@@ -5,13 +5,13 @@
         "jsx": "react-native",
         "lib": [
             "dom",
-            "esnext",
-            "node"
+            "esnext"
         ],
         "moduleResolution": "node",
+        "target": "es2018",
         "noEmit": true,
         "skipLibCheck": true,
         "resolveJsonModule": true,
-        "strictNullChecks": true
+        "strict": true
     }
 }
