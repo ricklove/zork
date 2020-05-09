@@ -1246,17 +1246,17 @@ define(
             fix),
         mapf(
           <>,
-          function(
-            (itm),
-            cond(
-              (type_Q(
+          (
+            itm) => (
+            cond,
+            (type_Q(
                   _itm,
                   string)
                 set(
                   prep,
                   find_prep(
                     _itm))),
-              (and(
+            (and(
                   _EQ_Q(
                     _itm,
                     obj),
@@ -1264,7 +1264,7 @@ define(
                     itm,
                     () => (_1)),
                   <>)),
-              (type_Q(
+            (type_Q(
                   _itm,
                   list)
                 set(
@@ -1337,7 +1337,7 @@ define(
                   _(
                     _whr,
                     1))),
-              (type_Q(
+            (type_Q(
                   _itm,
                   vector)
                 cond(
@@ -1365,20 +1365,20 @@ define(
                             2(
                               _itm)],
                           verb)))))),
-              (_EQ_Q(
+            (_EQ_Q(
                   _itm,
                   driver)
                 put(
                   _syn,
                   ,sdriver,
                   t)),
-              (_EQ_Q(
+            (_EQ_Q(
                   _itm,
                   flip)
                 put(
                   _syn,
                   ,sflip,
-                  t)))),
+                  t))),
           _sp),
         or(
           syn1(

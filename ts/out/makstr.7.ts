@@ -624,10 +624,10 @@ define(
       atom),
   mapf(
     <>,
-    function(
-      (x),
-      setg(
-        set(
+    (
+      x) => (
+      setg,
+      set(
           atm,
           or(
             lookup(
@@ -636,9 +636,9 @@ define(
             insert(
               _x,
               _dir))),
-        chtype(
+      chtype(
           _atm,
-          direction))),
+          direction)),
     _nms))
 
 define(
@@ -670,10 +670,10 @@ define(
       _str)),
   mapf(
     <>,
-    function(
-      (x),
-      setg(
-        set(
+    (
+      x) => (
+      setg,
+      set(
           atm,
           or(
             lookup(
@@ -682,7 +682,7 @@ define(
             insert(
               _x,
               _dir))),
-        _val)),
+      _val),
     _nms))
 
 define(
@@ -717,12 +717,12 @@ define(
         ,_atm)
       mapf(
         <>,
-        function(
-          (x),
-          setg(
-            add_word(
+        (
+          x) => (
+          setg,
+          add_word(
               _x),
-            _val)),
+          _val),
         _n2))),
   cond(
     (set(
@@ -735,17 +735,17 @@ define(
         ,_atm)
       mapf(
         <>,
-        function(
-          (x),
-          setg(
-            or(
+        (
+          x) => (
+          setg,
+          or(
               lookup(
                 _x,
                 ,actions),
               insert(
                 _x,
                 ,actions)),
-            _val)),
+          _val),
         _n2))))
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
@@ -864,11 +864,11 @@ define(
     ,oadjs,
     mapf(
       ,uvector,
-      function(
-        (w),
-        add_zork(
-          adjective,
-          _w)),
+      (
+        w) => (
+        add_zork,
+        adjective,
+        _w),
       _adj)),
   chutype(
     oadjs(
@@ -908,12 +908,12 @@ define(
         ,_atm)
       mapf(
         <>,
-        function(
-          (x),
-          setg(
-            add_word(
+        (
+          x) => (
+          setg,
+          add_word(
               _x),
-            _val)),
+          _val),
         _n2))))
 
 define(

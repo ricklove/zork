@@ -5387,13 +5387,13 @@ add_object(
 
 mapf(
   <>,
-  function(
-    (x),
-    rtro(
-      find_room(
+  (
+    x) => (
+    rtro,
+    find_room(
         spname(
           _x)),
-      ,rfillbit)),
+    ,rfillbit),
   _X,
   [resen_X_rooms
     reses_X_rooms
@@ -5414,24 +5414,24 @@ mapf(
 
 mapf(
   <>,
-  function(
-    (x),
-    rtro(
-      find_room(
+  (
+    x) => (
+    rtro,
+    find_room(
         _x),
-      ,rhousebit)),
+    ,rhousebit),
   ["LROOM"
     "KITCH"
     "ATTIC"])
 
 mapf(
   <>,
-  function(
-    (x),
-    rtro(
-      find_room(
+  (
+    x) => (
+    rtro,
+    find_room(
         _x),
-      ,rsacredbit)),
+    ,rsacredbit),
   ["BSHAF"
     "RIVR1"
     "DOCK"

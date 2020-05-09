@@ -1271,15 +1271,15 @@ define(
       adv),
   mapf(
     <>,
-    function(
-      (x),
-      cond(
-        (not(
+    (
+      x) => (
+      cond,
+      (not(
             0_Q(
               olight_Q(
                 _x)))
           mapleave(
-            _x)))),
+            _x))),
     aobjs(
       _me)))
 

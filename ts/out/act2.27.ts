@@ -2115,14 +2115,14 @@ define(
                 _brick_room)
               mapf(
                 <>,
-                function(
-                  (x),
-                  cond(
-                    (can_take_Q(
+                (
+                  x) => (
+                  cond,
+                  (can_take_Q(
                         _x)
                       trz(
                         _x,
-                        ,ovison)))),
+                        ,ovison))),
                 robjs(
                   _brick_room))
               cond(

@@ -874,10 +874,10 @@ define(
             ,vers)
           mapf(
             <>,
-            function(
-              (x),
-              print(
-                _x)),
+            (
+              x) => (
+              print,
+              _x),
             _zork)
           finish(
             #false
@@ -5813,21 +5813,21 @@ define(
       string),
   mapr(
     <>,
-    function(
-      (x),
-      cond(
-        (_EQ_Q(
+    (
+      x) => (
+      cond,
+      (_EQ_Q(
             _x,
             _sx)
           mapleave(
             <>)),
-        (not(
+      (not(
             memq(
               1(
                 _x),
               ,brks))
           mapleave(
-            _x)))),
+            _x))),
     _s))
 
 define(
@@ -5838,15 +5838,15 @@ define(
       string),
   mapr(
     <>,
-    function(
-      (s
-        "AUX"
-        (c
+    (
+      s,
+      "AUX",
+      (c
           ascii(
             1(
-              _s)))),
-      cond(
-        (and(
+              _s)))) => (
+      cond,
+      (and(
             g_Q(
               _c,
               96),
@@ -5859,7 +5859,7 @@ define(
             ascii(
               _(
                 _c,
-                32)))))),
+                32))))),
     _str),
   _str)
 
