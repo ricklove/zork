@@ -1,5 +1,6 @@
 import { fs } from "./loadFile";
-import { parseZorkFile, parseZorkFiles } from "./toAst";
+import { parseZorkFile, parseZorkFiles } from "./parseAst";
+import { convertToTypescript } from "./convertToTypescript";
 
 export const runDebug = async () => {
 
@@ -20,7 +21,7 @@ export const runDebug = async () => {
     const fileOutputs = filesParsed.map(x => ({
         ...x,
         outPath: fs.resolvePath(`../out/${x.fileName}`),
-        outText: x.result.toString(),
+        outText: convertToTypescript(x.result),
     }));
 
     for (let f of fileOutputs) {
