@@ -2,134 +2,321 @@
 
 // GLOBAL VARIABLES WHICH ARE ROOMS MUST BE HERE!
 
-psetg(rmgvals, '_
-    [bloc
-      here_])
+psetg(
+  rmgvals,
+  () => _)
 
 // GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 
-psetg(objgvals, '_
-    [_])
+psetg(
+  objgvals,
+  () => _)
 
 // GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 
-psetg(mgvals, '_
-    [kitchen_window!-flag
-      troll_flag!-flag
-      cage_solve!-flag
-      key_flag!-flag
-      bucket_top!-flag
-      carousel_flip!-flag
-      carousel_zoom!-flag
-      low_tide!-flag
-      dome_flag!-flag
-      glacier_flag!-flag
-      echo_flag!-flag
-      riddle_flag!-flag
-      lld_flag!-flag
-      cyclops_flag!-flag
-      magic_flag!-flag
-      trap_door!-flag
-      light_load!-flag
-      safe_flag!-flag
-      gnome_flag!-flag
-      gnome_door!-flag
-      mirror_mung!-flag
-      egypt_flag!-flag
-      on_pole!-flag
-      blab_-flag
-      binf_-flag
-      btie_-flag
-      buoy_flag!-flag
-      grunlock_-flag
-      gate_flag!-flag
-      rainbow_-flag
-      cage_top!-flag
-      empty_handed!-flag
-      deflate_-flag
-      light_shaft
-      played_time
-      moves
-      brief_-flag
-      then
-      super_brief!-flag
-      raw_score!])
+psetg(
+  mgvals,
+  () => _)
 
-psetg(cntuse, "You can't use that!")
+psetg(
+  cntuse,
+  "You can't use that!")
 
-setg(bigfix, _(chtype(min(), fix), 2))
+setg(
+  bigfix,
+  _(
+    chtype(
+      min(
+        ),
+      fix),
+    2))
 
-setg(words, or(get(words, oblist), moblist(words, 23)))
+setg(
+  words,
+  or(
+    get(
+      words,
+      oblist),
+    moblist(
+      words,
+      23)))
 
-setg(object_obl, or(get(objects, oblist), moblist(objects)))
+setg(
+  object_obl,
+  or(
+    get(
+      objects,
+      oblist),
+    moblist(
+      objects)))
 
-setg(room_obl, or(get(rooms, oblist), moblist(rooms)))
+setg(
+  room_obl,
+  or(
+    get(
+      rooms,
+      oblist),
+    moblist(
+      rooms)))
 
-setg(actors, ())
+setg(
+  actors,
+  ())
 
-setg(stars, ())
+setg(
+  stars,
+  ())
 
-add_buzz("BY", "IS", "ONE", "IT", "A", "THE", "AN", "THIS", "OVER")
+add_buzz(
+  "BY",
+  "IS",
+  "ONE",
+  "IT",
+  "A",
+  "THE",
+  "AN",
+  "THIS",
+  "OVER")
 
-add_directions("#!#!#", "NORTH", "SOUTH", "EAST", "WEST", "LAUNC", "LAND", "SE", "SW", "NE", "NW", "UP", "DOWN", "ENTER", "EXIT", "CROSS", "CLIMB")
+add_directions(
+  "#!#!#",
+  "NORTH",
+  "SOUTH",
+  "EAST",
+  "WEST",
+  "LAUNC",
+  "LAND",
+  "SE",
+  "SW",
+  "NE",
+  "NW",
+  "UP",
+  "DOWN",
+  "ENTER",
+  "EXIT",
+  "CROSS",
+  "CLIMB")
 
-dsynonym("NORTH", "N")
+dsynonym(
+  "NORTH",
+  "N")
 
-dsynonym("SOUTH", "S")
+dsynonym(
+  "SOUTH",
+  "S")
 
-dsynonym("EAST", "E")
+dsynonym(
+  "EAST",
+  "E")
 
-dsynonym("WEST", "W")
+dsynonym(
+  "WEST",
+  "W")
 
-dsynonym("UP", "U")
+dsynonym(
+  "UP",
+  "U")
 
-dsynonym("DOWN", "D")
+dsynonym(
+  "DOWN",
+  "D")
 
-dsynonym("ENTER", "IN")
+dsynonym(
+  "ENTER",
+  "IN")
 
-dsynonym("EXIT", "OUT", "LEAVE")
+dsynonym(
+  "EXIT",
+  "OUT",
+  "LEAVE")
 
-dsynonym("CROSS", "TRAVE")
+dsynonym(
+  "CROSS",
+  "TRAVE")
 
-add_zork(prep, "WITH", "AT", "TO", "IN", "DOWN", "UP", "UNDER")
+add_zork(
+  prep,
+  "WITH",
+  "AT",
+  "TO",
+  "IN",
+  "DOWN",
+  "UP",
+  "UNDER")
 
-synonym("WITH", "USING", "THROU")
+synonym(
+  "WITH",
+  "USING",
+  "THROU")
 
-synonym("IN", "INSID", "INTO")
+synonym(
+  "IN",
+  "INSID",
+  "INTO")
 
-setg(rooms, ())
+setg(
+  rooms,
+  ())
 
-setg(objects, ())
+setg(
+  objects,
+  ())
 
 "CEVENT DEFINITIONS"
 
-or(lookup("COMPILE", root()), cevent(0, _cure-clock, <>, "CURIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _cure-clock,
+    <>,
+    "CURIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _maint-room, t, "MNTIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _maint-room,
+    t,
+    "MNTIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _lantern, t, "LNTIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _lantern,
+    t,
+    "LNTIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _match-function, t, matin))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _match-function,
+    t,
+    matin))
 
-or(lookup("COMPILE", root()), cevent(0, _candles, t, "CNDIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _candles,
+    t,
+    "CNDIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _balloon, t, "BINT"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _balloon,
+    t,
+    "BINT"))
 
-or(lookup("COMPILE", root()), cevent(0, _burnup, t, "BRNIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _burnup,
+    t,
+    "BRNIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _fuse-function, t, "FUSIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _fuse-function,
+    t,
+    "FUSIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _ledge-mung, t, "LEDIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _ledge-mung,
+    t,
+    "LEDIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _safe-mung, t, "SAFIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _safe-mung,
+    t,
+    "SAFIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _volgnome, t, "VLGIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _volgnome,
+    t,
+    "VLGIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _gnome-function, t, "GNOIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _gnome-function,
+    t,
+    "GNOIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _bucket, t, "BCKIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _bucket,
+    t,
+    "BCKIN"))
 
-or(lookup("COMPILE", root()), cevent(0, _sphere-function, t, "SPHIN"))
+or(
+  lookup(
+    "COMPILE",
+    root(
+      )),
+  cevent(
+    0,
+    _sphere-function,
+    t,
+    "SPHIN"))
 
 // KLUDGE
 
@@ -148,9 +335,13 @@ or(lookup("COMPILE", root()), cevent(0, _sphere-function, t, "SPHIN"))
 
 "MAZE"
 
-psetg(forest, "Forest")
+psetg(
+  forest,
+  "Forest")
 
-psetg(current, #nexit
+psetg(
+  current,
+  #nexit
     "You cannot go upstream due to strong currents.")
 
 #room
@@ -280,7 +471,8 @@ psetg(current, #nexit
     kitchen
     10}
 
-add_object(#object
+add_object(
+  #object
     {"SBAG"
       "A sandwich bag is here."
       "sandwich bag"
@@ -294,16 +486,23 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _flamebit, _ovison, _takebit)
+      _(
+        _contbit,
+        _flamebit,
+        _ovison,
+        _takebit)
       0
       0
       0
       3
-      15}, ["BAG"
+      15},
+  ["BAG"
     "SACK"
-    "BAGGI"], ["BROWN"])
+    "BAGGI"],
+  ["BROWN"])
 
-add_object(#object
+add_object(
+  #object
     {"GARLI"
       "There is a clove of garlic here."
       "clove of garlic"
@@ -315,14 +514,19 @@ add_object(#object
       #find_obj
         {"SBAG"}
       _
-      _(_takebit, _foodbit, _ovison)
+      _(
+        _takebit,
+        _foodbit,
+        _ovison)
       0
       0
       0
       5
-      0}, ["CLOVE"])
+      0},
+  ["CLOVE"])
 
-add_object(#object
+add_object(
+  #object
     {"FOOD"
       "A hot pepper sandwich is here."
       "\.lunch"
@@ -334,18 +538,23 @@ add_object(#object
       #find_obj
         {"SBAG"}
       _
-      _(_foodbit, _takebit, _ovison)
+      _(
+        _foodbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       5
-      0}, ["SANDW"
+      0},
+  ["SANDW"
     "LUNCH"
     "PEPPE"
     "DINNE"
     "SNACK"])
 
-add_object(#object
+add_object(
+  #object
     {"GUNK"
       "There is a small piece of vitreous slag here."
       "piece of vitreous slag"
@@ -356,15 +565,21 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _takebit, _ovison)
+      _(
+        _trytakebit,
+        _takebit,
+        _ovison)
       0
       0
       0
       10
-      0}, ["MESS"
-    "SLAG"], ["VITRE"])
+      0},
+  ["MESS"
+    "SLAG"],
+  ["VITRE"])
 
-add_object(#object
+add_object(
+  #object
     {"COAL"
       "There is a small heap of coal here."
       "small pile of coal"
@@ -376,15 +591,20 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _ovison)
+      _(
+        _burnbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       20
-      0}, ["HEAP"
+      0},
+  ["HEAP"
     "CHARC"])
 
-add_object(#object
+add_object(
+  #object
     {"JADE"
       "There is an exquisite jade figurine here."
       "jade figurine"
@@ -396,14 +616,18 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       5
       5
       10
-      0}, ["FIGUR"])
+      0},
+  ["FIGUR"])
 
-add_object(#object
+add_object(
+  #object
     {"MACHI"
       ""
       "machine"
@@ -414,16 +638,20 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _ovison)
+      _(
+        _contbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      50}, ["PDP10"
+      50},
+  ["PDP10"
     "DRYER"
     "LID"])
 
-add_object(#object
+add_object(
+  #object
     {"DIAMO"
       "There is an enormous diamond (perfectly cut) here."
       "huge diamond"
@@ -435,14 +663,18 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       10
       6
       5
-      0}, ["PERFE"])
+      0},
+  ["PERFE"])
 
-add_object(#object
+add_object(
+  #object
     {"TCASE"
       "There is a trophy case here."
       "trophy case"
@@ -453,14 +685,20 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _transbit, _ovison)
+      _(
+        _contbit,
+        _transbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      _,bigfix}, ["CASE"], ["TROPH"])
+      _,bigfix},
+  ["CASE"],
+  ["TROPH"])
 
-add_object(#object
+add_object(
+  #object
     {"BOTTL"
       "A clear glass bottle is here."
       "glass bottle"
@@ -471,15 +709,22 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _transbit, _takebit, _ovison)
+      _(
+        _contbit,
+        _transbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       5
-      4}, ["CONTA"
-    "PITCH"], ["GLASS"])
+      4},
+  ["CONTA"
+    "PITCH"],
+  ["GLASS"])
 
-add_object(#object
+add_object(
+  #object
     {"WATER"
       "Water"
       "quantity of water"
@@ -489,12 +734,16 @@ add_object(#object
       #find_obj
         {"BOTTL"}
       _
-      _(_drinkbit, _takebit, _ovison)
+      _(
+        _drinkbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       4
-      0}, ["LIQUI"
+      0},
+  ["LIQUI"
     "H2O"])
 
 #room
@@ -513,7 +762,8 @@ add_object(#object
       #find_obj
         {"KNIFE"})}
 
-add_object(#object
+add_object(
+  #object
     {"ROPE"
       "There is a large coil of rope here."
       "rope"
@@ -523,15 +773,20 @@ add_object(#object
       _
       <>
       _
-      _(_tiebit, _takebit, _ovison)
+      _(
+        _tiebit,
+        _takebit,
+        _ovison)
       0
       0
       0
       10
-      0}, ["HEMP"
+      0},
+  ["HEMP"
     "COIL"])
 
-add_object(#object
+add_object(
+  #object
     {"KNIFE"
       "There is a nasty-looking knife lying here."
       "knife"
@@ -542,14 +797,22 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison, _weaponbit)
+      _(
+        _takebit,
+        _ovison,
+        _weaponbit)
       0
       0
       0
       5
-      0}, ["BLADE"], ["NASTY"])
+      0},
+  ["BLADE"],
+  ["NASTY"])
 
-add_melee(find_obj("KNIFE"), _knife-melee)
+add_melee(
+  find_obj(
+    "KNIFE"),
+  _knife-melee)
 
 #room
   {"LROOM"
@@ -584,7 +847,8 @@ add_melee(find_obj("KNIFE"), _knife-melee)
         {"SWORD"})
     living_room}
 
-add_object(#object
+add_object(
+  #object
     {"SWORD"
       "There is an elvish sword here."
       "sword"
@@ -594,18 +858,27 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit, _weaponbit)
+      _(
+        _ovison,
+        _takebit,
+        _weaponbit)
       0
       0
       0
       30
-      0}, ["ORCRI"
+      0},
+  ["ORCRI"
     "GLAMD"
-    "BLADE"], ["ELVIS"])
+    "BLADE"],
+  ["ELVIS"])
 
-add_melee(find_obj("SWORD"), _sword-melee)
+add_melee(
+  find_obj(
+    "SWORD"),
+  _sword-melee)
 
-add_object(#object
+add_object(
+  #object
     {"LAMP"
       "There is a brass lantern (battery-powered) here."
       "lamp"
@@ -615,14 +888,19 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       _1
       0
       0
       15
-      0}, ["LANTE"], ["BRASS"])
+      0},
+  ["LANTE"],
+  ["BRASS"])
 
-add_object(#object
+add_object(
+  #object
     {"BLAMP"
       "There is a broken brass lantern here."
       "broken lamp"
@@ -634,11 +912,16 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
-      0}, ["LAMP"
-    "LANTE"], ["BROKE"])
+      _(
+        _takebit,
+        _ovison)
+      0},
+  ["LAMP"
+    "LANTE"],
+  ["BROKE"])
 
-add_object(#object
+add_object(
+  #object
     {"RUG"
       ""
       "carpet"
@@ -649,14 +932,20 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _ndescbit, _ovison)
+      _(
+        _trytakebit,
+        _ndescbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["CARPE"], ["ORIEN"])
+      0},
+  ["CARPE"],
+  ["ORIEN"])
 
-add_object(#object
+add_object(
+  #object
     {"LEAVE"
       "There is a pile of leaves on the ground."
       "pile of leaves"
@@ -667,12 +956,16 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _ovison)
+      _(
+        _burnbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       25
-      0}, ["LEAF"
+      0},
+  ["LEAF"
     "PILE"])
 
 #room
@@ -699,7 +992,9 @@ add_object(#object
     cellar
     25}
 
-psetg(tchomp, "The troll fends you off with a menacing gesture.")
+psetg(
+  tchomp,
+  "The troll fends you off with a menacing gesture.")
 
 #room
   {"MTROL"
@@ -728,24 +1023,50 @@ psetg(tchomp, "The troll fends you off with a menacing gesture.")
     (#find_obj
         {"TROLL"})}
 
-psetg(trolldesc, "A nasty-looking troll, brandishing a bloody axe, blocks all passages\nout of the room.")
+psetg(
+  trolldesc,
+  "A nasty-looking troll, brandishing a bloody axe, blocks all passages\nout of the room.")
 
-psetg(trollout, "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
+psetg(
+  trollout,
+  "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
 
-setg(villains, (find_obj("TROLL")
-    find_obj("THIEF")
-    find_obj("CYCLO")))
+setg(
+  villains,
+  (find_obj(
+      "TROLL")
+    find_obj(
+      "THIEF")
+    find_obj(
+      "CYCLO")))
 
-setg(villain_probs, iuvector(length(_villains), 0))
+setg(
+  villain_probs,
+  iuvector(
+    length(
+      _villains),
+    0))
 
-setg(oppv, ivector(length(_villains), '<>))
+setg(
+  oppv,
+  ivector(
+    length(
+      _villains),
+    () => <>))
 
-add_demon(setg(sword_demon, chtype([sword_glow
+add_demon(
+  setg(
+    sword_demon,
+    chtype(
+      [sword_glow
         _villains
         ()
-        1(_rooms)
-        find_obj("SWORD")
-        <>], hack)))
+        1(
+          _rooms)
+        find_obj(
+          "SWORD")
+        <>],
+      hack)))
 
 #object
   {"TROLL"
@@ -759,23 +1080,37 @@ add_demon(setg(sword_demon, chtype([sword_glow
     _
     <>
     _
-    _(_vicbit, _ovison, _villain)
+    _(
+      _vicbit,
+      _ovison,
+      _villain)
     0
     0
     0
     _,bigfix
     2}
 
-add_melee(find_obj("TROLL"), _troll-melee)
+add_melee(
+  find_obj(
+    "TROLL"),
+  _troll-melee)
 
-add_demon(setg(fight_demon, chtype([fighting
+add_demon(
+  setg(
+    fight_demon,
+    chtype(
+      [fighting
         _villains
         ()
-        1(_rooms)
-        find_obj("TROLL")
-        <>], hack)))
+        1(
+          _rooms)
+        find_obj(
+          "TROLL")
+        <>],
+      hack)))
 
-add_object(#object
+add_object(
+  #object
     {"AXE"
       "There is a bloody axe here."
       "bloody axe"
@@ -785,18 +1120,27 @@ add_object(#object
       <>
       ()
       _
-      find_obj("TROLL")
+      find_obj(
+        "TROLL")
       _
-      _(_ovison, _weaponbit)
+      _(
+        _ovison,
+        _weaponbit)
       0
       0
       0
       25
-      0}, [], ["BLOOD"])
+      0},
+  [],
+  ["BLOOD"])
 
-psetg(mazedesc, "You are in a maze of twisty little passages, all alike.")
+psetg(
+  mazedesc,
+  "You are in a maze of twisty little passages, all alike.")
 
-psetg(deadend, "Dead End")
+psetg(
+  deadend,
+  "Dead End")
 
 #room
   {"MAZE1"
@@ -895,7 +1239,8 @@ psetg(deadend, "Dead End")
       #find_obj
         {"RKNIF"})}
 
-add_object(#object
+add_object(
+  #object
     {"RKNIF"
       "There is a rusty knife here."
       "rusty knife"
@@ -905,16 +1250,25 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit, _weaponbit)
+      _(
+        _ovison,
+        _takebit,
+        _weaponbit)
       0
       0
       0
       20
-      0}, ["KNIFE"], ["RUSTY"])
+      0},
+  ["KNIFE"],
+  ["RUSTY"])
 
-add_melee(find_obj("RKNIF"), _knife-melee)
+add_melee(
+  find_obj(
+    "RKNIF"),
+  _knife-melee)
 
-add_object(#object
+add_object(
+  #object
     {"BLANT"
       "There is a burned-out lantern here."
       "burned-out lantern"
@@ -925,13 +1279,17 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       0
       0
       20
-      0}, ["LANTE"
-    "LAMP"], ["USED"
+      0},
+  ["LANTE"
+    "LAMP"],
+  ["USED"
     "BURNE"
     "DEAD"
     "USELE"])
@@ -948,14 +1306,18 @@ add_object(#object
     _
     <>
     _
-    _(_toolbit, _takebit, _ovison)
+    _(
+      _toolbit,
+      _takebit,
+      _ovison)
     0
     0
     0
     10
     0}
 
-add_object(#object
+add_object(
+  #object
     {"BONES"
       "A skeleton, probably the remains of a luckless adventurer, lies here."
       ""
@@ -966,15 +1328,19 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _ovison)
+      _(
+        _trytakebit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["SKELE"
+      0},
+  ["SKELE"
     "BODY"])
 
-add_object(#object
+add_object(
+  #object
     {"BAGCO"
       "An old leather bag, bulging with coins, is here."
       "bag of coins"
@@ -986,15 +1352,20 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       10
       5
       15
-      0}, ["BAG"
-    "COINS"], ["LEATH"])
+      0},
+  ["BAG"
+    "COINS"],
+  ["LEATH"])
 
-add_object(#object
+add_object(
+  #object
     {"BAR"
       "There is a large platinum bar here."
       "platinum bar"
@@ -1006,14 +1377,19 @@ add_object(#object
       _
       <>
       _
-      _(_sacredbit, _takebit, _ovison)
+      _(
+        _sacredbit,
+        _takebit,
+        _ovison)
       0
       12
       10
       20
-      0}, ["PLATI"])
+      0},
+  ["PLATI"])
 
-add_object(#object
+add_object(
+  #object
     {"PEARL"
       "There is a pearl necklace here with hundreds of large pearls."
       "pearl necklace"
@@ -1025,12 +1401,15 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       9
       5
       10
-      0}, ["NECKL"])
+      0},
+  ["NECKL"])
 
 #room
   {"DEAD2"
@@ -1252,7 +1631,9 @@ add_object(#object
         "NE"
         "CYCLO"}}
 
-psetg(stfore, "You are in a forest, with trees in all directions around you.")
+psetg(
+  stfore,
+  "You are in a forest, with trees in all directions around you.")
 
 #room
   {"FORE1"
@@ -1300,7 +1681,9 @@ psetg(stfore, "You are in a forest, with trees in all directions around you.")
         "WEST"
         "FORE2"}}
 
-psetg(fordes, "You are in a dimly lit forest, with large trees all around.  To the\neast, there appears to be sunlight.")
+psetg(
+  fordes,
+  "You are in a dimly lit forest, with large trees all around.  To the\neast, there appears to be sunlight.")
 
 #room
   {"FORE2"
@@ -1506,7 +1889,8 @@ psetg(fordes, "You are in a dimly lit forest, with large trees all around.  To t
         {"ICE"})
     glacier_room}
 
-add_object(#object
+add_object(
+  #object
     {"REFL1"
       ""
       "mirror"
@@ -1517,14 +1901,19 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _vicbit, _ovison)
+      _(
+        _trytakebit,
+        _vicbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["MIRRO"])
+      0},
+  ["MIRRO"])
 
-add_object(#object
+add_object(
+  #object
     {"REFL2"
       ""
       "mirror"
@@ -1535,14 +1924,19 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _vicbit, _ovison)
+      _(
+        _trytakebit,
+        _vicbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["MIRRO"])
+      0},
+  ["MIRRO"])
 
-add_object(#object
+add_object(
+  #object
     {"ICE"
       "A mass of ice fills the western half of the room."
       "glacier"
@@ -1553,12 +1947,15 @@ add_object(#object
       _
       <>
       _
-      _(_vicbit, _ovison)
+      _(
+        _vicbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["GLACI"])
+      0},
+  ["GLACI"])
 
 #room
   {"RUBYR"
@@ -1630,14 +2027,17 @@ add_object(#object
     _
     <>
     _
-    _(_takebit, _ovison)
+    _(
+      _takebit,
+      _ovison)
     0
     15
     8
     5
     0}
 
-add_object(#object
+add_object(
+  #object
     {"TRIDE"
       "Neptune's own crystal trident is here."
       "crystal trident"
@@ -1648,14 +2048,19 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       4
       11
       20
-      0}, ["FORK"], ["CRYST"])
+      0},
+  ["FORK"],
+  ["CRYST"])
 
-add_object(#object
+add_object(
+  #object
     {"COFFI"
       "There is a solid-gold coffin, used for the burial of Ramses II, here."
       "gold coffin"
@@ -1667,14 +2072,21 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _sacredbit, _takebit, _ovison)
+      _(
+        _contbit,
+        _sacredbit,
+        _takebit,
+        _ovison)
       0
       3
       7
       55
-      35}, ["CASKE"], ["GOLD"])
+      35},
+  ["CASKE"],
+  ["GOLD"])
 
-add_object(#object
+add_object(
+  #object
     {"TORCH"
       "There is an ivory torch here."
       "torch"
@@ -1685,12 +2097,18 @@ add_object(#object
       _
       <>
       _
-      _(_toolbit, _flamebit, _takebit, _ovison)
+      _(
+        _toolbit,
+        _flamebit,
+        _takebit,
+        _ovison)
       1
       14
       6
       20
-      0}, [], ["IVORY"])
+      0},
+  [],
+  ["IVORY"])
 
 #room
   {"MIRR1"
@@ -1863,7 +2281,9 @@ add_object(#object
     (#find_obj
         {"TBASK"})}
 
-put(add_object(#object
+put(
+  add_object(
+    #object
       {"TBASK"
         "At the end of the chain is a basket."
         "basket"
@@ -1874,16 +2294,23 @@ put(add_object(#object
         _
         <>
         _
-        _(_contbit, _ovison, _transbit)
+        _(
+          _contbit,
+          _ovison,
+          _transbit)
         0
         0
         0
         _,bigfix
-        50}, ["CAGE"
+        50},
+    ["CAGE"
       "DUMBW"
-      "BASKE"]), _oopen_q, t)
+      "BASKE"]),
+  _oopen_q,
+  t)
 
-add_object(#object
+add_object(
+  #object
     {"FBASK"
       ""
       ""
@@ -1898,7 +2325,8 @@ add_object(#object
       0
       0
       _,bigfix
-      0}, ["CAGE"
+      0},
+  ["CAGE"
     "DUMBW"
     "BASKE"])
 
@@ -1941,7 +2369,8 @@ add_object(#object
         {"BRACE"})
     boom_room}
 
-add_object(#object
+add_object(
+  #object
     {"BRACE"
       "There is a sapphire-encrusted bracelet here."
       "sapphire bracelet"
@@ -1953,12 +2382,16 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       5
       3
       10
-      0}, ["JEWEL"], ["SAPPH"])
+      0},
+  ["JEWEL"],
+  ["SAPPH"])
 
 #room
   {"TLADD"
@@ -1972,7 +2405,9 @@ add_object(#object
         "UP"
         "MINE7"}}
 
-psetg(mindesc, "You are in a non-descript part of a coal mine.")
+psetg(
+  mindesc,
+  "You are in a non-descript part of a coal mine.")
 
 #room
   {"MINE1"
@@ -2110,7 +2545,9 @@ psetg(mindesc, "You are in a non-descript part of a coal mine.")
     (#find_obj
         {"COAL"})}
 
-psetg(nofit, "You cannot fit through this passage with that load.")
+psetg(
+  nofit,
+  "You cannot fit through this passage with that load.")
 
 #room
   {"TIMBE"
@@ -2348,7 +2785,8 @@ psetg(nofit, "You cannot fit through this passage with that load.")
         {"IRBOX"})
     carousel_room}
 
-add_object(#object
+add_object(
+  #object
     {"IRBOX"
       "There is a dented iron box here."
       "iron box"
@@ -2361,15 +2799,20 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _contbit)
+      _(
+        _takebit,
+        _contbit)
       0
       0
       0
       40
-      20}, ["BOX"], ["IRON"
+      20},
+  ["BOX"],
+  ["IRON"
     "DENTE"])
 
-add_object(#object
+add_object(
+  #object
     {"STRAD"
       "There is a Stradavarius here."
       "fancy violin"
@@ -2381,12 +2824,16 @@ add_object(#object
       #find_obj
         {"IRBOX"}
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       10
       10
       10
-      0}, ["VIOLI"], ["FANCY"])
+      0},
+  ["VIOLI"],
+  ["FANCY"])
 
 #room
   {"PASS5"
@@ -2488,10 +2935,22 @@ add_object(#object
     (#find_obj
         {"ENGRA"})}
 
-add_object(sobject("ENGRA", "wall with engravings", _ovison, _readbit, _sacredbit), ["INSCR"], ["OLD"
+add_object(
+  sobject(
+    "ENGRA",
+    "wall with engravings",
+    _ovison,
+    _readbit,
+    _sacredbit),
+  ["INSCR"],
+  ["OLD"
     "ANCIE"])
 
-put(find_obj("ENGRA"), _odesc1, "There are old engravings on the walls here.")
+put(
+  find_obj(
+    "ENGRA"),
+  _odesc1,
+  "There are old engravings on the walls here.")
 
 #room
   {"RIDDL"
@@ -2550,7 +3009,8 @@ put(find_obj("ENGRA"), _odesc1, "There are old engravings on the walls here.")
         {"GHOST"})
     lld_room}
 
-add_object(#object
+add_object(
+  #object
     {"GHOST"
       ""
       ""
@@ -2561,12 +3021,15 @@ add_object(#object
       _
       <>
       _
-      _(_vicbit, _ovison)
+      _(
+        _vicbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["SPIRI"
+      0},
+  ["SPIRI"
     "FIEND"])
 
 #room
@@ -2602,7 +3065,8 @@ add_object(#object
     (#find_obj
         {"GRAIL"})}
 
-add_object(#object
+add_object(
+  #object
     {"GRAIL"
       "There is an extremely valuable (perhaps original) grail here."
       "grail"
@@ -2614,12 +3078,16 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _takebit, _ovison)
+      _(
+        _contbit,
+        _takebit,
+        _ovison)
       0
       2
       5
       10
-      5}, [])
+      5},
+  [])
 
 #room
   {"TEMP1"
@@ -2636,7 +3104,16 @@ add_object(#object
       #find_obj
         {"BELL"})}
 
-add_object(sobject("PRAYE", "prayer", _(_readbit, _sacredbit, _ovison)), ["INSCR"], ["ANCIE"
+add_object(
+  sobject(
+    "PRAYE",
+    "prayer",
+    _(
+      _readbit,
+      _sacredbit,
+      _ovison)),
+  ["INSCR"],
+  ["ANCIE"
     "OLD"])
 
 #room
@@ -2652,7 +3129,8 @@ add_object(sobject("PRAYE", "prayer", _(_readbit, _sacredbit, _ovison)), ["INSCR
       #find_obj
         {"CANDL"})}
 
-add_object(#object
+add_object(
+  #object
     {"TRUNK"
       "There is an old trunk here, bulging with assorted jewels."
       "trunk with jewels"
@@ -2667,9 +3145,11 @@ add_object(#object
       15
       8
       35
-      0}, ["CHEST"])
+      0},
+  ["CHEST"])
 
-add_object(#object
+add_object(
+  #object
     {"BELL"
       "There is a small brass bell here."
       "bell"
@@ -2680,14 +3160,19 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       0
       0
       5
-      0}, [], ["BRASS"])
+      0},
+  [],
+  ["BRASS"])
 
-add_object(#object
+add_object(
+  #object
     {"BOOK"
       "There is a large black book here."
       "book"
@@ -2697,16 +3182,23 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _ovison, _readbit)
+      _(
+        _burnbit,
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       10
-      0}, ["PRAYE"
+      0},
+  ["PRAYE"
     "BIBLE"
-    "GOODB"], ["BLACK"])
+    "GOODB"],
+  ["BLACK"])
 
-add_object(#object
+add_object(
+  #object
     {"CANDL"
       "There are two candles here."
       "pair of candles"
@@ -2716,12 +3208,16 @@ add_object(#object
       _
       <>
       _
-      _(_flamebit, _takebit, _ovison)
+      _(
+        _flamebit,
+        _takebit,
+        _ovison)
       1
       0
       0
       10
-      0}, [])
+      0},
+  [])
 
 #room
   {"DAM"
@@ -2762,7 +3258,8 @@ add_object(#object
       #find_obj
         {"GUIDE"})}
 
-add_object(#object
+add_object(
+  #object
     {"GUIDE"
       "There are tour guidebooks here."
       "tour guidebook"
@@ -2773,14 +3270,21 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _readbit, _ovison)
+      _(
+        _burnbit,
+        _takebit,
+        _readbit,
+        _ovison)
       0
       0
       0
       5
-      0}, ["BOOK"], ["TOUR"])
+      0},
+  ["BOOK"],
+  ["TOUR"])
 
-add_object(#object
+add_object(
+  #object
     {"PAPER"
       ""
       "newspaper"
@@ -2792,12 +3296,17 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _readbit, _ovison)
+      _(
+        _burnbit,
+        _takebit,
+        _readbit,
+        _ovison)
       0
       0
       0
       2
-      0}, ["NEWSP"
+      0},
+  ["NEWSP"
     "ISSUE"
     "REPOR"
     "MAGAZ"
@@ -2832,7 +3341,8 @@ add_object(#object
         {"SCREW"})
     maint_room}
 
-add_object(#object
+add_object(
+  #object
     {"MATCH"
       "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
       "matchbook"
@@ -2843,14 +3353,19 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison, _readbit)
+      _(
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       2
-      0}, ["FLINT"])
+      0},
+  ["FLINT"])
 
-add_object(#object
+add_object(
+  #object
     {"ADVER"
       "There is a small leaflet here."
       "leaflet"
@@ -2862,16 +3377,22 @@ add_object(#object
       #find_obj
         {"MAILB"}
       _
-      _(_burnbit, _takebit, _ovison, _readbit)
+      _(
+        _burnbit,
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       2
-      0}, ["PAMPH"
+      0},
+  ["PAMPH"
     "LEAFL"
     "BOOKL"])
 
-add_object(#object
+add_object(
+  #object
     {"MAILB"
       "There is a small mailbox here."
       "mailbox"
@@ -2884,12 +3405,15 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _ovison)
+      _(
+        _contbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      10}, ["BOX"])
+      10},
+  ["BOX"])
 
 #object
   {"TUBE"
@@ -2903,14 +3427,18 @@ add_object(#object
     _
     <>
     _
-    _(_contbit, _takebit, _ovison)
+    _(
+      _contbit,
+      _takebit,
+      _ovison)
     0
     0
     0
     10
     7}
 
-add_object(#object
+add_object(
+  #object
     {"PUTTY"
       "There is some gunk here"
       "viscous material"
@@ -2922,16 +3450,22 @@ add_object(#object
       #find_obj
         {"TUBE"}
       _
-      _(_toolbit, _takebit, _ovison)
+      _(
+        _toolbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       6
-      0}, ["MATER"
+      0},
+  ["MATER"
     "GUNK"
-    "GLUE"], ["VISCO"])
+    "GLUE"],
+  ["VISCO"])
 
-add_object(#object
+add_object(
+  #object
     {"WRENC"
       "There is a wrench here."
       "wrench"
@@ -2943,14 +3477,19 @@ add_object(#object
       _
       <>
       _
-      _(_toolbit, _takebit, _ovison)
+      _(
+        _toolbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       10
-      0}, [])
+      0},
+  [])
 
-add_object(#object
+add_object(
+  #object
     {"SCREW"
       "There is a screwdriver here."
       "screwdriver"
@@ -2962,12 +3501,16 @@ add_object(#object
       _
       <>
       _
-      _(_toolbit, _takebit, _ovison)
+      _(
+        _toolbit,
+        _takebit,
+        _ovison)
       0
       0
       0
       5
-      0}, [])
+      0},
+  [])
 
 #room
   {"CYCLO"
@@ -2992,7 +3535,10 @@ add_object(#object
         {"CYCLO"})
     cyclops_room}
 
-add_melee(find_obj("CYCLO"), _cyclops-melee)
+add_melee(
+  find_obj(
+    "CYCLO"),
+  _cyclops-melee)
 
 #room
   {"BLROO"
@@ -3009,7 +3555,8 @@ add_melee(find_obj("CYCLO"), _cyclops-melee)
     time
     10}
 
-add_object(#object
+add_object(
+  #object
     {"CYCLO"
       ""
       "cyclops"
@@ -3020,12 +3567,16 @@ add_object(#object
       _
       <>
       _
-      _(_vicbit, _ovison, _villain)
+      _(
+        _vicbit,
+        _ovison,
+        _villain)
       0
       0
       0
       _,bigfix
-      10000}, ["ONE-E"
+      10000},
+  ["ONE-E"
     "MONST"])
 
 #room
@@ -3042,7 +3593,8 @@ add_object(#object
     treasure_room
     25}
 
-add_object(#object
+add_object(
+  #object
     {"CHALI"
       "There is a silver chalice, intricately engraved, here."
       "chalice"
@@ -3053,12 +3605,16 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _takebit, _ovison)
+      _(
+        _contbit,
+        _takebit,
+        _ovison)
       0
       10
       10
       10
-      5}, ["CUP"
+      5},
+  ["CUP"
     "GOBLE"])
 
 #room
@@ -3097,7 +3653,8 @@ add_object(#object
     (#find_obj
         {"PAINT"})}
 
-add_object(#object
+add_object(
+  #object
     {"PAINT"
       "A masterpiece by a neglected genius is here."
       "painting"
@@ -3107,29 +3664,45 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _takebit, _ovison)
+      _(
+        _burnbit,
+        _takebit,
+        _ovison)
       0
       4
       7
       15
-      0}, ["ART"
+      0},
+  ["ART"
     "CANVA"
     "MASTE"])
 
 "LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS"
 
-add_demon(setg(robber_demon, chtype([robber
+add_demon(
+  setg(
+    robber_demon,
+    chtype(
+      [robber
         ()
         _rooms
-        1(_rooms)
-        find_obj("THIEF")
-        <>], hack)))
+        1(
+          _rooms)
+        find_obj(
+          "THIEF")
+        <>],
+      hack)))
 
-psetg(robber_c-desc, "There is a suspicious-looking individual, holding a bag, leaning\nagainst one wall.  He is armed with a vicious-looking stilletto.")
+psetg(
+  robber_c-desc,
+  "There is a suspicious-looking individual, holding a bag, leaning\nagainst one wall.  He is armed with a vicious-looking stilletto.")
 
-psetg(robber_u-desc, "There is a suspicious-looking individual lying unconscious on the\nground.  His bag and stilletto seem to have vanished.")
+psetg(
+  robber_u-desc,
+  "There is a suspicious-looking individual lying unconscious on the\nground.  His bag and stilletto seem to have vanished.")
 
-add_object(#object
+add_object(
+  #object
     {"THIEF"
       _,robber-c-desc
       "thief"
@@ -3141,12 +3714,16 @@ add_object(#object
       _
       <>
       _
-      _(_vicbit, _ovison, _villain)
+      _(
+        _vicbit,
+        _ovison,
+        _villain)
       0
       0
       0
       _,bigfix
-      4}, ["ROBBE"
+      4},
+  ["ROBBE"
     "CROOK"
     "CRIME"
     "CRIMI"
@@ -3159,9 +3736,13 @@ add_object(#object
     "BAGMA"
     "MAFIA"])
 
-add_melee(find_obj("THIEF"), _thief-melee)
+add_melee(
+  find_obj(
+    "THIEF"),
+  _thief-melee)
 
-add_object(#object
+add_object(
+  #object
     {"STILL"
       "There is a vicious-looking stilletto here."
       "stilletto"
@@ -3171,140 +3752,434 @@ add_object(#object
       <>
       ()
       _
-      find_obj("THIEF")
+      find_obj(
+        "THIEF")
       _
-      _(_ovison, _weaponbit)
+      _(
+        _ovison,
+        _weaponbit)
       0
       0
       0
       10
-      0}, [], ["VICIO"])
+      0},
+  [],
+  ["VICIO"])
 
-setg(weapons, (find_obj("STICK")
-    find_obj("KNIFE")))
+setg(
+  weapons,
+  (find_obj(
+      "STICK")
+    find_obj(
+      "KNIFE")))
 
-setg(random_list, (find_room("LROOM")
-    find_room("KITCH")
-    find_room("CLEAR")
-    find_room("FORE3")
-    find_room("FORE2")
-    find_room("SHOUS")
-    find_room("FORE2")
-    find_room("KITCH")
-    find_room("EHOUS")))
+setg(
+  random_list,
+  (find_room(
+      "LROOM")
+    find_room(
+      "KITCH")
+    find_room(
+      "CLEAR")
+    find_room(
+      "FORE3")
+    find_room(
+      "FORE2")
+    find_room(
+      "SHOUS")
+    find_room(
+      "FORE2")
+    find_room(
+      "KITCH")
+    find_room(
+      "EHOUS")))
 
-add_desc(find_obj("BOOK"), "COMMANDMENT #12592\nOh ye who go about saying unto each:   \"Hello sailor\":\ndost thou know the magnitude of thy sin before the gods?\nYea, verily, thou shalt be ground between two stones.\nShall the angry gods cast thy body into the whirlpool?\nSurely, thy eye shall be put out with a sharp stick!\nEven unto the ends of the earth shalt thou wander and\nunto the land of the dead shalt thou be sent at last.\nSurely thou shalt repent of thy cunning.")
+add_desc(
+  find_obj(
+    "BOOK"),
+  "COMMANDMENT #12592\nOh ye who go about saying unto each:   \"Hello sailor\":\ndost thou know the magnitude of thy sin before the gods?\nYea, verily, thou shalt be ground between two stones.\nShall the angry gods cast thy body into the whirlpool?\nSurely, thy eye shall be put out with a sharp stick!\nEven unto the ends of the earth shalt thou wander and\nunto the land of the dead shalt thou be sent at last.\nSurely thou shalt repent of thy cunning.")
 
-add_desc(find_obj("GUIDE"), "\"		   Guide Book to\n		Flood Control Dam #3\n\n  Flood Control Dam #3 (FCD#3) was constructed in year 783 of the\nGreat Underground Empire to harness the destructive power of the\nFrigid River.  This work was supported by a grant of 37 million\nzorkmids from the Central Bureaucracy and your omnipotent local\ntyrant Lord Dimwit Flathead the Excessive. This impressive\nstructure is composed of 3.7 cubic feet of concrete, is 256 feet\ntall at the center, and 193 feet wide at the top.  The reservoir\ncreated behind the dam has a volume of 37 billion cubic feet, an\narea of 12 million square feet, and a shore line of 36 thousand\nfeet.\n\n  The construction of FCD#3 took 112 days from ground breaking to\nthe dedication. It required a work force of 384 slaves, 34 slave\ndrivers, 12 engineers, 2 turtle doves, and a partridge in a pear\ntree. The work was managed by a command team composed of 2345\nbureaucrats, 2347 secretaries (at least two of which can type),\n12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape\nprocessors, and nearly one million dead trees.\n\n  We will now point out some of the more interesting features\nof FCD#3 as we conduct you on a guided tour of the facilities:\n	1) You start your tour here in the Dam Lobby.\n	   You will notice on your right that .........")
+add_desc(
+  find_obj(
+    "GUIDE"),
+  "\"		   Guide Book to\n		Flood Control Dam #3\n\n  Flood Control Dam #3 (FCD#3) was constructed in year 783 of the\nGreat Underground Empire to harness the destructive power of the\nFrigid River.  This work was supported by a grant of 37 million\nzorkmids from the Central Bureaucracy and your omnipotent local\ntyrant Lord Dimwit Flathead the Excessive. This impressive\nstructure is composed of 3.7 cubic feet of concrete, is 256 feet\ntall at the center, and 193 feet wide at the top.  The reservoir\ncreated behind the dam has a volume of 37 billion cubic feet, an\narea of 12 million square feet, and a shore line of 36 thousand\nfeet.\n\n  The construction of FCD#3 took 112 days from ground breaking to\nthe dedication. It required a work force of 384 slaves, 34 slave\ndrivers, 12 engineers, 2 turtle doves, and a partridge in a pear\ntree. The work was managed by a command team composed of 2345\nbureaucrats, 2347 secretaries (at least two of which can type),\n12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape\nprocessors, and nearly one million dead trees.\n\n  We will now point out some of the more interesting features\nof FCD#3 as we conduct you on a guided tour of the facilities:\n	1) You start your tour here in the Dam Lobby.\n	   You will notice on your right that .........")
 
-add_desc(find_obj("PAPER"), "US NEWS & DUNGEON REPORT\n12/12/77  				       Late Dungeon Edition\n\n     In order to get a more-or-less working version, we have\ninstalled one with some known bugs.  In particular, the following\nsequence will not work correctly, nor will anything resembling it:\n>take\ntake what?\n>frob\nwhat do you want me to do with it?\n     Note that if you now respond 'take', the right thing will\nhappen. In short, the current parser can't handle verbs with missing\nobjects.  Since it is completely new, we'd appreciate reports of any\nother bugs encountered.\n\nFLASH!\n     An important change has been made.  When you have been killed,\nand the 'patch' question is asked, or if you are confirming a 'quit',\nit is now necessary to terminate the response to the question with a\ncarriage return (you may be surprised to find that this wasn't true\nbefore).  Also, the answer to the 'patch' question is taken to be yes\nunless something starting with n, N, f, or F is typed; the answer to\nthe 'quit' question is no unless something starting with y, Y, t, or\nT is typed.\n\nFLASH!\n     Another FLAG DAY has been declared for save files.  Yes, ladies\nand gentlemen, yet another incompatible change has been made to the\nsave/restore code.  When will it end?\n\n     Things like the bucket should resume working in this version.\n\n     Many people have reported the following message:\n'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn'\nThis indicates that a garbage collection is occurring.  Some reports\nhave this taking up to 30 sec. of cpu time, during which your dungeon\nwill refuse to respond.  We have added a feature which should prevent\nthis; if you see such a message, please send mail to DUNGEON@DM\ndescribing the circumstances (particularly number of moves,\nsave/restore status, and the TIME).  A garbage collection is not\nfatal:  your dungeon should be perfectly all right once it finishes\n(after the GOUT TIME= message is printed).")
+add_desc(
+  find_obj(
+    "PAPER"),
+  "US NEWS & DUNGEON REPORT\n12/12/77  				       Late Dungeon Edition\n\n     In order to get a more-or-less working version, we have\ninstalled one with some known bugs.  In particular, the following\nsequence will not work correctly, nor will anything resembling it:\n>take\ntake what?\n>frob\nwhat do you want me to do with it?\n     Note that if you now respond 'take', the right thing will\nhappen. In short, the current parser can't handle verbs with missing\nobjects.  Since it is completely new, we'd appreciate reports of any\nother bugs encountered.\n\nFLASH!\n     An important change has been made.  When you have been killed,\nand the 'patch' question is asked, or if you are confirming a 'quit',\nit is now necessary to terminate the response to the question with a\ncarriage return (you may be surprised to find that this wasn't true\nbefore).  Also, the answer to the 'patch' question is taken to be yes\nunless something starting with n, N, f, or F is typed; the answer to\nthe 'quit' question is no unless something starting with y, Y, t, or\nT is typed.\n\nFLASH!\n     Another FLAG DAY has been declared for save files.  Yes, ladies\nand gentlemen, yet another incompatible change has been made to the\nsave/restore code.  When will it end?\n\n     Things like the bucket should resume working in this version.\n\n     Many people have reported the following message:\n'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn'\nThis indicates that a garbage collection is occurring.  Some reports\nhave this taking up to 30 sec. of cpu time, during which your dungeon\nwill refuse to respond.  We have added a feature which should prevent\nthis; if you see such a message, please send mail to DUNGEON@DM\ndescribing the circumstances (particularly number of moves,\nsave/restore status, and the TIME).  A garbage collection is not\nfatal:  your dungeon should be perfectly all right once it finishes\n(after the GOUT TIME= message is printed).")
 
-add_desc(find_obj("ADVER"), "WELCOME TO DUNGEON\n\n    DUNGEON is a game of adventure, danger, and low cunning.  In it\nyou will explore some of the most amazing territory ever seen by\nmortal man. Hardened adventurers have run screaming from the terrors\ncontained within!\n\n    In DUNGEON the intrepid explorer delves into the forgotten\nsecrets of a lost labyrinth deep in the bowels of the earth,\nsearching for vast treasures long hidden from prying eyes, treasures\nguarded by fearsome monsters and diabolical traps!\n\n    No PDP-10 should be without one!\n\n    DUNGEON was created at the Programming Technology Division of the\nMIT Laboratory for Computer Science, by Tim Anderson, Marc Blank,\nBruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE\ngame of Crowther and Woods, and Dungeons and Dragons, by Gygax and\nArneson.  DUNGEON is written in MDL (alias MUDDLE).\n\n    Direct inquiries by Net mail to DUNGEON@MIT-DMS.")
+add_desc(
+  find_obj(
+    "ADVER"),
+  "WELCOME TO DUNGEON\n\n    DUNGEON is a game of adventure, danger, and low cunning.  In it\nyou will explore some of the most amazing territory ever seen by\nmortal man. Hardened adventurers have run screaming from the terrors\ncontained within!\n\n    In DUNGEON the intrepid explorer delves into the forgotten\nsecrets of a lost labyrinth deep in the bowels of the earth,\nsearching for vast treasures long hidden from prying eyes, treasures\nguarded by fearsome monsters and diabolical traps!\n\n    No PDP-10 should be without one!\n\n    DUNGEON was created at the Programming Technology Division of the\nMIT Laboratory for Computer Science, by Tim Anderson, Marc Blank,\nBruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE\ngame of Crowther and Woods, and Dungeons and Dragons, by Gygax and\nArneson.  DUNGEON is written in MDL (alias MUDDLE).\n\n    Direct inquiries by Net mail to DUNGEON@MIT-DMS.")
 
-add_desc(find_obj("MATCH"), "[close cover before striking BKD]\n\nYou too can make BIG MONEY in the exciting field of\n		PAPER SHUFFLING!\nMr. TAA of Muddle, Mass. says: \"Before I took\nthis course I used to be a lowly bit twiddler.\nNow with what I learned at MIT Tech I feel really\nimportant and can obfuscate and confuse with the best.\"\nMr. MARC had this to say: \"Ten short days ago all I could\nlook forward to was a dead-end job as a doctor.  Now\nI have a promising future and make really big Zorkmids.\"\n\nMIT Tech can't promise these fantastic results to everyone.\nBut when you earn your MDL degree from MIT Tech your future\nwill be brighter. Send for our free brochure today.")
+add_desc(
+  find_obj(
+    "MATCH"),
+  "[close cover before striking BKD]\n\nYou too can make BIG MONEY in the exciting field of\n		PAPER SHUFFLING!\nMr. TAA of Muddle, Mass. says: \"Before I took\nthis course I used to be a lowly bit twiddler.\nNow with what I learned at MIT Tech I feel really\nimportant and can obfuscate and confuse with the best.\"\nMr. MARC had this to say: \"Ten short days ago all I could\nlook forward to was a dead-end job as a doctor.  Now\nI have a promising future and make really big Zorkmids.\"\n\nMIT Tech can't promise these fantastic results to everyone.\nBut when you earn your MDL degree from MIT Tech your future\nwill be brighter. Send for our free brochure today.")
 
-add_desc(find_obj("ENGRA"), "The engravings were incised in the living rock of the cave wall by\nan unknown hand.  They depict, in symbolic form, the beliefs of the\nancient peoples of Zork.  Skillfully interwoven with the bas reliefs\nare excerpts illustrating the major tenets expounded by the sacred\ntexts of the religion of that time.  Unfortunately a later age seems\nto have considered them blasphemous and just as skillfully excised\nthem.")
+add_desc(
+  find_obj(
+    "ENGRA"),
+  "The engravings were incised in the living rock of the cave wall by\nan unknown hand.  They depict, in symbolic form, the beliefs of the\nancient peoples of Zork.  Skillfully interwoven with the bas reliefs\nare excerpts illustrating the major tenets expounded by the sacred\ntexts of the religion of that time.  Unfortunately a later age seems\nto have considered them blasphemous and just as skillfully excised\nthem.")
 
-add_desc(find_obj("PRAYE"), "The prayer is inscribed in an ancient script which is hardly\nremembered these days, much less understood.  What little of it can\nbe made out seems to be a phillipic against small insects,\nabsent-mindedness, and the picking up and dropping of small objects. \nThe final verse seems to consign trespassers to the land of the\ndead.  All evidence indicates that the beliefs of the ancient\nZorkers were obscure.")
+add_desc(
+  find_obj(
+    "PRAYE"),
+  "The prayer is inscribed in an ancient script which is hardly\nremembered these days, much less understood.  What little of it can\nbe made out seems to be a phillipic against small insects,\nabsent-mindedness, and the picking up and dropping of small objects. \nThe final verse seems to consign trespassers to the land of the\ndead.  All evidence indicates that the beliefs of the ancient\nZorkers were obscure.")
 
 // ASSORTED DOORS
 
-psetg(butstr, "button")
+psetg(
+  butstr,
+  "button")
 
-psetg(doorstr, "door")
+psetg(
+  doorstr,
+  "door")
 
-add_object(aobject("WIND1", "window", window_function, _ovison, _doorbit, _ndescbit), ["WINDO"], [])
+add_object(
+  aobject(
+    "WIND1",
+    "window",
+    window_function,
+    _ovison,
+    _doorbit,
+    _ndescbit),
+  ["WINDO"],
+  [])
 
-add_object(aobject("WIND2", "window", window_function, _ovison, _doorbit, _ndescbit), ["WINDO"], [])
+add_object(
+  aobject(
+    "WIND2",
+    "window",
+    window_function,
+    _ovison,
+    _doorbit,
+    _ndescbit),
+  ["WINDO"],
+  [])
 
-add_object(aobject("BOLT", "bolt", bolt_function, _turnbit, _ovison, _doorbit, _ndescbit), ["BOLT"
-    "NUT"], [])
+add_object(
+  aobject(
+    "BOLT",
+    "bolt",
+    bolt_function,
+    _turnbit,
+    _ovison,
+    _doorbit,
+    _ndescbit),
+  ["BOLT"
+    "NUT"],
+  [])
 
-add_object(aobject("GRAT1", "grating", grat1_function, _doorbit, _ndescbit), ["GRATI"
-    "GRATE"], [])
+add_object(
+  aobject(
+    "GRAT1",
+    "grating",
+    grat1_function,
+    _doorbit,
+    _ndescbit),
+  ["GRATI"
+    "GRATE"],
+  [])
 
-add_object(aobject("GRAT2", "grating", grat2_function, _ovison, _doorbit, _ndescbit), ["GRATI"
-    "GRATE"], [])
+add_object(
+  aobject(
+    "GRAT2",
+    "grating",
+    grat2_function,
+    _ovison,
+    _doorbit,
+    _ndescbit),
+  ["GRATI"
+    "GRATE"],
+  [])
 
-add_object(aobject("DOOR", _doorstr, trap_door, _doorbit, _ndescbit), ["TRAPD"
-    "TRAP-"], ["TRAP"])
+add_object(
+  aobject(
+    "DOOR",
+    _doorstr,
+    trap_door,
+    _doorbit,
+    _ndescbit),
+  ["TRAPD"
+    "TRAP-"],
+  ["TRAP"])
 
-add_object(aobject("TDOOR", _doorstr, trap_door, _doorbit, _ndescbit), ["TRAPD"
-    "TRAP-"], ["TRAP"])
+add_object(
+  aobject(
+    "TDOOR",
+    _doorstr,
+    trap_door,
+    _doorbit,
+    _ndescbit),
+  ["TRAPD"
+    "TRAP-"],
+  ["TRAP"])
 
-add_object(aobject("WDOOR", _doorstr, ddoor_function, _ovison, _ndescbit, _readbit), ["DOOR"], ["WOODE"])
+add_object(
+  aobject(
+    "WDOOR",
+    _doorstr,
+    ddoor_function,
+    _ovison,
+    _ndescbit,
+    _readbit),
+  ["DOOR"],
+  ["WOODE"])
 
-add_desc(find_obj("WDOOR"), "The engravings translate to 'This space intentionally left blank'")
+add_desc(
+  find_obj(
+    "WDOOR"),
+  "The engravings translate to 'This space intentionally left blank'")
 
-add_object(aobject("FDOOR", _doorstr, ddoor_function, _ovison, _ndescbit), ["DOOR"], ["FRONT"])
+add_object(
+  aobject(
+    "FDOOR",
+    _doorstr,
+    ddoor_function,
+    _ovison,
+    _ndescbit),
+  ["DOOR"],
+  ["FRONT"])
 
-add_object(aobject("SDOOR", _doorstr, ddoor_function, _ovison, _ndescbit), ["DOOR"], ["STONE"])
+add_object(
+  aobject(
+    "SDOOR",
+    _doorstr,
+    ddoor_function,
+    _ovison,
+    _ndescbit),
+  ["DOOR"],
+  ["STONE"])
 
-add_object(aobject("MSWIT", "switch", mswitch_function, _ovison, _ndescbit, _turnbit), ["SWITC"])
+add_object(
+  aobject(
+    "MSWIT",
+    "switch",
+    mswitch_function,
+    _ovison,
+    _ndescbit,
+    _turnbit),
+  ["SWITC"])
 
 // ASSORTED GARBAGE
 
-add_object(sobject("HPOLE", "head on a pole", _ovison), ["HEAD"])
+add_object(
+  sobject(
+    "HPOLE",
+    "head on a pole",
+    _ovison),
+  ["HEAD"])
 
-add_object(sobject("CORPS", "corpses", _ovison), [], ["MANGL"])
+add_object(
+  sobject(
+    "CORPS",
+    "corpses",
+    _ovison),
+  [],
+  ["MANGL"])
 
-add_object(aobject("BODIE", "pile of bodies", body_function, _ovison, _ndescbit, _trytakebit), ["BODY"
+add_object(
+  aobject(
+    "BODIE",
+    "pile of bodies",
+    body_function,
+    _ovison,
+    _ndescbit,
+    _trytakebit),
+  ["BODY"
     "CORPS"])
 
-add_object(sobject("DAM", "dam", _ovison, _ndescbit), ["GATE"
+add_object(
+  sobject(
+    "DAM",
+    "dam",
+    _ovison,
+    _ndescbit),
+  ["GATE"
     "GATES"
     "FCD"])
 
-add_object(sobject("RAILI", "railing", _ovison, _ndescbit), ["RAIL"])
+add_object(
+  sobject(
+    "RAILI",
+    "railing",
+    _ovison,
+    _ndescbit),
+  ["RAIL"])
 
-add_object(sobject("BUTTO", "button", _ovison, _ndescbit), ["SWITC"])
+add_object(
+  sobject(
+    "BUTTO",
+    "button",
+    _ovison,
+    _ndescbit),
+  ["SWITC"])
 
-sobject("BUBBL", "bubble", _ovison, _ndescbit)
+sobject(
+  "BUBBL",
+  "bubble",
+  _ovison,
+  _ndescbit)
 
-add_object(aobject("LEAK", "leak", leak_function, _ovison, _ndescbit), ["DRIP"
+add_object(
+  aobject(
+    "LEAK",
+    "leak",
+    leak_function,
+    _ovison,
+    _ndescbit),
+  ["DRIP"
     "HOLE"])
 
-add_star(add_object(aobject("EVERY", "everything", everything, _ovison, _takebit, _no-check-bit, _ndescbit), ["ALL"]))
+add_star(
+  add_object(
+    aobject(
+      "EVERY",
+      "everything",
+      everything,
+      _ovison,
+      _takebit,
+      _no-check-bit,
+      _ndescbit),
+    ["ALL"]))
 
-add_star(add_object(aobject("VALUA", "valuables", valuables, _ovison, _takebit, _no-check-bit, _ndescbit), ["TREAS"]))
+add_star(
+  add_object(
+    aobject(
+      "VALUA",
+      "valuables",
+      valuables,
+      _ovison,
+      _takebit,
+      _no-check-bit,
+      _ndescbit),
+    ["TREAS"]))
 
-add_star(sobject("SAILO", "sailor", _ovison, _ndescbit))
+add_star(
+  sobject(
+    "SAILO",
+    "sailor",
+    _ovison,
+    _ndescbit))
 
-add_star(sobject("TEETH", "set of teeth", _ovison, _ndescbit))
+add_star(
+  sobject(
+    "TEETH",
+    "set of teeth",
+    _ovison,
+    _ndescbit))
 
-add_star(sobject("WALL", "wall", _ovison, _ndescbit))
+add_star(
+  sobject(
+    "WALL",
+    "wall",
+    _ovison,
+    _ndescbit))
 
-add_star(find_obj("GRUE"))
+add_star(
+  find_obj(
+    "GRUE"))
 
-add_star(add_object(sobject("HANDS", "pair of hands", _ovison, _ndescbit, _toolbit), ["HAND"], ["BARE"]))
+add_star(
+  add_object(
+    sobject(
+      "HANDS",
+      "pair of hands",
+      _ovison,
+      _ndescbit,
+      _toolbit),
+    ["HAND"],
+    ["BARE"]))
 
-add_star(add_object(sobject("LUNGS", "breath", _ovison, _ndescbit, _toolbit), ["LUNG"
+add_star(
+  add_object(
+    sobject(
+      "LUNGS",
+      "breath",
+      _ovison,
+      _ndescbit,
+      _toolbit),
+    ["LUNG"
       "AIR"]))
 
-add_star(sobject("AVIAT", "flyer", _ovison, _ndescbit))
+add_star(
+  sobject(
+    "AVIAT",
+    "flyer",
+    _ovison,
+    _ndescbit))
 
-add_object(sobject("RBUTT", _butstr, _ovison, _ndescbit), ["BUTTO"
-    "SWITC"], ["RED"])
+add_object(
+  sobject(
+    "RBUTT",
+    _butstr,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"
+    "SWITC"],
+  ["RED"])
 
-add_object(sobject("YBUTT", _butstr, _ovison, _ndescbit), ["BUTTO"
-    "SWITC"], ["YELLO"])
+add_object(
+  sobject(
+    "YBUTT",
+    _butstr,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"
+    "SWITC"],
+  ["YELLO"])
 
-add_object(sobject("BLBUT", _butstr, _ovison, _ndescbit), ["BUTTO"
-    "SWITC"], ["BLUE"])
+add_object(
+  sobject(
+    "BLBUT",
+    _butstr,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"
+    "SWITC"],
+  ["BLUE"])
 
-add_object(sobject("BRBUT", _butstr, _ovison, _ndescbit), ["BUTTO"
-    "SWITC"], ["BROWN"])
+add_object(
+  sobject(
+    "BRBUT",
+    _butstr,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"
+    "SWITC"],
+  ["BROWN"])
 
-add_object(aobject("BAT", "bat", fly_me, _ovison, _ndescbit, _trytakebit), ["VAMPI"], [])
+add_object(
+  aobject(
+    "BAT",
+    "bat",
+    fly_me,
+    _ovison,
+    _ndescbit,
+    _trytakebit),
+  ["VAMPI"],
+  [])
 
 "MORE VOCABULARY"
 
-sobject("RAINB", "rainbow", _ovison, _ndescbit)
+sobject(
+  "RAINB",
+  "rainbow",
+  _ovison,
+  _ndescbit)
 
-psetg(cliffs, #nexit
+psetg(
+  cliffs,
+  #nexit
     "The White Cliffs prevent your landing here.")
 
-psetg(riverdesc, "Frigid River")
+psetg(
+  riverdesc,
+  "Frigid River")
 
 #room
   {"DOCK"
@@ -3391,7 +4266,9 @@ psetg(riverdesc, "Frigid River")
     0
     _,rwaterbit}
 
-psetg(narrow, "The path is too narrow.")
+psetg(
+  narrow,
+  "The path is too narrow.")
 
 #room
   {"WCLF1"
@@ -3600,7 +4477,9 @@ psetg(narrow, "The path is too narrow.")
         "WEST"
         "FALLS"}}
 
-setg(crain, #cexit
+setg(
+  crain,
+  #cexit
     {"RAINBOW"
       "RAINB"})
 
@@ -3667,7 +4546,8 @@ setg(crain, #cexit
         "WEST"
         "FORE5"}}
 
-add_object(#object
+add_object(
+  #object
     {"POT"
       "There is a pot of gold here."
       "pot filled with gold"
@@ -3682,9 +4562,12 @@ add_object(#object
       10
       10
       15
-      0}, [], ["GOLD"])
+      0},
+  [],
+  ["GOLD"])
 
-add_object(#object
+add_object(
+  #object
     {"STATU"
       "There is a beautiful statue here."
       "statue"
@@ -3700,10 +4583,12 @@ add_object(#object
       10
       13
       8
-      0}, ["SCULP"
+      0},
+  ["SCULP"
     "ROCK"])
 
-add_object(#object
+add_object(
+  #object
     {"IBOAT"
       "There is a folded pile of plastic here which has a small valve\nattached."
       "plastic inflatable boat"
@@ -3714,16 +4599,21 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _ovison, _takebit)
+      _(
+        _burnbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       20
-      0}, ["BOAT"
+      0},
+  ["BOAT"
     "PLAST"
     "PILE"])
 
-add_object(#object
+add_object(
+  #object
     {"DBOAT"
       "There is a pile of plastic here with a large hole in it."
       "plastic boat (with hole)"
@@ -3734,16 +4624,21 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _ovison, _takebit)
+      _(
+        _burnbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       20
-      0}, ["BOAT"
+      0},
+  ["BOAT"
     "PLAST"
     "PILE"])
 
-add_object(#object
+add_object(
+  #object
     {"PUMP"
       "There is a small pump here."
       "hand-held air pump"
@@ -3755,15 +4650,20 @@ add_object(#object
       _
       <>
       _
-      _(_toolbit, _ovison, _takebit)
+      _(
+        _toolbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       5
-      0}, ["AIR-P"
+      0},
+  ["AIR-P"
     "AIRPU"])
 
-add_object(#object
+add_object(
+  #object
     {"RBOAT"
       "There is an inflated boat here."
       "magic boat"
@@ -3775,19 +4675,34 @@ add_object(#object
       _
       <>
       _
-      _(_vehbit, _burnbit, _ovison, _takebit)
+      _(
+        _vehbit,
+        _burnbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       20
-      100}, ["BOAT"], ["PLAST"
+      100},
+  ["BOAT"],
+  ["PLAST"
     "SEAWO"])
 
-put(find_obj("RBOAT"), _oopen_q, t)
+put(
+  find_obj(
+    "RBOAT"),
+  _oopen_q,
+  t)
 
-put(find_obj("RBOAT"), _orand, _rwaterbit)
+put(
+  find_obj(
+    "RBOAT"),
+  _orand,
+  _rwaterbit)
 
-add_object(#object
+add_object(
+  #object
     {"LABEL"
       "There is a tan label here."
       "tan label"
@@ -3799,16 +4714,26 @@ add_object(#object
       #find_obj
         {"RBOAT"}
       _
-      _(_burnbit, _ovison, _readbit, _takebit)
+      _(
+        _burnbit,
+        _ovison,
+        _readbit,
+        _takebit)
       0
       0
       0
       2
-      0}, ["FINEP"], ["TAN"])
+      0},
+  ["FINEP"],
+  ["TAN"])
 
-add_desc(find_obj("LABEL"), "!!!! 	FROBOZZ MAGIC BOAT COMPANY  !!!!\n\nHello, Sailor!\n\nInstructions for use:\n   \n   To get into boat, say 'Board'\n   To leave boat, say 'Disembark'\n\n   To get into a body of water, say 'Launch'\n   To get to shore, say 'Land'\n    \nWarranty:\n\n  This boat is guaranteed against all defects in parts and\nworkmanship for a period of 76 milliseconds from date of purchase or\nuntil first used, whichever comes first.\n\nWarning:\n   This boat is made of plastic.		Good Luck!")
+add_desc(
+  find_obj(
+    "LABEL"),
+  "!!!! 	FROBOZZ MAGIC BOAT COMPANY  !!!!\n\nHello, Sailor!\n\nInstructions for use:\n   \n   To get into boat, say 'Board'\n   To leave boat, say 'Disembark'\n\n   To get into a body of water, say 'Launch'\n   To get to shore, say 'Land'\n    \nWarranty:\n\n  This boat is guaranteed against all defects in parts and\nworkmanship for a period of 76 milliseconds from date of purchase or\nuntil first used, whichever comes first.\n\nWarning:\n   This boat is made of plastic.		Good Luck!")
 
-add_object(#object
+add_object(
+  #object
     {"STICK"
       "There is a broken sharp stick here."
       "broken sharp stick"
@@ -3818,17 +4743,25 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       0
       0
       3
-      0}, [], ["SHARP"
+      0},
+  [],
+  ["SHARP"
     "BROKE"])
 
-sobject("BARRE", "barrel", _ovison)
+sobject(
+  "BARRE",
+  "barrel",
+  _ovison)
 
-add_object(#object
+add_object(
+  #object
     {"BUOY"
       "There is a red buoy here (probably a warning)."
       "red buoy"
@@ -3841,14 +4774,21 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _findmebit, _ovison, _takebit)
+      _(
+        _contbit,
+        _findmebit,
+        _ovison,
+        _takebit)
       0
       0
       0
       10
-      20}, [], ["RED"])
+      20},
+  [],
+  ["RED"])
 
-add_object(#object
+add_object(
+  #object
     {"EMERA"
       "There is an emerald here."
       "large emerald"
@@ -3860,14 +4800,18 @@ add_object(#object
       #find_obj
         {"BUOY"}
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       5
       10
       5
-      0}, [])
+      0},
+  [])
 
-add_object(#object
+add_object(
+  #object
     {"SHOVE"
       "There is a large shovel here."
       "shovel"
@@ -3879,14 +4823,19 @@ add_object(#object
       _
       <>
       _
-      _(_toolbit, _ovison, _takebit)
+      _(
+        _toolbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       15
-      0}, [])
+      0},
+  [])
 
-add_object(#object
+add_object(
+  #object
     {"GUANO"
       "There is a hunk of bat guano here."
       "hunk of bat guano"
@@ -3898,16 +4847,20 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       0
       0
       20
-      0}, ["CRAP"
+      0},
+  ["CRAP"
     "SHIT"
     "HUNK"])
 
-add_object(#object
+add_object(
+  #object
     {"GRUE"
       ""
       "lurking grue"
@@ -3922,7 +4875,9 @@ add_object(#object
       0
       0
       0
-      0}, [], ["LURKI"])
+      0},
+  [],
+  ["LURKI"])
 
 #room
   {"VLBOT"
@@ -3936,9 +4891,13 @@ add_object(#object
     (#find_obj
         {"BALLO"})}
 
-psetg(volcore, "Volcano Core")
+psetg(
+  volcore,
+  "Volcano Core")
 
-setg(nulexit, #exit
+setg(
+  nulexit,
+  #exit
     {"#!#!#"
       "!"})
 
@@ -4002,7 +4961,9 @@ setg(nulexit, #exit
     0
     _,rairbit}
 
-setg(cxgnome, #cexit
+setg(
+  cxgnome,
+  #cexit
     {"GNOME-DOOR"
       "VLBOT"})
 
@@ -4109,7 +5070,8 @@ setg(cxgnome, #cexit
         "WEST"
         "RUBYR"}}
 
-add_object(#object
+add_object(
+  #object
     {"BALLO"
       "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire."
       "basket"
@@ -4125,16 +5087,28 @@ add_object(#object
       _
       <>
       _
-      _(_vehbit, _ovison)
+      _(
+        _vehbit,
+        _ovison)
       0
       0
       0
       70
-      100}, ["BASKE"], ["WICKE"])
+      100},
+  ["BASKE"],
+  ["WICKE"])
 
-put(find_obj("BALLO"), _oopen_q, t)
+put(
+  find_obj(
+    "BALLO"),
+  _oopen_q,
+  t)
 
-put(find_obj("BALLO"), _orand, _rairbit)
+put(
+  find_obj(
+    "BALLO"),
+  _orand,
+  _rairbit)
 
 #object
   {"RECEP"
@@ -4148,14 +5122,18 @@ put(find_obj("BALLO"), _orand, _rairbit)
     #find_obj
       {"BALLO"}
     _
-    _(_contbit, _ovison, _searchbit)
+    _(
+      _contbit,
+      _ovison,
+      _searchbit)
     0
     0
     0
     _,bigfix
     6}
 
-add_object(#object
+add_object(
+  #object
     {"CBAG"
       ""
       "cloth bag"
@@ -4171,9 +5149,12 @@ add_object(#object
       0
       0
       _,bigfix
-      0}, ["BAG"], ["CLOTH"])
+      0},
+  ["BAG"],
+  ["CLOTH"])
 
-add_object(#object
+add_object(
+  #object
     {"BROPE"
       ""
       "braided wire"
@@ -4184,14 +5165,19 @@ add_object(#object
       #find_obj
         {"BALLO"}
       _
-      _(_tiebit, _ovison)
+      _(
+        _tiebit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["WIRE"], ["BRAID"])
+      0},
+  ["WIRE"],
+  ["BRAID"])
 
-add_object(#object
+add_object(
+  #object
     {"HOOK1"
       "There is a small hook attached to the rock here."
       "hook"
@@ -4207,9 +5193,11 @@ add_object(#object
       0
       0
       _,bigfix
-      0}, ["HOOK"])
+      0},
+  ["HOOK"])
 
-add_object(#object
+add_object(
+  #object
     {"HOOK2"
       "There is a small hook attached to the rock here."
       "hook"
@@ -4225,9 +5213,11 @@ add_object(#object
       0
       0
       _,bigfix
-      0}, ["HOOK"])
+      0},
+  ["HOOK"])
 
-add_object(#object
+add_object(
+  #object
     {"ZORKM"
       "There is an engraved zorkmid coin here."
       "priceless zorkmid"
@@ -4238,16 +5228,25 @@ add_object(#object
       _
       <>
       _
-      _(_readbit, _ovison, _takebit)
+      _(
+        _readbit,
+        _ovison,
+        _takebit)
       0
       10
       12
       10
-      0}, ["COIN"], ["GOLD"])
+      0},
+  ["COIN"],
+  ["GOLD"])
 
-add_desc(find_obj("ZORKM"), "--------------------------\n	      /      Gold Zorkmid	 \\\n	     /  T e n   T h o u s a n d   \\\n	    /        Z O R K M I D S	   \\\n	   /				    \\\n	  /        ||||||||||||||||||	     \\\n	 /        !||||		 ||||!	      \\\n	|	   |||   ^^  ^^   |||	       |\n	|	   |||	 OO  OO   |||	       |\n	| In Frobs  |||	   <<    |||  We Trust |\n	|	     || (______) ||	       |\n	|	      |          |	       |\n	|	      |__________|	       |\n	 \\				      /\n	  \\    -- Lord Dimwit Flathead --    /\n	   \\    -- Beloved of Zorkers --    /\n	    \\				   /\n	     \\	     * 722 G.U.E. *       /\n	      \\				 /\n	       --------------------------")
+add_desc(
+  find_obj(
+    "ZORKM"),
+  "--------------------------\n	      /      Gold Zorkmid	 \\\n	     /  T e n   T h o u s a n d   \\\n	    /        Z O R K M I D S	   \\\n	   /				    \\\n	  /        ||||||||||||||||||	     \\\n	 /        !||||		 ||||!	      \\\n	|	   |||   ^^  ^^   |||	       |\n	|	   |||	 OO  OO   |||	       |\n	| In Frobs  |||	   <<    |||  We Trust |\n	|	     || (______) ||	       |\n	|	      |          |	       |\n	|	      |__________|	       |\n	 \\				      /\n	  \\    -- Lord Dimwit Flathead --    /\n	   \\    -- Beloved of Zorkers --    /\n	    \\				   /\n	     \\	     * 722 G.U.E. *       /\n	      \\				 /\n	       --------------------------")
 
-add_object(#object
+add_object(
+  #object
     {"SAFE"
       ""
       "box"
@@ -4261,14 +5260,18 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _ovison)
+      _(
+        _contbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      15}, ["BOX"])
+      15},
+  ["BOX"])
 
-add_object(#object
+add_object(
+  #object
     {"CARD"
       "There is a card with writing on it here."
       "card"
@@ -4280,16 +5283,25 @@ add_object(#object
       #find_obj
         {"SAFE"}
       _
-      _(_ovison, _takebit, _readbit, _burnbit)
+      _(
+        _ovison,
+        _takebit,
+        _readbit,
+        _burnbit)
       0
       0
       0
       1
-      0}, ["NOTE"])
+      0},
+  ["NOTE"])
 
-add_desc(find_obj("CARD"), "Warning:\n    This room was constructed over very weak rock strata.  Detonation\nof explosives in this room is strictly prohibited!\n			Frobozz Magic Cave Company\n			per M. Agrippa, foreman")
+add_desc(
+  find_obj(
+    "CARD"),
+  "Warning:\n    This room was constructed over very weak rock strata.  Detonation\nof explosives in this room is strictly prohibited!\n			Frobozz Magic Cave Company\n			per M. Agrippa, foreman")
 
-add_object(#object
+add_object(
+  #object
     {"SSLOT"
       ""
       "hole"
@@ -4305,12 +5317,18 @@ add_object(#object
       0
       0
       _,bigfix
-      10}, ["SLOT"
+      10},
+  ["SLOT"
     "HOLE"])
 
-put(find_obj("SSLOT"), _oopen_q, t)
+put(
+  find_obj(
+    "SSLOT"),
+  _oopen_q,
+  t)
 
-add_object(#object
+add_object(
+  #object
     {"CROWN"
       "Lord Dimwit's crown is here."
       "crown"
@@ -4321,14 +5339,19 @@ add_object(#object
       #find_obj
         {"SAFE"}
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       15
       10
       10
-      0}, [], ["GAUDY"])
+      0},
+  [],
+  ["GAUDY"])
 
-add_object(#object
+add_object(
+  #object
     {"BRICK"
       "There is a square brick here which feels like clay."
       "brick"
@@ -4340,17 +5363,28 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _searchbit, _ovison, _takebit)
+      _(
+        _burnbit,
+        _searchbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       9
-      2}, ["BRICK"], ["SQUAR"
+      2},
+  ["BRICK"],
+  ["SQUAR"
     "CLAY"])
 
-put(find_obj("BRICK"), _oopen_q, t)
+put(
+  find_obj(
+    "BRICK"),
+  _oopen_q,
+  t)
 
-add_object(#object
+add_object(
+  #object
     {"FUSE"
       "There is a coil of thin shiny wire here."
       "wire coil"
@@ -4361,16 +5395,22 @@ add_object(#object
       _
       <>
       _
-      _(_burnbit, _ovison, _takebit)
+      _(
+        _burnbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       1
-      0}, ["COIL"
-    "WIRE"], ["SHINY"
+      0},
+  ["COIL"
+    "WIRE"],
+  ["SHINY"
     "THIN"])
 
-add_object(#object
+add_object(
+  #object
     {"GNOME"
       "There is a nervous Volcano Gnome here."
       "Volcano Gnome"
@@ -4381,14 +5421,18 @@ add_object(#object
       _
       <>
       _
-      _(_vicbit, _ovison)
+      _(
+        _vicbit,
+        _ovison)
       0
       0
       0
       _,bigfix
-      0}, ["TROLL"])
+      0},
+  ["TROLL"])
 
-add_object(#object
+add_object(
+  #object
     {"BLABE"
       "There is a blue label here."
       "blue label"
@@ -4400,16 +5444,26 @@ add_object(#object
       #find_obj
         {"BALLO"}
       _
-      _(_ovison, _takebit, _readbit, _burnbit)
+      _(
+        _ovison,
+        _takebit,
+        _readbit,
+        _burnbit)
       0
       0
       0
       1
-      0}, ["LABEL"], ["BLUE"])
+      0},
+  ["LABEL"],
+  ["BLUE"])
 
-add_desc(find_obj("BLABE"), "!!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!\n\nHello, Aviator!\n\nInstructions for use:\n   \n   To get into balloon, say 'Board'\n   To leave balloon, say 'Disembark'\n   To land, say 'Land'\n    \nWarranty:\n   \n   No warranty is expressed or implied.  You're on your own, sport!\n\n					Good Luck.")
+add_desc(
+  find_obj(
+    "BLABE"),
+  "!!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!\n\nHello, Aviator!\n\nInstructions for use:\n   \n   To get into balloon, say 'Board'\n   To leave balloon, say 'Disembark'\n   To land, say 'Land'\n    \nWarranty:\n   \n   No warranty is expressed or implied.  You're on your own, sport!\n\n					Good Luck.")
 
-add_object(#object
+add_object(
+  #object
     {"DBALL"
       "There is a balloon here, broken into pieces."
       "broken balloon"
@@ -4421,15 +5475,20 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison)
+      _(
+        _takebit,
+        _ovison)
       0
       0
       0
       40
-      0}, ["BALLO"
-    "BASKE"], ["BROKE"])
+      0},
+  ["BALLO"
+    "BASKE"],
+  ["BROKE"])
 
-add_object(#object
+add_object(
+  #object
     {"BLBK"
       "There is a blue book here."
       "blue book"
@@ -4441,14 +5500,21 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _takebit, _ovison, _readbit)
+      _(
+        _contbit,
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       10
-      2}, ["BOOK"], ["BLUE"])
+      2},
+  ["BOOK"],
+  ["BLUE"])
 
-add_object(#object
+add_object(
+  #object
     {"GRBK"
       "There is a green book here."
       "green book"
@@ -4460,14 +5526,21 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _takebit, _ovison, _readbit)
+      _(
+        _contbit,
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       10
-      2}, ["BOOK"], ["GREEN"])
+      2},
+  ["BOOK"],
+  ["GREEN"])
 
-add_object(#object
+add_object(
+  #object
     {"PUBK"
       "There is a purple book here."
       "purple book"
@@ -4480,14 +5553,21 @@ add_object(#object
       _
       <>
       _
-      _(_takebit, _ovison, _readbit, _contbit)
+      _(
+        _takebit,
+        _ovison,
+        _readbit,
+        _contbit)
       0
       0
       0
       10
-      2}, ["BOOK"], ["PURPL"])
+      2},
+  ["BOOK"],
+  ["PURPL"])
 
-add_object(#object
+add_object(
+  #object
     {"WHBK"
       "There is a white book here."
       "white book"
@@ -4499,22 +5579,42 @@ add_object(#object
       _
       <>
       _
-      _(_contbit, _takebit, _ovison, _readbit)
+      _(
+        _contbit,
+        _takebit,
+        _ovison,
+        _readbit)
       0
       0
       0
       10
-      2}, ["BOOK"], ["WHITE"])
+      2},
+  ["BOOK"],
+  ["WHITE"])
 
-psetg(greek_to-me, "This book is written in a tongue with which I am unfamiliar.")
+psetg(
+  greek_to-me,
+  "This book is written in a tongue with which I am unfamiliar.")
 
-add_desc(find_obj("BLBK"), _greek-to-me)
+add_desc(
+  find_obj(
+    "BLBK"),
+  _greek-to-me)
 
-add_desc(find_obj("GRBK"), _greek-to-me)
+add_desc(
+  find_obj(
+    "GRBK"),
+  _greek-to-me)
 
-add_desc(find_obj("PUBK"), _greek-to-me)
+add_desc(
+  find_obj(
+    "PUBK"),
+  _greek-to-me)
 
-add_desc(find_obj("WHBK"), _greek-to-me)
+add_desc(
+  find_obj(
+    "WHBK"),
+  _greek-to-me)
 
 #object
   {"STAMP"
@@ -4528,29 +5628,60 @@ add_desc(find_obj("WHBK"), _greek-to-me)
     #find_obj
       {"PUBK"}
     _
-    _(_takebit, _readbit, _burnbit, _ovison)
+    _(
+      _takebit,
+      _readbit,
+      _burnbit,
+      _ovison)
     0
     4
     10
     1
     0}
 
-add_desc(find_obj("STAMP"), "---v----v----v----v----v----v----v----v---\n|					 |\n|	   ||||||||||	     LORD	 |\n>         !||||	     |	    DIMWIT	 <\n|	  ||||    ---|	   FLATHEAD	 |\n|	  |||C	   CC \\  		 |\n>	   ||||	      _\\		 <\n|	    ||| (____|			 |\n|	     ||      |			 |\n>	      |______|	     Our	 <\n|		/   \\	  Excessive	 |\n|	       /     \\	    Leader	 |\n>	      |	      |			 <\n|	      |       |			 |\n|					 |\n>    G.U.E. POSTAGE	   3 Zorkmids    <\n|					 |\n---^----^----^----^----^----^----^----^---")
+add_desc(
+  find_obj(
+    "STAMP"),
+  "---v----v----v----v----v----v----v----v---\n|					 |\n|	   ||||||||||	     LORD	 |\n>         !||||	     |	    DIMWIT	 <\n|	  ||||    ---|	   FLATHEAD	 |\n|	  |||C	   CC \\  		 |\n>	   ||||	      _\\		 <\n|	    ||| (____|			 |\n|	     ||      |			 |\n>	      |______|	     Our	 <\n|		/   \\	  Excessive	 |\n|	       /     \\	    Leader	 |\n>	      |	      |			 <\n|	      |       |			 |\n|					 |\n>    G.U.E. POSTAGE	   3 Zorkmids    <\n|					 |\n---^----^----^----^----^----^----^----^---")
 
-setg(bloc, find_room("VLBOT"))
+setg(
+  bloc,
+  find_room(
+    "VLBOT"))
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
-put(find_obj("LAMP"), _orand, [0
-    clock_disable(clock_int(_lntin, 350))])
+put(
+  find_obj(
+    "LAMP"),
+  _orand,
+  [0
+    clock_disable(
+      clock_int(
+        _lntin,
+        350))])
 
-put(find_obj("CANDL"), _orand, <>)
+put(
+  find_obj(
+    "CANDL"),
+  _orand,
+  <>)
 
-put(find_obj("MATCH"), _orand, 5)
+put(
+  find_obj(
+    "MATCH"),
+  _orand,
+  5)
 
 // NUMBER OF MATCHES
 
-psetg(indentstr, rest(istring(8, _\), 8))
+psetg(
+  indentstr,
+  rest(
+    istring(
+      8,
+      _\),
+    8))
 
 #room
   {"TOMB"
@@ -4573,7 +5704,8 @@ psetg(indentstr, rest(istring(8, _\), 8))
     <>
     0}
 
-add_object(#object
+add_object(
+  #object
     {"TOMB"
       "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\""
       "tomb"
@@ -4584,11 +5716,19 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _readbit, _ovison)}, ["GRAVE"])
+      _(
+        _trytakebit,
+        _readbit,
+        _ovison)},
+  ["GRAVE"])
 
-add_desc(find_obj("TOMB"), "Here lie the implementers, whose heads were placed on poles by the\nKeeper of the Dungeon for amazing untastefulness.")
+add_desc(
+  find_obj(
+    "TOMB"),
+  "Here lie the implementers, whose heads were placed on poles by the\nKeeper of the Dungeon for amazing untastefulness.")
 
-add_object(#object
+add_object(
+  #object
     {"HEADS"
       "There are four heads here, mounted securely on poles."
       "set of poled heads"
@@ -4599,7 +5739,11 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _sacredbit, _ovison)}, ["HEAD"
+      _(
+        _trytakebit,
+        _sacredbit,
+        _ovison)},
+  ["HEAD"
     "POLE"
     "POLES"
     "PDL"
@@ -4609,7 +5753,8 @@ add_object(#object
     "IMPLE"
     "LOSER"])
 
-add_object(#object
+add_object(
+  #object
     {"COKES"
       "Many empty Coke bottles are here.  Alas, they can't hold water."
       "bunch of Coke bottles"
@@ -4619,13 +5764,18 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit)
+      _(
+        _ovison,
+        _takebit)
       0
       0
       0
-      15}, ["BOTTL"], ["COKE"])
+      15},
+  ["BOTTL"],
+  ["COKE"])
 
-add_object(#object
+add_object(
+  #object
     {"LISTS"
       "There is an enormous stack of line-printer paper here.  It is barely\nreadable."
       "stack of listings"
@@ -4636,19 +5786,28 @@ add_object(#object
       _
       <>
       _
-      _(_readbit, _burnbit, _ovison, _takebit)
+      _(
+        _readbit,
+        _burnbit,
+        _ovison,
+        _takebit)
       0
       0
       0
-      70}, ["PAPER"
+      70},
+  ["PAPER"
     "LIST"
     "PRINT"
     "LISTI"
     "STACK"])
 
-add_desc(find_obj("LISTS"), "<DEFINE FEEL-FREE (LOSER)\n		   <TELL \"FEEL FREE, CHOMPER!\">>\n			...\nThe rest is, alas, unintelligible (as were the implementers).")
+add_desc(
+  find_obj(
+    "LISTS"),
+  "<DEFINE FEEL-FREE (LOSER)\n		   <TELL \"FEEL FREE, CHOMPER!\">>\n			...\nThe rest is, alas, unintelligible (as were the implementers).")
 
-add_object(#object
+add_object(
+  #object
     {"LCASE"
       "There is a large case here, containing objects which you used to\npossess."
       "large case"
@@ -4660,9 +5819,23 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _transbit)}, ["CASE"], ["LARGE"])
+      _(
+        _ovison,
+        _transbit)},
+  ["CASE"],
+  ["LARGE"])
 
-mapf(<>, function((x), rtro(find_room(spname(_x)), _rfillbit)), _, [resen_-rooms
+mapf(
+  <>,
+  function(
+    (x),
+    rtro(
+      find_room(
+        spname(
+          _x)),
+      _rfillbit)),
+  _,
+  [resen_-rooms
     reses_-rooms
     dam_-rooms
     strea_-rooms
@@ -4679,11 +5852,27 @@ mapf(<>, function((x), rtro(find_room(spname(_x)), _rfillbit)), _, [resen_-rooms
     fante
     pog])
 
-mapf(<>, function((x), rtro(find_room(_x), _rhousebit)), ["LROOM"
+mapf(
+  <>,
+  function(
+    (x),
+    rtro(
+      find_room(
+        _x),
+      _rhousebit)),
+  ["LROOM"
     "KITCH"
     "ATTIC"])
 
-mapf(<>, function((x), rtro(find_room(_x), _rsacredbit)), ["BSHAF"
+mapf(
+  <>,
+  function(
+    (x),
+    rtro(
+      find_room(
+        _x),
+      _rsacredbit)),
+  ["BSHAF"
     "RIVR1"
     "DOCK"
     "FANTE"
@@ -4719,14 +5908,20 @@ mapf(<>, function((x), rtro(find_room(_x), _rsacredbit)), ["BSHAF"
     "RAINB"
     "FALLS"])
 
-setg(bucket_top!-flag, <>)
+setg(
+  bucket_top!-flag,
+  <>)
 
-setg(magcmach, #cexit
+setg(
+  magcmach,
+  #cexit
     {"FROBOZZ"
       "CMACH"
       ""})
 
-setg(magalice, #cexit
+setg(
+  magalice,
+  #cexit
     {"FROBOZZ"
       "ALICE"
       ""})
@@ -4805,7 +6000,8 @@ setg(magalice, #cexit
         {"CAGE"})
     caged_room}
 
-add_object(#object
+add_object(
+  #object
     {"CAGE"
       "There is a mangled cage here."
       "mangled cage"
@@ -4817,14 +6013,19 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _ndescbit)
+      _(
+        _ovison,
+        _ndescbit)
       0
       0
       0
       60
-      0}, [], [])
+      0},
+  [],
+  [])
 
-add_object(#object
+add_object(
+  #object
     {"RCAGE"
       "There is an iron cage in the middle of the room."
       "iron cage"
@@ -4840,9 +6041,12 @@ add_object(#object
       0
       0
       0
-      0}, ["CAGE"], ["IRON"])
+      0},
+  ["CAGE"],
+  ["IRON"])
 
-add_object(#object
+add_object(
+  #object
     {"SPHER"
       "There is a beautiful crystal sphere here."
       "crystal sphere"
@@ -4853,19 +6057,48 @@ add_object(#object
       _
       <>
       _
-      _(_trytakebit, _sacredbit, _ovison)
+      _(
+        _trytakebit,
+        _sacredbit,
+        _ovison)
       0
       6
       6
       10
-      0}, ["BALL"], ["CRYST"
+      0},
+  ["BALL"],
+  ["CRYST"
     "GLASS"])
 
-add_object(aobject("SQBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["SQUAR"])
+add_object(
+  aobject(
+    "SQBUT",
+    _butstr,
+    buttons,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"],
+  ["SQUAR"])
 
-add_object(aobject("RNBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["ROUND"])
+add_object(
+  aobject(
+    "RNBUT",
+    _butstr,
+    buttons,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"],
+  ["ROUND"])
 
-add_object(aobject("TRBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["TRIAN"])
+add_object(
+  aobject(
+    "TRBUT",
+    _butstr,
+    buttons,
+    _ovison,
+    _ndescbit),
+  ["BUTTO"],
+  ["TRIAN"])
 
 #room
   {"TWELL"
@@ -4885,7 +6118,9 @@ add_object(aobject("TRBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["
     <>
     10
     _
-    _(_rlandbit, _rbuckbit)}
+    _(
+      _rlandbit,
+      _rbuckbit)}
 
 #room
   {"BWELL"
@@ -4907,19 +6142,43 @@ add_object(aobject("TRBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["
     <>
     0
     _
-    _(_rlandbit, _rbuckbit)}
+    _(
+      _rlandbit,
+      _rbuckbit)}
 
-psetg(ewalls, ["ETCHI"
+psetg(
+  ewalls,
+  ["ETCHI"
     "WALLS"
     "WALL"])
 
-add_object(sobject("ETCH1", "wall with etchings", _ovison, _ndescbit, _readbit), _ewalls)
+add_object(
+  sobject(
+    "ETCH1",
+    "wall with etchings",
+    _ovison,
+    _ndescbit,
+    _readbit),
+  _ewalls)
 
-add_object(sobject("ETCH2", "wall with etchings", _ovison, _ndescbit, _readbit), _ewalls)
+add_object(
+  sobject(
+    "ETCH2",
+    "wall with etchings",
+    _ovison,
+    _ndescbit,
+    _readbit),
+  _ewalls)
 
-add_desc(find_obj("ETCH2"), "o  b  o\n		    r 		  z\n		 f   M  A  G  I  C   z\n		 c    W  E   L  L    y\n		    o		  n\n		        m  p  a")
+add_desc(
+  find_obj(
+    "ETCH2"),
+  "o  b  o\n		    r 		  z\n		 f   M  A  G  I  C   z\n		 c    W  E   L  L    y\n		    o		  n\n		        m  p  a")
 
-add_desc(find_obj("ETCH1"), "o  b  o\n		      		  \n		        A  G  I  \n		         E   L  \n		    		  \n		        m  p  a")
+add_desc(
+  find_obj(
+    "ETCH1"),
+  "o  b  o\n		      		  \n		        A  G  I  \n		         E   L  \n		    		  \n		        m  p  a")
 
 #room
   {"ALICE"
@@ -4946,7 +6205,9 @@ add_desc(find_obj("ETCH1"), "o  b  o\n		      		  \n		        A  G  I  \n		     
       #find_obj
         {"BLICE"})}
 
-psetg(smdrop, #nexit
+psetg(
+  smdrop,
+  #nexit
     "There is a chasm too large to jump across.")
 
 #room
@@ -4985,7 +6246,8 @@ psetg(smdrop, #nexit
       #find_obj
         {"SAFFR"})}
 
-add_object(#object
+add_object(
+  #object
     {"FLASK"
       "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid."
       "glass flask filled with liquid"
@@ -4996,14 +6258,20 @@ add_object(#object
       _
       <>
       _
-      _(_transbit, _ovison, _takebit)
+      _(
+        _transbit,
+        _ovison,
+        _takebit)
       0
       0
       0
       10
-      5}, [], ["GLASS"])
+      5},
+  [],
+  ["GLASS"])
 
-add_object(#object
+add_object(
+  #object
     {"POOL"
       "The leak has submerged the depressed area in a pool of sewage."
       "pool of sewage"
@@ -5015,14 +6283,19 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _vicbit)
+      _(
+        _ovison,
+        _vicbit)
       0
       0
       0
       0
-      0}, ["SEWAG"], ["LARGE"])
+      0},
+  ["SEWAG"],
+  ["LARGE"])
 
-add_object(#object
+add_object(
+  #object
     {"SAFFR"
       "There is a tin of rare spices here."
       "tin of spices"
@@ -5038,15 +6311,30 @@ add_object(#object
       5
       5
       8
-      0}, ["TIN"
-    "SPICE"], ["RARE"])
+      0},
+  ["TIN"
+    "SPICE"],
+  ["RARE"])
 
-add_object(sobject("ATABL", "large oblong table", _ovison), [], ["LARGE"
+add_object(
+  sobject(
+    "ATABL",
+    "large oblong table",
+    _ovison),
+  [],
+  ["LARGE"
     "OBLON"])
 
-add_object(sobject("POSTS", "wooden posts", _ovison), ["POST"], ["WOODE"])
+add_object(
+  sobject(
+    "POSTS",
+    "wooden posts",
+    _ovison),
+  ["POST"],
+  ["WOODE"])
 
-add_object(#object
+add_object(
+  #object
     {"BUCKE"
       "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
       "wooden bucket"
@@ -5057,14 +6345,19 @@ add_object(#object
       _
       <>
       _
-      _(_vehbit, _ovison)
+      _(
+        _vehbit,
+        _ovison)
       0
       0
       0
       100
-      100}, [], ["WOODE"])
+      100},
+  [],
+  ["WOODE"])
 
-add_object(#object
+add_object(
+  #object
     {"ECAKE"
       "There is a piece of cake here with the words 'Eat Me' on it."
       "piece of 'Eat Me' cake"
@@ -5075,15 +6368,21 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit, _foodbit)
+      _(
+        _ovison,
+        _takebit,
+        _foodbit)
       0
       0
       0
       10
-      0}, ["CAKE"], ["EATME"
+      0},
+  ["CAKE"],
+  ["EATME"
     "EAT-M"])
 
-add_object(#object
+add_object(
+  #object
     {"ORICE"
       "There is a piece of cake with orange icing here."
       "piece of cake with orange icing"
@@ -5094,15 +6393,22 @@ add_object(#object
       _
       <>
       _
-      _(_readbit, _ovison, _takebit, _foodbit)
+      _(
+        _readbit,
+        _ovison,
+        _takebit,
+        _foodbit)
       0
       0
       0
       4
-      0}, ["CAKE"
-    "ICING"], ["ORANG"])
+      0},
+  ["CAKE"
+    "ICING"],
+  ["ORANG"])
 
-add_object(#object
+add_object(
+  #object
     {"RDICE"
       "There is a piece of cake with red icing here."
       "piece of cake with red icing"
@@ -5113,15 +6419,22 @@ add_object(#object
       _
       <>
       _
-      _(_readbit, _ovison, _takebit, _foodbit)
+      _(
+        _readbit,
+        _ovison,
+        _takebit,
+        _foodbit)
       0
       0
       0
       4
-      0}, ["CAKE"
-    "ICING"], ["RED"])
+      0},
+  ["CAKE"
+    "ICING"],
+  ["RED"])
 
-add_object(#object
+add_object(
+  #object
     {"BLICE"
       "There is a piece of cake with blue (ecch) icing here."
       "piece of cake with blue icing"
@@ -5132,18 +6445,32 @@ add_object(#object
       _
       <>
       _
-      _(_readbit, _ovison, _takebit, _foodbit)
+      _(
+        _readbit,
+        _ovison,
+        _takebit,
+        _foodbit)
       0
       0
       0
       4
-      0}, ["CAKE"
-    "ICING"], ["BLUE"
+      0},
+  ["CAKE"
+    "ICING"],
+  ["BLUE"
     "ECCH"])
 
-put(put(find_obj("BUCKE"), _oopen_q, t), _orand, _rbuckbit)
+put(
+  put(
+    find_obj(
+      "BUCKE"),
+    _oopen_q,
+    t),
+  _orand,
+  _rbuckbit)
 
-add_object(#object
+add_object(
+  #object
     {"ROBOT"
       "There is a robot here."
       "robot"
@@ -5154,26 +6481,41 @@ add_object(#object
       _
       <>
       _
-      _(_sacredbit, _vicbit, _ovison, _actorbit)
+      _(
+        _sacredbit,
+        _vicbit,
+        _ovison,
+        _actorbit)
       0
       0
       0
       0
-      0}, ["R2D2"
+      0},
+  ["R2D2"
     "C3PO"
     "ROBBY"])
 
-put(find_obj("ROBOT"), _orand, add_actor(chtype([find_room("MAGNE")
+put(
+  find_obj(
+    "ROBOT"),
+  _orand,
+  add_actor(
+    chtype(
+      [find_room(
+          "MAGNE")
         ()
         0
         <>
-        find_obj("ROBOT")
+        find_obj(
+          "ROBOT")
         robot_actor
         3
         t
-        0], adv)))
+        0],
+      adv)))
 
-add_object(#object
+add_object(
+  #object
     {"RBTLB"
       "There is a green piece of paper here."
       "green piece of paper"
@@ -5185,73 +6527,130 @@ add_object(#object
       _
       <>
       _
-      _(_ovison, _takebit, _readbit, _burnbit)
+      _(
+        _ovison,
+        _takebit,
+        _readbit,
+        _burnbit)
       0
       0
       0
       3
-      0}, ["PAPER"], ["GREEN"])
+      0},
+  ["PAPER"],
+  ["GREEN"])
 
-add_desc(find_obj("RBTLB"), "!!!! 	FROBOZZ MAGIC ROBOT COMPANY  !!!!\n\nHello, Master!\n   \n   I am a late-model robot, trained at MIT Tech to perform various\nsimple household functions. \n\nInstructions for use:\n   To activate me, use the following formula:\n	>TELL ROBOT '<something to do>' <cr>\n   The quotation marks are required!\n       \nWarranty:\n   No warranty is expressed or implied.\n				\n					At your service!")
+add_desc(
+  find_obj(
+    "RBTLB"),
+  "!!!! 	FROBOZZ MAGIC ROBOT COMPANY  !!!!\n\nHello, Master!\n   \n   I am a late-model robot, trained at MIT Tech to perform various\nsimple household functions. \n\nInstructions for use:\n   To activate me, use the following formula:\n	>TELL ROBOT '<something to do>' <cr>\n   The quotation marks are required!\n       \nWarranty:\n   No warranty is expressed or implied.\n				\n					At your service!")
 
 // VERBS
 
-sadd_action("BACK", backer)
+sadd_action(
+  "BACK",
+  backer)
 
-sadd_action("REPEN", repent)
+sadd_action(
+  "REPEN",
+  repent)
 
-sadd_action("TIME", play_time)
+sadd_action(
+  "TIME",
+  play_time)
 
-sadd_action("WAIT", wait)
+sadd_action(
+  "WAIT",
+  wait)
 
-sadd_action("CURSE", curses)
+sadd_action(
+  "CURSE",
+  curses)
 
-vsynonym("CURSE", "SHIT", "FUCK", "DAMN")
+vsynonym(
+  "CURSE",
+  "SHIT",
+  "FUCK",
+  "DAMN")
 
-sadd_action("JARGON", jargon)
+sadd_action(
+  "JARGON",
+  jargon)
 
-vsynonym("JARGON", "FOO", "BLETCH")
+vsynonym(
+  "JARGON",
+  "FOO",
+  "BLETCH")
 
-add_action("PUT", "Put", [obj
+add_action(
+  "PUT",
+  "Put",
+  [obj
     "IN"
     obj
     ["PUT"
       putter]
-    driver], ["DOWN"
+    driver],
+  ["DOWN"
     obj
     ["DROP"
       dropper]])
 
-add_action("PICK", "Pick", ["UP"
+add_action(
+  "PICK",
+  "Pick",
+  ["UP"
     obj
     ["TAKE"
       take]])
 
-vsynonym("PUT", "STUFF", "PLACE", "INSER")
+vsynonym(
+  "PUT",
+  "STUFF",
+  "PLACE",
+  "INSER")
 
-1add_action("LOWER", "Lower", r_l)
+1add_action(
+  "LOWER",
+  "Lower",
+  r_l)
 
-add_action("RAISE", "Raise", [obj
+add_action(
+  "RAISE",
+  "Raise",
+  [obj
     ["RAISE"
       r_l]
-    driver], ["UP"
+    driver],
+  ["UP"
     obj
     ["RAISE"
       r_l]])
 
-vsynonym("RAISE", "LIFT")
+vsynonym(
+  "RAISE",
+  "LIFT")
 
-1add_action("MELT", "Melt", melter)
+1add_action(
+  "MELT",
+  "Melt",
+  melter)
 
-vsynonym("MELT", "LIQUI")
+vsynonym(
+  "MELT",
+  "LIQUI")
 
-add_action("LIGHT", "Light", [(_lightbit
+add_action(
+  "LIGHT",
+  "Light",
+  [(_lightbit
       aobjs
       robjs
       no_take)
     ["LIGHT"
       lamp_on]
-    driver], [(_lightbit
+    driver],
+  [(_lightbit
       aobjs
       robjs
       no_take)
@@ -5261,15 +6660,23 @@ add_action("LIGHT", "Light", [(_lightbit
     ["LIGHT"
       lamp_on]])
 
-add_action("EXTIN", "Turn off", [(_lightbit
+add_action(
+  "EXTIN",
+  "Turn off",
+  [(_lightbit
       aobjs
       robjs)
     ["EXTIN"
       lamp_off]])
 
-vsynonym("EXTIN", "DOUSE")
+vsynonym(
+  "EXTIN",
+  "DOUSE")
 
-add_action("TURN", "Turn", [(_turnbit
+add_action(
+  "TURN",
+  "Turn",
+  [(_turnbit
       aobjs
       robjs
       no_take)
@@ -5279,17 +6686,20 @@ add_action("TURN", "Turn", [(_turnbit
       aobjs)
     ["TURN"
       turner]
-    driver], ["ON"
+    driver],
+  ["ON"
     (_lightbit
       aobjs
       robjs)
     ["TURN-ON"
-      lamp_on]], ["OFF"
+      lamp_on]],
+  ["OFF"
     (_lightbit
       aobjs
       robjs)
     ["TURN-OFF"
-      lamp_off]], [(_turnbit
+      lamp_off]],
+  [(_turnbit
       aobjs
       robjs
       no_take)
@@ -5299,32 +6709,48 @@ add_action("TURN", "Turn", [(_turnbit
     ["TURN-TO"
       time]])
 
-add_action("TAKE", "Take", [(_1
+add_action(
+  "TAKE",
+  "Take",
+  [(_1
       robjs
       aobjs
       no_take)
     ["TAKE"
       take]])
 
-vsynonym("TAKE", "GET", "HOLD", "CARRY")
+vsynonym(
+  "TAKE",
+  "GET",
+  "HOLD",
+  "CARRY")
 
-add_action("LOOK", "Look", [["LOOK"
-      room_desc]], ["AT"
+add_action(
+  "LOOK",
+  "Look",
+  [["LOOK"
+      room_desc]],
+  ["AT"
     obj
     ["LOOK-AT"
-      room_desc]], ["UNDER"
+      room_desc]],
+  ["UNDER"
     obj
     ["LOOK-UNDER"
       look_under]])
 
-add_action("GIVE", "Give", [obj
+add_action(
+  "GIVE",
+  "Give",
+  [obj
     "TO"
     (_vicbit
       robjs
       no_take)
     ["GIVE"
       dropper]
-    driver], [(_vicbit
+    driver],
+  [(_vicbit
       robjs
       no_take)
     obj
@@ -5332,9 +6758,15 @@ add_action("GIVE", "Give", [obj
       dropper]
     flip])
 
-vsynonym("GIVE", "HAND", "DONAT")
+vsynonym(
+  "GIVE",
+  "HAND",
+  "DONAT")
 
-add_action("STRIK", "Strike", [(_vicbit
+add_action(
+  "STRIK",
+  "Strike",
+  [(_vicbit
       _
       robjs
       no_take)
@@ -5343,53 +6775,81 @@ add_action("STRIK", "Strike", [(_vicbit
       aobjs
       robjs)
     ["ATTAC"
-      attacker]], [(_vicbit
+      attacker]],
+  [(_vicbit
       _
       robjs
       no_take)
     ["ATTAC"
       attacker]
-    driver], [(_1
+    driver],
+  [(_1
       robjs
       aobjs)
     ["LIGHT"
       lamp_on]])
 
-aadd_action("MOVE", "Move", move)
+aadd_action(
+  "MOVE",
+  "Move",
+  move)
 
-vsynonym("MOVE", "PULL", "TUG")
+vsynonym(
+  "MOVE",
+  "PULL",
+  "TUG")
 
-aadd_action("WAVE", "Wave", waver)
+aadd_action(
+  "WAVE",
+  "Wave",
+  waver)
 
-vsynonym("BRAND", "FLAUN")
+vsynonym(
+  "BRAND",
+  "FLAUN")
 
-add_action("DROP", "Drop", [(_1
+add_action(
+  "DROP",
+  "Drop",
+  [(_1
       aobjs)
     ["DROP"
       dropper]
-    driver], [(_1
+    driver],
+  [(_1
       aobjs)
     "IN"
     obj
     ["DROP"
       dropper]])
 
-vsynonym("DROP", "RELEA")
+vsynonym(
+  "DROP",
+  "RELEA")
 
-add_action("POUR", "Pour", [(_1
+add_action(
+  "POUR",
+  "Pour",
+  [(_1
       aobjs)
     ["POUR"
       dropper]
-    driver], [(_1
+    driver],
+  [(_1
       aobjs)
     "IN"
     obj
     ["POUR"
       dropper]])
 
-vsynonym("POUR", "SPILL")
+vsynonym(
+  "POUR",
+  "SPILL")
 
-add_action("THROW", "Throw", [(_1
+add_action(
+  "THROW",
+  "Throw",
+  [(_1
       aobjs)
     "AT"
     (_vicbit
@@ -5398,91 +6858,182 @@ add_action("THROW", "Throw", [(_1
     ["THROW"
       dropper]])
 
-vsynonym("THROW", "HURL", "CHUCK")
+vsynonym(
+  "THROW",
+  "HURL",
+  "CHUCK")
 
-add_action("TELL", "Tell", [(_actorbit)
+add_action(
+  "TELL",
+  "Tell",
+  [(_actorbit)
     ["TELL"
       command]])
 
-vsynonym("TELL", "COMMA", "REQUE")
+vsynonym(
+  "TELL",
+  "COMMA",
+  "REQUE")
 
-vsynonym("LOOK", "L", "STARE", "GAZE")
+vsynonym(
+  "LOOK",
+  "L",
+  "STARE",
+  "GAZE")
 
-sadd_action("BRIEF", brief)
+sadd_action(
+  "BRIEF",
+  brief)
 
-sadd_action("UNBRI", un_brief)
+sadd_action(
+  "UNBRI",
+  un_brief)
 
-sadd_action("SUPER", super_brief)
+sadd_action(
+  "SUPER",
+  super_brief)
 
-sadd_action("UNSUP", un_super-brief)
+sadd_action(
+  "UNSUP",
+  un_super-brief)
 
-1add_action("EXAMI", "Examine", room_info)
+1add_action(
+  "EXAMI",
+  "Examine",
+  room_info)
 
-vsynonym("EXAMI", "DESCR", "WHAT", "WHATS", "WHAT'")
+vsynonym(
+  "EXAMI",
+  "DESCR",
+  "WHAT",
+  "WHATS",
+  "WHAT'")
 
-1add_action("FIND", "Find", find)
+1add_action(
+  "FIND",
+  "Find",
+  find)
 
-vsynonym("WHERE", "FIND", "SEEK", "SEE")
+vsynonym(
+  "WHERE",
+  "FIND",
+  "SEEK",
+  "SEE")
 
-sadd_action("INVEN", invent)
+sadd_action(
+  "INVEN",
+  invent)
 
-vsynonym("INVEN", "LIST")
+vsynonym(
+  "INVEN",
+  "LIST")
 
-sadd_action("VERSI", version)
+sadd_action(
+  "VERSI",
+  version)
 
-sadd_action("SCRIP", do_script)
+sadd_action(
+  "SCRIP",
+  do_script)
 
-sadd_action("UNSCR", do_unscript)
+sadd_action(
+  "UNSCR",
+  do_unscript)
 
-sadd_action("SAVE", do_save)
+sadd_action(
+  "SAVE",
+  do_save)
 
-sadd_action("RESTO", do_restore)
+sadd_action(
+  "RESTO",
+  do_restore)
 
-sadd_action("WALK-IN", time)
+sadd_action(
+  "WALK-IN",
+  time)
 
-sadd_action("C-INT", time)
+sadd_action(
+  "C-INT",
+  time)
 
 // funny verb for clock ints
 
-sadd_action("DEAD!", time)
+sadd_action(
+  "DEAD!",
+  time)
 
 // funny verb for killing villains
 
-sadd_action("FIRST?", time)
+sadd_action(
+  "FIRST?",
+  time)
 
 // funny verb for surprise by villains
 
-sadd_action("DIAGN", diagnose)
+sadd_action(
+  "DIAGN",
+  diagnose)
 
-sadd_action("HACK?", time)
+sadd_action(
+  "HACK?",
+  time)
 
 // funny verb for villain fight decisions
 
-sadd_action("SCORE", score)
+sadd_action(
+  "SCORE",
+  score)
 
-sadd_action("QUIT", finish)
+sadd_action(
+  "QUIT",
+  finish)
 
-sadd_action("INFO", info)
+sadd_action(
+  "INFO",
+  info)
 
-sadd_action("HELP", help)
+sadd_action(
+  "HELP",
+  help)
 
-add_action("PLUG", "Plug", [obj
+add_action(
+  "PLUG",
+  "Plug",
+  [obj
     "WITH"
     obj
     ["PLUG"
       plugger]])
 
-vsynonym("PLUG", "GLUE", "PATCH")
+vsynonym(
+  "PLUG",
+  "GLUE",
+  "PATCH")
 
-1add_action("RUB", "Rub", rubber)
+1add_action(
+  "RUB",
+  "Rub",
+  rubber)
 
-vsynonym("RUB", "CARES", "TOUCH", "FONDL")
+vsynonym(
+  "RUB",
+  "CARES",
+  "TOUCH",
+  "FONDL")
 
-sadd_action("SWIM", swimmer)
+sadd_action(
+  "SWIM",
+  swimmer)
 
-vsynonym("SWIM", "BATHE", "WADE")
+vsynonym(
+  "SWIM",
+  "BATHE",
+  "WADE")
 
-add_action("BURN", "Burn", [(_burnbit
+add_action(
+  "BURN",
+  "Burn",
+  [(_burnbit
       aobjs
       robjs
       no_take)
@@ -5493,9 +7044,15 @@ add_action("BURN", "Burn", [(_burnbit
     ["BURN"
       burner]])
 
-vsynonym("BURN", "INCIN", "IGNIT")
+vsynonym(
+  "BURN",
+  "INCIN",
+  "IGNIT")
 
-add_action("KILL", "Kill", [(_villain
+add_action(
+  "KILL",
+  "Kill",
+  [(_villain
       robjs
       no_take)
     "WITH"
@@ -5504,9 +7061,16 @@ add_action("KILL", "Kill", [(_villain
     ["KILL"
       killer]])
 
-vsynonym("KILL", "MURDE", "SLAY", "DISPA")
+vsynonym(
+  "KILL",
+  "MURDE",
+  "SLAY",
+  "DISPA")
 
-add_action("ATTAC", "Attack", [(_villain
+add_action(
+  "ATTAC",
+  "Attack",
+  [(_villain
       robjs
       no_take)
     "WITH"
@@ -5515,9 +7079,21 @@ add_action("ATTAC", "Attack", [(_villain
     ["ATTAC"
       attacker]])
 
-vsynonym("ATTAC", "FIGHT", "MUNG", "HACK", "FROB", "HURT", "INJUR", "DAMAG", "HIT")
+vsynonym(
+  "ATTAC",
+  "FIGHT",
+  "MUNG",
+  "HACK",
+  "FROB",
+  "HURT",
+  "INJUR",
+  "DAMAG",
+  "HIT")
 
-add_action("SWING", "Swing", [(_weaponbit
+add_action(
+  "SWING",
+  "Swing",
+  [(_weaponbit
       aobjs)
     "AT"
     (_villain
@@ -5526,9 +7102,14 @@ add_action("SWING", "Swing", [(_weaponbit
     ["SWING"
       swinger]])
 
-vsynonym("SWING", "THRUS")
+vsynonym(
+  "SWING",
+  "THRUS")
 
-add_action("POKE", "Poke", [(_villain
+add_action(
+  "POKE",
+  "Poke",
+  [(_villain
       robjs
       no_take)
     "WITH"
@@ -5537,35 +7118,64 @@ add_action("POKE", "Poke", [(_villain
     ["POKE"
       munger]])
 
-vsynonym("POKE", "JAB", "BREAK")
+vsynonym(
+  "POKE",
+  "JAB",
+  "BREAK")
 
-1add_action("KICK", "Kick", kicker)
+1add_action(
+  "KICK",
+  "Kick",
+  kicker)
 
-vsynonym("KICK", "BITE", "TAUNT")
+vsynonym(
+  "KICK",
+  "BITE",
+  "TAUNT")
 
-1add_action("PUSH", "Push", pusher)
+1add_action(
+  "PUSH",
+  "Push",
+  pusher)
 
-vsynonym("PUSH", "PRESS")
+vsynonym(
+  "PUSH",
+  "PRESS")
 
-add_action("OPEN", "Open", [(_(_doorbit, _contbit)
+add_action(
+  "OPEN",
+  "Open",
+  [(_(
+        _doorbit,
+        _contbit)
       aobjs
       robjs
       no_take)
     ["OPEN"
       opener]])
 
-vsynonym("OPEN")
+vsynonym(
+  "OPEN")
 
-add_action("CLOSE", "Close", [(_(_doorbit, _contbit)
+add_action(
+  "CLOSE",
+  "Close",
+  [(_(
+        _doorbit,
+        _contbit)
       aobjs
       robjs
       no_take)
     ["CLOSE"
       closer]])
 
-vsynonym("CLOSE")
+vsynonym(
+  "CLOSE")
 
-add_action("UNLOC", "Unlock", [(_1
+add_action(
+  "UNLOC",
+  "Unlock",
+  [(_1
       robjs
       no_take)
     "WITH"
@@ -5575,46 +7185,78 @@ add_action("UNLOC", "Unlock", [(_1
     ["UNLOC"
       unlocker]])
 
-add_action("LOCK", "Lock", [(_1
+add_action(
+  "LOCK",
+  "Lock",
+  [(_1
       robjs
       no_take)
     ["LOCK"
       locker]])
 
-add_action("TIE", "Tie", [obj
+add_action(
+  "TIE",
+  "Tie",
+  [obj
     "TO"
     obj
     ["TIE"
       tie]])
 
-vsynonym("TIE", "KNOT", "FASTE")
+vsynonym(
+  "TIE",
+  "KNOT",
+  "FASTE")
 
-1add_action("RING", "Ring", ring)
+1add_action(
+  "RING",
+  "Ring",
+  ring)
 
-vsynonym("RING", "PEAL")
+vsynonym(
+  "RING",
+  "PEAL")
 
-add_action("EAT", "Eat", [(_foodbit
+add_action(
+  "EAT",
+  "Eat",
+  [(_foodbit
       aobjs
       robjs)
     ["EAT"
       eat]])
 
-vsynonym("EAT", "CONSU", "GOBBL", "MUNCH", "TASTE")
+vsynonym(
+  "EAT",
+  "CONSU",
+  "GOBBL",
+  "MUNCH",
+  "TASTE")
 
-add_action("DRINK", "Drink", [(_drinkbit
+add_action(
+  "DRINK",
+  "Drink",
+  [(_drinkbit
       aobjs
       robjs)
     ["DRINK"
       eat]])
 
-vsynonym("DRINK", "IMBIB", "SWALL")
+vsynonym(
+  "DRINK",
+  "IMBIB",
+  "SWALL")
 
-add_action("BRUSH", "Brush", [(_1
+add_action(
+  "BRUSH",
+  "Brush",
+  [(_1
       aobjs
       robjs)
     ["BRUSH"
       brush]
-    driver], [(_1
+    driver],
+  [(_1
       aobjs
       robjs)
     "WITH"
@@ -5622,85 +7264,165 @@ add_action("BRUSH", "Brush", [(_1
     ["BRUSH"
       brush]])
 
-vsynonym("BRUSH", "CLEAN")
+vsynonym(
+  "BRUSH",
+  "CLEAN")
 
-1add_action("UNTIE", "Untie", untie)
+1add_action(
+  "UNTIE",
+  "Untie",
+  untie)
 
-vsynonym("UNTIE", "RELEA", "FREE")
+vsynonym(
+  "UNTIE",
+  "RELEA",
+  "FREE")
 
-sadd_action("EXORC", exorcise)
+sadd_action(
+  "EXORC",
+  exorcise)
 
-vsynonym("EXORC", "XORCI")
+vsynonym(
+  "EXORC",
+  "XORCI")
 
-sadd_action("CHOMP", chomp)
+sadd_action(
+  "CHOMP",
+  chomp)
 
-vsynonym("CHOMP", "LOSE", "BARF")
+vsynonym(
+  "CHOMP",
+  "LOSE",
+  "BARF")
 
-sadd_action("YELL", yell)
+sadd_action(
+  "YELL",
+  yell)
 
-vsynonym("YELL", "SCREA", "SHOUT")
+vsynonym(
+  "YELL",
+  "SCREA",
+  "SHOUT")
 
-sadd_action("WIN", win)
+sadd_action(
+  "WIN",
+  win)
 
-vsynonym("WIN", "WINNA")
+vsynonym(
+  "WIN",
+  "WINNA")
 
-sadd_action("FROBO", frobozz)
+sadd_action(
+  "FROBO",
+  frobozz)
 
-sadd_action("TREAS", treas)
+sadd_action(
+  "TREAS",
+  treas)
 
-sadd_action("TEMPL", treas)
+sadd_action(
+  "TEMPL",
+  treas)
 
-sadd_action("PRAY", prayer)
+sadd_action(
+  "PRAY",
+  prayer)
 
-sadd_action("JUMP", leaper)
+sadd_action(
+  "JUMP",
+  leaper)
 
-sadd_action("SKIP", skipper)
+sadd_action(
+  "SKIP",
+  skipper)
 
-vsynonym("SKIP", "HOP")
+vsynonym(
+  "SKIP",
+  "HOP")
 
-sadd_action("MUMBL", mumbler)
+sadd_action(
+  "MUMBL",
+  mumbler)
 
-vsynonym("MUMBL", "SIGH")
+vsynonym(
+  "MUMBL",
+  "SIGH")
 
-sadd_action("ZORK", zork)
+sadd_action(
+  "ZORK",
+  zork)
 
-sadd_action("DUNGE", dungeon)
+sadd_action(
+  "DUNGE",
+  dungeon)
 
-add_action("WAKE", "Wake", [(_vicbit
+add_action(
+  "WAKE",
+  "Wake",
+  [(_vicbit
       robjs
       no_take)
     ["WAKE"
       alarm]])
 
-vsynonym("WAKE", "AWAKE", "SURPR", "START")
+vsynonym(
+  "WAKE",
+  "AWAKE",
+  "SURPR",
+  "START")
 
-add_action("HELLO", "Hello", [["HELLO"
+add_action(
+  "HELLO",
+  "Hello",
+  [["HELLO"
       hello]
-    driver], [obj
+    driver],
+  [obj
     ["HELLO"
       hello]])
 
-vsynonym("HELLO", "HI")
+vsynonym(
+  "HELLO",
+  "HI")
 
-1add_action("GRANI", "Granite", granite)
+1add_action(
+  "GRANI",
+  "Granite",
+  granite)
 
-vsynonym("JUMP", "LEAP", "VAULT")
+vsynonym(
+  "JUMP",
+  "LEAP",
+  "VAULT")
 
-1add_action("FILL", "Fill", fill)
+1add_action(
+  "FILL",
+  "Fill",
+  fill)
 
-sadd_action("WELL", well)
+sadd_action(
+  "WELL",
+  well)
 
-sadd_action("ODYSS", sinbad)
+sadd_action(
+  "ODYSS",
+  sinbad)
 
-vsynonym("ODYSS", "ULYSS")
+vsynonym(
+  "ODYSS",
+  "ULYSS")
 
-add_action("READ", "Read", [(_readbit
+add_action(
+  "READ",
+  "Read",
+  [(_readbit
       aobjs
       robjs
       no_take)
     ["READ"
       reader]
-    driver], [(_readbit
+    driver],
+  [(_readbit
       aobjs
       robjs
       no_take)
@@ -5709,11 +7431,20 @@ add_action("READ", "Read", [(_readbit
     ["READ"
       reader]])
 
-vsynonym("READ", "SKIM", "SCAN")
+vsynonym(
+  "READ",
+  "SKIM",
+  "SCAN")
 
-1add_action("DEFLA", "Deflate", deflater)
+1add_action(
+  "DEFLA",
+  "Deflate",
+  deflater)
 
-add_action("INFLA", "Inflate", [obj
+add_action(
+  "INFLA",
+  "Inflate",
+  [obj
     "WITH"
     (_toolbit
       robjs
@@ -5722,32 +7453,46 @@ add_action("INFLA", "Inflate", [obj
     ["INFLA"
       inflater]])
 
-add_action("DISEM", "Disembark from", [(_vehbit
+add_action(
+  "DISEM",
+  "Disembark from",
+  [(_vehbit
       robjs
       no_take)
     ["DISEM"
       unboard]])
 
-add_action("DIG", "Dig", ["WITH"
+add_action(
+  "DIG",
+  "Dig",
+  ["WITH"
     (_toolbit
       aobjs)
     ["DIG"
       digger]])
 
-add_action("BOARD", "Board", [(_vehbit
+add_action(
+  "BOARD",
+  "Board",
+  [(_vehbit
       robjs
       no_take)
     ["BOARD"
       board]])
 
-add_action("KNOCK", "Knock", ["AT"
+add_action(
+  "KNOCK",
+  "Knock",
+  ["AT"
     obj
     ["KNOCK"
       knock]
-    driver], ["ON"
+    driver],
+  ["ON"
     obj
     ["KNOCK"
-      knock]], ["DOWN"
+      knock]],
+  ["DOWN"
     (_vicbit
       _
       robjs
@@ -5755,15 +7500,28 @@ add_action("KNOCK", "Knock", ["AT"
     ["ATTAC"
       attacker]])
 
-sadd_action("GERON", geronimo)
+sadd_action(
+  "GERON",
+  geronimo)
 
-sadd_action("BLAST", blast)
+sadd_action(
+  "BLAST",
+  blast)
 
-1add_action("WALK", "Walk", walk)
+1add_action(
+  "WALK",
+  "Walk",
+  walk)
 
-add_buzz("RUN", "GO", "PROCE")
+add_buzz(
+  "RUN",
+  "GO",
+  "PROCE")
 
-setg(robot_actions, _, [_walk!-words
+setg(
+  robot_actions,
+  _,
+  [_walk!-words
     _take!-words
     _drop!-words
     _put!-words
@@ -5772,12 +7530,18 @@ setg(robot_actions, _, [_walk!-words
     _throw!-words
     _turn!-words])
 
-setg(player, add_actor(chtype([_whous!-rooms
+setg(
+  player,
+  add_actor(
+    chtype(
+      [_whous!-rooms
         ()
         0
         <>
-        find_obj("#####")
+        find_obj(
+          "#####")
         <>
         0
         t
-        0], adv)))
+        0],
+      adv)))

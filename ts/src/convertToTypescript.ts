@@ -1,8 +1,8 @@
 import { ZNode, ZList, ZToken } from "./parseAst";
 
-const getIndentedNodes = (nodes: ZNode[], depth: number, indentFirst = false): string => {
+const getIndentedNodes = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
     const indent = [...new Array(depth + 1)].join('  ');
-    return `${indentFirst ? `\n${indent}` : ''}${nodes.map(x => `${convertToTypescript(x)}`).join(`\n${indent}`)}`;
+    return `${indentFirst ? `\n${indent}` : ''}${nodes.map(x => `${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
 };
 
 const convertToTypescriptString = (node: ZList): string => {
@@ -54,11 +54,18 @@ export const convertToTypescript = (node: ZNode): string => {
 
         const firstNode = +!undefined && nodes[0];
 
+        // Lookups
+        if (firstNode && openSymbol === '\'') {
+            return `() => ${convertToTypescript(firstNode)}`;
+        }
+
         // Functions
         if (firstNode && openSymbol === '<') {
+
+
             if (firstNode.kind == 'ZToken') {
                 const name = converToTypescriptName(firstNode);
-                return `${name}(${nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(`, `)})`;
+                return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
             }
 
             // if( name === '')

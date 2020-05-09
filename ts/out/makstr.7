@@ -1,44 +1,101 @@
-define(cevent, (tick
+define(
+  cevent,
+  (tick
     app
     flg
     name
     "AUX"
     (obl
-      get(initial, oblist))
-    atm), #decl
+      get(
+        initial,
+        oblist))
+    atm),
+  #decl
     ((tick)
       fix
       (app)
-      or(applicable, offset)
+      or(
+        applicable,
+        offset)
       (flg)
-      or(atom, false)
+      or(
+        atom,
+        false)
       (name)
-      or(atom, string)
+      or(
+        atom,
+        string)
       (atm)
-      or(atom, false)), cond((type_q(_name, string)
-      cond((set(atm, lookup(_name, _obl))), (t
-          set(atm, insert(_name, _obl))))), (set(atm, _name))), setg(_atm, chtype([_tick
+      or(
+        atom,
+        false)),
+  cond(
+    (type_q(
+        _name,
+        string)
+      cond(
+        (set(
+            atm,
+            lookup(
+              _name,
+              _obl))),
+        (t
+          set(
+            atm,
+            insert(
+              _name,
+              _obl))))),
+    (set(
+        atm,
+        _name))),
+  setg(
+    _atm,
+    chtype(
+      [_tick
         _app
         _flg
-        _atm], cevent)))
+        _atm],
+      cevent)))
 
-define(cons_obj, ("TUPLE"
+define(
+  cons_obj,
+  ("TUPLE"
     objs
     "AUX"
     (winner
-      _winner)), #decl
+      _winner)),
+  #decl
     ((objs)
-      tuple([rest
+      tuple(
+        [rest
           string])
       (winner)
-      adv), mapf(<>, function((x
+      adv),
+  mapf(
+    <>,
+    function(
+      (x
         "AUX"
         (y
-          find_obj(_x))), #decl
+          find_obj(
+            _x))),
+      #decl
         ((y)
-          object), or(memq(_y, aobjs(_winner)), take_object(find_obj(_x), _winner))), _objs))
+          object),
+      or(
+        memq(
+          _y,
+          aobjs(
+            _winner)),
+        take_object(
+          find_obj(
+            _x),
+          _winner))),
+    _objs))
 
-define(cexit, (flid
+define(
+  cexit,
+  (flid
     rmid
     "OPTIONAL"
     (str
@@ -50,56 +107,171 @@ define(cexit, (flid
     "AUX"
     (fval
       <>)
-    atm), #decl
+    atm),
+  #decl
     ((str)
-      or(false, string)
+      or(
+        false,
+        string)
       (flid
         rmid)
-      or(atom, string)
+      or(
+        atom,
+        string)
       (atm
         funct)
-      or(atom, false)
+      or(
+        atom,
+        false)
       (fval)
-      or(applicable, false)
+      or(
+        applicable,
+        false)
       (flag)
-      or(atom, false)), cond((type_q(_flid, atom)
-      set(flid, spname(_flid)))), set(atm, or(lookup(_flid, get(flag, oblist)), insert(_flid, get(flag, oblist)))), setg(_atm, _flag), chtype(vector(_atm, find_room(_rmid), _str, _funct), cexit))
+      or(
+        atom,
+        false)),
+  cond(
+    (type_q(
+        _flid,
+        atom)
+      set(
+        flid,
+        spname(
+          _flid)))),
+  set(
+    atm,
+    or(
+      lookup(
+        _flid,
+        get(
+          flag,
+          oblist)),
+      insert(
+        _flid,
+        get(
+          flag,
+          oblist)))),
+  setg(
+    _atm,
+    _flag),
+  chtype(
+    vector(
+      _atm,
+      find_room(
+        _rmid),
+      _str,
+      _funct),
+    cexit))
 
-define(exit, ("TUPLE"
+define(
+  exit,
+  ("TUPLE"
     pairs
     "AUX"
     (dobl
       _directions)
     (frob
-      ivector(length(_pairs)))), #decl
+      ivector(
+        length(
+          _pairs)))),
+  #decl
     ((pairs)
-      tuple([rest
+      tuple(
+        [rest
           string
-          or(nexit, cexit, string, atom)])
+          or(
+            nexit,
+            cexit,
+            string,
+            atom)])
       (dir)
-      list([rest
+      list(
+        [rest
           atom])
       (frob)
       vector
       (dobl)
-      oblist), repeat((atm
+      oblist),
+  repeat(
+    (atm
       rm
       (f
-        _frob)), #decl
+        _frob)),
+    #decl
       ((atm)
-        or(atom, false)
+        or(
+          atom,
+          false)
         (rm)
-        or(room, false)
+        or(
+          room,
+          false)
         (f)
-        vector), cond((or(and(set(atm, lookup(1(_pairs), _dobl)), gassigned_q(_atm), type_q(_.atm, direction)))
-        put(_f, 1, _atm)
-        cond((type_q(2(_pairs), string)
-            put(_f, 2, find_room(2(_pairs)))), (put(_f, 2, 2(_pairs))))
-        set(f, rest(_f, 2))), (t
-        put(_pairs, 1, error(illegal_direction, 1(_pairs))))), cond((empty_q(set(pairs, rest(_pairs, 2)))
-        return()))), chtype(_frob, exit))
+        vector),
+    cond(
+      (or(
+          and(
+            set(
+              atm,
+              lookup(
+                1(
+                  _pairs),
+                _dobl)),
+            gassigned_q(
+              _atm),
+            type_q(
+              _.atm,
+              direction)))
+        put(
+          _f,
+          1,
+          _atm)
+        cond(
+          (type_q(
+              2(
+                _pairs),
+              string)
+            put(
+              _f,
+              2,
+              find_room(
+                2(
+                  _pairs)))),
+          (put(
+              _f,
+              2,
+              2(
+                _pairs))))
+        set(
+          f,
+          rest(
+            _f,
+            2))),
+      (t
+        put(
+          _pairs,
+          1,
+          error(
+            illegal_direction,
+            1(
+              _pairs))))),
+    cond(
+      (empty_q(
+          set(
+            pairs,
+            rest(
+              _pairs,
+              2)))
+        return(
+          )))),
+  chtype(
+    _frob,
+    exit))
 
-define(room, (id
+define(
+  room,
+  (id
     d1
     d2
     lit_q
@@ -115,51 +287,149 @@ define(room, (id
       _rlandbit)
     "AUX"
     (rm
-      find_room(_id))), #decl
+      find_room(
+        _id))),
+  #decl
     ((id)
-      or(string, atom)
+      or(
+        string,
+        atom)
       (d1
         d2)
       string
       (lit_q)
-      or(atom, form, false)
+      or(
+        atom,
+        form,
+        false)
       (ex)
       exit
       (app)
-      or(form, false, atom)
+      or(
+        form,
+        false,
+        atom)
       (val
         bit)
       fix
       (rm)
-      room), setg(score_max, _(_score-max, _val)), put(_rm, _rbits, _bit), put(_rm, _rval, _val), put(_rm, _robjs, _objs), put(_rm, _rdesc1, _d1), put(_rm, _rdesc2, _d2), put(_rm, _rexits, _ex), put(_rm, _raction, cond((type_q(_app, false, form)
-        <>), (_app))), put(_rm, _rlight_q, cond((type_q(_lit_q, form)
-        <>), (t
-        _lit_q))), mapf(<>, function((x), #decl
+      room),
+  setg(
+    score_max,
+    _(
+      _score-max,
+      _val)),
+  put(
+    _rm,
+    _rbits,
+    _bit),
+  put(
+    _rm,
+    _rval,
+    _val),
+  put(
+    _rm,
+    _robjs,
+    _objs),
+  put(
+    _rm,
+    _rdesc1,
+    _d1),
+  put(
+    _rm,
+    _rdesc2,
+    _d2),
+  put(
+    _rm,
+    _rexits,
+    _ex),
+  put(
+    _rm,
+    _raction,
+    cond(
+      (type_q(
+          _app,
+          false,
+          form)
+        <>),
+      (_app))),
+  put(
+    _rm,
+    _rlight_q,
+    cond(
+      (type_q(
+          _lit_q,
+          form)
+        <>),
+      (t
+        _lit_q))),
+  mapf(
+    <>,
+    function(
+      (x),
+      #decl
         ((x)
-          object), put(_x, _oroom, _rm)), robjs(_rm)), _rm)
+          object),
+      put(
+        _x,
+        _oroom,
+        _rm)),
+    robjs(
+      _rm)),
+  _rm)
 
-define(sobject, (id
+define(
+  sobject,
+  (id
     str
     "TUPLE"
-    tup), #decl
+    tup),
+  #decl
     ((id)
       string
       (tup)
-      tuple), object(_id, "", _str, _, <>, <>, (), <>, _(_.tup)))
+      tuple),
+  object(
+    _id,
+    "",
+    _str,
+    _,
+    <>,
+    <>,
+    (),
+    <>,
+    _(
+      _.tup)))
 
-define(aobject, (id
+define(
+  aobject,
+  (id
     str
     app
     "TUPLE"
-    tup), #decl
+    tup),
+  #decl
     ((id)
       string
       (tup)
       tuple
       (app)
-      atom), object(_id, "", _str, _, <>, _app, (), <>, _(_.tup)))
+      atom),
+  object(
+    _id,
+    "",
+    _str,
+    _,
+    <>,
+    _app,
+    (),
+    <>,
+    _(
+      _.tup)))
 
-define(object, (id
+define(
+  object,
+  (id
     desc1
     desc2
     desco
@@ -177,21 +447,31 @@ define(object, (id
     (size
       5)
     (capac
-      0)), #decl
+      0)),
+  #decl
     ((id)
-      or(atom, string)
+      or(
+        atom,
+        string)
       (desc1
         desc2)
       string
       (app)
-      or(false, form, atom)
+      or(
+        false,
+        form,
+        atom)
       (conts)
-      list([rest
+      list(
+        [rest
           object])
       (can)
-      or(false, object)
+      or(
+        false,
+        object)
       (flags)
-      primtype(word)
+      primtype(
+        word)
       (size
         capac)
       fix
@@ -200,212 +480,588 @@ define(object, (id
         s2)
       fix
       (desco)
-      or(string, false)), setg(score_max, _(_score-max, _s1, _s2)), or(0_q(_light_q), set(flags, _(_flags, _lightbit))), put(put(put(put(put(put(put(put(put(put(put(put(find_obj(_id), _odesc1, _desc1), _ocapac, _capac), _osize, _size), _odesco, _desco), _olight_q, _light_q), _oflags, _flags), _ofval, _s1), _otval, _s2), _ocan, _can), _ocontents, _conts), _odesc2, _desc2), _oaction, cond((type_q(_app, false, form)
-        <>), (_app))))
+      or(
+        string,
+        false)),
+  setg(
+    score_max,
+    _(
+      _score-max,
+      _s1,
+      _s2)),
+  or(
+    0_q(
+      _light_q),
+    set(
+      flags,
+      _(
+        _flags,
+        _lightbit))),
+  put(
+    put(
+      put(
+        put(
+          put(
+            put(
+              put(
+                put(
+                  put(
+                    put(
+                      put(
+                        put(
+                          find_obj(
+                            _id),
+                          _odesc1,
+                          _desc1),
+                        _ocapac,
+                        _capac),
+                      _osize,
+                      _size),
+                    _odesco,
+                    _desco),
+                  _olight_q,
+                  _light_q),
+                _oflags,
+                _flags),
+              _ofval,
+              _s1),
+            _otval,
+            _s2),
+          _ocan,
+          _can),
+        _ocontents,
+        _conts),
+      _odesc2,
+      _desc2),
+    _oaction,
+    cond(
+      (type_q(
+          _app,
+          false,
+          form)
+        <>),
+      (_app))))
 
-define(find_prep, (str
+define(
+  find_prep,
+  (str
     "AUX"
     (atm
-      add_word(_str))), #decl
+      add_word(
+        _str))),
+  #decl
     ((str)
       string
       (atm)
-      or(false, atom)), cond((gassigned_q(_atm)
-      cond((type_q(_.atm, prep)
-          _.atm), (error(no_prep!-errors)))), (setg(_atm, chtype(_atm, prep)))))
+      or(
+        false,
+        atom)),
+  cond(
+    (gassigned_q(
+        _atm)
+      cond(
+        (type_q(
+            _.atm,
+            prep)
+          _.atm),
+        (error(
+            no_prep!-errors)))),
+    (setg(
+        _atm,
+        chtype(
+          _atm,
+          prep)))))
 
-define(add_action, (nam
+define(
+  add_action,
+  (nam
     str
     "TUPLE"
     decl
     "AUX"
     (atm
-      or(lookup(_nam, _actions), insert(_nam, _actions)))), #decl
+      or(
+        lookup(
+          _nam,
+          _actions),
+        insert(
+          _nam,
+          _actions)))),
+  #decl
     ((nam
         str)
       string
       (decl)
-      tuple([rest
+      tuple(
+        [rest
           vector])
       (atm)
-      atom), setg(_atm, chtype([_atm
-        make_action(_.decl)
-        _str], action)), _atm)
+      atom),
+  setg(
+    _atm,
+    chtype(
+      [_atm
+        make_action(
+          _.decl)
+        _str],
+      action)),
+  _atm)
 
-define(add_directions, ("TUPLE"
+define(
+  add_directions,
+  ("TUPLE"
     nms
     "AUX"
     (dir
       _directions)
-    atm), #decl
+    atm),
+  #decl
     ((nms)
-      tuple([rest
+      tuple(
+        [rest
           string])
       (dir)
       oblist
       (atm)
-      atom), mapf(<>, function((x), setg(set(atm, or(lookup(_x, _dir), insert(_x, _dir))), chtype(_atm, direction))), _nms))
+      atom),
+  mapf(
+    <>,
+    function(
+      (x),
+      setg(
+        set(
+          atm,
+          or(
+            lookup(
+              _x,
+              _dir),
+            insert(
+              _x,
+              _dir))),
+        chtype(
+          _atm,
+          direction))),
+    _nms))
 
-define(dsynonym, (str
+define(
+  dsynonym,
+  (str
     "TUPLE"
     nms
     "AUX"
     val
     (dir
       _directions)
-    atm), #decl
+    atm),
+  #decl
     ((atm)
       atom
       (str)
       string
       (nms)
-      tuple([rest
+      tuple(
+        [rest
           string])
       (val)
       direction
       (dir)
-      oblist), set(val, add_directions(_str)), mapf(<>, function((x), setg(set(atm, or(lookup(_x, _dir), insert(_x, _dir))), _val)), _nms))
+      oblist),
+  set(
+    val,
+    add_directions(
+      _str)),
+  mapf(
+    <>,
+    function(
+      (x),
+      setg(
+        set(
+          atm,
+          or(
+            lookup(
+              _x,
+              _dir),
+            insert(
+              _x,
+              _dir))),
+        _val)),
+    _nms))
 
-define(vsynonym, (n1
+define(
+  vsynonym,
+  (n1
     "TUPLE"
     n2
     "AUX"
     atm
-    val), #decl
+    val),
+  #decl
     ((n1)
       string
       (n2)
-      tuple([rest
+      tuple(
+        [rest
           string])
       (atm)
-      or(false, atom)
+      or(
+        false,
+        atom)
       (val)
-      any), cond((set(atm, lookup(_n1, _words))
-      set(val, _.atm)
-      mapf(<>, function((x), setg(add_word(_x), _val)), _n2))), cond((set(atm, lookup(_n1, _actions))
-      set(val, _.atm)
-      mapf(<>, function((x), setg(or(lookup(_x, _actions), insert(_x, _actions)), _val)), _n2))))
+      any),
+  cond(
+    (set(
+        atm,
+        lookup(
+          _n1,
+          _words))
+      set(
+        val,
+        _.atm)
+      mapf(
+        <>,
+        function(
+          (x),
+          setg(
+            add_word(
+              _x),
+            _val)),
+        _n2))),
+  cond(
+    (set(
+        atm,
+        lookup(
+          _n1,
+          _actions))
+      set(
+        val,
+        _.atm)
+      mapf(
+        <>,
+        function(
+          (x),
+          setg(
+            or(
+              lookup(
+                _x,
+                _actions),
+              insert(
+                _x,
+                _actions)),
+            _val)),
+        _n2))))
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-define(add_word, (w), #decl
+define(
+  add_word,
+  (w),
+  #decl
     ((w)
-      string), or(lookup(_w, _words), insert(_w, _words)))
+      string),
+  or(
+    lookup(
+      _w,
+      _words),
+    insert(
+      _w,
+      _words)))
 
-define(add_buzz, ("TUPLE"
-    w), #decl
+define(
+  add_buzz,
+  ("TUPLE"
+    w),
+  #decl
     ((w)
-      tuple([rest
-          string])), mapf(<>, function((x), #decl
+      tuple(
+        [rest
+          string])),
+  mapf(
+    <>,
+    function(
+      (x),
+      #decl
         ((x)
-          string), setg(add_word(_x), chtype(_x, buzz))), _w))
+          string),
+      setg(
+        add_word(
+          _x),
+        chtype(
+          _x,
+          buzz))),
+    _w))
 
-define(add_zork, (nm
+define(
+  add_zork,
+  (nm
     "TUPLE"
-    w), #decl
+    w),
+  #decl
     ((nm)
       atom
       (w)
-      tuple([rest
-          string])), mapf(<>, function((x
+      tuple(
+        [rest
+          string])),
+  mapf(
+    <>,
+    function(
+      (x
         "AUX"
-        atm), #decl
+        atm),
+      #decl
         ((x)
           string
           (atm)
-          atom), setg(set(atm, add_word(_x)), chtype(_atm, _nm))), _w))
+          atom),
+      setg(
+        set(
+          atm,
+          add_word(
+            _x)),
+        chtype(
+          _atm,
+          _nm))),
+    _w))
 
-define(add_object, (obj
+define(
+  add_object,
+  (obj
     names
     "OPTIONAL"
     (adj
-      '[])
+      () => [])
     "AUX"
     (objs
-      _object-obl)), #decl
+      _object-obl)),
+  #decl
     ((obj)
       object
       (names
         adj)
-      vector([rest
+      vector(
+        [rest
           string])
       (objs)
-      oblist), put(_obj, _onames, mapf(_uvector, function((x), #decl
+      oblist),
+  put(
+    _obj,
+    _onames,
+    mapf(
+      _uvector,
+      function(
+        (x),
+        #decl
           ((x)
-            string), or(lookup(_x, _objs), insert(_x, _objs))), _names)), put(_obj, _oadjs, mapf(_uvector, function((w), add_zork(adjective, _w)), _adj)), chutype(oadjs(_obj), adjective), _obj)
+            string),
+        or(
+          lookup(
+            _x,
+            _objs),
+          insert(
+            _x,
+            _objs))),
+      _names)),
+  put(
+    _obj,
+    _oadjs,
+    mapf(
+      _uvector,
+      function(
+        (w),
+        add_zork(
+          adjective,
+          _w)),
+      _adj)),
+  chutype(
+    oadjs(
+      _obj),
+    adjective),
+  _obj)
 
-define(synonym, (n1
+define(
+  synonym,
+  (n1
     "TUPLE"
     n2
     "AUX"
     atm
-    val), #decl
+    val),
+  #decl
     ((n1)
       string
       (n2)
-      tuple([rest
+      tuple(
+        [rest
           string])
       (atm)
-      or(false, atom)
+      or(
+        false,
+        atom)
       (val)
-      any), cond((set(atm, lookup(_n1, _words))
-      set(val, _.atm)
-      mapf(<>, function((x), setg(add_word(_x), _val)), _n2))))
+      any),
+  cond(
+    (set(
+        atm,
+        lookup(
+          _n1,
+          _words))
+      set(
+        val,
+        _.atm)
+      mapf(
+        <>,
+        function(
+          (x),
+          setg(
+            add_word(
+              _x),
+            _val)),
+        _n2))))
 
-define(add_abbrev, (x
+define(
+  add_abbrev,
+  (x
     y
-    "AUX"), #decl
+    "AUX"),
+  #decl
     ((x
         y)
-      string), setg(add_word(_x), or(lookup(_y, _words), insert(_y, _words))))
+      string),
+  setg(
+    add_word(
+      _x),
+    or(
+      lookup(
+        _y,
+        _words),
+      insert(
+        _y,
+        _words))))
 
-define(add_demon, (x), #decl
+define(
+  add_demon,
+  (x),
+  #decl
     ((x)
-      hack), cond((mapr(<>, function((y), #decl
+      hack),
+  cond(
+    (mapr(
+        <>,
+        function(
+          (y),
+          #decl
             ((y)
-              list([rest
-                  hack])), cond((eq_q(haction(1(_y)), haction(_x))
-              put(_y, 1, _x)
-              mapleave(t)))), _demons)), (setg(demons, (_x
+              list(
+                [rest
+                  hack])),
+          cond(
+            (eq_q(
+                haction(
+                  1(
+                    _y)),
+                haction(
+                  _x))
+              put(
+                _y,
+                1,
+                _x)
+              mapleave(
+                t)))),
+        _demons)),
+    (setg(
+        demons,
+        (_x
           _,demons)))))
 
-define(add_star, (obj), setg(stars, (_obj
+define(
+  add_star,
+  (obj),
+  setg(
+    stars,
+    (_obj
       _,stars)))
 
-define(add_actor, (adv
+define(
+  add_actor,
+  (adv
     "AUX"
     (actors
-      _actors)), #decl
+      _actors)),
+  #decl
     ((adv)
       adv
       (actors)
-      list([rest
-          adv])), cond((mapf(<>, function((x), #decl
+      list(
+        [rest
+          adv])),
+  cond(
+    (mapf(
+        <>,
+        function(
+          (x),
+          #decl
             ((x)
-              adv), cond((eq_q(aobj(_x), aobj(_adv))
-              mapleave(t)))), _actors)), (setg(actors, (_adv
-          _.actors)))), _adv)
+              adv),
+          cond(
+            (eq_q(
+                aobj(
+                  _x),
+                aobj(
+                  _adv))
+              mapleave(
+                t)))),
+        _actors)),
+    (setg(
+        actors,
+        (_adv
+          _.actors)))),
+  _adv)
 
-define(add_desc, (obj
-    str), #decl
+define(
+  add_desc,
+  (obj
+    str),
+  #decl
     ((obj)
       object
       (str)
-      string), put(_obj, _oread, _str))
+      string),
+  put(
+    _obj,
+    _oread,
+    _str))
 
-define(sadd_action, (str1
-    atm), add_action(_str1, "", [[_str1
+define(
+  sadd_action,
+  (str1
+    atm),
+  add_action(
+    _str1,
+    "",
+    [[_str1
         _atm]]))
 
-define(1add_action, (str1
+define(
+  1add_action,
+  (str1
     str2
-    atm), add_action(_str1, _str2, [obj
+    atm),
+  add_action(
+    _str1,
+    _str2,
+    [obj
       [_str1
         _atm]]))
 
-define(aadd_action, (str1
+define(
+  aadd_action,
+  (str1
     str2
-    atm), add_action(_str1, _str2, [(_1
+    atm),
+  add_action(
+    _str1,
+    _str2,
+    [(_1
         aobjs
         no_take)
       [_str1
