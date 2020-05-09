@@ -18,6 +18,11 @@ export class StringSpan {
     }
     toString() { return this.source.substr(this.start, this.length); }
 
+    getChar(index: number) {
+        if (index < this.start || index >= this.start + this.length) { throw { error: new Error('StringSpan.getChar(): Out of range'), data: { index, s: this } }; }
+        return this.source[index];
+    }
+
     indexOf = (d: string) => {
         const i = this.source.indexOf(d, this.start);
         if (i < this.start) { return -1; }
@@ -168,6 +173,10 @@ export class StringSpan {
 
     transform = (offsetStart: number, offsetEnd: number) => {
         return new StringSpan(this.source, this.start + offsetStart, this.length + offsetEnd - offsetStart);
+    };
+
+    newRange = (start: number, length: number) => {
+        return new StringSpan(this.source, start, length);
     };
 };
 
