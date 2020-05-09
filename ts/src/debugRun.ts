@@ -21,11 +21,14 @@ export const runDebug = async () => {
     const fileOutputs = filesParsed.map(x => ({
         ...x,
         outPath: fs.resolvePath(`../out/${x.fileName}`),
-        outText: convertToTypescript(x.result),
+        outPath_typescript: fs.resolvePath(`../out/${x.fileName}.ts`),
+        outText: x.result.toString(),
+        outText_typescript: convertToTypescript(x.result),
     }));
 
     for (let f of fileOutputs) {
         await fs.writeFile(f.outPath, f.outText);
+        await fs.writeFile(f.outPath_typescript, f.outText_typescript);
     }
 }
 

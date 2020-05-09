@@ -1,190 +1,183 @@
-define(
-  boom_room,
+<DEFINE
+  BOOM-ROOM
   ("AUX"
-    (dummy_Q
+    (DUMMY?
       <>)
-    (prsact
-      1(
-        ,prsvec))
-    (win
-      ,winner)
-    o),
-  #decl
-    ((dummy_Q)
-      or(
-        atom,
-        false)
-      (prsact)
-      verb
-      (win)
-      adv
-      (o)
-      object),
-  cond(
-    (or(
-        _EQ_Q(
-          vname(
-            _prsact),
-          walk_in_X_words),
-        and(
-          _EQ_Q(
-            vname(
-              _prsact),
-            on_X_words),
-          set(
-            dummy_Q,
-            t)))
-      cond(
-        (or(
-            and(
-              memq(
-                set(
-                  o,
-                  find_obj(
-                    "CANDL")),
-                aobjs(
-                  _win)),
-              1_Q(
-                olight_Q(
-                  _o))),
-            and(
-              memq(
-                set(
-                  o,
-                  find_obj(
-                    "TORCH")),
-                aobjs(
-                  _win)),
-              1_Q(
-                olight_Q(
-                  _o))))
-          unwind(
-            prog(
-              (),
-              cond(
-                (_dummy_Q
-                  tell(
-                    "I didn't realize that adventurers are stupid enough to light a",
-                    1,
-                    odesc2(
-                      _o),
-                    "in a room which reeks of coal gas.\nFortunately, there is justice in the world.")),
-                (tell(
-                    "Oh dear.  It appears that the smell coming from this room was coal\ngas.  I would have thought twice about carrying a",
-                    1,
-                    odesc2(
-                      _o),
-                    "in here."))),
-              fweep(
-                7),
-              jigs_up(
-                "BOOOOOOOOOOOM")),
-            jigs_up(
-              "BOOOOOOOOOOOM")))))))
-
-define(
-  bats_room,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (WIN
+      ,WINNER)
+    O)
+  #DECL
+    ((DUMMY?)
+      <OR
+        ATOM
+        FALSE>
+      (PRSACT)
+      VERB
+      (WIN)
+      ADV
+      (O)
+      OBJECT)
+  <COND
+    (<OR
+        <==?
+          <VNAME
+            .PRSACT>
+          WALK-IN!-WORDS>
+        <AND
+          <==?
+            <VNAME
+              .PRSACT>
+            ON!-WORDS>
+          <SET
+            DUMMY?
+            T>>>
+      <COND
+        (<OR
+            <AND
+              <MEMQ
+                <SET
+                  O
+                  <FIND-OBJ
+                    "CANDL">>
+                <AOBJS
+                  .WIN>>
+              <1?
+                <OLIGHT?
+                  .O>>>
+            <AND
+              <MEMQ
+                <SET
+                  O
+                  <FIND-OBJ
+                    "TORCH">>
+                <AOBJS
+                  .WIN>>
+              <1?
+                <OLIGHT?
+                  .O>>>>
+          <UNWIND
+            <PROG
+              ()
+              <COND
+                (.DUMMY?
+                  <TELL
+                    "I didn't realize that adventurers are stupid enough to light a   "
+                    1
+                    <ODESC2
+                      .O>
+                    " in a room which reeks of coal gas.  Fortunately, there is justice in the world.">)
+                (<TELL
+                    "Oh dear.  It appears that the smell coming from this room was coal  gas.  I would have thought twice about carrying a "
+                    1
+                    <ODESC2
+                      .O>
+                    "in here.">)>
+              <FWEEP
+                7>
+              <JIGS-UP
+                "   BOOOOOOOOOOOM      ">>
+            <JIGS-UP
+              "   BOOOOOOOOOOOM      ">>)>)>>
+<DEFINE
+  BATS-ROOM
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
-  cond(
-    (and(
-        _EQ_Q(
-          vname(
-            _prsact),
-          walk_in_X_words),
-        not(
-          memq(
-            find_obj(
-              "GARLI"),
-            aobjs(
-              ,winner))))
-      fly_me(
-        )),
-    (_EQ_Q(
-        _prsact,
-        ,look_X_words)
-      tell(
-        "You are in a small room which has only one door, to the east.")
-      and(
-        memq(
-          find_obj(
-            "GARLI"),
-          aobjs(
-            ,winner)),
-        tell(
-          "In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")))))
-
-define(
-  fly_me,
+    (PRSACT
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSACT)
+      VERB)
+  <COND
+    (<AND
+        <==?
+          <VNAME
+            .PRSACT>
+          WALK-IN!-WORDS>
+        <NOT
+          <MEMQ
+            <FIND-OBJ
+              "GARLI">
+            <AOBJS
+              ,WINNER>>>>
+      <FLY-ME>)
+    (<==?
+        .PRSACT
+        ,LOOK!-WORDS>
+      <TELL
+        "You are in a small room which has only one door, to the east.">
+      <AND
+        <MEMQ
+          <FIND-OBJ
+            "GARLI">
+          <AOBJS
+            ,WINNER>>
+        <TELL
+          "In the corner of the room on the ceiling is a large vampire bat who  is obviously deranged and holding his nose.">>)>>
+<DEFINE
+  FLY-ME
   ("AUX"
-    (bat_drops
-      ,bat_drops)),
-  #decl
-    ((bat_drops)
-      vector(
-        [rest
-          string])),
-  unwind(
-    prog(
-      (),
-      fweep(
-        4,
-        1),
-      tell(
-        "A deranged giant vampire bat (a reject from WUMPUS) swoops down\nfrom his belfry and lifts you away...."),
-      goto(
-        find_room(
-          pick_one(
-            _bat_drops)))),
-    goto(
-      find_room(
-        pick_one(
-          _bat_drops)))),
-  put(
-    ,prsvec,
-    2,
-    <>),
-  room_desc(
-    ),
-  t)
-
-define(
-  fweep,
-  (num
+    (BAT-DROPS
+      ,BAT-DROPS))
+  #DECL
+    ((BAT-DROPS)
+      <VECTOR
+        [REST
+          STRING]>)
+  <UNWIND
+    <PROG
+      ()
+      <FWEEP
+        4
+        1>
+      <TELL
+        "A deranged giant vampire bat (a reject from WUMPUS) swoops down  from his belfry and lifts you away....">
+      <GOTO
+        <FIND-ROOM
+          <PICK-ONE
+            .BAT-DROPS>>>>
+    <GOTO
+      <FIND-ROOM
+        <PICK-ONE
+          .BAT-DROPS>>>>
+  <PUT
+    ,PRSVEC
+    2
+    <>>
+  <ROOM-DESC>
+  T>
+<DEFINE
+  FWEEP
+  (NUM
     "OPTIONAL"
-    (slp
-      0)),
-  #decl
-    ((num
-        slp)
-      fix),
-  repeat(
-    ((n
-        _num)),
-    and(
-      0_Q(
-        set(
-          n,
-          _(
-            _n,
-            1))),
-      return(
-        )),
-    image(
-      7),
-    or(
-      0_Q(
-        _slp),
-      sleep(
-        _slp))))
-
-psetg(
-  bat_drops,
+    (SLP
+      0))
+  #DECL
+    ((NUM
+        SLP)
+      FIX)
+  <REPEAT
+    ((N
+        .NUM))
+    <AND
+      <0?
+        <SET
+          N
+          <-
+            .N
+            1>>>
+      <RETURN>>
+    <IMAGE
+      7>
+    <OR
+      <0?
+        .SLP>
+      <SLEEP
+        .SLP>>>>
+<PSETG
+  BAT-DROPS
   '["MINE1"
       "MINE2"
       "MINE3"
@@ -193,2202 +186,2146 @@ psetg(
       "MINE6"
       "MINE7"
       "TLADD"
-      "BLADD"])
-
-gdecl(
-  (bat_drops),
-  vector(
-    [rest
-      string]))
-
-setg(
-  cage_top_X_flag,
-  t)
-
-define(
-  dumbwaiter,
+      "BLADD"]>
+<GDECL
+  (BAT-DROPS)
+  <VECTOR
+    [REST
+      STRING]>>
+<SETG
+  CAGE-TOP!-FLAG
+  T>
+<DEFINE
+  DUMBWAITER
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (tb
-      find_obj(
-        "TBASK"))
-    (top
-      find_room(
-        "TSHAF"))
-    (bot
-      find_room(
-        "BSHAF"))
-    (fb
-      find_obj(
-        "FBASK"))
-    (ct
-      ,cage_top_X_flag)
-    (here
-      ,here)
-    (dummy
-      ,dummy)),
-  #decl
-    ((prsact)
-      verb
-      (fb
-        tb)
-      object
-      (top
-        bot)
-      room
-      (ct)
-      or(
-        atom,
-        false)
-      (here)
-      room
-      (dummy)
-      vector(
-        [rest
-          string])),
-  cond(
-    (_EQ_Q(
-        _prsact,
-        ,raise_X_words)
-      cond(
-        (_ct
-          tell(
-            pick_one(
-              ,dummy))),
-        (remove_object(
-            _tb)
-          remove_object(
-            _fb)
-          insert_object(
-            _tb,
-            _top)
-          insert_object(
-            _fb,
-            _bot)
-          tell(
-            "The basket is raised to the top of the shaft.")
-          setg(
-            cage_top_X_flag,
-            t)))),
-    (_EQ_Q(
-        _prsact,
-        ,lower_X_words)
-      cond(
-        (not(
-            _ct)
-          tell(
-            pick_one(
-              _dummy))),
-        (remove_object(
-            _tb)
-          remove_object(
-            _fb)
-          insert_object(
-            _tb,
-            _bot)
-          insert_object(
-            _fb,
-            _top)
-          tell(
-            "The basket is lowered to the bottom of the shaft.")
-          setg(
-            cage_top_X_flag,
-            <>)
-          t))),
-    (_EQ_Q(
-        _prsact,
-        ,take_X_words)
-      cond(
-        (or(
-            and(
-              _ct,
-              _EQ_Q(
-                _here,
-                _top)),
-            and(
-              not(
-                _ct),
-              _EQ_Q(
-                _here,
-                _bot)))
-          tell(
-            "The cage is securely fastened to the iron chain.")),
-        (tell(
-            "I can't see that here."))))))
-
-define(
-  machine_room,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (TB
+      <FIND-OBJ
+        "TBASK">)
+    (TOP
+      <FIND-ROOM
+        "TSHAF">)
+    (BOT
+      <FIND-ROOM
+        "BSHAF">)
+    (FB
+      <FIND-OBJ
+        "FBASK">)
+    (CT
+      ,CAGE-TOP!-FLAG)
+    (HERE
+      ,HERE)
+    (DUMMY
+      ,DUMMY))
+  #DECL
+    ((PRSACT)
+      VERB
+      (FB
+        TB)
+      OBJECT
+      (TOP
+        BOT)
+      ROOM
+      (CT)
+      <OR
+        ATOM
+        FALSE>
+      (HERE)
+      ROOM
+      (DUMMY)
+      <VECTOR
+        [REST
+          STRING]>)
+  <COND
+    (<==?
+        .PRSACT
+        ,RAISE!-WORDS>
+      <COND
+        (.CT
+          <TELL
+            <PICK-ONE
+              ,DUMMY>>)
+        (<REMOVE-OBJECT
+            .TB>
+          <REMOVE-OBJECT
+            .FB>
+          <INSERT-OBJECT
+            .TB
+            .TOP>
+          <INSERT-OBJECT
+            .FB
+            .BOT>
+          <TELL
+            "The basket is raised to the top of the shaft.">
+          <SETG
+            CAGE-TOP!-FLAG
+            T>)>)
+    (<==?
+        .PRSACT
+        ,LOWER!-WORDS>
+      <COND
+        (<NOT
+            .CT>
+          <TELL
+            <PICK-ONE
+              .DUMMY>>)
+        (<REMOVE-OBJECT
+            .TB>
+          <REMOVE-OBJECT
+            .FB>
+          <INSERT-OBJECT
+            .TB
+            .BOT>
+          <INSERT-OBJECT
+            .FB
+            .TOP>
+          <TELL
+            "The basket is lowered to the bottom of the shaft.">
+          <SETG
+            CAGE-TOP!-FLAG
+            <>>
+          T)>)
+    (<==?
+        .PRSACT
+        ,TAKE!-WORDS>
+      <COND
+        (<OR
+            <AND
+              .CT
+              <==?
+                .HERE
+                .TOP>>
+            <AND
+              <NOT
+                .CT>
+              <==?
+                .HERE
+                .BOT>>>
+          <TELL
+            "The cage is securely fastened to the iron chain.">)
+        (<TELL
+            "I can't see that here.">)>)>>
+<DEFINE
+  MACHINE-ROOM
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsact,
-        ,look_X_words)
-      tell(
-        "You are in a large room which seems to be air-conditioned.  In one\ncorner there is a machine (?) which is shaped somewhat like a clothes\ndryer.  On the 'panel' there is a switch which is labelled in a\ndialect of Swahili.  Fortunately, I know this dialect and the label\ntranslates to START.  The switch does not appear to be manipulable by\nany human hand (unless the fingers are about 1/16 by 1/4 inch).  On\nthe front of the machine is a large lid.")
-      cond(
-        (oopen_Q(
-            find_obj(
-              "MACHI"))
-          tell(
-            "The lid on the machine is open.")),
-        (tell(
-            "The lid on the machine is closed."))))))
-
-define(
-  machine_function,
+    (PRSACT
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSACT)
+      VERB)
+  <COND
+    (<==?
+        .PRSACT
+        ,LOOK!-WORDS>
+      <TELL
+        "You are in a large room which seems to be air-conditioned.  In one  corner there is a machine (?) which is shaped somewhat like a clothes  dryer.  On the 'panel' there is a switch which is labelled in a  dialect of Swahili.  Fortunately, I know this dialect and the label  translates to START.  The switch does not appear to be manipulable by  any human hand (unless the fingers are about 1/16 by 1/4 inch).  On  the front of the machine is a large lid.">
+      <COND
+        (<OOPEN?
+            <FIND-OBJ
+              "MACHI">>
+          <TELL
+            "The lid on the machine is open.">)
+        (<TELL
+            "The lid on the machine is closed.">)>)>>
+<DEFINE
+  MACHINE-FUNCTION
   ("AUX"
-    (dummy
-      ,dummy)
-    (prsact
-      1(
-        ,prsvec))
-    (mach
-      find_obj(
-        "MACHI"))),
-  #decl
-    ((prsact)
-      verb
-      (mach)
-      object
-      (dummy)
-      vector(
-        [rest
-          string])),
-  cond(
-    (_EQ_Q(
-        ,here,
-        find_room(
-          "MACHI"))
-      cond(
-        (_EQ_Q(
-            vname(
-              _prsact),
-            open_X_words)
-          cond(
-            (oopen_Q(
-                _mach)
-              tell(
-                pick_one(
-                  _dummy))),
-            (tell(
-                "The lid opens.")
-              put(
-                _mach,
-                ,oopen_Q,
-                t)))),
-        (_EQ_Q(
-            vname(
-              _prsact),
-            close_X_words)
-          cond(
-            (oopen_Q(
-                _mach)
-              tell(
-                "The lid closes.")
-              put(
-                _mach,
-                ,oopen_Q,
-                <>)
-              t),
-            (tell(
-                pick_one(
-                  _dummy))))),
-        (_EQ_Q(
-            _prsact,
-            ,take_X_words))))))
-
-define(
-  mswitch_function,
+    (DUMMY
+      ,DUMMY)
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (MACH
+      <FIND-OBJ
+        "MACHI">))
+  #DECL
+    ((PRSACT)
+      VERB
+      (MACH)
+      OBJECT
+      (DUMMY)
+      <VECTOR
+        [REST
+          STRING]>)
+  <COND
+    (<==?
+        ,HERE
+        <FIND-ROOM
+          "MACHI">>
+      <COND
+        (<==?
+            <VNAME
+              .PRSACT>
+            OPEN!-WORDS>
+          <COND
+            (<OOPEN?
+                .MACH>
+              <TELL
+                <PICK-ONE
+                  .DUMMY>>)
+            (<TELL
+                "The lid opens.">
+              <PUT
+                .MACH
+                ,OOPEN?
+                T>)>)
+        (<==?
+            <VNAME
+              .PRSACT>
+            CLOSE!-WORDS>
+          <COND
+            (<OOPEN?
+                .MACH>
+              <TELL
+                "The lid closes.">
+              <PUT
+                .MACH
+                ,OOPEN?
+                <>>
+              T)
+            (<TELL
+                <PICK-ONE
+                  .DUMMY>>)>)
+        (<==?
+            .PRSACT
+            ,TAKE!-WORDS>)>)>>
+<DEFINE
+  MSWITCH-FUNCTION
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (c
-      find_obj(
-        "COAL"))
-    (imp
-      3(
-        ,prsvec))
-    d
-    (mach
-      find_obj(
-        "MACHI"))
-    (screw
-      find_obj(
-        "SCREW"))),
-  #decl
-    ((prsact)
-      verb
-      (imp)
-      object
-      (mach
-        screw
-        c
-        d)
-      object),
-  cond(
-    (_EQ_Q(
-        _prsact,
-        ,turn_X_words)
-      cond(
-        (_EQ_Q(
-            _imp,
-            _screw)
-          cond(
-            (oopen_Q(
-                _mach)
-              tell(
-                "The machine doesn't seem to want to do anything.")),
-            (tell(
-                "The machine comes to life (figuratively) with a dazzling display of\ncolored lights and bizarre noises.  After a few moments, the\nexcitement abates.")
-              cond(
-                (memq(
-                    _c,
-                    ocontents(
-                      _mach))
-                  put(
-                    _mach,
-                    ,ocontents,
-                    splice_out(
-                      _c,
-                      ocontents(
-                        _mach)))
-                  put(
-                    _mach,
-                    ,ocontents,
-                    (set(
-                        d,
-                        find_obj(
-                          "DIAMO"))
-                      _X
-                      ocontents(
-                        _mach)))
-                  put(
-                    _d,
-                    ,ocan,
-                    _mach)),
-                (not(
-                    empty_Q(
-                      ocontents(
-                        _mach)))
-                  put(
-                    _mach,
-                    ,ocontents,
-                    (set(
-                        d,
-                        find_obj(
-                          "GUNK"))))),
-                (t))))),
-        (tell(
-            "It seems that a",
-            1,
-            odesc2(
-              _imp),
-            "won't do."))))))
-
-define(
-  gunk_function,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (C
+      <FIND-OBJ
+        "COAL">)
+    (IMP
+      <3
+        ,PRSVEC>)
+    D
+    (MACH
+      <FIND-OBJ
+        "MACHI">)
+    (SCREW
+      <FIND-OBJ
+        "SCREW">))
+  #DECL
+    ((PRSACT)
+      VERB
+      (IMP)
+      OBJECT
+      (MACH
+        SCREW
+        C
+        D)
+      OBJECT)
+  <COND
+    (<==?
+        .PRSACT
+        ,TURN!-WORDS>
+      <COND
+        (<==?
+            .IMP
+            .SCREW>
+          <COND
+            (<OOPEN?
+                .MACH>
+              <TELL
+                "The machine doesn't seem to want to do anything.">)
+            (<TELL
+                "The machine comes to life (figuratively) with a dazzling display of  colored lights and bizarre noises.  After a few moments, the  excitement abates.">
+              <COND
+                (<MEMQ
+                    .C
+                    <OCONTENTS
+                      .MACH>>
+                  <PUT
+                    .MACH
+                    ,OCONTENTS
+                    <SPLICE-OUT
+                      .C
+                      <OCONTENTS
+                        .MACH>>>
+                  <PUT
+                    .MACH
+                    ,OCONTENTS
+                    (<SET
+                        D
+                        <FIND-OBJ
+                          "DIAMO">>
+                      !
+                      <OCONTENTS
+                        .MACH>)>
+                  <PUT
+                    .D
+                    ,OCAN
+                    .MACH>)
+                (<NOT
+                    <EMPTY?
+                      <OCONTENTS
+                        .MACH>>>
+                  <PUT
+                    .MACH
+                    ,OCONTENTS
+                    (<SET
+                        D
+                        <FIND-OBJ
+                          "GUNK">>)>)
+                (T)>)>)
+        (<TELL
+            "It seems that a "
+            1
+            <ODESC2
+              .IMP>
+            " won't do.">)>)>>
+<DEFINE
+  GUNK-FUNCTION
   ("AUX"
-    (g
-      find_obj(
-        "GUNK"))
-    (m
-      ocan(
-        _g))),
-  #decl
-    ((g)
-      object
-      (m)
-      or(
-        object,
-        false)),
-  cond(
-    (_m
-      put(
-        _m,
-        ,ocontents,
-        splice_out(
-          _g,
-          ocontents(
-            _m)))
-      put(
-        _g,
-        ,ocan,
-        <>)
-      tell(
-        "The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable."))))
-
-setg(
-  score_max,
-  _(
-    ,score_max,
-    setg(
-      light_shaft,
-      10)))
-
-define(
-  no_objs,
-  (),
-  cond(
-    (empty_Q(
-        aobjs(
-          ,winner))
-      setg(
-        empty_handed_X_flag,
-        t)),
-    (setg(
-        empty_handed_X_flag,
-        <>))),
-  cond(
-    (and(
-        _EQ_Q(
-          ,here,
-          find_room(
-            "BSHAF")),
-        lit_Q(
-          ,here))
-      score_upd(
-        ,light_shaft)
-      setg(
-        light_shaft,
-        0))))
-
-gdecl(
-  (light_shaft),
-  fix)
-
-define(
-  cliff_function,
-  (),
-  cond(
-    (memq(
-        find_obj(
-          "RBOAT"),
-        aobjs(
-          ,winner))
-      setg(
-        deflate_X_flag,
-        <>)),
-    (setg(
-        deflate_X_flag,
-        t))))
-
-define(
-  stick_function,
+    (G
+      <FIND-OBJ
+        "GUNK">)
+    (M
+      <OCAN
+        .G>))
+  #DECL
+    ((G)
+      OBJECT
+      (M)
+      <OR
+        OBJECT
+        FALSE>)
+  <COND
+    (.M
+      <PUT
+        .M
+        ,OCONTENTS
+        <SPLICE-OUT
+          .G
+          <OCONTENTS
+            .M>>>
+      <PUT
+        .G
+        ,OCAN
+        <>>
+      <TELL
+        "The slag turns out to be rather insubstantial, and crumbles into dust  at your touch.  It must not have been very valuable.">)>>
+<SETG
+  SCORE-MAX
+  <+
+    ,SCORE-MAX
+    <SETG
+      LIGHT-SHAFT
+      10>>>
+<DEFINE
+  NO-OBJS
+  ()
+  <COND
+    (<EMPTY?
+        <AOBJS
+          ,WINNER>>
+      <SETG
+        EMPTY-HANDED!-FLAG
+        T>)
+    (<SETG
+        EMPTY-HANDED!-FLAG
+        <>>)>
+  <COND
+    (<AND
+        <==?
+          ,HERE
+          <FIND-ROOM
+            "BSHAF">>
+        <LIT?
+          ,HERE>>
+      <SCORE-UPD
+        ,LIGHT-SHAFT>
+      <SETG
+        LIGHT-SHAFT
+        0>)>>
+<GDECL
+  (LIGHT-SHAFT)
+  FIX>
+<DEFINE
+  CLIFF-FUNCTION
+  ()
+  <COND
+    (<MEMQ
+        <FIND-OBJ
+          "RBOAT">
+        <AOBJS
+          ,WINNER>>
+      <SETG
+        DEFLATE!-FLAG
+        <>>)
+    (<SETG
+        DEFLATE!-FLAG
+        T>)>>
+<DEFINE
+  STICK-FUNCTION
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
-  cond(
-    (_EQ_Q(
-        vname(
-          _prsact),
-        wave_X_words)
-      cond(
-        (or(
-            _EQ_Q(
-              ,here,
-              find_room(
-                "FALLS")),
-            _EQ_Q(
-              ,here,
-              find_room(
-                "POG")))
-          cond(
-            (not(
-                ,rainbow_X_flag)
-              tro(
-                find_obj(
-                  "POT"),
-                ,ovison)
-              tell(
-                "Suddenly, the rainbow appears to become solid and, I venture,\nwalkable (I think the giveaway was the stairs and bannister).")
-              setg(
-                rainbow_X_flag,
-                t)),
-            (tell(
-                "The rainbow seems to have become somewhat run-of-the-mill.")
-              setg(
-                rainbow_X_flag,
-                <>)))),
-        (_EQ_Q(
-            ,here,
-            find_room(
-              "RAINB"))
-          setg(
-            rainbow_X_flag,
-            <>)
-          jigs_up(
-            "The structural integrity of the rainbow seems to have left it,\nleaving you about 450 feet in the air, supported by water vapor.")),
-        (tell(
-            "Very good."))))))
-
-define(
-  falls_room,
+    (PRSACT
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSACT)
+      VERB)
+  <COND
+    (<==?
+        <VNAME
+          .PRSACT>
+        WAVE!-WORDS>
+      <COND
+        (<OR
+            <==?
+              ,HERE
+              <FIND-ROOM
+                "FALLS">>
+            <==?
+              ,HERE
+              <FIND-ROOM
+                "POG">>>
+          <COND
+            (<NOT
+                ,RAINBOW!-FLAG>
+              <TRO
+                <FIND-OBJ
+                  "POT">
+                ,OVISON>
+              <TELL
+                "Suddenly, the rainbow appears to become solid and, I venture,  walkable (I think the giveaway was the stairs and bannister).">
+              <SETG
+                RAINBOW!-FLAG
+                T>)
+            (<TELL
+                "The rainbow seems to have become somewhat run-of-the-mill.">
+              <SETG
+                RAINBOW!-FLAG
+                <>>)>)
+        (<==?
+            ,HERE
+            <FIND-ROOM
+              "RAINB">>
+          <SETG
+            RAINBOW!-FLAG
+            <>>
+          <JIGS-UP
+            "The structural integrity of the rainbow seems to have left it,  leaving you about 450 feet in the air, supported by water vapor.">)
+        (<TELL
+            "Very good.">)>)>>
+<DEFINE
+  FALLS-ROOM
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsact,
-        ,look_X_words)
-      tell(
-        "You are at the top of Aragain Falls, an enormous waterfall with a\ndrop of about 450 feet.  The only path here is on the north end.\nThere is a man-sized barrel here which you could fit into.")
-      cond(
-        (,rainbow_X_flag
-          tell(
-            "A solid rainbow spans the falls.")),
-        (tell(
-            "A beautiful rainbow can be seen over the falls and to the east."))))))
-
-define(
-  digger,
+    (PRSACT
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSACT)
+      VERB)
+  <COND
+    (<==?
+        .PRSACT
+        ,LOOK!-WORDS>
+      <TELL
+        "You are at the top of Aragain Falls, an enormous waterfall with a  drop of about 450 feet.  The only path here is on the north end.  There is a man-sized barrel here which you could fit into.">
+      <COND
+        (,RAINBOW!-FLAG
+          <TELL
+            "A solid rainbow spans the falls.">)
+        (<TELL
+            "A beautiful rainbow can be seen over the falls and to the east.">)>)>>
+<DEFINE
+  DIGGER
   ("AUX"
-    (prso
-      2(
-        ,prsvec))),
-  #decl
-    ((prso)
-      object),
-  cond(
-    (_EQ_Q(
-        _prso,
-        find_obj(
-          "SHOVE"))),
-    (trnn(
-        _prso,
-        ,toolbit)
-      tell(
-        "Digging with the",
-        1,
-        odesc2(
-          _prso),
-        "is slow and tedious.")),
-    (tell(
-        "Digging with a",
-        1,
-        odesc2(
-          _prso),
-        "is silly."))))
-
-define(
-  dboat_function,
+    (PRSO
+      <2
+        ,PRSVEC>))
+  #DECL
+    ((PRSO)
+      OBJECT)
+  <COND
+    (<==?
+        .PRSO
+        <FIND-OBJ
+          "SHOVE">>)
+    (<TRNN
+        .PRSO
+        ,TOOLBIT>
+      <TELL
+        "Digging with the "
+        1
+        <ODESC2
+          .PRSO>
+        " is slow and tedious.">)
+    (<TELL
+        "Digging with a "
+        1
+        <ODESC2
+          .PRSO>
+        " is silly.">)>>
+<DEFINE
+  DBOAT-FUNCTION
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (here
-      ,here)
-    (prsi
-      3(
-        ,prsvec))
-    (dboat
-      find_obj(
-        "DBOAT"))),
-  #decl
-    ((dboat)
-      object
-      (prsact)
-      verb
-      (here)
-      room
-      (prsi)
-      or(
-        false,
-        object)),
-  cond(
-    (_EQ_Q(
-        vname(
-          _prsact),
-        infla_X_words)
-      tell(
-        "This boat will not inflate since some moron put a hole in it.")),
-    (_EQ_Q(
-        vname(
-          _prsact),
-        plug_X_words)
-      cond(
-        (_EQ_Q(
-            _prsi,
-            find_obj(
-              "PUTTY"))
-          tell(
-            "Well done.  The boat is repaired.")
-          cond(
-            (not(
-                oroom(
-                  _dboat))
-              drop_object(
-                _dboat)
-              take_object(
-                find_obj(
-                  "IBOAT"))),
-            (remove_object(
-                find_obj(
-                  "DBOAT"))
-              insert_object(
-                find_obj(
-                  "IBOAT"),
-                _here)))),
-        (with_tell(
-            _prsi))))))
-
-define(
-  rboat_function,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (HERE
+      ,HERE)
+    (PRSI
+      <3
+        ,PRSVEC>)
+    (DBOAT
+      <FIND-OBJ
+        "DBOAT">))
+  #DECL
+    ((DBOAT)
+      OBJECT
+      (PRSACT)
+      VERB
+      (HERE)
+      ROOM
+      (PRSI)
+      <OR
+        FALSE
+        OBJECT>)
+  <COND
+    (<==?
+        <VNAME
+          .PRSACT>
+        INFLA!-WORDS>
+      <TELL
+        "This boat will not inflate since some moron put a hole in it.">)
+    (<==?
+        <VNAME
+          .PRSACT>
+        PLUG!-WORDS>
+      <COND
+        (<==?
+            .PRSI
+            <FIND-OBJ
+              "PUTTY">>
+          <TELL
+            "Well done.  The boat is repaired.">
+          <COND
+            (<NOT
+                <OROOM
+                  .DBOAT>>
+              <DROP-OBJECT
+                .DBOAT>
+              <TAKE-OBJECT
+                <FIND-OBJ
+                  "IBOAT">>)
+            (<REMOVE-OBJECT
+                <FIND-OBJ
+                  "DBOAT">>
+              <INSERT-OBJECT
+                <FIND-OBJ
+                  "IBOAT">
+                .HERE>)>)
+        (<WITH-TELL
+            .PRSI>)>)>>
+<DEFINE
+  RBOAT-FUNCTION
   ("OPTIONAL"
-    (arg
+    (ARG
       <>)
     "AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (rboat
-      find_obj(
-        "RBOAT"))
-    (iboat
-      find_obj(
-        "IBOAT"))
-    (here
-      ,here)),
-  #decl
-    ((arg)
-      or(
-        false,
-        atom)
-      (prsact)
-      verb
-      (iboat
-        rboat)
-      object
-      (here)
-      room),
-  cond(
-    (_arg
-      <>),
-    (_EQ_Q(
-        _prsact,
-        ,board_X_words)
-      cond(
-        (memq(
-            find_obj(
-              "STICK"),
-            aobjs(
-              ,winner))
-          tell(
-            "There is a hissing sound and the boat deflates.")
-          remove_object(
-            _rboat)
-          insert_object(
-            find_obj(
-              "DBOAT"),
-            _here)
-          t))),
-    (_EQ_Q(
-        _prsact,
-        ,disem_X_words)
-      and(
-        member(
-          "RIVR",
-          spname(
-            rid(
-              _here))),
-        jigs_up(
-          "Unfortunately, that leaves you in the water, where you drown."))),
-    (_EQ_Q(
-        vname(
-          _prsact),
-        defla_X_words)
-      cond(
-        (_EQ_Q(
-            avehicle(
-              ,winner),
-            _rboat)
-          tell(
-            "You can't deflate the boat while you're in it.")),
-        (not(
-            memq(
-              _rboat,
-              robjs(
-                _here)))
-          tell(
-            "The boat must be on the ground to be deflated.")),
-        (tell(
-            "The boat deflates.")
-          setg(
-            deflate_X_flag,
-            t)
-          remove_object(
-            _rboat)
-          insert_object(
-            _iboat,
-            _here))))))
-
-define(
-  iboat_function,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (RBOAT
+      <FIND-OBJ
+        "RBOAT">)
+    (IBOAT
+      <FIND-OBJ
+        "IBOAT">)
+    (HERE
+      ,HERE))
+  #DECL
+    ((ARG)
+      <OR
+        FALSE
+        ATOM>
+      (PRSACT)
+      VERB
+      (IBOAT
+        RBOAT)
+      OBJECT
+      (HERE)
+      ROOM)
+  <COND
+    (.ARG
+      <>)
+    (<==?
+        .PRSACT
+        ,BOARD!-WORDS>
+      <COND
+        (<MEMQ
+            <FIND-OBJ
+              "STICK">
+            <AOBJS
+              ,WINNER>>
+          <TELL
+            "There is a hissing sound and the boat deflates.">
+          <REMOVE-OBJECT
+            .RBOAT>
+          <INSERT-OBJECT
+            <FIND-OBJ
+              "DBOAT">
+            .HERE>
+          T)>)
+    (<==?
+        .PRSACT
+        ,DISEM!-WORDS>
+      <AND
+        <MEMBER
+          "RIVR"
+          <SPNAME
+            <RID
+              .HERE>>>
+        <JIGS-UP
+          "Unfortunately, that leaves you in the water, where you drown.">>)
+    (<==?
+        <VNAME
+          .PRSACT>
+        DEFLA!-WORDS>
+      <COND
+        (<==?
+            <AVEHICLE
+              ,WINNER>
+            .RBOAT>
+          <TELL
+            "You can't deflate the boat while you're in it.">)
+        (<NOT
+            <MEMQ
+              .RBOAT
+              <ROBJS
+                .HERE>>>
+          <TELL
+            "The boat must be on the ground to be deflated.">)
+        (<TELL
+            "The boat deflates.">
+          <SETG
+            DEFLATE!-FLAG
+            T>
+          <REMOVE-OBJECT
+            .RBOAT>
+          <INSERT-OBJECT
+            .IBOAT
+            .HERE>)>)>>
+<DEFINE
+  IBOAT-FUNCTION
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (iboat
-      find_obj(
-        "IBOAT"))
-    (rboat
-      find_obj(
-        "RBOAT"))
-    (here
-      ,here)),
-  #decl
-    ((prsact)
-      verb
-      (iboat
-        rboat)
-      object
-      (here)
-      room),
-  cond(
-    (_EQ_Q(
-        vname(
-          _prsact),
-        infla_X_words)
-      cond(
-        (not(
-            memq(
-              _iboat,
-              robjs(
-                _here)))
-          tell(
-            "The boat must be on the ground to be inflated.")),
-        (memq(
-            find_obj(
-              "PUMP"),
-            aobjs(
-              ,winner))
-          tell(
-            "The boat inflates and appears seaworthy.")
-          setg(
-            deflate_X_flag,
-            <>)
-          remove_object(
-            _iboat)
-          insert_object(
-            _rboat,
-            _here)),
-        (tell(
-            "I don't think you have enough lung-power to inflate this boat."))))))
-
-define(
-  over_falls,
-  (),
-  cond(
-    (_EQ_Q(
-        1(
-          ,prsvec),
-        ,look_X_words)),
-    (jigs_up(
-        "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently."))))
-
-setg(
-  buoy_flag_X_flag,
-  t)
-
-define(
-  shake,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (IBOAT
+      <FIND-OBJ
+        "IBOAT">)
+    (RBOAT
+      <FIND-OBJ
+        "RBOAT">)
+    (HERE
+      ,HERE))
+  #DECL
+    ((PRSACT)
+      VERB
+      (IBOAT
+        RBOAT)
+      OBJECT
+      (HERE)
+      ROOM)
+  <COND
+    (<==?
+        <VNAME
+          .PRSACT>
+        INFLA!-WORDS>
+      <COND
+        (<NOT
+            <MEMQ
+              .IBOAT
+              <ROBJS
+                .HERE>>>
+          <TELL
+            "The boat must be on the ground to be inflated.">)
+        (<MEMQ
+            <FIND-OBJ
+              "PUMP">
+            <AOBJS
+              ,WINNER>>
+          <TELL
+            "The boat inflates and appears seaworthy.">
+          <SETG
+            DEFLATE!-FLAG
+            <>>
+          <REMOVE-OBJECT
+            .IBOAT>
+          <INSERT-OBJECT
+            .RBOAT
+            .HERE>)
+        (<TELL
+            "I don't think you have enough lung-power to inflate this boat.">)>)>>
+<DEFINE
+  OVER-FALLS
+  ()
+  <COND
+    (<==?
+        <1
+          ,PRSVEC>
+        ,LOOK!-WORDS>)
+    (<JIGS-UP
+        "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart  thing to do, apparently.">)>>
+<SETG
+  BUOY-FLAG!-FLAG
+  T>
+<DEFINE
+  SHAKE
   ("AUX"
-    (prsobj
-      2(
-        ,prsvec))
-    (here
-      ,here)),
-  #decl
-    ((prsobj)
-      object
-      (here)
-      room),
-  cond(
-    (object_action(
-        )),
-    (and(
-        not(
-          oopen_Q(
-            _prsobj)),
-        not(
-          empty_Q(
-            ocontents(
-              _prsobj))),
-        tell(
-          "It sounds like there is something inside the",
-          1,
-          odesc2(
-            _prsobj),
-          "."))),
-    (and(
-        oopen_Q(
-          _prsobj),
-        not(
-          empty_Q(
-            ocontents(
-              _prsobj))))
-      mapf(
-        <>,
-        function(
-          (x),
-          #decl
-            ((x)
-              object),
-          put(
-            _x,
-            ,ocan,
-            <>),
-          insert_object(
-            _x,
-            _here)),
-        ocontents(
-          _prsobj))
-      put(
-        _prsobj,
-        ,ocontents,
-        ())
-      tell(
-        "All of the objects spill onto the floor."))))
-
-define(
-  rivr4_room,
-  (),
-  and(
-    memq(
-      find_obj(
-        "BUOY"),
-      aobjs(
-        ,winner)),
-    ,buoy_flag_X_flag,
-    tell(
-      "Something seems funny about the feel of the buoy."),
-    setg(
-      buoy_flag_X_flag,
-      <>)))
-
-define(
-  beach_room,
+    (PRSOBJ
+      <2
+        ,PRSVEC>)
+    (HERE
+      ,HERE))
+  #DECL
+    ((PRSOBJ)
+      OBJECT
+      (HERE)
+      ROOM)
+  <COND
+    (<OBJECT-ACTION>)
+    (<AND
+        <NOT
+          <OOPEN?
+            .PRSOBJ>>
+        <NOT
+          <EMPTY?
+            <OCONTENTS
+              .PRSOBJ>>>
+        <TELL
+          "It sounds like there is something inside the "
+          1
+          <ODESC2
+            .PRSOBJ>
+          ".">>)
+    (<AND
+        <OOPEN?
+          .PRSOBJ>
+        <NOT
+          <EMPTY?
+            <OCONTENTS
+              .PRSOBJ>>>>
+      <MAPF
+        <>
+        <FUNCTION
+          (X)
+          #DECL
+            ((X)
+              OBJECT)
+          <PUT
+            .X
+            ,OCAN
+            <>>
+          <INSERT-OBJECT
+            .X
+            .HERE>>
+        <OCONTENTS
+          .PRSOBJ>>
+      <PUT
+        .PRSOBJ
+        ,OCONTENTS
+        ()>
+      <TELL
+        "All of the objects spill onto the floor.">)>>
+<DEFINE
+  RIVR4-ROOM
+  ()
+  <AND
+    <MEMQ
+      <FIND-OBJ
+        "BUOY">
+      <AOBJS
+        ,WINNER>>
+    ,BUOY-FLAG!-FLAG
+    <TELL
+      "Something seems funny about the feel of the buoy.">
+    <SETG
+      BUOY-FLAG!-FLAG
+      <>>>>
+<DEFINE
+  BEACH-ROOM
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (shov
-      find_obj(
-        "SHOVE"))
-    (here
-      ,here)
-    cnt),
-  #decl
-    ((prsact)
-      verb
-      (shov)
-      object
-      (here)
-      room
-      (cnt)
-      fix),
-  cond(
-    (and(
-        _EQ_Q(
-          vname(
-            _prsact),
-          dig_X_words),
-        _EQ_Q(
-          _shov,
-          2(
-            ,prsvec)))
-      put(
-        _here,
-        ,rvars,
-        set(
-          cnt,
-          _(
-            1,
-            rvars(
-              _here))))
-      cond(
-        (g_Q(
-            _cnt,
-            4)
-          put(
-            _here,
-            ,rvars,
-            0)
-          jigs_up(
-            "The hole collapses, smothering you.")),
-        (_EQ_Q(
-            _cnt,
-            4)
-          tell(
-            "You can see a small statue here in the sand.")
-          tro(
-            find_obj(
-              "STATU"),
-            ,ovison)
-          put(
-            _here,
-            ,rvars,
-            _cnt)),
-        (l_Q(
-            _cnt,
-            0)),
-        (tell(
-            nth(
-              ,bdigs,
-              _cnt)))))))
-
-define(
-  tcave_room,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (SHOV
+      <FIND-OBJ
+        "SHOVE">)
+    (HERE
+      ,HERE)
+    CNT)
+  #DECL
+    ((PRSACT)
+      VERB
+      (SHOV)
+      OBJECT
+      (HERE)
+      ROOM
+      (CNT)
+      FIX)
+  <COND
+    (<AND
+        <==?
+          <VNAME
+            .PRSACT>
+          DIG!-WORDS>
+        <==?
+          .SHOV
+          <2
+            ,PRSVEC>>>
+      <PUT
+        .HERE
+        ,RVARS
+        <SET
+          CNT
+          <+
+            1
+            <RVARS
+              .HERE>>>>
+      <COND
+        (<G?
+            .CNT
+            4>
+          <PUT
+            .HERE
+            ,RVARS
+            0>
+          <JIGS-UP
+            "The hole collapses, smothering you.">)
+        (<==?
+            .CNT
+            4>
+          <TELL
+            "You can see a small statue here in the sand.">
+          <TRO
+            <FIND-OBJ
+              "STATU">
+            ,OVISON>
+          <PUT
+            .HERE
+            ,RVARS
+            .CNT>)
+        (<L?
+            .CNT
+            0>)
+        (<TELL
+            <NTH
+              ,BDIGS
+              .CNT>>)>)>>
+<DEFINE
+  TCAVE-ROOM
   ("AUX"
-    (prsact
-      1(
-        ,prsvec))
-    (shov
-      find_obj(
-        "SHOVE"))
-    (here
-      ,here)
-    cnt),
-  #decl
-    ((prsact)
-      verb
-      (shov)
-      object
-      (here)
-      room
-      (cnt)
-      fix),
-  cond(
-    (and(
-        _EQ_Q(
-          vname(
-            _prsact),
-          dig_X_words),
-        _EQ_Q(
-          2(
-            ,prsvec),
-          _shov))
-      cond(
-        (memq(
-            find_obj(
-              "GUANO"),
-            robjs(
-              _here))
-          put(
-            _here,
-            ,rvars,
-            set(
-              cnt,
-              _(
-                1,
-                rvars(
-                  _here))))
-          cond(
-            (g_Q(
-                _cnt,
-                3)
-              tell(
-                "This is getting you nowhere.")),
-            (tell(
-                nth(
-                  ,cdigs,
-                  _cnt))))),
-        (tell(
-            "There's nothing to dig into here."))))))
-
-psetg(
-  cdigs,
+    (PRSACT
+      <1
+        ,PRSVEC>)
+    (SHOV
+      <FIND-OBJ
+        "SHOVE">)
+    (HERE
+      ,HERE)
+    CNT)
+  #DECL
+    ((PRSACT)
+      VERB
+      (SHOV)
+      OBJECT
+      (HERE)
+      ROOM
+      (CNT)
+      FIX)
+  <COND
+    (<AND
+        <==?
+          <VNAME
+            .PRSACT>
+          DIG!-WORDS>
+        <==?
+          <2
+            ,PRSVEC>
+          .SHOV>>
+      <COND
+        (<MEMQ
+            <FIND-OBJ
+              "GUANO">
+            <ROBJS
+              .HERE>>
+          <PUT
+            .HERE
+            ,RVARS
+            <SET
+              CNT
+              <+
+                1
+                <RVARS
+                  .HERE>>>>
+          <COND
+            (<G?
+                .CNT
+                3>
+              <TELL
+                "This is getting you nowhere.">)
+            (<TELL
+                <NTH
+                  ,CDIGS
+                  .CNT>>)>)
+        (<TELL
+            "There's nothing to dig into here.">)>)>>
+<PSETG
+  CDIGS
   '["You are digging into a pile of bat guano."
       "You seem to be getting knee deep in guano."
-      "You are covered with bat turds, cretin."])
-
-psetg(
-  bdigs,
+      "You are covered with bat turds, cretin."]>
+<PSETG
+  BDIGS
   '["You seem to be digging a hole here."
       "The hole is getting deeper, but that's about it."
-      "You are surrounded by a wall of sand on all sides."])
-
-gdecl(
-  (bdigs
-    cdigs),
-  vector(
-    [rest
-      string]))
-
-define(
-  geronimo,
-  (),
-  cond(
-    (_EQ_Q(
-        ,here,
-        find_room(
-          "BARRE"))
-      jigs_up(
-        "I didn't think you would REALLY try to go over the falls in a\nbarrel. It seems that some 450 feet below, you were met by a number\nof  unfriendly rocks and boulders, causing your immediate demise.  Is\nthis what 'over a barrel' means?")),
-    (tell(
-        "Wasn't he an Indian?"))))
-
-psetg(
-  swimyuks,
+      "You are surrounded by a wall of sand on all sides."]>
+<GDECL
+  (BDIGS
+    CDIGS)
+  <VECTOR
+    [REST
+      STRING]>>
+<DEFINE
+  GERONIMO
+  ()
+  <COND
+    (<==?
+        ,HERE
+        <FIND-ROOM
+          "BARRE">>
+      <JIGS-UP
+        "I didn't think you would REALLY try to go over the falls in a  barrel. It seems that some 450 feet below, you were met by a number  of  unfriendly rocks and boulders, causing your immediate demise.  Is  this what 'over a barrel' means?">)
+    (<TELL
+        "Wasn't he an Indian?">)>>
+<PSETG
+  SWIMYUKS
   '["I don't really see how."
       "I think that swimming is best performed in water."
-      "Perhaps it is your head that is swimming."])
-
-gdecl(
-  (swimyuks),
-  vector(
-    [rest
-      string]))
-
-define(
-  swimmer,
+      "Perhaps it is your head that is swimming."]>
+<GDECL
+  (SWIMYUKS)
+  <VECTOR
+    [REST
+      STRING]>>
+<DEFINE
+  SWIMMER
   ("AUX"
-    (swimyuks
-      ,swimyuks)),
-  #decl
-    ((swimyuks)
-      vector(
-        [rest
-          string])),
-  cond(
-    (rtrnn(
-        ,here,
-        ,rfillbit)
-      tell(
-        "Swimming is not allowed in this dungeon.")),
-    (tell(
-        pick_one(
-          _swimyuks)))))
-
-define(
-  grue_function,
+    (SWIMYUKS
+      ,SWIMYUKS))
+  #DECL
+    ((SWIMYUKS)
+      <VECTOR
+        [REST
+          STRING]>)
+  <COND
+    (<RTRNN
+        ,HERE
+        ,RFILLBIT>
+      <TELL
+        "Swimming is not allowed in this dungeon.">)
+    (<TELL
+        <PICK-ONE
+          .SWIMYUKS>>)>>
+<DEFINE
+  GRUE-FUNCTION
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,exami_X_words)
-      tell(
-        "The grue is a sinister, lurking presence in the dark places of the\nearth.  Its favorite diet is adventurers, but its insatiable\nappetite is tempered by its fear of light.  No grue has ever been\nseen by the light of day, and few have survived its fearsome jaws\nto tell the tale.")),
-    (_EQ_Q(
-        _prsa,
-        ,find_X_words)
-      tell(
-        "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!"))))
-
-setg(
-  btie_X_flag,
-  <>)
-
-setg(
-  binf_X_flag,
-  <>)
-
-define(
-  balloon,
-  ballact,
+    (PRSA
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSA)
+      VERB)
+  <COND
+    (<==?
+        .PRSA
+        ,EXAMI!-WORDS>
+      <TELL
+        "The grue is a sinister, lurking presence in the dark places of the  earth.  Its favorite diet is adventurers, but its insatiable  appetite is tempered by its fear of light.  No grue has ever been  seen by the light of day, and few have survived its fearsome jaws  to tell the tale.">)
+    (<==?
+        .PRSA
+        ,FIND!-WORDS>
+      <TELL
+        "There is no grue here, but I'm sure there is at least one lurking  in the darkness nearby.  I wouldn't let my light go out if I were  you!">)>>
+<SETG
+  BTIE!-FLAG
+  <>>
+<SETG
+  BINF!-FLAG
+  <>>
+<DEFINE
+  BALLOON
+  BALLACT
   ("OPTIONAL"
-    (arg
+    (ARG
       <>)
     "AUX"
-    (prsvec
-      ,prsvec)
-    (ball
-      find_obj(
-        "BALLO"))
-    (prsa
-      1(
-        _prsvec))
-    (prso
-      2(
-        _prsvec))
-    (cont
-      find_obj(
-        "RECEP"))
-    m
-    (binf
-      ,binf_X_flag)
-    blabe),
-  #decl
-    ((arg)
-      or(
-        atom,
-        false)
-      (blabe
-        ball
-        cont
-        recep)
-      object
-      (prsa)
-      verb
-      (prso)
-      or(
-        object,
-        direction)
-      (m)
-      or(
-        false,
-        primtype(
-          vector))
-      (prsvec)
-      vector(
+    (PRSVEC
+      ,PRSVEC)
+    (BALL
+      <FIND-OBJ
+        "BALLO">)
+    (PRSA
+      <1
+        .PRSVEC>)
+    (PRSO
+      <2
+        .PRSVEC>)
+    (CONT
+      <FIND-OBJ
+        "RECEP">)
+    M
+    (BINF
+      ,BINF!-FLAG)
+    BLABE)
+  #DECL
+    ((ARG)
+      <OR
+        ATOM
+        FALSE>
+      (BLABE
+        BALL
+        CONT
+        RECEP)
+      OBJECT
+      (PRSA)
+      VERB
+      (PRSO)
+      <OR
+        OBJECT
+        DIRECTION>
+      (M)
+      <OR
+        FALSE
+        <PRIMTYPE
+          VECTOR>>
+      (PRSVEC)
+      <VECTOR
         [3
-          any])
-      (binf)
-      or(
-        false,
-        room)
-      (m)
-      or(
-        false,
-        <primtype(
-            vector)
-          any
-          room>)),
-  cond(
-    (_EQ_Q(
-        _arg,
-        read_out)
-      cond(
-        (_EQ_Q(
-            _prsa,
-            ,look_X_words)
-          cond(
-            (_binf
-              tell(
-                "The cloth bag is inflated and there is a",
-                1,
-                odesc2(
-                  _binf),
-                "burning in the receptacle.")),
-            (tell(
-                "The cloth bag is draped over the the basket.")))
-          cond(
-            (,btie_X_flag
-              tell(
-                "The balloon is tied to the hook.")))))
-      return(
-        <>,
-        _ballact))),
-  cond(
-    (_EQ_Q(
-        _arg,
-        read_in)
-      cond(
-        (_EQ_Q(
-            _prsa,
-            ,walk_X_words)
-          cond(
-            (set(
-                m,
-                memq(
-                  chtype(
-                    2(
-                      _prsvec),
-                    atom),
-                  rexits(
-                    ,here)))
-              cond(
-                (,btie_X_flag
-                  tell(
-                    "You are tied to the ledge.")
-                  return(
-                    t,
-                    _ballact)),
-                (else
-                  and(
-                    not(
-                      rtrnn(
-                        2(
-                          _m),
-                        ,rmungbit)),
-                    setg(
-                      bloc,
-                      2(
-                        _m)))
-                  return(
-                    <>,
-                    _ballact)))),
-            (tell(
-                "I'm afraid you can't control the balloon in this way.")
-              return(
-                t,
-                _ballact)))),
-        (and(
-            _EQ_Q(
-              _prsa,
-              ,take_X_words),
-            _EQ_Q(
-              ,binf_X_flag,
-              _prso))
-          tell(
-            "You don't really want to hold a burning",
-            1,
-            odesc2(
-              _prso),
-            ".")
-          return(
-            t,
-            _ballact)),
-        (and(
-            _EQ_Q(
-              _prsa,
-              ,put_X_words),
-            _EQ_Q(
-              3(
-                _prsvec),
-              _cont),
-            not(
-              empty_Q(
-                ocontents(
-                  _cont))))
-          tell(
-            "The receptacle is already occupied.")
-          return(
-            t,
-            _ballact)),
-        (return(
-            <>,
-            _ballact))))),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,burn_X_words)
-      cond(
-        (memq(
-            _prso,
-            ocontents(
-              _cont))
-          tell(
-            "The",
-            1,
-            odesc2(
-              _prso),
-            "burns inside the receptacle.")
-          setg(
-            burnup_int,
-            clock_int(
-              ,brnin,
-              _(
-                osize(
-                  _prso),
-                20)))
-          tro(
-            _prso,
-            ,flamebit)
-          trz(
-            _prso,
-            _(
-              ,takebit,
-              ,readbit))
-          put(
-            _prso,
-            ,olight_Q,
-            1)
-          cond(
-            (,binf_X_flag),
-            (tell(
-                "The cloth bag inflates as it fills with hot air.")
-              cond(
-                (not(
-                    ,blab_X_flag)
-                  put(
-                    _ball,
-                    ,ocontents,
-                    (set(
-                        blabe,
-                        find_obj(
-                          "BLABE"))
-                      _X
-                      ocontents(
-                        _ball)))
-                  put(
-                    _blabe,
-                    ,ocan,
-                    _ball)))
-              setg(
-                blab_X_flag,
-                t)
-              setg(
-                binf_X_flag,
-                _prso)
-              clock_int(
-                ,bint,
-                3)))))),
-    (and(
-        _EQ_Q(
-          _prsa,
-          ,disem_X_words),
-        rtrnn(
-          ,here,
-          ,rlandbit))
-      cond(
-        (,binf_X_flag
-          clock_int(
-            ,bint,
-            3)))
-      <>),
-    (_EQ_Q(
-        _prsa,
-        ,c_int_X_words)
-      cond(
-        (or(
-            and(
-              oopen_Q(
-                _cont),
-              ,binf_X_flag),
-            member(
-              "LEDG",
-              spname(
-                rid(
-                  ,here))))
-          rise_and_shine(
-            _ball,
-            ,here)),
-        (decline_and_fall(
-            _ball,
-            ,here))))))
-
-setg(
-  blab_X_flag,
-  <>)
-
-gdecl(
-  (burnup_int
-    bint),
-  cevent)
-
-define(
-  rise_and_shine,
-  (ball
-    here
+          ANY]>
+      (BINF)
+      <OR
+        FALSE
+        ROOM>
+      (M)
+      <OR
+        FALSE
+        <<PRIMTYPE
+            VECTOR>
+          ANY
+          ROOM>>)
+  <COND
+    (<==?
+        .ARG
+        READ-OUT>
+      <COND
+        (<==?
+            .PRSA
+            ,LOOK!-WORDS>
+          <COND
+            (.BINF
+              <TELL
+                "The cloth bag is inflated and there is a "
+                1
+                <ODESC2
+                  .BINF>
+                " burning in the receptacle.">)
+            (<TELL
+                "The cloth bag is draped over the the basket.">)>
+          <COND
+            (,BTIE!-FLAG
+              <TELL
+                "The balloon is tied to the hook.">)>)>
+      <RETURN
+        <>
+        .BALLACT>)>
+  <COND
+    (<==?
+        .ARG
+        READ-IN>
+      <COND
+        (<==?
+            .PRSA
+            ,WALK!-WORDS>
+          <COND
+            (<SET
+                M
+                <MEMQ
+                  <CHTYPE
+                    <2
+                      .PRSVEC>
+                    ATOM>
+                  <REXITS
+                    ,HERE>>>
+              <COND
+                (,BTIE!-FLAG
+                  <TELL
+                    "You are tied to the ledge.">
+                  <RETURN
+                    T
+                    .BALLACT>)
+                (ELSE
+                  <AND
+                    <NOT
+                      <RTRNN
+                        <2
+                          .M>
+                        ,RMUNGBIT>>
+                    <SETG
+                      BLOC
+                      <2
+                        .M>>>
+                  <RETURN
+                    <>
+                    .BALLACT>)>)
+            (<TELL
+                "I'm afraid you can't control the balloon in this way.">
+              <RETURN
+                T
+                .BALLACT>)>)
+        (<AND
+            <==?
+              .PRSA
+              ,TAKE!-WORDS>
+            <==?
+              ,BINF!-FLAG
+              .PRSO>>
+          <TELL
+            "You don't really want to hold a burning "
+            1
+            <ODESC2
+              .PRSO>
+            ".">
+          <RETURN
+            T
+            .BALLACT>)
+        (<AND
+            <==?
+              .PRSA
+              ,PUT!-WORDS>
+            <==?
+              <3
+                .PRSVEC>
+              .CONT>
+            <NOT
+              <EMPTY?
+                <OCONTENTS
+                  .CONT>>>>
+          <TELL
+            "The receptacle is already occupied.">
+          <RETURN
+            T
+            .BALLACT>)
+        (<RETURN
+            <>
+            .BALLACT>)>)>
+  <COND
+    (<==?
+        .PRSA
+        ,BURN!-WORDS>
+      <COND
+        (<MEMQ
+            .PRSO
+            <OCONTENTS
+              .CONT>>
+          <TELL
+            "The "
+            1
+            <ODESC2
+              .PRSO>
+            " burns inside the receptacle.">
+          <SETG
+            BURNUP-INT
+            <CLOCK-INT
+              ,BRNIN
+              <*
+                <OSIZE
+                  .PRSO>
+                20>>>
+          <TRO
+            .PRSO
+            ,FLAMEBIT>
+          <TRZ
+            .PRSO
+            <+
+              ,TAKEBIT
+              ,READBIT>>
+          <PUT
+            .PRSO
+            ,OLIGHT?
+            1>
+          <COND
+            (,BINF!-FLAG)
+            (<TELL
+                "The cloth bag inflates as it fills with hot air.">
+              <COND
+                (<NOT
+                    ,BLAB!-FLAG>
+                  <PUT
+                    .BALL
+                    ,OCONTENTS
+                    (<SET
+                        BLABE
+                        <FIND-OBJ
+                          "BLABE">>
+                      !
+                      <OCONTENTS
+                        .BALL>)>
+                  <PUT
+                    .BLABE
+                    ,OCAN
+                    .BALL>)>
+              <SETG
+                BLAB!-FLAG
+                T>
+              <SETG
+                BINF!-FLAG
+                .PRSO>
+              <CLOCK-INT
+                ,BINT
+                3>)>)>)
+    (<AND
+        <==?
+          .PRSA
+          ,DISEM!-WORDS>
+        <RTRNN
+          ,HERE
+          ,RLANDBIT>>
+      <COND
+        (,BINF!-FLAG
+          <CLOCK-INT
+            ,BINT
+            3>)>
+      <>)
+    (<==?
+        .PRSA
+        ,C-INT!-WORDS>
+      <COND
+        (<OR
+            <AND
+              <OOPEN?
+                .CONT>
+              ,BINF!-FLAG>
+            <MEMBER
+              "LEDG"
+              <SPNAME
+                <RID
+                  ,HERE>>>>
+          <RISE-AND-SHINE
+            .BALL
+            ,HERE>)
+        (<DECLINE-AND-FALL
+            .BALL
+            ,HERE>)>)>>
+<SETG
+  BLAB!-FLAG
+  <>>
+<GDECL
+  (BURNUP-INT
+    BINT)
+  CEVENT>
+<DEFINE
+  RISE-AND-SHINE
+  (BALL
+    HERE
     "AUX"
-    (s
-      top(
-        ,scrstr))
-    m
-    (in_Q
-      _EQ_Q(
-        avehicle(
-          ,winner),
-        _ball))
-    (bl
-      ,bloc)
-    foo),
-  #decl
-    ((ball)
-      object
-      (here
-        bl)
-      room
-      (m)
-      or(
-        false,
-        string)
-      (s)
-      string
-      (in_Q)
-      or(
-        atom,
-        false)
-      (foo)
-      cevent),
-  clock_int(
-    ,bint,
-    3),
-  cond(
-    (set(
-        m,
-        member(
-          "VAIR",
-          spname(
-            rid(
-              _bl))))
-      cond(
-        (__Q(
-            rest(
-              _m,
-              4),
-            "4")
-          clock_disable(
-            ,burnup_int)
-          clock_disable(
-            ,bint)
-          remove_object(
-            _ball)
-          insert_object(
-            find_obj(
-              "DBALL"),
-            find_room(
-              "VLBOT"))
-          cond(
-            (_in_Q
-              jigs_up(
-                "Your balloon has hit the rim of the volcano, ripping the cloth and\ncausing you a 500 foot drop.  Did you get your flight insurance?")),
-            (tell(
-                "You hear a boom and notice that the balloon is falling to the ground.")))
-          setg(
-            bloc,
-            find_room(
-              "VLBOT"))),
-        (substruc(
-            spname(
-              rid(
-                _bl)),
-            0,
-            4,
-            _s)
-          put(
-            _s,
-            5,
-            chtype(
-              _(
-                chtype(
-                  5(
-                    _m),
-                  fix),
-                1),
-              character))
-          cond(
-            (_in_Q
-              goto(
-                setg(
-                  bloc,
-                  find_room(
-                    _s)))
-              tell(
-                "The balloon ascends.")
-              room_info(
-                t)),
-            (put_balloon(
-                _ball,
-                _bl,
-                _s,
-                "ascends.")))))),
-    (set(
-        m,
-        member(
-          "LEDG",
-          spname(
-            rid(
-              _bl))))
-      substruc(
-        "VAIR",
-        0,
-        4,
-        _s)
-      put(
-        _s,
-        5,
-        5(
-          _m))
-      cond(
-        (_in_Q
-          goto(
-            setg(
-              bloc,
-              find_room(
-                _s)))
-          tell(
-            "The balloon leaves the ledge.")
-          room_info(
-            t)),
-        (clock_int(
-            ,vlgin,
-            10)
-          put_balloon(
-            _ball,
-            _bl,
-            _s,
-            "floats away.  It seems to be ascending,\ndue to its light load.")))),
-    (_in_Q
-      goto(
-        setg(
-          bloc,
-          find_room(
-            "VAIR1")))
-      tell(
-        "The balloon rises slowly from the ground.")
-      room_info(
-        t)),
-    (put_balloon(
-        _ball,
-        _bl,
-        "VAIR1",
-        "lifts off."))))
-
-define(
-  put_balloon,
-  (ball
-    here
-    there
-    str),
-  #decl
-    ((ball)
-      object
-      (here)
-      room
-      (there
-        str)
-      string),
-  and(
-    member(
-      "LEDG",
-      spname(
-        rid(
-          ,here))),
-    tell(
-      "You watch as the balloon slowly",
-      1,
-      _str)),
-  remove_object(
-    _ball),
-  insert_object(
-    _ball,
-    setg(
-      bloc,
-      find_room(
-        _there))))
-
-gdecl(
-  (bloc),
-  room)
-
-define(
-  decline_and_fall,
-  (ball
-    here
+    (S
+      <TOP
+        ,SCRSTR>)
+    M
+    (IN?
+      <==?
+        <AVEHICLE
+          ,WINNER>
+        .BALL>)
+    (BL
+      ,BLOC)
+    FOO)
+  #DECL
+    ((BALL)
+      OBJECT
+      (HERE
+        BL)
+      ROOM
+      (M)
+      <OR
+        FALSE
+        STRING>
+      (S)
+      STRING
+      (IN?)
+      <OR
+        ATOM
+        FALSE>
+      (FOO)
+      CEVENT)
+  <CLOCK-INT
+    ,BINT
+    3>
+  <COND
+    (<SET
+        M
+        <MEMBER
+          "VAIR"
+          <SPNAME
+            <RID
+              .BL>>>>
+      <COND
+        (<=?
+            <REST
+              .M
+              4>
+            "4">
+          <CLOCK-DISABLE
+            ,BURNUP-INT>
+          <CLOCK-DISABLE
+            ,BINT>
+          <REMOVE-OBJECT
+            .BALL>
+          <INSERT-OBJECT
+            <FIND-OBJ
+              "DBALL">
+            <FIND-ROOM
+              "VLBOT">>
+          <COND
+            (.IN?
+              <JIGS-UP
+                "Your balloon has hit the rim of the volcano, ripping the cloth and  causing you a 500 foot drop.  Did you get your flight insurance?">)
+            (<TELL
+                "You hear a boom and notice that the balloon is falling to the ground.">)>
+          <SETG
+            BLOC
+            <FIND-ROOM
+              "VLBOT">>)
+        (<SUBSTRUC
+            <SPNAME
+              <RID
+                .BL>>
+            0
+            4
+            .S>
+          <PUT
+            .S
+            5
+            <CHTYPE
+              <+
+                <CHTYPE
+                  <5
+                    .M>
+                  FIX>
+                1>
+              CHARACTER>>
+          <COND
+            (.IN?
+              <GOTO
+                <SETG
+                  BLOC
+                  <FIND-ROOM
+                    .S>>>
+              <TELL
+                "The balloon ascends.">
+              <ROOM-INFO
+                T>)
+            (<PUT-BALLOON
+                .BALL
+                .BL
+                .S
+                "ascends.">)>)>)
+    (<SET
+        M
+        <MEMBER
+          "LEDG"
+          <SPNAME
+            <RID
+              .BL>>>>
+      <SUBSTRUC
+        "VAIR"
+        0
+        4
+        .S>
+      <PUT
+        .S
+        5
+        <5
+          .M>>
+      <COND
+        (.IN?
+          <GOTO
+            <SETG
+              BLOC
+              <FIND-ROOM
+                .S>>>
+          <TELL
+            "The balloon leaves the ledge.">
+          <ROOM-INFO
+            T>)
+        (<CLOCK-INT
+            ,VLGIN
+            10>
+          <PUT-BALLOON
+            .BALL
+            .BL
+            .S
+            "floats away.  It seems to be ascending,  due to its light load.">)>)
+    (.IN?
+      <GOTO
+        <SETG
+          BLOC
+          <FIND-ROOM
+            "VAIR1">>>
+      <TELL
+        "The balloon rises slowly from the ground.">
+      <ROOM-INFO
+        T>)
+    (<PUT-BALLOON
+        .BALL
+        .BL
+        "VAIR1"
+        "lifts off.">)>>
+<DEFINE
+  PUT-BALLOON
+  (BALL
+    HERE
+    THERE
+    STR)
+  #DECL
+    ((BALL)
+      OBJECT
+      (HERE)
+      ROOM
+      (THERE
+        STR)
+      STRING)
+  <AND
+    <MEMBER
+      "LEDG"
+      <SPNAME
+        <RID
+          ,HERE>>>
+    <TELL
+      "You watch as the balloon slowly "
+      1
+      .STR>>
+  <REMOVE-OBJECT
+    .BALL>
+  <INSERT-OBJECT
+    .BALL
+    <SETG
+      BLOC
+      <FIND-ROOM
+        .THERE>>>>
+<GDECL
+  (BLOC)
+  ROOM>
+<DEFINE
+  DECLINE-AND-FALL
+  (BALL
+    HERE
     "AUX"
-    (s
-      top(
-        ,scrstr))
-    m
-    (bl
-      ,bloc)
-    (in_Q
-      _EQ_Q(
-        avehicle(
-          ,winner),
-        _ball))
-    foo),
-  #decl
-    ((ball)
-      object
-      (here
-        bl)
-      room
-      (m)
-      or(
-        false,
-        string)
-      (s)
-      string
-      (in_Q)
-      or(
-        atom,
-        false)
-      (foo)
-      cevent),
-  clock_int(
-    ,bint,
-    3),
-  cond(
-    (set(
-        m,
-        member(
-          "VAIR",
-          spname(
-            rid(
-              _bl))))
-      cond(
-        (__Q(
-            rest(
-              _m,
-              4),
-            "1")
-          cond(
-            (_in_Q
-              goto(
-                setg(
-                  bloc,
-                  find_room(
-                    "VLBOT")))
-              cond(
-                (,binf_X_flag
-                  tell(
-                    "The balloon has landed.")
-                  room_info(
-                    t)),
-                (t
-                  remove_object(
-                    _ball)
-                  insert_object(
-                    find_obj(
-                      "DBALL"),
-                    ,bloc)
-                  put(
-                    ,winner,
-                    ,avehicle,
-                    <>)
-                  clock_disable(
-                    set(
-                      foo,
-                      clock_int(
-                        ,bint,
-                        0)))
-                  tell(
-                    "You have landed, but the balloon did not survive.")))),
-            (put_balloon(
-                _ball,
-                _bl,
-                "VLBOT",
-                "lands.")))),
-        (substruc(
-            spname(
-              rid(
-                _bl)),
-            0,
-            4,
-            _s)
-          put(
-            _s,
-            5,
-            chtype(
-              _(
-                chtype(
-                  5(
-                    _m),
-                  fix),
-                1),
-              character))
-          cond(
-            (_in_Q
-              goto(
-                setg(
-                  bloc,
-                  find_room(
-                    _s)))
-              tell(
-                "The balloon descends.")
-              room_info(
-                t)),
-            (put_balloon(
-                _ball,
-                _bl,
-                _s,
-                "descends."))))))))
-
-define(
-  wire_function,
+    (S
+      <TOP
+        ,SCRSTR>)
+    M
+    (BL
+      ,BLOC)
+    (IN?
+      <==?
+        <AVEHICLE
+          ,WINNER>
+        .BALL>)
+    FOO)
+  #DECL
+    ((BALL)
+      OBJECT
+      (HERE
+        BL)
+      ROOM
+      (M)
+      <OR
+        FALSE
+        STRING>
+      (S)
+      STRING
+      (IN?)
+      <OR
+        ATOM
+        FALSE>
+      (FOO)
+      CEVENT)
+  <CLOCK-INT
+    ,BINT
+    3>
+  <COND
+    (<SET
+        M
+        <MEMBER
+          "VAIR"
+          <SPNAME
+            <RID
+              .BL>>>>
+      <COND
+        (<=?
+            <REST
+              .M
+              4>
+            "1">
+          <COND
+            (.IN?
+              <GOTO
+                <SETG
+                  BLOC
+                  <FIND-ROOM
+                    "VLBOT">>>
+              <COND
+                (,BINF!-FLAG
+                  <TELL
+                    "The balloon has landed.">
+                  <ROOM-INFO
+                    T>)
+                (T
+                  <REMOVE-OBJECT
+                    .BALL>
+                  <INSERT-OBJECT
+                    <FIND-OBJ
+                      "DBALL">
+                    ,BLOC>
+                  <PUT
+                    ,WINNER
+                    ,AVEHICLE
+                    <>>
+                  <CLOCK-DISABLE
+                    <SET
+                      FOO
+                      <CLOCK-INT
+                        ,BINT
+                        0>>>
+                  <TELL
+                    "You have landed, but the balloon did not survive.">)>)
+            (<PUT-BALLOON
+                .BALL
+                .BL
+                "VLBOT"
+                "lands.">)>)
+        (<SUBSTRUC
+            <SPNAME
+              <RID
+                .BL>>
+            0
+            4
+            .S>
+          <PUT
+            .S
+            5
+            <CHTYPE
+              <-
+                <CHTYPE
+                  <5
+                    .M>
+                  FIX>
+                1>
+              CHARACTER>>
+          <COND
+            (.IN?
+              <GOTO
+                <SETG
+                  BLOC
+                  <FIND-ROOM
+                    .S>>>
+              <TELL
+                "The balloon descends.">
+              <ROOM-INFO
+                T>)
+            (<PUT-BALLOON
+                .BALL
+                .BL
+                .S
+                "descends.">)>)>)>>
+<DEFINE
+  WIRE-FUNCTION
   ("AUX"
-    (pv
-      ,prsvec)
-    (prsa
-      1(
-        _pv))
-    (prso
-      2(
-        _pv))
-    (prsi
-      3(
-        _pv))
-    (bint
-      ,bint)),
-  #decl
-    ((bint)
-      cevent
-      (pv)
-      vector
-      (prsa)
-      verb
-      (prso
-        prsi)
-      prsobj),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,tie_X_words)
-      cond(
-        (and(
-            _EQ_Q(
-              _prso,
-              find_obj(
-                "BROPE")),
-            or(
-              _EQ_Q(
-                _prsi,
-                find_obj(
-                  "HOOK1")),
-              _EQ_Q(
-                _prsi,
-                find_obj(
-                  "HOOK2"))))
-          setg(
-            btie_X_flag,
-            t)
-          clock_disable(
-            _bint)
-          tell(
-            "The balloon is fastened to the hook.")))),
-    (and(
-        _EQ_Q(
-          _prsa,
-          ,untie_X_words),
-        _EQ_Q(
-          _prso,
-          find_obj(
-            "BROPE")))
-      cond(
-        (,btie_X_flag
-          clock_enable(
-            set(
-              bint,
-              clock_int(
-                ,bint,
-                3)))
-          setg(
-            btie_X_flag,
-            <>)
-          tell(
-            "The wire falls off of the hook.")),
-        (tell(
-            "The wire is not tied to anything."))))))
-
-define(
-  burnup,
+    (PV
+      ,PRSVEC)
+    (PRSA
+      <1
+        .PV>)
+    (PRSO
+      <2
+        .PV>)
+    (PRSI
+      <3
+        .PV>)
+    (BINT
+      ,BINT))
+  #DECL
+    ((BINT)
+      CEVENT
+      (PV)
+      VECTOR
+      (PRSA)
+      VERB
+      (PRSO
+        PRSI)
+      PRSOBJ)
+  <COND
+    (<==?
+        .PRSA
+        ,TIE!-WORDS>
+      <COND
+        (<AND
+            <==?
+              .PRSO
+              <FIND-OBJ
+                "BROPE">>
+            <OR
+              <==?
+                .PRSI
+                <FIND-OBJ
+                  "HOOK1">>
+              <==?
+                .PRSI
+                <FIND-OBJ
+                  "HOOK2">>>>
+          <SETG
+            BTIE!-FLAG
+            T>
+          <CLOCK-DISABLE
+            .BINT>
+          <TELL
+            "The balloon is fastened to the hook.">)>)
+    (<AND
+        <==?
+          .PRSA
+          ,UNTIE!-WORDS>
+        <==?
+          .PRSO
+          <FIND-OBJ
+            "BROPE">>>
+      <COND
+        (,BTIE!-FLAG
+          <CLOCK-ENABLE
+            <SET
+              BINT
+              <CLOCK-INT
+                ,BINT
+                3>>>
+          <SETG
+            BTIE!-FLAG
+            <>>
+          <TELL
+            "The wire falls off of the hook.">)
+        (<TELL
+            "The wire is not tied to anything.">)>)>>
+<DEFINE
+  BURNUP
   ("AUX"
-    (r
-      find_obj(
-        "RECEP"))
-    (obj
-      1(
-        ocontents(
-          _r)))),
-  #decl
-    ((r
-        obj)
-      object),
-  put(
-    _r,
-    ,ocontents,
-    splice_out(
-      _obj,
-      ocontents(
-        _r))),
-  tell(
-    "It seems that the",
-    1,
-    odesc2(
-      _obj),
-    "has burned out, and the cloth\nbag starts to collapse."),
-  setg(
-    binf_X_flag,
-    <>),
-  t)
-
-setg(
-  safe_flag_X_flag,
-  <>)
-
-define(
-  safe_room,
+    (R
+      <FIND-OBJ
+        "RECEP">)
+    (OBJ
+      <1
+        <OCONTENTS
+          .R>>))
+  #DECL
+    ((R
+        OBJ)
+      OBJECT)
+  <PUT
+    .R
+    ,OCONTENTS
+    <SPLICE-OUT
+      .OBJ
+      <OCONTENTS
+        .R>>>
+  <TELL
+    "It seems that the "
+    1
+    <ODESC2
+      .OBJ>
+    " has burned out, and the cloth  bag starts to collapse.">
+  <SETG
+    BINF!-FLAG
+    <>>
+  T>
+<SETG
+  SAFE-FLAG!-FLAG
+  <>>
+<DEFINE
+  SAFE-ROOM
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,look_X_words)
-      tell(
-        "You are in a dusty old room which is virtually featureless, except\nfor an exit on the north side.",
-        1,
-        cond(
-          (not(
-              ,safe_flag_X_flag)
-            "Imbedded in the far wall, there is a rusty old box.  It appears that\nthe box is somewhat damaged, since an oblong hole has been chipped\nout of the front of it."),
-          ("On the far wall is a rusty box, whose door has been blown off."))))))
-
-define(
-  safe_function,
+    (PRSA
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSA)
+      VERB)
+  <COND
+    (<==?
+        .PRSA
+        ,LOOK!-WORDS>
+      <TELL
+        "You are in a dusty old room which is virtually featureless, except  for an exit on the north side."
+        1
+        <COND
+          (<NOT
+              ,SAFE-FLAG!-FLAG>
+            "  Imbedded in the far wall, there is a rusty old box.  It appears that  the box is somewhat damaged, since an oblong hole has been chipped  out of the front of it.")
+          ("  On the far wall is a rusty box, whose door has been blown off.")>>)>>
+<DEFINE
+  SAFE-FUNCTION
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,take_X_words)
-      tell(
-        "The box is imbedded in the wall.")),
-    (_EQ_Q(
-        _prsa,
-        ,open_X_words)
-      cond(
-        (,safe_flag_X_flag
-          tell(
-            "The box has no door!")),
-        (tell(
-            "The box is rusted and will not open.")))),
-    (_EQ_Q(
-        _prsa,
-        ,close_X_words)
-      cond(
-        (,safe_flag_X_flag
-          tell(
-            "The box has no door!")),
-        (tell(
-            "The box is not open, chomper!")))),
-    (_EQ_Q(
-        _prsa,
-        ,blast_X_words)
-      tell(
-        "What do you expect, BOOM?"))))
-
-psetg(
-  brick_boom,
-  "Now you've done it.  It seems that the brick has other properties\nthan weight, namely the ability to blow you to smithereens.")
-
-define(
-  brick_function,
+    (PRSA
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSA)
+      VERB)
+  <COND
+    (<==?
+        .PRSA
+        ,TAKE!-WORDS>
+      <TELL
+        "The box is imbedded in the wall.">)
+    (<==?
+        .PRSA
+        ,OPEN!-WORDS>
+      <COND
+        (,SAFE-FLAG!-FLAG
+          <TELL
+            "The box has no door!">)
+        (<TELL
+            "The box is rusted and will not open.">)>)
+    (<==?
+        .PRSA
+        ,CLOSE!-WORDS>
+      <COND
+        (,SAFE-FLAG!-FLAG
+          <TELL
+            "The box has no door!">)
+        (<TELL
+            "The box is not open, chomper!">)>)
+    (<==?
+        .PRSA
+        ,BLAST!-WORDS>
+      <TELL
+        "What do you expect, BOOM?">)>>
+<PSETG
+  BRICK-BOOM
+  "Now you've done it.  It seems that the brick has other properties  than weight, namely the ability to blow you to smithereens.">
+<DEFINE
+  BRICK-FUNCTION
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,burn_X_words)
-      jigs_up(
-        ,brick_boom))))
-
-define(
-  fuse_function,
+    (PRSA
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSA)
+      VERB)
+  <COND
+    (<==?
+        .PRSA
+        ,BURN!-WORDS>
+      <JIGS-UP
+        ,BRICK-BOOM>)>>
+<DEFINE
+  FUSE-FUNCTION
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))
-    (fuse
-      find_obj(
-        "FUSE"))
-    (brick
-      find_obj(
-        "BRICK"))
-    brick_room
-    oc),
-  #decl
-    ((prsa)
-      verb
-      (fuse
-        brick)
-      object
-      (brick_room)
-      or(
-        room,
-        false)
-      (oc)
-      or(
-        object,
-        false)),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,burn_X_words)
-      tell(
-        "The wire starts to burn.")
-      put(
-        _fuse,
-        ,orand,
+    (PRSA
+      <1
+        ,PRSVEC>)
+    (FUSE
+      <FIND-OBJ
+        "FUSE">)
+    (BRICK
+      <FIND-OBJ
+        "BRICK">)
+    BRICK-ROOM
+    OC)
+  #DECL
+    ((PRSA)
+      VERB
+      (FUSE
+        BRICK)
+      OBJECT
+      (BRICK-ROOM)
+      <OR
+        ROOM
+        FALSE>
+      (OC)
+      <OR
+        OBJECT
+        FALSE>)
+  <COND
+    (<==?
+        .PRSA
+        ,BURN!-WORDS>
+      <TELL
+        "The wire starts to burn.">
+      <PUT
+        .FUSE
+        ,ORAND
         [0
-          clock_int(
-            ,fusin,
-            2)])),
-    (_EQ_Q(
-        _prsa,
-        ,c_int_X_words)
-      trz(
-        _fuse,
-        ,ovison)
-      cond(
-        (_EQ_Q(
-            ocan(
-              _fuse),
-            _brick)
-          trz(
-            _brick,
-            ,ovison)
-          cond(
-            (set(
-                oc,
-                ocan(
-                  _brick))
-              set(
-                brick_room,
-                oroom(
-                  _oc))),
-            (set(
-                brick_room,
-                oroom(
-                  _brick))))
-          or(
-            _brick_room,
-            set(
-              brick_room,
-              ,here))
-          cond(
-            (_EQ_Q(
-                _brick_room,
-                ,here)
-              mung_room(
-                _brick_room,
-                "The way is blocked by debris from an explosion.")
-              jigs_up(
-                ,brick_boom)),
-            (_EQ_Q(
-                _brick_room,
-                find_room(
-                  "SAFE"))
-              clock_int(
-                ,safin,
-                5)
-              setg(
-                munged_room,
-                oroom(
-                  _brick))
-              tell(
-                "There is an explosion nearby.")
-              cond(
-                (memq(
-                    _brick,
-                    ocontents(
-                      find_obj(
-                        "SSLOT")))
-                  trz(
-                    find_obj(
-                      "SSLOT"),
-                    ,ovison)
-                  put(
-                    find_obj(
-                      "SAFE"),
-                    ,oopen_Q,
-                    t)
-                  setg(
-                    safe_flag_X_flag,
-                    t)))),
-            (tell(
-                "There is an explosion nearby.")
-              clock_int(
-                ,safin,
-                5)
-              setg(
-                munged_room,
-                _brick_room)
-              mapf(
-                <>,
-                function(
-                  (x),
-                  cond(
-                    (can_take_Q(
-                        _x)
-                      trz(
-                        _x,
-                        ,ovison)))),
-                robjs(
-                  _brick_room))
-              cond(
-                (_EQ_Q(
-                    _brick_room,
-                    find_room(
-                      "LROOM"))
-                  mapf(
-                    <>,
-                    function(
-                      (x),
-                      #decl
-                        ((x)
-                          object),
-                      put(
-                        _x,
-                        ,ocan,
-                        <>)),
-                    ocontents(
-                      find_obj(
-                        "TCASE")))
-                  put(
-                    find_obj(
-                      "TCASE"),
-                    ,ocontents,
-                    ())))))),
-        (or(
-            not(
-              oroom(
-                _fuse)),
-            _EQ_Q(
-              ,here,
-              oroom(
-                _fuse)))
-          tell(
-            "The wire rapidly burns into nothingness."))))))
-
-define(
-  safe_mung,
+          <CLOCK-INT
+            ,FUSIN
+            2>]>)
+    (<==?
+        .PRSA
+        ,C-INT!-WORDS>
+      <TRZ
+        .FUSE
+        ,OVISON>
+      <COND
+        (<==?
+            <OCAN
+              .FUSE>
+            .BRICK>
+          <TRZ
+            .BRICK
+            ,OVISON>
+          <COND
+            (<SET
+                OC
+                <OCAN
+                  .BRICK>>
+              <SET
+                BRICK-ROOM
+                <OROOM
+                  .OC>>)
+            (<SET
+                BRICK-ROOM
+                <OROOM
+                  .BRICK>>)>
+          <OR
+            .BRICK-ROOM
+            <SET
+              BRICK-ROOM
+              ,HERE>>
+          <COND
+            (<==?
+                .BRICK-ROOM
+                ,HERE>
+              <MUNG-ROOM
+                .BRICK-ROOM
+                "The way is blocked by debris from an explosion.">
+              <JIGS-UP
+                ,BRICK-BOOM>)
+            (<==?
+                .BRICK-ROOM
+                <FIND-ROOM
+                  "SAFE">>
+              <CLOCK-INT
+                ,SAFIN
+                5>
+              <SETG
+                MUNGED-ROOM
+                <OROOM
+                  .BRICK>>
+              <TELL
+                "There is an explosion nearby.">
+              <COND
+                (<MEMQ
+                    .BRICK
+                    <OCONTENTS
+                      <FIND-OBJ
+                        "SSLOT">>>
+                  <TRZ
+                    <FIND-OBJ
+                      "SSLOT">
+                    ,OVISON>
+                  <PUT
+                    <FIND-OBJ
+                      "SAFE">
+                    ,OOPEN?
+                    T>
+                  <SETG
+                    SAFE-FLAG!-FLAG
+                    T>)>)
+            (<TELL
+                "There is an explosion nearby.">
+              <CLOCK-INT
+                ,SAFIN
+                5>
+              <SETG
+                MUNGED-ROOM
+                .BRICK-ROOM>
+              <MAPF
+                <>
+                <FUNCTION
+                  (X)
+                  <COND
+                    (<CAN-TAKE?
+                        .X>
+                      <TRZ
+                        .X
+                        ,OVISON>)>>
+                <ROBJS
+                  .BRICK-ROOM>>
+              <COND
+                (<==?
+                    .BRICK-ROOM
+                    <FIND-ROOM
+                      "LROOM">>
+                  <MAPF
+                    <>
+                    <FUNCTION
+                      (X)
+                      #DECL
+                        ((X)
+                          OBJECT)
+                      <PUT
+                        .X
+                        ,OCAN
+                        <>>>
+                    <OCONTENTS
+                      <FIND-OBJ
+                        "TCASE">>>
+                  <PUT
+                    <FIND-OBJ
+                      "TCASE">
+                    ,OCONTENTS
+                    ()>)>)>)
+        (<OR
+            <NOT
+              <OROOM
+                .FUSE>>
+            <==?
+              ,HERE
+              <OROOM
+                .FUSE>>>
+          <TELL
+            "The wire rapidly burns into nothingness.">)>)>>
+<DEFINE
+  SAFE-MUNG
   ("AUX"
-    (rm
-      ,munged_room)),
-  #decl
-    ((rm)
-      room),
-  cond(
-    (_EQ_Q(
-        ,here,
-        _rm)
-      jigs_up(
-        cond(
-          (rtrnn(
-              _rm,
-              ,rhousebit)
-            "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."),
-          ("The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake.")))),
-    (tell(
-        "You may recall your recent explosion.  Well, probably as a result of\nthat, you hear an ominous rumbling, as if one of the rooms in the\ndungeon had collapsed.")
-      and(
-        _EQ_Q(
-          _rm,
-          find_room(
-            "SAFE")),
-        clock_int(
-          ,ledin,
-          8)))),
-  mung_room(
-    or(
-      oroom(
-        find_obj(
-          "BRICK")),
-      ,here),
-    "The way is blocked by debris from an explosion."))
-
-define(
-  ledge_mung,
+    (RM
+      ,MUNGED-ROOM))
+  #DECL
+    ((RM)
+      ROOM)
+  <COND
+    (<==?
+        ,HERE
+        .RM>
+      <JIGS-UP
+        <COND
+          (<RTRNN
+              .RM
+              ,RHOUSEBIT>
+            "The house shakes, and the ceiling of the room you're in collapses,  turning you into a pancake.")
+          ("The room trembles and 50,000 pounds of rock fall on you, turning you  into a pancake.")>>)
+    (<TELL
+        "You may recall your recent explosion.  Well, probably as a result of  that, you hear an ominous rumbling, as if one of the rooms in the  dungeon had collapsed.">
+      <AND
+        <==?
+          .RM
+          <FIND-ROOM
+            "SAFE">>
+        <CLOCK-INT
+          ,LEDIN
+          8>>)>
+  <MUNG-ROOM
+    <OR
+      <OROOM
+        <FIND-OBJ
+          "BRICK">>
+      ,HERE>
+    "The way is blocked by debris from an explosion.">>
+<DEFINE
+  LEDGE-MUNG
   ("AUX"
-    (rm
-      find_room(
-        "LEDG4"))),
-  #decl
-    ((rm)
-      room),
-  cond(
-    (_EQ_Q(
-        ,here,
-        _rm)
-      cond(
-        (avehicle(
-            ,winner)
-          cond(
-            (,btie_X_flag
-              set(
-                rm,
-                find_room(
-                  "VLBOT"))
-              setg(
-                bloc,
-                _rm)
-              remove_object(
-                find_obj(
-                  "BALLO"))
-              insert_object(
-                find_obj(
-                  "DBALL"),
-                _rm)
-              setg(
-                btie_X_flag,
-                <>)
-              setg(
-                binf_X_flag,
-                <>)
-              clock_disable(
-                ,bint)
-              clock_disable(
-                ,brnin)
-              jigs_up(
-                "The ledge collapses, probably as a result of the explosion.  A large\nchunk of it, which is attached to the hook, drags you down to the\nground.  Fatally.")),
-            (tell(
-                "The ledge collapses, leaving you with no place to land.")))),
-        (t
-          jigs_up(
-            "The force of the explosion has caused the ledge to collapse\nbelatedly.")))),
-    (tell(
-        "The ledge collapses, giving you a narrow escape."))),
-  mung_room(
-    _rm,
-    "The ledge has collapsed and cannot be landed on."))
-
-define(
-  ledge_function,
+    (RM
+      <FIND-ROOM
+        "LEDG4">))
+  #DECL
+    ((RM)
+      ROOM)
+  <COND
+    (<==?
+        ,HERE
+        .RM>
+      <COND
+        (<AVEHICLE
+            ,WINNER>
+          <COND
+            (,BTIE!-FLAG
+              <SET
+                RM
+                <FIND-ROOM
+                  "VLBOT">>
+              <SETG
+                BLOC
+                .RM>
+              <REMOVE-OBJECT
+                <FIND-OBJ
+                  "BALLO">>
+              <INSERT-OBJECT
+                <FIND-OBJ
+                  "DBALL">
+                .RM>
+              <SETG
+                BTIE!-FLAG
+                <>>
+              <SETG
+                BINF!-FLAG
+                <>>
+              <CLOCK-DISABLE
+                ,BINT>
+              <CLOCK-DISABLE
+                ,BRNIN>
+              <JIGS-UP
+                "The ledge collapses, probably as a result of the explosion.  A large  chunk of it, which is attached to the hook, drags you down to the  ground.  Fatally.">)
+            (<TELL
+                "The ledge collapses, leaving you with no place to land.">)>)
+        (T
+          <JIGS-UP
+            "The force of the explosion has caused the ledge to collapse  belatedly.">)>)
+    (<TELL
+        "The ledge collapses, giving you a narrow escape.">)>
+  <MUNG-ROOM
+    .RM
+    "The ledge has collapsed and cannot be landed on.">>
+<DEFINE
+  LEDGE-FUNCTION
   ("AUX"
-    (prsa
-      1(
-        ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
-  cond(
-    (_EQ_Q(
-        _prsa,
-        ,walk_in_X_words)
-      and(
-        ,safe_flag_X_flag,
-        tell(
-          "Behind you, the walls of the safe room collapse into rubble."),
-        setg(
-          safe_flag_X_flag,
-          <>))),
-    (_EQ_Q(
-        _prsa,
-        ,look_X_words)
-      tell(
-        "You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.",
-        1,
-        cond(
-          (rtrnn(
-              find_room(
-                "SAFE"),
-              ,rmungbit)
-            "The way to the south is blocked by rubble."),
-          ("There is a small door to the south."))))))
-
-define(
-  blast,
-  (),
-  cond(
-    (_EQ_Q(
-        ,here,
-        find_room(
-          "SAFE"))),
-    (tell(
-        "I don't really know how to do that."))))
-
-define(
-  volgnome,
-  (),
-  cond(
-    (member(
-        "LEDG",
-        spname(
-          rid(
-            ,here)))
-      tell(
-        "A volcano gnome seems to walk straight out of the wall and says\n'I have a very busy appointment schedule and little time to waste on\ntresspassers, but for a small fee, I'll show you the way out.'  You\nnotice the gnome nervously glancing at his watch.")
-      insert_object(
-        find_obj(
-          "GNOME"),
-        ,here)),
-    (clock_int(
-        ,vlgin,
-        1))))
-
-setg(
-  gnome_door_X_flag,
-  setg(
-    gnome_flag_X_flag,
-    <>))
-
-define(
-  gnome_function,
+    (PRSA
+      <1
+        ,PRSVEC>))
+  #DECL
+    ((PRSA)
+      VERB)
+  <COND
+    (<==?
+        .PRSA
+        ,WALK-IN!-WORDS>
+      <AND
+        ,SAFE-FLAG!-FLAG
+        <TELL
+          "Behind you, the walls of the safe room collapse into rubble.">
+        <SETG
+          SAFE-FLAG!-FLAG
+          <>>>)
+    (<==?
+        .PRSA
+        ,LOOK!-WORDS>
+      <TELL
+        "You are on a wide ledge high into the volcano.  The rim of the  volcano is about 200 feet above and there is a precipitous drop below  to the bottom."
+        1
+        <COND
+          (<RTRNN
+              <FIND-ROOM
+                "SAFE">
+              ,RMUNGBIT>
+            " The way to the south is blocked by rubble.")
+          (" There is a small door to the south.")>>)>>
+<DEFINE
+  BLAST
+  ()
+  <COND
+    (<==?
+        ,HERE
+        <FIND-ROOM
+          "SAFE">>)
+    (<TELL
+        "I don't really know how to do that.">)>>
+<DEFINE
+  VOLGNOME
+  ()
+  <COND
+    (<MEMBER
+        "LEDG"
+        <SPNAME
+          <RID
+            ,HERE>>>
+      <TELL
+        "A volcano gnome seems to walk straight out of the wall and says  'I have a very busy appointment schedule and little time to waste on  tresspassers, but for a small fee, I'll show you the way out.'  You  notice the gnome nervously glancing at his watch.">
+      <INSERT-OBJECT
+        <FIND-OBJ
+          "GNOME">
+        ,HERE>)
+    (<CLOCK-INT
+        ,VLGIN
+        1>)>>
+<SETG
+  GNOME-DOOR!-FLAG
+  <SETG
+    GNOME-FLAG!-FLAG
+    <>>>
+<DEFINE
+  GNOME-FUNCTION
   ("AUX"
-    (pv
-      ,prsvec)
-    (prsa
-      1(
-        _pv))
-    (prso
-      2(
-        _pv))),
-  #decl
-    ((pv)
-      vector
-      (prsa)
-      verb
-      (prso)
-      prsobj),
-  cond(
-    (and(
-        or(
-          _EQ_Q(
-            _prsa,
-            ,give_X_words),
-          _EQ_Q(
-            _prsa,
-            ,throw_X_words)),
-        type_Q(
-          _prso,
-          object),
-        cond(
-          (n_EQ_Q(
-              otval(
-                _prso),
-              0)
-            tell(
-              "Thank you very much for the",
-              1,
-              odesc2(
-                _prso),
-              ".  I don't believe \nI've ever seen one as beautiful. 'Follow me', he says, and a door \nappears on the west end of the ledge.  Through the door, you can see\na narrow chimney sloping steeply downward.")
-            setg(
-              gnome_door_X_flag,
-              t)),
-          (tell(
-              "'That wasn't quite what I had in mind', he says, crunching the",
-              1,
-              odesc2(
-                _prso),
-              "in his rock-hard hands.")
-            remove_object(
-              _prso))))),
-    (_EQ_Q(
-        _prsa,
-        ,c_int_X_words)
-      tell(
-        "The gnome glances at his watch.  'Oops.  I'm late for an\nappointment!' He disappears, leaving you alone on the ledge.")
-      remove_object(
-        find_obj(
-          "GNOME"))),
-    (tell(
-        "The gnome appears increasingly nervous.")
-      or(
-        ,gnome_flag_X_flag,
-        clock_int(
-          ,gnoin,
-          5))
-      setg(
-        gnome_flag_X_flag,
-        t))))
+    (PV
+      ,PRSVEC)
+    (PRSA
+      <1
+        .PV>)
+    (PRSO
+      <2
+        .PV>))
+  #DECL
+    ((PV)
+      VECTOR
+      (PRSA)
+      VERB
+      (PRSO)
+      PRSOBJ)
+  <COND
+    (<AND
+        <OR
+          <==?
+            .PRSA
+            ,GIVE!-WORDS>
+          <==?
+            .PRSA
+            ,THROW!-WORDS>>
+        <TYPE?
+          .PRSO
+          OBJECT>
+        <COND
+          (<N==?
+              <OTVAL
+                .PRSO>
+              0>
+            <TELL
+              "Thank you very much for the "
+              1
+              <ODESC2
+                .PRSO>
+              ".  I don't believe   I've ever seen one as beautiful. 'Follow me', he says, and a door   appears on the west end of the ledge.  Through the door, you can see  a narrow chimney sloping steeply downward.">
+            <SETG
+              GNOME-DOOR!-FLAG
+              T>)
+          (<TELL
+              "'That wasn't quite what I had in mind', he says, crunching the  "
+              1
+              <ODESC2
+                .PRSO>
+              " in his rock-hard hands.">
+            <REMOVE-OBJECT
+              .PRSO>)>>)
+    (<==?
+        .PRSA
+        ,C-INT!-WORDS>
+      <TELL
+        "The gnome glances at his watch.  'Oops.  I'm late for an  appointment!' He disappears, leaving you alone on the ledge.">
+      <REMOVE-OBJECT
+        <FIND-OBJ
+          "GNOME">>)
+    (<TELL
+        "The gnome appears increasingly nervous.">
+      <OR
+        ,GNOME-FLAG!-FLAG
+        <CLOCK-INT
+          ,GNOIN
+          5>>
+      <SETG
+        GNOME-FLAG!-FLAG
+        T>)>>

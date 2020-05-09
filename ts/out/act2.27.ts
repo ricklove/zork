@@ -1,0 +1,2394 @@
+define(
+  boom_room,
+  ("AUX"
+    (dummy_Q
+      <>)
+    (prsact
+      1(
+        ,prsvec))
+    (win
+      ,winner)
+    o),
+  #decl
+    ((dummy_Q)
+      or(
+        atom,
+        false)
+      (prsact)
+      verb
+      (win)
+      adv
+      (o)
+      object),
+  cond(
+    (or(
+        _EQ_Q(
+          vname(
+            _prsact),
+          walk_in_X_words),
+        and(
+          _EQ_Q(
+            vname(
+              _prsact),
+            on_X_words),
+          set(
+            dummy_Q,
+            t)))
+      cond(
+        (or(
+            and(
+              memq(
+                set(
+                  o,
+                  find_obj(
+                    "CANDL")),
+                aobjs(
+                  _win)),
+              1_Q(
+                olight_Q(
+                  _o))),
+            and(
+              memq(
+                set(
+                  o,
+                  find_obj(
+                    "TORCH")),
+                aobjs(
+                  _win)),
+              1_Q(
+                olight_Q(
+                  _o))))
+          unwind(
+            prog(
+              (),
+              cond(
+                (_dummy_Q
+                  tell(
+                    "I didn't realize that adventurers are stupid enough to light a",
+                    1,
+                    odesc2(
+                      _o),
+                    "in a room which reeks of coal gas.\nFortunately, there is justice in the world.")),
+                (tell(
+                    "Oh dear.  It appears that the smell coming from this room was coal\ngas.  I would have thought twice about carrying a",
+                    1,
+                    odesc2(
+                      _o),
+                    "in here."))),
+              fweep(
+                7),
+              jigs_up(
+                "BOOOOOOOOOOOM")),
+            jigs_up(
+              "BOOOOOOOOOOOM")))))))
+
+define(
+  bats_room,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))),
+  #decl
+    ((prsact)
+      verb),
+  cond(
+    (and(
+        _EQ_Q(
+          vname(
+            _prsact),
+          walk_in_X_words),
+        not(
+          memq(
+            find_obj(
+              "GARLI"),
+            aobjs(
+              ,winner))))
+      fly_me(
+        )),
+    (_EQ_Q(
+        _prsact,
+        ,look_X_words)
+      tell(
+        "You are in a small room which has only one door, to the east.")
+      and(
+        memq(
+          find_obj(
+            "GARLI"),
+          aobjs(
+            ,winner)),
+        tell(
+          "In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")))))
+
+define(
+  fly_me,
+  ("AUX"
+    (bat_drops
+      ,bat_drops)),
+  #decl
+    ((bat_drops)
+      vector(
+        [rest
+          string])),
+  unwind(
+    prog(
+      (),
+      fweep(
+        4,
+        1),
+      tell(
+        "A deranged giant vampire bat (a reject from WUMPUS) swoops down\nfrom his belfry and lifts you away...."),
+      goto(
+        find_room(
+          pick_one(
+            _bat_drops)))),
+    goto(
+      find_room(
+        pick_one(
+          _bat_drops)))),
+  put(
+    ,prsvec,
+    2,
+    <>),
+  room_desc(
+    ),
+  t)
+
+define(
+  fweep,
+  (num
+    "OPTIONAL"
+    (slp
+      0)),
+  #decl
+    ((num
+        slp)
+      fix),
+  repeat(
+    ((n
+        _num)),
+    and(
+      0_Q(
+        set(
+          n,
+          _(
+            _n,
+            1))),
+      return(
+        )),
+    image(
+      7),
+    or(
+      0_Q(
+        _slp),
+      sleep(
+        _slp))))
+
+psetg(
+  bat_drops,
+  '["MINE1"
+      "MINE2"
+      "MINE3"
+      "MINE4"
+      "MINE5"
+      "MINE6"
+      "MINE7"
+      "TLADD"
+      "BLADD"])
+
+gdecl(
+  (bat_drops),
+  vector(
+    [rest
+      string]))
+
+setg(
+  cage_top_X_flag,
+  t)
+
+define(
+  dumbwaiter,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (tb
+      find_obj(
+        "TBASK"))
+    (top
+      find_room(
+        "TSHAF"))
+    (bot
+      find_room(
+        "BSHAF"))
+    (fb
+      find_obj(
+        "FBASK"))
+    (ct
+      ,cage_top_X_flag)
+    (here
+      ,here)
+    (dummy
+      ,dummy)),
+  #decl
+    ((prsact)
+      verb
+      (fb
+        tb)
+      object
+      (top
+        bot)
+      room
+      (ct)
+      or(
+        atom,
+        false)
+      (here)
+      room
+      (dummy)
+      vector(
+        [rest
+          string])),
+  cond(
+    (_EQ_Q(
+        _prsact,
+        ,raise_X_words)
+      cond(
+        (_ct
+          tell(
+            pick_one(
+              ,dummy))),
+        (remove_object(
+            _tb)
+          remove_object(
+            _fb)
+          insert_object(
+            _tb,
+            _top)
+          insert_object(
+            _fb,
+            _bot)
+          tell(
+            "The basket is raised to the top of the shaft.")
+          setg(
+            cage_top_X_flag,
+            t)))),
+    (_EQ_Q(
+        _prsact,
+        ,lower_X_words)
+      cond(
+        (not(
+            _ct)
+          tell(
+            pick_one(
+              _dummy))),
+        (remove_object(
+            _tb)
+          remove_object(
+            _fb)
+          insert_object(
+            _tb,
+            _bot)
+          insert_object(
+            _fb,
+            _top)
+          tell(
+            "The basket is lowered to the bottom of the shaft.")
+          setg(
+            cage_top_X_flag,
+            <>)
+          t))),
+    (_EQ_Q(
+        _prsact,
+        ,take_X_words)
+      cond(
+        (or(
+            and(
+              _ct,
+              _EQ_Q(
+                _here,
+                _top)),
+            and(
+              not(
+                _ct),
+              _EQ_Q(
+                _here,
+                _bot)))
+          tell(
+            "The cage is securely fastened to the iron chain.")),
+        (tell(
+            "I can't see that here."))))))
+
+define(
+  machine_room,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))),
+  #decl
+    ((prsact)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsact,
+        ,look_X_words)
+      tell(
+        "You are in a large room which seems to be air-conditioned.  In one\ncorner there is a machine (?) which is shaped somewhat like a clothes\ndryer.  On the 'panel' there is a switch which is labelled in a\ndialect of Swahili.  Fortunately, I know this dialect and the label\ntranslates to START.  The switch does not appear to be manipulable by\nany human hand (unless the fingers are about 1/16 by 1/4 inch).  On\nthe front of the machine is a large lid.")
+      cond(
+        (oopen_Q(
+            find_obj(
+              "MACHI"))
+          tell(
+            "The lid on the machine is open.")),
+        (tell(
+            "The lid on the machine is closed."))))))
+
+define(
+  machine_function,
+  ("AUX"
+    (dummy
+      ,dummy)
+    (prsact
+      1(
+        ,prsvec))
+    (mach
+      find_obj(
+        "MACHI"))),
+  #decl
+    ((prsact)
+      verb
+      (mach)
+      object
+      (dummy)
+      vector(
+        [rest
+          string])),
+  cond(
+    (_EQ_Q(
+        ,here,
+        find_room(
+          "MACHI"))
+      cond(
+        (_EQ_Q(
+            vname(
+              _prsact),
+            open_X_words)
+          cond(
+            (oopen_Q(
+                _mach)
+              tell(
+                pick_one(
+                  _dummy))),
+            (tell(
+                "The lid opens.")
+              put(
+                _mach,
+                ,oopen_Q,
+                t)))),
+        (_EQ_Q(
+            vname(
+              _prsact),
+            close_X_words)
+          cond(
+            (oopen_Q(
+                _mach)
+              tell(
+                "The lid closes.")
+              put(
+                _mach,
+                ,oopen_Q,
+                <>)
+              t),
+            (tell(
+                pick_one(
+                  _dummy))))),
+        (_EQ_Q(
+            _prsact,
+            ,take_X_words))))))
+
+define(
+  mswitch_function,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (c
+      find_obj(
+        "COAL"))
+    (imp
+      3(
+        ,prsvec))
+    d
+    (mach
+      find_obj(
+        "MACHI"))
+    (screw
+      find_obj(
+        "SCREW"))),
+  #decl
+    ((prsact)
+      verb
+      (imp)
+      object
+      (mach
+        screw
+        c
+        d)
+      object),
+  cond(
+    (_EQ_Q(
+        _prsact,
+        ,turn_X_words)
+      cond(
+        (_EQ_Q(
+            _imp,
+            _screw)
+          cond(
+            (oopen_Q(
+                _mach)
+              tell(
+                "The machine doesn't seem to want to do anything.")),
+            (tell(
+                "The machine comes to life (figuratively) with a dazzling display of\ncolored lights and bizarre noises.  After a few moments, the\nexcitement abates.")
+              cond(
+                (memq(
+                    _c,
+                    ocontents(
+                      _mach))
+                  put(
+                    _mach,
+                    ,ocontents,
+                    splice_out(
+                      _c,
+                      ocontents(
+                        _mach)))
+                  put(
+                    _mach,
+                    ,ocontents,
+                    (set(
+                        d,
+                        find_obj(
+                          "DIAMO"))
+                      _X
+                      ocontents(
+                        _mach)))
+                  put(
+                    _d,
+                    ,ocan,
+                    _mach)),
+                (not(
+                    empty_Q(
+                      ocontents(
+                        _mach)))
+                  put(
+                    _mach,
+                    ,ocontents,
+                    (set(
+                        d,
+                        find_obj(
+                          "GUNK"))))),
+                (t))))),
+        (tell(
+            "It seems that a",
+            1,
+            odesc2(
+              _imp),
+            "won't do."))))))
+
+define(
+  gunk_function,
+  ("AUX"
+    (g
+      find_obj(
+        "GUNK"))
+    (m
+      ocan(
+        _g))),
+  #decl
+    ((g)
+      object
+      (m)
+      or(
+        object,
+        false)),
+  cond(
+    (_m
+      put(
+        _m,
+        ,ocontents,
+        splice_out(
+          _g,
+          ocontents(
+            _m)))
+      put(
+        _g,
+        ,ocan,
+        <>)
+      tell(
+        "The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable."))))
+
+setg(
+  score_max,
+  _(
+    ,score_max,
+    setg(
+      light_shaft,
+      10)))
+
+define(
+  no_objs,
+  (),
+  cond(
+    (empty_Q(
+        aobjs(
+          ,winner))
+      setg(
+        empty_handed_X_flag,
+        t)),
+    (setg(
+        empty_handed_X_flag,
+        <>))),
+  cond(
+    (and(
+        _EQ_Q(
+          ,here,
+          find_room(
+            "BSHAF")),
+        lit_Q(
+          ,here))
+      score_upd(
+        ,light_shaft)
+      setg(
+        light_shaft,
+        0))))
+
+gdecl(
+  (light_shaft),
+  fix)
+
+define(
+  cliff_function,
+  (),
+  cond(
+    (memq(
+        find_obj(
+          "RBOAT"),
+        aobjs(
+          ,winner))
+      setg(
+        deflate_X_flag,
+        <>)),
+    (setg(
+        deflate_X_flag,
+        t))))
+
+define(
+  stick_function,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))),
+  #decl
+    ((prsact)
+      verb),
+  cond(
+    (_EQ_Q(
+        vname(
+          _prsact),
+        wave_X_words)
+      cond(
+        (or(
+            _EQ_Q(
+              ,here,
+              find_room(
+                "FALLS")),
+            _EQ_Q(
+              ,here,
+              find_room(
+                "POG")))
+          cond(
+            (not(
+                ,rainbow_X_flag)
+              tro(
+                find_obj(
+                  "POT"),
+                ,ovison)
+              tell(
+                "Suddenly, the rainbow appears to become solid and, I venture,\nwalkable (I think the giveaway was the stairs and bannister).")
+              setg(
+                rainbow_X_flag,
+                t)),
+            (tell(
+                "The rainbow seems to have become somewhat run-of-the-mill.")
+              setg(
+                rainbow_X_flag,
+                <>)))),
+        (_EQ_Q(
+            ,here,
+            find_room(
+              "RAINB"))
+          setg(
+            rainbow_X_flag,
+            <>)
+          jigs_up(
+            "The structural integrity of the rainbow seems to have left it,\nleaving you about 450 feet in the air, supported by water vapor.")),
+        (tell(
+            "Very good."))))))
+
+define(
+  falls_room,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))),
+  #decl
+    ((prsact)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsact,
+        ,look_X_words)
+      tell(
+        "You are at the top of Aragain Falls, an enormous waterfall with a\ndrop of about 450 feet.  The only path here is on the north end.\nThere is a man-sized barrel here which you could fit into.")
+      cond(
+        (,rainbow_X_flag
+          tell(
+            "A solid rainbow spans the falls.")),
+        (tell(
+            "A beautiful rainbow can be seen over the falls and to the east."))))))
+
+define(
+  digger,
+  ("AUX"
+    (prso
+      2(
+        ,prsvec))),
+  #decl
+    ((prso)
+      object),
+  cond(
+    (_EQ_Q(
+        _prso,
+        find_obj(
+          "SHOVE"))),
+    (trnn(
+        _prso,
+        ,toolbit)
+      tell(
+        "Digging with the",
+        1,
+        odesc2(
+          _prso),
+        "is slow and tedious.")),
+    (tell(
+        "Digging with a",
+        1,
+        odesc2(
+          _prso),
+        "is silly."))))
+
+define(
+  dboat_function,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (here
+      ,here)
+    (prsi
+      3(
+        ,prsvec))
+    (dboat
+      find_obj(
+        "DBOAT"))),
+  #decl
+    ((dboat)
+      object
+      (prsact)
+      verb
+      (here)
+      room
+      (prsi)
+      or(
+        false,
+        object)),
+  cond(
+    (_EQ_Q(
+        vname(
+          _prsact),
+        infla_X_words)
+      tell(
+        "This boat will not inflate since some moron put a hole in it.")),
+    (_EQ_Q(
+        vname(
+          _prsact),
+        plug_X_words)
+      cond(
+        (_EQ_Q(
+            _prsi,
+            find_obj(
+              "PUTTY"))
+          tell(
+            "Well done.  The boat is repaired.")
+          cond(
+            (not(
+                oroom(
+                  _dboat))
+              drop_object(
+                _dboat)
+              take_object(
+                find_obj(
+                  "IBOAT"))),
+            (remove_object(
+                find_obj(
+                  "DBOAT"))
+              insert_object(
+                find_obj(
+                  "IBOAT"),
+                _here)))),
+        (with_tell(
+            _prsi))))))
+
+define(
+  rboat_function,
+  ("OPTIONAL"
+    (arg
+      <>)
+    "AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (rboat
+      find_obj(
+        "RBOAT"))
+    (iboat
+      find_obj(
+        "IBOAT"))
+    (here
+      ,here)),
+  #decl
+    ((arg)
+      or(
+        false,
+        atom)
+      (prsact)
+      verb
+      (iboat
+        rboat)
+      object
+      (here)
+      room),
+  cond(
+    (_arg
+      <>),
+    (_EQ_Q(
+        _prsact,
+        ,board_X_words)
+      cond(
+        (memq(
+            find_obj(
+              "STICK"),
+            aobjs(
+              ,winner))
+          tell(
+            "There is a hissing sound and the boat deflates.")
+          remove_object(
+            _rboat)
+          insert_object(
+            find_obj(
+              "DBOAT"),
+            _here)
+          t))),
+    (_EQ_Q(
+        _prsact,
+        ,disem_X_words)
+      and(
+        member(
+          "RIVR",
+          spname(
+            rid(
+              _here))),
+        jigs_up(
+          "Unfortunately, that leaves you in the water, where you drown."))),
+    (_EQ_Q(
+        vname(
+          _prsact),
+        defla_X_words)
+      cond(
+        (_EQ_Q(
+            avehicle(
+              ,winner),
+            _rboat)
+          tell(
+            "You can't deflate the boat while you're in it.")),
+        (not(
+            memq(
+              _rboat,
+              robjs(
+                _here)))
+          tell(
+            "The boat must be on the ground to be deflated.")),
+        (tell(
+            "The boat deflates.")
+          setg(
+            deflate_X_flag,
+            t)
+          remove_object(
+            _rboat)
+          insert_object(
+            _iboat,
+            _here))))))
+
+define(
+  iboat_function,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (iboat
+      find_obj(
+        "IBOAT"))
+    (rboat
+      find_obj(
+        "RBOAT"))
+    (here
+      ,here)),
+  #decl
+    ((prsact)
+      verb
+      (iboat
+        rboat)
+      object
+      (here)
+      room),
+  cond(
+    (_EQ_Q(
+        vname(
+          _prsact),
+        infla_X_words)
+      cond(
+        (not(
+            memq(
+              _iboat,
+              robjs(
+                _here)))
+          tell(
+            "The boat must be on the ground to be inflated.")),
+        (memq(
+            find_obj(
+              "PUMP"),
+            aobjs(
+              ,winner))
+          tell(
+            "The boat inflates and appears seaworthy.")
+          setg(
+            deflate_X_flag,
+            <>)
+          remove_object(
+            _iboat)
+          insert_object(
+            _rboat,
+            _here)),
+        (tell(
+            "I don't think you have enough lung-power to inflate this boat."))))))
+
+define(
+  over_falls,
+  (),
+  cond(
+    (_EQ_Q(
+        1(
+          ,prsvec),
+        ,look_X_words)),
+    (jigs_up(
+        "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently."))))
+
+setg(
+  buoy_flag_X_flag,
+  t)
+
+define(
+  shake,
+  ("AUX"
+    (prsobj
+      2(
+        ,prsvec))
+    (here
+      ,here)),
+  #decl
+    ((prsobj)
+      object
+      (here)
+      room),
+  cond(
+    (object_action(
+        )),
+    (and(
+        not(
+          oopen_Q(
+            _prsobj)),
+        not(
+          empty_Q(
+            ocontents(
+              _prsobj))),
+        tell(
+          "It sounds like there is something inside the",
+          1,
+          odesc2(
+            _prsobj),
+          "."))),
+    (and(
+        oopen_Q(
+          _prsobj),
+        not(
+          empty_Q(
+            ocontents(
+              _prsobj))))
+      mapf(
+        <>,
+        function(
+          (x),
+          #decl
+            ((x)
+              object),
+          put(
+            _x,
+            ,ocan,
+            <>),
+          insert_object(
+            _x,
+            _here)),
+        ocontents(
+          _prsobj))
+      put(
+        _prsobj,
+        ,ocontents,
+        ())
+      tell(
+        "All of the objects spill onto the floor."))))
+
+define(
+  rivr4_room,
+  (),
+  and(
+    memq(
+      find_obj(
+        "BUOY"),
+      aobjs(
+        ,winner)),
+    ,buoy_flag_X_flag,
+    tell(
+      "Something seems funny about the feel of the buoy."),
+    setg(
+      buoy_flag_X_flag,
+      <>)))
+
+define(
+  beach_room,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (shov
+      find_obj(
+        "SHOVE"))
+    (here
+      ,here)
+    cnt),
+  #decl
+    ((prsact)
+      verb
+      (shov)
+      object
+      (here)
+      room
+      (cnt)
+      fix),
+  cond(
+    (and(
+        _EQ_Q(
+          vname(
+            _prsact),
+          dig_X_words),
+        _EQ_Q(
+          _shov,
+          2(
+            ,prsvec)))
+      put(
+        _here,
+        ,rvars,
+        set(
+          cnt,
+          _(
+            1,
+            rvars(
+              _here))))
+      cond(
+        (g_Q(
+            _cnt,
+            4)
+          put(
+            _here,
+            ,rvars,
+            0)
+          jigs_up(
+            "The hole collapses, smothering you.")),
+        (_EQ_Q(
+            _cnt,
+            4)
+          tell(
+            "You can see a small statue here in the sand.")
+          tro(
+            find_obj(
+              "STATU"),
+            ,ovison)
+          put(
+            _here,
+            ,rvars,
+            _cnt)),
+        (l_Q(
+            _cnt,
+            0)),
+        (tell(
+            nth(
+              ,bdigs,
+              _cnt)))))))
+
+define(
+  tcave_room,
+  ("AUX"
+    (prsact
+      1(
+        ,prsvec))
+    (shov
+      find_obj(
+        "SHOVE"))
+    (here
+      ,here)
+    cnt),
+  #decl
+    ((prsact)
+      verb
+      (shov)
+      object
+      (here)
+      room
+      (cnt)
+      fix),
+  cond(
+    (and(
+        _EQ_Q(
+          vname(
+            _prsact),
+          dig_X_words),
+        _EQ_Q(
+          2(
+            ,prsvec),
+          _shov))
+      cond(
+        (memq(
+            find_obj(
+              "GUANO"),
+            robjs(
+              _here))
+          put(
+            _here,
+            ,rvars,
+            set(
+              cnt,
+              _(
+                1,
+                rvars(
+                  _here))))
+          cond(
+            (g_Q(
+                _cnt,
+                3)
+              tell(
+                "This is getting you nowhere.")),
+            (tell(
+                nth(
+                  ,cdigs,
+                  _cnt))))),
+        (tell(
+            "There's nothing to dig into here."))))))
+
+psetg(
+  cdigs,
+  '["You are digging into a pile of bat guano."
+      "You seem to be getting knee deep in guano."
+      "You are covered with bat turds, cretin."])
+
+psetg(
+  bdigs,
+  '["You seem to be digging a hole here."
+      "The hole is getting deeper, but that's about it."
+      "You are surrounded by a wall of sand on all sides."])
+
+gdecl(
+  (bdigs
+    cdigs),
+  vector(
+    [rest
+      string]))
+
+define(
+  geronimo,
+  (),
+  cond(
+    (_EQ_Q(
+        ,here,
+        find_room(
+          "BARRE"))
+      jigs_up(
+        "I didn't think you would REALLY try to go over the falls in a\nbarrel. It seems that some 450 feet below, you were met by a number\nof  unfriendly rocks and boulders, causing your immediate demise.  Is\nthis what 'over a barrel' means?")),
+    (tell(
+        "Wasn't he an Indian?"))))
+
+psetg(
+  swimyuks,
+  '["I don't really see how."
+      "I think that swimming is best performed in water."
+      "Perhaps it is your head that is swimming."])
+
+gdecl(
+  (swimyuks),
+  vector(
+    [rest
+      string]))
+
+define(
+  swimmer,
+  ("AUX"
+    (swimyuks
+      ,swimyuks)),
+  #decl
+    ((swimyuks)
+      vector(
+        [rest
+          string])),
+  cond(
+    (rtrnn(
+        ,here,
+        ,rfillbit)
+      tell(
+        "Swimming is not allowed in this dungeon.")),
+    (tell(
+        pick_one(
+          _swimyuks)))))
+
+define(
+  grue_function,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))),
+  #decl
+    ((prsa)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,exami_X_words)
+      tell(
+        "The grue is a sinister, lurking presence in the dark places of the\nearth.  Its favorite diet is adventurers, but its insatiable\nappetite is tempered by its fear of light.  No grue has ever been\nseen by the light of day, and few have survived its fearsome jaws\nto tell the tale.")),
+    (_EQ_Q(
+        _prsa,
+        ,find_X_words)
+      tell(
+        "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!"))))
+
+setg(
+  btie_X_flag,
+  <>)
+
+setg(
+  binf_X_flag,
+  <>)
+
+define(
+  balloon,
+  ballact,
+  ("OPTIONAL"
+    (arg
+      <>)
+    "AUX"
+    (prsvec
+      ,prsvec)
+    (ball
+      find_obj(
+        "BALLO"))
+    (prsa
+      1(
+        _prsvec))
+    (prso
+      2(
+        _prsvec))
+    (cont
+      find_obj(
+        "RECEP"))
+    m
+    (binf
+      ,binf_X_flag)
+    blabe),
+  #decl
+    ((arg)
+      or(
+        atom,
+        false)
+      (blabe
+        ball
+        cont
+        recep)
+      object
+      (prsa)
+      verb
+      (prso)
+      or(
+        object,
+        direction)
+      (m)
+      or(
+        false,
+        primtype(
+          vector))
+      (prsvec)
+      vector(
+        [3
+          any])
+      (binf)
+      or(
+        false,
+        room)
+      (m)
+      or(
+        false,
+        <primtype(
+            vector)
+          any
+          room>)),
+  cond(
+    (_EQ_Q(
+        _arg,
+        read_out)
+      cond(
+        (_EQ_Q(
+            _prsa,
+            ,look_X_words)
+          cond(
+            (_binf
+              tell(
+                "The cloth bag is inflated and there is a",
+                1,
+                odesc2(
+                  _binf),
+                "burning in the receptacle.")),
+            (tell(
+                "The cloth bag is draped over the the basket.")))
+          cond(
+            (,btie_X_flag
+              tell(
+                "The balloon is tied to the hook.")))))
+      return(
+        <>,
+        _ballact))),
+  cond(
+    (_EQ_Q(
+        _arg,
+        read_in)
+      cond(
+        (_EQ_Q(
+            _prsa,
+            ,walk_X_words)
+          cond(
+            (set(
+                m,
+                memq(
+                  chtype(
+                    2(
+                      _prsvec),
+                    atom),
+                  rexits(
+                    ,here)))
+              cond(
+                (,btie_X_flag
+                  tell(
+                    "You are tied to the ledge.")
+                  return(
+                    t,
+                    _ballact)),
+                (else
+                  and(
+                    not(
+                      rtrnn(
+                        2(
+                          _m),
+                        ,rmungbit)),
+                    setg(
+                      bloc,
+                      2(
+                        _m)))
+                  return(
+                    <>,
+                    _ballact)))),
+            (tell(
+                "I'm afraid you can't control the balloon in this way.")
+              return(
+                t,
+                _ballact)))),
+        (and(
+            _EQ_Q(
+              _prsa,
+              ,take_X_words),
+            _EQ_Q(
+              ,binf_X_flag,
+              _prso))
+          tell(
+            "You don't really want to hold a burning",
+            1,
+            odesc2(
+              _prso),
+            ".")
+          return(
+            t,
+            _ballact)),
+        (and(
+            _EQ_Q(
+              _prsa,
+              ,put_X_words),
+            _EQ_Q(
+              3(
+                _prsvec),
+              _cont),
+            not(
+              empty_Q(
+                ocontents(
+                  _cont))))
+          tell(
+            "The receptacle is already occupied.")
+          return(
+            t,
+            _ballact)),
+        (return(
+            <>,
+            _ballact))))),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,burn_X_words)
+      cond(
+        (memq(
+            _prso,
+            ocontents(
+              _cont))
+          tell(
+            "The",
+            1,
+            odesc2(
+              _prso),
+            "burns inside the receptacle.")
+          setg(
+            burnup_int,
+            clock_int(
+              ,brnin,
+              _(
+                osize(
+                  _prso),
+                20)))
+          tro(
+            _prso,
+            ,flamebit)
+          trz(
+            _prso,
+            _(
+              ,takebit,
+              ,readbit))
+          put(
+            _prso,
+            ,olight_Q,
+            1)
+          cond(
+            (,binf_X_flag),
+            (tell(
+                "The cloth bag inflates as it fills with hot air.")
+              cond(
+                (not(
+                    ,blab_X_flag)
+                  put(
+                    _ball,
+                    ,ocontents,
+                    (set(
+                        blabe,
+                        find_obj(
+                          "BLABE"))
+                      _X
+                      ocontents(
+                        _ball)))
+                  put(
+                    _blabe,
+                    ,ocan,
+                    _ball)))
+              setg(
+                blab_X_flag,
+                t)
+              setg(
+                binf_X_flag,
+                _prso)
+              clock_int(
+                ,bint,
+                3)))))),
+    (and(
+        _EQ_Q(
+          _prsa,
+          ,disem_X_words),
+        rtrnn(
+          ,here,
+          ,rlandbit))
+      cond(
+        (,binf_X_flag
+          clock_int(
+            ,bint,
+            3)))
+      <>),
+    (_EQ_Q(
+        _prsa,
+        ,c_int_X_words)
+      cond(
+        (or(
+            and(
+              oopen_Q(
+                _cont),
+              ,binf_X_flag),
+            member(
+              "LEDG",
+              spname(
+                rid(
+                  ,here))))
+          rise_and_shine(
+            _ball,
+            ,here)),
+        (decline_and_fall(
+            _ball,
+            ,here))))))
+
+setg(
+  blab_X_flag,
+  <>)
+
+gdecl(
+  (burnup_int
+    bint),
+  cevent)
+
+define(
+  rise_and_shine,
+  (ball
+    here
+    "AUX"
+    (s
+      top(
+        ,scrstr))
+    m
+    (in_Q
+      _EQ_Q(
+        avehicle(
+          ,winner),
+        _ball))
+    (bl
+      ,bloc)
+    foo),
+  #decl
+    ((ball)
+      object
+      (here
+        bl)
+      room
+      (m)
+      or(
+        false,
+        string)
+      (s)
+      string
+      (in_Q)
+      or(
+        atom,
+        false)
+      (foo)
+      cevent),
+  clock_int(
+    ,bint,
+    3),
+  cond(
+    (set(
+        m,
+        member(
+          "VAIR",
+          spname(
+            rid(
+              _bl))))
+      cond(
+        (__Q(
+            rest(
+              _m,
+              4),
+            "4")
+          clock_disable(
+            ,burnup_int)
+          clock_disable(
+            ,bint)
+          remove_object(
+            _ball)
+          insert_object(
+            find_obj(
+              "DBALL"),
+            find_room(
+              "VLBOT"))
+          cond(
+            (_in_Q
+              jigs_up(
+                "Your balloon has hit the rim of the volcano, ripping the cloth and\ncausing you a 500 foot drop.  Did you get your flight insurance?")),
+            (tell(
+                "You hear a boom and notice that the balloon is falling to the ground.")))
+          setg(
+            bloc,
+            find_room(
+              "VLBOT"))),
+        (substruc(
+            spname(
+              rid(
+                _bl)),
+            0,
+            4,
+            _s)
+          put(
+            _s,
+            5,
+            chtype(
+              _(
+                chtype(
+                  5(
+                    _m),
+                  fix),
+                1),
+              character))
+          cond(
+            (_in_Q
+              goto(
+                setg(
+                  bloc,
+                  find_room(
+                    _s)))
+              tell(
+                "The balloon ascends.")
+              room_info(
+                t)),
+            (put_balloon(
+                _ball,
+                _bl,
+                _s,
+                "ascends.")))))),
+    (set(
+        m,
+        member(
+          "LEDG",
+          spname(
+            rid(
+              _bl))))
+      substruc(
+        "VAIR",
+        0,
+        4,
+        _s)
+      put(
+        _s,
+        5,
+        5(
+          _m))
+      cond(
+        (_in_Q
+          goto(
+            setg(
+              bloc,
+              find_room(
+                _s)))
+          tell(
+            "The balloon leaves the ledge.")
+          room_info(
+            t)),
+        (clock_int(
+            ,vlgin,
+            10)
+          put_balloon(
+            _ball,
+            _bl,
+            _s,
+            "floats away.  It seems to be ascending,\ndue to its light load.")))),
+    (_in_Q
+      goto(
+        setg(
+          bloc,
+          find_room(
+            "VAIR1")))
+      tell(
+        "The balloon rises slowly from the ground.")
+      room_info(
+        t)),
+    (put_balloon(
+        _ball,
+        _bl,
+        "VAIR1",
+        "lifts off."))))
+
+define(
+  put_balloon,
+  (ball
+    here
+    there
+    str),
+  #decl
+    ((ball)
+      object
+      (here)
+      room
+      (there
+        str)
+      string),
+  and(
+    member(
+      "LEDG",
+      spname(
+        rid(
+          ,here))),
+    tell(
+      "You watch as the balloon slowly",
+      1,
+      _str)),
+  remove_object(
+    _ball),
+  insert_object(
+    _ball,
+    setg(
+      bloc,
+      find_room(
+        _there))))
+
+gdecl(
+  (bloc),
+  room)
+
+define(
+  decline_and_fall,
+  (ball
+    here
+    "AUX"
+    (s
+      top(
+        ,scrstr))
+    m
+    (bl
+      ,bloc)
+    (in_Q
+      _EQ_Q(
+        avehicle(
+          ,winner),
+        _ball))
+    foo),
+  #decl
+    ((ball)
+      object
+      (here
+        bl)
+      room
+      (m)
+      or(
+        false,
+        string)
+      (s)
+      string
+      (in_Q)
+      or(
+        atom,
+        false)
+      (foo)
+      cevent),
+  clock_int(
+    ,bint,
+    3),
+  cond(
+    (set(
+        m,
+        member(
+          "VAIR",
+          spname(
+            rid(
+              _bl))))
+      cond(
+        (__Q(
+            rest(
+              _m,
+              4),
+            "1")
+          cond(
+            (_in_Q
+              goto(
+                setg(
+                  bloc,
+                  find_room(
+                    "VLBOT")))
+              cond(
+                (,binf_X_flag
+                  tell(
+                    "The balloon has landed.")
+                  room_info(
+                    t)),
+                (t
+                  remove_object(
+                    _ball)
+                  insert_object(
+                    find_obj(
+                      "DBALL"),
+                    ,bloc)
+                  put(
+                    ,winner,
+                    ,avehicle,
+                    <>)
+                  clock_disable(
+                    set(
+                      foo,
+                      clock_int(
+                        ,bint,
+                        0)))
+                  tell(
+                    "You have landed, but the balloon did not survive.")))),
+            (put_balloon(
+                _ball,
+                _bl,
+                "VLBOT",
+                "lands.")))),
+        (substruc(
+            spname(
+              rid(
+                _bl)),
+            0,
+            4,
+            _s)
+          put(
+            _s,
+            5,
+            chtype(
+              _(
+                chtype(
+                  5(
+                    _m),
+                  fix),
+                1),
+              character))
+          cond(
+            (_in_Q
+              goto(
+                setg(
+                  bloc,
+                  find_room(
+                    _s)))
+              tell(
+                "The balloon descends.")
+              room_info(
+                t)),
+            (put_balloon(
+                _ball,
+                _bl,
+                _s,
+                "descends."))))))))
+
+define(
+  wire_function,
+  ("AUX"
+    (pv
+      ,prsvec)
+    (prsa
+      1(
+        _pv))
+    (prso
+      2(
+        _pv))
+    (prsi
+      3(
+        _pv))
+    (bint
+      ,bint)),
+  #decl
+    ((bint)
+      cevent
+      (pv)
+      vector
+      (prsa)
+      verb
+      (prso
+        prsi)
+      prsobj),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,tie_X_words)
+      cond(
+        (and(
+            _EQ_Q(
+              _prso,
+              find_obj(
+                "BROPE")),
+            or(
+              _EQ_Q(
+                _prsi,
+                find_obj(
+                  "HOOK1")),
+              _EQ_Q(
+                _prsi,
+                find_obj(
+                  "HOOK2"))))
+          setg(
+            btie_X_flag,
+            t)
+          clock_disable(
+            _bint)
+          tell(
+            "The balloon is fastened to the hook.")))),
+    (and(
+        _EQ_Q(
+          _prsa,
+          ,untie_X_words),
+        _EQ_Q(
+          _prso,
+          find_obj(
+            "BROPE")))
+      cond(
+        (,btie_X_flag
+          clock_enable(
+            set(
+              bint,
+              clock_int(
+                ,bint,
+                3)))
+          setg(
+            btie_X_flag,
+            <>)
+          tell(
+            "The wire falls off of the hook.")),
+        (tell(
+            "The wire is not tied to anything."))))))
+
+define(
+  burnup,
+  ("AUX"
+    (r
+      find_obj(
+        "RECEP"))
+    (obj
+      1(
+        ocontents(
+          _r)))),
+  #decl
+    ((r
+        obj)
+      object),
+  put(
+    _r,
+    ,ocontents,
+    splice_out(
+      _obj,
+      ocontents(
+        _r))),
+  tell(
+    "It seems that the",
+    1,
+    odesc2(
+      _obj),
+    "has burned out, and the cloth\nbag starts to collapse."),
+  setg(
+    binf_X_flag,
+    <>),
+  t)
+
+setg(
+  safe_flag_X_flag,
+  <>)
+
+define(
+  safe_room,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))),
+  #decl
+    ((prsa)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,look_X_words)
+      tell(
+        "You are in a dusty old room which is virtually featureless, except\nfor an exit on the north side.",
+        1,
+        cond(
+          (not(
+              ,safe_flag_X_flag)
+            "Imbedded in the far wall, there is a rusty old box.  It appears that\nthe box is somewhat damaged, since an oblong hole has been chipped\nout of the front of it."),
+          ("On the far wall is a rusty box, whose door has been blown off."))))))
+
+define(
+  safe_function,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))),
+  #decl
+    ((prsa)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,take_X_words)
+      tell(
+        "The box is imbedded in the wall.")),
+    (_EQ_Q(
+        _prsa,
+        ,open_X_words)
+      cond(
+        (,safe_flag_X_flag
+          tell(
+            "The box has no door!")),
+        (tell(
+            "The box is rusted and will not open.")))),
+    (_EQ_Q(
+        _prsa,
+        ,close_X_words)
+      cond(
+        (,safe_flag_X_flag
+          tell(
+            "The box has no door!")),
+        (tell(
+            "The box is not open, chomper!")))),
+    (_EQ_Q(
+        _prsa,
+        ,blast_X_words)
+      tell(
+        "What do you expect, BOOM?"))))
+
+psetg(
+  brick_boom,
+  "Now you've done it.  It seems that the brick has other properties\nthan weight, namely the ability to blow you to smithereens.")
+
+define(
+  brick_function,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))),
+  #decl
+    ((prsa)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,burn_X_words)
+      jigs_up(
+        ,brick_boom))))
+
+define(
+  fuse_function,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))
+    (fuse
+      find_obj(
+        "FUSE"))
+    (brick
+      find_obj(
+        "BRICK"))
+    brick_room
+    oc),
+  #decl
+    ((prsa)
+      verb
+      (fuse
+        brick)
+      object
+      (brick_room)
+      or(
+        room,
+        false)
+      (oc)
+      or(
+        object,
+        false)),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,burn_X_words)
+      tell(
+        "The wire starts to burn.")
+      put(
+        _fuse,
+        ,orand,
+        [0
+          clock_int(
+            ,fusin,
+            2)])),
+    (_EQ_Q(
+        _prsa,
+        ,c_int_X_words)
+      trz(
+        _fuse,
+        ,ovison)
+      cond(
+        (_EQ_Q(
+            ocan(
+              _fuse),
+            _brick)
+          trz(
+            _brick,
+            ,ovison)
+          cond(
+            (set(
+                oc,
+                ocan(
+                  _brick))
+              set(
+                brick_room,
+                oroom(
+                  _oc))),
+            (set(
+                brick_room,
+                oroom(
+                  _brick))))
+          or(
+            _brick_room,
+            set(
+              brick_room,
+              ,here))
+          cond(
+            (_EQ_Q(
+                _brick_room,
+                ,here)
+              mung_room(
+                _brick_room,
+                "The way is blocked by debris from an explosion.")
+              jigs_up(
+                ,brick_boom)),
+            (_EQ_Q(
+                _brick_room,
+                find_room(
+                  "SAFE"))
+              clock_int(
+                ,safin,
+                5)
+              setg(
+                munged_room,
+                oroom(
+                  _brick))
+              tell(
+                "There is an explosion nearby.")
+              cond(
+                (memq(
+                    _brick,
+                    ocontents(
+                      find_obj(
+                        "SSLOT")))
+                  trz(
+                    find_obj(
+                      "SSLOT"),
+                    ,ovison)
+                  put(
+                    find_obj(
+                      "SAFE"),
+                    ,oopen_Q,
+                    t)
+                  setg(
+                    safe_flag_X_flag,
+                    t)))),
+            (tell(
+                "There is an explosion nearby.")
+              clock_int(
+                ,safin,
+                5)
+              setg(
+                munged_room,
+                _brick_room)
+              mapf(
+                <>,
+                function(
+                  (x),
+                  cond(
+                    (can_take_Q(
+                        _x)
+                      trz(
+                        _x,
+                        ,ovison)))),
+                robjs(
+                  _brick_room))
+              cond(
+                (_EQ_Q(
+                    _brick_room,
+                    find_room(
+                      "LROOM"))
+                  mapf(
+                    <>,
+                    function(
+                      (x),
+                      #decl
+                        ((x)
+                          object),
+                      put(
+                        _x,
+                        ,ocan,
+                        <>)),
+                    ocontents(
+                      find_obj(
+                        "TCASE")))
+                  put(
+                    find_obj(
+                      "TCASE"),
+                    ,ocontents,
+                    ())))))),
+        (or(
+            not(
+              oroom(
+                _fuse)),
+            _EQ_Q(
+              ,here,
+              oroom(
+                _fuse)))
+          tell(
+            "The wire rapidly burns into nothingness."))))))
+
+define(
+  safe_mung,
+  ("AUX"
+    (rm
+      ,munged_room)),
+  #decl
+    ((rm)
+      room),
+  cond(
+    (_EQ_Q(
+        ,here,
+        _rm)
+      jigs_up(
+        cond(
+          (rtrnn(
+              _rm,
+              ,rhousebit)
+            "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."),
+          ("The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake.")))),
+    (tell(
+        "You may recall your recent explosion.  Well, probably as a result of\nthat, you hear an ominous rumbling, as if one of the rooms in the\ndungeon had collapsed.")
+      and(
+        _EQ_Q(
+          _rm,
+          find_room(
+            "SAFE")),
+        clock_int(
+          ,ledin,
+          8)))),
+  mung_room(
+    or(
+      oroom(
+        find_obj(
+          "BRICK")),
+      ,here),
+    "The way is blocked by debris from an explosion."))
+
+define(
+  ledge_mung,
+  ("AUX"
+    (rm
+      find_room(
+        "LEDG4"))),
+  #decl
+    ((rm)
+      room),
+  cond(
+    (_EQ_Q(
+        ,here,
+        _rm)
+      cond(
+        (avehicle(
+            ,winner)
+          cond(
+            (,btie_X_flag
+              set(
+                rm,
+                find_room(
+                  "VLBOT"))
+              setg(
+                bloc,
+                _rm)
+              remove_object(
+                find_obj(
+                  "BALLO"))
+              insert_object(
+                find_obj(
+                  "DBALL"),
+                _rm)
+              setg(
+                btie_X_flag,
+                <>)
+              setg(
+                binf_X_flag,
+                <>)
+              clock_disable(
+                ,bint)
+              clock_disable(
+                ,brnin)
+              jigs_up(
+                "The ledge collapses, probably as a result of the explosion.  A large\nchunk of it, which is attached to the hook, drags you down to the\nground.  Fatally.")),
+            (tell(
+                "The ledge collapses, leaving you with no place to land.")))),
+        (t
+          jigs_up(
+            "The force of the explosion has caused the ledge to collapse\nbelatedly.")))),
+    (tell(
+        "The ledge collapses, giving you a narrow escape."))),
+  mung_room(
+    _rm,
+    "The ledge has collapsed and cannot be landed on."))
+
+define(
+  ledge_function,
+  ("AUX"
+    (prsa
+      1(
+        ,prsvec))),
+  #decl
+    ((prsa)
+      verb),
+  cond(
+    (_EQ_Q(
+        _prsa,
+        ,walk_in_X_words)
+      and(
+        ,safe_flag_X_flag,
+        tell(
+          "Behind you, the walls of the safe room collapse into rubble."),
+        setg(
+          safe_flag_X_flag,
+          <>))),
+    (_EQ_Q(
+        _prsa,
+        ,look_X_words)
+      tell(
+        "You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.",
+        1,
+        cond(
+          (rtrnn(
+              find_room(
+                "SAFE"),
+              ,rmungbit)
+            "The way to the south is blocked by rubble."),
+          ("There is a small door to the south."))))))
+
+define(
+  blast,
+  (),
+  cond(
+    (_EQ_Q(
+        ,here,
+        find_room(
+          "SAFE"))),
+    (tell(
+        "I don't really know how to do that."))))
+
+define(
+  volgnome,
+  (),
+  cond(
+    (member(
+        "LEDG",
+        spname(
+          rid(
+            ,here)))
+      tell(
+        "A volcano gnome seems to walk straight out of the wall and says\n'I have a very busy appointment schedule and little time to waste on\ntresspassers, but for a small fee, I'll show you the way out.'  You\nnotice the gnome nervously glancing at his watch.")
+      insert_object(
+        find_obj(
+          "GNOME"),
+        ,here)),
+    (clock_int(
+        ,vlgin,
+        1))))
+
+setg(
+  gnome_door_X_flag,
+  setg(
+    gnome_flag_X_flag,
+    <>))
+
+define(
+  gnome_function,
+  ("AUX"
+    (pv
+      ,prsvec)
+    (prsa
+      1(
+        _pv))
+    (prso
+      2(
+        _pv))),
+  #decl
+    ((pv)
+      vector
+      (prsa)
+      verb
+      (prso)
+      prsobj),
+  cond(
+    (and(
+        or(
+          _EQ_Q(
+            _prsa,
+            ,give_X_words),
+          _EQ_Q(
+            _prsa,
+            ,throw_X_words)),
+        type_Q(
+          _prso,
+          object),
+        cond(
+          (n_EQ_Q(
+              otval(
+                _prso),
+              0)
+            tell(
+              "Thank you very much for the",
+              1,
+              odesc2(
+                _prso),
+              ".  I don't believe \nI've ever seen one as beautiful. 'Follow me', he says, and a door \nappears on the west end of the ledge.  Through the door, you can see\na narrow chimney sloping steeply downward.")
+            setg(
+              gnome_door_X_flag,
+              t)),
+          (tell(
+              "'That wasn't quite what I had in mind', he says, crunching the",
+              1,
+              odesc2(
+                _prso),
+              "in his rock-hard hands.")
+            remove_object(
+              _prso))))),
+    (_EQ_Q(
+        _prsa,
+        ,c_int_X_words)
+      tell(
+        "The gnome glances at his watch.  'Oops.  I'm late for an\nappointment!' He disappears, leaving you alone on the ledge.")
+      remove_object(
+        find_obj(
+          "GNOME"))),
+    (tell(
+        "The gnome appears increasingly nervous.")
+      or(
+        ,gnome_flag_X_flag,
+        clock_int(
+          ,gnoin,
+          5))
+      setg(
+        gnome_flag_X_flag,
+        t))))
