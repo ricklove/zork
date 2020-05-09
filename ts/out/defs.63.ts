@@ -49,10 +49,10 @@ defmac(
       chtype,
       form(
         andb,
-        _bit,
+        LOCALS.bit,
         form(
           oflags,
-          _obj)),
+          LOCALS.obj)),
       fix),
     0))
 
@@ -66,10 +66,10 @@ defmac(
       chtype,
       form(
         andb,
-        _bit,
+        LOCALS.bit,
         form(
           rbits,
-          _rm)),
+          LOCALS.rm)),
       fix),
     0))
 
@@ -79,16 +79,16 @@ defmac(
     () => bit),
   form(
     put,
-    _rm,
+    LOCALS.rm,
     GLOBALS.rbits,
     form(
       andb,
       form(
         rbits,
-        _rm),
+        LOCALS.rm),
       form(
         xorb,
-        _bit,
+        LOCALS.bit,
         _1))))
 
 defmac(
@@ -97,14 +97,14 @@ defmac(
     () => bit),
   form(
     put,
-    _obj,
+    LOCALS.obj,
     GLOBALS.oflags,
     form(
       xorb,
       form(
         oflags,
-        _obj),
-      _bit)))
+        LOCALS.obj),
+      LOCALS.bit)))
 
 defmac(
   trz,
@@ -112,16 +112,16 @@ defmac(
     () => bit),
   form(
     put,
-    _obj,
+    LOCALS.obj,
     GLOBALS.oflags,
     form(
       andb,
       form(
         oflags,
-        _obj),
+        LOCALS.obj),
       form(
         xorb,
-        _bit,
+        LOCALS.bit,
         _1))))
 
 defmac(
@@ -130,14 +130,14 @@ defmac(
     () => bit),
   form(
     put,
-    _obj,
+    LOCALS.obj,
     GLOBALS.oflags,
     form(
       orb,
       form(
         oflags,
-        _obj),
-      _bit)))
+        LOCALS.obj),
+      LOCALS.bit)))
 
 defmac(
   rtro,
@@ -145,14 +145,14 @@ defmac(
     () => bit),
   form(
     put,
-    _rm,
+    LOCALS.rm,
     GLOBALS.rbits,
     form(
       orb,
       form(
         rbits,
-        _rm),
-      _bit)))
+        LOCALS.rm),
+      LOCALS.bit)))
 
 // room definition
 
@@ -369,10 +369,10 @@ defmac(
       chtype,
       form(
         andb,
-        _bit,
+        LOCALS.bit,
         form(
           vword,
-          _v)),
+          LOCALS.v)),
       fix),
     0))
 
@@ -670,7 +670,7 @@ defmac(
   (() => obj),
   form(
     trnn,
-    _obj,
+    LOCALS.obj,
     form(
       _,
       GLOBALS.doorbit,
@@ -685,7 +685,7 @@ defmac(
     not,
     form(
       trnn,
-      _obj,
+      LOCALS.obj,
       GLOBALS.ndescbit)))
 
 "if object is a light or aflame, then flaming"
@@ -697,13 +697,13 @@ defmac(
     and,
     form(
       trnn,
-      _obj,
+      LOCALS.obj,
       GLOBALS.flamebit),
     form(
       1_Q,
       form(
         olight_Q,
-        _obj))))
+        LOCALS.obj))))
 
 "if object visible and open or transparent, can see inside it"
 
@@ -714,15 +714,15 @@ defmac(
     and,
     form(
       ovis_Q,
-      _obj),
+      LOCALS.obj),
     form(
       or,
       form(
         transparent_Q,
-        _obj),
+        LOCALS.obj),
       form(
         oopen_Q,
-        _obj))))
+        LOCALS.obj))))
 
 // demons
 
@@ -835,10 +835,10 @@ defmac(
         el,
         form(
           memq,
-          _dir,
+          LOCALS.dir,
           form(
             rexits,
-            _rm)))),
+            LOCALS.rm)))),
     #decl
       ((el)
         <primtype(
@@ -867,10 +867,10 @@ defmac(
         el,
         form(
           memq,
-          _dir,
+          LOCALS.dir,
           form(
             rexits,
-            _rm)))),
+            LOCALS.rm)))),
     #decl
       ((el)
         <primtype(
@@ -898,7 +898,7 @@ defmac(
     ((foo
         form(
           oaction,
-          _obj))),
+          LOCALS.obj))),
     form(
       cond,
       (form(
@@ -947,40 +947,40 @@ define(
         room)),
   cond(
     (LOCALS.ocan = ocan(
-          _obj)
+          LOCALS.obj)
       put(
-        _ocan,
+        LOCALS.ocan,
         GLOBALS.ocontents,
         splice_out(
-          _obj,
+          LOCALS.obj,
           ocontents(
-            _ocan)))),
+            LOCALS.ocan)))),
     (LOCALS.oroom = oroom(
-          _obj)
+          LOCALS.obj)
       put(
-        _oroom,
+        LOCALS.oroom,
         GLOBALS.robjs,
         splice_out(
-          _obj,
+          LOCALS.obj,
           robjs(
-            _oroom)))),
+            LOCALS.oroom)))),
     (memq(
-        _obj,
+        LOCALS.obj,
         robjs(
           GLOBALS.here))
       put(
         GLOBALS.here,
         GLOBALS.robjs,
         splice_out(
-          _obj,
+          LOCALS.obj,
           robjs(
             GLOBALS.here))))),
   put(
-    _obj,
+    LOCALS.obj,
     GLOBALS.oroom,
     null),
   put(
-    _obj,
+    LOCALS.obj,
     GLOBALS.ocan,
     null))
 
@@ -990,17 +990,17 @@ defmac(
     () => room),
   form(
     put,
-    _room,
+    LOCALS.room,
     GLOBALS.robjs,
     (form(
         put,
-        _obj,
+        LOCALS.obj,
         GLOBALS.oroom,
-        _room)
+        LOCALS.room)
       chtype(
         form(
           robjs,
-          _room),
+          LOCALS.room),
         segment))))
 
 defmac(
@@ -1011,17 +1011,17 @@ defmac(
       () => GLOBALS.winner)),
   form(
     put,
-    _winner,
+    LOCALS.winner,
     GLOBALS.aobjs,
     (form(
         put,
-        _obj,
+        LOCALS.obj,
         GLOBALS.oroom,
         null)
       chtype(
         form(
           aobjs,
-          _winner),
+          LOCALS.winner),
         segment))))
 
 defmac(
@@ -1032,14 +1032,14 @@ defmac(
       () => GLOBALS.winner)),
   form(
     put,
-    _winner,
+    LOCALS.winner,
     GLOBALS.aobjs,
     form(
       splice_out,
-      _obj,
+      LOCALS.obj,
       form(
         aobjs,
-        _winner))))
+        LOCALS.winner))))
 
 define(
   kill_obj,
@@ -1052,18 +1052,18 @@ define(
       adv),
   cond(
     (memq(
-        _obj,
+        LOCALS.obj,
         aobjs(
-          _winner))
+          LOCALS.winner))
       put(
-        _winner,
+        LOCALS.winner,
         GLOBALS.aobjs,
         splice_out(
-          _obj,
+          LOCALS.obj,
           aobjs(
-            _winner)))),
+            LOCALS.winner)))),
     (remove_object(
-        _obj))))
+        LOCALS.obj))))
 
 define(
   flush_obj,
@@ -1086,20 +1086,20 @@ define(
         "AUX"
         (y
           find_obj(
-            _x))),
+            LOCALS.x))),
       #decl
         ((y)
           object),
       and(
         memq(
-          _y,
+          LOCALS.y,
           aobjs(
-            _winner)),
+            LOCALS.winner)),
         drop_object(
           find_obj(
-            _x),
-          _winner))),
-    _objs))
+            LOCALS.x),
+          LOCALS.winner))),
+    LOCALS.objs))
 
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
 
@@ -1125,24 +1125,25 @@ define(
         (and(
             g_Q(
               otval(
-                _x),
+                LOCALS.x),
               0),
             not(
               trnn(
-                _x,
+                LOCALS.x,
                 GLOBALS.sacredbit)))
           put(
-            _win,
+            LOCALS.win,
             GLOBALS.aobjs,
             splice_out(
-              _x,
+              LOCALS.x,
               aobjs(
-                _win)))
-          LOCALS.newlist = (_x
-              _X_newlist)))),
+                LOCALS.win)))
+          LOCALS.newlist = (LOCALS.x
+              _X
+              LOCALS.newlist)))),
     aobjs(
-      _win)),
-  _newlist)
+      LOCALS.win)),
+  LOCALS.newlist)
 
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
 
@@ -1171,35 +1172,36 @@ define(
         (and(
             g_Q(
               otval(
-                _x),
+                LOCALS.x),
               0),
             not(
               trnn(
-                _x,
+                LOCALS.x,
                 GLOBALS.sacredbit)),
             ovis_Q(
-              _x),
+              LOCALS.x),
             prob(
-              _prob))
+              LOCALS.prob))
           remove_object(
-            _x)
+            LOCALS.x)
           put(
-            _x,
+            LOCALS.x,
             GLOBALS.otouch_Q,
             t)
-          LOCALS.newlist = (_x
-              _X_newlist)),
+          LOCALS.newlist = (LOCALS.x
+              _X
+              LOCALS.newlist)),
         (type_Q(
             orand(
-              _x),
+              LOCALS.x),
             adv)
           LOCALS.newlist = rob_adv(
               orand(
-                _x),
-              _newlist)))),
+                LOCALS.x),
+              LOCALS.newlist)))),
     robjs(
-      _rm)),
-  _newlist)
+      LOCALS.rm)),
+  LOCALS.newlist)
 
 define(
   valuables_Q,
@@ -1217,12 +1219,12 @@ define(
       cond(
         (g_Q(
             otval(
-              _x),
+              LOCALS.x),
             0)
           mapleave(
             t)))),
     aobjs(
-      _adv)))
+      LOCALS.adv)))
 
 define(
   armed_Q,
@@ -1242,12 +1244,12 @@ define(
           object),
       cond(
         (memq(
-            _x,
-            _weapons)
+            LOCALS.x,
+            LOCALS.weapons)
           mapleave(
             t)))),
     aobjs(
-      _adv)))
+      LOCALS.adv)))
 
 define(
   light_source,
@@ -1263,11 +1265,11 @@ define(
       (not(
             0_Q(
               olight_Q(
-                _x)))
+                LOCALS.x)))
           mapleave(
-            _x))),
+            LOCALS.x))),
     aobjs(
-      _me)))
+      LOCALS.me)))
 
 define(
   get_demon,
@@ -1275,7 +1277,7 @@ define(
     "AUX"
     (obj
       find_obj(
-        _id))
+        LOCALS.id))
     (dems
       GLOBALS.demons)),
   #decl
@@ -1297,18 +1299,18 @@ define(
       cond(
         (_EQ_Q(
             hobj(
-              _x),
-            _obj)
+              LOCALS.x),
+            LOCALS.obj)
           mapleave(
-            _x)))),
-    _dems))
+            LOCALS.x)))),
+    LOCALS.dems))
 
 defmac(
   pick_one,
   (() => vec),
   form(
     nth,
-    _vec,
+    LOCALS.vec,
     form(
       _,
       1,
@@ -1318,14 +1320,14 @@ defmac(
           random),
         form(
           length,
-          _vec)))))
+          LOCALS.vec)))))
 
 defmac(
   clock_disable,
   (() => ev),
   form(
     put,
-    _ev,
+    LOCALS.ev,
     GLOBALS.cflag,
     null))
 
@@ -1334,7 +1336,7 @@ defmac(
   (() => ev),
   form(
     put,
-    _ev,
+    LOCALS.ev,
     GLOBALS.cflag,
     t))
 
@@ -1354,22 +1356,22 @@ define(
         atom,
         false)),
   reset(
-    _inchan),
+    LOCALS.inchan),
   readstring(
-    _inbuf,
-    _inchan,
+    LOCALS.inbuf,
+    LOCALS.inchan,
     GLOBALS.reader_string),
   cond(
-    (_no_is_bad_Q
+    (LOCALS.no_is_bad_Q
       not(
         memq(
           1(
-            _inbuf),
+            LOCALS.inbuf),
           "NnfF"))),
     (t
       memq(
         1(
-          _inbuf),
+          LOCALS.inbuf),
         "TtYy"))))
 
 defmac(
@@ -1382,26 +1384,26 @@ defmac(
     cond,
     (form(
         type_Q,
-        _frob,
+        LOCALS.frob,
         atom)
       cond(
-        (_mumble
+        (LOCALS.mumble
           form(
             apply,
             form(
               gval,
-              _frob),
-            _mumble)),
+              LOCALS.frob),
+            LOCALS.mumble)),
         (form(
             apply,
             form(
               gval,
-              _frob))))),
+              LOCALS.frob))))),
     (t
       form(
         dispatch,
-        _frob,
-        _mumble))))
+        LOCALS.frob,
+        LOCALS.mumble))))
 
 define(
   da,
@@ -1419,28 +1421,28 @@ define(
     (),
     cond(
       (type_Q(
-          _fn,
+          LOCALS.fn,
           fix)
         dispatch(
-          _fn,
-          _foo)),
+          LOCALS.fn,
+          LOCALS.foo)),
       (applicable_Q(
-          _fn)
+          LOCALS.fn)
         cond(
-          (_foo
+          (LOCALS.foo
             apply(
-              _fn,
-              _foo)),
+              LOCALS.fn,
+              LOCALS.foo)),
           (apply(
-              _fn)))),
+              LOCALS.fn)))),
       (gassigned_Q(
-          _fn)
-        LOCALS.fn = GLOBALS._fn
+          LOCALS.fn)
+        LOCALS.fn = ,LOCALS.fn
         again(
           )),
       (error(
           unassigned_variable_X_errors,
-          _fn,
+          LOCALS.fn,
           da)))))
 
 "OLD MAZER"
@@ -1485,26 +1487,28 @@ define(
         false)),
   cond(
     (type_Q(
-        _id,
+        LOCALS.id,
         atom)
       LOCALS.id = spname(
-          _id))),
+          LOCALS.id))),
   cond(
     (and(
         LOCALS.atm = lookup(
-            _id,
+            LOCALS.id,
             GLOBALS.room_obl),
         gassigned_Q(
-          _atm))
-      GLOBALS._atm),
+          LOCALS.atm))
+      ,LOCALS.atm),
     (or(
-        _atm,
+        LOCALS.atm,
         LOCALS.atm = insert(
-            _id,
+            LOCALS.id,
             GLOBALS.room_obl))
-      GLOBALS._atm = LOCALS.room = chtype(
+      setg(
+        LOCALS.atm,
+        LOCALS.room = chtype(
             vector(
-              _atm,
+              LOCALS.atm,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
               null,
@@ -1516,11 +1520,11 @@ define(
               0,
               0,
               t),
-            room)
-      GLOBALS.rooms = (_room
+            room))
+      GLOBALS.rooms = (LOCALS.room
           _X
           GLOBALS.rooms)
-      _room)))
+      LOCALS.room)))
 
 define(
   find_obj,
@@ -1543,25 +1547,27 @@ define(
       object),
   cond(
     (type_Q(
-        _id,
+        LOCALS.id,
         atom)
       LOCALS.id = spname(
-          _id))),
+          LOCALS.id))),
   cond(
     (and(
         LOCALS.atm = lookup(
-            _id,
+            LOCALS.id,
             GLOBALS.object_obl),
         gassigned_Q(
-          _atm))
-      GLOBALS._atm),
+          LOCALS.atm))
+      ,LOCALS.atm),
     (or(
-        _atm,
+        LOCALS.atm,
         LOCALS.atm = insert(
-            _id,
+            LOCALS.id,
             GLOBALS.object_obl))
-      GLOBALS._atm = LOCALS.obj = chtype(
-            [_atm
+      setg(
+        LOCALS.atm,
+        LOCALS.obj = chtype(
+            [LOCALS.atm
               GLOBALS.null_syn
               GLOBALS.null_desc
               GLOBALS.null_desc
@@ -1581,11 +1587,11 @@ define(
               GLOBALS.null_syn
               null
               null],
-            object)
-      GLOBALS.objects = (_obj
+            object))
+      GLOBALS.objects = (LOCALS.obj
           _X
           GLOBALS.objects)
-      _obj)))
+      LOCALS.obj)))
 
 define(
   function_print,
@@ -1599,31 +1605,31 @@ define(
         false)),
   cond(
     (not(
-        _frob)
+        LOCALS.frob)
       princ(
         "<>")),
     (type_Q(
-        _frob,
+        LOCALS.frob,
         rsubr,
         rsubr_entry)
       prin1(
         2(
-          _frob))),
+          LOCALS.frob))),
     (type_Q(
-        _frob,
+        LOCALS.frob,
         atom)
       prin1(
-        _frob)),
+        LOCALS.frob)),
     (type_Q(
-        _frob,
+        LOCALS.frob,
         offset)
       princ(
         "#OFFSET")
       prin1(
         get_atom(
-          _frob))),
+          LOCALS.frob))),
     (princ(
         "#FUNCTION")
       prin1(
         get_atom(
-          _frob)))))
+          LOCALS.frob)))))

@@ -31,23 +31,25 @@ define(
         false)),
   cond(
     (type_Q(
-        _name,
+        LOCALS.name,
         string)
       cond(
         (LOCALS.atm = lookup(
-              _name,
-              _obl)),
+              LOCALS.name,
+              LOCALS.obl)),
         (t
           LOCALS.atm = insert(
-              _name,
-              _obl)))),
-    (LOCALS.atm = _name)),
-  GLOBALS._atm = chtype(
-      [_tick
-        _app
-        _flg
-        _atm],
-      cevent))
+              LOCALS.name,
+              LOCALS.obl)))),
+    (LOCALS.atm = LOCALS.name)),
+  setg(
+    LOCALS.atm,
+    chtype(
+      [LOCALS.tick
+        LOCALS.app
+        LOCALS.flg
+        LOCALS.atm],
+      cevent)))
 
 define(
   cons_obj,
@@ -70,20 +72,20 @@ define(
         "AUX"
         (y
           find_obj(
-            _x))),
+            LOCALS.x))),
       #decl
         ((y)
           object),
       or(
         memq(
-          _y,
+          LOCALS.y,
           aobjs(
-            _winner)),
+            LOCALS.winner)),
         take_object(
           find_obj(
-            _x),
-          _winner))),
-    _objs))
+            LOCALS.x),
+          LOCALS.winner))),
+    LOCALS.objs))
 
 define(
   cexit,
@@ -125,29 +127,31 @@ define(
         false)),
   cond(
     (type_Q(
-        _flid,
+        LOCALS.flid,
         atom)
       LOCALS.flid = spname(
-          _flid))),
+          LOCALS.flid))),
   LOCALS.atm = or(
       lookup(
-        _flid,
+        LOCALS.flid,
         get(
           flag,
           oblist)),
       insert(
-        _flid,
+        LOCALS.flid,
         get(
           flag,
           oblist))),
-  GLOBALS._atm = _flag,
+  setg(
+    LOCALS.atm,
+    LOCALS.flag),
   chtype(
     vector(
-      _atm,
+      LOCALS.atm,
       find_room(
-        _rmid),
-      _str,
-      _funct),
+        LOCALS.rmid),
+      LOCALS.str,
+      LOCALS.funct),
     cexit))
 
 define(
@@ -160,7 +164,7 @@ define(
     (frob
       ivector(
         length(
-          _pairs)))),
+          LOCALS.pairs)))),
   #decl
     ((pairs)
       tuple(
@@ -183,7 +187,7 @@ define(
     (atm
       rm
       (f
-        _frob)),
+        LOCALS.frob)),
     #decl
       ((atm)
         or(
@@ -200,53 +204,53 @@ define(
           and(
             LOCALS.atm = lookup(
                 1(
-                  _pairs),
-                _dobl),
+                  LOCALS.pairs),
+                LOCALS.dobl),
             gassigned_Q(
-              _atm),
+              LOCALS.atm),
             type_Q(
-              GLOBALS._atm,
+              ,LOCALS.atm,
               direction)))
         put(
-          _f,
+          LOCALS.f,
           1,
-          _atm)
+          LOCALS.atm)
         cond(
           (type_Q(
               2(
-                _pairs),
+                LOCALS.pairs),
               string)
             put(
-              _f,
+              LOCALS.f,
               2,
               find_room(
                 2(
-                  _pairs)))),
+                  LOCALS.pairs)))),
           (put(
-              _f,
+              LOCALS.f,
               2,
               2(
-                _pairs))))
+                LOCALS.pairs))))
         LOCALS.f = rest(
-            _f,
+            LOCALS.f,
             2)),
       (t
         put(
-          _pairs,
+          LOCALS.pairs,
           1,
           error(
             illegal_direction,
             1(
-              _pairs))))),
+              LOCALS.pairs))))),
     cond(
       (empty_Q(
           LOCALS.pairs = rest(
-              _pairs,
+              LOCALS.pairs,
               2))
         return(
           )))),
   chtype(
-    _frob,
+    LOCALS.frob,
     exit))
 
 define(
@@ -268,7 +272,7 @@ define(
     "AUX"
     (rm
       find_room(
-        _id))),
+        LOCALS.id))),
   #decl
     ((id)
       or(
@@ -296,51 +300,51 @@ define(
       room),
   GLOBALS.score_max = _(
       GLOBALS.score_max,
-      _val),
+      LOCALS.val),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rbits,
-    _bit),
+    LOCALS.bit),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rval,
-    _val),
+    LOCALS.val),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.robjs,
-    _objs),
+    LOCALS.objs),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rdesc1,
-    _d1),
+    LOCALS.d1),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rdesc2,
-    _d2),
+    LOCALS.d2),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rexits,
-    _ex),
+    LOCALS.ex),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.raction,
     cond(
       (type_Q(
-          _app,
+          LOCALS.app,
           false,
           form)
         null),
-      (_app))),
+      (LOCALS.app))),
   put(
-    _rm,
+    LOCALS.rm,
     GLOBALS.rlight_Q,
     cond(
       (type_Q(
-          _lit_Q,
+          LOCALS.lit_Q,
           form)
         null),
       (t
-        _lit_Q))),
+        LOCALS.lit_Q))),
   mapf(
     null,
     function(
@@ -349,12 +353,12 @@ define(
         ((x)
           object),
       put(
-        _x,
+        LOCALS.x,
         GLOBALS.oroom,
-        _rm)),
+        LOCALS.rm)),
     robjs(
-      _rm)),
-  _rm)
+      LOCALS.rm)),
+  LOCALS.rm)
 
 define(
   sobject,
@@ -368,15 +372,16 @@ define(
       (tup)
       tuple),
   object(
-    _id,
+    LOCALS.id,
     "",
-    _str,
+    LOCALS.str,
     %null,
     null,
     (),
     null,
     _(
-      _X_tup)))
+      _X,
+      LOCALS.tup)))
 
 define(
   aobject,
@@ -393,15 +398,16 @@ define(
       (app)
       atom),
   object(
-    _id,
+    LOCALS.id,
     "",
-    _str,
+    LOCALS.str,
     %null,
-    _app,
+    LOCALS.app,
     (),
     null,
     _(
-      _X_tup)))
+      _X,
+      LOCALS.tup)))
 
 define(
   object,
@@ -461,13 +467,13 @@ define(
         false)),
   GLOBALS.score_max = _(
       GLOBALS.score_max,
-      _s1,
-      _s2),
+      LOCALS.s1,
+      LOCALS.s2),
   or(
     0_Q(
-      _light_Q),
+      LOCALS.light_Q),
     LOCALS.flags = _(
-        _flags,
+        LOCALS.flags,
         GLOBALS.lightbit)),
   put(
     put(
@@ -482,37 +488,37 @@ define(
                       put(
                         put(
                           find_obj(
-                            _id),
+                            LOCALS.id),
                           GLOBALS.odesc1,
-                          _desc1),
+                          LOCALS.desc1),
                         GLOBALS.ocapac,
-                        _capac),
+                        LOCALS.capac),
                       GLOBALS.osize,
-                      _size),
+                      LOCALS.size),
                     GLOBALS.odesco,
-                    _desco),
+                    LOCALS.desco),
                   GLOBALS.olight_Q,
-                  _light_Q),
+                  LOCALS.light_Q),
                 GLOBALS.oflags,
-                _flags),
+                LOCALS.flags),
               GLOBALS.ofval,
-              _s1),
+              LOCALS.s1),
             GLOBALS.otval,
-            _s2),
+            LOCALS.s2),
           GLOBALS.ocan,
-          _can),
+          LOCALS.can),
         GLOBALS.ocontents,
-        _conts),
+        LOCALS.conts),
       GLOBALS.odesc2,
-      _desc2),
+      LOCALS.desc2),
     GLOBALS.oaction,
     cond(
       (type_Q(
-          _app,
+          LOCALS.app,
           false,
           form)
         null),
-      (_app))))
+      (LOCALS.app))))
 
 define(
   find_prep,
@@ -520,7 +526,7 @@ define(
     "AUX"
     (atm
       add_word(
-        _str))),
+        LOCALS.str))),
   #decl
     ((str)
       string
@@ -530,17 +536,19 @@ define(
         atom)),
   cond(
     (gassigned_Q(
-        _atm)
+        LOCALS.atm)
       cond(
         (type_Q(
-            GLOBALS._atm,
+            ,LOCALS.atm,
             prep)
-          GLOBALS._atm),
+          ,LOCALS.atm),
         (error(
             no_prep_X_errors)))),
-    (GLOBALS._atm = chtype(
-          _atm,
-          prep))))
+    (setg(
+        LOCALS.atm,
+        chtype(
+          LOCALS.atm,
+          prep)))))
 
 define(
   add_action,
@@ -552,10 +560,10 @@ define(
     (atm
       or(
         lookup(
-          _nam,
+          LOCALS.nam,
           GLOBALS.actions),
         insert(
-          _nam,
+          LOCALS.nam,
           GLOBALS.actions)))),
   #decl
     ((nam
@@ -567,13 +575,16 @@ define(
           vector])
       (atm)
       atom),
-  GLOBALS._atm = chtype(
-      [_atm
+  setg(
+    LOCALS.atm,
+    chtype(
+      [LOCALS.atm
         make_action(
-          _X_decl)
-        _str],
-      action),
-  _atm)
+          _X,
+          LOCALS.decl)
+        LOCALS.str],
+      action)),
+  LOCALS.atm)
 
 define(
   add_directions,
@@ -599,15 +610,15 @@ define(
       setg,
       LOCALS.atm = or(
             lookup(
-              _x,
-              _dir),
+              LOCALS.x,
+              LOCALS.dir),
             insert(
-              _x,
-              _dir)),
+              LOCALS.x,
+              LOCALS.dir)),
       chtype(
-          _atm,
+          LOCALS.atm,
           direction)),
-    _nms))
+    LOCALS.nms))
 
 define(
   dsynonym,
@@ -633,7 +644,7 @@ define(
       (dir)
       oblist),
   LOCALS.val = add_directions(
-      _str),
+      LOCALS.str),
   mapf(
     null,
     /* FUNCTION */
@@ -641,13 +652,13 @@ define(
       setg,
       LOCALS.atm = or(
             lookup(
-              _x,
-              _dir),
+              LOCALS.x,
+              LOCALS.dir),
             insert(
-              _x,
-              _dir)),
-      _val),
-    _nms))
+              LOCALS.x,
+              LOCALS.dir)),
+      LOCALS.val),
+    LOCALS.nms))
 
 define(
   vsynonym,
@@ -672,23 +683,23 @@ define(
       any),
   cond(
     (LOCALS.atm = lookup(
-          _n1,
+          LOCALS.n1,
           GLOBALS.words)
-      LOCALS.val = GLOBALS._atm
+      LOCALS.val = ,LOCALS.atm
       mapf(
         null,
         /* FUNCTION */
           (x) => (
           setg,
           add_word(
-              _x),
-          _val),
-        _n2))),
+              LOCALS.x),
+          LOCALS.val),
+        LOCALS.n2))),
   cond(
     (LOCALS.atm = lookup(
-          _n1,
+          LOCALS.n1,
           GLOBALS.actions)
-      LOCALS.val = GLOBALS._atm
+      LOCALS.val = ,LOCALS.atm
       mapf(
         null,
         /* FUNCTION */
@@ -696,13 +707,13 @@ define(
           setg,
           or(
               lookup(
-                _x,
+                LOCALS.x,
                 GLOBALS.actions),
               insert(
-                _x,
+                LOCALS.x,
                 GLOBALS.actions)),
-          _val),
-        _n2))))
+          LOCALS.val),
+        LOCALS.n2))))
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
@@ -714,10 +725,10 @@ define(
       string),
   or(
     lookup(
-      _w,
+      LOCALS.w,
       GLOBALS.words),
     insert(
-      _w,
+      LOCALS.w,
       GLOBALS.words)))
 
 define(
@@ -738,11 +749,11 @@ define(
           string),
       setg(
         add_word(
-          _x),
+          LOCALS.x),
         chtype(
-          _x,
+          LOCALS.x,
           buzz))),
-    _w))
+    LOCALS.w))
 
 define(
   add_zork,
@@ -769,11 +780,11 @@ define(
           atom),
       setg(
         LOCALS.atm = add_word(
-            _x),
+            LOCALS.x),
         chtype(
-          _atm,
-          _nm))),
-    _w))
+          LOCALS.atm,
+          LOCALS.nm))),
+    LOCALS.w))
 
 define(
   add_object,
@@ -796,7 +807,7 @@ define(
       (objs)
       oblist),
   put(
-    _obj,
+    LOCALS.obj,
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
@@ -807,14 +818,14 @@ define(
             string),
         or(
           lookup(
-            _x,
-            _objs),
+            LOCALS.x,
+            LOCALS.objs),
           insert(
-            _x,
-            _objs))),
-      _names)),
+            LOCALS.x,
+            LOCALS.objs))),
+      LOCALS.names)),
   put(
-    _obj,
+    LOCALS.obj,
     GLOBALS.oadjs,
     mapf(
       GLOBALS.uvector,
@@ -822,13 +833,13 @@ define(
         (w) => (
         add_zork,
         adjective,
-        _w),
-      _adj)),
+        LOCALS.w),
+      LOCALS.adj)),
   chutype(
     oadjs(
-      _obj),
+      LOCALS.obj),
     adjective),
-  _obj)
+  LOCALS.obj)
 
 define(
   synonym,
@@ -853,18 +864,18 @@ define(
       any),
   cond(
     (LOCALS.atm = lookup(
-          _n1,
+          LOCALS.n1,
           GLOBALS.words)
-      LOCALS.val = GLOBALS._atm
+      LOCALS.val = ,LOCALS.atm
       mapf(
         null,
         /* FUNCTION */
           (x) => (
           setg,
           add_word(
-              _x),
-          _val),
-        _n2))))
+              LOCALS.x),
+          LOCALS.val),
+        LOCALS.n2))))
 
 define(
   add_abbrev,
@@ -877,13 +888,13 @@ define(
       string),
   setg(
     add_word(
-      _x),
+      LOCALS.x),
     or(
       lookup(
-        _y,
+        LOCALS.y,
         GLOBALS.words),
       insert(
-        _y,
+        LOCALS.y,
         GLOBALS.words))))
 
 define(
@@ -906,24 +917,24 @@ define(
             (_EQ_Q(
                 haction(
                   1(
-                    _y)),
+                    LOCALS.y)),
                 haction(
-                  _x))
+                  LOCALS.x))
               put(
-                _y,
+                LOCALS.y,
                 1,
-                _x)
+                LOCALS.x)
               mapleave(
                 t)))),
         GLOBALS.demons)),
-    (GLOBALS.demons = (_x
+    (GLOBALS.demons = (LOCALS.x
           _X
           GLOBALS.demons))))
 
 define(
   add_star,
   (obj),
-  GLOBALS.stars = (_obj
+  GLOBALS.stars = (LOCALS.obj
       _X
       GLOBALS.stars))
 
@@ -951,15 +962,16 @@ define(
           cond(
             (_EQ_Q(
                 aobj(
-                  _x),
+                  LOCALS.x),
                 aobj(
-                  _adv))
+                  LOCALS.adv))
               mapleave(
                 t)))),
-        _actors)),
-    (GLOBALS.actors = (_adv
-          _X_actors))),
-  _adv)
+        LOCALS.actors)),
+    (GLOBALS.actors = (LOCALS.adv
+          _X
+          LOCALS.actors))),
+  LOCALS.adv)
 
 define(
   add_desc,
@@ -971,19 +983,19 @@ define(
       (str)
       string),
   put(
-    _obj,
+    LOCALS.obj,
     GLOBALS.oread,
-    _str))
+    LOCALS.str))
 
 define(
   sadd_action,
   (str1
     atm),
   add_action(
-    _str1,
+    LOCALS.str1,
     "",
-    [[_str1
-        _atm]]))
+    [[LOCALS.str1
+        LOCALS.atm]]))
 
 define(
   1add_action,
@@ -991,11 +1003,11 @@ define(
     str2
     atm),
   add_action(
-    _str1,
-    _str2,
+    LOCALS.str1,
+    LOCALS.str2,
     [obj
-      [_str1
-        _atm]]))
+      [LOCALS.str1
+        LOCALS.atm]]))
 
 define(
   aadd_action,
@@ -1003,10 +1015,10 @@ define(
     str2
     atm),
   add_action(
-    _str1,
-    _str2,
+    LOCALS.str1,
+    LOCALS.str2,
     [(_1
         aobjs
         no_take)
-      [_str1
-        _atm]]))
+      [LOCALS.str1
+        LOCALS.atm]]))

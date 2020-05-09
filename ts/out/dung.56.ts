@@ -5352,7 +5352,7 @@ mapf(
     rtro,
     find_room(
         spname(
-          _x)),
+          LOCALS.x)),
     GLOBALS.rfillbit),
   _X,
   [resen_X_rooms
@@ -5378,7 +5378,7 @@ mapf(
     (x) => (
     rtro,
     find_room(
-        _x),
+        LOCALS.x),
     GLOBALS.rhousebit),
   ["LROOM"
     "KITCH"
@@ -5390,7 +5390,7 @@ mapf(
     (x) => (
     rtro,
     find_room(
-        _x),
+        LOCALS.x),
     GLOBALS.rsacredbit),
   ["BSHAF"
     "RIVR1"

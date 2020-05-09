@@ -1062,7 +1062,8 @@
           <SET
             NEWLIST
             (.X
-              !.NEWLIST)>)>>
+              !
+              .NEWLIST)>)>>
     <AOBJS
       .WIN>>
   .NEWLIST>
@@ -1111,7 +1112,8 @@
           <SET
             NEWLIST
             (.X
-              !.NEWLIST)>)
+              !
+              .NEWLIST)>)
         (<TYPE?
             <ORAND
               .X>

@@ -73,13 +73,13 @@ export class ZToken implements ZNodeBase {
 
 type OpenSymbol = '<' | '(' | '{' | '['
     | '"'
-    | ',' | '#' | '\'' | ';' | '%';
+    | '.' | ',' | '#' | '\'' | ';' | '%';
 type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1 | 2;
 
 const isOpenSymbol = (c: string): c is OpenSymbol => {
     return (c === '<' || c === '(' || c === '{' || c === '['
         || c === '"'
-        || c === ','
+        || c === '.' || c === ','
         || c === '#' || c === '\'' || c === ';'
         || c === '%'
     );
@@ -99,6 +99,7 @@ const getCloseSymbol = (s: OpenSymbol) => {
         case '"': return '"';
         // Take one token
         case ',': return 1;
+        case '.': return 1;
         case '#': return 2;
         case '\'': return 1;
         case ';': return 1;
@@ -109,6 +110,11 @@ const getCloseSymbol = (s: OpenSymbol) => {
 
 const WhiteSpace = ' \f\n\r\t\v';
 const isWhitespace = (c: string) => WhiteSpace.indexOf(c) >= 0;
+
+const nums = '0123456789'.split('');
+const isFloat = (c: StringSpan) => {
+    return c.trim().trim(nums).length <= 0;
+}
 
 export const parseContent = (source: StringSpan, start: number, depth: number, openSymbol: undefined | OpenSymbol, closeSymbol: undefined | CloseSymbol, parentCloseSymbol?: CloseSymbol): ZNode => {
 
@@ -198,12 +204,21 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
 
         // Handle Children 
         if (isOpenSymbol(c)) {
-            closeText(i);
-            const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), typeof closeSymbol === 'number' ? parentCloseSymbol : closeSymbol);
-            nodes.push(child);
-            i = child._raw.start + child._raw.length - 1;
-            end = i;
-            continue;
+
+            const isNum = c === '.' && iTextStart && isFloat(source.newRange(iTextStart, i - iTextStart));
+
+            if (!isNum) {
+                closeText(i);
+                const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), typeof closeSymbol === 'number' ? parentCloseSymbol : closeSymbol);
+                nodes.push(child);
+                i = child._raw.start + child._raw.length - 1;
+                end = i;
+                continue;
+            }
+
+            // if (isNum) {
+            //     var breakdance = true;
+            // }
         }
 
 

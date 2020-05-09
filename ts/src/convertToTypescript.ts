@@ -99,12 +99,12 @@ export const convertToTypescript = (node: ZNode): string => {
         }
 
         // Local Values 
-        // Get with ,atom
-        // if (firstNode && openSymbol === '.'
-        //     && firstNode.kind === 'ZToken'
-        // ) {
-        //     return `LOCALS.${convertToTypescriptName(firstNode)}`;
-        // }
+        // Get with .atom
+        if (firstNode && openSymbol === '.'
+            && firstNode.kind === 'ZToken'
+        ) {
+            return `LOCALS.${convertToTypescriptName(firstNode)}`;
+        }
         // <LVAL atom>
         if (firstNode && openSymbol === '<'
             && firstNode.kind === 'ZToken'
