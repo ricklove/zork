@@ -27,7 +27,7 @@ export class ZFile implements ZNode {
     toString() { return `${this.title} \n\n---\n\n ${this.content}`; }
 };
 
-export class ZTag implements ZNode {
+export class ZList implements ZNode {
     _debug?: string = undefined;
     kind = 'ZTag';
 
@@ -49,12 +49,12 @@ export class ZTag implements ZNode {
         }
     }
     toString() {
-        const indent = [...new Array(this.depth)].join('  ');
-        return `${this.openSymbol}${this.nodes.map(x => `${x}`).join(`\n${indent}`)}${this.closeSymbol}`;
+        const indent = [...new Array(this.depth + 1)].join('  ');
+        return `${this.openSymbol}${this.nodes.map(x => `${x}`).join(`\n${indent}`)}${this.closeSymbol !== 1 ? this.closeSymbol : ''}`;
     }
 };
 
-export class ZWord implements ZNode {
+export class ZToken implements ZNode {
     _debug?: string = undefined;
     kind = 'ZWord';
 
@@ -71,19 +71,23 @@ export class ZWord implements ZNode {
     }
 };
 
-type OpenSymbol = '<' | '(' | '{' | '"';
-type CloseSymbol = '>' | ')' | '}' | '"';
+type OpenSymbol = '<' | '(' | '{' | '[' | '"' | '\'' | ';';
+type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1;
 const getCloseSymbol = (s: OpenSymbol) => {
     switch (s) {
         case '<': return '>';
         case '(': return ')';
         case '{': return '}';
+        case '[': return ']';
         case '"': return '"';
+        // Take one token
+        case '\'': return 1;
+        case ';': return 1;
         default: throw new Error(`Unknown Symbol ${s}`);
     }
 };
 
-export const parseContent = (source: StringSpan, start: number, depth: number, openSymbol: undefined | OpenSymbol, closeSymbol: undefined | CloseSymbol): ZNode => {
+export const parseContent = (source: StringSpan, start: number, depth: number, openSymbol: undefined | OpenSymbol, closeSymbol: undefined | CloseSymbol, parentCloseSymbol?: CloseSymbol): ZNode => {
 
     const debug = source.newRange(start, source.length);
 
@@ -100,24 +104,62 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         const trimmed = raw.trim();
         // if (trimmed.length <= 0) { return; }
 
-        nodes.push(new ZWord({ raw }));
+        nodes.push(new ZToken({ raw }));
         iTextStart = null;
     };
 
     for (let i = innerStart; i < source.start + source.length; i++) {
         const c = source.getChar(i);
 
-        // Handle Comments
-        if (c === ';') {
-            closeText(i);
+        // Handle Strings (To non-escaped "")
+        if (openSymbol === '"') {
 
-            const iEnd = source.transform(i, 0).indexOf('\n');
-            comments.push(source.newRange(i, iEnd - i));
-            i = iEnd - 1;
-            end = i;
+            // Handle Escapes (ignore next char)
+            if (c === '\\') {
+                i++;
+                end = i;
+                continue;
+            }
+
+            // Handle End of string
+            if (c === '"') {
+                closeText(i);
+                end = i;
+                break;
+            }
+
+            if (iTextStart == null) {
+                iTextStart = i;
+            }
+
             continue;
         }
 
+        // Handle Close (Single Token)
+        if (closeSymbol === 1) {
+            // Node created
+            if (nodes.length >= 1) {
+                i--;
+                end = i;
+                break;
+            }
+            // Parent Close
+            if (c === parentCloseSymbol) {
+                closeText(i);
+                i--;
+                end = i;
+                break;
+            }
+        }
+
+        // Handle Whitespace
+        if (c === ' ' || c === '\t' || c === '\r' || c === '\n') {
+            closeText(i);
+            continue;
+        }
+
+
+        // Handle Close (Close Symbol)
         if (c === closeSymbol) {
             closeText(i);
             end = i;
@@ -125,14 +167,17 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         }
 
         // Handle Children 
-        if (c === '<' || c === '(' || c === '{' || c === '"') {
+        if (c === '<' || c === '(' || c === '{' || c === '['
+            || c === '"'
+            || c === '\'' || c === ';') {
             closeText(i);
-            const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c));
+            const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), closeSymbol);
             nodes.push(child);
             i = child._raw.start + child._raw.length - 1;
             end = i;
             continue;
         }
+
 
         // Handle Text
         if (iTextStart == null) {
@@ -142,16 +187,7 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         end = i;
     }
 
-    // Handle End of line Comment (after close)
-    let i = end + 1;
-    if (source.newRange(i, source.length - i).trimStart().startsWith(';')) {
-        const iEnd = source.transform(i, 0).indexOf('\n');
-        comments.push(source.newRange(i, iEnd - i));
-        i = iEnd - 1;
-        end = i;
-    }
-
-    return new ZTag({
+    return new ZList({
         raw: source.newRange(start, end - start + 1),
         openSymbol,
         closeSymbol,
