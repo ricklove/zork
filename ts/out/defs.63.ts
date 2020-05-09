@@ -946,10 +946,8 @@ define(
         false,
         room)),
   cond(
-    (set(
-        ocan,
-        ocan(
-          _obj))
+    (LOCALS.ocan = ocan(
+          _obj)
       put(
         _ocan,
         GLOBALS.ocontents,
@@ -957,10 +955,8 @@ define(
           _obj,
           ocontents(
             _ocan)))),
-    (set(
-        oroom,
-        oroom(
-          _obj))
+    (LOCALS.oroom = oroom(
+          _obj)
       put(
         _oroom,
         GLOBALS.robjs,
@@ -1142,10 +1138,8 @@ define(
               _x,
               aobjs(
                 _win)))
-          set(
-            newlist,
-            (_x
-              _X_newlist))))),
+          LOCALS.newlist = (_x
+              _X_newlist)))),
     aobjs(
       _win)),
   _newlist)
@@ -1193,20 +1187,16 @@ define(
             _x,
             GLOBALS.otouch_Q,
             t)
-          set(
-            newlist,
-            (_x
-              _X_newlist))),
+          LOCALS.newlist = (_x
+              _X_newlist)),
         (type_Q(
             orand(
               _x),
             adv)
-          set(
-            newlist,
-            rob_adv(
+          LOCALS.newlist = rob_adv(
               orand(
                 _x),
-              _newlist))))),
+              _newlist)))),
     robjs(
       _rm)),
   _newlist)
@@ -1445,9 +1435,7 @@ define(
               _fn)))),
       (gassigned_Q(
           _fn)
-        set(
-          fn,
-          GLOBALS._fn)
+        LOCALS.fn = GLOBALS._fn
         again(
           )),
       (error(
@@ -1499,30 +1487,22 @@ define(
     (type_Q(
         _id,
         atom)
-      set(
-        id,
-        spname(
-          _id)))),
+      LOCALS.id = spname(
+          _id))),
   cond(
     (and(
-        set(
-          atm,
-          lookup(
+        LOCALS.atm = lookup(
             _id,
-            GLOBALS.room_obl)),
+            GLOBALS.room_obl),
         gassigned_Q(
           _atm))
       GLOBALS._atm),
     (or(
         _atm,
-        set(
-          atm,
-          insert(
+        LOCALS.atm = insert(
             _id,
-            GLOBALS.room_obl)))
-      GLOBALS._atm = set(
-          room,
-          chtype(
+            GLOBALS.room_obl))
+      GLOBALS._atm = LOCALS.room = chtype(
             vector(
               _atm,
               GLOBALS.null_desc,
@@ -1536,7 +1516,7 @@ define(
               0,
               0,
               t),
-            room))
+            room)
       GLOBALS.rooms = (_room
           _X
           GLOBALS.rooms)
@@ -1565,30 +1545,22 @@ define(
     (type_Q(
         _id,
         atom)
-      set(
-        id,
-        spname(
-          _id)))),
+      LOCALS.id = spname(
+          _id))),
   cond(
     (and(
-        set(
-          atm,
-          lookup(
+        LOCALS.atm = lookup(
             _id,
-            GLOBALS.object_obl)),
+            GLOBALS.object_obl),
         gassigned_Q(
           _atm))
       GLOBALS._atm),
     (or(
         _atm,
-        set(
-          atm,
-          insert(
+        LOCALS.atm = insert(
             _id,
-            GLOBALS.object_obl)))
-      GLOBALS._atm = set(
-          obj,
-          chtype(
+            GLOBALS.object_obl))
+      GLOBALS._atm = LOCALS.obj = chtype(
             [_atm
               GLOBALS.null_syn
               GLOBALS.null_desc
@@ -1609,7 +1581,7 @@ define(
               GLOBALS.null_syn
               null
               null],
-            object))
+            object)
       GLOBALS.objects = (_obj
           _X
           GLOBALS.objects)

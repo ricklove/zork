@@ -51,12 +51,10 @@ define(
   GLOBALS.vers = _st,
   GLOBALS.script_channel = null,
   GLOBALS.raw_score = 0,
-  set(
-    ih,
-    on(
+  LOCALS.ih = on(
       "IPC",
       GLOBALS.ilo,
-      1)),
+      1),
   handler(
     GLOBALS.divert_int,
     GLOBALS.divert_hand),
@@ -87,10 +85,8 @@ define(
       cond(
         (and(
             type_Q(
-              set(
-                stv,
-                starter(
-                  )),
+              LOCALS.stv = starter(
+                  ),
               fix),
             g_Q(
               _stv,
@@ -140,12 +136,10 @@ define(
             uname(
               ),
             "ZORK")))
-      set(
-        bh,
-        on(
+      LOCALS.bh = on(
           "BLOCKED",
           GLOBALS.blo,
-          100))
+          100)
       start(
         "WHOUS",
         _st))))
@@ -298,38 +292,26 @@ define(
   cond(
     (_nm
       cond(
-        (set(
-            cma,
-            memq(
+        (LOCALS.cma = memq(
               _X__,
-              _nm))
-          set(
-            llst,
-            _(
+              _nm)
+          LOCALS.llst = _(
               length(
                 _nm),
               length(
-                _cma)))
-          set(
-            cma,
-            rest(
-              _cma))
-          set(
-            lfst,
-            length(
-              _cma))
+                _cma))
+          LOCALS.cma = rest(
+              _cma)
+          LOCALS.lfst = length(
+              _cma)
           cond(
-            (set(
-                jr,
-                memq(
+            (LOCALS.jr = memq(
                   _X__,
-                  _cma))
-              set(
-                lfst,
-                _(
+                  _cma)
+              LOCALS.lfst = _(
                   _lfst,
                   length(
-                    _jr)))))
+                    _jr))))
           repeat(
             (),
             cond(
@@ -345,46 +327,34 @@ define(
                         32),
                       ascii(
                         9)))
-                set(
-                  cma,
-                  rest(
-                    _cma))
-                set(
-                  lfst,
-                  _(
+                LOCALS.cma = rest(
+                    _cma)
+                LOCALS.lfst = _(
                     _lfst,
-                    1))),
+                    1)),
               (else
                 return(
                   ))))
-          set(
-            tlen,
-            _(
+          LOCALS.tlen = _(
               _lfst,
               1,
               _llst,
               length(
-                _jr)))
-          set(
-            str,
-            istring(
+                _jr))
+          LOCALS.str = istring(
               _tlen,
-              _X__))
-          set(
-            tstr,
-            _str)
+              _X__)
+          LOCALS.tstr = _str
           substruc(
             _cma,
             0,
             _lfst,
             _tstr)
-          set(
-            tstr,
-            rest(
+          LOCALS.tstr = rest(
               _tstr,
               _(
                 _lfst,
-                1)))
+                1))
           substruc(
             _nm,
             0,
@@ -422,12 +392,10 @@ define(
       string
       (len_i)
       fix),
-  set(
-    str,
-    memq(
+  LOCALS.str = memq(
       _X__,
       oread(
-        _o))),
+        _o)),
   cond(
     (_EQ_Q(
         1(
@@ -435,29 +403,21 @@ define(
             _str,
             2)),
         _X_1)
-      set(
-        str,
-        back(
+      LOCALS.str = back(
           _str,
-          2))
-      set(
-        len_i,
-        1)),
-    (set(
-        str,
-        back(
+          2)
+      LOCALS.len_i = 1),
+    (LOCALS.str = back(
           _str,
-          1)))),
-  set(
-    nstr,
-    rest(
+          1))),
+  LOCALS.nstr = rest(
       memq(
         _X__,
         rest(
           memq(
             _X__,
             _str))),
-      3)),
+      3),
   string(
     "There is an issue of US NEWS & DUNGEON REPORT dated",
     substruc(
@@ -605,10 +565,8 @@ define(
       or(
         atom,
         false)),
-  set(
-    time,
-    get_time(
-      )),
+  LOCALS.time = get_time(
+      ),
   GLOBALS.tell_flag = t,
   cond(
     (_loser_Q
@@ -619,11 +577,9 @@ define(
         "Played for"))),
   and(
     g_Q(
-      set(
-        mins,
-        _(
+      LOCALS.mins = _(
           _time,
-          3600)),
+          3600),
       0),
     prin1(
       _mins),
@@ -638,13 +594,11 @@ define(
       ",")),
   cond(
     (g_Q(
-        set(
-          mins,
-          mod(
+        LOCALS.mins = mod(
             _(
               _time,
               60),
-            60)),
+            60),
         0)
       prin1(
         _mins)
@@ -659,11 +613,9 @@ define(
       princ(
         ", and"))),
   prin1(
-    set(
-      mins,
-      mod(
+    LOCALS.mins = mod(
         _time,
-        60))),
+        60)),
   princ(
     "second"),
   or(
@@ -775,10 +727,8 @@ define(
                 _zork),
               file_system_error_X_errors),
             not(
-              set(
-                zf,
-                3(
-                  _zork))),
+              LOCALS.zf = 3(
+                  _zork)),
             _EQ_Q(
               length(
                 _zf),
@@ -909,14 +859,10 @@ define(
           "___"),
         quit(
           ))
-      set(
-        fn,
-        its_get_name(
-          _xunm))),
-    (set(
-        fn,
-        get_name(
-          )))),
+      LOCALS.fn = its_get_name(
+          _xunm)),
+    (LOCALS.fn = get_name(
+          ))),
   cond(
     (_fn
       GLOBALS.user_name = _fn),
@@ -997,14 +943,12 @@ define(
   cond(
     (GLOBALS.script_channel
       null),
-    (set(
-        ch,
-        open(
+    (LOCALS.ch = open(
           "PRINT",
           string(
             "MARC;%Z",
             GLOBALS.xunm,
-            ">")))
+            ">"))
       put(
         top(
           GLOBALS.inchan),
@@ -1066,34 +1010,28 @@ define(
               member(
                 "GUEST",
                 _unm)),
-            set(
-              ch,
-              open(
+            LOCALS.ch = open(
                 "READ",
                 ".FILE.",
                 "(DIR)",
                 "DSK",
-                _unm)),
+                _unm),
             close(
               _ch),
-            set(
-              ch,
-              open(
+            LOCALS.ch = open(
                 "READ",
                 "_MSGS_",
                 _unm,
                 "DSK",
-                _unm)),
+                _unm),
             close(
               _ch))),
-        set(
-          ch,
-          open(
+        LOCALS.ch = open(
             "PRINT",
             "ZORK",
             "SCRIPT",
             "DSK",
-            _unm)))
+            _unm))
       put(
         top(
           GLOBALS.inchan),
@@ -1189,14 +1127,12 @@ define(
             member(
               "GUEST",
               _unm)),
-          set(
-            ch,
-            open(
+          LOCALS.ch = open(
               "READ",
               ".FILE.",
               "(DIR)",
               "DSK",
-              _unm)),
+              _unm),
           close(
             _ch)))
       cond(
@@ -1205,14 +1141,12 @@ define(
               _muddle,
               100),
             and(
-              set(
-                ch,
-                open(
+              LOCALS.ch = open(
                   "READ",
                   "_MSGS_",
                   _unm,
                   "DSK",
-                  _unm)),
+                  _unm),
               close(
                 _ch)))
           and(
@@ -1233,9 +1167,7 @@ define(
           GLOBALS.played_time = get_time(
               )
           cond(
-            (set(
-                ch,
-                open(
+            (LOCALS.ch = open(
                   "PRINTB",
                   cond(
                     (l_Q(
@@ -1249,7 +1181,7 @@ define(
                       string(
                         "DSK:<",
                         _unm,
-                        ">ZORK.SAVE")))))
+                        ">ZORK.SAVE"))))
               save_game(
                 _ch)
               finish(
@@ -1297,19 +1229,15 @@ define(
     (l_Q(
         _muddle,
         100)
-      set(
-        str,
-        string(
+      LOCALS.str = string(
           "DSK:",
           GLOBALS.xunm,
-          ";ZORK SAVE"))),
+          ";ZORK SAVE")),
     (t
-      set(
-        str,
-        string(
+      LOCALS.str = string(
           "DSK:<",
           GLOBALS.xunm,
-          ">ZORK.SAVE")))),
+          ">ZORK.SAVE"))),
   prog(
     ((foo
         t)
@@ -1325,11 +1253,9 @@ define(
         special(
           string)),
     cond(
-      (set(
-          ch,
-          open(
+      (LOCALS.ch = open(
             "READB",
-            _str))
+            _str)
         cond(
           (restore_game(
               _ch)
@@ -1338,29 +1264,23 @@ define(
                   GLOBALS.xunm,
                   GLOBALS.winners)),
               (_EQ_Q(
-                  set(
-                    nowd,
-                    chtype(
+                  LOCALS.nowd = chtype(
                       getbits(
-                        set(
-                          now,
-                          chtype(
+                        LOCALS.now = chtype(
                             dskdate(
                               ),
-                            fix)),
+                            fix),
                         bits(
                           18,
                           18)),
-                      fix)),
-                  set(
-                    thend,
-                    chtype(
+                      fix),
+                  LOCALS.thend = chtype(
                       getbits(
                         GLOBALS.then,
                         bits(
                           18,
                           18)),
-                      fix)))
+                      fix))
                 cond(
                   (g__Q(
                       _(
@@ -1424,15 +1344,11 @@ define(
           g_Q(
             _muddle,
             100))
-        set(
-          str,
-          string(
+        LOCALS.str = string(
             sname(
               ),
-            "ZORK.SAVE"))
-        set(
-          foo,
-          null)
+            "ZORK.SAVE")
+        LOCALS.foo = null
         again(
           )),
       (tell(
@@ -1660,10 +1576,8 @@ define(
           empty_Q(
             rdesc1(
               _rm)),
-          set(
-            ra,
-            raction(
-              _rm)))
+          LOCALS.ra = raction(
+              _rm))
         put(
           GLOBALS.prsvec,
           1,
@@ -1743,10 +1657,8 @@ define(
         _rm)),
     cond(
       (and(
-          set(
-            ra,
-            raction(
-              _rm)),
+          LOCALS.ra = raction(
+              _rm),
           not(
             _full))
         put(
@@ -1897,14 +1809,10 @@ define(
         not(
           odesco(
             _obj)))
-      set(
-        str,
-        odesc1(
+      LOCALS.str = odesc1(
+          _obj)),
+    (LOCALS.str = odesco(
           _obj))),
-    (set(
-        str,
-        odesco(
-          _obj)))),
   cond(
     (empty_Q(
         _str)
@@ -1995,38 +1903,30 @@ define(
         or(
           false,
           verb)),
-    set(
-      vval,
-      t),
+    LOCALS.vval = t,
     cond(
       (not(
           _ivec)
-        set(
-          rm,
-          GLOBALS.here)
+        LOCALS.rm = GLOBALS.here
         princ(
           ">")
         GLOBALS.tell_flag = null
-        set(
-          inplen,
-          readstring(
+        LOCALS.inplen = readstring(
             _inbuf,
             GLOBALS.inchan,
-            _str))
+            _str)
         readchr(
           GLOBALS.inchan)
         or(
           GLOBALS.alt_flag,
           readchr(
             GLOBALS.inchan))
-        set(
-          vc,
-          lex(
+        LOCALS.vc = lex(
             _inbuf,
             rest(
               _inbuf,
               _inplen),
-            t)))),
+            t))),
     cond(
       (g_Q(
           _inplen,
@@ -2042,55 +1942,37 @@ define(
                     _vc),
                   null),
                 type_Q(
-                  set(
-                    cv,
-                    1(
-                      set(
-                        rvec,
-                        GLOBALS.prsvec))),
+                  LOCALS.cv = 1(
+                      LOCALS.rvec = GLOBALS.prsvec),
                   verb))
             cond(
               (not(
-                  set(
-                    random_action,
-                    aaction(
-                      _winner)))),
+                  LOCALS.random_action = aaction(
+                      _winner))),
               (apply_random(
                   _random_action)
                 return(
                   )))
             and(
-              set(
-                av,
-                avehicle(
-                  _winner)),
-              set(
-                random_action,
-                oaction(
-                  _av)),
-              set(
-                vval,
-                not(
+              LOCALS.av = avehicle(
+                  _winner),
+              LOCALS.random_action = oaction(
+                  _av),
+              LOCALS.vval = not(
                   apply_random(
                     _random_action,
-                    read_in))))
+                    read_in)))
             cond(
               (and(
                   _vval,
-                  set(
-                    random_action,
-                    vfcn(
-                      _cv)),
+                  LOCALS.random_action = vfcn(
+                      _cv),
                   apply_random(
                     _random_action))
                 cond(
                   (and(
-                      set(
-                        random_action,
-                        raction(
-                          set(
-                            rm,
-                            GLOBALS.here))),
+                      LOCALS.random_action = raction(
+                          LOCALS.rm = GLOBALS.here),
                       apply_random(
                         _random_action))))))),
           (_ivec
@@ -2118,24 +2000,18 @@ define(
           ((x)
             hack),
         cond(
-          (set(
-              random_action,
-              haction(
-                _x))
+          (LOCALS.random_action = haction(
+                _x)
             apply_random(
               _random_action,
               _x)))),
       GLOBALS.demons),
     and(
       GLOBALS.parse_won,
-      set(
-        av,
-        avehicle(
-          _winner)),
-      set(
-        random_action,
-        oaction(
-          _av)),
+      LOCALS.av = avehicle(
+          _winner),
+      LOCALS.random_action = oaction(
+          _av),
       apply_random(
         _random_action,
         read_out)),
@@ -2154,10 +2030,8 @@ define(
       object),
   cond(
     (g_Q(
-        set(
-          temp,
-          ofval(
-            _obj)),
+        LOCALS.temp = ofval(
+            _obj),
         0)
       score_upd(
         _temp)
@@ -2176,10 +2050,8 @@ define(
       room),
   cond(
     (g_Q(
-        set(
-          temp,
-          rval(
-            _rm)),
+        LOCALS.temp = rval(
+            _rm),
         0)
       score_upd(
         _temp)
@@ -2239,10 +2111,8 @@ define(
     (princ(
         "Your score is"))),
   prin1(
-    set(
-      scor,
-      ascore(
-        GLOBALS.winner))),
+    LOCALS.scor = ascore(
+        GLOBALS.winner)),
   princ(
     "[total of"),
   prin1(
@@ -2262,13 +2132,11 @@ define(
     ),
   princ(
     "This score gives you the rank of"),
-  set(
-    pct,
-    _(
+  LOCALS.pct = _(
       float(
         _scor),
       float(
-        GLOBALS.score_max))),
+        GLOBALS.score_max)),
   princ(
     cond(
       (1_Q(
@@ -2330,10 +2198,8 @@ define(
   unwind(
     prog(
       (),
-      set(
-        scor,
-        score(
-          _ask_Q)),
+      LOCALS.scor = score(
+          _ask_Q),
       cond(
         (or(
             and(
@@ -2429,43 +2295,35 @@ define(
       prog(
         (),
         cond(
-          (set(
-              ch,
-              open(
+          (LOCALS.ch = open(
                 "READB",
                 "ZORK",
                 "LOG",
                 _dev,
-                _snm))
+                _snm)
             cond(
               (g__Q(
-                  set(
-                    fl,
-                    file_length(
-                      _ch)),
+                  LOCALS.fl = file_length(
+                      _ch),
                   1)
                 access(
                   _ch,
                   _(
                     _fl,
                     1))
-                set(
-                  ct,
-                  readstring(
+                LOCALS.ct = readstring(
                     _str,
                     _ch,
-                    GLOBALS.recorder_string))))
+                    GLOBALS.recorder_string)))
             close(
               _ch)
             cond(
-              (set(
-                  ch,
-                  open(
+              (LOCALS.ch = open(
                     "PRINTO",
                     "ZORK",
                     "LOG",
                     _dev,
-                    _snm))),
+                    _snm)),
               (and(
                   g_Q(
                     _muddle,
@@ -2516,14 +2374,12 @@ define(
               1)
             again(
               )),
-          (set(
-              ch,
-              open(
+          (LOCALS.ch = open(
                 "PRINT",
                 "ZORK",
                 "LOG",
                 _dev,
-                _snm))),
+                _snm)),
           (and(
               g_Q(
                 _muddle,
@@ -2828,42 +2684,32 @@ define(
       princ(
         "at",
         _ch)
-      set(
-        hr,
-        _(
+      LOCALS.hr = _(
           _tim,
-          7200))
+          7200)
       cond(
         (g__Q(
             _hr,
             12)
-          set(
-            hr,
-            _(
+          LOCALS.hr = _(
               _hr,
-              12))
-          set(
-            a_p,
-            "PM")))
+              12)
+          LOCALS.a_p = "PM"))
       cond(
         (0_Q(
             _hr)
-          set(
-            hr,
-            12)))
+          LOCALS.hr = 12))
       prin1(
         _hr,
         _ch)
       princ(
         ":",
         _ch)
-      set(
-        hr,
-        _(
+      LOCALS.hr = _(
           mod(
             _tim,
             7200),
-          120))
+          120)
       cond(
         (l_Q(
             _hr,
@@ -3013,10 +2859,8 @@ define(
                   tell(
                     "Now, let me see...\nWell, we weren't quite able to restore your state.  You can't have\neverything.")
                   cond(
-                    (set(
-                        lamp_location,
-                        oroom(
-                          _lamp))
+                    (LOCALS.lamp_location = oroom(
+                          _lamp)
                       put(
                         _winner,
                         GLOBALS.aobjs,
@@ -3029,10 +2873,8 @@ define(
                               _lamp_location))
                           remove_object(
                             _lamp)),
-                        (set(
-                            lc,
-                            ocan(
-                              _lamp))
+                        (LOCALS.lc = ocan(
+                              _lamp)
                           put(
                             _lc,
                             GLOBALS.ocontents,
@@ -3068,11 +2910,9 @@ define(
                     find_room(
                       "FORE1"))
                   GLOBALS.egypt_flag_X_flag = t
-                  set(
-                    val_list,
-                    rob_adv(
+                  LOCALS.val_list = rob_adv(
                       _winner,
-                      _val_list))
+                      _val_list)
                   mapf(
                     null,
                     function(
@@ -3086,10 +2926,8 @@ define(
                       insert_object(
                         _x,
                         _y)),
-                    set(
-                      aobjs,
-                      aobjs(
-                        _winner)),
+                    LOCALS.aobjs = aobjs(
+                        _winner),
                     _random_list)
                   cond(
                     (g__Q(
@@ -3097,17 +2935,13 @@ define(
                           _random_list),
                         length(
                           _aobjs))
-                      set(
-                        aobjs,
-                        _val_list)),
+                      LOCALS.aobjs = _val_list),
                     (empty_Q(
                         _val_list)
-                      set(
-                        aobjs,
-                        rest(
+                      LOCALS.aobjs = rest(
                           _aobjs,
                           length(
-                            _random_list)))),
+                            _random_list))),
                     (t
                       putrest(
                         rest(
@@ -3120,9 +2954,7 @@ define(
                           _aobjs,
                           length(
                             _random_list)))
-                      set(
-                        aobjs,
-                        _val_list)))
+                      LOCALS.aobjs = _val_list))
                   mapf(
                     null,
                     function(
@@ -3223,25 +3055,19 @@ define(
       unwind(
         prog(
           (),
-          set(
-            len,
-            file_length(
-              _ch)),
-          set(
-            iter,
-            _(
+          LOCALS.len = file_length(
+              _ch),
+          LOCALS.iter = _(
               _len,
-              _buflen)),
+              _buflen),
           or(
             0_Q(
               mod(
                 _len,
                 _buflen)),
-            set(
-              iter,
-              _(
+            LOCALS.iter = _(
                 _iter,
-                1))),
+                1)),
           crlf(
             GLOBALS.outchan),
           GLOBALS.tell_flag = t,
@@ -3253,29 +3079,23 @@ define(
             cond(
               (1_Q(
                   _iter)
-                set(
-                  slen,
-                  readstring(
+                LOCALS.slen = readstring(
                     _buf,
                     _ch,
-                    GLOBALS.breaks))),
-              (set(
-                  slen,
-                  readstring(
+                    GLOBALS.breaks)),
+              (LOCALS.slen = readstring(
                     _buf,
                     _ch,
-                    _buflen)))),
+                    _buflen))),
             printstring(
               _buf,
               GLOBALS.outchan,
               _slen),
             cond(
               (0_Q(
-                  set(
-                    iter,
-                    _(
+                  LOCALS.iter = _(
                       _iter,
-                      1)))
+                      1))
                 crlf(
                   GLOBALS.outchan)
                 return(
@@ -3332,9 +3152,7 @@ define(
                       aobj(
                         _win)),
                     "is carrying:"))),
-              set(
-                any,
-                t)))
+              LOCALS.any = t))
           tell(
             "A",
             0,
@@ -3503,10 +3321,8 @@ define(
               GLOBALS.actorbit),
             lfcn(
               aobjs(
-                set(
-                  y,
-                  orand(
-                    _x)))))
+                LOCALS.y = orand(
+                    _x))))
           mapleave(
             t)))),
     _l))
@@ -3571,16 +3387,12 @@ define(
         prob(
           75))
       cond(
-        (set(
-            nrm,
-            memq(
+        (LOCALS.nrm = memq(
               _where,
               rexits(
-                _rm)))
-          set(
-            leavings,
-            2(
-              _nrm))
+                _rm))
+          LOCALS.leavings = 2(
+              _nrm)
           cond(
             (and(
                 type_Q(
@@ -3597,20 +3409,16 @@ define(
                 type_Q(
                   _leavings,
                   cexit),
-                set(
-                  leavings,
-                  cond(
+                LOCALS.leavings = cond(
                     (and(
-                        set(
-                          random_action,
-                          cxaction(
-                            _leavings)),
+                        LOCALS.random_action = cxaction(
+                            _leavings),
                         apply_random(
                           _random_action))),
                     (,cxflag(
                           _leavings)
                       cxroom(
-                        _leavings)))),
+                        _leavings))),
                 lit_Q(
                   _leavings))
               or(
@@ -3626,16 +3434,12 @@ define(
                 "Oh, no!  A fearsome grue slithered into the room and devoured you.")))),
         (jigs_up(
             "Oh, no!  You walked into the slavering fangs of a lurking grue.")))),
-    (set(
-        nrm,
-        memq(
+    (LOCALS.nrm = memq(
           _where,
           rexits(
-            _rm)))
-      set(
-        leavings,
-        2(
-          _nrm))
+            _rm))
+      LOCALS.leavings = 2(
+          _nrm)
       cond(
         (type_Q(
             _leavings,
@@ -3651,21 +3455,15 @@ define(
           cond(
             (or(
                 and(
-                  set(
-                    random_action,
-                    cxaction(
-                      _leavings)),
-                  set(
-                    nl,
-                    apply_random(
-                      _random_action))),
+                  LOCALS.random_action = cxaction(
+                      _leavings),
+                  LOCALS.nl = apply_random(
+                      _random_action)),
                 and(
                   ,cxflag(
                       _leavings),
-                  set(
-                    nl,
-                    cxroom(
-                      _leavings))))
+                  LOCALS.nl = cxroom(
+                      _leavings)))
               or(
                 type_Q(
                   _nl,
@@ -3675,10 +3473,8 @@ define(
                     _nl),
                   room_info(
                     null)))),
-            (set(
-                cxs,
-                cxstr(
-                  _leavings))
+            (LOCALS.cxs = cxstr(
+                  _leavings)
               or(
                 empty_Q(
                   _cxs),
@@ -3753,19 +3549,15 @@ define(
     cond(
       (ocan(
           _obj)
-        set(
-          nobj,
-          ocan(
-            _obj))
+        LOCALS.nobj = ocan(
+            _obj)
         cond(
           (see_inside_Q(
               _nobj)
             cond(
               (oopen_Q(
                   _nobj)
-                set(
-                  getter_Q,
-                  t)),
+                LOCALS.getter_Q = t),
               (tell(
                   "I can't reach that.")
                 return(
@@ -3799,9 +3591,7 @@ define(
           memq(
             _obj,
             _robjs))
-        set(
-          load_max,
-          _(
+        LOCALS.load_max = _(
             _load_max,
             fix(
               _(
@@ -3809,7 +3599,7 @@ define(
                   1_0,
                   _load_max),
                 astrength(
-                  _win)))))
+                  _win))))
         cond(
           (and(
               _getter_Q,
@@ -3961,12 +3751,8 @@ define(
           trnn(
             _obji,
             GLOBALS.vehbit))
-        set(
-          can,
-          _obji)
-        set(
-          crock,
-          _objo)),
+        LOCALS.can = _obji
+        LOCALS.crock = _objo),
       (tell(
           "I can't do that.")
         return(
@@ -4005,19 +3791,15 @@ define(
             _crock,
             _robjs),
           and(
-            set(
-              ocan,
-              ocan(
-                _crock)),
+            LOCALS.ocan = ocan(
+                _crock),
             memq(
               _ocan,
               _robjs)),
           and(
             _ocan,
-            set(
-              ocan,
-              ocan(
-                _ocan)),
+            LOCALS.ocan = ocan(
+                _ocan),
             memq(
               _ocan,
               _robjs)))
@@ -4039,24 +3821,18 @@ define(
                 null))
             return(
               null)),
-          (set(
-              aobjs,
-              aobjs(
-                _win))))),
-      (set(
-          ocan,
-          ocan(
-            _crock))
+          (LOCALS.aobjs = aobjs(
+                _win)))),
+      (LOCALS.ocan = ocan(
+            _crock)
         cond(
           (oopen_Q(
               _ocan)
             put(
               _win,
               GLOBALS.aobjs,
-              set(
-                aobjs,
-                (_crock
-                  _X_aobjs)))
+              LOCALS.aobjs = (_crock
+                  _X_aobjs))
             put(
               _ocan,
               GLOBALS.ocontents,
@@ -4202,10 +3978,8 @@ define(
           _vec,
           3,
           _obj)
-        set(
-          obj,
-          2(
-            _vec)))),
+        LOCALS.obj = 2(
+            _vec))),
     cond(
       (trnn(
           _obj,
@@ -4217,19 +3991,15 @@ define(
       (and(
           ocan(
             _obj),
-          set(
-            nobj,
-            ocan(
-              _obj)),
+          LOCALS.nobj = ocan(
+              _obj),
           memq(
             _nobj,
             _aobjs))
         cond(
           (oopen_Q(
               _nobj)
-            set(
-              getter_Q,
-              t)),
+            LOCALS.getter_Q = t),
           (transparent_Q(
               _nobj)
             tell(
@@ -4493,10 +4263,8 @@ define(
                     GLOBALS.losstr)
                   mapleave(
                     )))
-              set(
-                suv,
-                back(
-                  _suv))
+              LOCALS.suv = back(
+                  _suv)
               put(
                 _suv,
                 1,
@@ -4513,10 +4281,8 @@ define(
           #decl
             ((x)
               object),
-          set(
-            suv,
-            back(
-              _suv)),
+          LOCALS.suv = back(
+              _suv),
           put(
             _suv,
             1,
@@ -4526,10 +4292,8 @@ define(
     (_EQ_Q(
         _pa,
         GLOBALS.put_X_words)
-      set(
-        pi,
-        3(
-          _prsvec))
+      LOCALS.pi = 3(
+          _prsvec)
       prog(
         rp,
         (),
@@ -4560,10 +4324,8 @@ define(
                     return(
                       t,
                       _rp)))
-                set(
-                  suv,
-                  back(
-                    _suv))
+                LOCALS.suv = back(
+                    _suv)
                 put(
                   _suv,
                   1,
@@ -4590,10 +4352,8 @@ define(
                 return(
                   t,
                   _rp))),
-            set(
-              suv,
-              back(
-                _suv)),
+            LOCALS.suv = back(
+                _suv),
             put(
               _suv,
               1,
@@ -4676,10 +4436,8 @@ define(
                     GLOBALS.losstr)
                   mapleave(
                     )))
-              set(
-                suv,
-                back(
-                  _suv))
+              LOCALS.suv = back(
+                  _suv)
               put(
                 _suv,
                 1,
@@ -4701,10 +4459,8 @@ define(
                 0_Q(
                   otval(
                     _x)))
-              set(
-                suv,
-                back(
-                  _suv))
+              LOCALS.suv = back(
+                  _suv)
               put(
                 _suv,
                 1,
@@ -4714,10 +4470,8 @@ define(
     (_EQ_Q(
         _pa,
         GLOBALS.put_X_words)
-      set(
-        pi,
-        3(
-          _prsvec))
+      LOCALS.pi = 3(
+          _prsvec)
       prog(
         rp,
         (),
@@ -4749,10 +4503,8 @@ define(
                     0_Q(
                       otval(
                         _x))))
-                set(
-                  suv,
-                  back(
-                    _suv))
+                LOCALS.suv = back(
+                    _suv)
                 put(
                   _suv,
                   1,
@@ -4784,10 +4536,8 @@ define(
                   0_Q(
                     otval(
                       _x)))
-                set(
-                  suv,
-                  back(
-                    _suv))
+                LOCALS.suv = back(
+                    _suv)
                 put(
                   _suv,
                   1,
@@ -5099,16 +4849,12 @@ define(
             _obj))
         return(
           null)),
-      (set(
-          nobj,
-          ocan(
-            _obj))
+      (LOCALS.nobj = ocan(
+            _obj)
         cond(
           (oopen_Q(
               _nobj)
-            set(
-              obj,
-              _nobj)),
+            LOCALS.obj = _nobj),
           (return(
               null))))),
     or(
@@ -5157,13 +4903,9 @@ define(
                 _nl))
             return(
               _al)),
-          (set(
-              ol,
-              _nl)
-            set(
-              nl,
-              rest(
-                _nl))))))))
+          (LOCALS.ol = _nl
+            LOCALS.nl = rest(
+                _nl)))))))
 
 "WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level."
 
@@ -5581,13 +5323,9 @@ define(
                   _X__)),
               not(
                 _quot),
-              set(
-                quot,
-                t),
-              set(
-                v,
-                rest(
-                  _v)))
+              LOCALS.quot = t,
+              LOCALS.v = rest(
+                  _v))
             cond(
               (n_EQ_Q(
                   _s,
@@ -5606,23 +5344,19 @@ define(
                         substruc(
                           _s,
                           0,
-                          set(
-                            slen,
-                            min(
+                          LOCALS.slen = min(
                               _(
                                 length(
                                   _s),
                                 length(
                                   _s1)),
-                              5)),
+                              5),
                           back(
                             1(
                               _v),
                             _slen))))
-                    set(
-                      v,
-                      rest(
-                        _v))))))
+                    LOCALS.v = rest(
+                        _v)))))
             cond(
               (_EQ_Q(
                   length(
@@ -5631,14 +5365,10 @@ define(
                     _sx))
                 return(
                   _v)))
-            set(
-              s,
-              rest(
-                _s1)))),
-        set(
-          s1,
-          rest(
-            _s1))))),
+            LOCALS.s = rest(
+                _s1))),
+        LOCALS.s1 = rest(
+            _s1)))),
   GLOBALS.lexv)
 
 psetg(
@@ -5724,11 +5454,9 @@ define(
     cond(
       (or(
           l_Q(
-            set(
-              n,
-              _(
+            LOCALS.n = _(
                 _n,
-                1)),
+                1),
             0),
           clock_demon(
             GLOBALS.clocker))
@@ -5789,10 +5517,8 @@ define(
                 GLOBALS.c_int_X_words)
               cond(
                 (type_Q(
-                    set(
-                      ca,
-                      caction(
-                        _ev)),
+                    LOCALS.ca = caction(
+                        _ev),
                     offset)
                   dispatch(
                     _ca)),
@@ -5801,27 +5527,21 @@ define(
             (put(
                 _ev,
                 GLOBALS.ctick,
-                set(
-                  tick,
-                  _(
+                LOCALS.tick = _(
                     _tick,
-                    1)))
+                    1))
               and(
                 0_Q(
                   _tick),
-                set(
-                  flg,
-                  t),
+                LOCALS.flg = t,
                 put(
                   GLOBALS.prsvec,
                   1,
                   GLOBALS.c_int_X_words),
                 cond(
                   (type_Q(
-                      set(
-                        ca,
-                        caction(
-                          _ev)),
+                      LOCALS.ca = caction(
+                          _ev),
                       offset)
                     dispatch(
                       _ca)),

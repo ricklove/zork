@@ -31,17 +31,13 @@ define(
             vname(
               _prsact),
             on_X_words),
-          set(
-            dummy_Q,
-            t)))
+          LOCALS.dummy_Q = t))
       cond(
         (or(
             and(
               memq(
-                set(
-                  o,
-                  find_obj(
-                    "CANDL")),
+                LOCALS.o = find_obj(
+                    "CANDL"),
                 aobjs(
                   _win)),
               1_Q(
@@ -49,10 +45,8 @@ define(
                   _o))),
             and(
               memq(
-                set(
-                  o,
-                  find_obj(
-                    "TORCH")),
+                LOCALS.o = find_obj(
+                    "TORCH"),
                 aobjs(
                   _win)),
               1_Q(
@@ -168,11 +162,9 @@ define(
         _num)),
     and(
       0_Q(
-        set(
-          n,
-          _(
+        LOCALS.n = _(
             _n,
-            1))),
+            1)),
       return(
         )),
     image(
@@ -458,10 +450,8 @@ define(
                   put(
                     _mach,
                     GLOBALS.ocontents,
-                    (set(
-                        d,
-                        find_obj(
-                          "DIAMO"))
+                    (LOCALS.d = find_obj(
+                          "DIAMO")
                       _X
                       ocontents(
                         _mach)))
@@ -476,10 +466,8 @@ define(
                   put(
                     _mach,
                     GLOBALS.ocontents,
-                    (set(
-                        d,
-                        find_obj(
-                          "GUNK"))))),
+                    (LOCALS.d = find_obj(
+                          "GUNK")))),
                 (t))))),
         (tell(
             "It seems that a",
@@ -982,12 +970,10 @@ define(
       put(
         _here,
         GLOBALS.rvars,
-        set(
-          cnt,
-          _(
+        LOCALS.cnt = _(
             1,
             rvars(
-              _here))))
+              _here)))
       cond(
         (g_Q(
             _cnt,
@@ -1059,12 +1045,10 @@ define(
           put(
             _here,
             GLOBALS.rvars,
-            set(
-              cnt,
-              _(
+            LOCALS.cnt = _(
                 1,
                 rvars(
-                  _here))))
+                  _here)))
           cond(
             (g_Q(
                 _cnt,
@@ -1262,15 +1246,13 @@ define(
             _prsa,
             GLOBALS.walk_X_words)
           cond(
-            (set(
-                m,
-                memq(
+            (LOCALS.m = memq(
                   chtype(
                     2(
                       _prsvec),
                     atom),
                   rexits(
-                    GLOBALS.here)))
+                    GLOBALS.here))
               cond(
                 (GLOBALS.btie_X_flag
                   tell(
@@ -1374,10 +1356,8 @@ define(
                   put(
                     _ball,
                     GLOBALS.ocontents,
-                    (set(
-                        blabe,
-                        find_obj(
-                          "BLABE"))
+                    (LOCALS.blabe = find_obj(
+                          "BLABE")
                       _X
                       ocontents(
                         _ball)))
@@ -1470,13 +1450,11 @@ define(
     GLOBALS.bint,
     3),
   cond(
-    (set(
-        m,
-        member(
+    (LOCALS.m = member(
           "VAIR",
           spname(
             rid(
-              _bl))))
+              _bl)))
       cond(
         (__Q(
             rest(
@@ -1534,13 +1512,11 @@ define(
                 _bl,
                 _s,
                 "ascends.")))))),
-    (set(
-        m,
-        member(
+    (LOCALS.m = member(
           "LEDG",
           spname(
             rid(
-              _bl))))
+              _bl)))
       substruc(
         "VAIR",
         0,
@@ -1656,13 +1632,11 @@ define(
     GLOBALS.bint,
     3),
   cond(
-    (set(
-        m,
-        member(
+    (LOCALS.m = member(
           "VAIR",
           spname(
             rid(
-              _bl))))
+              _bl)))
       cond(
         (__Q(
             rest(
@@ -1692,11 +1666,9 @@ define(
                     GLOBALS.avehicle,
                     null)
                   clock_disable(
-                    set(
-                      foo,
-                      clock_int(
+                    LOCALS.foo = clock_int(
                         GLOBALS.bint,
-                        0)))
+                        0))
                   tell(
                     "You have landed, but the balloon did not survive.")))),
             (put_balloon(
@@ -1798,11 +1770,9 @@ define(
       cond(
         (GLOBALS.btie_X_flag
           clock_enable(
-            set(
-              bint,
-              clock_int(
+            LOCALS.bint = clock_int(
                 GLOBALS.bint,
-                3)))
+                3))
           GLOBALS.btie_X_flag = null
           tell(
             "The wire falls off of the hook.")),
@@ -1978,23 +1948,15 @@ define(
             _brick,
             GLOBALS.ovison)
           cond(
-            (set(
-                oc,
-                ocan(
-                  _brick))
-              set(
-                brick_room,
-                oroom(
-                  _oc))),
-            (set(
-                brick_room,
-                oroom(
-                  _brick))))
+            (LOCALS.oc = ocan(
+                  _brick)
+              LOCALS.brick_room = oroom(
+                  _oc)),
+            (LOCALS.brick_room = oroom(
+                  _brick)))
           or(
             _brick_room,
-            set(
-              brick_room,
-              GLOBALS.here))
+            LOCALS.brick_room = GLOBALS.here)
           cond(
             (_EQ_Q(
                 _brick_room,
@@ -2139,10 +2101,8 @@ define(
             GLOBALS.winner)
           cond(
             (GLOBALS.btie_X_flag
-              set(
-                rm,
-                find_room(
-                  "VLBOT"))
+              LOCALS.rm = find_room(
+                  "VLBOT")
               GLOBALS.bloc = _rm
               remove_object(
                 find_obj(

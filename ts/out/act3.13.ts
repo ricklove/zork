@@ -68,17 +68,13 @@ define(
         GLOBALS.read_X_words)
       tell(
         "Although the implementers are dead, they foresaw that some cretin\nwould tamper with their remains.  Therefore, they took steps to\nprevent this.")
-      set(
-        nl,
-        rob_adv(
+      LOCALS.nl = rob_adv(
           GLOBALS.winner,
-          _nl))
-      set(
-        nl,
-        rob_room(
+          _nl)
+      LOCALS.nl = rob_room(
           GLOBALS.here,
           _nl,
-          100))
+          100)
       cond(
         (not(
             empty_Q(
@@ -270,10 +266,8 @@ define(
         _EQ_Q(
           2(
             _pv),
-          set(
-            c,
-            find_obj(
-              "ECAKE"))),
+          LOCALS.c = find_obj(
+              "ECAKE")),
         _EQ_Q(
           _here,
           find_room(
@@ -283,10 +277,8 @@ define(
       kill_obj(
         _c,
         GLOBALS.winner)
-      set(
-        r,
-        find_room(
-          "ALISM"))
+      LOCALS.r = find_room(
+          "ALISM")
       put(
         _r,
         GLOBALS.robjs,
@@ -424,10 +416,8 @@ define(
                 _here,
                 find_room(
                   "ALISM"))
-              set(
-                r,
-                find_room(
-                  "ALICE"))
+              LOCALS.r = find_room(
+                  "ALICE")
               put(
                 _r,
                 GLOBALS.robjs,
@@ -528,10 +518,8 @@ define(
           GLOBALS.throw_X_words))
       tell(
         "The flask breaks into pieces.")
-      set(
-        f,
-        2(
-          _pv))
+      LOCALS.f = 2(
+          _pv)
       trz(
         _f,
         GLOBALS.ovison)
@@ -624,9 +612,7 @@ define(
             "You cannot get your bearings...")
           goto(
             cxroom(
-              set(
-                foo,
-                nth(
+              LOCALS.foo = nth(
                   rexits(
                     _here),
                   _(
@@ -636,25 +622,21 @@ define(
                       mod(
                         random(
                           ),
-                        8)))))))
+                        8))))))
           room_info(
             )),
-        (set(
-            m,
-            memq(
+        (LOCALS.m = memq(
               chtype(
                 _po,
                 atom),
               rest(
                 rexits(
                   _here),
-                12)))
+                12))
           goto(
             cxroom(
-              set(
-                foo,
-                2(
-                  _m))))
+              LOCALS.foo = 2(
+                  _m)))
           room_info(
             ))))))
 
@@ -741,10 +723,8 @@ define(
               GLOBALS.carousel_flip_X_flag)
           cond(
             (memq(
-                set(
-                  i,
-                  find_obj(
-                    "IRBOX")),
+                LOCALS.i = find_obj(
+                    "IRBOX"),
                 robjs(
                   find_room(
                     "CAROU")))
@@ -791,14 +771,12 @@ define(
         false)
       (ract)
       adv),
-  set(
-    fl,
-    and(
+  LOCALS.fl = and(
       not(
         GLOBALS.cage_solve_X_flag),
       _EQ_Q(
         _pa,
-        GLOBALS.take_X_words))),
+        GLOBALS.take_X_words)),
   cond(
     (and(
         _fl,
@@ -813,20 +791,16 @@ define(
               _r),
             GLOBALS.here)
           goto(
-            set(
-              c,
-              find_room(
-                "CAGED")))
+            LOCALS.c = find_room(
+                "CAGED"))
           remove_object(
             _r)
           insert_object(
             _r,
             _c)
           put(
-            set(
-              ract,
-              orand(
-                _r)),
+            LOCALS.ract = orand(
+                _r),
             GLOBALS.aroom,
             _c)
           tro(
@@ -945,15 +919,11 @@ define(
         GLOBALS.sphere_clock)
       GLOBALS.winner = GLOBALS.player
       goto(
-        set(
-          c,
-          find_room(
-            "CAGER")))
+        LOCALS.c = find_room(
+            "CAGER"))
       insert_object(
-        set(
-          cage,
-          find_obj(
-            "CAGE")),
+        LOCALS.cage = find_obj(
+            "CAGE"),
         _c)
       tro(
         _cage,
@@ -974,10 +944,8 @@ define(
         _r,
         _c)
       put(
-        set(
-          ract,
-          orand(
-            _r)),
+        LOCALS.ract = orand(
+            _r),
         GLOBALS.aroom,
         _c)
       GLOBALS.cage_solve_X_flag = t),
@@ -1036,12 +1004,8 @@ define(
     (_EQ_Q(
         _pa,
         GLOBALS.give_X_words)
-      set(
-        aa,
-        orand(
-          set(
-            pp,
-            _pi)))
+      LOCALS.aa = orand(
+          LOCALS.pp = _pi)
       remove_object(
         _po)
       put(

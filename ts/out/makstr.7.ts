@@ -34,20 +34,14 @@ define(
         _name,
         string)
       cond(
-        (set(
-            atm,
-            lookup(
+        (LOCALS.atm = lookup(
               _name,
-              _obl))),
+              _obl)),
         (t
-          set(
-            atm,
-            insert(
+          LOCALS.atm = insert(
               _name,
-              _obl))))),
-    (set(
-        atm,
-        _name))),
+              _obl)))),
+    (LOCALS.atm = _name)),
   GLOBALS._atm = chtype(
       [_tick
         _app
@@ -133,13 +127,9 @@ define(
     (type_Q(
         _flid,
         atom)
-      set(
-        flid,
-        spname(
-          _flid)))),
-  set(
-    atm,
-    or(
+      LOCALS.flid = spname(
+          _flid))),
+  LOCALS.atm = or(
       lookup(
         _flid,
         get(
@@ -149,7 +139,7 @@ define(
         _flid,
         get(
           flag,
-          oblist)))),
+          oblist))),
   GLOBALS._atm = _flag,
   chtype(
     vector(
@@ -208,12 +198,10 @@ define(
     cond(
       (or(
           and(
-            set(
-              atm,
-              lookup(
+            LOCALS.atm = lookup(
                 1(
                   _pairs),
-                _dobl)),
+                _dobl),
             gassigned_Q(
               _atm),
             type_Q(
@@ -239,11 +227,9 @@ define(
               2,
               2(
                 _pairs))))
-        set(
-          f,
-          rest(
+        LOCALS.f = rest(
             _f,
-            2))),
+            2)),
       (t
         put(
           _pairs,
@@ -254,11 +240,9 @@ define(
               _pairs))))),
     cond(
       (empty_Q(
-          set(
-            pairs,
-            rest(
+          LOCALS.pairs = rest(
               _pairs,
-              2)))
+              2))
         return(
           )))),
   chtype(
@@ -482,11 +466,9 @@ define(
   or(
     0_Q(
       _light_Q),
-    set(
-      flags,
-      _(
+    LOCALS.flags = _(
         _flags,
-        GLOBALS.lightbit))),
+        GLOBALS.lightbit)),
   put(
     put(
       put(
@@ -615,15 +597,13 @@ define(
     /* FUNCTION */
       (x) => (
       setg,
-      set(
-          atm,
-          or(
+      LOCALS.atm = or(
             lookup(
               _x,
               _dir),
             insert(
               _x,
-              _dir))),
+              _dir)),
       chtype(
           _atm,
           direction)),
@@ -652,24 +632,20 @@ define(
       direction
       (dir)
       oblist),
-  set(
-    val,
-    add_directions(
-      _str)),
+  LOCALS.val = add_directions(
+      _str),
   mapf(
     null,
     /* FUNCTION */
       (x) => (
       setg,
-      set(
-          atm,
-          or(
+      LOCALS.atm = or(
             lookup(
               _x,
               _dir),
             insert(
               _x,
-              _dir))),
+              _dir)),
       _val),
     _nms))
 
@@ -695,14 +671,10 @@ define(
       (val)
       any),
   cond(
-    (set(
-        atm,
-        lookup(
+    (LOCALS.atm = lookup(
           _n1,
-          GLOBALS.words))
-      set(
-        val,
-        GLOBALS._atm)
+          GLOBALS.words)
+      LOCALS.val = GLOBALS._atm
       mapf(
         null,
         /* FUNCTION */
@@ -713,14 +685,10 @@ define(
           _val),
         _n2))),
   cond(
-    (set(
-        atm,
-        lookup(
+    (LOCALS.atm = lookup(
           _n1,
-          GLOBALS.actions))
-      set(
-        val,
-        GLOBALS._atm)
+          GLOBALS.actions)
+      LOCALS.val = GLOBALS._atm
       mapf(
         null,
         /* FUNCTION */
@@ -800,10 +768,8 @@ define(
           (atm)
           atom),
       setg(
-        set(
-          atm,
-          add_word(
-            _x)),
+        LOCALS.atm = add_word(
+            _x),
         chtype(
           _atm,
           _nm))),
@@ -886,14 +852,10 @@ define(
       (val)
       any),
   cond(
-    (set(
-        atm,
-        lookup(
+    (LOCALS.atm = lookup(
           _n1,
-          GLOBALS.words))
-      set(
-        val,
-        GLOBALS._atm)
+          GLOBALS.words)
+      LOCALS.val = GLOBALS._atm
       mapf(
         null,
         /* FUNCTION */

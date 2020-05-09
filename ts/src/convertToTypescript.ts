@@ -98,6 +98,32 @@ export const convertToTypescript = (node: ZNode): string => {
             return `GLOBALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
         }
 
+        // Local Values 
+        // Get with ,atom
+        // if (firstNode && openSymbol === '.'
+        //     && firstNode.kind === 'ZToken'
+        // ) {
+        //     return `LOCALS.${convertToTypescriptName(firstNode)}`;
+        // }
+        // <LVAL atom>
+        if (firstNode && openSymbol === '<'
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'LVAL'
+            && nodes.length === 2
+            && nodes[1].kind === 'ZToken'
+        ) {
+            return `LOCALS.${convertToTypescriptName(nodes[1])}`;
+        }
+        // <SET atom any>
+        if (firstNode && openSymbol === '<'
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'SET'
+            && nodes.length === 3
+            && nodes[1].kind === 'ZToken'
+        ) {
+            return `LOCALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
+        }
+
         // Lazy Values
         if (firstNode && openSymbol === '\'') {
             return `() => ${convertToTypescript(firstNode)}`;

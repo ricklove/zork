@@ -153,9 +153,7 @@ define(
         object)
       (pprep)
       phrase),
-  set(
-    val,
-    mapf(
+  LOCALS.val = mapf(
       null,
       function(
         (x),
@@ -170,22 +168,16 @@ define(
           (and(
               not(
                 _action),
-              set(
-                atm,
-                lookup(
+              LOCALS.atm = lookup(
                   _x,
-                  _actions)))
-            set(
-              action,
-              GLOBALS._atm)),
+                  _actions))
+            LOCALS.action = GLOBALS._atm),
           (and(
               not(
                 _action),
-              set(
-                atm,
-                lookup(
+              LOCALS.atm = lookup(
                   _x,
-                  _dirs)))
+                  _dirs))
             put(
               _pv,
               1,
@@ -198,16 +190,12 @@ define(
               win,
               _sparout)),
           (and(
-              set(
-                atm,
-                lookup(
+              LOCALS.atm = lookup(
                   _x,
-                  _words)),
+                  _words),
               cond(
                 (type_Q(
-                    set(
-                      aval,
-                      GLOBALS._atm),
+                    LOCALS.aval = GLOBALS._atm,
                     prep)
                   cond(
                     (_prep
@@ -218,38 +206,26 @@ define(
                           0))
                       mapleave(
                         null)),
-                    (set(
-                        prep,
-                        _aval)))),
+                    (LOCALS.prep = _aval))),
                 (type_Q(
                     _aval,
                     adjective)
-                  set(
-                    adj,
-                    _aval)
+                  LOCALS.adj = _aval
                   not(
                     and(
                       _orfl,
-                      set(
-                        atm,
-                        oname(
-                          _orph)),
-                      set(
-                        x,
-                        spname(
-                          _atm))))),
+                      LOCALS.atm = oname(
+                          _orph),
+                      LOCALS.x = spname(
+                          _atm)))),
                 (t)))),
-          (set(
-              atm,
-              lookup(
+          (LOCALS.atm = lookup(
                 _x,
-                _objob))
+                _objob)
             cond(
-              (set(
-                  obj,
-                  get_object(
+              (LOCALS.obj = get_object(
                     _atm,
-                    _adj))
+                    _adj)
                 and(
                   empty_Q(
                     _pvr),
@@ -265,30 +241,22 @@ define(
                   1,
                   cond(
                     (_prep
-                      set(
-                        pprep,
-                        1(
-                          _prv))
-                      set(
-                        prv,
-                        rest(
-                          _prv))
+                      LOCALS.pprep = 1(
+                          _prv)
+                      LOCALS.prv = rest(
+                          _prv)
                       put(
                         _pprep,
                         1,
                         _prep)
-                      set(
-                        prep,
-                        null)
+                      LOCALS.prep = null
                       put(
                         _pprep,
                         2,
                         _obj)),
                     (_obj)))
-                set(
-                  pvr,
-                  rest(
-                    _pvr))),
+                LOCALS.pvr = rest(
+                    _pvr)),
               (t
                 cond(
                   (empty_Q(
@@ -353,9 +321,7 @@ define(
                       _atm)))
                 mapleave(
                   null)))
-            set(
-              adj,
-              null)
+            LOCALS.adj = null
             t),
           (or(
               _vb,
@@ -365,7 +331,7 @@ define(
                 _x))
             mapleave(
               null)))),
-      _sv)),
+      _sv),
   cond(
     (_val
       cond(
@@ -373,12 +339,10 @@ define(
             not(
               _action),
             not(
-              set(
-                action,
-                and(
+              LOCALS.action = and(
                   _orfl,
                   overb(
-                    _orph)))))
+                    _orph))))
           or(
             _vb,
             cond(
@@ -416,19 +380,13 @@ define(
           null),
         (and(
             _orfl,
-            set(
-              nprep,
-              oprep(
-                _orph)),
-            set(
-              obj,
-              2(
-                _pv)),
+            LOCALS.nprep = oprep(
+                _orph),
+            LOCALS.obj = 2(
+                _pv),
             put(
-              set(
-                pprep,
-                1(
-                  _prv)),
+              LOCALS.pprep = 1(
+                  _prv),
               1,
               _nprep),
             put(
@@ -436,10 +394,8 @@ define(
               2,
               _obj),
             cond(
-              (set(
-                  obj,
-                  oslot1(
-                    _orph))
+              (LOCALS.obj = oslot1(
+                    _orph)
                 put(
                   _pv,
                   2,
@@ -456,11 +412,9 @@ define(
         (_prep
           and(
             type_Q(
-              set(
-                lobj,
-                1(
+              LOCALS.lobj = 1(
                   back(
-                    _pvr))),
+                    _pvr)),
               object),
             top(
               put(
@@ -612,38 +566,26 @@ define(
                   cond(
                     (sdriver(
                         _syn)
-                      set(
-                        dforce,
-                        _syn)),
-                    (set(
-                        drive,
-                        _syn)))
+                      LOCALS.dforce = _syn),
+                    (LOCALS.drive = _syn))
                   null))),
             (not(
                 _o1)
               cond(
                 (sdriver(
                     _syn)
-                  set(
-                    dforce,
-                    _syn)),
-                (set(
-                    drive,
-                    _syn)))
+                  LOCALS.dforce = _syn),
+                (LOCALS.drive = _syn))
               null))),
         vdecl(
           _action))),
-    (set(
-        drive,
-        or(
+    (LOCALS.drive = or(
           _dforce,
-          _drive))
+          _drive)
       cond(
         (and(
-            set(
-              synn,
-              syn1(
-                _drive)),
+            LOCALS.synn = syn1(
+                _drive),
             not(
               _o1),
             not(
@@ -655,15 +597,11 @@ define(
                 _synn,
                 _objs)),
             not(
-              set(
-                o1,
-                set(
-                  gwim,
-                  gwim_slot(
+              LOCALS.o1 = LOCALS.gwim = gwim_slot(
                     1,
                     _synn,
                     _action,
-                    _objs)))))
+                    _objs)))
           orphan(
             t,
             _action,
@@ -675,10 +613,8 @@ define(
             _action,
             _gwim)),
         (and(
-            set(
-              synn,
-              syn2(
-                _drive)),
+            LOCALS.synn = syn2(
+                _drive),
             not(
               _o2),
             not(
@@ -746,9 +682,7 @@ define(
   put(
     _pv,
     2,
-    set(
-      obj,
-      cond(
+    LOCALS.obj = cond(
         (type_Q(
             _pv1,
             object)
@@ -757,13 +691,11 @@ define(
             _pv1,
             phrase)
           2(
-            _pv1))))),
+            _pv1)))),
   cond(
     (vtrnn(
-        set(
-          varg,
-          syn1(
-            _syn)),
+        LOCALS.varg = syn1(
+            _syn),
         GLOBALS.vrbit)
       take_it(
         _obj,
@@ -772,9 +704,7 @@ define(
   put(
     _pv,
     3,
-    set(
-      obj,
-      cond(
+    LOCALS.obj = cond(
         (type_Q(
             _pv2,
             object)
@@ -783,13 +713,11 @@ define(
             _pv2,
             phrase)
           2(
-            _pv2))))),
+            _pv2)))),
   cond(
     (vtrnn(
-        set(
-          varg,
-          syn2(
-            _syn)),
+        LOCALS.varg = syn2(
+            _syn),
         GLOBALS.vrbit)
       take_it(
         _obj,
@@ -886,10 +814,8 @@ define(
     (not(
         _orfl)
       null),
-    (set(
-        slot1,
-        oslot1(
-          _orph))
+    (LOCALS.slot1 = oslot1(
+          _orph)
       and(
         syn_equal(
           _syn,
@@ -963,10 +889,8 @@ define(
       (sp)
       string),
   foostr(
-    set(
-      sp,
-      spname(
-        _atm)),
+    LOCALS.sp = spname(
+        _atm),
     back(
       GLOBALS.scrstr,
       length(
@@ -1044,13 +968,11 @@ define(
         false,
         object)),
   cond(
-    (set(
-        obj,
-        gwim(
+    (LOCALS.obj = gwim(
           vbit(
             _varg),
           _varg,
-          _action))
+          _action)
       put(
         _objs,
         _fx,
@@ -1115,24 +1037,20 @@ define(
       action),
   and(
     _aobj,
-    set(
-      obj,
-      fwim(
+    LOCALS.obj = fwim(
         _bit,
         aobjs(
           GLOBALS.winner),
-        _ntake))),
+        _ntake)),
   cond(
     (_robj
       cond(
         (and(
-            set(
-              nobj,
-              fwim(
+            LOCALS.nobj = fwim(
                 _bit,
                 robjs(
                   GLOBALS.here),
-                _ntake)),
+                _ntake),
             or(
               not(
                 _av),
@@ -1149,18 +1067,14 @@ define(
           cond(
             (and(
                 or(
-                  set(
-                    savobj,
-                    2(
-                      _pv)),
+                  LOCALS.savobj = 2(
+                      _pv),
                   t),
                 not(
                   _obj),
                 or(
-                  set(
-                    sf,
-                    1(
-                      _pv)),
+                  LOCALS.sf = 1(
+                      _pv),
                   t),
                 put(
                   _pv,
@@ -1240,25 +1154,19 @@ define(
             (type_Q(
                   _itm,
                   string)
-                set(
-                  prep,
-                  find_prep(
-                    _itm))),
+                LOCALS.prep = find_prep(
+                    _itm)),
             (and(
                   _EQ_Q(
                     _itm,
                     obj),
-                  set(
-                    itm,
-                    () => (_1)),
+                  LOCALS.itm = () => (_1),
                   null)),
             (type_Q(
                   _itm,
                   list)
-                set(
-                  vv,
-                  ivector(
-                    3))
+                LOCALS.vv = ivector(
+                    3)
                 put(
                   _vv,
                   1,
@@ -1268,48 +1176,36 @@ define(
                   _vv,
                   2,
                   _prep)
-                set(
-                  sum,
-                  0)
-                set(
-                  prep,
-                  null)
+                LOCALS.sum = 0
+                LOCALS.prep = null
                 and(
                   memq(
                     aobjs,
                     _itm),
-                  set(
-                    sum,
-                    _(
+                  LOCALS.sum = _(
                       _sum,
-                      GLOBALS.vabit)))
+                      GLOBALS.vabit))
                 and(
                   memq(
                     robjs,
                     _itm),
-                  set(
-                    sum,
-                    _(
+                  LOCALS.sum = _(
                       _sum,
-                      GLOBALS.vrbit)))
+                      GLOBALS.vrbit))
                 and(
                   memq(
                     no_take,
                     _itm),
-                  set(
-                    sum,
-                    _(
+                  LOCALS.sum = _(
                       _sum,
-                      GLOBALS.vtbit)))
+                      GLOBALS.vtbit))
                 and(
                   memq(
                     _,
                     _itm),
-                  set(
-                    sum,
-                    _(
+                  LOCALS.sum = _(
                       _sum,
-                      GLOBALS.vxbit)))
+                      GLOBALS.vxbit))
                 put(
                   _vv,
                   3,
@@ -1320,21 +1216,17 @@ define(
                   chtype(
                     _vv,
                     varg))
-                set(
-                  whr,
-                  _(
+                LOCALS.whr = _(
                     _whr,
-                    1))),
+                    1)),
             (type_Q(
                   _itm,
                   vector)
                 cond(
                   (gassigned_Q(
-                      set(
-                        atm,
-                        add_word(
+                      LOCALS.atm = add_word(
                           1(
-                            _itm))))
+                            _itm)))
                     put(
                       _syn,
                       GLOBALS.sfcn,
@@ -1343,11 +1235,9 @@ define(
                       _syn,
                       GLOBALS.sfcn,
                       setg(
-                        set(
-                          atm,
-                          add_word(
+                        LOCALS.atm = add_word(
                             1(
-                              _itm))),
+                              _itm)),
                         chtype(
                           [_atm
                             2(
@@ -1473,11 +1363,9 @@ define(
         atom,
         false)),
   cond(
-    (set(
-        val,
-        sparse(
+    (LOCALS.val = sparse(
           _pv,
-          _vb))
+          _vb)
       cond(
         (or(
             _EQ_Q(
@@ -1551,15 +1439,11 @@ define(
           [rest
             object]))),
   cond(
-    (set(
-        obj,
-        search_list(
+    (LOCALS.obj = search_list(
           _objnam,
           GLOBALS.stars,
-          _adj))
-      set(
-        oobj,
-        _obj)),
+          _adj)
+      LOCALS.oobj = _obj),
     (not(
         empty_Q(
           _obj))
@@ -1570,13 +1454,11 @@ define(
     (and(
         lit_Q(
           _here),
-        set(
-          obj,
-          search_list(
+        LOCALS.obj = search_list(
             _objnam,
             robjs(
               GLOBALS.here),
-            _adj)))
+            _adj))
       cond(
         (and(
             _av,
@@ -1592,16 +1474,12 @@ define(
               trnn(
                 _obj,
                 GLOBALS.findmebit)))
-          set(
-            chomp,
-            t)),
+          LOCALS.chomp = t),
         (_oobj
           return(
             GLOBALS.nefals,
             _get_obj)),
-        (set(
-            oobj,
-            _obj)))),
+        (LOCALS.oobj = _obj))),
     (and(
         not(
           _obj),
@@ -1614,19 +1492,13 @@ define(
   cond(
     (_av
       cond(
-        (set(
-            obj,
-            search_list(
+        (LOCALS.obj = search_list(
               _objnam,
               ocontents(
                 _av),
-              _adj))
-          set(
-            chomp,
-            null)
-          set(
-            oobj,
-            _obj)),
+              _adj)
+          LOCALS.chomp = null
+          LOCALS.oobj = _obj),
         (not(
             empty_Q(
               _obj))
@@ -1634,13 +1506,11 @@ define(
             GLOBALS.nefals,
             _get_obj))))),
   cond(
-    (set(
-        obj,
-        search_list(
+    (LOCALS.obj = search_list(
           _objnam,
           aobjs(
             GLOBALS.winner),
-          _adj))
+          _adj)
       cond(
         (_oobj
           GLOBALS.nefals),
@@ -1715,9 +1585,7 @@ define(
               return(
                 _nefals,
                 _sl)),
-            (set(
-                oobj,
-                _obj))))),
+            (LOCALS.oobj = _obj)))),
       cond(
         (and(
             ovis_Q(
@@ -1733,22 +1601,18 @@ define(
                 _obj,
                 GLOBALS.searchbit)))
           cond(
-            (set(
-                nobj,
-                search_list(
+            (LOCALS.nobj = search_list(
                   _objnam,
                   ocontents(
                     _obj),
                   _adj,
-                  null))
+                  null)
               cond(
                 (_oobj
                   return(
                     _nefals,
                     _sl)),
-                (set(
-                    oobj,
-                    _nobj)))),
+                (LOCALS.oobj = _nobj))),
             (_EQ_Q(
                 _nobj,
                 _nefals)
@@ -1807,9 +1671,7 @@ define(
               return(
                 GLOBALS.nefals,
                 _dwim)))
-          set(
-            nobj,
-            _x))),
+          LOCALS.nobj = _x)),
       cond(
         (and(
             ovis_Q(
@@ -1835,9 +1697,7 @@ define(
                       return(
                         GLOBALS.nefals,
                         _dwim)),
-                    (set(
-                        nobj,
-                        _x)))))),
+                    (LOCALS.nobj = _x))))),
             ocontents(
               _x))))),
     _objs),

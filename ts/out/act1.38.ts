@@ -8,9 +8,7 @@ define(
         GLOBALS.rep,
         subr,
         fsubr)
-      set(
-        read_table,
-        put(
+      LOCALS.read_table = put(
           ivector(
             256,
             0),
@@ -18,7 +16,7 @@ define(
             ascii(
               _X__),
             fix),
-          _X__))
+          _X__)
       evaltype(
         form,
         segment)
@@ -335,10 +333,8 @@ define(
         (_EQ_Q(
             2(
               _prsvec),
-            set(
-              t,
-              find_obj(
-                "TORCH")))
+            LOCALS.t = find_obj(
+                "TORCH"))
           tell(
             "The torch hits the glacier and explodes into a great ball of flame,\ndevouring the glacier.  The water from the melting glacier rushes\ndownstream, carrying the torch with it.  In the place of the glacier,\nthere is a passageway leading west.")
           remove_object(
@@ -480,11 +476,9 @@ define(
         (tell(
             "You are in the living room.  There is a door to the east, a wooden\ndoor with strange gothic lettering to the west, which appears to be\nnailed shut,",
             0)))
-      set(
-        rug_Q,
-        orand(
+      LOCALS.rug_Q = orand(
           find_obj(
-            "RUG")))
+            "RUG"))
       cond(
         (and(
             _rug_Q,
@@ -505,10 +499,8 @@ define(
             1)))
       t),
     (and(
-        set(
-          tc,
-          find_obj(
-            "TCASE")),
+        LOCALS.tc = find_obj(
+            "TCASE"),
         or(
           _EQ_Q(
             _prsact,
@@ -821,10 +813,8 @@ define(
         GLOBALS.move_X_words)
       cond(
         (orand(
-            set(
-              obj,
-              find_obj(
-                "RUG")))
+            LOCALS.obj = find_obj(
+                "RUG"))
           tell(
             "Having moved the carpet previously, you find it impossible to move\nit again.")),
         (tell(
@@ -918,17 +908,13 @@ define(
           object])),
   tell(
     "A ghost appears in the room and is appalled at your having\ndesecrated the remains of a fellow adventurer.  He casts a curse\non all of your valuables and orders them banished to the Land of\nthe Living Dead.  The ghost leaves, muttering obscenities."),
-  set(
-    l,
-    rob_room(
+  LOCALS.l = rob_room(
       _rm,
       (),
-      100)),
-  set(
-    l,
-    rob_adv(
+      100),
+  LOCALS.l = rob_adv(
       GLOBALS.player,
-      _l)),
+      _l),
   mapf(
     null,
     function(
@@ -1173,12 +1159,8 @@ define(
           vname(
             _prsact),
           rub_X_words))
-      set(
-        rm1,
-        GLOBALS.here)
-      set(
-        rm2,
-        cond(
+      LOCALS.rm1 = GLOBALS.here
+      LOCALS.rm2 = cond(
           (_EQ_Q(
               _rm1,
               find_room(
@@ -1186,11 +1168,9 @@ define(
             find_room(
               "MIRR2")),
           (find_room(
-              "MIRR1"))))
-      set(
-        l1,
-        robjs(
-          _rm1))
+              "MIRR1")))
+      LOCALS.l1 = robjs(
+          _rm1)
       put(
         _rm1,
         GLOBALS.robjs,
@@ -1327,9 +1307,7 @@ define(
         room)),
   and(
     type_Q(
-      set(
-        cx,
-        nth(
+      LOCALS.cx = nth(
           rexits(
             GLOBALS.here),
           _(
@@ -1339,7 +1317,7 @@ define(
               mod(
                 random(
                   ),
-                8))))),
+                8)))),
       cexit),
     cxroom(
       _cx)))
@@ -1467,10 +1445,8 @@ define(
                     "BOOK"),
                   _wobj),
                 memq(
-                  set(
-                    cand,
-                    find_obj(
-                      "CANDL")),
+                  LOCALS.cand = find_obj(
+                      "CANDL"),
                   _wobj),
                 g_Q(
                   olight_Q(
@@ -1655,12 +1631,10 @@ define(
               _pv)),
           walk_in_X_words))
       cond(
-        (set(
-            flg,
-            n_EQ_Q(
+        (LOCALS.flg = n_EQ_Q(
               oroom(
                 _hobj),
-              _here))
+              _here)
           tell(
             "You hear a scream of anguish as you violate the robber's hideaway. \nUsing passages unknown to you, he rushes to its defense.")
           cond(
@@ -1680,12 +1654,10 @@ define(
             GLOBALS.hrooms,
             cond(
               (empty_Q(
-                  set(
-                    tl,
-                    rest(
+                  LOCALS.tl = rest(
                       memq(
                         _here,
-                        _rooms))))
+                        _rooms)))
                 _rooms),
               (_tl)))
           insert_object(
@@ -1698,10 +1670,8 @@ define(
       and(
         not(
           ocan(
-            set(
-              chali,
-              find_obj(
-                "CHALI")))),
+            LOCALS.chali = find_obj(
+                "CHALI"))),
         _EQ_Q(
           oroom(
             _chali),
@@ -1956,10 +1926,8 @@ define(
         GLOBALS.rvars,
         _(
           1,
-          set(
-            hack,
-            rvars(
-              _mnt))))
+          LOCALS.hack = rvars(
+              _mnt)))
       cond(
         (and(
             _here_Q,
@@ -1971,17 +1939,13 @@ define(
                 _(
                   1,
                   _(
-                    set(
-                      hack,
-                      rvars(
-                        _mnt)),
+                    LOCALS.hack = rvars(
+                        _mnt),
                     2)))))))
       cond(
         (g__Q(
-            set(
-              hack,
-              rvars(
-                _mnt)),
+            LOCALS.hack = rvars(
+                _mnt),
             16)
           mung_room(
             _mnt,
@@ -2005,10 +1969,8 @@ define(
               "BLBUT"))
           cond(
             (0_Q(
-                set(
-                  hack,
-                  rvars(
-                    GLOBALS.here)))
+                LOCALS.hack = rvars(
+                    GLOBALS.here))
               tell(
                 "There is a rumbling sound and a stream of water appears to burst\nfrom the east wall of the room (apparently, a leak has occurred in a\npipe.)")
               put(
@@ -2091,10 +2053,8 @@ define(
                 _prsa),
               plug_X_words),
             g_Q(
-              set(
-                hack,
-                rvars(
-                  GLOBALS.here)),
+              LOCALS.hack = rvars(
+                  GLOBALS.here),
               0))
           cond(
             (_EQ_Q(
@@ -2177,10 +2137,8 @@ define(
         walk_in_X_words)
       and(
         memq(
-          set(
-            c,
-            find_obj(
-              "CANDL")),
+          LOCALS.c = find_obj(
+              "CANDL"),
           aobjs(
             GLOBALS.winner)),
         prob(
@@ -2189,13 +2147,9 @@ define(
           olight_Q(
             _c)),
         clock_disable(
-          set(
-            bar,
-            2(
-              set(
-                foo,
-                orand(
-                  _c))))),
+          LOCALS.bar = 2(
+              LOCALS.foo = orand(
+                  _c))),
         put(
           _c,
           GLOBALS.olight_Q,
@@ -2287,9 +2241,7 @@ define(
         rtrnn(
           GLOBALS.here,
           GLOBALS.rfillbit),
-        set(
-          rem,
-          or(
+        LOCALS.rem = or(
             _EQ_Q(
               ocan(
                 _w),
@@ -2298,7 +2250,7 @@ define(
             _EQ_Q(
               oroom(
                 _w),
-              GLOBALS.here))))
+              GLOBALS.here)))
       put(
         _prsvec,
         1,
@@ -2694,10 +2646,8 @@ define(
             "The cyclops yawns and stares at the thing that woke him up.")
           GLOBALS.cyclops_flag_X_flag = null
           trz(
-            set(
-              cyc,
-              find_obj(
-                "CYCLO")),
+            LOCALS.cyc = find_obj(
+                "CYCLO"),
             GLOBALS.sleepbit)
           tro(
             _cyc,
@@ -2748,10 +2698,8 @@ define(
               remove_object(
                 _drink)
               tro(
-                set(
-                  cyc,
-                  find_obj(
-                    "CYCLO")),
+                LOCALS.cyc = find_obj(
+                    "CYCLO"),
                 GLOBALS.sleepbit)
               trz(
                 _cyc,
@@ -2905,16 +2853,12 @@ define(
     (l_Q(
         _foo,
         0)
-      set(
-        foo,
-        _(
+      LOCALS.foo = _(
+          _foo,
+          1)),
+    (LOCALS.foo = _(
           _foo,
           1))),
-    (set(
-        foo,
-        _(
-          _foo,
-          1)))),
   cond(
     (GLOBALS.cyclops_flag_X_flag),
     (tell(
@@ -2988,12 +2932,10 @@ define(
             #decl
               ((prsvec)
                 vector),
-            set(
-              l,
-              readstring(
+            LOCALS.l = readstring(
                 _b,
                 GLOBALS.inchan,
-                _reader_string)),
+                _reader_string),
             readchr(
               GLOBALS.inchan),
             or(
@@ -3014,10 +2956,8 @@ define(
                       t),
                     t),
                   _EQ_Q(
-                    set(
-                      verb,
-                      1(
-                        _prsvec)),
+                    LOCALS.verb = 1(
+                        _prsvec),
                     _walk),
                   2(
                     _prsvec),
@@ -3028,10 +2968,8 @@ define(
                       atom),
                     rexits(
                       _rm)))
-                set(
-                  random_action,
-                  vfcn(
-                    _verb))
+                LOCALS.random_action = vfcn(
+                    _verb)
                 apply_random(
                   _random_action)
                 cond(
@@ -3146,11 +3084,9 @@ define(
           vector),
         false)),
   cond(
-    (set(
-        m,
-        memq(
+    (LOCALS.m = memq(
           down_X_words,
-          _exits))
+          _exits)
       cond(
         (or(
             type_Q(
@@ -3490,10 +3426,8 @@ define(
     (object_action(
         )),
     (and(
-        set(
-          eat_Q,
-          edible_Q(
-            _prsobj)),
+        LOCALS.eat_Q = edible_Q(
+            _prsobj),
         memq(
           _prsobj,
           _aobjs))
@@ -3513,14 +3447,10 @@ define(
               _prsobj,
               _aobjs))))),
     (and(
-        set(
-          drink_Q,
-          drinkable_Q(
-            _prsobj)),
-        set(
-          nobj,
-          ocan(
-            _prsobj)),
+        LOCALS.drink_Q = drinkable_Q(
+            _prsobj),
+        LOCALS.nobj = ocan(
+            _prsobj),
         memq(
           _nobj,
           _aobjs))
@@ -3657,20 +3587,12 @@ define(
           [rest
             object])),
     cond(
-      (set(
-          here_Q,
-          oroom(
-            _hobj))
-        set(
-          rm,
-          _here_Q))),
-    set(
-      robj,
-      robjs(
-        _rm)),
-    set(
-      objt,
-      _hh),
+      (LOCALS.here_Q = oroom(
+            _hobj)
+        LOCALS.rm = _here_Q)),
+    LOCALS.robj = robjs(
+        _rm),
+    LOCALS.objt = _hh,
     cond(
       (and(
           _EQ_Q(
@@ -3691,9 +3613,7 @@ define(
                   _still)))
             remove_object(
               _hobj)
-            set(
-              here_Q,
-              null)))
+            LOCALS.here_Q = null))
         mapf(
           null,
           function(
@@ -3709,11 +3629,9 @@ define(
                 put(
                   _hack,
                   GLOBALS.hobjs,
-                  set(
-                    hh,
-                    splice_out(
+                  LOCALS.hh = splice_out(
                       _x,
-                      _hh)))
+                      _hh))
                 insert_object(
                   _x,
                   _rm)))),
@@ -3820,20 +3738,16 @@ define(
                 put(
                   _hack,
                   GLOBALS.hobjs,
-                  set(
-                    hh,
-                    rob_room(
+                  LOCALS.hh = rob_room(
                       _rm,
                       _hh,
-                      100)))
+                      100))
                 put(
                   _hack,
                   GLOBALS.hobjs,
-                  set(
-                    hh,
-                    rob_adv(
+                  LOCALS.hh = rob_adv(
                       _win,
-                      _hh)))
+                      _hh))
                 put(
                   _hack,
                   GLOBALS.hflag,
@@ -3861,9 +3775,7 @@ define(
                           "The other occupant (he of the large bag), finding nothing of value,\nleft disgusted.")))
                     remove_object(
                       _hobj)
-                    set(
-                      here_Q,
-                      null)),
+                    LOCALS.here_Q = null),
                   (t
                     tell(
                       "A 'lean and hungry' gentleman just wandered through.  Finding\nnothing of value, he left disgruntled.")))))),
@@ -3877,20 +3789,16 @@ define(
                     put(
                       _hack,
                       GLOBALS.hobjs,
-                      set(
-                        hh,
-                        rob_room(
+                      LOCALS.hh = rob_room(
                           _rm,
                           _hh,
-                          100)))
+                          100))
                     put(
                       _hack,
                       GLOBALS.hobjs,
-                      set(
-                        hh,
-                        rob_adv(
+                      LOCALS.hh = rob_adv(
                           _win,
-                          _hh)))
+                          _hh))
                     cond(
                       (memq(
                           find_obj(
@@ -3908,9 +3816,7 @@ define(
                           "The other occupant just left, still carrying his large bag.  You may\nnot have noticed that he robbed you blind first.")))
                     remove_object(
                       _hobj)
-                    set(
-                      here_Q,
-                      null)
+                    LOCALS.here_Q = null
                     snarf_object(
                       _hobj,
                       _still)),
@@ -3928,9 +3834,7 @@ define(
             _still),
           remove_object(
             _hobj),
-          set(
-            here_Q,
-            null))),
+          LOCALS.here_Q = null)),
       (and(
           _EQ_Q(
             oroom(
@@ -3945,12 +3849,10 @@ define(
         put(
           _hack,
           GLOBALS.hobjs,
-          set(
-            hh,
-            rob_room(
+          LOCALS.hh = rob_room(
               _rm,
               _hh,
-              75)))
+              75))
         cond(
           (and(
               _EQ_Q(
@@ -3997,10 +3899,8 @@ define(
                         put(
                           _hack,
                           GLOBALS.hobjs,
-                          set(
-                            hh,
-                            (_x
-                              _X_hh)))))
+                          LOCALS.hh = (_x
+                              _X_hh))))
                     mapleave(
                       )))),
               robjs(
@@ -4032,10 +3932,8 @@ define(
                     put(
                       _hack,
                       GLOBALS.hobjs,
-                      set(
-                        hh,
-                        (_x
-                          _X_hh)))
+                      LOCALS.hh = (_x
+                          _X_hh))
                     cond(
                       (_EQ_Q(
                           _rm,
@@ -4057,28 +3955,20 @@ define(
                   _hh)
                 GLOBALS.dome_flag_X_flag = null)))))),
     cond(
-      (set(
-          once,
-          not(
-            _once))
+      (LOCALS.once = not(
+            _once)
         // Move to next room, and hack.
         prog(
           ((rooms
               hrooms(
                 _hack))),
-          set(
-            rm,
-            1(
-              _rooms)),
+          LOCALS.rm = 1(
+              _rooms),
           cond(
             (empty_Q(
-                set(
-                  rooms,
-                  rest(
-                    _rooms)))
-              set(
-                rooms,
-                GLOBALS.rooms))),
+                LOCALS.rooms = rest(
+                    _rooms))
+              LOCALS.rooms = GLOBALS.rooms)),
           cond(
             (rtrnn(
                 _rm,
@@ -4098,10 +3988,8 @@ define(
             _hack,
             GLOBALS.hrooms,
             _rooms),
-          set(
-            seen_Q,
-            rseen_Q(
-              _rm)))
+          LOCALS.seen_Q = rseen_Q(
+              _rm))
         again(
           )))),
   // Drop worthless cruft, sometimes,
@@ -4126,11 +4014,9 @@ define(
             put(
               _hack,
               GLOBALS.hobjs,
-              set(
-                hh,
-                splice_out(
+              LOCALS.hh = splice_out(
                   _x,
-                  _hh)))
+                  _hh))
             insert_object(
               _x,
               _rm)
@@ -4239,10 +4125,8 @@ define(
       cond(
         (_EQ_Q(
             ocan(
-              set(
-                st,
-                find_obj(
-                  "STILL"))),
+              LOCALS.st = find_obj(
+                  "STILL")),
             _t)
           null),
         (_EQ_Q(
@@ -4328,9 +4212,7 @@ define(
                       cond(
                         (not(
                             _flg)
-                          set(
-                            flg,
-                            t)
+                          LOCALS.flg = t
                           tell(
                             "As the thief dies, the power of his magic decreases, and his\ntreasures reappear:",
                             2)))
@@ -4401,9 +4283,7 @@ define(
               find_room(
                 "TREAS")),
             oroom(
-              set(
-                chali,
-                _chali)))
+              LOCALS.chali = _chali))
           trz(
             _chali,
             GLOBALS.takebit)))
@@ -4513,16 +4393,12 @@ define(
         (and(
             _EQ_Q(
               _prsobj,
-              set(
-                brick,
-                find_obj(
-                  "BRICK"))),
+              LOCALS.brick = find_obj(
+                  "BRICK")),
             _EQ_Q(
               ocan(
-                set(
-                  fuse,
-                  find_obj(
-                    "FUSE"))),
+                LOCALS.fuse = find_obj(
+                    "FUSE")),
               _brick),
             orand(
               _fuse),
@@ -4530,10 +4406,8 @@ define(
               0_Q(
                 ctick(
                   2(
-                    set(
-                      f,
-                      orand(
-                        _fuse)))))))
+                    LOCALS.f = orand(
+                        _fuse))))))
           // I.e., he's trying to give us the brick with a lighted fuse.
           tell(
             "The thief seems rather offended by your offer.  Do you think he's as\nstupid as you are?")),
@@ -4593,16 +4467,12 @@ define(
             _EQ_Q(
               oroom(
                 _ch),
-              set(
-                tr,
-                find_room(
-                  "TREAS"))),
+              LOCALS.tr = find_room(
+                  "TREAS")),
             _EQ_Q(
               oroom(
-                set(
-                  t,
-                  find_obj(
-                    "THIEF"))),
+                LOCALS.t = find_obj(
+                    "THIEF")),
               _tr),
             fighting_Q(
               _t),
@@ -5512,20 +5382,16 @@ define(
         GLOBALS.turn_on_X_words)
       clock_enable(
         2(
-          set(
-            foo,
-            orand(
-              _rlamp))))
+          LOCALS.foo = orand(
+              _rlamp)))
       null),
     (_EQ_Q(
         _verb,
         GLOBALS.turn_off_X_words)
       clock_disable(
         2(
-          set(
-            foo,
-            orand(
-              _rlamp))))
+          LOCALS.foo = orand(
+              _rlamp)))
       null)))
 
 define(
@@ -5567,9 +5433,7 @@ define(
       cond(
         (infested_Q(
             _here)
-          set(
-            ng,
-            2)),
+          LOCALS.ng = 2),
         (mapf(
             null,
             function(
@@ -5601,9 +5465,7 @@ define(
                       t))))),
             rexits(
               _here))
-          set(
-            ng,
-            1)))
+          LOCALS.ng = 1))
       cond(
         (_EQ_Q(
             _ng,
@@ -5752,11 +5614,9 @@ define(
             put(
               _match,
               GLOBALS.orand,
-              set(
-                mc,
-                _(
+              LOCALS.mc = _(
                   _mc,
-                  1))),
+                  1)),
             l__Q(
               _mc,
               0))
@@ -5861,10 +5721,8 @@ define(
         clock_int(
           GLOBALS.cndin,
           50)])),
-  set(
-    foo,
-    orand(
-      _c)),
+  LOCALS.foo = orand(
+      _c),
   cond(
     (_EQ_Q(
         _prsact,
@@ -5880,9 +5738,7 @@ define(
           tell(
             "With what?")
           put(
-            set(
-              orphans,
-              GLOBALS.orphans),
+            LOCALS.orphans = GLOBALS.orphans,
             GLOBALS.oflag,
             t)
           put(
@@ -5904,10 +5760,8 @@ define(
         (and(
             _EQ_Q(
               _w,
-              set(
-                match,
-                find_obj(
-                  "MATCH"))),
+              LOCALS.match = find_obj(
+                  "MATCH")),
             1_Q(
               olight_Q(
                 _match)))
@@ -6050,19 +5904,15 @@ define(
   put(
     _foo,
     1,
-    set(
-      cnt,
-      _(
+    LOCALS.cnt = _(
         1(
           _foo),
-        1))),
+        1)),
   clock_int(
     _cev,
-    set(
-      tim,
-      nth(
+    LOCALS.tim = nth(
         _tick,
-        _cnt))),
+        _cnt)),
   cond(
     (0_Q(
         _tim)
