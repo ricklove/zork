@@ -18,11 +18,11 @@ GLOBALS.actions = moblist(
     actions,
     17)
 
-GLOBALS.orphans = [<>
-    <>
-    <>
-    <>
-    <>]
+GLOBALS.orphans = [null
+    null
+    null
+    null
+    null]
 
 cond(
   (or(
@@ -75,9 +75,9 @@ define(
           rest(
             _pv),
           1,
-          <>),
+          null),
         2,
-        <>))
+        null))
     (actions
       GLOBALS.actions)
     (dirs
@@ -92,12 +92,12 @@ define(
     (here
       GLOBALS.here)
     (action
-      <>)
+      null)
     (prep
-      <>)
+      null)
     nprep
     (adj
-      <>)
+      null)
     atm
     aval
     obj
@@ -156,7 +156,7 @@ define(
   set(
     val,
     mapf(
-      <>,
+      null,
       function(
         (x),
         #decl
@@ -217,7 +217,7 @@ define(
                           "Double preposition?",
                           0))
                       mapleave(
-                        <>)),
+                        null)),
                     (set(
                         prep,
                         _aval)))),
@@ -259,7 +259,7 @@ define(
                       "Too many objects specified?",
                       0)),
                   mapleave(
-                    <>))
+                    null))
                 put(
                   _pvr,
                   1,
@@ -279,7 +279,7 @@ define(
                         _prep)
                       set(
                         prep,
-                        <>)
+                        null)
                       put(
                         _pprep,
                         2,
@@ -352,10 +352,10 @@ define(
                       _prep,
                       _atm)))
                 mapleave(
-                  <>)))
+                  null)))
             set(
               adj,
-              <>)
+              null)
             t),
           (or(
               _vb,
@@ -364,7 +364,7 @@ define(
                 0,
                 _x))
             mapleave(
-              <>)))),
+              null)))),
       _sv)),
   cond(
     (_val
@@ -398,10 +398,10 @@ define(
                   0))))
           orphan(
             t,
-            <>,
+            null,
             2(
               _pv))
-          <>),
+          null),
         (and(
             put(
               _pv,
@@ -413,7 +413,7 @@ define(
             tell(
               "Dangling adjective?",
               0))
-          <>),
+          null),
         (and(
             _orfl,
             set(
@@ -452,7 +452,7 @@ define(
                   _pv,
                   2,
                   _pprep))),
-            <>)),
+            null)),
         (_prep
           and(
             type_Q(
@@ -483,21 +483,21 @@ define(
   parse(
     lex(
       _str),
-    <>))
+    null))
 
 define(
   orphan,
   ("OPTIONAL"
     (flag
-      <>)
+      null)
     (action
-      <>)
+      null)
     (slot1
-      <>)
+      null)
     (prep
-      <>)
+      null)
     (name
-      <>)),
+      null)),
   #decl
     ((flag)
       or(
@@ -541,11 +541,11 @@ define(
       2(
         _objs))
     (dforce
-      <>)
+      null)
     (drive
-      <>)
+      null)
     (gwim
-      <>)
+      null)
     synn),
   #decl
     ((action)
@@ -572,7 +572,7 @@ define(
         object)),
   cond(
     (mapf(
-        <>,
+        null,
         function(
           (syn),
           #decl
@@ -618,7 +618,7 @@ define(
                     (set(
                         drive,
                         _syn)))
-                  <>))),
+                  null))),
             (not(
                 _o1)
               cond(
@@ -630,7 +630,7 @@ define(
                 (set(
                     drive,
                     _syn)))
-              <>))),
+              null))),
         vdecl(
           _action))),
     (set(
@@ -667,7 +667,7 @@ define(
           orphan(
             t,
             _action,
-            <>,
+            null,
             vprep(
               _synn))
           ortell(
@@ -711,7 +711,7 @@ define(
     (tell(
         "I can't make sense out of that.",
         0)
-      <>)))
+      null)))
 
 define(
   take_it_or_leave_it,
@@ -829,7 +829,7 @@ define(
             _obj),
           robjs(
             GLOBALS.here),
-          <>),
+          null),
         or(
           can_take_Q(
             _obj),
@@ -885,7 +885,7 @@ define(
   cond(
     (not(
         _orfl)
-      <>),
+      null),
     (set(
         slot1,
         oslot1(
@@ -950,7 +950,7 @@ define(
           _action),
         0,
         "what?"))),
-  <>)
+  null)
 
 define(
   prstr,
@@ -971,7 +971,7 @@ define(
       GLOBALS.scrstr,
       length(
         _sp)),
-    <>))
+    null))
 
 define(
   foostr,
@@ -989,7 +989,7 @@ define(
         atom,
         false)),
   mapr(
-    <>,
+    null,
     function(
       (x
         y),
@@ -1078,7 +1078,7 @@ define(
         _fword,
         GLOBALS.vrbit))
     (obj
-      <>)
+      null)
     nobj
     (pv
       GLOBALS.prsvec)
@@ -1191,7 +1191,7 @@ define(
                 _pv,
                 2,
                 _savobj)
-              <>))),
+              null))),
         (or(
             _nobj,
             not(
@@ -1211,7 +1211,7 @@ define(
     vv
     sum
     (prep
-      <>)
+      null)
     atm),
   chtype(
     mapf(
@@ -1222,7 +1222,7 @@ define(
           (syn
             ivector(
               5,
-              <>))
+              null))
           (whr
             1)),
         #decl
@@ -1233,7 +1233,7 @@ define(
             (whr)
             fix),
         mapf(
-          <>,
+          null,
           /* FUNCTION */
             (itm) => (
             cond,
@@ -1251,7 +1251,7 @@ define(
                   set(
                     itm,
                     () => (_1)),
-                  <>)),
+                  null)),
             (type_Q(
                   _itm,
                   list)
@@ -1273,7 +1273,7 @@ define(
                   0)
                 set(
                   prep,
-                  <>)
+                  null)
                 and(
                   memq(
                     aobjs,
@@ -1390,7 +1390,7 @@ define(
 
 GLOBALS.evarg = chtype(
     [0
-      <>
+      null
       0],
     varg)
 
@@ -1486,17 +1486,17 @@ define(
             syn_match(
               _val))
           orphan(
-            <>)),
+            null)),
         (or(
             _vb,
             tell(
               ""))
-          <>))),
+          null))),
     (or(
         _vb,
         tell(
           ""))
-      <>)))
+      null)))
 
 GLOBALS.scrstr = rest(
     istring(
@@ -1505,7 +1505,7 @@ GLOBALS.scrstr = rest(
 
 GLOBALS.ssv = ivector(
     10,
-    <>)
+    null)
 
 "GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS\nOVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL\nOF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE\nOBJECT OTHERWISE."
 
@@ -1517,14 +1517,14 @@ define(
     "AUX"
     obj
     (oobj
-      <>)
+      null)
     (here
       GLOBALS.here)
     (av
       avehicle(
         GLOBALS.winner))
     (chomp
-      <>)),
+      null)),
   #decl
     ((oobj
         obj
@@ -1623,7 +1623,7 @@ define(
               _adj))
           set(
             chomp,
-            <>)
+            null)
           set(
             oobj,
             _obj)),
@@ -1672,7 +1672,7 @@ define(
       t)
     "AUX"
     (oobj
-      <>)
+      null)
     (nefals
       GLOBALS.nefals)
     nobj),
@@ -1699,7 +1699,7 @@ define(
       (nefals)
       false),
   mapf(
-    <>,
+    null,
     function(
       (obj),
       #decl
@@ -1740,7 +1740,7 @@ define(
                   ocontents(
                     _obj),
                   _adj,
-                  <>))
+                  null))
               cond(
                 (_oobj
                   return(
@@ -1768,7 +1768,7 @@ define(
     no_take
     "AUX"
     (nobj
-      <>)),
+      null)),
   #decl
     ((no_take)
       or(
@@ -1785,7 +1785,7 @@ define(
         false,
         object)),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1817,7 +1817,7 @@ define(
             oopen_Q(
               _x))
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl

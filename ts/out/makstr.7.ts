@@ -70,7 +70,7 @@ define(
       (winner)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x
         "AUX"
@@ -97,14 +97,14 @@ define(
     rmid
     "OPTIONAL"
     (str
-      <>)
+      null)
     (flag
-      <>)
+      null)
     (funct
-      <>)
+      null)
     "AUX"
     (fval
-      <>)
+      null)
     atm),
   #decl
     ((str)
@@ -276,7 +276,7 @@ define(
     (objs
       ())
     (app
-      <>)
+      null)
     (val
       0)
     (bit
@@ -345,7 +345,7 @@ define(
           _app,
           false,
           form)
-        <>),
+        null),
       (_app))),
   put(
     _rm,
@@ -354,11 +354,11 @@ define(
       (type_Q(
           _lit_Q,
           form)
-        <>),
+        null),
       (t
         _lit_Q))),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -387,10 +387,10 @@ define(
     _id,
     "",
     _str,
-    %<>,
-    <>,
+    %null,
+    null,
     (),
-    <>,
+    null,
     _(
       _X_tup)))
 
@@ -412,10 +412,10 @@ define(
     _id,
     "",
     _str,
-    %<>,
+    %null,
     _app,
     (),
-    <>,
+    null,
     _(
       _X_tup)))
 
@@ -529,7 +529,7 @@ define(
           _app,
           false,
           form)
-        <>),
+        null),
       (_app))))
 
 define(
@@ -611,7 +611,7 @@ define(
       (atm)
       atom),
   mapf(
-    <>,
+    null,
     /* FUNCTION */
       (x) => (
       setg,
@@ -657,7 +657,7 @@ define(
     add_directions(
       _str)),
   mapf(
-    <>,
+    null,
     /* FUNCTION */
       (x) => (
       setg,
@@ -704,7 +704,7 @@ define(
         val,
         GLOBALS._atm)
       mapf(
-        <>,
+        null,
         /* FUNCTION */
           (x) => (
           setg,
@@ -722,7 +722,7 @@ define(
         val,
         GLOBALS._atm)
       mapf(
-        <>,
+        null,
         /* FUNCTION */
           (x) => (
           setg,
@@ -762,7 +762,7 @@ define(
         [rest
           string])),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -789,7 +789,7 @@ define(
         [rest
           string])),
   mapf(
-    <>,
+    null,
     function(
       (x
         "AUX"
@@ -895,7 +895,7 @@ define(
         val,
         GLOBALS._atm)
       mapf(
-        <>,
+        null,
         /* FUNCTION */
           (x) => (
           setg,
@@ -932,7 +932,7 @@ define(
       hack),
   cond(
     (mapr(
-        <>,
+        null,
         function(
           (y),
           #decl
@@ -980,7 +980,7 @@ define(
           adv])),
   cond(
     (mapf(
-        <>,
+        null,
         function(
           (x),
           #decl

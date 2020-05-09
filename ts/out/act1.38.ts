@@ -120,7 +120,7 @@ define(
 
 // HACK THE KITCHEN WINDOW
 
-GLOBALS.grunlock_X_flag = <>
+GLOBALS.grunlock_X_flag = null
 
 define(
   window_function,
@@ -170,7 +170,7 @@ define(
         (GLOBALS._atm
           tell(
             _strcls)
-          GLOBALS._atm = <>
+          GLOBALS._atm = null
           t),
         (tell(
             pick_one(
@@ -373,7 +373,7 @@ define(
           GLOBALS.glacier_flag_X_flag = t),
         (tell(
             "The glacier is unmoved by your ridiculous attempt.")
-          <>))),
+          null))),
     (_EQ_Q(
         vname(
           _prsact),
@@ -742,7 +742,7 @@ define(
         not(
           otouch_Q(
             _door)))
-      GLOBALS.trap_door_X_flag = <>
+      GLOBALS.trap_door_X_flag = null
       put(
         _door,
         GLOBALS.otouch_Q,
@@ -787,10 +787,10 @@ define(
             find_obj(
               "DOOR"),
             GLOBALS.otouch_Q,
-            <>)))
-      <>),
+            null)))
+      null),
     (t
-      GLOBALS.light_load_X_flag = <>)))
+      GLOBALS.light_load_X_flag = null)))
 
 // OBJECT FUNCTIONS
 
@@ -875,7 +875,7 @@ define(
             GLOBALS.winner)),
         tell(
           "As you pick up the rusty knife, your sword gives a single pulse\nof blinding blue light."))
-      <>),
+      null),
     (or(
         _EQ_Q(
           _prsa,
@@ -930,7 +930,7 @@ define(
       GLOBALS.player,
       _l)),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1004,7 +1004,7 @@ define(
             ocan(
               _a),
             _t)
-          <>),
+          null),
         (memq(
             _a,
             robjs(
@@ -1061,7 +1061,7 @@ define(
         _t,
         GLOBALS.odesc1,
         GLOBALS.trolldesc)
-      GLOBALS.troll_flag_X_flag = <>),
+      GLOBALS.troll_flag_X_flag = null),
     (_EQ_Q(
         _pa,
         GLOBALS.first_Q_X_words)
@@ -1144,7 +1144,7 @@ define(
             "Unfortunately, you have managed to destroy it by your reckless\nactions.",
             1))))))
 
-GLOBALS.mirror_mung_X_flag = <>
+GLOBALS.mirror_mung_X_flag = null
 
 define(
   mirror_mirror,
@@ -1201,7 +1201,7 @@ define(
         GLOBALS.robjs,
         _l1)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -1214,7 +1214,7 @@ define(
         robjs(
           _rm1))
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -1308,7 +1308,7 @@ define(
         room)),
   cond(
     (GLOBALS.carousel_flip_X_flag
-      <>),
+      null),
     (tell(
         "Unfortunately, it is impossible to tell directions in here.",
         1)
@@ -1401,10 +1401,10 @@ define(
           "COFFI"),
         aobjs(
           GLOBALS.winner))
-      GLOBALS.egypt_flag_X_flag = <>),
+      GLOBALS.egypt_flag_X_flag = null),
     (else
       GLOBALS.egypt_flag_X_flag = t)),
-  <>)
+  null)
 
 define(
   lld_room,
@@ -1528,7 +1528,7 @@ define(
         _g)
       tell(
         "How can you attack a spirit with material objects?")
-      <>),
+      null),
     (_EQ_Q(
         2(
           _pv),
@@ -1616,7 +1616,7 @@ define(
       hobj(
         _hack))
     (flg
-      <>)
+      null)
     tl
     (here
       GLOBALS.here)
@@ -1718,7 +1718,7 @@ define(
           tell(
             "The thief gestures mysteriously, and the treasures in the room\nsuddenly vanish.")))
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -1791,7 +1791,7 @@ define(
     (tell(
         "If you pray enough, your prayers may be answered."))))
 
-GLOBALS.gate_flag_X_flag = <>
+GLOBALS.gate_flag_X_flag = null
 
 define(
   dam_room,
@@ -1859,7 +1859,7 @@ define(
             (GLOBALS.gate_flag_X_flag
               cond(
                 (GLOBALS.low_tide_X_flag
-                  GLOBALS.low_tide_X_flag = <>
+                  GLOBALS.low_tide_X_flag = null
                   tell(
                     "The sluice gates close and water starts to collect behind the dam.")
                   and(
@@ -2042,7 +2042,7 @@ define(
             _prso,
             find_obj(
               "BRBUT"))
-          GLOBALS.gate_flag_X_flag = <>
+          GLOBALS.gate_flag_X_flag = null
           tell(
             "Click.")),
         (_EQ_Q(
@@ -2262,7 +2262,7 @@ define(
   fill,
   ("AUX"
     (rem
-      <>)
+      null)
     (prsvec
       GLOBALS.prsvec)
     (w
@@ -2549,7 +2549,7 @@ define(
     (n_EQ_Q(
         GLOBALS.here,
         _droom)
-      GLOBALS.dome_flag_X_flag = <>
+      GLOBALS.dome_flag_X_flag = null
       cond(
         (_EQ_Q(
             vname(
@@ -2603,7 +2603,7 @@ define(
         untie_X_words)
       cond(
         (GLOBALS.dome_flag_X_flag
-          GLOBALS.dome_flag_X_flag = <>
+          GLOBALS.dome_flag_X_flag = null
           trz(
             _rope,
             GLOBALS.ndescbit)
@@ -2692,7 +2692,7 @@ define(
               GLOBALS.fight_X_words))
           tell(
             "The cyclops yawns and stares at the thing that woke him up.")
-          GLOBALS.cyclops_flag_X_flag = <>
+          GLOBALS.cyclops_flag_X_flag = null
           trz(
             set(
               cyc,
@@ -2761,7 +2761,7 @@ define(
               GLOBALS.cyclops_flag_X_flag = t),
             (tell(
                 "The cyclops apparently was not thirsty at the time and refuses your\ngenerous gesture.")
-              <>))),
+              null))),
         (_EQ_Q(
             _prsob1,
             _garlic)
@@ -2786,14 +2786,14 @@ define(
         _EQ_Q(
           _prsact,
           GLOBALS.fight_X_words))
-      <>),
+      null),
     (and(
         put(
           _rm,
           GLOBALS.rvars,
           aos_sos(
             _count)),
-        <>)),
+        null)),
     (or(
         _EQ_Q(
           _prsact,
@@ -2924,7 +2924,7 @@ define(
             _foo))))),
   _foo)
 
-GLOBALS.echo_flag_X_flag = <>
+GLOBALS.echo_flag_X_flag = null
 
 define(
   echo_room,
@@ -2964,7 +2964,7 @@ define(
         prog(
           (),
           mapf(
-            <>,
+            null,
             function(
               (obj),
               #decl
@@ -3039,7 +3039,7 @@ define(
                       GLOBALS.here,
                       _rm)
                     mapf(
-                      <>,
+                      null,
                       function(
                         (x),
                         #decl
@@ -3078,7 +3078,7 @@ define(
                       1)
                     GLOBALS.echo_flag_X_flag = t
                     mapf(
-                      <>,
+                      null,
                       function(
                         (x),
                         #decl
@@ -3107,7 +3107,7 @@ define(
               GLOBALS.moves,
               1),
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl
@@ -3456,9 +3456,9 @@ define(
     (prsvec
       GLOBALS.prsvec)
     (eat_Q
-      <>)
+      null)
     (drink_Q
-      <>)
+      null)
     (prsobj
       2(
         _prsvec))
@@ -3535,7 +3535,7 @@ define(
       put(
         _prsobj,
         GLOBALS.ocan,
-        <>)
+        null)
       put(
         _nobj,
         GLOBALS.ocontents,
@@ -3645,7 +3645,7 @@ define(
       room),
   prog(
     ((once
-        <>)
+        null)
       objt),
     #decl
       ((once)
@@ -3693,9 +3693,9 @@ define(
               _hobj)
             set(
               here_Q,
-              <>)))
+              null)))
         mapf(
-          <>,
+          null,
           function(
             (x),
             #decl
@@ -3863,7 +3863,7 @@ define(
                       _hobj)
                     set(
                       here_Q,
-                      <>)),
+                      null)),
                   (t
                     tell(
                       "A 'lean and hungry' gentleman just wandered through.  Finding\nnothing of value, he left disgruntled.")))))),
@@ -3896,7 +3896,7 @@ define(
                           find_obj(
                             "ROPE"),
                           _hh)
-                        GLOBALS.dome_flag_X_flag = <>))
+                        GLOBALS.dome_flag_X_flag = null))
                     cond(
                       (_EQ_Q(
                           _objt,
@@ -3910,7 +3910,7 @@ define(
                       _hobj)
                     set(
                       here_Q,
-                      <>)
+                      null)
                     snarf_object(
                       _hobj,
                       _still)),
@@ -3930,7 +3930,7 @@ define(
             _hobj),
           set(
             here_Q,
-            <>))),
+            null))),
       (and(
           _EQ_Q(
             oroom(
@@ -3939,7 +3939,7 @@ define(
           snarf_object(
             _hobj,
             _still),
-          <>)),
+          null)),
       (_seen_Q
         // Hack the adventurer's belongings
         put(
@@ -3962,7 +3962,7 @@ define(
                   _wroom),
                 GLOBALS.mazedesc))
             mapf(
-              <>,
+              null,
               function(
                 (x),
                 #decl
@@ -4006,7 +4006,7 @@ define(
               robjs(
                 _rm))),
           (mapf(
-              <>,
+              null,
               function(
                 (x),
                 #decl
@@ -4055,7 +4055,7 @@ define(
                   find_obj(
                     "ROPE"),
                   _hh)
-                GLOBALS.dome_flag_X_flag = <>)))))),
+                GLOBALS.dome_flag_X_flag = null)))))),
     cond(
       (set(
           once,
@@ -4093,7 +4093,7 @@ define(
           put(
             _hack,
             GLOBALS.hflag,
-            <>),
+            null),
           put(
             _hack,
             GLOBALS.hrooms,
@@ -4110,7 +4110,7 @@ define(
       _rm,
       _treas),
     mapf(
-      <>,
+      null,
       function(
         (x),
         #decl
@@ -4193,7 +4193,7 @@ define(
     (here
       GLOBALS.here)
     (flg
-      <>)
+      null)
     brick
     fuse
     st
@@ -4244,7 +4244,7 @@ define(
                 find_obj(
                   "STILL"))),
             _t)
-          <>),
+          null),
         (_EQ_Q(
             oroom(
               _st),
@@ -4274,7 +4274,7 @@ define(
           tell(
             "His booty remains.")
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl
@@ -4301,7 +4301,7 @@ define(
             find_room(
               "TREAS"))
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl
@@ -4344,7 +4344,7 @@ define(
       put(
         _dem,
         GLOBALS.haction,
-        <>)),
+        null)),
     (_EQ_Q(
         _prsact,
         GLOBALS.first_Q_X_words)
@@ -4356,7 +4356,7 @@ define(
       put(
         _dem,
         GLOBALS.haction,
-        <>)
+        null)
       trz(
         find_obj(
           "STILL"),
@@ -4440,7 +4440,7 @@ define(
                 "."),
               (t
                 mapf(
-                  <>,
+                  null,
                   function(
                     (x),
                     #decl
@@ -4828,11 +4828,11 @@ define(
         _prso,
         find_obj(
           "GRAT2"))
-      GLOBALS.grunlock_X_flag = <>
+      GLOBALS.grunlock_X_flag = null
       tell(
         "The grate is locked.")
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4893,7 +4893,7 @@ define(
           tell(
             "The grate is unlocked.")
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl
@@ -4982,7 +4982,7 @@ define(
         orand(
           _prsi),
         t,
-        <>))))
+        null))))
 
 define(
   attacker,
@@ -5038,7 +5038,7 @@ define(
         orand(
           _prsi),
         t,
-        <>))))
+        null))))
 
 define(
   swinger,
@@ -5076,7 +5076,7 @@ define(
     str
     "OPTIONAL"
     (obj2
-      <>)),
+      null)),
   #decl
     ((obj)
       object
@@ -5157,7 +5157,7 @@ define(
                 orand(
                   _prsw),
                 t,
-                <>)),
+                null)),
             (t
               tell(
                 "Munging a",
@@ -5330,7 +5330,7 @@ define(
           _prso),
         "can be melted."))))
 
-GLOBALS.on_pole_X_flag = <>
+GLOBALS.on_pole_X_flag = null
 
 define(
   body_function,
@@ -5516,7 +5516,7 @@ define(
             foo,
             orand(
               _rlamp))))
-      <>),
+      null),
     (_EQ_Q(
         _verb,
         GLOBALS.turn_off_X_words)
@@ -5526,7 +5526,7 @@ define(
             foo,
             orand(
               _rlamp))))
-      <>)))
+      null)))
 
 define(
   sword_glow,
@@ -5571,7 +5571,7 @@ define(
             ng,
             2)),
         (mapf(
-            <>,
+            null,
             function(
               (e),
               #decl
@@ -5628,7 +5628,7 @@ define(
     (put(
         _dem,
         GLOBALS.haction,
-        <>))))
+        null))))
 
 define(
   sword,
@@ -5656,7 +5656,7 @@ define(
               offset)
             GLOBALS.sword_glow),
           (sword_glow)))
-      <>)))
+      null)))
 
 define(
   infested_Q,
@@ -5685,7 +5685,7 @@ define(
       haction(
         _dem)),
     mapf(
-      <>,
+      null,
       function(
         (v),
         #decl
@@ -5899,7 +5899,7 @@ define(
             chtype(
               with_X_words,
               prep))
-          GLOBALS.parse_won = <>
+          GLOBALS.parse_won = null
           t),
         (and(
             _EQ_Q(
@@ -6122,10 +6122,10 @@ define(
           _obj),
         ocontents(
           _av),
-        <>)),
+        null)),
     (search_list(
         oid(
           _obj),
         robjs(
           _rm),
-        <>))))
+        null))))

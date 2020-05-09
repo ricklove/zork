@@ -103,13 +103,13 @@ define(
 
 GLOBALS.then = 0
 
-GLOBALS.bucket_top_X_flag = <>
+GLOBALS.bucket_top_X_flag = null
 
 define(
   bucket,
   ("OPTIONAL"
     (arg
-      <>)
+      null)
     "AUX"
     (pv
       GLOBALS.prsvec)
@@ -146,7 +146,7 @@ define(
     (_EQ_Q(
         _arg,
         read_in)
-      <>),
+      null),
     (and(
         _EQ_Q(
           _pa,
@@ -158,7 +158,7 @@ define(
                 _buck))
             remove_object(
               _w)
-            <>),
+            null),
           (t)))),
     (_EQ_Q(
         _arg,
@@ -182,7 +182,7 @@ define(
           clock_int(
             GLOBALS.bckin,
             100)
-          <>),
+          null),
         (and(
             GLOBALS.bucket_top_X_flag,
             n_EQ_Q(
@@ -191,7 +191,7 @@ define(
               _buck))
           tell(
             "The bucket descends and comes to a stop.")
-          GLOBALS.bucket_top_X_flag = <>
+          GLOBALS.bucket_top_X_flag = null
           pass_the_bucket(
             find_room(
               "BWELL"),
@@ -222,7 +222,7 @@ define(
   put(
     _pv,
     2,
-    <>),
+    null),
   remove_object(
     _b),
   insert_object(
@@ -293,7 +293,7 @@ define(
         robjs(
           _here))
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -434,7 +434,7 @@ define(
                 robjs(
                   _here))
               mapf(
-                <>,
+                null,
                 function(
                   (x),
                   #decl
@@ -610,7 +610,7 @@ define(
             GLOBALS.spindizzy)),
         (tell(
             "As you enter, your compass starts spinning wildly.")
-          <>))),
+          null))),
     (_EQ_Q(
         _pa,
         GLOBALS.walk_X_words)
@@ -678,9 +678,9 @@ define(
       tell(
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south."))))
 
-GLOBALS.carousel_zoom_X_flag = <>
+GLOBALS.carousel_zoom_X_flag = null
 
-GLOBALS.carousel_flip_X_flag = <>
+GLOBALS.carousel_flip_X_flag = null
 
 define(
   buttons,
@@ -728,7 +728,7 @@ define(
               "RNBUT"))
           cond(
             (GLOBALS.carousel_zoom_X_flag
-              GLOBALS.carousel_zoom_X_flag = <>
+              GLOBALS.carousel_zoom_X_flag = null
               tell(
                 "The whirring decreases in intensity slightly.")),
             (tell(
@@ -758,7 +758,7 @@ psetg(
   spindizzy,
   "According to Prof. TAA of MIT Tech, the rapidly changing magnetic\nfields in the room are so intense as to cause you to be electrocuted. \nI really don't know, but in any event, something just killed you.")
 
-GLOBALS.cage_solve_X_flag = <>
+GLOBALS.cage_solve_X_flag = null
 
 define(
   sphere_function,
@@ -998,7 +998,7 @@ define(
     (memq(
         _pa,
         GLOBALS.robot_actions)
-      <>),
+      null),
     (tell(
         "\"I am only a stupid robot and cannot perform that command.\"))))
 

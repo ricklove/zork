@@ -49,7 +49,7 @@ define(
     unspeakable_code(
       )),
   GLOBALS.vers = _st,
-  GLOBALS.script_channel = <>,
+  GLOBALS.script_channel = null,
   GLOBALS.raw_score = 0,
   set(
     ih,
@@ -805,7 +805,7 @@ define(
           tell(
             GLOBALS.vers)
           mapf(
-            <>,
+            null,
             /* FUNCTION */
               (x) => (
               print,
@@ -946,7 +946,7 @@ define(
 define(
   contin,
   (),
-  GLOBALS.alt_flag = <>,
+  GLOBALS.alt_flag = null,
   put(
     1(
       back(
@@ -974,10 +974,10 @@ define(
   put(
     GLOBALS.prsvec,
     2,
-    <>),
+    null),
   GLOBALS.null)
 
-GLOBALS.my_script = <>
+GLOBALS.my_script = null
 
 gdecl(
   (my_script),
@@ -996,7 +996,7 @@ define(
         false)),
   cond(
     (GLOBALS.script_channel
-      <>),
+      null),
     (set(
         ch,
         open(
@@ -1027,9 +1027,9 @@ define(
       tell(
         "Suddenly, a sinister, wraithlike figure appears before you, seeming\nto float in the air.  He glows with an eldritch light.  In a barely\naudible voice he says, \"Begone, defiler!  Your presence upsets the\nvery balance of the System itself!\"  With a sinister chuckle, he\nraises his oaken staff, taps you on the head, and fades into the\ngloom.  In his place appears a tastefully lettered sign reading:\n\n			DUNGEON CLOSED\n\nAt that instant, you disappear, and all your belongings clatter to\nthe ground."),
       finish(
-        <>)),
+        null)),
     finish(
-      <>)))
+      null)))
 
 define(
   do_script,
@@ -1051,7 +1051,7 @@ define(
   cond(
     (GLOBALS.my_script
       do_unscript(
-        <>))),
+        null))),
   cond(
     (GLOBALS.script_channel
       tell(
@@ -1148,7 +1148,7 @@ define(
         ())
       close(
         GLOBALS.script_channel)
-      GLOBALS.script_channel = <>
+      GLOBALS.script_channel = null
       and(
         _verbose,
         tell(
@@ -1432,7 +1432,7 @@ define(
             "ZORK.SAVE"))
         set(
           foo,
-          <>)
+          null)
         again(
           )),
       (tell(
@@ -1471,7 +1471,7 @@ define(
     ((o)
       oblist),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1480,7 +1480,7 @@ define(
             [rest
               atom])),
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -1501,9 +1501,9 @@ define(
 
 // ROOM-INFO --  PRINT SOMETHING ABOUT THIS PLACE  1. CHECK FOR LIGHT --> ELSE WARN LOSER  2. GIVE A DESCRIPTION OF THE ROOM  3. TELL WHAT'S ON THE FLOOR IN THE WAY OF OBJECTS  4. SIGNAL ENTRY INTO THE ROOM
 
-GLOBALS.brief_X_flag = <>
+GLOBALS.brief_X_flag = null
 
-GLOBALS.super_brief_X_flag = <>
+GLOBALS.super_brief_X_flag = null
 
 gdecl(
   (super_brief_X_flag
@@ -1529,15 +1529,15 @@ define(
 define(
   un_brief,
   (),
-  GLOBALS.brief_X_flag = <>,
-  GLOBALS.super_brief_X_flag = <>,
+  GLOBALS.brief_X_flag = null,
+  GLOBALS.super_brief_X_flag = null,
   tell(
     "Long descriptions."))
 
 define(
   un_super_brief,
   (),
-  GLOBALS.super_brief_X_flag = <>,
+  GLOBALS.super_brief_X_flag = null,
   tell(
     "Some long descriptions."))
 
@@ -1551,7 +1551,7 @@ define(
   room_info,
   ("OPTIONAL"
     (full
-      <>)
+      null)
     "AUX"
     (av
       avehicle(
@@ -1595,7 +1595,7 @@ define(
     put(
       GLOBALS.prsvec,
       2,
-      <>)),
+      null)),
   prog(
     (),
     cond(
@@ -1638,7 +1638,7 @@ define(
         tell(
           "It is pitch black.  You are likely to be eaten by a grue.")
         return(
-          <>)),
+          null)),
       (or(
           and(
             not(
@@ -1691,7 +1691,7 @@ define(
           _av),
         ".")),
     mapf(
-      <>,
+      null,
       function(
         (x),
         #decl
@@ -1735,9 +1735,9 @@ define(
                   cond(
                     (_full),
                     (GLOBALS.super_brief_X_flag
-                      <>),
+                      null),
                     (GLOBALS.brief_X_flag
-                      <>),
+                      null),
                     (t)))))))),
       robjs(
         _rm)),
@@ -1841,7 +1841,7 @@ define(
             t,
             _print_c)))
       mapf(
-        <>,
+        null,
         function(
           (y),
           #decl
@@ -1908,7 +1908,7 @@ define(
   cond(
     (empty_Q(
         _str)
-      <>),
+      null),
     (tell(
         _str,
         0))))
@@ -1935,7 +1935,7 @@ define(
   rdcom,
   ("OPTIONAL"
     (ivec
-      <>)
+      null)
     "AUX"
     (str
       GLOBALS.reader_string)
@@ -2006,7 +2006,7 @@ define(
           GLOBALS.here)
         princ(
           ">")
-        GLOBALS.tell_flag = <>
+        GLOBALS.tell_flag = null
         set(
           inplen,
           readstring(
@@ -2040,7 +2040,7 @@ define(
                   or(
                     _ivec,
                     _vc),
-                  <>),
+                  null),
                 type_Q(
                   set(
                     cv,
@@ -2107,11 +2107,11 @@ define(
           tell(
             "Nothing happens."))),
       (t
-        GLOBALS.parse_won = <>
+        GLOBALS.parse_won = null
         tell(
           "Beg pardon?"))),
     mapf(
-      <>,
+      null,
       function(
         (x),
         #decl
@@ -2341,7 +2341,7 @@ define(
               tell(
                 "Do you wish to leave the game? (Y is affirmative):"),
               yes_no(
-                <>)),
+                null)),
             not(
               _ask_Q))
           record(
@@ -2384,7 +2384,7 @@ define(
     loc
     "AUX"
     (ch
-      <>)
+      null)
     (str
       GLOBALS.record_string)
     fl
@@ -2571,7 +2571,7 @@ define(
         _ch),
       play_time(
         _ch,
-        <>),
+        null),
       crlf(
         _ch),
       prin1(
@@ -2632,7 +2632,7 @@ define(
       crlf(
         _ch),
       mapf(
-        <>,
+        null,
         function(
           (x
             y),
@@ -2652,7 +2652,7 @@ define(
         GLOBALS.flag_names,
         GLOBALS.short_names),
       mapf(
-        <>,
+        null,
         function(
           (x
             y),
@@ -2981,7 +2981,7 @@ define(
           put(
             _winner,
             GLOBALS.avehicle,
-            <>),
+            null),
           cond(
             (g__Q(
                 _deaths,
@@ -2991,7 +2991,7 @@ define(
               tell(
                 "You clearly are a suicidal maniac.  We don't allow psychotics in the\ncave, since they may harm other adventurers.  Your remains will\ninstalled in the Land of the Living Dead, where your fellow adventurers \nmay gloat over them.")
               finish(
-                <>)),
+                null)),
             (GLOBALS.deaths = _(
                   _deaths,
                   1)
@@ -3008,7 +3008,7 @@ define(
                     "What?  You don't trust me?  Why, only last week I patched a running ITS\nand it survived for over 30 seconds.  Oh, well.",
                     2)
                   finish(
-                    <>)),
+                    null)),
                 (t
                   tell(
                     "Now, let me see...\nWell, we weren't quite able to restore your state.  You can't have\neverything.")
@@ -3043,11 +3043,11 @@ define(
                           put(
                             _lamp,
                             GLOBALS.oroom,
-                            <>)
+                            null)
                           put(
                             _lamp,
                             GLOBALS.ocan,
-                            <>)))),
+                            null)))),
                     (memq(
                         _lamp,
                         _aobjs)
@@ -3063,7 +3063,7 @@ define(
                     find_obj(
                       "DOOR"),
                     GLOBALS.otouch_Q,
-                    <>)
+                    null)
                   goto(
                     find_room(
                       "FORE1"))
@@ -3074,7 +3074,7 @@ define(
                       _winner,
                       _val_list))
                   mapf(
-                    <>,
+                    null,
                     function(
                       (x
                         y),
@@ -3124,7 +3124,7 @@ define(
                         aobjs,
                         _val_list)))
                   mapf(
-                    <>,
+                    null,
                     function(
                       (x
                         y),
@@ -3147,10 +3147,10 @@ define(
           (),
           record(
             score(
-              <>),
+              null),
             GLOBALS.moves,
             GLOBALS.deaths,
-            <>,
+            null,
             GLOBALS.here),
           quit(
             ))))))
@@ -3293,7 +3293,7 @@ define(
       GLOBALS.winner)
     "AUX"
     (any
-      <>)
+      null)
     (outchan
       GLOBALS.outchan)),
   #decl
@@ -3306,7 +3306,7 @@ define(
       (win)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -3380,7 +3380,7 @@ define(
       (outchan)
       channel),
   mapr(
-    <>,
+    null,
     function(
       (y),
       #decl
@@ -3457,7 +3457,7 @@ define(
       (y)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -3480,7 +3480,7 @@ define(
               transparent_Q(
                 _x)))
           mapf(
-            <>,
+            null,
             function(
               (x),
               #decl
@@ -3592,7 +3592,7 @@ define(
                 goto(
                   _leavings),
                 room_info(
-                  <>))),
+                  null))),
             (and(
                 type_Q(
                   _leavings,
@@ -3621,7 +3621,7 @@ define(
                   goto(
                     _leavings),
                   room_info(
-                    <>)))),
+                    null)))),
             (jigs_up(
                 "Oh, no!  A fearsome grue slithered into the room and devoured you.")))),
         (jigs_up(
@@ -3644,7 +3644,7 @@ define(
             goto(
               _leavings),
             room_info(
-              <>))),
+              null))),
         (type_Q(
             _leavings,
             cexit)
@@ -3674,7 +3674,7 @@ define(
                   goto(
                     _nl),
                   room_info(
-                    <>)))),
+                    null)))),
             (set(
                 cxs,
                 cxstr(
@@ -3710,7 +3710,7 @@ define(
       2(
         _vec))
     (getter_Q
-      <>)
+      null)
     (robjs
       robjs(
         _rm))
@@ -3769,11 +3769,11 @@ define(
               (tell(
                   "I can't reach that.")
                 return(
-                  <>)))),
+                  null)))),
           (tell(
               "I can't see one here.")
             return(
-              <>))))),
+              null))))),
     cond(
       (_EQ_Q(
           _obj,
@@ -3782,7 +3782,7 @@ define(
         tell(
           "You are in it, loser!")
         return(
-          <>)),
+          null)),
       (not(
           can_take_Q(
             _obj))
@@ -3793,7 +3793,7 @@ define(
             pick_one(
               GLOBALS.yuks)))
         return(
-          <>)),
+          null)),
       (or(
           _getter_Q,
           memq(
@@ -3829,7 +3829,7 @@ define(
             tell(
               "Your load is too heavy.  You will have to leave something behind.")
             return(
-              <>)))
+              null)))
         cond(
           (not(
               apply_object(
@@ -3846,11 +3846,11 @@ define(
                 put(
                   _obj,
                   GLOBALS.oroom,
-                  <>)
+                  null)
                 put(
                   _obj,
                   GLOBALS.ocan,
-                  <>)),
+                  null)),
               (remove_object(
                   _obj)))
             put(
@@ -3877,7 +3877,7 @@ define(
           "You already have it.")),
       (tell(
           "I can't see one here.")
-        <>))))
+        null))))
 
 define(
   putter,
@@ -3904,7 +3904,7 @@ define(
       robjs(
         GLOBALS.here))
     (ocan
-      <>)),
+      null)),
   #decl
     ((pv)
       vector(
@@ -3951,7 +3951,7 @@ define(
         tell(
           "Nice try.")
         return(
-          <>))),
+          null))),
     cond(
       (or(
           oopen_Q(
@@ -3970,7 +3970,7 @@ define(
       (tell(
           "I can't do that.")
         return(
-          <>))),
+          null))),
     cond(
       (not(
           oopen_Q(
@@ -3978,14 +3978,14 @@ define(
         tell(
           "I can't reach inside.")
         return(
-          <>)),
+          null)),
       (_EQ_Q(
           _can,
           _crock)
         tell(
           "How can you do that?")
         return(
-          <>)),
+          null)),
       (g_Q(
           _(
             weight(
@@ -3998,7 +3998,7 @@ define(
         tell(
           "It won't fit.")
         return(
-          <>))),
+          null))),
     cond(
       (or(
           memq(
@@ -4032,13 +4032,13 @@ define(
         put(
           _pv,
           3,
-          <>)
+          null)
         cond(
           (not(
               take(
-                <>))
+                null))
             return(
-              <>)),
+              null)),
           (set(
               aobjs,
               aobjs(
@@ -4067,14 +4067,14 @@ define(
             put(
               _crock,
               GLOBALS.ocan,
-              <>)),
+              null)),
           (tell(
               "I can't reach the",
               1,
               odesc2(
                 _crock))
             return(
-              <>))))),
+              null))))),
     put(
       _pv,
       1,
@@ -4130,7 +4130,7 @@ define(
       aobjs(
         _winner))
     (getter_Q
-      <>)
+      null)
     (vec
       GLOBALS.prsvec)
     (rm
@@ -4257,7 +4257,7 @@ define(
             put(
               _obj,
               GLOBALS.ocan,
-              <>)),
+              null)),
           (put(
               _winner,
               GLOBALS.aobjs,
@@ -4275,7 +4275,7 @@ define(
               3,
               _av)
             putter(
-              <>)),
+              null)),
           (insert_object(
               _obj,
               _rm)))
@@ -4358,7 +4358,7 @@ define(
         _pa,
         GLOBALS.take_X_words)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4398,7 +4398,7 @@ define(
           _pa,
           GLOBALS.put_X_words))
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4471,7 +4471,7 @@ define(
         _pa,
         GLOBALS.take_X_words)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4507,7 +4507,7 @@ define(
         _pa,
         GLOBALS.drop_X_words)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4534,7 +4534,7 @@ define(
         rp,
         (),
         mapf(
-          <>,
+          null,
           function(
             (x),
             #decl
@@ -4571,7 +4571,7 @@ define(
           robjs(
             _here)),
         mapf(
-          <>,
+          null,
           function(
             (x),
             #decl
@@ -4650,7 +4650,7 @@ define(
         _pa,
         GLOBALS.take_X_words)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4690,7 +4690,7 @@ define(
         _pa,
         GLOBALS.drop_X_words)
       mapf(
-        <>,
+        null,
         function(
           (x),
           #decl
@@ -4722,7 +4722,7 @@ define(
         rp,
         (),
         mapf(
-          <>,
+          null,
           function(
             (x),
             #decl
@@ -4760,7 +4760,7 @@ define(
           robjs(
             _here)),
         mapf(
-          <>,
+          null,
           function(
             (x),
             #decl
@@ -4918,7 +4918,7 @@ define(
           put(
             _prso,
             GLOBALS.oopen_Q,
-            <>)
+            null)
           tell(
             "Closed.")),
         (t
@@ -4983,7 +4983,7 @@ define(
         str3)
       string),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -5008,7 +5008,7 @@ define(
               oopen_Q(
                 _x)))
           mapf(
-            <>,
+            null,
             function(
               (y),
               #decl
@@ -5098,7 +5098,7 @@ define(
           ovis_Q(
             _obj))
         return(
-          <>)),
+          null)),
       (set(
           nobj,
           ocan(
@@ -5110,7 +5110,7 @@ define(
               obj,
               _nobj)),
           (return(
-              <>))))),
+              null))))),
     or(
       memq(
         _obj,
@@ -5246,7 +5246,7 @@ define(
     ((rm)
       room),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -5336,9 +5336,9 @@ define(
               put(
                 GLOBALS.prsvec,
                 2,
-                <>)
+                null)
               room_info(
-                <>))))))))
+                null))))))))
 
 define(
   lamp_off,
@@ -5480,7 +5480,7 @@ define(
         length(
           _s)))
     (silent_Q
-      <>)
+      null)
     "AUX"
     (brks
       GLOBALS.brks)
@@ -5489,7 +5489,7 @@ define(
     (s1
       _s)
     (quot
-      <>)),
+      null)),
   #decl
     ((s
         s1
@@ -5510,7 +5510,7 @@ define(
         [rest
           string])),
   mapr(
-    <>,
+    null,
     function(
       (x
         "AUX"
@@ -5654,7 +5654,7 @@ define(
         sx)
       string),
   mapr(
-    <>,
+    null,
     /* FUNCTION */
       (x) => (
       cond,
@@ -5662,7 +5662,7 @@ define(
             _x,
             _sx)
           mapleave(
-            <>)),
+            null)),
       (not(
             memq(
               1(
@@ -5679,7 +5679,7 @@ define(
     ((str)
       string),
   mapr(
-    <>,
+    null,
     /* FUNCTION */
       (s,
       "AUX",
@@ -5743,7 +5743,7 @@ define(
     "AUX"
     ca
     (flg
-      <>)),
+      null)),
   #decl
     ((hack)
       hack
@@ -5756,13 +5756,13 @@ define(
       put(
         GLOBALS.prsvec,
         2,
-        <>)
+        null)
       put(
         GLOBALS.prsvec,
         3,
-        <>)
+        null)
       mapf(
-        <>,
+        null,
         function(
           (ev
             "AUX"
@@ -5840,7 +5840,7 @@ define(
   (cev
     "OPTIONAL"
     (num
-      <>)
+      null)
     (clocker
       GLOBALS.clocker)),
   #decl
@@ -5994,7 +5994,7 @@ define(
           put(
             _win,
             GLOBALS.avehicle,
-            <>)
+            null)
           put(
             _obj,
             GLOBALS.ocontents,
@@ -6075,7 +6075,7 @@ define(
             ".")),
         (tell(
             "You can't go there without a vehicle.")))
-      <>),
+      null),
     (rtrnn(
         _rm,
         GLOBALS.rmungbit)

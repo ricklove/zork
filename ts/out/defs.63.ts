@@ -208,28 +208,28 @@ newstruc(
 
 flagword(
   rlandbit,
-  <>,
+  null,
   // on land,
   rwaterbit,
-  <>,
+  null,
   // water room,
   rairbit,
-  <>,
+  null,
   // mid-air room,
   rsacredbit,
-  <>,
+  null,
   // thief not allowed,
   rfillbit,
-  <>,
+  null,
   // can fill bottle here,
   rmungbit,
-  <>,
+  null,
   // room has been munged,
   rbuckbit,
-  <>,
+  null,
   // this room is a bucket,
   rhousebit,
-  <>,
+  null,
   // This room is part of the house)
 
 // exit
@@ -345,16 +345,16 @@ newstruc(
 
 flagword(
   vabit,
-  <>,
+  null,
   // look in AOBJS,
   vrbit,
-  <>,
+  null,
   // look in ROBJS,
   vtbit,
-  <>,
+  null,
   // no-take,
   vxbit,
-  <>,
+  null,
   // (?) turned on by '=' in VARG spec)
 
 // VTRNN -- test a bit in the VWORD slot of a VARG
@@ -586,73 +586,73 @@ flagword(
   edible_Q,
   // object is food,
   ndescbit,
-  <>,
+  null,
   // object not describable,
   drinkbit,
   drinkable_Q,
   // object is drinkable,
   contbit,
-  <>,
+  null,
   // object can be opened/closed,
   lightbit,
-  <>,
+  null,
   // object can provide light,
   vicbit,
-  <>,
+  null,
   // object is victim,
   burnbit,
   burnable_Q,
   // object is flammable,
   flamebit,
-  <>,
+  null,
   // object is on fire,
   toolbit,
-  <>,
+  null,
   // object is a tool,
   turnbit,
-  <>,
+  null,
   // object can be turned,
   vehbit,
-  <>,
+  null,
   // object is a vehicle,
   findmebit,
-  <>,
+  null,
   // can be reached from a vehicle,
   sleepbit,
-  <>,
+  null,
   // object is asleep,
   searchbit,
-  <>,
+  null,
   // allow multi-level access into this,
   sacredbit,
-  <>,
+  null,
   // thief can't take this,
   tiebit,
-  <>,
+  null,
   // object can be tied,
   echo_room_bit,
-  <>,
+  null,
   // nothing can be taken in echo room,
   actorbit,
-  <>,
+  null,
   // object is an actor,
   weaponbit,
-  <>,
+  null,
   // object is a weapon,
   fightbit,
   fighting_Q,
   // object is in melee,
   villain,
-  <>,
+  null,
   // object is a bad guy,
   staggered,
-  <>,
+  null,
   // object can't fight this turn,
   trytakebit,
-  <>,
+  null,
   // object wants to handle not being taken,
   no_check_bit,
-  <>,
+  null,
   // ignore checks (in put & drop):  for EVERY and VALUA)
 
 "extra stuff for flagword for objects"
@@ -886,7 +886,7 @@ defmac(
           form(
             lval,
             el))),
-      <>)))
+      null)))
 
 "APPLY AN OBJECT FUNCTION"
 
@@ -906,7 +906,7 @@ defmac(
           form(
             lval,
             foo))
-        <>),
+        null),
       (form(
           type_Q,
           form(
@@ -982,11 +982,11 @@ define(
   put(
     _obj,
     GLOBALS.oroom,
-    <>),
+    null),
   put(
     _obj,
     GLOBALS.ocan,
-    <>))
+    null))
 
 defmac(
   insert_object,
@@ -1021,7 +1021,7 @@ defmac(
         put,
         _obj,
         GLOBALS.oroom,
-        <>)
+        null)
       chtype(
         form(
           aobjs,
@@ -1084,7 +1084,7 @@ define(
       (winner)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x
         "AUX"
@@ -1119,7 +1119,7 @@ define(
         [rest
           object])),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1167,7 +1167,7 @@ define(
       (prob)
       fix),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1218,7 +1218,7 @@ define(
     ((adv)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1244,7 +1244,7 @@ define(
     ((adv)
       adv),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1266,7 +1266,7 @@ define(
     ((me)
       adv),
   mapf(
-    <>,
+    null,
     /* FUNCTION */
       (x) => (
       cond,
@@ -1298,7 +1298,7 @@ define(
         [rest
           hack])),
   mapf(
-    <>,
+    null,
     function(
       (x),
       #decl
@@ -1337,7 +1337,7 @@ defmac(
     put,
     _ev,
     GLOBALS.cflag,
-    <>))
+    null))
 
 defmac(
   clock_enable,
@@ -1387,7 +1387,7 @@ defmac(
   (() => frob
     "OPTIONAL"
     (() => mumble
-      <>)),
+      null)),
   form(
     cond,
     (form(
@@ -1418,7 +1418,7 @@ define(
   (fn
     "OPTIONAL"
     (foo
-      <>)),
+      null)),
   #decl
     ((fn)
       or(
@@ -1527,11 +1527,11 @@ define(
               _atm,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
-              <>,
-              <>,
+              null,
+              null,
               GLOBALS.null_exit,
               (),
-              <>,
+              null,
               0,
               0,
               0,
@@ -1593,22 +1593,22 @@ define(
               GLOBALS.null_syn
               GLOBALS.null_desc
               GLOBALS.null_desc
-              <>
-              <>
+              null
+              null
               ()
-              <>
+              null
               0
-              <>
+              null
               0
               0
               0
-              <>
-              <>
+              null
+              null
               5
               0
               GLOBALS.null_syn
-              <>
-              <>],
+              null
+              null],
             object))
       GLOBALS.objects = (_obj
           _X

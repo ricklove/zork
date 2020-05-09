@@ -156,7 +156,7 @@ or(
   cevent(
     0,
     GLOBALS.cure_clock,
-    <>,
+    null,
     "CURIN"))
 
 or(
@@ -308,10 +308,10 @@ or(
   {"#####"
     "You are here"
     "cretin"
-    %<>
-    %<>
+    %null
+    %null
     ()
-    %<>
+    %null
     %GLOBALS.ovison}
 
 "MAZE"
@@ -329,7 +329,7 @@ psetg(
   {"PASS1"
     "You are in a narrow east-west passageway.  There is a narrow stairway\nleading down at the north end of the room."
     "East-West Passage"
-    %<>
+    %null
     #exit
       {"EAST"
         "CAROU"
@@ -340,7 +340,7 @@ psetg(
         "NORTH"
         "RAVI1"}
     ()
-    %<>
+    %null
     5}
 
 #room
@@ -456,12 +456,12 @@ add_object(
       "A sandwich bag is here."
       "sandwich bag"
       "On the table is an elongated brown sack, smelling of hot peppers."
-      %<>
+      %null
       (#find_obj
           {"GARLI"}
         #find_obj
           {"FOOD"})
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.flamebit,
@@ -482,8 +482,8 @@ add_object(
     {"GARLI"
       "There is a clove of garlic here."
       "clove of garlic"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"SBAG"}
@@ -503,8 +503,8 @@ add_object(
     {"FOOD"
       "A hot pepper sandwich is here."
       "\.lunch"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"SBAG"}
@@ -528,10 +528,10 @@ add_object(
     {"GUNK"
       "There is a small piece of vitreous slag here."
       "piece of vitreous slag"
-      %<>
+      %null
       gunk_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.takebit,
@@ -550,10 +550,10 @@ add_object(
     {"COAL"
       "There is a small heap of coal here."
       "small pile of coal"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -571,10 +571,10 @@ add_object(
     {"JADE"
       "There is an exquisite jade figurine here."
       "jade figurine"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -590,10 +590,10 @@ add_object(
     {"MACHI"
       ""
       "machine"
-      %<>
+      %null
       machine_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.ovison)
@@ -611,10 +611,10 @@ add_object(
     {"DIAMO"
       "There is an enormous diamond (perfectly cut) here."
       "huge diamond"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -630,10 +630,10 @@ add_object(
     {"TCASE"
       "There is a trophy case here."
       "trophy case"
-      %<>
+      %null
       trophy_case
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.transbit,
@@ -655,7 +655,7 @@ add_object(
       bottle_function
       (#find_obj
           {"WATER"})
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.transbit,
@@ -696,7 +696,7 @@ add_object(
   {"ATTIC"
     "You are in the attic.  The only exit is stairs that lead down."
     "Attic"
-    %<>
+    %null
     #exit
       {"DOWN"
         "KITCH"}
@@ -715,7 +715,7 @@ add_object(
       "A large coil of rope is lying in the corner."
       rope_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.tiebit,
           GLOBALS.takebit,
@@ -734,9 +734,9 @@ add_object(
       "There is a nasty-looking knife lying here."
       "knife"
       "On a table is a nasty-looking knife."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison,
@@ -795,7 +795,7 @@ add_object(
       "On hooks above the mantelpiece hangs an elvish sword of great\nantiquity."
       sword
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit,
@@ -823,7 +823,7 @@ add_object(
       "A battery-powered brass lantern is on the trophy case."
       lantern
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -840,10 +840,10 @@ add_object(
     {"BLAMP"
       "There is a broken brass lantern here."
       "broken lamp"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -857,10 +857,10 @@ add_object(
     {"RUG"
       ""
       "carpet"
-      %<>
+      %null
       rug
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.ndescbit,
@@ -878,10 +878,10 @@ add_object(
     {"LEAVE"
       "There is a pile of leaves on the ground."
       "pile of leaves"
-      %<>
+      %null
       leaf_pile
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -898,7 +898,7 @@ add_object(
   {"CELLA"
     ""
     "Cellar"
-    %<>
+    %null
     #exit
       {"EAST"
         "MTROL"
@@ -925,7 +925,7 @@ psetg(
   {"MTROL"
     "You are in a small room with passages off in all directions. \nBloodstains and deep scratches (perhaps made by an axe) mar the\nwalls."
     "The Troll Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "CELLA"
@@ -970,7 +970,7 @@ GLOBALS.villain_probs = iuvector(
 GLOBALS.oppv = ivector(
     length(
       GLOBALS.villains),
-    () => <>)
+    () => null)
 
 add_demon(
   GLOBALS.sword_demon = chtype(
@@ -981,18 +981,18 @@ add_demon(
           GLOBALS.rooms)
         find_obj(
           "SWORD")
-        <>],
+        null],
       hack))
 
 #object
   {"TROLL"
     %GLOBALS.trolldesc
     "troll"
-    %<>
+    %null
     troll
     (#find_obj
         {"AXE"})
-    %<>
+    %null
     %_(
         GLOBALS.vicbit,
         GLOBALS.ovison,
@@ -1017,7 +1017,7 @@ add_demon(
           GLOBALS.rooms)
         find_obj(
           "TROLL")
-        <>],
+        null],
       hack))
 
 add_object(
@@ -1025,8 +1025,8 @@ add_object(
     {"AXE"
       "There is a bloody axe here."
       "bloody axe"
-      %<>
-      %<>
+      %null
+      %null
       ()
       %find_obj(
           "TROLL")
@@ -1053,7 +1053,7 @@ psetg(
   {"MAZE1"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MTROL"
@@ -1069,7 +1069,7 @@ psetg(
   {"MAZE2"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"SOUTH"
         "MAZE1"
@@ -1083,7 +1083,7 @@ psetg(
   {"MAZE3"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZE2"
@@ -1097,7 +1097,7 @@ psetg(
   {"MAZE4"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZE3"
@@ -1111,7 +1111,7 @@ psetg(
   {"DEAD1"
     %GLOBALS.deadend
     %GLOBALS.deadend
-    %<>
+    %null
     #exit
       {"SOUTH"
         "MAZE4"}
@@ -1121,7 +1121,7 @@ psetg(
   {"MAZE5"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"EAST"
         "DEAD2"
@@ -1148,7 +1148,7 @@ add_object(
       "Beside the skeleton is a rusty knife."
       rusty_knife
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit,
@@ -1172,9 +1172,9 @@ add_object(
       "There is a burned-out lantern here."
       "burned-out lantern"
       "The deceased adventurer's useless lantern is here."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit)
@@ -1194,10 +1194,10 @@ add_object(
   {"KEYS"
     "There is a set of skeleton keys here."
     "set of skeleton keys"
-    %<>
-    %<>
+    %null
+    %null
     ()
-    %<>
+    %null
     %_(
         GLOBALS.toolbit,
         GLOBALS.takebit,
@@ -1213,10 +1213,10 @@ add_object(
     {"BONES"
       "A skeleton, probably the remains of a luckless adventurer, lies here."
       ""
-      %<>
+      %null
       skeleton
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.ovison)
@@ -1233,10 +1233,10 @@ add_object(
     {"BAGCO"
       "An old leather bag, bulging with coins, is here."
       "bag of coins"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -1254,10 +1254,10 @@ add_object(
     {"BAR"
       "There is a large platinum bar here."
       "platinum bar"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.sacredbit,
           GLOBALS.takebit,
@@ -1274,10 +1274,10 @@ add_object(
     {"PEARL"
       "There is a pearl necklace here with hundreds of large pearls."
       "pearl necklace"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -1292,7 +1292,7 @@ add_object(
   {"DEAD2"
     %GLOBALS.deadend
     %GLOBALS.deadend
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZE5"}
@@ -1302,7 +1302,7 @@ add_object(
   {"MAZE6"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"DOWN"
         "MAZE5"
@@ -1318,7 +1318,7 @@ add_object(
   {"MAZE7"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"UP"
         "MAZ14"
@@ -1336,7 +1336,7 @@ add_object(
   {"MAZE8"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"NE"
         "MAZE7"
@@ -1350,7 +1350,7 @@ add_object(
   {"DEAD3"
     %GLOBALS.deadend
     %GLOBALS.deadend
-    %<>
+    %null
     #exit
       {"NORTH"
         "MAZE8"}
@@ -1360,7 +1360,7 @@ add_object(
   {"MAZE9"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"NORTH"
         "MAZE6"
@@ -1380,7 +1380,7 @@ add_object(
   {"MAZ10"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"EAST"
         "MAZE9"
@@ -1394,7 +1394,7 @@ add_object(
   {"MAZ11"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"NE"
         "MGRAT"
@@ -1409,7 +1409,7 @@ add_object(
   {"MGRAT"
     ""
     "Grating Room"
-    %<>
+    %null
     #exit
       {"SW"
         "MAZ11"
@@ -1426,7 +1426,7 @@ add_object(
   {"MAZ12"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZE5"
@@ -1444,7 +1444,7 @@ add_object(
   {"DEAD4"
     %GLOBALS.deadend
     %GLOBALS.deadend
-    %<>
+    %null
     #exit
       {"SOUTH"
         "MAZ12"}
@@ -1454,7 +1454,7 @@ add_object(
   {"MAZ13"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"EAST"
         "MAZE9"
@@ -1470,7 +1470,7 @@ add_object(
   {"MAZ14"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZ15"
@@ -1485,7 +1485,7 @@ add_object(
   {"MAZ15"
     %GLOBALS.mazedesc
     %GLOBALS.mazedesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZ14"
@@ -1612,7 +1612,7 @@ psetg(
   {"RAVI1"
     "You are in a deep ravine at a crossing with an east-west crawlway. \nSome stone steps are at the south of the ravine and a steep staircase\ndescends."
     "Deep Ravine"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "PASS1"
@@ -1627,7 +1627,7 @@ psetg(
   {"CRAW1"
     "You are in a crawlway with a three-foot high ceiling.  Your footing\nis very unsure here due to the assortment of rocks underfoot. \nPassages can be seen in the east, west, and northwest corners of the\npassage."
     "Rocky Crawl"
-    %<>
+    %null
     #exit
       {"WEST"
         "RAVI1"
@@ -1640,7 +1640,7 @@ psetg(
   {"RESES"
     ""
     "Reservoir South"
-    %<>
+    %null
     #exit
       {"SOUTH"
         #cexit
@@ -1676,7 +1676,7 @@ psetg(
   {"RESEN"
     ""
     "Reservoir North"
-    %<>
+    %null
     #exit
       {"NORTH"
         "ATLAN"
@@ -1698,7 +1698,7 @@ psetg(
   {"STREA"
     "You are standing on a path beside a flowing stream.  The path\ntravels to the north and the east."
     "Stream"
-    %<>
+    %null
     #exit
       {"EAST"
         "RESES"
@@ -1711,7 +1711,7 @@ psetg(
   {"EGYPT"
     "You are in a room which looks like an Egyptian tomb.  There is an\nascending staircase in the room as well as doors, east and south."
     "Egyptian Room"
-    %<>
+    %null
     #exit
       {"UP"
         "ICY"
@@ -1731,7 +1731,7 @@ psetg(
   {"ICY"
     ""
     "Glacier Room"
-    %<>
+    %null
     #exit
       {"NORTH"
         "STREA"
@@ -1750,10 +1750,10 @@ add_object(
     {"REFL1"
       ""
       "mirror"
-      %<>
+      %null
       mirror_mirror
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.vicbit,
@@ -1770,10 +1770,10 @@ add_object(
     {"REFL2"
       ""
       "mirror"
-      %<>
+      %null
       mirror_mirror
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.vicbit,
@@ -1790,10 +1790,10 @@ add_object(
     {"ICE"
       "A mass of ice fills the western half of the room."
       "glacier"
-      %<>
+      %null
       glacier
       ()
-      %<>
+      %null
       %_(
           GLOBALS.vicbit,
           GLOBALS.ovison)
@@ -1808,7 +1808,7 @@ add_object(
   {"RUBYR"
     "You are in a small chamber behind the remains of the Great Glacier.\nTo the south and west are small passageways."
     "Ruby Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "LAVA"
@@ -1821,7 +1821,7 @@ add_object(
   {"ATLAN"
     "You are in an ancient room, long buried by the Reservoir.  There are\nexits here to the southeast and upward."
     "Atlantis Room"
-    %<>
+    %null
     #exit
       {"SE"
         "RESEN"
@@ -1834,7 +1834,7 @@ add_object(
   {"CANY1"
     "You are on the south edge of a deep canyon.  Passages lead off\nto the east, south, and northwest.  You can hear the sound of\nflowing water below."
     "Deep Canyon"
-    %<>
+    %null
     #exit
       {"NW"
         "RESES"
@@ -1847,7 +1847,7 @@ add_object(
   {"ECHO"
     "You are in a large room with a ceiling which cannot be detected from\nthe ground. There is a narrow passage from east to west and a stone\nstairway leading upward.  The room is extremely noisy.  In fact, it is\ndifficult to hear yourself think."
     "Loud Room"
-    %<>
+    %null
     #exit
       {"EAST"
         "CHAS3"
@@ -1864,9 +1864,9 @@ add_object(
     "There is a moby ruby lying here."
     "ruby"
     "On the floor lies a moby ruby."
-    %<>
+    %null
     ()
-    %<>
+    %null
     %_(
         GLOBALS.takebit,
         GLOBALS.ovison)
@@ -1882,9 +1882,9 @@ add_object(
       "Neptune's own crystal trident is here."
       "crystal trident"
       "On the shore lies Neptune's own crystal trident."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -1901,10 +1901,10 @@ add_object(
     {"COFFI"
       "There is a solid-gold coffin, used for the burial of Ramses II, here."
       "gold coffin"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.sacredbit,
@@ -1924,9 +1924,9 @@ add_object(
       "There is an ivory torch here."
       "torch"
       "Sitting on the pedestal is a flaming torch, made of ivory."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.toolbit,
           GLOBALS.flamebit,
@@ -1944,7 +1944,7 @@ add_object(
   {"MIRR1"
     ""
     "Mirror Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "PASS3"
@@ -1976,7 +1976,7 @@ add_object(
   {"CAVE1"
     "You are in a small cave with an entrance to the north and a stairway\nleading down."
     "Cave"
-    %<>
+    %null
     #exit
       {"NORTH"
         "MIRR1"
@@ -1987,7 +1987,7 @@ add_object(
   {"CAVE2"
     "You are in a tiny cave with entrances west and north, and a dark,\nforbidding staircase leading down."
     "Cave"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CRAW3"
@@ -2002,7 +2002,7 @@ add_object(
   {"CRAW2"
     "You are in a steep and narrow crawlway.  There are two exits nearby to\nthe south and southwest."
     "Steep Crawlway"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "MIRR1"
@@ -2013,7 +2013,7 @@ add_object(
   {"CRAW3"
     "You are in a narrow crawlway.  The crawlway leads from north to south.\nHowever the south passage divides to the south and southwest."
     "Narrow Crawlway"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "CAVE2"
@@ -2026,7 +2026,7 @@ add_object(
   {"PASS3"
     "You are in a cold and damp corridor where a long east-west passageway\nintersects with a northward path."
     "Cold Passage"
-    %<>
+    %null
     #exit
       {"EAST"
         "MIRR1"
@@ -2039,7 +2039,7 @@ add_object(
   {"PASS4"
     "You are in a winding passage.  It seems that there is only an exit\non the east end although the whirring from the round room can be\nheard faintly to the north."
     "Winding Passage"
-    %<>
+    %null
     #exit
       {"EAST"
         "MIRR2"
@@ -2051,7 +2051,7 @@ add_object(
   {"SLIDE"
     "You are in a small chamber, which appears to have been part of a\ncoal mine. On the south wall of the chamber the letters \"Granite\nWall\" are etched in the rock. To the east is a long passage and\nthere is a steep metal slide twisting downward. From the appearance\nof the slide, an attempt to climb up it would be impossible.  To the\nnorth is a small opening."
     "Slide Room"
-    %<>
+    %null
     #exit
       {"EAST"
         "PASS3"
@@ -2064,7 +2064,7 @@ add_object(
   {"ENTRA"
     "You are standing at the entrance of what might have been a coal\nmine. To the northeast and the northwest are entrances to the mine,\nand there is another exit on the south end of the room."
     "Mine Entrance"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "SLIDE"
@@ -2077,7 +2077,7 @@ add_object(
   {"SQUEE"
     "You are a small room.  Strange squeaky sounds may be heard coming from\nthe passage at the west end.  You may also escape to the south."
     "Squeaky Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "BATS"
@@ -2088,7 +2088,7 @@ add_object(
   {"TSHAF"
     "You are in a large room, in the middle of which is a small shaft\ndescending through the floor into darkness below.  To the west and\nthe north are exits from this room.  Constructed over the top of the\nshaft is a metal framework to which a heavy iron chain is attached."
     "Shaft Room"
-    %<>
+    %null
     #exit
       {"DOWN"
         #nexit
@@ -2106,10 +2106,10 @@ put(
       {"TBASK"
         "At the end of the chain is a basket."
         "basket"
-        %<>
+        %null
         dumbwaiter
         ()
-        %<>
+        %null
         %_(
             GLOBALS.contbit,
             GLOBALS.ovison,
@@ -2130,10 +2130,10 @@ add_object(
     {"FBASK"
       ""
       ""
-      %<>
+      %null
       dumbwaiter
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -2148,7 +2148,7 @@ add_object(
   {"TUNNE"
     "You are in a narrow tunnel with large wooden beams running across\nthe ceiling and around the walls.  A path from the south splits into\npaths running west and northeast."
     "Wooden Tunnel"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "TSHAF"
@@ -2161,7 +2161,7 @@ add_object(
   {"SMELL"
     "You are in a small non-descript room.  However, from the direction\nof a small descending staircase a foul odor can be detected.  To the\neast is a narrow path."
     "Smelly Room"
-    %<>
+    %null
     #exit
       {"DOWN"
         "BOOM"
@@ -2172,7 +2172,7 @@ add_object(
   {"BOOM"
     "You are in a small room which smells strongly of coal gas."
     "Gas Room"
-    %<>
+    %null
     #exit
       {"UP"
         "SMELL"}
@@ -2185,10 +2185,10 @@ add_object(
     {"BRACE"
       "There is a sapphire-encrusted bracelet here."
       "sapphire bracelet"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -2204,7 +2204,7 @@ add_object(
   {"TLADD"
     "You are in a very small room.  In the corner is a rickety wooden\nladder, leading downward.  It might be safe to descend.  There is\nalso a staircase leading upward."
     "Ladder Top"
-    %<>
+    %null
     #exit
       {"DOWN"
         "BLADD"
@@ -2219,7 +2219,7 @@ psetg(
   {"MINE1"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"NORTH"
         "MINE4"
@@ -2232,7 +2232,7 @@ psetg(
   {"MINE2"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"SOUTH"
         "MINE1"
@@ -2247,7 +2247,7 @@ psetg(
   {"MINE3"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"WEST"
         "MINE2"
@@ -2260,7 +2260,7 @@ psetg(
   {"MINE4"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"UP"
         "MINE5"
@@ -2275,7 +2275,7 @@ psetg(
   {"MINE5"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"DOWN"
         "MINE6"
@@ -2294,7 +2294,7 @@ psetg(
   {"MINE6"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"SE"
         "MINE4"
@@ -2307,7 +2307,7 @@ psetg(
   {"MINE7"
     %GLOBALS.mindesc
     %GLOBALS.mindesc
-    %<>
+    %null
     #exit
       {"EAST"
         "MINE1"
@@ -2322,7 +2322,7 @@ psetg(
   {"BLADD"
     "You are in a rather wide room.  On one side is the bottom of a\nnarrow wooden ladder.  To the northeast and the south are passages\nleaving the room."
     "Ladder Bottom"
-    %<>
+    %null
     #exit
       {"NE"
         "DEAD7"
@@ -2335,7 +2335,7 @@ psetg(
   {"DEAD7"
     "Dead End"
     "Dead End"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "BLADD"}
@@ -2350,7 +2350,7 @@ psetg(
   {"TIMBE"
     "You are in a long and narrow passage, which is cluttered with broken\ntimbers.  A wide passage comes from the north and turns at the \nsouthwest corner of the room into a very narrow passageway."
     "Timber Room"
-    %<>
+    %null
     #exit
       {"NORTH"
         "BLADD"
@@ -2366,7 +2366,7 @@ psetg(
   {"BSHAF"
     "You are in a small square room which is at the bottom of a long\nshaft. To the east is a passageway and to the northeast a very narrow\npassage. In the shaft can be seen a heavy iron chain."
     "Lower Shaft"
-    %<>
+    %null
     #exit
       {"EAST"
         "MACHI"
@@ -2394,7 +2394,7 @@ psetg(
   {"MACHI"
     ""
     "Machine Room"
-    %<>
+    %null
     #exit
       {"NW"
         "BSHAF"}
@@ -2408,7 +2408,7 @@ psetg(
   {"BATS"
     ""
     "Bat Room"
-    %<>
+    %null
     #exit
       {"EAST"
         "SQUEE"}
@@ -2422,7 +2422,7 @@ psetg(
   {"DOME"
     ""
     "Dome Room"
-    %<>
+    %null
     #exit
       {"EAST"
         "CRAW1"
@@ -2444,7 +2444,7 @@ psetg(
   {"MTORC"
     ""
     "Torch Room"
-    %<>
+    %null
     #exit
       {"UP"
         #nexit
@@ -2461,7 +2461,7 @@ psetg(
   {"CRAW4"
     "You are in a north-south crawlway; a passage goes to the east also.\nThere is a hole above, but it provides no opportunities for climbing."
     "North-South Crawlway"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CHAS2"
@@ -2478,7 +2478,7 @@ psetg(
   {"CHAS2"
     "You are on the west edge of a chasm, the bottom of which cannot be\nseen. The east side is sheer rock, providing no exits.  A narrow\npassage goes west, and the path you are on continues to the north and\nsouth."
     "West of Chasm"
-    %<>
+    %null
     #exit
       {"WEST"
         "CELLA"
@@ -2495,70 +2495,70 @@ psetg(
   {"CAROU"
     ""
     "Round room"
-    %<>
+    %null
     #exit
       {"NORTH"
         #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            %<>
+            %null
             carousel_exit}
         "SOUTH"
         #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            %<>
+            %null
             carousel_exit}
         "EAST"
         #cexit
           {"CAROUSEL-FLIP"
             "MGRAI"
             ""
-            %<>
+            %null
             carousel_exit}
         "WEST"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS1"
             ""
-            %<>
+            %null
             carousel_exit}
         "NW"
         #cexit
           {"CAROUSEL-FLIP"
             "CANY1"
             ""
-            %<>
+            %null
             carousel_exit}
         "NE"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS5"
             ""
-            %<>
+            %null
             carousel_exit}
         "SE"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS4"
             ""
-            %<>
+            %null
             carousel_exit}
         "SW"
         #cexit
           {"CAROUSEL-FLIP"
             "MAZE1"
             ""
-            %<>
+            %null
             carousel_exit}
         "EXIT"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS3"
             ""
-            %<>
+            %null
             carousel_out}}
     (#find_obj
         {"IRBOX"})
@@ -2569,11 +2569,11 @@ add_object(
     {"IRBOX"
       "There is a dented iron box here."
       "iron box"
-      %<>
-      %<>
+      %null
+      %null
       (#find_obj
           {"STRAD"})
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.contbit)
@@ -2591,8 +2591,8 @@ add_object(
     {"STRAD"
       "There is a Stradavarius here."
       "fancy violin"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"IRBOX"}
@@ -2611,7 +2611,7 @@ add_object(
   {"PASS5"
     "You are in a high north-south passage, which forks to the northeast."
     "North-South Passage"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CHAS1"
@@ -2625,7 +2625,7 @@ add_object(
   {"CHAS1"
     "A chasm runs southwest to northeast.  You are on the south edge; the\npath exits to the south and to the east."
     "Chasm"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "RAVI1"
@@ -2640,7 +2640,7 @@ add_object(
   {"CAVE3"
     "You are in a cave.  Passages exit to the south and to the east, but\nthe cave narrows to a crack to the west.  The earth is particularly\ndamp here."
     "Damp Cave"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "ECHO"
@@ -2655,7 +2655,7 @@ add_object(
   {"CHAS3"
     "A chasm, evidently produced by an ancient river, runs through the\ncave here.  Passages lead off in all directions."
     "Ancient Chasm"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "ECHO"
@@ -2671,7 +2671,7 @@ add_object(
   {"DEAD5"
     "Dead end"
     "Dead end"
-    %<>
+    %null
     #exit
       {"SW"
         "CHAS3"}
@@ -2681,7 +2681,7 @@ add_object(
   {"DEAD6"
     "Dead end"
     "Dead end"
-    %<>
+    %null
     #exit
       {"EAST"
         "CHAS3"}
@@ -2691,7 +2691,7 @@ add_object(
   {"CAVE4"
     "You have entered a cave with passages leading north and southeast."
     "Engravings Cave"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CAROU"
@@ -2721,7 +2721,7 @@ put(
   {"RIDDL"
     "This is a room which is bare on all sides.  There is an exit down. \nTo the east is a great door made of stone.  Above the stone, the\nfollowing words are written: 'No man shall enter this room without\nsolving this riddle:\n  What is tall as a house,\n	  round as a cup, \n	  and all the king's horses can't draw it up?'"
     "Riddle Room"
-    %<>
+    %null
     #exit
       {"DOWN"
         "CAVE4"
@@ -2737,7 +2737,7 @@ put(
   {"MPEAR"
     "This is a former broom closet.  The exits are to the east and west."
     "Pearl Room"
-    %<>
+    %null
     #exit
       {"EAST"
         "BWELL"
@@ -2777,10 +2777,10 @@ add_object(
     {"GHOST"
       ""
       ""
-      %<>
+      %null
       ghost_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.vicbit,
           GLOBALS.ovison)
@@ -2813,7 +2813,7 @@ add_object(
   {"MGRAI"
     "You are standing in a small circular room with a pedestal.  A set of\nstairs leads up, and passages leave to the east and west."
     "Grail Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "CAROU"
@@ -2829,10 +2829,10 @@ add_object(
     {"GRAIL"
       "There is an extremely valuable (perhaps original) grail here."
       "grail"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.takebit,
@@ -2890,9 +2890,9 @@ add_object(
       "There is an old trunk here, bulging with assorted jewels."
       "trunk with jewels"
       "Lying half buried in the mud is an old trunk, bulging with jewels."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.takebit
       0
       15
@@ -2907,9 +2907,9 @@ add_object(
       "There is a small brass bell here."
       "bell"
       "Lying in a corner of the room is a small brass bell."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -2929,7 +2929,7 @@ add_object(
       "On the altar is a large black book, open to page 569."
       black_book
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -2953,7 +2953,7 @@ add_object(
       "On the two ends of the altar are burning candles."
       candles
       ()
-      %<>
+      %null
       %_(
           GLOBALS.flamebit,
           GLOBALS.takebit,
@@ -3010,9 +3010,9 @@ add_object(
       "There are tour guidebooks here."
       "tour guidebook"
       "Some guidebooks entitled 'Flood Control Dam #3' are on the reception\ndesk."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -3031,10 +3031,10 @@ add_object(
     {"PAPER"
       ""
       "newspaper"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -3055,7 +3055,7 @@ add_object(
   {"MAINT"
     "You are in what appears to have been the maintenance room for Flood\nControl Dam #3, judging by the assortment of tool chests around the\nroom.  Apparently, this room has been ransacked recently, for most of\nthe valuable equipment is gone. On the wall in front of you is a\npanel of buttons, which are labelled in EBCDIC. However, they are of\ndifferent colors:  Blue, Yellow, Brown, and Red. The doors to this\nroom are in the west and south ends."
     "Maintenance Room"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "LOBBY"
@@ -3084,10 +3084,10 @@ add_object(
     {"MATCH"
       "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
       "matchbook"
-      %<>
+      %null
       match_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison,
@@ -3104,8 +3104,8 @@ add_object(
     {"ADVER"
       "There is a small leaflet here."
       "leaflet"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"MAILB"}
@@ -3128,11 +3128,11 @@ add_object(
     {"MAILB"
       "There is a small mailbox here."
       "mailbox"
-      %<>
-      %<>
+      %null
+      %null
       (#find_obj
           {"ADVER"})
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.ovison)
@@ -3147,11 +3147,11 @@ add_object(
   {"TUBE"
     "There is an object which looks like a tube of toothpaste here."
     "tube"
-    %<>
+    %null
     tube_function
     (#find_obj
         {"PUTTY"})
-    %<>
+    %null
     %_(
         GLOBALS.contbit,
         GLOBALS.takebit,
@@ -3167,8 +3167,8 @@ add_object(
     {"PUTTY"
       "There is some gunk here"
       "viscous material"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"TUBE"}
@@ -3191,10 +3191,10 @@ add_object(
     {"WRENC"
       "There is a wrench here."
       "wrench"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.toolbit,
           GLOBALS.takebit,
@@ -3211,10 +3211,10 @@ add_object(
     {"SCREW"
       "There is a screwdriver here."
       "screwdriver"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.toolbit,
           GLOBALS.takebit,
@@ -3230,7 +3230,7 @@ add_object(
   {"CYCLO"
     ""
     "Cyclops Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "MAZ15"
@@ -3257,7 +3257,7 @@ add_melee(
   {"BLROO"
     "You are in a long passage.  To the south is one entrance.  On the\neast there is an old wooden door, with a large hole in it (about\ncyclops sized)."
     "Strange Passage"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "CYCLO"
@@ -3272,10 +3272,10 @@ add_object(
     {"CYCLO"
       ""
       "cyclops"
-      %<>
+      %null
       cyclops
       ()
-      %<>
+      %null
       %_(
           GLOBALS.vicbit,
           GLOBALS.ovison,
@@ -3292,7 +3292,7 @@ add_object(
   {"TREAS"
     "This is a large room, whose north wall is solid granite.  A number\nof discarded bags, which crumble at your touch, are scattered about\non the floor."
     "Treasure Room"
-    %<>
+    %null
     #exit
       {"DOWN"
         "CYCLO"}
@@ -3306,10 +3306,10 @@ add_object(
     {"CHALI"
       "There is a silver chalice, intricately engraved, here."
       "chalice"
-      %<>
+      %null
       chalice
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.takebit,
@@ -3326,7 +3326,7 @@ add_object(
   {"STUDI"
     "You are in what appears to have been an artist's studio.  The walls\nand floors are splattered with paints of 69 different colors. \nStrangely enough, nothing of value is hanging here.  At the north and\nnorthwest of the room are open doors (also covered with paint).  An\nextremely dark and narrow chimney leads up from a fireplace; although\nyou might be able to get up it, it seems unlikely you could get back\ndown."
     "Studio"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CRAW4"
@@ -3337,10 +3337,10 @@ add_object(
           {"LIGHT-LOAD"
             "KITCH"
             "The chimney is too narrow for you and all of your baggage."
-            %<>
+            %null
             chimney_function}}
     ()
-    %<>}
+    %null}
 
 #room
   {"GALLE"
@@ -3363,7 +3363,7 @@ add_object(
       "Fortunately, there is still one chance for you to be a vandal, for on\nthe far wall is a work of unparalleled beauty."
       painting
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
@@ -3388,7 +3388,7 @@ add_demon(
           GLOBALS.rooms)
         find_obj(
           "THIEF")
-        <>],
+        null],
       hack))
 
 psetg(
@@ -3404,11 +3404,11 @@ add_object(
     {"THIEF"
       %GLOBALS.robber_c_desc
       "thief"
-      %<>
+      %null
       robber_function
       (#find_obj
           {"STILL"})
-      %<>
+      %null
       %_(
           GLOBALS.vicbit,
           GLOBALS.ovison,
@@ -3441,8 +3441,8 @@ add_object(
     {"STILL"
       "There is a vicious-looking stilletto here."
       "stilletto"
-      %<>
-      %<>
+      %null
+      %null
       ()
       %find_obj(
           "THIEF")
@@ -3884,13 +3884,13 @@ psetg(
         {"IBOAT"}
       #find_obj
         {"STICK"})
-    %<>}
+    %null}
 
 #room
   {"RIVR1"
     "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
     %GLOBALS.riverdesc
-    %<>
+    %null
     #exit
       {"UP"
         %GLOBALS.current
@@ -3903,7 +3903,7 @@ psetg(
         "EAST"
         %GLOBALS.cliffs}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rwaterbit}
 
@@ -3911,7 +3911,7 @@ psetg(
   {"RIVR2"
     "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
     %GLOBALS.riverdesc
-    %<>
+    %null
     #exit
       {"UP"
         %GLOBALS.current
@@ -3920,7 +3920,7 @@ psetg(
         "EAST"
         %GLOBALS.cliffs}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rwaterbit}
 
@@ -3928,7 +3928,7 @@ psetg(
   {"RIVR3"
     "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
     %GLOBALS.riverdesc
-    %<>
+    %null
     #exit
       {"UP"
         %GLOBALS.current
@@ -3942,7 +3942,7 @@ psetg(
         #nexit
           "You must specify which direction here."}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rwaterbit}
 
@@ -3954,7 +3954,7 @@ psetg(
   {"WCLF1"
     "You are on a narrow strip of beach which runs along the base of the\nWhite Cliffs. The only path here is a narrow one, heading south\nalong the Cliffs."
     "White Cliffs Beach"
-    %<>
+    %null
     #exit
       {"SOUTH"
         #cexit
@@ -3971,7 +3971,7 @@ psetg(
   {"WCLF2"
     "You are on a rocky, narrow strip of beach beside the Cliffs.  A\nnarrow path leads north along the shore."
     "White Cliffs Beach"
-    %<>
+    %null
     #exit
       {"NORTH"
         #cexit
@@ -3988,7 +3988,7 @@ psetg(
   {"RIVR4"
     "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
     %GLOBALS.riverdesc
-    %<>
+    %null
     #exit
       {"UP"
         %GLOBALS.current
@@ -4011,7 +4011,7 @@ psetg(
   {"RIVR5"
     "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
     %GLOBALS.riverdesc
-    %<>
+    %null
     #exit
       {"UP"
         %GLOBALS.current
@@ -4020,7 +4020,7 @@ psetg(
         "LAND"
         "FANTE"}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rwaterbit}
 
@@ -4028,7 +4028,7 @@ psetg(
   {"FCHMP"
     ""
     "Moby lossage"
-    %<>
+    %null
     #exit
       {"NORTH"
         #nexit
@@ -4040,7 +4040,7 @@ psetg(
   {"FANTE"
     "You are on the shore of the River.  The river here seems somewhat\ntreacherous.  A path travels from north to south here, the south end\nquickly turning around a sharp corner."
     "Shore"
-    %<>
+    %null
     #exit
       {"LAUNC"
         "RIVR5"
@@ -4049,14 +4049,14 @@ psetg(
         "SOUTH"
         "FALLS"}
     ()
-    %<>
+    %null
     0}
 
 #room
   {"BEACH"
     "You are on a large sandy beach at the shore of the river, which is\nflowing quickly by.  A path runs beside the river to the south here."
     "Sandy Beach"
-    %<>
+    %null
     #exit
       {"LAUNC"
         "RIVR4"
@@ -4071,21 +4071,21 @@ psetg(
   {"RCAVE"
     "You are on the west shore of the river.  An entrance to a cave is\nto the northwest.  The shore is very rocky here."
     "Rocky Shore"
-    %<>
+    %null
     #exit
       {"LAUNC"
         "RIVR3"
         "NW"
         "TCAVE"}
     ()
-    %<>
+    %null
     0}
 
 #room
   {"TCAVE"
     "You are in a small cave whose exits are on the south and northwest."
     "Small Cave"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "RCAVE"
@@ -4101,7 +4101,7 @@ psetg(
   {"BARRE"
     "You are in a barrel.  Congratulations.  Etched into the side of the\nbarrel is the word 'Geronimo!'."
     "Barrel"
-    %<>
+    %null
     #exit
       {"EXIT"
         "FALLS"}}
@@ -4110,7 +4110,7 @@ psetg(
   {"FALLS"
     ""
     "Aragain Falls"
-    %<>
+    %null
     #exit
       {"EAST"
         #cexit
@@ -4165,7 +4165,7 @@ GLOBALS.crain = #cexit
         {"RAINB"}
       #find_obj
         {"POT"})
-    %<>
+    %null
     0}
 
 #room
@@ -4215,9 +4215,9 @@ add_object(
       "There is a pot of gold here."
       "pot filled with gold"
       "At the end of the rainbow is a pot of gold."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.takebit
       0
       10
@@ -4232,10 +4232,10 @@ add_object(
     {"STATU"
       "There is a beautiful statue here."
       "statue"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.takebit
       0
       10
@@ -4250,10 +4250,10 @@ add_object(
     {"IBOAT"
       "There is a folded pile of plastic here which has a small valve\nattached."
       "plastic inflatable boat"
-      %<>
+      %null
       iboat_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
@@ -4272,10 +4272,10 @@ add_object(
     {"DBOAT"
       "There is a pile of plastic here with a large hole in it."
       "plastic boat (with hole)"
-      %<>
+      %null
       dboat_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
@@ -4294,10 +4294,10 @@ add_object(
     {"PUMP"
       "There is a small pump here."
       "hand-held air pump"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.toolbit,
           GLOBALS.ovison,
@@ -4315,11 +4315,11 @@ add_object(
     {"RBOAT"
       "There is an inflated boat here."
       "magic boat"
-      %<>
+      %null
       rboat_function
       (#find_obj
           {"LABEL"})
-      %<>
+      %null
       %_(
           GLOBALS.vehbit,
           GLOBALS.burnbit,
@@ -4351,8 +4351,8 @@ add_object(
     {"LABEL"
       "There is a tan label here."
       "tan label"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"RBOAT"}
@@ -4382,7 +4382,7 @@ add_object(
       "A sharp stick, which appears to have been broken at one end, is here."
       stick_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit)
@@ -4405,11 +4405,11 @@ add_object(
     {"BUOY"
       "There is a red buoy here (probably a warning)."
       "red buoy"
-      %<>
-      %<>
+      %null
+      %null
       (#find_obj
           {"EMERA"})
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.findmebit,
@@ -4428,8 +4428,8 @@ add_object(
     {"EMERA"
       "There is an emerald here."
       "large emerald"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"BUOY"}
@@ -4448,10 +4448,10 @@ add_object(
     {"SHOVE"
       "There is a large shovel here."
       "shovel"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.toolbit,
           GLOBALS.ovison,
@@ -4468,10 +4468,10 @@ add_object(
     {"GUANO"
       "There is a hunk of bat guano here."
       "hunk of bat guano"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit)
@@ -4489,10 +4489,10 @@ add_object(
     {"GRUE"
       ""
       "lurking grue"
-      %<>
+      %null
       grue_function
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -4506,7 +4506,7 @@ add_object(
   {"VLBOT"
     "You are at the bottom of a large dormant volcano.  High above you\nlight may be seen entering from the cone of the volcano.  The only\nexit here is to the north."
     "Volcano Bottom"
-    %<>
+    %null
     #exit
       {"NORTH"
         "LAVA"}
@@ -4525,10 +4525,10 @@ GLOBALS.nulexit = #exit
   {"VAIR1"
     "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
     %GLOBALS.volcore
-    %<>
+    %null
     %GLOBALS.nulexit
     ()
-    %<>
+    %null
     0
     %GLOBALS.rairbit}
 
@@ -4536,14 +4536,14 @@ GLOBALS.nulexit = #exit
   {"VAIR2"
     "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
     %GLOBALS.volcore
-    %<>
+    %null
     #exit
       {"WEST"
         "LEDG2"
         "LAND"
         "LEDG2"}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rairbit}
 
@@ -4551,10 +4551,10 @@ GLOBALS.nulexit = #exit
   {"VAIR3"
     "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
     %GLOBALS.volcore
-    %<>
+    %null
     %GLOBALS.nulexit
     ()
-    %<>
+    %null
     0
     %GLOBALS.rairbit}
 
@@ -4562,14 +4562,14 @@ GLOBALS.nulexit = #exit
   {"VAIR4"
     "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
     %GLOBALS.volcore
-    %<>
+    %null
     #exit
       {"LAND"
         "LEDG4"
         "EAST"
         "LEDG4"}
     ()
-    %<>
+    %null
     0
     %GLOBALS.rairbit}
 
@@ -4581,7 +4581,7 @@ GLOBALS.cxgnome = #cexit
   {"LEDG2"
     "You are on a narrow ledge overlooking the inside of an old dormant\nvolcano.  This ledge appears to be about in the middle between the\nfloor below and the rim above. There is an exit here to the south."
     "Narrow Ledge"
-    %<>
+    %null
     #exit
       {"DOWN"
         #nexit
@@ -4601,7 +4601,7 @@ GLOBALS.cxgnome = #cexit
   {"LIBRA"
     "You are in a room which must have been a large library, probably\nfor the royal family.  All of the shelves appear to have been gnawed\nto pieces by unfriendly gnomes.  To the north is an exit."
     "Library"
-    %<>
+    %null
     #exit
       {"NORTH"
         "LEDG2"
@@ -4620,7 +4620,7 @@ GLOBALS.cxgnome = #cexit
   {"LEDG3"
     "You are on a ledge in the middle of a large volcano.  Below you\nthe volcano bottom can be seen and above is the rim of the volcano.\nA couple of ledges can be seen on the other side of the volcano;\nit appears that this ledge is intermediate in elevation between\nthose on the other side.  The exit from this room is to the east."
     "Volcano View"
-    %<>
+    %null
     #exit
       {"DOWN"
         #nexit
@@ -4635,7 +4635,7 @@ GLOBALS.cxgnome = #cexit
   {"LEDG4"
     ""
     "Wide Ledge"
-    %<>
+    %null
     #exit
       {"DOWN"
         #nexit
@@ -4668,7 +4668,7 @@ GLOBALS.cxgnome = #cexit
   {"LAVA"
     "You are in a small room, whose walls are formed by an old lava flow.\nThere are exits here to the west and the south."
     "Lava Room"
-    %<>
+    %null
     #exit
       {"SOUTH"
         "VLBOT"
@@ -4680,7 +4680,7 @@ add_object(
     {"BALLO"
       "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire."
       "basket"
-      %<>
+      %null
       balloon
       (#find_obj
           {"CBAG"}
@@ -4688,7 +4688,7 @@ add_object(
           {"BROPE"}
         #find_obj
           {"RECEP"})
-      %<>
+      %null
       %_(
           GLOBALS.vehbit,
           GLOBALS.ovison)
@@ -4716,8 +4716,8 @@ put(
   {"RECEP"
     ""
     "receptacle"
-    %<>
-    %<>
+    %null
+    %null
     ()
     #find_obj
       {"BALLO"}
@@ -4736,8 +4736,8 @@ add_object(
     {"CBAG"
       ""
       "cloth bag"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"BALLO"}
@@ -4755,7 +4755,7 @@ add_object(
     {"BROPE"
       ""
       "braided wire"
-      %<>
+      %null
       wire_function
       ()
       #find_obj
@@ -4776,10 +4776,10 @@ add_object(
     {"HOOK1"
       "There is a small hook attached to the rock here."
       "hook"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -4793,10 +4793,10 @@ add_object(
     {"HOOK2"
       "There is a small hook attached to the rock here."
       "hook"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -4811,9 +4811,9 @@ add_object(
       "There is an engraved zorkmid coin here."
       "priceless zorkmid"
       "On the floor is a gold zorkmid coin (a valuable collector's item)."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.readbit,
           GLOBALS.ovison,
@@ -4836,13 +4836,13 @@ add_object(
     {"SAFE"
       ""
       "box"
-      %<>
+      %null
       safe_function
       (#find_obj
           {"CROWN"}
         #find_obj
           {"CARD"})
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.ovison)
@@ -4858,8 +4858,8 @@ add_object(
     {"CARD"
       "There is a card with writing on it here."
       "card"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"SAFE"}
@@ -4885,10 +4885,10 @@ add_object(
     {"SSLOT"
       ""
       "hole"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -4910,7 +4910,7 @@ add_object(
       "Lord Dimwit's crown is here."
       "crown"
       "The excessively gaudy crown of Lord Dimwit Flathead is here."
-      %<>
+      %null
       ()
       #find_obj
         {"SAFE"}
@@ -4930,10 +4930,10 @@ add_object(
     {"BRICK"
       "There is a square brick here which feels like clay."
       "brick"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.searchbit,
@@ -4959,10 +4959,10 @@ add_object(
     {"FUSE"
       "There is a coil of thin shiny wire here."
       "wire coil"
-      %<>
+      %null
       fuse_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
@@ -4982,10 +4982,10 @@ add_object(
     {"GNOME"
       "There is a nervous Volcano Gnome here."
       "Volcano Gnome"
-      %<>
+      %null
       gnome_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.vicbit,
           GLOBALS.ovison)
@@ -5001,8 +5001,8 @@ add_object(
     {"BLABE"
       "There is a blue label here."
       "blue label"
-      %<>
-      %<>
+      %null
+      %null
       ()
       #find_obj
         {"BALLO"}
@@ -5029,10 +5029,10 @@ add_object(
     {"DBALL"
       "There is a balloon here, broken into pieces."
       "broken balloon"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison)
@@ -5050,10 +5050,10 @@ add_object(
     {"BLBK"
       "There is a blue book here."
       "blue book"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.takebit,
@@ -5072,10 +5072,10 @@ add_object(
     {"GRBK"
       "There is a green book here."
       "green book"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.takebit,
@@ -5094,11 +5094,11 @@ add_object(
     {"PUBK"
       "There is a purple book here."
       "purple book"
-      %<>
-      %<>
+      %null
+      %null
       (#find_obj
           {"STAMP"})
-      %<>
+      %null
       %_(
           GLOBALS.takebit,
           GLOBALS.ovison,
@@ -5117,10 +5117,10 @@ add_object(
     {"WHBK"
       "There is a white book here."
       "white book"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.contbit,
           GLOBALS.takebit,
@@ -5162,8 +5162,8 @@ add_desc(
   {"STAMP"
     "There is a Flathead Commemorative stamp here."
     "stamp"
-    %<>
-    %<>
+    %null
+    %null
     ()
     #find_obj
       {"PUBK"}
@@ -5202,7 +5202,7 @@ put(
   find_obj(
     "CANDL"),
   GLOBALS.orand,
-  <>)
+  null)
 
 put(
   find_obj(
@@ -5224,7 +5224,7 @@ psetg(
   {"TOMB"
     "You are in the Tomb of the Unknown Implementer.\nA hollow voice says:  \"That's not a bug, it's a feature!\"
     "Tomb of the Unknown Implementer"
-    %<>
+    %null
     #exit
       {"WEST"
         "LLD2"}
@@ -5236,7 +5236,7 @@ psetg(
         {"COKES"}
       #find_obj
         {"LISTS"})
-    %<>
+    %null
     0}
 
 add_object(
@@ -5244,10 +5244,10 @@ add_object(
     {"TOMB"
       "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\""
       "tomb"
-      %<>
+      %null
       head_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.readbit,
@@ -5264,10 +5264,10 @@ add_object(
     {"HEADS"
       "There are four heads here, mounted securely on poles."
       "set of poled heads"
-      %<>
+      %null
       head_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.sacredbit,
@@ -5290,7 +5290,7 @@ add_object(
       "There is a large pile of empty Coke bottles here, evidently produced\nby the implementers during their long struggle to win totally."
       coke_bottles
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit)
@@ -5307,9 +5307,9 @@ add_object(
       "There is an enormous stack of line-printer paper here.  It is barely\nreadable."
       "stack of listings"
       "There is a gigantic pile of line-printer output here.  Although the\npaper once contained useful information, almost nothing can be\ndistinguished now."
-      %<>
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.readbit,
           GLOBALS.burnbit,
@@ -5335,10 +5335,10 @@ add_object(
     {"LCASE"
       "There is a large case here, containing objects which you used to\npossess."
       "large case"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.transbit)},
@@ -5346,7 +5346,7 @@ add_object(
   ["LARGE"])
 
 mapf(
-  <>,
+  null,
   /* FUNCTION */
     (x) => (
     rtro,
@@ -5373,7 +5373,7 @@ mapf(
     pog])
 
 mapf(
-  <>,
+  null,
   /* FUNCTION */
     (x) => (
     rtro,
@@ -5385,7 +5385,7 @@ mapf(
     "ATTIC"])
 
 mapf(
-  <>,
+  null,
   /* FUNCTION */
     (x) => (
     rtro,
@@ -5428,7 +5428,7 @@ mapf(
     "RAINB"
     "FALLS"])
 
-GLOBALS.bucket_top_X_flag = <>
+GLOBALS.bucket_top_X_flag = null
 
 GLOBALS.magcmach = #cexit
     {"FROBOZZ"
@@ -5444,7 +5444,7 @@ GLOBALS.magalice = #cexit
   {"MAGNE"
     ""
     "Low Room"
-    %<>
+    %null
     #exit
       {"NORTH"
         %GLOBALS.magcmach
@@ -5472,7 +5472,7 @@ GLOBALS.magalice = #cexit
   {"CMACH"
     ""
     "Machine Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "MAGNE"
@@ -5490,7 +5490,7 @@ GLOBALS.magalice = #cexit
   {"CAGER"
     "You are in a dingy closet adjacent to the machine room.  On one wall\nis a small sticker which says\n		Protected by\n		  FROBOZZ\n	     Magic Alarm Company\n	      (Hello, footpad!)"
     "Dingy Closet"
-    %<>
+    %null
     #exit
       {"NORTH"
         "CMACH"}
@@ -5501,7 +5501,7 @@ GLOBALS.magalice = #cexit
   {"CAGED"
     "You are trapped inside an iron cage."
     "Cage"
-    %<>
+    %null
     #exit
       {"NORTH"
         #nexit
@@ -5515,10 +5515,10 @@ add_object(
     {"CAGE"
       "There is a mangled cage here."
       "mangled cage"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.ndescbit)
@@ -5535,10 +5535,10 @@ add_object(
     {"RCAGE"
       "There is an iron cage in the middle of the room."
       "iron cage"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.ovison
       0
       0
@@ -5553,10 +5553,10 @@ add_object(
     {"SPHER"
       "There is a beautiful crystal sphere here."
       "crystal sphere"
-      %<>
+      %null
       sphere_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.trytakebit,
           GLOBALS.sacredbit,
@@ -5604,7 +5604,7 @@ add_object(
   {"TWELL"
     "You are at the top of the well.  Well done.  There are etchings on\nthe side of the well. There is a small crack across the floor at the\nentrance to a room on the east, but it can be crossed easily."
     "Top of Well"
-    %<>
+    %null
     #exit
       {"EAST"
         "ALICE"
@@ -5613,7 +5613,7 @@ add_object(
           "It's a long way down!"}
     (#find_obj
         {"ETCH2"})
-    %<>
+    %null
     10
     %_(
         GLOBALS.rlandbit,
@@ -5623,7 +5623,7 @@ add_object(
   {"BWELL"
     "You are in a damp circular room, whose walls are made of brick and\nmortar.  The roof of this room is not visible, but there appear to be\nsome etchings on the walls.  There is a passageway to the west."
     "Circular Room"
-    %<>
+    %null
     #exit
       {"WEST"
         "MPEAR"
@@ -5634,7 +5634,7 @@ add_object(
         {"BUCKE"}
       #find_obj
         {"ETCH1"})
-    %<>
+    %null
     0
     %_(
         GLOBALS.rlandbit,
@@ -5678,7 +5678,7 @@ add_desc(
   {"ALICE"
     "You are in a small square room, in the center of which is a large\noblong table, no doubt set for afternoon tea.  It is clear from the\nobjects on the table that the users were indeed mad.  In the eastern\ncorner of the room is a small hole (no more that four inches high). \nThere are passageways leading away to the west and the northwest."
     "Tea Room"
-    %<>
+    %null
     #exit
       {"EAST"
         #nexit
@@ -5707,7 +5707,7 @@ psetg(
   {"ALISM"
     "You are in an enormous room, in the center of which are four wooden\nposts delineating a rectanular area, above which is what appears to\nbe a wooden roof.  In fact, all objects in this room appear to be\nabnormally large. To the east is a passageway.  There is a large\nchasm on the west and the northwest."
     "Posts Room"
-    %<>
+    %null
     #exit
       {"NW"
         %GLOBALS.smdrop
@@ -5724,7 +5724,7 @@ psetg(
   {"ALITR"
     "You are in a large room, one half of which is depressed.  There is a\nlarge leak in the ceiling through which brown colored goop is\nfalling.  The only exit to this room is to the west."
     "Pool Room"
-    %<>
+    %null
     #exit
       {"EXIT"
         "ALISM"
@@ -5742,10 +5742,10 @@ add_object(
     {"FLASK"
       "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid."
       "glass flask filled with liquid"
-      %<>
+      %null
       flask_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.transbit,
           GLOBALS.ovison,
@@ -5763,10 +5763,10 @@ add_object(
     {"POOL"
       "The leak has submerged the depressed area in a pool of sewage."
       "pool of sewage"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.vicbit)
@@ -5783,10 +5783,10 @@ add_object(
     {"SAFFR"
       "There is a tin of rare spices here."
       "tin of spices"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %GLOBALS.takebit
       0
       5
@@ -5819,10 +5819,10 @@ add_object(
     {"BUCKE"
       "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
       "wooden bucket"
-      %<>
+      %null
       bucket
       ()
-      %<>
+      %null
       %_(
           GLOBALS.vehbit,
           GLOBALS.ovison)
@@ -5839,10 +5839,10 @@ add_object(
     {"ECAKE"
       "There is a piece of cake here with the words 'Eat Me' on it."
       "piece of 'Eat Me' cake"
-      %<>
+      %null
       eatme_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit,
@@ -5861,10 +5861,10 @@ add_object(
     {"ORICE"
       "There is a piece of cake with orange icing here."
       "piece of cake with orange icing"
-      %<>
+      %null
       cake_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.readbit,
           GLOBALS.ovison,
@@ -5884,10 +5884,10 @@ add_object(
     {"RDICE"
       "There is a piece of cake with red icing here."
       "piece of cake with red icing"
-      %<>
+      %null
       cake_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.readbit,
           GLOBALS.ovison,
@@ -5907,10 +5907,10 @@ add_object(
     {"BLICE"
       "There is a piece of cake with blue (ecch) icing here."
       "piece of cake with blue icing"
-      %<>
+      %null
       cake_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.readbit,
           GLOBALS.ovison,
@@ -5940,10 +5940,10 @@ add_object(
     {"ROBOT"
       "There is a robot here."
       "robot"
-      %<>
+      %null
       robot_function
       ()
-      %<>
+      %null
       %_(
           GLOBALS.sacredbit,
           GLOBALS.vicbit,
@@ -5968,7 +5968,7 @@ put(
           "MAGNE")
         ()
         0
-        <>
+        null
         find_obj(
           "ROBOT")
         robot_actor
@@ -5982,10 +5982,10 @@ add_object(
     {"RBTLB"
       "There is a green piece of paper here."
       "green piece of paper"
-      %<>
-      %<>
+      %null
+      %null
       ()
-      %<>
+      %null
       %_(
           GLOBALS.ovison,
           GLOBALS.takebit,
@@ -6994,10 +6994,10 @@ GLOBALS.player = add_actor(
       [GLOBALS.whous_X_rooms
         ()
         0
-        <>
+        null
         find_obj(
           "#####")
-        <>
+        null
         0
         t
         0],
