@@ -32,7 +32,7 @@ const convertToTypescriptFunction = (name: undefined | ZToken, argsList: undefin
     const argsListText = getIndentedNodes(argsList?.nodes ?? [], depth, false, ',');
     const bodyText = getIndentedNodes(body?.nodes ?? [], depth, true, ',');
 
-    return `${nameText ? `\\* FUNCTION ${nameText}*\\` : '\\* FUNCTION *\\'}\n${getIndentation(depth)}(${argsListText}) => (${bodyText})`;
+    return `${nameText ? `/* FUNCTION ${nameText}*/` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => (${bodyText})`;
 };
 
 
@@ -176,7 +176,7 @@ export const convertToTypescript = (node: ZNode): string => {
 
 
         // TS List as Array
-        // return `[${getIndentedNodes(nodes, depth, false, ',')}]`;
+        // return `/*${openSymbol ?? ''}*/ [${getIndentedNodes(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
 
         // Unknown
         const getDefaultWithIndentedChildren = () => {

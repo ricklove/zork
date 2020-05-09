@@ -624,7 +624,7 @@ define(
       atom),
   mapf(
     <>,
-    \* FUNCTION *\
+    /* FUNCTION */
       (x) => (
       setg,
       set(
@@ -670,7 +670,7 @@ define(
       _str)),
   mapf(
     <>,
-    \* FUNCTION *\
+    /* FUNCTION */
       (x) => (
       setg,
       set(
@@ -717,7 +717,7 @@ define(
         ,_atm)
       mapf(
         <>,
-        \* FUNCTION *\
+        /* FUNCTION */
           (x) => (
           setg,
           add_word(
@@ -735,7 +735,7 @@ define(
         ,_atm)
       mapf(
         <>,
-        \* FUNCTION *\
+        /* FUNCTION */
           (x) => (
           setg,
           or(
@@ -864,7 +864,7 @@ define(
     ,oadjs,
     mapf(
       ,uvector,
-      \* FUNCTION *\
+      /* FUNCTION */
         (w) => (
         add_zork,
         adjective,
@@ -908,7 +908,7 @@ define(
         ,_atm)
       mapf(
         <>,
-        \* FUNCTION *\
+        /* FUNCTION */
           (x) => (
           setg,
           add_word(

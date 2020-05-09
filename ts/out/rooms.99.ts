@@ -874,7 +874,7 @@ define(
             ,vers)
           mapf(
             <>,
-            \* FUNCTION *\
+            /* FUNCTION */
               (x) => (
               print,
               _x),
@@ -5813,7 +5813,7 @@ define(
       string),
   mapr(
     <>,
-    \* FUNCTION *\
+    /* FUNCTION */
       (x) => (
       cond,
       (_EQ_Q(
@@ -5838,7 +5838,7 @@ define(
       string),
   mapr(
     <>,
-    \* FUNCTION *\
+    /* FUNCTION */
       (s,
       "AUX",
       (c
