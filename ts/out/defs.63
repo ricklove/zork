@@ -4,7 +4,7 @@
     100>
   <USE
     "LSRTNS">>
-;"applicables"
+// applicables
 <NEWTYPE
   OFFSET
   WORD>
@@ -15,7 +15,7 @@
       ATOM
       FALSE
       OFFSET>>
-;"newtypes for parser"
+// newtypes for parser
 <NEWTYPE
   BUZZ
   STRING>
@@ -29,7 +29,7 @@
   PREP
   ATOM>
 \
-;"generalized oflags tester"
+// generalized oflags tester
 <DEFMAC
   TRNN
   ('OBJ
@@ -139,81 +139,81 @@
         .RM>
       .BIT>>>
 \
-;"room definition"
+// room definition
 <NEWSTRUC
   ROOM
   VECTOR
   RID
   ATOM
-  ;"room id"
+  // room id
   RDESC1
   STRING
-  ;"long description"
+  // long description
   RDESC2
   STRING
-  ;"short description"
+  // short description
   RSEEN?
   <OR
     ATOM
     FALSE>
-  ;"visited?"
+  // visited?
   RLIGHT?
   <OR
     ATOM
     FALSE>
-  ;"endogenous light source?"
+  // endogenous light source?
   REXITS
   EXIT
-  ;"list of exits"
+  // list of exits
   ROBJS
   <LIST
     [REST
       OBJECT]>
-  ;"objects in room"
+  // objects in room
   RACTION
   RAPPLIC
-  ;"room-action"
+  // room-action
   RVARS
   <PRIMTYPE
     WORD>
-  ;"slot for use of room function"
+  // slot for use of room function
   RVAL
   FIX
-  ;"value for visiting"
+  // value for visiting
   RBITS
   <PRIMTYPE
     WORD>
-  ;"random flags"
+  // random flags
   RRAND
   ANY
-  ;"random slot">
-;"flagword for <RBITS room>:    bit-name   bit-tester"
+  // random slot>
+// flagword for <RBITS room>:    bit-name   bit-tester
 <FLAGWORD
   RLANDBIT
   <>
-  ;"on land"
+  // on land
   RWATERBIT
   <>
-  ;"water room"
+  // water room
   RAIRBIT
   <>
-  ;"mid-air room"
+  // mid-air room
   RSACREDBIT
   <>
-  ;"thief not allowed"
+  // thief not allowed
   RFILLBIT
   <>
-  ;"can fill bottle here"
+  // can fill bottle here
   RMUNGBIT
   <>
-  ;"room has been munged"
+  // room has been munged
   RBUCKBIT
   <>
-  ;"this room is a bucket"
+  // this room is a bucket
   RHOUSEBIT
   <>
-  ;"This room is part of the house">
-;"exit"
+  // This room is part of the house>
+// exit
 <NEWTYPE
   EXIT
   VECTOR
@@ -225,44 +225,44 @@
           ROOM
           CEXIT
           NEXIT>]>>
-;"conditional exit"
+// conditional exit
 <NEWSTRUC
   CEXIT
   VECTOR
   CXFLAG
   ATOM
-  ;"condition flag"
+  // condition flag
   CXROOM
   ROOM
-  ;"room it protects"
+  // room it protects
   CXSTR
   <OR
     FALSE
     STRING>
-  ;"description"
+  // description
   CXACTION
   RAPPLIC
-  ;"exit function">
+  // exit function>
 <NEWTYPE
   NEXIT
   STRING>
-;"unusable exit description"
+// unusable exit description
 \
-;"PARSER related types"
-;"ACTION -- top level type for verbs"
+// PARSER related types
+// ACTION -- top level type for verbs
 <NEWSTRUC
   ACTION
   VECTOR
   VNAME
   ATOM
-  ;"atom associated with this action"
+  // atom associated with this action
   VDECL
   VSPEC
-  ;"syntaxes for this verb (any number)"
+  // syntaxes for this verb (any number)
   VSTR
   STRING
-  ;"string to print when talking about this verb">
-;"VSPEC -- uvector of syntaxes for a verb"
+  // string to print when talking about this verb>
+// VSPEC -- uvector of syntaxes for a verb
 <NEWTYPE
   VSPEC
   UVECTOR
@@ -270,59 +270,59 @@
         UVECTOR>
       [REST
         SYNTAX]>>
-;"SYNTAX -- a legal syntax for a sentence involving this verb"
+// SYNTAX -- a legal syntax for a sentence involving this verb
 <NEWSTRUC
   SYNTAX
   VECTOR
   SYN1
   VARG
-  ;"direct object, more or less"
+  // direct object, more or less
   SYN2
   VARG
-  ;"indirect object, more or less"
+  // indirect object, more or less
   SFCN
   VERB
-  ;"function to handle this action"
+  // function to handle this action
   SFLIP
   <OR
     ATOM
     FALSE>
-  ;"(?)"
+  // (?)
   SDRIVER
   <OR
     ATOM
     FALSE>
-  ;"(?)">
-;"VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX."
+  // (?)>
+// VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX.
 <NEWSTRUC
   VARG
   VECTOR
   VBIT
   FIX
-  ;"acceptable object characteristics"
+  // acceptable object characteristics
   VPREP
   <OR
     PREP
     FALSE>
-  ;"preposition that must precede(?) object"
+  // preposition that must precede(?) object
   VWORD
   FIX
-  ;"locations object may be looked for in">
-;"flagbit definitions for VWORD of a VARG"
+  // locations object may be looked for in>
+// flagbit definitions for VWORD of a VARG
 <FLAGWORD
   VABIT
   <>
-  ;"look in AOBJS"
+  // look in AOBJS
   VRBIT
   <>
-  ;"look in ROBJS"
+  // look in ROBJS
   VTBIT
   <>
-  ;"no-take"
+  // no-take
   VXBIT
   <>
-  ;"(?) turned on by '=' in VARG spec">
-;"VTRNN -- test a bit in the VWORD slot of a VARG"
+  // (?) turned on by '=' in VARG spec>
+// VTRNN -- test a bit in the VWORD slot of a VARG
 <DEFMAC
   VTRNN
   ('V
@@ -339,7 +339,7 @@
           .V>>
       FIX>
     0>>
-;"VERB -- name and function to apply to handle verb"
+// VERB -- name and function to apply to handle verb
 <NEWSTRUC
   VERB
   VECTOR
@@ -347,7 +347,7 @@
   ATOM
   VFCN
   RAPPLIC>
-;"ORPHANS -- mysterious vector of orphan data"
+// ORPHANS -- mysterious vector of orphan data
 <GDECL
   (ORPHANS)
   <VECTOR
@@ -382,7 +382,7 @@
   <MSETG
     ONAME
     5>>
-;"prepositional phrases"
+// prepositional phrases
 <NEWSTRUC
   PHRASE
   VECTOR
@@ -391,219 +391,219 @@
   POBJ
   OBJECT>
 \
-;"adventurer"
+// adventurer
 <NEWSTRUC
   ADV
   VECTOR
   AROOM
   ROOM
-  ;"where he is"
+  // where he is
   AOBJS
   <LIST
     [REST
       OBJECT]>
-  ;"what he's carrying"
+  // what he's carrying
   ASCORE
   FIX
-  ;"score"
+  // score
   AVEHICLE
   <OR
     FALSE
     OBJECT>
-  ;"what he's riding in"
+  // what he's riding in
   AOBJ
   OBJECT
-  ;"what he is"
+  // what he is
   AACTION
   RAPPLIC
-  ;"special action for robot, etc."
+  // special action for robot, etc.
   ASTRENGTH
   FIX
-  ;"fighting strength"
+  // fighting strength
   ARAND
   ANY
-  ;" ** reserved for future expansion ** "
+  // ** reserved for future expansion **
   AFLAGS
   <PRIMTYPE
     WORD>
-  ;"flags THIS MUST BE SAME OFFSET AS OFLAGS!">
+  // flags THIS MUST BE SAME OFFSET AS OFLAGS!>
 "bits in <AFLAGS adv>:    bit-name  bit-tester"
 <FLAGWORD
   ASTAGGERED
   STAGGERED?
-  ;"staggered?">
-;"object"
+  // staggered?>
+// object
 <NEWSTRUC
   OBJECT
   VECTOR
   OID
   ATOM
-  ;"unique name, SETG'd to this"
+  // unique name, SETG'd to this
   ONAMES
   <UVECTOR
     [REST
       ATOM]>
-  ;"synonyms"
+  // synonyms
   ODESC1
   STRING
-  ;"description when not carried"
+  // description when not carried
   ODESC2
   STRING
-  ;"short description"
+  // short description
   ODESCO
   <OR
     STRING
     FALSE>
-  ;"description when untouched"
+  // description when untouched
   OACTION
   RAPPLIC
-  ;"object-action"
+  // object-action
   OCONTENTS
   <LIST
     [REST
       OBJECT]>
-  ;"list of contents"
+  // list of contents
   OCAN
   <OR
     FALSE
     OBJECT>
-  ;"what contains this"
+  // what contains this
   OFLAGS
   <PRIMTYPE
     WORD>
-  ;"flags THIS MUST BE SAME OFFSET AS AFLAGS!"
+  // flags THIS MUST BE SAME OFFSET AS AFLAGS!
   OTOUCH?
   <OR
     ATOM
     FALSE>
-  ;"has this been touched?"
+  // has this been touched?
   OLIGHT?
   FIX
-  ;"light producer?"
+  // light producer?
   OFVAL
   FIX
-  ;"value for finding"
+  // value for finding
   OTVAL
   FIX
-  ;"value for putting in trophy case"
+  // value for putting in trophy case
   ORAND
   ANY
-  ;"random slot"
+  // random slot
   OOPEN?
   <OR
     ATOM
     FALSE>
-  ;"is this open?"
+  // is this open?
   OSIZE
   FIX
-  ;"how big is it?"
+  // how big is it?
   OCAPAC
   FIX
-  ;"how much can it hold?"
+  // how much can it hold?
   OADJS
   <UVECTOR
     [REST
       ADJECTIVE]>
-  ;"adjectives for this"
+  // adjectives for this
   OROOM
   <OR
     FALSE
     ROOM>
-  ;"what room its in"
+  // what room its in
   OREAD
   <OR
     FALSE
     STRING>
-  ;"reading material">
+  // reading material>
 "bits in <OFLAGS object>:    bit-name  bit-tester"
 <FLAGWORD
   OVISON
   OVIS?
-  ;"visible?"
+  // visible?
   READBIT
   READABLE?
-  ;"readable?"
+  // readable?
   TAKEBIT
   CAN-TAKE?
-  ;"takeable?"
+  // takeable?
   DOORBIT
   DOOR?
-  ;"object is door"
+  // object is door
   TRANSBIT
   TRANSPARENT?
-  ;"object is transparent"
+  // object is transparent
   FOODBIT
   EDIBLE?
-  ;"object is food"
+  // object is food
   NDESCBIT
   <>
-  ;"object not describable"
+  // object not describable
   DRINKBIT
   DRINKABLE?
-  ;"object is drinkable"
+  // object is drinkable
   CONTBIT
   <>
-  ;"object can be opened/closed"
+  // object can be opened/closed
   LIGHTBIT
   <>
-  ;"object can provide light"
+  // object can provide light
   VICBIT
   <>
-  ;"object is victim"
+  // object is victim
   BURNBIT
   BURNABLE?
-  ;"object is flammable"
+  // object is flammable
   FLAMEBIT
   <>
-  ;"object is on fire"
+  // object is on fire
   TOOLBIT
   <>
-  ;"object is a tool"
+  // object is a tool
   TURNBIT
   <>
-  ;"object can be turned"
+  // object can be turned
   VEHBIT
   <>
-  ;"object is a vehicle"
+  // object is a vehicle
   FINDMEBIT
   <>
-  ;"can be reached from a vehicle"
+  // can be reached from a vehicle
   SLEEPBIT
   <>
-  ;"object is asleep"
+  // object is asleep
   SEARCHBIT
   <>
-  ;"allow multi-level access into this"
+  // allow multi-level access into this
   SACREDBIT
   <>
-  ;"thief can't take this"
+  // thief can't take this
   TIEBIT
   <>
-  ;"object can be tied"
+  // object can be tied
   ECHO-ROOM-BIT
   <>
-  ;"nothing can be taken in echo room"
+  // nothing can be taken in echo room
   ACTORBIT
   <>
-  ;"object is an actor"
+  // object is an actor
   WEAPONBIT
   <>
-  ;"object is a weapon"
+  // object is a weapon
   FIGHTBIT
   FIGHTING?
-  ;"object is in melee"
+  // object is in melee
   VILLAIN
   <>
-  ;"object is a bad guy"
+  // object is a bad guy
   STAGGERED
   <>
-  ;"object can't fight this turn"
+  // object can't fight this turn
   TRYTAKEBIT
   <>
-  ;"object wants to handle not being taken"
+  // object wants to handle not being taken
   NO-CHECK-BIT
   <>
-  ;"ignore checks (in put & drop):  for EVERY and VALUA">
+  // ignore checks (in put & drop):  for EVERY and VALUA>
 "extra stuff for flagword for objects"
 "complement of the visible bit"
 <MSETG
@@ -663,7 +663,7 @@
         OOPEN?
         .OBJ>>>>
 \
-;"demons"
+// demons
 <NEWSTRUC
   HACK
   VECTOR
@@ -684,7 +684,7 @@
   OBJECT
   HFLAG
   ANY>
-;"Clock interrupts"
+// Clock interrupts
 <NEWSTRUC
   CEVENT
   VECTOR

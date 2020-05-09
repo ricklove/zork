@@ -84,7 +84,7 @@
                     .BODY>>)>)>
         <DISMISS
           T>>
-      ;"ROOM FUNCTIONS"
+      // ROOM FUNCTIONS
       <DEFINE
         EAST-HOUSE
         ("AUX"
@@ -113,7 +113,7 @@
                 (,KITCHEN-WINDOW!-FLAG
                   "open.")
                 ("slightly ajar.")>>)>>
-      ;"HACK THE KITCHEN WINDOW"
+      // HACK THE KITCHEN WINDOW
       <SETG
         GRUNLOCK!-FLAG
         <>>
@@ -173,7 +173,7 @@
               (<TELL
                   <PICK-ONE
                     ,DUMMY>>)>)>>
-      ;"KITCHEN -- CHECK THE WINDOW"
+      // KITCHEN -- CHECK THE WINDOW
       <DEFINE
         KITCHEN
         ("AUX"
@@ -429,7 +429,7 @@
             <TELL
               "There is a tunnel leaving the room to the north."
               1>)>>
-      ;"LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE"
+      // LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE
       <DEFINE
         LIVING-ROOM
         ("AUX"
@@ -689,7 +689,7 @@
               .RM
               ,RVARS
               1>)>>
-      ;"CELLAR--FIRST ROOM IN BASEMENT."
+      // CELLAR--FIRST ROOM IN BASEMENT.
       <DEFINE
         CELLAR
         ("AUX"
@@ -762,7 +762,7 @@
             <SETG
               LIGHT-LOAD!-FLAG
               T>
-            ;"Door will slam shut next time, too, since this way up don't count."
+            // Door will slam shut next time, too, since this way up don't count.
             <COND
               (<NOT
                   ,TRAP-DOOR!-FLAG>
@@ -776,7 +776,7 @@
             <SETG
               LIGHT-LOAD!-FLAG
               <>>)>>
-      ;"OBJECT FUNCTIONS"
+      // OBJECT FUNCTIONS
       <DEFINE
         RUG
         ("AUX"
@@ -3684,12 +3684,12 @@
             (<==?
                 .RM
                 .WROOM>
-              ;"Adventurer is in room:  CHOMP, CHOMP"
+              // Adventurer is in room:  CHOMP, CHOMP
               <COND
                 (<==?
                     .RM
                     .TREAS>)
-                ;"Don't move, Gertrude"
+                // Don't move, Gertrude
                 (<NOT
                     <HFLAG
                       .HACK>>
@@ -3833,7 +3833,7 @@
                 (T
                   <COND
                     (.HERE?
-                      ;"Here, already announced."
+                      // Here, already announced.
                       <COND
                         (<PROB
                             30>
@@ -3887,7 +3887,7 @@
                   .HOBJ
                   <ROBJS
                     .RM>>
-                ;"Leave if victim left"
+                // Leave if victim left
                 <SNARF-OBJECT
                   .HOBJ
                   .STILL>
@@ -3906,7 +3906,7 @@
                   .STILL>
                 <>>)
             (.SEEN?
-              ;"Hack the adventurer's belongings"
+              // Hack the adventurer's belongings
               <PUT
                 .HACK
                 ,HOBJS
@@ -4026,7 +4026,7 @@
                 ONCE
                 <NOT
                   .ONCE>>
-              ;"Move to next room, and hack."
+              // Move to next room, and hack.
               <PROG
                 ((ROOMS
                     <HROOMS
@@ -4048,7 +4048,7 @@
                   (<RTRNN
                       .RM
                       ,RSACREDBIT>
-                    ;"Can I work here?"
+                    // Can I work here?
                     <AGAIN>)>
                 <PUT
                   .HACK
@@ -4067,7 +4067,7 @@
                   <RSEEN?
                     .RM>>>
               <AGAIN>)>>
-        ;"Drop worthless cruft, sometimes"
+        // Drop worthless cruft, sometimes
         <OR
           <==?
             .RM
@@ -4495,7 +4495,7 @@
                             F
                             <ORAND
                               .FUSE>>>>>>>
-                ;"I.e., he's trying to give us the brick with a lighted fuse."
+                // I.e., he's trying to give us the brick with a lighted fuse.
                 <TELL
                   "The thief seems rather offended by your offer.  Do you think he's as stupid as you are?">)
               (<REMOVE-OBJECT

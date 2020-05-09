@@ -3,13 +3,16 @@ import { StringSpan } from "./stringSpan";
 import { DEBUG } from "./debug";
 import { runDebug } from "./debugRun";
 
-export type ZNode = {
+type ZNodeBase = {
     _raw: StringSpan;
+    kind: unknown;
 };
 
-export class ZFile implements ZNode {
+export type ZNode = ZFile | ZList | ZToken;
+
+export class ZFile implements ZNodeBase {
     _debug?: string = undefined;
-    kind = 'ZFile';
+    kind = 'ZFile' as const;
 
     _raw: StringSpan;
     content: ZNode;
@@ -25,9 +28,9 @@ export class ZFile implements ZNode {
     toString() { return `${this.content}`; }
 };
 
-export class ZList implements ZNode {
+export class ZList implements ZNodeBase {
     _debug?: string = undefined;
-    kind = 'ZTag';
+    kind = 'ZList' as const;
 
     _raw: StringSpan;
     openSymbol?: OpenSymbol;
@@ -52,9 +55,9 @@ export class ZList implements ZNode {
     }
 };
 
-export class ZToken implements ZNode {
+export class ZToken implements ZNodeBase {
     _debug?: string = undefined;
-    kind = 'ZWord';
+    kind = 'ZToken' as const;
 
     _raw: StringSpan;
 

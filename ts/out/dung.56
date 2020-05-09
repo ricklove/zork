@@ -1,16 +1,16 @@
 "VOCABULARY"
-;"GLOBAL VARIABLES WHICH ARE ROOMS MUST BE HERE!"
+// GLOBAL VARIABLES WHICH ARE ROOMS MUST BE HERE!
 <PSETG
   RMGVALS
   '!
     [BLOC
       HERE!]>
-;"GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!"
+// GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 <PSETG
   OBJGVALS
   '!
     [!]>
-;"GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!"
+// GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 <PSETG
   MGVALS
   '!
@@ -301,7 +301,7 @@
     ,SPHERE-FUNCTION
     T
     "SPHIN">>
-;"KLUDGE"
+// KLUDGE
 #OBJECT
   {"#####"
     "You are here"
@@ -3609,7 +3609,7 @@
   <FIND-OBJ
     "PRAYE">
   "The prayer is inscribed in an ancient script which is hardly remembered these days, much less understood.  What little of it can be made out seems to be a phillipic against small insects, absent-mindedness, and the picking up and dropping of small objects.  The final verse seems to consign trespassers to the land of the dead.  All evidence indicates that the beliefs of the ancient Zorkers were obscure.">
-;"ASSORTED DOORS"
+// ASSORTED DOORS
 <PSETG
   BUTSTR
   "button">
@@ -3730,7 +3730,7 @@
     ,NDESCBIT
     ,TURNBIT>
   ["SWITC"]>
-;"ASSORTED GARBAGE"
+// ASSORTED GARBAGE
 <ADD-OBJECT
   <SOBJECT
     "HPOLE"
@@ -5299,7 +5299,7 @@
   BLOC
   <FIND-ROOM
     "VLBOT">>
-;"SET UP LIGHT INTERRUPTS, ETC."
+// SET UP LIGHT INTERRUPTS, ETC.
 <PUT
   <FIND-OBJ
     "LAMP">
@@ -5319,7 +5319,7 @@
     "MATCH">
   ,ORAND
   5>
-;"NUMBER OF MATCHES"
+// NUMBER OF MATCHES
 <PSETG
   INDENTSTR
   <REST
@@ -6139,7 +6139,7 @@
   <FIND-OBJ
     "RBTLB">
   "   !!!!  FROBOZZ MAGIC ROBOT COMPANY  !!!!  Hello, Master!        I am a late-model robot, trained at MIT Tech to perform various simple household functions.   Instructions for use:    To activate me, use the following formula:  >TELL ROBOT '<something to do>' <cr>    The quotation marks are required!         Warranty:    No warranty is expressed or implied.           At your service! ">
-;"VERBS"
+// VERBS
 <SADD-ACTION
   "BACK"
   BACKER>
@@ -6493,22 +6493,22 @@
 <SADD-ACTION
   "C-INT"
   TIME>
-;"funny verb for clock ints"
+// funny verb for clock ints
 <SADD-ACTION
   "DEAD!"
   TIME>
-;"funny verb for killing villains"
+// funny verb for killing villains
 <SADD-ACTION
   "FIRST?"
   TIME>
-;"funny verb for surprise by villains"
+// funny verb for surprise by villains
 <SADD-ACTION
   "DIAGN"
   DIAGNOSE>
 <SADD-ACTION
   "HACK?"
   TIME>
-;"funny verb for villain fight decisions"
+// funny verb for villain fight decisions
 <SADD-ACTION
   "SCORE"
   SCORE>

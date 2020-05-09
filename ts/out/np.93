@@ -1193,7 +1193,7 @@
           ,NEFALS)
         (.OBJ)>)
     (.OBJ)>>
-;" [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]"
+// [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 <DEFINE
   MAKE-ACTION
   ("TUPLE"
