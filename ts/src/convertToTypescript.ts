@@ -17,7 +17,7 @@ const convertToTypescriptComment = (node: ZList): string => {
     return `// ${node._raw.trimStart(';').trim().trim('"').trim().toString().replace(/\s/g, ' ')}`;
 }
 
-const converToTypescriptName = (node: ZToken): string => {
+const convertToTypescriptName = (node: ZToken): string => {
     return `${node._raw.toString()
         .toLowerCase()
         .replace(/==/g, '_EQ')
@@ -28,7 +28,7 @@ const converToTypescriptName = (node: ZToken): string => {
 }
 
 const convertToTypescriptFunction = (name: undefined | ZToken, argsList: undefined | ZList, body: undefined | ZList, depth: number, ) => {
-    const nameText = name && name.kind === 'ZToken' ? converToTypescriptName(name) : undefined;
+    const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
     const argsListText = getIndentedNodes(argsList?.nodes ?? [], depth, false, ',');
     const bodyText = getIndentedNodes(body?.nodes ?? [], depth, true, ',');
 
@@ -66,6 +66,32 @@ export const convertToTypescript = (node: ZNode): string => {
         }
 
         const firstNode = +!undefined && nodes[0];
+
+        // Global Values 
+        // Get with ,atom
+        if (firstNode && openSymbol === ','
+            && firstNode.kind === 'ZToken'
+        ) {
+            return `GLOBALS.${convertToTypescriptName(firstNode)}`;
+        }
+        // <GVAL atom>
+        if (firstNode && openSymbol === '<'
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'GVAL'
+            && nodes.length === 2
+            && nodes[1].kind === 'ZToken'
+        ) {
+            return `GLOBALS.${convertToTypescriptName(nodes[1])}`;
+        }
+        // // <SETG atom any>
+        // if (firstNode && openSymbol === '<'
+        //     && firstNode.kind === 'ZToken'
+        //     && firstNode.toString() === 'SETG'
+        //     && nodes.length === 3
+        //     && nodes[1].kind === 'ZToken'
+        // ) {
+        //     return `GLOBALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
+        // }
 
         // Lazy Values
         if (firstNode && openSymbol === '\'') {
@@ -170,7 +196,7 @@ export const convertToTypescript = (node: ZNode): string => {
 
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
-            const name = converToTypescriptName(firstNode);
+            const name = convertToTypescriptName(firstNode);
             return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
         }
 
@@ -186,7 +212,7 @@ export const convertToTypescript = (node: ZNode): string => {
     }
 
     if (node.kind === 'ZToken') {
-        const name = converToTypescriptName(node);
+        const name = convertToTypescriptName(node);
         return name;
     }
 

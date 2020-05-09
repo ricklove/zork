@@ -1,6 +1,6 @@
 and(
   l_Q(
-    ,muddle,
+    GLOBALS.muddle,
     100),
   use(
     "LSRTNS"))
@@ -80,7 +80,7 @@ defmac(
   form(
     put,
     _rm,
-    ,rbits,
+    GLOBALS.rbits,
     form(
       andb,
       form(
@@ -98,7 +98,7 @@ defmac(
   form(
     put,
     _obj,
-    ,oflags,
+    GLOBALS.oflags,
     form(
       xorb,
       form(
@@ -113,7 +113,7 @@ defmac(
   form(
     put,
     _obj,
-    ,oflags,
+    GLOBALS.oflags,
     form(
       andb,
       form(
@@ -131,7 +131,7 @@ defmac(
   form(
     put,
     _obj,
-    ,oflags,
+    GLOBALS.oflags,
     form(
       orb,
       form(
@@ -146,7 +146,7 @@ defmac(
   form(
     put,
     _rm,
-    ,rbits,
+    GLOBALS.rbits,
     form(
       orb,
       form(
@@ -673,8 +673,8 @@ defmac(
     _obj,
     form(
       _,
-      ,doorbit,
-      ,contbit)))
+      GLOBALS.doorbit,
+      GLOBALS.contbit)))
 
 "complement of the bit state"
 
@@ -686,7 +686,7 @@ defmac(
     form(
       trnn,
       _obj,
-      ,ndescbit)))
+      GLOBALS.ndescbit)))
 
 "if object is a light or aflame, then flaming"
 
@@ -698,7 +698,7 @@ defmac(
     form(
       trnn,
       _obj,
-      ,flamebit),
+      GLOBALS.flamebit),
     form(
       1_Q,
       form(
@@ -956,7 +956,7 @@ define(
           _obj))
       put(
         _ocan,
-        ,ocontents,
+        GLOBALS.ocontents,
         splice_out(
           _obj,
           ocontents(
@@ -967,7 +967,7 @@ define(
           _obj))
       put(
         _oroom,
-        ,robjs,
+        GLOBALS.robjs,
         splice_out(
           _obj,
           robjs(
@@ -975,21 +975,21 @@ define(
     (memq(
         _obj,
         robjs(
-          ,here))
+          GLOBALS.here))
       put(
-        ,here,
-        ,robjs,
+        GLOBALS.here,
+        GLOBALS.robjs,
         splice_out(
           _obj,
           robjs(
-            ,here))))),
+            GLOBALS.here))))),
   put(
     _obj,
-    ,oroom,
+    GLOBALS.oroom,
     <>),
   put(
     _obj,
-    ,ocan,
+    GLOBALS.ocan,
     <>))
 
 defmac(
@@ -999,11 +999,11 @@ defmac(
   form(
     put,
     _room,
-    ,robjs,
+    GLOBALS.robjs,
     (form(
         put,
         _obj,
-        ,oroom,
+        GLOBALS.oroom,
         _room)
       chtype(
         form(
@@ -1016,15 +1016,15 @@ defmac(
   (() => obj
     "OPTIONAL"
     (() => winner
-      () => ,winner)),
+      () => GLOBALS.winner)),
   form(
     put,
     _winner,
-    ,aobjs,
+    GLOBALS.aobjs,
     (form(
         put,
         _obj,
-        ,oroom,
+        GLOBALS.oroom,
         <>)
       chtype(
         form(
@@ -1037,11 +1037,11 @@ defmac(
   (() => obj
     "OPTIONAL"
     (() => winner
-      () => ,winner)),
+      () => GLOBALS.winner)),
   form(
     put,
     _winner,
-    ,aobjs,
+    GLOBALS.aobjs,
     form(
       splice_out,
       _obj,
@@ -1065,7 +1065,7 @@ define(
           _winner))
       put(
         _winner,
-        ,aobjs,
+        GLOBALS.aobjs,
         splice_out(
           _obj,
           aobjs(
@@ -1079,7 +1079,7 @@ define(
     objs
     "AUX"
     (winner
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((objs)
       tuple(
@@ -1138,10 +1138,10 @@ define(
             not(
               trnn(
                 _x,
-                ,sacredbit)))
+                GLOBALS.sacredbit)))
           put(
             _win,
-            ,aobjs,
+            GLOBALS.aobjs,
             splice_out(
               _x,
               aobjs(
@@ -1186,7 +1186,7 @@ define(
             not(
               trnn(
                 _x,
-                ,sacredbit)),
+                GLOBALS.sacredbit)),
             ovis_Q(
               _x),
             prob(
@@ -1195,7 +1195,7 @@ define(
             _x)
           put(
             _x,
-            ,otouch_Q,
+            GLOBALS.otouch_Q,
             t)
           set(
             newlist,
@@ -1243,7 +1243,7 @@ define(
   (adv
     "AUX"
     (weapons
-      ,weapons)),
+      GLOBALS.weapons)),
   #decl
     ((adv)
       adv),
@@ -1291,7 +1291,7 @@ define(
       find_obj(
         _id))
     (dems
-      ,demons)),
+      GLOBALS.demons)),
   #decl
     ((id)
       string
@@ -1340,7 +1340,7 @@ defmac(
   form(
     put,
     _ev,
-    ,cflag,
+    GLOBALS.cflag,
     <>))
 
 defmac(
@@ -1349,7 +1349,7 @@ defmac(
   form(
     put,
     _ev,
-    ,cflag,
+    GLOBALS.cflag,
     t))
 
 define(
@@ -1357,9 +1357,9 @@ define(
   (no_is_bad_Q
     "AUX"
     (inbuf
-      ,inbuf)
+      GLOBALS.inbuf)
     (inchan
-      ,inchan)),
+      GLOBALS.inchan)),
   #decl
     ((inbuf)
       string
@@ -1372,7 +1372,7 @@ define(
   readstring(
     _inbuf,
     _inchan,
-    ,reader_string),
+    GLOBALS.reader_string),
   cond(
     (_no_is_bad_Q
       not(
@@ -1451,7 +1451,7 @@ define(
           _fn)
         set(
           fn,
-          ,_fn)
+          GLOBALS._fn)
         again(
           )),
       (error(
@@ -1513,17 +1513,17 @@ define(
           atm,
           lookup(
             _id,
-            ,room_obl)),
+            GLOBALS.room_obl)),
         gassigned_Q(
           _atm))
-      ,_atm),
+      GLOBALS._atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            ,room_obl)))
+            GLOBALS.room_obl)))
       setg(
         _atm,
         set(
@@ -1531,11 +1531,11 @@ define(
           chtype(
             vector(
               _atm,
-              ,null_desc,
-              ,null_desc,
+              GLOBALS.null_desc,
+              GLOBALS.null_desc,
               <>,
               <>,
-              ,null_exit,
+              GLOBALS.null_exit,
               (),
               <>,
               0,
@@ -1547,7 +1547,7 @@ define(
         rooms,
         (_room
           _X
-          ,rooms))
+          GLOBALS.rooms))
       _room)))
 
 define(
@@ -1583,26 +1583,26 @@ define(
           atm,
           lookup(
             _id,
-            ,object_obl)),
+            GLOBALS.object_obl)),
         gassigned_Q(
           _atm))
-      ,_atm),
+      GLOBALS._atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            ,object_obl)))
+            GLOBALS.object_obl)))
       setg(
         _atm,
         set(
           obj,
           chtype(
             [_atm
-              ,null_syn
-              ,null_desc
-              ,null_desc
+              GLOBALS.null_syn
+              GLOBALS.null_desc
+              GLOBALS.null_desc
               <>
               <>
               ()
@@ -1616,7 +1616,7 @@ define(
               <>
               5
               0
-              ,null_syn
+              GLOBALS.null_syn
               <>
               <>],
             object)))
@@ -1624,7 +1624,7 @@ define(
         objects,
         (_obj
           _X
-          ,objects))
+          GLOBALS.objects))
       _obj)))
 
 define(

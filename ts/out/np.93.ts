@@ -76,11 +76,11 @@ define(
     vb
     "AUX"
     (words
-      ,words)
+      GLOBALS.words)
     (objob
-      ,object_obl)
+      GLOBALS.object_obl)
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (pvr
       put(
         put(
@@ -91,18 +91,18 @@ define(
         2,
         <>))
     (actions
-      ,actions)
+      GLOBALS.actions)
     (dirs
-      ,directions)
+      GLOBALS.directions)
     (orph
-      ,orphans)
+      GLOBALS.orphans)
     (orfl
       oflag(
         _orph))
     (prv
-      ,prepvec)
+      GLOBALS.prepvec)
     (here
-      ,here)
+      GLOBALS.here)
     (action
       <>)
     (prep
@@ -189,7 +189,7 @@ define(
                   _actions)))
             set(
               action,
-              ,_atm)),
+              GLOBALS._atm)),
           (and(
               not(
                 _action),
@@ -201,11 +201,11 @@ define(
             put(
               _pv,
               1,
-              ,walk_X_words)
+              GLOBALS.walk_X_words)
             put(
               _pv,
               2,
-              ,_atm)
+              GLOBALS._atm)
             return(
               win,
               _sparout)),
@@ -219,7 +219,7 @@ define(
                 (type_Q(
                     set(
                       aval,
-                      ,_atm),
+                      GLOBALS._atm),
                     prep)
                   cond(
                     (_prep
@@ -333,7 +333,7 @@ define(
                             0))))),
                   (_EQ_Q(
                       _obj,
-                      ,nefals2)
+                      GLOBALS.nefals2)
                     or(
                       _vb,
                       tell(
@@ -341,7 +341,7 @@ define(
                         0,
                         odesc2(
                           avehicle(
-                            ,winner)),
+                            GLOBALS.winner)),
                         "."))),
                   (or(
                       _vb,
@@ -524,16 +524,16 @@ define(
       put(
         put(
           put(
-            ,orphans,
-            ,oname,
+            GLOBALS.orphans,
+            GLOBALS.oname,
             _name),
-          ,oprep,
+          GLOBALS.oprep,
           _prep),
-        ,oslot1,
+        GLOBALS.oslot1,
         _slot1),
-      ,overb,
+      GLOBALS.overb,
       _action),
-    ,oflag,
+    GLOBALS.oflag,
     _flag))
 
 define(
@@ -776,7 +776,7 @@ define(
           varg,
           syn1(
             _syn)),
-        ,vrbit)
+        GLOBALS.vrbit)
       take_it(
         _obj,
         _pv,
@@ -802,7 +802,7 @@ define(
           varg,
           syn2(
             _syn)),
-        ,vrbit)
+        GLOBALS.vrbit)
       take_it(
         _obj,
         _pv,
@@ -840,7 +840,7 @@ define(
           oid(
             _obj),
           robjs(
-            ,here),
+            GLOBALS.here),
           <>),
         or(
           can_take_Q(
@@ -848,11 +848,11 @@ define(
           not(
             vtrnn(
               _vrb,
-              ,vtbit))))
+              GLOBALS.vtbit))))
       put(
         _vec,
         1,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       put(
         _vec,
         2,
@@ -874,7 +874,7 @@ define(
     objs
     "AUX"
     (orph
-      ,orphans)
+      GLOBALS.orphans)
     (orfl
       oflag(
         _orph))
@@ -980,7 +980,7 @@ define(
       spname(
         _atm)),
     back(
-      ,scrstr,
+      GLOBALS.scrstr,
       length(
         _sp)),
     <>))
@@ -1080,24 +1080,24 @@ define(
     (aobj
       vtrnn(
         _fword,
-        ,vabit))
+        GLOBALS.vabit))
     (ntake
       vtrnn(
         _fword,
-        ,vtbit))
+        GLOBALS.vtbit))
     (robj
       vtrnn(
         _fword,
-        ,vrbit))
+        GLOBALS.vrbit))
     (obj
       <>)
     nobj
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     savobj
     (av
       avehicle(
-        ,winner))
+        GLOBALS.winner))
     sf),
   #decl
     ((bit)
@@ -1132,7 +1132,7 @@ define(
       fwim(
         _bit,
         aobjs(
-          ,winner),
+          GLOBALS.winner),
         _ntake))),
   cond(
     (_robj
@@ -1143,7 +1143,7 @@ define(
               fwim(
                 _bit,
                 robjs(
-                  ,here),
+                  GLOBALS.here),
                 _ntake)),
             or(
               not(
@@ -1157,7 +1157,7 @@ define(
                   _av)),
               trnn(
                 _nobj,
-                ,findmebit)))
+                GLOBALS.findmebit)))
           cond(
             (and(
                 or(
@@ -1177,7 +1177,7 @@ define(
                 put(
                   _pv,
                   1,
-                  ,take_X_words),
+                  GLOBALS.take_X_words),
                 put(
                   _pv,
                   2,
@@ -1209,7 +1209,7 @@ define(
             not(
               empty_Q(
                 _nobj)))
-          ,nefals),
+          GLOBALS.nefals),
         (_obj))),
     (_obj)))
 
@@ -1227,7 +1227,7 @@ define(
     atm),
   chtype(
     mapf(
-      ,uvector,
+      GLOBALS.uvector,
       function(
         (sp
           "AUX"
@@ -1294,7 +1294,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      ,vabit)))
+                      GLOBALS.vabit)))
                 and(
                   memq(
                     robjs,
@@ -1303,7 +1303,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      ,vrbit)))
+                      GLOBALS.vrbit)))
                 and(
                   memq(
                     no_take,
@@ -1312,7 +1312,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      ,vtbit)))
+                      GLOBALS.vtbit)))
                 and(
                   memq(
                     _,
@@ -1321,7 +1321,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      ,vxbit)))
+                      GLOBALS.vxbit)))
                 put(
                   _vv,
                   3,
@@ -1349,11 +1349,11 @@ define(
                             _itm))))
                     put(
                       _syn,
-                      ,sfcn,
-                      ,_atm)),
+                      GLOBALS.sfcn,
+                      GLOBALS._atm)),
                   (put(
                       _syn,
-                      ,sfcn,
+                      GLOBALS.sfcn,
                       setg(
                         set(
                           atm,
@@ -1370,14 +1370,14 @@ define(
                   driver)
                 put(
                   _syn,
-                  ,sdriver,
+                  GLOBALS.sdriver,
                   t)),
             (_EQ_Q(
                   _itm,
                   flip)
                 put(
                   _syn,
-                  ,sflip,
+                  GLOBALS.sflip,
                   t))),
           _sp),
         or(
@@ -1385,15 +1385,15 @@ define(
             _syn),
           put(
             _syn,
-            ,syn1,
-            ,evarg)),
+            GLOBALS.syn1,
+            GLOBALS.evarg)),
         or(
           syn2(
             _syn),
           put(
             _syn,
-            ,syn2,
-            ,evarg)),
+            GLOBALS.syn2,
+            GLOBALS.evarg)),
         chtype(
           _syn,
           syntax)),
@@ -1440,7 +1440,7 @@ define(
           not(
             vtrnn(
               _varg,
-              ,vxbit)),
+              GLOBALS.vxbit)),
           trnn(
             2(
               _pobj),
@@ -1456,7 +1456,7 @@ define(
           not(
             vtrnn(
               _varg,
-              ,vxbit)),
+              GLOBALS.vxbit)),
           trnn(
             _pobj,
             _vbit)))),
@@ -1539,10 +1539,10 @@ define(
     (oobj
       <>)
     (here
-      ,here)
+      GLOBALS.here)
     (av
       avehicle(
-        ,winner))
+        GLOBALS.winner))
     (chomp
       <>)),
   #decl
@@ -1575,7 +1575,7 @@ define(
         obj,
         search_list(
           _objnam,
-          ,stars,
+          GLOBALS.stars,
           _adj))
       set(
         oobj,
@@ -1584,7 +1584,7 @@ define(
         empty_Q(
           _obj))
       return(
-        ,nefals,
+        GLOBALS.nefals,
         _get_obj))),
   cond(
     (and(
@@ -1595,7 +1595,7 @@ define(
           search_list(
             _objnam,
             robjs(
-              ,here),
+              GLOBALS.here),
             _adj)))
       cond(
         (and(
@@ -1611,13 +1611,13 @@ define(
             not(
               trnn(
                 _obj,
-                ,findmebit)))
+                GLOBALS.findmebit)))
           set(
             chomp,
             t)),
         (_oobj
           return(
-            ,nefals,
+            GLOBALS.nefals,
             _get_obj)),
         (set(
             oobj,
@@ -1629,7 +1629,7 @@ define(
           empty_Q(
             _obj)))
       return(
-        ,nefals,
+        GLOBALS.nefals,
         _get_obj))),
   cond(
     (_av
@@ -1651,7 +1651,7 @@ define(
             empty_Q(
               _obj))
           return(
-            ,nefals,
+            GLOBALS.nefals,
             _get_obj))))),
   cond(
     (set(
@@ -1659,18 +1659,18 @@ define(
         search_list(
           _objnam,
           aobjs(
-            ,winner),
+            GLOBALS.winner),
           _adj))
       cond(
         (_oobj
-          ,nefals),
+          GLOBALS.nefals),
         (_obj))),
     (not(
         empty_Q(
           _obj))
-      ,nefals),
+      GLOBALS.nefals),
     (_chomp
-      ,nefals2),
+      GLOBALS.nefals2),
     (_oobj)))
 
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.\nIF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO\nONE LEVEL OF CONTAINMENT."
@@ -1698,7 +1698,7 @@ define(
     (oobj
       <>)
     (nefals
-      ,nefals)
+      GLOBALS.nefals)
     nobj),
   #decl
     ((objnam)
@@ -1755,7 +1755,7 @@ define(
               _first_Q,
               trnn(
                 _obj,
-                ,searchbit)))
+                GLOBALS.searchbit)))
           cond(
             (set(
                 nobj,
@@ -1829,7 +1829,7 @@ define(
           cond(
             (_nobj
               return(
-                ,nefals,
+                GLOBALS.nefals,
                 _dwim)))
           set(
             nobj,
@@ -1857,7 +1857,7 @@ define(
                   cond(
                     (_nobj
                       return(
-                        ,nefals,
+                        GLOBALS.nefals,
                         _dwim)),
                     (set(
                         nobj,

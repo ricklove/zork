@@ -5,9 +5,9 @@ define(
       <>)
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (win
-      ,winner)
+      GLOBALS.winner)
     o),
   #decl
     ((dummy_Q)
@@ -87,7 +87,7 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsact)
       verb),
@@ -102,12 +102,12 @@ define(
             find_obj(
               "GARLI"),
             aobjs(
-              ,winner))))
+              GLOBALS.winner))))
       fly_me(
         )),
     (_EQ_Q(
         _prsact,
-        ,look_X_words)
+        GLOBALS.look_X_words)
       tell(
         "You are in a small room which has only one door, to the east.")
       and(
@@ -115,7 +115,7 @@ define(
           find_obj(
             "GARLI"),
           aobjs(
-            ,winner)),
+            GLOBALS.winner)),
         tell(
           "In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")))))
 
@@ -123,7 +123,7 @@ define(
   fly_me,
   ("AUX"
     (bat_drops
-      ,bat_drops)),
+      GLOBALS.bat_drops)),
   #decl
     ((bat_drops)
       vector(
@@ -146,7 +146,7 @@ define(
         pick_one(
           _bat_drops)))),
   put(
-    ,prsvec,
+    GLOBALS.prsvec,
     2,
     <>),
   room_desc(
@@ -210,7 +210,7 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (tb
       find_obj(
         "TBASK"))
@@ -224,11 +224,11 @@ define(
       find_obj(
         "FBASK"))
     (ct
-      ,cage_top_X_flag)
+      GLOBALS.cage_top_X_flag)
     (here
-      ,here)
+      GLOBALS.here)
     (dummy
-      ,dummy)),
+      GLOBALS.dummy)),
   #decl
     ((prsact)
       verb
@@ -251,12 +251,12 @@ define(
   cond(
     (_EQ_Q(
         _prsact,
-        ,raise_X_words)
+        GLOBALS.raise_X_words)
       cond(
         (_ct
           tell(
             pick_one(
-              ,dummy))),
+              GLOBALS.dummy))),
         (remove_object(
             _tb)
           remove_object(
@@ -274,7 +274,7 @@ define(
             t)))),
     (_EQ_Q(
         _prsact,
-        ,lower_X_words)
+        GLOBALS.lower_X_words)
       cond(
         (not(
             _ct)
@@ -299,7 +299,7 @@ define(
           t))),
     (_EQ_Q(
         _prsact,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       cond(
         (or(
             and(
@@ -323,14 +323,14 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsact)
       verb),
   cond(
     (_EQ_Q(
         _prsact,
-        ,look_X_words)
+        GLOBALS.look_X_words)
       tell(
         "You are in a large room which seems to be air-conditioned.  In one\ncorner there is a machine (?) which is shaped somewhat like a clothes\ndryer.  On the 'panel' there is a switch which is labelled in a\ndialect of Swahili.  Fortunately, I know this dialect and the label\ntranslates to START.  The switch does not appear to be manipulable by\nany human hand (unless the fingers are about 1/16 by 1/4 inch).  On\nthe front of the machine is a large lid.")
       cond(
@@ -346,10 +346,10 @@ define(
   machine_function,
   ("AUX"
     (dummy
-      ,dummy)
+      GLOBALS.dummy)
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (mach
       find_obj(
         "MACHI"))),
@@ -364,7 +364,7 @@ define(
           string])),
   cond(
     (_EQ_Q(
-        ,here,
+        GLOBALS.here,
         find_room(
           "MACHI"))
       cond(
@@ -382,7 +382,7 @@ define(
                 "The lid opens.")
               put(
                 _mach,
-                ,oopen_Q,
+                GLOBALS.oopen_Q,
                 t)))),
         (_EQ_Q(
             vname(
@@ -395,7 +395,7 @@ define(
                 "The lid closes.")
               put(
                 _mach,
-                ,oopen_Q,
+                GLOBALS.oopen_Q,
                 <>)
               t),
             (tell(
@@ -403,20 +403,20 @@ define(
                   _dummy))))),
         (_EQ_Q(
             _prsact,
-            ,take_X_words))))))
+            GLOBALS.take_X_words))))))
 
 define(
   mswitch_function,
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (c
       find_obj(
         "COAL"))
     (imp
       3(
-        ,prsvec))
+        GLOBALS.prsvec))
     d
     (mach
       find_obj(
@@ -437,7 +437,7 @@ define(
   cond(
     (_EQ_Q(
         _prsact,
-        ,turn_X_words)
+        GLOBALS.turn_X_words)
       cond(
         (_EQ_Q(
             _imp,
@@ -456,14 +456,14 @@ define(
                       _mach))
                   put(
                     _mach,
-                    ,ocontents,
+                    GLOBALS.ocontents,
                     splice_out(
                       _c,
                       ocontents(
                         _mach)))
                   put(
                     _mach,
-                    ,ocontents,
+                    GLOBALS.ocontents,
                     (set(
                         d,
                         find_obj(
@@ -473,7 +473,7 @@ define(
                         _mach)))
                   put(
                     _d,
-                    ,ocan,
+                    GLOBALS.ocan,
                     _mach)),
                 (not(
                     empty_Q(
@@ -481,7 +481,7 @@ define(
                         _mach)))
                   put(
                     _mach,
-                    ,ocontents,
+                    GLOBALS.ocontents,
                     (set(
                         d,
                         find_obj(
@@ -514,14 +514,14 @@ define(
     (_m
       put(
         _m,
-        ,ocontents,
+        GLOBALS.ocontents,
         splice_out(
           _g,
           ocontents(
             _m)))
       put(
         _g,
-        ,ocan,
+        GLOBALS.ocan,
         <>)
       tell(
         "The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable."))))
@@ -529,7 +529,7 @@ define(
 setg(
   score_max,
   _(
-    ,score_max,
+    GLOBALS.score_max,
     setg(
       light_shaft,
       10)))
@@ -540,7 +540,7 @@ define(
   cond(
     (empty_Q(
         aobjs(
-          ,winner))
+          GLOBALS.winner))
       setg(
         empty_handed_X_flag,
         t)),
@@ -550,13 +550,13 @@ define(
   cond(
     (and(
         _EQ_Q(
-          ,here,
+          GLOBALS.here,
           find_room(
             "BSHAF")),
         lit_Q(
-          ,here))
+          GLOBALS.here))
       score_upd(
-        ,light_shaft)
+        GLOBALS.light_shaft)
       setg(
         light_shaft,
         0))))
@@ -573,7 +573,7 @@ define(
         find_obj(
           "RBOAT"),
         aobjs(
-          ,winner))
+          GLOBALS.winner))
       setg(
         deflate_X_flag,
         <>)),
@@ -586,7 +586,7 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsact)
       verb),
@@ -598,20 +598,20 @@ define(
       cond(
         (or(
             _EQ_Q(
-              ,here,
+              GLOBALS.here,
               find_room(
                 "FALLS")),
             _EQ_Q(
-              ,here,
+              GLOBALS.here,
               find_room(
                 "POG")))
           cond(
             (not(
-                ,rainbow_X_flag)
+                GLOBALS.rainbow_X_flag)
               tro(
                 find_obj(
                   "POT"),
-                ,ovison)
+                GLOBALS.ovison)
               tell(
                 "Suddenly, the rainbow appears to become solid and, I venture,\nwalkable (I think the giveaway was the stairs and bannister).")
               setg(
@@ -623,7 +623,7 @@ define(
                 rainbow_X_flag,
                 <>)))),
         (_EQ_Q(
-            ,here,
+            GLOBALS.here,
             find_room(
               "RAINB"))
           setg(
@@ -639,18 +639,18 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsact)
       verb),
   cond(
     (_EQ_Q(
         _prsact,
-        ,look_X_words)
+        GLOBALS.look_X_words)
       tell(
         "You are at the top of Aragain Falls, an enormous waterfall with a\ndrop of about 450 feet.  The only path here is on the north end.\nThere is a man-sized barrel here which you could fit into.")
       cond(
-        (,rainbow_X_flag
+        (GLOBALS.rainbow_X_flag
           tell(
             "A solid rainbow spans the falls.")),
         (tell(
@@ -661,7 +661,7 @@ define(
   ("AUX"
     (prso
       2(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prso)
       object),
@@ -672,7 +672,7 @@ define(
           "SHOVE"))),
     (trnn(
         _prso,
-        ,toolbit)
+        GLOBALS.toolbit)
       tell(
         "Digging with the",
         1,
@@ -691,12 +691,12 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (here
-      ,here)
+      GLOBALS.here)
     (prsi
       3(
-        ,prsvec))
+        GLOBALS.prsvec))
     (dboat
       find_obj(
         "DBOAT"))),
@@ -756,7 +756,7 @@ define(
     "AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (rboat
       find_obj(
         "RBOAT"))
@@ -764,7 +764,7 @@ define(
       find_obj(
         "IBOAT"))
     (here
-      ,here)),
+      GLOBALS.here)),
   #decl
     ((arg)
       or(
@@ -782,13 +782,13 @@ define(
       <>),
     (_EQ_Q(
         _prsact,
-        ,board_X_words)
+        GLOBALS.board_X_words)
       cond(
         (memq(
             find_obj(
               "STICK"),
             aobjs(
-              ,winner))
+              GLOBALS.winner))
           tell(
             "There is a hissing sound and the boat deflates.")
           remove_object(
@@ -800,7 +800,7 @@ define(
           t))),
     (_EQ_Q(
         _prsact,
-        ,disem_X_words)
+        GLOBALS.disem_X_words)
       and(
         member(
           "RIVR",
@@ -816,7 +816,7 @@ define(
       cond(
         (_EQ_Q(
             avehicle(
-              ,winner),
+              GLOBALS.winner),
             _rboat)
           tell(
             "You can't deflate the boat while you're in it.")),
@@ -843,7 +843,7 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (iboat
       find_obj(
         "IBOAT"))
@@ -851,7 +851,7 @@ define(
       find_obj(
         "RBOAT"))
     (here
-      ,here)),
+      GLOBALS.here)),
   #decl
     ((prsact)
       verb
@@ -877,7 +877,7 @@ define(
             find_obj(
               "PUMP"),
             aobjs(
-              ,winner))
+              GLOBALS.winner))
           tell(
             "The boat inflates and appears seaworthy.")
           setg(
@@ -897,8 +897,8 @@ define(
   cond(
     (_EQ_Q(
         1(
-          ,prsvec),
-        ,look_X_words)),
+          GLOBALS.prsvec),
+        GLOBALS.look_X_words)),
     (jigs_up(
         "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently."))))
 
@@ -911,9 +911,9 @@ define(
   ("AUX"
     (prsobj
       2(
-        ,prsvec))
+        GLOBALS.prsvec))
     (here
-      ,here)),
+      GLOBALS.here)),
   #decl
     ((prsobj)
       object
@@ -952,7 +952,7 @@ define(
               object),
           put(
             _x,
-            ,ocan,
+            GLOBALS.ocan,
             <>),
           insert_object(
             _x,
@@ -961,7 +961,7 @@ define(
           _prsobj))
       put(
         _prsobj,
-        ,ocontents,
+        GLOBALS.ocontents,
         ())
       tell(
         "All of the objects spill onto the floor."))))
@@ -974,8 +974,8 @@ define(
       find_obj(
         "BUOY"),
       aobjs(
-        ,winner)),
-    ,buoy_flag_X_flag,
+        GLOBALS.winner)),
+    GLOBALS.buoy_flag_X_flag,
     tell(
       "Something seems funny about the feel of the buoy."),
     setg(
@@ -987,12 +987,12 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (shov
       find_obj(
         "SHOVE"))
     (here
-      ,here)
+      GLOBALS.here)
     cnt),
   #decl
     ((prsact)
@@ -1012,10 +1012,10 @@ define(
         _EQ_Q(
           _shov,
           2(
-            ,prsvec)))
+            GLOBALS.prsvec)))
       put(
         _here,
-        ,rvars,
+        GLOBALS.rvars,
         set(
           cnt,
           _(
@@ -1028,7 +1028,7 @@ define(
             4)
           put(
             _here,
-            ,rvars,
+            GLOBALS.rvars,
             0)
           jigs_up(
             "The hole collapses, smothering you.")),
@@ -1040,17 +1040,17 @@ define(
           tro(
             find_obj(
               "STATU"),
-            ,ovison)
+            GLOBALS.ovison)
           put(
             _here,
-            ,rvars,
+            GLOBALS.rvars,
             _cnt)),
         (l_Q(
             _cnt,
             0)),
         (tell(
             nth(
-              ,bdigs,
+              GLOBALS.bdigs,
               _cnt)))))))
 
 define(
@@ -1058,12 +1058,12 @@ define(
   ("AUX"
     (prsact
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (shov
       find_obj(
         "SHOVE"))
     (here
-      ,here)
+      GLOBALS.here)
     cnt),
   #decl
     ((prsact)
@@ -1082,7 +1082,7 @@ define(
           dig_X_words),
         _EQ_Q(
           2(
-            ,prsvec),
+            GLOBALS.prsvec),
           _shov))
       cond(
         (memq(
@@ -1092,7 +1092,7 @@ define(
               _here))
           put(
             _here,
-            ,rvars,
+            GLOBALS.rvars,
             set(
               cnt,
               _(
@@ -1107,7 +1107,7 @@ define(
                 "This is getting you nowhere.")),
             (tell(
                 nth(
-                  ,cdigs,
+                  GLOBALS.cdigs,
                   _cnt))))),
         (tell(
             "There's nothing to dig into here."))))))
@@ -1136,7 +1136,7 @@ define(
   (),
   cond(
     (_EQ_Q(
-        ,here,
+        GLOBALS.here,
         find_room(
           "BARRE"))
       jigs_up(
@@ -1160,7 +1160,7 @@ define(
   swimmer,
   ("AUX"
     (swimyuks
-      ,swimyuks)),
+      GLOBALS.swimyuks)),
   #decl
     ((swimyuks)
       vector(
@@ -1168,8 +1168,8 @@ define(
           string])),
   cond(
     (rtrnn(
-        ,here,
-        ,rfillbit)
+        GLOBALS.here,
+        GLOBALS.rfillbit)
       tell(
         "Swimming is not allowed in this dungeon.")),
     (tell(
@@ -1181,19 +1181,19 @@ define(
   ("AUX"
     (prsa
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsa)
       verb),
   cond(
     (_EQ_Q(
         _prsa,
-        ,exami_X_words)
+        GLOBALS.exami_X_words)
       tell(
         "The grue is a sinister, lurking presence in the dark places of the\nearth.  Its favorite diet is adventurers, but its insatiable\nappetite is tempered by its fear of light.  No grue has ever been\nseen by the light of day, and few have survived its fearsome jaws\nto tell the tale.")),
     (_EQ_Q(
         _prsa,
-        ,find_X_words)
+        GLOBALS.find_X_words)
       tell(
         "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!"))))
 
@@ -1213,7 +1213,7 @@ define(
       <>)
     "AUX"
     (prsvec
-      ,prsvec)
+      GLOBALS.prsvec)
     (ball
       find_obj(
         "BALLO"))
@@ -1228,7 +1228,7 @@ define(
         "RECEP"))
     m
     (binf
-      ,binf_X_flag)
+      GLOBALS.binf_X_flag)
     blabe),
   #decl
     ((arg)
@@ -1273,7 +1273,7 @@ define(
       cond(
         (_EQ_Q(
             _prsa,
-            ,look_X_words)
+            GLOBALS.look_X_words)
           cond(
             (_binf
               tell(
@@ -1285,7 +1285,7 @@ define(
             (tell(
                 "The cloth bag is draped over the the basket.")))
           cond(
-            (,btie_X_flag
+            (GLOBALS.btie_X_flag
               tell(
                 "The balloon is tied to the hook.")))))
       return(
@@ -1298,7 +1298,7 @@ define(
       cond(
         (_EQ_Q(
             _prsa,
-            ,walk_X_words)
+            GLOBALS.walk_X_words)
           cond(
             (set(
                 m,
@@ -1308,9 +1308,9 @@ define(
                       _prsvec),
                     atom),
                   rexits(
-                    ,here)))
+                    GLOBALS.here)))
               cond(
-                (,btie_X_flag
+                (GLOBALS.btie_X_flag
                   tell(
                     "You are tied to the ledge.")
                   return(
@@ -1322,7 +1322,7 @@ define(
                       rtrnn(
                         2(
                           _m),
-                        ,rmungbit)),
+                        GLOBALS.rmungbit)),
                     setg(
                       bloc,
                       2(
@@ -1338,9 +1338,9 @@ define(
         (and(
             _EQ_Q(
               _prsa,
-              ,take_X_words),
+              GLOBALS.take_X_words),
             _EQ_Q(
-              ,binf_X_flag,
+              GLOBALS.binf_X_flag,
               _prso))
           tell(
             "You don't really want to hold a burning",
@@ -1354,7 +1354,7 @@ define(
         (and(
             _EQ_Q(
               _prsa,
-              ,put_X_words),
+              GLOBALS.put_X_words),
             _EQ_Q(
               3(
                 _prsvec),
@@ -1374,7 +1374,7 @@ define(
   cond(
     (_EQ_Q(
         _prsa,
-        ,burn_X_words)
+        GLOBALS.burn_X_words)
       cond(
         (memq(
             _prso,
@@ -1389,33 +1389,33 @@ define(
           setg(
             burnup_int,
             clock_int(
-              ,brnin,
+              GLOBALS.brnin,
               _(
                 osize(
                   _prso),
                 20)))
           tro(
             _prso,
-            ,flamebit)
+            GLOBALS.flamebit)
           trz(
             _prso,
             _(
-              ,takebit,
-              ,readbit))
+              GLOBALS.takebit,
+              GLOBALS.readbit))
           put(
             _prso,
-            ,olight_Q,
+            GLOBALS.olight_Q,
             1)
           cond(
-            (,binf_X_flag),
+            (GLOBALS.binf_X_flag),
             (tell(
                 "The cloth bag inflates as it fills with hot air.")
               cond(
                 (not(
-                    ,blab_X_flag)
+                    GLOBALS.blab_X_flag)
                   put(
                     _ball,
-                    ,ocontents,
+                    GLOBALS.ocontents,
                     (set(
                         blabe,
                         find_obj(
@@ -1425,7 +1425,7 @@ define(
                         _ball)))
                   put(
                     _blabe,
-                    ,ocan,
+                    GLOBALS.ocan,
                     _ball)))
               setg(
                 blab_X_flag,
@@ -1434,41 +1434,41 @@ define(
                 binf_X_flag,
                 _prso)
               clock_int(
-                ,bint,
+                GLOBALS.bint,
                 3)))))),
     (and(
         _EQ_Q(
           _prsa,
-          ,disem_X_words),
+          GLOBALS.disem_X_words),
         rtrnn(
-          ,here,
-          ,rlandbit))
+          GLOBALS.here,
+          GLOBALS.rlandbit))
       cond(
-        (,binf_X_flag
+        (GLOBALS.binf_X_flag
           clock_int(
-            ,bint,
+            GLOBALS.bint,
             3)))
       <>),
     (_EQ_Q(
         _prsa,
-        ,c_int_X_words)
+        GLOBALS.c_int_X_words)
       cond(
         (or(
             and(
               oopen_Q(
                 _cont),
-              ,binf_X_flag),
+              GLOBALS.binf_X_flag),
             member(
               "LEDG",
               spname(
                 rid(
-                  ,here))))
+                  GLOBALS.here))))
           rise_and_shine(
             _ball,
-            ,here)),
+            GLOBALS.here)),
         (decline_and_fall(
             _ball,
-            ,here))))))
+            GLOBALS.here))))))
 
 setg(
   blab_X_flag,
@@ -1486,15 +1486,15 @@ define(
     "AUX"
     (s
       top(
-        ,scrstr))
+        GLOBALS.scrstr))
     m
     (in_Q
       _EQ_Q(
         avehicle(
-          ,winner),
+          GLOBALS.winner),
         _ball))
     (bl
-      ,bloc)
+      GLOBALS.bloc)
     foo),
   #decl
     ((ball)
@@ -1515,7 +1515,7 @@ define(
       (foo)
       cevent),
   clock_int(
-    ,bint,
+    GLOBALS.bint,
     3),
   cond(
     (set(
@@ -1532,9 +1532,9 @@ define(
               4),
             "4")
           clock_disable(
-            ,burnup_int)
+            GLOBALS.burnup_int)
           clock_disable(
-            ,bint)
+            GLOBALS.bint)
           remove_object(
             _ball)
           insert_object(
@@ -1615,7 +1615,7 @@ define(
           room_info(
             t)),
         (clock_int(
-            ,vlgin,
+            GLOBALS.vlgin,
             10)
           put_balloon(
             _ball,
@@ -1657,7 +1657,7 @@ define(
       "LEDG",
       spname(
         rid(
-          ,here))),
+          GLOBALS.here))),
     tell(
       "You watch as the balloon slowly",
       1,
@@ -1682,14 +1682,14 @@ define(
     "AUX"
     (s
       top(
-        ,scrstr))
+        GLOBALS.scrstr))
     m
     (bl
-      ,bloc)
+      GLOBALS.bloc)
     (in_Q
       _EQ_Q(
         avehicle(
-          ,winner),
+          GLOBALS.winner),
         _ball))
     foo),
   #decl
@@ -1711,7 +1711,7 @@ define(
       (foo)
       cevent),
   clock_int(
-    ,bint,
+    GLOBALS.bint,
     3),
   cond(
     (set(
@@ -1735,7 +1735,7 @@ define(
                   find_room(
                     "VLBOT")))
               cond(
-                (,binf_X_flag
+                (GLOBALS.binf_X_flag
                   tell(
                     "The balloon has landed.")
                   room_info(
@@ -1746,16 +1746,16 @@ define(
                   insert_object(
                     find_obj(
                       "DBALL"),
-                    ,bloc)
+                    GLOBALS.bloc)
                   put(
-                    ,winner,
-                    ,avehicle,
+                    GLOBALS.winner,
+                    GLOBALS.avehicle,
                     <>)
                   clock_disable(
                     set(
                       foo,
                       clock_int(
-                        ,bint,
+                        GLOBALS.bint,
                         0)))
                   tell(
                     "You have landed, but the balloon did not survive.")))),
@@ -1803,7 +1803,7 @@ define(
   wire_function,
   ("AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (prsa
       1(
         _pv))
@@ -1814,7 +1814,7 @@ define(
       3(
         _pv))
     (bint
-      ,bint)),
+      GLOBALS.bint)),
   #decl
     ((bint)
       cevent
@@ -1828,7 +1828,7 @@ define(
   cond(
     (_EQ_Q(
         _prsa,
-        ,tie_X_words)
+        GLOBALS.tie_X_words)
       cond(
         (and(
             _EQ_Q(
@@ -1854,18 +1854,18 @@ define(
     (and(
         _EQ_Q(
           _prsa,
-          ,untie_X_words),
+          GLOBALS.untie_X_words),
         _EQ_Q(
           _prso,
           find_obj(
             "BROPE")))
       cond(
-        (,btie_X_flag
+        (GLOBALS.btie_X_flag
           clock_enable(
             set(
               bint,
               clock_int(
-                ,bint,
+                GLOBALS.bint,
                 3)))
           setg(
             btie_X_flag,
@@ -1891,7 +1891,7 @@ define(
       object),
   put(
     _r,
-    ,ocontents,
+    GLOBALS.ocontents,
     splice_out(
       _obj,
       ocontents(
@@ -1916,20 +1916,20 @@ define(
   ("AUX"
     (prsa
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsa)
       verb),
   cond(
     (_EQ_Q(
         _prsa,
-        ,look_X_words)
+        GLOBALS.look_X_words)
       tell(
         "You are in a dusty old room which is virtually featureless, except\nfor an exit on the north side.",
         1,
         cond(
           (not(
-              ,safe_flag_X_flag)
+              GLOBALS.safe_flag_X_flag)
             "Imbedded in the far wall, there is a rusty old box.  It appears that\nthe box is somewhat damaged, since an oblong hole has been chipped\nout of the front of it."),
           ("On the far wall is a rusty box, whose door has been blown off."))))))
 
@@ -1938,37 +1938,37 @@ define(
   ("AUX"
     (prsa
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsa)
       verb),
   cond(
     (_EQ_Q(
         _prsa,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       tell(
         "The box is imbedded in the wall.")),
     (_EQ_Q(
         _prsa,
-        ,open_X_words)
+        GLOBALS.open_X_words)
       cond(
-        (,safe_flag_X_flag
+        (GLOBALS.safe_flag_X_flag
           tell(
             "The box has no door!")),
         (tell(
             "The box is rusted and will not open.")))),
     (_EQ_Q(
         _prsa,
-        ,close_X_words)
+        GLOBALS.close_X_words)
       cond(
-        (,safe_flag_X_flag
+        (GLOBALS.safe_flag_X_flag
           tell(
             "The box has no door!")),
         (tell(
             "The box is not open, chomper!")))),
     (_EQ_Q(
         _prsa,
-        ,blast_X_words)
+        GLOBALS.blast_X_words)
       tell(
         "What do you expect, BOOM?"))))
 
@@ -1981,23 +1981,23 @@ define(
   ("AUX"
     (prsa
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsa)
       verb),
   cond(
     (_EQ_Q(
         _prsa,
-        ,burn_X_words)
+        GLOBALS.burn_X_words)
       jigs_up(
-        ,brick_boom))))
+        GLOBALS.brick_boom))))
 
 define(
   fuse_function,
   ("AUX"
     (prsa
       1(
-        ,prsvec))
+        GLOBALS.prsvec))
     (fuse
       find_obj(
         "FUSE"))
@@ -2023,22 +2023,22 @@ define(
   cond(
     (_EQ_Q(
         _prsa,
-        ,burn_X_words)
+        GLOBALS.burn_X_words)
       tell(
         "The wire starts to burn.")
       put(
         _fuse,
-        ,orand,
+        GLOBALS.orand,
         [0
           clock_int(
-            ,fusin,
+            GLOBALS.fusin,
             2)])),
     (_EQ_Q(
         _prsa,
-        ,c_int_X_words)
+        GLOBALS.c_int_X_words)
       trz(
         _fuse,
-        ,ovison)
+        GLOBALS.ovison)
       cond(
         (_EQ_Q(
             ocan(
@@ -2046,7 +2046,7 @@ define(
             _brick)
           trz(
             _brick,
-            ,ovison)
+            GLOBALS.ovison)
           cond(
             (set(
                 oc,
@@ -2064,22 +2064,22 @@ define(
             _brick_room,
             set(
               brick_room,
-              ,here))
+              GLOBALS.here))
           cond(
             (_EQ_Q(
                 _brick_room,
-                ,here)
+                GLOBALS.here)
               mung_room(
                 _brick_room,
                 "The way is blocked by debris from an explosion.")
               jigs_up(
-                ,brick_boom)),
+                GLOBALS.brick_boom)),
             (_EQ_Q(
                 _brick_room,
                 find_room(
                   "SAFE"))
               clock_int(
-                ,safin,
+                GLOBALS.safin,
                 5)
               setg(
                 munged_room,
@@ -2096,11 +2096,11 @@ define(
                   trz(
                     find_obj(
                       "SSLOT"),
-                    ,ovison)
+                    GLOBALS.ovison)
                   put(
                     find_obj(
                       "SAFE"),
-                    ,oopen_Q,
+                    GLOBALS.oopen_Q,
                     t)
                   setg(
                     safe_flag_X_flag,
@@ -2108,7 +2108,7 @@ define(
             (tell(
                 "There is an explosion nearby.")
               clock_int(
-                ,safin,
+                GLOBALS.safin,
                 5)
               setg(
                 munged_room,
@@ -2122,7 +2122,7 @@ define(
                         _x)
                       trz(
                         _x,
-                        ,ovison))),
+                        GLOBALS.ovison))),
                 robjs(
                   _brick_room))
               cond(
@@ -2139,7 +2139,7 @@ define(
                           object),
                       put(
                         _x,
-                        ,ocan,
+                        GLOBALS.ocan,
                         <>)),
                     ocontents(
                       find_obj(
@@ -2147,14 +2147,14 @@ define(
                   put(
                     find_obj(
                       "TCASE"),
-                    ,ocontents,
+                    GLOBALS.ocontents,
                     ())))))),
         (or(
             not(
               oroom(
                 _fuse)),
             _EQ_Q(
-              ,here,
+              GLOBALS.here,
               oroom(
                 _fuse)))
           tell(
@@ -2164,19 +2164,19 @@ define(
   safe_mung,
   ("AUX"
     (rm
-      ,munged_room)),
+      GLOBALS.munged_room)),
   #decl
     ((rm)
       room),
   cond(
     (_EQ_Q(
-        ,here,
+        GLOBALS.here,
         _rm)
       jigs_up(
         cond(
           (rtrnn(
               _rm,
-              ,rhousebit)
+              GLOBALS.rhousebit)
             "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."),
           ("The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake.")))),
     (tell(
@@ -2187,14 +2187,14 @@ define(
           find_room(
             "SAFE")),
         clock_int(
-          ,ledin,
+          GLOBALS.ledin,
           8)))),
   mung_room(
     or(
       oroom(
         find_obj(
           "BRICK")),
-      ,here),
+      GLOBALS.here),
     "The way is blocked by debris from an explosion."))
 
 define(
@@ -2208,13 +2208,13 @@ define(
       room),
   cond(
     (_EQ_Q(
-        ,here,
+        GLOBALS.here,
         _rm)
       cond(
         (avehicle(
-            ,winner)
+            GLOBALS.winner)
           cond(
-            (,btie_X_flag
+            (GLOBALS.btie_X_flag
               set(
                 rm,
                 find_room(
@@ -2236,9 +2236,9 @@ define(
                 binf_X_flag,
                 <>)
               clock_disable(
-                ,bint)
+                GLOBALS.bint)
               clock_disable(
-                ,brnin)
+                GLOBALS.brnin)
               jigs_up(
                 "The ledge collapses, probably as a result of the explosion.  A large\nchunk of it, which is attached to the hook, drags you down to the\nground.  Fatally.")),
             (tell(
@@ -2257,16 +2257,16 @@ define(
   ("AUX"
     (prsa
       1(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prsa)
       verb),
   cond(
     (_EQ_Q(
         _prsa,
-        ,walk_in_X_words)
+        GLOBALS.walk_in_X_words)
       and(
-        ,safe_flag_X_flag,
+        GLOBALS.safe_flag_X_flag,
         tell(
           "Behind you, the walls of the safe room collapse into rubble."),
         setg(
@@ -2274,7 +2274,7 @@ define(
           <>))),
     (_EQ_Q(
         _prsa,
-        ,look_X_words)
+        GLOBALS.look_X_words)
       tell(
         "You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.",
         1,
@@ -2282,7 +2282,7 @@ define(
           (rtrnn(
               find_room(
                 "SAFE"),
-              ,rmungbit)
+              GLOBALS.rmungbit)
             "The way to the south is blocked by rubble."),
           ("There is a small door to the south."))))))
 
@@ -2291,7 +2291,7 @@ define(
   (),
   cond(
     (_EQ_Q(
-        ,here,
+        GLOBALS.here,
         find_room(
           "SAFE"))),
     (tell(
@@ -2305,15 +2305,15 @@ define(
         "LEDG",
         spname(
           rid(
-            ,here)))
+            GLOBALS.here)))
       tell(
         "A volcano gnome seems to walk straight out of the wall and says\n'I have a very busy appointment schedule and little time to waste on\ntresspassers, but for a small fee, I'll show you the way out.'  You\nnotice the gnome nervously glancing at his watch.")
       insert_object(
         find_obj(
           "GNOME"),
-        ,here)),
+        GLOBALS.here)),
     (clock_int(
-        ,vlgin,
+        GLOBALS.vlgin,
         1))))
 
 setg(
@@ -2326,7 +2326,7 @@ define(
   gnome_function,
   ("AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (prsa
       1(
         _pv))
@@ -2345,10 +2345,10 @@ define(
         or(
           _EQ_Q(
             _prsa,
-            ,give_X_words),
+            GLOBALS.give_X_words),
           _EQ_Q(
             _prsa,
-            ,throw_X_words)),
+            GLOBALS.throw_X_words)),
         type_Q(
           _prso,
           object),
@@ -2376,7 +2376,7 @@ define(
               _prso))))),
     (_EQ_Q(
         _prsa,
-        ,c_int_X_words)
+        GLOBALS.c_int_X_words)
       tell(
         "The gnome glances at his watch.  'Oops.  I'm late for an\nappointment!' He disappears, leaving you alone on the ledge.")
       remove_object(
@@ -2385,9 +2385,9 @@ define(
     (tell(
         "The gnome appears increasingly nervous.")
       or(
-        ,gnome_flag_X_flag,
+        GLOBALS.gnome_flag_X_flag,
         clock_int(
-          ,gnoin,
+          GLOBALS.gnoin,
           5))
       setg(
         gnome_flag_X_flag,

@@ -63,7 +63,7 @@ define(
     objs
     "AUX"
     (winner
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((objs)
       tuple(
@@ -170,7 +170,7 @@ define(
     pairs
     "AUX"
     (dobl
-      ,directions)
+      GLOBALS.directions)
     (frob
       ivector(
         length(
@@ -221,7 +221,7 @@ define(
             gassigned_Q(
               _atm),
             type_Q(
-              ,_atm,
+              GLOBALS._atm,
               direction)))
         put(
           _f,
@@ -284,7 +284,7 @@ define(
     (val
       0)
     (bit
-      ,rlandbit)
+      GLOBALS.rlandbit)
     "AUX"
     (rm
       find_room(
@@ -317,35 +317,35 @@ define(
   setg(
     score_max,
     _(
-      ,score_max,
+      GLOBALS.score_max,
       _val)),
   put(
     _rm,
-    ,rbits,
+    GLOBALS.rbits,
     _bit),
   put(
     _rm,
-    ,rval,
+    GLOBALS.rval,
     _val),
   put(
     _rm,
-    ,robjs,
+    GLOBALS.robjs,
     _objs),
   put(
     _rm,
-    ,rdesc1,
+    GLOBALS.rdesc1,
     _d1),
   put(
     _rm,
-    ,rdesc2,
+    GLOBALS.rdesc2,
     _d2),
   put(
     _rm,
-    ,rexits,
+    GLOBALS.rexits,
     _ex),
   put(
     _rm,
-    ,raction,
+    GLOBALS.raction,
     cond(
       (type_Q(
           _app,
@@ -355,7 +355,7 @@ define(
       (_app))),
   put(
     _rm,
-    ,rlight_Q,
+    GLOBALS.rlight_Q,
     cond(
       (type_Q(
           _lit_Q,
@@ -372,7 +372,7 @@ define(
           object),
       put(
         _x,
-        ,oroom,
+        GLOBALS.oroom,
         _rm)),
     robjs(
       _rm)),
@@ -484,7 +484,7 @@ define(
   setg(
     score_max,
     _(
-      ,score_max,
+      GLOBALS.score_max,
       _s1,
       _s2)),
   or(
@@ -494,7 +494,7 @@ define(
       flags,
       _(
         _flags,
-        ,lightbit))),
+        GLOBALS.lightbit))),
   put(
     put(
       put(
@@ -509,29 +509,29 @@ define(
                         put(
                           find_obj(
                             _id),
-                          ,odesc1,
+                          GLOBALS.odesc1,
                           _desc1),
-                        ,ocapac,
+                        GLOBALS.ocapac,
                         _capac),
-                      ,osize,
+                      GLOBALS.osize,
                       _size),
-                    ,odesco,
+                    GLOBALS.odesco,
                     _desco),
-                  ,olight_Q,
+                  GLOBALS.olight_Q,
                   _light_Q),
-                ,oflags,
+                GLOBALS.oflags,
                 _flags),
-              ,ofval,
+              GLOBALS.ofval,
               _s1),
-            ,otval,
+            GLOBALS.otval,
             _s2),
-          ,ocan,
+          GLOBALS.ocan,
           _can),
-        ,ocontents,
+        GLOBALS.ocontents,
         _conts),
-      ,odesc2,
+      GLOBALS.odesc2,
       _desc2),
-    ,oaction,
+    GLOBALS.oaction,
     cond(
       (type_Q(
           _app,
@@ -559,9 +559,9 @@ define(
         _atm)
       cond(
         (type_Q(
-            ,_atm,
+            GLOBALS._atm,
             prep)
-          ,_atm),
+          GLOBALS._atm),
         (error(
             no_prep_X_errors)))),
     (setg(
@@ -581,10 +581,10 @@ define(
       or(
         lookup(
           _nam,
-          ,actions),
+          GLOBALS.actions),
         insert(
           _nam,
-          ,actions)))),
+          GLOBALS.actions)))),
   #decl
     ((nam
         str)
@@ -611,7 +611,7 @@ define(
     nms
     "AUX"
     (dir
-      ,directions)
+      GLOBALS.directions)
     atm),
   #decl
     ((nms)
@@ -649,7 +649,7 @@ define(
     "AUX"
     val
     (dir
-      ,directions)
+      GLOBALS.directions)
     atm),
   #decl
     ((atm)
@@ -711,10 +711,10 @@ define(
         atm,
         lookup(
           _n1,
-          ,words))
+          GLOBALS.words))
       set(
         val,
-        ,_atm)
+        GLOBALS._atm)
       mapf(
         <>,
         /* FUNCTION */
@@ -729,10 +729,10 @@ define(
         atm,
         lookup(
           _n1,
-          ,actions))
+          GLOBALS.actions))
       set(
         val,
-        ,_atm)
+        GLOBALS._atm)
       mapf(
         <>,
         /* FUNCTION */
@@ -741,10 +741,10 @@ define(
           or(
               lookup(
                 _x,
-                ,actions),
+                GLOBALS.actions),
               insert(
                 _x,
-                ,actions)),
+                GLOBALS.actions)),
           _val),
         _n2))))
 
@@ -759,10 +759,10 @@ define(
   or(
     lookup(
       _w,
-      ,words),
+      GLOBALS.words),
     insert(
       _w,
-      ,words)))
+      GLOBALS.words)))
 
 define(
   add_buzz,
@@ -830,7 +830,7 @@ define(
       () => [])
     "AUX"
     (objs
-      ,object_obl)),
+      GLOBALS.object_obl)),
   #decl
     ((obj)
       object
@@ -843,9 +843,9 @@ define(
       oblist),
   put(
     _obj,
-    ,onames,
+    GLOBALS.onames,
     mapf(
-      ,uvector,
+      GLOBALS.uvector,
       function(
         (x),
         #decl
@@ -861,9 +861,9 @@ define(
       _names)),
   put(
     _obj,
-    ,oadjs,
+    GLOBALS.oadjs,
     mapf(
-      ,uvector,
+      GLOBALS.uvector,
       /* FUNCTION */
         (w) => (
         add_zork,
@@ -902,10 +902,10 @@ define(
         atm,
         lookup(
           _n1,
-          ,words))
+          GLOBALS.words))
       set(
         val,
-        ,_atm)
+        GLOBALS._atm)
       mapf(
         <>,
         /* FUNCTION */
@@ -931,10 +931,10 @@ define(
     or(
       lookup(
         _y,
-        ,words),
+        GLOBALS.words),
       insert(
         _y,
-        ,words))))
+        GLOBALS.words))))
 
 define(
   add_demon,
@@ -965,12 +965,12 @@ define(
                 _x)
               mapleave(
                 t)))),
-        ,demons)),
+        GLOBALS.demons)),
     (setg(
         demons,
         (_x
           _X
-          ,demons)))))
+          GLOBALS.demons)))))
 
 define(
   add_star,
@@ -979,14 +979,14 @@ define(
     stars,
     (_obj
       _X
-      ,stars)))
+      GLOBALS.stars)))
 
 define(
   add_actor,
   (adv
     "AUX"
     (actors
-      ,actors)),
+      GLOBALS.actors)),
   #decl
     ((adv)
       adv
@@ -1028,7 +1028,7 @@ define(
       string),
   put(
     _obj,
-    ,oread,
+    GLOBALS.oread,
     _str))
 
 define(

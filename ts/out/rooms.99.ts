@@ -23,14 +23,14 @@ define(
     (fn
       cond(
         (l_Q(
-            ,muddle,
+            GLOBALS.muddle,
             100)
           "MADMAN;MADADV SAVE"),
         (t
           "<MDL>MADADV.SAVE")))
     "AUX"
     (muddle
-      ,muddle)
+      GLOBALS.muddle)
     stv
     (st
       remarkably_disgusting_code(
@@ -47,7 +47,7 @@ define(
   put(
     find_obj(
       "PAPER"),
-    ,odesc1,
+    GLOBALS.odesc1,
     unspeakable_code(
       )),
   setg(
@@ -63,11 +63,11 @@ define(
     ih,
     on(
       "IPC",
-      ,ilo,
+      GLOBALS.ilo,
       1)),
   handler(
-    ,divert_int,
-    ,divert_hand),
+    GLOBALS.divert_int,
+    GLOBALS.divert_hand),
   cond(
     (g_Q(
         _muddle,
@@ -119,17 +119,17 @@ define(
                 xunm,
                 xuname(
                   )),
-              ,winners),
+              GLOBALS.winners),
             __Q(
-              ,xunm,
+              GLOBALS.xunm,
               "SEC"),
             __Q(
-              ,xunm,
+              GLOBALS.xunm,
               "ELBOW"),
             and(
               off(
                 "CHAR",
-                ,inchan),
+                GLOBALS.inchan),
               tell(
                 "There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you."),
               quit(
@@ -140,27 +140,27 @@ define(
           setg(
             snm,
             substruc(
-              ,scratch_str,
+              GLOBALS.scratch_str,
               0,
               _(
                 length(
-                  ,scratch_str),
+                  GLOBALS.scratch_str),
                 length(
                   memq(
                     _X__,
                     _stv)))))))
       cond(
         (g_Q(
-            ,muddle,
+            GLOBALS.muddle,
             100)
           setg(
             tenex_Q,
             getsys(
               ))),
         (apply(
-            ,ipc_off)
+            GLOBALS.ipc_off)
           apply(
-            ,ipc_on,
+            GLOBALS.ipc_on,
             uname(
               ),
             "ZORK")))
@@ -168,7 +168,7 @@ define(
         bh,
         on(
           "BLOCKED",
-          ,blo,
+          GLOBALS.blo,
           100))
       start(
         "WHOUS",
@@ -211,22 +211,22 @@ define(
   setg(
     divert_cnt,
     _(
-      ,divert_cnt,
+      GLOBALS.divert_cnt,
       1)),
   setg(
     divert_amt,
     _(
-      ,divert_amt,
-      ,divert_inc,
+      GLOBALS.divert_amt,
+      GLOBALS.divert_inc,
       _amt)),
   cond(
     (or(
         g_Q(
-          ,divert_cnt,
-          ,divert_max),
+          GLOBALS.divert_cnt,
+          GLOBALS.divert_max),
         g_Q(
-          ,divert_amt,
-          ,divert_lmt))
+          GLOBALS.divert_amt,
+          GLOBALS.divert_lmt))
       // Too much diversion ?
       setg(
         divert_amt,
@@ -241,15 +241,15 @@ define(
       // Divert this request for storage
       cond(
         (1_Q(
-            ,divert_cnt)
+            GLOBALS.divert_cnt)
           // First diversion ?
           handler(
-            ,gc_int,
-            ,gc_hand)))
+            GLOBALS.gc_int,
+            GLOBALS.gc_hand)))
       bloat(
         _(
           _amt,
-          ,divert_inc))
+          GLOBALS.divert_inc))
       // Get storage desired plus extra increment)))
 
 setg(
@@ -260,17 +260,17 @@ setg(
       event(
         "DIVERT-AGC",
         1000)),
-    ,divert_fcn))
+    GLOBALS.divert_fcn))
 
 off(
-  ,divert_hand)
+  GLOBALS.divert_hand)
 
 define(
   gc_fcn,
   ("TUPLE"
     t),
   off(
-    ,gc_hand),
+    GLOBALS.gc_hand),
   setg(
     divert_amt,
     setg(
@@ -285,10 +285,10 @@ setg(
       event(
         "GC",
         11)),
-    ,gc_fcn))
+    GLOBALS.gc_fcn))
 
 off(
-  ,gc_hand)
+  GLOBALS.gc_hand)
 
 define(
   xuname,
@@ -297,7 +297,7 @@ define(
     ((value)
       string),
   mapf(
-    ,string,
+    GLOBALS.string,
     function(
       (x),
       #decl
@@ -326,7 +326,7 @@ define(
     (nm
       field(
         _uname,
-        ,_name))
+        GLOBALS._name))
     cma
     jr
     lfst
@@ -541,7 +541,7 @@ define(
   string(
     "This version created",
     nth(
-      ,months,
+      GLOBALS.months,
       chtype(
         getbits(
           _n,
@@ -564,7 +564,7 @@ define(
   version,
   (),
   tell(
-    ,vers))
+    GLOBALS.vers))
 
 setg(
   played_time,
@@ -581,7 +581,7 @@ define(
       dskdate(
         ))
     (then
-      ,intime)),
+      GLOBALS.intime)),
   #decl
     ((now
         then)
@@ -642,13 +642,13 @@ define(
                   0)),
               fix)),
           2))),
-    ,played_time))
+    GLOBALS.played_time))
 
 define(
   play_time,
   ("OPTIONAL"
     (outchan
-      ,outchan)
+      GLOBALS.outchan)
     (loser_Q
       t)
     "AUX"
@@ -757,13 +757,13 @@ define(
     ((zf)
       any),
   put(
-    ,outchan,
+    GLOBALS.outchan,
     13,
     80),
   put(
     1(
       back(
-        ,inchan)),
+        GLOBALS.inchan)),
     6,
     #lose
       27),
@@ -774,8 +774,8 @@ define(
             gassigned_Q(
               xunm)),
           member(
-            ,xunm,
-            ,winners)),
+            GLOBALS.xunm,
+            GLOBALS.winners)),
         pc(
           ))
       and(
@@ -783,7 +783,7 @@ define(
           saverep),
         setg(
           rep,
-          ,saverep))
+          GLOBALS.saverep))
       and(
         assigned_Q(
           bh),
@@ -814,14 +814,14 @@ define(
           put(
             1(
               back(
-                ,inchan)),
+                GLOBALS.inchan)),
             6,
             cond(
               (g_Q(
-                  ,muddle,
+                  GLOBALS.muddle,
                   100)
                 cond(
-                  (,tenex_Q
+                  (GLOBALS.tenex_Q
                     #lose
                       _37_),
                   (t
@@ -859,7 +859,7 @@ define(
           put(
             1(
               back(
-                ,inchan)),
+                GLOBALS.inchan)),
             6,
             #lose
               _000000000015_)
@@ -871,7 +871,7 @@ define(
         (tell(
             "I'm sorry, you seem to have encountered an error in the program.\nSend mail to DUNGEON@MIT-DMS describing what it was you tried to do.")
           tell(
-            ,vers)
+            GLOBALS.vers)
           mapf(
             <>,
             /* FUNCTION */
@@ -917,7 +917,7 @@ or(
         event(
           "ERROR",
           8)),
-      ,handle)))
+      GLOBALS.handle)))
 
 gdecl(
   (moves),
@@ -936,7 +936,7 @@ define(
     "AUX"
     fn
     (muddle
-      ,muddle)
+      GLOBALS.muddle)
     (xunm
       xuname(
         ))),
@@ -1009,10 +1009,10 @@ define(
     0),
   setg(
     winner,
-    ,player),
+    GLOBALS.player),
   put(
-    ,winner,
-    ,aroom,
+    GLOBALS.winner,
+    GLOBALS.aroom,
     setg(
       here,
       find_room(
@@ -1040,14 +1040,14 @@ define(
   put(
     1(
       back(
-        ,inchan)),
+        GLOBALS.inchan)),
     6,
     cond(
       (g_Q(
-          ,muddle,
+          GLOBALS.muddle,
           100)
         cond(
-          (,tenex_Q
+          (GLOBALS.tenex_Q
             #lose
               _37_),
           (t
@@ -1058,20 +1058,20 @@ define(
           _000000000015_))),
   setg(
     saverep,
-    ,rep),
+    GLOBALS.rep),
   setg(
     rep,
-    ,rdcom),
+    GLOBALS.rdcom),
   reset(
-    ,inchan),
+    GLOBALS.inchan),
   setg(
     winner,
-    ,player),
+    GLOBALS.player),
   put(
-    ,prsvec,
+    GLOBALS.prsvec,
     2,
     <>),
-  ,null)
+  GLOBALS.null)
 
 setg(
   my_script,
@@ -1093,7 +1093,7 @@ define(
         channel,
         false)),
   cond(
-    (,script_channel
+    (GLOBALS.script_channel
       <>),
     (set(
         ch,
@@ -1101,16 +1101,16 @@ define(
           "PRINT",
           string(
             "MARC;%Z",
-            ,xunm,
+            GLOBALS.xunm,
             ">")))
       put(
         top(
-          ,inchan),
+          GLOBALS.inchan),
         1,
         (_ch))
       put(
         top(
-          ,outchan),
+          GLOBALS.outchan),
         1,
         (_ch))
       setg(
@@ -1138,9 +1138,9 @@ define(
   ("AUX"
     ch
     (unm
-      ,xunm)
+      GLOBALS.xunm)
     (muddle
-      ,muddle)),
+      GLOBALS.muddle)),
   #decl
     ((ch)
       or(
@@ -1151,11 +1151,11 @@ define(
       (muddle)
       fix),
   cond(
-    (,my_script
+    (GLOBALS.my_script
       do_unscript(
         <>))),
   cond(
-    (,script_channel
+    (GLOBALS.script_channel
       tell(
         "You are already scripting.")),
     (and(
@@ -1198,12 +1198,12 @@ define(
             _unm)))
       put(
         top(
-          ,inchan),
+          GLOBALS.inchan),
         1,
         (_ch))
       put(
         top(
-          ,outchan),
+          GLOBALS.outchan),
         1,
         (_ch))
       setg(
@@ -1211,18 +1211,18 @@ define(
         _ch)
       cond(
         (l_Q(
-            ,muddle,
+            GLOBALS.muddle,
             100)
           tell(
             "Scripting to",
             1,
-            ,xunm,
+            GLOBALS.xunm,
             ";ZORK SCRIPT")),
         (t
           tell(
             "Scripting to <",
             1,
-            ,xunm,
+            GLOBALS.xunm,
             ">ZORK.SCRIPT")))),
     (t
       tell(
@@ -1239,19 +1239,19 @@ define(
         atom,
         false)),
   cond(
-    (,script_channel
+    (GLOBALS.script_channel
       put(
         top(
-          ,inchan),
+          GLOBALS.inchan),
         1,
         ())
       put(
         top(
-          ,outchan),
+          GLOBALS.outchan),
         1,
         ())
       close(
-        ,script_channel)
+        GLOBALS.script_channel)
       setg(
         script_channel,
         <>)
@@ -1272,10 +1272,10 @@ define(
   do_save,
   ("AUX"
     (muddle
-      ,muddle)
+      GLOBALS.muddle)
     ch
     (unm
-      ,xunm)),
+      GLOBALS.xunm)),
   #decl
     ((ch)
       or(
@@ -1322,7 +1322,7 @@ define(
               close(
                 _ch)))
           and(
-            ,script_channel,
+            GLOBALS.script_channel,
             do_unscript(
               ))
           tell(
@@ -1331,7 +1331,7 @@ define(
             100000)
           off(
             "CHAR",
-            ,inchan)
+            GLOBALS.inchan)
           setg(
             then,
             chtype(
@@ -1387,7 +1387,7 @@ define(
     ch
     str
     (muddle
-      ,muddle)
+      GLOBALS.muddle)
     nowd
     now
     thend),
@@ -1411,14 +1411,14 @@ define(
         str,
         string(
           "DSK:",
-          ,xunm,
+          GLOBALS.xunm,
           ";ZORK SAVE"))),
     (t
       set(
         str,
         string(
           "DSK:<",
-          ,xunm,
+          GLOBALS.xunm,
           ">ZORK.SAVE")))),
   prog(
     ((foo
@@ -1445,8 +1445,8 @@ define(
               _ch)
             cond(
               (member(
-                  ,xunm,
-                  ,winners)),
+                  GLOBALS.xunm,
+                  GLOBALS.winners)),
               (_EQ_Q(
                   set(
                     nowd,
@@ -1466,7 +1466,7 @@ define(
                     thend,
                     chtype(
                       getbits(
-                        ,then,
+                        GLOBALS.then,
                         bits(
                           18,
                           18)),
@@ -1475,17 +1475,17 @@ define(
                   (g__Q(
                       _(
                         _now,
-                        ,then),
+                        GLOBALS.then),
                       2400)),
                   (tell(
                       "It's too soon.")
                     cond(
                       (g_Q(
-                          ,muddle,
+                          GLOBALS.muddle,
                           100)
                         off(
                           "CHAR",
-                          ,inchan)
+                          GLOBALS.inchan)
                         int_level(
                           10000)
                         quit(
@@ -1603,7 +1603,7 @@ define(
                 gassigned_Q(
                   _x),
                 _EQ_Q(
-                  ,_x,
+                  GLOBALS._x,
                   _val))
               return(
                 _x,
@@ -1681,17 +1681,17 @@ define(
     "AUX"
     (av
       avehicle(
-        ,winner))
+        GLOBALS.winner))
     (rm
-      ,here)
+      GLOBALS.here)
     (prso
       2(
-        ,prsvec))
+        GLOBALS.prsvec))
     (winobj
       find_obj(
         "#####"))
     (outchan
-      ,outchan)
+      GLOBALS.outchan)
     ra),
   #decl
     ((rm)
@@ -1721,20 +1721,20 @@ define(
       _prso,
       direction),
     put(
-      ,prsvec,
+      GLOBALS.prsvec,
       2,
       <>)),
   prog(
     (),
     cond(
       (n_EQ_Q(
-          ,here,
+          GLOBALS.here,
           aroom(
-            ,player))
+            GLOBALS.player))
         put(
-          ,prsvec,
+          GLOBALS.prsvec,
           1,
-          ,walk_in_X_words)
+          GLOBALS.walk_in_X_words)
         tell(
           "Done.")
         return(
@@ -1771,12 +1771,12 @@ define(
           and(
             not(
               _full),
-            ,super_brief_X_flag),
+            GLOBALS.super_brief_X_flag),
           and(
             rseen_Q(
               _rm),
             or(
-              ,brief_X_flag,
+              GLOBALS.brief_X_flag,
               prob(
                 80)),
             not(
@@ -1793,22 +1793,22 @@ define(
             raction(
               _rm)))
         put(
-          ,prsvec,
+          GLOBALS.prsvec,
           1,
-          ,look_X_words)
+          GLOBALS.look_X_words)
         apply_random(
           _ra)
         put(
-          ,prsvec,
+          GLOBALS.prsvec,
           1,
-          ,foo_X_words)
+          GLOBALS.foo_X_words)
         // Something innocuous),
       (tell(
           rdesc1(
             _rm)))),
     put(
       _rm,
-      ,rseen_Q,
+      GLOBALS.rseen_Q,
       t),
     and(
       _av,
@@ -1849,7 +1849,7 @@ define(
             cond(
               (trnn(
                   _x,
-                  ,actorbit)
+                  GLOBALS.actorbit)
                 invent(
                   orand(
                     _x))),
@@ -1859,12 +1859,12 @@ define(
                   _x,
                   _av,
                   _winobj,
-                  ,indentstr,
+                  GLOBALS.indentstr,
                   cond(
                     (_full),
-                    (,super_brief_X_flag
+                    (GLOBALS.super_brief_X_flag
                       <>),
-                    (,brief_X_flag
+                    (GLOBALS.brief_X_flag
                       <>),
                     (t)))))))),
       robjs(
@@ -1878,15 +1878,15 @@ define(
           not(
             _full))
         put(
-          ,prsvec,
+          GLOBALS.prsvec,
           1,
-          ,walk_in_X_words)
+          GLOBALS.walk_in_X_words)
         apply_random(
           _ra)
         put(
-          ,prsvec,
+          GLOBALS.prsvec,
           1,
-          ,foo_X_words))),
+          GLOBALS.foo_X_words))),
     t))
 
 psetg(
@@ -2066,19 +2066,19 @@ define(
       <>)
     "AUX"
     (str
-      ,reader_string)
+      GLOBALS.reader_string)
     vc
     rvec
     rm
     (inplen
       1)
     (inbuf
-      ,inbuf)
+      GLOBALS.inbuf)
     (winner
-      ,winner)
+      GLOBALS.winner)
     av
     (outchan
-      ,outchan)
+      GLOBALS.outchan)
     random_action),
   #decl
     ((rvec)
@@ -2131,7 +2131,7 @@ define(
           _ivec)
         set(
           rm,
-          ,here)
+          GLOBALS.here)
         princ(
           ">")
         setg(
@@ -2141,14 +2141,14 @@ define(
           inplen,
           readstring(
             _inbuf,
-            ,inchan,
+            GLOBALS.inchan,
             _str))
         readchr(
-          ,inchan)
+          GLOBALS.inchan)
         or(
-          ,alt_flag,
+          GLOBALS.alt_flag,
           readchr(
-            ,inchan))
+            GLOBALS.inchan))
         set(
           vc,
           lex(
@@ -2164,7 +2164,7 @@ define(
         setg(
           moves,
           _(
-            ,moves,
+            GLOBALS.moves,
             1))
         cond(
           (setg(
@@ -2181,7 +2181,7 @@ define(
                     1(
                       set(
                         rvec,
-                        ,prsvec))),
+                        GLOBALS.prsvec))),
                   verb)))
             cond(
               (not(
@@ -2224,12 +2224,12 @@ define(
                         raction(
                           set(
                             rm,
-                            ,here))),
+                            GLOBALS.here))),
                       apply_random(
                         _random_action))))))),
           (_ivec
             cond(
-              (,tell_flag
+              (GLOBALS.tell_flag
                 tell(
                   "Please input entire command again.")),
               (tell(
@@ -2237,7 +2237,7 @@ define(
             return(
               )))
         or(
-          ,tell_flag,
+          GLOBALS.tell_flag,
           tell(
             "Nothing happens."))),
       (t
@@ -2261,9 +2261,9 @@ define(
             apply_random(
               _random_action,
               _x)))),
-      ,demons),
+      GLOBALS.demons),
     and(
-      ,parse_won,
+      GLOBALS.parse_won,
       set(
         av,
         avehicle(
@@ -2299,7 +2299,7 @@ define(
         _temp)
       put(
         _obj,
-        ,ofval,
+        GLOBALS.ofval,
         0))))
 
 define(
@@ -2321,7 +2321,7 @@ define(
         _temp)
       put(
         _rm,
-        ,rval,
+        GLOBALS.rval,
         0))))
 
 define(
@@ -2329,13 +2329,13 @@ define(
   (num
     "AUX"
     (winner
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((num)
       fix),
   put(
     _winner,
-    ,ascore,
+    GLOBALS.ascore,
     _(
       ascore(
         _winner),
@@ -2343,7 +2343,7 @@ define(
   setg(
     raw_score,
     _(
-      ,raw_score,
+      GLOBALS.raw_score,
       _num)))
 
 define(
@@ -2382,18 +2382,18 @@ define(
     set(
       scor,
       ascore(
-        ,winner))),
+        GLOBALS.winner))),
   princ(
     "[total of"),
   prin1(
-    ,score_max),
+    GLOBALS.score_max),
   princ(
     "points], in"),
   prin1(
-    ,moves),
+    GLOBALS.moves),
   cond(
     (1_Q(
-        ,moves)
+        GLOBALS.moves)
       princ(
         "move.")),
     (princ(
@@ -2408,7 +2408,7 @@ define(
       float(
         _scor),
       float(
-        ,score_max))),
+        GLOBALS.score_max))),
   princ(
     cond(
       (1_Q(
@@ -2486,10 +2486,10 @@ define(
               _ask_Q))
           record(
             _scor,
-            ,moves,
-            ,deaths,
+            GLOBALS.moves,
+            GLOBALS.deaths,
             _ask_Q,
-            ,here)
+            GLOBALS.here)
           quit(
             )))),
     quit(
@@ -2528,12 +2528,12 @@ define(
     (ch
       <>)
     (str
-      ,record_string)
+      GLOBALS.record_string)
     fl
     (ct
       0)
     (muddle
-      ,muddle)
+      GLOBALS.muddle)
     (dev
       value(
         dev))
@@ -2596,7 +2596,7 @@ define(
                   readstring(
                     _str,
                     _ch,
-                    ,recorder_string))))
+                    GLOBALS.recorder_string))))
             close(
               _ch)
             cond(
@@ -2687,17 +2687,17 @@ define(
         "",
         _ch),
       princ(
-        ,user_name,
+        GLOBALS.user_name,
         _ch),
       cond(
         (n__Q(
-            ,user_name,
-            ,xunm)
+            GLOBALS.user_name,
+            GLOBALS.xunm)
           princ(
             "(",
             _ch)
           princ(
-            ,xunm,
+            GLOBALS.xunm,
             _ch)
           princ(
             _X__,
@@ -2723,7 +2723,7 @@ define(
         _X__,
         _ch),
       prin1(
-        ,score_max,
+        GLOBALS.score_max,
         _ch),
       princ(
         "points,",
@@ -2784,15 +2784,15 @@ define(
               (y)
               string),
           cond(
-            (,_x
+            (GLOBALS._x
               princ(
                 "/",
                 _ch)
               princ(
                 _y,
                 _ch)))),
-        ,flag_names,
-        ,short_names),
+        GLOBALS.flag_names,
+        GLOBALS.short_names),
       mapf(
         <>,
         function(
@@ -2805,15 +2805,15 @@ define(
               string),
           cond(
             (0_Q(
-                ,_x)
+                GLOBALS._x)
               princ(
                 "/",
                 _ch)
               princ(
                 _y,
                 _ch)))),
-        ,val_names,
-        ,short_val_names),
+        GLOBALS.val_names,
+        GLOBALS.short_val_names),
       crlf(
         _ch),
       close(
@@ -2946,7 +2946,7 @@ define(
     (t
       princ(
         nth(
-          ,months,
+          GLOBALS.months,
           chtype(
             getbits(
               _wd,
@@ -3046,14 +3046,14 @@ define(
   (desc
     "AUX"
     (winner
-      ,winner)
+      GLOBALS.winner)
     (deaths
-      ,deaths)
+      GLOBALS.deaths)
     (aobjs
       aobjs(
         _winner))
     (random_list
-      ,random_list)
+      GLOBALS.random_list)
     (lamp
       find_obj(
         "LAMP"))
@@ -3087,7 +3087,7 @@ define(
       (lamp)
       object),
   cond(
-    (,dbg
+    (GLOBALS.dbg
       tell(
         _desc)),
     (unwind(
@@ -3096,7 +3096,7 @@ define(
           cond(
             (n_EQ_Q(
                 _winner,
-                ,player)
+                GLOBALS.player)
               tell(
                 _desc)
               tell(
@@ -3111,18 +3111,18 @@ define(
                   _winner))
               put(
                 _winner,
-                ,aroom,
+                GLOBALS.aroom,
                 find_room(
                   "FCHMP"))
               return(
                 ))),
           reset(
-            ,inchan),
+            GLOBALS.inchan),
           score_upd(
             _10),
           put(
             _winner,
-            ,avehicle,
+            GLOBALS.avehicle,
             <>),
           cond(
             (g__Q(
@@ -3163,7 +3163,7 @@ define(
                           _lamp))
                       put(
                         _winner,
-                        ,aobjs,
+                        GLOBALS.aobjs,
                         (_lamp
                           _X_aobjs))
                       cond(
@@ -3179,25 +3179,25 @@ define(
                               _lamp))
                           put(
                             _lc,
-                            ,ocontents,
+                            GLOBALS.ocontents,
                             splice_out(
                               _lamp,
                               ocontents(
                                 _lc)))
                           put(
                             _lamp,
-                            ,oroom,
+                            GLOBALS.oroom,
                             <>)
                           put(
                             _lamp,
-                            ,ocan,
+                            GLOBALS.ocan,
                             <>)))),
                     (memq(
                         _lamp,
                         _aobjs)
                       put(
                         _winner,
-                        ,aobjs,
+                        GLOBALS.aobjs,
                         (_lamp
                           _X
                           splice_out(
@@ -3206,7 +3206,7 @@ define(
                   put(
                     find_obj(
                       "DOOR"),
-                    ,otouch_Q,
+                    GLOBALS.otouch_Q,
                     <>)
                   goto(
                     find_room(
@@ -3283,10 +3283,10 @@ define(
                         _x,
                         _y)),
                     _aobjs,
-                    ,rooms)
+                    GLOBALS.rooms)
                   put(
                     _winner,
-                    ,aobjs,
+                    GLOBALS.aobjs,
                     ())
                   t))))),
         prog(
@@ -3294,10 +3294,10 @@ define(
           record(
             score(
               <>),
-            ,moves,
-            ,deaths,
+            GLOBALS.moves,
+            GLOBALS.deaths,
             <>,
-            ,here),
+            GLOBALS.here),
           quit(
             ))))))
 
@@ -3344,7 +3344,7 @@ define(
         _snm))
     len
     (buf
-      ,inbuf)
+      GLOBALS.inbuf)
     (buflen
       length(
         _buf))
@@ -3389,7 +3389,7 @@ define(
                 _iter,
                 1))),
           crlf(
-            ,outchan),
+            GLOBALS.outchan),
           setg(
             tell_flag,
             t),
@@ -3406,7 +3406,7 @@ define(
                   readstring(
                     _buf,
                     _ch,
-                    ,breaks))),
+                    GLOBALS.breaks))),
               (set(
                   slen,
                   readstring(
@@ -3415,7 +3415,7 @@ define(
                     _buflen)))),
             printstring(
               _buf,
-              ,outchan,
+              GLOBALS.outchan,
               _slen),
             cond(
               (0_Q(
@@ -3425,7 +3425,7 @@ define(
                       _iter,
                       1)))
                 crlf(
-                  ,outchan)
+                  GLOBALS.outchan)
                 return(
                   close(
                     _ch)))))),
@@ -3438,12 +3438,12 @@ define(
   invent,
   ("OPTIONAL"
     (win
-      ,winner)
+      GLOBALS.winner)
     "AUX"
     (any
       <>)
     (outchan
-      ,outchan)),
+      GLOBALS.outchan)),
   #decl
     ((any)
       or(
@@ -3470,7 +3470,7 @@ define(
               cond(
                 (_EQ_Q(
                     _win,
-                    ,player)
+                    GLOBALS.player)
                   tell(
                     "You are carrying:")),
                 (tell(
@@ -3510,7 +3510,7 @@ define(
     _any,
     n_EQ_Q(
       _win,
-      ,player),
+      GLOBALS.player),
     tell(
       "You are empty handed.")))
 
@@ -3519,7 +3519,7 @@ define(
   (olst
     "AUX"
     (outchan
-      ,outchan)),
+      GLOBALS.outchan)),
   #decl
     ((olst)
       list(
@@ -3564,7 +3564,7 @@ define(
   (rm
     "AUX"
     (win
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((rm)
       room
@@ -3582,14 +3582,14 @@ define(
     and(
       n_EQ_Q(
         _win,
-        ,player),
+        GLOBALS.player),
       _EQ_Q(
-        ,here,
+        GLOBALS.here,
         aroom(
-          ,player)),
+          GLOBALS.player)),
       lfcn(
         aobjs(
-          ,player)))))
+          GLOBALS.player)))))
 
 define(
   lfcn,
@@ -3648,7 +3648,7 @@ define(
         (and(
             trnn(
               _x,
-              ,actorbit),
+              GLOBALS.actorbit),
             lfcn(
               aobjs(
                 set(
@@ -3669,10 +3669,10 @@ define(
     (where
       chtype(
         2(
-          ,prsvec),
+          GLOBALS.prsvec),
         atom))
     (me
-      ,winner)
+      GLOBALS.winner)
     (rm
       1(
         _me))
@@ -3712,7 +3712,7 @@ define(
     (and(
         _EQ_Q(
           _me,
-          ,player),
+          GLOBALS.player),
         not(
           lit_Q(
             _rm)),
@@ -3847,9 +3847,9 @@ define(
       t)
     "AUX"
     (win
-      ,winner)
+      GLOBALS.winner)
     (vec
-      ,prsvec)
+      GLOBALS.prsvec)
     (rm
       aroom(
         _win))
@@ -3866,7 +3866,7 @@ define(
       aobjs(
         _win))
     (load_max
-      ,load_max)),
+      GLOBALS.load_max)),
   #decl
     ((win)
       adv
@@ -3894,7 +3894,7 @@ define(
     cond(
       (trnn(
           _obj,
-          ,no_check_bit)
+          GLOBALS.no_check_bit)
         return(
           object_action(
             )))),
@@ -3939,7 +3939,7 @@ define(
             _obj),
           tell(
             pick_one(
-              ,yuks)))
+              GLOBALS.yuks)))
         return(
           <>)),
       (or(
@@ -3986,29 +3986,29 @@ define(
               (_getter_Q
                 put(
                   _nobj,
-                  ,ocontents,
+                  GLOBALS.ocontents,
                   splice_out(
                     _obj,
                     ocontents(
                       _nobj)))
                 put(
                   _obj,
-                  ,oroom,
+                  GLOBALS.oroom,
                   <>)
                 put(
                   _obj,
-                  ,ocan,
+                  GLOBALS.ocan,
                   <>)),
               (remove_object(
                   _obj)))
             put(
               _win,
-              ,aobjs,
+              GLOBALS.aobjs,
               (_obj
                 _X_aobjs))
             put(
               _obj,
-              ,otouch_Q,
+              GLOBALS.otouch_Q,
               t)
             score_obj(
               _obj)
@@ -4034,7 +4034,7 @@ define(
       t)
     "AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (objo
       2(
         _pv))
@@ -4042,7 +4042,7 @@ define(
       3(
         _pv))
     (win
-      ,winner)
+      GLOBALS.winner)
     (aobjs
       aobjs(
         _win))
@@ -4050,7 +4050,7 @@ define(
     can
     (robjs
       robjs(
-        ,here))
+        GLOBALS.here))
     (ocan
       <>)),
   #decl
@@ -4084,7 +4084,7 @@ define(
     cond(
       (trnn(
           _objo,
-          ,no_check_bit)
+          GLOBALS.no_check_bit)
         return(
           object_action(
             )))),
@@ -4092,10 +4092,10 @@ define(
       (or(
           memq(
             _objo,
-            ,stars),
+            GLOBALS.stars),
           memq(
             _obji,
-            ,stars))
+            GLOBALS.stars))
         tell(
           "Nice try.")
         return(
@@ -4108,7 +4108,7 @@ define(
             _obji),
           trnn(
             _obji,
-            ,vehbit))
+            GLOBALS.vehbit))
         set(
           can,
           _obji)
@@ -4172,7 +4172,7 @@ define(
         put(
           _pv,
           1,
-          ,take_X_words)
+          GLOBALS.take_X_words)
         put(
           _pv,
           2,
@@ -4200,21 +4200,21 @@ define(
               _ocan)
             put(
               _win,
-              ,aobjs,
+              GLOBALS.aobjs,
               set(
                 aobjs,
                 (_crock
                   _X_aobjs)))
             put(
               _ocan,
-              ,ocontents,
+              GLOBALS.ocontents,
               splice_out(
                 _crock,
                 ocontents(
                   _ocan)))
             put(
               _crock,
-              ,ocan,
+              GLOBALS.ocan,
               <>)),
           (tell(
               "I can't reach the",
@@ -4226,7 +4226,7 @@ define(
     put(
       _pv,
       1,
-      ,put_X_words),
+      GLOBALS.put_X_words),
     put(
       _pv,
       2,
@@ -4244,25 +4244,25 @@ define(
           )),
       (put(
           _win,
-          ,aobjs,
+          GLOBALS.aobjs,
           splice_out(
             _crock,
             _aobjs))
         put(
           _can,
-          ,ocontents,
+          GLOBALS.ocontents,
           (_crock
             _X
             ocontents(
               _can)))
         put(
           _crock,
-          ,ocan,
+          GLOBALS.ocan,
           _can)
         put(
           _crock,
-          ,oroom,
-          ,here)
+          GLOBALS.oroom,
+          GLOBALS.here)
         tell(
           "Done.")))))
 
@@ -4270,7 +4270,7 @@ define(
   dropper,
   ("AUX"
     (winner
-      ,winner)
+      GLOBALS.winner)
     (av
       avehicle(
         _winner))
@@ -4280,7 +4280,7 @@ define(
     (getter_Q
       <>)
     (vec
-      ,prsvec)
+      GLOBALS.prsvec)
     (rm
       aroom(
         _winner))
@@ -4327,7 +4327,7 @@ define(
         put(
           _vec,
           1,
-          ,put_X_words)
+          GLOBALS.put_X_words)
         return(
           putter(
             ))),
@@ -4357,7 +4357,7 @@ define(
     cond(
       (trnn(
           _obj,
-          ,no_check_bit)
+          GLOBALS.no_check_bit)
         return(
           object_action(
             )))),
@@ -4397,18 +4397,18 @@ define(
           (_getter_Q
             put(
               _nobj,
-              ,ocontents,
+              GLOBALS.ocontents,
               splice_out(
                 _obj,
                 ocontents(
                   _nobj)))
             put(
               _obj,
-              ,ocan,
+              GLOBALS.ocan,
               <>)),
           (put(
               _winner,
-              ,aobjs,
+              GLOBALS.aobjs,
               splice_out(
                 _obj,
                 _aobjs))))
@@ -4469,7 +4469,7 @@ define(
   (uv
     "AUX"
     (prsvec
-      ,prsvec)
+      GLOBALS.prsvec)
     (pa
       1(
         _prsvec))
@@ -4478,9 +4478,9 @@ define(
         _pa))
     pi
     (winner
-      ,winner)
+      GLOBALS.winner)
     (here
-      ,here)),
+      GLOBALS.here)),
   #decl
     ((uv)
       uvector(
@@ -4506,7 +4506,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       mapf(
         <>,
         function(
@@ -4520,7 +4520,7 @@ define(
                   _x),
                 trnn(
                   _x,
-                  ,trytakebit))
+                  GLOBALS.trytakebit))
               put(
                 _prsvec,
                 2,
@@ -4543,10 +4543,10 @@ define(
     (or(
         _EQ_Q(
           _pa,
-          ,drop_X_words),
+          GLOBALS.drop_X_words),
         _EQ_Q(
           _pa,
-          ,put_X_words))
+          GLOBALS.put_X_words))
       mapf(
         <>,
         function(
@@ -4583,13 +4583,13 @@ define(
   everything,
   ("AUX"
     (prsvec
-      ,prsvec)
+      GLOBALS.prsvec)
     (pa
       1(
         _prsvec))
     pi
     (suv
-      ,obj_uv)
+      GLOBALS.obj_uv)
     (tuv
       top(
         _suv))
@@ -4597,9 +4597,9 @@ define(
       length(
         _tuv))
     (here
-      ,here)
+      GLOBALS.here)
     (winner
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((pa)
       verb
@@ -4619,7 +4619,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       mapf(
         <>,
         function(
@@ -4634,13 +4634,13 @@ define(
                 not(
                   trnn(
                     _x,
-                    ,actorbit)))
+                    GLOBALS.actorbit)))
               cond(
                 (_EQ_Q(
                     _suv,
                     _tuv)
                   tell(
-                    ,losstr)
+                    GLOBALS.losstr)
                   mapleave(
                     )))
               set(
@@ -4655,7 +4655,7 @@ define(
           _here))),
     (_EQ_Q(
         _pa,
-        ,drop_X_words)
+        GLOBALS.drop_X_words)
       mapf(
         <>,
         function(
@@ -4675,7 +4675,7 @@ define(
           _winner))),
     (_EQ_Q(
         _pa,
-        ,put_X_words)
+        GLOBALS.put_X_words)
       set(
         pi,
         3(
@@ -4700,13 +4700,13 @@ define(
                   not(
                     trnn(
                       _x,
-                      ,actorbit)))
+                      GLOBALS.actorbit)))
                 cond(
                   (_EQ_Q(
                       _suv,
                       _tuv)
                     tell(
-                      ,losstr)
+                      GLOBALS.losstr)
                     return(
                       t,
                       _rp)))
@@ -4736,7 +4736,7 @@ define(
                     _x,
                     _pi))
                 tell(
-                  ,losstr)
+                  GLOBALS.losstr)
                 return(
                   t,
                   _rp))),
@@ -4762,12 +4762,12 @@ define(
   valuables,
   ("AUX"
     (prsvec
-      ,prsvec)
+      GLOBALS.prsvec)
     (pa
       1(
         _prsvec))
     (suv
-      ,obj_uv)
+      GLOBALS.obj_uv)
     (tuv
       top(
         _suv))
@@ -4776,9 +4776,9 @@ define(
       length(
         _tuv))
     (here
-      ,here)
+      GLOBALS.here)
     (winner
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((pa)
       verb
@@ -4798,7 +4798,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        ,take_X_words)
+        GLOBALS.take_X_words)
       mapf(
         <>,
         function(
@@ -4813,7 +4813,7 @@ define(
                 not(
                   trnn(
                     _x,
-                    ,actorbit)),
+                    GLOBALS.actorbit)),
                 not(
                   0_Q(
                     otval(
@@ -4823,7 +4823,7 @@ define(
                     _suv,
                     _tuv)
                   tell(
-                    ,losstr)
+                    GLOBALS.losstr)
                   mapleave(
                     )))
               set(
@@ -4838,7 +4838,7 @@ define(
           _here))),
     (_EQ_Q(
         _pa,
-        ,drop_X_words)
+        GLOBALS.drop_X_words)
       mapf(
         <>,
         function(
@@ -4863,7 +4863,7 @@ define(
           _winner))),
     (_EQ_Q(
         _pa,
-        ,put_X_words)
+        GLOBALS.put_X_words)
       set(
         pi,
         3(
@@ -4887,7 +4887,7 @@ define(
                     _x,
                     _pi))
                 tell(
-                  ,losstr)
+                  GLOBALS.losstr)
                 return(
                   t,
                   _rp))),
@@ -4925,7 +4925,7 @@ define(
                     _x,
                     _pi))
                 tell(
-                  ,losstr)
+                  GLOBALS.losstr)
                 return(
                   t,
                   _rp))),
@@ -4957,12 +4957,12 @@ define(
   open_act,
   ("AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (prso
       2(
         _pv))
     (outchan
-      ,outchan)),
+      GLOBALS.outchan)),
   #decl
     ((prso)
       object
@@ -4978,7 +4978,7 @@ define(
     (not(
         trnn(
           _prso,
-          ,contbit))
+          GLOBALS.contbit))
       tell(
         "You must tell me how to do that to a",
         1,
@@ -4997,7 +4997,7 @@ define(
         (t
           put(
             _prso,
-            ,oopen_Q,
+            GLOBALS.oopen_Q,
             t)
           cond(
             (or(
@@ -5036,7 +5036,7 @@ define(
   close_act,
   ("AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (prso
       2(
         _pv))),
@@ -5053,7 +5053,7 @@ define(
     (not(
         trnn(
           _prso,
-          ,contbit))
+          GLOBALS.contbit))
       tell(
         "You must tell me how to do that to a",
         1,
@@ -5069,7 +5069,7 @@ define(
             _prso)
           put(
             _prso,
-            ,oopen_Q,
+            GLOBALS.oopen_Q,
             <>)
           tell(
             "Closed.")),
@@ -5084,7 +5084,7 @@ define(
   ("AUX"
     (prso
       2(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((prso)
       or(
@@ -5097,20 +5097,20 @@ define(
       find_frob(
         _prso,
         robjs(
-          ,here),
+          GLOBALS.here),
         ", which is in the room.",
         "There is a",
         "here.")
       find_frob(
         _prso,
         aobjs(
-          ,winner),
+          GLOBALS.winner),
         ", which you are carrying.",
         "You are carrying a",
         ".")
       cond(
         (not(
-            ,tell_flag)
+            GLOBALS.tell_flag)
           tell(
             "I can't see that here.")))),
     (tell(
@@ -5192,7 +5192,7 @@ define(
   object_action,
   ("AUX"
     (vec
-      ,prsvec)
+      GLOBALS.prsvec)
     (prso
       2(
         _vec))
@@ -5229,9 +5229,9 @@ define(
     "AUX"
     nobj
     (rm
-      ,here)
+      GLOBALS.here)
     (win
-      ,winner)),
+      GLOBALS.winner)),
   #decl
     ((obj)
       object
@@ -5324,7 +5324,7 @@ define(
   (objl
     "AUX"
     (bigfix
-      ,bigfix)),
+      GLOBALS.bigfix)),
   #decl
     ((objl)
       list(
@@ -5335,7 +5335,7 @@ define(
       (value)
       fix),
   mapf(
-    ,_,
+    GLOBALS._,
     function(
       (obj),
       #decl
@@ -5346,7 +5346,7 @@ define(
           (_EQ_Q(
               osize(
                 _obj),
-              ,bigfix)
+              GLOBALS.bigfix)
             0),
           (osize(
               _obj))),
@@ -5364,10 +5364,10 @@ define(
   move,
   ("AUX"
     (vec
-      ,prsvec)
+      GLOBALS.prsvec)
     (rm
       aroom(
-        ,winner))
+        GLOBALS.winner))
     (obj
       2(
         _vec))),
@@ -5407,7 +5407,7 @@ define(
       cond(
         (trnn(
             _x,
-            ,vicbit)
+            GLOBALS.vicbit)
           mapleave(
             _x)))),
     robjs(
@@ -5418,15 +5418,15 @@ define(
   lampo,
   ("AUX"
     (prsvec
-      ,prsvec)
+      GLOBALS.prsvec)
     (me
-      ,winner)
+      GLOBALS.winner)
     (obj
       2(
         _prsvec))
     (lit_Q
       lit_Q(
-        ,here))),
+        GLOBALS.here))),
   #decl
     ((me)
       adv
@@ -5438,13 +5438,13 @@ define(
     (and(
         trnn(
           _obj,
-          ,burnbit),
+          GLOBALS.burnbit),
         3(
           _prsvec),
         put(
           _prsvec,
           1,
-          ,burn_X_words))
+          GLOBALS.burn_X_words))
       burner(
         )),
     (object_action(
@@ -5474,7 +5474,7 @@ define(
             "It is already on.")),
         (put(
             _obj,
-            ,olight_Q,
+            GLOBALS.olight_Q,
             1)
           tell(
             "The",
@@ -5486,7 +5486,7 @@ define(
             (not(
                 _lit_Q)
               put(
-                ,prsvec,
+                GLOBALS.prsvec,
                 2,
                 <>)
               room_info(
@@ -5497,10 +5497,10 @@ define(
   lampo,
   ("AUX"
     (me
-      ,winner)
+      GLOBALS.winner)
     (obj
       2(
-        ,prsvec))),
+        GLOBALS.prsvec))),
   #decl
     ((me)
       adv
@@ -5535,7 +5535,7 @@ define(
             "It is already off.")),
         (put(
             _obj,
-            ,olight_Q,
+            GLOBALS.olight_Q,
             _1)
           tell(
             "The",
@@ -5545,7 +5545,7 @@ define(
             "is now off.")
           or(
             lit_Q(
-              ,here),
+              GLOBALS.here),
             tell(
               "It is now pitch black.")))))))
 
@@ -5574,7 +5574,7 @@ define(
   (w),
   lookup(
     _w,
-    ,words))
+    GLOBALS.words))
 
 define(
   this_it_Q,
@@ -5641,9 +5641,9 @@ define(
       <>)
     "AUX"
     (brks
-      ,brks)
+      GLOBALS.brks)
     (v
-      ,lexv)
+      GLOBALS.lexv)
     (s1
       _s)
     (quot
@@ -5797,7 +5797,7 @@ define(
           s1,
           rest(
             _s1))))),
-  ,lexv)
+  GLOBALS.lexv)
 
 psetg(
   brks,
@@ -5825,7 +5825,7 @@ define(
             memq(
               1(
                 _x),
-              ,brks))
+              GLOBALS.brks))
           mapleave(
             _x))),
     _s))
@@ -5889,7 +5889,7 @@ define(
                 1)),
             0),
           clock_demon(
-            ,clocker))
+            GLOBALS.clocker))
         return(
           )))))
 
@@ -5910,13 +5910,13 @@ define(
         atom,
         false)),
   cond(
-    (,parse_won
+    (GLOBALS.parse_won
       put(
-        ,prsvec,
+        GLOBALS.prsvec,
         2,
         <>)
       put(
-        ,prsvec,
+        GLOBALS.prsvec,
         3,
         <>)
       mapf(
@@ -5942,9 +5942,9 @@ define(
                 _tick,
                 0)
               put(
-                ,prsvec,
+                GLOBALS.prsvec,
                 1,
-                ,c_int_X_words)
+                GLOBALS.c_int_X_words)
               cond(
                 (type_Q(
                     set(
@@ -5958,7 +5958,7 @@ define(
                     _ca)))),
             (put(
                 _ev,
-                ,ctick,
+                GLOBALS.ctick,
                 set(
                   tick,
                   _(
@@ -5971,9 +5971,9 @@ define(
                   flg,
                   t),
                 put(
-                  ,prsvec,
+                  GLOBALS.prsvec,
                   1,
-                  ,c_int_X_words),
+                  GLOBALS.c_int_X_words),
                 cond(
                   (type_Q(
                       set(
@@ -6000,7 +6000,7 @@ define(
     (num
       <>)
     (clocker
-      ,clocker)),
+      GLOBALS.clocker)),
   #decl
     ((cev)
       cevent
@@ -6018,7 +6018,7 @@ define(
             _clocker)))
       put(
         _clocker,
-        ,hobjs,
+        GLOBALS.hobjs,
         (_cev
           _X
           hobjs(
@@ -6027,7 +6027,7 @@ define(
     (_num
       put(
         _cev,
-        ,ctick,
+        GLOBALS.ctick,
         _num))))
 
 setg(
@@ -6054,9 +6054,9 @@ define(
   ("AUX"
     (obj
       2(
-        ,prsvec))
+        GLOBALS.prsvec))
     (win
-      ,winner)
+      GLOBALS.winner)
     (av
       avehicle(
         _win))),
@@ -6074,7 +6074,7 @@ define(
         memq(
           _obj,
           robjs(
-            ,here)))
+            GLOBALS.here)))
       tell(
         "The",
         1,
@@ -6083,7 +6083,7 @@ define(
         "must be on the ground to be boarded.")),
     (trnn(
         _obj,
-        ,vehbit)
+        GLOBALS.vehbit)
       cond(
         (_av
           tell(
@@ -6104,11 +6104,11 @@ define(
                 ".")
               put(
                 _win,
-                ,avehicle,
+                GLOBALS.avehicle,
                 _obj)
               put(
                 _obj,
-                ,ocontents,
+                GLOBALS.ocontents,
                 (find_obj(
                     "#####")
                   _X
@@ -6126,9 +6126,9 @@ define(
   ("AUX"
     (obj
       2(
-        ,prsvec))
+        GLOBALS.prsvec))
     (win
-      ,winner)
+      GLOBALS.winner)
     (av
       avehicle(
         _win))),
@@ -6149,17 +6149,17 @@ define(
         (object_action(
             )),
         (rtrnn(
-            ,here,
-            ,rlandbit)
+            GLOBALS.here,
+            GLOBALS.rlandbit)
           tell(
             "You are on your own feet again.")
           put(
             _win,
-            ,avehicle,
+            GLOBALS.avehicle,
             <>)
           put(
             _obj,
-            ,ocontents,
+            GLOBALS.ocontents,
             splice_out(
               find_obj(
                 "#####"),
@@ -6175,16 +6175,16 @@ define(
   (rm
     "AUX"
     (win
-      ,winner)
+      GLOBALS.winner)
     (av
       avehicle(
-        ,winner))
+        GLOBALS.winner))
     (here
-      ,here)
+      GLOBALS.here)
     (lb
       rtrnn(
         _rm,
-        ,rlandbit))),
+        GLOBALS.rlandbit))),
   #decl
     ((here
         rm)
@@ -6215,13 +6215,13 @@ define(
         and(
           rtrnn(
             _here,
-            ,rlandbit),
+            GLOBALS.rlandbit),
           _lb,
           _av,
           n_EQ_Q(
             orand(
               _av),
-            ,rlandbit),
+            GLOBALS.rlandbit),
           not(
             rtrnn(
               _rm,
@@ -6240,7 +6240,7 @@ define(
       <>),
     (rtrnn(
         _rm,
-        ,rmungbit)
+        GLOBALS.rmungbit)
       tell(
         rrand(
           _rm))),
@@ -6248,7 +6248,7 @@ define(
       cond(
         (n_EQ_Q(
             _win,
-            ,player)
+            GLOBALS.player)
           remove_object(
             aobj(
               _win))
@@ -6264,8 +6264,8 @@ define(
             _av,
             _rm)))
       put(
-        ,winner,
-        ,aroom,
+        GLOBALS.winner,
+        GLOBALS.aroom,
         setg(
           here,
           _rm))
@@ -6298,17 +6298,17 @@ define(
       string),
   rtro(
     _rm,
-    ,rmungbit),
+    GLOBALS.rmungbit),
   put(
     _rm,
-    ,rrand,
+    GLOBALS.rrand,
     _str))
 
 define(
   command,
   ("AUX"
     (pv
-      ,prsvec)
+      GLOBALS.prsvec)
     (po
       2(
         _pv))
@@ -6316,13 +6316,13 @@ define(
       rest(
         member(
           "",
-          ,lexv)))
+          GLOBALS.lexv)))
     (hs
-      ,here)
+      GLOBALS.here)
     (win
-      ,winner)
+      GLOBALS.winner)
     (play
-      ,player)),
+      GLOBALS.player)),
   #decl
     ((po)
       object
@@ -6342,7 +6342,7 @@ define(
         "You cannot talk through another person!")),
     (trnn(
         _po,
-        ,actorbit)
+        GLOBALS.actorbit)
       setg(
         winner,
         orand(

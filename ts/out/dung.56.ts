@@ -171,7 +171,7 @@ or(
       )),
   cevent(
     0,
-    ,cure_clock,
+    GLOBALS.cure_clock,
     <>,
     "CURIN"))
 
@@ -182,7 +182,7 @@ or(
       )),
   cevent(
     0,
-    ,maint_room,
+    GLOBALS.maint_room,
     t,
     "MNTIN"))
 
@@ -193,7 +193,7 @@ or(
       )),
   cevent(
     0,
-    ,lantern,
+    GLOBALS.lantern,
     t,
     "LNTIN"))
 
@@ -204,7 +204,7 @@ or(
       )),
   cevent(
     0,
-    ,match_function,
+    GLOBALS.match_function,
     t,
     matin))
 
@@ -215,7 +215,7 @@ or(
       )),
   cevent(
     0,
-    ,candles,
+    GLOBALS.candles,
     t,
     "CNDIN"))
 
@@ -226,7 +226,7 @@ or(
       )),
   cevent(
     0,
-    ,balloon,
+    GLOBALS.balloon,
     t,
     "BINT"))
 
@@ -237,7 +237,7 @@ or(
       )),
   cevent(
     0,
-    ,burnup,
+    GLOBALS.burnup,
     t,
     "BRNIN"))
 
@@ -248,7 +248,7 @@ or(
       )),
   cevent(
     0,
-    ,fuse_function,
+    GLOBALS.fuse_function,
     t,
     "FUSIN"))
 
@@ -259,7 +259,7 @@ or(
       )),
   cevent(
     0,
-    ,ledge_mung,
+    GLOBALS.ledge_mung,
     t,
     "LEDIN"))
 
@@ -270,7 +270,7 @@ or(
       )),
   cevent(
     0,
-    ,safe_mung,
+    GLOBALS.safe_mung,
     t,
     "SAFIN"))
 
@@ -281,7 +281,7 @@ or(
       )),
   cevent(
     0,
-    ,volgnome,
+    GLOBALS.volgnome,
     t,
     "VLGIN"))
 
@@ -292,7 +292,7 @@ or(
       )),
   cevent(
     0,
-    ,gnome_function,
+    GLOBALS.gnome_function,
     t,
     "GNOIN"))
 
@@ -303,7 +303,7 @@ or(
       )),
   cevent(
     0,
-    ,bucket,
+    GLOBALS.bucket,
     t,
     "BCKIN"))
 
@@ -314,7 +314,7 @@ or(
       )),
   cevent(
     0,
-    ,sphere_function,
+    GLOBALS.sphere_function,
     t,
     "SPHIN"))
 
@@ -328,7 +328,7 @@ or(
     %<>
     ()
     %<>
-    %,ovison}
+    %GLOBALS.ovison}
 
 "MAZE"
 
@@ -479,10 +479,10 @@ add_object(
           {"FOOD"})
       %<>
       %_(
-          ,contbit,
-          ,flamebit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.contbit,
+          GLOBALS.flamebit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -504,9 +504,9 @@ add_object(
       #find_obj
         {"SBAG"}
       %_(
-          ,takebit,
-          ,foodbit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.foodbit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -525,9 +525,9 @@ add_object(
       #find_obj
         {"SBAG"}
       %_(
-          ,foodbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.foodbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -549,9 +549,9 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -571,9 +571,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -592,8 +592,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       5
       5
@@ -611,12 +611,12 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       50},
   ["PDP10"
     "DRYER"
@@ -632,8 +632,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       10
       6
@@ -651,14 +651,14 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,transbit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.transbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
-      %,bigfix},
+      %GLOBALS.bigfix
+      %GLOBALS.bigfix},
   ["CASE"],
   ["TROPH"])
 
@@ -673,10 +673,10 @@ add_object(
           {"WATER"})
       %<>
       %_(
-          ,contbit,
-          ,transbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.transbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -697,9 +697,9 @@ add_object(
       #find_obj
         {"BOTTL"}
       %_(
-          ,drinkbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.drinkbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -733,9 +733,9 @@ add_object(
       ()
       %<>
       %_(
-          ,tiebit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.tiebit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -754,9 +754,9 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison,
-          ,weaponbit)
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.weaponbit)
       0
       0
       0
@@ -768,7 +768,7 @@ add_object(
 add_melee(
   find_obj(
     "KNIFE"),
-  ,knife_melee)
+  GLOBALS.knife_melee)
 
 #room
   {"LROOM"
@@ -813,9 +813,9 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit,
-          ,weaponbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.weaponbit)
       0
       0
       0
@@ -829,7 +829,7 @@ add_object(
 add_melee(
   find_obj(
     "SWORD"),
-  ,sword_melee)
+  GLOBALS.sword_melee)
 
 add_object(
   #object
@@ -841,8 +841,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       _1
       0
       0
@@ -861,8 +861,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0},
   ["LAMP"
     "LANTE"],
@@ -878,13 +878,13 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,ndescbit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.ndescbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["CARPE"],
   ["ORIEN"])
@@ -899,9 +899,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -949,17 +949,17 @@ psetg(
         #cexit
           {"TROLL-FLAG"
             "CRAW4"
-            %,tchomp}
+            %GLOBALS.tchomp}
         "NORTH"
         #cexit
           {"TROLL-FLAG"
             "PASS1"
-            %,tchomp}
+            %GLOBALS.tchomp}
         "SOUTH"
         #cexit
           {"TROLL-FLAG"
             "MAZE1"
-            %,tchomp}}
+            %GLOBALS.tchomp}}
     (#find_obj
         {"TROLL"})}
 
@@ -984,14 +984,14 @@ setg(
   villain_probs,
   iuvector(
     length(
-      ,villains),
+      GLOBALS.villains),
     0))
 
 setg(
   oppv,
   ivector(
     length(
-      ,villains),
+      GLOBALS.villains),
     () => <>))
 
 add_demon(
@@ -999,10 +999,10 @@ add_demon(
     sword_demon,
     chtype(
       [sword_glow
-        ,villains
+        GLOBALS.villains
         ()
         1(
-          ,rooms)
+          GLOBALS.rooms)
         find_obj(
           "SWORD")
         <>],
@@ -1010,7 +1010,7 @@ add_demon(
 
 #object
   {"TROLL"
-    %,trolldesc
+    %GLOBALS.trolldesc
     "troll"
     %<>
     troll
@@ -1018,29 +1018,29 @@ add_demon(
         {"AXE"})
     %<>
     %_(
-        ,vicbit,
-        ,ovison,
-        ,villain)
+        GLOBALS.vicbit,
+        GLOBALS.ovison,
+        GLOBALS.villain)
     0
     0
     0
-    %,bigfix
+    %GLOBALS.bigfix
     2}
 
 add_melee(
   find_obj(
     "TROLL"),
-  ,troll_melee)
+  GLOBALS.troll_melee)
 
 add_demon(
   setg(
     fight_demon,
     chtype(
       [fighting
-        ,villains
+        GLOBALS.villains
         ()
         1(
-          ,rooms)
+          GLOBALS.rooms)
         find_obj(
           "TROLL")
         <>],
@@ -1057,8 +1057,8 @@ add_object(
       %find_obj(
           "TROLL")
       %_(
-          ,ovison,
-          ,weaponbit)
+          GLOBALS.ovison,
+          GLOBALS.weaponbit)
       0
       0
       0
@@ -1077,8 +1077,8 @@ psetg(
 
 #room
   {"MAZE1"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1093,8 +1093,8 @@ psetg(
 
 #room
   {"MAZE2"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"SOUTH"
@@ -1107,8 +1107,8 @@ psetg(
 
 #room
   {"MAZE3"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1121,8 +1121,8 @@ psetg(
 
 #room
   {"MAZE4"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1135,8 +1135,8 @@ psetg(
 
 #room
   {"DEAD1"
-    %,deadend
-    %,deadend
+    %GLOBALS.deadend
+    %GLOBALS.deadend
     %<>
     #exit
       {"SOUTH"
@@ -1145,8 +1145,8 @@ psetg(
 
 #room
   {"MAZE5"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"EAST"
@@ -1176,9 +1176,9 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit,
-          ,weaponbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.weaponbit)
       0
       0
       0
@@ -1190,7 +1190,7 @@ add_object(
 add_melee(
   find_obj(
     "RKNIF"),
-  ,knife_melee)
+  GLOBALS.knife_melee)
 
 add_object(
   #object
@@ -1202,8 +1202,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -1225,9 +1225,9 @@ add_object(
     ()
     %<>
     %_(
-        ,toolbit,
-        ,takebit,
-        ,ovison)
+        GLOBALS.toolbit,
+        GLOBALS.takebit,
+        GLOBALS.ovison)
     0
     0
     0
@@ -1244,12 +1244,12 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["SKELE"
     "BODY"])
@@ -1264,8 +1264,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       10
       5
@@ -1285,9 +1285,9 @@ add_object(
       ()
       %<>
       %_(
-          ,sacredbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.sacredbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       12
       10
@@ -1305,8 +1305,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       9
       5
@@ -1316,8 +1316,8 @@ add_object(
 
 #room
   {"DEAD2"
-    %,deadend
-    %,deadend
+    %GLOBALS.deadend
+    %GLOBALS.deadend
     %<>
     #exit
       {"WEST"
@@ -1326,8 +1326,8 @@ add_object(
 
 #room
   {"MAZE6"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"DOWN"
@@ -1342,8 +1342,8 @@ add_object(
 
 #room
   {"MAZE7"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"UP"
@@ -1360,8 +1360,8 @@ add_object(
 
 #room
   {"MAZE8"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"NE"
@@ -1374,8 +1374,8 @@ add_object(
 
 #room
   {"DEAD3"
-    %,deadend
-    %,deadend
+    %GLOBALS.deadend
+    %GLOBALS.deadend
     %<>
     #exit
       {"NORTH"
@@ -1384,8 +1384,8 @@ add_object(
 
 #room
   {"MAZE9"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"NORTH"
@@ -1404,8 +1404,8 @@ add_object(
 
 #room
   {"MAZ10"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"EAST"
@@ -1418,8 +1418,8 @@ add_object(
 
 #room
   {"MAZ11"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"NE"
@@ -1450,8 +1450,8 @@ add_object(
 
 #room
   {"MAZ12"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1468,8 +1468,8 @@ add_object(
 
 #room
   {"DEAD4"
-    %,deadend
-    %,deadend
+    %GLOBALS.deadend
+    %GLOBALS.deadend
     %<>
     #exit
       {"SOUTH"
@@ -1478,8 +1478,8 @@ add_object(
 
 #room
   {"MAZ13"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"EAST"
@@ -1494,8 +1494,8 @@ add_object(
 
 #room
   {"MAZ14"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1509,8 +1509,8 @@ add_object(
 
 #room
   {"MAZ15"
-    %,mazedesc
-    %,mazedesc
+    %GLOBALS.mazedesc
+    %GLOBALS.mazedesc
     %<>
     #exit
       {"WEST"
@@ -1526,8 +1526,8 @@ psetg(
 
 #room
   {"FORE1"
-    %,stfore
-    %,forest
+    %GLOBALS.stfore
+    %GLOBALS.forest
     t
     #exit
       {"NORTH"
@@ -1543,7 +1543,7 @@ psetg(
 #room
   {"FORE4"
     "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
-    %,forest
+    %GLOBALS.forest
     t
     #exit
       {"EAST"
@@ -1557,8 +1557,8 @@ psetg(
 
 #room
   {"FORE5"
-    %,stfore
-    %,forest
+    %GLOBALS.stfore
+    %GLOBALS.forest
     t
     #exit
       {"NORTH"
@@ -1576,8 +1576,8 @@ psetg(
 
 #room
   {"FORE2"
-    %,fordes
-    %,forest
+    %GLOBALS.fordes
+    %GLOBALS.forest
     t
     #exit
       {"NORTH"
@@ -1592,8 +1592,8 @@ psetg(
 
 #room
   {"FORE3"
-    %,fordes
-    %,forest
+    %GLOBALS.fordes
+    %GLOBALS.forest
     t
     #exit
       {"NORTH"
@@ -1781,13 +1781,13 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,vicbit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.vicbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["MIRRO"])
 
@@ -1801,13 +1801,13 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,vicbit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.vicbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["MIRRO"])
 
@@ -1821,12 +1821,12 @@ add_object(
       ()
       %<>
       %_(
-          ,vicbit,
-          ,ovison)
+          GLOBALS.vicbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["GLACI"])
 
@@ -1894,8 +1894,8 @@ add_object(
     ()
     %<>
     %_(
-        ,takebit,
-        ,ovison)
+        GLOBALS.takebit,
+        GLOBALS.ovison)
     0
     15
     8
@@ -1912,8 +1912,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       4
       11
@@ -1932,10 +1932,10 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,sacredbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.sacredbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       3
       7
@@ -1954,10 +1954,10 @@ add_object(
       ()
       %<>
       %_(
-          ,toolbit,
-          ,flamebit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.toolbit,
+          GLOBALS.flamebit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       1
       14
       6
@@ -2137,18 +2137,18 @@ put(
         ()
         %<>
         %_(
-            ,contbit,
-            ,ovison,
-            ,transbit)
+            GLOBALS.contbit,
+            GLOBALS.ovison,
+            GLOBALS.transbit)
         0
         0
         0
-        %,bigfix
+        %GLOBALS.bigfix
         50},
     ["CAGE"
       "DUMBW"
       "BASKE"]),
-  ,oopen_Q,
+  GLOBALS.oopen_Q,
   t)
 
 add_object(
@@ -2160,11 +2160,11 @@ add_object(
       dumbwaiter
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["CAGE"
     "DUMBW"
@@ -2216,8 +2216,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       5
       3
@@ -2243,8 +2243,8 @@ psetg(
 
 #room
   {"MINE1"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"NORTH"
@@ -2256,8 +2256,8 @@ psetg(
 
 #room
   {"MINE2"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"SOUTH"
@@ -2271,8 +2271,8 @@ psetg(
 
 #room
   {"MINE3"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"WEST"
@@ -2284,8 +2284,8 @@ psetg(
 
 #room
   {"MINE4"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"UP"
@@ -2299,8 +2299,8 @@ psetg(
 
 #room
   {"MINE5"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"DOWN"
@@ -2318,8 +2318,8 @@ psetg(
 
 #room
   {"MINE6"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"SE"
@@ -2331,8 +2331,8 @@ psetg(
 
 #room
   {"MINE7"
-    %,mindesc
-    %,mindesc
+    %GLOBALS.mindesc
+    %GLOBALS.mindesc
     %<>
     #exit
       {"EAST"
@@ -2384,7 +2384,7 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "BSHAF"
-            %,nofit}}
+            %GLOBALS.nofit}}
     ()
     no_objs}
 
@@ -2400,12 +2400,12 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            %,nofit}
+            %GLOBALS.nofit}
         "NE"
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            %,nofit}
+            %GLOBALS.nofit}
         "UP"
         #nexit
           "Not a chance."
@@ -2601,8 +2601,8 @@ add_object(
           {"STRAD"})
       %<>
       %_(
-          ,takebit,
-          ,contbit)
+          GLOBALS.takebit,
+          GLOBALS.contbit)
       0
       0
       0
@@ -2623,8 +2623,8 @@ add_object(
       #find_obj
         {"IRBOX"}
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       10
       10
@@ -2730,9 +2730,9 @@ add_object(
   sobject(
     "ENGRA",
     "wall with engravings",
-    ,ovison,
-    ,readbit,
-    ,sacredbit),
+    GLOBALS.ovison,
+    GLOBALS.readbit,
+    GLOBALS.sacredbit),
   ["INSCR"],
   ["OLD"
     "ANCIE"])
@@ -2740,7 +2740,7 @@ add_object(
 put(
   find_obj(
     "ENGRA"),
-  ,odesc1,
+  GLOBALS.odesc1,
   "There are old engravings on the walls here.")
 
 #room
@@ -2808,12 +2808,12 @@ add_object(
       ()
       %<>
       %_(
-          ,vicbit,
-          ,ovison)
+          GLOBALS.vicbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["SPIRI"
     "FIEND"])
@@ -2860,9 +2860,9 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       2
       5
@@ -2890,9 +2890,9 @@ add_object(
     "PRAYE",
     "prayer",
     _(
-      ,readbit,
-      ,sacredbit,
-      ,ovison)),
+      GLOBALS.readbit,
+      GLOBALS.sacredbit,
+      GLOBALS.ovison)),
   ["INSCR"],
   ["ANCIE"
     "OLD"])
@@ -2919,7 +2919,7 @@ add_object(
       %<>
       ()
       %<>
-      %,takebit
+      %GLOBALS.takebit
       0
       15
       8
@@ -2937,8 +2937,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -2957,10 +2957,10 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -2981,9 +2981,9 @@ add_object(
       ()
       %<>
       %_(
-          ,flamebit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.flamebit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       1
       0
       0
@@ -3040,10 +3040,10 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,readbit,
-          ,ovison)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.readbit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -3062,10 +3062,10 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,readbit,
-          ,ovison)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.readbit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -3115,9 +3115,9 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -3136,10 +3136,10 @@ add_object(
       #find_obj
         {"MAILB"}
       %_(
-          ,burnbit,
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -3160,12 +3160,12 @@ add_object(
           {"ADVER"})
       %<>
       %_(
-          ,contbit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       10},
   ["BOX"])
 
@@ -3179,9 +3179,9 @@ add_object(
         {"PUTTY"})
     %<>
     %_(
-        ,contbit,
-        ,takebit,
-        ,ovison)
+        GLOBALS.contbit,
+        GLOBALS.takebit,
+        GLOBALS.ovison)
     0
     0
     0
@@ -3199,9 +3199,9 @@ add_object(
       #find_obj
         {"TUBE"}
       %_(
-          ,toolbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.toolbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -3222,9 +3222,9 @@ add_object(
       ()
       %<>
       %_(
-          ,toolbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.toolbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -3242,9 +3242,9 @@ add_object(
       ()
       %<>
       %_(
-          ,toolbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.toolbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -3277,7 +3277,7 @@ add_object(
 add_melee(
   find_obj(
     "CYCLO"),
-  ,cyclops_melee)
+  GLOBALS.cyclops_melee)
 
 #room
   {"BLROO"
@@ -3303,13 +3303,13 @@ add_object(
       ()
       %<>
       %_(
-          ,vicbit,
-          ,ovison,
-          ,villain)
+          GLOBALS.vicbit,
+          GLOBALS.ovison,
+          GLOBALS.villain)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       10000},
   ["ONE-E"
     "MONST"])
@@ -3337,9 +3337,9 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       10
       10
@@ -3391,9 +3391,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,takebit,
-          ,ovison)
+          GLOBALS.burnbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       4
       7
@@ -3411,9 +3411,9 @@ add_demon(
     chtype(
       [robber
         ()
-        ,rooms
+        GLOBALS.rooms
         1(
-          ,rooms)
+          GLOBALS.rooms)
         find_obj(
           "THIEF")
         <>],
@@ -3430,7 +3430,7 @@ psetg(
 add_object(
   #object
     {"THIEF"
-      %,robber_c_desc
+      %GLOBALS.robber_c_desc
       "thief"
       %<>
       robber_function
@@ -3438,13 +3438,13 @@ add_object(
           {"STILL"})
       %<>
       %_(
-          ,vicbit,
-          ,ovison,
-          ,villain)
+          GLOBALS.vicbit,
+          GLOBALS.ovison,
+          GLOBALS.villain)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       4},
   ["ROBBE"
     "CROOK"
@@ -3462,7 +3462,7 @@ add_object(
 add_melee(
   find_obj(
     "THIEF"),
-  ,thief_melee)
+  GLOBALS.thief_melee)
 
 add_object(
   #object
@@ -3475,8 +3475,8 @@ add_object(
       %find_obj(
           "THIEF")
       %_(
-          ,ovison,
-          ,weaponbit)
+          GLOBALS.ovison,
+          GLOBALS.weaponbit)
       0
       0
       0
@@ -3563,9 +3563,9 @@ add_object(
     "WIND1",
     "window",
     window_function,
-    ,ovison,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["WINDO"],
   [])
 
@@ -3574,9 +3574,9 @@ add_object(
     "WIND2",
     "window",
     window_function,
-    ,ovison,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["WINDO"],
   [])
 
@@ -3585,10 +3585,10 @@ add_object(
     "BOLT",
     "bolt",
     bolt_function,
-    ,turnbit,
-    ,ovison,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.turnbit,
+    GLOBALS.ovison,
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["BOLT"
     "NUT"],
   [])
@@ -3598,8 +3598,8 @@ add_object(
     "GRAT1",
     "grating",
     grat1_function,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["GRATI"
     "GRATE"],
   [])
@@ -3609,9 +3609,9 @@ add_object(
     "GRAT2",
     "grating",
     grat2_function,
-    ,ovison,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["GRATI"
     "GRATE"],
   [])
@@ -3619,10 +3619,10 @@ add_object(
 add_object(
   aobject(
     "DOOR",
-    ,doorstr,
+    GLOBALS.doorstr,
     trap_door,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["TRAPD"
     "TRAP-"],
   ["TRAP"])
@@ -3630,10 +3630,10 @@ add_object(
 add_object(
   aobject(
     "TDOOR",
-    ,doorstr,
+    GLOBALS.doorstr,
     trap_door,
-    ,doorbit,
-    ,ndescbit),
+    GLOBALS.doorbit,
+    GLOBALS.ndescbit),
   ["TRAPD"
     "TRAP-"],
   ["TRAP"])
@@ -3641,11 +3641,11 @@ add_object(
 add_object(
   aobject(
     "WDOOR",
-    ,doorstr,
+    GLOBALS.doorstr,
     ddoor_function,
-    ,ovison,
-    ,ndescbit,
-    ,readbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.readbit),
   ["DOOR"],
   ["WOODE"])
 
@@ -3657,20 +3657,20 @@ add_desc(
 add_object(
   aobject(
     "FDOOR",
-    ,doorstr,
+    GLOBALS.doorstr,
     ddoor_function,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["DOOR"],
   ["FRONT"])
 
 add_object(
   aobject(
     "SDOOR",
-    ,doorstr,
+    GLOBALS.doorstr,
     ddoor_function,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["DOOR"],
   ["STONE"])
 
@@ -3679,9 +3679,9 @@ add_object(
     "MSWIT",
     "switch",
     mswitch_function,
-    ,ovison,
-    ,ndescbit,
-    ,turnbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.turnbit),
   ["SWITC"])
 
 // ASSORTED GARBAGE
@@ -3690,14 +3690,14 @@ add_object(
   sobject(
     "HPOLE",
     "head on a pole",
-    ,ovison),
+    GLOBALS.ovison),
   ["HEAD"])
 
 add_object(
   sobject(
     "CORPS",
     "corpses",
-    ,ovison),
+    GLOBALS.ovison),
   [],
   ["MANGL"])
 
@@ -3706,9 +3706,9 @@ add_object(
     "BODIE",
     "pile of bodies",
     body_function,
-    ,ovison,
-    ,ndescbit,
-    ,trytakebit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.trytakebit),
   ["BODY"
     "CORPS"])
 
@@ -3716,8 +3716,8 @@ add_object(
   sobject(
     "DAM",
     "dam",
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["GATE"
     "GATES"
     "FCD"])
@@ -3726,31 +3726,31 @@ add_object(
   sobject(
     "RAILI",
     "railing",
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["RAIL"])
 
 add_object(
   sobject(
     "BUTTO",
     "button",
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["SWITC"])
 
 sobject(
   "BUBBL",
   "bubble",
-  ,ovison,
-  ,ndescbit)
+  GLOBALS.ovison,
+  GLOBALS.ndescbit)
 
 add_object(
   aobject(
     "LEAK",
     "leak",
     leak_function,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["DRIP"
     "HOLE"])
 
@@ -3760,10 +3760,10 @@ add_star(
       "EVERY",
       "everything",
       everything,
-      ,ovison,
-      ,takebit,
-      ,no_check_bit,
-      ,ndescbit),
+      GLOBALS.ovison,
+      GLOBALS.takebit,
+      GLOBALS.no_check_bit,
+      GLOBALS.ndescbit),
     ["ALL"]))
 
 add_star(
@@ -3772,32 +3772,32 @@ add_star(
       "VALUA",
       "valuables",
       valuables,
-      ,ovison,
-      ,takebit,
-      ,no_check_bit,
-      ,ndescbit),
+      GLOBALS.ovison,
+      GLOBALS.takebit,
+      GLOBALS.no_check_bit,
+      GLOBALS.ndescbit),
     ["TREAS"]))
 
 add_star(
   sobject(
     "SAILO",
     "sailor",
-    ,ovison,
-    ,ndescbit))
+    GLOBALS.ovison,
+    GLOBALS.ndescbit))
 
 add_star(
   sobject(
     "TEETH",
     "set of teeth",
-    ,ovison,
-    ,ndescbit))
+    GLOBALS.ovison,
+    GLOBALS.ndescbit))
 
 add_star(
   sobject(
     "WALL",
     "wall",
-    ,ovison,
-    ,ndescbit))
+    GLOBALS.ovison,
+    GLOBALS.ndescbit))
 
 add_star(
   find_obj(
@@ -3808,9 +3808,9 @@ add_star(
     sobject(
       "HANDS",
       "pair of hands",
-      ,ovison,
-      ,ndescbit,
-      ,toolbit),
+      GLOBALS.ovison,
+      GLOBALS.ndescbit,
+      GLOBALS.toolbit),
     ["HAND"],
     ["BARE"]))
 
@@ -3819,9 +3819,9 @@ add_star(
     sobject(
       "LUNGS",
       "breath",
-      ,ovison,
-      ,ndescbit,
-      ,toolbit),
+      GLOBALS.ovison,
+      GLOBALS.ndescbit,
+      GLOBALS.toolbit),
     ["LUNG"
       "AIR"]))
 
@@ -3829,15 +3829,15 @@ add_star(
   sobject(
     "AVIAT",
     "flyer",
-    ,ovison,
-    ,ndescbit))
+    GLOBALS.ovison,
+    GLOBALS.ndescbit))
 
 add_object(
   sobject(
     "RBUTT",
-    ,butstr,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.butstr,
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"
     "SWITC"],
   ["RED"])
@@ -3845,9 +3845,9 @@ add_object(
 add_object(
   sobject(
     "YBUTT",
-    ,butstr,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.butstr,
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"
     "SWITC"],
   ["YELLO"])
@@ -3855,9 +3855,9 @@ add_object(
 add_object(
   sobject(
     "BLBUT",
-    ,butstr,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.butstr,
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"
     "SWITC"],
   ["BLUE"])
@@ -3865,9 +3865,9 @@ add_object(
 add_object(
   sobject(
     "BRBUT",
-    ,butstr,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.butstr,
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"
     "SWITC"],
   ["BROWN"])
@@ -3877,9 +3877,9 @@ add_object(
     "BAT",
     "bat",
     fly_me,
-    ,ovison,
-    ,ndescbit,
-    ,trytakebit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.trytakebit),
   ["VAMPI"],
   [])
 
@@ -3888,8 +3888,8 @@ add_object(
 sobject(
   "RAINB",
   "rainbow",
-  ,ovison,
-  ,ndescbit)
+  GLOBALS.ovison,
+  GLOBALS.ndescbit)
 
 psetg(
   cliffs,
@@ -3921,11 +3921,11 @@ psetg(
 #room
   {"RIVR1"
     "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
-    %,riverdesc
+    %GLOBALS.riverdesc
     %<>
     #exit
       {"UP"
-        %,current
+        %GLOBALS.current
         "WEST"
         "DOCK"
         "LAND"
@@ -3933,37 +3933,37 @@ psetg(
         "DOWN"
         "RIVR2"
         "EAST"
-        %,cliffs}
+        %GLOBALS.cliffs}
     ()
     %<>
     0
-    %,rwaterbit}
+    %GLOBALS.rwaterbit}
 
 #room
   {"RIVR2"
     "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
-    %,riverdesc
+    %GLOBALS.riverdesc
     %<>
     #exit
       {"UP"
-        %,current
+        %GLOBALS.current
         "DOWN"
         "RIVR3"
         "EAST"
-        %,cliffs}
+        %GLOBALS.cliffs}
     ()
     %<>
     0
-    %,rwaterbit}
+    %GLOBALS.rwaterbit}
 
 #room
   {"RIVR3"
     "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
-    %,riverdesc
+    %GLOBALS.riverdesc
     %<>
     #exit
       {"UP"
-        %,current
+        %GLOBALS.current
         "DOWN"
         "RIVR4"
         "EAST"
@@ -3976,7 +3976,7 @@ psetg(
     ()
     %<>
     0
-    %,rwaterbit}
+    %GLOBALS.rwaterbit}
 
 psetg(
   narrow,
@@ -3992,7 +3992,7 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF2"
-            %,narrow}
+            %GLOBALS.narrow}
         "LAUNC"
         "RIVR3"}
     ()
@@ -4009,7 +4009,7 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF1"
-            %,narrow}
+            %GLOBALS.narrow}
         "LAUNC"
         "RIVR4"}
     ()
@@ -4019,11 +4019,11 @@ psetg(
 #room
   {"RIVR4"
     "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
-    %,riverdesc
+    %GLOBALS.riverdesc
     %<>
     #exit
       {"UP"
-        %,current
+        %GLOBALS.current
         "DOWN"
         "RIVR5"
         "EAST"
@@ -4037,16 +4037,16 @@ psetg(
         {"BUOY"})
     rivr4_room
     0
-    %,rwaterbit}
+    %GLOBALS.rwaterbit}
 
 #room
   {"RIVR5"
     "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
-    %,riverdesc
+    %GLOBALS.riverdesc
     %<>
     #exit
       {"UP"
-        %,current
+        %GLOBALS.current
         "DOWN"
         "FCHMP"
         "LAND"
@@ -4054,7 +4054,7 @@ psetg(
     ()
     %<>
     0
-    %,rwaterbit}
+    %GLOBALS.rwaterbit}
 
 #room
   {"FCHMP"
@@ -4188,11 +4188,11 @@ setg(
     t
     #exit
       {"UP"
-        %,crain
+        %GLOBALS.crain
         "NW"
-        %,crain
+        %GLOBALS.crain
         "WEST"
-        %,crain
+        %GLOBALS.crain
         "SE"
         "CLBOT"}
     (#find_obj
@@ -4252,7 +4252,7 @@ add_object(
       %<>
       ()
       %<>
-      %,takebit
+      %GLOBALS.takebit
       0
       10
       10
@@ -4270,7 +4270,7 @@ add_object(
       %<>
       ()
       %<>
-      %,takebit
+      %GLOBALS.takebit
       0
       10
       13
@@ -4289,9 +4289,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4311,9 +4311,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4333,9 +4333,9 @@ add_object(
       ()
       %<>
       %_(
-          ,toolbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.toolbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4355,10 +4355,10 @@ add_object(
           {"LABEL"})
       %<>
       %_(
-          ,vehbit,
-          ,burnbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.vehbit,
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4371,14 +4371,14 @@ add_object(
 put(
   find_obj(
     "RBOAT"),
-  ,oopen_Q,
+  GLOBALS.oopen_Q,
   t)
 
 put(
   find_obj(
     "RBOAT"),
-  ,orand,
-  ,rwaterbit)
+  GLOBALS.orand,
+  GLOBALS.rwaterbit)
 
 add_object(
   #object
@@ -4391,10 +4391,10 @@ add_object(
       #find_obj
         {"RBOAT"}
       %_(
-          ,burnbit,
-          ,ovison,
-          ,readbit,
-          ,takebit)
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.readbit,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4418,8 +4418,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4432,7 +4432,7 @@ add_object(
 sobject(
   "BARRE",
   "barrel",
-  ,ovison)
+  GLOBALS.ovison)
 
 add_object(
   #object
@@ -4445,10 +4445,10 @@ add_object(
           {"EMERA"})
       %<>
       %_(
-          ,contbit,
-          ,findmebit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.contbit,
+          GLOBALS.findmebit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4468,8 +4468,8 @@ add_object(
       #find_obj
         {"BUOY"}
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       5
       10
@@ -4487,9 +4487,9 @@ add_object(
       ()
       %<>
       %_(
-          ,toolbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.toolbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4507,8 +4507,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4527,7 +4527,7 @@ add_object(
       grue_function
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
@@ -4560,18 +4560,18 @@ setg(
 #room
   {"VAIR1"
     "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
-    %,volcore
+    %GLOBALS.volcore
     %<>
-    %,nulexit
+    %GLOBALS.nulexit
     ()
     %<>
     0
-    %,rairbit}
+    %GLOBALS.rairbit}
 
 #room
   {"VAIR2"
     "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
-    %,volcore
+    %GLOBALS.volcore
     %<>
     #exit
       {"WEST"
@@ -4581,23 +4581,23 @@ setg(
     ()
     %<>
     0
-    %,rairbit}
+    %GLOBALS.rairbit}
 
 #room
   {"VAIR3"
     "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
-    %,volcore
+    %GLOBALS.volcore
     %<>
-    %,nulexit
+    %GLOBALS.nulexit
     ()
     %<>
     0
-    %,rairbit}
+    %GLOBALS.rairbit}
 
 #room
   {"VAIR4"
     "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
-    %,volcore
+    %GLOBALS.volcore
     %<>
     #exit
       {"LAND"
@@ -4607,7 +4607,7 @@ setg(
     ()
     %<>
     0
-    %,rairbit}
+    %GLOBALS.rairbit}
 
 setg(
   cxgnome,
@@ -4627,7 +4627,7 @@ setg(
         "LAUNC"
         "VAIR2"
         "WEST"
-        %,cxgnome
+        %GLOBALS.cxgnome
         "SOUTH"
         "LIBRA"}
     (#find_obj
@@ -4681,7 +4681,7 @@ setg(
         "LAUNC"
         "VAIR4"
         "WEST"
-        %,cxgnome
+        %GLOBALS.cxgnome
         "SOUTH"
         "SAFE"}
     (#find_obj
@@ -4728,8 +4728,8 @@ add_object(
           {"RECEP"})
       %<>
       %_(
-          ,vehbit,
-          ,ovison)
+          GLOBALS.vehbit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -4741,14 +4741,14 @@ add_object(
 put(
   find_obj(
     "BALLO"),
-  ,oopen_Q,
+  GLOBALS.oopen_Q,
   t)
 
 put(
   find_obj(
     "BALLO"),
-  ,orand,
-  ,rairbit)
+  GLOBALS.orand,
+  GLOBALS.rairbit)
 
 #object
   {"RECEP"
@@ -4760,13 +4760,13 @@ put(
     #find_obj
       {"BALLO"}
     %_(
-        ,contbit,
-        ,ovison,
-        ,searchbit)
+        GLOBALS.contbit,
+        GLOBALS.ovison,
+        GLOBALS.searchbit)
     0
     0
     0
-    %,bigfix
+    %GLOBALS.bigfix
     6}
 
 add_object(
@@ -4779,11 +4779,11 @@ add_object(
       ()
       #find_obj
         {"BALLO"}
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["BAG"],
   ["CLOTH"])
@@ -4799,12 +4799,12 @@ add_object(
       #find_obj
         {"BALLO"}
       %_(
-          ,tiebit,
-          ,ovison)
+          GLOBALS.tiebit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["WIRE"],
   ["BRAID"])
@@ -4818,11 +4818,11 @@ add_object(
       %<>
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["HOOK"])
 
@@ -4835,11 +4835,11 @@ add_object(
       %<>
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["HOOK"])
 
@@ -4853,9 +4853,9 @@ add_object(
       ()
       %<>
       %_(
-          ,readbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.readbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       10
       12
@@ -4882,12 +4882,12 @@ add_object(
           {"CARD"})
       %<>
       %_(
-          ,contbit,
-          ,ovison)
+          GLOBALS.contbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       15},
   ["BOX"])
 
@@ -4902,10 +4902,10 @@ add_object(
       #find_obj
         {"SAFE"}
       %_(
-          ,ovison,
-          ,takebit,
-          ,readbit,
-          ,burnbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.readbit,
+          GLOBALS.burnbit)
       0
       0
       0
@@ -4927,11 +4927,11 @@ add_object(
       %<>
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       10},
   ["SLOT"
     "HOLE"])
@@ -4939,7 +4939,7 @@ add_object(
 put(
   find_obj(
     "SSLOT"),
-  ,oopen_Q,
+  GLOBALS.oopen_Q,
   t)
 
 add_object(
@@ -4953,8 +4953,8 @@ add_object(
       #find_obj
         {"SAFE"}
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       15
       10
@@ -4973,10 +4973,10 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,searchbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.burnbit,
+          GLOBALS.searchbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -4989,7 +4989,7 @@ add_object(
 put(
   find_obj(
     "BRICK"),
-  ,oopen_Q,
+  GLOBALS.oopen_Q,
   t)
 
 add_object(
@@ -5002,9 +5002,9 @@ add_object(
       ()
       %<>
       %_(
-          ,burnbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -5025,12 +5025,12 @@ add_object(
       ()
       %<>
       %_(
-          ,vicbit,
-          ,ovison)
+          GLOBALS.vicbit,
+          GLOBALS.ovison)
       0
       0
       0
-      %,bigfix
+      %GLOBALS.bigfix
       0},
   ["TROLL"])
 
@@ -5045,10 +5045,10 @@ add_object(
       #find_obj
         {"BALLO"}
       %_(
-          ,ovison,
-          ,takebit,
-          ,readbit,
-          ,burnbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.readbit,
+          GLOBALS.burnbit)
       0
       0
       0
@@ -5072,8 +5072,8 @@ add_object(
       ()
       %<>
       %_(
-          ,takebit,
-          ,ovison)
+          GLOBALS.takebit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -5093,10 +5093,10 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.contbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -5115,10 +5115,10 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.contbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -5138,10 +5138,10 @@ add_object(
           {"STAMP"})
       %<>
       %_(
-          ,takebit,
-          ,ovison,
-          ,readbit,
-          ,contbit)
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit,
+          GLOBALS.contbit)
       0
       0
       0
@@ -5160,10 +5160,10 @@ add_object(
       ()
       %<>
       %_(
-          ,contbit,
-          ,takebit,
-          ,ovison,
-          ,readbit)
+          GLOBALS.contbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison,
+          GLOBALS.readbit)
       0
       0
       0
@@ -5179,22 +5179,22 @@ psetg(
 add_desc(
   find_obj(
     "BLBK"),
-  ,greek_to_me)
+  GLOBALS.greek_to_me)
 
 add_desc(
   find_obj(
     "GRBK"),
-  ,greek_to_me)
+  GLOBALS.greek_to_me)
 
 add_desc(
   find_obj(
     "PUBK"),
-  ,greek_to_me)
+  GLOBALS.greek_to_me)
 
 add_desc(
   find_obj(
     "WHBK"),
-  ,greek_to_me)
+  GLOBALS.greek_to_me)
 
 #object
   {"STAMP"
@@ -5206,10 +5206,10 @@ add_desc(
     #find_obj
       {"PUBK"}
     %_(
-        ,takebit,
-        ,readbit,
-        ,burnbit,
-        ,ovison)
+        GLOBALS.takebit,
+        GLOBALS.readbit,
+        GLOBALS.burnbit,
+        GLOBALS.ovison)
     0
     4
     10
@@ -5231,23 +5231,23 @@ setg(
 put(
   find_obj(
     "LAMP"),
-  ,orand,
+  GLOBALS.orand,
   [0
     clock_disable(
       clock_int(
-        ,lntin,
+        GLOBALS.lntin,
         350))])
 
 put(
   find_obj(
     "CANDL"),
-  ,orand,
+  GLOBALS.orand,
   <>)
 
 put(
   find_obj(
     "MATCH"),
-  ,orand,
+  GLOBALS.orand,
   5)
 
 // NUMBER OF MATCHES
@@ -5289,9 +5289,9 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,readbit,
-          ,ovison)},
+          GLOBALS.trytakebit,
+          GLOBALS.readbit,
+          GLOBALS.ovison)},
   ["GRAVE"])
 
 add_desc(
@@ -5309,9 +5309,9 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,sacredbit,
-          ,ovison)},
+          GLOBALS.trytakebit,
+          GLOBALS.sacredbit,
+          GLOBALS.ovison)},
   ["HEAD"
     "POLE"
     "POLES"
@@ -5332,8 +5332,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit)
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -5351,10 +5351,10 @@ add_object(
       ()
       %<>
       %_(
-          ,readbit,
-          ,burnbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.readbit,
+          GLOBALS.burnbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -5380,8 +5380,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,transbit)},
+          GLOBALS.ovison,
+          GLOBALS.transbit)},
   ["CASE"],
   ["LARGE"])
 
@@ -5393,7 +5393,7 @@ mapf(
     find_room(
         spname(
           _x)),
-    ,rfillbit),
+    GLOBALS.rfillbit),
   _X,
   [resen_X_rooms
     reses_X_rooms
@@ -5419,7 +5419,7 @@ mapf(
     rtro,
     find_room(
         _x),
-    ,rhousebit),
+    GLOBALS.rhousebit),
   ["LROOM"
     "KITCH"
     "ATTIC"])
@@ -5431,7 +5431,7 @@ mapf(
     rtro,
     find_room(
         _x),
-    ,rsacredbit),
+    GLOBALS.rsacredbit),
   ["BSHAF"
     "RIVR1"
     "DOCK"
@@ -5493,21 +5493,21 @@ setg(
     %<>
     #exit
       {"NORTH"
-        %,magcmach
+        %GLOBALS.magcmach
         "SOUTH"
-        %,magcmach
+        %GLOBALS.magcmach
         "WEST"
-        %,magcmach
+        %GLOBALS.magcmach
         "NE"
-        %,magcmach
+        %GLOBALS.magcmach
         "NW"
-        %,magalice
+        %GLOBALS.magalice
         "SW"
-        %,magalice
+        %GLOBALS.magalice
         "SE"
-        %,magalice
+        %GLOBALS.magalice
         "EAST"
-        %,magcmach}
+        %GLOBALS.magcmach}
     (#find_obj
         {"RBTLB"}
       #find_obj
@@ -5566,8 +5566,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,ndescbit)
+          GLOBALS.ovison,
+          GLOBALS.ndescbit)
       0
       0
       0
@@ -5585,7 +5585,7 @@ add_object(
       %<>
       ()
       %<>
-      %,ovison
+      %GLOBALS.ovison
       0
       0
       0
@@ -5604,9 +5604,9 @@ add_object(
       ()
       %<>
       %_(
-          ,trytakebit,
-          ,sacredbit,
-          ,ovison)
+          GLOBALS.trytakebit,
+          GLOBALS.sacredbit,
+          GLOBALS.ovison)
       0
       6
       6
@@ -5619,30 +5619,30 @@ add_object(
 add_object(
   aobject(
     "SQBUT",
-    ,butstr,
+    GLOBALS.butstr,
     buttons,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"],
   ["SQUAR"])
 
 add_object(
   aobject(
     "RNBUT",
-    ,butstr,
+    GLOBALS.butstr,
     buttons,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"],
   ["ROUND"])
 
 add_object(
   aobject(
     "TRBUT",
-    ,butstr,
+    GLOBALS.butstr,
     buttons,
-    ,ovison,
-    ,ndescbit),
+    GLOBALS.ovison,
+    GLOBALS.ndescbit),
   ["BUTTO"],
   ["TRIAN"])
 
@@ -5662,8 +5662,8 @@ add_object(
     %<>
     10
     %_(
-        ,rlandbit,
-        ,rbuckbit)}
+        GLOBALS.rlandbit,
+        GLOBALS.rbuckbit)}
 
 #room
   {"BWELL"
@@ -5683,8 +5683,8 @@ add_object(
     %<>
     0
     %_(
-        ,rlandbit,
-        ,rbuckbit)}
+        GLOBALS.rlandbit,
+        GLOBALS.rbuckbit)}
 
 psetg(
   ewalls,
@@ -5696,19 +5696,19 @@ add_object(
   sobject(
     "ETCH1",
     "wall with etchings",
-    ,ovison,
-    ,ndescbit,
-    ,readbit),
-  ,ewalls)
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.readbit),
+  GLOBALS.ewalls)
 
 add_object(
   sobject(
     "ETCH2",
     "wall with etchings",
-    ,ovison,
-    ,ndescbit,
-    ,readbit),
-  ,ewalls)
+    GLOBALS.ovison,
+    GLOBALS.ndescbit,
+    GLOBALS.readbit),
+  GLOBALS.ewalls)
 
 add_desc(
   find_obj(
@@ -5756,13 +5756,13 @@ psetg(
     %<>
     #exit
       {"NW"
-        %,smdrop
+        %GLOBALS.smdrop
         "EAST"
         "ALITR"
         "WEST"
-        %,smdrop
+        %GLOBALS.smdrop
         "DOWN"
-        %,smdrop}
+        %GLOBALS.smdrop}
     (#find_obj
         {"POSTS"})}
 
@@ -5793,9 +5793,9 @@ add_object(
       ()
       %<>
       %_(
-          ,transbit,
-          ,ovison,
-          ,takebit)
+          GLOBALS.transbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit)
       0
       0
       0
@@ -5814,8 +5814,8 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,vicbit)
+          GLOBALS.ovison,
+          GLOBALS.vicbit)
       0
       0
       0
@@ -5833,7 +5833,7 @@ add_object(
       %<>
       ()
       %<>
-      %,takebit
+      %GLOBALS.takebit
       0
       5
       5
@@ -5847,7 +5847,7 @@ add_object(
   sobject(
     "ATABL",
     "large oblong table",
-    ,ovison),
+    GLOBALS.ovison),
   [],
   ["LARGE"
     "OBLON"])
@@ -5856,7 +5856,7 @@ add_object(
   sobject(
     "POSTS",
     "wooden posts",
-    ,ovison),
+    GLOBALS.ovison),
   ["POST"],
   ["WOODE"])
 
@@ -5870,8 +5870,8 @@ add_object(
       ()
       %<>
       %_(
-          ,vehbit,
-          ,ovison)
+          GLOBALS.vehbit,
+          GLOBALS.ovison)
       0
       0
       0
@@ -5890,9 +5890,9 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit,
-          ,foodbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.foodbit)
       0
       0
       0
@@ -5912,10 +5912,10 @@ add_object(
       ()
       %<>
       %_(
-          ,readbit,
-          ,ovison,
-          ,takebit,
-          ,foodbit)
+          GLOBALS.readbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.foodbit)
       0
       0
       0
@@ -5935,10 +5935,10 @@ add_object(
       ()
       %<>
       %_(
-          ,readbit,
-          ,ovison,
-          ,takebit,
-          ,foodbit)
+          GLOBALS.readbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.foodbit)
       0
       0
       0
@@ -5958,10 +5958,10 @@ add_object(
       ()
       %<>
       %_(
-          ,readbit,
-          ,ovison,
-          ,takebit,
-          ,foodbit)
+          GLOBALS.readbit,
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.foodbit)
       0
       0
       0
@@ -5976,10 +5976,10 @@ put(
   put(
     find_obj(
       "BUCKE"),
-    ,oopen_Q,
+    GLOBALS.oopen_Q,
     t),
-  ,orand,
-  ,rbuckbit)
+  GLOBALS.orand,
+  GLOBALS.rbuckbit)
 
 add_object(
   #object
@@ -5991,10 +5991,10 @@ add_object(
       ()
       %<>
       %_(
-          ,sacredbit,
-          ,vicbit,
-          ,ovison,
-          ,actorbit)
+          GLOBALS.sacredbit,
+          GLOBALS.vicbit,
+          GLOBALS.ovison,
+          GLOBALS.actorbit)
       0
       0
       0
@@ -6007,7 +6007,7 @@ add_object(
 put(
   find_obj(
     "ROBOT"),
-  ,orand,
+  GLOBALS.orand,
   add_actor(
     chtype(
       [find_room(
@@ -6033,10 +6033,10 @@ add_object(
       ()
       %<>
       %_(
-          ,ovison,
-          ,takebit,
-          ,readbit,
-          ,burnbit)
+          GLOBALS.ovison,
+          GLOBALS.takebit,
+          GLOBALS.readbit,
+          GLOBALS.burnbit)
       0
       0
       0
@@ -6148,19 +6148,19 @@ vsynonym(
 add_action(
   "LIGHT",
   "Light",
-  [(,lightbit
+  [(GLOBALS.lightbit
       aobjs
       robjs
       no_take)
     ["LIGHT"
       lamp_on]
     driver],
-  [(,lightbit
+  [(GLOBALS.lightbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (,flamebit
+    (GLOBALS.flamebit
       aobjs)
     ["LIGHT"
       lamp_on]])
@@ -6168,7 +6168,7 @@ add_action(
 add_action(
   "EXTIN",
   "Turn off",
-  [(,lightbit
+  [(GLOBALS.lightbit
       aobjs
       robjs)
     ["EXTIN"
@@ -6181,30 +6181,30 @@ vsynonym(
 add_action(
   "TURN",
   "Turn",
-  [(,turnbit
+  [(GLOBALS.turnbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (,toolbit
+    (GLOBALS.toolbit
       robjs
       aobjs)
     ["TURN"
       turner]
     driver],
   ["ON"
-    (,lightbit
+    (GLOBALS.lightbit
       aobjs
       robjs)
     ["TURN-ON"
       lamp_on]],
   ["OFF"
-    (,lightbit
+    (GLOBALS.lightbit
       aobjs
       robjs)
     ["TURN-OFF"
       lamp_off]],
-  [(,turnbit
+  [(GLOBALS.turnbit
       aobjs
       robjs
       no_take)
@@ -6249,13 +6249,13 @@ add_action(
   "Give",
   [obj
     "TO"
-    (,vicbit
+    (GLOBALS.vicbit
       robjs
       no_take)
     ["GIVE"
       dropper]
     driver],
-  [(,vicbit
+  [(GLOBALS.vicbit
       robjs
       no_take)
     obj
@@ -6271,17 +6271,17 @@ vsynonym(
 add_action(
   "STRIK",
   "Strike",
-  [(,vicbit
+  [(GLOBALS.vicbit
       _
       robjs
       no_take)
     "WITH"
-    (,weaponbit
+    (GLOBALS.weaponbit
       aobjs
       robjs)
     ["ATTAC"
       attacker]],
-  [(,vicbit
+  [(GLOBALS.vicbit
       _
       robjs
       no_take)
@@ -6357,7 +6357,7 @@ add_action(
   [(_1
       aobjs)
     "AT"
-    (,vicbit
+    (GLOBALS.vicbit
       robjs
       no_take)
     ["THROW"
@@ -6371,7 +6371,7 @@ vsynonym(
 add_action(
   "TELL",
   "Tell",
-  [(,actorbit)
+  [(GLOBALS.actorbit)
     ["TELL"
       command]])
 
@@ -6538,12 +6538,12 @@ vsynonym(
 add_action(
   "BURN",
   "Burn",
-  [(,burnbit
+  [(GLOBALS.burnbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (,flamebit
+    (GLOBALS.flamebit
       aobjs
       robjs)
     ["BURN"
@@ -6557,11 +6557,11 @@ vsynonym(
 add_action(
   "KILL",
   "Kill",
-  [(,villain
+  [(GLOBALS.villain
       robjs
       no_take)
     "WITH"
-    (,weaponbit
+    (GLOBALS.weaponbit
       aobjs)
     ["KILL"
       killer]])
@@ -6575,11 +6575,11 @@ vsynonym(
 add_action(
   "ATTAC",
   "Attack",
-  [(,villain
+  [(GLOBALS.villain
       robjs
       no_take)
     "WITH"
-    (,weaponbit
+    (GLOBALS.weaponbit
       aobjs)
     ["ATTAC"
       attacker]])
@@ -6598,10 +6598,10 @@ vsynonym(
 add_action(
   "SWING",
   "Swing",
-  [(,weaponbit
+  [(GLOBALS.weaponbit
       aobjs)
     "AT"
-    (,villain
+    (GLOBALS.villain
       robjs
       no_take)
     ["SWING"
@@ -6614,11 +6614,11 @@ vsynonym(
 add_action(
   "POKE",
   "Poke",
-  [(,villain
+  [(GLOBALS.villain
       robjs
       no_take)
     "WITH"
-    (,weaponbit
+    (GLOBALS.weaponbit
       aobjs)
     ["POKE"
       munger]])
@@ -6651,8 +6651,8 @@ add_action(
   "OPEN",
   "Open",
   [(_(
-        ,doorbit,
-        ,contbit)
+        GLOBALS.doorbit,
+        GLOBALS.contbit)
       aobjs
       robjs
       no_take)
@@ -6666,8 +6666,8 @@ add_action(
   "CLOSE",
   "Close",
   [(_(
-        ,doorbit,
-        ,contbit)
+        GLOBALS.doorbit,
+        GLOBALS.contbit)
       aobjs
       robjs
       no_take)
@@ -6684,7 +6684,7 @@ add_action(
       robjs
       no_take)
     "WITH"
-    (,toolbit
+    (GLOBALS.toolbit
       aobjs
       robjs)
     ["UNLOC"
@@ -6725,7 +6725,7 @@ vsynonym(
 add_action(
   "EAT",
   "Eat",
-  [(,foodbit
+  [(GLOBALS.foodbit
       aobjs
       robjs)
     ["EAT"
@@ -6741,7 +6741,7 @@ vsynonym(
 add_action(
   "DRINK",
   "Drink",
-  [(,drinkbit
+  [(GLOBALS.drinkbit
       aobjs
       robjs)
     ["DRINK"
@@ -6864,7 +6864,7 @@ sadd_action(
 add_action(
   "WAKE",
   "Wake",
-  [(,vicbit
+  [(GLOBALS.vicbit
       robjs
       no_take)
     ["WAKE"
@@ -6920,14 +6920,14 @@ vsynonym(
 add_action(
   "READ",
   "Read",
-  [(,readbit
+  [(GLOBALS.readbit
       aobjs
       robjs
       no_take)
     ["READ"
       reader]
     driver],
-  [(,readbit
+  [(GLOBALS.readbit
       aobjs
       robjs
       no_take)
@@ -6951,7 +6951,7 @@ add_action(
   "Inflate",
   [obj
     "WITH"
-    (,toolbit
+    (GLOBALS.toolbit
       robjs
       aobjs
       no_take)
@@ -6961,7 +6961,7 @@ add_action(
 add_action(
   "DISEM",
   "Disembark from",
-  [(,vehbit
+  [(GLOBALS.vehbit
       robjs
       no_take)
     ["DISEM"
@@ -6971,7 +6971,7 @@ add_action(
   "DIG",
   "Dig",
   ["WITH"
-    (,toolbit
+    (GLOBALS.toolbit
       aobjs)
     ["DIG"
       digger]])
@@ -6979,7 +6979,7 @@ add_action(
 add_action(
   "BOARD",
   "Board",
-  [(,vehbit
+  [(GLOBALS.vehbit
       robjs
       no_take)
     ["BOARD"
@@ -6998,7 +6998,7 @@ add_action(
     ["KNOCK"
       knock]],
   ["DOWN"
-    (,vicbit
+    (GLOBALS.vicbit
       _
       robjs
       no_take)
@@ -7026,20 +7026,20 @@ add_buzz(
 setg(
   robot_actions,
   _X,
-  [,walk_X_words
-    ,take_X_words
-    ,drop_X_words
-    ,put_X_words
-    ,jump_X_words
-    ,push_X_words
-    ,throw_X_words
-    ,turn_X_words])
+  [GLOBALS.walk_X_words
+    GLOBALS.take_X_words
+    GLOBALS.drop_X_words
+    GLOBALS.put_X_words
+    GLOBALS.jump_X_words
+    GLOBALS.push_X_words
+    GLOBALS.throw_X_words
+    GLOBALS.turn_X_words])
 
 setg(
   player,
   add_actor(
     chtype(
-      [,whous_X_rooms
+      [GLOBALS.whous_X_rooms
         ()
         0
         <>
