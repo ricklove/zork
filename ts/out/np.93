@@ -76,11 +76,11 @@ define(
     vb
     "AUX"
     (words
-      _words)
+      ,words)
     (objob
-      _object_obl)
+      ,object_obl)
     (pv
-      _prsvec)
+      ,prsvec)
     (pvr
       put(
         put(
@@ -91,18 +91,18 @@ define(
         2,
         <>))
     (actions
-      _actions)
+      ,actions)
     (dirs
-      _directions)
+      ,directions)
     (orph
-      _orphans)
+      ,orphans)
     (orfl
       oflag(
         _orph))
     (prv
-      _prepvec)
+      ,prepvec)
     (here
-      _here)
+      ,here)
     (action
       <>)
     (prep
@@ -189,7 +189,7 @@ define(
                   _actions)))
             set(
               action,
-              __atm)),
+              ,_atm)),
           (and(
               not(
                 _action),
@@ -201,11 +201,11 @@ define(
             put(
               _pv,
               1,
-              _walk_X_words)
+              ,walk_X_words)
             put(
               _pv,
               2,
-              __atm)
+              ,_atm)
             return(
               win,
               _sparout)),
@@ -219,7 +219,7 @@ define(
                 (type_Q(
                     set(
                       aval,
-                      __atm),
+                      ,_atm),
                     prep)
                   cond(
                     (_prep
@@ -333,7 +333,7 @@ define(
                             0))))),
                   (_EQ_Q(
                       _obj,
-                      _nefals2)
+                      ,nefals2)
                     or(
                       _vb,
                       tell(
@@ -341,7 +341,7 @@ define(
                         0,
                         odesc2(
                           avehicle(
-                            _winner)),
+                            ,winner)),
                         "."))),
                   (or(
                       _vb,
@@ -524,16 +524,16 @@ define(
       put(
         put(
           put(
-            _orphans,
-            _oname,
+            ,orphans,
+            ,oname,
             _name),
-          _oprep,
+          ,oprep,
           _prep),
-        _oslot1,
+        ,oslot1,
         _slot1),
-      _overb,
+      ,overb,
       _action),
-    _oflag,
+    ,oflag,
     _flag))
 
 define(
@@ -776,7 +776,7 @@ define(
           varg,
           syn1(
             _syn)),
-        _vrbit)
+        ,vrbit)
       take_it(
         _obj,
         _pv,
@@ -802,7 +802,7 @@ define(
           varg,
           syn2(
             _syn)),
-        _vrbit)
+        ,vrbit)
       take_it(
         _obj,
         _pv,
@@ -840,7 +840,7 @@ define(
           oid(
             _obj),
           robjs(
-            _here),
+            ,here),
           <>),
         or(
           can_take_Q(
@@ -848,11 +848,11 @@ define(
           not(
             vtrnn(
               _vrb,
-              _vtbit))))
+              ,vtbit))))
       put(
         _vec,
         1,
-        _take_X_words)
+        ,take_X_words)
       put(
         _vec,
         2,
@@ -874,7 +874,7 @@ define(
     objs
     "AUX"
     (orph
-      _orphans)
+      ,orphans)
     (orfl
       oflag(
         _orph))
@@ -980,7 +980,7 @@ define(
       spname(
         _atm)),
     back(
-      _scrstr,
+      ,scrstr,
       length(
         _sp)),
     <>))
@@ -1080,24 +1080,24 @@ define(
     (aobj
       vtrnn(
         _fword,
-        _vabit))
+        ,vabit))
     (ntake
       vtrnn(
         _fword,
-        _vtbit))
+        ,vtbit))
     (robj
       vtrnn(
         _fword,
-        _vrbit))
+        ,vrbit))
     (obj
       <>)
     nobj
     (pv
-      _prsvec)
+      ,prsvec)
     savobj
     (av
       avehicle(
-        _winner))
+        ,winner))
     sf),
   #decl
     ((bit)
@@ -1132,7 +1132,7 @@ define(
       fwim(
         _bit,
         aobjs(
-          _winner),
+          ,winner),
         _ntake))),
   cond(
     (_robj
@@ -1143,7 +1143,7 @@ define(
               fwim(
                 _bit,
                 robjs(
-                  _here),
+                  ,here),
                 _ntake)),
             or(
               not(
@@ -1157,7 +1157,7 @@ define(
                   _av)),
               trnn(
                 _nobj,
-                _findmebit)))
+                ,findmebit)))
           cond(
             (and(
                 or(
@@ -1177,7 +1177,7 @@ define(
                 put(
                   _pv,
                   1,
-                  _take_X_words),
+                  ,take_X_words),
                 put(
                   _pv,
                   2,
@@ -1209,7 +1209,7 @@ define(
             not(
               empty_Q(
                 _nobj)))
-          _nefals),
+          ,nefals),
         (_obj))),
     (_obj)))
 
@@ -1227,7 +1227,7 @@ define(
     atm),
   chtype(
     mapf(
-      _uvector,
+      ,uvector,
       function(
         (sp
           "AUX"
@@ -1294,7 +1294,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      _vabit)))
+                      ,vabit)))
                 and(
                   memq(
                     robjs,
@@ -1303,7 +1303,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      _vrbit)))
+                      ,vrbit)))
                 and(
                   memq(
                     no_take,
@@ -1312,7 +1312,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      _vtbit)))
+                      ,vtbit)))
                 and(
                   memq(
                     _,
@@ -1321,7 +1321,7 @@ define(
                     sum,
                     _(
                       _sum,
-                      _vxbit)))
+                      ,vxbit)))
                 put(
                   _vv,
                   3,
@@ -1349,11 +1349,11 @@ define(
                             _itm))))
                     put(
                       _syn,
-                      _sfcn,
-                      __atm)),
+                      ,sfcn,
+                      ,_atm)),
                   (put(
                       _syn,
-                      _sfcn,
+                      ,sfcn,
                       setg(
                         set(
                           atm,
@@ -1370,14 +1370,14 @@ define(
                   driver)
                 put(
                   _syn,
-                  _sdriver,
+                  ,sdriver,
                   t)),
               (_EQ_Q(
                   _itm,
                   flip)
                 put(
                   _syn,
-                  _sflip,
+                  ,sflip,
                   t)))),
           _sp),
         or(
@@ -1385,15 +1385,15 @@ define(
             _syn),
           put(
             _syn,
-            _syn1,
-            _evarg)),
+            ,syn1,
+            ,evarg)),
         or(
           syn2(
             _syn),
           put(
             _syn,
-            _syn2,
-            _evarg)),
+            ,syn2,
+            ,evarg)),
         chtype(
           _syn,
           syntax)),
@@ -1440,7 +1440,7 @@ define(
           not(
             vtrnn(
               _varg,
-              _vxbit)),
+              ,vxbit)),
           trnn(
             2(
               _pobj),
@@ -1456,7 +1456,7 @@ define(
           not(
             vtrnn(
               _varg,
-              _vxbit)),
+              ,vxbit)),
           trnn(
             _pobj,
             _vbit)))),
@@ -1539,10 +1539,10 @@ define(
     (oobj
       <>)
     (here
-      _here)
+      ,here)
     (av
       avehicle(
-        _winner))
+        ,winner))
     (chomp
       <>)),
   #decl
@@ -1575,7 +1575,7 @@ define(
         obj,
         search_list(
           _objnam,
-          _stars,
+          ,stars,
           _adj))
       set(
         oobj,
@@ -1584,7 +1584,7 @@ define(
         empty_Q(
           _obj))
       return(
-        _nefals,
+        ,nefals,
         _get_obj))),
   cond(
     (and(
@@ -1595,7 +1595,7 @@ define(
           search_list(
             _objnam,
             robjs(
-              _here),
+              ,here),
             _adj)))
       cond(
         (and(
@@ -1611,13 +1611,13 @@ define(
             not(
               trnn(
                 _obj,
-                _findmebit)))
+                ,findmebit)))
           set(
             chomp,
             t)),
         (_oobj
           return(
-            _nefals,
+            ,nefals,
             _get_obj)),
         (set(
             oobj,
@@ -1629,7 +1629,7 @@ define(
           empty_Q(
             _obj)))
       return(
-        _nefals,
+        ,nefals,
         _get_obj))),
   cond(
     (_av
@@ -1651,7 +1651,7 @@ define(
             empty_Q(
               _obj))
           return(
-            _nefals,
+            ,nefals,
             _get_obj))))),
   cond(
     (set(
@@ -1659,18 +1659,18 @@ define(
         search_list(
           _objnam,
           aobjs(
-            _winner),
+            ,winner),
           _adj))
       cond(
         (_oobj
-          _nefals),
+          ,nefals),
         (_obj))),
     (not(
         empty_Q(
           _obj))
-      _nefals),
+      ,nefals),
     (_chomp
-      _nefals2),
+      ,nefals2),
     (_oobj)))
 
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.\nIF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO\nONE LEVEL OF CONTAINMENT."
@@ -1698,7 +1698,7 @@ define(
     (oobj
       <>)
     (nefals
-      _nefals)
+      ,nefals)
     nobj),
   #decl
     ((objnam)
@@ -1755,7 +1755,7 @@ define(
               _first_Q,
               trnn(
                 _obj,
-                _searchbit)))
+                ,searchbit)))
           cond(
             (set(
                 nobj,
@@ -1829,7 +1829,7 @@ define(
           cond(
             (_nobj
               return(
-                _nefals,
+                ,nefals,
                 _dwim)))
           set(
             nobj,
@@ -1857,7 +1857,7 @@ define(
                   cond(
                     (_nobj
                       return(
-                        _nefals,
+                        ,nefals,
                         _dwim)),
                     (set(
                         nobj,

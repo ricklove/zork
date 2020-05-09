@@ -63,7 +63,7 @@ define(
     objs
     "AUX"
     (winner
-      _winner)),
+      ,winner)),
   #decl
     ((objs)
       tuple(
@@ -170,7 +170,7 @@ define(
     pairs
     "AUX"
     (dobl
-      _directions)
+      ,directions)
     (frob
       ivector(
         length(
@@ -221,7 +221,7 @@ define(
             gassigned_Q(
               _atm),
             type_Q(
-              __atm,
+              ,_atm,
               direction)))
         put(
           _f,
@@ -284,7 +284,7 @@ define(
     (val
       0)
     (bit
-      _rlandbit)
+      ,rlandbit)
     "AUX"
     (rm
       find_room(
@@ -317,35 +317,35 @@ define(
   setg(
     score_max,
     _(
-      _score_max,
+      ,score_max,
       _val)),
   put(
     _rm,
-    _rbits,
+    ,rbits,
     _bit),
   put(
     _rm,
-    _rval,
+    ,rval,
     _val),
   put(
     _rm,
-    _robjs,
+    ,robjs,
     _objs),
   put(
     _rm,
-    _rdesc1,
+    ,rdesc1,
     _d1),
   put(
     _rm,
-    _rdesc2,
+    ,rdesc2,
     _d2),
   put(
     _rm,
-    _rexits,
+    ,rexits,
     _ex),
   put(
     _rm,
-    _raction,
+    ,raction,
     cond(
       (type_Q(
           _app,
@@ -355,7 +355,7 @@ define(
       (_app))),
   put(
     _rm,
-    _rlight_Q,
+    ,rlight_Q,
     cond(
       (type_Q(
           _lit_Q,
@@ -372,7 +372,7 @@ define(
           object),
       put(
         _x,
-        _oroom,
+        ,oroom,
         _rm)),
     robjs(
       _rm)),
@@ -486,7 +486,7 @@ define(
   setg(
     score_max,
     _(
-      _score_max,
+      ,score_max,
       _s1,
       _s2)),
   or(
@@ -496,7 +496,7 @@ define(
       flags,
       _(
         _flags,
-        _lightbit))),
+        ,lightbit))),
   put(
     put(
       put(
@@ -511,29 +511,29 @@ define(
                         put(
                           find_obj(
                             _id),
-                          _odesc1,
+                          ,odesc1,
                           _desc1),
-                        _ocapac,
+                        ,ocapac,
                         _capac),
-                      _osize,
+                      ,osize,
                       _size),
-                    _odesco,
+                    ,odesco,
                     _desco),
-                  _olight_Q,
+                  ,olight_Q,
                   _light_Q),
-                _oflags,
+                ,oflags,
                 _flags),
-              _ofval,
+              ,ofval,
               _s1),
-            _otval,
+            ,otval,
             _s2),
-          _ocan,
+          ,ocan,
           _can),
-        _ocontents,
+        ,ocontents,
         _conts),
-      _odesc2,
+      ,odesc2,
       _desc2),
-    _oaction,
+    ,oaction,
     cond(
       (type_Q(
           _app,
@@ -561,9 +561,9 @@ define(
         _atm)
       cond(
         (type_Q(
-            __atm,
+            ,_atm,
             prep)
-          __atm),
+          ,_atm),
         (error(
             no_prep_X_errors)))),
     (setg(
@@ -583,10 +583,10 @@ define(
       or(
         lookup(
           _nam,
-          _actions),
+          ,actions),
         insert(
           _nam,
-          _actions)))),
+          ,actions)))),
   #decl
     ((nam
         str)
@@ -613,7 +613,7 @@ define(
     nms
     "AUX"
     (dir
-      _directions)
+      ,directions)
     atm),
   #decl
     ((nms)
@@ -651,7 +651,7 @@ define(
     "AUX"
     val
     (dir
-      _directions)
+      ,directions)
     atm),
   #decl
     ((atm)
@@ -713,10 +713,10 @@ define(
         atm,
         lookup(
           _n1,
-          _words))
+          ,words))
       set(
         val,
-        __atm)
+        ,_atm)
       mapf(
         <>,
         function(
@@ -731,10 +731,10 @@ define(
         atm,
         lookup(
           _n1,
-          _actions))
+          ,actions))
       set(
         val,
-        __atm)
+        ,_atm)
       mapf(
         <>,
         function(
@@ -743,10 +743,10 @@ define(
             or(
               lookup(
                 _x,
-                _actions),
+                ,actions),
               insert(
                 _x,
-                _actions)),
+                ,actions)),
             _val)),
         _n2))))
 
@@ -761,10 +761,10 @@ define(
   or(
     lookup(
       _w,
-      _words),
+      ,words),
     insert(
       _w,
-      _words)))
+      ,words)))
 
 define(
   add_buzz,
@@ -832,7 +832,7 @@ define(
       () => [])
     "AUX"
     (objs
-      _object_obl)),
+      ,object_obl)),
   #decl
     ((obj)
       object
@@ -845,9 +845,9 @@ define(
       oblist),
   put(
     _obj,
-    _onames,
+    ,onames,
     mapf(
-      _uvector,
+      ,uvector,
       function(
         (x),
         #decl
@@ -863,9 +863,9 @@ define(
       _names)),
   put(
     _obj,
-    _oadjs,
+    ,oadjs,
     mapf(
-      _uvector,
+      ,uvector,
       function(
         (w),
         add_zork(
@@ -904,10 +904,10 @@ define(
         atm,
         lookup(
           _n1,
-          _words))
+          ,words))
       set(
         val,
-        __atm)
+        ,_atm)
       mapf(
         <>,
         function(
@@ -933,10 +933,10 @@ define(
     or(
       lookup(
         _y,
-        _words),
+        ,words),
       insert(
         _y,
-        _words))))
+        ,words))))
 
 define(
   add_demon,
@@ -967,11 +967,12 @@ define(
                 _x)
               mapleave(
                 t)))),
-        _demons)),
+        ,demons)),
     (setg(
         demons,
         (_x
-          _X_demons)))))
+          _X
+          ,demons)))))
 
 define(
   add_star,
@@ -979,14 +980,15 @@ define(
   setg(
     stars,
     (_obj
-      _X_stars)))
+      _X
+      ,stars)))
 
 define(
   add_actor,
   (adv
     "AUX"
     (actors
-      _actors)),
+      ,actors)),
   #decl
     ((adv)
       adv
@@ -1028,7 +1030,7 @@ define(
       string),
   put(
     _obj,
-    _oread,
+    ,oread,
     _str))
 
 define(

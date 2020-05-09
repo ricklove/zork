@@ -2,7 +2,7 @@ define(
   coke_bottles,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (bottl
       2(
         _pv))
@@ -21,7 +21,7 @@ define(
     (or(
         _EQ_Q(
           _vb,
-          _throw_X_words),
+          ,throw_X_words),
         _EQ_Q(
           vname(
             _vb),
@@ -30,10 +30,10 @@ define(
         "Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately.")
       trz(
         _bottl,
-        _ovison)
+        ,ovison)
       put(
         _bottl,
-        _osize,
+        ,osize,
         0)
       t)))
 
@@ -41,7 +41,7 @@ define(
   head_function,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (vb
       1(
         _pv))
@@ -65,18 +65,18 @@ define(
   cond(
     (n_EQ_Q(
         _vb,
-        _read_X_words)
+        ,read_X_words)
       tell(
         "Although the implementers are dead, they foresaw that some cretin\nwould tamper with their remains.  Therefore, they took steps to\nprevent this.")
       set(
         nl,
         rob_adv(
-          _winner,
+          ,winner,
           _nl))
       set(
         nl,
         rob_room(
-          _here,
+          ,here,
           _nl,
           100))
       cond(
@@ -92,7 +92,7 @@ define(
                 "LROOM")))
           put(
             _lcase,
-            _ocontents,
+            ,ocontents,
             (_X
               ocontents(
                 _lcase)
@@ -116,7 +116,7 @@ define(
       <>)
     "AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -154,7 +154,7 @@ define(
     (and(
         _EQ_Q(
           _pa,
-          _c_int_X_words),
+          ,c_int_X_words),
         cond(
           (memq(
               _w,
@@ -174,7 +174,7 @@ define(
                 _w),
               _buck),
             not(
-              _bucket_top_X_flag))
+              ,bucket_top_X_flag))
           tell(
             "The bucket rises and comes to a stop.")
           setg(
@@ -186,11 +186,11 @@ define(
             _pv,
             _buck)
           clock_int(
-            _bckin,
+            ,bckin,
             100)
           <>),
         (and(
-            _bucket_top_X_flag,
+            ,bucket_top_X_flag,
             n_EQ_Q(
               ocan(
                 _w),
@@ -239,7 +239,7 @@ define(
   cond(
     (_EQ_Q(
         avehicle(
-          _winner),
+          ,winner),
         _b)
       goto(
         _r)
@@ -256,9 +256,9 @@ define(
     r
     c
     (pv
-      _prsvec)
+      ,prsvec)
     (here
-      _here)),
+      ,here)),
   #decl
     ((pv)
       vector
@@ -274,7 +274,7 @@ define(
         _EQ_Q(
           1(
             _pv),
-          _eat_X_words),
+          ,eat_X_words),
         _EQ_Q(
           2(
             _pv),
@@ -290,14 +290,14 @@ define(
         "Suddenly, the room appears to have become very large.")
       kill_obj(
         _c,
-        _winner)
+        ,winner)
       set(
         r,
         find_room(
           "ALISM"))
       put(
         _r,
-        _robjs,
+        ,robjs,
         robjs(
           _here))
       mapf(
@@ -309,14 +309,14 @@ define(
               object),
           put(
             _x,
-            _osize,
+            ,osize,
             _(
               64,
               osize(
                 _x))),
           put(
             _x,
-            _oroom,
+            ,oroom,
             _r)),
         robjs(
           _here))
@@ -327,7 +327,7 @@ define(
   cake_function,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -347,7 +347,7 @@ define(
       find_obj(
         "BLICE"))
     (here
-      _here)
+      ,here)
     r),
   #decl
     ((pv)
@@ -369,7 +369,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _read_X_words)
+        ,read_X_words)
       cond(
         (_pi
           cond(
@@ -404,7 +404,7 @@ define(
     (and(
         _EQ_Q(
           _pa,
-          _eat_X_words),
+          ,eat_X_words),
         member(
           "ALI",
           spname(
@@ -416,7 +416,7 @@ define(
             _oice)
           kill_obj(
             _po,
-            _winner)
+            ,winner)
           iceboom(
             )),
         (_EQ_Q(
@@ -424,7 +424,7 @@ define(
             _bice)
           kill_obj(
             _po,
-            _winner)
+            ,winner)
           tell(
             "The room around you seems to be getting smaller.")
           cond(
@@ -438,7 +438,7 @@ define(
                   "ALICE"))
               put(
                 _r,
-                _robjs,
+                ,robjs,
                 robjs(
                   _here))
               mapf(
@@ -450,11 +450,11 @@ define(
                       object),
                   put(
                     _x,
-                    _oroom,
+                    ,oroom,
                     _r),
                   put(
                     _x,
-                    _osize,
+                    ,osize,
                     _(
                       osize(
                         _x),
@@ -464,11 +464,11 @@ define(
               goto(
                 _r)),
             (jigs_up(
-                _crushed)))))),
+                ,crushed)))))),
     (and(
         _EQ_Q(
           _pa,
-          _throw_X_words),
+          ,throw_X_words),
         _EQ_Q(
           _po,
           _oice),
@@ -479,13 +479,13 @@ define(
               _here))))
       kill_obj(
         _po,
-        _winner)
+        ,winner)
       iceboom(
         )),
     (and(
         _EQ_Q(
           _pa,
-          _throw_X_words),
+          ,throw_X_words),
         _EQ_Q(
           _po,
           _rice),
@@ -500,14 +500,14 @@ define(
       tro(
         find_obj(
           "SAFFR"),
-        _ovison))))
+        ,ovison))))
 
 define(
   flask_function,
   ("AUX"
     f
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))),
@@ -521,19 +521,19 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _open_X_words)
+        ,open_X_words)
       mung_room(
-        _here,
+        ,here,
         "Noxious vapors prevent your entry.")
       jigs_up(
-        _vapors)),
+        ,vapors)),
     (or(
         _EQ_Q(
           _pa,
-          _mung_X_words),
+          ,mung_X_words),
         _EQ_Q(
           _pa,
-          _throw_X_words))
+          ,throw_X_words))
       tell(
         "The flask breaks into pieces.")
       set(
@@ -542,9 +542,9 @@ define(
           _pv))
       trz(
         _f,
-        _ovison)
+        ,ovison)
       jigs_up(
-        _vapors))))
+        ,vapors))))
 
 psetg(
   vapors,
@@ -558,10 +558,10 @@ define(
   iceboom,
   (),
   mung_room(
-    _here,
+    ,here,
     "The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes."),
   jigs_up(
-    _iceblast))
+    ,iceblast))
 
 psetg(
   iceblast,
@@ -572,7 +572,7 @@ define(
   ("AUX"
     foo
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -580,7 +580,7 @@ define(
       2(
         _pv))
     (here
-      _here)
+      ,here)
     m),
   #decl
     ((pv)
@@ -604,30 +604,30 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _look_X_words)
+        ,look_X_words)
       tell(
         "You are in a room with a low ceiling which is circular in shape. \nThere are exits to the east and the southeast.")),
     (and(
         _EQ_Q(
           _pa,
-          _walk_in_X_words),
-        _carousel_flip_X_flag)
+          ,walk_in_X_words),
+        ,carousel_flip_X_flag)
       cond(
-        (_carousel_zoom_X_flag
+        (,carousel_zoom_X_flag
           jigs_up(
-            _spindizzy)),
+            ,spindizzy)),
         (tell(
             "As you enter, your compass starts spinning wildly.")
           <>))),
     (_EQ_Q(
         _pa,
-        _walk_X_words)
+        ,walk_X_words)
       cond(
         (and(
-            _carousel_flip_X_flag,
+            ,carousel_flip_X_flag,
             _EQ_Q(
-              _winner,
-              _player))
+              ,winner,
+              ,player))
           tell(
             "You cannot get your bearings...")
           goto(
@@ -670,7 +670,7 @@ define(
   cmach_room,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))),
@@ -682,7 +682,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _look_X_words)
+        ,look_X_words)
       tell(
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south."))))
 
@@ -699,7 +699,7 @@ define(
   ("AUX"
     i
     (pv
-      _prsvec)
+      ,prsvec)
     (po
       2(
         _pv))
@@ -716,11 +716,11 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _push_X_words)
+        ,push_X_words)
       cond(
         (_EQ_Q(
-            _winner,
-            _player)
+            ,winner,
+            ,player)
           jigs_up(
             "There is a giant spark and you are fried to a crisp.")),
         (_EQ_Q(
@@ -728,7 +728,7 @@ define(
             find_obj(
               "SQBUT"))
           cond(
-            (_carousel_zoom_X_flag
+            (,carousel_zoom_X_flag
               tell(
                 "Nothing seems to happen.")),
             (setg(
@@ -741,7 +741,7 @@ define(
             find_obj(
               "RNBUT"))
           cond(
-            (_carousel_zoom_X_flag
+            (,carousel_zoom_X_flag
               setg(
                 carousel_zoom_X_flag,
                 <>)
@@ -756,7 +756,7 @@ define(
           setg(
             carousel_flip_X_flag,
             not(
-              _carousel_flip_X_flag))
+              ,carousel_flip_X_flag))
           cond(
             (memq(
                 set(
@@ -770,7 +770,7 @@ define(
                 "A dull thump is heard in the distance.")
               trc(
                 _i,
-                _ovison))))))))
+                ,ovison))))))))
 
 psetg(
   spindizzy,
@@ -784,7 +784,7 @@ define(
   sphere_function,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -815,23 +815,23 @@ define(
     fl,
     and(
       not(
-        _cage_solve_X_flag),
+        ,cage_solve_X_flag),
       _EQ_Q(
         _pa,
-        _take_X_words))),
+        ,take_X_words))),
   cond(
     (and(
         _fl,
         _EQ_Q(
-          _player,
-          _winner))
+          ,player,
+          ,winner))
       tell(
         "As you reach for the sphere, an iron cage falls from the ceiling\nto entrap you.  To make matters worse, poisonous gas starts coming\ninto the room.")
       cond(
         (_EQ_Q(
             oroom(
               _r),
-            _here)
+            ,here)
           goto(
             set(
               c,
@@ -847,33 +847,33 @@ define(
               ract,
               orand(
                 _r)),
-            _aroom,
+            ,aroom,
             _c)
           tro(
             _r,
-            _ndescbit)
+            ,ndescbit)
           setg(
             sphere_clock,
             clock_int(
-              _sphin,
+              ,sphin,
               10))
           t),
         (else
           trz(
             find_obj(
               "SPHER"),
-            _ovison)
+            ,ovison)
           mung_room(
             find_room(
               "CAGER"),
             "You are stopped by a cloud of poisonous gas.")
           jigs_up(
-            _poison)))),
+            ,poison)))),
     (_fl
       trz(
         find_obj(
           "SPHER"),
-        _ovison)
+        ,ovison)
       jigs_up(
         "As the robot reaches for the sphere, an iron cage falls from the\nceiling.  The robot attempts to fend it off, but is trapped below it.\nAlas, the robot short-circuits in his vain attempt to escape, and\ncrushes the sphere beneath him as he falls to the floor.")
       remove_object(
@@ -881,21 +881,21 @@ define(
       trz(
         2(
           _pv),
-        _ovison)
+        ,ovison)
       insert_object(
         find_obj(
           "RCAGE"),
-        _here)
+        ,here)
       t),
     (_EQ_Q(
         _pa,
-        _c_int_X_words)
+        ,c_int_X_words)
       mung_room(
         find_room(
           "CAGER"),
         "You are stopped by a cloud of poisonous gas.")
       jigs_up(
-        _poison))))
+        ,poison))))
 
 psetg(
   poison,
@@ -905,7 +905,7 @@ define(
   caged_room,
   (),
   cond(
-    (_cage_solve_X_flag
+    (,cage_solve_X_flag
       setg(
         here,
         find_room(
@@ -923,7 +923,7 @@ define(
   robot_actor,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -958,7 +958,7 @@ define(
     (and(
         _EQ_Q(
           _pa,
-          _raise_X_words),
+          ,raise_X_words),
         _EQ_Q(
           _po,
           find_obj(
@@ -966,10 +966,10 @@ define(
       tell(
         "The cage shakes and is hurled across the room.")
       clock_disable(
-        _sphere_clock)
+        ,sphere_clock)
       setg(
         winner,
-        _player)
+        ,player)
       goto(
         set(
           c,
@@ -983,17 +983,17 @@ define(
         _c)
       tro(
         _cage,
-        _takebit)
+        ,takebit)
       trz(
         _cage,
-        _ndescbit)
+        ,ndescbit)
       trz(
         _r,
-        _ndescbit)
+        ,ndescbit)
       tro(
         find_obj(
           "SPHER"),
-        _takebit)
+        ,takebit)
       remove_object(
         _r)
       insert_object(
@@ -1004,7 +1004,7 @@ define(
           ract,
           orand(
             _r)),
-        _aroom,
+        ,aroom,
         _c)
       setg(
         cage_solve_X_flag,
@@ -1012,20 +1012,20 @@ define(
     (or(
         _EQ_Q(
           _pa,
-          _eat_X_words),
+          ,eat_X_words),
         _EQ_Q(
           _pa,
-          _drink_X_words))
+          ,drink_X_words))
       tell(
         "\"I am sorry but that action is difficult in the absence of a mouth.\")),
     (_EQ_Q(
         _pa,
-        _read_X_words)
+        ,read_X_words)
       tell(
         "\"My vision is not that good without eyes.\")),
     (memq(
         _pa,
-        _robot_actions)
+        ,robot_actions)
       <>),
     (tell(
         "\"I am only a stupid robot and cannot perform that command.\"))))
@@ -1034,7 +1034,7 @@ define(
   robot_function,
   ("AUX"
     (pv
-      _prsvec)
+      ,prsvec)
     (pa
       1(
         _pv))
@@ -1063,7 +1063,7 @@ define(
   cond(
     (_EQ_Q(
         _pa,
-        _give_X_words)
+        ,give_X_words)
       set(
         aa,
         orand(
@@ -1074,7 +1074,7 @@ define(
         _po)
       put(
         _aa,
-        _aobjs,
+        ,aobjs,
         (_po
           _X
           aobjs(
@@ -1088,17 +1088,17 @@ define(
     (or(
         _EQ_Q(
           _pa,
-          _throw_X_words),
+          ,throw_X_words),
         _EQ_Q(
           _pa,
-          _mung_X_words))
+          ,mung_X_words))
       tell(
         "The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes.")
       remove_object(
         cond(
           (_EQ_Q(
               _pa,
-              _throw_X_words)
+              ,throw_X_words)
             _pi),
           (_po))))))
 
@@ -1107,7 +1107,7 @@ define(
   ("AUX"
     (prso
       2(
-        _prsvec))),
+        ,prsvec))),
   cond(
     (memq(
         door_X_objects,

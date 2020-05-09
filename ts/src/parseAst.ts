@@ -79,7 +79,7 @@ type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1 | 2;
 const isOpenSymbol = (c: string): c is OpenSymbol => {
     return (c === '<' || c === '(' || c === '{' || c === '['
         || c === '"'
-        //|| c === ',' 
+        || c === ','
         || c === '#' || c === '\'' || c === ';'
         // || c === '%'
     );
@@ -199,7 +199,7 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         // Handle Children 
         if (isOpenSymbol(c)) {
             closeText(i);
-            const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), closeSymbol);
+            const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), typeof closeSymbol === 'number' ? parentCloseSymbol : closeSymbol);
             nodes.push(child);
             i = child._raw.start + child._raw.length - 1;
             end = i;

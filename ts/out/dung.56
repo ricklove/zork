@@ -171,7 +171,7 @@ or(
       )),
   cevent(
     0,
-    _cure_clock,
+    ,cure_clock,
     <>,
     "CURIN"))
 
@@ -182,7 +182,7 @@ or(
       )),
   cevent(
     0,
-    _maint_room,
+    ,maint_room,
     t,
     "MNTIN"))
 
@@ -193,7 +193,7 @@ or(
       )),
   cevent(
     0,
-    _lantern,
+    ,lantern,
     t,
     "LNTIN"))
 
@@ -204,7 +204,7 @@ or(
       )),
   cevent(
     0,
-    _match_function,
+    ,match_function,
     t,
     matin))
 
@@ -215,7 +215,7 @@ or(
       )),
   cevent(
     0,
-    _candles,
+    ,candles,
     t,
     "CNDIN"))
 
@@ -226,7 +226,7 @@ or(
       )),
   cevent(
     0,
-    _balloon,
+    ,balloon,
     t,
     "BINT"))
 
@@ -237,7 +237,7 @@ or(
       )),
   cevent(
     0,
-    _burnup,
+    ,burnup,
     t,
     "BRNIN"))
 
@@ -248,7 +248,7 @@ or(
       )),
   cevent(
     0,
-    _fuse_function,
+    ,fuse_function,
     t,
     "FUSIN"))
 
@@ -259,7 +259,7 @@ or(
       )),
   cevent(
     0,
-    _ledge_mung,
+    ,ledge_mung,
     t,
     "LEDIN"))
 
@@ -270,7 +270,7 @@ or(
       )),
   cevent(
     0,
-    _safe_mung,
+    ,safe_mung,
     t,
     "SAFIN"))
 
@@ -281,7 +281,7 @@ or(
       )),
   cevent(
     0,
-    _volgnome,
+    ,volgnome,
     t,
     "VLGIN"))
 
@@ -292,7 +292,7 @@ or(
       )),
   cevent(
     0,
-    _gnome_function,
+    ,gnome_function,
     t,
     "GNOIN"))
 
@@ -303,7 +303,7 @@ or(
       )),
   cevent(
     0,
-    _bucket,
+    ,bucket,
     t,
     "BCKIN"))
 
@@ -314,7 +314,7 @@ or(
       )),
   cevent(
     0,
-    _sphere_function,
+    ,sphere_function,
     t,
     "SPHIN"))
 
@@ -331,7 +331,8 @@ or(
     ()
     _
     <>
-    __ovison}
+    _
+    ,ovison}
 
 "MAZE"
 
@@ -487,10 +488,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _flamebit,
-        _ovison,
-        _takebit)
+        ,contbit,
+        ,flamebit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -515,9 +516,9 @@ add_object(
         {"SBAG"}
       _
       _(
-        _takebit,
-        _foodbit,
-        _ovison)
+        ,takebit,
+        ,foodbit,
+        ,ovison)
       0
       0
       0
@@ -539,9 +540,9 @@ add_object(
         {"SBAG"}
       _
       _(
-        _foodbit,
-        _takebit,
-        _ovison)
+        ,foodbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -566,9 +567,9 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _takebit,
-        _ovison)
+        ,trytakebit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -592,9 +593,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _ovison)
+        ,burnbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -617,8 +618,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       5
       5
@@ -639,12 +640,13 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _ovison)
+        ,contbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       50},
   ["PDP10"
     "DRYER"
@@ -664,8 +666,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       10
       6
@@ -686,14 +688,16 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _transbit,
-        _ovison)
+        ,contbit,
+        ,transbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
-      __bigfix},
+      _
+      ,bigfix
+      _
+      ,bigfix},
   ["CASE"],
   ["TROPH"])
 
@@ -710,10 +714,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _transbit,
-        _takebit,
-        _ovison)
+        ,contbit,
+        ,transbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -735,9 +739,9 @@ add_object(
         {"BOTTL"}
       _
       _(
-        _drinkbit,
-        _takebit,
-        _ovison)
+        ,drinkbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -774,9 +778,9 @@ add_object(
       <>
       _
       _(
-        _tiebit,
-        _takebit,
-        _ovison)
+        ,tiebit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -798,9 +802,9 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison,
-        _weaponbit)
+        ,takebit,
+        ,ovison,
+        ,weaponbit)
       0
       0
       0
@@ -812,7 +816,7 @@ add_object(
 add_melee(
   find_obj(
     "KNIFE"),
-  _knife_melee)
+  ,knife_melee)
 
 #room
   {"LROOM"
@@ -859,9 +863,9 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit,
-        _weaponbit)
+        ,ovison,
+        ,takebit,
+        ,weaponbit)
       0
       0
       0
@@ -875,7 +879,7 @@ add_object(
 add_melee(
   find_obj(
     "SWORD"),
-  _sword_melee)
+  ,sword_melee)
 
 add_object(
   #object
@@ -889,8 +893,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       _1
       0
       0
@@ -913,8 +917,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0},
   ["LAMP"
     "LANTE"],
@@ -933,13 +937,14 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _ndescbit,
-        _ovison)
+        ,trytakebit,
+        ,ndescbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["CARPE"],
   ["ORIEN"])
@@ -957,9 +962,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _ovison)
+        ,burnbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -1009,17 +1014,20 @@ psetg(
         #cexit
           {"TROLL-FLAG"
             "CRAW4"
-            __tchomp}
+            _
+            ,tchomp}
         "NORTH"
         #cexit
           {"TROLL-FLAG"
             "PASS1"
-            __tchomp}
+            _
+            ,tchomp}
         "SOUTH"
         #cexit
           {"TROLL-FLAG"
             "MAZE1"
-            __tchomp}}
+            _
+            ,tchomp}}
     (#find_obj
         {"TROLL"})}
 
@@ -1044,14 +1052,14 @@ setg(
   villain_probs,
   iuvector(
     length(
-      _villains),
+      ,villains),
     0))
 
 setg(
   oppv,
   ivector(
     length(
-      _villains),
+      ,villains),
     () => <>))
 
 add_demon(
@@ -1059,10 +1067,10 @@ add_demon(
     sword_demon,
     chtype(
       [sword_glow
-        _villains
+        ,villains
         ()
         1(
-          _rooms)
+          ,rooms)
         find_obj(
           "SWORD")
         <>],
@@ -1070,7 +1078,8 @@ add_demon(
 
 #object
   {"TROLL"
-    __trolldesc
+    _
+    ,trolldesc
     "troll"
     _
     <>
@@ -1081,29 +1090,30 @@ add_demon(
     <>
     _
     _(
-      _vicbit,
-      _ovison,
-      _villain)
+      ,vicbit,
+      ,ovison,
+      ,villain)
     0
     0
     0
-    __bigfix
+    _
+    ,bigfix
     2}
 
 add_melee(
   find_obj(
     "TROLL"),
-  _troll_melee)
+  ,troll_melee)
 
 add_demon(
   setg(
     fight_demon,
     chtype(
       [fighting
-        _villains
+        ,villains
         ()
         1(
-          _rooms)
+          ,rooms)
         find_obj(
           "TROLL")
         <>],
@@ -1124,8 +1134,8 @@ add_object(
         "TROLL")
       _
       _(
-        _ovison,
-        _weaponbit)
+        ,ovison,
+        ,weaponbit)
       0
       0
       0
@@ -1144,8 +1154,10 @@ psetg(
 
 #room
   {"MAZE1"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1161,8 +1173,10 @@ psetg(
 
 #room
   {"MAZE2"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1176,8 +1190,10 @@ psetg(
 
 #room
   {"MAZE3"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1191,8 +1207,10 @@ psetg(
 
 #room
   {"MAZE4"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1206,8 +1224,10 @@ psetg(
 
 #room
   {"DEAD1"
-    __deadend
-    __deadend
+    _
+    ,deadend
+    _
+    ,deadend
     _
     <>
     #exit
@@ -1217,8 +1237,10 @@ psetg(
 
 #room
   {"MAZE5"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1251,9 +1273,9 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit,
-        _weaponbit)
+        ,ovison,
+        ,takebit,
+        ,weaponbit)
       0
       0
       0
@@ -1265,7 +1287,7 @@ add_object(
 add_melee(
   find_obj(
     "RKNIF"),
-  _knife_melee)
+  ,knife_melee)
 
 add_object(
   #object
@@ -1280,8 +1302,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -1307,9 +1329,9 @@ add_object(
     <>
     _
     _(
-      _toolbit,
-      _takebit,
-      _ovison)
+      ,toolbit,
+      ,takebit,
+      ,ovison)
     0
     0
     0
@@ -1329,12 +1351,13 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _ovison)
+        ,trytakebit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["SKELE"
     "BODY"])
@@ -1353,8 +1376,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       10
       5
@@ -1378,9 +1401,9 @@ add_object(
       <>
       _
       _(
-        _sacredbit,
-        _takebit,
-        _ovison)
+        ,sacredbit,
+        ,takebit,
+        ,ovison)
       0
       12
       10
@@ -1402,8 +1425,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       9
       5
@@ -1413,8 +1436,10 @@ add_object(
 
 #room
   {"DEAD2"
-    __deadend
-    __deadend
+    _
+    ,deadend
+    _
+    ,deadend
     _
     <>
     #exit
@@ -1424,8 +1449,10 @@ add_object(
 
 #room
   {"MAZE6"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1441,8 +1468,10 @@ add_object(
 
 #room
   {"MAZE7"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1460,8 +1489,10 @@ add_object(
 
 #room
   {"MAZE8"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1475,8 +1506,10 @@ add_object(
 
 #room
   {"DEAD3"
-    __deadend
-    __deadend
+    _
+    ,deadend
+    _
+    ,deadend
     _
     <>
     #exit
@@ -1486,8 +1519,10 @@ add_object(
 
 #room
   {"MAZE9"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1507,8 +1542,10 @@ add_object(
 
 #room
   {"MAZ10"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1522,8 +1559,10 @@ add_object(
 
 #room
   {"MAZ11"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1556,8 +1595,10 @@ add_object(
 
 #room
   {"MAZ12"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1575,8 +1616,10 @@ add_object(
 
 #room
   {"DEAD4"
-    __deadend
-    __deadend
+    _
+    ,deadend
+    _
+    ,deadend
     _
     <>
     #exit
@@ -1586,8 +1629,10 @@ add_object(
 
 #room
   {"MAZ13"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1603,8 +1648,10 @@ add_object(
 
 #room
   {"MAZ14"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1619,8 +1666,10 @@ add_object(
 
 #room
   {"MAZ15"
-    __mazedesc
-    __mazedesc
+    _
+    ,mazedesc
+    _
+    ,mazedesc
     _
     <>
     #exit
@@ -1637,8 +1686,10 @@ psetg(
 
 #room
   {"FORE1"
-    __stfore
-    __forest
+    _
+    ,stfore
+    _
+    ,forest
     t
     #exit
       {"NORTH"
@@ -1654,7 +1705,8 @@ psetg(
 #room
   {"FORE4"
     "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
-    __forest
+    _
+    ,forest
     t
     #exit
       {"EAST"
@@ -1668,8 +1720,10 @@ psetg(
 
 #room
   {"FORE5"
-    __stfore
-    __forest
+    _
+    ,stfore
+    _
+    ,forest
     t
     #exit
       {"NORTH"
@@ -1687,8 +1741,10 @@ psetg(
 
 #room
   {"FORE2"
-    __fordes
-    __forest
+    _
+    ,fordes
+    _
+    ,forest
     t
     #exit
       {"NORTH"
@@ -1703,8 +1759,10 @@ psetg(
 
 #room
   {"FORE3"
-    __fordes
-    __forest
+    _
+    ,fordes
+    _
+    ,forest
     t
     #exit
       {"NORTH"
@@ -1902,13 +1960,14 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _vicbit,
-        _ovison)
+        ,trytakebit,
+        ,vicbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["MIRRO"])
 
@@ -1925,13 +1984,14 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _vicbit,
-        _ovison)
+        ,trytakebit,
+        ,vicbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["MIRRO"])
 
@@ -1948,12 +2008,13 @@ add_object(
       <>
       _
       _(
-        _vicbit,
-        _ovison)
+        ,vicbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["GLACI"])
 
@@ -2028,8 +2089,8 @@ add_object(
     <>
     _
     _(
-      _takebit,
-      _ovison)
+      ,takebit,
+      ,ovison)
     0
     15
     8
@@ -2049,8 +2110,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       4
       11
@@ -2073,10 +2134,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _sacredbit,
-        _takebit,
-        _ovison)
+        ,contbit,
+        ,sacredbit,
+        ,takebit,
+        ,ovison)
       0
       3
       7
@@ -2098,10 +2159,10 @@ add_object(
       <>
       _
       _(
-        _toolbit,
-        _flamebit,
-        _takebit,
-        _ovison)
+        ,toolbit,
+        ,flamebit,
+        ,takebit,
+        ,ovison)
       1
       14
       6
@@ -2295,18 +2356,19 @@ put(
         <>
         _
         _(
-          _contbit,
-          _ovison,
-          _transbit)
+          ,contbit,
+          ,ovison,
+          ,transbit)
         0
         0
         0
-        __bigfix
+        _
+        ,bigfix
         50},
     ["CAGE"
       "DUMBW"
       "BASKE"]),
-  _oopen_Q,
+  ,oopen_Q,
   t)
 
 add_object(
@@ -2320,11 +2382,13 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["CAGE"
     "DUMBW"
@@ -2383,8 +2447,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       5
       3
@@ -2411,8 +2475,10 @@ psetg(
 
 #room
   {"MINE1"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2425,8 +2491,10 @@ psetg(
 
 #room
   {"MINE2"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2441,8 +2509,10 @@ psetg(
 
 #room
   {"MINE3"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2455,8 +2525,10 @@ psetg(
 
 #room
   {"MINE4"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2471,8 +2543,10 @@ psetg(
 
 #room
   {"MINE5"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2491,8 +2565,10 @@ psetg(
 
 #room
   {"MINE6"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2505,8 +2581,10 @@ psetg(
 
 #room
   {"MINE7"
-    __mindesc
-    __mindesc
+    _
+    ,mindesc
+    _
+    ,mindesc
     _
     <>
     #exit
@@ -2562,7 +2640,8 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "BSHAF"
-            __nofit}}
+            _
+            ,nofit}}
     ()
     no_objs}
 
@@ -2579,12 +2658,14 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            __nofit}
+            _
+            ,nofit}
         "NE"
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            __nofit}
+            _
+            ,nofit}
         "UP"
         #nexit
           "Not a chance."
@@ -2800,8 +2881,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _contbit)
+        ,takebit,
+        ,contbit)
       0
       0
       0
@@ -2825,8 +2906,8 @@ add_object(
         {"IRBOX"}
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       10
       10
@@ -2939,9 +3020,9 @@ add_object(
   sobject(
     "ENGRA",
     "wall with engravings",
-    _ovison,
-    _readbit,
-    _sacredbit),
+    ,ovison,
+    ,readbit,
+    ,sacredbit),
   ["INSCR"],
   ["OLD"
     "ANCIE"])
@@ -2949,7 +3030,7 @@ add_object(
 put(
   find_obj(
     "ENGRA"),
-  _odesc1,
+  ,odesc1,
   "There are old engravings on the walls here.")
 
 #room
@@ -3022,12 +3103,13 @@ add_object(
       <>
       _
       _(
-        _vicbit,
-        _ovison)
+        ,vicbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["SPIRI"
     "FIEND"])
@@ -3079,9 +3161,9 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _takebit,
-        _ovison)
+        ,contbit,
+        ,takebit,
+        ,ovison)
       0
       2
       5
@@ -3109,9 +3191,9 @@ add_object(
     "PRAYE",
     "prayer",
     _(
-      _readbit,
-      _sacredbit,
-      _ovison)),
+      ,readbit,
+      ,sacredbit,
+      ,ovison)),
   ["INSCR"],
   ["ANCIE"
     "OLD"])
@@ -3140,7 +3222,8 @@ add_object(
       ()
       _
       <>
-      __takebit
+      _
+      ,takebit
       0
       15
       8
@@ -3161,8 +3244,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -3183,10 +3266,10 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _ovison,
-        _readbit)
+        ,burnbit,
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -3209,9 +3292,9 @@ add_object(
       <>
       _
       _(
-        _flamebit,
-        _takebit,
-        _ovison)
+        ,flamebit,
+        ,takebit,
+        ,ovison)
       1
       0
       0
@@ -3271,10 +3354,10 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _readbit,
-        _ovison)
+        ,burnbit,
+        ,takebit,
+        ,readbit,
+        ,ovison)
       0
       0
       0
@@ -3297,10 +3380,10 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _readbit,
-        _ovison)
+        ,burnbit,
+        ,takebit,
+        ,readbit,
+        ,ovison)
       0
       0
       0
@@ -3354,9 +3437,9 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison,
-        _readbit)
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -3378,10 +3461,10 @@ add_object(
         {"MAILB"}
       _
       _(
-        _burnbit,
-        _takebit,
-        _ovison,
-        _readbit)
+        ,burnbit,
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -3406,12 +3489,13 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _ovison)
+        ,contbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       10},
   ["BOX"])
 
@@ -3428,9 +3512,9 @@ add_object(
     <>
     _
     _(
-      _contbit,
-      _takebit,
-      _ovison)
+      ,contbit,
+      ,takebit,
+      ,ovison)
     0
     0
     0
@@ -3451,9 +3535,9 @@ add_object(
         {"TUBE"}
       _
       _(
-        _toolbit,
-        _takebit,
-        _ovison)
+        ,toolbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -3478,9 +3562,9 @@ add_object(
       <>
       _
       _(
-        _toolbit,
-        _takebit,
-        _ovison)
+        ,toolbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -3502,9 +3586,9 @@ add_object(
       <>
       _
       _(
-        _toolbit,
-        _takebit,
-        _ovison)
+        ,toolbit,
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -3538,7 +3622,7 @@ add_object(
 add_melee(
   find_obj(
     "CYCLO"),
-  _cyclops_melee)
+  ,cyclops_melee)
 
 #room
   {"BLROO"
@@ -3568,13 +3652,14 @@ add_object(
       <>
       _
       _(
-        _vicbit,
-        _ovison,
-        _villain)
+        ,vicbit,
+        ,ovison,
+        ,villain)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       10000},
   ["ONE-E"
     "MONST"])
@@ -3606,9 +3691,9 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _takebit,
-        _ovison)
+        ,contbit,
+        ,takebit,
+        ,ovison)
       0
       10
       10
@@ -3665,9 +3750,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _takebit,
-        _ovison)
+        ,burnbit,
+        ,takebit,
+        ,ovison)
       0
       4
       7
@@ -3685,9 +3770,9 @@ add_demon(
     chtype(
       [robber
         ()
-        _rooms
+        ,rooms
         1(
-          _rooms)
+          ,rooms)
         find_obj(
           "THIEF")
         <>],
@@ -3704,7 +3789,8 @@ psetg(
 add_object(
   #object
     {"THIEF"
-      __robber_c_desc
+      _
+      ,robber_c_desc
       "thief"
       _
       <>
@@ -3715,13 +3801,14 @@ add_object(
       <>
       _
       _(
-        _vicbit,
-        _ovison,
-        _villain)
+        ,vicbit,
+        ,ovison,
+        ,villain)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       4},
   ["ROBBE"
     "CROOK"
@@ -3739,7 +3826,7 @@ add_object(
 add_melee(
   find_obj(
     "THIEF"),
-  _thief_melee)
+  ,thief_melee)
 
 add_object(
   #object
@@ -3756,8 +3843,8 @@ add_object(
         "THIEF")
       _
       _(
-        _ovison,
-        _weaponbit)
+        ,ovison,
+        ,weaponbit)
       0
       0
       0
@@ -3844,9 +3931,9 @@ add_object(
     "WIND1",
     "window",
     window_function,
-    _ovison,
-    _doorbit,
-    _ndescbit),
+    ,ovison,
+    ,doorbit,
+    ,ndescbit),
   ["WINDO"],
   [])
 
@@ -3855,9 +3942,9 @@ add_object(
     "WIND2",
     "window",
     window_function,
-    _ovison,
-    _doorbit,
-    _ndescbit),
+    ,ovison,
+    ,doorbit,
+    ,ndescbit),
   ["WINDO"],
   [])
 
@@ -3866,10 +3953,10 @@ add_object(
     "BOLT",
     "bolt",
     bolt_function,
-    _turnbit,
-    _ovison,
-    _doorbit,
-    _ndescbit),
+    ,turnbit,
+    ,ovison,
+    ,doorbit,
+    ,ndescbit),
   ["BOLT"
     "NUT"],
   [])
@@ -3879,8 +3966,8 @@ add_object(
     "GRAT1",
     "grating",
     grat1_function,
-    _doorbit,
-    _ndescbit),
+    ,doorbit,
+    ,ndescbit),
   ["GRATI"
     "GRATE"],
   [])
@@ -3890,9 +3977,9 @@ add_object(
     "GRAT2",
     "grating",
     grat2_function,
-    _ovison,
-    _doorbit,
-    _ndescbit),
+    ,ovison,
+    ,doorbit,
+    ,ndescbit),
   ["GRATI"
     "GRATE"],
   [])
@@ -3900,10 +3987,10 @@ add_object(
 add_object(
   aobject(
     "DOOR",
-    _doorstr,
+    ,doorstr,
     trap_door,
-    _doorbit,
-    _ndescbit),
+    ,doorbit,
+    ,ndescbit),
   ["TRAPD"
     "TRAP-"],
   ["TRAP"])
@@ -3911,10 +3998,10 @@ add_object(
 add_object(
   aobject(
     "TDOOR",
-    _doorstr,
+    ,doorstr,
     trap_door,
-    _doorbit,
-    _ndescbit),
+    ,doorbit,
+    ,ndescbit),
   ["TRAPD"
     "TRAP-"],
   ["TRAP"])
@@ -3922,11 +4009,11 @@ add_object(
 add_object(
   aobject(
     "WDOOR",
-    _doorstr,
+    ,doorstr,
     ddoor_function,
-    _ovison,
-    _ndescbit,
-    _readbit),
+    ,ovison,
+    ,ndescbit,
+    ,readbit),
   ["DOOR"],
   ["WOODE"])
 
@@ -3938,20 +4025,20 @@ add_desc(
 add_object(
   aobject(
     "FDOOR",
-    _doorstr,
+    ,doorstr,
     ddoor_function,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["DOOR"],
   ["FRONT"])
 
 add_object(
   aobject(
     "SDOOR",
-    _doorstr,
+    ,doorstr,
     ddoor_function,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["DOOR"],
   ["STONE"])
 
@@ -3960,9 +4047,9 @@ add_object(
     "MSWIT",
     "switch",
     mswitch_function,
-    _ovison,
-    _ndescbit,
-    _turnbit),
+    ,ovison,
+    ,ndescbit,
+    ,turnbit),
   ["SWITC"])
 
 // ASSORTED GARBAGE
@@ -3971,14 +4058,14 @@ add_object(
   sobject(
     "HPOLE",
     "head on a pole",
-    _ovison),
+    ,ovison),
   ["HEAD"])
 
 add_object(
   sobject(
     "CORPS",
     "corpses",
-    _ovison),
+    ,ovison),
   [],
   ["MANGL"])
 
@@ -3987,9 +4074,9 @@ add_object(
     "BODIE",
     "pile of bodies",
     body_function,
-    _ovison,
-    _ndescbit,
-    _trytakebit),
+    ,ovison,
+    ,ndescbit,
+    ,trytakebit),
   ["BODY"
     "CORPS"])
 
@@ -3997,8 +4084,8 @@ add_object(
   sobject(
     "DAM",
     "dam",
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["GATE"
     "GATES"
     "FCD"])
@@ -4007,31 +4094,31 @@ add_object(
   sobject(
     "RAILI",
     "railing",
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["RAIL"])
 
 add_object(
   sobject(
     "BUTTO",
     "button",
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["SWITC"])
 
 sobject(
   "BUBBL",
   "bubble",
-  _ovison,
-  _ndescbit)
+  ,ovison,
+  ,ndescbit)
 
 add_object(
   aobject(
     "LEAK",
     "leak",
     leak_function,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["DRIP"
     "HOLE"])
 
@@ -4041,10 +4128,10 @@ add_star(
       "EVERY",
       "everything",
       everything,
-      _ovison,
-      _takebit,
-      _no_check_bit,
-      _ndescbit),
+      ,ovison,
+      ,takebit,
+      ,no_check_bit,
+      ,ndescbit),
     ["ALL"]))
 
 add_star(
@@ -4053,32 +4140,32 @@ add_star(
       "VALUA",
       "valuables",
       valuables,
-      _ovison,
-      _takebit,
-      _no_check_bit,
-      _ndescbit),
+      ,ovison,
+      ,takebit,
+      ,no_check_bit,
+      ,ndescbit),
     ["TREAS"]))
 
 add_star(
   sobject(
     "SAILO",
     "sailor",
-    _ovison,
-    _ndescbit))
+    ,ovison,
+    ,ndescbit))
 
 add_star(
   sobject(
     "TEETH",
     "set of teeth",
-    _ovison,
-    _ndescbit))
+    ,ovison,
+    ,ndescbit))
 
 add_star(
   sobject(
     "WALL",
     "wall",
-    _ovison,
-    _ndescbit))
+    ,ovison,
+    ,ndescbit))
 
 add_star(
   find_obj(
@@ -4089,9 +4176,9 @@ add_star(
     sobject(
       "HANDS",
       "pair of hands",
-      _ovison,
-      _ndescbit,
-      _toolbit),
+      ,ovison,
+      ,ndescbit,
+      ,toolbit),
     ["HAND"],
     ["BARE"]))
 
@@ -4100,9 +4187,9 @@ add_star(
     sobject(
       "LUNGS",
       "breath",
-      _ovison,
-      _ndescbit,
-      _toolbit),
+      ,ovison,
+      ,ndescbit,
+      ,toolbit),
     ["LUNG"
       "AIR"]))
 
@@ -4110,15 +4197,15 @@ add_star(
   sobject(
     "AVIAT",
     "flyer",
-    _ovison,
-    _ndescbit))
+    ,ovison,
+    ,ndescbit))
 
 add_object(
   sobject(
     "RBUTT",
-    _butstr,
-    _ovison,
-    _ndescbit),
+    ,butstr,
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"
     "SWITC"],
   ["RED"])
@@ -4126,9 +4213,9 @@ add_object(
 add_object(
   sobject(
     "YBUTT",
-    _butstr,
-    _ovison,
-    _ndescbit),
+    ,butstr,
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"
     "SWITC"],
   ["YELLO"])
@@ -4136,9 +4223,9 @@ add_object(
 add_object(
   sobject(
     "BLBUT",
-    _butstr,
-    _ovison,
-    _ndescbit),
+    ,butstr,
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"
     "SWITC"],
   ["BLUE"])
@@ -4146,9 +4233,9 @@ add_object(
 add_object(
   sobject(
     "BRBUT",
-    _butstr,
-    _ovison,
-    _ndescbit),
+    ,butstr,
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"
     "SWITC"],
   ["BROWN"])
@@ -4158,9 +4245,9 @@ add_object(
     "BAT",
     "bat",
     fly_me,
-    _ovison,
-    _ndescbit,
-    _trytakebit),
+    ,ovison,
+    ,ndescbit,
+    ,trytakebit),
   ["VAMPI"],
   [])
 
@@ -4169,8 +4256,8 @@ add_object(
 sobject(
   "RAINB",
   "rainbow",
-  _ovison,
-  _ndescbit)
+  ,ovison,
+  ,ndescbit)
 
 psetg(
   cliffs,
@@ -4203,12 +4290,14 @@ psetg(
 #room
   {"RIVR1"
     "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
-    __riverdesc
+    _
+    ,riverdesc
     _
     <>
     #exit
       {"UP"
-        __current
+        _
+        ,current
         "WEST"
         "DOCK"
         "LAND"
@@ -4216,41 +4305,49 @@ psetg(
         "DOWN"
         "RIVR2"
         "EAST"
-        __cliffs}
+        _
+        ,cliffs}
     ()
     _
     <>
     0
-    __rwaterbit}
+    _
+    ,rwaterbit}
 
 #room
   {"RIVR2"
     "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
-    __riverdesc
+    _
+    ,riverdesc
     _
     <>
     #exit
       {"UP"
-        __current
+        _
+        ,current
         "DOWN"
         "RIVR3"
         "EAST"
-        __cliffs}
+        _
+        ,cliffs}
     ()
     _
     <>
     0
-    __rwaterbit}
+    _
+    ,rwaterbit}
 
 #room
   {"RIVR3"
     "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
-    __riverdesc
+    _
+    ,riverdesc
     _
     <>
     #exit
       {"UP"
-        __current
+        _
+        ,current
         "DOWN"
         "RIVR4"
         "EAST"
@@ -4264,7 +4361,8 @@ psetg(
     _
     <>
     0
-    __rwaterbit}
+    _
+    ,rwaterbit}
 
 psetg(
   narrow,
@@ -4281,7 +4379,8 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF2"
-            __narrow}
+            _
+            ,narrow}
         "LAUNC"
         "RIVR3"}
     ()
@@ -4299,7 +4398,8 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF1"
-            __narrow}
+            _
+            ,narrow}
         "LAUNC"
         "RIVR4"}
     ()
@@ -4309,12 +4409,14 @@ psetg(
 #room
   {"RIVR4"
     "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
-    __riverdesc
+    _
+    ,riverdesc
     _
     <>
     #exit
       {"UP"
-        __current
+        _
+        ,current
         "DOWN"
         "RIVR5"
         "EAST"
@@ -4328,17 +4430,20 @@ psetg(
         {"BUOY"})
     rivr4_room
     0
-    __rwaterbit}
+    _
+    ,rwaterbit}
 
 #room
   {"RIVR5"
     "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
-    __riverdesc
+    _
+    ,riverdesc
     _
     <>
     #exit
       {"UP"
-        __current
+        _
+        ,current
         "DOWN"
         "FCHMP"
         "LAND"
@@ -4347,7 +4452,8 @@ psetg(
     _
     <>
     0
-    __rwaterbit}
+    _
+    ,rwaterbit}
 
 #room
   {"FCHMP"
@@ -4490,11 +4596,14 @@ setg(
     t
     #exit
       {"UP"
-        __crain
+        _
+        ,crain
         "NW"
-        __crain
+        _
+        ,crain
         "WEST"
-        __crain
+        _
+        ,crain
         "SE"
         "CLBOT"}
     (#find_obj
@@ -4557,7 +4666,8 @@ add_object(
       ()
       _
       <>
-      __takebit
+      _
+      ,takebit
       0
       10
       10
@@ -4578,7 +4688,8 @@ add_object(
       ()
       _
       <>
-      __takebit
+      _
+      ,takebit
       0
       10
       13
@@ -4600,9 +4711,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _ovison,
-        _takebit)
+        ,burnbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4625,9 +4736,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _ovison,
-        _takebit)
+        ,burnbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4651,9 +4762,9 @@ add_object(
       <>
       _
       _(
-        _toolbit,
-        _ovison,
-        _takebit)
+        ,toolbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4676,10 +4787,10 @@ add_object(
       <>
       _
       _(
-        _vehbit,
-        _burnbit,
-        _ovison,
-        _takebit)
+        ,vehbit,
+        ,burnbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4692,14 +4803,14 @@ add_object(
 put(
   find_obj(
     "RBOAT"),
-  _oopen_Q,
+  ,oopen_Q,
   t)
 
 put(
   find_obj(
     "RBOAT"),
-  _orand,
-  _rwaterbit)
+  ,orand,
+  ,rwaterbit)
 
 add_object(
   #object
@@ -4715,10 +4826,10 @@ add_object(
         {"RBOAT"}
       _
       _(
-        _burnbit,
-        _ovison,
-        _readbit,
-        _takebit)
+        ,burnbit,
+        ,ovison,
+        ,readbit,
+        ,takebit)
       0
       0
       0
@@ -4744,8 +4855,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4758,7 +4869,7 @@ add_object(
 sobject(
   "BARRE",
   "barrel",
-  _ovison)
+  ,ovison)
 
 add_object(
   #object
@@ -4775,10 +4886,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _findmebit,
-        _ovison,
-        _takebit)
+        ,contbit,
+        ,findmebit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4801,8 +4912,8 @@ add_object(
         {"BUOY"}
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       5
       10
@@ -4824,9 +4935,9 @@ add_object(
       <>
       _
       _(
-        _toolbit,
-        _ovison,
-        _takebit)
+        ,toolbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4848,8 +4959,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -4870,7 +4981,8 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
@@ -4904,20 +5016,24 @@ setg(
 #room
   {"VAIR1"
     "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
-    __volcore
+    _
+    ,volcore
     _
     <>
-    __nulexit
+    _
+    ,nulexit
     ()
     _
     <>
     0
-    __rairbit}
+    _
+    ,rairbit}
 
 #room
   {"VAIR2"
     "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
-    __volcore
+    _
+    ,volcore
     _
     <>
     #exit
@@ -4929,25 +5045,30 @@ setg(
     _
     <>
     0
-    __rairbit}
+    _
+    ,rairbit}
 
 #room
   {"VAIR3"
     "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
-    __volcore
+    _
+    ,volcore
     _
     <>
-    __nulexit
+    _
+    ,nulexit
     ()
     _
     <>
     0
-    __rairbit}
+    _
+    ,rairbit}
 
 #room
   {"VAIR4"
     "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
-    __volcore
+    _
+    ,volcore
     _
     <>
     #exit
@@ -4959,7 +5080,8 @@ setg(
     _
     <>
     0
-    __rairbit}
+    _
+    ,rairbit}
 
 setg(
   cxgnome,
@@ -4980,7 +5102,8 @@ setg(
         "LAUNC"
         "VAIR2"
         "WEST"
-        __cxgnome
+        _
+        ,cxgnome
         "SOUTH"
         "LIBRA"}
     (#find_obj
@@ -5037,7 +5160,8 @@ setg(
         "LAUNC"
         "VAIR4"
         "WEST"
-        __cxgnome
+        _
+        ,cxgnome
         "SOUTH"
         "SAFE"}
     (#find_obj
@@ -5088,8 +5212,8 @@ add_object(
       <>
       _
       _(
-        _vehbit,
-        _ovison)
+        ,vehbit,
+        ,ovison)
       0
       0
       0
@@ -5101,14 +5225,14 @@ add_object(
 put(
   find_obj(
     "BALLO"),
-  _oopen_Q,
+  ,oopen_Q,
   t)
 
 put(
   find_obj(
     "BALLO"),
-  _orand,
-  _rairbit)
+  ,orand,
+  ,rairbit)
 
 #object
   {"RECEP"
@@ -5123,13 +5247,14 @@ put(
       {"BALLO"}
     _
     _(
-      _contbit,
-      _ovison,
-      _searchbit)
+      ,contbit,
+      ,ovison,
+      ,searchbit)
     0
     0
     0
-    __bigfix
+    _
+    ,bigfix
     6}
 
 add_object(
@@ -5144,11 +5269,13 @@ add_object(
       ()
       #find_obj
         {"BALLO"}
-      __ovison
+      _
+      ,ovison
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["BAG"],
   ["CLOTH"])
@@ -5166,12 +5293,13 @@ add_object(
         {"BALLO"}
       _
       _(
-        _tiebit,
-        _ovison)
+        ,tiebit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["WIRE"],
   ["BRAID"])
@@ -5188,11 +5316,13 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["HOOK"])
 
@@ -5208,11 +5338,13 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["HOOK"])
 
@@ -5229,9 +5361,9 @@ add_object(
       <>
       _
       _(
-        _readbit,
-        _ovison,
-        _takebit)
+        ,readbit,
+        ,ovison,
+        ,takebit)
       0
       10
       12
@@ -5261,12 +5393,13 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _ovison)
+        ,contbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       15},
   ["BOX"])
 
@@ -5284,10 +5417,10 @@ add_object(
         {"SAFE"}
       _
       _(
-        _ovison,
-        _takebit,
-        _readbit,
-        _burnbit)
+        ,ovison,
+        ,takebit,
+        ,readbit,
+        ,burnbit)
       0
       0
       0
@@ -5312,11 +5445,13 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       10},
   ["SLOT"
     "HOLE"])
@@ -5324,7 +5459,7 @@ add_object(
 put(
   find_obj(
     "SSLOT"),
-  _oopen_Q,
+  ,oopen_Q,
   t)
 
 add_object(
@@ -5340,8 +5475,8 @@ add_object(
         {"SAFE"}
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       15
       10
@@ -5364,10 +5499,10 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _searchbit,
-        _ovison,
-        _takebit)
+        ,burnbit,
+        ,searchbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -5380,7 +5515,7 @@ add_object(
 put(
   find_obj(
     "BRICK"),
-  _oopen_Q,
+  ,oopen_Q,
   t)
 
 add_object(
@@ -5396,9 +5531,9 @@ add_object(
       <>
       _
       _(
-        _burnbit,
-        _ovison,
-        _takebit)
+        ,burnbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -5422,12 +5557,13 @@ add_object(
       <>
       _
       _(
-        _vicbit,
-        _ovison)
+        ,vicbit,
+        ,ovison)
       0
       0
       0
-      __bigfix
+      _
+      ,bigfix
       0},
   ["TROLL"])
 
@@ -5445,10 +5581,10 @@ add_object(
         {"BALLO"}
       _
       _(
-        _ovison,
-        _takebit,
-        _readbit,
-        _burnbit)
+        ,ovison,
+        ,takebit,
+        ,readbit,
+        ,burnbit)
       0
       0
       0
@@ -5476,8 +5612,8 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison)
+        ,takebit,
+        ,ovison)
       0
       0
       0
@@ -5501,10 +5637,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _takebit,
-        _ovison,
-        _readbit)
+        ,contbit,
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -5527,10 +5663,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _takebit,
-        _ovison,
-        _readbit)
+        ,contbit,
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -5554,10 +5690,10 @@ add_object(
       <>
       _
       _(
-        _takebit,
-        _ovison,
-        _readbit,
-        _contbit)
+        ,takebit,
+        ,ovison,
+        ,readbit,
+        ,contbit)
       0
       0
       0
@@ -5580,10 +5716,10 @@ add_object(
       <>
       _
       _(
-        _contbit,
-        _takebit,
-        _ovison,
-        _readbit)
+        ,contbit,
+        ,takebit,
+        ,ovison,
+        ,readbit)
       0
       0
       0
@@ -5599,22 +5735,22 @@ psetg(
 add_desc(
   find_obj(
     "BLBK"),
-  _greek_to_me)
+  ,greek_to_me)
 
 add_desc(
   find_obj(
     "GRBK"),
-  _greek_to_me)
+  ,greek_to_me)
 
 add_desc(
   find_obj(
     "PUBK"),
-  _greek_to_me)
+  ,greek_to_me)
 
 add_desc(
   find_obj(
     "WHBK"),
-  _greek_to_me)
+  ,greek_to_me)
 
 #object
   {"STAMP"
@@ -5629,10 +5765,10 @@ add_desc(
       {"PUBK"}
     _
     _(
-      _takebit,
-      _readbit,
-      _burnbit,
-      _ovison)
+      ,takebit,
+      ,readbit,
+      ,burnbit,
+      ,ovison)
     0
     4
     10
@@ -5654,23 +5790,23 @@ setg(
 put(
   find_obj(
     "LAMP"),
-  _orand,
+  ,orand,
   [0
     clock_disable(
       clock_int(
-        _lntin,
+        ,lntin,
         350))])
 
 put(
   find_obj(
     "CANDL"),
-  _orand,
+  ,orand,
   <>)
 
 put(
   find_obj(
     "MATCH"),
-  _orand,
+  ,orand,
   5)
 
 // NUMBER OF MATCHES
@@ -5717,9 +5853,9 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _readbit,
-        _ovison)},
+        ,trytakebit,
+        ,readbit,
+        ,ovison)},
   ["GRAVE"])
 
 add_desc(
@@ -5740,9 +5876,9 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _sacredbit,
-        _ovison)},
+        ,trytakebit,
+        ,sacredbit,
+        ,ovison)},
   ["HEAD"
     "POLE"
     "POLES"
@@ -5765,8 +5901,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit)
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -5787,10 +5923,10 @@ add_object(
       <>
       _
       _(
-        _readbit,
-        _burnbit,
-        _ovison,
-        _takebit)
+        ,readbit,
+        ,burnbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -5820,8 +5956,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _transbit)},
+        ,ovison,
+        ,transbit)},
   ["CASE"],
   ["LARGE"])
 
@@ -5833,7 +5969,7 @@ mapf(
       find_room(
         spname(
           _x)),
-      _rfillbit)),
+      ,rfillbit)),
   _X,
   [resen_X_rooms
     reses_X_rooms
@@ -5859,7 +5995,7 @@ mapf(
     rtro(
       find_room(
         _x),
-      _rhousebit)),
+      ,rhousebit)),
   ["LROOM"
     "KITCH"
     "ATTIC"])
@@ -5871,7 +6007,7 @@ mapf(
     rtro(
       find_room(
         _x),
-      _rsacredbit)),
+      ,rsacredbit)),
   ["BSHAF"
     "RIVR1"
     "DOCK"
@@ -5934,21 +6070,29 @@ setg(
     <>
     #exit
       {"NORTH"
-        __magcmach
+        _
+        ,magcmach
         "SOUTH"
-        __magcmach
+        _
+        ,magcmach
         "WEST"
-        __magcmach
+        _
+        ,magcmach
         "NE"
-        __magcmach
+        _
+        ,magcmach
         "NW"
-        __magalice
+        _
+        ,magalice
         "SW"
-        __magalice
+        _
+        ,magalice
         "SE"
-        __magalice
+        _
+        ,magalice
         "EAST"
-        __magcmach}
+        _
+        ,magcmach}
     (#find_obj
         {"RBTLB"}
       #find_obj
@@ -6014,8 +6158,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _ndescbit)
+        ,ovison,
+        ,ndescbit)
       0
       0
       0
@@ -6036,7 +6180,8 @@ add_object(
       ()
       _
       <>
-      __ovison
+      _
+      ,ovison
       0
       0
       0
@@ -6058,9 +6203,9 @@ add_object(
       <>
       _
       _(
-        _trytakebit,
-        _sacredbit,
-        _ovison)
+        ,trytakebit,
+        ,sacredbit,
+        ,ovison)
       0
       6
       6
@@ -6073,30 +6218,30 @@ add_object(
 add_object(
   aobject(
     "SQBUT",
-    _butstr,
+    ,butstr,
     buttons,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"],
   ["SQUAR"])
 
 add_object(
   aobject(
     "RNBUT",
-    _butstr,
+    ,butstr,
     buttons,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"],
   ["ROUND"])
 
 add_object(
   aobject(
     "TRBUT",
-    _butstr,
+    ,butstr,
     buttons,
-    _ovison,
-    _ndescbit),
+    ,ovison,
+    ,ndescbit),
   ["BUTTO"],
   ["TRIAN"])
 
@@ -6119,8 +6264,8 @@ add_object(
     10
     _
     _(
-      _rlandbit,
-      _rbuckbit)}
+      ,rlandbit,
+      ,rbuckbit)}
 
 #room
   {"BWELL"
@@ -6143,8 +6288,8 @@ add_object(
     0
     _
     _(
-      _rlandbit,
-      _rbuckbit)}
+      ,rlandbit,
+      ,rbuckbit)}
 
 psetg(
   ewalls,
@@ -6156,19 +6301,19 @@ add_object(
   sobject(
     "ETCH1",
     "wall with etchings",
-    _ovison,
-    _ndescbit,
-    _readbit),
-  _ewalls)
+    ,ovison,
+    ,ndescbit,
+    ,readbit),
+  ,ewalls)
 
 add_object(
   sobject(
     "ETCH2",
     "wall with etchings",
-    _ovison,
-    _ndescbit,
-    _readbit),
-  _ewalls)
+    ,ovison,
+    ,ndescbit,
+    ,readbit),
+  ,ewalls)
 
 add_desc(
   find_obj(
@@ -6218,13 +6363,16 @@ psetg(
     <>
     #exit
       {"NW"
-        __smdrop
+        _
+        ,smdrop
         "EAST"
         "ALITR"
         "WEST"
-        __smdrop
+        _
+        ,smdrop
         "DOWN"
-        __smdrop}
+        _
+        ,smdrop}
     (#find_obj
         {"POSTS"})}
 
@@ -6259,9 +6407,9 @@ add_object(
       <>
       _
       _(
-        _transbit,
-        _ovison,
-        _takebit)
+        ,transbit,
+        ,ovison,
+        ,takebit)
       0
       0
       0
@@ -6284,8 +6432,8 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _vicbit)
+        ,ovison,
+        ,vicbit)
       0
       0
       0
@@ -6306,7 +6454,8 @@ add_object(
       ()
       _
       <>
-      __takebit
+      _
+      ,takebit
       0
       5
       5
@@ -6320,7 +6469,7 @@ add_object(
   sobject(
     "ATABL",
     "large oblong table",
-    _ovison),
+    ,ovison),
   [],
   ["LARGE"
     "OBLON"])
@@ -6329,7 +6478,7 @@ add_object(
   sobject(
     "POSTS",
     "wooden posts",
-    _ovison),
+    ,ovison),
   ["POST"],
   ["WOODE"])
 
@@ -6346,8 +6495,8 @@ add_object(
       <>
       _
       _(
-        _vehbit,
-        _ovison)
+        ,vehbit,
+        ,ovison)
       0
       0
       0
@@ -6369,9 +6518,9 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit,
-        _foodbit)
+        ,ovison,
+        ,takebit,
+        ,foodbit)
       0
       0
       0
@@ -6394,10 +6543,10 @@ add_object(
       <>
       _
       _(
-        _readbit,
-        _ovison,
-        _takebit,
-        _foodbit)
+        ,readbit,
+        ,ovison,
+        ,takebit,
+        ,foodbit)
       0
       0
       0
@@ -6420,10 +6569,10 @@ add_object(
       <>
       _
       _(
-        _readbit,
-        _ovison,
-        _takebit,
-        _foodbit)
+        ,readbit,
+        ,ovison,
+        ,takebit,
+        ,foodbit)
       0
       0
       0
@@ -6446,10 +6595,10 @@ add_object(
       <>
       _
       _(
-        _readbit,
-        _ovison,
-        _takebit,
-        _foodbit)
+        ,readbit,
+        ,ovison,
+        ,takebit,
+        ,foodbit)
       0
       0
       0
@@ -6464,10 +6613,10 @@ put(
   put(
     find_obj(
       "BUCKE"),
-    _oopen_Q,
+    ,oopen_Q,
     t),
-  _orand,
-  _rbuckbit)
+  ,orand,
+  ,rbuckbit)
 
 add_object(
   #object
@@ -6482,10 +6631,10 @@ add_object(
       <>
       _
       _(
-        _sacredbit,
-        _vicbit,
-        _ovison,
-        _actorbit)
+        ,sacredbit,
+        ,vicbit,
+        ,ovison,
+        ,actorbit)
       0
       0
       0
@@ -6498,7 +6647,7 @@ add_object(
 put(
   find_obj(
     "ROBOT"),
-  _orand,
+  ,orand,
   add_actor(
     chtype(
       [find_room(
@@ -6528,10 +6677,10 @@ add_object(
       <>
       _
       _(
-        _ovison,
-        _takebit,
-        _readbit,
-        _burnbit)
+        ,ovison,
+        ,takebit,
+        ,readbit,
+        ,burnbit)
       0
       0
       0
@@ -6643,19 +6792,19 @@ vsynonym(
 add_action(
   "LIGHT",
   "Light",
-  [(_lightbit
+  [(,lightbit
       aobjs
       robjs
       no_take)
     ["LIGHT"
       lamp_on]
     driver],
-  [(_lightbit
+  [(,lightbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (_flamebit
+    (,flamebit
       aobjs)
     ["LIGHT"
       lamp_on]])
@@ -6663,7 +6812,7 @@ add_action(
 add_action(
   "EXTIN",
   "Turn off",
-  [(_lightbit
+  [(,lightbit
       aobjs
       robjs)
     ["EXTIN"
@@ -6676,30 +6825,30 @@ vsynonym(
 add_action(
   "TURN",
   "Turn",
-  [(_turnbit
+  [(,turnbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (_toolbit
+    (,toolbit
       robjs
       aobjs)
     ["TURN"
       turner]
     driver],
   ["ON"
-    (_lightbit
+    (,lightbit
       aobjs
       robjs)
     ["TURN-ON"
       lamp_on]],
   ["OFF"
-    (_lightbit
+    (,lightbit
       aobjs
       robjs)
     ["TURN-OFF"
       lamp_off]],
-  [(_turnbit
+  [(,turnbit
       aobjs
       robjs
       no_take)
@@ -6744,13 +6893,13 @@ add_action(
   "Give",
   [obj
     "TO"
-    (_vicbit
+    (,vicbit
       robjs
       no_take)
     ["GIVE"
       dropper]
     driver],
-  [(_vicbit
+  [(,vicbit
       robjs
       no_take)
     obj
@@ -6766,17 +6915,17 @@ vsynonym(
 add_action(
   "STRIK",
   "Strike",
-  [(_vicbit
+  [(,vicbit
       _
       robjs
       no_take)
     "WITH"
-    (_weaponbit
+    (,weaponbit
       aobjs
       robjs)
     ["ATTAC"
       attacker]],
-  [(_vicbit
+  [(,vicbit
       _
       robjs
       no_take)
@@ -6852,7 +7001,7 @@ add_action(
   [(_1
       aobjs)
     "AT"
-    (_vicbit
+    (,vicbit
       robjs
       no_take)
     ["THROW"
@@ -6866,7 +7015,7 @@ vsynonym(
 add_action(
   "TELL",
   "Tell",
-  [(_actorbit)
+  [(,actorbit)
     ["TELL"
       command]])
 
@@ -7033,12 +7182,12 @@ vsynonym(
 add_action(
   "BURN",
   "Burn",
-  [(_burnbit
+  [(,burnbit
       aobjs
       robjs
       no_take)
     "WITH"
-    (_flamebit
+    (,flamebit
       aobjs
       robjs)
     ["BURN"
@@ -7052,11 +7201,11 @@ vsynonym(
 add_action(
   "KILL",
   "Kill",
-  [(_villain
+  [(,villain
       robjs
       no_take)
     "WITH"
-    (_weaponbit
+    (,weaponbit
       aobjs)
     ["KILL"
       killer]])
@@ -7070,11 +7219,11 @@ vsynonym(
 add_action(
   "ATTAC",
   "Attack",
-  [(_villain
+  [(,villain
       robjs
       no_take)
     "WITH"
-    (_weaponbit
+    (,weaponbit
       aobjs)
     ["ATTAC"
       attacker]])
@@ -7093,10 +7242,10 @@ vsynonym(
 add_action(
   "SWING",
   "Swing",
-  [(_weaponbit
+  [(,weaponbit
       aobjs)
     "AT"
-    (_villain
+    (,villain
       robjs
       no_take)
     ["SWING"
@@ -7109,11 +7258,11 @@ vsynonym(
 add_action(
   "POKE",
   "Poke",
-  [(_villain
+  [(,villain
       robjs
       no_take)
     "WITH"
-    (_weaponbit
+    (,weaponbit
       aobjs)
     ["POKE"
       munger]])
@@ -7146,8 +7295,8 @@ add_action(
   "OPEN",
   "Open",
   [(_(
-        _doorbit,
-        _contbit)
+        ,doorbit,
+        ,contbit)
       aobjs
       robjs
       no_take)
@@ -7161,8 +7310,8 @@ add_action(
   "CLOSE",
   "Close",
   [(_(
-        _doorbit,
-        _contbit)
+        ,doorbit,
+        ,contbit)
       aobjs
       robjs
       no_take)
@@ -7179,7 +7328,7 @@ add_action(
       robjs
       no_take)
     "WITH"
-    (_toolbit
+    (,toolbit
       aobjs
       robjs)
     ["UNLOC"
@@ -7220,7 +7369,7 @@ vsynonym(
 add_action(
   "EAT",
   "Eat",
-  [(_foodbit
+  [(,foodbit
       aobjs
       robjs)
     ["EAT"
@@ -7236,7 +7385,7 @@ vsynonym(
 add_action(
   "DRINK",
   "Drink",
-  [(_drinkbit
+  [(,drinkbit
       aobjs
       robjs)
     ["DRINK"
@@ -7359,7 +7508,7 @@ sadd_action(
 add_action(
   "WAKE",
   "Wake",
-  [(_vicbit
+  [(,vicbit
       robjs
       no_take)
     ["WAKE"
@@ -7415,14 +7564,14 @@ vsynonym(
 add_action(
   "READ",
   "Read",
-  [(_readbit
+  [(,readbit
       aobjs
       robjs
       no_take)
     ["READ"
       reader]
     driver],
-  [(_readbit
+  [(,readbit
       aobjs
       robjs
       no_take)
@@ -7446,7 +7595,7 @@ add_action(
   "Inflate",
   [obj
     "WITH"
-    (_toolbit
+    (,toolbit
       robjs
       aobjs
       no_take)
@@ -7456,7 +7605,7 @@ add_action(
 add_action(
   "DISEM",
   "Disembark from",
-  [(_vehbit
+  [(,vehbit
       robjs
       no_take)
     ["DISEM"
@@ -7466,7 +7615,7 @@ add_action(
   "DIG",
   "Dig",
   ["WITH"
-    (_toolbit
+    (,toolbit
       aobjs)
     ["DIG"
       digger]])
@@ -7474,7 +7623,7 @@ add_action(
 add_action(
   "BOARD",
   "Board",
-  [(_vehbit
+  [(,vehbit
       robjs
       no_take)
     ["BOARD"
@@ -7493,7 +7642,7 @@ add_action(
     ["KNOCK"
       knock]],
   ["DOWN"
-    (_vicbit
+    (,vicbit
       _
       robjs
       no_take)
@@ -7521,20 +7670,20 @@ add_buzz(
 setg(
   robot_actions,
   _X,
-  [_walk_X_words
-    _take_X_words
-    _drop_X_words
-    _put_X_words
-    _jump_X_words
-    _push_X_words
-    _throw_X_words
-    _turn_X_words])
+  [,walk_X_words
+    ,take_X_words
+    ,drop_X_words
+    ,put_X_words
+    ,jump_X_words
+    ,push_X_words
+    ,throw_X_words
+    ,turn_X_words])
 
 setg(
   player,
   add_actor(
     chtype(
-      [_whous_X_rooms
+      [,whous_X_rooms
         ()
         0
         <>

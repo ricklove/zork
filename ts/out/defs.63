@@ -1,6 +1,6 @@
 and(
   l_Q(
-    _muddle,
+    ,muddle,
     100),
   use(
     "LSRTNS"))
@@ -82,7 +82,7 @@ defmac(
   form(
     put,
     _rm,
-    _rbits,
+    ,rbits,
     form(
       andb,
       form(
@@ -100,7 +100,7 @@ defmac(
   form(
     put,
     _obj,
-    _oflags,
+    ,oflags,
     form(
       xorb,
       form(
@@ -115,7 +115,7 @@ defmac(
   form(
     put,
     _obj,
-    _oflags,
+    ,oflags,
     form(
       andb,
       form(
@@ -133,7 +133,7 @@ defmac(
   form(
     put,
     _obj,
-    _oflags,
+    ,oflags,
     form(
       orb,
       form(
@@ -148,7 +148,7 @@ defmac(
   form(
     put,
     _rm,
-    _rbits,
+    ,rbits,
     form(
       orb,
       form(
@@ -681,8 +681,8 @@ defmac(
     _obj,
     form(
       _,
-      _doorbit,
-      _contbit)))
+      ,doorbit,
+      ,contbit)))
 
 "complement of the bit state"
 
@@ -694,7 +694,7 @@ defmac(
     form(
       trnn,
       _obj,
-      _ndescbit)))
+      ,ndescbit)))
 
 "if object is a light or aflame, then flaming"
 
@@ -706,7 +706,7 @@ defmac(
     form(
       trnn,
       _obj,
-      _flamebit),
+      ,flamebit),
     form(
       1_Q,
       form(
@@ -970,7 +970,7 @@ define(
           _obj))
       put(
         _ocan,
-        _ocontents,
+        ,ocontents,
         splice_out(
           _obj,
           ocontents(
@@ -981,7 +981,7 @@ define(
           _obj))
       put(
         _oroom,
-        _robjs,
+        ,robjs,
         splice_out(
           _obj,
           robjs(
@@ -989,21 +989,21 @@ define(
     (memq(
         _obj,
         robjs(
-          _here))
+          ,here))
       put(
-        _here,
-        _robjs,
+        ,here,
+        ,robjs,
         splice_out(
           _obj,
           robjs(
-            _here))))),
+            ,here))))),
   put(
     _obj,
-    _oroom,
+    ,oroom,
     <>),
   put(
     _obj,
-    _ocan,
+    ,ocan,
     <>))
 
 defmac(
@@ -1013,11 +1013,11 @@ defmac(
   form(
     put,
     _room,
-    _robjs,
+    ,robjs,
     (form(
         put,
         _obj,
-        _oroom,
+        ,oroom,
         _room)
       chtype(
         form(
@@ -1030,15 +1030,15 @@ defmac(
   (() => obj
     "OPTIONAL"
     (() => winner
-      () => _winner)),
+      () => ,winner)),
   form(
     put,
     _winner,
-    _aobjs,
+    ,aobjs,
     (form(
         put,
         _obj,
-        _oroom,
+        ,oroom,
         <>)
       chtype(
         form(
@@ -1051,11 +1051,11 @@ defmac(
   (() => obj
     "OPTIONAL"
     (() => winner
-      () => _winner)),
+      () => ,winner)),
   form(
     put,
     _winner,
-    _aobjs,
+    ,aobjs,
     form(
       splice_out,
       _obj,
@@ -1079,7 +1079,7 @@ define(
           _winner))
       put(
         _winner,
-        _aobjs,
+        ,aobjs,
         splice_out(
           _obj,
           aobjs(
@@ -1093,7 +1093,7 @@ define(
     objs
     "AUX"
     (winner
-      _winner)),
+      ,winner)),
   #decl
     ((objs)
       tuple(
@@ -1152,10 +1152,10 @@ define(
             not(
               trnn(
                 _x,
-                _sacredbit)))
+                ,sacredbit)))
           put(
             _win,
-            _aobjs,
+            ,aobjs,
             splice_out(
               _x,
               aobjs(
@@ -1200,7 +1200,7 @@ define(
             not(
               trnn(
                 _x,
-                _sacredbit)),
+                ,sacredbit)),
             ovis_Q(
               _x),
             prob(
@@ -1209,7 +1209,7 @@ define(
             _x)
           put(
             _x,
-            _otouch_Q,
+            ,otouch_Q,
             t)
           set(
             newlist,
@@ -1257,7 +1257,7 @@ define(
   (adv
     "AUX"
     (weapons
-      _weapons)),
+      ,weapons)),
   #decl
     ((adv)
       adv),
@@ -1305,7 +1305,7 @@ define(
       find_obj(
         _id))
     (dems
-      _demons)),
+      ,demons)),
   #decl
     ((id)
       string
@@ -1354,7 +1354,7 @@ defmac(
   form(
     put,
     _ev,
-    _cflag,
+    ,cflag,
     <>))
 
 defmac(
@@ -1363,7 +1363,7 @@ defmac(
   form(
     put,
     _ev,
-    _cflag,
+    ,cflag,
     t))
 
 define(
@@ -1371,9 +1371,9 @@ define(
   (no_is_bad_Q
     "AUX"
     (inbuf
-      _inbuf)
+      ,inbuf)
     (inchan
-      _inchan)),
+      ,inchan)),
   #decl
     ((inbuf)
       string
@@ -1386,7 +1386,7 @@ define(
   readstring(
     _inbuf,
     _inchan,
-    _reader_string),
+    ,reader_string),
   cond(
     (_no_is_bad_Q
       not(
@@ -1465,7 +1465,7 @@ define(
           _fn)
         set(
           fn,
-          __fn)
+          ,_fn)
         again(
           )),
       (error(
@@ -1527,17 +1527,17 @@ define(
           atm,
           lookup(
             _id,
-            _room_obl)),
+            ,room_obl)),
         gassigned_Q(
           _atm))
-      __atm),
+      ,_atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            _room_obl)))
+            ,room_obl)))
       setg(
         _atm,
         set(
@@ -1545,11 +1545,11 @@ define(
           chtype(
             vector(
               _atm,
-              _null_desc,
-              _null_desc,
+              ,null_desc,
+              ,null_desc,
               <>,
               <>,
-              _null_exit,
+              ,null_exit,
               (),
               <>,
               0,
@@ -1560,7 +1560,8 @@ define(
       setg(
         rooms,
         (_room
-          _X_rooms))
+          _X
+          ,rooms))
       _room)))
 
 define(
@@ -1596,26 +1597,26 @@ define(
           atm,
           lookup(
             _id,
-            _object_obl)),
+            ,object_obl)),
         gassigned_Q(
           _atm))
-      __atm),
+      ,_atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            _object_obl)))
+            ,object_obl)))
       setg(
         _atm,
         set(
           obj,
           chtype(
             [_atm
-              _null_syn
-              _null_desc
-              _null_desc
+              ,null_syn
+              ,null_desc
+              ,null_desc
               <>
               <>
               ()
@@ -1629,14 +1630,15 @@ define(
               <>
               5
               0
-              _null_syn
+              ,null_syn
               <>
               <>],
             object)))
       setg(
         objects,
         (_obj
-          _X_objects))
+          _X
+          ,objects))
       _obj)))
 
 define(
