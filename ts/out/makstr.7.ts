@@ -10,23 +10,23 @@ define(
         initial,
         oblist))
     atm),
-  #decl
-    ((tick)
-      fix
-      (app)
-      or(
+  decl(
+    (tick),
+    fix,
+    (app),
+    or(
         applicable,
-        offset)
-      (flg)
-      or(
+        offset),
+    (flg),
+    or(
         atom,
-        false)
-      (name)
-      or(
+        false),
+    (name),
+    or(
         atom,
-        string)
-      (atm)
-      or(
+        string),
+    (atm),
+    or(
         atom,
         false)),
   cond(
@@ -64,13 +64,13 @@ define(
     "AUX"
     (winner
       ,winner)),
-  #decl
-    ((objs)
-      tuple(
+  decl(
+    (objs),
+    tuple(
         [rest
-          string])
-      (winner)
-      adv),
+          string]),
+    (winner),
+    adv),
   mapf(
     <>,
     function(
@@ -79,9 +79,9 @@ define(
         (y
           find_obj(
             _x))),
-      #decl
-        ((y)
-          object),
+      decl(
+        (y),
+        object),
       or(
         memq(
           _y,
@@ -108,27 +108,27 @@ define(
     (fval
       <>)
     atm),
-  #decl
-    ((str)
-      or(
+  decl(
+    (str),
+    or(
         false,
-        string)
-      (flid
-        rmid)
-      or(
+        string),
+    (flid
+        rmid),
+    or(
         atom,
-        string)
-      (atm
-        funct)
-      or(
+        string),
+    (atm
+        funct),
+    or(
         atom,
-        false)
-      (fval)
-      or(
+        false),
+    (fval),
+    or(
         applicable,
-        false)
-      (flag)
-      or(
+        false),
+    (flag),
+    or(
         atom,
         false)),
   cond(
@@ -175,40 +175,40 @@ define(
       ivector(
         length(
           _pairs)))),
-  #decl
-    ((pairs)
-      tuple(
+  decl(
+    (pairs),
+    tuple(
         [rest
           string
           or(
             nexit,
             cexit,
             string,
-            atom)])
-      (dir)
-      list(
+            atom)]),
+    (dir),
+    list(
         [rest
-          atom])
-      (frob)
-      vector
-      (dobl)
-      oblist),
+          atom]),
+    (frob),
+    vector,
+    (dobl),
+    oblist),
   repeat(
     (atm
       rm
       (f
         _frob)),
-    #decl
-      ((atm)
-        or(
+    decl(
+      (atm),
+      or(
           atom,
-          false)
-        (rm)
-        or(
+          false),
+      (rm),
+      or(
           room,
-          false)
-        (f)
-        vector),
+          false),
+      (f),
+      vector),
     cond(
       (or(
           and(
@@ -289,31 +289,31 @@ define(
     (rm
       find_room(
         _id))),
-  #decl
-    ((id)
-      or(
+  decl(
+    (id),
+    or(
         string,
-        atom)
-      (d1
-        d2)
-      string
-      (lit_Q)
-      or(
+        atom),
+    (d1
+        d2),
+    string,
+    (lit_Q),
+    or(
         atom,
         form,
-        false)
-      (ex)
-      exit
-      (app)
-      or(
+        false),
+    (ex),
+    exit,
+    (app),
+    or(
         form,
         false,
-        atom)
-      (val
-        bit)
-      fix
-      (rm)
-      room),
+        atom),
+    (val
+        bit),
+    fix,
+    (rm),
+    room),
   setg(
     score_max,
     _(
@@ -367,9 +367,9 @@ define(
     <>,
     function(
       (x),
-      #decl
-        ((x)
-          object),
+      decl(
+        (x),
+        object),
       put(
         _x,
         ,oroom,
@@ -384,11 +384,11 @@ define(
     str
     "TUPLE"
     tup),
-  #decl
-    ((id)
-      string
-      (tup)
-      tuple),
+  decl(
+    (id),
+    string,
+    (tup),
+    tuple),
   object(
     _id,
     "",
@@ -407,13 +407,13 @@ define(
     app
     "TUPLE"
     tup),
-  #decl
-    ((id)
-      string
-      (tup)
-      tuple
-      (app)
-      atom),
+  decl(
+    (id),
+    string,
+    (tup),
+    tuple,
+    (app),
+    atom),
   object(
     _id,
     "",
@@ -446,39 +446,39 @@ define(
       5)
     (capac
       0)),
-  #decl
-    ((id)
-      or(
+  decl(
+    (id),
+    or(
         atom,
-        string)
-      (desc1
-        desc2)
-      string
-      (app)
-      or(
+        string),
+    (desc1
+        desc2),
+    string,
+    (app),
+    or(
         false,
         form,
-        atom)
-      (conts)
-      list(
+        atom),
+    (conts),
+    list(
         [rest
-          object])
-      (can)
-      or(
+          object]),
+    (can),
+    or(
         false,
-        object)
-      (flags)
-      primtype(
-        word)
-      (size
-        capac)
-      fix
-      (light_Q
+        object),
+    (flags),
+    primtype(
+        word),
+    (size
+        capac),
+    fix,
+    (light_Q
         s1
-        s2)
-      fix
-      (desco)
-      or(
+        s2),
+    fix,
+    (desco),
+    or(
         string,
         false)),
   setg(
@@ -547,11 +547,11 @@ define(
     (atm
       add_word(
         _str))),
-  #decl
-    ((str)
-      string
-      (atm)
-      or(
+  decl(
+    (str),
+    string,
+    (atm),
+    or(
         false,
         atom)),
   cond(
@@ -585,16 +585,16 @@ define(
         insert(
           _nam,
           ,actions)))),
-  #decl
-    ((nam
-        str)
-      string
-      (decl)
-      tuple(
+  decl(
+    (nam
+        str),
+    string,
+    (decl),
+    tuple(
         [rest
-          vector])
-      (atm)
-      atom),
+          vector]),
+    (atm),
+    atom),
   setg(
     _atm,
     chtype(
@@ -613,15 +613,15 @@ define(
     (dir
       ,directions)
     atm),
-  #decl
-    ((nms)
-      tuple(
+  decl(
+    (nms),
+    tuple(
         [rest
-          string])
-      (dir)
-      oblist
-      (atm)
-      atom),
+          string]),
+    (dir),
+    oblist,
+    (atm),
+    atom),
   mapf(
     <>,
     function(
@@ -651,19 +651,19 @@ define(
     (dir
       ,directions)
     atm),
-  #decl
-    ((atm)
-      atom
-      (str)
-      string
-      (nms)
-      tuple(
+  decl(
+    (atm),
+    atom,
+    (str),
+    string,
+    (nms),
+    tuple(
         [rest
-          string])
-      (val)
-      direction
-      (dir)
-      oblist),
+          string]),
+    (val),
+    direction,
+    (dir),
+    oblist),
   set(
     val,
     add_directions(
@@ -693,19 +693,19 @@ define(
     "AUX"
     atm
     val),
-  #decl
-    ((n1)
-      string
-      (n2)
-      tuple(
+  decl(
+    (n1),
+    string,
+    (n2),
+    tuple(
         [rest
-          string])
-      (atm)
-      or(
+          string]),
+    (atm),
+    or(
         false,
-        atom)
-      (val)
-      any),
+        atom),
+    (val),
+    any),
   cond(
     (set(
         atm,
@@ -753,9 +753,9 @@ define(
 define(
   add_word,
   (w),
-  #decl
-    ((w)
-      string),
+  decl(
+    (w),
+    string),
   or(
     lookup(
       _w,
@@ -768,18 +768,18 @@ define(
   add_buzz,
   ("TUPLE"
     w),
-  #decl
-    ((w)
-      tuple(
+  decl(
+    (w),
+    tuple(
         [rest
           string])),
   mapf(
     <>,
     function(
       (x),
-      #decl
-        ((x)
-          string),
+      decl(
+        (x),
+        string),
       setg(
         add_word(
           _x),
@@ -793,11 +793,11 @@ define(
   (nm
     "TUPLE"
     w),
-  #decl
-    ((nm)
-      atom
-      (w)
-      tuple(
+  decl(
+    (nm),
+    atom,
+    (w),
+    tuple(
         [rest
           string])),
   mapf(
@@ -806,11 +806,11 @@ define(
       (x
         "AUX"
         atm),
-      #decl
-        ((x)
-          string
-          (atm)
-          atom),
+      decl(
+        (x),
+        string,
+        (atm),
+        atom),
       setg(
         set(
           atm,
@@ -831,16 +831,16 @@ define(
     "AUX"
     (objs
       ,object_obl)),
-  #decl
-    ((obj)
-      object
-      (names
-        adj)
-      vector(
+  decl(
+    (obj),
+    object,
+    (names
+        adj),
+    vector(
         [rest
-          string])
-      (objs)
-      oblist),
+          string]),
+    (objs),
+    oblist),
   put(
     _obj,
     ,onames,
@@ -848,9 +848,9 @@ define(
       ,uvector,
       function(
         (x),
-        #decl
-          ((x)
-            string),
+        decl(
+          (x),
+          string),
         or(
           lookup(
             _x,
@@ -884,19 +884,19 @@ define(
     "AUX"
     atm
     val),
-  #decl
-    ((n1)
-      string
-      (n2)
-      tuple(
+  decl(
+    (n1),
+    string,
+    (n2),
+    tuple(
         [rest
-          string])
-      (atm)
-      or(
+          string]),
+    (atm),
+    or(
         false,
-        atom)
-      (val)
-      any),
+        atom),
+    (val),
+    any),
   cond(
     (set(
         atm,
@@ -921,10 +921,10 @@ define(
   (x
     y
     "AUX"),
-  #decl
-    ((x
-        y)
-      string),
+  decl(
+    (x
+        y),
+    string),
   setg(
     add_word(
       _x),
@@ -939,17 +939,17 @@ define(
 define(
   add_demon,
   (x),
-  #decl
-    ((x)
-      hack),
+  decl(
+    (x),
+    hack),
   cond(
     (mapr(
         <>,
         function(
           (y),
-          #decl
-            ((y)
-              list(
+          decl(
+            (y),
+            list(
                 [rest
                   hack])),
           cond(
@@ -987,11 +987,11 @@ define(
     "AUX"
     (actors
       ,actors)),
-  #decl
-    ((adv)
-      adv
-      (actors)
-      list(
+  decl(
+    (adv),
+    adv,
+    (actors),
+    list(
         [rest
           adv])),
   cond(
@@ -999,9 +999,9 @@ define(
         <>,
         function(
           (x),
-          #decl
-            ((x)
-              adv),
+          decl(
+            (x),
+            adv),
           cond(
             (_EQ_Q(
                 aobj(
@@ -1021,11 +1021,11 @@ define(
   add_desc,
   (obj
     str),
-  #decl
-    ((obj)
-      object
-      (str)
-      string),
+  decl(
+    (obj),
+    object,
+    (str),
+    string),
   put(
     _obj,
     ,oread,

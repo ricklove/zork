@@ -60,16 +60,18 @@ export const convertToTypescript = (node: ZNode): string => {
         //     return `() => ${convertToTypescript(firstNode)}`;
         // }
 
-        // Functions
-        if (firstNode && openSymbol === '<') {
+        // <Functions ...>
+        if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
+            const name = converToTypescriptName(firstNode);
+            return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
+        }
 
-
-            if (firstNode.kind == 'ZToken') {
-                const name = converToTypescriptName(firstNode);
-                return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
-            }
-
-            // if( name === '')
+        // #Fuctions ()
+        if (openSymbol === '#' && firstNode && firstNode.kind === 'ZToken'
+            && nodes.length === 2 && nodes[1].kind === 'ZList' && nodes[1].openSymbol === '('
+        ) {
+            const name = converToTypescriptName(firstNode);
+            return `${name}(${getIndentedNodes(nodes[1].nodes, depth, true, ',')})`;
         }
 
         // Unknown

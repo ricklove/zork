@@ -51,15 +51,15 @@ define(
     "OPTIONAL"
     m1
     m2),
-  #decl
-    ((body
+  decl(
+    (body
         nm1
         nm2
         m1
-        m2)
-      string
-      (type)
-      fix),
+        m2),
+    string,
+    (type),
+    fix),
   cond(
     (_EQ_Q(
         _type,
@@ -99,13 +99,13 @@ define(
     (prsact
       1(
         _prsvec))),
-  #decl
-    ((prsvec)
-      vector
-      (win)
-      adv
-      (prsact)
-      verb),
+  decl(
+    (prsvec),
+    vector,
+    (win),
+    adv,
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -130,9 +130,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   open_close(
     _prsact,
     kitchen_window_X_flag,
@@ -145,14 +145,14 @@ define(
     atm
     stropn
     strcls),
-  #decl
-    ((verb)
-      verb
-      (atm)
-      atom
-      (stropn
-        strcls)
-      string),
+  decl(
+    (verb),
+    verb,
+    (atm),
+    atom,
+    (stropn
+        strcls),
+    string),
   cond(
     (_EQ_Q(
         _verb,
@@ -194,13 +194,13 @@ define(
     (prsact
       1(
         _prsvec))),
-  #decl
-    ((prsvec)
-      vector
-      (win)
-      adv
-      (prsact)
-      verb),
+  decl(
+    (prsvec),
+    vector,
+    (win),
+    adv,
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -226,13 +226,13 @@ define(
     (l
       2(
         _pv))),
-  #decl
-    ((pv)
-      vector(
+  decl(
+    (pv),
+    vector(
         [3
-          any])
-      (l)
-      object),
+          any]),
+    (l),
+    object),
   cond(
     (_EQ_Q(
         1(
@@ -279,9 +279,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -303,9 +303,9 @@ define(
       1(
         ,prsvec))),
   #decl
-    #decl
-      ((prsact)
-        verb),
+    decl(
+      (prsact),
+      verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -322,16 +322,16 @@ define(
       1(
         _prsvec))
     t),
-  #decl
-    ((prsvec)
-      vector(
+  decl(
+    (prsvec),
+    vector(
         verb,
         [2
-          any])
-      (prsact)
-      verb
-      (t)
-      object),
+          any]),
+    (prsact),
+    verb,
+    (t),
+    object),
   cond(
     (_EQ_Q(
         vname(
@@ -403,9 +403,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -429,9 +429,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -463,19 +463,19 @@ define(
       1(
         _prsvec))
     tc),
-  #decl
-    ((prsvec)
-      vector
-      (win)
-      adv
-      (rug_Q)
-      or(
+  decl(
+    (prsvec),
+    vector,
+    (win),
+    adv,
+    (rug_Q),
+    or(
         atom,
-        false)
-      (prsact)
-      verb
-      (tc)
-      object),
+        false),
+    (prsact),
+    verb,
+    (tc),
+    object),
   cond(
     (_EQ_Q(
         _prsact,
@@ -548,11 +548,11 @@ define(
         ,prsvec))
     (rm
       ,here)),
-  #decl
-    ((prsact)
-      verb
-      (rm)
-      room),
+  decl(
+    (prsact),
+    verb,
+    (rm),
+    room),
   cond(
     (_EQ_Q(
         _rm,
@@ -604,9 +604,9 @@ define(
     (obj
       2(
         ,prsvec))),
-  #decl
-    ((obj)
-      object),
+  decl(
+    (obj),
+    object),
   cond(
     (and(
         _EQ_Q(
@@ -656,16 +656,16 @@ define(
     (rv
       rvars(
         _rm))),
-  #decl
-    ((prsact)
-      verb
-      (rm)
-      room
-      (leaves
-        grate)
-      object
-      (rv)
-      fix),
+  decl(
+    (prsact),
+    verb,
+    (rm),
+    room,
+    (leaves
+        grate),
+    object,
+    (rv),
+    fix),
   cond(
     (_EQ_Q(
         _prsact,
@@ -728,13 +728,13 @@ define(
     (door
       find_obj(
         "DOOR"))),
-  #decl
-    ((win)
-      adv
-      (prsact)
-      verb
-      (door)
-      object),
+  decl(
+    (win),
+    adv,
+    (prsact),
+    verb,
+    (door),
+    object),
   cond(
     (_EQ_Q(
         _prsact,
@@ -771,11 +771,11 @@ define(
     (aobjs
       aobjs(
         _winner))),
-  #decl
-    ((winner)
-      adv
-      (aobjs)
-      list(
+  decl(
+    (winner),
+    adv,
+    (aobjs),
+    list(
         [rest
           object])),
   cond(
@@ -817,13 +817,13 @@ define(
       1(
         _prsvec))
     obj),
-  #decl
-    ((prsvec)
-      vector
-      (obj)
-      object
-      (prsa)
-      verb),
+  decl(
+    (prsvec),
+    vector,
+    (obj),
+    object,
+    (prsa),
+    verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -868,13 +868,13 @@ define(
     (prsi
       3(
         _prsvec))),
-  #decl
-    ((prsvec)
-      vector
-      (prsa)
-      verb
-      (prsi)
-      or(
+  decl(
+    (prsvec),
+    vector,
+    (prsa),
+    verb,
+    (prsi),
+    or(
         false,
         object)),
   cond(
@@ -922,12 +922,12 @@ define(
       find_room(
         "LLD2"))
     l),
-  #decl
-    ((rm
-        lld)
-      room
-      (l)
-      list(
+  decl(
+    (rm
+        lld),
+    room,
+    (l),
+    list(
         [rest
           object])),
   tell(
@@ -947,9 +947,9 @@ define(
     <>,
     function(
       (x),
-      #decl
-        ((x)
-          object),
+      decl(
+        (x),
+        object),
       put(
         _x,
         ,oroom,
@@ -993,22 +993,22 @@ define(
     (a
       find_obj(
         "AXE"))),
-  #decl
-    ((pv)
-      vector
-      (prso)
-      or(
+  decl(
+    (pv),
+    vector,
+    (prso),
+    or(
         false,
-        object)
-      (win)
-      adv
-      (here)
-      room
-      (t
-        a)
-      object
-      (pa)
-      verb),
+        object),
+    (win),
+    adv,
+    (here),
+    room,
+    (t
+        a),
+    object,
+    (pa),
+    verb),
   cond(
     (_EQ_Q(
         _pa,
@@ -1146,9 +1146,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (and(
         _EQ_Q(
@@ -1177,14 +1177,14 @@ define(
     rm1
     rm2
     l1),
-  #decl
-    ((prsact)
-      verb
-      (rm1
-        rm2)
-      room
-      (l1)
-      list(
+  decl(
+    (prsact),
+    verb,
+    (rm1
+        rm2),
+    room,
+    (l1),
+    list(
         [rest
           object])),
   cond(
@@ -1226,9 +1226,9 @@ define(
         <>,
         function(
           (x),
-          #decl
-            ((x)
-              object),
+          decl(
+            (x),
+            object),
           put(
             _x,
             ,oroom,
@@ -1239,9 +1239,9 @@ define(
         <>,
         function(
           (x),
-          #decl
-            ((x)
-              object),
+          decl(
+            (x),
+            object),
           put(
             _x,
             ,oroom,
@@ -1294,9 +1294,9 @@ define(
   ("AUX"
     (pv
       ,prsvec)),
-  #decl
-    ((pv)
-      vector),
+  decl(
+    (pv),
+    vector),
   cond(
     (and(
         _EQ_Q(
@@ -1324,9 +1324,9 @@ define(
   carousel_exit,
   ("AUX"
     cx),
-  #decl
-    ((cx)
-      or(
+  decl(
+    (cx),
+    or(
         cexit,
         nexit,
         room)),
@@ -1343,9 +1343,9 @@ define(
   carousel_out,
   ("AUX"
     cx),
-  #decl
-    ((cx)
-      or(
+  decl(
+    (cx),
+    or(
         cexit,
         nexit,
         room)),
@@ -1374,9 +1374,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -1395,9 +1395,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -1450,19 +1450,19 @@ define(
     (cand
       find_obj(
         "CANDL"))),
-  #decl
-    ((pv)
-      vector
-      (pa)
-      verb
-      (win)
-      adv
-      (wobj)
-      list(
+  decl(
+    (pv),
+    vector,
+    (pa),
+    verb,
+    (win),
+    adv,
+    (wobj),
+    list(
         [rest
-          object])
-      (cand)
-      object),
+          object]),
+    (cand),
+    object),
   cond(
     (_EQ_Q(
         _pa,
@@ -1523,9 +1523,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
+  decl(
+    (prsa),
+    verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -1546,11 +1546,11 @@ define(
     (g
       find_obj(
         "GHOST"))),
-  #decl
-    ((pv)
-      vector
-      (g)
-      object),
+  decl(
+    (pv),
+    vector,
+    (g),
+    object),
   cond(
     (_EQ_Q(
         3(
@@ -1572,9 +1572,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -1597,9 +1597,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (,grunlock_X_flag
       open_close(
@@ -1616,9 +1616,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (,grunlock_X_flag
       open_close(
@@ -1652,29 +1652,29 @@ define(
       ,here)
     (rooms
       ,rooms)),
-  #decl
-    ((hack)
-      hack
-      (pv)
-      vector(
-        verb)
-      (hh)
-      list(
+  decl(
+    (hack),
+    hack,
+    (pv),
+    vector(
+        verb),
+    (hh),
+    list(
         [rest
-          object])
-      (hobj)
-      object
-      (flg)
-      or(
+          object]),
+    (hobj),
+    object,
+    (flg),
+    or(
         atom,
-        false)
-      (tl
-        rooms)
-      list(
+        false),
+    (tl
+        rooms),
+    list(
         [rest
-          room])
-      (here)
-      room),
+          room]),
+    (here),
+    room),
   cond(
     (and(
         haction(
@@ -1751,9 +1751,9 @@ define(
         <>,
         function(
           (x),
-          #decl
-            ((x)
-              object),
+          decl(
+            (x),
+            object),
           cond(
             (and(
                 n_EQ_Q(
@@ -1831,9 +1831,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -1869,13 +1869,13 @@ define(
     (trunk
       find_obj(
         "TRUNK"))),
-  #decl
-    ((prsact)
-      verb
-      (trunk)
-      object
-      (prsi)
-      or(
+  decl(
+    (prsact),
+    verb,
+    (trunk),
+    object,
+    (prsi),
+    or(
         false,
         object)),
   cond(
@@ -1966,23 +1966,23 @@ define(
         ,here,
         _mnt))
     hack),
-  #decl
-    ((prsact)
-      verb
-      (prsi)
-      or(
+  decl(
+    (prsact),
+    verb,
+    (prsi),
+    or(
         false,
-        object)
-      (here_Q)
-      or(
+        object),
+    (here_Q),
+    or(
         atom,
-        false)
-      (mnt)
-      room
-      (prso)
-      prsobj
-      (hack)
-      fix),
+        false),
+    (mnt),
+    room,
+    (prso),
+    prsobj,
+    (hack),
+    fix),
   cond(
     (_EQ_Q(
         _prsact,
@@ -2105,19 +2105,19 @@ define(
     (prsi
       3(
         _prsvec))),
-  #decl
-    ((prsvec)
-      vector(
+  decl(
+    (prsvec),
+    vector(
         [3
-          any])
-      (prsa)
-      verb
-      (prsi)
-      or(
+          any]),
+    (prsa),
+    verb,
+    (prsi),
+    or(
         object,
-        false)
-      (hack)
-      fix),
+        false),
+    (hack),
+    fix),
   cond(
     (_EQ_Q(
         2(
@@ -2158,9 +2158,9 @@ define(
   ("AUX"
     (prsvec
       ,prsvec)),
-  #decl
-    ((prsvec)
-      vector(
+  decl(
+    (prsvec),
+    vector(
         [3
           any])),
   cond(
@@ -2180,9 +2180,9 @@ define(
 define(
   with_tell,
   (obj),
-  #decl
-    ((obj)
-      object),
+  decl(
+    (obj),
+    object),
   tell(
     "With a",
     1,
@@ -2199,17 +2199,17 @@ define(
       1(
         ,prsvec))
     c),
-  #decl
-    ((foo)
-      vector(
+  decl(
+    (foo),
+    vector(
         fix,
-        cevent)
-      (bar)
-      cevent
-      (prsact)
-      verb
-      (c)
-      object),
+        cevent),
+    (bar),
+    cevent,
+    (prsact),
+    verb,
+    (c),
+    object),
   cond(
     (_EQ_Q(
         vname(
@@ -2249,9 +2249,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  #decl
-    ((prsact)
-      verb),
+  decl(
+    (prsact),
+    verb),
   cond(
     (_EQ_Q(
         1(
@@ -2308,18 +2308,18 @@ define(
     (w
       find_obj(
         "WATER"))),
-  #decl
-    ((rem)
-      or(
+  decl(
+    (rem),
+    or(
         atom,
-        false)
-      (prsvec)
-      vector(
+        false),
+    (prsvec),
+    vector(
         verb,
         object,
-        any)
-      (w)
-      object),
+        any),
+    (w),
+    object),
   cond(
     (object_action(
         )),
@@ -2382,28 +2382,28 @@ define(
     (can
       3(
         _prsvec))),
-  #decl
-    ((prsact)
-      verb
-      (me)
-      adv
-      (b
-        w)
-      object
-      (rem)
-      or(
+  decl(
+    (prsact),
+    verb,
+    (me),
+    adv,
+    (b
+        w),
+    object,
+    (rem),
+    or(
         atom,
-        false)
-      (prsvec)
-      vector(
+        false),
+    (prsvec),
+    vector(
         [3
-          any])
-      (av)
-      or(
+          any]),
+    (av),
+    or(
         object,
-        false)
-      (can)
-      or(
+        false),
+    (can),
+    or(
         false,
         object)),
   cond(
@@ -2576,15 +2576,15 @@ define(
         "ROPE"))
     (win
       ,winner)),
-  #decl
-    ((prsact)
-      verb
-      (rope)
-      object
-      (win)
-      adv
-      (droom)
-      room),
+  decl(
+    (prsact),
+    verb,
+    (rope),
+    object,
+    (win),
+    adv,
+    (droom),
+    room),
   cond(
     (n_EQ_Q(
         ,here,
@@ -2703,23 +2703,23 @@ define(
       find_obj(
         "GARLI"))
     cyc),
-  #decl
-    ((prsact)
-      verb
-      (prsob1)
-      or(
+  decl(
+    (prsact),
+    verb,
+    (prsob1),
+    or(
         object,
-        false)
-      (rm)
-      room
-      (food
-        drink)
-      object
-      (cyc
-        garlic)
-      object
-      (count)
-      fix),
+        false),
+    (rm),
+    room,
+    (food
+        drink),
+    object,
+    (cyc
+        garlic),
+    object,
+    (count),
+    fix),
   cond(
     (,cyclops_flag_X_flag
       cond(
@@ -2880,13 +2880,13 @@ define(
     (vars
       rvars(
         _rm))),
-  #decl
-    ((pv)
-      vector
-      (rm)
-      room
-      (vars)
-      fix),
+  decl(
+    (pv),
+    vector,
+    (rm),
+    room,
+    (vars),
+    fix),
   cond(
     (_EQ_Q(
         1(
@@ -2948,9 +2948,9 @@ gdecl(
 define(
   aos_sos,
   (foo),
-  #decl
-    ((foo)
-      fix),
+  decl(
+    (foo),
+    fix),
   cond(
     (l_Q(
         _foo,
@@ -2994,22 +2994,22 @@ define(
     verb
     (walk
       ,walk_X_words)),
-  #decl
-    ((outchan)
-      channel
-      (walk
-        verb)
-      verb
-      (reader_string)
-      string
-      (prsact)
-      verb
-      (b)
-      string
-      (l)
-      fix
-      (rm)
-      room),
+  decl(
+    (outchan),
+    channel,
+    (walk
+        verb),
+    verb,
+    (reader_string),
+    string,
+    (prsact),
+    verb,
+    (b),
+    string,
+    (l),
+    fix,
+    (rm),
+    room),
   cond(
     (,echo_flag_X_flag),
     (unwind(
@@ -3019,9 +3019,9 @@ define(
             <>,
             function(
               (obj),
-              #decl
-                ((obj)
-                  object),
+              decl(
+                (obj),
+                object),
               cond(
                 (ovis_Q(
                     _obj)
@@ -3037,9 +3037,9 @@ define(
             ((prsvec
                 ,prsvec)
               random_action),
-            #decl
-              ((prsvec)
-                vector),
+            decl(
+              (prsvec),
+              vector),
             set(
               l,
               readstring(
@@ -3096,9 +3096,9 @@ define(
                       <>,
                       function(
                         (x),
-                        #decl
-                          ((x)
-                            object),
+                        decl(
+                          (x),
+                          object),
                         cond(
                           (trnn(
                               _x,
@@ -3139,9 +3139,9 @@ define(
                       <>,
                       function(
                         (x),
-                        #decl
-                          ((x)
-                            object),
+                        decl(
+                          (x),
+                          object),
                         cond(
                           (trnn(
                               _x,
@@ -3170,9 +3170,9 @@ define(
             <>,
             function(
               (x),
-              #decl
-                ((x)
-                  object),
+              decl(
+                (x),
+                object),
               cond(
                 (trnn(
                     _x,
@@ -3195,13 +3195,13 @@ define(
       rexits(
         _rm))
     m),
-  #decl
-    ((rm)
-      room
-      (exits)
-      exit
-      (m)
-      or(
+  decl(
+    (rm),
+    room,
+    (exits),
+    exit,
+    (m),
+    or(
         primtype(
           vector),
         false)),
@@ -3260,13 +3260,13 @@ define(
         _(
           ,hs,
           1)))),
-  #decl
-    ((prsobj)
-      or(
+  decl(
+    (prsobj),
+    or(
         object,
-        false)
-      (amt)
-      fix),
+        false),
+    (amt),
+    fix),
   cond(
     (_prsobj
       cond(
@@ -3347,13 +3347,13 @@ define(
     (pi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (po)
-      object
-      (pi)
-      or(
+  decl(
+    (pv),
+    vector,
+    (po),
+    object,
+    (pi),
+    or(
         false,
         object)),
   cond(
@@ -3462,11 +3462,11 @@ define(
     (prsi
       3(
         ,prsvec))),
-  #decl
-    ((prso)
-      object
-      (prsi)
-      or(
+  decl(
+    (prso),
+    object,
+    (prsi),
+    or(
         object,
         false)),
   cond(
@@ -3505,9 +3505,9 @@ define(
     (prsobj
       2(
         ,prsvec))),
-  #decl
-    ((prsobj)
-      or(
+  decl(
+    (prsobj),
+    or(
         object,
         false)),
   cond(
@@ -3536,24 +3536,24 @@ define(
     (aobjs
       aobjs(
         ,winner))),
-  #decl
-    ((prsobj)
-      object
-      (nobj)
-      or(
+  decl(
+    (prsobj),
+    object,
+    (nobj),
+    or(
         object,
-        false)
-      (prsvec)
-      vector(
+        false),
+    (prsvec),
+    vector(
         [3
-          any])
-      (aobjs)
-      list(
+          any]),
+    (aobjs),
+    list(
         [rest
-          object])
-      (eat_Q
-        drink_Q)
-      or(
+          object]),
+    (eat_Q
+        drink_Q),
+    or(
         atom,
         false)),
   cond(
@@ -3684,46 +3684,46 @@ define(
     (treas
       find_room(
         "TREAS"))),
-  #decl
-    ((hack)
-      hack
-      (rm
-        wroom)
-      room
-      (robj
-        hh)
-      list(
+  decl(
+    (hack),
+    hack,
+    (rm
+        wroom),
+    room,
+    (robj
+        hh),
+    list(
         [rest
-          object])
-      (seen_Q)
-      or(
+          object]),
+    (seen_Q),
+    or(
         atom,
-        false)
-      (win)
-      adv
-      (hobj)
-      object
-      (robber)
-      activation
-      (here_Q)
-      or(
+        false),
+    (win),
+    adv,
+    (hobj),
+    object,
+    (robber),
+    activation,
+    (here_Q),
+    or(
         room,
-        false)
-      (still)
-      object
-      (treas)
-      room),
+        false),
+    (still),
+    object,
+    (treas),
+    room),
   prog(
     ((once
         <>)
       objt),
-    #decl
-      ((once)
-        or(
+    decl(
+      (once),
+      or(
           atom,
-          false)
-        (objt)
-        list(
+          false),
+      (objt),
+      list(
           [rest
             object])),
     cond(
@@ -3768,9 +3768,9 @@ define(
           <>,
           function(
             (x),
-            #decl
-              ((x)
-                object),
+            decl(
+              (x),
+              object),
             cond(
               (g_Q(
                   otval(
@@ -4037,9 +4037,9 @@ define(
               <>,
               function(
                 (x),
-                #decl
-                  ((x)
-                    object),
+                decl(
+                  (x),
+                  object),
                 cond(
                   (and(
                       can_take_Q(
@@ -4081,9 +4081,9 @@ define(
               <>,
               function(
                 (x),
-                #decl
-                  ((x)
-                    object),
+                decl(
+                  (x),
+                  object),
                 cond(
                   (and(
                       0_Q(
@@ -4187,9 +4187,9 @@ define(
       <>,
       function(
         (x),
-        #decl
-          ((x)
-            object),
+        decl(
+          (x),
+          object),
         cond(
           (and(
               0_Q(
@@ -4220,10 +4220,10 @@ define(
   snarf_object,
   (who
     what),
-  #decl
-    ((who
-        what)
-      object),
+  decl(
+    (who
+        what),
+    object),
   cond(
     (and(
         n_EQ_Q(
@@ -4278,32 +4278,32 @@ define(
     (chali
       find_obj(
         "CHALI"))),
-  #decl
-    ((pv)
-      vector
-      (dem)
-      hack
-      (prsact)
-      verb
-      (prsobj)
-      or(
+  decl(
+    (pv),
+    vector,
+    (dem),
+    hack,
+    (prsact),
+    verb,
+    (prsobj),
+    or(
         object,
-        false)
-      (chali
+        false),
+    (chali
         t
         hobj
         st
         brick
-        fuse)
-      object
-      (f)
-      vector(
+        fuse),
+    object,
+    (f),
+    vector(
         any,
-        cevent)
-      (here)
-      room
-      (flg)
-      or(
+        cevent),
+    (here),
+    room,
+    (flg),
+    or(
         atom,
         false)),
   cond(
@@ -4351,9 +4351,9 @@ define(
             <>,
             function(
               (x),
-              #decl
-                ((x)
-                  object),
+              decl(
+                (x),
+                object),
               insert_object(
                 _x,
                 _here),
@@ -4378,9 +4378,9 @@ define(
             <>,
             function(
               (x),
-              #decl
-                ((x)
-                  object),
+              decl(
+                (x),
+                object),
               cond(
                 (and(
                     n_EQ_Q(
@@ -4517,9 +4517,9 @@ define(
                   <>,
                   function(
                     (x),
-                    #decl
-                      ((x)
-                        object),
+                    decl(
+                      (x),
+                      object),
                     insert_object(
                       _x,
                       _here)),
@@ -4646,15 +4646,15 @@ define(
         ,prsvec))
     tr
     t),
-  #decl
-    ((prsa)
-      verb
-      (ch)
-      object
-      (tr)
-      room
-      (t)
-      object),
+  decl(
+    (prsa),
+    verb,
+    (ch),
+    object,
+    (tr),
+    room,
+    (t),
+    object),
   cond(
     (_EQ_Q(
         _prsa,
@@ -4696,12 +4696,12 @@ define(
     (prsi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (prso
-        prsi)
-      object),
+  decl(
+    (pv),
+    vector,
+    (prso
+        prsi),
+    object),
   cond(
     (flaming_Q(
         _prsi)
@@ -4769,12 +4769,12 @@ define(
     (prsi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (prso
-        prsi)
-      object),
+  decl(
+    (pv),
+    vector,
+    (prso
+        prsi),
+    object),
   cond(
     (trnn(
         _prso,
@@ -4812,9 +4812,9 @@ define(
     (pa
       1(
         ,prsvec))),
-  #decl
-    ((pa)
-      verb),
+  decl(
+    (pa),
+    verb),
   cond(
     (_EQ_Q(
         _pa,
@@ -4842,10 +4842,10 @@ define(
     (prso
       3(
         ,prsvec))),
-  #decl
-    ((prsi
-        prso)
-      object),
+  decl(
+    (prsi
+        prso),
+    object),
   cond(
     (_EQ_Q(
         _prsi,
@@ -4875,9 +4875,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (_EQ_Q(
         _prso,
@@ -4894,9 +4894,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (_EQ_Q(
         _prso,
@@ -4911,9 +4911,9 @@ define(
         <>,
         function(
           (x),
-          #decl
-            ((x)
-              or(
+          decl(
+            (x),
+            or(
                 cexit,
                 nexit,
                 room)),
@@ -4949,12 +4949,12 @@ define(
     (r
       find_room(
         "MGRAT"))),
-  #decl
-    ((prso
-        prsi)
-      object
-      (r)
-      room),
+  decl(
+    (prso
+        prsi),
+    object,
+    (r),
+    room),
   cond(
     (_EQ_Q(
         _prso,
@@ -4974,9 +4974,9 @@ define(
             <>,
             function(
               (x),
-              #decl
-                ((x)
-                  or(
+              decl(
+                (x),
+                or(
                     cexit,
                     nexit,
                     room)),
@@ -5017,12 +5017,12 @@ define(
     (prsi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (prso
-        prsi)
-      or(
+  decl(
+    (pv),
+    vector,
+    (prso
+        prsi),
+    or(
         false,
         object)),
   cond(
@@ -5073,12 +5073,12 @@ define(
     (prsi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (prso
-        prsi)
-      or(
+  decl(
+    (pv),
+    vector,
+    (prso
+        prsi),
+    or(
         false,
         object)),
   cond(
@@ -5129,12 +5129,12 @@ define(
     (prsi
       3(
         _pv))),
-  #decl
-    ((pv)
-      vector
-      (prso
-        prsi)
-      or(
+  decl(
+    (pv),
+    vector,
+    (prso
+        prsi),
+    or(
         false,
         object)),
   put(
@@ -5155,13 +5155,13 @@ define(
     "OPTIONAL"
     (obj2
       <>)),
-  #decl
-    ((obj)
-      object
-      (str)
-      string
-      (obj2)
-      or(
+  decl(
+    (obj),
+    object,
+    (str),
+    string,
+    (obj2),
+    or(
         false,
         string)),
   cond(
@@ -5212,13 +5212,13 @@ define(
     (prsw
       3(
         ,prsvec))),
-  #decl
-    ((prsw)
-      or(
+  decl(
+    (prsw),
+    or(
         object,
-        false)
-      (prso)
-      object),
+        false),
+    (prso),
+    object),
   cond(
     (trnn(
         _prso,
@@ -5265,9 +5265,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   hack_hack(
     _prso,
     "Munging a"))
@@ -5278,9 +5278,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   hack_hack(
     _prso,
     "Waving a"))
@@ -5291,9 +5291,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   hack_hack(
     _prso,
     "Playing in this way with a"))
@@ -5304,9 +5304,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   hack_hack(
     _prso,
     "Fiddling with a"))
@@ -5334,9 +5334,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (object_action(
         )),
@@ -5354,9 +5354,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (object_action(
         )),
@@ -5374,9 +5374,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (trnn(
         _prso,
@@ -5395,9 +5395,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (object_action(
         )),
@@ -5418,9 +5418,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  #decl
-    ((prsa)
-      verb),
+  decl(
+    (prsa),
+    verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -5459,9 +5459,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  #decl
-    ((prso)
-      object),
+  decl(
+    (prso),
+    object),
   cond(
     (trnn(
         _prso,
@@ -5496,11 +5496,11 @@ define(
     (art
       2(
         ,prsvec))),
-  #decl
-    ((prsa)
-      verb
-      (art)
-      object),
+  decl(
+    (prsa),
+    verb,
+    (art),
+    object),
   cond(
     (_EQ_Q(
         _prsa,
@@ -5555,17 +5555,17 @@ define(
       find_obj(
         "LAMP"))
     foo),
-  #decl
-    ((pv)
-      vector
-      (verb)
-      verb
-      (here)
-      room
-      (rlamp)
-      object
-      (foo)
-      vector(
+  decl(
+    (pv),
+    vector,
+    (verb),
+    verb,
+    (here),
+    room,
+    (rlamp),
+    object,
+    (foo),
+    vector(
         any,
         cevent)),
   cond(
@@ -5624,16 +5624,16 @@ define(
       ,here)
     (ng
       0)),
-  #decl
-    ((dem)
-      hack
-      (sw)
-      object
-      (ng
-        g)
-      fix
-      (here)
-      room),
+  decl(
+    (dem),
+    hack,
+    (sw),
+    object,
+    (ng
+        g),
+    fix,
+    (here),
+    room),
   cond(
     (and(
         not(
@@ -5656,9 +5656,9 @@ define(
             <>,
             function(
               (e),
-              #decl
-                ((e)
-                  or(
+              decl(
+                (e),
+                or(
                     room,
                     cexit,
                     nexit,
@@ -5718,9 +5718,9 @@ define(
     (pa
       1(
         ,prsvec))),
-  #decl
-    ((pa)
-      verb),
+  decl(
+    (pa),
+    verb),
   cond(
     (and(
         _EQ_Q(
@@ -5749,15 +5749,15 @@ define(
     (dem
       get_demon(
         "THIEF"))),
-  #decl
-    ((r)
-      room
-      (villains)
-      list(
+  decl(
+    (r),
+    room,
+    (villains),
+    list(
         [rest
-          object])
-      (dem)
-      hack),
+          object]),
+    (dem),
+    hack),
   or(
     and(
       _EQ_Q(
@@ -5770,9 +5770,9 @@ define(
       <>,
       function(
         (v),
-        #decl
-          ((v)
-            object),
+        decl(
+          (v),
+          object),
         cond(
           (_EQ_Q(
               _r,
@@ -5814,13 +5814,13 @@ define(
     (mc
       orand(
         _match))),
-  #decl
-    ((prsa)
-      verb
-      (match)
-      object
-      (mc)
-      fix),
+  decl(
+    (prsa),
+    verb,
+    (match),
+    object,
+    (mc),
+    fix),
   cond(
     (and(
         _EQ_Q(
@@ -5909,28 +5909,28 @@ define(
     match
     foo
     orphans),
-  #decl
-    ((prsact)
-      verb
-      (match
-        c)
-      object
-      (w)
-      or(
+  decl(
+    (prsact),
+    verb,
+    (match
+        c),
+    object,
+    (w),
+    or(
         false,
-        object)
-      (winner)
-      adv
-      (ao)
-      list(
+        object),
+    (winner),
+    adv,
+    (ao),
+    list(
         [rest
-          object])
-      (foo)
-      vector(
+          object]),
+    (foo),
+    vector(
         fix,
-        cevent)
-      (orphans)
-      vector(
+        cevent),
+    (orphans),
+    vector(
         [4
           any])),
   or(
@@ -6076,15 +6076,15 @@ define(
     (b
       2(
         _pv))),
-  #decl
-    ((pv)
-      vector(
+  decl(
+    (pv),
+    vector(
         [3
-          any])
-      (b)
-      object
-      (v)
-      verb),
+          any]),
+    (b),
+    object,
+    (v),
+    verb),
   cond(
     (_EQ_Q(
         _v,
@@ -6111,24 +6111,24 @@ define(
     (foo
       orand(
         _obj))),
-  #decl
-    ((obj)
-      object
-      (fcn)
-      applicable
-      (tick)
-      vector(
+  decl(
+    (obj),
+    object,
+    (fcn),
+    applicable,
+    (tick),
+    vector(
         [rest
-          fix])
-      (tell)
-      vector(
+          fix]),
+    (tell),
+    vector(
         [rest
-          string])
-      (tim
-        cnt)
-      fix
-      (foo)
-      vector(
+          string]),
+    (tim
+        cnt),
+    fix,
+    (foo),
+    vector(
         fix,
         cevent)),
   put(
@@ -6190,13 +6190,13 @@ define(
     (av
       avehicle(
         ,winner))),
-  #decl
-    ((obj)
-      object
-      (rm)
-      room
-      (av)
-      or(
+  decl(
+    (obj),
+    object,
+    (rm),
+    room,
+    (av),
+    or(
         false,
         object)),
   cond(
