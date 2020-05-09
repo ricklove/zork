@@ -1,116 +1,79 @@
-<DEFINE
-  COKE-BOTTLES
+define(COKE-BOTTLES
   ("AUX"
     (PV
       ,PRSVEC)
     (BOTTL
-      <2
-        .PV>)
+      2(.PV);)
     (VB
-      <1
-        .PV>))
+      1(.PV);))
   #DECL
     ((PV)
-      <VECTOR
-        VERB>
+      vector(VERB);
       (VB)
       VERB
       (BOTTL)
       OBJECT)
-  <COND
-    (<OR
-        <==?
-          .VB
-          ,THROW!-WORDS>
-        <==?
-          <VNAME
-            .VB>
-          MUNG!-WORDS>>
-      <TELL
-        "Congratulations!  You've managed to break all those bottles. Fortunately for your feet, they were made of magic glass and disappear immediately.">
-      <TRZ
-        .BOTTL
-        ,OVISON>
-      <PUT
-        .BOTTL
+  cond((or(eq_q(.VB
+          ,THROW!-WORDS);
+        eq_q(vname(.VB);
+          MUNG!-WORDS););
+      tell("Congratulations!  You've managed to break all those bottles. Fortunately for your feet, they were made of magic glass and disappear immediately.");
+      trz(.BOTTL
+        ,OVISON);
+      put(.BOTTL
         ,OSIZE
-        0>
-      T)>>
+        0);
+      T)););
 
-<DEFINE
-  HEAD-FUNCTION
+define(HEAD-FUNCTION
   ("AUX"
     (PV
       ,PRSVEC)
     (VB
-      <1
-        .PV>)
+      1(.PV);)
     (NL
       ())
     (LCASE
-      <FIND-OBJ
-        "LCASE">))
+      find_obj("LCASE");))
   #DECL
     ((PV)
-      <VECTOR
-        VERB>
+      vector(VERB);
       (VB)
       VERB
       (NL)
-      <LIST
-        [REST
-          OBJECT]>
+      list([REST
+          OBJECT]);
       (LCASE)
       OBJECT)
-  <COND
-    (<N==?
-        .VB
-        ,READ!-WORDS>
-      <TELL
-        "Although the implementers are dead, they foresaw that some cretin would tamper with their remains.  Therefore, they took steps to prevent this.">
-      <SET
-        NL
-        <ROB-ADV
-          ,WINNER
-          .NL>>
-      <SET
-        NL
-        <ROB-ROOM
-          ,HERE
+  cond((neq_q(.VB
+        ,READ!-WORDS);
+      tell("Although the implementers are dead, they foresaw that some cretin would tamper with their remains.  Therefore, they took steps to prevent this.");
+      set(NL
+        rob_adv(,WINNER
+          .NL););
+      set(NL
+        rob_room(,HERE
           .NL
-          100>>
-      <COND
-        (<NOT
-            <EMPTY?
-              .NL>>
-          <OR
-            <OROOM
-              .LCASE>
-            <INSERT-OBJECT
-              .LCASE
-              <FIND-ROOM
-                "LROOM">>>
-          <PUT
-            .LCASE
+          100););
+      cond((not(empty_q(.NL););
+          or(oroom(.LCASE);
+            insert_object(.LCASE
+              find_room("LROOM");););
+          put(.LCASE
             ,OCONTENTS
             (!
-              <OCONTENTS
-                .LCASE>
-              !.NL)>)>
-      <JIGS-UP
-        "Unfortunately, we've run out of poles.  Therefore, in punishment for your most grievous sin, we shall deprive you of all your valuables, and of your life.">
-      T)>>
+              ocontents(.LCASE);
+              !.NL));));
+      jigs_up("Unfortunately, we've run out of poles.  Therefore, in punishment for your most grievous sin, we shall deprive you of all your valuables, and of your life.");
+      T)););
 
-<SETG
-  THEN
-  0>
+setg(THEN
+  0);
 
-<SETG
-  BUCKET-TOP!-FLAG
-  <>>
+setg(BUCKET-TOP!-FLAG
+  <>);
 
-<DEFINE
-  BUCKET
+define(BUCKET
   ("OPTIONAL"
     (ARG
       <>)
@@ -118,103 +81,69 @@
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     (W
-      <FIND-OBJ
-        "WATER">)
+      find_obj("WATER");)
     (BUCK
-      <FIND-OBJ
-        "BUCKE">))
+      find_obj("BUCKE");))
   #DECL
     ((ARG)
-      <OR
-        FALSE
-        ATOM>
+      or(FALSE
+        ATOM);
       (PV)
       VECTOR
       (PA)
       VERB
       (PO)
-      <OR
-        DIRECTION
+      or(DIRECTION
         FALSE
-        OBJECT>
+        OBJECT);
       (W
         BUCK)
       OBJECT)
-  <COND
-    (<==?
-        .ARG
-        READ-IN>
+  cond((eq_q(.ARG
+        READ-IN);
       <>)
-    (<AND
-        <==?
-          .PA
-          ,C-INT!-WORDS>
-        <COND
-          (<MEMQ
-              .W
-              <OCONTENTS
-                .BUCK>>
-            <REMOVE-OBJECT
-              .W>
+    (and(eq_q(.PA
+          ,C-INT!-WORDS);
+        cond((memq(.W
+              ocontents(.BUCK););
+            remove_object(.W);
             <>)
-          (T)>>)
-    (<==?
-        .ARG
-        READ-OUT>
-      <COND
-        (<AND
-            <==?
-              <OCAN
-                .W>
-              .BUCK>
-            <NOT
-              ,BUCKET-TOP!-FLAG>>
-          <TELL
-            "The bucket rises and comes to a stop.">
-          <SETG
-            BUCKET-TOP!-FLAG
-            T>
-          <PASS-THE-BUCKET
-            <FIND-ROOM
-              "TWELL">
+          (T)););)
+    (eq_q(.ARG
+        READ-OUT);
+      cond((and(eq_q(ocan(.W);
+              .BUCK);
+            not(,BUCKET-TOP!-FLAG););
+          tell("The bucket rises and comes to a stop.");
+          setg(BUCKET-TOP!-FLAG
+            T);
+          pass_the-bucket(find_room("TWELL");
             .PV
-            .BUCK>
-          <CLOCK-INT
-            ,BCKIN
-            100>
+            .BUCK);
+          clock_int(,BCKIN
+            100);
           <>)
-        (<AND
-            ,BUCKET-TOP!-FLAG
-            <N==?
-              <OCAN
-                .W>
-              .BUCK>>
-          <TELL
-            "The bucket descends and comes to a stop.">
-          <SETG
-            BUCKET-TOP!-FLAG
-            <>>
-          <PASS-THE-BUCKET
-            <FIND-ROOM
-              "BWELL">
+        (and(,BUCKET-TOP!-FLAG
+            neq_q(ocan(.W);
+              .BUCK););
+          tell("The bucket descends and comes to a stop.");
+          setg(BUCKET-TOP!-FLAG
+            <>);
+          pass_the-bucket(find_room("BWELL");
             .PV
-            .BUCK>)>)>>
+            .BUCK);));)););
 
-<DEFINE
-  PASS-THE-BUCKET
+define(PASS-THE-BUCKET
   (R
     PV
     B
     "AUX"
     (PVS
-      <2
-        .PV>))
+      2(.PV);))
   #DECL
     ((R)
       ROOM
@@ -223,35 +152,24 @@
       (PV)
       VECTOR
       (PVS)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        DIRECTION>)
-  <PUT
-    .PV
+        DIRECTION);)
+  put(.PV
     2
-    <>>
-  <REMOVE-OBJECT
-    .B>
-  <INSERT-OBJECT
-    .B
-    .R>
-  <COND
-    (<==?
-        <AVEHICLE
-          ,WINNER>
-        .B>
-      <GOTO
-        .R>
-      <ROOM-INFO
-        T>)>
-  <PUT
-    .PV
+    <>);
+  remove_object(.B);
+  insert_object(.B
+    .R);
+  cond((eq_q(avehicle(,WINNER);
+        .B);
+      goto(.R);
+      room_info(T);));
+  put(.PV
     2
-    .PVS>>
+    .PVS););
 
-<DEFINE
-  EATME-FUNCTION
+define(EATME-FUNCTION
   ("AUX"
     R
     C
@@ -269,83 +187,52 @@
       (HERE
         R)
       ROOM)
-  <COND
-    (<AND
-        <==?
-          <1
-            .PV>
-          ,EAT!-WORDS>
-        <==?
-          <2
-            .PV>
-          <SET
-            C
-            <FIND-OBJ
-              "ECAKE">>>
-        <==?
-          .HERE
-          <FIND-ROOM
-            "ALICE">>>
-      <TELL
-        "Suddenly, the room appears to have become very large.">
-      <KILL-OBJ
-        .C
-        ,WINNER>
-      <SET
-        R
-        <FIND-ROOM
-          "ALISM">>
-      <PUT
-        .R
+  cond((and(eq_q(1(.PV);
+          ,EAT!-WORDS);
+        eq_q(2(.PV);
+          set(C
+            find_obj("ECAKE");););
+        eq_q(.HERE
+          find_room("ALICE");););
+      tell("Suddenly, the room appears to have become very large.");
+      kill_obj(.C
+        ,WINNER);
+      set(R
+        find_room("ALISM"););
+      put(.R
         ,ROBJS
-        <ROBJS
-          .HERE>>
-      <MAPF
-        <>
-        <FUNCTION
-          (X)
+        robjs(.HERE););
+      mapf(<>
+        function((X)
           #DECL
             ((X)
               OBJECT)
-          <PUT
-            .X
+          put(.X
             ,OSIZE
-            <*
-              64
-              <OSIZE
-                .X>>>
-          <PUT
-            .X
+            _(64
+              osize(.X);););
+          put(.X
             ,OROOM
-            .R>>
-        <ROBJS
-          .HERE>>
-      <GOTO
-        .R>)>>
+            .R););
+        robjs(.HERE););
+      goto(.R);)););
 
-<DEFINE
-  CAKE-FUNCTION
+define(CAKE-FUNCTION
   ("AUX"
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     (PI
-      <3
-        .PV>)
+      3(.PV);)
     (RICE
-      <FIND-OBJ
-        "RDICE">)
+      find_obj("RDICE");)
     (OICE
-      <FIND-OBJ
-        "ORICE">)
+      find_obj("ORICE");)
     (BICE
-      <FIND-OBJ
-        "BLICE">)
+      find_obj("BLICE");)
     (HERE
       ,HERE)
     R)
@@ -356,9 +243,8 @@
       VERB
       (PI
         PO)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (RICE
         OICE
         BICE)
@@ -366,217 +252,135 @@
       (HERE
         R)
       ROOM)
-  <COND
-    (<==?
-        .PA
-        ,READ!-WORDS>
-      <COND
-        (.PI
-          <COND
-            (<==?
-                .PI
-                <FIND-OBJ
-                  "BOTTL">>
-              <TELL
-                "The letters appear larger, but still are too small to be read.">)
-            (<==?
-                .PI
-                <FIND-OBJ
-                  "FLASK">>
-              <TELL
-                "The icing, now visible, says '"
+  cond((eq_q(.PA
+        ,READ!-WORDS);
+      cond((.PI
+          cond((eq_q(.PI
+                find_obj("BOTTL"););
+              tell("The letters appear larger, but still are too small to be read.");)
+            (eq_q(.PI
+                find_obj("FLASK"););
+              tell("The icing, now visible, says '"
                 1
-                <COND
-                  (<==?
-                      .PO
-                      .RICE>
+                cond((eq_q(.PO
+                      .RICE);
                     "Evaporate")
-                  (<==?
-                      .PO
-                      .OICE>
+                  (eq_q(.PO
+                      .OICE);
                     "Explode")
-                  ("Enlarge")>
-                "'.">)
-            (<TELL
-                "You can't see through that!">)>)
-        (<TELL
-            "The only writing legible is a capital E.  The rest is too small to be clearly visible.">)>)
-    (<AND
-        <==?
-          .PA
-          ,EAT!-WORDS>
-        <MEMBER
-          "ALI"
-          <SPNAME
-            <RID
-              .HERE>>>>
-      <COND
-        (<==?
-            .PO
-            .OICE>
-          <KILL-OBJ
-            .PO
-            ,WINNER>
-          <ICEBOOM>)
-        (<==?
-            .PO
-            .BICE>
-          <KILL-OBJ
-            .PO
-            ,WINNER>
-          <TELL
-            "The room around you seems to be getting smaller.">
-          <COND
-            (<==?
-                .HERE
-                <FIND-ROOM
-                  "ALISM">>
-              <SET
-                R
-                <FIND-ROOM
-                  "ALICE">>
-              <PUT
-                .R
+                  ("Enlarge"));
+                "'.");)
+            (tell("You can't see through that!");));)
+        (tell("The only writing legible is a capital E.  The rest is too small to be clearly visible.");));)
+    (and(eq_q(.PA
+          ,EAT!-WORDS);
+        member("ALI"
+          spname(rid(.HERE););););
+      cond((eq_q(.PO
+            .OICE);
+          kill_obj(.PO
+            ,WINNER);
+          iceboom();)
+        (eq_q(.PO
+            .BICE);
+          kill_obj(.PO
+            ,WINNER);
+          tell("The room around you seems to be getting smaller.");
+          cond((eq_q(.HERE
+                find_room("ALISM"););
+              set(R
+                find_room("ALICE"););
+              put(.R
                 ,ROBJS
-                <ROBJS
-                  .HERE>>
-              <MAPF
-                <>
-                <FUNCTION
-                  (X)
+                robjs(.HERE););
+              mapf(<>
+                function((X)
                   #DECL
                     ((X)
                       OBJECT)
-                  <PUT
-                    .X
+                  put(.X
                     ,OROOM
-                    .R>
-                  <PUT
-                    .X
+                    .R);
+                  put(.X
                     ,OSIZE
-                    </
-                      <OSIZE
-                        .X>
-                      64>>>
-                <ROBJS
-                  .HERE>>
-              <GOTO
-                .R>)
-            (<JIGS-UP
-                ,CRUSHED>)>)>)
-    (<AND
-        <==?
-          .PA
-          ,THROW!-WORDS>
-        <==?
-          .PO
-          .OICE>
-        <MEMBER
-          "ALI"
-          <SPNAME
-            <RID
-              .HERE>>>>
-      <KILL-OBJ
-        .PO
-        ,WINNER>
-      <ICEBOOM>)
-    (<AND
-        <==?
-          .PA
-          ,THROW!-WORDS>
-        <==?
-          .PO
-          .RICE>
-        <==?
-          .PI
-          <FIND-OBJ
-            "POOL">>>
-      <REMOVE-OBJECT
-        .PI>
-      <TELL
-        "The pool of water evaporates, revealing a tin of rare spices.">
-      <TRO
-        <FIND-OBJ
-          "SAFFR">
-        ,OVISON>)>>
+                    _(osize(.X);
+                      64);););
+                robjs(.HERE););
+              goto(.R);)
+            (jigs_up(,CRUSHED);));));)
+    (and(eq_q(.PA
+          ,THROW!-WORDS);
+        eq_q(.PO
+          .OICE);
+        member("ALI"
+          spname(rid(.HERE););););
+      kill_obj(.PO
+        ,WINNER);
+      iceboom();)
+    (and(eq_q(.PA
+          ,THROW!-WORDS);
+        eq_q(.PO
+          .RICE);
+        eq_q(.PI
+          find_obj("POOL");););
+      remove_object(.PI);
+      tell("The pool of water evaporates, revealing a tin of rare spices.");
+      tro(find_obj("SAFFR");
+        ,OVISON);)););
 
-<DEFINE
-  FLASK-FUNCTION
+define(FLASK-FUNCTION
   ("AUX"
     F
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>))
+      1(.PV);))
   #DECL
     ((PV)
-      <VECTOR
-        VERB
-        OBJECT>
+      vector(VERB
+        OBJECT);
       (PA)
       VERB)
-  <COND
-    (<==?
-        .PA
-        ,OPEN!-WORDS>
-      <MUNG-ROOM
-        ,HERE
-        "Noxious vapors prevent your entry.">
-      <JIGS-UP
-        ,VAPORS>)
-    (<OR
-        <==?
-          .PA
-          ,MUNG!-WORDS>
-        <==?
-          .PA
-          ,THROW!-WORDS>>
-      <TELL
-        "The flask breaks into pieces.">
-      <SET
-        F
-        <2
-          .PV>>
-      <TRZ
-        .F
-        ,OVISON>
-      <JIGS-UP
-        ,VAPORS>)>>
+  cond((eq_q(.PA
+        ,OPEN!-WORDS);
+      mung_room(,HERE
+        "Noxious vapors prevent your entry.");
+      jigs_up(,VAPORS);)
+    (or(eq_q(.PA
+          ,MUNG!-WORDS);
+        eq_q(.PA
+          ,THROW!-WORDS););
+      tell("The flask breaks into pieces.");
+      set(F
+        2(.PV););
+      trz(.F
+        ,OVISON);
+      jigs_up(,VAPORS);)););
 
-<PSETG
-  VAPORS
-  "Just before you pass out, you notice that the vapors from the flask's contents are fatal.">
+psetg(VAPORS
+  "Just before you pass out, you notice that the vapors from the flask's contents are fatal.");
 
-<PSETG
-  CRUSHED
-  "The room seems to have become too small to hold you.  It seems that the  walls are not as compressible as your body, which is somewhat demolished.">
+psetg(CRUSHED
+  "The room seems to have become too small to hold you.  It seems that the  walls are not as compressible as your body, which is somewhat demolished.");
 
-<DEFINE
-  ICEBOOM
+define(ICEBOOM
   ()
-  <MUNG-ROOM
-    ,HERE
-    "The door to the room seems to be blocked by sticky orange rubble from an explosion.  Probably some careless adventurer was playing with blasting cakes.">
-  <JIGS-UP
-    ,ICEBLAST>>
+  mung_room(,HERE
+    "The door to the room seems to be blocked by sticky orange rubble from an explosion.  Probably some careless adventurer was playing with blasting cakes.");
+  jigs_up(,ICEBLAST););
 
-<PSETG
-  ICEBLAST
-  "You have been blasted to smithereens (wherever they are).">
+psetg(ICEBLAST
+  "You have been blasted to smithereens (wherever they are).");
 
-<DEFINE
-  MAGNET-ROOM
+define(MAGNET-ROOM
   ("AUX"
     FOO
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     (HERE
       ,HERE)
     M)
@@ -586,121 +390,78 @@
       (PA)
       VERB
       (PO)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        DIRECTION>
+        DIRECTION);
       (HERE)
       ROOM
       (M)
-      <OR
-        FALSE
-        <PRIMTYPE
-          VECTOR>>
+      or(FALSE
+        primtype(VECTOR););
       (FOO)
       CEXIT)
-  <COND
-    (<==?
-        .PA
-        ,LOOK!-WORDS>
-      <TELL
-        "You are in a room with a low ceiling which is circular in shape.  There are exits to the east and the southeast.">)
-    (<AND
-        <==?
-          .PA
-          ,WALK-IN!-WORDS>
-        ,CAROUSEL-FLIP!-FLAG>
-      <COND
-        (,CAROUSEL-ZOOM!-FLAG
-          <JIGS-UP
-            ,SPINDIZZY>)
-        (<TELL
-            "As you enter, your compass starts spinning wildly.">
-          <>)>)
-    (<==?
-        .PA
-        ,WALK!-WORDS>
-      <COND
-        (<AND
-            ,CAROUSEL-FLIP!-FLAG
-            <==?
-              ,WINNER
-              ,PLAYER>>
-          <TELL
-            "You cannot get your bearings...">
-          <GOTO
-            <CXROOM
-              <SET
-                FOO
-                <NTH
-                  <REXITS
-                    .HERE>
-                  <*
-                    2
-                    <+
-                      1
-                      <MOD
-                        <RANDOM>
-                        8>>>>>>>
-          <ROOM-INFO>)
-        (<SET
-            M
-            <MEMQ
-              <CHTYPE
-                .PO
-                ATOM>
-              <REST
-                <REXITS
-                  .HERE>
-                12>>>
-          <GOTO
-            <CXROOM
-              <SET
-                FOO
-                <2
-                  .M>>>>
-          <ROOM-INFO>)>)>>
+  cond((eq_q(.PA
+        ,LOOK!-WORDS);
+      tell("You are in a room with a low ceiling which is circular in shape.  There are exits to the east and the southeast.");)
+    (and(eq_q(.PA
+          ,WALK-IN!-WORDS);
+        ,CAROUSEL-FLIP!-FLAG);
+      cond((,CAROUSEL-ZOOM!-FLAG
+          jigs_up(,SPINDIZZY);)
+        (tell("As you enter, your compass starts spinning wildly.");
+          <>));)
+    (eq_q(.PA
+        ,WALK!-WORDS);
+      cond((and(,CAROUSEL-FLIP!-FLAG
+            eq_q(,WINNER
+              ,PLAYER););
+          tell("You cannot get your bearings...");
+          goto(cxroom(set(FOO
+                nth(rexits(.HERE);
+                  _(2
+                    _(1
+                      mod(random();
+                        8);););););););
+          room_info();)
+        (set(M
+            memq(chtype(.PO
+                ATOM);
+              rest(rexits(.HERE);
+                12);););
+          goto(cxroom(set(FOO
+                2(.M););););
+          room_info();));)););
 
-<DEFINE
-  CMACH-ROOM
+define(CMACH-ROOM
   ("AUX"
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>))
+      1(.PV);))
   #DECL
     ((PV)
       VECTOR
       (PA)
       VERB)
-  <COND
-    (<==?
-        .PA
-        ,LOOK!-WORDS>
-      <TELL
-        "You are in a large room full of assorted heavy machinery.  The room smells of burned resistors. The room is noisy from the whirring sounds of the machines. Along one wall of the room are three buttons which are, respectively, round, triangular, and square.  Naturally, above these buttons are instructions written in EBCDIC.  A large sign in English above all the buttons says   'DANGER -- HIGH VOLTAGE '. There are exits to the west and the south.">)>>
+  cond((eq_q(.PA
+        ,LOOK!-WORDS);
+      tell("You are in a large room full of assorted heavy machinery.  The room smells of burned resistors. The room is noisy from the whirring sounds of the machines. Along one wall of the room are three buttons which are, respectively, round, triangular, and square.  Naturally, above these buttons are instructions written in EBCDIC.  A large sign in English above all the buttons says   'DANGER -- HIGH VOLTAGE '. There are exits to the west and the south.");)););
 
-<SETG
-  CAROUSEL-ZOOM!-FLAG
-  <>>
+setg(CAROUSEL-ZOOM!-FLAG
+  <>);
 
-<SETG
-  CAROUSEL-FLIP!-FLAG
-  <>>
+setg(CAROUSEL-FLIP!-FLAG
+  <>);
 
-<DEFINE
-  BUTTONS
+define(BUTTONS
   ("AUX"
     I
     (PV
       ,PRSVEC)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     (PA
-      <1
-        .PV>))
+      1(.PV);))
   #DECL
     ((I)
       OBJECT
@@ -708,92 +469,57 @@
       VECTOR
       (PA)
       VERB)
-  <COND
-    (<==?
-        .PA
-        ,PUSH!-WORDS>
-      <COND
-        (<==?
-            ,WINNER
-            ,PLAYER>
-          <JIGS-UP
-            "There is a giant spark and you are fried to a crisp.">)
-        (<==?
-            .PO
-            <FIND-OBJ
-              "SQBUT">>
-          <COND
-            (,CAROUSEL-ZOOM!-FLAG
-              <TELL
-                "Nothing seems to happen.">)
-            (<SETG
-                CAROUSEL-ZOOM!-FLAG
-                T>
-              <TELL
-                "The whirring increases in intensity slightly.">)>)
-        (<==?
-            .PO
-            <FIND-OBJ
-              "RNBUT">>
-          <COND
-            (,CAROUSEL-ZOOM!-FLAG
-              <SETG
-                CAROUSEL-ZOOM!-FLAG
-                <>>
-              <TELL
-                "The whirring decreases in intensity slightly.">)
-            (<TELL
-                "Nothing seems to happen.">)>)
-        (<==?
-            .PO
-            <FIND-OBJ
-              "TRBUT">>
-          <SETG
-            CAROUSEL-FLIP!-FLAG
-            <NOT
-              ,CAROUSEL-FLIP!-FLAG>>
-          <COND
-            (<MEMQ
-                <SET
-                  I
-                  <FIND-OBJ
-                    "IRBOX">>
-                <ROBJS
-                  <FIND-ROOM
-                    "CAROU">>>
-              <TELL
-                "A dull thump is heard in the distance.">
-              <TRC
-                .I
-                ,OVISON>)>)>)>>
+  cond((eq_q(.PA
+        ,PUSH!-WORDS);
+      cond((eq_q(,WINNER
+            ,PLAYER);
+          jigs_up("There is a giant spark and you are fried to a crisp.");)
+        (eq_q(.PO
+            find_obj("SQBUT"););
+          cond((,CAROUSEL-ZOOM!-FLAG
+              tell("Nothing seems to happen.");)
+            (setg(CAROUSEL-ZOOM!-FLAG
+                T);
+              tell("The whirring increases in intensity slightly.");));)
+        (eq_q(.PO
+            find_obj("RNBUT"););
+          cond((,CAROUSEL-ZOOM!-FLAG
+              setg(CAROUSEL-ZOOM!-FLAG
+                <>);
+              tell("The whirring decreases in intensity slightly.");)
+            (tell("Nothing seems to happen.");));)
+        (eq_q(.PO
+            find_obj("TRBUT"););
+          setg(CAROUSEL-FLIP!-FLAG
+            not(,CAROUSEL-FLIP!-FLAG););
+          cond((memq(set(I
+                  find_obj("IRBOX"););
+                robjs(find_room("CAROU");););
+              tell("A dull thump is heard in the distance.");
+              trc(.I
+                ,OVISON);));));)););
 
-<PSETG
-  SPINDIZZY
-  "According to Prof. TAA of MIT Tech, the rapidly changing magnetic fields in the room are so intense as to cause you to be electrocuted.  I really don't know, but in any event, something just killed you.">
+psetg(SPINDIZZY
+  "According to Prof. TAA of MIT Tech, the rapidly changing magnetic fields in the room are so intense as to cause you to be electrocuted.  I really don't know, but in any event, something just killed you.");
 
-<SETG
-  CAGE-SOLVE!-FLAG
-  <>>
+setg(CAGE-SOLVE!-FLAG
+  <>);
 
-<DEFINE
-  SPHERE-FUNCTION
+define(SPHERE-FUNCTION
   ("AUX"
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (R
-      <FIND-OBJ
-        "ROBOT">)
+      find_obj("ROBOT");)
     C
     FL
     RACT)
   #DECL
     ((PV)
-      <VECTOR
-        VERB
-        OBJECT>
+      vector(VERB
+        OBJECT);
       (PA)
       VERB
       (C)
@@ -801,135 +527,84 @@
       (R)
       OBJECT
       (FL)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (RACT)
       ADV)
-  <SET
-    FL
-    <AND
-      <NOT
-        ,CAGE-SOLVE!-FLAG>
-      <==?
-        .PA
-        ,TAKE!-WORDS>>>
-  <COND
-    (<AND
-        .FL
-        <==?
-          ,PLAYER
-          ,WINNER>>
-      <TELL
-        "As you reach for the sphere, an iron cage falls from the ceiling to entrap you.  To make matters worse, poisonous gas starts coming into the room.">
-      <COND
-        (<==?
-            <OROOM
-              .R>
-            ,HERE>
-          <GOTO
-            <SET
-              C
-              <FIND-ROOM
-                "CAGED">>>
-          <REMOVE-OBJECT
-            .R>
-          <INSERT-OBJECT
-            .R
-            .C>
-          <PUT
-            <SET
-              RACT
-              <ORAND
-                .R>>
+  set(FL
+    and(not(,CAGE-SOLVE!-FLAG);
+      eq_q(.PA
+        ,TAKE!-WORDS);););
+  cond((and(.FL
+        eq_q(,PLAYER
+          ,WINNER););
+      tell("As you reach for the sphere, an iron cage falls from the ceiling to entrap you.  To make matters worse, poisonous gas starts coming into the room.");
+      cond((eq_q(oroom(.R);
+            ,HERE);
+          goto(set(C
+              find_room("CAGED");););
+          remove_object(.R);
+          insert_object(.R
+            .C);
+          put(set(RACT
+              orand(.R););
             ,AROOM
-            .C>
-          <TRO
-            .R
-            ,NDESCBIT>
-          <SETG
-            SPHERE-CLOCK
-            <CLOCK-INT
-              ,SPHIN
-              10>>
+            .C);
+          tro(.R
+            ,NDESCBIT);
+          setg(SPHERE-CLOCK
+            clock_int(,SPHIN
+              10););
           T)
         (ELSE
-          <TRZ
-            <FIND-OBJ
-              "SPHER">
-            ,OVISON>
-          <MUNG-ROOM
-            <FIND-ROOM
-              "CAGER">
-            "You are stopped by a cloud of poisonous gas.">
-          <JIGS-UP
-            ,POISON>)>)
+          trz(find_obj("SPHER");
+            ,OVISON);
+          mung_room(find_room("CAGER");
+            "You are stopped by a cloud of poisonous gas.");
+          jigs_up(,POISON);));)
     (.FL
-      <TRZ
-        <FIND-OBJ
-          "SPHER">
-        ,OVISON>
-      <JIGS-UP
-        "As the robot reaches for the sphere, an iron cage falls from the ceiling.  The robot attempts to fend it off, but is trapped below it. Alas, the robot short-circuits in his vain attempt to escape, and crushes the sphere beneath him as he falls to the floor.">
-      <REMOVE-OBJECT
-        .R>
-      <TRZ
-        <2
-          .PV>
-        ,OVISON>
-      <INSERT-OBJECT
-        <FIND-OBJ
-          "RCAGE">
-        ,HERE>
+      trz(find_obj("SPHER");
+        ,OVISON);
+      jigs_up("As the robot reaches for the sphere, an iron cage falls from the ceiling.  The robot attempts to fend it off, but is trapped below it. Alas, the robot short-circuits in his vain attempt to escape, and crushes the sphere beneath him as he falls to the floor.");
+      remove_object(.R);
+      trz(2(.PV);
+        ,OVISON);
+      insert_object(find_obj("RCAGE");
+        ,HERE);
       T)
-    (<==?
-        .PA
-        ,C-INT!-WORDS>
-      <MUNG-ROOM
-        <FIND-ROOM
-          "CAGER">
-        "You are stopped by a cloud of poisonous gas.">
-      <JIGS-UP
-        ,POISON>)>>
+    (eq_q(.PA
+        ,C-INT!-WORDS);
+      mung_room(find_room("CAGER");
+        "You are stopped by a cloud of poisonous gas.");
+      jigs_up(,POISON);)););
 
-<PSETG
-  POISON
-  "Time passes...and you die from some obscure poisoning.">
+psetg(POISON
+  "Time passes...and you die from some obscure poisoning.");
 
-<DEFINE
-  CAGED-ROOM
+define(CAGED-ROOM
   ()
-  <COND
-    (,CAGE-SOLVE!-FLAG
-      <SETG
-        HERE
-        <FIND-ROOM
-          "CAGER">>)>>
+  cond((,CAGE-SOLVE!-FLAG
+      setg(HERE
+        find_room("CAGER"););)););
 
-<GDECL
-  (SPHERE-CLOCK)
+gdecl((SPHERE-CLOCK)
   CEVENT
   (ROBOT-ACTIONS)
-  <UVECTOR
-    [REST
-      VERB]>>
+  uvector([REST
+      VERB]););
 
-<DEFINE
-  ROBOT-ACTOR
+define(ROBOT-ACTOR
   ("AUX"
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     C
     CAGE
     (R
-      <FIND-OBJ
-        "ROBOT">)
+      find_obj("ROBOT");)
     RACT)
   #DECL
     ((C)
@@ -939,106 +614,68 @@
       (PV)
       VECTOR
       (PO)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        DIRECTION>
+        DIRECTION);
       (CAGE)
       OBJECT
       (R)
       OBJECT
       (RACT)
       ADV)
-  <COND
-    (<AND
-        <==?
-          .PA
-          ,RAISE!-WORDS>
-        <==?
-          .PO
-          <FIND-OBJ
-            "CAGE">>>
-      <TELL
-        "The cage shakes and is hurled across the room.">
-      <CLOCK-DISABLE
-        ,SPHERE-CLOCK>
-      <SETG
-        WINNER
-        ,PLAYER>
-      <GOTO
-        <SET
-          C
-          <FIND-ROOM
-            "CAGER">>>
-      <INSERT-OBJECT
-        <SET
-          CAGE
-          <FIND-OBJ
-            "CAGE">>
-        .C>
-      <TRO
-        .CAGE
-        ,TAKEBIT>
-      <TRZ
-        .CAGE
-        ,NDESCBIT>
-      <TRZ
-        .R
-        ,NDESCBIT>
-      <TRO
-        <FIND-OBJ
-          "SPHER">
-        ,TAKEBIT>
-      <REMOVE-OBJECT
-        .R>
-      <INSERT-OBJECT
-        .R
-        .C>
-      <PUT
-        <SET
-          RACT
-          <ORAND
-            .R>>
+  cond((and(eq_q(.PA
+          ,RAISE!-WORDS);
+        eq_q(.PO
+          find_obj("CAGE");););
+      tell("The cage shakes and is hurled across the room.");
+      clock_disable(,SPHERE-CLOCK);
+      setg(WINNER
+        ,PLAYER);
+      goto(set(C
+          find_room("CAGER");););
+      insert_object(set(CAGE
+          find_obj("CAGE"););
+        .C);
+      tro(.CAGE
+        ,TAKEBIT);
+      trz(.CAGE
+        ,NDESCBIT);
+      trz(.R
+        ,NDESCBIT);
+      tro(find_obj("SPHER");
+        ,TAKEBIT);
+      remove_object(.R);
+      insert_object(.R
+        .C);
+      put(set(RACT
+          orand(.R););
         ,AROOM
-        .C>
-      <SETG
-        CAGE-SOLVE!-FLAG
-        T>)
-    (<OR
-        <==?
-          .PA
-          ,EAT!-WORDS>
-        <==?
-          .PA
-          ,DRINK!-WORDS>>
-      <TELL
-        "I am sorry but that action is difficult in the absence of a mouth.\"">)
-    (<==?
-        .PA
-        ,READ!-WORDS>
-      <TELL
-        "My vision is not that good without eyes.\"">)
-    (<MEMQ
-        .PA
-        ,ROBOT-ACTIONS>
+        .C);
+      setg(CAGE-SOLVE!-FLAG
+        T);)
+    (or(eq_q(.PA
+          ,EAT!-WORDS);
+        eq_q(.PA
+          ,DRINK!-WORDS););
+      tell("I am sorry but that action is difficult in the absence of a mouth.\"");)
+    (eq_q(.PA
+        ,READ!-WORDS);
+      tell("My vision is not that good without eyes.\"");)
+    (memq(.PA
+        ,ROBOT-ACTIONS);
       <>)
-    (<TELL
-        "I am only a stupid robot and cannot perform that command.\"">)>>
+    (tell("I am only a stupid robot and cannot perform that command.\"");)););
 
-<DEFINE
-  ROBOT-FUNCTION
+define(ROBOT-FUNCTION
   ("AUX"
     (PV
       ,PRSVEC)
     (PA
-      <1
-        .PV>)
+      1(.PV);)
     (PO
-      <2
-        .PV>)
+      2(.PV);)
     (PI
-      <3
-        .PV>)
+      3(.PV);)
     PP
     AA)
   #DECL
@@ -1052,91 +689,57 @@
         PO)
       OBJECT
       (PI)
-      <OR
-        FALSE
-        OBJECT>)
-  <COND
-    (<==?
-        .PA
-        ,GIVE!-WORDS>
-      <SET
-        AA
-        <ORAND
-          <SET
-            PP
-            .PI>>>
-      <REMOVE-OBJECT
-        .PO>
-      <PUT
-        .AA
+      or(FALSE
+        OBJECT);)
+  cond((eq_q(.PA
+        ,GIVE!-WORDS);
+      set(AA
+        orand(set(PP
+            .PI);););
+      remove_object(.PO);
+      put(.AA
         ,AOBJS
         (.PO
           !
-          <AOBJS
-            .AA>)>
-      <TELL
-        "The robot gladly takes the "
+          aobjs(.AA);));
+      tell("The robot gladly takes the "
         1
-        <ODESC2
-          .PO>
-        " and nods his head-like appendage in thanks.">)
-    (<OR
-        <==?
-          .PA
-          ,THROW!-WORDS>
-        <==?
-          .PA
-          ,MUNG!-WORDS>>
-      <TELL
-        "The robot is injured (being of shoddy construction) and falls to the floor in a pile of garbage, which disintegrates before your eyes.">
-      <REMOVE-OBJECT
-        <COND
-          (<==?
-              .PA
-              ,THROW!-WORDS>
+        odesc2(.PO);
+        " and nods his head-like appendage in thanks.");)
+    (or(eq_q(.PA
+          ,THROW!-WORDS);
+        eq_q(.PA
+          ,MUNG!-WORDS););
+      tell("The robot is injured (being of shoddy construction) and falls to the floor in a pile of garbage, which disintegrates before your eyes.");
+      remove_object(cond((eq_q(.PA
+              ,THROW!-WORDS);
             .PI)
-          (.PO)>>)>>
+          (.PO)););)););
 
-<DEFINE
-  KNOCK
+define(KNOCK
   ("AUX"
     (PRSO
-      <2
-        ,PRSVEC>))
-  <COND
-    (<MEMQ
-        DOOR!-OBJECTS
-        <ONAMES
-          .PRSO>>
-      <TELL
-        "I don't think that anybody's home.">)
-    (<TELL
-        "Why knock on a "
+      2(,PRSVEC);))
+  cond((memq(DOOR!-OBJECTS
+        onames(.PRSO););
+      tell("I don't think that anybody's home.");)
+    (tell("Why knock on a "
         0
-        <ODESC2
-          .PRSO>
-        "?">)>>
+        odesc2(.PRSO);
+        "?");)););
 
-<DEFINE
-  CHOMP
+define(CHOMP
   ()
-  <TELL
-    "I don't know how to do that.  I win in all cases!">>
+  tell("I don't know how to do that.  I win in all cases!"););
 
-<DEFINE
-  FROBOZZ
+define(FROBOZZ
   ()
-  <TELL
-    "The FROBOZZ Corporation created, owns, and operates this dungeon.">>
+  tell("The FROBOZZ Corporation created, owns, and operates this dungeon."););
 
-<DEFINE
-  WIN
+define(WIN
   ()
-  <TELL
-    "Naturally!">>
+  tell("Naturally!"););
 
-<DEFINE
-  YELL
+define(YELL
   ()
-  <TELL
-    "Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!">>
+  tell("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!"););

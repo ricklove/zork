@@ -1,167 +1,124 @@
-<AND
-  <L?
-    ,MUDDLE
-    100>
-  <USE
-    "LSRTNS">>
+and(l_q(,MUDDLE
+    100);
+  use("LSRTNS"););
 
 // applicables
 
-<NEWTYPE
-  OFFSET
-  WORD>
+newtype(OFFSET
+  WORD);
 
-<PUT
-  RAPPLIC
+put(RAPPLIC
   DECL
-  '<OR
-      ATOM
+  'or(ATOM
       FALSE
-      OFFSET>>
+      OFFSET););
 
 // newtypes for parser
 
-<NEWTYPE
-  BUZZ
-  STRING>
+newtype(BUZZ
+  STRING);
 
-<NEWTYPE
-  DIRECTION
-  ATOM>
+newtype(DIRECTION
+  ATOM);
 
-<NEWTYPE
-  ADJECTIVE
-  ATOM>
+newtype(ADJECTIVE
+  ATOM);
 
-<NEWTYPE
-  PREP
-  ATOM>
+newtype(PREP
+  ATOM);
 
 \
 
 // generalized oflags tester
 
-<DEFMAC
-  TRNN
+defmac(TRNN
   ('OBJ
     'BIT)
-  <FORM
-    N==?
-    <FORM
-      CHTYPE
-      <FORM
-        ANDB
+  form(N==?
+    form(CHTYPE
+      form(ANDB
         .BIT
-        <FORM
-          OFLAGS
-          .OBJ>>
-      FIX>
-    0>>
+        form(OFLAGS
+          .OBJ););
+      FIX);
+    0););
 
-<DEFMAC
-  RTRNN
+defmac(RTRNN
   ('RM
     'BIT)
-  <FORM
-    N==?
-    <FORM
-      CHTYPE
-      <FORM
-        ANDB
+  form(N==?
+    form(CHTYPE
+      form(ANDB
         .BIT
-        <FORM
-          RBITS
-          .RM>>
-      FIX>
-    0>>
+        form(RBITS
+          .RM););
+      FIX);
+    0););
 
-<DEFMAC
-  RTRZ
+defmac(RTRZ
   ('RM
     'BIT)
-  <FORM
-    PUT
+  form(PUT
     .RM
     ,RBITS
-    <FORM
-      ANDB
-      <FORM
-        RBITS
-        .RM>
-      <FORM
-        XORB
+    form(ANDB
+      form(RBITS
+        .RM);
+      form(XORB
         .BIT
-        -1>>>>
+        -1););););
 
-<DEFMAC
-  TRC
+defmac(TRC
   ('OBJ
     'BIT)
-  <FORM
-    PUT
+  form(PUT
     .OBJ
     ,OFLAGS
-    <FORM
-      XORB
-      <FORM
-        OFLAGS
-        .OBJ>
-      .BIT>>>
+    form(XORB
+      form(OFLAGS
+        .OBJ);
+      .BIT);););
 
-<DEFMAC
-  TRZ
+defmac(TRZ
   ('OBJ
     'BIT)
-  <FORM
-    PUT
+  form(PUT
     .OBJ
     ,OFLAGS
-    <FORM
-      ANDB
-      <FORM
-        OFLAGS
-        .OBJ>
-      <FORM
-        XORB
+    form(ANDB
+      form(OFLAGS
+        .OBJ);
+      form(XORB
         .BIT
-        -1>>>>
+        -1););););
 
-<DEFMAC
-  TRO
+defmac(TRO
   ('OBJ
     'BIT)
-  <FORM
-    PUT
+  form(PUT
     .OBJ
     ,OFLAGS
-    <FORM
-      ORB
-      <FORM
-        OFLAGS
-        .OBJ>
-      .BIT>>>
+    form(ORB
+      form(OFLAGS
+        .OBJ);
+      .BIT);););
 
-<DEFMAC
-  RTRO
+defmac(RTRO
   ('RM
     'BIT)
-  <FORM
-    PUT
+  form(PUT
     .RM
     ,RBITS
-    <FORM
-      ORB
-      <FORM
-        RBITS
-        .RM>
-      .BIT>>>
+    form(ORB
+      form(RBITS
+        .RM);
+      .BIT);););
 
 \
 
 // room definition
 
-<NEWSTRUC
-  ROOM
+newstruc(ROOM
   VECTOR
   RID
   ATOM
@@ -173,45 +130,39 @@
   STRING
   // short description
   RSEEN?
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   // visited?
   RLIGHT?
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   // endogenous light source?
   REXITS
   EXIT
   // list of exits
   ROBJS
-  <LIST
-    [REST
-      OBJECT]>
+  list([REST
+      OBJECT]);
   // objects in room
   RACTION
   RAPPLIC
   // room-action
   RVARS
-  <PRIMTYPE
-    WORD>
+  primtype(WORD);
   // slot for use of room function
   RVAL
   FIX
   // value for visiting
   RBITS
-  <PRIMTYPE
-    WORD>
+  primtype(WORD);
   // random flags
   RRAND
   ANY
-  // random slot>
+  // random slot);
 
 // flagword for <RBITS room>:    bit-name   bit-tester
 
-<FLAGWORD
-  RLANDBIT
+flagword(RLANDBIT
   <>
   // on land
   RWATERBIT
@@ -234,26 +185,22 @@
   // this room is a bucket
   RHOUSEBIT
   <>
-  // This room is part of the house>
+  // This room is part of the house);
 
 // exit
 
-<NEWTYPE
-  EXIT
+newtype(EXIT
   VECTOR
-  '<<PRIMTYPE
-        VECTOR>
+  '<primtype(VECTOR);
       [REST
         ATOM
-        <OR
-          ROOM
+        or(ROOM
           CEXIT
-          NEXIT>]>>
+          NEXIT);]>);
 
 // conditional exit
 
-<NEWSTRUC
-  CEXIT
+newstruc(CEXIT
   VECTOR
   CXFLAG
   ATOM
@@ -262,17 +209,15 @@
   ROOM
   // room it protects
   CXSTR
-  <OR
-    FALSE
-    STRING>
+  or(FALSE
+    STRING);
   // description
   CXACTION
   RAPPLIC
-  // exit function>
+  // exit function);
 
-<NEWTYPE
-  NEXIT
-  STRING>
+newtype(NEXIT
+  STRING);
 
 // unusable exit description
 
@@ -282,8 +227,7 @@
 
 // ACTION -- top level type for verbs
 
-<NEWSTRUC
-  ACTION
+newstruc(ACTION
   VECTOR
   VNAME
   ATOM
@@ -293,22 +237,19 @@
   // syntaxes for this verb (any number)
   VSTR
   STRING
-  // string to print when talking about this verb>
+  // string to print when talking about this verb);
 
 // VSPEC -- uvector of syntaxes for a verb
 
-<NEWTYPE
-  VSPEC
+newtype(VSPEC
   UVECTOR
-  '<<PRIMTYPE
-        UVECTOR>
+  '<primtype(UVECTOR);
       [REST
-        SYNTAX]>>
+        SYNTAX]>);
 
 // SYNTAX -- a legal syntax for a sentence involving this verb
 
-<NEWSTRUC
-  SYNTAX
+newstruc(SYNTAX
   VECTOR
   SYN1
   VARG
@@ -320,37 +261,32 @@
   VERB
   // function to handle this action
   SFLIP
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   // (?)
   SDRIVER
-  <OR
-    ATOM
-    FALSE>
-  // (?)>
+  or(ATOM
+    FALSE);
+  // (?));
 
 // VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX.
 
-<NEWSTRUC
-  VARG
+newstruc(VARG
   VECTOR
   VBIT
   FIX
   // acceptable object characteristics
   VPREP
-  <OR
-    PREP
-    FALSE>
+  or(PREP
+    FALSE);
   // preposition that must precede(?) object
   VWORD
   FIX
-  // locations object may be looked for in>
+  // locations object may be looked for in);
 
 // flagbit definitions for VWORD of a VARG
 
-<FLAGWORD
-  VABIT
+flagword(VABIT
   <>
   // look in AOBJS
   VRBIT
@@ -361,107 +297,84 @@
   // no-take
   VXBIT
   <>
-  // (?) turned on by '=' in VARG spec>
+  // (?) turned on by '=' in VARG spec);
 
 // VTRNN -- test a bit in the VWORD slot of a VARG
 
-<DEFMAC
-  VTRNN
+defmac(VTRNN
   ('V
     'BIT)
-  <FORM
-    N==?
-    <FORM
-      CHTYPE
-      <FORM
-        ANDB
+  form(N==?
+    form(CHTYPE
+      form(ANDB
         .BIT
-        <FORM
-          VWORD
-          .V>>
-      FIX>
-    0>>
+        form(VWORD
+          .V););
+      FIX);
+    0););
 
 // VERB -- name and function to apply to handle verb
 
-<NEWSTRUC
-  VERB
+newstruc(VERB
   VECTOR
   VNAME
   ATOM
   VFCN
-  RAPPLIC>
+  RAPPLIC);
 
 // ORPHANS -- mysterious vector of orphan data
 
-<GDECL
-  (ORPHANS)
-  <VECTOR
-    <OR
-      FALSE
-      ATOM>
-    <OR
-      FALSE
-      VERB>
-    <OR
-      FALSE
-      OBJECT>
-    <OR
-      FALSE
-      PREP>
-    <OR
-      FALSE
-      ATOM>>>
+gdecl((ORPHANS)
+  vector(or(FALSE
+      ATOM);
+    or(FALSE
+      VERB);
+    or(FALSE
+      OBJECT);
+    or(FALSE
+      PREP);
+    or(FALSE
+      ATOM);););
 
-<AND?
-  <MSETG
-    OFLAG
-    1>
-  <MSETG
-    OVERB
-    2>
-  <MSETG
-    OSLOT1
-    3>
-  <MSETG
-    OPREP
-    4>
-  <MSETG
-    ONAME
-    5>>
+and_q(msetg(OFLAG
+    1);
+  msetg(OVERB
+    2);
+  msetg(OSLOT1
+    3);
+  msetg(OPREP
+    4);
+  msetg(ONAME
+    5););
 
 // prepositional phrases
 
-<NEWSTRUC
-  PHRASE
+newstruc(PHRASE
   VECTOR
   PPREP
   PREP
   POBJ
-  OBJECT>
+  OBJECT);
 
 \
 
 // adventurer
 
-<NEWSTRUC
-  ADV
+newstruc(ADV
   VECTOR
   AROOM
   ROOM
   // where he is
   AOBJS
-  <LIST
-    [REST
-      OBJECT]>
+  list([REST
+      OBJECT]);
   // what he's carrying
   ASCORE
   FIX
   // score
   AVEHICLE
-  <OR
-    FALSE
-    OBJECT>
+  or(FALSE
+    OBJECT);
   // what he's riding in
   AOBJ
   OBJECT
@@ -476,29 +389,25 @@
   ANY
   // ** reserved for future expansion **
   AFLAGS
-  <PRIMTYPE
-    WORD>
-  // flags THIS MUST BE SAME OFFSET AS OFLAGS!>
+  primtype(WORD);
+  // flags THIS MUST BE SAME OFFSET AS OFLAGS!);
 
 "bits in <AFLAGS adv>:    bit-name  bit-tester"
 
-<FLAGWORD
-  ASTAGGERED
+flagword(ASTAGGERED
   STAGGERED?
-  // staggered?>
+  // staggered?);
 
 // object
 
-<NEWSTRUC
-  OBJECT
+newstruc(OBJECT
   VECTOR
   OID
   ATOM
   // unique name, SETG'd to this
   ONAMES
-  <UVECTOR
-    [REST
-      ATOM]>
+  uvector([REST
+      ATOM]);
   // synonyms
   ODESC1
   STRING
@@ -507,31 +416,26 @@
   STRING
   // short description
   ODESCO
-  <OR
-    STRING
-    FALSE>
+  or(STRING
+    FALSE);
   // description when untouched
   OACTION
   RAPPLIC
   // object-action
   OCONTENTS
-  <LIST
-    [REST
-      OBJECT]>
+  list([REST
+      OBJECT]);
   // list of contents
   OCAN
-  <OR
-    FALSE
-    OBJECT>
+  or(FALSE
+    OBJECT);
   // what contains this
   OFLAGS
-  <PRIMTYPE
-    WORD>
+  primtype(WORD);
   // flags THIS MUST BE SAME OFFSET AS AFLAGS!
   OTOUCH?
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   // has this been touched?
   OLIGHT?
   FIX
@@ -546,9 +450,8 @@
   ANY
   // random slot
   OOPEN?
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   // is this open?
   OSIZE
   FIX
@@ -557,25 +460,21 @@
   FIX
   // how much can it hold?
   OADJS
-  <UVECTOR
-    [REST
-      ADJECTIVE]>
+  uvector([REST
+      ADJECTIVE]);
   // adjectives for this
   OROOM
-  <OR
-    FALSE
-    ROOM>
+  or(FALSE
+    ROOM);
   // what room its in
   OREAD
-  <OR
-    FALSE
-    STRING>
-  // reading material>
+  or(FALSE
+    STRING);
+  // reading material);
 
 "bits in <OFLAGS object>:    bit-name  bit-tester"
 
-<FLAGWORD
-  OVISON
+flagword(OVISON
   OVIS?
   // visible?
   READBIT
@@ -661,160 +560,127 @@
   // object wants to handle not being taken
   NO-CHECK-BIT
   <>
-  // ignore checks (in put & drop):  for EVERY and VALUA>
+  // ignore checks (in put & drop):  for EVERY and VALUA);
 
 "extra stuff for flagword for objects"
 
 "complement of the visible bit"
 
-<MSETG
-  OVISOFF
-  *777777777776*>
+msetg(OVISOFF
+  *777777777776*);
 
 "can i be opened?"
 
-<DEFMAC
-  OPENABLE?
+defmac(OPENABLE?
   ('OBJ)
-  <FORM
-    TRNN
+  form(TRNN
     .OBJ
-    <FORM
-      +
+    form(+
       ,DOORBIT
-      ,CONTBIT>>>
+      ,CONTBIT);););
 
 "complement of the bit state"
 
-<DEFMAC
-  DESCRIBABLE?
+defmac(DESCRIBABLE?
   ('OBJ)
-  <FORM
-    NOT
-    <FORM
-      TRNN
+  form(NOT
+    form(TRNN
       .OBJ
-      ,NDESCBIT>>>
+      ,NDESCBIT);););
 
 "if object is a light or aflame, then flaming"
 
-<DEFMAC
-  FLAMING?
+defmac(FLAMING?
   ('OBJ)
-  <FORM
-    AND
-    <FORM
-      TRNN
+  form(AND
+    form(TRNN
       .OBJ
-      ,FLAMEBIT>
-    <FORM
-      1?
-      <FORM
-        OLIGHT?
-        .OBJ>>>>
+      ,FLAMEBIT);
+    form(1?
+      form(OLIGHT?
+        .OBJ););););
 
 "if object visible and open or transparent, can see inside it"
 
-<DEFMAC
-  SEE-INSIDE?
+defmac(SEE-INSIDE?
   ('OBJ)
-  <FORM
-    AND
-    <FORM
-      OVIS?
-      .OBJ>
-    <FORM
-      OR
-      <FORM
-        TRANSPARENT?
-        .OBJ>
-      <FORM
-        OOPEN?
-        .OBJ>>>>
+  form(AND
+    form(OVIS?
+      .OBJ);
+    form(OR
+      form(TRANSPARENT?
+        .OBJ);
+      form(OOPEN?
+        .OBJ););););
 
 \
 
 // demons
 
-<NEWSTRUC
-  HACK
+newstruc(HACK
   VECTOR
   HACTION
   RAPPLIC
   HOBJS
-  <LIST
-    [REST
-      ANY]>
+  list([REST
+      ANY]);
   "REST"
   HROOMS
-  <LIST
-    [REST
-      ROOM]>
+  list([REST
+      ROOM]);
   HROOM
   ROOM
   HOBJ
   OBJECT
   HFLAG
-  ANY>
+  ANY);
 
 // Clock interrupts
 
-<NEWSTRUC
-  CEVENT
+newstruc(CEVENT
   VECTOR
   CTICK
   FIX
   CACTION
-  <OR
-    APPLICABLE
-    OFFSET>
+  or(APPLICABLE
+    OFFSET);
   CFLAG
-  <OR
-    ATOM
-    FALSE>
+  or(ATOM
+    FALSE);
   CID
-  ATOM>
+  ATOM);
 
 \
 
-<SETG
-  LOAD-MAX
-  100>
+setg(LOAD-MAX
+  100);
 
-<SETG
-  SCORE-MAX
-  0>
+setg(SCORE-MAX
+  0);
 
-<GDECL
-  (RAW-SCORE
+gdecl((RAW-SCORE
     LOAD-MAX
     SCORE-MAX)
   FIX
   (RANDOM-LIST
     ROOMS
     SACRED-PLACES)
-  <LIST
-    [REST
-      ROOM]>
+  list([REST
+      ROOM]);
   (STARS
     OBJECTS
     WEAPONS
     NASTIES)
-  <LIST
-    [REST
-      OBJECT]>
+  list([REST
+      OBJECT]);
   (PRSVEC)
-  <VECTOR
-    <OR
-      FALSE
-      VERB>
-    <OR
-      FALSE
+  vector(or(FALSE
+      VERB);
+    or(FALSE
       OBJECT
-      DIRECTION>
-    <OR
-      FALSE
-      OBJECT>>
+      DIRECTION);
+    or(FALSE
+      OBJECT););
   (WINNER
     PLAYER)
   ADV
@@ -830,11 +696,10 @@
   FIX
   (DUMMY
     YUKS)
-  <VECTOR
-    [REST
-      STRING]>
+  vector([REST
+      STRING]);
   (SWORD-DEMON)
-  HACK>
+  HACK);
 
 \
 
@@ -842,112 +707,76 @@
 
 "TO OPEN DOORS"
 
-<DEFMAC
-  COND-OPEN
+defmac(COND-OPEN
   ('DIR
     'RM)
-  <FORM
-    PROG
-    <LIST
-      <LIST
-        EL
-        <FORM
-          MEMQ
+  form(PROG
+    list(list(EL
+        form(MEMQ
           .DIR
-          <FORM
-            REXITS
-            .RM>>>>
+          form(REXITS
+            .RM););););
     #DECL
       ((EL)
-        <<PRIMTYPE
-            VECTOR>
+        <primtype(VECTOR);
           ATOM
           CEXIT>)
-    <FORM
-      SETG
-      <FORM
-        CXFLAG
-        <FORM
-          2
-          <FORM
-            LVAL
-            EL>>>
-      T>>>
+    form(SETG
+      form(CXFLAG
+        form(2
+          form(LVAL
+            EL);););
+      T);););
 
-<DEFMAC
-  COND-CLOSE
+defmac(COND-CLOSE
   ('DIR
     'RM)
-  <FORM
-    PROG
-    <LIST
-      <LIST
-        EL
-        <FORM
-          MEMQ
+  form(PROG
+    list(list(EL
+        form(MEMQ
           .DIR
-          <FORM
-            REXITS
-            .RM>>>>
+          form(REXITS
+            .RM););););
     #DECL
       ((EL)
-        <<PRIMTYPE
-            VECTOR>
+        <primtype(VECTOR);
           ATOM
           CEXIT>)
-    <FORM
-      SETG
-      <FORM
-        CXFLAG
-        <FORM
-          2
-          <FORM
-            LVAL
-            EL>>>
-      <>>>>
+    form(SETG
+      form(CXFLAG
+        form(2
+          form(LVAL
+            EL);););
+      <>);););
 
 "APPLY AN OBJECT FUNCTION"
 
-<DEFMAC
-  APPLY-OBJECT
+defmac(APPLY-OBJECT
   ('OBJ)
-  <FORM
-    PROG
+  form(PROG
     ((FOO
-        <FORM
-          OACTION
-          .OBJ>))
-    <FORM
-      COND
-      (<FORM
-          NOT
-          <FORM
-            LVAL
-            FOO>>
+        form(OACTION
+          .OBJ);))
+    form(COND
+      (form(NOT
+          form(LVAL
+            FOO););
         <>)
-      (<FORM
-          TYPE?
-          <FORM
-            LVAL
-            FOO>
-          ATOM>
-        <FORM
-          APPLY
-          <FORM
-            GVAL
-            <FORM
-              LVAL
-              FOO>>>)
-      (<FORM
-          DISPATCH
-          <FORM
-            LVAL
-            FOO>>)>>>
+      (form(TYPE?
+          form(LVAL
+            FOO);
+          ATOM);
+        form(APPLY
+          form(GVAL
+            form(LVAL
+              FOO);););)
+      (form(DISPATCH
+          form(LVAL
+            FOO););));););
 
 "FLUSH AN OBJECT FROM A ROOM"
 
-<DEFINE
-  REMOVE-OBJECT
+define(REMOVE-OBJECT
   (OBJ
     "AUX"
     OCAN
@@ -956,115 +785,80 @@
     ((OBJ)
       OBJECT
       (OCAN)
-      <OR
-        OBJECT
-        FALSE>
+      or(OBJECT
+        FALSE);
       (OROOM)
-      <OR
-        FALSE
-        ROOM>)
-  <COND
-    (<SET
-        OCAN
-        <OCAN
-          .OBJ>>
-      <PUT
-        .OCAN
+      or(FALSE
+        ROOM);)
+  cond((set(OCAN
+        ocan(.OBJ););
+      put(.OCAN
         ,OCONTENTS
-        <SPLICE-OUT
-          .OBJ
-          <OCONTENTS
-            .OCAN>>>)
-    (<SET
-        OROOM
-        <OROOM
-          .OBJ>>
-      <PUT
-        .OROOM
+        splice_out(.OBJ
+          ocontents(.OCAN);););)
+    (set(OROOM
+        oroom(.OBJ););
+      put(.OROOM
         ,ROBJS
-        <SPLICE-OUT
-          .OBJ
-          <ROBJS
-            .OROOM>>>)
-    (<MEMQ
-        .OBJ
-        <ROBJS
-          ,HERE>>
-      <PUT
-        ,HERE
+        splice_out(.OBJ
+          robjs(.OROOM);););)
+    (memq(.OBJ
+        robjs(,HERE););
+      put(,HERE
         ,ROBJS
-        <SPLICE-OUT
-          .OBJ
-          <ROBJS
-            ,HERE>>>)>
-  <PUT
-    .OBJ
+        splice_out(.OBJ
+          robjs(,HERE);););));
+  put(.OBJ
     ,OROOM
-    <>>
-  <PUT
-    .OBJ
+    <>);
+  put(.OBJ
     ,OCAN
-    <>>>
+    <>););
 
-<DEFMAC
-  INSERT-OBJECT
+defmac(INSERT-OBJECT
   ('OBJ
     'ROOM)
-  <FORM
-    PUT
+  form(PUT
     .ROOM
     ,ROBJS
-    (<FORM
-        PUT
+    (form(PUT
         .OBJ
         ,OROOM
-        .ROOM>
-      <CHTYPE
-        <FORM
-          ROBJS
-          .ROOM>
-        SEGMENT>)>>
+        .ROOM);
+      chtype(form(ROBJS
+          .ROOM);
+        SEGMENT);)););
 
-<DEFMAC
-  TAKE-OBJECT
+defmac(TAKE-OBJECT
   ('OBJ
     "OPTIONAL"
     ('WINNER
       ',WINNER))
-  <FORM
-    PUT
+  form(PUT
     .WINNER
     ,AOBJS
-    (<FORM
-        PUT
+    (form(PUT
         .OBJ
         ,OROOM
-        <>>
-      <CHTYPE
-        <FORM
-          AOBJS
-          .WINNER>
-        SEGMENT>)>>
+        <>);
+      chtype(form(AOBJS
+          .WINNER);
+        SEGMENT);)););
 
-<DEFMAC
-  DROP-OBJECT
+defmac(DROP-OBJECT
   ('OBJ
     "OPTIONAL"
     ('WINNER
       ',WINNER))
-  <FORM
-    PUT
+  form(PUT
     .WINNER
     ,AOBJS
-    <FORM
-      SPLICE-OUT
+    form(SPLICE-OUT
       .OBJ
-      <FORM
-        AOBJS
-        .WINNER>>>>
+      form(AOBJS
+        .WINNER););););
 
-<DEFINE
-  KILL-OBJ
+define(KILL-OBJ
   (OBJ
     WINNER)
   #DECL
@@ -1072,23 +866,15 @@
       OBJECT
       (WINNER)
       ADV)
-  <COND
-    (<MEMQ
-        .OBJ
-        <AOBJS
-          .WINNER>>
-      <PUT
-        .WINNER
+  cond((memq(.OBJ
+        aobjs(.WINNER););
+      put(.WINNER
         ,AOBJS
-        <SPLICE-OUT
-          .OBJ
-          <AOBJS
-            .WINNER>>>)
-    (<REMOVE-OBJECT
-        .OBJ>)>>
+        splice_out(.OBJ
+          aobjs(.WINNER);););)
+    (remove_object(.OBJ);)););
 
-<DEFINE
-  FLUSH-OBJ
+define(FLUSH-OBJ
   ("TUPLE"
     OBJS
     "AUX"
@@ -1096,82 +882,57 @@
       ,WINNER))
   #DECL
     ((OBJS)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (WINNER)
       ADV)
-  <MAPF
-    <>
-    <FUNCTION
-      (X
+  mapf(<>
+    function((X
         "AUX"
         (Y
-          <FIND-OBJ
-            .X>))
+          find_obj(.X);))
       #DECL
         ((Y)
           OBJECT)
-      <AND
-        <MEMQ
-          .Y
-          <AOBJS
-            .WINNER>>
-        <DROP-OBJECT
-          <FIND-OBJ
-            .X>
-          .WINNER>>>
-    .OBJS>>
+      and(memq(.Y
+          aobjs(.WINNER););
+        drop_object(find_obj(.X);
+          .WINNER);););
+    .OBJS););
 
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
 
-<DEFINE
-  ROB-ADV
+define(ROB-ADV
   (WIN
     NEWLIST)
   #DECL
     ((WIN)
       ADV
       (NEWLIST)
-      <LIST
-        [REST
-          OBJECT]>)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+      list([REST
+          OBJECT]);)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <COND
-        (<AND
-            <G?
-              <OTVAL
-                .X>
-              0>
-            <NOT
-              <TRNN
-                .X
-                ,SACREDBIT>>>
-          <PUT
-            .WIN
+      cond((and(g_q(otval(.X);
+              0);
+            not(trnn(.X
+                ,SACREDBIT);););
+          put(.WIN
             ,AOBJS
-            <SPLICE-OUT
-              .X
-              <AOBJS
-                .WIN>>>
-          <SET
-            NEWLIST
+            splice_out(.X
+              aobjs(.WIN);););
+          set(NEWLIST
             (.X
-              !.NEWLIST)>)>>
-    <AOBJS
-      .WIN>>
-  .NEWLIST>
+              !.NEWLIST));)););
+    aobjs(.WIN););
+  .NEWLIST);
 
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
 
-<DEFINE
-  ROB-ROOM
+define(ROB-ROOM
   (RM
     NEWLIST
     PROB)
@@ -1179,81 +940,52 @@
     ((RM)
       ROOM
       (NEWLIST)
-      <LIST
-        [REST
-          OBJECT]>
+      list([REST
+          OBJECT]);
       (PROB)
       FIX)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <COND
-        (<AND
-            <G?
-              <OTVAL
-                .X>
-              0>
-            <NOT
-              <TRNN
-                .X
-                ,SACREDBIT>>
-            <OVIS?
-              .X>
-            <PROB
-              .PROB>>
-          <REMOVE-OBJECT
-            .X>
-          <PUT
-            .X
+      cond((and(g_q(otval(.X);
+              0);
+            not(trnn(.X
+                ,SACREDBIT););
+            ovis_q(.X);
+            prob(.PROB););
+          remove_object(.X);
+          put(.X
             ,OTOUCH?
-            T>
-          <SET
-            NEWLIST
+            T);
+          set(NEWLIST
             (.X
-              !.NEWLIST)>)
-        (<TYPE?
-            <ORAND
-              .X>
-            ADV>
-          <SET
-            NEWLIST
-            <ROB-ADV
-              <ORAND
-                .X>
-              .NEWLIST>>)>>
-    <ROBJS
-      .RM>>
-  .NEWLIST>
+              !.NEWLIST));)
+        (type_q(orand(.X);
+            ADV);
+          set(NEWLIST
+            rob_adv(orand(.X);
+              .NEWLIST););)););
+    robjs(.RM););
+  .NEWLIST);
 
-<DEFINE
-  VALUABLES?
+define(VALUABLES?
   (ADV)
   #DECL
     ((ADV)
       ADV)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <COND
-        (<G?
-            <OTVAL
-              .X>
-            0>
-          <MAPLEAVE
-            T>)>>
-    <AOBJS
-      .ADV>>>
+      cond((g_q(otval(.X);
+            0);
+          mapleave(T);)););
+    aobjs(.ADV);););
 
-<DEFINE
-  ARMED?
+define(ARMED?
   (ADV
     "AUX"
     (WEAPONS
@@ -1261,49 +993,32 @@
   #DECL
     ((ADV)
       ADV)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <COND
-        (<MEMQ
-            .X
-            .WEAPONS>
-          <MAPLEAVE
-            T>)>>
-    <AOBJS
-      .ADV>>>
+      cond((memq(.X
+            .WEAPONS);
+          mapleave(T);)););
+    aobjs(.ADV);););
 
-<DEFINE
-  LIGHT-SOURCE
+define(LIGHT-SOURCE
   (ME)
   #DECL
     ((ME)
       ADV)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
-      <COND
-        (<NOT
-            <0?
-              <OLIGHT?
-                .X>>>
-          <MAPLEAVE
-            .X>)>>
-    <AOBJS
-      .ME>>>
+  mapf(<>
+    function((X)
+      cond((not(0_q(olight_q(.X);););
+          mapleave(.X);)););
+    aobjs(.ME);););
 
-<DEFINE
-  GET-DEMON
+define(GET-DEMON
   (ID
     "AUX"
     (OBJ
-      <FIND-OBJ
-        .ID>)
+      find_obj(.ID);)
     (DEMS
       ,DEMONS))
   #DECL
@@ -1312,62 +1027,44 @@
       (OBJ)
       OBJECT
       (DEMS)
-      <LIST
-        [REST
-          HACK]>)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+      list([REST
+          HACK]);)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           HACK)
-      <COND
-        (<==?
-            <HOBJ
-              .X>
-            .OBJ>
-          <MAPLEAVE
-            .X>)>>
-    .DEMS>>
+      cond((eq_q(hobj(.X);
+            .OBJ);
+          mapleave(.X);)););
+    .DEMS););
 
-<DEFMAC
-  PICK-ONE
+defmac(PICK-ONE
   ('VEC)
-  <FORM
-    NTH
+  form(NTH
     .VEC
-    <FORM
-      +
+    form(+
       1
-      <FORM
-        MOD
-        <FORM
-          RANDOM>
-        <FORM
-          LENGTH
-          .VEC>>>>>
+      form(MOD
+        form(RANDOM);
+        form(LENGTH
+          .VEC);););););
 
-<DEFMAC
-  CLOCK-DISABLE
+defmac(CLOCK-DISABLE
   ('EV)
-  <FORM
-    PUT
+  form(PUT
     .EV
     ,CFLAG
-    <>>>
+    <>););
 
-<DEFMAC
-  CLOCK-ENABLE
+defmac(CLOCK-ENABLE
   ('EV)
-  <FORM
-    PUT
+  form(PUT
     .EV
     ,CFLAG
-    T>>
+    T););
 
-<DEFINE
-  YES/NO
+define(YES/NO
   (NO-IS-BAD?
     "AUX"
     (INBUF
@@ -1378,172 +1075,117 @@
     ((INBUF)
       STRING
       (NO-IS-BAD?)
-      <OR
-        ATOM
-        FALSE>)
-  <RESET
-    .INCHAN>
-  <READSTRING
-    .INBUF
+      or(ATOM
+        FALSE);)
+  reset(.INCHAN);
+  readstring(.INBUF
     .INCHAN
-    ,READER-STRING>
-  <COND
-    (.NO-IS-BAD?
-      <NOT
-        <MEMQ
-          <1
-            .INBUF>
-          "NnfF">>)
+    ,READER-STRING);
+  cond((.NO-IS-BAD?
+      not(memq(1(.INBUF);
+          "NnfF"););)
     (T
-      <MEMQ
-        <1
-          .INBUF>
-        "TtYy">)>>
+      memq(1(.INBUF);
+        "TtYy");)););
 
-<DEFMAC
-  APPLY-RANDOM
+defmac(APPLY-RANDOM
   ('FROB
     "OPTIONAL"
     ('MUMBLE
       <>))
-  <FORM
-    COND
-    (<FORM
-        TYPE?
+  form(COND
+    (form(TYPE?
         .FROB
-        ATOM>
-      <COND
-        (.MUMBLE
-          <FORM
-            APPLY
-            <FORM
-              GVAL
-              .FROB>
-            .MUMBLE>)
-        (<FORM
-            APPLY
-            <FORM
-              GVAL
-              .FROB>>)>)
+        ATOM);
+      cond((.MUMBLE
+          form(APPLY
+            form(GVAL
+              .FROB);
+            .MUMBLE);)
+        (form(APPLY
+            form(GVAL
+              .FROB););));)
     (T
-      <FORM
-        DISPATCH
+      form(DISPATCH
         .FROB
-        .MUMBLE>)>>
+        .MUMBLE);)););
 
-<DEFINE
-  DA
+define(DA
   (FN
     "OPTIONAL"
     (FOO
       <>))
   #DECL
     ((FN)
-      <OR
-        APPLICABLE
+      or(APPLICABLE
         ATOM
-        FIX>)
-  <PROG
-    ()
-    <COND
-      (<TYPE?
+        FIX);)
+  prog(()
+    cond((type_q(.FN
+          FIX);
+        dispatch(.FN
+          .FOO);)
+      (applicable_q(.FN);
+        cond((.FOO
+            apply(.FN
+              .FOO);)
+          (apply(.FN);));)
+      (gassigned_q(.FN);
+        set(FN
+          ,.FN);
+        again();)
+      (error(UNASSIGNED-VARIABLE!-ERRORS
           .FN
-          FIX>
-        <DISPATCH
-          .FN
-          .FOO>)
-      (<APPLICABLE?
-          .FN>
-        <COND
-          (.FOO
-            <APPLY
-              .FN
-              .FOO>)
-          (<APPLY
-              .FN>)>)
-      (<GASSIGNED?
-          .FN>
-        <SET
-          FN
-          ,.FN>
-        <AGAIN>)
-      (<ERROR
-          UNASSIGNED-VARIABLE!-ERRORS
-          .FN
-          DA>)>>>
+          DA);));););
 
 "OLD MAZER"
 
-<MOBLIST
-  FLAG
-  17>
+moblist(FLAG
+  17);
 
-<PSETG
-  NULL-DESC
-  "">
+psetg(NULL-DESC
+  "");
 
-<PSETG
-  NULL-EXIT
-  <CHTYPE
-    []
-    EXIT>>
+psetg(NULL-EXIT
+  chtype([]
+    EXIT););
 
-<PSETG
-  NULL-SYN
+psetg(NULL-SYN
   !
-  []>
+  []);
 
-<DEFINE
-  FIND-ROOM
+define(FIND-ROOM
   (ID
     "AUX"
     ATM
     ROOM)
   #DECL
     ((ID)
-      <OR
-        ATOM
-        STRING>
+      or(ATOM
+        STRING);
       (VALUE)
       ROOM
       (ROOM)
       ROOM
       (ATM)
-      <OR
-        ATOM
-        FALSE>)
-  <COND
-    (<TYPE?
-        .ID
-        ATOM>
-      <SET
-        ID
-        <SPNAME
-          .ID>>)>
-  <COND
-    (<AND
-        <SET
-          ATM
-          <LOOKUP
-            .ID
-            ,ROOM-OBL>>
-        <GASSIGNED?
-          .ATM>>
+      or(ATOM
+        FALSE);)
+  cond((type_q(.ID
+        ATOM);
+      set(ID
+        spname(.ID););));
+  cond((and(set(ATM
+          lookup(.ID
+            ,ROOM-OBL););
+        gassigned_q(.ATM););
       ,.ATM)
-    (<OR
-        .ATM
-        <SET
-          ATM
-          <INSERT
-            .ID
-            ,ROOM-OBL>>>
-      <SETG
-        .ATM
-        <SET
-          ROOM
-          <CHTYPE
-            <VECTOR
-              .ATM
+    (or(.ATM
+        set(ATM
+          insert(.ID
+            ,ROOM-OBL);););
+      setg(.ATM
+        set(ROOM
+          chtype(vector(.ATM
               ,NULL-DESC
               ,NULL-DESC
               <>
@@ -1554,64 +1196,45 @@
               0
               0
               0
-              T>
-            ROOM>>>
-      <SETG
-        ROOMS
+              T);
+            ROOM);););
+      setg(ROOMS
         (.ROOM
-          !,ROOMS)>
-      .ROOM)>>
+          !,ROOMS));
+      .ROOM)););
 
-<DEFINE
-  FIND-OBJ
+define(FIND-OBJ
   (ID
     "AUX"
     OBJ
     ATM)
   #DECL
     ((ID)
-      <OR
-        ATOM
-        STRING>
+      or(ATOM
+        STRING);
       (OBJ)
       OBJECT
       (ATM)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (VALUE)
       OBJECT)
-  <COND
-    (<TYPE?
-        .ID
-        ATOM>
-      <SET
-        ID
-        <SPNAME
-          .ID>>)>
-  <COND
-    (<AND
-        <SET
-          ATM
-          <LOOKUP
-            .ID
-            ,OBJECT-OBL>>
-        <GASSIGNED?
-          .ATM>>
+  cond((type_q(.ID
+        ATOM);
+      set(ID
+        spname(.ID););));
+  cond((and(set(ATM
+          lookup(.ID
+            ,OBJECT-OBL););
+        gassigned_q(.ATM););
       ,.ATM)
-    (<OR
-        .ATM
-        <SET
-          ATM
-          <INSERT
-            .ID
-            ,OBJECT-OBL>>>
-      <SETG
-        .ATM
-        <SET
-          OBJ
-          <CHTYPE
-            [.ATM
+    (or(.ATM
+        set(ATM
+          insert(.ID
+            ,OBJECT-OBL);););
+      setg(.ATM
+        set(OBJ
+          chtype([.ATM
               ,NULL-SYN
               ,NULL-DESC
               ,NULL-DESC
@@ -1631,50 +1254,32 @@
               ,NULL-SYN
               <>
               <>]
-            OBJECT>>>
-      <SETG
-        OBJECTS
+            OBJECT);););
+      setg(OBJECTS
         (.OBJ
-          !,OBJECTS)>
-      .OBJ)>>
+          !,OBJECTS));
+      .OBJ)););
 
-<DEFINE
-  FUNCTION-PRINT
+define(FUNCTION-PRINT
   (FROB)
   #DECL
     ((FROB)
-      <OR
-        ATOM
+      or(ATOM
         OFFSET
         APPLICABLE
-        FALSE>)
-  <COND
-    (<NOT
-        .FROB>
-      <PRINC
-        "<>">)
-    (<TYPE?
-        .FROB
+        FALSE);)
+  cond((not(.FROB);
+      princ("<>");)
+    (type_q(.FROB
         RSUBR
-        RSUBR-ENTRY>
-      <PRIN1
-        <2
-          .FROB>>)
-    (<TYPE?
-        .FROB
-        ATOM>
-      <PRIN1
-        .FROB>)
-    (<TYPE?
-        .FROB
-        OFFSET>
-      <PRINC
-        "#OFFSET ">
-      <PRIN1
-        <GET-ATOM
-          .FROB>>)
-    (<PRINC
-        "#FUNCTION ">
-      <PRIN1
-        <GET-ATOM
-          .FROB>>)>>
+        RSUBR-ENTRY);
+      prin1(2(.FROB););)
+    (type_q(.FROB
+        ATOM);
+      prin1(.FROB);)
+    (type_q(.FROB
+        OFFSET);
+      princ("#OFFSET ");
+      prin1(get_atom(.FROB););)
+    (princ("#FUNCTION ");
+      prin1(get_atom(.FROB););)););

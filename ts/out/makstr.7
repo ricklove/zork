@@ -1,64 +1,47 @@
-<DEFINE
-  CEVENT
+define(CEVENT
   (TICK
     APP
     FLG
     NAME
     "AUX"
     (OBL
-      <GET
-        INITIAL
-        OBLIST>)
+      get(INITIAL
+        OBLIST);)
     ATM)
   #DECL
     ((TICK)
       FIX
       (APP)
-      <OR
-        APPLICABLE
-        OFFSET>
+      or(APPLICABLE
+        OFFSET);
       (FLG)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (NAME)
-      <OR
-        ATOM
-        STRING>
+      or(ATOM
+        STRING);
       (ATM)
-      <OR
-        ATOM
-        FALSE>)
-  <COND
-    (<TYPE?
-        .NAME
-        STRING>
-      <COND
-        (<SET
-            ATM
-            <LOOKUP
-              .NAME
-              .OBL>>)
+      or(ATOM
+        FALSE);)
+  cond((type_q(.NAME
+        STRING);
+      cond((set(ATM
+            lookup(.NAME
+              .OBL););)
         (T
-          <SET
-            ATM
-            <INSERT
-              .NAME
-              .OBL>>)>)
-    (<SET
-        ATM
-        .NAME>)>
-  <SETG
-    .ATM
-    <CHTYPE
-      [.TICK
+          set(ATM
+            insert(.NAME
+              .OBL););));)
+    (set(ATM
+        .NAME);));
+  setg(.ATM
+    chtype([.TICK
         .APP
         .FLG
         .ATM]
-      CEVENT>>>
+      CEVENT);););
 
-<DEFINE
-  CONS-OBJ
+define(CONS-OBJ
   ("TUPLE"
     OBJS
     "AUX"
@@ -66,35 +49,25 @@
       ,WINNER))
   #DECL
     ((OBJS)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (WINNER)
       ADV)
-  <MAPF
-    <>
-    <FUNCTION
-      (X
+  mapf(<>
+    function((X
         "AUX"
         (Y
-          <FIND-OBJ
-            .X>))
+          find_obj(.X);))
       #DECL
         ((Y)
           OBJECT)
-      <OR
-        <MEMQ
-          .Y
-          <AOBJS
-            .WINNER>>
-        <TAKE-OBJECT
-          <FIND-OBJ
-            .X>
-          .WINNER>>>
-    .OBJS>>
+      or(memq(.Y
+          aobjs(.WINNER););
+        take_object(find_obj(.X);
+          .WINNER);););
+    .OBJS););
 
-<DEFINE
-  CEXIT
+define(CEXIT
   (FLID
     RMID
     "OPTIONAL"
@@ -110,166 +83,110 @@
     ATM)
   #DECL
     ((STR)
-      <OR
-        FALSE
-        STRING>
+      or(FALSE
+        STRING);
       (FLID
         RMID)
-      <OR
-        ATOM
-        STRING>
+      or(ATOM
+        STRING);
       (ATM
         FUNCT)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (FVAL)
-      <OR
-        APPLICABLE
-        FALSE>
+      or(APPLICABLE
+        FALSE);
       (FLAG)
-      <OR
-        ATOM
-        FALSE>)
-  <COND
-    (<TYPE?
-        .FLID
-        ATOM>
-      <SET
-        FLID
-        <SPNAME
-          .FLID>>)>
-  <SET
-    ATM
-    <OR
-      <LOOKUP
-        .FLID
-        <GET
-          FLAG
-          OBLIST>>
-      <INSERT
-        .FLID
-        <GET
-          FLAG
-          OBLIST>>>>
-  <SETG
-    .ATM
-    .FLAG>
-  <CHTYPE
-    <VECTOR
-      .ATM
-      <FIND-ROOM
-        .RMID>
+      or(ATOM
+        FALSE);)
+  cond((type_q(.FLID
+        ATOM);
+      set(FLID
+        spname(.FLID););));
+  set(ATM
+    or(lookup(.FLID
+        get(FLAG
+          OBLIST););
+      insert(.FLID
+        get(FLAG
+          OBLIST););););
+  setg(.ATM
+    .FLAG);
+  chtype(vector(.ATM
+      find_room(.RMID);
       .STR
-      .FUNCT>
-    CEXIT>>
+      .FUNCT);
+    CEXIT););
 
-<DEFINE
-  EXIT
+define(EXIT
   ("TUPLE"
     PAIRS
     "AUX"
     (DOBL
       ,DIRECTIONS)
     (FROB
-      <IVECTOR
-        <LENGTH
-          .PAIRS>>))
+      ivector(length(.PAIRS););))
   #DECL
     ((PAIRS)
-      <TUPLE
-        [REST
+      tuple([REST
           STRING
-          <OR
-            NEXIT
+          or(NEXIT
             CEXIT
             STRING
-            ATOM>]>
+            ATOM);]);
       (DIR)
-      <LIST
-        [REST
-          ATOM]>
+      list([REST
+          ATOM]);
       (FROB)
       VECTOR
       (DOBL)
       OBLIST)
-  <REPEAT
-    (ATM
+  repeat((ATM
       RM
       (F
         .FROB))
     #DECL
       ((ATM)
-        <OR
-          ATOM
-          FALSE>
+        or(ATOM
+          FALSE);
         (RM)
-        <OR
-          ROOM
-          FALSE>
+        or(ROOM
+          FALSE);
         (F)
         VECTOR)
-    <COND
-      (<OR
-          <AND
-            <SET
-              ATM
-              <LOOKUP
-                <1
-                  .PAIRS>
-                .DOBL>>
-            <GASSIGNED?
-              .ATM>
-            <TYPE?
-              ,.ATM
-              DIRECTION>>>
-        <PUT
-          .F
+    cond((or(and(set(ATM
+              lookup(1(.PAIRS);
+                .DOBL););
+            gassigned_q(.ATM);
+            type_q(,.ATM
+              DIRECTION);););
+        put(.F
           1
-          .ATM>
-        <COND
-          (<TYPE?
-              <2
-                .PAIRS>
-              STRING>
-            <PUT
-              .F
+          .ATM);
+        cond((type_q(2(.PAIRS);
+              STRING);
+            put(.F
               2
-              <FIND-ROOM
-                <2
-                  .PAIRS>>>)
-          (<PUT
-              .F
+              find_room(2(.PAIRS);););)
+          (put(.F
               2
-              <2
-                .PAIRS>>)>
-        <SET
-          F
-          <REST
-            .F
-            2>>)
+              2(.PAIRS););));
+        set(F
+          rest(.F
+            2););)
       (T
-        <PUT
-          .PAIRS
+        put(.PAIRS
           1
-          <ERROR
-            ILLEGAL-DIRECTION
-            <1
-              .PAIRS>>>)>
-    <COND
-      (<EMPTY?
-          <SET
-            PAIRS
-            <REST
-              .PAIRS
-              2>>>
-        <RETURN>)>>
-  <CHTYPE
-    .FROB
-    EXIT>>
+          error(ILLEGAL-DIRECTION
+            1(.PAIRS);););));
+    cond((empty_q(set(PAIRS
+            rest(.PAIRS
+              2);););
+        return();)););
+  chtype(.FROB
+    EXIT););
 
-<DEFINE
-  ROOM
+define(ROOM
   (ID
     D1
     D2
@@ -286,99 +203,76 @@
       ,RLANDBIT)
     "AUX"
     (RM
-      <FIND-ROOM
-        .ID>))
+      find_room(.ID);))
   #DECL
     ((ID)
-      <OR
-        STRING
-        ATOM>
+      or(STRING
+        ATOM);
       (D1
         D2)
       STRING
       (LIT?)
-      <OR
-        ATOM
+      or(ATOM
         FORM
-        FALSE>
+        FALSE);
       (EX)
       EXIT
       (APP)
-      <OR
-        FORM
+      or(FORM
         FALSE
-        ATOM>
+        ATOM);
       (VAL
         BIT)
       FIX
       (RM)
       ROOM)
-  <SETG
-    SCORE-MAX
-    <+
-      ,SCORE-MAX
-      .VAL>>
-  <PUT
-    .RM
+  setg(SCORE-MAX
+    _(,SCORE-MAX
+      .VAL););
+  put(.RM
     ,RBITS
-    .BIT>
-  <PUT
-    .RM
+    .BIT);
+  put(.RM
     ,RVAL
-    .VAL>
-  <PUT
-    .RM
+    .VAL);
+  put(.RM
     ,ROBJS
-    .OBJS>
-  <PUT
-    .RM
+    .OBJS);
+  put(.RM
     ,RDESC1
-    .D1>
-  <PUT
-    .RM
+    .D1);
+  put(.RM
     ,RDESC2
-    .D2>
-  <PUT
-    .RM
+    .D2);
+  put(.RM
     ,REXITS
-    .EX>
-  <PUT
-    .RM
+    .EX);
+  put(.RM
     ,RACTION
-    <COND
-      (<TYPE?
-          .APP
+    cond((type_q(.APP
           FALSE
-          FORM>
+          FORM);
         <>)
-      (.APP)>>
-  <PUT
-    .RM
+      (.APP)););
+  put(.RM
     ,RLIGHT?
-    <COND
-      (<TYPE?
-          .LIT?
-          FORM>
+    cond((type_q(.LIT?
+          FORM);
         <>)
       (T
-        .LIT?)>>
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+        .LIT?)););
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <PUT
-        .X
+      put(.X
         ,OROOM
-        .RM>>
-    <ROBJS
-      .RM>>
-  .RM>
+        .RM););
+    robjs(.RM););
+  .RM);
 
-<DEFINE
-  SOBJECT
+define(SOBJECT
   (ID
     STR
     "TUPLE"
@@ -388,8 +282,7 @@
       STRING
       (TUP)
       TUPLE)
-  <OBJECT
-    .ID
+  object(.ID
     ""
     .STR
     %
@@ -397,11 +290,9 @@
     <>
     ()
     <>
-    <+
-      !.TUP>>>
+    _(!.TUP);););
 
-<DEFINE
-  AOBJECT
+define(AOBJECT
   (ID
     STR
     APP
@@ -414,8 +305,7 @@
       TUPLE
       (APP)
       ATOM)
-  <OBJECT
-    .ID
+  object(.ID
     ""
     .STR
     %
@@ -423,11 +313,9 @@
     .APP
     ()
     <>
-    <+
-      !.TUP>>>
+    _(!.TUP);););
 
-<DEFINE
-  OBJECT
+define(OBJECT
   (ID
     DESC1
     DESC2
@@ -449,28 +337,23 @@
       0))
   #DECL
     ((ID)
-      <OR
-        ATOM
-        STRING>
+      or(ATOM
+        STRING);
       (DESC1
         DESC2)
       STRING
       (APP)
-      <OR
-        FALSE
+      or(FALSE
         FORM
-        ATOM>
+        ATOM);
       (CONTS)
-      <LIST
-        [REST
-          OBJECT]>
+      list([REST
+          OBJECT]);
       (CAN)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (FLAGS)
-      <PRIMTYPE
-        WORD>
+      primtype(WORD);
       (SIZE
         CAPAC)
       FIX
@@ -479,135 +362,94 @@
         S2)
       FIX
       (DESCO)
-      <OR
-        STRING
-        FALSE>)
-  <SETG
-    SCORE-MAX
-    <+
-      ,SCORE-MAX
+      or(STRING
+        FALSE);)
+  setg(SCORE-MAX
+    _(,SCORE-MAX
       .S1
-      .S2>>
-  <OR
-    <0?
-      .LIGHT?>
-    <SET
-      FLAGS
-      <+
-        .FLAGS
-        ,LIGHTBIT>>>
-  <PUT
-    <PUT
-      <PUT
-        <PUT
-          <PUT
-            <PUT
-              <PUT
-                <PUT
-                  <PUT
-                    <PUT
-                      <PUT
-                        <PUT
-                          <FIND-OBJ
-                            .ID>
+      .S2););
+  or(0_q(.LIGHT?);
+    set(FLAGS
+      _(.FLAGS
+        ,LIGHTBIT);););
+  put(put(put(put(put(put(put(put(put(put(put(put(find_obj(.ID);
                           ,ODESC1
-                          .DESC1>
+                          .DESC1);
                         ,OCAPAC
-                        .CAPAC>
+                        .CAPAC);
                       ,OSIZE
-                      .SIZE>
+                      .SIZE);
                     ,ODESCO
-                    .DESCO>
+                    .DESCO);
                   ,OLIGHT?
-                  .LIGHT?>
+                  .LIGHT?);
                 ,OFLAGS
-                .FLAGS>
+                .FLAGS);
               ,OFVAL
-              .S1>
+              .S1);
             ,OTVAL
-            .S2>
+            .S2);
           ,OCAN
-          .CAN>
+          .CAN);
         ,OCONTENTS
-        .CONTS>
+        .CONTS);
       ,ODESC2
-      .DESC2>
+      .DESC2);
     ,OACTION
-    <COND
-      (<TYPE?
-          .APP
+    cond((type_q(.APP
           FALSE
-          FORM>
+          FORM);
         <>)
-      (.APP)>>>
+      (.APP));););
 
-<DEFINE
-  FIND-PREP
+define(FIND-PREP
   (STR
     "AUX"
     (ATM
-      <ADD-WORD
-        .STR>))
+      add_word(.STR);))
   #DECL
     ((STR)
       STRING
       (ATM)
-      <OR
-        FALSE
-        ATOM>)
-  <COND
-    (<GASSIGNED?
-        .ATM>
-      <COND
-        (<TYPE?
-            ,.ATM
-            PREP>
+      or(FALSE
+        ATOM);)
+  cond((gassigned_q(.ATM);
+      cond((type_q(,.ATM
+            PREP);
           ,.ATM)
-        (<ERROR
-            NO-PREP!-ERRORS>)>)
-    (<SETG
-        .ATM
-        <CHTYPE
-          .ATM
-          PREP>>)>>
+        (error(NO-PREP!-ERRORS);));)
+    (setg(.ATM
+        chtype(.ATM
+          PREP););)););
 
-<DEFINE
-  ADD-ACTION
+define(ADD-ACTION
   (NAM
     STR
     "TUPLE"
     DECL
     "AUX"
     (ATM
-      <OR
-        <LOOKUP
-          .NAM
-          ,ACTIONS>
-        <INSERT
-          .NAM
-          ,ACTIONS>>))
+      or(lookup(.NAM
+          ,ACTIONS);
+        insert(.NAM
+          ,ACTIONS););))
   #DECL
     ((NAM
         STR)
       STRING
       (DECL)
-      <TUPLE
-        [REST
-          VECTOR]>
+      tuple([REST
+          VECTOR]);
       (ATM)
       ATOM)
-  <SETG
-    .ATM
-    <CHTYPE
-      [.ATM
-        <MAKE-ACTION
-          !.DECL>
+  setg(.ATM
+    chtype([.ATM
+        make_action(!.DECL);
         .STR]
-      ACTION>>
-  .ATM>
+      ACTION););
+  .ATM);
 
-<DEFINE
-  ADD-DIRECTIONS
+define(ADD-DIRECTIONS
   ("TUPLE"
     NMS
     "AUX"
@@ -616,34 +458,24 @@
     ATM)
   #DECL
     ((NMS)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (DIR)
       OBLIST
       (ATM)
       ATOM)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
-      <SETG
-        <SET
-          ATM
-          <OR
-            <LOOKUP
-              .X
-              .DIR>
-            <INSERT
-              .X
-              .DIR>>>
-        <CHTYPE
-          .ATM
-          DIRECTION>>>
-    .NMS>>
+  mapf(<>
+    function((X)
+      setg(set(ATM
+          or(lookup(.X
+              .DIR);
+            insert(.X
+              .DIR);););
+        chtype(.ATM
+          DIRECTION);););
+    .NMS););
 
-<DEFINE
-  DSYNONYM
+define(DSYNONYM
   (STR
     "TUPLE"
     NMS
@@ -658,36 +490,25 @@
       (STR)
       STRING
       (NMS)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (VAL)
       DIRECTION
       (DIR)
       OBLIST)
-  <SET
-    VAL
-    <ADD-DIRECTIONS
-      .STR>>
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
-      <SETG
-        <SET
-          ATM
-          <OR
-            <LOOKUP
-              .X
-              .DIR>
-            <INSERT
-              .X
-              .DIR>>>
-        .VAL>>
-    .NMS>>
+  set(VAL
+    add_directions(.STR););
+  mapf(<>
+    function((X)
+      setg(set(ATM
+          or(lookup(.X
+              .DIR);
+            insert(.X
+              .DIR);););
+        .VAL););
+    .NMS););
 
-<DEFINE
-  VSYNONYM
+define(VSYNONYM
   (N1
     "TUPLE"
     N2
@@ -698,99 +519,67 @@
     ((N1)
       STRING
       (N2)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (ATM)
-      <OR
-        FALSE
-        ATOM>
+      or(FALSE
+        ATOM);
       (VAL)
       ANY)
-  <COND
-    (<SET
-        ATM
-        <LOOKUP
-          .N1
-          ,WORDS>>
-      <SET
-        VAL
-        ,.ATM>
-      <MAPF
-        <>
-        <FUNCTION
-          (X)
-          <SETG
-            <ADD-WORD
-              .X>
-            .VAL>>
-        .N2>)>
-  <COND
-    (<SET
-        ATM
-        <LOOKUP
-          .N1
-          ,ACTIONS>>
-      <SET
-        VAL
-        ,.ATM>
-      <MAPF
-        <>
-        <FUNCTION
-          (X)
-          <SETG
-            <OR
-              <LOOKUP
-                .X
-                ,ACTIONS>
-              <INSERT
-                .X
-                ,ACTIONS>>
-            .VAL>>
-        .N2>)>>
+  cond((set(ATM
+        lookup(.N1
+          ,WORDS););
+      set(VAL
+        ,.ATM);
+      mapf(<>
+        function((X)
+          setg(add_word(.X);
+            .VAL););
+        .N2);));
+  cond((set(ATM
+        lookup(.N1
+          ,ACTIONS););
+      set(VAL
+        ,.ATM);
+      mapf(<>
+        function((X)
+          setg(or(lookup(.X
+                ,ACTIONS);
+              insert(.X
+                ,ACTIONS););
+            .VAL););
+        .N2);)););
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-<DEFINE
-  ADD-WORD
+define(ADD-WORD
   (W)
   #DECL
     ((W)
       STRING)
-  <OR
-    <LOOKUP
-      .W
-      ,WORDS>
-    <INSERT
-      .W
-      ,WORDS>>>
+  or(lookup(.W
+      ,WORDS);
+    insert(.W
+      ,WORDS);););
 
-<DEFINE
-  ADD-BUZZ
+define(ADD-BUZZ
   ("TUPLE"
     W)
   #DECL
     ((W)
-      <TUPLE
-        [REST
-          STRING]>)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+      tuple([REST
+          STRING]);)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           STRING)
-      <SETG
-        <ADD-WORD
-          .X>
-        <CHTYPE
-          .X
-          BUZZ>>>
-    .W>>
+      setg(add_word(.X);
+        chtype(.X
+          BUZZ);););
+    .W););
 
-<DEFINE
-  ADD-ZORK
+define(ADD-ZORK
   (NM
     "TUPLE"
     W)
@@ -798,13 +587,10 @@
     ((NM)
       ATOM
       (W)
-      <TUPLE
-        [REST
-          STRING]>)
-  <MAPF
-    <>
-    <FUNCTION
-      (X
+      tuple([REST
+          STRING]);)
+  mapf(<>
+    function((X
         "AUX"
         ATM)
       #DECL
@@ -812,18 +598,13 @@
           STRING
           (ATM)
           ATOM)
-      <SETG
-        <SET
-          ATM
-          <ADD-WORD
-            .X>>
-        <CHTYPE
-          .ATM
-          .NM>>>
-    .W>>
+      setg(set(ATM
+          add_word(.X););
+        chtype(.ATM
+          .NM);););
+    .W););
 
-<DEFINE
-  ADD-OBJECT
+define(ADD-OBJECT
   (OBJ
     NAMES
     "OPTIONAL"
@@ -837,48 +618,34 @@
       OBJECT
       (NAMES
         ADJ)
-      <VECTOR
-        [REST
-          STRING]>
+      vector([REST
+          STRING]);
       (OBJS)
       OBLIST)
-  <PUT
-    .OBJ
+  put(.OBJ
     ,ONAMES
-    <MAPF
-      ,UVECTOR
-      <FUNCTION
-        (X)
+    mapf(,UVECTOR
+      function((X)
         #DECL
           ((X)
             STRING)
-        <OR
-          <LOOKUP
-            .X
-            .OBJS>
-          <INSERT
-            .X
-            .OBJS>>>
-      .NAMES>>
-  <PUT
-    .OBJ
+        or(lookup(.X
+            .OBJS);
+          insert(.X
+            .OBJS);););
+      .NAMES););
+  put(.OBJ
     ,OADJS
-    <MAPF
-      ,UVECTOR
-      <FUNCTION
-        (W)
-        <ADD-ZORK
-          ADJECTIVE
-          .W>>
-      .ADJ>>
-  <CHUTYPE
-    <OADJS
-      .OBJ>
-    ADJECTIVE>
-  .OBJ>
+    mapf(,UVECTOR
+      function((W)
+        add_zork(ADJECTIVE
+          .W););
+      .ADJ););
+  chutype(oadjs(.OBJ);
+    ADJECTIVE);
+  .OBJ);
 
-<DEFINE
-  SYNONYM
+define(SYNONYM
   (N1
     "TUPLE"
     N2
@@ -889,36 +656,25 @@
     ((N1)
       STRING
       (N2)
-      <TUPLE
-        [REST
-          STRING]>
+      tuple([REST
+          STRING]);
       (ATM)
-      <OR
-        FALSE
-        ATOM>
+      or(FALSE
+        ATOM);
       (VAL)
       ANY)
-  <COND
-    (<SET
-        ATM
-        <LOOKUP
-          .N1
-          ,WORDS>>
-      <SET
-        VAL
-        ,.ATM>
-      <MAPF
-        <>
-        <FUNCTION
-          (X)
-          <SETG
-            <ADD-WORD
-              .X>
-            .VAL>>
-        .N2>)>>
+  cond((set(ATM
+        lookup(.N1
+          ,WORDS););
+      set(VAL
+        ,.ATM);
+      mapf(<>
+        function((X)
+          setg(add_word(.X);
+            .VAL););
+        .N2);)););
 
-<DEFINE
-  ADD-ABBREV
+define(ADD-ABBREV
   (X
     Y
     "AUX")
@@ -926,62 +682,41 @@
     ((X
         Y)
       STRING)
-  <SETG
-    <ADD-WORD
-      .X>
-    <OR
-      <LOOKUP
-        .Y
-        ,WORDS>
-      <INSERT
-        .Y
-        ,WORDS>>>>
+  setg(add_word(.X);
+    or(lookup(.Y
+        ,WORDS);
+      insert(.Y
+        ,WORDS););););
 
-<DEFINE
-  ADD-DEMON
+define(ADD-DEMON
   (X)
   #DECL
     ((X)
       HACK)
-  <COND
-    (<MAPR
-        <>
-        <FUNCTION
-          (Y)
+  cond((mapr(<>
+        function((Y)
           #DECL
             ((Y)
-              <LIST
-                [REST
-                  HACK]>)
-          <COND
-            (<==?
-                <HACTION
-                  <1
-                    .Y>>
-                <HACTION
-                  .X>>
-              <PUT
-                .Y
+              list([REST
+                  HACK]);)
+          cond((eq_q(haction(1(.Y););
+                haction(.X););
+              put(.Y
                 1
-                .X>
-              <MAPLEAVE
-                T>)>>
-        ,DEMONS>)
-    (<SETG
-        DEMONS
+                .X);
+              mapleave(T);)););
+        ,DEMONS);)
+    (setg(DEMONS
         (.X
-          !,DEMONS)>)>>
+          !,DEMONS));)););
 
-<DEFINE
-  ADD-STAR
+define(ADD-STAR
   (OBJ)
-  <SETG
-    STARS
+  setg(STARS
     (.OBJ
-      !,STARS)>>
+      !,STARS)););
 
-<DEFINE
-  ADD-ACTOR
+define(ADD-ACTOR
   (ADV
     "AUX"
     (ACTORS
@@ -990,34 +725,23 @@
     ((ADV)
       ADV
       (ACTORS)
-      <LIST
-        [REST
-          ADV]>)
-  <COND
-    (<MAPF
-        <>
-        <FUNCTION
-          (X)
+      list([REST
+          ADV]);)
+  cond((mapf(<>
+        function((X)
           #DECL
             ((X)
               ADV)
-          <COND
-            (<==?
-                <AOBJ
-                  .X>
-                <AOBJ
-                  .ADV>>
-              <MAPLEAVE
-                T>)>>
-        .ACTORS>)
-    (<SETG
-        ACTORS
+          cond((eq_q(aobj(.X);
+                aobj(.ADV););
+              mapleave(T);)););
+        .ACTORS);)
+    (setg(ACTORS
         (.ADV
-          !.ACTORS)>)>
-  .ADV>
+          !.ACTORS));));
+  .ADV);
 
-<DEFINE
-  ADD-DESC
+define(ADD-DESC
   (OBJ
     STR)
   #DECL
@@ -1025,43 +749,36 @@
       OBJECT
       (STR)
       STRING)
-  <PUT
-    .OBJ
+  put(.OBJ
     ,OREAD
-    .STR>>
+    .STR););
 
-<DEFINE
-  SADD-ACTION
+define(SADD-ACTION
   (STR1
     ATM)
-  <ADD-ACTION
-    .STR1
+  add_action(.STR1
     ""
     [[.STR1
-        .ATM]]>>
+        .ATM]]););
 
-<DEFINE
-  1ADD-ACTION
+define(1ADD-ACTION
   (STR1
     STR2
     ATM)
-  <ADD-ACTION
-    .STR1
+  add_action(.STR1
     .STR2
     [OBJ
       [.STR1
-        .ATM]]>>
+        .ATM]]););
 
-<DEFINE
-  AADD-ACTION
+define(AADD-ACTION
   (STR1
     STR2
     ATM)
-  <ADD-ACTION
-    .STR1
+  add_action(.STR1
     .STR2
     [(-1
         AOBJS
         NO-TAKE)
       [.STR1
-        .ATM]]>>
+        .ATM]]););

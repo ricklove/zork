@@ -1,75 +1,45 @@
-<SETG
-  WORDS
-  <OR
-    <GET
-      WORDS
-      OBLIST>
-    <MOBLIST
-      WORDS
-      23>>>
+setg(WORDS
+  or(get(WORDS
+      OBLIST);
+    moblist(WORDS
+      23);););
 
-<SETG
-  OBJECT-OBL
-  <OR
-    <GET
-      OBJECTS
-      OBLIST>
-    <MOBLIST
-      OBJECTS
-      23>>>
+setg(OBJECT-OBL
+  or(get(OBJECTS
+      OBLIST);
+    moblist(OBJECTS
+      23);););
 
-<SETG
-  ACTIONS
-  <MOBLIST
-    ACTIONS
-    17>>
+setg(ACTIONS
+  moblist(ACTIONS
+    17););
 
-<SETG
-  ORPHANS
+setg(ORPHANS
   [<>
     <>
     <>
     <>
-    <>]>
+    <>]);
 
-<COND
-  (<OR
-      <LOOKUP
-        "COMPILE"
-        <ROOT>>
-      <GASSIGNED?
-        GROUP-GLUE>>)
-  (<SETG
-      PREPVEC
-      [<CHTYPE
-          [<FIND-PREP
-              "WITH">
-            <FIND-OBJ
-              "#####">]
-          PHRASE>
-        <CHTYPE
-          [<FIND-PREP
-              "WITH">
-            <FIND-OBJ
-              "#####">]
-          PHRASE>]>
-    <SETG
-      PREP2VEC
-      [<CHTYPE
-          [<FIND-PREP
-              "WITH">
-            <FIND-OBJ
-              "#####">]
-          PHRASE>
-        <CHTYPE
-          [<FIND-PREP
-              "WITH">
-            <FIND-OBJ
-              "#####">]
-          PHRASE>]>)>
+cond((or(lookup("COMPILE"
+        root(););
+      gassigned_q(GROUP-GLUE););)
+  (setg(PREPVEC
+      [chtype([find_prep("WITH");
+            find_obj("#####");]
+          PHRASE);
+        chtype([find_prep("WITH");
+            find_obj("#####");]
+          PHRASE);]);
+    setg(PREP2VEC
+      [chtype([find_prep("WITH");
+            find_obj("#####");]
+          PHRASE);
+        chtype([find_prep("WITH");
+            find_obj("#####");]
+          PHRASE);]);));
 
-<DEFINE
-  SPARSE
+define(SPARSE
   SPAROUT
   (SV
     VB
@@ -81,14 +51,11 @@
     (PV
       ,PRSVEC)
     (PVR
-      <PUT
-        <PUT
-          <REST
-            .PV>
+      put(put(rest(.PV);
           1
-          <>>
+          <>);
         2
-        <>>)
+        <>);)
     (ACTIONS
       ,ACTIONS)
     (DIRS
@@ -96,8 +63,7 @@
     (ORPH
       ,ORPHANS)
     (ORFL
-      <OFLAG
-        .ORPH>)
+      oflag(.ORPH);)
     (PRV
       ,PREPVEC)
     (HERE
@@ -117,14 +83,12 @@
     VAL)
   #DECL
     ((SV)
-      <VECTOR
-        [REST
-          STRING]>
+      vector([REST
+          STRING]);
       (VB
         ORFL)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (ACTIONS
         WORDS
         OBJOB
@@ -136,368 +100,222 @@
         PVR)
       VECTOR
       (ATM)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (HERE)
       ROOM
       (ACTION)
-      <OR
-        FALSE
-        ACTION>
+      or(FALSE
+        ACTION);
       (NPREP
         PREP)
-      <OR
-        FALSE
-        PREP>
+      or(FALSE
+        PREP);
       (ADJ)
-      <OR
-        FALSE
-        ADJECTIVE>
+      or(FALSE
+        ADJECTIVE);
       (AVAL)
       ANY
       (LOBJ)
       ANY
       (OBJ)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (PPREP)
       PHRASE)
-  <SET
-    VAL
-    <MAPF
-      <>
-      <FUNCTION
-        (X)
+  set(VAL
+    mapf(<>
+      function((X)
         #DECL
           ((X)
             STRING)
-        <COND
-          (<EMPTY?
-              .X>
-            <MAPLEAVE
-              T>)
-          (<AND
-              <NOT
-                .ACTION>
-              <SET
-                ATM
-                <LOOKUP
-                  .X
-                  .ACTIONS>>>
-            <SET
-              ACTION
-              ,.ATM>)
-          (<AND
-              <NOT
-                .ACTION>
-              <SET
-                ATM
-                <LOOKUP
-                  .X
-                  .DIRS>>>
-            <PUT
-              .PV
+        cond((empty_q(.X);
+            mapleave(T);)
+          (and(not(.ACTION);
+              set(ATM
+                lookup(.X
+                  .ACTIONS);););
+            set(ACTION
+              ,.ATM);)
+          (and(not(.ACTION);
+              set(ATM
+                lookup(.X
+                  .DIRS);););
+            put(.PV
               1
-              ,WALK!-WORDS>
-            <PUT
-              .PV
+              ,WALK!-WORDS);
+            put(.PV
               2
-              ,.ATM>
-            <RETURN
-              WIN
-              .SPAROUT>)
-          (<AND
-              <SET
-                ATM
-                <LOOKUP
-                  .X
-                  .WORDS>>
-              <COND
-                (<TYPE?
-                    <SET
-                      AVAL
-                      ,.ATM>
-                    PREP>
-                  <COND
-                    (.PREP
-                      <OR
-                        .VB
-                        <TELL
-                          "Double preposition?"
-                          0>>
-                      <MAPLEAVE
-                        <>>)
-                    (<SET
-                        PREP
-                        .AVAL>)>)
-                (<TYPE?
-                    .AVAL
-                    ADJECTIVE>
-                  <SET
-                    ADJ
-                    .AVAL>
-                  <NOT
-                    <AND
-                      .ORFL
-                      <SET
-                        ATM
-                        <ONAME
-                          .ORPH>>
-                      <SET
-                        X
-                        <SPNAME
-                          .ATM>>>>)
-                (T)>>)
-          (<SET
-              ATM
-              <LOOKUP
-                .X
-                .OBJOB>>
-            <COND
-              (<SET
-                  OBJ
-                  <GET-OBJECT
-                    .ATM
-                    .ADJ>>
-                <AND
-                  <EMPTY?
-                    .PVR>
-                  <OR
-                    .VB
-                    <TELL
-                      "Too many objects specified?"
-                      0>>
-                  <MAPLEAVE
-                    <>>>
-                <PUT
-                  .PVR
+              ,.ATM);
+            return(WIN
+              .SPAROUT);)
+          (and(set(ATM
+                lookup(.X
+                  .WORDS););
+              cond((type_q(set(AVAL
+                      ,.ATM);
+                    PREP);
+                  cond((.PREP
+                      or(.VB
+                        tell("Double preposition?"
+                          0););
+                      mapleave(<>);)
+                    (set(PREP
+                        .AVAL);));)
+                (type_q(.AVAL
+                    ADJECTIVE);
+                  set(ADJ
+                    .AVAL);
+                  not(and(.ORFL
+                      set(ATM
+                        oname(.ORPH););
+                      set(X
+                        spname(.ATM););););)
+                (T)););)
+          (set(ATM
+              lookup(.X
+                .OBJOB););
+            cond((set(OBJ
+                  get_object(.ATM
+                    .ADJ););
+                and(empty_q(.PVR);
+                  or(.VB
+                    tell("Too many objects specified?"
+                      0););
+                  mapleave(<>););
+                put(.PVR
                   1
-                  <COND
-                    (.PREP
-                      <SET
-                        PPREP
-                        <1
-                          .PRV>>
-                      <SET
-                        PRV
-                        <REST
-                          .PRV>>
-                      <PUT
-                        .PPREP
+                  cond((.PREP
+                      set(PPREP
+                        1(.PRV););
+                      set(PRV
+                        rest(.PRV););
+                      put(.PPREP
                         1
-                        .PREP>
-                      <SET
-                        PREP
-                        <>>
-                      <PUT
-                        .PPREP
+                        .PREP);
+                      set(PREP
+                        <>);
+                      put(.PPREP
                         2
-                        .OBJ>)
-                    (.OBJ)>>
-                <SET
-                  PVR
-                  <REST
-                    .PVR>>)
+                        .OBJ);)
+                    (.OBJ)););
+                set(PVR
+                  rest(.PVR););)
               (T
-                <COND
-                  (<EMPTY?
-                      .OBJ>
-                    <OR
-                      .VB
-                      <COND
-                        (<LIT?
-                            .HERE>
-                          <TELL
-                            "I can't see a"
-                            0>
-                          <COND
-                            (.ADJ
-                              <TELL
-                                " "
+                cond((empty_q(.OBJ);
+                    or(.VB
+                      cond((lit_q(.HERE);
+                          tell("I can't see a"
+                            0);
+                          cond((.ADJ
+                              tell(" "
                                 0
-                                <PRSTR
-                                  <CHTYPE
-                                    .ADJ
-                                    ATOM>>>)>
-                          <TELL
-                            " "
+                                prstr(chtype(.ADJ
+                                    ATOM);););));
+                          tell(" "
                             0
-                            <PRSTR
-                              .ATM>
-                            " here.">)
-                        (<TELL
-                            "It is too dark in here to see."
-                            0>)>>)
-                  (<==?
-                      .OBJ
-                      ,NEFALS2>
-                    <OR
-                      .VB
-                      <TELL
-                        "I can't reach that from inside the "
+                            prstr(.ATM);
+                            " here.");)
+                        (tell("It is too dark in here to see."
+                            0);)););)
+                  (eq_q(.OBJ
+                      ,NEFALS2);
+                    or(.VB
+                      tell("I can't reach that from inside the "
                         0
-                        <ODESC2
-                          <AVEHICLE
-                            ,WINNER>>
-                        ".">>)
-                  (<OR
-                      .VB
-                      <TELL
-                        "Which "
+                        odesc2(avehicle(,WINNER););
+                        "."););)
+                  (or(.VB
+                      tell("Which "
                         0
-                        <PRSTR
-                          .ATM>
-                        "?">>
-                    <ORPHAN
-                      T
-                      <OR
-                        .ACTION
-                        <AND
-                          .ORFL
-                          <OVERB
-                            .ORPH>>>
-                      <2
-                        .PV>
+                        prstr(.ATM);
+                        "?"););
+                    orphan(T
+                      or(.ACTION
+                        and(.ORFL
+                          overb(.ORPH);););
+                      2(.PV);
                       .PREP
-                      .ATM>)>
-                <MAPLEAVE
-                  <>>)>
-            <SET
-              ADJ
-              <>>
+                      .ATM);));
+                mapleave(<>);));
+            set(ADJ
+              <>);
             T)
-          (<OR
-              .VB
-              <TELL
-                "I don't know the word "
+          (or(.VB
+              tell("I don't know the word "
                 0
-                .X>>
-            <MAPLEAVE
-              <>>)>>
-      .SV>>
-  <COND
-    (.VAL
-      <COND
-        (<AND
-            <NOT
-              .ACTION>
-            <NOT
-              <SET
-                ACTION
-                <AND
-                  .ORFL
-                  <OVERB
-                    .ORPH>>>>>
-          <OR
-            .VB
-            <COND
-              (<TYPE?
-                  <2
-                    .PV>
-                  OBJECT>
-                <TELL
-                  "What should I do with the "
+                .X););
+            mapleave(<>);)););
+      .SV););
+  cond((.VAL
+      cond((and(not(.ACTION);
+            not(set(ACTION
+                and(.ORFL
+                  overb(.ORPH);););););
+          or(.VB
+            cond((type_q(2(.PV);
+                  OBJECT);
+                tell("What should I do with the "
                   0
-                  <ODESC2
-                    <2
-                      .PV>>
-                  "?">)
-              (<TELL
-                  "Huh?"
-                  0>)>>
-          <ORPHAN
-            T
+                  odesc2(2(.PV););
+                  "?");)
+              (tell("Huh?"
+                  0);)););
+          orphan(T
             <>
-            <2
-              .PV>>
+            2(.PV););
           <>)
-        (<AND
-            <PUT
-              .PV
+        (and(put(.PV
               1
-              .ACTION>
-            .ADJ>
-          <OR
-            .VB
-            <TELL
-              "Dangling adjective?"
-              0>>
+              .ACTION);
+            .ADJ);
+          or(.VB
+            tell("Dangling adjective?"
+              0););
           <>)
-        (<AND
-            .ORFL
-            <SET
-              NPREP
-              <OPREP
-                .ORPH>>
-            <SET
-              OBJ
-              <2
-                .PV>>
-            <PUT
-              <SET
-                PPREP
-                <1
-                  .PRV>>
+        (and(.ORFL
+            set(NPREP
+              oprep(.ORPH););
+            set(OBJ
+              2(.PV););
+            put(set(PPREP
+                1(.PRV););
               1
-              .NPREP>
-            <PUT
-              .PPREP
+              .NPREP);
+            put(.PPREP
               2
-              .OBJ>
-            <COND
-              (<SET
-                  OBJ
-                  <OSLOT1
-                    .ORPH>>
-                <PUT
-                  .PV
+              .OBJ);
+            cond((set(OBJ
+                  oslot1(.ORPH););
+                put(.PV
                   2
-                  .OBJ>
-                <PUT
-                  .PV
+                  .OBJ);
+                put(.PV
                   3
-                  .PPREP>)
-              (<PUT
-                  .PV
+                  .PPREP);)
+              (put(.PV
                   2
-                  .PPREP>)>
-            <>>)
+                  .PPREP);));
+            <>);)
         (.PREP
-          <AND
-            <TYPE?
-              <SET
-                LOBJ
-                <1
-                  <BACK
-                    .PVR>>>
-              OBJECT>
-            <TOP
-              <PUT
-                <BACK
-                  .PVR>
+          and(type_q(set(LOBJ
+                1(back(.PVR);););
+              OBJECT);
+            top(put(back(.PVR);
                 1
-                <PUT
-                  <PUT
-                    <1
-                      .PRV>
+                put(put(1(.PRV);
                     1
-                    .PREP>
+                    .PREP);
                   2
-                  .LOBJ>>>>)
-        (.PV)>)>>
+                  .LOBJ););););)
+        (.PV));)););
 
-<DEFINE
-  SP
+define(SP
   (STR)
-  <PARSE
-    <LEX
-      .STR>
-    <>>>
+  parse(lex(.STR);
+    <>););
 
-<DEFINE
-  ORPHAN
+define(ORPHAN
   ("OPTIONAL"
     (FLAG
       <>)
@@ -511,46 +329,34 @@
       <>))
   #DECL
     ((FLAG)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (NAME)
-      <OR
-        ATOM
-        FALSE>)
-  <PUT
-    <PUT
-      <PUT
-        <PUT
-          <PUT
-            ,ORPHANS
+      or(ATOM
+        FALSE);)
+  put(put(put(put(put(,ORPHANS
             ,ONAME
-            .NAME>
+            .NAME);
           ,OPREP
-          .PREP>
+          .PREP);
         ,OSLOT1
-        .SLOT1>
+        .SLOT1);
       ,OVERB
-      .ACTION>
+      .ACTION);
     ,OFLAG
-    .FLAG>>
+    .FLAG););
 
-<DEFINE
-  SYN-MATCH
+define(SYN-MATCH
   (PV
     "AUX"
     (ACTION
-      <1
-        .PV>)
+      1(.PV);)
     (OBJS
-      <REST
-        .PV>)
+      rest(.PV);)
     (O1
-      <1
-        .OBJS>)
+      1(.OBJS);)
     (O2
-      <2
-        .OBJS>)
+      2(.OBJS);)
     (DFORCE
       <>)
     (DRIVE
@@ -566,175 +372,106 @@
       VECTOR
       (DRIVE
         DFORCE)
-      <OR
-        FALSE
-        SYNTAX>
+      or(FALSE
+        SYNTAX);
       (O1
         O2)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        PHRASE>
+        PHRASE);
       (SYNN)
       VARG
       (GWIM)
-      <OR
-        FALSE
-        OBJECT>)
-  <COND
-    (<MAPF
-        <>
-        <FUNCTION
-          (SYN)
+      or(FALSE
+        OBJECT);)
+  cond((mapf(<>
+        function((SYN)
           #DECL
             ((SYN)
               SYNTAX)
-          <COND
-            (<SYN-EQUAL
-                <SYN1
-                  .SYN>
-                .O1>
-              <COND
-                (<SYN-EQUAL
-                    <SYN2
-                      .SYN>
-                    .O2>
-                  <AND
-                    <SFLIP
-                      .SYN>
-                    <PUT
-                      .OBJS
+          cond((syn_equal(syn1(.SYN);
+                .O1);
+              cond((syn_equal(syn2(.SYN);
+                    .O2);
+                  and(sflip(.SYN);
+                    put(.OBJS
                       1
-                      .O2>
-                    <PUT
-                      .OBJS
+                      .O2);
+                    put(.OBJS
                       2
-                      .O1>>
-                  <MAPLEAVE
-                    <TAKE-IT-OR-LEAVE-IT
-                      .SYN
-                      <PUT
-                        .PV
+                      .O1););
+                  mapleave(take_it-or-leave-it(.SYN
+                      put(.PV
                         1
-                        <SFCN
-                          .SYN>>>>)
-                (<NOT
-                    .O2>
-                  <COND
-                    (<SDRIVER
-                        .SYN>
-                      <SET
-                        DFORCE
-                        .SYN>)
-                    (<SET
-                        DRIVE
-                        .SYN>)>
-                  <>)>)
-            (<NOT
-                .O1>
-              <COND
-                (<SDRIVER
-                    .SYN>
-                  <SET
-                    DFORCE
-                    .SYN>)
-                (<SET
-                    DRIVE
-                    .SYN>)>
-              <>)>>
-        <VDECL
-          .ACTION>>)
-    (<SET
-        DRIVE
-        <OR
-          .DFORCE
-          .DRIVE>>
-      <COND
-        (<AND
-            <SET
-              SYNN
-              <SYN1
-                .DRIVE>>
-            <NOT
-              .O1>
-            <NOT
-              <0?
-                <VBIT
-                  .SYNN>>>
-            <NOT
-              <ORFEO
-                .SYNN
-                .OBJS>>
-            <NOT
-              <SET
-                O1
-                <SET
-                  GWIM
-                  <GWIM-SLOT
-                    1
+                        sfcn(.SYN););););)
+                (not(.O2);
+                  cond((sdriver(.SYN);
+                      set(DFORCE
+                        .SYN);)
+                    (set(DRIVE
+                        .SYN);));
+                  <>));)
+            (not(.O1);
+              cond((sdriver(.SYN);
+                  set(DFORCE
+                    .SYN);)
+                (set(DRIVE
+                    .SYN);));
+              <>)););
+        vdecl(.ACTION););)
+    (set(DRIVE
+        or(.DFORCE
+          .DRIVE););
+      cond((and(set(SYNN
+              syn1(.DRIVE););
+            not(.O1);
+            not(0_q(vbit(.SYNN);););
+            not(orfeo(.SYNN
+                .OBJS););
+            not(set(O1
+                set(GWIM
+                  gwim_slot(1
                     .SYNN
                     .ACTION
-                    .OBJS>>>>>
-          <ORPHAN
-            T
+                    .OBJS);););););
+          orphan(T
             .ACTION
             <>
-            <VPREP
-              .SYNN>>
-          <ORTELL
-            .SYNN
+            vprep(.SYNN););
+          ortell(.SYNN
             .ACTION
-            .GWIM>)
-        (<AND
-            <SET
-              SYNN
-              <SYN2
-                .DRIVE>>
-            <NOT
-              .O2>
-            <NOT
-              <0?
-                <VBIT
-                  .SYNN>>>
-            <NOT
-              <GWIM-SLOT
-                2
+            .GWIM);)
+        (and(set(SYNN
+              syn2(.DRIVE););
+            not(.O2);
+            not(0_q(vbit(.SYNN);););
+            not(gwim_slot(2
                 .SYNN
                 .ACTION
-                .OBJS>>>
-          <ORPHAN
-            T
+                .OBJS);););
+          orphan(T
             .ACTION
             .O1
-            <VPREP
-              .SYNN>>
-          <ORTELL
-            .SYNN
+            vprep(.SYNN););
+          ortell(.SYNN
             .ACTION
-            .GWIM>)
-        (<TAKE-IT-OR-LEAVE-IT
-            .DRIVE
-            <PUT
-              .PV
+            .GWIM);)
+        (take_it-or-leave-it(.DRIVE
+            put(.PV
               1
-              <SFCN
-                .DRIVE>>>)>)
-    (<TELL
-        "I can't make sense out of that."
-        0>
-      <>)>>
+              sfcn(.DRIVE);););));)
+    (tell("I can't make sense out of that."
+        0);
+      <>)););
 
-<DEFINE
-  TAKE-IT-OR-LEAVE-IT
+define(TAKE-IT-OR-LEAVE-IT
   (SYN
     PV
     "AUX"
     (PV1
-      <2
-        .PV>)
+      2(.PV);)
     (PV2
-      <3
-        .PV>)
+      3(.PV);)
     OBJ
     VARG)
   #DECL
@@ -744,82 +481,55 @@
       VECTOR
       (PV1
         PV2)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        PHRASE>
+        PHRASE);
       (OBJ)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (VARG)
       VARG)
-  <PUT
-    .PV
+  put(.PV
     2
-    <SET
-      OBJ
-      <COND
-        (<TYPE?
-            .PV1
-            OBJECT>
+    set(OBJ
+      cond((type_q(.PV1
+            OBJECT);
           .PV1)
-        (<TYPE?
-            .PV1
-            PHRASE>
-          <2
-            .PV1>)>>>
-  <COND
-    (<VTRNN
-        <SET
-          VARG
-          <SYN1
-            .SYN>>
-        ,VRBIT>
-      <TAKE-IT
-        .OBJ
+        (type_q(.PV1
+            PHRASE);
+          2(.PV1);));););
+  cond((vtrnn(set(VARG
+          syn1(.SYN););
+        ,VRBIT);
+      take_it(.OBJ
         .PV
-        .VARG>)>
-  <PUT
-    .PV
+        .VARG);));
+  put(.PV
     3
-    <SET
-      OBJ
-      <COND
-        (<TYPE?
-            .PV2
-            OBJECT>
+    set(OBJ
+      cond((type_q(.PV2
+            OBJECT);
           .PV2)
-        (<TYPE?
-            .PV2
-            PHRASE>
-          <2
-            .PV2>)>>>
-  <COND
-    (<VTRNN
-        <SET
-          VARG
-          <SYN2
-            .SYN>>
-        ,VRBIT>
-      <TAKE-IT
-        .OBJ
+        (type_q(.PV2
+            PHRASE);
+          2(.PV2);));););
+  cond((vtrnn(set(VARG
+          syn2(.SYN););
+        ,VRBIT);
+      take_it(.OBJ
         .PV
-        .VARG>)>
-  T>
+        .VARG);));
+  T);
 
-<DEFINE
-  TAKE-IT
+define(TAKE-IT
   (OBJ
     VEC
     VRB
     "AUX"
     (SAV1
-      <1
-        .VEC>)
+      1(.VEC);)
     (SAV2
-      <2
-        .VEC>))
+      2(.VEC);))
   #DECL
     ((OBJ)
       OBJECT
@@ -828,55 +538,38 @@
       (SAV1)
       VERB
       (SAV2)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (VRB)
       VARG)
-  <COND
-    (<AND
-        <SEARCH-LIST
-          <OID
-            .OBJ>
-          <ROBJS
-            ,HERE>
-          <>>
-        <OR
-          <CAN-TAKE?
-            .OBJ>
-          <NOT
-            <VTRNN
-              .VRB
-              ,VTBIT>>>>
-      <PUT
-        .VEC
+  cond((and(search_list(oid(.OBJ);
+          robjs(,HERE);
+          <>);
+        or(can_take_q(.OBJ);
+          not(vtrnn(.VRB
+              ,VTBIT););););
+      put(.VEC
         1
-        ,TAKE!-WORDS>
-      <PUT
-        .VEC
+        ,TAKE!-WORDS);
+      put(.VEC
         2
-        .OBJ>
-      <TAKE
-        T>
-      <PUT
-        .VEC
+        .OBJ);
+      take(T);
+      put(.VEC
         1
-        .SAV1>
-      <PUT
-        .VEC
+        .SAV1);
+      put(.VEC
         2
-        .SAV2>)>>
+        .SAV2);)););
 
-<DEFINE
-  ORFEO
+define(ORFEO
   (SYN
     OBJS
     "AUX"
     (ORPH
       ,ORPHANS)
     (ORFL
-      <OFLAG
-        .ORPH>)
+      oflag(.ORPH);)
     SLOT1)
   #DECL
     ((SYN)
@@ -885,40 +578,29 @@
         ORPH)
       VECTOR
       (ORFL)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (SLOT1)
-      <OR
-        FALSE
+      or(FALSE
         PHRASE
-        OBJECT>)
-  <COND
-    (<NOT
-        .ORFL>
+        OBJECT);)
+  cond((not(.ORFL);
       <>)
-    (<SET
-        SLOT1
-        <OSLOT1
-          .ORPH>>
-      <AND
-        <SYN-EQUAL
-          .SYN
-          .SLOT1>
-        <PUT
-          .OBJS
+    (set(SLOT1
+        oslot1(.ORPH););
+      and(syn_equal(.SYN
+          .SLOT1);
+        put(.OBJS
           1
-          .SLOT1>>)>>
+          .SLOT1););)););
 
-<DEFINE
-  ORTELL
+define(ORTELL
   (VARG
     ACTION
     GWIM
     "AUX"
     (PREP
-      <VPREP
-        .VARG>)
+      vprep(.VARG);)
     SP)
   #DECL
     ((VARG)
@@ -926,45 +608,31 @@
       (ACTION)
       ACTION
       (PREP)
-      <OR
-        FALSE
-        PREP>
+      or(FALSE
+        PREP);
       (SP)
       STRING
       (GWIM)
-      <OR
-        FALSE
-        OBJECT>)
-  <COND
-    (.PREP
-      <AND
-        .GWIM
-        <TELL
-          <VSTR
-            .ACTION>
+      or(FALSE
+        OBJECT);)
+  cond((.PREP
+      and(.GWIM
+        tell(vstr(.ACTION);
           0
-          " ">
-        <TELL
-          <ODESC2
-            .GWIM>
+          " ");
+        tell(odesc2(.GWIM);
           0
-          " ">>
-      <TELL
-        <PRSTR
-          <CHTYPE
-            .PREP
-            ATOM>>
+          " "););
+      tell(prstr(chtype(.PREP
+            ATOM););
         0
-        " what?">)
-    (<TELL
-        <VSTR
-          .ACTION>
+        " what?");)
+    (tell(vstr(.ACTION);
         0
-        " what?">)>
-  <>>
+        " what?");));
+  <>);
 
-<DEFINE
-  PRSTR
+define(PRSTR
   (ATM
     "AUX"
     SP)
@@ -973,19 +641,13 @@
       ATOM
       (SP)
       STRING)
-  <FOOSTR
-    <SET
-      SP
-      <SPNAME
-        .ATM>>
-    <BACK
-      ,SCRSTR
-      <LENGTH
-        .SP>>
-    <>>>
+  foostr(set(SP
+      spname(.ATM););
+    back(,SCRSTR
+      length(.SP););
+    <>););
 
-<DEFINE
-  FOOSTR
+define(FOOSTR
   (NAM
     STR
     "OPTIONAL"
@@ -996,45 +658,31 @@
         NAM)
       STRING
       (1ST)
-      <OR
-        ATOM
-        FALSE>)
-  <MAPR
-    <>
-    <FUNCTION
-      (X
+      or(ATOM
+        FALSE);)
+  mapr(<>
+    function((X
         Y)
       #DECL
         ((X
             Y)
           STRING)
-      <COND
-        (<AND
-            .1ST
-            <==?
-              .X
-              .NAM>>
-          <PUT
-            .Y
+      cond((and(.1ST
+            eq_q(.X
+              .NAM););
+          put(.Y
             1
-            <1
-              .X>>)
-        (<PUT
-            .Y
+            1(.X););)
+        (put(.Y
             1
-            <CHTYPE
-              <+
-                32
-                <ASCII
-                  <1
-                    .X>>>
-              CHARACTER>>)>>
+            chtype(_(32
+                ascii(1(.X);););
+              CHARACTER););)););
     .NAM
-    .STR>
-  .STR>
+    .STR);
+  .STR);
 
-<DEFINE
-  GWIM-SLOT
+define(GWIM-SLOT
   (FX
     VARG
     ACTION
@@ -1051,43 +699,33 @@
       (OBJS)
       VECTOR
       (OBJ)
-      <OR
-        FALSE
-        OBJECT>)
-  <COND
-    (<SET
-        OBJ
-        <GWIM
-          <VBIT
-            .VARG>
+      or(FALSE
+        OBJECT);)
+  cond((set(OBJ
+        gwim(vbit(.VARG);
           .VARG
-          .ACTION>>
-      <PUT
-        .OBJS
+          .ACTION););
+      put(.OBJS
         .FX
-        .OBJ>
-      .OBJ)>>
+        .OBJ);
+      .OBJ)););
 
 "GET WHAT I MEAN - GWIM  TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
-<DEFINE
-  GWIM
+define(GWIM
   (BIT
     FWORD
     ACTION
     "AUX"
     (AOBJ
-      <VTRNN
-        .FWORD
-        ,VABIT>)
+      vtrnn(.FWORD
+        ,VABIT);)
     (NTAKE
-      <VTRNN
-        .FWORD
-        ,VTBIT>)
+      vtrnn(.FWORD
+        ,VTBIT);)
     (ROBJ
-      <VTRNN
-        .FWORD
-        ,VRBIT>)
+      vtrnn(.FWORD
+        ,VRBIT);)
     (OBJ
       <>)
     NOBJ
@@ -1095,8 +733,7 @@
       ,PRSVEC)
     SAVOBJ
     (AV
-      <AVEHICLE
-        ,WINNER>)
+      avehicle(,WINNER);)
     SF)
   #DECL
     ((BIT)
@@ -1104,117 +741,77 @@
       (NTAKE
         ROBJ
         AOBJ)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (OBJ
         NOBJ
         AV)
-      <OR
-        OBJECT
-        FALSE>
+      or(OBJECT
+        FALSE);
       (PV)
       VECTOR
       (SAVOBJ)
-      <OR
-        FALSE
+      or(FALSE
         OBJECT
-        PHRASE>
+        PHRASE);
       (FWORD)
       VARG
       (ACTION)
       ACTION)
-  <AND
-    .AOBJ
-    <SET
-      OBJ
-      <FWIM
-        .BIT
-        <AOBJS
-          ,WINNER>
-        .NTAKE>>>
-  <COND
-    (.ROBJ
-      <COND
-        (<AND
-            <SET
-              NOBJ
-              <FWIM
-                .BIT
-                <ROBJS
-                  ,HERE>
-                .NTAKE>>
-            <OR
-              <NOT
-                .AV>
-              <==?
-                .AV
-                .NOBJ>
-              <MEMQ
-                .NOBJ
-                <OCONTENTS
-                  .AV>>
-              <TRNN
-                .NOBJ
-                ,FINDMEBIT>>>
-          <COND
-            (<AND
-                <OR
-                  <SET
-                    SAVOBJ
-                    <2
-                      .PV>>
-                  T>
-                <NOT
-                  .OBJ>
-                <OR
-                  <SET
-                    SF
-                    <1
-                      .PV>>
-                  T>
-                <PUT
-                  .PV
+  and(.AOBJ
+    set(OBJ
+      fwim(.BIT
+        aobjs(,WINNER);
+        .NTAKE);););
+  cond((.ROBJ
+      cond((and(set(NOBJ
+              fwim(.BIT
+                robjs(,HERE);
+                .NTAKE););
+            or(not(.AV);
+              eq_q(.AV
+                .NOBJ);
+              memq(.NOBJ
+                ocontents(.AV););
+              trnn(.NOBJ
+                ,FINDMEBIT);););
+          cond((and(or(set(SAVOBJ
+                    2(.PV););
+                  T);
+                not(.OBJ);
+                or(set(SF
+                    1(.PV););
+                  T);
+                put(.PV
                   1
-                  ,TAKE!-WORDS>
-                <PUT
-                  .PV
+                  ,TAKE!-WORDS);
+                put(.PV
                   2
-                  .NOBJ>
-                <OR
-                  <==?
-                    .ACTION
-                    <1
-                      .PV>>
+                  .NOBJ);
+                or(eq_q(.ACTION
+                    1(.PV););
                   .NTAKE
-                  <TAKE>>
-                <PUT
-                  .PV
+                  take(););
+                put(.PV
                   2
-                  .SAVOBJ>
-                <PUT
-                  .PV
+                  .SAVOBJ);
+                put(.PV
                   1
-                  .SF>
-                .NOBJ>)
-            (<PUT
-                .PV
+                  .SF);
+                .NOBJ);)
+            (put(.PV
                 2
-                .SAVOBJ>
-              <>)>)
-        (<OR
-            .NOBJ
-            <NOT
-              <EMPTY?
-                .NOBJ>>>
+                .SAVOBJ);
+              <>));)
+        (or(.NOBJ
+            not(empty_q(.NOBJ);););
           ,NEFALS)
-        (.OBJ)>)
-    (.OBJ)>>
+        (.OBJ));)
+    (.OBJ)););
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
-<DEFINE
-  MAKE-ACTION
+define(MAKE-ACTION
   ("TUPLE"
     SPECS
     "AUX"
@@ -1223,16 +820,12 @@
     (PREP
       <>)
     ATM)
-  <CHTYPE
-    <MAPF
-      ,UVECTOR
-      <FUNCTION
-        (SP
+  chtype(mapf(,UVECTOR
+      function((SP
           "AUX"
           (SYN
-            <IVECTOR
-              5
-              <>>)
+            ivector(5
+              <>);)
           (WHR
             1))
         #DECL
@@ -1242,235 +835,142 @@
             VECTOR
             (WHR)
             FIX)
-        <MAPF
-          <>
-          <FUNCTION
-            (ITM)
-            <COND
-              (<TYPE?
-                  .ITM
-                  STRING>
-                <SET
-                  PREP
-                  <FIND-PREP
-                    .ITM>>)
-              (<AND
-                  <==?
-                    .ITM
-                    OBJ>
-                  <SET
-                    ITM
-                    '(-1)>
-                  <>>)
-              (<TYPE?
-                  .ITM
-                  LIST>
-                <SET
-                  VV
-                  <IVECTOR
-                    3>>
-                <PUT
-                  .VV
+        mapf(<>
+          function((ITM)
+            cond((type_q(.ITM
+                  STRING);
+                set(PREP
+                  find_prep(.ITM););)
+              (and(eq_q(.ITM
+                    OBJ);
+                  set(ITM
+                    '(-1));
+                  <>);)
+              (type_q(.ITM
+                  LIST);
+                set(VV
+                  ivector(3););
+                put(.VV
                   1
-                  <1
-                    .ITM>>
-                <PUT
-                  .VV
+                  1(.ITM););
+                put(.VV
                   2
-                  .PREP>
-                <SET
-                  SUM
-                  0>
-                <SET
-                  PREP
-                  <>>
-                <AND
-                  <MEMQ
-                    AOBJS
-                    .ITM>
-                  <SET
-                    SUM
-                    <+
-                      .SUM
-                      ,VABIT>>>
-                <AND
-                  <MEMQ
-                    ROBJS
-                    .ITM>
-                  <SET
-                    SUM
-                    <+
-                      .SUM
-                      ,VRBIT>>>
-                <AND
-                  <MEMQ
-                    NO-TAKE
-                    .ITM>
-                  <SET
-                    SUM
-                    <+
-                      .SUM
-                      ,VTBIT>>>
-                <AND
-                  <MEMQ
-                    =
-                    .ITM>
-                  <SET
-                    SUM
-                    <+
-                      .SUM
-                      ,VXBIT>>>
-                <PUT
-                  .VV
+                  .PREP);
+                set(SUM
+                  0);
+                set(PREP
+                  <>);
+                and(memq(AOBJS
+                    .ITM);
+                  set(SUM
+                    _(.SUM
+                      ,VABIT);););
+                and(memq(ROBJS
+                    .ITM);
+                  set(SUM
+                    _(.SUM
+                      ,VRBIT);););
+                and(memq(NO-TAKE
+                    .ITM);
+                  set(SUM
+                    _(.SUM
+                      ,VTBIT);););
+                and(memq(=
+                    .ITM);
+                  set(SUM
+                    _(.SUM
+                      ,VXBIT);););
+                put(.VV
                   3
-                  .SUM>
-                <PUT
-                  .SYN
+                  .SUM);
+                put(.SYN
                   .WHR
-                  <CHTYPE
-                    .VV
-                    VARG>>
-                <SET
-                  WHR
-                  <+
-                    .WHR
-                    1>>)
-              (<TYPE?
-                  .ITM
-                  VECTOR>
-                <COND
-                  (<GASSIGNED?
-                      <SET
-                        ATM
-                        <ADD-WORD
-                          <1
-                            .ITM>>>>
-                    <PUT
-                      .SYN
+                  chtype(.VV
+                    VARG););
+                set(WHR
+                  _(.WHR
+                    1););)
+              (type_q(.ITM
+                  VECTOR);
+                cond((gassigned_q(set(ATM
+                        add_word(1(.ITM););););
+                    put(.SYN
                       ,SFCN
-                      ,.ATM>)
-                  (<PUT
-                      .SYN
+                      ,.ATM);)
+                  (put(.SYN
                       ,SFCN
-                      <SETG
-                        <SET
-                          ATM
-                          <ADD-WORD
-                            <1
-                              .ITM>>>
-                        <CHTYPE
-                          [.ATM
-                            <2
-                              .ITM>]
-                          VERB>>>)>)
-              (<==?
-                  .ITM
-                  DRIVER>
-                <PUT
-                  .SYN
+                      setg(set(ATM
+                          add_word(1(.ITM);););
+                        chtype([.ATM
+                            2(.ITM);]
+                          VERB);););));)
+              (eq_q(.ITM
+                  DRIVER);
+                put(.SYN
                   ,SDRIVER
-                  T>)
-              (<==?
-                  .ITM
-                  FLIP>
-                <PUT
-                  .SYN
+                  T);)
+              (eq_q(.ITM
+                  FLIP);
+                put(.SYN
                   ,SFLIP
-                  T>)>>
-          .SP>
-        <OR
-          <SYN1
-            .SYN>
-          <PUT
-            .SYN
+                  T);)););
+          .SP);
+        or(syn1(.SYN);
+          put(.SYN
             ,SYN1
-            ,EVARG>>
-        <OR
-          <SYN2
-            .SYN>
-          <PUT
-            .SYN
+            ,EVARG););
+        or(syn2(.SYN);
+          put(.SYN
             ,SYN2
-            ,EVARG>>
-        <CHTYPE
-          .SYN
-          SYNTAX>>
-      .SPECS>
-    VSPEC>>
+            ,EVARG););
+        chtype(.SYN
+          SYNTAX););
+      .SPECS);
+    VSPEC););
 
-<SETG
-  EVARG
-  <CHTYPE
-    [0
+setg(EVARG
+  chtype([0
       <>
       0]
-    VARG>>
+    VARG););
 
-<DEFINE
-  SYN-EQUAL
+define(SYN-EQUAL
   (VARG
     POBJ
     "AUX"
     (VBIT
-      <VBIT
-        .VARG>))
+      vbit(.VARG);))
   #DECL
     ((VARG)
       VARG
       (POBJ)
-      <OR
-        FALSE
+      or(FALSE
         PHRASE
-        OBJECT>
+        OBJECT);
       (VBIT)
       FIX)
-  <COND
-    (<TYPE?
-        .POBJ
-        PHRASE>
-      <AND
-        <==?
-          <VPREP
-            .VARG>
-          <1
-            .POBJ>>
-        <OR
-          <NOT
-            <VTRNN
-              .VARG
-              ,VXBIT>>
-          <TRNN
-            <2
-              .POBJ>
-            .VBIT>>>)
-    (<TYPE?
-        .POBJ
-        OBJECT>
-      <AND
-        <NOT
-          <VPREP
-            .VARG>>
-        <OR
-          <NOT
-            <VTRNN
-              .VARG
-              ,VXBIT>>
-          <TRNN
-            .POBJ
-            .VBIT>>>)
-    (<AND
-        <NOT
-          .POBJ>
-        <0?
-          .VBIT>>)>>
+  cond((type_q(.POBJ
+        PHRASE);
+      and(eq_q(vprep(.VARG);
+          1(.POBJ););
+        or(not(vtrnn(.VARG
+              ,VXBIT););
+          trnn(2(.POBJ);
+            .VBIT);););)
+    (type_q(.POBJ
+        OBJECT);
+      and(not(vprep(.VARG););
+        or(not(vtrnn(.VARG
+              ,VXBIT););
+          trnn(.POBJ
+            .VBIT);););)
+    (and(not(.POBJ);
+        0_q(.VBIT););)););
 
-<SETG
-  DIRECTIONS
-  <MOBLIST
-    DIRECTIONS>>
+setg(DIRECTIONS
+  moblist(DIRECTIONS););
 
-<DEFINE
-  EPARSE
+define(EPARSE
   (PV
     VB
     "AUX"
@@ -1479,56 +979,36 @@
     ((VAL)
       ANY
       (PV)
-      <VECTOR
-        [REST
-          STRING]>
+      vector([REST
+          STRING]);
       (VB)
-      <OR
-        ATOM
-        FALSE>)
-  <COND
-    (<SET
-        VAL
-        <SPARSE
-          .PV
-          .VB>>
-      <COND
-        (<OR
-            <==?
-              .VAL
-              WIN>
-            <SYN-MATCH
-              .VAL>>
-          <ORPHAN
-            <>>)
-        (<OR
-            .VB
-            <TELL
-              "">>
-          <>)>)
-    (<OR
-        .VB
-        <TELL
-          "">>
-      <>)>>
+      or(ATOM
+        FALSE);)
+  cond((set(VAL
+        sparse(.PV
+          .VB););
+      cond((or(eq_q(.VAL
+              WIN);
+            syn_match(.VAL););
+          orphan(<>);)
+        (or(.VB
+            tell(""););
+          <>));)
+    (or(.VB
+        tell(""););
+      <>)););
 
-<SETG
-  SCRSTR
-  <REST
-    <ISTRING
-      5>
-    5>>
+setg(SCRSTR
+  rest(istring(5);
+    5););
 
-<SETG
-  SSV
-  <IVECTOR
-    10
-    <>>>
+setg(SSV
+  ivector(10
+    <>););
 
 "GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS OVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL OF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE OBJECT OTHERWISE."
 
-<DEFINE
-  GET-OBJECT
+define(GET-OBJECT
   GET-OBJ
   (OBJNAM
     ADJ
@@ -1539,152 +1019,97 @@
     (HERE
       ,HERE)
     (AV
-      <AVEHICLE
-        ,WINNER>)
+      avehicle(,WINNER);)
     (CHOMP
       <>))
   #DECL
     ((OOBJ
         OBJ
         AV)
-      <OR
-        OBJECT
-        FALSE>
+      or(OBJECT
+        FALSE);
       (OBJNAM)
       ATOM
       (HERE)
       ROOM
       (ADJ)
-      <OR
-        ADJECTIVE
-        FALSE>
+      or(ADJECTIVE
+        FALSE);
       (CHOMP)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (OBJL)
-      <OR
-        FALSE
-        <LIST
-          [REST
-            OBJECT]>>)
-  <COND
-    (<SET
-        OBJ
-        <SEARCH-LIST
-          .OBJNAM
+      or(FALSE
+        list([REST
+            OBJECT]););)
+  cond((set(OBJ
+        search_list(.OBJNAM
           ,STARS
-          .ADJ>>
-      <SET
-        OOBJ
-        .OBJ>)
-    (<NOT
-        <EMPTY?
-          .OBJ>>
-      <RETURN
-        ,NEFALS
-        .GET-OBJ>)>
-  <COND
-    (<AND
-        <LIT?
-          .HERE>
-        <SET
-          OBJ
-          <SEARCH-LIST
-            .OBJNAM
-            <ROBJS
-              ,HERE>
-            .ADJ>>>
-      <COND
-        (<AND
-            .AV
-            <N==?
-              .OBJ
-              .AV>
-            <NOT
-              <MEMQ
-                .OBJ
-                <OCONTENTS
-                  .AV>>>
-            <NOT
-              <TRNN
-                .OBJ
-                ,FINDMEBIT>>>
-          <SET
-            CHOMP
-            T>)
+          .ADJ););
+      set(OOBJ
+        .OBJ);)
+    (not(empty_q(.OBJ););
+      return(,NEFALS
+        .GET-OBJ);));
+  cond((and(lit_q(.HERE);
+        set(OBJ
+          search_list(.OBJNAM
+            robjs(,HERE);
+            .ADJ);););
+      cond((and(.AV
+            neq_q(.OBJ
+              .AV);
+            not(memq(.OBJ
+                ocontents(.AV);););
+            not(trnn(.OBJ
+                ,FINDMEBIT);););
+          set(CHOMP
+            T);)
         (.OOBJ
-          <RETURN
-            ,NEFALS
-            .GET-OBJ>)
-        (<SET
-            OOBJ
-            .OBJ>)>)
-    (<AND
-        <NOT
-          .OBJ>
-        <NOT
-          <EMPTY?
-            .OBJ>>>
-      <RETURN
-        ,NEFALS
-        .GET-OBJ>)>
-  <COND
-    (.AV
-      <COND
-        (<SET
-            OBJ
-            <SEARCH-LIST
-              .OBJNAM
-              <OCONTENTS
-                .AV>
-              .ADJ>>
-          <SET
-            CHOMP
-            <>>
-          <SET
-            OOBJ
-            .OBJ>)
-        (<NOT
-            <EMPTY?
-              .OBJ>>
-          <RETURN
-            ,NEFALS
-            .GET-OBJ>)>)>
-  <COND
-    (<SET
-        OBJ
-        <SEARCH-LIST
-          .OBJNAM
-          <AOBJS
-            ,WINNER>
-          .ADJ>>
-      <COND
-        (.OOBJ
+          return(,NEFALS
+            .GET-OBJ);)
+        (set(OOBJ
+            .OBJ);));)
+    (and(not(.OBJ);
+        not(empty_q(.OBJ);););
+      return(,NEFALS
+        .GET-OBJ);));
+  cond((.AV
+      cond((set(OBJ
+            search_list(.OBJNAM
+              ocontents(.AV);
+              .ADJ););
+          set(CHOMP
+            <>);
+          set(OOBJ
+            .OBJ);)
+        (not(empty_q(.OBJ););
+          return(,NEFALS
+            .GET-OBJ);));));
+  cond((set(OBJ
+        search_list(.OBJNAM
+          aobjs(,WINNER);
+          .ADJ););
+      cond((.OOBJ
           ,NEFALS)
-        (.OBJ)>)
-    (<NOT
-        <EMPTY?
-          .OBJ>>
+        (.OBJ));)
+    (not(empty_q(.OBJ););
       ,NEFALS)
     (.CHOMP
       ,NEFALS2)
-    (.OOBJ)>>
+    (.OOBJ)););
 
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY. IF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO ONE LEVEL OF CONTAINMENT."
 
-<SETG
-  NEFALS
+setg(NEFALS
   #FALSE
-    (1)>
+    (1));
 
-<SETG
-  NEFALS2
+setg(NEFALS2
   #FALSE
-    (2)>
+    (2));
 
-<DEFINE
-  SEARCH-LIST
+define(SEARCH-LIST
   SL
   (OBJNAM
     SLIST
@@ -1702,88 +1127,59 @@
     ((OBJNAM)
       ATOM
       (SLIST)
-      <LIST
-        [REST
-          OBJECT]>
+      list([REST
+          OBJECT]);
       (OOBJ
         NOBJ)
-      <OR
-        FALSE
-        OBJECT>
+      or(FALSE
+        OBJECT);
       (ADJ)
-      <OR
-        FALSE
-        ADJECTIVE>
+      or(FALSE
+        ADJECTIVE);
       (FIRST?)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (NEFALS)
       FALSE)
-  <MAPF
-    <>
-    <FUNCTION
-      (OBJ)
+  mapf(<>
+    function((OBJ)
       #DECL
         ((OBJ)
           OBJECT)
-      <COND
-        (<THIS-IT?
-            .OBJNAM
+      cond((this_it_q(.OBJNAM
             .OBJ
-            .ADJ>
-          <COND
-            (.OOBJ
-              <RETURN
-                .NEFALS
-                .SL>)
-            (<SET
-                OOBJ
-                .OBJ>)>)>
-      <COND
-        (<AND
-            <OVIS?
-              .OBJ>
-            <OR
-              <OOPEN?
-                .OBJ>
-              <TRANSPARENT?
-                .OBJ>>
-            <OR
-              .FIRST?
-              <TRNN
-                .OBJ
-                ,SEARCHBIT>>>
-          <COND
-            (<SET
-                NOBJ
-                <SEARCH-LIST
-                  .OBJNAM
-                  <OCONTENTS
-                    .OBJ>
+            .ADJ);
+          cond((.OOBJ
+              return(.NEFALS
+                .SL);)
+            (set(OOBJ
+                .OBJ);));));
+      cond((and(ovis_q(.OBJ);
+            or(oopen_q(.OBJ);
+              transparent_q(.OBJ););
+            or(.FIRST?
+              trnn(.OBJ
+                ,SEARCHBIT);););
+          cond((set(NOBJ
+                search_list(.OBJNAM
+                  ocontents(.OBJ);
                   .ADJ
-                  <>>>
-              <COND
-                (.OOBJ
-                  <RETURN
-                    .NEFALS
-                    .SL>)
-                (<SET
-                    OOBJ
-                    .NOBJ>)>)
-            (<==?
-                .NOBJ
-                .NEFALS>
-              <RETURN
-                .NEFALS
-                .SL>)>)>>
-    .SLIST>
-  .OOBJ>
+                  <>););
+              cond((.OOBJ
+                  return(.NEFALS
+                    .SL);)
+                (set(OOBJ
+                    .NOBJ);));)
+            (eq_q(.NOBJ
+                .NEFALS);
+              return(.NEFALS
+                .SL);));)););
+    .SLIST);
+  .OOBJ);
 
 "FWIM:  TAKE LIST OF FROBS, FIND ONE THAT CAN BE MANIPULATED (VISIBLE AND TAKEABLE, OR VISIBLE AND IN SOMETHING THAT'S VISIBLE AND OPEN)"
 
-<DEFINE
-  FWIM
+define(FWIM
   DWIM
   (BIT
     OBJS
@@ -1793,74 +1189,46 @@
       <>))
   #DECL
     ((NO-TAKE)
-      <OR
-        ATOM
-        FALSE>
+      or(ATOM
+        FALSE);
       (BIT)
       FIX
       (OBJS)
-      <LIST
-        [REST
-          OBJECT]>
+      list([REST
+          OBJECT]);
       (NOBJ)
-      <OR
-        FALSE
-        OBJECT>)
-  <MAPF
-    <>
-    <FUNCTION
-      (X)
+      or(FALSE
+        OBJECT);)
+  mapf(<>
+    function((X)
       #DECL
         ((X)
           OBJECT)
-      <COND
-        (<AND
-            <OVIS?
-              .X>
-            <OR
-              .NO-TAKE
-              <CAN-TAKE?
-                .X>>
-            <TRNN
-              .X
-              .BIT>>
-          <COND
-            (.NOBJ
-              <RETURN
-                ,NEFALS
-                .DWIM>)>
-          <SET
-            NOBJ
-            .X>)>
-      <COND
-        (<AND
-            <OVIS?
-              .X>
-            <OOPEN?
-              .X>>
-          <MAPF
-            <>
-            <FUNCTION
-              (X)
+      cond((and(ovis_q(.X);
+            or(.NO-TAKE
+              can_take_q(.X););
+            trnn(.X
+              .BIT););
+          cond((.NOBJ
+              return(,NEFALS
+                .DWIM);));
+          set(NOBJ
+            .X);));
+      cond((and(ovis_q(.X);
+            oopen_q(.X););
+          mapf(<>
+            function((X)
               #DECL
                 ((X)
                   OBJECT)
-              <COND
-                (<AND
-                    <OVIS?
-                      .X>
-                    <TRNN
-                      .X
-                      .BIT>>
-                  <COND
-                    (.NOBJ
-                      <RETURN
-                        ,NEFALS
-                        .DWIM>)
-                    (<SET
-                        NOBJ
-                        .X>)>)>>
-            <OCONTENTS
-              .X>>)>>
-    .OBJS>
-  .NOBJ>
+              cond((and(ovis_q(.X);
+                    trnn(.X
+                      .BIT););
+                  cond((.NOBJ
+                      return(,NEFALS
+                        .DWIM);)
+                    (set(NOBJ
+                        .X);));)););
+            ocontents(.X););)););
+    .OBJS);
+  .NOBJ);

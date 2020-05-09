@@ -2,23 +2,20 @@
 
 // GLOBAL VARIABLES WHICH ARE ROOMS MUST BE HERE!
 
-<PSETG
-  RMGVALS
+psetg(RMGVALS
   '!
     [BLOC
-      HERE!]>
+      HERE!]);
 
 // GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 
-<PSETG
-  OBJGVALS
+psetg(OBJGVALS
   '!
-    [!]>
+    [!]);
 
 // GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 
-<PSETG
-  MGVALS
+psetg(MGVALS
   '!
     [KITCHEN-WINDOW!-FLAG
       TROLL-FLAG!-FLAG
@@ -59,58 +56,39 @@
       BRIEF!-FLAG
       THEN
       SUPER-BRIEF!-FLAG
-      RAW-SCORE!]>
+      RAW-SCORE!]);
 
-<PSETG
-  CNTUSE
-  "You can't use that!">
+psetg(CNTUSE
+  "You can't use that!");
 
-<SETG
-  BIGFIX
-  </
-    <CHTYPE
-      <MIN>
-      FIX>
-    2>>
+setg(BIGFIX
+  _(chtype(min();
+      FIX);
+    2););
 
-<SETG
-  WORDS
-  <OR
-    <GET
-      WORDS
-      OBLIST>
-    <MOBLIST
-      WORDS
-      23>>>
+setg(WORDS
+  or(get(WORDS
+      OBLIST);
+    moblist(WORDS
+      23);););
 
-<SETG
-  OBJECT-OBL
-  <OR
-    <GET
-      OBJECTS
-      OBLIST>
-    <MOBLIST
-      OBJECTS>>>
+setg(OBJECT-OBL
+  or(get(OBJECTS
+      OBLIST);
+    moblist(OBJECTS);););
 
-<SETG
-  ROOM-OBL
-  <OR
-    <GET
-      ROOMS
-      OBLIST>
-    <MOBLIST
-      ROOMS>>>
+setg(ROOM-OBL
+  or(get(ROOMS
+      OBLIST);
+    moblist(ROOMS);););
 
-<SETG
-  ACTORS
-  ()>
+setg(ACTORS
+  ());
 
-<SETG
-  STARS
-  ()>
+setg(STARS
+  ());
 
-<ADD-BUZZ
-  "BY"
+add_buzz("BY"
   "IS"
   "ONE"
   "IT"
@@ -118,10 +96,9 @@
   "THE"
   "AN"
   "THIS"
-  "OVER">
+  "OVER");
 
-<ADD-DIRECTIONS
-  "#!#!#"
+add_directions("#!#!#"
   "NORTH"
   "SOUTH"
   "EAST"
@@ -137,214 +114,158 @@
   "ENTER"
   "EXIT"
   "CROSS"
-  "CLIMB">
+  "CLIMB");
 
-<DSYNONYM
-  "NORTH"
-  "N">
+dsynonym("NORTH"
+  "N");
 
-<DSYNONYM
-  "SOUTH"
-  "S">
+dsynonym("SOUTH"
+  "S");
 
-<DSYNONYM
-  "EAST"
-  "E">
+dsynonym("EAST"
+  "E");
 
-<DSYNONYM
-  "WEST"
-  "W">
+dsynonym("WEST"
+  "W");
 
-<DSYNONYM
-  "UP"
-  "U">
+dsynonym("UP"
+  "U");
 
-<DSYNONYM
-  "DOWN"
-  "D">
+dsynonym("DOWN"
+  "D");
 
-<DSYNONYM
-  "ENTER"
-  "IN">
+dsynonym("ENTER"
+  "IN");
 
-<DSYNONYM
-  "EXIT"
+dsynonym("EXIT"
   "OUT"
-  "LEAVE">
+  "LEAVE");
 
-<DSYNONYM
-  "CROSS"
-  "TRAVE">
+dsynonym("CROSS"
+  "TRAVE");
 
-<ADD-ZORK
-  PREP
+add_zork(PREP
   "WITH"
   "AT"
   "TO"
   "IN"
   "DOWN"
   "UP"
-  "UNDER">
+  "UNDER");
 
-<SYNONYM
-  "WITH"
+synonym("WITH"
   "USING"
-  "THROU">
+  "THROU");
 
-<SYNONYM
-  "IN"
+synonym("IN"
   "INSID"
-  "INTO">
+  "INTO");
 
-<SETG
-  ROOMS
-  ()>
+setg(ROOMS
+  ());
 
-<SETG
-  OBJECTS
-  ()>
+setg(OBJECTS
+  ());
 
 "CEVENT DEFINITIONS"
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,CURE-CLOCK
     <>
-    "CURIN">>
+    "CURIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,MAINT-ROOM
     T
-    "MNTIN">>
+    "MNTIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,LANTERN
     T
-    "LNTIN">>
+    "LNTIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,MATCH-FUNCTION
     T
-    MATIN>>
+    MATIN););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,CANDLES
     T
-    "CNDIN">>
+    "CNDIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,BALLOON
     T
-    "BINT">>
+    "BINT"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,BURNUP
     T
-    "BRNIN">>
+    "BRNIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,FUSE-FUNCTION
     T
-    "FUSIN">>
+    "FUSIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,LEDGE-MUNG
     T
-    "LEDIN">>
+    "LEDIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,SAFE-MUNG
     T
-    "SAFIN">>
+    "SAFIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,VOLGNOME
     T
-    "VLGIN">>
+    "VLGIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,GNOME-FUNCTION
     T
-    "GNOIN">>
+    "GNOIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,BUCKET
     T
-    "BCKIN">>
+    "BCKIN"););
 
-<OR
-  <LOOKUP
-    "COMPILE"
-    <ROOT>>
-  <CEVENT
-    0
+or(lookup("COMPILE"
+    root(););
+  cevent(0
     ,SPHERE-FUNCTION
     T
-    "SPHIN">>
+    "SPHIN"););
 
 // KLUDGE
 
@@ -363,14 +284,12 @@
 
 "MAZE"
 
-<PSETG
-  FOREST
-  "Forest">
+psetg(FOREST
+  "Forest");
 
-<PSETG
-  CURRENT
+psetg(CURRENT
   #NEXIT
-    "You cannot go upstream due to strong currents.">
+    "You cannot go upstream due to strong currents.");
 
 #ROOM
   {"PASS1"
@@ -499,8 +418,7 @@
     KITCHEN
     10}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SBAG"
       "A sandwich bag is here."
       "sandwich bag"
@@ -514,11 +432,10 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,FLAMEBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -527,10 +444,9 @@
   ["BAG"
     "SACK"
     "BAGGI"]
-  ["BROWN"]>
+  ["BROWN"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GARLI"
       "There is a clove of garlic here."
       "clove of garlic"
@@ -542,19 +458,17 @@
       #FIND-OBJ
         {"SBAG"}
       %
-      <+
-        ,TAKEBIT
+      _(,TAKEBIT
         ,FOODBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       5
       0}
-  ["CLOVE"]>
+  ["CLOVE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"FOOD"
       "A hot pepper sandwich is here."
       "lunch"
@@ -566,10 +480,9 @@
       #FIND-OBJ
         {"SBAG"}
       %
-      <+
-        ,FOODBIT
+      _(,FOODBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
@@ -579,10 +492,9 @@
     "LUNCH"
     "PEPPE"
     "DINNE"
-    "SNACK"]>
+    "SNACK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GUNK"
       "There is a small piece of vitreous slag here."
       "piece of vitreous slag"
@@ -593,10 +505,9 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
@@ -604,10 +515,9 @@
       0}
   ["MESS"
     "SLAG"]
-  ["VITRE"]>
+  ["VITRE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"COAL"
       "There is a small heap of coal here."
       "small pile of coal"
@@ -619,20 +529,18 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       20
       0}
   ["HEAP"
-    "CHARC"]>
+    "CHARC"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"JADE"
       "There is an exquisite jade figurine here."
       "jade figurine"
@@ -644,18 +552,16 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       5
       5
       10
       0}
-  ["FIGUR"]>
+  ["FIGUR"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"MACHI"
       ""
       "machine"
@@ -666,9 +572,8 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
-        ,OVISON>
+      _(,CONTBIT
+        ,OVISON);
       0
       0
       0
@@ -676,10 +581,9 @@
       50}
   ["PDP10"
     "DRYER"
-    "LID"]>
+    "LID"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"DIAMO"
       "There is an enormous diamond (perfectly cut) here."
       "huge diamond"
@@ -691,18 +595,16 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       10
       6
       5
       0}
-  ["PERFE"]>
+  ["PERFE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"TCASE"
       "There is a trophy case here."
       "trophy case"
@@ -713,20 +615,18 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TRANSBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       %,BIGFIX}
   ["CASE"]
-  ["TROPH"]>
+  ["TROPH"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BOTTL"
       "A clear glass bottle is here."
       "glass bottle"
@@ -737,11 +637,10 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TRANSBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
@@ -749,10 +648,9 @@
       4}
   ["CONTA"
     "PITCH"]
-  ["GLASS"]>
+  ["GLASS"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"WATER"
       "Water"
       "quantity of water"
@@ -762,17 +660,16 @@
       #FIND-OBJ
         {"BOTTL"}
       %
-      <+
-        ,DRINKBIT
+      _(,DRINKBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       4
       0}
   ["LIQUI"
-    "H2O"]>
+    "H2O"]);
 
 #ROOM
   {"ATTIC"
@@ -790,8 +687,7 @@
       #FIND-OBJ
         {"KNIFE"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ROPE"
       "There is a large coil of rope here."
       "rope"
@@ -801,20 +697,18 @@
       %
       <>
       %
-      <+
-        ,TIEBIT
+      _(,TIEBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       10
       0}
   ["HEMP"
-    "COIL"]>
+    "COIL"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"KNIFE"
       "There is a nasty-looking knife lying here."
       "knife"
@@ -825,22 +719,19 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
+      _(,TAKEBIT
         ,OVISON
-        ,WEAPONBIT>
+        ,WEAPONBIT);
       0
       0
       0
       5
       0}
   ["BLADE"]
-  ["NASTY"]>
+  ["NASTY"]);
 
-<ADD-MELEE
-  <FIND-OBJ
-    "KNIFE">
-  ,KNIFE-MELEE>
+add_melee(find_obj("KNIFE");
+  ,KNIFE-MELEE);
 
 #ROOM
   {"LROOM"
@@ -875,8 +766,7 @@
         {"SWORD"})
     LIVING-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SWORD"
       "There is an elvish sword here."
       "sword"
@@ -886,10 +776,9 @@
       %
       <>
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
-        ,WEAPONBIT>
+        ,WEAPONBIT);
       0
       0
       0
@@ -898,15 +787,12 @@
   ["ORCRI"
     "GLAMD"
     "BLADE"]
-  ["ELVIS"]>
+  ["ELVIS"]);
 
-<ADD-MELEE
-  <FIND-OBJ
-    "SWORD">
-  ,SWORD-MELEE>
+add_melee(find_obj("SWORD");
+  ,SWORD-MELEE);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"LAMP"
       "There is a brass lantern (battery-powered) here."
       "lamp"
@@ -916,19 +802,17 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       -1
       0
       0
       15
       0}
   ["LANTE"]
-  ["BRASS"]>
+  ["BRASS"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BLAMP"
       "There is a broken brass lantern here."
       "broken lamp"
@@ -940,16 +824,14 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0}
   ["LAMP"
     "LANTE"]
-  ["BROKE"]>
+  ["BROKE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RUG"
       ""
       "carpet"
@@ -960,20 +842,18 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,NDESCBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
   ["CARPE"]
-  ["ORIEN"]>
+  ["ORIEN"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"LEAVE"
       "There is a pile of leaves on the ground."
       "pile of leaves"
@@ -984,17 +864,16 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       25
       0}
   ["LEAF"
-    "PILE"]>
+    "PILE"]);
 
 #ROOM
   {"CELLA"
@@ -1020,9 +899,8 @@
     CELLAR
     25}
 
-<PSETG
-  TCHOMP
-  "The troll fends you off with a menacing gesture.">
+psetg(TCHOMP
+  "The troll fends you off with a menacing gesture.");
 
 #ROOM
   {"MTROL"
@@ -1051,50 +929,33 @@
     (#FIND-OBJ
         {"TROLL"})}
 
-<PSETG
-  TROLLDESC
-  "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.">
+psetg(TROLLDESC
+  "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.");
 
-<PSETG
-  TROLLOUT
-  "An unconscious troll is sprawled on the floor.  All passages out of the room are open.">
+psetg(TROLLOUT
+  "An unconscious troll is sprawled on the floor.  All passages out of the room are open.");
 
-<SETG
-  VILLAINS
-  (<FIND-OBJ
-      "TROLL">
-    <FIND-OBJ
-      "THIEF">
-    <FIND-OBJ
-      "CYCLO">)>
+setg(VILLAINS
+  (find_obj("TROLL");
+    find_obj("THIEF");
+    find_obj("CYCLO");));
 
-<SETG
-  VILLAIN-PROBS
-  <IUVECTOR
-    <LENGTH
-      ,VILLAINS>
-    0>>
+setg(VILLAIN-PROBS
+  iuvector(length(,VILLAINS);
+    0););
 
-<SETG
-  OPPV
-  <IVECTOR
-    <LENGTH
-      ,VILLAINS>
-    '<>>>
+setg(OPPV
+  ivector(length(,VILLAINS);
+    '<>););
 
-<ADD-DEMON
-  <SETG
-    SWORD-DEMON
-    <CHTYPE
-      [SWORD-GLOW
+add_demon(setg(SWORD-DEMON
+    chtype([SWORD-GLOW
         ,VILLAINS
         ()
-        <1
-          ,ROOMS>
-        <FIND-OBJ
-          "SWORD">
+        1(,ROOMS);
+        find_obj("SWORD");
         <>]
-      HACK>>>
+      HACK);););
 
 #OBJECT
   {"TROLL"
@@ -1108,37 +969,28 @@
     %
     <>
     %
-    <+
-      ,VICBIT
+    _(,VICBIT
       ,OVISON
-      ,VILLAIN>
+      ,VILLAIN);
     0
     0
     0
     %,BIGFIX
     2}
 
-<ADD-MELEE
-  <FIND-OBJ
-    "TROLL">
-  ,TROLL-MELEE>
+add_melee(find_obj("TROLL");
+  ,TROLL-MELEE);
 
-<ADD-DEMON
-  <SETG
-    FIGHT-DEMON
-    <CHTYPE
-      [FIGHTING
+add_demon(setg(FIGHT-DEMON
+    chtype([FIGHTING
         ,VILLAINS
         ()
-        <1
-          ,ROOMS>
-        <FIND-OBJ
-          "TROLL">
+        1(,ROOMS);
+        find_obj("TROLL");
         <>]
-      HACK>>>
+      HACK);););
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"AXE"
       "There is a bloody axe here."
       "bloody axe"
@@ -1148,27 +1000,23 @@
       <>
       ()
       %
-      <FIND-OBJ
-        "TROLL">
+      find_obj("TROLL");
       %
-      <+
-        ,OVISON
-        ,WEAPONBIT>
+      _(,OVISON
+        ,WEAPONBIT);
       0
       0
       0
       25
       0}
   []
-  ["BLOOD"]>
+  ["BLOOD"]);
 
-<PSETG
-  MAZEDESC
-  "You are in a maze of twisty little passages, all alike.">
+psetg(MAZEDESC
+  "You are in a maze of twisty little passages, all alike.");
 
-<PSETG
-  DEADEND
-  "Dead End">
+psetg(DEADEND
+  "Dead End");
 
 #ROOM
   {"MAZE1"
@@ -1267,8 +1115,7 @@
       #FIND-OBJ
         {"RKNIF"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RKNIF"
       "There is a rusty knife here."
       "rusty knife"
@@ -1278,25 +1125,21 @@
       %
       <>
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
-        ,WEAPONBIT>
+        ,WEAPONBIT);
       0
       0
       0
       20
       0}
   ["KNIFE"]
-  ["RUSTY"]>
+  ["RUSTY"]);
 
-<ADD-MELEE
-  <FIND-OBJ
-    "RKNIF">
-  ,KNIFE-MELEE>
+add_melee(find_obj("RKNIF");
+  ,KNIFE-MELEE);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BLANT"
       "There is a burned-out lantern here."
       "burned-out lantern"
@@ -1307,9 +1150,8 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       0
       0
@@ -1320,7 +1162,7 @@
   ["USED"
     "BURNE"
     "DEAD"
-    "USELE"]>
+    "USELE"]);
 
 #OBJECT
   {"KEYS"
@@ -1334,18 +1176,16 @@
     %
     <>
     %
-    <+
-      ,TOOLBIT
+    _(,TOOLBIT
       ,TAKEBIT
-      ,OVISON>
+      ,OVISON);
     0
     0
     0
     10
     0}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BONES"
       "A skeleton, probably the remains of a luckless adventurer, lies here."
       ""
@@ -1356,19 +1196,17 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
-        ,OVISON>
+      _(,TRYTAKEBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
   ["SKELE"
-    "BODY"]>
+    "BODY"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BAGCO"
       "An old leather bag, bulging with coins, is here."
       "bag of coins"
@@ -1380,9 +1218,8 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       10
       5
@@ -1390,10 +1227,9 @@
       0}
   ["BAG"
     "COINS"]
-  ["LEATH"]>
+  ["LEATH"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BAR"
       "There is a large platinum bar here."
       "platinum bar"
@@ -1405,19 +1241,17 @@
       %
       <>
       %
-      <+
-        ,SACREDBIT
+      _(,SACREDBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       12
       10
       20
       0}
-  ["PLATI"]>
+  ["PLATI"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PEARL"
       "There is a pearl necklace here with hundreds of large pearls."
       "pearl necklace"
@@ -1429,15 +1263,14 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       9
       5
       10
       0}
-  ["NECKL"]>
+  ["NECKL"]);
 
 #ROOM
   {"DEAD2"
@@ -1659,9 +1492,8 @@
         "NE"
         "CYCLO"}}
 
-<PSETG
-  STFORE
-  "You are in a forest, with trees in all directions around you.">
+psetg(STFORE
+  "You are in a forest, with trees in all directions around you.");
 
 #ROOM
   {"FORE1"
@@ -1709,9 +1541,8 @@
         "WEST"
         "FORE2"}}
 
-<PSETG
-  FORDES
-  "You are in a dimly lit forest, with large trees all around.  To the east, there appears to be sunlight.">
+psetg(FORDES
+  "You are in a dimly lit forest, with large trees all around.  To the east, there appears to be sunlight.");
 
 #ROOM
   {"FORE2"
@@ -1917,8 +1748,7 @@
         {"ICE"})
     GLACIER-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"REFL1"
       ""
       "mirror"
@@ -1929,19 +1759,17 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,VICBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
-  ["MIRRO"]>
+  ["MIRRO"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"REFL2"
       ""
       "mirror"
@@ -1952,19 +1780,17 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,VICBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
-  ["MIRRO"]>
+  ["MIRRO"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ICE"
       "A mass of ice fills the western half of the room."
       "glacier"
@@ -1975,15 +1801,14 @@
       %
       <>
       %
-      <+
-        ,VICBIT
-        ,OVISON>
+      _(,VICBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
-  ["GLACI"]>
+  ["GLACI"]);
 
 #ROOM
   {"RUBYR"
@@ -2055,17 +1880,15 @@
     %
     <>
     %
-    <+
-      ,TAKEBIT
-      ,OVISON>
+    _(,TAKEBIT
+      ,OVISON);
     0
     15
     8
     5
     0}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"TRIDE"
       "Neptune's own crystal trident is here."
       "crystal trident"
@@ -2076,19 +1899,17 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       4
       11
       20
       0}
   ["FORK"]
-  ["CRYST"]>
+  ["CRYST"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"COFFI"
       "There is a solid-gold coffin, used for the burial of Ramses II, here."
       "gold coffin"
@@ -2100,21 +1921,19 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,SACREDBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       3
       7
       55
       35}
   ["CASKE"]
-  ["GOLD"]>
+  ["GOLD"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"TORCH"
       "There is an ivory torch here."
       "torch"
@@ -2125,18 +1944,17 @@
       %
       <>
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,FLAMEBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       1
       14
       6
       20
       0}
   []
-  ["IVORY"]>
+  ["IVORY"]);
 
 #ROOM
   {"MIRR1"
@@ -2309,9 +2127,7 @@
     (#FIND-OBJ
         {"TBASK"})}
 
-<PUT
-  <ADD-OBJECT
-    #OBJECT
+put(add_object(#OBJECT
       {"TBASK"
         "At the end of the chain is a basket."
         "basket"
@@ -2322,10 +2138,9 @@
         %
         <>
         %
-        <+
-          ,CONTBIT
+        _(,CONTBIT
           ,OVISON
-          ,TRANSBIT>
+          ,TRANSBIT);
         0
         0
         0
@@ -2333,12 +2148,11 @@
         50}
     ["CAGE"
       "DUMBW"
-      "BASKE"]>
+      "BASKE"]);
   ,OOPEN?
-  T>
+  T);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"FBASK"
       ""
       ""
@@ -2356,7 +2170,7 @@
       0}
   ["CAGE"
     "DUMBW"
-    "BASKE"]>
+    "BASKE"]);
 
 #ROOM
   {"TUNNE"
@@ -2397,8 +2211,7 @@
         {"BRACE"})
     BOOM-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BRACE"
       "There is a sapphire-encrusted bracelet here."
       "sapphire bracelet"
@@ -2410,16 +2223,15 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       5
       3
       10
       0}
   ["JEWEL"]
-  ["SAPPH"]>
+  ["SAPPH"]);
 
 #ROOM
   {"TLADD"
@@ -2433,9 +2245,8 @@
         "UP"
         "MINE7"}}
 
-<PSETG
-  MINDESC
-  "You are in a non-descript part of a coal mine.">
+psetg(MINDESC
+  "You are in a non-descript part of a coal mine.");
 
 #ROOM
   {"MINE1"
@@ -2573,9 +2384,8 @@
     (#FIND-OBJ
         {"COAL"})}
 
-<PSETG
-  NOFIT
-  "You cannot fit through this passage with that load.">
+psetg(NOFIT
+  "You cannot fit through this passage with that load.");
 
 #ROOM
   {"TIMBE"
@@ -2813,8 +2623,7 @@
         {"IRBOX"})
     CAROUSEL-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"IRBOX"
       "There is a dented iron box here."
       "iron box"
@@ -2827,9 +2636,8 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,CONTBIT>
+      _(,TAKEBIT
+        ,CONTBIT);
       0
       0
       0
@@ -2837,10 +2645,9 @@
       20}
   ["BOX"]
   ["IRON"
-    "DENTE"]>
+    "DENTE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"STRAD"
       "There is a Stradavarius here."
       "fancy violin"
@@ -2852,16 +2659,15 @@
       #FIND-OBJ
         {"IRBOX"}
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       10
       10
       10
       0}
   ["VIOLI"]
-  ["FANCY"]>
+  ["FANCY"]);
 
 #ROOM
   {"PASS5"
@@ -2963,22 +2769,18 @@
     (#FIND-OBJ
         {"ENGRA"})}
 
-<ADD-OBJECT
-  <SOBJECT
-    "ENGRA"
+add_object(sobject("ENGRA"
     "wall with engravings"
     ,OVISON
     ,READBIT
-    ,SACREDBIT>
+    ,SACREDBIT);
   ["INSCR"]
   ["OLD"
-    "ANCIE"]>
+    "ANCIE"]);
 
-<PUT
-  <FIND-OBJ
-    "ENGRA">
+put(find_obj("ENGRA");
   ,ODESC1
-  "There are old engravings on the walls here.">
+  "There are old engravings on the walls here.");
 
 #ROOM
   {"RIDDL"
@@ -3037,8 +2839,7 @@
         {"GHOST"})
     LLD-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GHOST"
       ""
       ""
@@ -3049,16 +2850,15 @@
       %
       <>
       %
-      <+
-        ,VICBIT
-        ,OVISON>
+      _(,VICBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
   ["SPIRI"
-    "FIEND"]>
+    "FIEND"]);
 
 #ROOM
   {"LLD2"
@@ -3093,8 +2893,7 @@
     (#FIND-OBJ
         {"GRAIL"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GRAIL"
       "There is an extremely valuable (perhaps original) grail here."
       "grail"
@@ -3106,16 +2905,15 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       2
       5
       10
       5}
-  []>
+  []);
 
 #ROOM
   {"TEMP1"
@@ -3132,17 +2930,14 @@
       #FIND-OBJ
         {"BELL"})}
 
-<ADD-OBJECT
-  <SOBJECT
-    "PRAYE"
+add_object(sobject("PRAYE"
     "prayer"
-    <+
-      ,READBIT
+    _(,READBIT
       ,SACREDBIT
-      ,OVISON>>
+      ,OVISON););
   ["INSCR"]
   ["ANCIE"
-    "OLD"]>
+    "OLD"]);
 
 #ROOM
   {"TEMP2"
@@ -3157,8 +2952,7 @@
       #FIND-OBJ
         {"CANDL"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"TRUNK"
       "There is an old trunk here, bulging with assorted jewels."
       "trunk with jewels"
@@ -3174,10 +2968,9 @@
       8
       35
       0}
-  ["CHEST"]>
+  ["CHEST"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BELL"
       "There is a small brass bell here."
       "bell"
@@ -3188,19 +2981,17 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       0
       0
       5
       0}
   []
-  ["BRASS"]>
+  ["BRASS"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BOOK"
       "There is a large black book here."
       "book"
@@ -3210,11 +3001,10 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
@@ -3223,10 +3013,9 @@
   ["PRAYE"
     "BIBLE"
     "GOODB"]
-  ["BLACK"]>
+  ["BLACK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CANDL"
       "There are two candles here."
       "pair of candles"
@@ -3236,16 +3025,15 @@
       %
       <>
       %
-      <+
-        ,FLAMEBIT
+      _(,FLAMEBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       1
       0
       0
       10
       0}
-  []>
+  []);
 
 #ROOM
   {"DAM"
@@ -3286,8 +3074,7 @@
       #FIND-OBJ
         {"GUIDE"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GUIDE"
       "There are tour guidebooks here."
       "tour guidebook"
@@ -3298,21 +3085,19 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
         ,READBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       5
       0}
   ["BOOK"]
-  ["TOUR"]>
+  ["TOUR"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PAPER"
       ""
       "newspaper"
@@ -3324,11 +3109,10 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
         ,READBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
@@ -3338,7 +3122,7 @@
     "ISSUE"
     "REPOR"
     "MAGAZ"
-    "NEWS"]>
+    "NEWS"]);
 
 #ROOM
   {"MAINT"
@@ -3369,8 +3153,7 @@
         {"SCREW"})
     MAINT-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"MATCH"
       "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
       "matchbook"
@@ -3381,19 +3164,17 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
+      _(,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
       2
       0}
-  ["FLINT"]>
+  ["FLINT"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ADVER"
       "There is a small leaflet here."
       "leaflet"
@@ -3405,11 +3186,10 @@
       #FIND-OBJ
         {"MAILB"}
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
@@ -3417,10 +3197,9 @@
       0}
   ["PAMPH"
     "LEAFL"
-    "BOOKL"]>
+    "BOOKL"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"MAILB"
       "There is a small mailbox here."
       "mailbox"
@@ -3433,15 +3212,14 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
-        ,OVISON>
+      _(,CONTBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       10}
-  ["BOX"]>
+  ["BOX"]);
 
 #OBJECT
   {"TUBE"
@@ -3455,18 +3233,16 @@
     %
     <>
     %
-    <+
-      ,CONTBIT
+    _(,CONTBIT
       ,TAKEBIT
-      ,OVISON>
+      ,OVISON);
     0
     0
     0
     10
     7}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PUTTY"
       "There is some gunk here"
       "viscous material"
@@ -3478,10 +3254,9 @@
       #FIND-OBJ
         {"TUBE"}
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
@@ -3490,10 +3265,9 @@
   ["MATER"
     "GUNK"
     "GLUE"]
-  ["VISCO"]>
+  ["VISCO"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"WRENC"
       "There is a wrench here."
       "wrench"
@@ -3505,19 +3279,17 @@
       %
       <>
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       10
       0}
-  []>
+  []);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SCREW"
       "There is a screwdriver here."
       "screwdriver"
@@ -3529,16 +3301,15 @@
       %
       <>
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       0
       0
       5
       0}
-  []>
+  []);
 
 #ROOM
   {"CYCLO"
@@ -3563,10 +3334,8 @@
         {"CYCLO"})
     CYCLOPS-ROOM}
 
-<ADD-MELEE
-  <FIND-OBJ
-    "CYCLO">
-  ,CYCLOPS-MELEE>
+add_melee(find_obj("CYCLO");
+  ,CYCLOPS-MELEE);
 
 #ROOM
   {"BLROO"
@@ -3583,8 +3352,7 @@
     TIME
     10}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CYCLO"
       ""
       "cyclops"
@@ -3595,17 +3363,16 @@
       %
       <>
       %
-      <+
-        ,VICBIT
+      _(,VICBIT
         ,OVISON
-        ,VILLAIN>
+        ,VILLAIN);
       0
       0
       0
       %,BIGFIX
       10000}
   ["ONE-E"
-    "MONST"]>
+    "MONST"]);
 
 #ROOM
   {"TREAS"
@@ -3621,8 +3388,7 @@
     TREASURE-ROOM
     25}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CHALI"
       "There is a silver chalice, intricately engraved, here."
       "chalice"
@@ -3633,17 +3399,16 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       10
       10
       10
       5}
   ["CUP"
-    "GOBLE"]>
+    "GOBLE"]);
 
 #ROOM
   {"STUDI"
@@ -3681,8 +3446,7 @@
     (#FIND-OBJ
         {"PAINT"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PAINT"
       "A masterpiece by a neglected genius is here."
       "painting"
@@ -3692,10 +3456,9 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,TAKEBIT
-        ,OVISON>
+        ,OVISON);
       0
       4
       7
@@ -3703,34 +3466,26 @@
       0}
   ["ART"
     "CANVA"
-    "MASTE"]>
+    "MASTE"]);
 
 "LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS"
 
-<ADD-DEMON
-  <SETG
-    ROBBER-DEMON
-    <CHTYPE
-      [ROBBER
+add_demon(setg(ROBBER-DEMON
+    chtype([ROBBER
         ()
         ,ROOMS
-        <1
-          ,ROOMS>
-        <FIND-OBJ
-          "THIEF">
+        1(,ROOMS);
+        find_obj("THIEF");
         <>]
-      HACK>>>
+      HACK);););
 
-<PSETG
-  ROBBER-C-DESC
-  "There is a suspicious-looking individual, holding a bag, leaning against one wall.  He is armed with a vicious-looking stilletto.">
+psetg(ROBBER-C-DESC
+  "There is a suspicious-looking individual, holding a bag, leaning against one wall.  He is armed with a vicious-looking stilletto.");
 
-<PSETG
-  ROBBER-U-DESC
-  "There is a suspicious-looking individual lying unconscious on the ground.  His bag and stilletto seem to have vanished.">
+psetg(ROBBER-U-DESC
+  "There is a suspicious-looking individual lying unconscious on the ground.  His bag and stilletto seem to have vanished.");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"THIEF"
       %,ROBBER-C-DESC
       "thief"
@@ -3742,10 +3497,9 @@
       %
       <>
       %
-      <+
-        ,VICBIT
+      _(,VICBIT
         ,OVISON
-        ,VILLAIN>
+        ,VILLAIN);
       0
       0
       0
@@ -3762,15 +3516,12 @@
     "SHADY"
     "THUG"
     "BAGMA"
-    "MAFIA"]>
+    "MAFIA"]);
 
-<ADD-MELEE
-  <FIND-OBJ
-    "THIEF">
-  ,THIEF-MELEE>
+add_melee(find_obj("THIEF");
+  ,THIEF-MELEE);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"STILL"
       "There is a vicious-looking stilletto here."
       "stilletto"
@@ -3780,434 +3531,329 @@
       <>
       ()
       %
-      <FIND-OBJ
-        "THIEF">
+      find_obj("THIEF");
       %
-      <+
-        ,OVISON
-        ,WEAPONBIT>
+      _(,OVISON
+        ,WEAPONBIT);
       0
       0
       0
       10
       0}
   []
-  ["VICIO"]>
+  ["VICIO"]);
 
-<SETG
-  WEAPONS
-  (<FIND-OBJ
-      "STICK">
-    <FIND-OBJ
-      "KNIFE">)>
+setg(WEAPONS
+  (find_obj("STICK");
+    find_obj("KNIFE");));
 
-<SETG
-  RANDOM-LIST
-  (<FIND-ROOM
-      "LROOM">
-    <FIND-ROOM
-      "KITCH">
-    <FIND-ROOM
-      "CLEAR">
-    <FIND-ROOM
-      "FORE3">
-    <FIND-ROOM
-      "FORE2">
-    <FIND-ROOM
-      "SHOUS">
-    <FIND-ROOM
-      "FORE2">
-    <FIND-ROOM
-      "KITCH">
-    <FIND-ROOM
-      "EHOUS">)>
+setg(RANDOM-LIST
+  (find_room("LROOM");
+    find_room("KITCH");
+    find_room("CLEAR");
+    find_room("FORE3");
+    find_room("FORE2");
+    find_room("SHOUS");
+    find_room("FORE2");
+    find_room("KITCH");
+    find_room("EHOUS");));
 
-<ADD-DESC
-  <FIND-OBJ
-    "BOOK">
-  "  COMMANDMENT #12592 Oh ye who go about saying unto each:   \"Hello sailor\": dost thou know the magnitude of thy sin before the gods? Yea, verily, thou shalt be ground between two stones. Shall the angry gods cast thy body into the whirlpool? Surely, thy eye shall be put out with a sharp stick! Even unto the ends of the earth shalt thou wander and unto the land of the dead shalt thou be sent at last. Surely thou shalt repent of thy cunning.">
+add_desc(find_obj("BOOK");
+  "  COMMANDMENT #12592 Oh ye who go about saying unto each:   \"Hello sailor\": dost thou know the magnitude of thy sin before the gods? Yea, verily, thou shalt be ground between two stones. Shall the angry gods cast thy body into the whirlpool? Surely, thy eye shall be put out with a sharp stick! Even unto the ends of the earth shalt thou wander and unto the land of the dead shalt thou be sent at last. Surely thou shalt repent of thy cunning.");
 
-<ADD-DESC
-  <FIND-OBJ
-    "GUIDE">
-  "     Guide Book to   Flood Control Dam #3    Flood Control Dam #3 (FCD#3) was constructed in year 783 of the Great Underground Empire to harness the destructive power of the Frigid River.  This work was supported by a grant of 37 million zorkmids from the Central Bureaucracy and your omnipotent local tyrant Lord Dimwit Flathead the Excessive. This impressive structure is composed of 3.7 cubic feet of concrete, is 256 feet tall at the center, and 193 feet wide at the top.  The reservoir created behind the dam has a volume of 37 billion cubic feet, an area of 12 million square feet, and a shore line of 36 thousand feet.    The construction of FCD#3 took 112 days from ground breaking to the dedication. It required a work force of 384 slaves, 34 slave drivers, 12 engineers, 2 turtle doves, and a partridge in a pear tree. The work was managed by a command team composed of 2345 bureaucrats, 2347 secretaries (at least two of which can type), 12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape processors, and nearly one million dead trees.    We will now point out some of the more interesting features of FCD#3 as we conduct you on a guided tour of the facilities:  1) You start your tour here in the Dam Lobby.     You will notice on your right that .........">
+add_desc(find_obj("GUIDE");
+  "     Guide Book to   Flood Control Dam #3    Flood Control Dam #3 (FCD#3) was constructed in year 783 of the Great Underground Empire to harness the destructive power of the Frigid River.  This work was supported by a grant of 37 million zorkmids from the Central Bureaucracy and your omnipotent local tyrant Lord Dimwit Flathead the Excessive. This impressive structure is composed of 3.7 cubic feet of concrete, is 256 feet tall at the center, and 193 feet wide at the top.  The reservoir created behind the dam has a volume of 37 billion cubic feet, an area of 12 million square feet, and a shore line of 36 thousand feet.    The construction of FCD#3 took 112 days from ground breaking to the dedication. It required a work force of 384 slaves, 34 slave drivers, 12 engineers, 2 turtle doves, and a partridge in a pear tree. The work was managed by a command team composed of 2345 bureaucrats, 2347 secretaries (at least two of which can type), 12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape processors, and nearly one million dead trees.    We will now point out some of the more interesting features of FCD#3 as we conduct you on a guided tour of the facilities:  1) You start your tour here in the Dam Lobby.     You will notice on your right that .........");
 
-<ADD-DESC
-  <FIND-OBJ
-    "PAPER">
-  "  US NEWS & DUNGEON REPORT 12/12/77             Late Dungeon Edition       In order to get a more-or-less working version, we have installed one with some known bugs.  In particular, the following sequence will not work correctly, nor will anything resembling it: >take take what? >frob what do you want me to do with it?      Note that if you now respond 'take', the right thing will happen. In short, the current parser can't handle verbs with missing objects.  Since it is completely new, we'd appreciate reports of any other bugs encountered.  FLASH!      An important change has been made.  When you have been killed, and the 'patch' question is asked, or if you are confirming a 'quit', it is now necessary to terminate the response to the question with a carriage return (you may be surprised to find that this wasn't true before).  Also, the answer to the 'patch' question is taken to be yes unless something starting with n, N, f, or F is typed; the answer to the 'quit' question is no unless something starting with y, Y, t, or T is typed.  FLASH!      Another FLAG DAY has been declared for save files.  Yes, ladies and gentlemen, yet another incompatible change has been made to the save/restore code.  When will it end?       Things like the bucket should resume working in this version.       Many people have reported the following message: 'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn' This indicates that a garbage collection is occurring.  Some reports have this taking up to 30 sec. of cpu time, during which your dungeon will refuse to respond.  We have added a feature which should prevent this; if you see such a message, please send mail to DUNGEON@DM describing the circumstances (particularly number of moves, save/restore status, and the TIME).  A garbage collection is not fatal:  your dungeon should be perfectly all right once it finishes (after the GOUT TIME= message is printed). ">
+add_desc(find_obj("PAPER");
+  "  US NEWS & DUNGEON REPORT 12/12/77             Late Dungeon Edition       In order to get a more-or-less working version, we have installed one with some known bugs.  In particular, the following sequence will not work correctly, nor will anything resembling it: >take take what? >frob what do you want me to do with it?      Note that if you now respond 'take', the right thing will happen. In short, the current parser can't handle verbs with missing objects.  Since it is completely new, we'd appreciate reports of any other bugs encountered.  FLASH!      An important change has been made.  When you have been killed, and the 'patch' question is asked, or if you are confirming a 'quit', it is now necessary to terminate the response to the question with a carriage return (you may be surprised to find that this wasn't true before).  Also, the answer to the 'patch' question is taken to be yes unless something starting with n, N, f, or F is typed; the answer to the 'quit' question is no unless something starting with y, Y, t, or T is typed.  FLASH!      Another FLAG DAY has been declared for save files.  Yes, ladies and gentlemen, yet another incompatible change has been made to the save/restore code.  When will it end?       Things like the bucket should resume working in this version.       Many people have reported the following message: 'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn' This indicates that a garbage collection is occurring.  Some reports have this taking up to 30 sec. of cpu time, during which your dungeon will refuse to respond.  We have added a feature which should prevent this; if you see such a message, please send mail to DUNGEON@DM describing the circumstances (particularly number of moves, save/restore status, and the TIME).  A garbage collection is not fatal:  your dungeon should be perfectly all right once it finishes (after the GOUT TIME= message is printed). ");
 
-<ADD-DESC
-  <FIND-OBJ
-    "ADVER">
-  "   WELCOME TO DUNGEON      DUNGEON is a game of adventure, danger, and low cunning.  In it you will explore some of the most amazing territory ever seen by mortal man. Hardened adventurers have run screaming from the terrors contained within!      In DUNGEON the intrepid explorer delves into the forgotten secrets of a lost labyrinth deep in the bowels of the earth, searching for vast treasures long hidden from prying eyes, treasures guarded by fearsome monsters and diabolical traps!      No PDP-10 should be without one!      DUNGEON was created at the Programming Technology Division of the MIT Laboratory for Computer Science, by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE game of Crowther and Woods, and Dungeons and Dragons, by Gygax and Arneson.  DUNGEON is written in MDL (alias MUDDLE).      Direct inquiries by Net mail to DUNGEON@MIT-DMS. ">
+add_desc(find_obj("ADVER");
+  "   WELCOME TO DUNGEON      DUNGEON is a game of adventure, danger, and low cunning.  In it you will explore some of the most amazing territory ever seen by mortal man. Hardened adventurers have run screaming from the terrors contained within!      In DUNGEON the intrepid explorer delves into the forgotten secrets of a lost labyrinth deep in the bowels of the earth, searching for vast treasures long hidden from prying eyes, treasures guarded by fearsome monsters and diabolical traps!      No PDP-10 should be without one!      DUNGEON was created at the Programming Technology Division of the MIT Laboratory for Computer Science, by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE game of Crowther and Woods, and Dungeons and Dragons, by Gygax and Arneson.  DUNGEON is written in MDL (alias MUDDLE).      Direct inquiries by Net mail to DUNGEON@MIT-DMS. ");
 
-<ADD-DESC
-  <FIND-OBJ
-    "MATCH">
-  " [close cover before striking BKD]  You too can make BIG MONEY in the exciting field of   PAPER SHUFFLING! Mr. TAA of Muddle, Mass. says: \"Before I took this course I used to be a lowly bit twiddler. Now with what I learned at MIT Tech I feel really important and can obfuscate and confuse with the best.\" Mr. MARC had this to say: \"Ten short days ago all I could look forward to was a dead-end job as a doctor.  Now I have a promising future and make really big Zorkmids.\"  MIT Tech can't promise these fantastic results to everyone. But when you earn your MDL degree from MIT Tech your future will be brighter. Send for our free brochure today.">
+add_desc(find_obj("MATCH");
+  " [close cover before striking BKD]  You too can make BIG MONEY in the exciting field of   PAPER SHUFFLING! Mr. TAA of Muddle, Mass. says: \"Before I took this course I used to be a lowly bit twiddler. Now with what I learned at MIT Tech I feel really important and can obfuscate and confuse with the best.\" Mr. MARC had this to say: \"Ten short days ago all I could look forward to was a dead-end job as a doctor.  Now I have a promising future and make really big Zorkmids.\"  MIT Tech can't promise these fantastic results to everyone. But when you earn your MDL degree from MIT Tech your future will be brighter. Send for our free brochure today.");
 
-<ADD-DESC
-  <FIND-OBJ
-    "ENGRA">
-  "The engravings were incised in the living rock of the cave wall by an unknown hand.  They depict, in symbolic form, the beliefs of the ancient peoples of Zork.  Skillfully interwoven with the bas reliefs are excerpts illustrating the major tenets expounded by the sacred texts of the religion of that time.  Unfortunately a later age seems to have considered them blasphemous and just as skillfully excised them.">
+add_desc(find_obj("ENGRA");
+  "The engravings were incised in the living rock of the cave wall by an unknown hand.  They depict, in symbolic form, the beliefs of the ancient peoples of Zork.  Skillfully interwoven with the bas reliefs are excerpts illustrating the major tenets expounded by the sacred texts of the religion of that time.  Unfortunately a later age seems to have considered them blasphemous and just as skillfully excised them.");
 
-<ADD-DESC
-  <FIND-OBJ
-    "PRAYE">
-  "The prayer is inscribed in an ancient script which is hardly remembered these days, much less understood.  What little of it can be made out seems to be a phillipic against small insects, absent-mindedness, and the picking up and dropping of small objects.  The final verse seems to consign trespassers to the land of the dead.  All evidence indicates that the beliefs of the ancient Zorkers were obscure.">
+add_desc(find_obj("PRAYE");
+  "The prayer is inscribed in an ancient script which is hardly remembered these days, much less understood.  What little of it can be made out seems to be a phillipic against small insects, absent-mindedness, and the picking up and dropping of small objects.  The final verse seems to consign trespassers to the land of the dead.  All evidence indicates that the beliefs of the ancient Zorkers were obscure.");
 
 // ASSORTED DOORS
 
-<PSETG
-  BUTSTR
-  "button">
+psetg(BUTSTR
+  "button");
 
-<PSETG
-  DOORSTR
-  "door">
+psetg(DOORSTR
+  "door");
 
-<ADD-OBJECT
-  <AOBJECT
-    "WIND1"
+add_object(aobject("WIND1"
     "window"
     WINDOW-FUNCTION
     ,OVISON
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["WINDO"]
-  []>
+  []);
 
-<ADD-OBJECT
-  <AOBJECT
-    "WIND2"
+add_object(aobject("WIND2"
     "window"
     WINDOW-FUNCTION
     ,OVISON
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["WINDO"]
-  []>
+  []);
 
-<ADD-OBJECT
-  <AOBJECT
-    "BOLT"
+add_object(aobject("BOLT"
     "bolt"
     BOLT-FUNCTION
     ,TURNBIT
     ,OVISON
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BOLT"
     "NUT"]
-  []>
+  []);
 
-<ADD-OBJECT
-  <AOBJECT
-    "GRAT1"
+add_object(aobject("GRAT1"
     "grating"
     GRAT1-FUNCTION
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["GRATI"
     "GRATE"]
-  []>
+  []);
 
-<ADD-OBJECT
-  <AOBJECT
-    "GRAT2"
+add_object(aobject("GRAT2"
     "grating"
     GRAT2-FUNCTION
     ,OVISON
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["GRATI"
     "GRATE"]
-  []>
+  []);
 
-<ADD-OBJECT
-  <AOBJECT
-    "DOOR"
+add_object(aobject("DOOR"
     ,DOORSTR
     TRAP-DOOR
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["TRAPD"
     "TRAP-"]
-  ["TRAP"]>
+  ["TRAP"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "TDOOR"
+add_object(aobject("TDOOR"
     ,DOORSTR
     TRAP-DOOR
     ,DOORBIT
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["TRAPD"
     "TRAP-"]
-  ["TRAP"]>
+  ["TRAP"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "WDOOR"
+add_object(aobject("WDOOR"
     ,DOORSTR
     DDOOR-FUNCTION
     ,OVISON
     ,NDESCBIT
-    ,READBIT>
+    ,READBIT);
   ["DOOR"]
-  ["WOODE"]>
+  ["WOODE"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "WDOOR">
-  "The engravings translate to 'This space intentionally left blank'">
+add_desc(find_obj("WDOOR");
+  "The engravings translate to 'This space intentionally left blank'");
 
-<ADD-OBJECT
-  <AOBJECT
-    "FDOOR"
+add_object(aobject("FDOOR"
     ,DOORSTR
     DDOOR-FUNCTION
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["DOOR"]
-  ["FRONT"]>
+  ["FRONT"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "SDOOR"
+add_object(aobject("SDOOR"
     ,DOORSTR
     DDOOR-FUNCTION
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["DOOR"]
-  ["STONE"]>
+  ["STONE"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "MSWIT"
+add_object(aobject("MSWIT"
     "switch"
     MSWITCH-FUNCTION
     ,OVISON
     ,NDESCBIT
-    ,TURNBIT>
-  ["SWITC"]>
+    ,TURNBIT);
+  ["SWITC"]);
 
 // ASSORTED GARBAGE
 
-<ADD-OBJECT
-  <SOBJECT
-    "HPOLE"
+add_object(sobject("HPOLE"
     "head on a pole"
-    ,OVISON>
-  ["HEAD"]>
+    ,OVISON);
+  ["HEAD"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "CORPS"
+add_object(sobject("CORPS"
     "corpses"
-    ,OVISON>
+    ,OVISON);
   []
-  ["MANGL"]>
+  ["MANGL"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "BODIE"
+add_object(aobject("BODIE"
     "pile of bodies"
     BODY-FUNCTION
     ,OVISON
     ,NDESCBIT
-    ,TRYTAKEBIT>
+    ,TRYTAKEBIT);
   ["BODY"
-    "CORPS"]>
+    "CORPS"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "DAM"
+add_object(sobject("DAM"
     "dam"
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["GATE"
     "GATES"
-    "FCD"]>
+    "FCD"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "RAILI"
+add_object(sobject("RAILI"
     "railing"
     ,OVISON
-    ,NDESCBIT>
-  ["RAIL"]>
+    ,NDESCBIT);
+  ["RAIL"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "BUTTO"
+add_object(sobject("BUTTO"
     "button"
     ,OVISON
-    ,NDESCBIT>
-  ["SWITC"]>
+    ,NDESCBIT);
+  ["SWITC"]);
 
-<SOBJECT
-  "BUBBL"
+sobject("BUBBL"
   "bubble"
   ,OVISON
-  ,NDESCBIT>
+  ,NDESCBIT);
 
-<ADD-OBJECT
-  <AOBJECT
-    "LEAK"
+add_object(aobject("LEAK"
     "leak"
     LEAK-FUNCTION
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["DRIP"
-    "HOLE"]>
+    "HOLE"]);
 
-<ADD-STAR
-  <ADD-OBJECT
-    <AOBJECT
-      "EVERY"
+add_star(add_object(aobject("EVERY"
       "everything"
       EVERYTHING
       ,OVISON
       ,TAKEBIT
       ,NO-CHECK-BIT
-      ,NDESCBIT>
-    ["ALL"]>>
+      ,NDESCBIT);
+    ["ALL"]););
 
-<ADD-STAR
-  <ADD-OBJECT
-    <AOBJECT
-      "VALUA"
+add_star(add_object(aobject("VALUA"
       "valuables"
       VALUABLES
       ,OVISON
       ,TAKEBIT
       ,NO-CHECK-BIT
-      ,NDESCBIT>
-    ["TREAS"]>>
+      ,NDESCBIT);
+    ["TREAS"]););
 
-<ADD-STAR
-  <SOBJECT
-    "SAILO"
+add_star(sobject("SAILO"
     "sailor"
     ,OVISON
-    ,NDESCBIT>>
+    ,NDESCBIT););
 
-<ADD-STAR
-  <SOBJECT
-    "TEETH"
+add_star(sobject("TEETH"
     "set of teeth"
     ,OVISON
-    ,NDESCBIT>>
+    ,NDESCBIT););
 
-<ADD-STAR
-  <SOBJECT
-    "WALL"
+add_star(sobject("WALL"
     "wall"
     ,OVISON
-    ,NDESCBIT>>
+    ,NDESCBIT););
 
-<ADD-STAR
-  <FIND-OBJ
-    "GRUE">>
+add_star(find_obj("GRUE"););
 
-<ADD-STAR
-  <ADD-OBJECT
-    <SOBJECT
-      "HANDS"
+add_star(add_object(sobject("HANDS"
       "pair of hands"
       ,OVISON
       ,NDESCBIT
-      ,TOOLBIT>
+      ,TOOLBIT);
     ["HAND"]
-    ["BARE"]>>
+    ["BARE"]););
 
-<ADD-STAR
-  <ADD-OBJECT
-    <SOBJECT
-      "LUNGS"
+add_star(add_object(sobject("LUNGS"
       "breath"
       ,OVISON
       ,NDESCBIT
-      ,TOOLBIT>
+      ,TOOLBIT);
     ["LUNG"
-      "AIR"]>>
+      "AIR"]););
 
-<ADD-STAR
-  <SOBJECT
-    "AVIAT"
+add_star(sobject("AVIAT"
     "flyer"
     ,OVISON
-    ,NDESCBIT>>
+    ,NDESCBIT););
 
-<ADD-OBJECT
-  <SOBJECT
-    "RBUTT"
+add_object(sobject("RBUTT"
     ,BUTSTR
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"
     "SWITC"]
-  ["RED"]>
+  ["RED"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "YBUTT"
+add_object(sobject("YBUTT"
     ,BUTSTR
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"
     "SWITC"]
-  ["YELLO"]>
+  ["YELLO"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "BLBUT"
+add_object(sobject("BLBUT"
     ,BUTSTR
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"
     "SWITC"]
-  ["BLUE"]>
+  ["BLUE"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "BRBUT"
+add_object(sobject("BRBUT"
     ,BUTSTR
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"
     "SWITC"]
-  ["BROWN"]>
+  ["BROWN"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "BAT"
+add_object(aobject("BAT"
     "bat"
     FLY-ME
     ,OVISON
     ,NDESCBIT
-    ,TRYTAKEBIT>
+    ,TRYTAKEBIT);
   ["VAMPI"]
-  []>
+  []);
 
 "MORE VOCABULARY"
 
-<SOBJECT
-  "RAINB"
+sobject("RAINB"
   "rainbow"
   ,OVISON
-  ,NDESCBIT>
+  ,NDESCBIT);
 
-<PSETG
-  CLIFFS
+psetg(CLIFFS
   #NEXIT
-    "The White Cliffs prevent your landing here.">
+    "The White Cliffs prevent your landing here.");
 
-<PSETG
-  RIVERDESC
-  "Frigid River">
+psetg(RIVERDESC
+  "Frigid River");
 
 #ROOM
   {"DOCK"
@@ -4294,9 +3940,8 @@
     0
     %,RWATERBIT}
 
-<PSETG
-  NARROW
-  "The path is too narrow.">
+psetg(NARROW
+  "The path is too narrow.");
 
 #ROOM
   {"WCLF1"
@@ -4505,11 +4150,10 @@
         "WEST"
         "FALLS"}}
 
-<SETG
-  CRAIN
+setg(CRAIN
   #CEXIT
     {"RAINBOW"
-      "RAINB"}>
+      "RAINB"});
 
 #ROOM
   {"POG"
@@ -4574,8 +4218,7 @@
         "WEST"
         "FORE5"}}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"POT"
       "There is a pot of gold here."
       "pot filled with gold"
@@ -4592,10 +4235,9 @@
       15
       0}
   []
-  ["GOLD"]>
+  ["GOLD"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"STATU"
       "There is a beautiful statue here."
       "statue"
@@ -4613,10 +4255,9 @@
       8
       0}
   ["SCULP"
-    "ROCK"]>
+    "ROCK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"IBOAT"
       "There is a folded pile of plastic here which has a small valve attached."
       "plastic inflatable boat"
@@ -4627,10 +4268,9 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -4638,10 +4278,9 @@
       0}
   ["BOAT"
     "PLAST"
-    "PILE"]>
+    "PILE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"DBOAT"
       "There is a pile of plastic here with a large hole in it."
       "plastic boat (with hole)"
@@ -4652,10 +4291,9 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -4663,10 +4301,9 @@
       0}
   ["BOAT"
     "PLAST"
-    "PILE"]>
+    "PILE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PUMP"
       "There is a small pump here."
       "hand-held air pump"
@@ -4678,20 +4315,18 @@
       %
       <>
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
       5
       0}
   ["AIR-P"
-    "AIRPU"]>
+    "AIRPU"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RBOAT"
       "There is an inflated boat here."
       "magic boat"
@@ -4703,11 +4338,10 @@
       %
       <>
       %
-      <+
-        ,VEHBIT
+      _(,VEHBIT
         ,BURNBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -4715,22 +4349,17 @@
       100}
   ["BOAT"]
   ["PLAST"
-    "SEAWO"]>
+    "SEAWO"]);
 
-<PUT
-  <FIND-OBJ
-    "RBOAT">
+put(find_obj("RBOAT");
   ,OOPEN?
-  T>
+  T);
 
-<PUT
-  <FIND-OBJ
-    "RBOAT">
+put(find_obj("RBOAT");
   ,ORAND
-  ,RWATERBIT>
+  ,RWATERBIT);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"LABEL"
       "There is a tan label here."
       "tan label"
@@ -4742,26 +4371,22 @@
       #FIND-OBJ
         {"RBOAT"}
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,OVISON
         ,READBIT
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
       2
       0}
   ["FINEP"]
-  ["TAN"]>
+  ["TAN"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "LABEL">
-  "   !!!!  FROBOZZ MAGIC BOAT COMPANY  !!!!  Hello, Sailor!  Instructions for use:        To get into boat, say 'Board'    To leave boat, say 'Disembark'     To get into a body of water, say 'Launch'    To get to shore, say 'Land'      Warranty:    This boat is guaranteed against all defects in parts and workmanship for a period of 76 milliseconds from date of purchase or until first used, whichever comes first.  Warning:    This boat is made of plastic.  Good Luck! ">
+add_desc(find_obj("LABEL");
+  "   !!!!  FROBOZZ MAGIC BOAT COMPANY  !!!!  Hello, Sailor!  Instructions for use:        To get into boat, say 'Board'    To leave boat, say 'Disembark'     To get into a body of water, say 'Launch'    To get to shore, say 'Land'      Warranty:    This boat is guaranteed against all defects in parts and workmanship for a period of 76 milliseconds from date of purchase or until first used, whichever comes first.  Warning:    This boat is made of plastic.  Good Luck! ");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"STICK"
       "There is a broken sharp stick here."
       "broken sharp stick"
@@ -4771,9 +4396,8 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       0
       0
@@ -4781,15 +4405,13 @@
       0}
   []
   ["SHARP"
-    "BROKE"]>
+    "BROKE"]);
 
-<SOBJECT
-  "BARRE"
+sobject("BARRE"
   "barrel"
-  ,OVISON>
+  ,OVISON);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BUOY"
       "There is a red buoy here (probably a warning)."
       "red buoy"
@@ -4802,21 +4424,19 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,FINDMEBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
       10
       20}
   []
-  ["RED"]>
+  ["RED"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"EMERA"
       "There is an emerald here."
       "large emerald"
@@ -4828,18 +4448,16 @@
       #FIND-OBJ
         {"BUOY"}
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       5
       10
       5
       0}
-  []>
+  []);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SHOVE"
       "There is a large shovel here."
       "shovel"
@@ -4851,19 +4469,17 @@
       %
       <>
       %
-      <+
-        ,TOOLBIT
+      _(,TOOLBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
       15
       0}
-  []>
+  []);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GUANO"
       "There is a hunk of bat guano here."
       "hunk of bat guano"
@@ -4875,9 +4491,8 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       0
       0
@@ -4885,10 +4500,9 @@
       0}
   ["CRAP"
     "SHIT"
-    "HUNK"]>
+    "HUNK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GRUE"
       ""
       "lurking grue"
@@ -4905,7 +4519,7 @@
       0
       0}
   []
-  ["LURKI"]>
+  ["LURKI"]);
 
 #ROOM
   {"VLBOT"
@@ -4919,15 +4533,13 @@
     (#FIND-OBJ
         {"BALLO"})}
 
-<PSETG
-  VOLCORE
-  "Volcano Core">
+psetg(VOLCORE
+  "Volcano Core");
 
-<SETG
-  NULEXIT
+setg(NULEXIT
   #EXIT
     {"#!#!#"
-      "!"}>
+      "!"});
 
 #ROOM
   {"VAIR1"
@@ -4989,11 +4601,10 @@
     0
     %,RAIRBIT}
 
-<SETG
-  CXGNOME
+setg(CXGNOME
   #CEXIT
     {"GNOME-DOOR"
-      "VLBOT"}>
+      "VLBOT"});
 
 #ROOM
   {"LEDG2"
@@ -5098,8 +4709,7 @@
         "WEST"
         "RUBYR"}}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BALLO"
       "There is a very large and extremely heavy wicker basket with a cloth bag here. Inside the basket is a metal receptacle of some kind.  Attached to the basket on the outside is a piece of wire."
       "basket"
@@ -5115,28 +4725,23 @@
       %
       <>
       %
-      <+
-        ,VEHBIT
-        ,OVISON>
+      _(,VEHBIT
+        ,OVISON);
       0
       0
       0
       70
       100}
   ["BASKE"]
-  ["WICKE"]>
+  ["WICKE"]);
 
-<PUT
-  <FIND-OBJ
-    "BALLO">
+put(find_obj("BALLO");
   ,OOPEN?
-  T>
+  T);
 
-<PUT
-  <FIND-OBJ
-    "BALLO">
+put(find_obj("BALLO");
   ,ORAND
-  ,RAIRBIT>
+  ,RAIRBIT);
 
 #OBJECT
   {"RECEP"
@@ -5150,18 +4755,16 @@
     #FIND-OBJ
       {"BALLO"}
     %
-    <+
-      ,CONTBIT
+    _(,CONTBIT
       ,OVISON
-      ,SEARCHBIT>
+      ,SEARCHBIT);
     0
     0
     0
     %,BIGFIX
     6}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CBAG"
       ""
       "cloth bag"
@@ -5179,10 +4782,9 @@
       %,BIGFIX
       0}
   ["BAG"]
-  ["CLOTH"]>
+  ["CLOTH"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BROPE"
       ""
       "braided wire"
@@ -5193,19 +4795,17 @@
       #FIND-OBJ
         {"BALLO"}
       %
-      <+
-        ,TIEBIT
-        ,OVISON>
+      _(,TIEBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
   ["WIRE"]
-  ["BRAID"]>
+  ["BRAID"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"HOOK1"
       "There is a small hook attached to the rock here."
       "hook"
@@ -5222,10 +4822,9 @@
       0
       %,BIGFIX
       0}
-  ["HOOK"]>
+  ["HOOK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"HOOK2"
       "There is a small hook attached to the rock here."
       "hook"
@@ -5242,10 +4841,9 @@
       0
       %,BIGFIX
       0}
-  ["HOOK"]>
+  ["HOOK"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ZORKM"
       "There is an engraved zorkmid coin here."
       "priceless zorkmid"
@@ -5256,25 +4854,21 @@
       %
       <>
       %
-      <+
-        ,READBIT
+      _(,READBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       10
       12
       10
       0}
   ["COIN"]
-  ["GOLD"]>
+  ["GOLD"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "ZORKM">
-  "         --------------------------        /      Gold Zorkmid  \\       /  T e n   T h o u s a n d   \\      /        Z O R K M I D S    \\     /        \\    /        ||||||||||||||||||      \\   /        !||||   ||||!       \\  |    |||   ^^  ^^   |||        |  |    |||  OO  OO   |||        |  | In Frobs  |||    <<    |||  We Trust |  |      || (______) ||        |  |       |          |        |  |       |__________|        |   \\          /    \\    -- Lord Dimwit Flathead --    /     \\    -- Beloved of Zorkers --    /      \\       /       \\      * 722 G.U.E. *       /        \\     /         -------------------------- ">
+add_desc(find_obj("ZORKM");
+  "         --------------------------        /      Gold Zorkmid  \\       /  T e n   T h o u s a n d   \\      /        Z O R K M I D S    \\     /        \\    /        ||||||||||||||||||      \\   /        !||||   ||||!       \\  |    |||   ^^  ^^   |||        |  |    |||  OO  OO   |||        |  | In Frobs  |||    <<    |||  We Trust |  |      || (______) ||        |  |       |          |        |  |       |__________|        |   \\          /    \\    -- Lord Dimwit Flathead --    /     \\    -- Beloved of Zorkers --    /      \\       /       \\      * 722 G.U.E. *       /        \\     /         -------------------------- ");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SAFE"
       ""
       "box"
@@ -5288,18 +4882,16 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
-        ,OVISON>
+      _(,CONTBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       15}
-  ["BOX"]>
+  ["BOX"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CARD"
       "There is a card with writing on it here."
       "card"
@@ -5311,25 +4903,21 @@
       #FIND-OBJ
         {"SAFE"}
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
         ,READBIT
-        ,BURNBIT>
+        ,BURNBIT);
       0
       0
       0
       1
       0}
-  ["NOTE"]>
+  ["NOTE"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "CARD">
-  " Warning:     This room was constructed over very weak rock strata.  Detonation of explosives in this room is strictly prohibited!    Frobozz Magic Cave Company    per M. Agrippa, foreman ">
+add_desc(find_obj("CARD");
+  " Warning:     This room was constructed over very weak rock strata.  Detonation of explosives in this room is strictly prohibited!    Frobozz Magic Cave Company    per M. Agrippa, foreman ");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SSLOT"
       ""
       "hole"
@@ -5347,16 +4935,13 @@
       %,BIGFIX
       10}
   ["SLOT"
-    "HOLE"]>
+    "HOLE"]);
 
-<PUT
-  <FIND-OBJ
-    "SSLOT">
+put(find_obj("SSLOT");
   ,OOPEN?
-  T>
+  T);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CROWN"
       "Lord Dimwit's crown is here."
       "crown"
@@ -5367,19 +4952,17 @@
       #FIND-OBJ
         {"SAFE"}
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       15
       10
       10
       0}
   []
-  ["GAUDY"]>
+  ["GAUDY"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BRICK"
       "There is a square brick here which feels like clay."
       "brick"
@@ -5391,11 +4974,10 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,SEARCHBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -5403,16 +4985,13 @@
       2}
   ["BRICK"]
   ["SQUAR"
-    "CLAY"]>
+    "CLAY"]);
 
-<PUT
-  <FIND-OBJ
-    "BRICK">
+put(find_obj("BRICK");
   ,OOPEN?
-  T>
+  T);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"FUSE"
       "There is a coil of thin shiny wire here."
       "wire coil"
@@ -5423,10 +5002,9 @@
       %
       <>
       %
-      <+
-        ,BURNBIT
+      _(,BURNBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -5435,10 +5013,9 @@
   ["COIL"
     "WIRE"]
   ["SHINY"
-    "THIN"]>
+    "THIN"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GNOME"
       "There is a nervous Volcano Gnome here."
       "Volcano Gnome"
@@ -5449,18 +5026,16 @@
       %
       <>
       %
-      <+
-        ,VICBIT
-        ,OVISON>
+      _(,VICBIT
+        ,OVISON);
       0
       0
       0
       %,BIGFIX
       0}
-  ["TROLL"]>
+  ["TROLL"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BLABE"
       "There is a blue label here."
       "blue label"
@@ -5472,26 +5047,22 @@
       #FIND-OBJ
         {"BALLO"}
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
         ,READBIT
-        ,BURNBIT>
+        ,BURNBIT);
       0
       0
       0
       1
       0}
   ["LABEL"]
-  ["BLUE"]>
+  ["BLUE"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "BLABE">
-  "    !!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!  Hello, Aviator!  Instructions for use:        To get into balloon, say 'Board'    To leave balloon, say 'Disembark'    To land, say 'Land'      Warranty:        No warranty is expressed or implied.  You're on your own, sport!       Good Luck. ">
+add_desc(find_obj("BLABE");
+  "    !!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!  Hello, Aviator!  Instructions for use:        To get into balloon, say 'Board'    To leave balloon, say 'Disembark'    To land, say 'Land'      Warranty:        No warranty is expressed or implied.  You're on your own, sport!       Good Luck. ");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"DBALL"
       "There is a balloon here, broken into pieces."
       "broken balloon"
@@ -5503,9 +5074,8 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
-        ,OVISON>
+      _(,TAKEBIT
+        ,OVISON);
       0
       0
       0
@@ -5513,10 +5083,9 @@
       0}
   ["BALLO"
     "BASKE"]
-  ["BROKE"]>
+  ["BROKE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BLBK"
       "There is a blue book here."
       "blue book"
@@ -5528,21 +5097,19 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
       10
       2}
   ["BOOK"]
-  ["BLUE"]>
+  ["BLUE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"GRBK"
       "There is a green book here."
       "green book"
@@ -5554,21 +5121,19 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
       10
       2}
   ["BOOK"]
-  ["GREEN"]>
+  ["GREEN"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"PUBK"
       "There is a purple book here."
       "purple book"
@@ -5581,21 +5146,19 @@
       %
       <>
       %
-      <+
-        ,TAKEBIT
+      _(,TAKEBIT
         ,OVISON
         ,READBIT
-        ,CONTBIT>
+        ,CONTBIT);
       0
       0
       0
       10
       2}
   ["BOOK"]
-  ["PURPL"]>
+  ["PURPL"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"WHBK"
       "There is a white book here."
       "white book"
@@ -5607,42 +5170,32 @@
       %
       <>
       %
-      <+
-        ,CONTBIT
+      _(,CONTBIT
         ,TAKEBIT
         ,OVISON
-        ,READBIT>
+        ,READBIT);
       0
       0
       0
       10
       2}
   ["BOOK"]
-  ["WHITE"]>
+  ["WHITE"]);
 
-<PSETG
-  GREEK-TO-ME
-  "This book is written in a tongue with which I am unfamiliar.">
+psetg(GREEK-TO-ME
+  "This book is written in a tongue with which I am unfamiliar.");
 
-<ADD-DESC
-  <FIND-OBJ
-    "BLBK">
-  ,GREEK-TO-ME>
+add_desc(find_obj("BLBK");
+  ,GREEK-TO-ME);
 
-<ADD-DESC
-  <FIND-OBJ
-    "GRBK">
-  ,GREEK-TO-ME>
+add_desc(find_obj("GRBK");
+  ,GREEK-TO-ME);
 
-<ADD-DESC
-  <FIND-OBJ
-    "PUBK">
-  ,GREEK-TO-ME>
+add_desc(find_obj("PUBK");
+  ,GREEK-TO-ME);
 
-<ADD-DESC
-  <FIND-OBJ
-    "WHBK">
-  ,GREEK-TO-ME>
+add_desc(find_obj("WHBK");
+  ,GREEK-TO-ME);
 
 #OBJECT
   {"STAMP"
@@ -5656,60 +5209,44 @@
     #FIND-OBJ
       {"PUBK"}
     %
-    <+
-      ,TAKEBIT
+    _(,TAKEBIT
       ,READBIT
       ,BURNBIT
-      ,OVISON>
+      ,OVISON);
     0
     4
     10
     1
     0}
 
-<ADD-DESC
-  <FIND-OBJ
-    "STAMP">
-  " ---v----v----v----v----v----v----v----v--- |      | |    ||||||||||      LORD  | >         !||||      |     DIMWIT  < |   ||||    ---|    FLATHEAD  | |   |||C    CC \\     | >    ||||       _\\   < |     ||| (____|    | |      ||      |    | >       |______|      Our  < |  /   \\   Excessive  | |        /     \\     Leader  | >       |       |    < |       |       |    | |      | >    G.U.E. POSTAGE    3 Zorkmids    < |      | ---^----^----^----^----^----^----^----^--- ">
+add_desc(find_obj("STAMP");
+  " ---v----v----v----v----v----v----v----v--- |      | |    ||||||||||      LORD  | >         !||||      |     DIMWIT  < |   ||||    ---|    FLATHEAD  | |   |||C    CC \\     | >    ||||       _\\   < |     ||| (____|    | |      ||      |    | >       |______|      Our  < |  /   \\   Excessive  | |        /     \\     Leader  | >       |       |    < |       |       |    | |      | >    G.U.E. POSTAGE    3 Zorkmids    < |      | ---^----^----^----^----^----^----^----^--- ");
 
-<SETG
-  BLOC
-  <FIND-ROOM
-    "VLBOT">>
+setg(BLOC
+  find_room("VLBOT"););
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
-<PUT
-  <FIND-OBJ
-    "LAMP">
+put(find_obj("LAMP");
   ,ORAND
   [0
-    <CLOCK-DISABLE
-      <CLOCK-INT
-        ,LNTIN
-        350>>]>
+    clock_disable(clock_int(,LNTIN
+        350););]);
 
-<PUT
-  <FIND-OBJ
-    "CANDL">
+put(find_obj("CANDL");
   ,ORAND
-  <>>
+  <>);
 
-<PUT
-  <FIND-OBJ
-    "MATCH">
+put(find_obj("MATCH");
   ,ORAND
-  5>
+  5);
 
 // NUMBER OF MATCHES
 
-<PSETG
-  INDENTSTR
-  <REST
-    <ISTRING
-      8
-      !\>
-    8>>
+psetg(INDENTSTR
+  rest(istring(8
+      !\);
+    8););
 
 #ROOM
   {"TOMB"
@@ -5732,8 +5269,7 @@
     <>
     0}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"TOMB"
       "There is a tomb here, made of the finest marble, and large enough for four headless corpses.  On one end is the cryptic inscription:                \"Feel Free.\" "
       "tomb"
@@ -5744,19 +5280,15 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,READBIT
-        ,OVISON>}
-  ["GRAVE"]>
+        ,OVISON);}
+  ["GRAVE"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "TOMB">
-  "Here lie the implementers, whose heads were placed on poles by the Keeper of the Dungeon for amazing untastefulness.">
+add_desc(find_obj("TOMB");
+  "Here lie the implementers, whose heads were placed on poles by the Keeper of the Dungeon for amazing untastefulness.");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"HEADS"
       "There are four heads here, mounted securely on poles."
       "set of poled heads"
@@ -5767,10 +5299,9 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,SACREDBIT
-        ,OVISON>}
+        ,OVISON);}
   ["HEAD"
     "POLE"
     "POLES"
@@ -5779,10 +5310,9 @@
     "TAA"
     "MARC"
     "IMPLE"
-    "LOSER"]>
+    "LOSER"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"COKES"
       "Many empty Coke bottles are here.  Alas, they can't hold water."
       "bunch of Coke bottles"
@@ -5792,18 +5322,16 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,TAKEBIT>
+      _(,OVISON
+        ,TAKEBIT);
       0
       0
       0
       15}
   ["BOTTL"]
-  ["COKE"]>
+  ["COKE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"LISTS"
       "There is an enormous stack of line-printer paper here.  It is barely readable."
       "stack of listings"
@@ -5814,11 +5342,10 @@
       %
       <>
       %
-      <+
-        ,READBIT
+      _(,READBIT
         ,BURNBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
@@ -5827,15 +5354,12 @@
     "LIST"
     "PRINT"
     "LISTI"
-    "STACK"]>
+    "STACK"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "LISTS">
-  "<DEFINE FEEL-FREE (LOSER)      <TELL \"FEEL FREE, CHOMPER!\">>    ... The rest is, alas, unintelligible (as were the implementers).">
+add_desc(find_obj("LISTS");
+  "<DEFINE FEEL-FREE (LOSER)      <TELL \"FEEL FREE, CHOMPER!\">>    ... The rest is, alas, unintelligible (as were the implementers).");
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"LCASE"
       "There is a large case here, containing objects which you used to possess."
       "large case"
@@ -5847,21 +5371,15 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,TRANSBIT>}
+      _(,OVISON
+        ,TRANSBIT);}
   ["CASE"]
-  ["LARGE"]>
+  ["LARGE"]);
 
-<MAPF
-  <>
-  <FUNCTION
-    (X)
-    <RTRO
-      <FIND-ROOM
-        <SPNAME
-          .X>>
-      ,RFILLBIT>>
+mapf(<>
+  function((X)
+    rtro(find_room(spname(.X););
+      ,RFILLBIT););
   !
   [RESEN!-ROOMS
     RESES!-ROOMS
@@ -5878,28 +5396,20 @@
     WCLF1
     WCLF2
     FANTE
-    POG]>
+    POG]);
 
-<MAPF
-  <>
-  <FUNCTION
-    (X)
-    <RTRO
-      <FIND-ROOM
-        .X>
-      ,RHOUSEBIT>>
+mapf(<>
+  function((X)
+    rtro(find_room(.X);
+      ,RHOUSEBIT););
   ["LROOM"
     "KITCH"
-    "ATTIC"]>
+    "ATTIC"]);
 
-<MAPF
-  <>
-  <FUNCTION
-    (X)
-    <RTRO
-      <FIND-ROOM
-        .X>
-      ,RSACREDBIT>>
+mapf(<>
+  function((X)
+    rtro(find_room(.X);
+      ,RSACREDBIT););
   ["BSHAF"
     "RIVR1"
     "DOCK"
@@ -5934,25 +5444,22 @@
     "CLMID"
     "CLBOT"
     "RAINB"
-    "FALLS"]>
+    "FALLS"]);
 
-<SETG
-  BUCKET-TOP!-FLAG
-  <>>
+setg(BUCKET-TOP!-FLAG
+  <>);
 
-<SETG
-  MAGCMACH
+setg(MAGCMACH
   #CEXIT
     {"FROBOZZ"
       "CMACH"
-      ""}>
+      ""});
 
-<SETG
-  MAGALICE
+setg(MAGALICE
   #CEXIT
     {"FROBOZZ"
       "ALICE"
-      ""}>
+      ""});
 
 #ROOM
   {"MAGNE"
@@ -6028,8 +5535,7 @@
         {"CAGE"})
     CAGED-ROOM}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"CAGE"
       "There is a mangled cage here."
       "mangled cage"
@@ -6041,19 +5547,17 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,NDESCBIT>
+      _(,OVISON
+        ,NDESCBIT);
       0
       0
       0
       60
       0}
   []
-  []>
+  []);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RCAGE"
       "There is an iron cage in the middle of the room."
       "iron cage"
@@ -6071,10 +5575,9 @@
       0
       0}
   ["CAGE"]
-  ["IRON"]>
+  ["IRON"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SPHER"
       "There is a beautiful crystal sphere here."
       "crystal sphere"
@@ -6085,10 +5588,9 @@
       %
       <>
       %
-      <+
-        ,TRYTAKEBIT
+      _(,TRYTAKEBIT
         ,SACREDBIT
-        ,OVISON>
+        ,OVISON);
       0
       6
       6
@@ -6096,37 +5598,31 @@
       0}
   ["BALL"]
   ["CRYST"
-    "GLASS"]>
+    "GLASS"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "SQBUT"
+add_object(aobject("SQBUT"
     ,BUTSTR
     BUTTONS
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"]
-  ["SQUAR"]>
+  ["SQUAR"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "RNBUT"
+add_object(aobject("RNBUT"
     ,BUTSTR
     BUTTONS
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"]
-  ["ROUND"]>
+  ["ROUND"]);
 
-<ADD-OBJECT
-  <AOBJECT
-    "TRBUT"
+add_object(aobject("TRBUT"
     ,BUTSTR
     BUTTONS
     ,OVISON
-    ,NDESCBIT>
+    ,NDESCBIT);
   ["BUTTO"]
-  ["TRIAN"]>
+  ["TRIAN"]);
 
 #ROOM
   {"TWELL"
@@ -6146,9 +5642,8 @@
     <>
     10
     %
-    <+
-      ,RLANDBIT
-      ,RBUCKBIT>}
+    _(,RLANDBIT
+      ,RBUCKBIT);}
 
 #ROOM
   {"BWELL"
@@ -6170,43 +5665,33 @@
     <>
     0
     %
-    <+
-      ,RLANDBIT
-      ,RBUCKBIT>}
+    _(,RLANDBIT
+      ,RBUCKBIT);}
 
-<PSETG
-  EWALLS
+psetg(EWALLS
   ["ETCHI"
     "WALLS"
-    "WALL"]>
+    "WALL"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "ETCH1"
+add_object(sobject("ETCH1"
     "wall with etchings"
     ,OVISON
     ,NDESCBIT
-    ,READBIT>
-  ,EWALLS>
+    ,READBIT);
+  ,EWALLS);
 
-<ADD-OBJECT
-  <SOBJECT
-    "ETCH2"
+add_object(sobject("ETCH2"
     "wall with etchings"
     ,OVISON
     ,NDESCBIT
-    ,READBIT>
-  ,EWALLS>
+    ,READBIT);
+  ,EWALLS);
 
-<ADD-DESC
-  <FIND-OBJ
-    "ETCH2">
-  "          o  b  o       r     z    f   M  A  G  I  C   z    c    W  E   L  L    y       o    n           m  p  a ">
+add_desc(find_obj("ETCH2");
+  "          o  b  o       r     z    f   M  A  G  I  C   z    c    W  E   L  L    y       o    n           m  p  a ");
 
-<ADD-DESC
-  <FIND-OBJ
-    "ETCH1">
-  "          o  b  o                        A  G  I              E   L                        m  p  a ">
+add_desc(find_obj("ETCH1");
+  "          o  b  o                        A  G  I              E   L                        m  p  a ");
 
 #ROOM
   {"ALICE"
@@ -6233,10 +5718,9 @@
       #FIND-OBJ
         {"BLICE"})}
 
-<PSETG
-  SMDROP
+psetg(SMDROP
   #NEXIT
-    "There is a chasm too large to jump across.">
+    "There is a chasm too large to jump across.");
 
 #ROOM
   {"ALISM"
@@ -6274,8 +5758,7 @@
       #FIND-OBJ
         {"SAFFR"})}
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"FLASK"
       "A stoppered glass flask with a skull-and-crossbones marking is here. The flask is filled with some clear liquid."
       "glass flask filled with liquid"
@@ -6286,20 +5769,18 @@
       %
       <>
       %
-      <+
-        ,TRANSBIT
+      _(,TRANSBIT
         ,OVISON
-        ,TAKEBIT>
+        ,TAKEBIT);
       0
       0
       0
       10
       5}
   []
-  ["GLASS"]>
+  ["GLASS"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"POOL"
       "The leak has submerged the depressed area in a pool of sewage."
       "pool of sewage"
@@ -6311,19 +5792,17 @@
       %
       <>
       %
-      <+
-        ,OVISON
-        ,VICBIT>
+      _(,OVISON
+        ,VICBIT);
       0
       0
       0
       0
       0}
   ["SEWAG"]
-  ["LARGE"]>
+  ["LARGE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"SAFFR"
       "There is a tin of rare spices here."
       "tin of spices"
@@ -6342,27 +5821,22 @@
       0}
   ["TIN"
     "SPICE"]
-  ["RARE"]>
+  ["RARE"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "ATABL"
+add_object(sobject("ATABL"
     "large oblong table"
-    ,OVISON>
+    ,OVISON);
   []
   ["LARGE"
-    "OBLON"]>
+    "OBLON"]);
 
-<ADD-OBJECT
-  <SOBJECT
-    "POSTS"
+add_object(sobject("POSTS"
     "wooden posts"
-    ,OVISON>
+    ,OVISON);
   ["POST"]
-  ["WOODE"]>
+  ["WOODE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BUCKE"
       "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
       "wooden bucket"
@@ -6373,19 +5847,17 @@
       %
       <>
       %
-      <+
-        ,VEHBIT
-        ,OVISON>
+      _(,VEHBIT
+        ,OVISON);
       0
       0
       0
       100
       100}
   []
-  ["WOODE"]>
+  ["WOODE"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ECAKE"
       "There is a piece of cake here with the words 'Eat Me' on it."
       "piece of 'Eat Me' cake"
@@ -6396,10 +5868,9 @@
       %
       <>
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
-        ,FOODBIT>
+        ,FOODBIT);
       0
       0
       0
@@ -6407,10 +5878,9 @@
       0}
   ["CAKE"]
   ["EATME"
-    "EAT-M"]>
+    "EAT-M"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ORICE"
       "There is a piece of cake with orange icing here."
       "piece of cake with orange icing"
@@ -6421,11 +5891,10 @@
       %
       <>
       %
-      <+
-        ,READBIT
+      _(,READBIT
         ,OVISON
         ,TAKEBIT
-        ,FOODBIT>
+        ,FOODBIT);
       0
       0
       0
@@ -6433,10 +5902,9 @@
       0}
   ["CAKE"
     "ICING"]
-  ["ORANG"]>
+  ["ORANG"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RDICE"
       "There is a piece of cake with red icing here."
       "piece of cake with red icing"
@@ -6447,11 +5915,10 @@
       %
       <>
       %
-      <+
-        ,READBIT
+      _(,READBIT
         ,OVISON
         ,TAKEBIT
-        ,FOODBIT>
+        ,FOODBIT);
       0
       0
       0
@@ -6459,10 +5926,9 @@
       0}
   ["CAKE"
     "ICING"]
-  ["RED"]>
+  ["RED"]);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"BLICE"
       "There is a piece of cake with blue (ecch) icing here."
       "piece of cake with blue icing"
@@ -6473,11 +5939,10 @@
       %
       <>
       %
-      <+
-        ,READBIT
+      _(,READBIT
         ,OVISON
         ,TAKEBIT
-        ,FOODBIT>
+        ,FOODBIT);
       0
       0
       0
@@ -6486,19 +5951,15 @@
   ["CAKE"
     "ICING"]
   ["BLUE"
-    "ECCH"]>
+    "ECCH"]);
 
-<PUT
-  <PUT
-    <FIND-OBJ
-      "BUCKE">
+put(put(find_obj("BUCKE");
     ,OOPEN?
-    T>
+    T);
   ,ORAND
-  ,RBUCKBIT>
+  ,RBUCKBIT);
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"ROBOT"
       "There is a robot here."
       "robot"
@@ -6509,11 +5970,10 @@
       %
       <>
       %
-      <+
-        ,SACREDBIT
+      _(,SACREDBIT
         ,VICBIT
         ,OVISON
-        ,ACTORBIT>
+        ,ACTORBIT);
       0
       0
       0
@@ -6521,29 +5981,22 @@
       0}
   ["R2D2"
     "C3PO"
-    "ROBBY"]>
+    "ROBBY"]);
 
-<PUT
-  <FIND-OBJ
-    "ROBOT">
+put(find_obj("ROBOT");
   ,ORAND
-  <ADD-ACTOR
-    <CHTYPE
-      [<FIND-ROOM
-          "MAGNE">
+  add_actor(chtype([find_room("MAGNE");
         ()
         0
         <>
-        <FIND-OBJ
-          "ROBOT">
+        find_obj("ROBOT");
         ROBOT-ACTOR
         3
         T
         0]
-      ADV>>>
+      ADV);););
 
-<ADD-OBJECT
-  #OBJECT
+add_object(#OBJECT
     {"RBTLB"
       "There is a green piece of paper here."
       "green piece of paper"
@@ -6555,63 +6008,51 @@
       %
       <>
       %
-      <+
-        ,OVISON
+      _(,OVISON
         ,TAKEBIT
         ,READBIT
-        ,BURNBIT>
+        ,BURNBIT);
       0
       0
       0
       3
       0}
   ["PAPER"]
-  ["GREEN"]>
+  ["GREEN"]);
 
-<ADD-DESC
-  <FIND-OBJ
-    "RBTLB">
-  "   !!!!  FROBOZZ MAGIC ROBOT COMPANY  !!!!  Hello, Master!        I am a late-model robot, trained at MIT Tech to perform various simple household functions.   Instructions for use:    To activate me, use the following formula:  >TELL ROBOT '<something to do>' <cr>    The quotation marks are required!         Warranty:    No warranty is expressed or implied.           At your service! ">
+add_desc(find_obj("RBTLB");
+  "   !!!!  FROBOZZ MAGIC ROBOT COMPANY  !!!!  Hello, Master!        I am a late-model robot, trained at MIT Tech to perform various simple household functions.   Instructions for use:    To activate me, use the following formula:  >TELL ROBOT '<something to do>' <cr>    The quotation marks are required!         Warranty:    No warranty is expressed or implied.           At your service! ");
 
 // VERBS
 
-<SADD-ACTION
-  "BACK"
-  BACKER>
+sadd_action("BACK"
+  BACKER);
 
-<SADD-ACTION
-  "REPEN"
-  REPENT>
+sadd_action("REPEN"
+  REPENT);
 
-<SADD-ACTION
-  "TIME"
-  PLAY-TIME>
+sadd_action("TIME"
+  PLAY-TIME);
 
-<SADD-ACTION
-  "WAIT"
-  WAIT>
+sadd_action("WAIT"
+  WAIT);
 
-<SADD-ACTION
-  "CURSE"
-  CURSES>
+sadd_action("CURSE"
+  CURSES);
 
-<VSYNONYM
-  "CURSE"
+vsynonym("CURSE"
   "SHIT"
   "FUCK"
-  "DAMN">
+  "DAMN");
 
-<SADD-ACTION
-  "JARGON"
-  JARGON>
+sadd_action("JARGON"
+  JARGON);
 
-<VSYNONYM
-  "JARGON"
+vsynonym("JARGON"
   "FOO"
-  "BLETCH">
+  "BLETCH");
 
-<ADD-ACTION
-  "PUT"
+add_action("PUT"
   "Put"
   [OBJ
     "IN"
@@ -6622,29 +6063,25 @@
   ["DOWN"
     OBJ
     ["DROP"
-      DROPPER]]>
+      DROPPER]]);
 
-<ADD-ACTION
-  "PICK"
+add_action("PICK"
   "Pick"
   ["UP"
     OBJ
     ["TAKE"
-      TAKE]]>
+      TAKE]]);
 
-<VSYNONYM
-  "PUT"
+vsynonym("PUT"
   "STUFF"
   "PLACE"
-  "INSER">
+  "INSER");
 
-<1ADD-ACTION
-  "LOWER"
+1add_action("LOWER"
   "Lower"
-  R/L>
+  R/L);
 
-<ADD-ACTION
-  "RAISE"
+add_action("RAISE"
   "Raise"
   [OBJ
     ["RAISE"
@@ -6653,23 +6090,19 @@
   ["UP"
     OBJ
     ["RAISE"
-      R/L]]>
+      R/L]]);
 
-<VSYNONYM
-  "RAISE"
-  "LIFT">
+vsynonym("RAISE"
+  "LIFT");
 
-<1ADD-ACTION
-  "MELT"
+1add_action("MELT"
   "Melt"
-  MELTER>
+  MELTER);
 
-<VSYNONYM
-  "MELT"
-  "LIQUI">
+vsynonym("MELT"
+  "LIQUI");
 
-<ADD-ACTION
-  "LIGHT"
+add_action("LIGHT"
   "Light"
   [(,LIGHTBIT
       AOBJS
@@ -6686,23 +6119,20 @@
     (,FLAMEBIT
       AOBJS)
     ["LIGHT"
-      LAMP-ON]]>
+      LAMP-ON]]);
 
-<ADD-ACTION
-  "EXTIN"
+add_action("EXTIN"
   "Turn off"
   [(,LIGHTBIT
       AOBJS
       ROBJS)
     ["EXTIN"
-      LAMP-OFF]]>
+      LAMP-OFF]]);
 
-<VSYNONYM
-  "EXTIN"
-  "DOUSE">
+vsynonym("EXTIN"
+  "DOUSE");
 
-<ADD-ACTION
-  "TURN"
+add_action("TURN"
   "Turn"
   [(,TURNBIT
       AOBJS
@@ -6735,26 +6165,23 @@
     (-1
       ROBJS)
     ["TURN-TO"
-      TIME]]>
+      TIME]]);
 
-<ADD-ACTION
-  "TAKE"
+add_action("TAKE"
   "Take"
   [(-1
       ROBJS
       AOBJS
       NO-TAKE)
     ["TAKE"
-      TAKE]]>
+      TAKE]]);
 
-<VSYNONYM
-  "TAKE"
+vsynonym("TAKE"
   "GET"
   "HOLD"
-  "CARRY">
+  "CARRY");
 
-<ADD-ACTION
-  "LOOK"
+add_action("LOOK"
   "Look"
   [["LOOK"
       ROOM-DESC]]
@@ -6765,10 +6192,9 @@
   ["UNDER"
     OBJ
     ["LOOK-UNDER"
-      LOOK-UNDER]]>
+      LOOK-UNDER]]);
 
-<ADD-ACTION
-  "GIVE"
+add_action("GIVE"
   "Give"
   [OBJ
     "TO"
@@ -6784,15 +6210,13 @@
     OBJ
     ["GIVE"
       DROPPER]
-    FLIP]>
+    FLIP]);
 
-<VSYNONYM
-  "GIVE"
+vsynonym("GIVE"
   "HAND"
-  "DONAT">
+  "DONAT");
 
-<ADD-ACTION
-  "STRIK"
+add_action("STRIK"
   "Strike"
   [(,VICBIT
       =
@@ -6815,29 +6239,24 @@
       ROBJS
       AOBJS)
     ["LIGHT"
-      LAMP-ON]]>
+      LAMP-ON]]);
 
-<AADD-ACTION
-  "MOVE"
+aadd_action("MOVE"
   "Move"
-  MOVE>
+  MOVE);
 
-<VSYNONYM
-  "MOVE"
+vsynonym("MOVE"
   "PULL"
-  "TUG">
+  "TUG");
 
-<AADD-ACTION
-  "WAVE"
+aadd_action("WAVE"
   "Wave"
-  WAVER>
+  WAVER);
 
-<VSYNONYM
-  "BRAND"
-  "FLAUN">
+vsynonym("BRAND"
+  "FLAUN");
 
-<ADD-ACTION
-  "DROP"
+add_action("DROP"
   "Drop"
   [(-1
       AOBJS)
@@ -6849,14 +6268,12 @@
     "IN"
     OBJ
     ["DROP"
-      DROPPER]]>
+      DROPPER]]);
 
-<VSYNONYM
-  "DROP"
-  "RELEA">
+vsynonym("DROP"
+  "RELEA");
 
-<ADD-ACTION
-  "POUR"
+add_action("POUR"
   "Pour"
   [(-1
       AOBJS)
@@ -6868,14 +6285,12 @@
     "IN"
     OBJ
     ["POUR"
-      DROPPER]]>
+      DROPPER]]);
 
-<VSYNONYM
-  "POUR"
-  "SPILL">
+vsynonym("POUR"
+  "SPILL");
 
-<ADD-ACTION
-  "THROW"
+add_action("THROW"
   "Throw"
   [(-1
       AOBJS)
@@ -6884,182 +6299,146 @@
       ROBJS
       NO-TAKE)
     ["THROW"
-      DROPPER]]>
+      DROPPER]]);
 
-<VSYNONYM
-  "THROW"
+vsynonym("THROW"
   "HURL"
-  "CHUCK">
+  "CHUCK");
 
-<ADD-ACTION
-  "TELL"
+add_action("TELL"
   "Tell"
   [(,ACTORBIT)
     ["TELL"
-      COMMAND]]>
+      COMMAND]]);
 
-<VSYNONYM
-  "TELL"
+vsynonym("TELL"
   "COMMA"
-  "REQUE">
+  "REQUE");
 
-<VSYNONYM
-  "LOOK"
+vsynonym("LOOK"
   "L"
   "STARE"
-  "GAZE">
+  "GAZE");
 
-<SADD-ACTION
-  "BRIEF"
-  BRIEF>
+sadd_action("BRIEF"
+  BRIEF);
 
-<SADD-ACTION
-  "UNBRI"
-  UN-BRIEF>
+sadd_action("UNBRI"
+  UN-BRIEF);
 
-<SADD-ACTION
-  "SUPER"
-  SUPER-BRIEF>
+sadd_action("SUPER"
+  SUPER-BRIEF);
 
-<SADD-ACTION
-  "UNSUP"
-  UN-SUPER-BRIEF>
+sadd_action("UNSUP"
+  UN-SUPER-BRIEF);
 
-<1ADD-ACTION
-  "EXAMI"
+1add_action("EXAMI"
   "Examine"
-  ROOM-INFO>
+  ROOM-INFO);
 
-<VSYNONYM
-  "EXAMI"
+vsynonym("EXAMI"
   "DESCR"
   "WHAT"
   "WHATS"
-  "WHAT'">
+  "WHAT'");
 
-<1ADD-ACTION
-  "FIND"
+1add_action("FIND"
   "Find"
-  FIND>
+  FIND);
 
-<VSYNONYM
-  "WHERE"
+vsynonym("WHERE"
   "FIND"
   "SEEK"
-  "SEE">
+  "SEE");
 
-<SADD-ACTION
-  "INVEN"
-  INVENT>
+sadd_action("INVEN"
+  INVENT);
 
-<VSYNONYM
-  "INVEN"
-  "LIST">
+vsynonym("INVEN"
+  "LIST");
 
-<SADD-ACTION
-  "VERSI"
-  VERSION>
+sadd_action("VERSI"
+  VERSION);
 
-<SADD-ACTION
-  "SCRIP"
-  DO-SCRIPT>
+sadd_action("SCRIP"
+  DO-SCRIPT);
 
-<SADD-ACTION
-  "UNSCR"
-  DO-UNSCRIPT>
+sadd_action("UNSCR"
+  DO-UNSCRIPT);
 
-<SADD-ACTION
-  "SAVE"
-  DO-SAVE>
+sadd_action("SAVE"
+  DO-SAVE);
 
-<SADD-ACTION
-  "RESTO"
-  DO-RESTORE>
+sadd_action("RESTO"
+  DO-RESTORE);
 
-<SADD-ACTION
-  "WALK-IN"
-  TIME>
+sadd_action("WALK-IN"
+  TIME);
 
-<SADD-ACTION
-  "C-INT"
-  TIME>
+sadd_action("C-INT"
+  TIME);
 
 // funny verb for clock ints
 
-<SADD-ACTION
-  "DEAD!"
-  TIME>
+sadd_action("DEAD!"
+  TIME);
 
 // funny verb for killing villains
 
-<SADD-ACTION
-  "FIRST?"
-  TIME>
+sadd_action("FIRST?"
+  TIME);
 
 // funny verb for surprise by villains
 
-<SADD-ACTION
-  "DIAGN"
-  DIAGNOSE>
+sadd_action("DIAGN"
+  DIAGNOSE);
 
-<SADD-ACTION
-  "HACK?"
-  TIME>
+sadd_action("HACK?"
+  TIME);
 
 // funny verb for villain fight decisions
 
-<SADD-ACTION
-  "SCORE"
-  SCORE>
+sadd_action("SCORE"
+  SCORE);
 
-<SADD-ACTION
-  "QUIT"
-  FINISH>
+sadd_action("QUIT"
+  FINISH);
 
-<SADD-ACTION
-  "INFO"
-  INFO>
+sadd_action("INFO"
+  INFO);
 
-<SADD-ACTION
-  "HELP"
-  HELP>
+sadd_action("HELP"
+  HELP);
 
-<ADD-ACTION
-  "PLUG"
+add_action("PLUG"
   "Plug"
   [OBJ
     "WITH"
     OBJ
     ["PLUG"
-      PLUGGER]]>
+      PLUGGER]]);
 
-<VSYNONYM
-  "PLUG"
+vsynonym("PLUG"
   "GLUE"
-  "PATCH">
+  "PATCH");
 
-<1ADD-ACTION
-  "RUB"
+1add_action("RUB"
   "Rub"
-  RUBBER>
+  RUBBER);
 
-<VSYNONYM
-  "RUB"
+vsynonym("RUB"
   "CARES"
   "TOUCH"
-  "FONDL">
+  "FONDL");
 
-<SADD-ACTION
-  "SWIM"
-  SWIMMER>
+sadd_action("SWIM"
+  SWIMMER);
 
-<VSYNONYM
-  "SWIM"
+vsynonym("SWIM"
   "BATHE"
-  "WADE">
+  "WADE");
 
-<ADD-ACTION
-  "BURN"
+add_action("BURN"
   "Burn"
   [(,BURNBIT
       AOBJS
@@ -7070,15 +6449,13 @@
       AOBJS
       ROBJS)
     ["BURN"
-      BURNER]]>
+      BURNER]]);
 
-<VSYNONYM
-  "BURN"
+vsynonym("BURN"
   "INCIN"
-  "IGNIT">
+  "IGNIT");
 
-<ADD-ACTION
-  "KILL"
+add_action("KILL"
   "Kill"
   [(,VILLAIN
       ROBJS
@@ -7087,16 +6464,14 @@
     (,WEAPONBIT
       AOBJS)
     ["KILL"
-      KILLER]]>
+      KILLER]]);
 
-<VSYNONYM
-  "KILL"
+vsynonym("KILL"
   "MURDE"
   "SLAY"
-  "DISPA">
+  "DISPA");
 
-<ADD-ACTION
-  "ATTAC"
+add_action("ATTAC"
   "Attack"
   [(,VILLAIN
       ROBJS
@@ -7105,10 +6480,9 @@
     (,WEAPONBIT
       AOBJS)
     ["ATTAC"
-      ATTACKER]]>
+      ATTACKER]]);
 
-<VSYNONYM
-  "ATTAC"
+vsynonym("ATTAC"
   "FIGHT"
   "MUNG"
   "HACK"
@@ -7116,10 +6490,9 @@
   "HURT"
   "INJUR"
   "DAMAG"
-  "HIT">
+  "HIT");
 
-<ADD-ACTION
-  "SWING"
+add_action("SWING"
   "Swing"
   [(,WEAPONBIT
       AOBJS)
@@ -7128,14 +6501,12 @@
       ROBJS
       NO-TAKE)
     ["SWING"
-      SWINGER]]>
+      SWINGER]]);
 
-<VSYNONYM
-  "SWING"
-  "THRUS">
+vsynonym("SWING"
+  "THRUS");
 
-<ADD-ACTION
-  "POKE"
+add_action("POKE"
   "Poke"
   [(,VILLAIN
       ROBJS
@@ -7144,64 +6515,52 @@
     (,WEAPONBIT
       AOBJS)
     ["POKE"
-      MUNGER]]>
+      MUNGER]]);
 
-<VSYNONYM
-  "POKE"
+vsynonym("POKE"
   "JAB"
-  "BREAK">
+  "BREAK");
 
-<1ADD-ACTION
-  "KICK"
+1add_action("KICK"
   "Kick"
-  KICKER>
+  KICKER);
 
-<VSYNONYM
-  "KICK"
+vsynonym("KICK"
   "BITE"
-  "TAUNT">
+  "TAUNT");
 
-<1ADD-ACTION
-  "PUSH"
+1add_action("PUSH"
   "Push"
-  PUSHER>
+  PUSHER);
 
-<VSYNONYM
-  "PUSH"
-  "PRESS">
+vsynonym("PUSH"
+  "PRESS");
 
-<ADD-ACTION
-  "OPEN"
+add_action("OPEN"
   "Open"
-  [(<+
-        ,DOORBIT
-        ,CONTBIT>
+  [(_(,DOORBIT
+        ,CONTBIT);
       AOBJS
       ROBJS
       NO-TAKE)
     ["OPEN"
-      OPENER]]>
+      OPENER]]);
 
-<VSYNONYM
-  "OPEN">
+vsynonym("OPEN");
 
-<ADD-ACTION
-  "CLOSE"
+add_action("CLOSE"
   "Close"
-  [(<+
-        ,DOORBIT
-        ,CONTBIT>
+  [(_(,DOORBIT
+        ,CONTBIT);
       AOBJS
       ROBJS
       NO-TAKE)
     ["CLOSE"
-      CLOSER]]>
+      CLOSER]]);
 
-<VSYNONYM
-  "CLOSE">
+vsynonym("CLOSE");
 
-<ADD-ACTION
-  "UNLOC"
+add_action("UNLOC"
   "Unlock"
   [(-1
       ROBJS
@@ -7211,72 +6570,62 @@
       AOBJS
       ROBJS)
     ["UNLOC"
-      UNLOCKER]]>
+      UNLOCKER]]);
 
-<ADD-ACTION
-  "LOCK"
+add_action("LOCK"
   "Lock"
   [(-1
       ROBJS
       NO-TAKE)
     ["LOCK"
-      LOCKER]]>
+      LOCKER]]);
 
-<ADD-ACTION
-  "TIE"
+add_action("TIE"
   "Tie"
   [OBJ
     "TO"
     OBJ
     ["TIE"
-      TIE]]>
+      TIE]]);
 
-<VSYNONYM
-  "TIE"
+vsynonym("TIE"
   "KNOT"
-  "FASTE">
+  "FASTE");
 
-<1ADD-ACTION
-  "RING"
+1add_action("RING"
   "Ring"
-  RING>
+  RING);
 
-<VSYNONYM
-  "RING"
-  "PEAL">
+vsynonym("RING"
+  "PEAL");
 
-<ADD-ACTION
-  "EAT"
+add_action("EAT"
   "Eat"
   [(,FOODBIT
       AOBJS
       ROBJS)
     ["EAT"
-      EAT]]>
+      EAT]]);
 
-<VSYNONYM
-  "EAT"
+vsynonym("EAT"
   "CONSU"
   "GOBBL"
   "MUNCH"
-  "TASTE">
+  "TASTE");
 
-<ADD-ACTION
-  "DRINK"
+add_action("DRINK"
   "Drink"
   [(,DRINKBIT
       AOBJS
       ROBJS)
     ["DRINK"
-      EAT]]>
+      EAT]]);
 
-<VSYNONYM
-  "DRINK"
+vsynonym("DRINK"
   "IMBIB"
-  "SWALL">
+  "SWALL");
 
-<ADD-ACTION
-  "BRUSH"
+add_action("BRUSH"
   "Brush"
   [(-1
       AOBJS
@@ -7290,158 +6639,125 @@
     "WITH"
     OBJ
     ["BRUSH"
-      BRUSH]]>
+      BRUSH]]);
 
-<VSYNONYM
-  "BRUSH"
-  "CLEAN">
+vsynonym("BRUSH"
+  "CLEAN");
 
-<1ADD-ACTION
-  "UNTIE"
+1add_action("UNTIE"
   "Untie"
-  UNTIE>
+  UNTIE);
 
-<VSYNONYM
-  "UNTIE"
+vsynonym("UNTIE"
   "RELEA"
-  "FREE">
+  "FREE");
 
-<SADD-ACTION
-  "EXORC"
-  EXORCISE>
+sadd_action("EXORC"
+  EXORCISE);
 
-<VSYNONYM
-  "EXORC"
-  "XORCI">
+vsynonym("EXORC"
+  "XORCI");
 
-<SADD-ACTION
-  "CHOMP"
-  CHOMP>
+sadd_action("CHOMP"
+  CHOMP);
 
-<VSYNONYM
-  "CHOMP"
+vsynonym("CHOMP"
   "LOSE"
-  "BARF">
+  "BARF");
 
-<SADD-ACTION
-  "YELL"
-  YELL>
+sadd_action("YELL"
+  YELL);
 
-<VSYNONYM
-  "YELL"
+vsynonym("YELL"
   "SCREA"
-  "SHOUT">
+  "SHOUT");
 
-<SADD-ACTION
-  "WIN"
-  WIN>
+sadd_action("WIN"
+  WIN);
 
-<VSYNONYM
-  "WIN"
-  "WINNA">
+vsynonym("WIN"
+  "WINNA");
 
-<SADD-ACTION
-  "FROBO"
-  FROBOZZ>
+sadd_action("FROBO"
+  FROBOZZ);
 
-<SADD-ACTION
-  "TREAS"
-  TREAS>
+sadd_action("TREAS"
+  TREAS);
 
-<SADD-ACTION
-  "TEMPL"
-  TREAS>
+sadd_action("TEMPL"
+  TREAS);
 
-<SADD-ACTION
-  "PRAY"
-  PRAYER>
+sadd_action("PRAY"
+  PRAYER);
 
-<SADD-ACTION
-  "JUMP"
-  LEAPER>
+sadd_action("JUMP"
+  LEAPER);
 
-<SADD-ACTION
-  "SKIP"
-  SKIPPER>
+sadd_action("SKIP"
+  SKIPPER);
 
-<VSYNONYM
-  "SKIP"
-  "HOP">
+vsynonym("SKIP"
+  "HOP");
 
-<SADD-ACTION
-  "MUMBL"
-  MUMBLER>
+sadd_action("MUMBL"
+  MUMBLER);
 
-<VSYNONYM
-  "MUMBL"
-  "SIGH">
+vsynonym("MUMBL"
+  "SIGH");
 
-<SADD-ACTION
-  "ZORK"
-  ZORK>
+sadd_action("ZORK"
+  ZORK);
 
-<SADD-ACTION
-  "DUNGE"
-  DUNGEON>
+sadd_action("DUNGE"
+  DUNGEON);
 
-<ADD-ACTION
-  "WAKE"
+add_action("WAKE"
   "Wake"
   [(,VICBIT
       ROBJS
       NO-TAKE)
     ["WAKE"
-      ALARM]]>
+      ALARM]]);
 
-<VSYNONYM
-  "WAKE"
+vsynonym("WAKE"
   "AWAKE"
   "SURPR"
-  "START">
+  "START");
 
-<ADD-ACTION
-  "HELLO"
+add_action("HELLO"
   "Hello"
   [["HELLO"
       HELLO]
     DRIVER]
   [OBJ
     ["HELLO"
-      HELLO]]>
+      HELLO]]);
 
-<VSYNONYM
-  "HELLO"
-  "HI">
+vsynonym("HELLO"
+  "HI");
 
-<1ADD-ACTION
-  "GRANI"
+1add_action("GRANI"
   "Granite"
-  GRANITE>
+  GRANITE);
 
-<VSYNONYM
-  "JUMP"
+vsynonym("JUMP"
   "LEAP"
-  "VAULT">
+  "VAULT");
 
-<1ADD-ACTION
-  "FILL"
+1add_action("FILL"
   "Fill"
-  FILL>
+  FILL);
 
-<SADD-ACTION
-  "WELL"
-  WELL>
+sadd_action("WELL"
+  WELL);
 
-<SADD-ACTION
-  "ODYSS"
-  SINBAD>
+sadd_action("ODYSS"
+  SINBAD);
 
-<VSYNONYM
-  "ODYSS"
-  "ULYSS">
+vsynonym("ODYSS"
+  "ULYSS");
 
-<ADD-ACTION
-  "READ"
+add_action("READ"
   "Read"
   [(,READBIT
       AOBJS
@@ -7457,20 +6773,17 @@
     "WITH"
     OBJ
     ["READ"
-      READER]]>
+      READER]]);
 
-<VSYNONYM
-  "READ"
+vsynonym("READ"
   "SKIM"
-  "SCAN">
+  "SCAN");
 
-<1ADD-ACTION
-  "DEFLA"
+1add_action("DEFLA"
   "Deflate"
-  DEFLATER>
+  DEFLATER);
 
-<ADD-ACTION
-  "INFLA"
+add_action("INFLA"
   "Inflate"
   [OBJ
     "WITH"
@@ -7479,37 +6792,33 @@
       AOBJS
       NO-TAKE)
     ["INFLA"
-      INFLATER]]>
+      INFLATER]]);
 
-<ADD-ACTION
-  "DISEM"
+add_action("DISEM"
   "Disembark from"
   [(,VEHBIT
       ROBJS
       NO-TAKE)
     ["DISEM"
-      UNBOARD]]>
+      UNBOARD]]);
 
-<ADD-ACTION
-  "DIG"
+add_action("DIG"
   "Dig"
   ["WITH"
     (,TOOLBIT
       AOBJS)
     ["DIG"
-      DIGGER]]>
+      DIGGER]]);
 
-<ADD-ACTION
-  "BOARD"
+add_action("BOARD"
   "Board"
   [(,VEHBIT
       ROBJS
       NO-TAKE)
     ["BOARD"
-      BOARD]]>
+      BOARD]]);
 
-<ADD-ACTION
-  "KNOCK"
+add_action("KNOCK"
   "Knock"
   ["AT"
     OBJ
@@ -7526,28 +6835,23 @@
       ROBJS
       NO-TAKE)
     ["ATTAC"
-      ATTACKER]]>
+      ATTACKER]]);
 
-<SADD-ACTION
-  "GERON"
-  GERONIMO>
+sadd_action("GERON"
+  GERONIMO);
 
-<SADD-ACTION
-  "BLAST"
-  BLAST>
+sadd_action("BLAST"
+  BLAST);
 
-<1ADD-ACTION
-  "WALK"
+1add_action("WALK"
   "Walk"
-  WALK>
+  WALK);
 
-<ADD-BUZZ
-  "RUN"
+add_buzz("RUN"
   "GO"
-  "PROCE">
+  "PROCE");
 
-<SETG
-  ROBOT-ACTIONS
+setg(ROBOT-ACTIONS
   !
   [,WALK!-WORDS
     ,TAKE!-WORDS
@@ -7556,20 +6860,16 @@
     ,JUMP!-WORDS
     ,PUSH!-WORDS
     ,THROW!-WORDS
-    ,TURN!-WORDS]>
+    ,TURN!-WORDS]);
 
-<SETG
-  PLAYER
-  <ADD-ACTOR
-    <CHTYPE
-      [,WHOUS!-ROOMS
+setg(PLAYER
+  add_actor(chtype([,WHOUS!-ROOMS
         ()
         0
         <>
-        <FIND-OBJ
-          "#####">
+        find_obj("#####");
         <>
         0
         T
         0]
-      ADV>>>
+      ADV);););
