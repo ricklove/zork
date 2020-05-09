@@ -2,302 +2,164 @@
 
 // GLOBAL VARIABLES WHICH ARE ROOMS MUST BE HERE!
 
-psetg(RMGVALS
-  '!
-    [BLOC
-      HERE!]);
+psetg(rmgvals, '_
+    [bloc
+      here_])
 
 // GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 
-psetg(OBJGVALS
-  '!
-    [!]);
+psetg(objgvals, '_
+    [_])
 
 // GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 
-psetg(MGVALS
-  '!
-    [KITCHEN-WINDOW!-FLAG
-      TROLL-FLAG!-FLAG
-      CAGE-SOLVE!-FLAG
-      KEY-FLAG!-FLAG
-      BUCKET-TOP!-FLAG
-      CAROUSEL-FLIP!-FLAG
-      CAROUSEL-ZOOM!-FLAG
-      LOW-TIDE!-FLAG
-      DOME-FLAG!-FLAG
-      GLACIER-FLAG!-FLAG
-      ECHO-FLAG!-FLAG
-      RIDDLE-FLAG!-FLAG
-      LLD-FLAG!-FLAG
-      CYCLOPS-FLAG!-FLAG
-      MAGIC-FLAG!-FLAG
-      TRAP-DOOR!-FLAG
-      LIGHT-LOAD!-FLAG
-      SAFE-FLAG!-FLAG
-      GNOME-FLAG!-FLAG
-      GNOME-DOOR!-FLAG
-      MIRROR-MUNG!-FLAG
-      EGYPT-FLAG!-FLAG
-      ON-POLE!-FLAG
-      BLAB!-FLAG
-      BINF!-FLAG
-      BTIE!-FLAG
-      BUOY-FLAG!-FLAG
-      GRUNLOCK!-FLAG
-      GATE-FLAG!-FLAG
-      RAINBOW!-FLAG
-      CAGE-TOP!-FLAG
-      EMPTY-HANDED!-FLAG
-      DEFLATE!-FLAG
-      LIGHT-SHAFT
-      PLAYED-TIME
-      MOVES
-      BRIEF!-FLAG
-      THEN
-      SUPER-BRIEF!-FLAG
-      RAW-SCORE!]);
+psetg(mgvals, '_
+    [kitchen_window!-flag
+      troll_flag!-flag
+      cage_solve!-flag
+      key_flag!-flag
+      bucket_top!-flag
+      carousel_flip!-flag
+      carousel_zoom!-flag
+      low_tide!-flag
+      dome_flag!-flag
+      glacier_flag!-flag
+      echo_flag!-flag
+      riddle_flag!-flag
+      lld_flag!-flag
+      cyclops_flag!-flag
+      magic_flag!-flag
+      trap_door!-flag
+      light_load!-flag
+      safe_flag!-flag
+      gnome_flag!-flag
+      gnome_door!-flag
+      mirror_mung!-flag
+      egypt_flag!-flag
+      on_pole!-flag
+      blab_-flag
+      binf_-flag
+      btie_-flag
+      buoy_flag!-flag
+      grunlock_-flag
+      gate_flag!-flag
+      rainbow_-flag
+      cage_top!-flag
+      empty_handed!-flag
+      deflate_-flag
+      light_shaft
+      played_time
+      moves
+      brief_-flag
+      then
+      super_brief!-flag
+      raw_score!])
 
-psetg(CNTUSE
-  "You can't use that!");
+psetg(cntuse, "You can't use that!")
 
-setg(BIGFIX
-  _(chtype(min();
-      FIX);
-    2););
+setg(bigfix, _(chtype(min(), fix), 2))
 
-setg(WORDS
-  or(get(WORDS
-      OBLIST);
-    moblist(WORDS
-      23);););
+setg(words, or(get(words, oblist), moblist(words, 23)))
 
-setg(OBJECT-OBL
-  or(get(OBJECTS
-      OBLIST);
-    moblist(OBJECTS);););
+setg(object_obl, or(get(objects, oblist), moblist(objects)))
 
-setg(ROOM-OBL
-  or(get(ROOMS
-      OBLIST);
-    moblist(ROOMS);););
+setg(room_obl, or(get(rooms, oblist), moblist(rooms)))
 
-setg(ACTORS
-  ());
+setg(actors, ())
 
-setg(STARS
-  ());
+setg(stars, ())
 
-add_buzz("BY"
-  "IS"
-  "ONE"
-  "IT"
-  "A"
-  "THE"
-  "AN"
-  "THIS"
-  "OVER");
+add_buzz("BY", "IS", "ONE", "IT", "A", "THE", "AN", "THIS", "OVER")
 
-add_directions("#!#!#"
-  "NORTH"
-  "SOUTH"
-  "EAST"
-  "WEST"
-  "LAUNC"
-  "LAND"
-  "SE"
-  "SW"
-  "NE"
-  "NW"
-  "UP"
-  "DOWN"
-  "ENTER"
-  "EXIT"
-  "CROSS"
-  "CLIMB");
+add_directions("#!#!#", "NORTH", "SOUTH", "EAST", "WEST", "LAUNC", "LAND", "SE", "SW", "NE", "NW", "UP", "DOWN", "ENTER", "EXIT", "CROSS", "CLIMB")
 
-dsynonym("NORTH"
-  "N");
+dsynonym("NORTH", "N")
 
-dsynonym("SOUTH"
-  "S");
+dsynonym("SOUTH", "S")
 
-dsynonym("EAST"
-  "E");
+dsynonym("EAST", "E")
 
-dsynonym("WEST"
-  "W");
+dsynonym("WEST", "W")
 
-dsynonym("UP"
-  "U");
+dsynonym("UP", "U")
 
-dsynonym("DOWN"
-  "D");
+dsynonym("DOWN", "D")
 
-dsynonym("ENTER"
-  "IN");
+dsynonym("ENTER", "IN")
 
-dsynonym("EXIT"
-  "OUT"
-  "LEAVE");
+dsynonym("EXIT", "OUT", "LEAVE")
 
-dsynonym("CROSS"
-  "TRAVE");
+dsynonym("CROSS", "TRAVE")
 
-add_zork(PREP
-  "WITH"
-  "AT"
-  "TO"
-  "IN"
-  "DOWN"
-  "UP"
-  "UNDER");
+add_zork(prep, "WITH", "AT", "TO", "IN", "DOWN", "UP", "UNDER")
 
-synonym("WITH"
-  "USING"
-  "THROU");
+synonym("WITH", "USING", "THROU")
 
-synonym("IN"
-  "INSID"
-  "INTO");
+synonym("IN", "INSID", "INTO")
 
-setg(ROOMS
-  ());
+setg(rooms, ())
 
-setg(OBJECTS
-  ());
+setg(objects, ())
 
 "CEVENT DEFINITIONS"
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,CURE-CLOCK
-    <>
-    "CURIN"););
+or(lookup("COMPILE", root()), cevent(0, _cure-clock, <>, "CURIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,MAINT-ROOM
-    T
-    "MNTIN"););
+or(lookup("COMPILE", root()), cevent(0, _maint-room, t, "MNTIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,LANTERN
-    T
-    "LNTIN"););
+or(lookup("COMPILE", root()), cevent(0, _lantern, t, "LNTIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,MATCH-FUNCTION
-    T
-    MATIN););
+or(lookup("COMPILE", root()), cevent(0, _match-function, t, matin))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,CANDLES
-    T
-    "CNDIN"););
+or(lookup("COMPILE", root()), cevent(0, _candles, t, "CNDIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,BALLOON
-    T
-    "BINT"););
+or(lookup("COMPILE", root()), cevent(0, _balloon, t, "BINT"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,BURNUP
-    T
-    "BRNIN"););
+or(lookup("COMPILE", root()), cevent(0, _burnup, t, "BRNIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,FUSE-FUNCTION
-    T
-    "FUSIN"););
+or(lookup("COMPILE", root()), cevent(0, _fuse-function, t, "FUSIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,LEDGE-MUNG
-    T
-    "LEDIN"););
+or(lookup("COMPILE", root()), cevent(0, _ledge-mung, t, "LEDIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,SAFE-MUNG
-    T
-    "SAFIN"););
+or(lookup("COMPILE", root()), cevent(0, _safe-mung, t, "SAFIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,VOLGNOME
-    T
-    "VLGIN"););
+or(lookup("COMPILE", root()), cevent(0, _volgnome, t, "VLGIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,GNOME-FUNCTION
-    T
-    "GNOIN"););
+or(lookup("COMPILE", root()), cevent(0, _gnome-function, t, "GNOIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,BUCKET
-    T
-    "BCKIN"););
+or(lookup("COMPILE", root()), cevent(0, _bucket, t, "BCKIN"))
 
-or(lookup("COMPILE"
-    root(););
-  cevent(0
-    ,SPHERE-FUNCTION
-    T
-    "SPHIN"););
+or(lookup("COMPILE", root()), cevent(0, _sphere-function, t, "SPHIN"))
 
 // KLUDGE
 
-#OBJECT
+#object
   {"#####"
     "You are here"
     "cretin"
-    %
+    _
     <>
-    %
+    _
     <>
     ()
-    %
+    _
     <>
-    %,OVISON}
+    _,ovison}
 
 "MAZE"
 
-psetg(FOREST
-  "Forest");
+psetg(forest, "Forest")
 
-psetg(CURRENT
-  #NEXIT
-    "You cannot go upstream due to strong currents.");
+psetg(current, #nexit
+    "You cannot go upstream due to strong currents.")
 
-#ROOM
+#room
   {"PASS1"
-    "You are in a narrow east-west passageway.  There is a narrow stairway leading down at the north end of the room."
+    "You are in a narrow east-west passageway.  There is a narrow stairway\nleading down at the north end of the room."
     "East-West Passage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "CAROU"
         "WEST"
@@ -307,16 +169,16 @@ psetg(CURRENT
         "NORTH"
         "RAVI1"}
     ()
-    %
+    _
     <>
     5}
 
-#ROOM
+#room
   {"WHOUS"
-    "You are in an open field west of a big white house, with a boarded front door."
+    "You are in an open field west of a big white house, with a boarded\nfront door."
     "West of House"
-    T
-    #EXIT
+    t
+    #exit
       {"NORTH"
         "NHOUS"
         "SOUTH"
@@ -324,19 +186,19 @@ psetg(CURRENT
         "WEST"
         "FORE1"
         "EAST"
-        #NEXIT
+        #nexit
           "The door is locked, and there is evidently no key."}
-    (#FIND-OBJ
+    (#find_obj
         {"FDOOR"}
-      #FIND-OBJ
+      #find_obj
         {"MAILB"})}
 
-#ROOM
+#room
   {"NHOUS"
-    "You are facing the north side of a white house.  There is no door here, and all the windows are barred."
+    "You are facing the north side of a white house.  There is no door here,\nand all the windows are barred."
     "North of House"
-    T
-    #EXIT
+    t
+    #exit
       {"WEST"
         "WHOUS"
         "EAST"
@@ -344,15 +206,15 @@ psetg(CURRENT
         "NORTH"
         "FORE3"
         "SOUTH"
-        #NEXIT
+        #nexit
           "The windows are all barred."}}
 
-#ROOM
+#room
   {"SHOUS"
-    "You are facing the south side of a white house. There is no door here, and all the windows are barred."
+    "You are facing the south side of a white house. There is no door here,\nand all the windows are barred."
     "South of House"
-    T
-    #EXIT
+    t
+    #exit
       {"WEST"
         "WHOUS"
         "EAST"
@@ -360,16 +222,16 @@ psetg(CURRENT
         "SOUTH"
         "FORE2"
         "NORTH"
-        #NEXIT
+        #nexit
           "The windows are all barred."}
     ()}
 
-#ROOM
+#room
   {"EHOUS"
     ""
     "Behind House"
-    T
-    #EXIT
+    t
+    #exit
       {"NORTH"
         "NHOUS"
         "SOUTH"
@@ -377,654 +239,572 @@ psetg(CURRENT
         "EAST"
         "CLEAR"
         "WEST"
-        #CEXIT
+        #cexit
           {"KITCHEN-WINDOW"
             "KITCH"}
         "ENTER"
-        #CEXIT
+        #cexit
           {"KITCHEN-WINDOW"
             "KITCH"}}
-    (#FIND-OBJ
+    (#find_obj
         {"WIND1"})
-    EAST-HOUSE}
+    east_house}
 
-#ROOM
+#room
   {"KITCH"
     ""
     "Kitchen"
-    T
-    #EXIT
+    t
+    #exit
       {"EAST"
-        #CEXIT
+        #cexit
           {"KITCHEN-WINDOW"
             "EHOUS"}
         "WEST"
         "LROOM"
         "EXIT"
-        #CEXIT
+        #cexit
           {"KITCHEN-WINDOW"
             "EHOUS"}
         "UP"
         "ATTIC"
         "DOWN"
-        #NEXIT
+        #nexit
           "Only Santa Claus climbs down chimneys."}
-    (#FIND-OBJ
+    (#find_obj
         {"WIND2"}
-      #FIND-OBJ
+      #find_obj
         {"SBAG"}
-      #FIND-OBJ
+      #find_obj
         {"BOTTL"})
-    KITCHEN
+    kitchen
     10}
 
-add_object(#OBJECT
+add_object(#object
     {"SBAG"
       "A sandwich bag is here."
       "sandwich bag"
       "On the table is an elongated brown sack, smelling of hot peppers."
-      %
+      _
       <>
-      (#FIND-OBJ
+      (#find_obj
           {"GARLI"}
-        #FIND-OBJ
+        #find_obj
           {"FOOD"})
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,FLAMEBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_contbit, _flamebit, _ovison, _takebit)
       0
       0
       0
       3
-      15}
-  ["BAG"
+      15}, ["BAG"
     "SACK"
-    "BAGGI"]
-  ["BROWN"]);
+    "BAGGI"], ["BROWN"])
 
-add_object(#OBJECT
+add_object(#object
     {"GARLI"
       "There is a clove of garlic here."
       "clove of garlic"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"SBAG"}
-      %
-      _(,TAKEBIT
-        ,FOODBIT
-        ,OVISON);
+      _
+      _(_takebit, _foodbit, _ovison)
       0
       0
       0
       5
-      0}
-  ["CLOVE"]);
+      0}, ["CLOVE"])
 
-add_object(#OBJECT
+add_object(#object
     {"FOOD"
       "A hot pepper sandwich is here."
-      "lunch"
-      %
+      "\.lunch"
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"SBAG"}
-      %
-      _(,FOODBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_foodbit, _takebit, _ovison)
       0
       0
       0
       5
-      0}
-  ["SANDW"
+      0}, ["SANDW"
     "LUNCH"
     "PEPPE"
     "DINNE"
-    "SNACK"]);
+    "SNACK"])
 
-add_object(#OBJECT
+add_object(#object
     {"GUNK"
       "There is a small piece of vitreous slag here."
       "piece of vitreous slag"
-      %
+      _
       <>
-      GUNK-FUNCTION
+      gunk_function
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _takebit, _ovison)
       0
       0
       0
       10
-      0}
-  ["MESS"
-    "SLAG"]
-  ["VITRE"]);
+      0}, ["MESS"
+    "SLAG"], ["VITRE"])
 
-add_object(#OBJECT
+add_object(#object
     {"COAL"
       "There is a small heap of coal here."
       "small pile of coal"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_burnbit, _takebit, _ovison)
       0
       0
       0
       20
-      0}
-  ["HEAP"
-    "CHARC"]);
+      0}, ["HEAP"
+    "CHARC"])
 
-add_object(#OBJECT
+add_object(#object
     {"JADE"
       "There is an exquisite jade figurine here."
       "jade figurine"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       5
       5
       10
-      0}
-  ["FIGUR"]);
+      0}, ["FIGUR"])
 
-add_object(#OBJECT
+add_object(#object
     {"MACHI"
       ""
       "machine"
-      %
+      _
       <>
-      MACHINE-FUNCTION
+      machine_function
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,OVISON);
+      _
+      _(_contbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      50}
-  ["PDP10"
+      _,bigfix
+      50}, ["PDP10"
     "DRYER"
-    "LID"]);
+    "LID"])
 
-add_object(#OBJECT
+add_object(#object
     {"DIAMO"
       "There is an enormous diamond (perfectly cut) here."
       "huge diamond"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       10
       6
       5
-      0}
-  ["PERFE"]);
+      0}, ["PERFE"])
 
-add_object(#OBJECT
+add_object(#object
     {"TCASE"
       "There is a trophy case here."
       "trophy case"
-      %
+      _
       <>
-      TROPHY-CASE
+      trophy_case
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TRANSBIT
-        ,OVISON);
+      _
+      _(_contbit, _transbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      %,BIGFIX}
-  ["CASE"]
-  ["TROPH"]);
+      _,bigfix
+      _,bigfix}, ["CASE"], ["TROPH"])
 
-add_object(#OBJECT
+add_object(#object
     {"BOTTL"
       "A clear glass bottle is here."
       "glass bottle"
       "A bottle is sitting on the table."
-      BOTTLE-FUNCTION
-      (#FIND-OBJ
+      bottle_function
+      (#find_obj
           {"WATER"})
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TRANSBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_contbit, _transbit, _takebit, _ovison)
       0
       0
       0
       5
-      4}
-  ["CONTA"
-    "PITCH"]
-  ["GLASS"]);
+      4}, ["CONTA"
+    "PITCH"], ["GLASS"])
 
-add_object(#OBJECT
+add_object(#object
     {"WATER"
       "Water"
       "quantity of water"
       "There is some water here"
-      WATER-FUNCTION
+      water_function
       ()
-      #FIND-OBJ
+      #find_obj
         {"BOTTL"}
-      %
-      _(,DRINKBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_drinkbit, _takebit, _ovison)
       0
       0
       0
       4
-      0}
-  ["LIQUI"
-    "H2O"]);
+      0}, ["LIQUI"
+    "H2O"])
 
-#ROOM
+#room
   {"ATTIC"
     "You are in the attic.  The only exit is stairs that lead down."
     "Attic"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "KITCH"}
-    (#FIND-OBJ
+    (#find_obj
         {"BRICK"}
-      #FIND-OBJ
+      #find_obj
         {"ROPE"}
-      #FIND-OBJ
+      #find_obj
         {"KNIFE"})}
 
-add_object(#OBJECT
+add_object(#object
     {"ROPE"
       "There is a large coil of rope here."
       "rope"
       "A large coil of rope is lying in the corner."
-      ROPE-FUNCTION
+      rope_function
       ()
-      %
+      _
       <>
-      %
-      _(,TIEBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_tiebit, _takebit, _ovison)
       0
       0
       0
       10
-      0}
-  ["HEMP"
-    "COIL"]);
+      0}, ["HEMP"
+    "COIL"])
 
-add_object(#OBJECT
+add_object(#object
     {"KNIFE"
       "There is a nasty-looking knife lying here."
       "knife"
       "On a table is a nasty-looking knife."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON
-        ,WEAPONBIT);
+      _
+      _(_takebit, _ovison, _weaponbit)
       0
       0
       0
       5
-      0}
-  ["BLADE"]
-  ["NASTY"]);
+      0}, ["BLADE"], ["NASTY"])
 
-add_melee(find_obj("KNIFE");
-  ,KNIFE-MELEE);
+add_melee(find_obj("KNIFE"), _knife-melee)
 
-#ROOM
+#room
   {"LROOM"
     ""
     "Living Room"
-    T
-    #EXIT
+    t
+    #exit
       {"EAST"
         "KITCH"
         "WEST"
-        #CEXIT
+        #cexit
           {"MAGIC-FLAG"
             "BLROO"
             "The door is nailed shut."}
         "DOWN"
-        #CEXIT
+        #cexit
           {"TRAP-DOOR"
             "CELLA"}}
-    (#FIND-OBJ
+    (#find_obj
         {"WDOOR"}
-      #FIND-OBJ
+      #find_obj
         {"DOOR"}
-      #FIND-OBJ
+      #find_obj
         {"TCASE"}
-      #FIND-OBJ
+      #find_obj
         {"LAMP"}
-      #FIND-OBJ
+      #find_obj
         {"RUG"}
-      #FIND-OBJ
+      #find_obj
         {"PAPER"}
-      #FIND-OBJ
+      #find_obj
         {"SWORD"})
-    LIVING-ROOM}
+    living_room}
 
-add_object(#OBJECT
+add_object(#object
     {"SWORD"
       "There is an elvish sword here."
       "sword"
-      "On hooks above the mantelpiece hangs an elvish sword of great antiquity."
-      SWORD
+      "On hooks above the mantelpiece hangs an elvish sword of great\nantiquity."
+      sword
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,WEAPONBIT);
+      _
+      _(_ovison, _takebit, _weaponbit)
       0
       0
       0
       30
-      0}
-  ["ORCRI"
+      0}, ["ORCRI"
     "GLAMD"
-    "BLADE"]
-  ["ELVIS"]);
+    "BLADE"], ["ELVIS"])
 
-add_melee(find_obj("SWORD");
-  ,SWORD-MELEE);
+add_melee(find_obj("SWORD"), _sword-melee)
 
-add_object(#OBJECT
+add_object(#object
     {"LAMP"
       "There is a brass lantern (battery-powered) here."
       "lamp"
       "A battery-powered brass lantern is on the trophy case."
-      LANTERN
+      lantern
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
-      -1
+      _
+      _(_takebit, _ovison)
+      _1
       0
       0
       15
-      0}
-  ["LANTE"]
-  ["BRASS"]);
+      0}, ["LANTE"], ["BRASS"])
 
-add_object(#OBJECT
+add_object(#object
     {"BLAMP"
       "There is a broken brass lantern here."
       "broken lamp"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
-      0}
-  ["LAMP"
-    "LANTE"]
-  ["BROKE"]);
+      _
+      _(_takebit, _ovison)
+      0}, ["LAMP"
+    "LANTE"], ["BROKE"])
 
-add_object(#OBJECT
+add_object(#object
     {"RUG"
       ""
       "carpet"
-      %
+      _
       <>
-      RUG
+      rug
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,NDESCBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _ndescbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["CARPE"]
-  ["ORIEN"]);
+      _,bigfix
+      0}, ["CARPE"], ["ORIEN"])
 
-add_object(#OBJECT
+add_object(#object
     {"LEAVE"
       "There is a pile of leaves on the ground."
       "pile of leaves"
-      %
+      _
       <>
-      LEAF-PILE
+      leaf_pile
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_burnbit, _takebit, _ovison)
       0
       0
       0
       25
-      0}
-  ["LEAF"
-    "PILE"]);
+      0}, ["LEAF"
+    "PILE"])
 
-#ROOM
+#room
   {"CELLA"
     ""
     "Cellar"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MTROL"
         "SOUTH"
         "CHAS2"
         "UP"
-        #CEXIT
+        #cexit
           {"TRAP-DOOR"
             "LROOM"
             "The trap door has been barred from the other side."}
         "WEST"
-        #NEXIT
+        #nexit
           "You try to ascend the ramp, but it is impossible, and you slide back down."}
-    (#FIND-OBJ
+    (#find_obj
         {"TDOOR"})
-    CELLAR
+    cellar
     25}
 
-psetg(TCHOMP
-  "The troll fends you off with a menacing gesture.");
+psetg(tchomp, "The troll fends you off with a menacing gesture.")
 
-#ROOM
+#room
   {"MTROL"
-    "You are in a small room with passages off in all directions.  Bloodstains and deep scratches (perhaps made by an axe) mar the walls."
+    "You are in a small room with passages off in all directions. \nBloodstains and deep scratches (perhaps made by an axe) mar the\nwalls."
     "The Troll Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "CELLA"
         "EAST"
-        #CEXIT
+        #cexit
           {"TROLL-FLAG"
             "CRAW4"
-            %,TCHOMP}
+            _,tchomp}
         "NORTH"
-        #CEXIT
+        #cexit
           {"TROLL-FLAG"
             "PASS1"
-            %,TCHOMP}
+            _,tchomp}
         "SOUTH"
-        #CEXIT
+        #cexit
           {"TROLL-FLAG"
             "MAZE1"
-            %,TCHOMP}}
-    (#FIND-OBJ
+            _,tchomp}}
+    (#find_obj
         {"TROLL"})}
 
-psetg(TROLLDESC
-  "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.");
+psetg(trolldesc, "A nasty-looking troll, brandishing a bloody axe, blocks all passages\nout of the room.")
 
-psetg(TROLLOUT
-  "An unconscious troll is sprawled on the floor.  All passages out of the room are open.");
+psetg(trollout, "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
 
-setg(VILLAINS
-  (find_obj("TROLL");
-    find_obj("THIEF");
-    find_obj("CYCLO");));
+setg(villains, (find_obj("TROLL")
+    find_obj("THIEF")
+    find_obj("CYCLO")))
 
-setg(VILLAIN-PROBS
-  iuvector(length(,VILLAINS);
-    0););
+setg(villain_probs, iuvector(length(_villains), 0))
 
-setg(OPPV
-  ivector(length(,VILLAINS);
-    '<>););
+setg(oppv, ivector(length(_villains), '<>))
 
-add_demon(setg(SWORD-DEMON
-    chtype([SWORD-GLOW
-        ,VILLAINS
+add_demon(setg(sword_demon, chtype([sword_glow
+        _villains
         ()
-        1(,ROOMS);
-        find_obj("SWORD");
-        <>]
-      HACK);););
+        1(_rooms)
+        find_obj("SWORD")
+        <>], hack)))
 
-#OBJECT
+#object
   {"TROLL"
-    %,TROLLDESC
+    _,trolldesc
     "troll"
-    %
+    _
     <>
-    TROLL
-    (#FIND-OBJ
+    troll
+    (#find_obj
         {"AXE"})
-    %
+    _
     <>
-    %
-    _(,VICBIT
-      ,OVISON
-      ,VILLAIN);
+    _
+    _(_vicbit, _ovison, _villain)
     0
     0
     0
-    %,BIGFIX
+    _,bigfix
     2}
 
-add_melee(find_obj("TROLL");
-  ,TROLL-MELEE);
+add_melee(find_obj("TROLL"), _troll-melee)
 
-add_demon(setg(FIGHT-DEMON
-    chtype([FIGHTING
-        ,VILLAINS
+add_demon(setg(fight_demon, chtype([fighting
+        _villains
         ()
-        1(,ROOMS);
-        find_obj("TROLL");
-        <>]
-      HACK);););
+        1(_rooms)
+        find_obj("TROLL")
+        <>], hack)))
 
-add_object(#OBJECT
+add_object(#object
     {"AXE"
       "There is a bloody axe here."
       "bloody axe"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
-      find_obj("TROLL");
-      %
-      _(,OVISON
-        ,WEAPONBIT);
+      _
+      find_obj("TROLL")
+      _
+      _(_ovison, _weaponbit)
       0
       0
       0
       25
-      0}
-  []
-  ["BLOOD"]);
+      0}, [], ["BLOOD"])
 
-psetg(MAZEDESC
-  "You are in a maze of twisty little passages, all alike.");
+psetg(mazedesc, "You are in a maze of twisty little passages, all alike.")
 
-psetg(DEADEND
-  "Dead End");
+psetg(deadend, "Dead End")
 
-#ROOM
+#room
   {"MAZE1"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MTROL"
         "NORTH"
@@ -1035,13 +815,13 @@ psetg(DEADEND
         "MAZE4"}
     ()}
 
-#ROOM
+#room
   {"MAZE2"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "MAZE1"
         "NORTH"
@@ -1050,13 +830,13 @@ psetg(DEADEND
         "MAZE3"}
     ()}
 
-#ROOM
+#room
   {"MAZE3"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZE2"
         "NORTH"
@@ -1065,13 +845,13 @@ psetg(DEADEND
         "MAZE5"}
     ()}
 
-#ROOM
+#room
   {"MAZE4"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZE3"
         "NORTH"
@@ -1080,216 +860,196 @@ psetg(DEADEND
         "DEAD1"}
     ()}
 
-#ROOM
+#room
   {"DEAD1"
-    %,DEADEND
-    %,DEADEND
-    %
+    _,deadend
+    _,deadend
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "MAZE4"}
     ()}
 
-#ROOM
+#room
   {"MAZE5"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "DEAD2"
         "NORTH"
         "MAZE3"
         "SW"
         "MAZE6"}
-    (#FIND-OBJ
+    (#find_obj
         {"BONES"}
-      #FIND-OBJ
+      #find_obj
         {"BAGCO"}
-      #FIND-OBJ
+      #find_obj
         {"KEYS"}
-      #FIND-OBJ
+      #find_obj
         {"BLANT"}
-      #FIND-OBJ
+      #find_obj
         {"RKNIF"})}
 
-add_object(#OBJECT
+add_object(#object
     {"RKNIF"
       "There is a rusty knife here."
       "rusty knife"
       "Beside the skeleton is a rusty knife."
-      RUSTY-KNIFE
+      rusty_knife
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,WEAPONBIT);
+      _
+      _(_ovison, _takebit, _weaponbit)
       0
       0
       0
       20
-      0}
-  ["KNIFE"]
-  ["RUSTY"]);
+      0}, ["KNIFE"], ["RUSTY"])
 
-add_melee(find_obj("RKNIF");
-  ,KNIFE-MELEE);
+add_melee(find_obj("RKNIF"), _knife-melee)
 
-add_object(#OBJECT
+add_object(#object
     {"BLANT"
       "There is a burned-out lantern here."
       "burned-out lantern"
       "The deceased adventurer's useless lantern is here."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       0
       0
       20
-      0}
-  ["LANTE"
-    "LAMP"]
-  ["USED"
+      0}, ["LANTE"
+    "LAMP"], ["USED"
     "BURNE"
     "DEAD"
-    "USELE"]);
+    "USELE"])
 
-#OBJECT
+#object
   {"KEYS"
     "There is a set of skeleton keys here."
     "set of skeleton keys"
-    %
+    _
     <>
-    %
+    _
     <>
     ()
-    %
+    _
     <>
-    %
-    _(,TOOLBIT
-      ,TAKEBIT
-      ,OVISON);
+    _
+    _(_toolbit, _takebit, _ovison)
     0
     0
     0
     10
     0}
 
-add_object(#OBJECT
+add_object(#object
     {"BONES"
       "A skeleton, probably the remains of a luckless adventurer, lies here."
       ""
-      %
+      _
       <>
-      SKELETON
+      skeleton
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["SKELE"
-    "BODY"]);
+      _,bigfix
+      0}, ["SKELE"
+    "BODY"])
 
-add_object(#OBJECT
+add_object(#object
     {"BAGCO"
       "An old leather bag, bulging with coins, is here."
       "bag of coins"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       10
       5
       15
-      0}
-  ["BAG"
-    "COINS"]
-  ["LEATH"]);
+      0}, ["BAG"
+    "COINS"], ["LEATH"])
 
-add_object(#OBJECT
+add_object(#object
     {"BAR"
       "There is a large platinum bar here."
       "platinum bar"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,SACREDBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_sacredbit, _takebit, _ovison)
       0
       12
       10
       20
-      0}
-  ["PLATI"]);
+      0}, ["PLATI"])
 
-add_object(#OBJECT
+add_object(#object
     {"PEARL"
       "There is a pearl necklace here with hundreds of large pearls."
       "pearl necklace"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       9
       5
       10
-      0}
-  ["NECKL"]);
+      0}, ["NECKL"])
 
-#ROOM
+#room
   {"DEAD2"
-    %,DEADEND
-    %,DEADEND
-    %
+    _,deadend
+    _,deadend
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZE5"}
     ()}
 
-#ROOM
+#room
   {"MAZE6"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "MAZE5"
         "EAST"
@@ -1300,13 +1060,13 @@ add_object(#OBJECT
         "MAZE9"}
     ()}
 
-#ROOM
+#room
   {"MAZE7"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
         "MAZ14"
         "WEST"
@@ -1319,13 +1079,13 @@ add_object(#OBJECT
         "MAZ15"}
     ()}
 
-#ROOM
+#room
   {"MAZE8"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"NE"
         "MAZE7"
         "WEST"
@@ -1334,24 +1094,24 @@ add_object(#OBJECT
         "DEAD3"}
     ()}
 
-#ROOM
+#room
   {"DEAD3"
-    %,DEADEND
-    %,DEADEND
-    %
+    _,deadend
+    _,deadend
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "MAZE8"}
     ()}
 
-#ROOM
+#room
   {"MAZE9"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "MAZE6"
         "EAST"
@@ -1366,13 +1126,13 @@ add_object(#OBJECT
         "MAZE9"}
     ()}
 
-#ROOM
+#room
   {"MAZ10"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MAZE9"
         "WEST"
@@ -1381,13 +1141,13 @@ add_object(#OBJECT
         "MAZ11"}
     ()}
 
-#ROOM
+#room
   {"MAZ11"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"NE"
         "MGRAT"
         "DOWN"
@@ -1397,31 +1157,31 @@ add_object(#OBJECT
         "SW"
         "MAZ12"}}
 
-#ROOM
+#room
   {"MGRAT"
     ""
     "Grating Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SW"
         "MAZ11"
         "UP"
-        #CEXIT
+        #cexit
           {"KEY-FLAG"
             "CLEAR"
             "The grating is locked"}}
-    (#FIND-OBJ
+    (#find_obj
         {"GRAT2"})
-    MAZE-11}
+    maze_11}
 
-#ROOM
+#room
   {"MAZ12"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZE5"
         "SW"
@@ -1434,24 +1194,24 @@ add_object(#OBJECT
         "DEAD4"}
     ()}
 
-#ROOM
+#room
   {"DEAD4"
-    %,DEADEND
-    %,DEADEND
-    %
+    _,deadend
+    _,deadend
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "MAZ12"}
     ()}
 
-#ROOM
+#room
   {"MAZ13"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MAZE9"
         "DOWN"
@@ -1462,13 +1222,13 @@ add_object(#OBJECT
         "MAZ11"}
     ()}
 
-#ROOM
+#room
   {"MAZ14"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZ15"
         "NW"
@@ -1478,13 +1238,13 @@ add_object(#OBJECT
         "SOUTH"
         "MAZE7"}}
 
-#ROOM
+#room
   {"MAZ15"
-    %,MAZEDESC
-    %,MAZEDESC
-    %
+    _,mazedesc
+    _,mazedesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZ14"
         "SOUTH"
@@ -1492,15 +1252,14 @@ add_object(#OBJECT
         "NE"
         "CYCLO"}}
 
-psetg(STFORE
-  "You are in a forest, with trees in all directions around you.");
+psetg(stfore, "You are in a forest, with trees in all directions around you.")
 
-#ROOM
+#room
   {"FORE1"
-    %,STFORE
-    %,FOREST
-    T
-    #EXIT
+    _,stfore
+    _,forest
+    t
+    #exit
       {"NORTH"
         "FORE1"
         "EAST"
@@ -1511,12 +1270,12 @@ psetg(STFORE
         "FORE1"}
     ()}
 
-#ROOM
+#room
   {"FORE4"
-    "You are in a large forest, with trees obstructing all views except to the east, where a small clearing may be seen through the trees."
-    %,FOREST
-    T
-    #EXIT
+    "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
+    _,forest
+    t
+    #exit
       {"EAST"
         "CLTOP"
         "NORTH"
@@ -1526,12 +1285,12 @@ psetg(STFORE
         "WEST"
         "FORE2"}}
 
-#ROOM
+#room
   {"FORE5"
-    %,STFORE
-    %,FOREST
-    T
-    #EXIT
+    _,stfore
+    _,forest
+    t
+    #exit
       {"NORTH"
         "FORE5"
         "SE"
@@ -1541,15 +1300,14 @@ psetg(STFORE
         "WEST"
         "FORE2"}}
 
-psetg(FORDES
-  "You are in a dimly lit forest, with large trees all around.  To the east, there appears to be sunlight.");
+psetg(fordes, "You are in a dimly lit forest, with large trees all around.  To the\neast, there appears to be sunlight.")
 
-#ROOM
+#room
   {"FORE2"
-    %,FORDES
-    %,FOREST
-    T
-    #EXIT
+    _,fordes
+    _,forest
+    t
+    #exit
       {"NORTH"
         "SHOUS"
         "EAST"
@@ -1560,12 +1318,12 @@ psetg(FORDES
         "FORE1"}
     ()}
 
-#ROOM
+#room
   {"FORE3"
-    %,FORDES
-    %,FOREST
-    T
-    #EXIT
+    _,fordes
+    _,forest
+    t
+    #exit
       {"NORTH"
         "FORE2"
         "EAST"
@@ -1576,12 +1334,12 @@ psetg(FORDES
         "NHOUS"}
     ()}
 
-#ROOM
+#room
   {"CLEAR"
     ""
     "Clearing"
-    T
-    #EXIT
+    t
+    #exit
       {"SW"
         "EHOUS"
         "SE"
@@ -1595,22 +1353,22 @@ psetg(FORDES
         "SOUTH"
         "FORE2"
         "DOWN"
-        #CEXIT
+        #cexit
           {"KEY-FLAG"
             "MGRAT"}}
-    (#FIND-OBJ
+    (#find_obj
         {"GRAT1"}
-      #FIND-OBJ
+      #find_obj
         {"LEAVE"})
-    CLEARING}
+    clearing}
 
-#ROOM
+#room
   {"RAVI1"
-    "You are in a deep ravine at a crossing with an east-west crawlway.  Some stone steps are at the south of the ravine and a steep staircase descends."
+    "You are in a deep ravine at a crossing with an east-west crawlway. \nSome stone steps are at the south of the ravine and a steep staircase\ndescends."
     "Deep Ravine"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "PASS1"
         "DOWN"
@@ -1620,13 +1378,13 @@ psetg(FORDES
         "WEST"
         "CRAW1"}}
 
-#ROOM
+#room
   {"CRAW1"
-    "You are in a crawlway with a three-foot high ceiling.  Your footing is very unsure here due to the assortment of rocks underfoot.  Passages can be seen in the east, west, and northwest corners of the passage."
+    "You are in a crawlway with a three-foot high ceiling.  Your footing\nis very unsure here due to the assortment of rocks underfoot. \nPassages can be seen in the east, west, and northwest corners of the\npassage."
     "Rocky Crawl"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "RAVI1"
         "EAST"
@@ -1634,217 +1392,209 @@ psetg(FORDES
         "NW"
         "EGYPT"}}
 
-#ROOM
+#room
   {"RESES"
     ""
     "Reservoir South"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
-        #CEXIT
+        #cexit
           {"EGYPT-FLAG"
             "RAVI1"
             "The coffin will not fit through this passage."
-            T
-            COFFIN-CURE}
+            t
+            coffin_cure}
         "WEST"
         "STREA"
         "CROSS"
-        #CEXIT
+        #cexit
           {"LOW-TIDE"
             "RESEN"
             "You are not equipped for swimming."}
         "NORTH"
-        #CEXIT
+        #cexit
           {"LOW-TIDE"
             "RESEN"
             "You are not equipped for swimming."}
         "UP"
-        #CEXIT
+        #cexit
           {"EGYPT-FLAG"
             "CANY1"
             "The stairs are too steep for carrying the coffin."
-            T
-            COFFIN-CURE}}
-    (#FIND-OBJ
+            t
+            coffin_cure}}
+    (#find_obj
         {"TRUNK"})
-    RESERVOIR-SOUTH}
+    reservoir_south}
 
-#ROOM
+#room
   {"RESEN"
     ""
     "Reservoir North"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "ATLAN"
         "CROSS"
-        #CEXIT
+        #cexit
           {"LOW-TIDE"
             "RESES"
             "You are not equipped for swimming."}
         "SOUTH"
-        #CEXIT
+        #cexit
           {"LOW-TIDE"
             "RESES"
             "You are not equipped for swimming."}}
-    (#FIND-OBJ
+    (#find_obj
         {"PUMP"})
-    RESERVOIR-NORTH}
+    reservoir_north}
 
-#ROOM
+#room
   {"STREA"
-    "You are standing on a path beside a flowing stream.  The path travels to the north and the east."
+    "You are standing on a path beside a flowing stream.  The path\ntravels to the north and the east."
     "Stream"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "RESES"
         "NORTH"
         "ICY"}
-    (#FIND-OBJ
+    (#find_obj
         {"FUSE"})}
 
-#ROOM
+#room
   {"EGYPT"
-    "You are in a room which looks like an Egyptian tomb.  There is an ascending staircase in the room as well as doors, east and south."
+    "You are in a room which looks like an Egyptian tomb.  There is an\nascending staircase in the room as well as doors, east and south."
     "Egyptian Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
         "ICY"
         "SOUTH"
         "LEDG3"
         "EAST"
-        #CEXIT
+        #cexit
           {"EGYPT-FLAG"
             "CRAW1"
             "The passage is too narrow to accomodate coffins."
-            T
-            COFFIN-CURE}}
-    (#FIND-OBJ
+            t
+            coffin_cure}}
+    (#find_obj
         {"COFFI"})}
 
-#ROOM
+#room
   {"ICY"
     ""
     "Glacier Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "STREA"
         "EAST"
         "EGYPT"
         "WEST"
-        #CEXIT
+        #cexit
           {"GLACIER-FLAG"
             "RUBYR"}}
-    (#FIND-OBJ
+    (#find_obj
         {"ICE"})
-    GLACIER-ROOM}
+    glacier_room}
 
-add_object(#OBJECT
+add_object(#object
     {"REFL1"
       ""
       "mirror"
-      %
+      _
       <>
-      MIRROR-MIRROR
+      mirror_mirror
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,VICBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _vicbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["MIRRO"]);
+      _,bigfix
+      0}, ["MIRRO"])
 
-add_object(#OBJECT
+add_object(#object
     {"REFL2"
       ""
       "mirror"
-      %
+      _
       <>
-      MIRROR-MIRROR
+      mirror_mirror
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,VICBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _vicbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["MIRRO"]);
+      _,bigfix
+      0}, ["MIRRO"])
 
-add_object(#OBJECT
+add_object(#object
     {"ICE"
       "A mass of ice fills the western half of the room."
       "glacier"
-      %
+      _
       <>
-      GLACIER
+      glacier
       ()
-      %
+      _
       <>
-      %
-      _(,VICBIT
-        ,OVISON);
+      _
+      _(_vicbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["GLACI"]);
+      _,bigfix
+      0}, ["GLACI"])
 
-#ROOM
+#room
   {"RUBYR"
-    "You are in a small chamber behind the remains of the Great Glacier. To the south and west are small passageways."
+    "You are in a small chamber behind the remains of the Great Glacier.\nTo the south and west are small passageways."
     "Ruby Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "LAVA"
         "SOUTH"
         "ICY"}
-    (#FIND-OBJ
+    (#find_obj
         {"RUBY"})}
 
-#ROOM
+#room
   {"ATLAN"
-    "You are in an ancient room, long buried by the Reservoir.  There are exits here to the southeast and upward."
+    "You are in an ancient room, long buried by the Reservoir.  There are\nexits here to the southeast and upward."
     "Atlantis Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SE"
         "RESEN"
         "UP"
         "CAVE1"}
-    (#FIND-OBJ
+    (#find_obj
         {"TRIDE"})}
 
-#ROOM
+#room
   {"CANY1"
-    "You are on the south edge of a deep canyon.  Passages lead off to the east, south, and northwest.  You can hear the sound of flowing water below."
+    "You are on the south edge of a deep canyon.  Passages lead off\nto the east, south, and northwest.  You can hear the sound of\nflowing water below."
     "Deep Canyon"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NW"
         "RESES"
         "EAST"
@@ -1852,162 +1602,148 @@ add_object(#OBJECT
         "SOUTH"
         "CAROU"}}
 
-#ROOM
+#room
   {"ECHO"
-    "You are in a large room with a ceiling which cannot be detected from the ground. There is a narrow passage from east to west and a stone stairway leading upward.  The room is extremely noisy.  In fact, it is difficult to hear yourself think."
+    "You are in a large room with a ceiling which cannot be detected from\nthe ground. There is a narrow passage from east to west and a stone\nstairway leading upward.  The room is extremely noisy.  In fact, it is\ndifficult to hear yourself think."
     "Loud Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "CHAS3"
         "WEST"
         "PASS5"
         "UP"
         "CAVE3"}
-    (#FIND-OBJ
+    (#find_obj
         {"BAR"})
-    ECHO-ROOM}
+    echo_room}
 
-#OBJECT
+#object
   {"RUBY"
     "There is a moby ruby lying here."
     "ruby"
     "On the floor lies a moby ruby."
-    %
+    _
     <>
     ()
-    %
+    _
     <>
-    %
-    _(,TAKEBIT
-      ,OVISON);
+    _
+    _(_takebit, _ovison)
     0
     15
     8
     5
     0}
 
-add_object(#OBJECT
+add_object(#object
     {"TRIDE"
       "Neptune's own crystal trident is here."
       "crystal trident"
       "On the shore lies Neptune's own crystal trident."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       4
       11
       20
-      0}
-  ["FORK"]
-  ["CRYST"]);
+      0}, ["FORK"], ["CRYST"])
 
-add_object(#OBJECT
+add_object(#object
     {"COFFI"
       "There is a solid-gold coffin, used for the burial of Ramses II, here."
       "gold coffin"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,SACREDBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_contbit, _sacredbit, _takebit, _ovison)
       0
       3
       7
       55
-      35}
-  ["CASKE"]
-  ["GOLD"]);
+      35}, ["CASKE"], ["GOLD"])
 
-add_object(#OBJECT
+add_object(#object
     {"TORCH"
       "There is an ivory torch here."
       "torch"
       "Sitting on the pedestal is a flaming torch, made of ivory."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TOOLBIT
-        ,FLAMEBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_toolbit, _flamebit, _takebit, _ovison)
       1
       14
       6
       20
-      0}
-  []
-  ["IVORY"]);
+      0}, [], ["IVORY"])
 
-#ROOM
+#room
   {"MIRR1"
     ""
     "Mirror Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "PASS3"
         "NORTH"
         "CRAW2"
         "EAST"
         "CAVE1"}
-    (#FIND-OBJ
+    (#find_obj
         {"REFL1"})
-    MIRROR-ROOM}
+    mirror_room}
 
-#ROOM
+#room
   {"MIRR2"
     ""
     "Mirror Room"
-    T
-    #EXIT
+    t
+    #exit
       {"WEST"
         "PASS4"
         "NORTH"
         "CRAW3"
         "EAST"
         "CAVE2"}
-    (#FIND-OBJ
+    (#find_obj
         {"REFL2"})
-    MIRROR-ROOM}
+    mirror_room}
 
-#ROOM
+#room
   {"CAVE1"
-    "You are in a small cave with an entrance to the north and a stairway leading down."
+    "You are in a small cave with an entrance to the north and a stairway\nleading down."
     "Cave"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "MIRR1"
         "DOWN"
         "ATLAN"}}
 
-#ROOM
+#room
   {"CAVE2"
-    "You are in a tiny cave with entrances west and north, and a dark, forbidding staircase leading down."
+    "You are in a tiny cave with entrances west and north, and a dark,\nforbidding staircase leading down."
     "Cave"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CRAW3"
         "WEST"
@@ -2015,27 +1751,27 @@ add_object(#OBJECT
         "DOWN"
         "LLD1"}
     ()
-    CAVE2-ROOM}
+    cave2_room}
 
-#ROOM
+#room
   {"CRAW2"
-    "You are in a steep and narrow crawlway.  There are two exits nearby to the south and southwest."
+    "You are in a steep and narrow crawlway.  There are two exits nearby to\nthe south and southwest."
     "Steep Crawlway"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "MIRR1"
         "SW"
         "PASS3"}}
 
-#ROOM
+#room
   {"CRAW3"
-    "You are in a narrow crawlway.  The crawlway leads from north to south. However the south passage divides to the south and southwest."
+    "You are in a narrow crawlway.  The crawlway leads from north to south.\nHowever the south passage divides to the south and southwest."
     "Narrow Crawlway"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "CAVE2"
         "SW"
@@ -2043,13 +1779,13 @@ add_object(#OBJECT
         "NORTH"
         "MGRAI"}}
 
-#ROOM
+#room
   {"PASS3"
-    "You are in a cold and damp corridor where a long east-west passageway intersects with a northward path."
+    "You are in a cold and damp corridor where a long east-west passageway\nintersects with a northward path."
     "Cold Passage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MIRR1"
         "WEST"
@@ -2057,26 +1793,26 @@ add_object(#OBJECT
         "NORTH"
         "CRAW2"}}
 
-#ROOM
+#room
   {"PASS4"
-    "You are in a winding passage.  It seems that there is only an exit on the east end although the whirring from the round room can be heard faintly to the north."
+    "You are in a winding passage.  It seems that there is only an exit\non the east end although the whirring from the round room can be\nheard faintly to the north."
     "Winding Passage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MIRR2"
         "NORTH"
-        #NEXIT
+        #nexit
           "You hear the whir of the carousel room but can find no entrance."}}
 
-#ROOM
+#room
   {"SLIDE"
-    "You are in a small chamber, which appears to have been part of a coal mine. On the south wall of the chamber the letters \"Granite Wall\" are etched in the rock. To the east is a long passage and there is a steep metal slide twisting downward. From the appearance of the slide, an attempt to climb up it would be impossible.  To the north is a small opening."
+    "You are in a small chamber, which appears to have been part of a\ncoal mine. On the south wall of the chamber the letters \"Granite\nWall\" are etched in the rock. To the east is a long passage and\nthere is a steep metal slide twisting downward. From the appearance\nof the slide, an attempt to climb up it would be impossible.  To the\nnorth is a small opening."
     "Slide Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "PASS3"
         "DOWN"
@@ -2084,13 +1820,13 @@ add_object(#OBJECT
         "NORTH"
         "ENTRA"}}
 
-#ROOM
+#room
   {"ENTRA"
-    "You are standing at the entrance of what might have been a coal mine. To the northeast and the northwest are entrances to the mine, and there is another exit on the south end of the room."
+    "You are standing at the entrance of what might have been a coal\nmine. To the northeast and the northwest are entrances to the mine,\nand there is another exit on the south end of the room."
     "Mine Entrance"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "SLIDE"
         "NW"
@@ -2098,87 +1834,81 @@ add_object(#OBJECT
         "NE"
         "TSHAF"}}
 
-#ROOM
+#room
   {"SQUEE"
-    "You are a small room.  Strange squeaky sounds may be heard coming from the passage at the west end.  You may also escape to the south."
+    "You are a small room.  Strange squeaky sounds may be heard coming from\nthe passage at the west end.  You may also escape to the south."
     "Squeaky Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "BATS"
         "SOUTH"
         "ENTRA"}}
 
-#ROOM
+#room
   {"TSHAF"
-    "You are in a large room, in the middle of which is a small shaft descending through the floor into darkness below.  To the west and the north are exits from this room.  Constructed over the top of the shaft is a metal framework to which a heavy iron chain is attached."
+    "You are in a large room, in the middle of which is a small shaft\ndescending through the floor into darkness below.  To the west and\nthe north are exits from this room.  Constructed over the top of the\nshaft is a metal framework to which a heavy iron chain is attached."
     "Shaft Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
-        #NEXIT
+        #nexit
           "You wouldn't fit and would die if you could."
         "WEST"
         "ENTRA"
         "NORTH"
         "TUNNE"}
-    (#FIND-OBJ
+    (#find_obj
         {"TBASK"})}
 
-put(add_object(#OBJECT
+put(add_object(#object
       {"TBASK"
         "At the end of the chain is a basket."
         "basket"
-        %
+        _
         <>
-        DUMBWAITER
+        dumbwaiter
         ()
-        %
+        _
         <>
-        %
-        _(,CONTBIT
-          ,OVISON
-          ,TRANSBIT);
+        _
+        _(_contbit, _ovison, _transbit)
         0
         0
         0
-        %,BIGFIX
-        50}
-    ["CAGE"
+        _,bigfix
+        50}, ["CAGE"
       "DUMBW"
-      "BASKE"]);
-  ,OOPEN?
-  T);
+      "BASKE"]), _oopen_q, t)
 
-add_object(#OBJECT
+add_object(#object
     {"FBASK"
       ""
       ""
-      %
+      _
       <>
-      DUMBWAITER
+      dumbwaiter
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["CAGE"
+      _,bigfix
+      0}, ["CAGE"
     "DUMBW"
-    "BASKE"]);
+    "BASKE"])
 
-#ROOM
+#room
   {"TUNNE"
-    "You are in a narrow tunnel with large wooden beams running across the ceiling and around the walls.  A path from the south splits into paths running west and northeast."
+    "You are in a narrow tunnel with large wooden beams running across\nthe ceiling and around the walls.  A path from the south splits into\npaths running west and northeast."
     "Wooden Tunnel"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "TSHAF"
         "WEST"
@@ -2186,75 +1916,71 @@ add_object(#OBJECT
         "NE"
         "MINE1"}}
 
-#ROOM
+#room
   {"SMELL"
-    "You are in a small non-descript room.  However, from the direction of a small descending staircase a foul odor can be detected.  To the east is a narrow path."
+    "You are in a small non-descript room.  However, from the direction\nof a small descending staircase a foul odor can be detected.  To the\neast is a narrow path."
     "Smelly Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "BOOM"
         "EAST"
         "TUNNE"}}
 
-#ROOM
+#room
   {"BOOM"
     "You are in a small room which smells strongly of coal gas."
     "Gas Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
         "SMELL"}
-    (#FIND-OBJ
+    (#find_obj
         {"BRACE"})
-    BOOM-ROOM}
+    boom_room}
 
-add_object(#OBJECT
+add_object(#object
     {"BRACE"
       "There is a sapphire-encrusted bracelet here."
       "sapphire bracelet"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       5
       3
       10
-      0}
-  ["JEWEL"]
-  ["SAPPH"]);
+      0}, ["JEWEL"], ["SAPPH"])
 
-#ROOM
+#room
   {"TLADD"
-    "You are in a very small room.  In the corner is a rickety wooden ladder, leading downward.  It might be safe to descend.  There is also a staircase leading upward."
+    "You are in a very small room.  In the corner is a rickety wooden\nladder, leading downward.  It might be safe to descend.  There is\nalso a staircase leading upward."
     "Ladder Top"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "BLADD"
         "UP"
         "MINE7"}}
 
-psetg(MINDESC
-  "You are in a non-descript part of a coal mine.");
+psetg(mindesc, "You are in a non-descript part of a coal mine.")
 
-#ROOM
+#room
   {"MINE1"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "MINE4"
         "SW"
@@ -2262,13 +1988,13 @@ psetg(MINDESC
         "EAST"
         "TUNNE"}}
 
-#ROOM
+#room
   {"MINE2"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "MINE1"
         "WEST"
@@ -2278,13 +2004,13 @@ psetg(MINDESC
         "NE"
         "MINE4"}}
 
-#ROOM
+#room
   {"MINE3"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MINE2"
         "NE"
@@ -2292,13 +2018,13 @@ psetg(MINDESC
         "EAST"
         "MINE5"}}
 
-#ROOM
+#room
   {"MINE4"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
         "MINE5"
         "NE"
@@ -2308,13 +2034,13 @@ psetg(MINDESC
         "WEST"
         "MINE2"}}
 
-#ROOM
+#room
   {"MINE5"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "MINE6"
         "NORTH"
@@ -2328,13 +2054,13 @@ psetg(MINDESC
         "EAST"
         "MINE4"}}
 
-#ROOM
+#room
   {"MINE6"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"SE"
         "MINE4"
         "UP"
@@ -2342,13 +2068,13 @@ psetg(MINDESC
         "NW"
         "MINE7"}}
 
-#ROOM
+#room
   {"MINE7"
-    %,MINDESC
-    %,MINDESC
-    %
+    _,mindesc
+    _,mindesc
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MINE1"
         "WEST"
@@ -2358,13 +2084,13 @@ psetg(MINDESC
         "SOUTH"
         "MINE6"}}
 
-#ROOM
+#room
   {"BLADD"
-    "You are in a rather wide room.  On one side is the bottom of a narrow wooden ladder.  To the northeast and the south are passages leaving the room."
+    "You are in a rather wide room.  On one side is the bottom of a\nnarrow wooden ladder.  To the northeast and the south are passages\nleaving the room."
     "Ladder Bottom"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NE"
         "DEAD7"
         "SOUTH"
@@ -2372,145 +2098,144 @@ psetg(MINDESC
         "UP"
         "TLADD"}}
 
-#ROOM
+#room
   {"DEAD7"
     "Dead End"
     "Dead End"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "BLADD"}
-    (#FIND-OBJ
+    (#find_obj
         {"COAL"})}
 
-psetg(NOFIT
-  "You cannot fit through this passage with that load.");
+psetg(nofit, "You cannot fit through this passage with that load.")
 
-#ROOM
+#room
   {"TIMBE"
-    "You are in a long and narrow passage, which is cluttered with broken timbers.  A wide passage comes from the north and turns at the  southwest corner of the room into a very narrow passageway."
+    "You are in a long and narrow passage, which is cluttered with broken\ntimbers.  A wide passage comes from the north and turns at the \nsouthwest corner of the room into a very narrow passageway."
     "Timber Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "BLADD"
         "SW"
-        #CEXIT
+        #cexit
           {"EMPTY-HANDED"
             "BSHAF"
-            %,NOFIT}}
+            _,nofit}}
     ()
-    NO-OBJS}
+    no_objs}
 
-#ROOM
+#room
   {"BSHAF"
-    "You are in a small square room which is at the bottom of a long shaft. To the east is a passageway and to the northeast a very narrow passage. In the shaft can be seen a heavy iron chain."
+    "You are in a small square room which is at the bottom of a long\nshaft. To the east is a passageway and to the northeast a very narrow\npassage. In the shaft can be seen a heavy iron chain."
     "Lower Shaft"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "MACHI"
         "OUT"
-        #CEXIT
+        #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            %,NOFIT}
+            _,nofit}
         "NE"
-        #CEXIT
+        #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            %,NOFIT}
+            _,nofit}
         "UP"
-        #NEXIT
+        #nexit
           "Not a chance."
         "CLIMB"
-        #NEXIT
+        #nexit
           "The chain is not climbable."}
-    (#FIND-OBJ
+    (#find_obj
         {"FBASK"})
-    NO-OBJS}
+    no_objs}
 
-#ROOM
+#room
   {"MACHI"
     ""
     "Machine Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NW"
         "BSHAF"}
-    (#FIND-OBJ
+    (#find_obj
         {"MSWIT"}
-      #FIND-OBJ
+      #find_obj
         {"MACHI"})
-    MACHINE-ROOM}
+    machine_room}
 
-#ROOM
+#room
   {"BATS"
     ""
     "Bat Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "SQUEE"}
-    (#FIND-OBJ
+    (#find_obj
         {"JADE"}
-      #FIND-OBJ
+      #find_obj
         {"BAT"})
-    BATS-ROOM}
+    bats_room}
 
-#ROOM
+#room
   {"DOME"
     ""
     "Dome Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "CRAW1"
         "DOWN"
-        #CEXIT
+        #cexit
           {"DOME-FLAG"
             "MTORC"
             "You cannot go down without fracturing many bones."}
         "CLIMB"
-        #CEXIT
+        #cexit
           {"DOME-FLAG"
             "MTORC"
             "You cannot go down without fracturing many bones."}}
-    (#FIND-OBJ
+    (#find_obj
         {"RAILI"})
-    DOME-ROOM}
+    dome_room}
 
-#ROOM
+#room
   {"MTORC"
     ""
     "Torch Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        #NEXIT
+        #nexit
           "You cannot reach the rope."
         "WEST"
         "MTORC"
         "DOWN"
         "CRAW4"}
-    (#FIND-OBJ
+    (#find_obj
         {"TORCH"})
-    TORCH-ROOM}
+    torch_room}
 
-#ROOM
+#room
   {"CRAW4"
-    "You are in a north-south crawlway; a passage goes to the east also. There is a hole above, but it provides no opportunities for climbing."
+    "You are in a north-south crawlway; a passage goes to the east also.\nThere is a hole above, but it provides no opportunities for climbing."
     "North-South Crawlway"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CHAS2"
         "SOUTH"
@@ -2518,17 +2243,17 @@ psetg(NOFIT
         "EAST"
         "MTROL"
         "UP"
-        #NEXIT
+        #nexit
           "Not even a human fly could get up it."}
     ()}
 
-#ROOM
+#room
   {"CHAS2"
-    "You are on the west edge of a chasm, the bottom of which cannot be seen. The east side is sheer rock, providing no exits.  A narrow passage goes west, and the path you are on continues to the north and south."
+    "You are on the west edge of a chasm, the bottom of which cannot be\nseen. The east side is sheer rock, providing no exits.  A narrow\npassage goes west, and the path you are on continues to the north and\nsouth."
     "West of Chasm"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "CELLA"
         "NORTH"
@@ -2536,146 +2261,140 @@ psetg(NOFIT
         "SOUTH"
         "GALLE"
         "DOWN"
-        #NEXIT
+        #nexit
           "The chasm probably leads straight to the infernal regions."}
     ()}
 
-#ROOM
+#room
   {"CAROU"
     ""
     "Round room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "SOUTH"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "EAST"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "MGRAI"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "WEST"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "PASS1"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "NW"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "CANY1"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "NE"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "PASS5"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "SE"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "PASS4"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "SW"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "MAZE1"
             ""
-            %
+            _
             <>
-            CAROUSEL-EXIT}
+            carousel_exit}
         "EXIT"
-        #CEXIT
+        #cexit
           {"CAROUSEL-FLIP"
             "PASS3"
             ""
-            %
+            _
             <>
-            CAROUSEL-OUT}}
-    (#FIND-OBJ
+            carousel_out}}
+    (#find_obj
         {"IRBOX"})
-    CAROUSEL-ROOM}
+    carousel_room}
 
-add_object(#OBJECT
+add_object(#object
     {"IRBOX"
       "There is a dented iron box here."
       "iron box"
-      %
+      _
       <>
-      %
+      _
       <>
-      (#FIND-OBJ
+      (#find_obj
           {"STRAD"})
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,CONTBIT);
+      _
+      _(_takebit, _contbit)
       0
       0
       0
       40
-      20}
-  ["BOX"]
-  ["IRON"
-    "DENTE"]);
+      20}, ["BOX"], ["IRON"
+    "DENTE"])
 
-add_object(#OBJECT
+add_object(#object
     {"STRAD"
       "There is a Stradavarius here."
       "fancy violin"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"IRBOX"}
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       10
       10
       10
-      0}
-  ["VIOLI"]
-  ["FANCY"]);
+      0}, ["VIOLI"], ["FANCY"])
 
-#ROOM
+#room
   {"PASS5"
     "You are in a high north-south passage, which forks to the northeast."
     "North-South Passage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CHAS1"
         "NE"
@@ -2684,45 +2403,45 @@ add_object(#OBJECT
         "CAROU"}
     ()}
 
-#ROOM
+#room
   {"CHAS1"
-    "A chasm runs southwest to northeast.  You are on the south edge; the path exits to the south and to the east."
+    "A chasm runs southwest to northeast.  You are on the south edge; the\npath exits to the south and to the east."
     "Chasm"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "RAVI1"
         "EAST"
         "PASS5"
         "DOWN"
-        #NEXIT
+        #nexit
           "Are you out of your mind?"}
     ()}
 
-#ROOM
+#room
   {"CAVE3"
-    "You are in a cave.  Passages exit to the south and to the east, but the cave narrows to a crack to the west.  The earth is particularly damp here."
+    "You are in a cave.  Passages exit to the south and to the east, but\nthe cave narrows to a crack to the west.  The earth is particularly\ndamp here."
     "Damp Cave"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "ECHO"
         "EAST"
         "DAM"
         "WEST"
-        #NEXIT
+        #nexit
           "It is too narrow for most insects."}
     ()}
 
-#ROOM
+#room
   {"CHAS3"
-    "A chasm, evidently produced by an ancient river, runs through the cave here.  Passages lead off in all directions."
+    "A chasm, evidently produced by an ancient river, runs through the\ncave here.  Passages lead off in all directions."
     "Ancient Chasm"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "ECHO"
         "EAST"
@@ -2733,314 +2452,283 @@ add_object(#OBJECT
         "DEAD6"}
     ()}
 
-#ROOM
+#room
   {"DEAD5"
     "Dead end"
     "Dead end"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SW"
         "CHAS3"}
     ()}
 
-#ROOM
+#room
   {"DEAD6"
     "Dead end"
     "Dead end"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "CHAS3"}
     ()}
 
-#ROOM
+#room
   {"CAVE4"
     "You have entered a cave with passages leading north and southeast."
     "Engravings Cave"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CAROU"
         "SE"
         "RIDDL"}
-    (#FIND-OBJ
+    (#find_obj
         {"ENGRA"})}
 
-add_object(sobject("ENGRA"
-    "wall with engravings"
-    ,OVISON
-    ,READBIT
-    ,SACREDBIT);
-  ["INSCR"]
-  ["OLD"
-    "ANCIE"]);
+add_object(sobject("ENGRA", "wall with engravings", _ovison, _readbit, _sacredbit), ["INSCR"], ["OLD"
+    "ANCIE"])
 
-put(find_obj("ENGRA");
-  ,ODESC1
-  "There are old engravings on the walls here.");
+put(find_obj("ENGRA"), _odesc1, "There are old engravings on the walls here.")
 
-#ROOM
+#room
   {"RIDDL"
-    "This is a room which is bare on all sides.  There is an exit down.  To the east is a great door made of stone.  Above the stone, the following words are written: 'No man shall enter this room without solving this riddle:   What is tall as a house,    round as a cup,     and all the king's horses can't draw it up?'"
+    "This is a room which is bare on all sides.  There is an exit down. \nTo the east is a great door made of stone.  Above the stone, the\nfollowing words are written: 'No man shall enter this room without\nsolving this riddle:\n  What is tall as a house,\n	  round as a cup, \n	  and all the king's horses can't draw it up?'"
     "Riddle Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "CAVE4"
         "EAST"
-        #CEXIT
+        #cexit
           {"RIDDLE-FLAG"
             "MPEAR"
             "Your way is blocked by an invisible force."}}
-    (#FIND-OBJ
+    (#find_obj
         {"SDOOR"})}
 
-#ROOM
+#room
   {"MPEAR"
     "This is a former broom closet.  The exits are to the east and west."
     "Pearl Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "BWELL"
         "WEST"
         "RIDDL"}
-    (#FIND-OBJ
+    (#find_obj
         {"PEARL"})}
 
-#ROOM
+#room
   {"LLD1"
     ""
     "Entrance to Hades"
-    T
-    #EXIT
+    t
+    #exit
       {"EAST"
-        #CEXIT
+        #cexit
           {"LLD-FLAG"
             "LLD2"
             "Some invisible force prevents you from passing through the gate."}
         "UP"
         "CAVE2"
         "ENTER"
-        #CEXIT
+        #cexit
           {"LLD-FLAG"
             "LLD2"
             "Some invisible force prevents you from passing through the gate."}}
-    (#FIND-OBJ
+    (#find_obj
         {"CORPS"}
-      #FIND-OBJ
+      #find_obj
         {"GATES"}
-      #FIND-OBJ
+      #find_obj
         {"GHOST"})
-    LLD-ROOM}
+    lld_room}
 
-add_object(#OBJECT
+add_object(#object
     {"GHOST"
       ""
       ""
-      %
+      _
       <>
-      GHOST-FUNCTION
+      ghost_function
       ()
-      %
+      _
       <>
-      %
-      _(,VICBIT
-        ,OVISON);
+      _
+      _(_vicbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["SPIRI"
-    "FIEND"]);
+      _,bigfix
+      0}, ["SPIRI"
+    "FIEND"])
 
-#ROOM
+#room
   {"LLD2"
     ""
     "Land of the Living Dead"
-    T
-    #EXIT
+    t
+    #exit
       {"EAST"
         "TOMB"
         "EXIT"
         "LLD1"
         "WEST"
         "LLD1"}
-    (#FIND-OBJ
+    (#find_obj
         {"BODIE"})
-    LLD2-ROOM
+    lld2_room
     30}
 
-#ROOM
+#room
   {"MGRAI"
-    "You are standing in a small circular room with a pedestal.  A set of stairs leads up, and passages leave to the east and west."
+    "You are standing in a small circular room with a pedestal.  A set of\nstairs leads up, and passages leave to the east and west."
     "Grail Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "CAROU"
         "EAST"
         "CRAW3"
         "UP"
         "TEMP1"}
-    (#FIND-OBJ
+    (#find_obj
         {"GRAIL"})}
 
-add_object(#OBJECT
+add_object(#object
     {"GRAIL"
       "There is an extremely valuable (perhaps original) grail here."
       "grail"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_contbit, _takebit, _ovison)
       0
       2
       5
       10
-      5}
-  []);
+      5}, [])
 
-#ROOM
+#room
   {"TEMP1"
-    "You are in the west end of a large temple.  On the south wall is an  ancient inscription, probably a prayer in a long-forgotten language.  The north wall is solid granite.  The entrance at the west end of the room is through huge marble pillars."
+    "You are in the west end of a large temple.  On the south wall is an \nancient inscription, probably a prayer in a long-forgotten language. \nThe north wall is solid granite.  The entrance at the west end of the\nroom is through huge marble pillars."
     "Temple"
-    T
-    #EXIT
+    t
+    #exit
       {"WEST"
         "MGRAI"
         "EAST"
         "TEMP2"}
-    (#FIND-OBJ
+    (#find_obj
         {"PRAYE"}
-      #FIND-OBJ
+      #find_obj
         {"BELL"})}
 
-add_object(sobject("PRAYE"
-    "prayer"
-    _(,READBIT
-      ,SACREDBIT
-      ,OVISON););
-  ["INSCR"]
-  ["ANCIE"
-    "OLD"]);
+add_object(sobject("PRAYE", "prayer", _(_readbit, _sacredbit, _ovison)), ["INSCR"], ["ANCIE"
+    "OLD"])
 
-#ROOM
+#room
   {"TEMP2"
-    "You are in the east end of a large temple.  In front of you is what appears to be an altar."
+    "You are in the east end of a large temple.  In front of you is what\nappears to be an altar."
     "Altar"
-    T
-    #EXIT
+    t
+    #exit
       {"WEST"
         "TEMP1"}
-    (#FIND-OBJ
+    (#find_obj
         {"BOOK"}
-      #FIND-OBJ
+      #find_obj
         {"CANDL"})}
 
-add_object(#OBJECT
+add_object(#object
     {"TRUNK"
       "There is an old trunk here, bulging with assorted jewels."
       "trunk with jewels"
       "Lying half buried in the mud is an old trunk, bulging with jewels."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,TAKEBIT
+      _,takebit
       0
       15
       8
       35
-      0}
-  ["CHEST"]);
+      0}, ["CHEST"])
 
-add_object(#OBJECT
+add_object(#object
     {"BELL"
       "There is a small brass bell here."
       "bell"
       "Lying in a corner of the room is a small brass bell."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       0
       0
       5
-      0}
-  []
-  ["BRASS"]);
+      0}, [], ["BRASS"])
 
-add_object(#OBJECT
+add_object(#object
     {"BOOK"
       "There is a large black book here."
       "book"
       "On the altar is a large black book, open to page 569."
-      BLACK-BOOK
+      black_book
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_burnbit, _takebit, _ovison, _readbit)
       0
       0
       0
       10
-      0}
-  ["PRAYE"
+      0}, ["PRAYE"
     "BIBLE"
-    "GOODB"]
-  ["BLACK"]);
+    "GOODB"], ["BLACK"])
 
-add_object(#OBJECT
+add_object(#object
     {"CANDL"
       "There are two candles here."
       "pair of candles"
       "On the two ends of the altar are burning candles."
-      CANDLES
+      candles
       ()
-      %
+      _
       <>
-      %
-      _(,FLAMEBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_flamebit, _takebit, _ovison)
       1
       0
       0
       10
-      0}
-  []);
+      0}, [])
 
-#ROOM
+#room
   {"DAM"
     ""
     "Dam"
-    T
-    #EXIT
+    t
+    #exit
       {"SOUTH"
         "CANY1"
         "DOWN"
@@ -3049,463 +2737,416 @@ add_object(#OBJECT
         "CAVE3"
         "NORTH"
         "LOBBY"}
-    (#FIND-OBJ
+    (#find_obj
         {"BOLT"}
-      #FIND-OBJ
+      #find_obj
         {"DAM"}
-      #FIND-OBJ
+      #find_obj
         {"BUBBL"})
-    DAM-ROOM}
+    dam_room}
 
-#ROOM
+#room
   {"LOBBY"
-    "This room appears to have been the waiting room for groups touring the dam.  There are exits here to the north and east marked 'Private', though the doors are open, and an exit to the south."
+    "This room appears to have been the waiting room for groups touring\nthe dam.  There are exits here to the north and east marked\n'Private', though the doors are open, and an exit to the south."
     "Dam Lobby"
-    T
-    #EXIT
+    t
+    #exit
       {"SOUTH"
         "DAM"
         "NORTH"
         "MAINT"
         "EAST"
         "MAINT"}
-    (#FIND-OBJ
+    (#find_obj
         {"MATCH"}
-      #FIND-OBJ
+      #find_obj
         {"GUIDE"})}
 
-add_object(#OBJECT
+add_object(#object
     {"GUIDE"
       "There are tour guidebooks here."
       "tour guidebook"
-      "Some guidebooks entitled 'Flood Control Dam #3' are on the reception desk."
-      %
+      "Some guidebooks entitled 'Flood Control Dam #3' are on the reception\ndesk."
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,READBIT
-        ,OVISON);
+      _
+      _(_burnbit, _takebit, _readbit, _ovison)
       0
       0
       0
       5
-      0}
-  ["BOOK"]
-  ["TOUR"]);
+      0}, ["BOOK"], ["TOUR"])
 
-add_object(#OBJECT
+add_object(#object
     {"PAPER"
       ""
       "newspaper"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,READBIT
-        ,OVISON);
+      _
+      _(_burnbit, _takebit, _readbit, _ovison)
       0
       0
       0
       2
-      0}
-  ["NEWSP"
+      0}, ["NEWSP"
     "ISSUE"
     "REPOR"
     "MAGAZ"
-    "NEWS"]);
+    "NEWS"])
 
-#ROOM
+#room
   {"MAINT"
-    "You are in what appears to have been the maintenance room for Flood Control Dam #3, judging by the assortment of tool chests around the room.  Apparently, this room has been ransacked recently, for most of the valuable equipment is gone. On the wall in front of you is a panel of buttons, which are labelled in EBCDIC. However, they are of different colors:  Blue, Yellow, Brown, and Red. The doors to this room are in the west and south ends."
+    "You are in what appears to have been the maintenance room for Flood\nControl Dam #3, judging by the assortment of tool chests around the\nroom.  Apparently, this room has been ransacked recently, for most of\nthe valuable equipment is gone. On the wall in front of you is a\npanel of buttons, which are labelled in EBCDIC. However, they are of\ndifferent colors:  Blue, Yellow, Brown, and Red. The doors to this\nroom are in the west and south ends."
     "Maintenance Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "LOBBY"
         "WEST"
         "LOBBY"}
-    (#FIND-OBJ
+    (#find_obj
         {"LEAK"}
-      #FIND-OBJ
+      #find_obj
         {"TUBE"}
-      #FIND-OBJ
+      #find_obj
         {"WRENC"}
-      #FIND-OBJ
+      #find_obj
         {"BLBUT"}
-      #FIND-OBJ
+      #find_obj
         {"RBUTT"}
-      #FIND-OBJ
+      #find_obj
         {"BRBUT"}
-      #FIND-OBJ
+      #find_obj
         {"YBUTT"}
-      #FIND-OBJ
+      #find_obj
         {"SCREW"})
-    MAINT-ROOM}
+    maint_room}
 
-add_object(#OBJECT
+add_object(#object
     {"MATCH"
       "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
       "matchbook"
-      %
+      _
       <>
-      MATCH-FUNCTION
+      match_function
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_takebit, _ovison, _readbit)
       0
       0
       0
       2
-      0}
-  ["FLINT"]);
+      0}, ["FLINT"])
 
-add_object(#OBJECT
+add_object(#object
     {"ADVER"
       "There is a small leaflet here."
       "leaflet"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"MAILB"}
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_burnbit, _takebit, _ovison, _readbit)
       0
       0
       0
       2
-      0}
-  ["PAMPH"
+      0}, ["PAMPH"
     "LEAFL"
-    "BOOKL"]);
+    "BOOKL"])
 
-add_object(#OBJECT
+add_object(#object
     {"MAILB"
       "There is a small mailbox here."
       "mailbox"
-      %
+      _
       <>
-      %
+      _
       <>
-      (#FIND-OBJ
+      (#find_obj
           {"ADVER"})
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,OVISON);
+      _
+      _(_contbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      10}
-  ["BOX"]);
+      _,bigfix
+      10}, ["BOX"])
 
-#OBJECT
+#object
   {"TUBE"
     "There is an object which looks like a tube of toothpaste here."
     "tube"
-    %
+    _
     <>
-    TUBE-FUNCTION
-    (#FIND-OBJ
+    tube_function
+    (#find_obj
         {"PUTTY"})
-    %
+    _
     <>
-    %
-    _(,CONTBIT
-      ,TAKEBIT
-      ,OVISON);
+    _
+    _(_contbit, _takebit, _ovison)
     0
     0
     0
     10
     7}
 
-add_object(#OBJECT
+add_object(#object
     {"PUTTY"
       "There is some gunk here"
       "viscous material"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"TUBE"}
-      %
-      _(,TOOLBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_toolbit, _takebit, _ovison)
       0
       0
       0
       6
-      0}
-  ["MATER"
+      0}, ["MATER"
     "GUNK"
-    "GLUE"]
-  ["VISCO"]);
+    "GLUE"], ["VISCO"])
 
-add_object(#OBJECT
+add_object(#object
     {"WRENC"
       "There is a wrench here."
       "wrench"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TOOLBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_toolbit, _takebit, _ovison)
       0
       0
       0
       10
-      0}
-  []);
+      0}, [])
 
-add_object(#OBJECT
+add_object(#object
     {"SCREW"
       "There is a screwdriver here."
       "screwdriver"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TOOLBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_toolbit, _takebit, _ovison)
       0
       0
       0
       5
-      0}
-  []);
+      0}, [])
 
-#ROOM
+#room
   {"CYCLO"
     ""
     "Cyclops Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAZ15"
         "NORTH"
-        #CEXIT
+        #cexit
           {"MAGIC-FLAG"
             "BLROO"
             "The north wall is solid rock."}
         "UP"
-        #CEXIT
+        #cexit
           {"CYCLOPS-FLAG"
             "TREAS"
             "The cyclops doesn't look like he'll let you past."}}
-    (#FIND-OBJ
+    (#find_obj
         {"CYCLO"})
-    CYCLOPS-ROOM}
+    cyclops_room}
 
-add_melee(find_obj("CYCLO");
-  ,CYCLOPS-MELEE);
+add_melee(find_obj("CYCLO"), _cyclops-melee)
 
-#ROOM
+#room
   {"BLROO"
-    "You are in a long passage.  To the south is one entrance.  On the east there is an old wooden door, with a large hole in it (about cyclops sized)."
+    "You are in a long passage.  To the south is one entrance.  On the\neast there is an old wooden door, with a large hole in it (about\ncyclops sized)."
     "Strange Passage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "CYCLO"
         "EAST"
         "LROOM"}
     ()
-    TIME
+    time
     10}
 
-add_object(#OBJECT
+add_object(#object
     {"CYCLO"
       ""
       "cyclops"
-      %
+      _
       <>
-      CYCLOPS
+      cyclops
       ()
-      %
+      _
       <>
-      %
-      _(,VICBIT
-        ,OVISON
-        ,VILLAIN);
+      _
+      _(_vicbit, _ovison, _villain)
       0
       0
       0
-      %,BIGFIX
-      10000}
-  ["ONE-E"
-    "MONST"]);
+      _,bigfix
+      10000}, ["ONE-E"
+    "MONST"])
 
-#ROOM
+#room
   {"TREAS"
-    "This is a large room, whose north wall is solid granite.  A number of discarded bags, which crumble at your touch, are scattered about on the floor."
+    "This is a large room, whose north wall is solid granite.  A number\nof discarded bags, which crumble at your touch, are scattered about\non the floor."
     "Treasure Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
         "CYCLO"}
-    (#FIND-OBJ
+    (#find_obj
         {"CHALI"})
-    TREASURE-ROOM
+    treasure_room
     25}
 
-add_object(#OBJECT
+add_object(#object
     {"CHALI"
       "There is a silver chalice, intricately engraved, here."
       "chalice"
-      %
+      _
       <>
-      CHALICE
+      chalice
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_contbit, _takebit, _ovison)
       0
       10
       10
       10
-      5}
-  ["CUP"
-    "GOBLE"]);
+      5}, ["CUP"
+    "GOBLE"])
 
-#ROOM
+#room
   {"STUDI"
-    "You are in what appears to have been an artist's studio.  The walls and floors are splattered with paints of 69 different colors.  Strangely enough, nothing of value is hanging here.  At the north and northwest of the room are open doors (also covered with paint).  An extremely dark and narrow chimney leads up from a fireplace; although you might be able to get up it, it seems unlikely you could get back down."
+    "You are in what appears to have been an artist's studio.  The walls\nand floors are splattered with paints of 69 different colors. \nStrangely enough, nothing of value is hanging here.  At the north and\nnorthwest of the room are open doors (also covered with paint).  An\nextremely dark and narrow chimney leads up from a fireplace; although\nyou might be able to get up it, it seems unlikely you could get back\ndown."
     "Studio"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CRAW4"
         "NW"
         "GALLE"
         "UP"
-        #CEXIT
+        #cexit
           {"LIGHT-LOAD"
             "KITCH"
             "The chimney is too narrow for you and all of your baggage."
-            %
+            _
             <>
-            CHIMNEY-FUNCTION}}
+            chimney_function}}
     ()
-    %
+    _
     <>}
 
-#ROOM
+#room
   {"GALLE"
-    "You are in an art gallery.  Most of the paintings which were here have been stolen by vandals with exceptional taste.  The vandals left through either the north or south exits."
+    "You are in an art gallery.  Most of the paintings which were here\nhave been stolen by vandals with exceptional taste.  The vandals\nleft through either the north or south exits."
     "Gallery"
-    T
-    #EXIT
+    t
+    #exit
       {"NORTH"
         "CHAS2"
         "SOUTH"
         "STUDI"}
-    (#FIND-OBJ
+    (#find_obj
         {"PAINT"})}
 
-add_object(#OBJECT
+add_object(#object
     {"PAINT"
       "A masterpiece by a neglected genius is here."
       "painting"
-      "Fortunately, there is still one chance for you to be a vandal, for on the far wall is a work of unparalleled beauty."
-      PAINTING
+      "Fortunately, there is still one chance for you to be a vandal, for on\nthe far wall is a work of unparalleled beauty."
+      painting
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,TAKEBIT
-        ,OVISON);
+      _
+      _(_burnbit, _takebit, _ovison)
       0
       4
       7
       15
-      0}
-  ["ART"
+      0}, ["ART"
     "CANVA"
-    "MASTE"]);
+    "MASTE"])
 
 "LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS"
 
-add_demon(setg(ROBBER-DEMON
-    chtype([ROBBER
+add_demon(setg(robber_demon, chtype([robber
         ()
-        ,ROOMS
-        1(,ROOMS);
-        find_obj("THIEF");
-        <>]
-      HACK);););
+        _rooms
+        1(_rooms)
+        find_obj("THIEF")
+        <>], hack)))
 
-psetg(ROBBER-C-DESC
-  "There is a suspicious-looking individual, holding a bag, leaning against one wall.  He is armed with a vicious-looking stilletto.");
+psetg(robber_c-desc, "There is a suspicious-looking individual, holding a bag, leaning\nagainst one wall.  He is armed with a vicious-looking stilletto.")
 
-psetg(ROBBER-U-DESC
-  "There is a suspicious-looking individual lying unconscious on the ground.  His bag and stilletto seem to have vanished.");
+psetg(robber_u-desc, "There is a suspicious-looking individual lying unconscious on the\nground.  His bag and stilletto seem to have vanished.")
 
-add_object(#OBJECT
+add_object(#object
     {"THIEF"
-      %,ROBBER-C-DESC
+      _,robber-c-desc
       "thief"
-      %
+      _
       <>
-      ROBBER-FUNCTION
-      (#FIND-OBJ
+      robber_function
+      (#find_obj
           {"STILL"})
-      %
+      _
       <>
-      %
-      _(,VICBIT
-        ,OVISON
-        ,VILLAIN);
+      _
+      _(_vicbit, _ovison, _villain)
       0
       0
       0
-      %,BIGFIX
-      4}
-  ["ROBBE"
+      _,bigfix
+      4}, ["ROBBE"
     "CROOK"
     "CRIME"
     "CRIMI"
@@ -3516,373 +3157,183 @@ add_object(#OBJECT
     "SHADY"
     "THUG"
     "BAGMA"
-    "MAFIA"]);
+    "MAFIA"])
 
-add_melee(find_obj("THIEF");
-  ,THIEF-MELEE);
+add_melee(find_obj("THIEF"), _thief-melee)
 
-add_object(#OBJECT
+add_object(#object
     {"STILL"
       "There is a vicious-looking stilletto here."
       "stilletto"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
-      find_obj("THIEF");
-      %
-      _(,OVISON
-        ,WEAPONBIT);
+      _
+      find_obj("THIEF")
+      _
+      _(_ovison, _weaponbit)
       0
       0
       0
       10
-      0}
-  []
-  ["VICIO"]);
+      0}, [], ["VICIO"])
 
-setg(WEAPONS
-  (find_obj("STICK");
-    find_obj("KNIFE");));
+setg(weapons, (find_obj("STICK")
+    find_obj("KNIFE")))
 
-setg(RANDOM-LIST
-  (find_room("LROOM");
-    find_room("KITCH");
-    find_room("CLEAR");
-    find_room("FORE3");
-    find_room("FORE2");
-    find_room("SHOUS");
-    find_room("FORE2");
-    find_room("KITCH");
-    find_room("EHOUS");));
+setg(random_list, (find_room("LROOM")
+    find_room("KITCH")
+    find_room("CLEAR")
+    find_room("FORE3")
+    find_room("FORE2")
+    find_room("SHOUS")
+    find_room("FORE2")
+    find_room("KITCH")
+    find_room("EHOUS")))
 
-add_desc(find_obj("BOOK");
-  "  COMMANDMENT #12592 Oh ye who go about saying unto each:   \"Hello sailor\": dost thou know the magnitude of thy sin before the gods? Yea, verily, thou shalt be ground between two stones. Shall the angry gods cast thy body into the whirlpool? Surely, thy eye shall be put out with a sharp stick! Even unto the ends of the earth shalt thou wander and unto the land of the dead shalt thou be sent at last. Surely thou shalt repent of thy cunning.");
+add_desc(find_obj("BOOK"), "COMMANDMENT #12592\nOh ye who go about saying unto each:   \"Hello sailor\":\ndost thou know the magnitude of thy sin before the gods?\nYea, verily, thou shalt be ground between two stones.\nShall the angry gods cast thy body into the whirlpool?\nSurely, thy eye shall be put out with a sharp stick!\nEven unto the ends of the earth shalt thou wander and\nunto the land of the dead shalt thou be sent at last.\nSurely thou shalt repent of thy cunning.")
 
-add_desc(find_obj("GUIDE");
-  "     Guide Book to   Flood Control Dam #3    Flood Control Dam #3 (FCD#3) was constructed in year 783 of the Great Underground Empire to harness the destructive power of the Frigid River.  This work was supported by a grant of 37 million zorkmids from the Central Bureaucracy and your omnipotent local tyrant Lord Dimwit Flathead the Excessive. This impressive structure is composed of 3.7 cubic feet of concrete, is 256 feet tall at the center, and 193 feet wide at the top.  The reservoir created behind the dam has a volume of 37 billion cubic feet, an area of 12 million square feet, and a shore line of 36 thousand feet.    The construction of FCD#3 took 112 days from ground breaking to the dedication. It required a work force of 384 slaves, 34 slave drivers, 12 engineers, 2 turtle doves, and a partridge in a pear tree. The work was managed by a command team composed of 2345 bureaucrats, 2347 secretaries (at least two of which can type), 12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape processors, and nearly one million dead trees.    We will now point out some of the more interesting features of FCD#3 as we conduct you on a guided tour of the facilities:  1) You start your tour here in the Dam Lobby.     You will notice on your right that .........");
+add_desc(find_obj("GUIDE"), "\"		   Guide Book to\n		Flood Control Dam #3\n\n  Flood Control Dam #3 (FCD#3) was constructed in year 783 of the\nGreat Underground Empire to harness the destructive power of the\nFrigid River.  This work was supported by a grant of 37 million\nzorkmids from the Central Bureaucracy and your omnipotent local\ntyrant Lord Dimwit Flathead the Excessive. This impressive\nstructure is composed of 3.7 cubic feet of concrete, is 256 feet\ntall at the center, and 193 feet wide at the top.  The reservoir\ncreated behind the dam has a volume of 37 billion cubic feet, an\narea of 12 million square feet, and a shore line of 36 thousand\nfeet.\n\n  The construction of FCD#3 took 112 days from ground breaking to\nthe dedication. It required a work force of 384 slaves, 34 slave\ndrivers, 12 engineers, 2 turtle doves, and a partridge in a pear\ntree. The work was managed by a command team composed of 2345\nbureaucrats, 2347 secretaries (at least two of which can type),\n12,256 paper shufflers, 52,469 rubber stampers, 245,193 red tape\nprocessors, and nearly one million dead trees.\n\n  We will now point out some of the more interesting features\nof FCD#3 as we conduct you on a guided tour of the facilities:\n	1) You start your tour here in the Dam Lobby.\n	   You will notice on your right that .........")
 
-add_desc(find_obj("PAPER");
-  "  US NEWS & DUNGEON REPORT 12/12/77             Late Dungeon Edition       In order to get a more-or-less working version, we have installed one with some known bugs.  In particular, the following sequence will not work correctly, nor will anything resembling it: >take take what? >frob what do you want me to do with it?      Note that if you now respond 'take', the right thing will happen. In short, the current parser can't handle verbs with missing objects.  Since it is completely new, we'd appreciate reports of any other bugs encountered.  FLASH!      An important change has been made.  When you have been killed, and the 'patch' question is asked, or if you are confirming a 'quit', it is now necessary to terminate the response to the question with a carriage return (you may be surprised to find that this wasn't true before).  Also, the answer to the 'patch' question is taken to be yes unless something starting with n, N, f, or F is typed; the answer to the 'quit' question is no unless something starting with y, Y, t, or T is typed.  FLASH!      Another FLAG DAY has been declared for save files.  Yes, ladies and gentlemen, yet another incompatible change has been made to the save/restore code.  When will it end?       Things like the bucket should resume working in this version.       Many people have reported the following message: 'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn' This indicates that a garbage collection is occurring.  Some reports have this taking up to 30 sec. of cpu time, during which your dungeon will refuse to respond.  We have added a feature which should prevent this; if you see such a message, please send mail to DUNGEON@DM describing the circumstances (particularly number of moves, save/restore status, and the TIME).  A garbage collection is not fatal:  your dungeon should be perfectly all right once it finishes (after the GOUT TIME= message is printed). ");
+add_desc(find_obj("PAPER"), "US NEWS & DUNGEON REPORT\n12/12/77  				       Late Dungeon Edition\n\n     In order to get a more-or-less working version, we have\ninstalled one with some known bugs.  In particular, the following\nsequence will not work correctly, nor will anything resembling it:\n>take\ntake what?\n>frob\nwhat do you want me to do with it?\n     Note that if you now respond 'take', the right thing will\nhappen. In short, the current parser can't handle verbs with missing\nobjects.  Since it is completely new, we'd appreciate reports of any\nother bugs encountered.\n\nFLASH!\n     An important change has been made.  When you have been killed,\nand the 'patch' question is asked, or if you are confirming a 'quit',\nit is now necessary to terminate the response to the question with a\ncarriage return (you may be surprised to find that this wasn't true\nbefore).  Also, the answer to the 'patch' question is taken to be yes\nunless something starting with n, N, f, or F is typed; the answer to\nthe 'quit' question is no unless something starting with y, Y, t, or\nT is typed.\n\nFLASH!\n     Another FLAG DAY has been declared for save files.  Yes, ladies\nand gentlemen, yet another incompatible change has been made to the\nsave/restore code.  When will it end?\n\n     Things like the bucket should resume working in this version.\n\n     Many people have reported the following message:\n'GIN FREE STORAGE- VECTOR ...GOUT TIME= n.nn'\nThis indicates that a garbage collection is occurring.  Some reports\nhave this taking up to 30 sec. of cpu time, during which your dungeon\nwill refuse to respond.  We have added a feature which should prevent\nthis; if you see such a message, please send mail to DUNGEON@DM\ndescribing the circumstances (particularly number of moves,\nsave/restore status, and the TIME).  A garbage collection is not\nfatal:  your dungeon should be perfectly all right once it finishes\n(after the GOUT TIME= message is printed).")
 
-add_desc(find_obj("ADVER");
-  "   WELCOME TO DUNGEON      DUNGEON is a game of adventure, danger, and low cunning.  In it you will explore some of the most amazing territory ever seen by mortal man. Hardened adventurers have run screaming from the terrors contained within!      In DUNGEON the intrepid explorer delves into the forgotten secrets of a lost labyrinth deep in the bowels of the earth, searching for vast treasures long hidden from prying eyes, treasures guarded by fearsome monsters and diabolical traps!      No PDP-10 should be without one!      DUNGEON was created at the Programming Technology Division of the MIT Laboratory for Computer Science, by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE game of Crowther and Woods, and Dungeons and Dragons, by Gygax and Arneson.  DUNGEON is written in MDL (alias MUDDLE).      Direct inquiries by Net mail to DUNGEON@MIT-DMS. ");
+add_desc(find_obj("ADVER"), "WELCOME TO DUNGEON\n\n    DUNGEON is a game of adventure, danger, and low cunning.  In it\nyou will explore some of the most amazing territory ever seen by\nmortal man. Hardened adventurers have run screaming from the terrors\ncontained within!\n\n    In DUNGEON the intrepid explorer delves into the forgotten\nsecrets of a lost labyrinth deep in the bowels of the earth,\nsearching for vast treasures long hidden from prying eyes, treasures\nguarded by fearsome monsters and diabolical traps!\n\n    No PDP-10 should be without one!\n\n    DUNGEON was created at the Programming Technology Division of the\nMIT Laboratory for Computer Science, by Tim Anderson, Marc Blank,\nBruce Daniels, and Dave Lebling.  It was inspired by the ADVENTURE\ngame of Crowther and Woods, and Dungeons and Dragons, by Gygax and\nArneson.  DUNGEON is written in MDL (alias MUDDLE).\n\n    Direct inquiries by Net mail to DUNGEON@MIT-DMS.")
 
-add_desc(find_obj("MATCH");
-  " [close cover before striking BKD]  You too can make BIG MONEY in the exciting field of   PAPER SHUFFLING! Mr. TAA of Muddle, Mass. says: \"Before I took this course I used to be a lowly bit twiddler. Now with what I learned at MIT Tech I feel really important and can obfuscate and confuse with the best.\" Mr. MARC had this to say: \"Ten short days ago all I could look forward to was a dead-end job as a doctor.  Now I have a promising future and make really big Zorkmids.\"  MIT Tech can't promise these fantastic results to everyone. But when you earn your MDL degree from MIT Tech your future will be brighter. Send for our free brochure today.");
+add_desc(find_obj("MATCH"), "[close cover before striking BKD]\n\nYou too can make BIG MONEY in the exciting field of\n		PAPER SHUFFLING!\nMr. TAA of Muddle, Mass. says: \"Before I took\nthis course I used to be a lowly bit twiddler.\nNow with what I learned at MIT Tech I feel really\nimportant and can obfuscate and confuse with the best.\"\nMr. MARC had this to say: \"Ten short days ago all I could\nlook forward to was a dead-end job as a doctor.  Now\nI have a promising future and make really big Zorkmids.\"\n\nMIT Tech can't promise these fantastic results to everyone.\nBut when you earn your MDL degree from MIT Tech your future\nwill be brighter. Send for our free brochure today.")
 
-add_desc(find_obj("ENGRA");
-  "The engravings were incised in the living rock of the cave wall by an unknown hand.  They depict, in symbolic form, the beliefs of the ancient peoples of Zork.  Skillfully interwoven with the bas reliefs are excerpts illustrating the major tenets expounded by the sacred texts of the religion of that time.  Unfortunately a later age seems to have considered them blasphemous and just as skillfully excised them.");
+add_desc(find_obj("ENGRA"), "The engravings were incised in the living rock of the cave wall by\nan unknown hand.  They depict, in symbolic form, the beliefs of the\nancient peoples of Zork.  Skillfully interwoven with the bas reliefs\nare excerpts illustrating the major tenets expounded by the sacred\ntexts of the religion of that time.  Unfortunately a later age seems\nto have considered them blasphemous and just as skillfully excised\nthem.")
 
-add_desc(find_obj("PRAYE");
-  "The prayer is inscribed in an ancient script which is hardly remembered these days, much less understood.  What little of it can be made out seems to be a phillipic against small insects, absent-mindedness, and the picking up and dropping of small objects.  The final verse seems to consign trespassers to the land of the dead.  All evidence indicates that the beliefs of the ancient Zorkers were obscure.");
+add_desc(find_obj("PRAYE"), "The prayer is inscribed in an ancient script which is hardly\nremembered these days, much less understood.  What little of it can\nbe made out seems to be a phillipic against small insects,\nabsent-mindedness, and the picking up and dropping of small objects. \nThe final verse seems to consign trespassers to the land of the\ndead.  All evidence indicates that the beliefs of the ancient\nZorkers were obscure.")
 
 // ASSORTED DOORS
 
-psetg(BUTSTR
-  "button");
+psetg(butstr, "button")
 
-psetg(DOORSTR
-  "door");
+psetg(doorstr, "door")
 
-add_object(aobject("WIND1"
-    "window"
-    WINDOW-FUNCTION
-    ,OVISON
-    ,DOORBIT
-    ,NDESCBIT);
-  ["WINDO"]
-  []);
+add_object(aobject("WIND1", "window", window_function, _ovison, _doorbit, _ndescbit), ["WINDO"], [])
 
-add_object(aobject("WIND2"
-    "window"
-    WINDOW-FUNCTION
-    ,OVISON
-    ,DOORBIT
-    ,NDESCBIT);
-  ["WINDO"]
-  []);
+add_object(aobject("WIND2", "window", window_function, _ovison, _doorbit, _ndescbit), ["WINDO"], [])
 
-add_object(aobject("BOLT"
-    "bolt"
-    BOLT-FUNCTION
-    ,TURNBIT
-    ,OVISON
-    ,DOORBIT
-    ,NDESCBIT);
-  ["BOLT"
-    "NUT"]
-  []);
+add_object(aobject("BOLT", "bolt", bolt_function, _turnbit, _ovison, _doorbit, _ndescbit), ["BOLT"
+    "NUT"], [])
 
-add_object(aobject("GRAT1"
-    "grating"
-    GRAT1-FUNCTION
-    ,DOORBIT
-    ,NDESCBIT);
-  ["GRATI"
-    "GRATE"]
-  []);
+add_object(aobject("GRAT1", "grating", grat1_function, _doorbit, _ndescbit), ["GRATI"
+    "GRATE"], [])
 
-add_object(aobject("GRAT2"
-    "grating"
-    GRAT2-FUNCTION
-    ,OVISON
-    ,DOORBIT
-    ,NDESCBIT);
-  ["GRATI"
-    "GRATE"]
-  []);
+add_object(aobject("GRAT2", "grating", grat2_function, _ovison, _doorbit, _ndescbit), ["GRATI"
+    "GRATE"], [])
 
-add_object(aobject("DOOR"
-    ,DOORSTR
-    TRAP-DOOR
-    ,DOORBIT
-    ,NDESCBIT);
-  ["TRAPD"
-    "TRAP-"]
-  ["TRAP"]);
+add_object(aobject("DOOR", _doorstr, trap_door, _doorbit, _ndescbit), ["TRAPD"
+    "TRAP-"], ["TRAP"])
 
-add_object(aobject("TDOOR"
-    ,DOORSTR
-    TRAP-DOOR
-    ,DOORBIT
-    ,NDESCBIT);
-  ["TRAPD"
-    "TRAP-"]
-  ["TRAP"]);
+add_object(aobject("TDOOR", _doorstr, trap_door, _doorbit, _ndescbit), ["TRAPD"
+    "TRAP-"], ["TRAP"])
 
-add_object(aobject("WDOOR"
-    ,DOORSTR
-    DDOOR-FUNCTION
-    ,OVISON
-    ,NDESCBIT
-    ,READBIT);
-  ["DOOR"]
-  ["WOODE"]);
+add_object(aobject("WDOOR", _doorstr, ddoor_function, _ovison, _ndescbit, _readbit), ["DOOR"], ["WOODE"])
 
-add_desc(find_obj("WDOOR");
-  "The engravings translate to 'This space intentionally left blank'");
+add_desc(find_obj("WDOOR"), "The engravings translate to 'This space intentionally left blank'")
 
-add_object(aobject("FDOOR"
-    ,DOORSTR
-    DDOOR-FUNCTION
-    ,OVISON
-    ,NDESCBIT);
-  ["DOOR"]
-  ["FRONT"]);
+add_object(aobject("FDOOR", _doorstr, ddoor_function, _ovison, _ndescbit), ["DOOR"], ["FRONT"])
 
-add_object(aobject("SDOOR"
-    ,DOORSTR
-    DDOOR-FUNCTION
-    ,OVISON
-    ,NDESCBIT);
-  ["DOOR"]
-  ["STONE"]);
+add_object(aobject("SDOOR", _doorstr, ddoor_function, _ovison, _ndescbit), ["DOOR"], ["STONE"])
 
-add_object(aobject("MSWIT"
-    "switch"
-    MSWITCH-FUNCTION
-    ,OVISON
-    ,NDESCBIT
-    ,TURNBIT);
-  ["SWITC"]);
+add_object(aobject("MSWIT", "switch", mswitch_function, _ovison, _ndescbit, _turnbit), ["SWITC"])
 
 // ASSORTED GARBAGE
 
-add_object(sobject("HPOLE"
-    "head on a pole"
-    ,OVISON);
-  ["HEAD"]);
+add_object(sobject("HPOLE", "head on a pole", _ovison), ["HEAD"])
 
-add_object(sobject("CORPS"
-    "corpses"
-    ,OVISON);
-  []
-  ["MANGL"]);
+add_object(sobject("CORPS", "corpses", _ovison), [], ["MANGL"])
 
-add_object(aobject("BODIE"
-    "pile of bodies"
-    BODY-FUNCTION
-    ,OVISON
-    ,NDESCBIT
-    ,TRYTAKEBIT);
-  ["BODY"
-    "CORPS"]);
+add_object(aobject("BODIE", "pile of bodies", body_function, _ovison, _ndescbit, _trytakebit), ["BODY"
+    "CORPS"])
 
-add_object(sobject("DAM"
-    "dam"
-    ,OVISON
-    ,NDESCBIT);
-  ["GATE"
+add_object(sobject("DAM", "dam", _ovison, _ndescbit), ["GATE"
     "GATES"
-    "FCD"]);
+    "FCD"])
 
-add_object(sobject("RAILI"
-    "railing"
-    ,OVISON
-    ,NDESCBIT);
-  ["RAIL"]);
+add_object(sobject("RAILI", "railing", _ovison, _ndescbit), ["RAIL"])
 
-add_object(sobject("BUTTO"
-    "button"
-    ,OVISON
-    ,NDESCBIT);
-  ["SWITC"]);
+add_object(sobject("BUTTO", "button", _ovison, _ndescbit), ["SWITC"])
 
-sobject("BUBBL"
-  "bubble"
-  ,OVISON
-  ,NDESCBIT);
+sobject("BUBBL", "bubble", _ovison, _ndescbit)
 
-add_object(aobject("LEAK"
-    "leak"
-    LEAK-FUNCTION
-    ,OVISON
-    ,NDESCBIT);
-  ["DRIP"
-    "HOLE"]);
+add_object(aobject("LEAK", "leak", leak_function, _ovison, _ndescbit), ["DRIP"
+    "HOLE"])
 
-add_star(add_object(aobject("EVERY"
-      "everything"
-      EVERYTHING
-      ,OVISON
-      ,TAKEBIT
-      ,NO-CHECK-BIT
-      ,NDESCBIT);
-    ["ALL"]););
+add_star(add_object(aobject("EVERY", "everything", everything, _ovison, _takebit, _no-check-bit, _ndescbit), ["ALL"]))
 
-add_star(add_object(aobject("VALUA"
-      "valuables"
-      VALUABLES
-      ,OVISON
-      ,TAKEBIT
-      ,NO-CHECK-BIT
-      ,NDESCBIT);
-    ["TREAS"]););
+add_star(add_object(aobject("VALUA", "valuables", valuables, _ovison, _takebit, _no-check-bit, _ndescbit), ["TREAS"]))
 
-add_star(sobject("SAILO"
-    "sailor"
-    ,OVISON
-    ,NDESCBIT););
+add_star(sobject("SAILO", "sailor", _ovison, _ndescbit))
 
-add_star(sobject("TEETH"
-    "set of teeth"
-    ,OVISON
-    ,NDESCBIT););
+add_star(sobject("TEETH", "set of teeth", _ovison, _ndescbit))
 
-add_star(sobject("WALL"
-    "wall"
-    ,OVISON
-    ,NDESCBIT););
+add_star(sobject("WALL", "wall", _ovison, _ndescbit))
 
-add_star(find_obj("GRUE"););
+add_star(find_obj("GRUE"))
 
-add_star(add_object(sobject("HANDS"
-      "pair of hands"
-      ,OVISON
-      ,NDESCBIT
-      ,TOOLBIT);
-    ["HAND"]
-    ["BARE"]););
+add_star(add_object(sobject("HANDS", "pair of hands", _ovison, _ndescbit, _toolbit), ["HAND"], ["BARE"]))
 
-add_star(add_object(sobject("LUNGS"
-      "breath"
-      ,OVISON
-      ,NDESCBIT
-      ,TOOLBIT);
-    ["LUNG"
-      "AIR"]););
+add_star(add_object(sobject("LUNGS", "breath", _ovison, _ndescbit, _toolbit), ["LUNG"
+      "AIR"]))
 
-add_star(sobject("AVIAT"
-    "flyer"
-    ,OVISON
-    ,NDESCBIT););
+add_star(sobject("AVIAT", "flyer", _ovison, _ndescbit))
 
-add_object(sobject("RBUTT"
-    ,BUTSTR
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"
-    "SWITC"]
-  ["RED"]);
+add_object(sobject("RBUTT", _butstr, _ovison, _ndescbit), ["BUTTO"
+    "SWITC"], ["RED"])
 
-add_object(sobject("YBUTT"
-    ,BUTSTR
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"
-    "SWITC"]
-  ["YELLO"]);
+add_object(sobject("YBUTT", _butstr, _ovison, _ndescbit), ["BUTTO"
+    "SWITC"], ["YELLO"])
 
-add_object(sobject("BLBUT"
-    ,BUTSTR
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"
-    "SWITC"]
-  ["BLUE"]);
+add_object(sobject("BLBUT", _butstr, _ovison, _ndescbit), ["BUTTO"
+    "SWITC"], ["BLUE"])
 
-add_object(sobject("BRBUT"
-    ,BUTSTR
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"
-    "SWITC"]
-  ["BROWN"]);
+add_object(sobject("BRBUT", _butstr, _ovison, _ndescbit), ["BUTTO"
+    "SWITC"], ["BROWN"])
 
-add_object(aobject("BAT"
-    "bat"
-    FLY-ME
-    ,OVISON
-    ,NDESCBIT
-    ,TRYTAKEBIT);
-  ["VAMPI"]
-  []);
+add_object(aobject("BAT", "bat", fly_me, _ovison, _ndescbit, _trytakebit), ["VAMPI"], [])
 
 "MORE VOCABULARY"
 
-sobject("RAINB"
-  "rainbow"
-  ,OVISON
-  ,NDESCBIT);
+sobject("RAINB", "rainbow", _ovison, _ndescbit)
 
-psetg(CLIFFS
-  #NEXIT
-    "The White Cliffs prevent your landing here.");
+psetg(cliffs, #nexit
+    "The White Cliffs prevent your landing here.")
 
-psetg(RIVERDESC
-  "Frigid River");
+psetg(riverdesc, "Frigid River")
 
-#ROOM
+#room
   {"DOCK"
-    "You are at the base of Flood Control Dam #3, which looms above you and to the north.  The river Frigid is flowing by here.  Across the river are the White Cliffs which seem to form a giant wall stretching from north to south along the east shore of the river as it winds its way downstream."
+    "You are at the base of Flood Control Dam #3, which looms above you\nand to the north.  The river Frigid is flowing by here.  Across the\nriver are the White Cliffs which seem to form a giant wall stretching\nfrom north to south along the east shore of the river as it winds its\nway downstream."
     "Dam Base"
-    T
-    #EXIT
+    t
+    #exit
       {"NORTH"
         "DAM"
         "UP"
         "DAM"
         "LAUNC"
         "RIVR1"}
-    (#FIND-OBJ
+    (#find_obj
         {"IBOAT"}
-      #FIND-OBJ
+      #find_obj
         {"STICK"})
-    %
+    _
     <>}
 
-#ROOM
+#room
   {"RIVR1"
-    "You are on the River Frigid in the vicinity of the Dam.  The river flows quietly here.  There is a landing on the west shore."
-    %,RIVERDESC
-    %
+    "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
+    _,riverdesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        %,CURRENT
+        _,current
         "WEST"
         "DOCK"
         "LAND"
@@ -3890,41 +3341,41 @@ psetg(RIVERDESC
         "DOWN"
         "RIVR2"
         "EAST"
-        %,CLIFFS}
+        _,cliffs}
     ()
-    %
+    _
     <>
     0
-    %,RWATERBIT}
+    _,rwaterbit}
 
-#ROOM
+#room
   {"RIVR2"
-    "The River turns a corner here making it impossible to see the Dam.  The White Cliffs loom on the east bank and large rocks prevent landing on the west."
-    %,RIVERDESC
-    %
+    "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
+    _,riverdesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        %,CURRENT
+        _,current
         "DOWN"
         "RIVR3"
         "EAST"
-        %,CLIFFS}
+        _,cliffs}
     ()
-    %
+    _
     <>
     0
-    %,RWATERBIT}
+    _,rwaterbit}
 
-#ROOM
+#room
   {"RIVR3"
-    "The river descends here into a valley.  There is a narrow beach on the east below the cliffs and there is some shore on the west which may be suitable.  In the distance a faint rumbling can be heard."
-    %,RIVERDESC
-    %
+    "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
+    _,riverdesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        %,CURRENT
+        _,current
         "DOWN"
         "RIVR4"
         "EAST"
@@ -3932,62 +3383,61 @@ psetg(RIVERDESC
         "WEST"
         "RCAVE"
         "LAND"
-        #NEXIT
+        #nexit
           "You must specify which direction here."}
     ()
-    %
+    _
     <>
     0
-    %,RWATERBIT}
+    _,rwaterbit}
 
-psetg(NARROW
-  "The path is too narrow.");
+psetg(narrow, "The path is too narrow.")
 
-#ROOM
+#room
   {"WCLF1"
-    "You are on a narrow strip of beach which runs along the base of the White Cliffs. The only path here is a narrow one, heading south along the Cliffs."
+    "You are on a narrow strip of beach which runs along the base of the\nWhite Cliffs. The only path here is a narrow one, heading south\nalong the Cliffs."
     "White Cliffs Beach"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
-        #CEXIT
+        #cexit
           {"DEFLATE"
             "WCLF2"
-            %,NARROW}
+            _,narrow}
         "LAUNC"
         "RIVR3"}
     ()
-    CLIFF-FUNCTION
+    cliff_function
     0}
 
-#ROOM
+#room
   {"WCLF2"
-    "You are on a rocky, narrow strip of beach beside the Cliffs.  A narrow path leads north along the shore."
+    "You are on a rocky, narrow strip of beach beside the Cliffs.  A\nnarrow path leads north along the shore."
     "White Cliffs Beach"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
-        #CEXIT
+        #cexit
           {"DEFLATE"
             "WCLF1"
-            %,NARROW}
+            _,narrow}
         "LAUNC"
         "RIVR4"}
     ()
-    CLIFF-FUNCTION
+    cliff_function
     0}
 
-#ROOM
+#room
   {"RIVR4"
-    "The river is running faster here and the sound ahead appears to be that of rushing water.  On the west shore is a sandy beach.  A small area of beach can also be seen below the Cliffs."
-    %,RIVERDESC
-    %
+    "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
+    _,riverdesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        %,CURRENT
+        _,current
         "DOWN"
         "RIVR5"
         "EAST"
@@ -3995,53 +3445,53 @@ psetg(NARROW
         "WEST"
         "BEACH"
         "LAND"
-        #NEXIT
+        #nexit
           "Specify the direction to land."}
-    (#FIND-OBJ
+    (#find_obj
         {"BUOY"})
-    RIVR4-ROOM
+    rivr4_room
     0
-    %,RWATERBIT}
+    _,rwaterbit}
 
-#ROOM
+#room
   {"RIVR5"
-    "The sound of rushing water is nearly unbearable here.  On the west shore is a large landing area."
-    %,RIVERDESC
-    %
+    "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
+    _,riverdesc
+    _
     <>
-    #EXIT
+    #exit
       {"UP"
-        %,CURRENT
+        _,current
         "DOWN"
         "FCHMP"
         "LAND"
         "FANTE"}
     ()
-    %
+    _
     <>
     0
-    %,RWATERBIT}
+    _,rwaterbit}
 
-#ROOM
+#room
   {"FCHMP"
     ""
     "Moby lossage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
-        #NEXIT
+        #nexit
           ""}
     ()
-    OVER-FALLS}
+    over_falls}
 
-#ROOM
+#room
   {"FANTE"
-    "You are on the shore of the River.  The river here seems somewhat treacherous.  A path travels from north to south here, the south end quickly turning around a sharp corner."
+    "You are on the shore of the River.  The river here seems somewhat\ntreacherous.  A path travels from north to south here, the south end\nquickly turning around a sharp corner."
     "Shore"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"LAUNC"
         "RIVR5"
         "NORTH"
@@ -4049,78 +3499,78 @@ psetg(NARROW
         "SOUTH"
         "FALLS"}
     ()
-    %
+    _
     <>
     0}
 
-#ROOM
+#room
   {"BEACH"
-    "You are on a large sandy beach at the shore of the river, which is flowing quickly by.  A path runs beside the river to the south here."
+    "You are on a large sandy beach at the shore of the river, which is\nflowing quickly by.  A path runs beside the river to the south here."
     "Sandy Beach"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"LAUNC"
         "RIVR4"
         "SOUTH"
         "FANTE"}
-    (#FIND-OBJ
+    (#find_obj
         {"STATU"})
-    BEACH-ROOM
+    beach_room
     0}
 
-#ROOM
+#room
   {"RCAVE"
-    "You are on the west shore of the river.  An entrance to a cave is to the northwest.  The shore is very rocky here."
+    "You are on the west shore of the river.  An entrance to a cave is\nto the northwest.  The shore is very rocky here."
     "Rocky Shore"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"LAUNC"
         "RIVR3"
         "NW"
         "TCAVE"}
     ()
-    %
+    _
     <>
     0}
 
-#ROOM
+#room
   {"TCAVE"
     "You are in a small cave whose exits are on the south and northwest."
     "Small Cave"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "RCAVE"
         "NW"
         "CHAS3"}
-    (#FIND-OBJ
+    (#find_obj
         {"GUANO"}
-      #FIND-OBJ
+      #find_obj
         {"SHOVE"})
-    TCAVE-ROOM}
+    tcave_room}
 
-#ROOM
+#room
   {"BARRE"
-    "You are in a barrel.  Congratulations.  Etched into the side of the barrel is the word 'Geronimo!'."
+    "You are in a barrel.  Congratulations.  Etched into the side of the\nbarrel is the word 'Geronimo!'."
     "Barrel"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EXIT"
         "FALLS"}}
 
-#ROOM
+#room
   {"FALLS"
     ""
     "Aragain Falls"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
-        #CEXIT
+        #cexit
           {"RAINBOW"
             "RAINB"}
         "DOWN"
@@ -4130,59 +3580,58 @@ psetg(NARROW
         "ENTER"
         "BARRE"
         "UP"
-        #CEXIT
+        #cexit
           {"RAINBOW"
             "RAINB"}}
-    (#FIND-OBJ
+    (#find_obj
         {"RAINB"}
-      #FIND-OBJ
+      #find_obj
         {"BARRE"})
-    FALLS-ROOM}
+    falls_room}
 
-#ROOM
+#room
   {"RAINB"
-    "You are on top of a rainbow (I bet you never thought you would walk on a rainbow), with a magnificent view of the Falls.  The rainbow travels east-west here.  There is an NBC Commissary here."
+    "You are on top of a rainbow (I bet you never thought you would walk\non a rainbow), with a magnificent view of the Falls.  The rainbow\ntravels east-west here.  There is an NBC Commissary here."
     "Rainbow Room"
-    T
-    #EXIT
+    t
+    #exit
       {"EAST"
         "POG"
         "WEST"
         "FALLS"}}
 
-setg(CRAIN
-  #CEXIT
+setg(crain, #cexit
     {"RAINBOW"
-      "RAINB"});
+      "RAINB"})
 
-#ROOM
+#room
   {"POG"
-    "You are on a small beach on the continuation of the Frigid River past the Falls.  The beach is narrow due to the presence of the White Cliffs.  The river canyon opens here and sunlight shines in from above. A rainbow crosses over the falls to the west and a narrow path continues to the southeast."
+    "You are on a small beach on the continuation of the Frigid River\npast the Falls.  The beach is narrow due to the presence of the White\nCliffs.  The river canyon opens here and sunlight shines in from\nabove. A rainbow crosses over the falls to the west and a narrow path\ncontinues to the southeast."
     "End of Rainbow"
-    T
-    #EXIT
+    t
+    #exit
       {"UP"
-        %,CRAIN
+        _,crain
         "NW"
-        %,CRAIN
+        _,crain
         "WEST"
-        %,CRAIN
+        _,crain
         "SE"
         "CLBOT"}
-    (#FIND-OBJ
+    (#find_obj
         {"RAINB"}
-      #FIND-OBJ
+      #find_obj
         {"POT"})
-    %
+    _
     <>
     0}
 
-#ROOM
+#room
   {"CLBOT"
-    "You are beneath the walls of the river canyon which may be climbable here.  There is a small stream here, which is the lesser part of the runoff of Aragain Falls. To the north is a narrow path."
+    "You are beneath the walls of the river canyon which may be climbable\nhere.  There is a small stream here, which is the lesser part of the\nrunoff of Aragain Falls. To the north is a narrow path."
     "Canyon Bottom"
-    T
-    #EXIT
+    t
+    #exit
       {"UP"
         "CLMID"
         "CLIMB"
@@ -4190,12 +3639,12 @@ setg(CRAIN
         "NORTH"
         "POG"}}
 
-#ROOM
+#room
   {"CLMID"
-    "You are on a ledge about halfway up the wall of the river canyon. You can see from here that the main flow from Aragain Falls twists along a passage which it is impossible to enter.  Below you is the canyon bottom.  Above you is more cliff, which still appears climbable."
+    "You are on a ledge about halfway up the wall of the river canyon.\nYou can see from here that the main flow from Aragain Falls twists\nalong a passage which it is impossible to enter.  Below you is the\ncanyon bottom.  Above you is more cliff, which still appears\nclimbable."
     "Rocky Ledge"
-    T
-    #EXIT
+    t
+    #exit
       {"UP"
         "CLTOP"
         "CLIMB"
@@ -4203,12 +3652,12 @@ setg(CRAIN
         "DOWN"
         "CLBOT"}}
 
-#ROOM
+#room
   {"CLTOP"
-    "You are at the top of the Great Canyon on its south wall.  From here there is a marvelous view of the Canyon and parts of the Frigid River upstream.  Across the canyon, the walls of the White Cliffs still appear to loom far above.  Following the Canyon upstream (north and northwest), Aragain Falls may be seen, complete with rainbow.  Fortunately, my vision is better than average and I can discern the top of the Flood Control Dam #3 far to the distant north.  To the west and south can be seen an immense forest, stretching for miles around.  It is possible to climb down into the canyon from here."
+    "You are at the top of the Great Canyon on its south wall.  From here\nthere is a marvelous view of the Canyon and parts of the Frigid River\nupstream.  Across the canyon, the walls of the White Cliffs still\nappear to loom far above.  Following the Canyon upstream (north and\nnorthwest), Aragain Falls may be seen, complete with rainbow. \nFortunately, my vision is better than average and I can discern the\ntop of the Flood Control Dam #3 far to the distant north.  To the\nwest and south can be seen an immense forest, stretching for miles\naround.  It is possible to climb down into the canyon from here."
     "Canyon View"
-    T
-    #EXIT
+    t
+    #exit
       {"DOWN"
         "CLMID"
         "CLIMB"
@@ -4218,1091 +3667,939 @@ setg(CRAIN
         "WEST"
         "FORE5"}}
 
-add_object(#OBJECT
+add_object(#object
     {"POT"
       "There is a pot of gold here."
       "pot filled with gold"
       "At the end of the rainbow is a pot of gold."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,TAKEBIT
+      _,takebit
       0
       10
       10
       15
-      0}
-  []
-  ["GOLD"]);
+      0}, [], ["GOLD"])
 
-add_object(#OBJECT
+add_object(#object
     {"STATU"
       "There is a beautiful statue here."
       "statue"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,TAKEBIT
+      _,takebit
       0
       10
       13
       8
-      0}
-  ["SCULP"
-    "ROCK"]);
+      0}, ["SCULP"
+    "ROCK"])
 
-add_object(#OBJECT
+add_object(#object
     {"IBOAT"
-      "There is a folded pile of plastic here which has a small valve attached."
+      "There is a folded pile of plastic here which has a small valve\nattached."
       "plastic inflatable boat"
-      %
+      _
       <>
-      IBOAT-FUNCTION
+      iboat_function
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_burnbit, _ovison, _takebit)
       0
       0
       0
       20
-      0}
-  ["BOAT"
+      0}, ["BOAT"
     "PLAST"
-    "PILE"]);
+    "PILE"])
 
-add_object(#OBJECT
+add_object(#object
     {"DBOAT"
       "There is a pile of plastic here with a large hole in it."
       "plastic boat (with hole)"
-      %
+      _
       <>
-      DBOAT-FUNCTION
+      dboat_function
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_burnbit, _ovison, _takebit)
       0
       0
       0
       20
-      0}
-  ["BOAT"
+      0}, ["BOAT"
     "PLAST"
-    "PILE"]);
+    "PILE"])
 
-add_object(#OBJECT
+add_object(#object
     {"PUMP"
       "There is a small pump here."
       "hand-held air pump"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TOOLBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_toolbit, _ovison, _takebit)
       0
       0
       0
       5
-      0}
-  ["AIR-P"
-    "AIRPU"]);
+      0}, ["AIR-P"
+    "AIRPU"])
 
-add_object(#OBJECT
+add_object(#object
     {"RBOAT"
       "There is an inflated boat here."
       "magic boat"
-      %
+      _
       <>
-      RBOAT-FUNCTION
-      (#FIND-OBJ
+      rboat_function
+      (#find_obj
           {"LABEL"})
-      %
+      _
       <>
-      %
-      _(,VEHBIT
-        ,BURNBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_vehbit, _burnbit, _ovison, _takebit)
       0
       0
       0
       20
-      100}
-  ["BOAT"]
-  ["PLAST"
-    "SEAWO"]);
+      100}, ["BOAT"], ["PLAST"
+    "SEAWO"])
 
-put(find_obj("RBOAT");
-  ,OOPEN?
-  T);
+put(find_obj("RBOAT"), _oopen_q, t)
 
-put(find_obj("RBOAT");
-  ,ORAND
-  ,RWATERBIT);
+put(find_obj("RBOAT"), _orand, _rwaterbit)
 
-add_object(#OBJECT
+add_object(#object
     {"LABEL"
       "There is a tan label here."
       "tan label"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"RBOAT"}
-      %
-      _(,BURNBIT
-        ,OVISON
-        ,READBIT
-        ,TAKEBIT);
+      _
+      _(_burnbit, _ovison, _readbit, _takebit)
       0
       0
       0
       2
-      0}
-  ["FINEP"]
-  ["TAN"]);
+      0}, ["FINEP"], ["TAN"])
 
-add_desc(find_obj("LABEL");
-  "   !!!!  FROBOZZ MAGIC BOAT COMPANY  !!!!  Hello, Sailor!  Instructions for use:        To get into boat, say 'Board'    To leave boat, say 'Disembark'     To get into a body of water, say 'Launch'    To get to shore, say 'Land'      Warranty:    This boat is guaranteed against all defects in parts and workmanship for a period of 76 milliseconds from date of purchase or until first used, whichever comes first.  Warning:    This boat is made of plastic.  Good Luck! ");
+add_desc(find_obj("LABEL"), "!!!! 	FROBOZZ MAGIC BOAT COMPANY  !!!!\n\nHello, Sailor!\n\nInstructions for use:\n   \n   To get into boat, say 'Board'\n   To leave boat, say 'Disembark'\n\n   To get into a body of water, say 'Launch'\n   To get to shore, say 'Land'\n    \nWarranty:\n\n  This boat is guaranteed against all defects in parts and\nworkmanship for a period of 76 milliseconds from date of purchase or\nuntil first used, whichever comes first.\n\nWarning:\n   This boat is made of plastic.		Good Luck!")
 
-add_object(#OBJECT
+add_object(#object
     {"STICK"
       "There is a broken sharp stick here."
       "broken sharp stick"
       "A sharp stick, which appears to have been broken at one end, is here."
-      STICK-FUNCTION
+      stick_function
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       0
       0
       3
-      0}
-  []
-  ["SHARP"
-    "BROKE"]);
+      0}, [], ["SHARP"
+    "BROKE"])
 
-sobject("BARRE"
-  "barrel"
-  ,OVISON);
+sobject("BARRE", "barrel", _ovison)
 
-add_object(#OBJECT
+add_object(#object
     {"BUOY"
       "There is a red buoy here (probably a warning)."
       "red buoy"
-      %
+      _
       <>
-      %
+      _
       <>
-      (#FIND-OBJ
+      (#find_obj
           {"EMERA"})
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,FINDMEBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_contbit, _findmebit, _ovison, _takebit)
       0
       0
       0
       10
-      20}
-  []
-  ["RED"]);
+      20}, [], ["RED"])
 
-add_object(#OBJECT
+add_object(#object
     {"EMERA"
       "There is an emerald here."
       "large emerald"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"BUOY"}
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       5
       10
       5
-      0}
-  []);
+      0}, [])
 
-add_object(#OBJECT
+add_object(#object
     {"SHOVE"
       "There is a large shovel here."
       "shovel"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TOOLBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_toolbit, _ovison, _takebit)
       0
       0
       0
       15
-      0}
-  []);
+      0}, [])
 
-add_object(#OBJECT
+add_object(#object
     {"GUANO"
       "There is a hunk of bat guano here."
       "hunk of bat guano"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       0
       0
       20
-      0}
-  ["CRAP"
+      0}, ["CRAP"
     "SHIT"
-    "HUNK"]);
+    "HUNK"])
 
-add_object(#OBJECT
+add_object(#object
     {"GRUE"
       ""
       "lurking grue"
-      %
+      _
       <>
-      GRUE-FUNCTION
+      grue_function
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
       0
-      0}
-  []
-  ["LURKI"]);
+      0}, [], ["LURKI"])
 
-#ROOM
+#room
   {"VLBOT"
-    "You are at the bottom of a large dormant volcano.  High above you light may be seen entering from the cone of the volcano.  The only exit here is to the north."
+    "You are at the bottom of a large dormant volcano.  High above you\nlight may be seen entering from the cone of the volcano.  The only\nexit here is to the north."
     "Volcano Bottom"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "LAVA"}
-    (#FIND-OBJ
+    (#find_obj
         {"BALLO"})}
 
-psetg(VOLCORE
-  "Volcano Core");
+psetg(volcore, "Volcano Core")
 
-setg(NULEXIT
-  #EXIT
+setg(nulexit, #exit
     {"#!#!#"
-      "!"});
+      "!"})
 
-#ROOM
+#room
   {"VAIR1"
-    "You are about one hundred feet above the bottom of the volcano.  The top of the volcano is clearly visible here."
-    %,VOLCORE
-    %
+    "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
+    _,volcore
+    _
     <>
-    %,NULEXIT
+    _,nulexit
     ()
-    %
+    _
     <>
     0
-    %,RAIRBIT}
+    _,rairbit}
 
-#ROOM
+#room
   {"VAIR2"
-    "You are about two hundred feet above the volcano floor.  Looming above is the rim of the volcano.  There is a small ledge on the west side."
-    %,VOLCORE
-    %
+    "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
+    _,volcore
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "LEDG2"
         "LAND"
         "LEDG2"}
     ()
-    %
+    _
     <>
     0
-    %,RAIRBIT}
+    _,rairbit}
 
-#ROOM
+#room
   {"VAIR3"
-    "You are high above the floor of the volcano.  From here the rim of the volcano looks very narrow and you are very near it.  To the  east is what appears to be a viewing ledge, too thin to land on."
-    %,VOLCORE
-    %
+    "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
+    _,volcore
+    _
     <>
-    %,NULEXIT
+    _,nulexit
     ()
-    %
+    _
     <>
     0
-    %,RAIRBIT}
+    _,rairbit}
 
-#ROOM
+#room
   {"VAIR4"
-    "You are near the rim of the volcano which is only about 15 feet across.  To the west, there is a place to land on a wide ledge."
-    %,VOLCORE
-    %
+    "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
+    _,volcore
+    _
     <>
-    #EXIT
+    #exit
       {"LAND"
         "LEDG4"
         "EAST"
         "LEDG4"}
     ()
-    %
+    _
     <>
     0
-    %,RAIRBIT}
+    _,rairbit}
 
-setg(CXGNOME
-  #CEXIT
+setg(cxgnome, #cexit
     {"GNOME-DOOR"
-      "VLBOT"});
+      "VLBOT"})
 
-#ROOM
+#room
   {"LEDG2"
-    "You are on a narrow ledge overlooking the inside of an old dormant volcano.  This ledge appears to be about in the middle between the floor below and the rim above. There is an exit here to the south."
+    "You are on a narrow ledge overlooking the inside of an old dormant\nvolcano.  This ledge appears to be about in the middle between the\nfloor below and the rim above. There is an exit here to the south."
     "Narrow Ledge"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
-        #NEXIT
+        #nexit
           "I wouldn't jump from here."
         "LAUNC"
         "VAIR2"
         "WEST"
-        %,CXGNOME
+        _,cxgnome
         "SOUTH"
         "LIBRA"}
-    (#FIND-OBJ
+    (#find_obj
         {"HOOK1"}
-      #FIND-OBJ
+      #find_obj
         {"ZORKM"})}
 
-#ROOM
+#room
   {"LIBRA"
-    "You are in a room which must have been a large library, probably for the royal family.  All of the shelves appear to have been gnawed to pieces by unfriendly gnomes.  To the north is an exit."
+    "You are in a room which must have been a large library, probably\nfor the royal family.  All of the shelves appear to have been gnawed\nto pieces by unfriendly gnomes.  To the north is an exit."
     "Library"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "LEDG2"
         "OUT"
         "LEDG2"}
-    (#FIND-OBJ
+    (#find_obj
         {"BLBK"}
-      #FIND-OBJ
+      #find_obj
         {"GRBK"}
-      #FIND-OBJ
+      #find_obj
         {"PUBK"}
-      #FIND-OBJ
+      #find_obj
         {"WHBK"})}
 
-#ROOM
+#room
   {"LEDG3"
-    "You are on a ledge in the middle of a large volcano.  Below you the volcano bottom can be seen and above is the rim of the volcano. A couple of ledges can be seen on the other side of the volcano; it appears that this ledge is intermediate in elevation between those on the other side.  The exit from this room is to the east."
+    "You are on a ledge in the middle of a large volcano.  Below you\nthe volcano bottom can be seen and above is the rim of the volcano.\nA couple of ledges can be seen on the other side of the volcano;\nit appears that this ledge is intermediate in elevation between\nthose on the other side.  The exit from this room is to the east."
     "Volcano View"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
-        #NEXIT
+        #nexit
           "I wouldn't try that."
         "CROSS"
-        #NEXIT
+        #nexit
           "It is impossible to cross this distance."
         "EAST"
         "EGYPT"}}
 
-#ROOM
+#room
   {"LEDG4"
     ""
     "Wide Ledge"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"DOWN"
-        #NEXIT
+        #nexit
           "It's a long way down."
         "LAUNC"
         "VAIR4"
         "WEST"
-        %,CXGNOME
+        _,cxgnome
         "SOUTH"
         "SAFE"}
-    (#FIND-OBJ
+    (#find_obj
         {"HOOK2"})
-    LEDGE-FUNCTION}
+    ledge_function}
 
-#ROOM
+#room
   {"SAFE"
     ""
     "Dusty Room"
-    T
-    #EXIT
+    t
+    #exit
       {"NORTH"
         "LEDG4"}
-    (#FIND-OBJ
+    (#find_obj
         {"SSLOT"}
-      #FIND-OBJ
+      #find_obj
         {"SAFE"})
-    SAFE-ROOM}
+    safe_room}
 
-#ROOM
+#room
   {"LAVA"
-    "You are in a small room, whose walls are formed by an old lava flow. There are exits here to the west and the south."
+    "You are in a small room, whose walls are formed by an old lava flow.\nThere are exits here to the west and the south."
     "Lava Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"SOUTH"
         "VLBOT"
         "WEST"
         "RUBYR"}}
 
-add_object(#OBJECT
+add_object(#object
     {"BALLO"
-      "There is a very large and extremely heavy wicker basket with a cloth bag here. Inside the basket is a metal receptacle of some kind.  Attached to the basket on the outside is a piece of wire."
+      "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire."
       "basket"
-      %
+      _
       <>
-      BALLOON
-      (#FIND-OBJ
+      balloon
+      (#find_obj
           {"CBAG"}
-        #FIND-OBJ
+        #find_obj
           {"BROPE"}
-        #FIND-OBJ
+        #find_obj
           {"RECEP"})
-      %
+      _
       <>
-      %
-      _(,VEHBIT
-        ,OVISON);
+      _
+      _(_vehbit, _ovison)
       0
       0
       0
       70
-      100}
-  ["BASKE"]
-  ["WICKE"]);
+      100}, ["BASKE"], ["WICKE"])
 
-put(find_obj("BALLO");
-  ,OOPEN?
-  T);
+put(find_obj("BALLO"), _oopen_q, t)
 
-put(find_obj("BALLO");
-  ,ORAND
-  ,RAIRBIT);
+put(find_obj("BALLO"), _orand, _rairbit)
 
-#OBJECT
+#object
   {"RECEP"
     ""
     "receptacle"
-    %
+    _
     <>
-    %
+    _
     <>
     ()
-    #FIND-OBJ
+    #find_obj
       {"BALLO"}
-    %
-    _(,CONTBIT
-      ,OVISON
-      ,SEARCHBIT);
+    _
+    _(_contbit, _ovison, _searchbit)
     0
     0
     0
-    %,BIGFIX
+    _,bigfix
     6}
 
-add_object(#OBJECT
+add_object(#object
     {"CBAG"
       ""
       "cloth bag"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"BALLO"}
-      %,OVISON
+      _,ovison
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["BAG"]
-  ["CLOTH"]);
+      _,bigfix
+      0}, ["BAG"], ["CLOTH"])
 
-add_object(#OBJECT
+add_object(#object
     {"BROPE"
       ""
       "braided wire"
-      %
+      _
       <>
-      WIRE-FUNCTION
+      wire_function
       ()
-      #FIND-OBJ
+      #find_obj
         {"BALLO"}
-      %
-      _(,TIEBIT
-        ,OVISON);
+      _
+      _(_tiebit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["WIRE"]
-  ["BRAID"]);
+      _,bigfix
+      0}, ["WIRE"], ["BRAID"])
 
-add_object(#OBJECT
+add_object(#object
     {"HOOK1"
       "There is a small hook attached to the rock here."
       "hook"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["HOOK"]);
+      _,bigfix
+      0}, ["HOOK"])
 
-add_object(#OBJECT
+add_object(#object
     {"HOOK2"
       "There is a small hook attached to the rock here."
       "hook"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["HOOK"]);
+      _,bigfix
+      0}, ["HOOK"])
 
-add_object(#OBJECT
+add_object(#object
     {"ZORKM"
       "There is an engraved zorkmid coin here."
       "priceless zorkmid"
       "On the floor is a gold zorkmid coin (a valuable collector's item)."
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,READBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_readbit, _ovison, _takebit)
       0
       10
       12
       10
-      0}
-  ["COIN"]
-  ["GOLD"]);
+      0}, ["COIN"], ["GOLD"])
 
-add_desc(find_obj("ZORKM");
-  "         --------------------------        /      Gold Zorkmid  \\       /  T e n   T h o u s a n d   \\      /        Z O R K M I D S    \\     /        \\    /        ||||||||||||||||||      \\   /        !||||   ||||!       \\  |    |||   ^^  ^^   |||        |  |    |||  OO  OO   |||        |  | In Frobs  |||    <<    |||  We Trust |  |      || (______) ||        |  |       |          |        |  |       |__________|        |   \\          /    \\    -- Lord Dimwit Flathead --    /     \\    -- Beloved of Zorkers --    /      \\       /       \\      * 722 G.U.E. *       /        \\     /         -------------------------- ");
+add_desc(find_obj("ZORKM"), "--------------------------\n	      /      Gold Zorkmid	 \\\n	     /  T e n   T h o u s a n d   \\\n	    /        Z O R K M I D S	   \\\n	   /				    \\\n	  /        ||||||||||||||||||	     \\\n	 /        !||||		 ||||!	      \\\n	|	   |||   ^^  ^^   |||	       |\n	|	   |||	 OO  OO   |||	       |\n	| In Frobs  |||	   <<    |||  We Trust |\n	|	     || (______) ||	       |\n	|	      |          |	       |\n	|	      |__________|	       |\n	 \\				      /\n	  \\    -- Lord Dimwit Flathead --    /\n	   \\    -- Beloved of Zorkers --    /\n	    \\				   /\n	     \\	     * 722 G.U.E. *       /\n	      \\				 /\n	       --------------------------")
 
-add_object(#OBJECT
+add_object(#object
     {"SAFE"
       ""
       "box"
-      %
+      _
       <>
-      SAFE-FUNCTION
-      (#FIND-OBJ
+      safe_function
+      (#find_obj
           {"CROWN"}
-        #FIND-OBJ
+        #find_obj
           {"CARD"})
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,OVISON);
+      _
+      _(_contbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      15}
-  ["BOX"]);
+      _,bigfix
+      15}, ["BOX"])
 
-add_object(#OBJECT
+add_object(#object
     {"CARD"
       "There is a card with writing on it here."
       "card"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"SAFE"}
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,READBIT
-        ,BURNBIT);
+      _
+      _(_ovison, _takebit, _readbit, _burnbit)
       0
       0
       0
       1
-      0}
-  ["NOTE"]);
+      0}, ["NOTE"])
 
-add_desc(find_obj("CARD");
-  " Warning:     This room was constructed over very weak rock strata.  Detonation of explosives in this room is strictly prohibited!    Frobozz Magic Cave Company    per M. Agrippa, foreman ");
+add_desc(find_obj("CARD"), "Warning:\n    This room was constructed over very weak rock strata.  Detonation\nof explosives in this room is strictly prohibited!\n			Frobozz Magic Cave Company\n			per M. Agrippa, foreman")
 
-add_object(#OBJECT
+add_object(#object
     {"SSLOT"
       ""
       "hole"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
-      %,BIGFIX
-      10}
-  ["SLOT"
-    "HOLE"]);
+      _,bigfix
+      10}, ["SLOT"
+    "HOLE"])
 
-put(find_obj("SSLOT");
-  ,OOPEN?
-  T);
+put(find_obj("SSLOT"), _oopen_q, t)
 
-add_object(#OBJECT
+add_object(#object
     {"CROWN"
       "Lord Dimwit's crown is here."
       "crown"
       "The excessively gaudy crown of Lord Dimwit Flathead is here."
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"SAFE"}
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       15
       10
       10
-      0}
-  []
-  ["GAUDY"]);
+      0}, [], ["GAUDY"])
 
-add_object(#OBJECT
+add_object(#object
     {"BRICK"
       "There is a square brick here which feels like clay."
       "brick"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,SEARCHBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_burnbit, _searchbit, _ovison, _takebit)
       0
       0
       0
       9
-      2}
-  ["BRICK"]
-  ["SQUAR"
-    "CLAY"]);
+      2}, ["BRICK"], ["SQUAR"
+    "CLAY"])
 
-put(find_obj("BRICK");
-  ,OOPEN?
-  T);
+put(find_obj("BRICK"), _oopen_q, t)
 
-add_object(#OBJECT
+add_object(#object
     {"FUSE"
       "There is a coil of thin shiny wire here."
       "wire coil"
-      %
+      _
       <>
-      FUSE-FUNCTION
+      fuse_function
       ()
-      %
+      _
       <>
-      %
-      _(,BURNBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_burnbit, _ovison, _takebit)
       0
       0
       0
       1
-      0}
-  ["COIL"
-    "WIRE"]
-  ["SHINY"
-    "THIN"]);
+      0}, ["COIL"
+    "WIRE"], ["SHINY"
+    "THIN"])
 
-add_object(#OBJECT
+add_object(#object
     {"GNOME"
       "There is a nervous Volcano Gnome here."
       "Volcano Gnome"
-      %
+      _
       <>
-      GNOME-FUNCTION
+      gnome_function
       ()
-      %
+      _
       <>
-      %
-      _(,VICBIT
-        ,OVISON);
+      _
+      _(_vicbit, _ovison)
       0
       0
       0
-      %,BIGFIX
-      0}
-  ["TROLL"]);
+      _,bigfix
+      0}, ["TROLL"])
 
-add_object(#OBJECT
+add_object(#object
     {"BLABE"
       "There is a blue label here."
       "blue label"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      #FIND-OBJ
+      #find_obj
         {"BALLO"}
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,READBIT
-        ,BURNBIT);
+      _
+      _(_ovison, _takebit, _readbit, _burnbit)
       0
       0
       0
       1
-      0}
-  ["LABEL"]
-  ["BLUE"]);
+      0}, ["LABEL"], ["BLUE"])
 
-add_desc(find_obj("BLABE");
-  "    !!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!  Hello, Aviator!  Instructions for use:        To get into balloon, say 'Board'    To leave balloon, say 'Disembark'    To land, say 'Land'      Warranty:        No warranty is expressed or implied.  You're on your own, sport!       Good Luck. ");
+add_desc(find_obj("BLABE"), "!!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!\n\nHello, Aviator!\n\nInstructions for use:\n   \n   To get into balloon, say 'Board'\n   To leave balloon, say 'Disembark'\n   To land, say 'Land'\n    \nWarranty:\n   \n   No warranty is expressed or implied.  You're on your own, sport!\n\n					Good Luck.")
 
-add_object(#OBJECT
+add_object(#object
     {"DBALL"
       "There is a balloon here, broken into pieces."
       "broken balloon"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON);
+      _
+      _(_takebit, _ovison)
       0
       0
       0
       40
-      0}
-  ["BALLO"
-    "BASKE"]
-  ["BROKE"]);
+      0}, ["BALLO"
+    "BASKE"], ["BROKE"])
 
-add_object(#OBJECT
+add_object(#object
     {"BLBK"
       "There is a blue book here."
       "blue book"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_contbit, _takebit, _ovison, _readbit)
       0
       0
       0
       10
-      2}
-  ["BOOK"]
-  ["BLUE"]);
+      2}, ["BOOK"], ["BLUE"])
 
-add_object(#OBJECT
+add_object(#object
     {"GRBK"
       "There is a green book here."
       "green book"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_contbit, _takebit, _ovison, _readbit)
       0
       0
       0
       10
-      2}
-  ["BOOK"]
-  ["GREEN"]);
+      2}, ["BOOK"], ["GREEN"])
 
-add_object(#OBJECT
+add_object(#object
     {"PUBK"
       "There is a purple book here."
       "purple book"
-      %
+      _
       <>
-      %
+      _
       <>
-      (#FIND-OBJ
+      (#find_obj
           {"STAMP"})
-      %
+      _
       <>
-      %
-      _(,TAKEBIT
-        ,OVISON
-        ,READBIT
-        ,CONTBIT);
+      _
+      _(_takebit, _ovison, _readbit, _contbit)
       0
       0
       0
       10
-      2}
-  ["BOOK"]
-  ["PURPL"]);
+      2}, ["BOOK"], ["PURPL"])
 
-add_object(#OBJECT
+add_object(#object
     {"WHBK"
       "There is a white book here."
       "white book"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,CONTBIT
-        ,TAKEBIT
-        ,OVISON
-        ,READBIT);
+      _
+      _(_contbit, _takebit, _ovison, _readbit)
       0
       0
       0
       10
-      2}
-  ["BOOK"]
-  ["WHITE"]);
+      2}, ["BOOK"], ["WHITE"])
 
-psetg(GREEK-TO-ME
-  "This book is written in a tongue with which I am unfamiliar.");
+psetg(greek_to-me, "This book is written in a tongue with which I am unfamiliar.")
 
-add_desc(find_obj("BLBK");
-  ,GREEK-TO-ME);
+add_desc(find_obj("BLBK"), _greek-to-me)
 
-add_desc(find_obj("GRBK");
-  ,GREEK-TO-ME);
+add_desc(find_obj("GRBK"), _greek-to-me)
 
-add_desc(find_obj("PUBK");
-  ,GREEK-TO-ME);
+add_desc(find_obj("PUBK"), _greek-to-me)
 
-add_desc(find_obj("WHBK");
-  ,GREEK-TO-ME);
+add_desc(find_obj("WHBK"), _greek-to-me)
 
-#OBJECT
+#object
   {"STAMP"
     "There is a Flathead Commemorative stamp here."
     "stamp"
-    %
+    _
     <>
-    %
+    _
     <>
     ()
-    #FIND-OBJ
+    #find_obj
       {"PUBK"}
-    %
-    _(,TAKEBIT
-      ,READBIT
-      ,BURNBIT
-      ,OVISON);
+    _
+    _(_takebit, _readbit, _burnbit, _ovison)
     0
     4
     10
     1
     0}
 
-add_desc(find_obj("STAMP");
-  " ---v----v----v----v----v----v----v----v--- |      | |    ||||||||||      LORD  | >         !||||      |     DIMWIT  < |   ||||    ---|    FLATHEAD  | |   |||C    CC \\     | >    ||||       _\\   < |     ||| (____|    | |      ||      |    | >       |______|      Our  < |  /   \\   Excessive  | |        /     \\     Leader  | >       |       |    < |       |       |    | |      | >    G.U.E. POSTAGE    3 Zorkmids    < |      | ---^----^----^----^----^----^----^----^--- ");
+add_desc(find_obj("STAMP"), "---v----v----v----v----v----v----v----v---\n|					 |\n|	   ||||||||||	     LORD	 |\n>         !||||	     |	    DIMWIT	 <\n|	  ||||    ---|	   FLATHEAD	 |\n|	  |||C	   CC \\  		 |\n>	   ||||	      _\\		 <\n|	    ||| (____|			 |\n|	     ||      |			 |\n>	      |______|	     Our	 <\n|		/   \\	  Excessive	 |\n|	       /     \\	    Leader	 |\n>	      |	      |			 <\n|	      |       |			 |\n|					 |\n>    G.U.E. POSTAGE	   3 Zorkmids    <\n|					 |\n---^----^----^----^----^----^----^----^---")
 
-setg(BLOC
-  find_room("VLBOT"););
+setg(bloc, find_room("VLBOT"))
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
-put(find_obj("LAMP");
-  ,ORAND
-  [0
-    clock_disable(clock_int(,LNTIN
-        350););]);
+put(find_obj("LAMP"), _orand, [0
+    clock_disable(clock_int(_lntin, 350))])
 
-put(find_obj("CANDL");
-  ,ORAND
-  <>);
+put(find_obj("CANDL"), _orand, <>)
 
-put(find_obj("MATCH");
-  ,ORAND
-  5);
+put(find_obj("MATCH"), _orand, 5)
 
 // NUMBER OF MATCHES
 
-psetg(INDENTSTR
-  rest(istring(8
-      !\);
-    8););
+psetg(indentstr, rest(istring(8, _\), 8))
 
-#ROOM
+#room
   {"TOMB"
-    "You are in the Tomb of the Unknown Implementer. A hollow voice says:  \"That's not a bug, it's a feature!\""
+    "You are in the Tomb of the Unknown Implementer.\nA hollow voice says:  \"That's not a bug, it's a feature!\"
     "Tomb of the Unknown Implementer"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "LLD2"}
-    (#FIND-OBJ
+    (#find_obj
         {"TOMB"}
-      #FIND-OBJ
+      #find_obj
         {"HEADS"}
-      #FIND-OBJ
+      #find_obj
         {"COKES"}
-      #FIND-OBJ
+      #find_obj
         {"LISTS"})
-    %
+    _
     <>
     0}
 
-add_object(#OBJECT
+add_object(#object
     {"TOMB"
-      "There is a tomb here, made of the finest marble, and large enough for four headless corpses.  On one end is the cryptic inscription:                \"Feel Free.\" "
+      "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\""
       "tomb"
-      %
+      _
       <>
-      HEAD-FUNCTION
+      head_function
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,READBIT
-        ,OVISON);}
-  ["GRAVE"]);
+      _
+      _(_trytakebit, _readbit, _ovison)}, ["GRAVE"])
 
-add_desc(find_obj("TOMB");
-  "Here lie the implementers, whose heads were placed on poles by the Keeper of the Dungeon for amazing untastefulness.");
+add_desc(find_obj("TOMB"), "Here lie the implementers, whose heads were placed on poles by the\nKeeper of the Dungeon for amazing untastefulness.")
 
-add_object(#OBJECT
+add_object(#object
     {"HEADS"
       "There are four heads here, mounted securely on poles."
       "set of poled heads"
-      %
+      _
       <>
-      HEAD-FUNCTION
+      head_function
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,SACREDBIT
-        ,OVISON);}
-  ["HEAD"
+      _
+      _(_trytakebit, _sacredbit, _ovison)}, ["HEAD"
     "POLE"
     "POLES"
     "PDL"
@@ -5310,107 +4607,83 @@ add_object(#OBJECT
     "TAA"
     "MARC"
     "IMPLE"
-    "LOSER"]);
+    "LOSER"])
 
-add_object(#OBJECT
+add_object(#object
     {"COKES"
       "Many empty Coke bottles are here.  Alas, they can't hold water."
       "bunch of Coke bottles"
-      "There is a large pile of empty Coke bottles here, evidently produced by the implementers during their long struggle to win totally."
-      COKE-BOTTLES
+      "There is a large pile of empty Coke bottles here, evidently produced\nby the implementers during their long struggle to win totally."
+      coke_bottles
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT);
+      _
+      _(_ovison, _takebit)
       0
       0
       0
-      15}
-  ["BOTTL"]
-  ["COKE"]);
+      15}, ["BOTTL"], ["COKE"])
 
-add_object(#OBJECT
+add_object(#object
     {"LISTS"
-      "There is an enormous stack of line-printer paper here.  It is barely readable."
+      "There is an enormous stack of line-printer paper here.  It is barely\nreadable."
       "stack of listings"
-      "There is a gigantic pile of line-printer output here.  Although the paper once contained useful information, almost nothing can be distinguished now."
-      %
+      "There is a gigantic pile of line-printer output here.  Although the\npaper once contained useful information, almost nothing can be\ndistinguished now."
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,READBIT
-        ,BURNBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_readbit, _burnbit, _ovison, _takebit)
       0
       0
       0
-      70}
-  ["PAPER"
+      70}, ["PAPER"
     "LIST"
     "PRINT"
     "LISTI"
-    "STACK"]);
+    "STACK"])
 
-add_desc(find_obj("LISTS");
-  "<DEFINE FEEL-FREE (LOSER)      <TELL \"FEEL FREE, CHOMPER!\">>    ... The rest is, alas, unintelligible (as were the implementers).");
+add_desc(find_obj("LISTS"), "<DEFINE FEEL-FREE (LOSER)\n		   <TELL \"FEEL FREE, CHOMPER!\">>\n			...\nThe rest is, alas, unintelligible (as were the implementers).")
 
-add_object(#OBJECT
+add_object(#object
     {"LCASE"
-      "There is a large case here, containing objects which you used to possess."
+      "There is a large case here, containing objects which you used to\npossess."
       "large case"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TRANSBIT);}
-  ["CASE"]
-  ["LARGE"]);
+      _
+      _(_ovison, _transbit)}, ["CASE"], ["LARGE"])
 
-mapf(<>
-  function((X)
-    rtro(find_room(spname(.X););
-      ,RFILLBIT););
-  !
-  [RESEN!-ROOMS
-    RESES!-ROOMS
-    DAM!-ROOMS
-    STREA!-ROOMS
-    RIVR1!-ROOMS
-    RIVR2!-ROOMS
-    RIVR3!-ROOMS
-    RIVR4!-ROOMS
-    RIVR5!-ROOMS
-    BEACH!-ROOMS
-    RCAVE!-ROOMS
-    DOCK!-ROOMS
-    WCLF1
-    WCLF2
-    FANTE
-    POG]);
+mapf(<>, function((x), rtro(find_room(spname(_x)), _rfillbit)), _, [resen_-rooms
+    reses_-rooms
+    dam_-rooms
+    strea_-rooms
+    rivr1_-rooms
+    rivr2_-rooms
+    rivr3_-rooms
+    rivr4_-rooms
+    rivr5_-rooms
+    beach_-rooms
+    rcave_-rooms
+    dock_-rooms
+    wclf1
+    wclf2
+    fante
+    pog])
 
-mapf(<>
-  function((X)
-    rtro(find_room(.X);
-      ,RHOUSEBIT););
-  ["LROOM"
+mapf(<>, function((x), rtro(find_room(_x), _rhousebit)), ["LROOM"
     "KITCH"
-    "ATTIC"]);
+    "ATTIC"])
 
-mapf(<>
-  function((X)
-    rtro(find_room(.X);
-      ,RSACREDBIT););
-  ["BSHAF"
+mapf(<>, function((x), rtro(find_room(_x), _rsacredbit)), ["BSHAF"
     "RIVR1"
     "DOCK"
     "FANTE"
@@ -5444,1432 +4717,1067 @@ mapf(<>
     "CLMID"
     "CLBOT"
     "RAINB"
-    "FALLS"]);
+    "FALLS"])
 
-setg(BUCKET-TOP!-FLAG
-  <>);
+setg(bucket_top!-flag, <>)
 
-setg(MAGCMACH
-  #CEXIT
+setg(magcmach, #cexit
     {"FROBOZZ"
       "CMACH"
-      ""});
+      ""})
 
-setg(MAGALICE
-  #CEXIT
+setg(magalice, #cexit
     {"FROBOZZ"
       "ALICE"
-      ""});
+      ""})
 
-#ROOM
+#room
   {"MAGNE"
     ""
     "Low Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
-        %,MAGCMACH
+        _,magcmach
         "SOUTH"
-        %,MAGCMACH
+        _,magcmach
         "WEST"
-        %,MAGCMACH
+        _,magcmach
         "NE"
-        %,MAGCMACH
+        _,magcmach
         "NW"
-        %,MAGALICE
+        _,magalice
         "SW"
-        %,MAGALICE
+        _,magalice
         "SE"
-        %,MAGALICE
+        _,magalice
         "EAST"
-        %,MAGCMACH}
-    (#FIND-OBJ
+        _,magcmach}
+    (#find_obj
         {"RBTLB"}
-      #FIND-OBJ
+      #find_obj
         {"ROBOT"})
-    MAGNET-ROOM}
+    magnet_room}
 
-#ROOM
+#room
   {"CMACH"
     ""
     "Machine Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MAGNE"
         "SOUTH"
         "CAGER"}
-    (#FIND-OBJ
+    (#find_obj
         {"SQBUT"}
-      #FIND-OBJ
+      #find_obj
         {"RNBUT"}
-      #FIND-OBJ
+      #find_obj
         {"TRBUT"})
-    CMACH-ROOM}
+    cmach_room}
 
-#ROOM
+#room
   {"CAGER"
-    "You are in a dingy closet adjacent to the machine room.  On one wall is a small sticker which says   Protected by     FROBOZZ       Magic Alarm Company        (Hello, footpad!) "
+    "You are in a dingy closet adjacent to the machine room.  On one wall\nis a small sticker which says\n		Protected by\n		  FROBOZZ\n	     Magic Alarm Company\n	      (Hello, footpad!)"
     "Dingy Closet"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
         "CMACH"}
-    (#FIND-OBJ
+    (#find_obj
         {"SPHER"})}
 
-#ROOM
+#room
   {"CAGED"
     "You are trapped inside an iron cage."
     "Cage"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NORTH"
-        #NEXIT
+        #nexit
           ""}
-    (#FIND-OBJ
+    (#find_obj
         {"CAGE"})
-    CAGED-ROOM}
+    caged_room}
 
-add_object(#OBJECT
+add_object(#object
     {"CAGE"
       "There is a mangled cage here."
       "mangled cage"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,NDESCBIT);
+      _
+      _(_ovison, _ndescbit)
       0
       0
       0
       60
-      0}
-  []
-  []);
+      0}, [], [])
 
-add_object(#OBJECT
+add_object(#object
     {"RCAGE"
       "There is an iron cage in the middle of the room."
       "iron cage"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,OVISON
+      _,ovison
       0
       0
       0
       0
-      0}
-  ["CAGE"]
-  ["IRON"]);
+      0}, ["CAGE"], ["IRON"])
 
-add_object(#OBJECT
+add_object(#object
     {"SPHER"
       "There is a beautiful crystal sphere here."
       "crystal sphere"
-      %
+      _
       <>
-      SPHERE-FUNCTION
+      sphere_function
       ()
-      %
+      _
       <>
-      %
-      _(,TRYTAKEBIT
-        ,SACREDBIT
-        ,OVISON);
+      _
+      _(_trytakebit, _sacredbit, _ovison)
       0
       6
       6
       10
-      0}
-  ["BALL"]
-  ["CRYST"
-    "GLASS"]);
+      0}, ["BALL"], ["CRYST"
+    "GLASS"])
 
-add_object(aobject("SQBUT"
-    ,BUTSTR
-    BUTTONS
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"]
-  ["SQUAR"]);
+add_object(aobject("SQBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["SQUAR"])
 
-add_object(aobject("RNBUT"
-    ,BUTSTR
-    BUTTONS
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"]
-  ["ROUND"]);
+add_object(aobject("RNBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["ROUND"])
 
-add_object(aobject("TRBUT"
-    ,BUTSTR
-    BUTTONS
-    ,OVISON
-    ,NDESCBIT);
-  ["BUTTO"]
-  ["TRIAN"]);
+add_object(aobject("TRBUT", _butstr, buttons, _ovison, _ndescbit), ["BUTTO"], ["TRIAN"])
 
-#ROOM
+#room
   {"TWELL"
-    "You are at the top of the well.  Well done.  There are etchings on the side of the well. There is a small crack across the floor at the entrance to a room on the east, but it can be crossed easily."
+    "You are at the top of the well.  Well done.  There are etchings on\nthe side of the well. There is a small crack across the floor at the\nentrance to a room on the east, but it can be crossed easily."
     "Top of Well"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
         "ALICE"
         "DOWN"
-        #NEXIT
+        #nexit
           "It's a long way down!"}
-    (#FIND-OBJ
+    (#find_obj
         {"ETCH2"})
-    %
+    _
     <>
     10
-    %
-    _(,RLANDBIT
-      ,RBUCKBIT);}
+    _
+    _(_rlandbit, _rbuckbit)}
 
-#ROOM
+#room
   {"BWELL"
-    "You are in a damp circular room, whose walls are made of brick and mortar.  The roof of this room is not visible, but there appear to be some etchings on the walls.  There is a passageway to the west."
+    "You are in a damp circular room, whose walls are made of brick and\nmortar.  The roof of this room is not visible, but there appear to be\nsome etchings on the walls.  There is a passageway to the west."
     "Circular Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"WEST"
         "MPEAR"
         "UP"
-        #NEXIT
+        #nexit
           "The walls cannot be climbed."}
-    (#FIND-OBJ
+    (#find_obj
         {"BUCKE"}
-      #FIND-OBJ
+      #find_obj
         {"ETCH1"})
-    %
+    _
     <>
     0
-    %
-    _(,RLANDBIT
-      ,RBUCKBIT);}
+    _
+    _(_rlandbit, _rbuckbit)}
 
-psetg(EWALLS
-  ["ETCHI"
+psetg(ewalls, ["ETCHI"
     "WALLS"
-    "WALL"]);
+    "WALL"])
 
-add_object(sobject("ETCH1"
-    "wall with etchings"
-    ,OVISON
-    ,NDESCBIT
-    ,READBIT);
-  ,EWALLS);
+add_object(sobject("ETCH1", "wall with etchings", _ovison, _ndescbit, _readbit), _ewalls)
 
-add_object(sobject("ETCH2"
-    "wall with etchings"
-    ,OVISON
-    ,NDESCBIT
-    ,READBIT);
-  ,EWALLS);
+add_object(sobject("ETCH2", "wall with etchings", _ovison, _ndescbit, _readbit), _ewalls)
 
-add_desc(find_obj("ETCH2");
-  "          o  b  o       r     z    f   M  A  G  I  C   z    c    W  E   L  L    y       o    n           m  p  a ");
+add_desc(find_obj("ETCH2"), "o  b  o\n		    r 		  z\n		 f   M  A  G  I  C   z\n		 c    W  E   L  L    y\n		    o		  n\n		        m  p  a")
 
-add_desc(find_obj("ETCH1");
-  "          o  b  o                        A  G  I              E   L                        m  p  a ");
+add_desc(find_obj("ETCH1"), "o  b  o\n		      		  \n		        A  G  I  \n		         E   L  \n		    		  \n		        m  p  a")
 
-#ROOM
+#room
   {"ALICE"
-    "You are in a small square room, in the center of which is a large oblong table, no doubt set for afternoon tea.  It is clear from the objects on the table that the users were indeed mad.  In the eastern corner of the room is a small hole (no more that four inches high).  There are passageways leading away to the west and the northwest."
+    "You are in a small square room, in the center of which is a large\noblong table, no doubt set for afternoon tea.  It is clear from the\nobjects on the table that the users were indeed mad.  In the eastern\ncorner of the room is a small hole (no more that four inches high). \nThere are passageways leading away to the west and the northwest."
     "Tea Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EAST"
-        #NEXIT
+        #nexit
           "Only a mouse could get in there."
         "WEST"
         "TWELL"
         "NW"
         "MAGNE"}
-    (#FIND-OBJ
+    (#find_obj
         {"ATABL"}
-      #FIND-OBJ
+      #find_obj
         {"ECAKE"}
-      #FIND-OBJ
+      #find_obj
         {"ORICE"}
-      #FIND-OBJ
+      #find_obj
         {"RDICE"}
-      #FIND-OBJ
+      #find_obj
         {"BLICE"})}
 
-psetg(SMDROP
-  #NEXIT
-    "There is a chasm too large to jump across.");
+psetg(smdrop, #nexit
+    "There is a chasm too large to jump across.")
 
-#ROOM
+#room
   {"ALISM"
-    "You are in an enormous room, in the center of which are four wooden posts delineating a rectanular area, above which is what appears to be a wooden roof.  In fact, all objects in this room appear to be abnormally large. To the east is a passageway.  There is a large chasm on the west and the northwest."
+    "You are in an enormous room, in the center of which are four wooden\nposts delineating a rectanular area, above which is what appears to\nbe a wooden roof.  In fact, all objects in this room appear to be\nabnormally large. To the east is a passageway.  There is a large\nchasm on the west and the northwest."
     "Posts Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"NW"
-        %,SMDROP
+        _,smdrop
         "EAST"
         "ALITR"
         "WEST"
-        %,SMDROP
+        _,smdrop
         "DOWN"
-        %,SMDROP}
-    (#FIND-OBJ
+        _,smdrop}
+    (#find_obj
         {"POSTS"})}
 
-#ROOM
+#room
   {"ALITR"
-    "You are in a large room, one half of which is depressed.  There is a large leak in the ceiling through which brown colored goop is falling.  The only exit to this room is to the west."
+    "You are in a large room, one half of which is depressed.  There is a\nlarge leak in the ceiling through which brown colored goop is\nfalling.  The only exit to this room is to the west."
     "Pool Room"
-    %
+    _
     <>
-    #EXIT
+    #exit
       {"EXIT"
         "ALISM"
         "WEST"
         "ALISM"}
-    (#FIND-OBJ
+    (#find_obj
         {"FLASK"}
-      #FIND-OBJ
+      #find_obj
         {"POOL"}
-      #FIND-OBJ
+      #find_obj
         {"SAFFR"})}
 
-add_object(#OBJECT
+add_object(#object
     {"FLASK"
-      "A stoppered glass flask with a skull-and-crossbones marking is here. The flask is filled with some clear liquid."
+      "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid."
       "glass flask filled with liquid"
-      %
+      _
       <>
-      FLASK-FUNCTION
+      flask_function
       ()
-      %
+      _
       <>
-      %
-      _(,TRANSBIT
-        ,OVISON
-        ,TAKEBIT);
+      _
+      _(_transbit, _ovison, _takebit)
       0
       0
       0
       10
-      5}
-  []
-  ["GLASS"]);
+      5}, [], ["GLASS"])
 
-add_object(#OBJECT
+add_object(#object
     {"POOL"
       "The leak has submerged the depressed area in a pool of sewage."
       "pool of sewage"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,VICBIT);
+      _
+      _(_ovison, _vicbit)
       0
       0
       0
       0
-      0}
-  ["SEWAG"]
-  ["LARGE"]);
+      0}, ["SEWAG"], ["LARGE"])
 
-add_object(#OBJECT
+add_object(#object
     {"SAFFR"
       "There is a tin of rare spices here."
       "tin of spices"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %,TAKEBIT
+      _,takebit
       0
       5
       5
       8
-      0}
-  ["TIN"
-    "SPICE"]
-  ["RARE"]);
+      0}, ["TIN"
+    "SPICE"], ["RARE"])
 
-add_object(sobject("ATABL"
-    "large oblong table"
-    ,OVISON);
-  []
-  ["LARGE"
-    "OBLON"]);
+add_object(sobject("ATABL", "large oblong table", _ovison), [], ["LARGE"
+    "OBLON"])
 
-add_object(sobject("POSTS"
-    "wooden posts"
-    ,OVISON);
-  ["POST"]
-  ["WOODE"]);
+add_object(sobject("POSTS", "wooden posts", _ovison), ["POST"], ["WOODE"])
 
-add_object(#OBJECT
+add_object(#object
     {"BUCKE"
       "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
       "wooden bucket"
-      %
+      _
       <>
-      BUCKET
+      bucket
       ()
-      %
+      _
       <>
-      %
-      _(,VEHBIT
-        ,OVISON);
+      _
+      _(_vehbit, _ovison)
       0
       0
       0
       100
-      100}
-  []
-  ["WOODE"]);
+      100}, [], ["WOODE"])
 
-add_object(#OBJECT
+add_object(#object
     {"ECAKE"
       "There is a piece of cake here with the words 'Eat Me' on it."
       "piece of 'Eat Me' cake"
-      %
+      _
       <>
-      EATME-FUNCTION
+      eatme_function
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,FOODBIT);
+      _
+      _(_ovison, _takebit, _foodbit)
       0
       0
       0
       10
-      0}
-  ["CAKE"]
-  ["EATME"
-    "EAT-M"]);
+      0}, ["CAKE"], ["EATME"
+    "EAT-M"])
 
-add_object(#OBJECT
+add_object(#object
     {"ORICE"
       "There is a piece of cake with orange icing here."
       "piece of cake with orange icing"
-      %
+      _
       <>
-      CAKE-FUNCTION
+      cake_function
       ()
-      %
+      _
       <>
-      %
-      _(,READBIT
-        ,OVISON
-        ,TAKEBIT
-        ,FOODBIT);
+      _
+      _(_readbit, _ovison, _takebit, _foodbit)
       0
       0
       0
       4
-      0}
-  ["CAKE"
-    "ICING"]
-  ["ORANG"]);
+      0}, ["CAKE"
+    "ICING"], ["ORANG"])
 
-add_object(#OBJECT
+add_object(#object
     {"RDICE"
       "There is a piece of cake with red icing here."
       "piece of cake with red icing"
-      %
+      _
       <>
-      CAKE-FUNCTION
+      cake_function
       ()
-      %
+      _
       <>
-      %
-      _(,READBIT
-        ,OVISON
-        ,TAKEBIT
-        ,FOODBIT);
+      _
+      _(_readbit, _ovison, _takebit, _foodbit)
       0
       0
       0
       4
-      0}
-  ["CAKE"
-    "ICING"]
-  ["RED"]);
+      0}, ["CAKE"
+    "ICING"], ["RED"])
 
-add_object(#OBJECT
+add_object(#object
     {"BLICE"
       "There is a piece of cake with blue (ecch) icing here."
       "piece of cake with blue icing"
-      %
+      _
       <>
-      CAKE-FUNCTION
+      cake_function
       ()
-      %
+      _
       <>
-      %
-      _(,READBIT
-        ,OVISON
-        ,TAKEBIT
-        ,FOODBIT);
+      _
+      _(_readbit, _ovison, _takebit, _foodbit)
       0
       0
       0
       4
-      0}
-  ["CAKE"
-    "ICING"]
-  ["BLUE"
-    "ECCH"]);
+      0}, ["CAKE"
+    "ICING"], ["BLUE"
+    "ECCH"])
 
-put(put(find_obj("BUCKE");
-    ,OOPEN?
-    T);
-  ,ORAND
-  ,RBUCKBIT);
+put(put(find_obj("BUCKE"), _oopen_q, t), _orand, _rbuckbit)
 
-add_object(#OBJECT
+add_object(#object
     {"ROBOT"
       "There is a robot here."
       "robot"
-      %
+      _
       <>
-      ROBOT-FUNCTION
+      robot_function
       ()
-      %
+      _
       <>
-      %
-      _(,SACREDBIT
-        ,VICBIT
-        ,OVISON
-        ,ACTORBIT);
+      _
+      _(_sacredbit, _vicbit, _ovison, _actorbit)
       0
       0
       0
       0
-      0}
-  ["R2D2"
+      0}, ["R2D2"
     "C3PO"
-    "ROBBY"]);
+    "ROBBY"])
 
-put(find_obj("ROBOT");
-  ,ORAND
-  add_actor(chtype([find_room("MAGNE");
+put(find_obj("ROBOT"), _orand, add_actor(chtype([find_room("MAGNE")
         ()
         0
         <>
-        find_obj("ROBOT");
-        ROBOT-ACTOR
+        find_obj("ROBOT")
+        robot_actor
         3
-        T
-        0]
-      ADV);););
+        t
+        0], adv)))
 
-add_object(#OBJECT
+add_object(#object
     {"RBTLB"
       "There is a green piece of paper here."
       "green piece of paper"
-      %
+      _
       <>
-      %
+      _
       <>
       ()
-      %
+      _
       <>
-      %
-      _(,OVISON
-        ,TAKEBIT
-        ,READBIT
-        ,BURNBIT);
+      _
+      _(_ovison, _takebit, _readbit, _burnbit)
       0
       0
       0
       3
-      0}
-  ["PAPER"]
-  ["GREEN"]);
+      0}, ["PAPER"], ["GREEN"])
 
-add_desc(find_obj("RBTLB");
-  "   !!!!  FROBOZZ MAGIC ROBOT COMPANY  !!!!  Hello, Master!        I am a late-model robot, trained at MIT Tech to perform various simple household functions.   Instructions for use:    To activate me, use the following formula:  >TELL ROBOT '<something to do>' <cr>    The quotation marks are required!         Warranty:    No warranty is expressed or implied.           At your service! ");
+add_desc(find_obj("RBTLB"), "!!!! 	FROBOZZ MAGIC ROBOT COMPANY  !!!!\n\nHello, Master!\n   \n   I am a late-model robot, trained at MIT Tech to perform various\nsimple household functions. \n\nInstructions for use:\n   To activate me, use the following formula:\n	>TELL ROBOT '<something to do>' <cr>\n   The quotation marks are required!\n       \nWarranty:\n   No warranty is expressed or implied.\n				\n					At your service!")
 
 // VERBS
 
-sadd_action("BACK"
-  BACKER);
+sadd_action("BACK", backer)
 
-sadd_action("REPEN"
-  REPENT);
+sadd_action("REPEN", repent)
 
-sadd_action("TIME"
-  PLAY-TIME);
+sadd_action("TIME", play_time)
 
-sadd_action("WAIT"
-  WAIT);
+sadd_action("WAIT", wait)
 
-sadd_action("CURSE"
-  CURSES);
+sadd_action("CURSE", curses)
 
-vsynonym("CURSE"
-  "SHIT"
-  "FUCK"
-  "DAMN");
+vsynonym("CURSE", "SHIT", "FUCK", "DAMN")
 
-sadd_action("JARGON"
-  JARGON);
+sadd_action("JARGON", jargon)
 
-vsynonym("JARGON"
-  "FOO"
-  "BLETCH");
+vsynonym("JARGON", "FOO", "BLETCH")
 
-add_action("PUT"
-  "Put"
-  [OBJ
+add_action("PUT", "Put", [obj
     "IN"
-    OBJ
+    obj
     ["PUT"
-      PUTTER]
-    DRIVER]
-  ["DOWN"
-    OBJ
+      putter]
+    driver], ["DOWN"
+    obj
     ["DROP"
-      DROPPER]]);
+      dropper]])
 
-add_action("PICK"
-  "Pick"
-  ["UP"
-    OBJ
+add_action("PICK", "Pick", ["UP"
+    obj
     ["TAKE"
-      TAKE]]);
+      take]])
 
-vsynonym("PUT"
-  "STUFF"
-  "PLACE"
-  "INSER");
+vsynonym("PUT", "STUFF", "PLACE", "INSER")
 
-1add_action("LOWER"
-  "Lower"
-  R/L);
+1add_action("LOWER", "Lower", r_l)
 
-add_action("RAISE"
-  "Raise"
-  [OBJ
+add_action("RAISE", "Raise", [obj
     ["RAISE"
-      R/L]
-    DRIVER]
-  ["UP"
-    OBJ
+      r_l]
+    driver], ["UP"
+    obj
     ["RAISE"
-      R/L]]);
+      r_l]])
 
-vsynonym("RAISE"
-  "LIFT");
+vsynonym("RAISE", "LIFT")
 
-1add_action("MELT"
-  "Melt"
-  MELTER);
+1add_action("MELT", "Melt", melter)
 
-vsynonym("MELT"
-  "LIQUI");
+vsynonym("MELT", "LIQUI")
 
-add_action("LIGHT"
-  "Light"
-  [(,LIGHTBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("LIGHT", "Light", [(_lightbit
+      aobjs
+      robjs
+      no_take)
     ["LIGHT"
-      LAMP-ON]
-    DRIVER]
-  [(,LIGHTBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+      lamp_on]
+    driver], [(_lightbit
+      aobjs
+      robjs
+      no_take)
     "WITH"
-    (,FLAMEBIT
-      AOBJS)
+    (_flamebit
+      aobjs)
     ["LIGHT"
-      LAMP-ON]]);
+      lamp_on]])
 
-add_action("EXTIN"
-  "Turn off"
-  [(,LIGHTBIT
-      AOBJS
-      ROBJS)
+add_action("EXTIN", "Turn off", [(_lightbit
+      aobjs
+      robjs)
     ["EXTIN"
-      LAMP-OFF]]);
+      lamp_off]])
 
-vsynonym("EXTIN"
-  "DOUSE");
+vsynonym("EXTIN", "DOUSE")
 
-add_action("TURN"
-  "Turn"
-  [(,TURNBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("TURN", "Turn", [(_turnbit
+      aobjs
+      robjs
+      no_take)
     "WITH"
-    (,TOOLBIT
-      ROBJS
-      AOBJS)
+    (_toolbit
+      robjs
+      aobjs)
     ["TURN"
-      TURNER]
-    DRIVER]
-  ["ON"
-    (,LIGHTBIT
-      AOBJS
-      ROBJS)
+      turner]
+    driver], ["ON"
+    (_lightbit
+      aobjs
+      robjs)
     ["TURN-ON"
-      LAMP-ON]]
-  ["OFF"
-    (,LIGHTBIT
-      AOBJS
-      ROBJS)
+      lamp_on]], ["OFF"
+    (_lightbit
+      aobjs
+      robjs)
     ["TURN-OFF"
-      LAMP-OFF]]
-  [(,TURNBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+      lamp_off]], [(_turnbit
+      aobjs
+      robjs
+      no_take)
     "TO"
-    (-1
-      ROBJS)
+    (_1
+      robjs)
     ["TURN-TO"
-      TIME]]);
+      time]])
 
-add_action("TAKE"
-  "Take"
-  [(-1
-      ROBJS
-      AOBJS
-      NO-TAKE)
+add_action("TAKE", "Take", [(_1
+      robjs
+      aobjs
+      no_take)
     ["TAKE"
-      TAKE]]);
+      take]])
 
-vsynonym("TAKE"
-  "GET"
-  "HOLD"
-  "CARRY");
+vsynonym("TAKE", "GET", "HOLD", "CARRY")
 
-add_action("LOOK"
-  "Look"
-  [["LOOK"
-      ROOM-DESC]]
-  ["AT"
-    OBJ
+add_action("LOOK", "Look", [["LOOK"
+      room_desc]], ["AT"
+    obj
     ["LOOK-AT"
-      ROOM-DESC]]
-  ["UNDER"
-    OBJ
+      room_desc]], ["UNDER"
+    obj
     ["LOOK-UNDER"
-      LOOK-UNDER]]);
+      look_under]])
 
-add_action("GIVE"
-  "Give"
-  [OBJ
+add_action("GIVE", "Give", [obj
     "TO"
-    (,VICBIT
-      ROBJS
-      NO-TAKE)
+    (_vicbit
+      robjs
+      no_take)
     ["GIVE"
-      DROPPER]
-    DRIVER]
-  [(,VICBIT
-      ROBJS
-      NO-TAKE)
-    OBJ
+      dropper]
+    driver], [(_vicbit
+      robjs
+      no_take)
+    obj
     ["GIVE"
-      DROPPER]
-    FLIP]);
+      dropper]
+    flip])
 
-vsynonym("GIVE"
-  "HAND"
-  "DONAT");
+vsynonym("GIVE", "HAND", "DONAT")
 
-add_action("STRIK"
-  "Strike"
-  [(,VICBIT
-      =
-      ROBJS
-      NO-TAKE)
+add_action("STRIK", "Strike", [(_vicbit
+      _
+      robjs
+      no_take)
     "WITH"
-    (,WEAPONBIT
-      AOBJS
-      ROBJS)
+    (_weaponbit
+      aobjs
+      robjs)
     ["ATTAC"
-      ATTACKER]]
-  [(,VICBIT
-      =
-      ROBJS
-      NO-TAKE)
+      attacker]], [(_vicbit
+      _
+      robjs
+      no_take)
     ["ATTAC"
-      ATTACKER]
-    DRIVER]
-  [(-1
-      ROBJS
-      AOBJS)
+      attacker]
+    driver], [(_1
+      robjs
+      aobjs)
     ["LIGHT"
-      LAMP-ON]]);
+      lamp_on]])
 
-aadd_action("MOVE"
-  "Move"
-  MOVE);
+aadd_action("MOVE", "Move", move)
 
-vsynonym("MOVE"
-  "PULL"
-  "TUG");
+vsynonym("MOVE", "PULL", "TUG")
 
-aadd_action("WAVE"
-  "Wave"
-  WAVER);
+aadd_action("WAVE", "Wave", waver)
 
-vsynonym("BRAND"
-  "FLAUN");
+vsynonym("BRAND", "FLAUN")
 
-add_action("DROP"
-  "Drop"
-  [(-1
-      AOBJS)
+add_action("DROP", "Drop", [(_1
+      aobjs)
     ["DROP"
-      DROPPER]
-    DRIVER]
-  [(-1
-      AOBJS)
+      dropper]
+    driver], [(_1
+      aobjs)
     "IN"
-    OBJ
+    obj
     ["DROP"
-      DROPPER]]);
+      dropper]])
 
-vsynonym("DROP"
-  "RELEA");
+vsynonym("DROP", "RELEA")
 
-add_action("POUR"
-  "Pour"
-  [(-1
-      AOBJS)
+add_action("POUR", "Pour", [(_1
+      aobjs)
     ["POUR"
-      DROPPER]
-    DRIVER]
-  [(-1
-      AOBJS)
+      dropper]
+    driver], [(_1
+      aobjs)
     "IN"
-    OBJ
+    obj
     ["POUR"
-      DROPPER]]);
+      dropper]])
 
-vsynonym("POUR"
-  "SPILL");
+vsynonym("POUR", "SPILL")
 
-add_action("THROW"
-  "Throw"
-  [(-1
-      AOBJS)
+add_action("THROW", "Throw", [(_1
+      aobjs)
     "AT"
-    (,VICBIT
-      ROBJS
-      NO-TAKE)
+    (_vicbit
+      robjs
+      no_take)
     ["THROW"
-      DROPPER]]);
+      dropper]])
 
-vsynonym("THROW"
-  "HURL"
-  "CHUCK");
+vsynonym("THROW", "HURL", "CHUCK")
 
-add_action("TELL"
-  "Tell"
-  [(,ACTORBIT)
+add_action("TELL", "Tell", [(_actorbit)
     ["TELL"
-      COMMAND]]);
+      command]])
 
-vsynonym("TELL"
-  "COMMA"
-  "REQUE");
+vsynonym("TELL", "COMMA", "REQUE")
 
-vsynonym("LOOK"
-  "L"
-  "STARE"
-  "GAZE");
+vsynonym("LOOK", "L", "STARE", "GAZE")
 
-sadd_action("BRIEF"
-  BRIEF);
+sadd_action("BRIEF", brief)
 
-sadd_action("UNBRI"
-  UN-BRIEF);
+sadd_action("UNBRI", un_brief)
 
-sadd_action("SUPER"
-  SUPER-BRIEF);
+sadd_action("SUPER", super_brief)
 
-sadd_action("UNSUP"
-  UN-SUPER-BRIEF);
+sadd_action("UNSUP", un_super-brief)
 
-1add_action("EXAMI"
-  "Examine"
-  ROOM-INFO);
+1add_action("EXAMI", "Examine", room_info)
 
-vsynonym("EXAMI"
-  "DESCR"
-  "WHAT"
-  "WHATS"
-  "WHAT'");
+vsynonym("EXAMI", "DESCR", "WHAT", "WHATS", "WHAT'")
 
-1add_action("FIND"
-  "Find"
-  FIND);
+1add_action("FIND", "Find", find)
 
-vsynonym("WHERE"
-  "FIND"
-  "SEEK"
-  "SEE");
+vsynonym("WHERE", "FIND", "SEEK", "SEE")
 
-sadd_action("INVEN"
-  INVENT);
+sadd_action("INVEN", invent)
 
-vsynonym("INVEN"
-  "LIST");
+vsynonym("INVEN", "LIST")
 
-sadd_action("VERSI"
-  VERSION);
+sadd_action("VERSI", version)
 
-sadd_action("SCRIP"
-  DO-SCRIPT);
+sadd_action("SCRIP", do_script)
 
-sadd_action("UNSCR"
-  DO-UNSCRIPT);
+sadd_action("UNSCR", do_unscript)
 
-sadd_action("SAVE"
-  DO-SAVE);
+sadd_action("SAVE", do_save)
 
-sadd_action("RESTO"
-  DO-RESTORE);
+sadd_action("RESTO", do_restore)
 
-sadd_action("WALK-IN"
-  TIME);
+sadd_action("WALK-IN", time)
 
-sadd_action("C-INT"
-  TIME);
+sadd_action("C-INT", time)
 
 // funny verb for clock ints
 
-sadd_action("DEAD!"
-  TIME);
+sadd_action("DEAD!", time)
 
 // funny verb for killing villains
 
-sadd_action("FIRST?"
-  TIME);
+sadd_action("FIRST?", time)
 
 // funny verb for surprise by villains
 
-sadd_action("DIAGN"
-  DIAGNOSE);
+sadd_action("DIAGN", diagnose)
 
-sadd_action("HACK?"
-  TIME);
+sadd_action("HACK?", time)
 
 // funny verb for villain fight decisions
 
-sadd_action("SCORE"
-  SCORE);
+sadd_action("SCORE", score)
 
-sadd_action("QUIT"
-  FINISH);
+sadd_action("QUIT", finish)
 
-sadd_action("INFO"
-  INFO);
+sadd_action("INFO", info)
 
-sadd_action("HELP"
-  HELP);
+sadd_action("HELP", help)
 
-add_action("PLUG"
-  "Plug"
-  [OBJ
+add_action("PLUG", "Plug", [obj
     "WITH"
-    OBJ
+    obj
     ["PLUG"
-      PLUGGER]]);
+      plugger]])
 
-vsynonym("PLUG"
-  "GLUE"
-  "PATCH");
+vsynonym("PLUG", "GLUE", "PATCH")
 
-1add_action("RUB"
-  "Rub"
-  RUBBER);
+1add_action("RUB", "Rub", rubber)
 
-vsynonym("RUB"
-  "CARES"
-  "TOUCH"
-  "FONDL");
+vsynonym("RUB", "CARES", "TOUCH", "FONDL")
 
-sadd_action("SWIM"
-  SWIMMER);
+sadd_action("SWIM", swimmer)
 
-vsynonym("SWIM"
-  "BATHE"
-  "WADE");
+vsynonym("SWIM", "BATHE", "WADE")
 
-add_action("BURN"
-  "Burn"
-  [(,BURNBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("BURN", "Burn", [(_burnbit
+      aobjs
+      robjs
+      no_take)
     "WITH"
-    (,FLAMEBIT
-      AOBJS
-      ROBJS)
+    (_flamebit
+      aobjs
+      robjs)
     ["BURN"
-      BURNER]]);
+      burner]])
 
-vsynonym("BURN"
-  "INCIN"
-  "IGNIT");
+vsynonym("BURN", "INCIN", "IGNIT")
 
-add_action("KILL"
-  "Kill"
-  [(,VILLAIN
-      ROBJS
-      NO-TAKE)
+add_action("KILL", "Kill", [(_villain
+      robjs
+      no_take)
     "WITH"
-    (,WEAPONBIT
-      AOBJS)
+    (_weaponbit
+      aobjs)
     ["KILL"
-      KILLER]]);
+      killer]])
 
-vsynonym("KILL"
-  "MURDE"
-  "SLAY"
-  "DISPA");
+vsynonym("KILL", "MURDE", "SLAY", "DISPA")
 
-add_action("ATTAC"
-  "Attack"
-  [(,VILLAIN
-      ROBJS
-      NO-TAKE)
+add_action("ATTAC", "Attack", [(_villain
+      robjs
+      no_take)
     "WITH"
-    (,WEAPONBIT
-      AOBJS)
+    (_weaponbit
+      aobjs)
     ["ATTAC"
-      ATTACKER]]);
+      attacker]])
 
-vsynonym("ATTAC"
-  "FIGHT"
-  "MUNG"
-  "HACK"
-  "FROB"
-  "HURT"
-  "INJUR"
-  "DAMAG"
-  "HIT");
+vsynonym("ATTAC", "FIGHT", "MUNG", "HACK", "FROB", "HURT", "INJUR", "DAMAG", "HIT")
 
-add_action("SWING"
-  "Swing"
-  [(,WEAPONBIT
-      AOBJS)
+add_action("SWING", "Swing", [(_weaponbit
+      aobjs)
     "AT"
-    (,VILLAIN
-      ROBJS
-      NO-TAKE)
+    (_villain
+      robjs
+      no_take)
     ["SWING"
-      SWINGER]]);
+      swinger]])
 
-vsynonym("SWING"
-  "THRUS");
+vsynonym("SWING", "THRUS")
 
-add_action("POKE"
-  "Poke"
-  [(,VILLAIN
-      ROBJS
-      NO-TAKE)
+add_action("POKE", "Poke", [(_villain
+      robjs
+      no_take)
     "WITH"
-    (,WEAPONBIT
-      AOBJS)
+    (_weaponbit
+      aobjs)
     ["POKE"
-      MUNGER]]);
+      munger]])
 
-vsynonym("POKE"
-  "JAB"
-  "BREAK");
+vsynonym("POKE", "JAB", "BREAK")
 
-1add_action("KICK"
-  "Kick"
-  KICKER);
+1add_action("KICK", "Kick", kicker)
 
-vsynonym("KICK"
-  "BITE"
-  "TAUNT");
+vsynonym("KICK", "BITE", "TAUNT")
 
-1add_action("PUSH"
-  "Push"
-  PUSHER);
+1add_action("PUSH", "Push", pusher)
 
-vsynonym("PUSH"
-  "PRESS");
+vsynonym("PUSH", "PRESS")
 
-add_action("OPEN"
-  "Open"
-  [(_(,DOORBIT
-        ,CONTBIT);
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("OPEN", "Open", [(_(_doorbit, _contbit)
+      aobjs
+      robjs
+      no_take)
     ["OPEN"
-      OPENER]]);
+      opener]])
 
-vsynonym("OPEN");
+vsynonym("OPEN")
 
-add_action("CLOSE"
-  "Close"
-  [(_(,DOORBIT
-        ,CONTBIT);
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("CLOSE", "Close", [(_(_doorbit, _contbit)
+      aobjs
+      robjs
+      no_take)
     ["CLOSE"
-      CLOSER]]);
+      closer]])
 
-vsynonym("CLOSE");
+vsynonym("CLOSE")
 
-add_action("UNLOC"
-  "Unlock"
-  [(-1
-      ROBJS
-      NO-TAKE)
+add_action("UNLOC", "Unlock", [(_1
+      robjs
+      no_take)
     "WITH"
-    (,TOOLBIT
-      AOBJS
-      ROBJS)
+    (_toolbit
+      aobjs
+      robjs)
     ["UNLOC"
-      UNLOCKER]]);
+      unlocker]])
 
-add_action("LOCK"
-  "Lock"
-  [(-1
-      ROBJS
-      NO-TAKE)
+add_action("LOCK", "Lock", [(_1
+      robjs
+      no_take)
     ["LOCK"
-      LOCKER]]);
+      locker]])
 
-add_action("TIE"
-  "Tie"
-  [OBJ
+add_action("TIE", "Tie", [obj
     "TO"
-    OBJ
+    obj
     ["TIE"
-      TIE]]);
+      tie]])
 
-vsynonym("TIE"
-  "KNOT"
-  "FASTE");
+vsynonym("TIE", "KNOT", "FASTE")
 
-1add_action("RING"
-  "Ring"
-  RING);
+1add_action("RING", "Ring", ring)
 
-vsynonym("RING"
-  "PEAL");
+vsynonym("RING", "PEAL")
 
-add_action("EAT"
-  "Eat"
-  [(,FOODBIT
-      AOBJS
-      ROBJS)
+add_action("EAT", "Eat", [(_foodbit
+      aobjs
+      robjs)
     ["EAT"
-      EAT]]);
+      eat]])
 
-vsynonym("EAT"
-  "CONSU"
-  "GOBBL"
-  "MUNCH"
-  "TASTE");
+vsynonym("EAT", "CONSU", "GOBBL", "MUNCH", "TASTE")
 
-add_action("DRINK"
-  "Drink"
-  [(,DRINKBIT
-      AOBJS
-      ROBJS)
+add_action("DRINK", "Drink", [(_drinkbit
+      aobjs
+      robjs)
     ["DRINK"
-      EAT]]);
+      eat]])
 
-vsynonym("DRINK"
-  "IMBIB"
-  "SWALL");
+vsynonym("DRINK", "IMBIB", "SWALL")
 
-add_action("BRUSH"
-  "Brush"
-  [(-1
-      AOBJS
-      ROBJS)
+add_action("BRUSH", "Brush", [(_1
+      aobjs
+      robjs)
     ["BRUSH"
-      BRUSH]
-    DRIVER]
-  [(-1
-      AOBJS
-      ROBJS)
+      brush]
+    driver], [(_1
+      aobjs
+      robjs)
     "WITH"
-    OBJ
+    obj
     ["BRUSH"
-      BRUSH]]);
+      brush]])
 
-vsynonym("BRUSH"
-  "CLEAN");
+vsynonym("BRUSH", "CLEAN")
 
-1add_action("UNTIE"
-  "Untie"
-  UNTIE);
+1add_action("UNTIE", "Untie", untie)
 
-vsynonym("UNTIE"
-  "RELEA"
-  "FREE");
+vsynonym("UNTIE", "RELEA", "FREE")
 
-sadd_action("EXORC"
-  EXORCISE);
+sadd_action("EXORC", exorcise)
 
-vsynonym("EXORC"
-  "XORCI");
+vsynonym("EXORC", "XORCI")
 
-sadd_action("CHOMP"
-  CHOMP);
+sadd_action("CHOMP", chomp)
 
-vsynonym("CHOMP"
-  "LOSE"
-  "BARF");
+vsynonym("CHOMP", "LOSE", "BARF")
 
-sadd_action("YELL"
-  YELL);
+sadd_action("YELL", yell)
 
-vsynonym("YELL"
-  "SCREA"
-  "SHOUT");
+vsynonym("YELL", "SCREA", "SHOUT")
 
-sadd_action("WIN"
-  WIN);
+sadd_action("WIN", win)
 
-vsynonym("WIN"
-  "WINNA");
+vsynonym("WIN", "WINNA")
 
-sadd_action("FROBO"
-  FROBOZZ);
+sadd_action("FROBO", frobozz)
 
-sadd_action("TREAS"
-  TREAS);
+sadd_action("TREAS", treas)
 
-sadd_action("TEMPL"
-  TREAS);
+sadd_action("TEMPL", treas)
 
-sadd_action("PRAY"
-  PRAYER);
+sadd_action("PRAY", prayer)
 
-sadd_action("JUMP"
-  LEAPER);
+sadd_action("JUMP", leaper)
 
-sadd_action("SKIP"
-  SKIPPER);
+sadd_action("SKIP", skipper)
 
-vsynonym("SKIP"
-  "HOP");
+vsynonym("SKIP", "HOP")
 
-sadd_action("MUMBL"
-  MUMBLER);
+sadd_action("MUMBL", mumbler)
 
-vsynonym("MUMBL"
-  "SIGH");
+vsynonym("MUMBL", "SIGH")
 
-sadd_action("ZORK"
-  ZORK);
+sadd_action("ZORK", zork)
 
-sadd_action("DUNGE"
-  DUNGEON);
+sadd_action("DUNGE", dungeon)
 
-add_action("WAKE"
-  "Wake"
-  [(,VICBIT
-      ROBJS
-      NO-TAKE)
+add_action("WAKE", "Wake", [(_vicbit
+      robjs
+      no_take)
     ["WAKE"
-      ALARM]]);
+      alarm]])
 
-vsynonym("WAKE"
-  "AWAKE"
-  "SURPR"
-  "START");
+vsynonym("WAKE", "AWAKE", "SURPR", "START")
 
-add_action("HELLO"
-  "Hello"
-  [["HELLO"
-      HELLO]
-    DRIVER]
-  [OBJ
+add_action("HELLO", "Hello", [["HELLO"
+      hello]
+    driver], [obj
     ["HELLO"
-      HELLO]]);
+      hello]])
 
-vsynonym("HELLO"
-  "HI");
+vsynonym("HELLO", "HI")
 
-1add_action("GRANI"
-  "Granite"
-  GRANITE);
+1add_action("GRANI", "Granite", granite)
 
-vsynonym("JUMP"
-  "LEAP"
-  "VAULT");
+vsynonym("JUMP", "LEAP", "VAULT")
 
-1add_action("FILL"
-  "Fill"
-  FILL);
+1add_action("FILL", "Fill", fill)
 
-sadd_action("WELL"
-  WELL);
+sadd_action("WELL", well)
 
-sadd_action("ODYSS"
-  SINBAD);
+sadd_action("ODYSS", sinbad)
 
-vsynonym("ODYSS"
-  "ULYSS");
+vsynonym("ODYSS", "ULYSS")
 
-add_action("READ"
-  "Read"
-  [(,READBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+add_action("READ", "Read", [(_readbit
+      aobjs
+      robjs
+      no_take)
     ["READ"
-      READER]
-    DRIVER]
-  [(,READBIT
-      AOBJS
-      ROBJS
-      NO-TAKE)
+      reader]
+    driver], [(_readbit
+      aobjs
+      robjs
+      no_take)
     "WITH"
-    OBJ
+    obj
     ["READ"
-      READER]]);
+      reader]])
 
-vsynonym("READ"
-  "SKIM"
-  "SCAN");
+vsynonym("READ", "SKIM", "SCAN")
 
-1add_action("DEFLA"
-  "Deflate"
-  DEFLATER);
+1add_action("DEFLA", "Deflate", deflater)
 
-add_action("INFLA"
-  "Inflate"
-  [OBJ
+add_action("INFLA", "Inflate", [obj
     "WITH"
-    (,TOOLBIT
-      ROBJS
-      AOBJS
-      NO-TAKE)
+    (_toolbit
+      robjs
+      aobjs
+      no_take)
     ["INFLA"
-      INFLATER]]);
+      inflater]])
 
-add_action("DISEM"
-  "Disembark from"
-  [(,VEHBIT
-      ROBJS
-      NO-TAKE)
+add_action("DISEM", "Disembark from", [(_vehbit
+      robjs
+      no_take)
     ["DISEM"
-      UNBOARD]]);
+      unboard]])
 
-add_action("DIG"
-  "Dig"
-  ["WITH"
-    (,TOOLBIT
-      AOBJS)
+add_action("DIG", "Dig", ["WITH"
+    (_toolbit
+      aobjs)
     ["DIG"
-      DIGGER]]);
+      digger]])
 
-add_action("BOARD"
-  "Board"
-  [(,VEHBIT
-      ROBJS
-      NO-TAKE)
+add_action("BOARD", "Board", [(_vehbit
+      robjs
+      no_take)
     ["BOARD"
-      BOARD]]);
+      board]])
 
-add_action("KNOCK"
-  "Knock"
-  ["AT"
-    OBJ
+add_action("KNOCK", "Knock", ["AT"
+    obj
     ["KNOCK"
-      KNOCK]
-    DRIVER]
-  ["ON"
-    OBJ
+      knock]
+    driver], ["ON"
+    obj
     ["KNOCK"
-      KNOCK]]
-  ["DOWN"
-    (,VICBIT
-      =
-      ROBJS
-      NO-TAKE)
+      knock]], ["DOWN"
+    (_vicbit
+      _
+      robjs
+      no_take)
     ["ATTAC"
-      ATTACKER]]);
+      attacker]])
 
-sadd_action("GERON"
-  GERONIMO);
+sadd_action("GERON", geronimo)
 
-sadd_action("BLAST"
-  BLAST);
+sadd_action("BLAST", blast)
 
-1add_action("WALK"
-  "Walk"
-  WALK);
+1add_action("WALK", "Walk", walk)
 
-add_buzz("RUN"
-  "GO"
-  "PROCE");
+add_buzz("RUN", "GO", "PROCE")
 
-setg(ROBOT-ACTIONS
-  !
-  [,WALK!-WORDS
-    ,TAKE!-WORDS
-    ,DROP!-WORDS
-    ,PUT!-WORDS
-    ,JUMP!-WORDS
-    ,PUSH!-WORDS
-    ,THROW!-WORDS
-    ,TURN!-WORDS]);
+setg(robot_actions, _, [_walk!-words
+    _take!-words
+    _drop!-words
+    _put!-words
+    _jump!-words
+    _push!-words
+    _throw!-words
+    _turn!-words])
 
-setg(PLAYER
-  add_actor(chtype([,WHOUS!-ROOMS
+setg(player, add_actor(chtype([_whous!-rooms
         ()
         0
         <>
-        find_obj("#####");
+        find_obj("#####")
         <>
         0
-        T
-        0]
-      ADV);););
+        t
+        0], adv)))

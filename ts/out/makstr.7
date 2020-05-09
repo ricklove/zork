@@ -1,784 +1,412 @@
-define(CEVENT
-  (TICK
-    APP
-    FLG
-    NAME
+define(cevent, (tick
+    app
+    flg
+    name
     "AUX"
-    (OBL
-      get(INITIAL
-        OBLIST);)
-    ATM)
-  #DECL
-    ((TICK)
-      FIX
-      (APP)
-      or(APPLICABLE
-        OFFSET);
-      (FLG)
-      or(ATOM
-        FALSE);
-      (NAME)
-      or(ATOM
-        STRING);
-      (ATM)
-      or(ATOM
-        FALSE);)
-  cond((type_q(.NAME
-        STRING);
-      cond((set(ATM
-            lookup(.NAME
-              .OBL););)
-        (T
-          set(ATM
-            insert(.NAME
-              .OBL););));)
-    (set(ATM
-        .NAME);));
-  setg(.ATM
-    chtype([.TICK
-        .APP
-        .FLG
-        .ATM]
-      CEVENT);););
+    (obl
+      get(initial, oblist))
+    atm), #decl
+    ((tick)
+      fix
+      (app)
+      or(applicable, offset)
+      (flg)
+      or(atom, false)
+      (name)
+      or(atom, string)
+      (atm)
+      or(atom, false)), cond((type_q(_name, string)
+      cond((set(atm, lookup(_name, _obl))), (t
+          set(atm, insert(_name, _obl))))), (set(atm, _name))), setg(_atm, chtype([_tick
+        _app
+        _flg
+        _atm], cevent)))
 
-define(CONS-OBJ
-  ("TUPLE"
-    OBJS
+define(cons_obj, ("TUPLE"
+    objs
     "AUX"
-    (WINNER
-      ,WINNER))
-  #DECL
-    ((OBJS)
-      tuple([REST
-          STRING]);
-      (WINNER)
-      ADV)
-  mapf(<>
-    function((X
+    (winner
+      _winner)), #decl
+    ((objs)
+      tuple([rest
+          string])
+      (winner)
+      adv), mapf(<>, function((x
         "AUX"
-        (Y
-          find_obj(.X);))
-      #DECL
-        ((Y)
-          OBJECT)
-      or(memq(.Y
-          aobjs(.WINNER););
-        take_object(find_obj(.X);
-          .WINNER);););
-    .OBJS););
+        (y
+          find_obj(_x))), #decl
+        ((y)
+          object), or(memq(_y, aobjs(_winner)), take_object(find_obj(_x), _winner))), _objs))
 
-define(CEXIT
-  (FLID
-    RMID
+define(cexit, (flid
+    rmid
     "OPTIONAL"
-    (STR
+    (str
       <>)
-    (FLAG
+    (flag
       <>)
-    (FUNCT
+    (funct
       <>)
     "AUX"
-    (FVAL
+    (fval
       <>)
-    ATM)
-  #DECL
-    ((STR)
-      or(FALSE
-        STRING);
-      (FLID
-        RMID)
-      or(ATOM
-        STRING);
-      (ATM
-        FUNCT)
-      or(ATOM
-        FALSE);
-      (FVAL)
-      or(APPLICABLE
-        FALSE);
-      (FLAG)
-      or(ATOM
-        FALSE);)
-  cond((type_q(.FLID
-        ATOM);
-      set(FLID
-        spname(.FLID););));
-  set(ATM
-    or(lookup(.FLID
-        get(FLAG
-          OBLIST););
-      insert(.FLID
-        get(FLAG
-          OBLIST););););
-  setg(.ATM
-    .FLAG);
-  chtype(vector(.ATM
-      find_room(.RMID);
-      .STR
-      .FUNCT);
-    CEXIT););
+    atm), #decl
+    ((str)
+      or(false, string)
+      (flid
+        rmid)
+      or(atom, string)
+      (atm
+        funct)
+      or(atom, false)
+      (fval)
+      or(applicable, false)
+      (flag)
+      or(atom, false)), cond((type_q(_flid, atom)
+      set(flid, spname(_flid)))), set(atm, or(lookup(_flid, get(flag, oblist)), insert(_flid, get(flag, oblist)))), setg(_atm, _flag), chtype(vector(_atm, find_room(_rmid), _str, _funct), cexit))
 
-define(EXIT
-  ("TUPLE"
-    PAIRS
+define(exit, ("TUPLE"
+    pairs
     "AUX"
-    (DOBL
-      ,DIRECTIONS)
-    (FROB
-      ivector(length(.PAIRS););))
-  #DECL
-    ((PAIRS)
-      tuple([REST
-          STRING
-          or(NEXIT
-            CEXIT
-            STRING
-            ATOM);]);
-      (DIR)
-      list([REST
-          ATOM]);
-      (FROB)
-      VECTOR
-      (DOBL)
-      OBLIST)
-  repeat((ATM
-      RM
-      (F
-        .FROB))
-    #DECL
-      ((ATM)
-        or(ATOM
-          FALSE);
-        (RM)
-        or(ROOM
-          FALSE);
-        (F)
-        VECTOR)
-    cond((or(and(set(ATM
-              lookup(1(.PAIRS);
-                .DOBL););
-            gassigned_q(.ATM);
-            type_q(,.ATM
-              DIRECTION);););
-        put(.F
-          1
-          .ATM);
-        cond((type_q(2(.PAIRS);
-              STRING);
-            put(.F
-              2
-              find_room(2(.PAIRS);););)
-          (put(.F
-              2
-              2(.PAIRS););));
-        set(F
-          rest(.F
-            2););)
-      (T
-        put(.PAIRS
-          1
-          error(ILLEGAL-DIRECTION
-            1(.PAIRS);););));
-    cond((empty_q(set(PAIRS
-            rest(.PAIRS
-              2);););
-        return();)););
-  chtype(.FROB
-    EXIT););
+    (dobl
+      _directions)
+    (frob
+      ivector(length(_pairs)))), #decl
+    ((pairs)
+      tuple([rest
+          string
+          or(nexit, cexit, string, atom)])
+      (dir)
+      list([rest
+          atom])
+      (frob)
+      vector
+      (dobl)
+      oblist), repeat((atm
+      rm
+      (f
+        _frob)), #decl
+      ((atm)
+        or(atom, false)
+        (rm)
+        or(room, false)
+        (f)
+        vector), cond((or(and(set(atm, lookup(1(_pairs), _dobl)), gassigned_q(_atm), type_q(_.atm, direction)))
+        put(_f, 1, _atm)
+        cond((type_q(2(_pairs), string)
+            put(_f, 2, find_room(2(_pairs)))), (put(_f, 2, 2(_pairs))))
+        set(f, rest(_f, 2))), (t
+        put(_pairs, 1, error(illegal_direction, 1(_pairs))))), cond((empty_q(set(pairs, rest(_pairs, 2)))
+        return()))), chtype(_frob, exit))
 
-define(ROOM
-  (ID
-    D1
-    D2
-    LIT?
-    EX
+define(room, (id
+    d1
+    d2
+    lit_q
+    ex
     "OPTIONAL"
-    (OBJS
+    (objs
       ())
-    (APP
+    (app
       <>)
-    (VAL
+    (val
       0)
-    (BIT
-      ,RLANDBIT)
+    (bit
+      _rlandbit)
     "AUX"
-    (RM
-      find_room(.ID);))
-  #DECL
-    ((ID)
-      or(STRING
-        ATOM);
-      (D1
-        D2)
-      STRING
-      (LIT?)
-      or(ATOM
-        FORM
-        FALSE);
-      (EX)
-      EXIT
-      (APP)
-      or(FORM
-        FALSE
-        ATOM);
-      (VAL
-        BIT)
-      FIX
-      (RM)
-      ROOM)
-  setg(SCORE-MAX
-    _(,SCORE-MAX
-      .VAL););
-  put(.RM
-    ,RBITS
-    .BIT);
-  put(.RM
-    ,RVAL
-    .VAL);
-  put(.RM
-    ,ROBJS
-    .OBJS);
-  put(.RM
-    ,RDESC1
-    .D1);
-  put(.RM
-    ,RDESC2
-    .D2);
-  put(.RM
-    ,REXITS
-    .EX);
-  put(.RM
-    ,RACTION
-    cond((type_q(.APP
-          FALSE
-          FORM);
-        <>)
-      (.APP)););
-  put(.RM
-    ,RLIGHT?
-    cond((type_q(.LIT?
-          FORM);
-        <>)
-      (T
-        .LIT?)););
-  mapf(<>
-    function((X)
-      #DECL
-        ((X)
-          OBJECT)
-      put(.X
-        ,OROOM
-        .RM););
-    robjs(.RM););
-  .RM);
+    (rm
+      find_room(_id))), #decl
+    ((id)
+      or(string, atom)
+      (d1
+        d2)
+      string
+      (lit_q)
+      or(atom, form, false)
+      (ex)
+      exit
+      (app)
+      or(form, false, atom)
+      (val
+        bit)
+      fix
+      (rm)
+      room), setg(score_max, _(_score-max, _val)), put(_rm, _rbits, _bit), put(_rm, _rval, _val), put(_rm, _robjs, _objs), put(_rm, _rdesc1, _d1), put(_rm, _rdesc2, _d2), put(_rm, _rexits, _ex), put(_rm, _raction, cond((type_q(_app, false, form)
+        <>), (_app))), put(_rm, _rlight_q, cond((type_q(_lit_q, form)
+        <>), (t
+        _lit_q))), mapf(<>, function((x), #decl
+        ((x)
+          object), put(_x, _oroom, _rm)), robjs(_rm)), _rm)
 
-define(SOBJECT
-  (ID
-    STR
+define(sobject, (id
+    str
     "TUPLE"
-    TUP)
-  #DECL
-    ((ID)
-      STRING
-      (TUP)
-      TUPLE)
-  object(.ID
-    ""
-    .STR
-    %
-    <>
-    <>
-    ()
-    <>
-    _(!.TUP);););
+    tup), #decl
+    ((id)
+      string
+      (tup)
+      tuple), object(_id, "", _str, _, <>, <>, (), <>, _(_.tup)))
 
-define(AOBJECT
-  (ID
-    STR
-    APP
+define(aobject, (id
+    str
+    app
     "TUPLE"
-    TUP)
-  #DECL
-    ((ID)
-      STRING
-      (TUP)
-      TUPLE
-      (APP)
-      ATOM)
-  object(.ID
-    ""
-    .STR
-    %
-    <>
-    .APP
-    ()
-    <>
-    _(!.TUP);););
+    tup), #decl
+    ((id)
+      string
+      (tup)
+      tuple
+      (app)
+      atom), object(_id, "", _str, _, <>, _app, (), <>, _(_.tup)))
 
-define(OBJECT
-  (ID
-    DESC1
-    DESC2
-    DESCO
-    APP
-    CONTS
-    CAN
-    FLAGS
+define(object, (id
+    desc1
+    desc2
+    desco
+    app
+    conts
+    can
+    flags
     "OPTIONAL"
-    (LIGHT?
+    (light_q
       0)
-    (S1
+    (s1
       0)
-    (S2
+    (s2
       0)
-    (SIZE
+    (size
       5)
-    (CAPAC
-      0))
-  #DECL
-    ((ID)
-      or(ATOM
-        STRING);
-      (DESC1
-        DESC2)
-      STRING
-      (APP)
-      or(FALSE
-        FORM
-        ATOM);
-      (CONTS)
-      list([REST
-          OBJECT]);
-      (CAN)
-      or(FALSE
-        OBJECT);
-      (FLAGS)
-      primtype(WORD);
-      (SIZE
-        CAPAC)
-      FIX
-      (LIGHT?
-        S1
-        S2)
-      FIX
-      (DESCO)
-      or(STRING
-        FALSE);)
-  setg(SCORE-MAX
-    _(,SCORE-MAX
-      .S1
-      .S2););
-  or(0_q(.LIGHT?);
-    set(FLAGS
-      _(.FLAGS
-        ,LIGHTBIT);););
-  put(put(put(put(put(put(put(put(put(put(put(put(find_obj(.ID);
-                          ,ODESC1
-                          .DESC1);
-                        ,OCAPAC
-                        .CAPAC);
-                      ,OSIZE
-                      .SIZE);
-                    ,ODESCO
-                    .DESCO);
-                  ,OLIGHT?
-                  .LIGHT?);
-                ,OFLAGS
-                .FLAGS);
-              ,OFVAL
-              .S1);
-            ,OTVAL
-            .S2);
-          ,OCAN
-          .CAN);
-        ,OCONTENTS
-        .CONTS);
-      ,ODESC2
-      .DESC2);
-    ,OACTION
-    cond((type_q(.APP
-          FALSE
-          FORM);
-        <>)
-      (.APP));););
+    (capac
+      0)), #decl
+    ((id)
+      or(atom, string)
+      (desc1
+        desc2)
+      string
+      (app)
+      or(false, form, atom)
+      (conts)
+      list([rest
+          object])
+      (can)
+      or(false, object)
+      (flags)
+      primtype(word)
+      (size
+        capac)
+      fix
+      (light_q
+        s1
+        s2)
+      fix
+      (desco)
+      or(string, false)), setg(score_max, _(_score-max, _s1, _s2)), or(0_q(_light_q), set(flags, _(_flags, _lightbit))), put(put(put(put(put(put(put(put(put(put(put(put(find_obj(_id), _odesc1, _desc1), _ocapac, _capac), _osize, _size), _odesco, _desco), _olight_q, _light_q), _oflags, _flags), _ofval, _s1), _otval, _s2), _ocan, _can), _ocontents, _conts), _odesc2, _desc2), _oaction, cond((type_q(_app, false, form)
+        <>), (_app))))
 
-define(FIND-PREP
-  (STR
+define(find_prep, (str
     "AUX"
-    (ATM
-      add_word(.STR);))
-  #DECL
-    ((STR)
-      STRING
-      (ATM)
-      or(FALSE
-        ATOM);)
-  cond((gassigned_q(.ATM);
-      cond((type_q(,.ATM
-            PREP);
-          ,.ATM)
-        (error(NO-PREP!-ERRORS);));)
-    (setg(.ATM
-        chtype(.ATM
-          PREP););)););
+    (atm
+      add_word(_str))), #decl
+    ((str)
+      string
+      (atm)
+      or(false, atom)), cond((gassigned_q(_atm)
+      cond((type_q(_.atm, prep)
+          _.atm), (error(no_prep!-errors)))), (setg(_atm, chtype(_atm, prep)))))
 
-define(ADD-ACTION
-  (NAM
-    STR
+define(add_action, (nam
+    str
     "TUPLE"
-    DECL
+    decl
     "AUX"
-    (ATM
-      or(lookup(.NAM
-          ,ACTIONS);
-        insert(.NAM
-          ,ACTIONS););))
-  #DECL
-    ((NAM
-        STR)
-      STRING
-      (DECL)
-      tuple([REST
-          VECTOR]);
-      (ATM)
-      ATOM)
-  setg(.ATM
-    chtype([.ATM
-        make_action(!.DECL);
-        .STR]
-      ACTION););
-  .ATM);
+    (atm
+      or(lookup(_nam, _actions), insert(_nam, _actions)))), #decl
+    ((nam
+        str)
+      string
+      (decl)
+      tuple([rest
+          vector])
+      (atm)
+      atom), setg(_atm, chtype([_atm
+        make_action(_.decl)
+        _str], action)), _atm)
 
-define(ADD-DIRECTIONS
-  ("TUPLE"
-    NMS
+define(add_directions, ("TUPLE"
+    nms
     "AUX"
-    (DIR
-      ,DIRECTIONS)
-    ATM)
-  #DECL
-    ((NMS)
-      tuple([REST
-          STRING]);
-      (DIR)
-      OBLIST
-      (ATM)
-      ATOM)
-  mapf(<>
-    function((X)
-      setg(set(ATM
-          or(lookup(.X
-              .DIR);
-            insert(.X
-              .DIR);););
-        chtype(.ATM
-          DIRECTION);););
-    .NMS););
+    (dir
+      _directions)
+    atm), #decl
+    ((nms)
+      tuple([rest
+          string])
+      (dir)
+      oblist
+      (atm)
+      atom), mapf(<>, function((x), setg(set(atm, or(lookup(_x, _dir), insert(_x, _dir))), chtype(_atm, direction))), _nms))
 
-define(DSYNONYM
-  (STR
+define(dsynonym, (str
     "TUPLE"
-    NMS
+    nms
     "AUX"
-    VAL
-    (DIR
-      ,DIRECTIONS)
-    ATM)
-  #DECL
-    ((ATM)
-      ATOM
-      (STR)
-      STRING
-      (NMS)
-      tuple([REST
-          STRING]);
-      (VAL)
-      DIRECTION
-      (DIR)
-      OBLIST)
-  set(VAL
-    add_directions(.STR););
-  mapf(<>
-    function((X)
-      setg(set(ATM
-          or(lookup(.X
-              .DIR);
-            insert(.X
-              .DIR);););
-        .VAL););
-    .NMS););
+    val
+    (dir
+      _directions)
+    atm), #decl
+    ((atm)
+      atom
+      (str)
+      string
+      (nms)
+      tuple([rest
+          string])
+      (val)
+      direction
+      (dir)
+      oblist), set(val, add_directions(_str)), mapf(<>, function((x), setg(set(atm, or(lookup(_x, _dir), insert(_x, _dir))), _val)), _nms))
 
-define(VSYNONYM
-  (N1
+define(vsynonym, (n1
     "TUPLE"
-    N2
+    n2
     "AUX"
-    ATM
-    VAL)
-  #DECL
-    ((N1)
-      STRING
-      (N2)
-      tuple([REST
-          STRING]);
-      (ATM)
-      or(FALSE
-        ATOM);
-      (VAL)
-      ANY)
-  cond((set(ATM
-        lookup(.N1
-          ,WORDS););
-      set(VAL
-        ,.ATM);
-      mapf(<>
-        function((X)
-          setg(add_word(.X);
-            .VAL););
-        .N2);));
-  cond((set(ATM
-        lookup(.N1
-          ,ACTIONS););
-      set(VAL
-        ,.ATM);
-      mapf(<>
-        function((X)
-          setg(or(lookup(.X
-                ,ACTIONS);
-              insert(.X
-                ,ACTIONS););
-            .VAL););
-        .N2);)););
+    atm
+    val), #decl
+    ((n1)
+      string
+      (n2)
+      tuple([rest
+          string])
+      (atm)
+      or(false, atom)
+      (val)
+      any), cond((set(atm, lookup(_n1, _words))
+      set(val, _.atm)
+      mapf(<>, function((x), setg(add_word(_x), _val)), _n2))), cond((set(atm, lookup(_n1, _actions))
+      set(val, _.atm)
+      mapf(<>, function((x), setg(or(lookup(_x, _actions), insert(_x, _actions)), _val)), _n2))))
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-define(ADD-WORD
-  (W)
-  #DECL
-    ((W)
-      STRING)
-  or(lookup(.W
-      ,WORDS);
-    insert(.W
-      ,WORDS);););
+define(add_word, (w), #decl
+    ((w)
+      string), or(lookup(_w, _words), insert(_w, _words)))
 
-define(ADD-BUZZ
-  ("TUPLE"
-    W)
-  #DECL
-    ((W)
-      tuple([REST
-          STRING]);)
-  mapf(<>
-    function((X)
-      #DECL
-        ((X)
-          STRING)
-      setg(add_word(.X);
-        chtype(.X
-          BUZZ);););
-    .W););
+define(add_buzz, ("TUPLE"
+    w), #decl
+    ((w)
+      tuple([rest
+          string])), mapf(<>, function((x), #decl
+        ((x)
+          string), setg(add_word(_x), chtype(_x, buzz))), _w))
 
-define(ADD-ZORK
-  (NM
+define(add_zork, (nm
     "TUPLE"
-    W)
-  #DECL
-    ((NM)
-      ATOM
-      (W)
-      tuple([REST
-          STRING]);)
-  mapf(<>
-    function((X
+    w), #decl
+    ((nm)
+      atom
+      (w)
+      tuple([rest
+          string])), mapf(<>, function((x
         "AUX"
-        ATM)
-      #DECL
-        ((X)
-          STRING
-          (ATM)
-          ATOM)
-      setg(set(ATM
-          add_word(.X););
-        chtype(.ATM
-          .NM);););
-    .W););
+        atm), #decl
+        ((x)
+          string
+          (atm)
+          atom), setg(set(atm, add_word(_x)), chtype(_atm, _nm))), _w))
 
-define(ADD-OBJECT
-  (OBJ
-    NAMES
+define(add_object, (obj
+    names
     "OPTIONAL"
-    (ADJ
+    (adj
       '[])
     "AUX"
-    (OBJS
-      ,OBJECT-OBL))
-  #DECL
-    ((OBJ)
-      OBJECT
-      (NAMES
-        ADJ)
-      vector([REST
-          STRING]);
-      (OBJS)
-      OBLIST)
-  put(.OBJ
-    ,ONAMES
-    mapf(,UVECTOR
-      function((X)
-        #DECL
-          ((X)
-            STRING)
-        or(lookup(.X
-            .OBJS);
-          insert(.X
-            .OBJS);););
-      .NAMES););
-  put(.OBJ
-    ,OADJS
-    mapf(,UVECTOR
-      function((W)
-        add_zork(ADJECTIVE
-          .W););
-      .ADJ););
-  chutype(oadjs(.OBJ);
-    ADJECTIVE);
-  .OBJ);
+    (objs
+      _object-obl)), #decl
+    ((obj)
+      object
+      (names
+        adj)
+      vector([rest
+          string])
+      (objs)
+      oblist), put(_obj, _onames, mapf(_uvector, function((x), #decl
+          ((x)
+            string), or(lookup(_x, _objs), insert(_x, _objs))), _names)), put(_obj, _oadjs, mapf(_uvector, function((w), add_zork(adjective, _w)), _adj)), chutype(oadjs(_obj), adjective), _obj)
 
-define(SYNONYM
-  (N1
+define(synonym, (n1
     "TUPLE"
-    N2
+    n2
     "AUX"
-    ATM
-    VAL)
-  #DECL
-    ((N1)
-      STRING
-      (N2)
-      tuple([REST
-          STRING]);
-      (ATM)
-      or(FALSE
-        ATOM);
-      (VAL)
-      ANY)
-  cond((set(ATM
-        lookup(.N1
-          ,WORDS););
-      set(VAL
-        ,.ATM);
-      mapf(<>
-        function((X)
-          setg(add_word(.X);
-            .VAL););
-        .N2);)););
+    atm
+    val), #decl
+    ((n1)
+      string
+      (n2)
+      tuple([rest
+          string])
+      (atm)
+      or(false, atom)
+      (val)
+      any), cond((set(atm, lookup(_n1, _words))
+      set(val, _.atm)
+      mapf(<>, function((x), setg(add_word(_x), _val)), _n2))))
 
-define(ADD-ABBREV
-  (X
-    Y
-    "AUX")
-  #DECL
-    ((X
-        Y)
-      STRING)
-  setg(add_word(.X);
-    or(lookup(.Y
-        ,WORDS);
-      insert(.Y
-        ,WORDS););););
+define(add_abbrev, (x
+    y
+    "AUX"), #decl
+    ((x
+        y)
+      string), setg(add_word(_x), or(lookup(_y, _words), insert(_y, _words))))
 
-define(ADD-DEMON
-  (X)
-  #DECL
-    ((X)
-      HACK)
-  cond((mapr(<>
-        function((Y)
-          #DECL
-            ((Y)
-              list([REST
-                  HACK]);)
-          cond((eq_q(haction(1(.Y););
-                haction(.X););
-              put(.Y
-                1
-                .X);
-              mapleave(T);)););
-        ,DEMONS);)
-    (setg(DEMONS
-        (.X
-          !,DEMONS));)););
+define(add_demon, (x), #decl
+    ((x)
+      hack), cond((mapr(<>, function((y), #decl
+            ((y)
+              list([rest
+                  hack])), cond((eq_q(haction(1(_y)), haction(_x))
+              put(_y, 1, _x)
+              mapleave(t)))), _demons)), (setg(demons, (_x
+          _,demons)))))
 
-define(ADD-STAR
-  (OBJ)
-  setg(STARS
-    (.OBJ
-      !,STARS)););
+define(add_star, (obj), setg(stars, (_obj
+      _,stars)))
 
-define(ADD-ACTOR
-  (ADV
+define(add_actor, (adv
     "AUX"
-    (ACTORS
-      ,ACTORS))
-  #DECL
-    ((ADV)
-      ADV
-      (ACTORS)
-      list([REST
-          ADV]);)
-  cond((mapf(<>
-        function((X)
-          #DECL
-            ((X)
-              ADV)
-          cond((eq_q(aobj(.X);
-                aobj(.ADV););
-              mapleave(T);)););
-        .ACTORS);)
-    (setg(ACTORS
-        (.ADV
-          !.ACTORS));));
-  .ADV);
+    (actors
+      _actors)), #decl
+    ((adv)
+      adv
+      (actors)
+      list([rest
+          adv])), cond((mapf(<>, function((x), #decl
+            ((x)
+              adv), cond((eq_q(aobj(_x), aobj(_adv))
+              mapleave(t)))), _actors)), (setg(actors, (_adv
+          _.actors)))), _adv)
 
-define(ADD-DESC
-  (OBJ
-    STR)
-  #DECL
-    ((OBJ)
-      OBJECT
-      (STR)
-      STRING)
-  put(.OBJ
-    ,OREAD
-    .STR););
+define(add_desc, (obj
+    str), #decl
+    ((obj)
+      object
+      (str)
+      string), put(_obj, _oread, _str))
 
-define(SADD-ACTION
-  (STR1
-    ATM)
-  add_action(.STR1
-    ""
-    [[.STR1
-        .ATM]]););
+define(sadd_action, (str1
+    atm), add_action(_str1, "", [[_str1
+        _atm]]))
 
-define(1ADD-ACTION
-  (STR1
-    STR2
-    ATM)
-  add_action(.STR1
-    .STR2
-    [OBJ
-      [.STR1
-        .ATM]]););
+define(1add_action, (str1
+    str2
+    atm), add_action(_str1, _str2, [obj
+      [_str1
+        _atm]]))
 
-define(AADD-ACTION
-  (STR1
-    STR2
-    ATM)
-  add_action(.STR1
-    .STR2
-    [(-1
-        AOBJS
-        NO-TAKE)
-      [.STR1
-        .ATM]]););
+define(aadd_action, (str1
+    str2
+    atm), add_action(_str1, _str2, [(_1
+        aobjs
+        no_take)
+      [_str1
+        _atm]]))
