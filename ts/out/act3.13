@@ -36,6 +36,7 @@
         ,OSIZE
         0>
       T)>>
+
 <DEFINE
   HEAD-FUNCTION
   ("AUX"
@@ -99,12 +100,15 @@
       <JIGS-UP
         "Unfortunately, we've run out of poles.  Therefore, in punishment for your most grievous sin, we shall deprive you of all your valuables, and of your life.">
       T)>>
+
 <SETG
   THEN
   0>
+
 <SETG
   BUCKET-TOP!-FLAG
   <>>
+
 <DEFINE
   BUCKET
   ("OPTIONAL"
@@ -201,6 +205,7 @@
               "BWELL">
             .PV
             .BUCK>)>)>>
+
 <DEFINE
   PASS-THE-BUCKET
   (R
@@ -244,6 +249,7 @@
     .PV
     2
     .PVS>>
+
 <DEFINE
   EATME-FUNCTION
   ("AUX"
@@ -316,6 +322,7 @@
           .HERE>>
       <GOTO
         .R>)>>
+
 <DEFINE
   CAKE-FUNCTION
   ("AUX"
@@ -492,6 +499,7 @@
         <FIND-OBJ
           "SAFFR">
         ,OVISON>)>>
+
 <DEFINE
   FLASK-FUNCTION
   ("AUX"
@@ -535,12 +543,15 @@
         ,OVISON>
       <JIGS-UP
         ,VAPORS>)>>
+
 <PSETG
   VAPORS
   "Just before you pass out, you notice that the vapors from the flask's contents are fatal.">
+
 <PSETG
   CRUSHED
   "The room seems to have become too small to hold you.  It seems that the  walls are not as compressible as your body, which is somewhat demolished.">
+
 <DEFINE
   ICEBOOM
   ()
@@ -549,9 +560,11 @@
     "The door to the room seems to be blocked by sticky orange rubble from an explosion.  Probably some careless adventurer was playing with blasting cakes.">
   <JIGS-UP
     ,ICEBLAST>>
+
 <PSETG
   ICEBLAST
   "You have been blasted to smithereens (wherever they are).">
+
 <DEFINE
   MAGNET-ROOM
   ("AUX"
@@ -647,6 +660,7 @@
                 <2
                   .M>>>>
           <ROOM-INFO>)>)>>
+
 <DEFINE
   CMACH-ROOM
   ("AUX"
@@ -666,12 +680,15 @@
         ,LOOK!-WORDS>
       <TELL
         "You are in a large room full of assorted heavy machinery.  The room smells of burned resistors. The room is noisy from the whirring sounds of the machines. Along one wall of the room are three buttons which are, respectively, round, triangular, and square.  Naturally, above these buttons are instructions written in EBCDIC.  A large sign in English above all the buttons says   'DANGER -- HIGH VOLTAGE '. There are exits to the west and the south.">)>>
+
 <SETG
   CAROUSEL-ZOOM!-FLAG
   <>>
+
 <SETG
   CAROUSEL-FLIP!-FLAG
   <>>
+
 <DEFINE
   BUTTONS
   ("AUX"
@@ -749,12 +766,15 @@
               <TRC
                 .I
                 ,OVISON>)>)>)>>
+
 <PSETG
   SPINDIZZY
   "According to Prof. TAA of MIT Tech, the rapidly changing magnetic fields in the room are so intense as to cause you to be electrocuted.  I really don't know, but in any event, something just killed you.">
+
 <SETG
   CAGE-SOLVE!-FLAG
   <>>
+
 <DEFINE
   SPHERE-FUNCTION
   ("AUX"
@@ -871,9 +891,11 @@
         "You are stopped by a cloud of poisonous gas.">
       <JIGS-UP
         ,POISON>)>>
+
 <PSETG
   POISON
   "Time passes...and you die from some obscure poisoning.">
+
 <DEFINE
   CAGED-ROOM
   ()
@@ -883,6 +905,7 @@
         HERE
         <FIND-ROOM
           "CAGER">>)>>
+
 <GDECL
   (SPHERE-CLOCK)
   CEVENT
@@ -890,6 +913,7 @@
   <UVECTOR
     [REST
       VERB]>>
+
 <DEFINE
   ROBOT-ACTOR
   ("AUX"
@@ -1000,6 +1024,7 @@
       <>)
     (<TELL
         "I am only a stupid robot and cannot perform that command.\"">)>>
+
 <DEFINE
   ROBOT-FUNCTION
   ("AUX"
@@ -1071,6 +1096,7 @@
               ,THROW!-WORDS>
             .PI)
           (.PO)>>)>>
+
 <DEFINE
   KNOCK
   ("AUX"
@@ -1090,21 +1116,25 @@
         <ODESC2
           .PRSO>
         "?">)>>
+
 <DEFINE
   CHOMP
   ()
   <TELL
     "I don't know how to do that.  I win in all cases!">>
+
 <DEFINE
   FROBOZZ
   ()
   <TELL
     "The FROBOZZ Corporation created, owns, and operates this dungeon.">>
+
 <DEFINE
   WIN
   ()
   <TELL
     "Naturally!">>
+
 <DEFINE
   YELL
   ()

@@ -7,6 +7,7 @@
     <MOBLIST
       WORDS
       23>>>
+
 <SETG
   OBJECT-OBL
   <OR
@@ -16,11 +17,13 @@
     <MOBLIST
       OBJECTS
       23>>>
+
 <SETG
   ACTIONS
   <MOBLIST
     ACTIONS
     17>>
+
 <SETG
   ORPHANS
   [<>
@@ -28,6 +31,7 @@
     <>
     <>
     <>]>
+
 <COND
   (<OR
       <LOOKUP
@@ -63,6 +67,7 @@
             <FIND-OBJ
               "#####">]
           PHRASE>]>)>
+
 <DEFINE
   SPARSE
   SPAROUT
@@ -482,6 +487,7 @@
                   2
                   .LOBJ>>>>)
         (.PV)>)>>
+
 <DEFINE
   SP
   (STR)
@@ -489,6 +495,7 @@
     <LEX
       .STR>
     <>>>
+
 <DEFINE
   ORPHAN
   ("OPTIONAL"
@@ -527,6 +534,7 @@
       .ACTION>
     ,OFLAG
     .FLAG>>
+
 <DEFINE
   SYN-MATCH
   (PV
@@ -715,6 +723,7 @@
         "I can't make sense out of that."
         0>
       <>)>>
+
 <DEFINE
   TAKE-IT-OR-LEAVE-IT
   (SYN
@@ -798,6 +807,7 @@
         .PV
         .VARG>)>
   T>
+
 <DEFINE
   TAKE-IT
   (OBJ
@@ -856,6 +866,7 @@
         .VEC
         2
         .SAV2>)>>
+
 <DEFINE
   ORFEO
   (SYN
@@ -898,6 +909,7 @@
           .OBJS
           1
           .SLOT1>>)>>
+
 <DEFINE
   ORTELL
   (VARG
@@ -950,6 +962,7 @@
         0
         " what?">)>
   <>>
+
 <DEFINE
   PRSTR
   (ATM
@@ -970,6 +983,7 @@
       <LENGTH
         .SP>>
     <>>>
+
 <DEFINE
   FOOSTR
   (NAM
@@ -1018,6 +1032,7 @@
     .NAM
     .STR>
   .STR>
+
 <DEFINE
   GWIM-SLOT
   (FX
@@ -1052,7 +1067,9 @@
         .FX
         .OBJ>
       .OBJ)>>
+
 "GET WHAT I MEAN - GWIM  TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
+
 <DEFINE
   GWIM
   (BIT
@@ -1193,7 +1210,9 @@
           ,NEFALS)
         (.OBJ)>)
     (.OBJ)>>
+
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
+
 <DEFINE
   MAKE-ACTION
   ("TUPLE"
@@ -1378,6 +1397,7 @@
           SYNTAX>>
       .SPECS>
     VSPEC>>
+
 <SETG
   EVARG
   <CHTYPE
@@ -1385,6 +1405,7 @@
       <>
       0]
     VARG>>
+
 <DEFINE
   SYN-EQUAL
   (VARG
@@ -1442,10 +1463,12 @@
           .POBJ>
         <0?
           .VBIT>>)>>
+
 <SETG
   DIRECTIONS
   <MOBLIST
     DIRECTIONS>>
+
 <DEFINE
   EPARSE
   (PV
@@ -1488,18 +1511,22 @@
         <TELL
           "">>
       <>)>>
+
 <SETG
   SCRSTR
   <REST
     <ISTRING
       5>
     5>>
+
 <SETG
   SSV
   <IVECTOR
     10
     <>>>
+
 "GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS OVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL OF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE OBJECT OTHERWISE."
+
 <DEFINE
   GET-OBJECT
   GET-OBJ
@@ -1643,15 +1670,19 @@
     (.CHOMP
       ,NEFALS2)
     (.OOBJ)>>
+
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY. IF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO ONE LEVEL OF CONTAINMENT."
+
 <SETG
   NEFALS
   #FALSE
     (1)>
+
 <SETG
   NEFALS2
   #FALSE
     (2)>
+
 <DEFINE
   SEARCH-LIST
   SL
@@ -1748,7 +1779,9 @@
                 .SL>)>)>>
     .SLIST>
   .OOBJ>
+
 "FWIM:  TAKE LIST OF FROBS, FIND ONE THAT CAN BE MANIPULATED (VISIBLE AND TAKEABLE, OR VISIBLE AND IN SOMETHING THAT'S VISIBLE AND OPEN)"
+
 <DEFINE
   FWIM
   DWIM

@@ -81,6 +81,7 @@
                 "   BOOOOOOOOOOOM      ">>
             <JIGS-UP
               "   BOOOOOOOOOOOM      ">>)>)>>
+
 <DEFINE
   BATS-ROOM
   ("AUX"
@@ -116,6 +117,7 @@
             ,WINNER>>
         <TELL
           "In the corner of the room on the ceiling is a large vampire bat who  is obviously deranged and holding his nose.">>)>>
+
 <DEFINE
   FLY-ME
   ("AUX"
@@ -148,6 +150,7 @@
     <>>
   <ROOM-DESC>
   T>
+
 <DEFINE
   FWEEP
   (NUM
@@ -176,6 +179,7 @@
         .SLP>
       <SLEEP
         .SLP>>>>
+
 <PSETG
   BAT-DROPS
   '["MINE1"
@@ -187,14 +191,17 @@
       "MINE7"
       "TLADD"
       "BLADD"]>
+
 <GDECL
   (BAT-DROPS)
   <VECTOR
     [REST
       STRING]>>
+
 <SETG
   CAGE-TOP!-FLAG
   T>
+
 <DEFINE
   DUMBWAITER
   ("AUX"
@@ -307,6 +314,7 @@
             "The cage is securely fastened to the iron chain.">)
         (<TELL
             "I can't see that here.">)>)>>
+
 <DEFINE
   MACHINE-ROOM
   ("AUX"
@@ -330,6 +338,7 @@
             "The lid on the machine is open.">)
         (<TELL
             "The lid on the machine is closed.">)>)>>
+
 <DEFINE
   MACHINE-FUNCTION
   ("AUX"
@@ -392,6 +401,7 @@
         (<==?
             .PRSACT
             ,TAKE!-WORDS>)>)>>
+
 <DEFINE
   MSWITCH-FUNCTION
   ("AUX"
@@ -480,6 +490,7 @@
             <ODESC2
               .IMP>
             " won't do.">)>)>>
+
 <DEFINE
   GUNK-FUNCTION
   ("AUX"
@@ -511,6 +522,7 @@
         <>>
       <TELL
         "The slag turns out to be rather insubstantial, and crumbles into dust  at your touch.  It must not have been very valuable.">)>>
+
 <SETG
   SCORE-MAX
   <+
@@ -518,6 +530,7 @@
     <SETG
       LIGHT-SHAFT
       10>>>
+
 <DEFINE
   NO-OBJS
   ()
@@ -544,9 +557,11 @@
       <SETG
         LIGHT-SHAFT
         0>)>>
+
 <GDECL
   (LIGHT-SHAFT)
   FIX>
+
 <DEFINE
   CLIFF-FUNCTION
   ()
@@ -562,6 +577,7 @@
     (<SETG
         DEFLATE!-FLAG
         T>)>>
+
 <DEFINE
   STICK-FUNCTION
   ("AUX"
@@ -614,6 +630,7 @@
             "The structural integrity of the rainbow seems to have left it,  leaving you about 450 feet in the air, supported by water vapor.">)
         (<TELL
             "Very good.">)>)>>
+
 <DEFINE
   FALLS-ROOM
   ("AUX"
@@ -635,6 +652,7 @@
             "A solid rainbow spans the falls.">)
         (<TELL
             "A beautiful rainbow can be seen over the falls and to the east.">)>)>>
+
 <DEFINE
   DIGGER
   ("AUX"
@@ -664,6 +682,7 @@
         <ODESC2
           .PRSO>
         " is silly.">)>>
+
 <DEFINE
   DBOAT-FUNCTION
   ("AUX"
@@ -725,6 +744,7 @@
                 .HERE>)>)
         (<WITH-TELL
             .PRSI>)>)>>
+
 <DEFINE
   RBOAT-FUNCTION
   ("OPTIONAL"
@@ -814,6 +834,7 @@
           <INSERT-OBJECT
             .IBOAT
             .HERE>)>)>>
+
 <DEFINE
   IBOAT-FUNCTION
   ("AUX"
@@ -866,6 +887,7 @@
             .HERE>)
         (<TELL
             "I don't think you have enough lung-power to inflate this boat.">)>)>>
+
 <DEFINE
   OVER-FALLS
   ()
@@ -876,9 +898,11 @@
         ,LOOK!-WORDS>)
     (<JIGS-UP
         "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart  thing to do, apparently.">)>>
+
 <SETG
   BUOY-FLAG!-FLAG
   T>
+
 <DEFINE
   SHAKE
   ("AUX"
@@ -937,6 +961,7 @@
         ()>
       <TELL
         "All of the objects spill onto the floor.">)>>
+
 <DEFINE
   RIVR4-ROOM
   ()
@@ -952,6 +977,7 @@
     <SETG
       BUOY-FLAG!-FLAG
       <>>>>
+
 <DEFINE
   BEACH-ROOM
   ("AUX"
@@ -1022,6 +1048,7 @@
             <NTH
               ,BDIGS
               .CNT>>)>)>>
+
 <DEFINE
   TCAVE-ROOM
   ("AUX"
@@ -1080,22 +1107,26 @@
                   .CNT>>)>)
         (<TELL
             "There's nothing to dig into here.">)>)>>
+
 <PSETG
   CDIGS
   '["You are digging into a pile of bat guano."
       "You seem to be getting knee deep in guano."
       "You are covered with bat turds, cretin."]>
+
 <PSETG
   BDIGS
   '["You seem to be digging a hole here."
       "The hole is getting deeper, but that's about it."
       "You are surrounded by a wall of sand on all sides."]>
+
 <GDECL
   (BDIGS
     CDIGS)
   <VECTOR
     [REST
       STRING]>>
+
 <DEFINE
   GERONIMO
   ()
@@ -1108,16 +1139,19 @@
         "I didn't think you would REALLY try to go over the falls in a  barrel. It seems that some 450 feet below, you were met by a number  of  unfriendly rocks and boulders, causing your immediate demise.  Is  this what 'over a barrel' means?">)
     (<TELL
         "Wasn't he an Indian?">)>>
+
 <PSETG
   SWIMYUKS
   '["I don't really see how."
       "I think that swimming is best performed in water."
       "Perhaps it is your head that is swimming."]>
+
 <GDECL
   (SWIMYUKS)
   <VECTOR
     [REST
       STRING]>>
+
 <DEFINE
   SWIMMER
   ("AUX"
@@ -1137,6 +1171,7 @@
     (<TELL
         <PICK-ONE
           .SWIMYUKS>>)>>
+
 <DEFINE
   GRUE-FUNCTION
   ("AUX"
@@ -1157,12 +1192,15 @@
         ,FIND!-WORDS>
       <TELL
         "There is no grue here, but I'm sure there is at least one lurking  in the darkness nearby.  I wouldn't let my light go out if I were  you!">)>>
+
 <SETG
   BTIE!-FLAG
   <>>
+
 <SETG
   BINF!-FLAG
   <>>
+
 <DEFINE
   BALLOON
   BALLACT
@@ -1427,13 +1465,16 @@
         (<DECLINE-AND-FALL
             .BALL
             ,HERE>)>)>>
+
 <SETG
   BLAB!-FLAG
   <>>
+
 <GDECL
   (BURNUP-INT
     BINT)
   CEVENT>
+
 <DEFINE
   RISE-AND-SHINE
   (BALL
@@ -1592,6 +1633,7 @@
         .BL
         "VAIR1"
         "lifts off.">)>>
+
 <DEFINE
   PUT-BALLOON
   (BALL
@@ -1624,9 +1666,11 @@
       BLOC
       <FIND-ROOM
         .THERE>>>>
+
 <GDECL
   (BLOC)
   ROOM>
+
 <DEFINE
   DECLINE-AND-FALL
   (BALL
@@ -1750,6 +1794,7 @@
                 .BL
                 .S
                 "descends.">)>)>)>>
+
 <DEFINE
   WIRE-FUNCTION
   ("AUX"
@@ -1825,6 +1870,7 @@
             "The wire falls off of the hook.">)
         (<TELL
             "The wire is not tied to anything.">)>)>>
+
 <DEFINE
   BURNUP
   ("AUX"
@@ -1856,9 +1902,11 @@
     BINF!-FLAG
     <>>
   T>
+
 <SETG
   SAFE-FLAG!-FLAG
   <>>
+
 <DEFINE
   SAFE-ROOM
   ("AUX"
@@ -1880,6 +1928,7 @@
               ,SAFE-FLAG!-FLAG>
             "  Imbedded in the far wall, there is a rusty old box.  It appears that  the box is somewhat damaged, since an oblong hole has been chipped  out of the front of it.")
           ("  On the far wall is a rusty box, whose door has been blown off.")>>)>>
+
 <DEFINE
   SAFE-FUNCTION
   ("AUX"
@@ -1918,9 +1967,11 @@
         ,BLAST!-WORDS>
       <TELL
         "What do you expect, BOOM?">)>>
+
 <PSETG
   BRICK-BOOM
   "Now you've done it.  It seems that the brick has other properties  than weight, namely the ability to blow you to smithereens.">
+
 <DEFINE
   BRICK-FUNCTION
   ("AUX"
@@ -1936,6 +1987,7 @@
         ,BURN!-WORDS>
       <JIGS-UP
         ,BRICK-BOOM>)>>
+
 <DEFINE
   FUSE-FUNCTION
   ("AUX"
@@ -2103,6 +2155,7 @@
                 .FUSE>>>
           <TELL
             "The wire rapidly burns into nothingness.">)>)>>
+
 <DEFINE
   SAFE-MUNG
   ("AUX"
@@ -2139,6 +2192,7 @@
           "BRICK">>
       ,HERE>
     "The way is blocked by debris from an explosion.">>
+
 <DEFINE
   LEDGE-MUNG
   ("AUX"
@@ -2193,6 +2247,7 @@
   <MUNG-ROOM
     .RM
     "The ledge has collapsed and cannot be landed on.">>
+
 <DEFINE
   LEDGE-FUNCTION
   ("AUX"
@@ -2226,6 +2281,7 @@
               ,RMUNGBIT>
             " The way to the south is blocked by rubble.")
           (" There is a small door to the south.")>>)>>
+
 <DEFINE
   BLAST
   ()
@@ -2236,6 +2292,7 @@
           "SAFE">>)
     (<TELL
         "I don't really know how to do that.">)>>
+
 <DEFINE
   VOLGNOME
   ()
@@ -2254,11 +2311,13 @@
     (<CLOCK-INT
         ,VLGIN
         1>)>>
+
 <SETG
   GNOME-DOOR!-FLAG
   <SETG
     GNOME-FLAG!-FLAG
     <>>>
+
 <DEFINE
   GNOME-FUNCTION
   ("AUX"

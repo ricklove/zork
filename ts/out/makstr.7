@@ -56,6 +56,7 @@
         .FLG
         .ATM]
       CEVENT>>>
+
 <DEFINE
   CONS-OBJ
   ("TUPLE"
@@ -91,6 +92,7 @@
             .X>
           .WINNER>>>
     .OBJS>>
+
 <DEFINE
   CEXIT
   (FLID
@@ -161,6 +163,7 @@
       .STR
       .FUNCT>
     CEXIT>>
+
 <DEFINE
   EXIT
   ("TUPLE"
@@ -264,6 +267,7 @@
   <CHTYPE
     .FROB
     EXIT>>
+
 <DEFINE
   ROOM
   (ID
@@ -372,6 +376,7 @@
     <ROBJS
       .RM>>
   .RM>
+
 <DEFINE
   SOBJECT
   (ID
@@ -394,6 +399,7 @@
     <>
     <+
       !.TUP>>>
+
 <DEFINE
   AOBJECT
   (ID
@@ -419,6 +425,7 @@
     <>
     <+
       !.TUP>>>
+
 <DEFINE
   OBJECT
   (ID
@@ -533,6 +540,7 @@
           FORM>
         <>)
       (.APP)>>>
+
 <DEFINE
   FIND-PREP
   (STR
@@ -562,6 +570,7 @@
         <CHTYPE
           .ATM
           PREP>>)>>
+
 <DEFINE
   ADD-ACTION
   (NAM
@@ -596,6 +605,7 @@
         .STR]
       ACTION>>
   .ATM>
+
 <DEFINE
   ADD-DIRECTIONS
   ("TUPLE"
@@ -631,6 +641,7 @@
           .ATM
           DIRECTION>>>
     .NMS>>
+
 <DEFINE
   DSYNONYM
   (STR
@@ -674,6 +685,7 @@
               .DIR>>>
         .VAL>>
     .NMS>>
+
 <DEFINE
   VSYNONYM
   (N1
@@ -736,7 +748,9 @@
                 ,ACTIONS>>
             .VAL>>
         .N2>)>>
+
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
+
 <DEFINE
   ADD-WORD
   (W)
@@ -750,6 +764,7 @@
     <INSERT
       .W
       ,WORDS>>>
+
 <DEFINE
   ADD-BUZZ
   ("TUPLE"
@@ -773,6 +788,7 @@
           .X
           BUZZ>>>
     .W>>
+
 <DEFINE
   ADD-ZORK
   (NM
@@ -805,6 +821,7 @@
           .ATM
           .NM>>>
     .W>>
+
 <DEFINE
   ADD-OBJECT
   (OBJ
@@ -859,6 +876,7 @@
       .OBJ>
     ADJECTIVE>
   .OBJ>
+
 <DEFINE
   SYNONYM
   (N1
@@ -898,6 +916,7 @@
               .X>
             .VAL>>
         .N2>)>>
+
 <DEFINE
   ADD-ABBREV
   (X
@@ -917,6 +936,7 @@
       <INSERT
         .Y
         ,WORDS>>>>
+
 <DEFINE
   ADD-DEMON
   (X)
@@ -951,6 +971,7 @@
         DEMONS
         (.X
           !,DEMONS)>)>>
+
 <DEFINE
   ADD-STAR
   (OBJ)
@@ -958,6 +979,7 @@
     STARS
     (.OBJ
       !,STARS)>>
+
 <DEFINE
   ADD-ACTOR
   (ADV
@@ -993,6 +1015,7 @@
         (.ADV
           !.ACTORS)>)>
   .ADV>
+
 <DEFINE
   ADD-DESC
   (OBJ
@@ -1006,6 +1029,7 @@
     .OBJ
     ,OREAD
     .STR>>
+
 <DEFINE
   SADD-ACTION
   (STR1
@@ -1015,6 +1039,7 @@
     ""
     [[.STR1
         .ATM]]>>
+
 <DEFINE
   1ADD-ACTION
   (STR1
@@ -1026,6 +1051,7 @@
     [OBJ
       [.STR1
         .ATM]]>>
+
 <DEFINE
   AADD-ACTION
   (STR1

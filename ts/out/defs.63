@@ -4,10 +4,13 @@
     100>
   <USE
     "LSRTNS">>
+
 // applicables
+
 <NEWTYPE
   OFFSET
   WORD>
+
 <PUT
   RAPPLIC
   DECL
@@ -15,21 +18,29 @@
       ATOM
       FALSE
       OFFSET>>
+
 // newtypes for parser
+
 <NEWTYPE
   BUZZ
   STRING>
+
 <NEWTYPE
   DIRECTION
   ATOM>
+
 <NEWTYPE
   ADJECTIVE
   ATOM>
+
 <NEWTYPE
   PREP
   ATOM>
+
 \
+
 // generalized oflags tester
+
 <DEFMAC
   TRNN
   ('OBJ
@@ -46,6 +57,7 @@
           .OBJ>>
       FIX>
     0>>
+
 <DEFMAC
   RTRNN
   ('RM
@@ -62,6 +74,7 @@
           .RM>>
       FIX>
     0>>
+
 <DEFMAC
   RTRZ
   ('RM
@@ -79,6 +92,7 @@
         XORB
         .BIT
         -1>>>>
+
 <DEFMAC
   TRC
   ('OBJ
@@ -93,6 +107,7 @@
         OFLAGS
         .OBJ>
       .BIT>>>
+
 <DEFMAC
   TRZ
   ('OBJ
@@ -110,6 +125,7 @@
         XORB
         .BIT
         -1>>>>
+
 <DEFMAC
   TRO
   ('OBJ
@@ -124,6 +140,7 @@
         OFLAGS
         .OBJ>
       .BIT>>>
+
 <DEFMAC
   RTRO
   ('RM
@@ -138,8 +155,11 @@
         RBITS
         .RM>
       .BIT>>>
+
 \
+
 // room definition
+
 <NEWSTRUC
   ROOM
   VECTOR
@@ -187,7 +207,9 @@
   RRAND
   ANY
   // random slot>
+
 // flagword for <RBITS room>:    bit-name   bit-tester
+
 <FLAGWORD
   RLANDBIT
   <>
@@ -213,7 +235,9 @@
   RHOUSEBIT
   <>
   // This room is part of the house>
+
 // exit
+
 <NEWTYPE
   EXIT
   VECTOR
@@ -225,7 +249,9 @@
           ROOM
           CEXIT
           NEXIT>]>>
+
 // conditional exit
+
 <NEWSTRUC
   CEXIT
   VECTOR
@@ -243,13 +269,19 @@
   CXACTION
   RAPPLIC
   // exit function>
+
 <NEWTYPE
   NEXIT
   STRING>
+
 // unusable exit description
+
 \
+
 // PARSER related types
+
 // ACTION -- top level type for verbs
+
 <NEWSTRUC
   ACTION
   VECTOR
@@ -262,7 +294,9 @@
   VSTR
   STRING
   // string to print when talking about this verb>
+
 // VSPEC -- uvector of syntaxes for a verb
+
 <NEWTYPE
   VSPEC
   UVECTOR
@@ -270,7 +304,9 @@
         UVECTOR>
       [REST
         SYNTAX]>>
+
 // SYNTAX -- a legal syntax for a sentence involving this verb
+
 <NEWSTRUC
   SYNTAX
   VECTOR
@@ -293,7 +329,9 @@
     ATOM
     FALSE>
   // (?)>
+
 // VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX.
+
 <NEWSTRUC
   VARG
   VECTOR
@@ -308,7 +346,9 @@
   VWORD
   FIX
   // locations object may be looked for in>
+
 // flagbit definitions for VWORD of a VARG
+
 <FLAGWORD
   VABIT
   <>
@@ -322,7 +362,9 @@
   VXBIT
   <>
   // (?) turned on by '=' in VARG spec>
+
 // VTRNN -- test a bit in the VWORD slot of a VARG
+
 <DEFMAC
   VTRNN
   ('V
@@ -339,7 +381,9 @@
           .V>>
       FIX>
     0>>
+
 // VERB -- name and function to apply to handle verb
+
 <NEWSTRUC
   VERB
   VECTOR
@@ -347,7 +391,9 @@
   ATOM
   VFCN
   RAPPLIC>
+
 // ORPHANS -- mysterious vector of orphan data
+
 <GDECL
   (ORPHANS)
   <VECTOR
@@ -366,6 +412,7 @@
     <OR
       FALSE
       ATOM>>>
+
 <AND?
   <MSETG
     OFLAG
@@ -382,7 +429,9 @@
   <MSETG
     ONAME
     5>>
+
 // prepositional phrases
+
 <NEWSTRUC
   PHRASE
   VECTOR
@@ -390,8 +439,11 @@
   PREP
   POBJ
   OBJECT>
+
 \
+
 // adventurer
+
 <NEWSTRUC
   ADV
   VECTOR
@@ -427,12 +479,16 @@
   <PRIMTYPE
     WORD>
   // flags THIS MUST BE SAME OFFSET AS OFLAGS!>
+
 "bits in <AFLAGS adv>:    bit-name  bit-tester"
+
 <FLAGWORD
   ASTAGGERED
   STAGGERED?
   // staggered?>
+
 // object
+
 <NEWSTRUC
   OBJECT
   VECTOR
@@ -515,7 +571,9 @@
     FALSE
     STRING>
   // reading material>
+
 "bits in <OFLAGS object>:    bit-name  bit-tester"
+
 <FLAGWORD
   OVISON
   OVIS?
@@ -604,12 +662,17 @@
   NO-CHECK-BIT
   <>
   // ignore checks (in put & drop):  for EVERY and VALUA>
+
 "extra stuff for flagword for objects"
+
 "complement of the visible bit"
+
 <MSETG
   OVISOFF
   *777777777776*>
+
 "can i be opened?"
+
 <DEFMAC
   OPENABLE?
   ('OBJ)
@@ -620,7 +683,9 @@
       +
       ,DOORBIT
       ,CONTBIT>>>
+
 "complement of the bit state"
+
 <DEFMAC
   DESCRIBABLE?
   ('OBJ)
@@ -630,7 +695,9 @@
       TRNN
       .OBJ
       ,NDESCBIT>>>
+
 "if object is a light or aflame, then flaming"
+
 <DEFMAC
   FLAMING?
   ('OBJ)
@@ -645,7 +712,9 @@
       <FORM
         OLIGHT?
         .OBJ>>>>
+
 "if object visible and open or transparent, can see inside it"
+
 <DEFMAC
   SEE-INSIDE?
   ('OBJ)
@@ -662,8 +731,11 @@
       <FORM
         OOPEN?
         .OBJ>>>>
+
 \
+
 // demons
+
 <NEWSTRUC
   HACK
   VECTOR
@@ -684,7 +756,9 @@
   OBJECT
   HFLAG
   ANY>
+
 // Clock interrupts
+
 <NEWSTRUC
   CEVENT
   VECTOR
@@ -700,13 +774,17 @@
     FALSE>
   CID
   ATOM>
+
 \
+
 <SETG
   LOAD-MAX
   100>
+
 <SETG
   SCORE-MAX
   0>
+
 <GDECL
   (RAW-SCORE
     LOAD-MAX
@@ -757,9 +835,13 @@
       STRING]>
   (SWORD-DEMON)
   HACK>
+
 \
+
 "UTILITY FUNCTIONS"
+
 "TO OPEN DOORS"
+
 <DEFMAC
   COND-OPEN
   ('DIR
@@ -791,6 +873,7 @@
             LVAL
             EL>>>
       T>>>
+
 <DEFMAC
   COND-CLOSE
   ('DIR
@@ -822,7 +905,9 @@
             LVAL
             EL>>>
       <>>>>
+
 "APPLY AN OBJECT FUNCTION"
+
 <DEFMAC
   APPLY-OBJECT
   ('OBJ)
@@ -858,7 +943,9 @@
           <FORM
             LVAL
             FOO>>)>>>
+
 "FLUSH AN OBJECT FROM A ROOM"
+
 <DEFINE
   REMOVE-OBJECT
   (OBJ
@@ -918,6 +1005,7 @@
     .OBJ
     ,OCAN
     <>>>
+
 <DEFMAC
   INSERT-OBJECT
   ('OBJ
@@ -936,6 +1024,7 @@
           ROBJS
           .ROOM>
         SEGMENT>)>>
+
 <DEFMAC
   TAKE-OBJECT
   ('OBJ
@@ -956,6 +1045,7 @@
           AOBJS
           .WINNER>
         SEGMENT>)>>
+
 <DEFMAC
   DROP-OBJECT
   ('OBJ
@@ -972,6 +1062,7 @@
       <FORM
         AOBJS
         .WINNER>>>>
+
 <DEFINE
   KILL-OBJ
   (OBJ
@@ -995,6 +1086,7 @@
             .WINNER>>>)
     (<REMOVE-OBJECT
         .OBJ>)>>
+
 <DEFINE
   FLUSH-OBJ
   ("TUPLE"
@@ -1030,7 +1122,9 @@
             .X>
           .WINNER>>>
     .OBJS>>
+
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
+
 <DEFINE
   ROB-ADV
   (WIN
@@ -1073,7 +1167,9 @@
     <AOBJS
       .WIN>>
   .NEWLIST>
+
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
+
 <DEFINE
   ROB-ROOM
   (RM
@@ -1132,6 +1228,7 @@
     <ROBJS
       .RM>>
   .NEWLIST>
+
 <DEFINE
   VALUABLES?
   (ADV)
@@ -1154,6 +1251,7 @@
             T>)>>
     <AOBJS
       .ADV>>>
+
 <DEFINE
   ARMED?
   (ADV
@@ -1178,6 +1276,7 @@
             T>)>>
     <AOBJS
       .ADV>>>
+
 <DEFINE
   LIGHT-SOURCE
   (ME)
@@ -1197,6 +1296,7 @@
             .X>)>>
     <AOBJS
       .ME>>>
+
 <DEFINE
   GET-DEMON
   (ID
@@ -1230,6 +1330,7 @@
           <MAPLEAVE
             .X>)>>
     .DEMS>>
+
 <DEFMAC
   PICK-ONE
   ('VEC)
@@ -1246,6 +1347,7 @@
         <FORM
           LENGTH
           .VEC>>>>>
+
 <DEFMAC
   CLOCK-DISABLE
   ('EV)
@@ -1254,6 +1356,7 @@
     .EV
     ,CFLAG
     <>>>
+
 <DEFMAC
   CLOCK-ENABLE
   ('EV)
@@ -1262,6 +1365,7 @@
     .EV
     ,CFLAG
     T>>
+
 <DEFINE
   YES/NO
   (NO-IS-BAD?
@@ -1295,6 +1399,7 @@
         <1
           .INBUF>
         "TtYy">)>>
+
 <DEFMAC
   APPLY-RANDOM
   ('FROB
@@ -1325,6 +1430,7 @@
         DISPATCH
         .FROB
         .MUMBLE>)>>
+
 <DEFINE
   DA
   (FN
@@ -1365,22 +1471,28 @@
           UNASSIGNED-VARIABLE!-ERRORS
           .FN
           DA>)>>>
+
 "OLD MAZER"
+
 <MOBLIST
   FLAG
   17>
+
 <PSETG
   NULL-DESC
   "">
+
 <PSETG
   NULL-EXIT
   <CHTYPE
     []
     EXIT>>
+
 <PSETG
   NULL-SYN
   !
   []>
+
 <DEFINE
   FIND-ROOM
   (ID
@@ -1449,6 +1561,7 @@
         (.ROOM
           !,ROOMS)>
       .ROOM)>>
+
 <DEFINE
   FIND-OBJ
   (ID
@@ -1524,6 +1637,7 @@
         (.OBJ
           !,OBJECTS)>
       .OBJ)>>
+
 <DEFINE
   FUNCTION-PRINT
   (FROB)
