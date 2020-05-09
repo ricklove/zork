@@ -874,8 +874,8 @@ define(
             ,vers)
           mapf(
             <>,
-            (
-              x) => (
+            \* FUNCTION *\
+              (x) => (
               print,
               _x),
             _zork)
@@ -5813,8 +5813,8 @@ define(
       string),
   mapr(
     <>,
-    (
-      x) => (
+    \* FUNCTION *\
+      (x) => (
       cond,
       (_EQ_Q(
             _x,
@@ -5838,8 +5838,8 @@ define(
       string),
   mapr(
     <>,
-    (
-      s,
+    \* FUNCTION *\
+      (s,
       "AUX",
       (c
           ascii(

@@ -1271,8 +1271,8 @@ define(
       adv),
   mapf(
     <>,
-    (
-      x) => (
+    \* FUNCTION *\
+      (x) => (
       cond,
       (not(
             0_Q(

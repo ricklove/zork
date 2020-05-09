@@ -1,7 +1,11 @@
 import { ZNode, ZList, ZToken } from "./parseAst";
 
+function getIndentation(depth: number) {
+    return [...new Array(depth + 1)].join('  ');
+}
+
 const getIndentedNodes = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
-    const indent = [...new Array(depth + 1)].join('  ');
+    const indent = getIndentation(depth);
     return `${indentFirst ? `\n${indent}` : ''}${nodes.map(x => `${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
 };
 
@@ -25,10 +29,10 @@ const converToTypescriptName = (node: ZToken): string => {
 
 const convertToTypescriptFunction = (name: undefined | ZToken, argsList: undefined | ZList, body: undefined | ZList, depth: number, ) => {
     const nameText = name && name.kind === 'ZToken' ? converToTypescriptName(name) : undefined;
-    const argsListText = getIndentedNodes(argsList?.nodes ?? [], depth, true, ',');
+    const argsListText = getIndentedNodes(argsList?.nodes ?? [], depth, false, ',');
     const bodyText = getIndentedNodes(body?.nodes ?? [], depth, true, ',');
 
-    return `${nameText ? `\\*${nameText}*\\` : ''}(${argsListText}) => (${bodyText})`;
+    return `${nameText ? `\\* FUNCTION ${nameText}*\\` : '\\* FUNCTION *\\'}\n${getIndentation(depth)}(${argsListText}) => (${bodyText})`;
 };
 
 
@@ -170,6 +174,10 @@ export const convertToTypescript = (node: ZNode): string => {
             return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
         }
 
+
+        // TS List as Array
+        // return `[${getIndentedNodes(nodes, depth, false, ',')}]`;
+
         // Unknown
         const getDefaultWithIndentedChildren = () => {
             return `${openSymbol ?? ''}${getIndentedNodes(nodes, depth)}${typeof closeSymbol === 'number' ? '' : (closeSymbol ?? '')}`;
@@ -184,3 +192,4 @@ export const convertToTypescript = (node: ZNode): string => {
 
     return node + '';
 };
+

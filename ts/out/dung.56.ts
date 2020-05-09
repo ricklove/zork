@@ -5387,8 +5387,8 @@ add_object(
 
 mapf(
   <>,
-  (
-    x) => (
+  \* FUNCTION *\
+    (x) => (
     rtro,
     find_room(
         spname(
@@ -5414,8 +5414,8 @@ mapf(
 
 mapf(
   <>,
-  (
-    x) => (
+  \* FUNCTION *\
+    (x) => (
     rtro,
     find_room(
         _x),
@@ -5426,8 +5426,8 @@ mapf(
 
 mapf(
   <>,
-  (
-    x) => (
+  \* FUNCTION *\
+    (x) => (
     rtro,
     find_room(
         _x),

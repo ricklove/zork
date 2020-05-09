@@ -1246,8 +1246,8 @@ define(
             fix),
         mapf(
           <>,
-          (
-            itm) => (
+          \* FUNCTION *\
+            (itm) => (
             cond,
             (type_Q(
                   _itm,

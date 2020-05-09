@@ -2115,8 +2115,8 @@ define(
                 _brick_room)
               mapf(
                 <>,
-                (
-                  x) => (
+                \* FUNCTION *\
+                  (x) => (
                   cond,
                   (can_take_Q(
                         _x)
