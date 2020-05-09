@@ -12,19 +12,17 @@ export class ZFile implements ZNode {
     kind = 'ZFile';
 
     _raw: StringSpan;
-    title?: StringSpan;
     content: ZNode;
 
-    constructor(args: { raw: StringSpan, title?: StringSpan, content: ZNode }) {
+    constructor(args: { raw: StringSpan, content: ZNode }) {
         this._raw = args.raw;
-        this.title = args.title;
         this.content = args.content;
 
         if (DEBUG) {
             this._debug = this.toString();
         }
     }
-    toString() { return `${this.title} \n\n---\n\n ${this.content}`; }
+    toString() { return `${this.content}`; }
 };
 
 export class ZList implements ZNode {
@@ -50,7 +48,7 @@ export class ZList implements ZNode {
     }
     toString() {
         const indent = [...new Array(this.depth + 1)].join('  ');
-        return `${this.openSymbol}${this.nodes.map(x => `${x}`).join(`\n${indent}`)}${this.closeSymbol !== 1 ? this.closeSymbol : ''}`;
+        return `${this.openSymbol ?? ''}${this.nodes.map(x => `${x}`).join(`\n${indent}`)}${typeof this.closeSymbol === 'number' ? '' : (this.closeSymbol ?? '')}`;
     }
 };
 
@@ -71,8 +69,8 @@ export class ZToken implements ZNode {
     }
 };
 
-type OpenSymbol = '<' | '(' | '{' | '[' | '"' | '\'' | ';';
-type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1;
+type OpenSymbol = '<' | '(' | '{' | '[' | '"' | '\'' | ';' | '#';
+type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1 | 2;
 const getCloseSymbol = (s: OpenSymbol) => {
     switch (s) {
         case '<': return '>';
@@ -83,9 +81,13 @@ const getCloseSymbol = (s: OpenSymbol) => {
         // Take one token
         case '\'': return 1;
         case ';': return 1;
+        case '#': return 2;
         default: throw new Error(`Unknown Symbol ${s}`);
     }
 };
+
+const WhiteSpace = ' \f\n\r\t\v';
+const isWhitespace = (c: string) => WhiteSpace.indexOf(c) >= 0;
 
 export const parseContent = (source: StringSpan, start: number, depth: number, openSymbol: undefined | OpenSymbol, closeSymbol: undefined | CloseSymbol, parentCloseSymbol?: CloseSymbol): ZNode => {
 
@@ -136,9 +138,9 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         }
 
         // Handle Close (Single Token)
-        if (closeSymbol === 1) {
+        if (typeof closeSymbol === 'number') {
             // Node created
-            if (nodes.length >= 1) {
+            if (nodes.length >= closeSymbol) {
                 i--;
                 end = i;
                 break;
@@ -153,7 +155,7 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         }
 
         // Handle Whitespace
-        if (c === ' ' || c === '\t' || c === '\r' || c === '\n') {
+        if (isWhitespace(c)) {
             closeText(i);
             continue;
         }
@@ -198,32 +200,12 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
 
 export const parseZorkFile = (text: string): ZFile => {
     const source = new StringSpan(text, 0, text.length);
-
-    const quoteParts = source.splitOn('"', 3);
-    const title = quoteParts.length == 2 && source.startsWith('"') ? quoteParts[1].trim('"') : undefined;
-
-    const contentText = quoteParts.length == 2 ? source.transform(quoteParts[2].start - source.start, 0).trim() : source;
-    const node = parseContent(contentText, 0, 0, undefined, undefined);
-
-    // const sections: ZFileSection[] = source.splitOn('\n;').map(x => {
-    //     const raw = x;
-    //     const trimmed = x.trimStart(['\n', ';']).trimStart();
-    //     const quoteParts = trimmed.splitOn('"', 3);
-    //     const header = quoteParts.length == 2 && trimmed.startsWith('"') ? quoteParts[1].trim('"') : undefined;
-    //     const contentText = quoteParts.length == 2 ? trimmed.transform(quoteParts[2].start - trimmed.start, 0).trim() : trimmed;
-    //     const content = parseContent(contentText);
-    //     const s = new ZFileSection({
-    //         raw,
-    //         header,
-    //     });
-    //     return s;
-    // });
-
-    const file = new ZFile({ raw: source, title, content: node });
-    const files = [file];
+    const node = parseContent(source, 0, 0, undefined, undefined);
+    const file = new ZFile({ raw: source, content: node });
     return file;
 };
 
-
-// Quick Run
-runDebug();
+export const parseZorkFiles = (texts: string[]): ZFile[] => {
+    const files = texts.map(parseZorkFile);
+    return files;
+}

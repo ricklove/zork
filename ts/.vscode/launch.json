@@ -24,6 +24,27 @@
                 "${workspaceFolder}/node_modules/**/*.js",
                 "<node_internals>/**/*.js"
             ]
-        }
+        },
+        {
+            "name": "runDebug",
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "${workspaceFolder}/src/debugRun.ts"
+            ],
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register"
+            ],
+            "sourceMaps": true,
+            "cwd": "${workspaceFolder}/src/",
+            "protocol": "inspector",
+            "smartStep": true,
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**/*.js"
+            ]
+        },
     ]
 }

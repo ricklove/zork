@@ -4,6 +4,7 @@ import * as util from 'util';
 
 export const fs = {
     resolvePath: path.resolve,
+    getFileName: path.basename,
     writeFile: util.promisify(fsRaw.writeFile),
     readFile: async (path: string) => {
         const b = await util.promisify(fsRaw.readFile)(path);
