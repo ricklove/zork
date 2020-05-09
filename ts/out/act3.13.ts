@@ -1,23 +1,14 @@
-define(
-  coke_bottles,
-  /*(*/ ["AUX",
+FUNCTIONS.coke_bottles = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [bottl,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [vb,
       1(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        verb),
-      /*(*/ [vb] /*)*/,
-      verb,
-      /*(*/ [bottl] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [or(
         _EQ_Q(
           LOCALS.vb,
@@ -35,34 +26,22 @@ define(
         LOCALS.bottl,
         GLOBALS.osize,
         0),
-      t] /*)*/))
+      t] /*)*/)
+  }
 
-define(
-  head_function,
-  /*(*/ ["AUX",
+FUNCTIONS.head_function = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [vb,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [nl,
-      /*(*/ [] /*)*/] /*)*/,
+      /*(*/ [] /*)*/] /*)*/: unknown,
     /*(*/ [lcase,
       find_obj(
-        "LCASE")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        verb),
-      /*(*/ [vb] /*)*/,
-      verb,
-      /*(*/ [nl] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/),
-      /*(*/ [lcase] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "LCASE")] /*)*/: unknown) => {
+    cond(
     /*(*/ [n_EQ_Q(
         LOCALS.vb,
         GLOBALS.read_X_words),
@@ -96,50 +75,32 @@ define(
               LOCALS.nl] /*)*/)] /*)*/),
       jigs_up(
         "Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life."),
-      t] /*)*/))
+      t] /*)*/)
+  }
 
 GLOBALS.then = 0
 
 GLOBALS.bucket_top_X_flag = null
 
-define(
-  bucket,
-  /*(*/ ["OPTIONAL",
-    /*(*/ [arg,
-      null] /*)*/,
-    "AUX",
+FUNCTIONS.bucket = 
+  (/*(*/ [arg,
+      null] /*)*/?: unknown,
+    "AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [w,
       find_obj(
-        "WATER")] /*)*/,
+        "WATER")] /*)*/: unknown,
     /*(*/ [buck,
       find_obj(
-        "BUCKE")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [arg] /*)*/,
-      or(
-        false,
-        atom),
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [po] /*)*/,
-      or(
-        direction,
-        false,
-        object),
-      /*(*/ [w,
-        buck] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "BUCKE")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.arg,
         read_in),
@@ -193,39 +154,27 @@ define(
             find_room(
               "BWELL"),
             LOCALS.pv,
-            LOCALS.buck)] /*)*/)] /*)*/))
+            LOCALS.buck)] /*)*/)] /*)*/)
+  }
 
-define(
-  pass_the_bucket,
-  /*(*/ [r,
-    pv,
-    b,
-    "AUX",
+FUNCTIONS.pass_the_bucket = 
+  (r: room,
+    pv: vector,
+    b: object,
+    "AUX": unknown,
     /*(*/ [pvs,
       2(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [r] /*)*/,
-      room,
-      /*(*/ [b] /*)*/,
-      object,
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pvs] /*)*/,
-      or(
-        false,
-        object,
-        direction)] /*)*/] /*2*/,
-  put(
+        LOCALS.pv)] /*)*/: unknown) => {
+    put(
     LOCALS.pv,
     2,
-    null),
-  remove_object(
-    LOCALS.b),
-  insert_object(
+    null)
+remove_object(
+    LOCALS.b)
+insert_object(
     LOCALS.b,
-    LOCALS.r),
-  cond(
+    LOCALS.r)
+cond(
     /*(*/ [_EQ_Q(
         avehicle(
           GLOBALS.winner),
@@ -233,32 +182,22 @@ define(
       goto(
         LOCALS.r),
       room_info(
-        t)] /*)*/),
-  put(
+        t)] /*)*/)
+put(
     LOCALS.pv,
     2,
-    LOCALS.pvs))
+    LOCALS.pvs)
+  }
 
-define(
-  eatme_function,
-  /*(*/ ["AUX",
-    r,
-    c,
+FUNCTIONS.eatme_function = 
+  ("AUX": unknown,
+    r: room,
+    c: object,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [c] /*)*/,
-      object,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [here,
-        r] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      GLOBALS.here] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           1(
@@ -287,71 +226,52 @@ define(
           LOCALS.here)),
       mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              object] /*)*/] /*2*/,
-          put(
+        /* FUNCTION */
+          (x: object) => {
+            put(
             LOCALS.x,
             GLOBALS.osize,
             _(
               64,
               osize(
-                LOCALS.x))),
-          put(
+                LOCALS.x)))
+put(
             LOCALS.x,
             GLOBALS.oroom,
-            LOCALS.r)),
+            LOCALS.r)
+          },
         robjs(
           LOCALS.here)),
       goto(
-        LOCALS.r)] /*)*/))
+        LOCALS.r)] /*)*/)
+  }
 
-define(
-  cake_function,
-  /*(*/ ["AUX",
+FUNCTIONS.cake_function = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [pi,
       3(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [rice,
       find_obj(
-        "RDICE")] /*)*/,
+        "RDICE")] /*)*/: unknown,
     /*(*/ [oice,
       find_obj(
-        "ORICE")] /*)*/,
+        "ORICE")] /*)*/: unknown,
     /*(*/ [bice,
       find_obj(
-        "BLICE")] /*)*/,
+        "BLICE")] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
-    r] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [pi,
-        po] /*)*/,
-      or(
-        false,
-        object),
-      /*(*/ [rice,
-        oice,
-        bice] /*)*/,
-      object,
-      /*(*/ [here,
-        r] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      GLOBALS.here] /*)*/: unknown,
+    r: object) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.read_X_words),
@@ -426,22 +346,20 @@ define(
                   LOCALS.here)),
               mapf(
                 null,
-                function(
-                  /*(*/ [x] /*)*/,
-                  /*#*/ [decl,
-                    /*(*/ [/*(*/ [x] /*)*/,
-                      object] /*)*/] /*2*/,
-                  put(
+                /* FUNCTION */
+                  (x: object) => {
+                    put(
                     LOCALS.x,
                     GLOBALS.oroom,
-                    LOCALS.r),
-                  put(
+                    LOCALS.r)
+put(
                     LOCALS.x,
                     GLOBALS.osize,
                     _(
                       osize(
                         LOCALS.x),
-                      64))),
+                      64))
+                  },
                 robjs(
                   LOCALS.here)),
               goto(
@@ -483,25 +401,18 @@ define(
       tro(
         find_obj(
           "SAFFR"),
-        GLOBALS.ovison)] /*)*/))
+        GLOBALS.ovison)] /*)*/)
+  }
 
-define(
-  flask_function,
-  /*(*/ ["AUX",
-    f,
+FUNCTIONS.flask_function = 
+  ("AUX": unknown,
+    f: unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        verb,
-        object),
-      /*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.open_X_words),
@@ -525,7 +436,8 @@ define(
         LOCALS.f,
         GLOBALS.ovison),
       jigs_up(
-        GLOBALS.vapors)] /*)*/))
+        GLOBALS.vapors)] /*)*/)
+  }
 
 psetg(
   vapors,
@@ -535,54 +447,37 @@ psetg(
   crushed,
   "The room seems to have become too small to hold you.  It seems that\nthe  walls are not as compressible as your body, which is somewhat\ndemolished.")
 
-define(
-  iceboom,
-  /*(*/ [] /*)*/,
-  mung_room(
+FUNCTIONS.iceboom = 
+  () => {
+    mung_room(
     GLOBALS.here,
-    "The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes."),
-  jigs_up(
-    GLOBALS.iceblast))
+    "The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes.")
+jigs_up(
+    GLOBALS.iceblast)
+  }
 
 psetg(
   iceblast,
   "You have been blasted to smithereens (wherever they are).")
 
-define(
-  magnet_room,
-  /*(*/ ["AUX",
-    foo,
+FUNCTIONS.magnet_room = 
+  ("AUX": unknown,
+    foo: cexit,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
-    m] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [po] /*)*/,
-      or(
-        false,
-        object,
-        direction),
-      /*(*/ [here] /*)*/,
-      room,
-      /*(*/ [m] /*)*/,
-      or(
+      GLOBALS.here] /*)*/: unknown,
+    m: or(
         false,
         primtype(
-          vector)),
-      /*(*/ [foo] /*)*/,
-      cexit] /*)*/] /*2*/,
-  cond(
+          vector))) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.look_X_words),
@@ -639,52 +534,40 @@ define(
               LOCALS.foo = 2(
                   LOCALS.m))),
           room_info(
-            )] /*)*/)] /*)*/))
+            )] /*)*/)] /*)*/)
+  }
 
-define(
-  cmach_room,
-  /*(*/ ["AUX",
+FUNCTIONS.cmach_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.look_X_words),
       tell(
-        "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/))
+        "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/)
+  }
 
 GLOBALS.carousel_zoom_X_flag = null
 
 GLOBALS.carousel_flip_X_flag = null
 
-define(
-  buttons,
-  /*(*/ ["AUX",
-    i,
+FUNCTIONS.buttons = 
+  ("AUX": unknown,
+    i: object,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [i] /*)*/,
-      object,
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.push_X_words),
@@ -733,7 +616,8 @@ define(
                 "A dull thump is heard in the distance."),
               trc(
                 LOCALS.i,
-                GLOBALS.ovison)] /*)*/)] /*)*/)] /*)*/))
+                GLOBALS.ovison)] /*)*/)] /*)*/)] /*)*/)
+  }
 
 psetg(
   spindizzy,
@@ -741,44 +625,28 @@ psetg(
 
 GLOBALS.cage_solve_X_flag = null
 
-define(
-  sphere_function,
-  /*(*/ ["AUX",
+FUNCTIONS.sphere_function = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [r,
       find_obj(
-        "ROBOT")] /*)*/,
-    c,
-    fl,
-    ract] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        verb,
-        object),
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [c] /*)*/,
-      room,
-      /*(*/ [r] /*)*/,
-      object,
-      /*(*/ [fl] /*)*/,
-      or(
+        "ROBOT")] /*)*/: unknown,
+    c: room,
+    fl: or(
         atom,
         false),
-      /*(*/ [ract] /*)*/,
-      adv] /*)*/] /*2*/,
-  LOCALS.fl = and(
+    ract: adv) => {
+    LOCALS.fl = and(
       not(
         GLOBALS.cage_solve_X_flag),
       _EQ_Q(
         LOCALS.pa,
-        GLOBALS.take_X_words)),
-  cond(
+        GLOBALS.take_X_words))
+cond(
     /*(*/ [and(
         LOCALS.fl,
         _EQ_Q(
@@ -848,19 +716,20 @@ define(
           "CAGER"),
         "You are stopped by a cloud of poisonous gas."),
       jigs_up(
-        GLOBALS.poison)] /*)*/))
+        GLOBALS.poison)] /*)*/)
+  }
 
 psetg(
   poison,
   "Time passes...and you die from some obscure poisoning.")
 
-define(
-  caged_room,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.caged_room = 
+  () => {
+    cond(
     /*(*/ [GLOBALS.cage_solve_X_flag,
       GLOBALS.here = find_room(
-          "CAGER")] /*)*/))
+          "CAGER")] /*)*/)
+  }
 
 gdecl(
   /*(*/ [sphere_clock] /*)*/,
@@ -870,42 +739,23 @@ gdecl(
     /*[*/ [rest,
       verb] /*]*/))
 
-define(
-  robot_actor,
-  /*(*/ ["AUX",
+FUNCTIONS.robot_actor = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
-    c,
-    cage,
+        LOCALS.pv)] /*)*/: unknown,
+    c: room,
+    cage: object,
     /*(*/ [r,
       find_obj(
-        "ROBOT")] /*)*/,
-    ract] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [c] /*)*/,
-      room,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [po] /*)*/,
-      or(
-        false,
-        object,
-        direction),
-      /*(*/ [cage] /*)*/,
-      object,
-      /*(*/ [r] /*)*/,
-      object,
-      /*(*/ [ract] /*)*/,
-      adv] /*)*/] /*2*/,
-  cond(
+        "ROBOT")] /*)*/: unknown,
+    ract: adv) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           LOCALS.pa,
@@ -969,39 +819,25 @@ define(
         GLOBALS.robot_actions),
       null] /*)*/,
     /*(*/ [tell(
-        "\"I am only a stupid robot and cannot perform that command.\")] /*)*/))
+        "\"I am only a stupid robot and cannot perform that command.\")] /*)*/)
+  }
 
-define(
-  robot_function,
-  /*(*/ ["AUX",
+FUNCTIONS.robot_function = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [pi,
       3(
-        LOCALS.pv)] /*)*/,
-    pp,
-    aa] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [aa] /*)*/,
-      adv,
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [pp,
-        po] /*)*/,
-      object,
-      /*(*/ [pi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown,
+    pp: object,
+    aa: adv) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.give_X_words),
@@ -1037,15 +873,15 @@ define(
               LOCALS.pa,
               GLOBALS.throw_X_words),
             LOCALS.pi] /*)*/,
-          /*(*/ [LOCALS.po] /*)*/))] /*)*/))
+          /*(*/ [LOCALS.po] /*)*/))] /*)*/)
+  }
 
-define(
-  knock,
-  /*(*/ ["AUX",
-    /*(*/ [prso,
+FUNCTIONS.knock = 
+  ("AUX",
+  /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/) => {
+    cond(
     /*(*/ [memq(
         door_X_objects,
         onames(
@@ -1057,28 +893,29 @@ define(
         0,
         odesc2(
           LOCALS.prso),
-        "?")] /*)*/))
+        "?")] /*)*/)
+  }
 
-define(
-  chomp,
-  /*(*/ [] /*)*/,
-  tell(
-    "I don't know how to do that.  I win in all cases!"))
+FUNCTIONS.chomp = 
+  () => {
+    tell(
+    "I don't know how to do that.  I win in all cases!")
+  }
 
-define(
-  frobozz,
-  /*(*/ [] /*)*/,
-  tell(
-    "The FROBOZZ Corporation created, owns, and operates this dungeon."))
+FUNCTIONS.frobozz = 
+  () => {
+    tell(
+    "The FROBOZZ Corporation created, owns, and operates this dungeon.")
+  }
 
-define(
-  win,
-  /*(*/ [] /*)*/,
-  tell(
-    "Naturally!"))
+FUNCTIONS.win = 
+  () => {
+    tell(
+    "Naturally!")
+  }
 
-define(
-  yell,
-  /*(*/ [] /*)*/,
-  tell(
-    "Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!"))
+FUNCTIONS.yell = 
+  () => {
+    tell(
+    "Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!")
+  }

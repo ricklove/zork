@@ -155,12 +155,9 @@ define(
       phrase] /*)*/] /*2*/,
   LOCALS.val = mapf(
       null,
-      function(
-        /*(*/ [x] /*)*/,
-        /*#*/ [decl,
-          /*(*/ [/*(*/ [x] /*)*/,
-            string] /*)*/] /*2*/,
-        cond(
+      /* FUNCTION */
+        (x: string) => {
+          cond(
           /*(*/ [empty_Q(
               LOCALS.x),
             mapleave(
@@ -330,7 +327,8 @@ define(
                 0,
                 LOCALS.x)),
             mapleave(
-              null)] /*)*/)),
+              null)] /*)*/)
+        },
       LOCALS.sv),
   cond(
     /*(*/ [LOCALS.val,
@@ -431,37 +429,26 @@ define(
                   LOCALS.lobj))))] /*)*/,
         /*(*/ [LOCALS.pv] /*)*/)] /*)*/))
 
-define(
-  sp,
-  /*(*/ [str] /*)*/,
-  parse(
+FUNCTIONS.sp = 
+  (str) => {
+    parse(
     lex(
       LOCALS.str),
-    null))
+    null)
+  }
 
-define(
-  orphan,
-  /*(*/ ["OPTIONAL",
-    /*(*/ [flag,
-      null] /*)*/,
+FUNCTIONS.orphan = 
+  (/*(*/ [flag,
+      null] /*)*/?: unknown,
     /*(*/ [action,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [slot1,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [prep,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [name,
-      null] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [flag] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [name] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  put(
+      null] /*)*/: unknown) => {
+    put(
     put(
       put(
         put(
@@ -476,63 +463,37 @@ define(
       GLOBALS.overb,
       LOCALS.action),
     GLOBALS.oflag,
-    LOCALS.flag))
+    LOCALS.flag)
+  }
 
-define(
-  syn_match,
-  /*(*/ [pv,
-    "AUX",
+FUNCTIONS.syn_match = 
+  (pv: vector,
+    "AUX": unknown,
     /*(*/ [action,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [objs,
       rest(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [o1,
       1(
-        LOCALS.objs)] /*)*/,
+        LOCALS.objs)] /*)*/: unknown,
     /*(*/ [o2,
       2(
-        LOCALS.objs)] /*)*/,
+        LOCALS.objs)] /*)*/: unknown,
     /*(*/ [dforce,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [drive,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [gwim,
-      null] /*)*/,
-    synn] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [action] /*)*/,
-      action,
-      /*(*/ [pv,
-        objs] /*)*/,
-      vector,
-      /*(*/ [drive,
-        dforce] /*)*/,
-      or(
-        false,
-        syntax),
-      /*(*/ [o1,
-        o2] /*)*/,
-      or(
-        false,
-        object,
-        phrase),
-      /*(*/ [synn] /*)*/,
-      varg,
-      /*(*/ [gwim] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+      null] /*)*/: unknown,
+    synn: varg) => {
+    cond(
     /*(*/ [mapf(
         null,
-        function(
-          /*(*/ [syn] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [syn] /*)*/,
-              syntax] /*)*/] /*2*/,
-          cond(
+        /* FUNCTION */
+          (syn: syntax) => {
+            cond(
             /*(*/ [syn_equal(
                 syn1(
                   LOCALS.syn),
@@ -576,7 +537,8 @@ define(
                     LOCALS.syn),
                   LOCALS.dforce = LOCALS.syn] /*)*/,
                 /*(*/ [LOCALS.drive = LOCALS.syn] /*)*/),
-              null] /*)*/)),
+              null] /*)*/)
+          },
         vdecl(
           LOCALS.action))] /*)*/,
     /*(*/ [LOCALS.drive = or(
@@ -647,39 +609,24 @@ define(
     /*(*/ [tell(
         "I can't make sense out of that.",
         0),
-      null] /*)*/))
+      null] /*)*/)
+  }
 
-define(
-  take_it_or_leave_it,
-  /*(*/ [syn,
-    pv,
-    "AUX",
+FUNCTIONS.take_it_or_leave_it = 
+  (syn: syntax,
+    pv: vector,
+    "AUX": unknown,
     /*(*/ [pv1,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [pv2,
       3(
-        LOCALS.pv)] /*)*/,
-    obj,
-    varg] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [syn] /*)*/,
-      syntax,
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pv1,
-        pv2] /*)*/,
-      or(
-        false,
-        object,
-        phrase),
-      /*(*/ [obj] /*)*/,
-      or(
+        LOCALS.pv)] /*)*/: unknown,
+    obj: or(
         false,
         object),
-      /*(*/ [varg] /*)*/,
-      varg] /*)*/] /*2*/,
-  put(
+    varg: varg) => {
+    put(
     LOCALS.pv,
     2,
     LOCALS.obj = cond(
@@ -691,8 +638,8 @@ define(
             LOCALS.pv1,
             phrase),
           2(
-            LOCALS.pv1)] /*)*/)),
-  cond(
+            LOCALS.pv1)] /*)*/))
+cond(
     /*(*/ [vtrnn(
         LOCALS.varg = syn1(
             LOCALS.syn),
@@ -700,8 +647,8 @@ define(
       take_it(
         LOCALS.obj,
         LOCALS.pv,
-        LOCALS.varg)] /*)*/),
-  put(
+        LOCALS.varg)] /*)*/)
+put(
     LOCALS.pv,
     3,
     LOCALS.obj = cond(
@@ -713,8 +660,8 @@ define(
             LOCALS.pv2,
             phrase),
           2(
-            LOCALS.pv2)] /*)*/)),
-  cond(
+            LOCALS.pv2)] /*)*/))
+cond(
     /*(*/ [vtrnn(
         LOCALS.varg = syn2(
             LOCALS.syn),
@@ -722,35 +669,21 @@ define(
       take_it(
         LOCALS.obj,
         LOCALS.pv,
-        LOCALS.varg)] /*)*/),
-  t)
+        LOCALS.varg)] /*)*/)
+  }
 
-define(
-  take_it,
-  /*(*/ [obj,
-    vec,
-    vrb,
-    "AUX",
+FUNCTIONS.take_it = 
+  (obj: object,
+    vec: vector,
+    vrb: varg,
+    "AUX": unknown,
     /*(*/ [sav1,
       1(
-        LOCALS.vec)] /*)*/,
+        LOCALS.vec)] /*)*/: unknown,
     /*(*/ [sav2,
       2(
-        LOCALS.vec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [vec] /*)*/,
-      vector,
-      /*(*/ [sav1] /*)*/,
-      verb,
-      /*(*/ [sav2] /*)*/,
-      or(
-        false,
-        object),
-      /*(*/ [vrb] /*)*/,
-      varg] /*)*/] /*2*/,
-  cond(
+        LOCALS.vec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         search_list(
           oid(
@@ -782,35 +715,23 @@ define(
       put(
         LOCALS.vec,
         2,
-        LOCALS.sav2)] /*)*/))
+        LOCALS.sav2)] /*)*/)
+  }
 
-define(
-  orfeo,
-  /*(*/ [syn,
-    objs,
-    "AUX",
+FUNCTIONS.orfeo = 
+  (syn: varg,
+    objs: vector,
+    "AUX": unknown,
     /*(*/ [orph,
-      GLOBALS.orphans] /*)*/,
+      GLOBALS.orphans] /*)*/: unknown,
     /*(*/ [orfl,
       oflag(
-        LOCALS.orph)] /*)*/,
-    slot1] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [syn] /*)*/,
-      varg,
-      /*(*/ [objs,
-        orph] /*)*/,
-      vector,
-      /*(*/ [orfl] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [slot1] /*)*/,
-      or(
+        LOCALS.orph)] /*)*/: unknown,
+    slot1: or(
         false,
         phrase,
-        object)] /*)*/] /*2*/,
-  cond(
+        object)) => {
+    cond(
     /*(*/ [not(
         LOCALS.orfl),
       null] /*)*/,
@@ -823,34 +744,21 @@ define(
         put(
           LOCALS.objs,
           1,
-          LOCALS.slot1))] /*)*/))
+          LOCALS.slot1))] /*)*/)
+  }
 
-define(
-  ortell,
-  /*(*/ [varg,
-    action,
-    gwim,
-    "AUX",
+FUNCTIONS.ortell = 
+  (varg: varg,
+    action: action,
+    gwim: or(
+        false,
+        object),
+    "AUX": unknown,
     /*(*/ [prep,
       vprep(
-        LOCALS.varg)] /*)*/,
-    sp] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [varg] /*)*/,
-      varg,
-      /*(*/ [action] /*)*/,
-      action,
-      /*(*/ [prep] /*)*/,
-      or(
-        false,
-        prep),
-      /*(*/ [sp] /*)*/,
-      string,
-      /*(*/ [gwim] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.varg)] /*)*/: unknown,
+    sp: string) => {
+    cond(
     /*(*/ [LOCALS.prep,
       and(
         LOCALS.gwim,
@@ -875,53 +783,35 @@ define(
         vstr(
           LOCALS.action),
         0,
-        "what?")] /*)*/),
-  null)
+        "what?")] /*)*/)
+null
+  }
 
-define(
-  prstr,
-  /*(*/ [atm,
-    "AUX",
-    sp] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [atm] /*)*/,
-      atom,
-      /*(*/ [sp] /*)*/,
-      string] /*)*/] /*2*/,
-  foostr(
+FUNCTIONS.prstr = 
+  (atm: atom,
+    "AUX": unknown,
+    sp: string) => {
+    foostr(
     LOCALS.sp = spname(
         LOCALS.atm),
     back(
       GLOBALS.scrstr,
       length(
         LOCALS.sp)),
-    null))
+    null)
+  }
 
-define(
-  foostr,
-  /*(*/ [nam,
-    str,
-    "OPTIONAL",
+FUNCTIONS.foostr = 
+  (nam: string,
+    str: string,
     /*(*/ [1st,
-      t] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [str,
-        nam] /*)*/,
-      string,
-      /*(*/ [1st] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  mapr(
+      t] /*)*/?: unknown) => {
+    mapr(
     null,
-    function(
-      /*(*/ [x,
-        y] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x,
-            y] /*)*/,
-          string] /*)*/] /*2*/,
-      cond(
+    /* FUNCTION */
+      (x: string,
+        y: string) => {
+        cond(
         /*(*/ [and(
             LOCALS.1st,
             _EQ_Q(
@@ -941,33 +831,20 @@ define(
                 ascii(
                   1(
                     LOCALS.x))),
-              character))] /*)*/)),
+              character))] /*)*/)
+      },
     LOCALS.nam,
-    LOCALS.str),
-  LOCALS.str)
+    LOCALS.str)
+  }
 
-define(
-  gwim_slot,
-  /*(*/ [fx,
-    varg,
-    action,
-    objs,
-    "AUX",
-    obj] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [fx] /*)*/,
-      fix,
-      /*(*/ [varg] /*)*/,
-      varg,
-      /*(*/ [action] /*)*/,
-      action,
-      /*(*/ [objs] /*)*/,
-      vector,
-      /*(*/ [obj] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.gwim_slot = 
+  (fx: fix,
+    varg: varg,
+    action: action,
+    objs: vector,
+    "AUX": unknown,
+    obj: vector) => {
+    cond(
     /*(*/ [LOCALS.obj = gwim(
           vbit(
             LOCALS.varg),
@@ -977,72 +854,51 @@ define(
         LOCALS.objs,
         LOCALS.fx,
         LOCALS.obj),
-      LOCALS.obj] /*)*/))
+      LOCALS.obj] /*)*/)
+  }
 
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
-define(
-  gwim,
-  /*(*/ [bit,
-    fword,
-    action,
-    "AUX",
+FUNCTIONS.gwim = 
+  (bit: fix,
+    fword: varg,
+    action: action,
+    "AUX": unknown,
     /*(*/ [aobj,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vabit)] /*)*/,
+        GLOBALS.vabit)] /*)*/: unknown,
     /*(*/ [ntake,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vtbit)] /*)*/,
+        GLOBALS.vtbit)] /*)*/: unknown,
     /*(*/ [robj,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vrbit)] /*)*/,
+        GLOBALS.vrbit)] /*)*/: unknown,
     /*(*/ [obj,
-      null] /*)*/,
-    nobj,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
-    savobj,
-    /*(*/ [av,
-      avehicle(
-        GLOBALS.winner)] /*)*/,
-    sf] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [bit] /*)*/,
-      fix,
-      /*(*/ [ntake,
-        robj,
-        aobj] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [obj,
-        nobj,
-        av] /*)*/,
-      or(
+      null] /*)*/: unknown,
+    nobj: or(
         object,
         false),
-      /*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [savobj] /*)*/,
-      or(
+    /*(*/ [pv,
+      GLOBALS.prsvec] /*)*/: unknown,
+    savobj: or(
         false,
         object,
         phrase),
-      /*(*/ [fword] /*)*/,
-      varg,
-      /*(*/ [action] /*)*/,
-      action] /*)*/] /*2*/,
-  and(
+    /*(*/ [av,
+      avehicle(
+        GLOBALS.winner)] /*)*/: unknown,
+    sf: unknown) => {
+    and(
     LOCALS.aobj,
     LOCALS.obj = fwim(
         LOCALS.bit,
         aobjs(
           GLOBALS.winner),
-        LOCALS.ntake)),
-  cond(
+        LOCALS.ntake))
+cond(
     /*(*/ [LOCALS.robj,
       cond(
         /*(*/ [and(
@@ -1113,56 +969,49 @@ define(
                 LOCALS.nobj))),
           GLOBALS.nefals] /*)*/,
         /*(*/ [LOCALS.obj] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.obj] /*)*/))
+    /*(*/ [LOCALS.obj] /*)*/)
+  }
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
-define(
-  make_action,
-  /*(*/ ["TUPLE",
-    specs,
-    "AUX",
-    vv,
-    sum,
-    /*(*/ [prep,
+FUNCTIONS.make_action = 
+  ("TUPLE",
+  specs,
+  "AUX",
+  vv,
+  sum,
+  /*(*/ [prep,
       null] /*)*/,
-    atm] /*)*/,
-  chtype(
+  atm) => {
+    chtype(
     mapf(
       GLOBALS.uvector,
-      function(
-        /*(*/ [sp,
-          "AUX",
+      /* FUNCTION */
+        (sp: vector,
+          "AUX": unknown,
           /*(*/ [syn,
             ivector(
               5,
-              null)] /*)*/,
+              null)] /*)*/: unknown,
           /*(*/ [whr,
-            1] /*)*/] /*)*/,
-        /*#*/ [decl,
-          /*(*/ [/*(*/ [sp] /*)*/,
-            vector,
-            /*(*/ [syn] /*)*/,
-            vector,
-            /*(*/ [whr] /*)*/,
-            fix] /*)*/] /*2*/,
-        mapf(
+            1] /*)*/: unknown) => {
+          mapf(
           null,
           /* FUNCTION */
-            (itm) => (
-            cond,
-            /*(*/ [type_Q(
+            (itm) => {
+              cond(
+              /*(*/ [type_Q(
                   LOCALS.itm,
                   string),
                 LOCALS.prep = find_prep(
                     LOCALS.itm)] /*)*/,
-            /*(*/ [and(
+              /*(*/ [and(
                   _EQ_Q(
                     LOCALS.itm,
                     obj),
                   LOCALS.itm = () => /*(*/ [_1] /*)*/,
                   null)] /*)*/,
-            /*(*/ [type_Q(
+              /*(*/ [type_Q(
                   LOCALS.itm,
                   list),
                 LOCALS.vv = ivector(
@@ -1219,7 +1068,7 @@ define(
                 LOCALS.whr = _(
                     LOCALS.whr,
                     1)] /*)*/,
-            /*(*/ [type_Q(
+              /*(*/ [type_Q(
                   LOCALS.itm,
                   vector),
                 cond(
@@ -1243,40 +1092,43 @@ define(
                             2(
                               LOCALS.itm)] /*]*/,
                           verb)))] /*)*/)] /*)*/,
-            /*(*/ [_EQ_Q(
+              /*(*/ [_EQ_Q(
                   LOCALS.itm,
                   driver),
                 put(
                   LOCALS.syn,
                   GLOBALS.sdriver,
                   t)] /*)*/,
-            /*(*/ [_EQ_Q(
+              /*(*/ [_EQ_Q(
                   LOCALS.itm,
                   flip),
                 put(
                   LOCALS.syn,
                   GLOBALS.sflip,
-                  t)] /*)*/),
-          LOCALS.sp),
-        or(
+                  t)] /*)*/)
+            },
+          LOCALS.sp)
+or(
           syn1(
             LOCALS.syn),
           put(
             LOCALS.syn,
             GLOBALS.syn1,
-            GLOBALS.evarg)),
-        or(
+            GLOBALS.evarg))
+or(
           syn2(
             LOCALS.syn),
           put(
             LOCALS.syn,
             GLOBALS.syn2,
-            GLOBALS.evarg)),
-        chtype(
+            GLOBALS.evarg))
+chtype(
           LOCALS.syn,
-          syntax)),
+          syntax)
+        },
       LOCALS.specs),
-    vspec))
+    vspec)
+  }
 
 GLOBALS.evarg = chtype(
     /*[*/ [0,
@@ -1284,25 +1136,17 @@ GLOBALS.evarg = chtype(
       0] /*]*/,
     varg)
 
-define(
-  syn_equal,
-  /*(*/ [varg,
-    pobj,
-    "AUX",
-    /*(*/ [vbit,
-      vbit(
-        LOCALS.varg)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [varg] /*)*/,
-      varg,
-      /*(*/ [pobj] /*)*/,
-      or(
+FUNCTIONS.syn_equal = 
+  (varg: varg,
+    pobj: or(
         false,
         phrase,
         object),
-      /*(*/ [vbit] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+    "AUX": unknown,
+    /*(*/ [vbit,
+      vbit(
+        LOCALS.varg)] /*)*/: unknown) => {
+    cond(
     /*(*/ [type_Q(
         LOCALS.pobj,
         phrase),
@@ -1340,29 +1184,22 @@ define(
         not(
           LOCALS.pobj),
         0_Q(
-          LOCALS.vbit))] /*)*/))
+          LOCALS.vbit))] /*)*/)
+  }
 
 GLOBALS.directions = moblist(
     directions)
 
-define(
-  eparse,
-  /*(*/ [pv,
-    vb,
-    "AUX",
-    val] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [val] /*)*/,
-      any,
-      /*(*/ [pv] /*)*/,
-      vector(
+FUNCTIONS.eparse = 
+  (pv: vector(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [vb] /*)*/,
-      or(
+    vb: or(
         atom,
-        false)] /*)*/] /*2*/,
-  cond(
+        false),
+    "AUX": unknown,
+    val: any) => {
+    cond(
     /*(*/ [LOCALS.val = sparse(
           LOCALS.pv,
           LOCALS.vb),
@@ -1384,7 +1221,8 @@ define(
         LOCALS.vb,
         tell(
           "")),
-      null] /*)*/))
+      null] /*)*/)
+  }
 
 GLOBALS.scrstr = rest(
     istring(
@@ -1570,12 +1408,9 @@ define(
       false] /*)*/] /*2*/,
   mapf(
     null,
-    function(
-      /*(*/ [obj] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [obj] /*)*/,
-          object] /*)*/] /*2*/,
-      cond(
+    /* FUNCTION */
+      (obj: object) => {
+        cond(
         /*(*/ [this_it_Q(
             LOCALS.objnam,
             LOCALS.obj,
@@ -1585,8 +1420,8 @@ define(
               return(
                 LOCALS.nefals,
                 LOCALS.sl)] /*)*/,
-            /*(*/ [LOCALS.oobj = LOCALS.obj] /*)*/)] /*)*/),
-      cond(
+            /*(*/ [LOCALS.oobj = LOCALS.obj] /*)*/)] /*)*/)
+cond(
         /*(*/ [and(
             ovis_Q(
               LOCALS.obj),
@@ -1618,7 +1453,8 @@ define(
                 LOCALS.nefals),
               return(
                 LOCALS.nefals,
-                LOCALS.sl)] /*)*/)] /*)*/)),
+                LOCALS.sl)] /*)*/)] /*)*/)
+      },
     LOCALS.slist),
   LOCALS.oobj)
 
@@ -1650,12 +1486,9 @@ define(
         object)] /*)*/] /*2*/,
   mapf(
     null,
-    function(
-      /*(*/ [x] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x] /*)*/,
-          object] /*)*/] /*2*/,
-      cond(
+    /* FUNCTION */
+      (x: object) => {
+        cond(
         /*(*/ [and(
             ovis_Q(
               LOCALS.x),
@@ -1671,8 +1504,8 @@ define(
               return(
                 GLOBALS.nefals,
                 LOCALS.dwim)] /*)*/),
-          LOCALS.nobj = LOCALS.x] /*)*/),
-      cond(
+          LOCALS.nobj = LOCALS.x] /*)*/)
+cond(
         /*(*/ [and(
             ovis_Q(
               LOCALS.x),
@@ -1680,12 +1513,9 @@ define(
               LOCALS.x)),
           mapf(
             null,
-            function(
-              /*(*/ [x] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [x] /*)*/,
-                  object] /*)*/] /*2*/,
-              cond(
+            /* FUNCTION */
+              (x: object) => {
+                cond(
                 /*(*/ [and(
                     ovis_Q(
                       LOCALS.x),
@@ -1697,8 +1527,10 @@ define(
                       return(
                         GLOBALS.nefals,
                         LOCALS.dwim)] /*)*/,
-                    /*(*/ [LOCALS.nobj = LOCALS.x] /*)*/)] /*)*/)),
+                    /*(*/ [LOCALS.nobj = LOCALS.x] /*)*/)] /*)*/)
+              },
             ocontents(
-              LOCALS.x))] /*)*/)),
+              LOCALS.x))] /*)*/)
+      },
     LOCALS.objs),
   LOCALS.nobj)

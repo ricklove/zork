@@ -1,9 +1,8 @@
 // VOCABULARY, ACTION FUNCTIONS, MAZE (NORMALLY ENCODED)
 
-define(
-  blo,
-  /*(*/ [y] /*)*/,
-  cond(
+FUNCTIONS.blo = 
+  (y) => {
+    cond(
     /*(*/ [type_Q(
         GLOBALS.rep,
         subr,
@@ -34,31 +33,21 @@ define(
         2,
         1),
       off(
-        LOCALS.bh)] /*)*/))
+        LOCALS.bh)] /*)*/)
+  }
 
 gdecl(
   /*(*/ [ff] /*)*/,
   string)
 
-define(
-  ilo,
-  /*(*/ [body,
-    type,
-    nm1,
-    nm2,
-    "OPTIONAL",
-    m1,
-    m2] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [body,
-        nm1,
-        nm2,
-        m1,
-        m2] /*)*/,
-      string,
-      /*(*/ [type] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.ilo = 
+  (body: string,
+    type: fix,
+    nm1: string,
+    nm2: string,
+    m1?: string,
+    m2: string) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.type,
         _400000000000_),
@@ -81,30 +70,23 @@ define(
                 LOCALS.body))),
           eval(
             parse(
-              LOCALS.body))] /*)*/)] /*)*/),
-  dismiss(
-    t))
+              LOCALS.body))] /*)*/)] /*)*/)
+dismiss(
+    t)
+  }
 
 // ROOM FUNCTIONS
 
-define(
-  east_house,
-  /*(*/ ["AUX",
+FUNCTIONS.east_house = 
+  ("AUX": unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        LOCALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector,
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -114,42 +96,31 @@ define(
         cond(
           /*(*/ [GLOBALS.kitchen_window_X_flag,
             "open."] /*)*/,
-          /*(*/ ["slightly ajar."] /*)*/))] /*)*/))
+          /*(*/ ["slightly ajar."] /*)*/))] /*)*/)
+  }
 
 // HACK THE KITCHEN WINDOW
 
 GLOBALS.grunlock_X_flag = null
 
-define(
-  window_function,
-  /*(*/ ["AUX",
+FUNCTIONS.window_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  open_close(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    open_close(
     LOCALS.prsact,
     kitchen_window_X_flag,
     "With great effort, you open the window far enough to allow entry.",
-    "The window closes (more easily than it opened)."))
+    "The window closes (more easily than it opened).")
+  }
 
-define(
-  open_close,
-  /*(*/ [verb,
-    atm,
-    stropn,
-    strcls] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [verb] /*)*/,
-      verb,
-      /*(*/ [atm] /*)*/,
-      atom,
-      /*(*/ [stropn,
-        strcls] /*)*/,
-      string] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.open_close = 
+  (verb: verb,
+    atm: atom,
+    stropn: string,
+    strcls: string) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.verb,
         GLOBALS.open_X_words),
@@ -176,28 +147,21 @@ define(
           t] /*)*/,
         /*(*/ [tell(
             pick_one(
-              GLOBALS.dummy))] /*)*/)] /*)*/))
+              GLOBALS.dummy))] /*)*/)] /*)*/)
+  }
 
 // KITCHEN -- CHECK THE WINDOW
 
-define(
-  kitchen,
-  /*(*/ ["AUX",
+FUNCTIONS.kitchen = 
+  ("AUX": unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        LOCALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector,
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -212,24 +176,17 @@ define(
         /*(*/ [tell(
             "slightly ajar.",
             1)] /*)*/)] /*)*/,
-    /*(*/ [t] /*)*/))
+    /*(*/ [t] /*)*/)
+  }
 
-define(
-  leaf_pile,
-  /*(*/ ["AUX",
+FUNCTIONS.leaf_pile = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [l,
       2(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/),
-      /*(*/ [l] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         1(
           LOCALS.pv),
@@ -259,7 +216,8 @@ define(
         GLOBALS.orand,
         1),
       tell(
-        "Done.")] /*)*/))
+        "Done.")] /*)*/)
+  }
 
 psetg(
   resdesc,
@@ -269,16 +227,12 @@ psetg(
   gladesc,
   "You are in a large room, with giant icicles hanging from the walls\nand ceiling.  There are passages to the north and east.")
 
-define(
-  glacier_room,
-  /*(*/ ["AUX",
+FUNCTIONS.glacier_room = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -290,45 +244,31 @@ define(
             "There is a large passageway leading westward.",
             1)] /*)*/,
         /*(*/ [tell(
-            GLOBALS.gladesc)] /*)*/)] /*)*/))
+            GLOBALS.gladesc)] /*)*/)] /*)*/)
+  }
 
-define(
-  trophy_case,
-  /*(*/ ["AUX",
+FUNCTIONS.trophy_case = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*#*/ [decl,
-      /*(*/ [/*(*/ [prsact] /*)*/,
-        verb] /*)*/] /*2*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.take_X_words),
       tell(
-        "The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it).")] /*)*/))
+        "The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it).")] /*)*/)
+  }
 
-define(
-  glacier,
-  /*(*/ ["AUX",
+FUNCTIONS.glacier = 
+  ("AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        LOCALS.prsvec)] /*)*/,
-    t] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector(
-        verb,
-        /*[*/ [2,
-          any] /*]*/),
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [t] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown,
+    t: verb) => {
+    cond(
     /*(*/ [_EQ_Q(
         vname(
           LOCALS.prsact),
@@ -379,7 +319,8 @@ define(
           LOCALS.prsact),
         melt_X_words),
       tell(
-        "How exactly are you going to melt this glacier?")] /*)*/))
+        "How exactly are you going to melt this glacier?")] /*)*/)
+  }
 
 psetg(
   yuks,
@@ -389,16 +330,12 @@ psetg(
       "Not a prayer.",
       "I don't think so."] /*]*/)
 
-define(
-  reservoir_south,
-  /*(*/ ["AUX",
+FUNCTIONS.reservoir_south = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -413,18 +350,15 @@ define(
             "You are at the south end of a large reservoir.")] /*)*/),
       tell(
         "There is a western exit, a passageway south, and a steep pathway\nclimbing up along the edge of a cliff.",
-        1)] /*)*/))
+        1)] /*)*/)
+  }
 
-define(
-  reservoir_north,
-  /*(*/ ["AUX",
+FUNCTIONS.reservoir_north = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -439,36 +373,25 @@ define(
             "You are at the north end of a large reservoir.")] /*)*/),
       tell(
         "There is a tunnel leaving the room to the north.",
-        1)] /*)*/))
+        1)] /*)*/)
+  }
 
 // LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE
 
-define(
-  living_room,
-  /*(*/ ["AUX",
+FUNCTIONS.living_room = 
+  ("AUX": unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
-    rug_Q,
-    /*(*/ [prsact,
-      1(
-        LOCALS.prsvec)] /*)*/,
-    tc] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector,
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [rug_Q] /*)*/,
-      or(
+      GLOBALS.prsvec] /*)*/: unknown,
+    rug_Q: or(
         atom,
         false),
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [tc] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+    /*(*/ [prsact,
+      1(
+        LOCALS.prsvec)] /*)*/: unknown,
+    tc: object) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -526,22 +449,17 @@ define(
             GLOBALS._,
             GLOBALS.otval,
             ocontents(
-              LOCALS.tc))))] /*)*/))
+              LOCALS.tc))))] /*)*/)
+  }
 
-define(
-  trap_door,
-  /*(*/ ["AUX",
+FUNCTIONS.trap_door = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [rm,
-      GLOBALS.here] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [rm] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      GLOBALS.here] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.rm,
         find_room(
@@ -584,18 +502,15 @@ define(
             "The door is locked from above.")] /*)*/,
         /*(*/ [tell(
             pick_one(
-              GLOBALS.dummy))] /*)*/)] /*)*/))
+              GLOBALS.dummy))] /*)*/)] /*)*/)
+  }
 
-define(
-  look_under,
-  /*(*/ ["AUX",
+FUNCTIONS.look_under = 
+  ("AUX": unknown,
     /*(*/ [obj,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           LOCALS.obj,
@@ -619,42 +534,32 @@ define(
               "CLEAR")),
           1)),
       tell(
-        "Underneath the pile of leaves is a grating.")] /*)*/))
+        "Underneath the pile of leaves is a grating.")] /*)*/)
+  }
 
-define(
-  repent,
-  /*(*/ [] /*)*/,
-  tell(
-    "It could very well be too late!"))
+FUNCTIONS.repent = 
+  () => {
+    tell(
+    "It could very well be too late!")
+  }
 
-define(
-  clearing,
-  /*(*/ ["AUX",
+FUNCTIONS.clearing = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [rm,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [grate,
       find_obj(
-        "GRAT1")] /*)*/,
+        "GRAT1")] /*)*/: unknown,
     /*(*/ [leaves,
       find_obj(
-        "LEAVE")] /*)*/,
+        "LEAVE")] /*)*/: unknown,
     /*(*/ [rv,
       rvars(
-        LOCALS.rm)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [rm] /*)*/,
-      room,
-      /*(*/ [leaves,
-        grate] /*)*/,
-      object,
-      /*(*/ [rv] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        LOCALS.rm)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -701,29 +606,22 @@ define(
       put(
         LOCALS.rm,
         GLOBALS.rvars,
-        1)] /*)*/))
+        1)] /*)*/)
+  }
 
 // CELLAR--FIRST ROOM IN BASEMENT.
 
-define(
-  cellar,
-  /*(*/ ["AUX",
+FUNCTIONS.cellar = 
+  ("AUX": unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [door,
       find_obj(
-        "DOOR")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [door] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "DOOR")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -745,26 +643,19 @@ define(
         t),
       tell(
         "The trap door crashes shut, and you hear someone barring it.",
-        1)] /*)*/))
+        1)] /*)*/)
+  }
 
 "STUDIO:  LET PEOPLE UP THE CHIMNEY IF THEY DON'T HAVE MUCH STUFF"
 
-define(
-  chimney_function,
-  /*(*/ ["AUX",
+FUNCTIONS.chimney_function = 
+  ("AUX": unknown,
     /*(*/ [winner,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [aobjs,
       aobjs(
-        LOCALS.winner)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [winner] /*)*/,
-      adv,
-      /*(*/ [aobjs] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/)] /*)*/] /*2*/,
-  cond(
+        LOCALS.winner)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         l__Q(
           length(
@@ -786,27 +677,20 @@ define(
             null)] /*)*/),
       null] /*)*/,
     /*(*/ [t,
-      GLOBALS.light_load_X_flag = null] /*)*/))
+      GLOBALS.light_load_X_flag = null] /*)*/)
+  }
 
 // OBJECT FUNCTIONS
 
-define(
-  rug,
-  /*(*/ ["AUX",
+FUNCTIONS.rug = 
+  ("AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsa,
       1(
-        LOCALS.prsvec)] /*)*/,
-    obj] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector,
-      /*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [prsa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown,
+    obj: object) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.lift_X_words),
@@ -835,29 +719,20 @@ define(
         LOCALS.prsa,
         GLOBALS.take_X_words),
       tell(
-        "The rug is extremely heavy and cannot be carried.")] /*)*/))
+        "The rug is extremely heavy and cannot be carried.")] /*)*/)
+  }
 
-define(
-  rusty_knife,
-  /*(*/ ["AUX",
+FUNCTIONS.rusty_knife = 
+  ("AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsa,
       1(
-        LOCALS.prsvec)] /*)*/,
+        LOCALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector,
-      /*(*/ [prsa] /*)*/,
-      verb,
-      /*(*/ [prsi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.take_X_words),
@@ -890,48 +765,38 @@ define(
           "RKNIF"),
         GLOBALS.winner),
       jigs_up(
-        "As the knife approaches its victim, your mind is submerged by an\novermastering will.  Slowly, your hand turns, until the rusty blade\nis an inch from your neck.  The knife seems to sing as it savagely\nslits your throat.")] /*)*/))
+        "As the knife approaches its victim, your mind is submerged by an\novermastering will.  Slowly, your hand turns, until the rusty blade\nis an inch from your neck.  The knife seems to sing as it savagely\nslits your throat.")] /*)*/)
+  }
 
-define(
-  skeleton,
-  /*(*/ ["AUX",
+FUNCTIONS.skeleton = 
+  ("AUX": unknown,
     /*(*/ [rm,
       1(
-        GLOBALS.winner)] /*)*/,
+        GLOBALS.winner)] /*)*/: unknown,
     /*(*/ [lld,
       find_room(
-        "LLD2")] /*)*/,
-    l] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [rm,
-        lld] /*)*/,
-      room,
-      /*(*/ [l] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/)] /*)*/] /*2*/,
-  tell(
-    "A ghost appears in the room and is appalled at your having\ndesecrated the remains of a fellow adventurer.  He casts a curse\non all of your valuables and orders them banished to the Land of\nthe Living Dead.  The ghost leaves, muttering obscenities."),
-  LOCALS.l = rob_room(
+        "LLD2")] /*)*/: unknown,
+    l: room) => {
+    tell(
+    "A ghost appears in the room and is appalled at your having\ndesecrated the remains of a fellow adventurer.  He casts a curse\non all of your valuables and orders them banished to the Land of\nthe Living Dead.  The ghost leaves, muttering obscenities.")
+LOCALS.l = rob_room(
       LOCALS.rm,
       /*(*/ [] /*)*/,
-      100),
-  LOCALS.l = rob_adv(
+      100)
+LOCALS.l = rob_adv(
       GLOBALS.player,
-      LOCALS.l),
-  mapf(
+      LOCALS.l)
+mapf(
     null,
-    function(
-      /*(*/ [x] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x] /*)*/,
-          object] /*)*/] /*2*/,
-      put(
+    /* FUNCTION */
+      (x: object) => {
+        put(
         LOCALS.x,
         GLOBALS.oroom,
-        LOCALS.lld)),
-    LOCALS.l),
-  cond(
+        LOCALS.lld)
+      },
+    LOCALS.l)
+cond(
     /*(*/ [not(
         empty_Q(
           LOCALS.l)),
@@ -947,45 +812,28 @@ define(
       put(
         LOCALS.lld,
         GLOBALS.robjs,
-        LOCALS.l)] /*)*/),
-  t)
+        LOCALS.l)] /*)*/)
+  }
 
-define(
-  troll,
-  /*(*/ ["AUX",
+FUNCTIONS.troll = 
+  ("AUX": unknown,
     /*(*/ [pa,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [t,
       find_obj(
-        "TROLL")] /*)*/,
+        "TROLL")] /*)*/: unknown,
     /*(*/ [a,
       find_obj(
-        "AXE")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso] /*)*/,
-      or(
-        false,
-        object),
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [here] /*)*/,
-      room,
-      /*(*/ [t,
-        a] /*)*/,
-      object,
-      /*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        "AXE")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.fight_X_words),
@@ -1106,20 +954,17 @@ define(
           LOCALS.pa),
         mung_X_words),
       tell(
-        "The troll laughs at your puny gesture.")] /*)*/))
+        "The troll laughs at your puny gesture.")] /*)*/)
+  }
 
 "MIRROR ROOM HACKERY"
 
-define(
-  mirror_room,
-  /*(*/ ["AUX",
+FUNCTIONS.mirror_room = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           LOCALS.prsact,
@@ -1132,30 +977,22 @@ define(
         /*(*/ [GLOBALS.mirror_mung_X_flag,
           tell(
             "Unfortunately, you have managed to destroy it by your reckless\nactions.",
-            1)] /*)*/)] /*)*/))
+            1)] /*)*/)] /*)*/)
+  }
 
 GLOBALS.mirror_mung_X_flag = null
 
-define(
-  mirror_mirror,
-  /*(*/ ["AUX",
+FUNCTIONS.mirror_mirror = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
-    rm1,
-    rm2,
-    l1] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [rm1,
-        rm2] /*)*/,
-      room,
-      /*(*/ [l1] /*)*/,
-      list(
+        GLOBALS.prsvec)] /*)*/: unknown,
+    rm1: room,
+    rm2: room,
+    l1: list(
         /*[*/ [rest,
-          object] /*]*/)] /*)*/] /*2*/,
-  cond(
+          object] /*]*/)) => {
+    cond(
     /*(*/ [and(
         not(
           GLOBALS.mirror_mung_X_flag),
@@ -1186,28 +1023,24 @@ define(
         LOCALS.l1),
       mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              object] /*)*/] /*2*/,
-          put(
+        /* FUNCTION */
+          (x: object) => {
+            put(
             LOCALS.x,
             GLOBALS.oroom,
-            LOCALS.rm1)),
+            LOCALS.rm1)
+          },
         robjs(
           LOCALS.rm1)),
       mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              object] /*)*/] /*2*/,
-          put(
+        /* FUNCTION */
+          (x: object) => {
+            put(
             LOCALS.x,
             GLOBALS.oroom,
-            LOCALS.rm2)),
+            LOCALS.rm2)
+          },
         robjs(
           LOCALS.rm2)),
       goto(
@@ -1247,17 +1080,14 @@ define(
             "Haven't you done enough already?")] /*)*/,
         /*(*/ [GLOBALS.mirror_mung_X_flag = t,
           tell(
-            "You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy.")] /*)*/)] /*)*/))
+            "You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy.")] /*)*/)] /*)*/)
+  }
 
-define(
-  carousel_room,
-  /*(*/ ["AUX",
+FUNCTIONS.carousel_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector] /*)*/] /*2*/,
-  cond(
+      GLOBALS.prsvec] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           1(
@@ -1278,38 +1108,32 @@ define(
             GLOBALS.carousel_flip_X_flag),
           tell(
             "Your compass needle spins wildly, and you can't get your bearings.",
-            1)] /*)*/)] /*)*/))
+            1)] /*)*/)] /*)*/)
+  }
 
-define(
-  carousel_exit,
-  /*(*/ ["AUX",
-    cx] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [cx] /*)*/,
-      or(
+FUNCTIONS.carousel_exit = 
+  ("AUX": unknown,
+    cx: or(
         cexit,
         nexit,
-        room)] /*)*/] /*2*/,
-  cond(
+        room)) => {
+    cond(
     /*(*/ [GLOBALS.carousel_flip_X_flag,
       null] /*)*/,
     /*(*/ [tell(
         "Unfortunately, it is impossible to tell directions in here.",
         1),
       carousel_out(
-        )] /*)*/))
+        )] /*)*/)
+  }
 
-define(
-  carousel_out,
-  /*(*/ ["AUX",
-    cx] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [cx] /*)*/,
-      or(
+FUNCTIONS.carousel_out = 
+  ("AUX": unknown,
+    cx: or(
         cexit,
         nexit,
-        room)] /*)*/] /*2*/,
-  and(
+        room)) => {
+    and(
     type_Q(
       LOCALS.cx = nth(
           rexits(
@@ -1324,18 +1148,15 @@ define(
                 8)))),
       cexit),
     cxroom(
-      LOCALS.cx)))
+      LOCALS.cx))
+  }
 
-define(
-  torch_room,
-  /*(*/ ["AUX",
+FUNCTIONS.torch_room = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -1345,18 +1166,15 @@ define(
         /*(*/ [GLOBALS.dome_flag_X_flag,
           tell(
             "A large piece of rope descends from the railing above, ending some\nfive feet above your head.",
-            1)] /*)*/)] /*)*/))
+            1)] /*)*/)] /*)*/)
+  }
 
-define(
-  dome_room,
-  /*(*/ ["AUX",
+FUNCTIONS.dome_room = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -1372,12 +1190,12 @@ define(
           LOCALS.prsact),
         jump_X_words),
       jigs_up(
-        "I'm afraid that the leap you attempted has done you in.")] /*)*/))
+        "I'm afraid that the leap you attempted has done you in.")] /*)*/)
+  }
 
-define(
-  coffin_cure,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.coffin_cure = 
+  () => {
+    cond(
     /*(*/ [memq(
         find_obj(
           "COFFI"),
@@ -1385,39 +1203,26 @@ define(
           GLOBALS.winner)),
       GLOBALS.egypt_flag_X_flag = null] /*)*/,
     /*(*/ [else,
-      GLOBALS.egypt_flag_X_flag = t] /*)*/),
-  null)
+      GLOBALS.egypt_flag_X_flag = t] /*)*/)
+null
+  }
 
-define(
-  lld_room,
-  /*(*/ ["AUX",
+FUNCTIONS.lld_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [wobj,
       aobjs(
-        LOCALS.win)] /*)*/,
+        LOCALS.win)] /*)*/: unknown,
     /*(*/ [pa,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [cand,
       find_obj(
-        "CANDL")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [pa] /*)*/,
-      verb,
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [wobj] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/),
-      /*(*/ [cand] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "CANDL")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.look_X_words),
@@ -1465,18 +1270,15 @@ define(
             /*(*/ [tell(
                 "You are not equipped for an exorcism.")] /*)*/)] /*)*/,
         /*(*/ [jigs_up(
-            "There is a clap of thunder, and a voice echoes through the\ncavern: \"Begone, chomper!\"  Apparently, the voice thinks you\nare an evil spirit, and dismisses you from the realm of the living.")] /*)*/)] /*)*/))
+            "There is a clap of thunder, and a voice echoes through the\ncavern: \"Begone, chomper!\"  Apparently, the voice thinks you\nare an evil spirit, and dismisses you from the realm of the living.")] /*)*/)] /*)*/)
+  }
 
-define(
-  lld2_room,
-  /*(*/ ["AUX",
+FUNCTIONS.lld2_room = 
+  ("AUX": unknown,
     /*(*/ [prsa,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.look_X_words),
@@ -1486,22 +1288,17 @@ define(
         cond(
           /*(*/ [GLOBALS.on_pole_X_flag,
             "Amid the desolation, you spot what\nappears to be your head, at the end of a long pole."] /*)*/,
-          /*(*/ [""] /*)*/))] /*)*/))
+          /*(*/ [""] /*)*/))] /*)*/)
+  }
 
-define(
-  ghost_function,
-  /*(*/ ["AUX",
+FUNCTIONS.ghost_function = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [g,
       find_obj(
-        "GHOST")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [g] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "GHOST")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         3(
           LOCALS.pv),
@@ -1514,18 +1311,15 @@ define(
           LOCALS.pv),
         LOCALS.g),
       tell(
-        "You seem unable to affect these spirits.")] /*)*/))
+        "You seem unable to affect these spirits.")] /*)*/)
+  }
 
-define(
-  maze_11,
-  /*(*/ ["AUX",
+FUNCTIONS.maze_11 = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -1539,18 +1333,15 @@ define(
           tell(
             "Above you is a grating.")] /*)*/,
         /*(*/ [tell(
-            "Above you is a grating locked with a skull-and-crossbones lock.")] /*)*/)] /*)*/))
+            "Above you is a grating locked with a skull-and-crossbones lock.")] /*)*/)] /*)*/)
+  }
 
-define(
-  grat1_function,
-  /*(*/ ["AUX",
+FUNCTIONS.grat1_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [GLOBALS.grunlock_X_flag,
       open_close(
         LOCALS.prsact,
@@ -1558,18 +1349,15 @@ define(
         "The grating opens.",
         "The grating is closed.")] /*)*/,
     /*(*/ [tell(
-        "The grating is locked.")] /*)*/))
+        "The grating is locked.")] /*)*/)
+  }
 
-define(
-  grat2_function,
-  /*(*/ ["AUX",
+FUNCTIONS.grat2_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [GLOBALS.grunlock_X_flag,
       open_close(
         LOCALS.prsact,
@@ -1581,51 +1369,32 @@ define(
           "GRAT1"),
         GLOBALS.ovison)] /*)*/,
     /*(*/ [tell(
-        "The grating is locked.")] /*)*/))
+        "The grating is locked.")] /*)*/)
+  }
 
-define(
-  treasure_room,
-  /*(*/ ["AUX",
+FUNCTIONS.treasure_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [hack,
-      GLOBALS.robber_demon] /*)*/,
-    hh,
-    chali,
-    /*(*/ [hobj,
-      hobj(
-        LOCALS.hack)] /*)*/,
-    /*(*/ [flg,
-      null] /*)*/,
-    tl,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/,
-    /*(*/ [rooms,
-      GLOBALS.rooms] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [hack] /*)*/,
-      hack,
-      /*(*/ [pv] /*)*/,
-      vector(
-        verb),
-      /*(*/ [hh] /*)*/,
-      list(
+      GLOBALS.robber_demon] /*)*/: unknown,
+    hh: list(
         /*[*/ [rest,
           object] /*]*/),
-      /*(*/ [hobj] /*)*/,
-      object,
-      /*(*/ [flg] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [tl,
-        rooms] /*)*/,
-      list(
+    chali: unknown,
+    /*(*/ [hobj,
+      hobj(
+        LOCALS.hack)] /*)*/: unknown,
+    /*(*/ [flg,
+      null] /*)*/: unknown,
+    tl: list(
         /*[*/ [rest,
           room] /*]*/),
-      /*(*/ [here] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+    /*(*/ [here,
+      GLOBALS.here] /*)*/: unknown,
+    /*(*/ [rooms,
+      GLOBALS.rooms] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         haction(
           LOCALS.hack),
@@ -1693,12 +1462,9 @@ define(
             "The thief gestures mysteriously, and the treasures in the room\nsuddenly vanish.")] /*)*/),
       mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              object] /*)*/] /*2*/,
-          cond(
+        /* FUNCTION */
+          (x: object) => {
+            cond(
             /*(*/ [and(
                 n_EQ_Q(
                   LOCALS.x,
@@ -1708,14 +1474,15 @@ define(
                   LOCALS.hobj)),
               trz(
                 LOCALS.x,
-                GLOBALS.ovison)] /*)*/)),
+                GLOBALS.ovison)] /*)*/)
+          },
         robjs(
-          LOCALS.here))] /*)*/))
+          LOCALS.here))] /*)*/)
+  }
 
-define(
-  treas,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.treas = 
+  () => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           1(
@@ -1746,12 +1513,12 @@ define(
         )] /*)*/,
     /*(*/ [t,
       tell(
-        "Nothing happens.")] /*)*/))
+        "Nothing happens.")] /*)*/)
+  }
 
-define(
-  prayer,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.prayer = 
+  () => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           GLOBALS.here,
@@ -1763,20 +1530,17 @@ define(
       room_desc(
         )] /*)*/,
     /*(*/ [tell(
-        "If you pray enough, your prayers may be answered.")] /*)*/))
+        "If you pray enough, your prayers may be answered.")] /*)*/)
+  }
 
 GLOBALS.gate_flag_X_flag = null
 
-define(
-  dam_room,
-  /*(*/ ["AUX",
+FUNCTIONS.dam_room = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.look_X_words),
@@ -1797,30 +1561,21 @@ define(
         /*(*/ [GLOBALS.gate_flag_X_flag,
           tell(
             "The green bubble is glowing.",
-            1)] /*)*/)] /*)*/))
+            1)] /*)*/)] /*)*/)
+  }
 
-define(
-  bolt_function,
-  /*(*/ ["AUX",
+FUNCTIONS.bolt_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [trunk,
       find_obj(
-        "TRUNK")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [trunk] /*)*/,
-      object,
-      /*(*/ [prsi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        "TRUNK")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.turn_X_words),
@@ -1862,7 +1617,8 @@ define(
             1,
             odesc2(
               LOCALS.prsi),
-            ".")] /*)*/)] /*)*/))
+            ".")] /*)*/)] /*)*/)
+  }
 
 psetg(
   drownings,
@@ -1882,46 +1638,28 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  maint_room,
-  /*(*/ ["AUX",
+FUNCTIONS.maint_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [mnt,
       find_room(
-        "MAINT")] /*)*/,
+        "MAINT")] /*)*/: unknown,
     /*(*/ [here_Q,
       _EQ_Q(
         GLOBALS.here,
-        LOCALS.mnt)] /*)*/,
-    hack] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [prsi] /*)*/,
-      or(
-        false,
-        object),
-      /*(*/ [here_Q] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [mnt] /*)*/,
-      room,
-      /*(*/ [prso] /*)*/,
-      prsobj,
-      /*(*/ [hack] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        LOCALS.mnt)] /*)*/: unknown,
+    hack: fix) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.c_int_X_words),
@@ -1960,8 +1698,8 @@ define(
           and(
             LOCALS.here_Q,
             jigs_up(
-              "I'm afraid you have done drowned yourself."))] /*)*/)] /*)*/),
-  cond(
+              "I'm afraid you have done drowned yourself."))] /*)*/)] /*)*/)
+cond(
     /*(*/ [_EQ_Q(
         vname(
           LOCALS.prsact),
@@ -2017,34 +1755,21 @@ define(
               "YBUTT")),
           GLOBALS.gate_flag_X_flag = t,
           tell(
-            "Click.")] /*)*/)] /*)*/))
+            "Click.")] /*)*/)] /*)*/)
+  }
 
-define(
-  leak_function,
-  /*(*/ ["AUX",
-    hack,
+FUNCTIONS.leak_function = 
+  ("AUX": unknown,
+    hack: fix,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsa,
       1(
-        LOCALS.prsvec)] /*)*/,
+        LOCALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/),
-      /*(*/ [prsa] /*)*/,
-      verb,
-      /*(*/ [prsi] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [hack] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         2(
           LOCALS.prsvec),
@@ -2075,19 +1800,14 @@ define(
               tell(
                 "By some miracle of elven technology, you have managed to stop the\nleak in the dam.")] /*)*/,
             /*(*/ [with_tell(
-                LOCALS.prsi)] /*)*/)] /*)*/)] /*)*/))
+                LOCALS.prsi)] /*)*/)] /*)*/)] /*)*/)
+  }
 
-define(
-  tube_function,
-  /*(*/ ["AUX",
+FUNCTIONS.tube_function = 
+  ("AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsvec] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/)] /*)*/] /*2*/,
-  cond(
+      GLOBALS.prsvec] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           1(
@@ -2099,42 +1819,30 @@ define(
           find_obj(
             "TUBE"))),
       tell(
-        "The tube refuses to accept anything.")] /*)*/))
+        "The tube refuses to accept anything.")] /*)*/)
+  }
 
-define(
-  with_tell,
-  /*(*/ [obj] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object] /*)*/] /*2*/,
-  tell(
+FUNCTIONS.with_tell = 
+  (obj: object) => {
+    tell(
     "With a",
     1,
     odesc2(
       LOCALS.obj),
-    "?"))
+    "?")
+  }
 
-define(
-  cave2_room,
-  /*(*/ ["AUX",
-    foo,
-    bar,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/,
-    c] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [foo] /*)*/,
-      vector(
+FUNCTIONS.cave2_room = 
+  ("AUX": unknown,
+    foo: vector(
         fix,
         cevent),
-      /*(*/ [bar] /*)*/,
-      cevent,
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [c] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+    bar: cevent,
+    /*(*/ [prsact,
+      1(
+        GLOBALS.prsvec)] /*)*/: unknown,
+    c: verb) => {
+    cond(
     /*(*/ [_EQ_Q(
         vname(
           LOCALS.prsact),
@@ -2159,18 +1867,15 @@ define(
           GLOBALS.olight_Q,
           _1),
         tell(
-          "The cave is very windy at the moment and your candles have blown out."))] /*)*/))
+          "The cave is very windy at the moment and your candles have blown out."))] /*)*/)
+  }
 
-define(
-  bottle_function,
-  /*(*/ ["AUX",
+FUNCTIONS.bottle_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         1(
           LOCALS.prsact),
@@ -2214,31 +1919,19 @@ define(
               robjs(
                 GLOBALS.here))),
           tell(
-            "A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/))
+            "A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/)
+  }
 
-define(
-  fill,
-  /*(*/ ["AUX",
+FUNCTIONS.fill = 
+  ("AUX": unknown,
     /*(*/ [rem,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [w,
       find_obj(
-        "WATER")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [rem] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [prsvec] /*)*/,
-      vector(
-        verb,
-        object,
-        any),
-      /*(*/ [w] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        "WATER")] /*)*/: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [or(
@@ -2271,58 +1964,33 @@ define(
       water_function(
         LOCALS.rem)] /*)*/,
     /*(*/ [tell(
-        "I can't find any water here.")] /*)*/))
+        "I can't find any water here.")] /*)*/)
+  }
 
-define(
-  water_function,
-  /*(*/ ["OPTIONAL",
-    /*(*/ [rem,
-      t] /*)*/,
-    "AUX",
+FUNCTIONS.water_function = 
+  (/*(*/ [rem,
+      t] /*)*/?: unknown,
+    "AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsact,
       1(
-        LOCALS.prsvec)] /*)*/,
+        LOCALS.prsvec)] /*)*/: unknown,
     /*(*/ [me,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [b,
       find_obj(
-        "BOTTL")] /*)*/,
+        "BOTTL")] /*)*/: unknown,
     /*(*/ [w,
       2(
-        LOCALS.prsvec)] /*)*/,
+        LOCALS.prsvec)] /*)*/: unknown,
     /*(*/ [av,
       avehicle(
-        LOCALS.me)] /*)*/,
+        LOCALS.me)] /*)*/: unknown,
     /*(*/ [can,
       3(
-        LOCALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [me] /*)*/,
-      adv,
-      /*(*/ [b,
-        w] /*)*/,
-      object,
-      /*(*/ [rem] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [prsvec] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/),
-      /*(*/ [av] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [can] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [or(
         _EQ_Q(
           LOCALS.prsact,
@@ -2476,32 +2144,23 @@ define(
       tell(
         "The water splashes on the walls, and evaporates immediately."),
       remove_object(
-        LOCALS.w)] /*)*/))
+        LOCALS.w)] /*)*/)
+  }
 
-define(
-  rope_function,
-  /*(*/ ["AUX",
+FUNCTIONS.rope_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [droom,
       find_room(
-        "DOME")] /*)*/,
+        "DOME")] /*)*/: unknown,
     /*(*/ [rope,
       find_obj(
-        "ROPE")] /*)*/,
+        "ROPE")] /*)*/: unknown,
     /*(*/ [win,
-      GLOBALS.winner] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [rope] /*)*/,
-      object,
-      /*(*/ [win] /*)*/,
-      adv,
-      /*(*/ [droom] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      GLOBALS.winner] /*)*/: unknown) => {
+    cond(
     /*(*/ [n_EQ_Q(
         GLOBALS.here,
         LOCALS.droom),
@@ -2587,50 +2246,33 @@ define(
           GLOBALS.take_X_words),
         GLOBALS.dome_flag_X_flag,
         tell(
-          "The rope is tied to the railing."))] /*)*/))
+          "The rope is tied to the railing."))] /*)*/)
+  }
 
-define(
-  cyclops,
-  /*(*/ ["AUX",
+FUNCTIONS.cyclops = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsob1,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [rm,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [food,
       find_obj(
-        "FOOD")] /*)*/,
+        "FOOD")] /*)*/: unknown,
     /*(*/ [drink,
       find_obj(
-        "WATER")] /*)*/,
+        "WATER")] /*)*/: unknown,
     /*(*/ [count,
       rvars(
-        LOCALS.rm)] /*)*/,
+        LOCALS.rm)] /*)*/: unknown,
     /*(*/ [garlic,
       find_obj(
-        "GARLI")] /*)*/,
-    cyc] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [prsob1] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [rm] /*)*/,
-      room,
-      /*(*/ [food,
-        drink] /*)*/,
-      object,
-      /*(*/ [cyc,
-        garlic] /*)*/,
-      object,
-      /*(*/ [count] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        "GARLI")] /*)*/: unknown,
+    cyc: object) => {
+    cond(
     /*(*/ [GLOBALS.cyclops_flag_X_flag,
       cond(
         /*(*/ [or(
@@ -2770,26 +2412,19 @@ define(
         LOCALS.prsact,
         GLOBALS.tie_X_words),
       tell(
-        "You cannot tie the cyclops, although he is fit to be tied.")] /*)*/))
+        "You cannot tie the cyclops, although he is fit to be tied.")] /*)*/)
+  }
 
-define(
-  cyclops_room,
-  /*(*/ ["AUX",
+FUNCTIONS.cyclops_room = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [rm,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [vars,
       rvars(
-        LOCALS.rm)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [rm] /*)*/,
-      room,
-      /*(*/ [vars] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        LOCALS.rm)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         1(
           LOCALS.pv),
@@ -2830,7 +2465,8 @@ define(
               nth(
                 GLOBALS.cyclomad,
                 abs(
-                  LOCALS.vars))))] /*)*/)] /*)*/))
+                  LOCALS.vars))))] /*)*/)] /*)*/)
+  }
 
 psetg(
   cyclomad,
@@ -2847,13 +2483,9 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  aos_sos,
-  /*(*/ [foo] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [foo] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.aos_sos = 
+  (foo: fix) => {
+    cond(
     /*(*/ [l_Q(
         LOCALS.foo,
         0),
@@ -2862,63 +2494,43 @@ define(
           1)] /*)*/,
     /*(*/ [LOCALS.foo = _(
           LOCALS.foo,
-          1)] /*)*/),
-  cond(
+          1)] /*)*/)
+cond(
     /*(*/ [GLOBALS.cyclops_flag_X_flag] /*)*/,
     /*(*/ [tell(
         nth(
           GLOBALS.cyclomad,
           abs(
-            LOCALS.foo)))] /*)*/),
-  LOCALS.foo)
+            LOCALS.foo)))] /*)*/)
+  }
 
 GLOBALS.echo_flag_X_flag = null
 
-define(
-  echo_room,
-  /*(*/ ["AUX",
+FUNCTIONS.echo_room = 
+  ("AUX": unknown,
     /*(*/ [reader_string,
-      GLOBALS.reader_string] /*)*/,
+      GLOBALS.reader_string] /*)*/: unknown,
     /*(*/ [b,
-      GLOBALS.inbuf] /*)*/,
-    l,
+      GLOBALS.inbuf] /*)*/: unknown,
+    l: verb,
     /*(*/ [rm,
       find_room(
-        "ECHO")] /*)*/,
+        "ECHO")] /*)*/: unknown,
     /*(*/ [outchan,
-      GLOBALS.outchan] /*)*/,
-    verb,
+      GLOBALS.outchan] /*)*/: unknown,
+    verb: verb,
     /*(*/ [walk,
-      GLOBALS.walk_X_words] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [outchan] /*)*/,
-      channel,
-      /*(*/ [walk,
-        verb] /*)*/,
-      verb,
-      /*(*/ [reader_string] /*)*/,
-      string,
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [b] /*)*/,
-      string,
-      /*(*/ [l] /*)*/,
-      fix,
-      /*(*/ [rm] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      GLOBALS.walk_X_words] /*)*/: unknown) => {
+    cond(
     /*(*/ [GLOBALS.echo_flag_X_flag] /*)*/,
     /*(*/ [unwind(
         prog(
           /*(*/ [] /*)*/,
           mapf(
             null,
-            function(
-              /*(*/ [obj] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [obj] /*)*/,
-                  object] /*)*/] /*2*/,
-              cond(
+            /* FUNCTION */
+              (obj: object) => {
+                cond(
                 /*(*/ [ovis_Q(
                     LOCALS.obj),
                   tro(
@@ -2926,7 +2538,8 @@ define(
                     GLOBALS.echo_room_bit),
                   trz(
                     LOCALS.obj,
-                    GLOBALS.ovison)] /*)*/)),
+                    GLOBALS.ovison)] /*)*/)
+              },
             robjs(
               LOCALS.rm)),
           repeat(
@@ -2982,12 +2595,9 @@ define(
                       LOCALS.rm),
                     mapf(
                       null,
-                      function(
-                        /*(*/ [x] /*)*/,
-                        /*#*/ [decl,
-                          /*(*/ [/*(*/ [x] /*)*/,
-                            object] /*)*/] /*2*/,
-                        cond(
+                      /* FUNCTION */
+                        (x: object) => {
+                          cond(
                           /*(*/ [trnn(
                               LOCALS.x,
                               GLOBALS.echo_room_bit),
@@ -2996,7 +2606,8 @@ define(
                               GLOBALS.echo_room_bit),
                             tro(
                               LOCALS.x,
-                              GLOBALS.ovison)] /*)*/)),
+                              GLOBALS.ovison)] /*)*/)
+                        },
                       robjs(
                         LOCALS.rm))] /*)*/),
                 return(
@@ -3021,12 +2632,9 @@ define(
                     GLOBALS.echo_flag_X_flag = t,
                     mapf(
                       null,
-                      function(
-                        /*(*/ [x] /*)*/,
-                        /*#*/ [decl,
-                          /*(*/ [/*(*/ [x] /*)*/,
-                            object] /*)*/] /*2*/,
-                        cond(
+                      /* FUNCTION */
+                        (x: object) => {
+                          cond(
                           /*(*/ [trnn(
                               LOCALS.x,
                               GLOBALS.echo_room_bit),
@@ -3035,7 +2643,8 @@ define(
                               GLOBALS.echo_room_bit),
                             tro(
                               LOCALS.x,
-                              GLOBALS.ovison)] /*)*/)),
+                              GLOBALS.ovison)] /*)*/)
+                        },
                       robjs(
                         LOCALS.rm)),
                     return(
@@ -3050,12 +2659,9 @@ define(
               1),
           mapf(
             null,
-            function(
-              /*(*/ [x] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [x] /*)*/,
-                  object] /*)*/] /*2*/,
-              cond(
+            /* FUNCTION */
+              (x: object) => {
+                cond(
                 /*(*/ [trnn(
                     LOCALS.x,
                     GLOBALS.echo_room_bit),
@@ -3064,30 +2670,21 @@ define(
                     GLOBALS.echo_room_bit),
                   tro(
                     LOCALS.x,
-                    GLOBALS.ovison)] /*)*/)),
+                    GLOBALS.ovison)] /*)*/)
+              },
             robjs(
-              LOCALS.rm))))] /*)*/))
+              LOCALS.rm))))] /*)*/)
+  }
 
-define(
-  leaper,
-  /*(*/ ["AUX",
+FUNCTIONS.leaper = 
+  ("AUX": unknown,
     /*(*/ [rm,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [exits,
       rexits(
-        LOCALS.rm)] /*)*/,
-    m] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [rm] /*)*/,
-      room,
-      /*(*/ [exits] /*)*/,
-      exit,
-      /*(*/ [m] /*)*/,
-      or(
-        primtype(
-          vector),
-        false)] /*)*/] /*2*/,
-  cond(
+        LOCALS.rm)] /*)*/: unknown,
+    m: room) => {
+    cond(
     /*(*/ [LOCALS.m = memq(
           down_X_words,
           LOCALS.exits),
@@ -3111,14 +2708,15 @@ define(
               GLOBALS.jumploss))] /*)*/)] /*)*/,
     /*(*/ [tell(
         pick_one(
-          GLOBALS.wheeeee))] /*)*/))
+          GLOBALS.wheeeee))] /*)*/)
+  }
 
-define(
-  skipper,
-  /*(*/ [] /*)*/,
-  tell(
+FUNCTIONS.skipper = 
+  () => {
+    tell(
     pick_one(
-      GLOBALS.wheeeee)))
+      GLOBALS.wheeeee))
+  }
 
 GLOBALS.hs = 0
 
@@ -3126,24 +2724,16 @@ gdecl(
   /*(*/ [hs] /*)*/,
   fix)
 
-define(
-  hello,
-  /*(*/ ["AUX",
+FUNCTIONS.hello = 
+  ("AUX": unknown,
     /*(*/ [prsobj,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [amt,
       GLOBALS.hs = _(
           GLOBALS.hs,
-          1)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsobj] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [amt] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+          1)] /*)*/: unknown) => {
+    cond(
     /*(*/ [LOCALS.prsobj,
       cond(
         /*(*/ [_EQ_Q(
@@ -3179,7 +2769,8 @@ define(
             ".")] /*)*/)] /*)*/,
     /*(*/ [tell(
         pick_one(
-          GLOBALS.hellos))] /*)*/))
+          GLOBALS.hellos))] /*)*/)
+  }
 
 psetg(
   hellos,
@@ -3212,27 +2803,17 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  reader,
-  /*(*/ ["AUX",
+FUNCTIONS.reader = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [po,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [pi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [po] /*)*/,
-      object,
-      /*(*/ [pi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [not(
         lit_Q(
           GLOBALS.here)),
@@ -3262,12 +2843,12 @@ define(
         )] /*)*/,
     /*(*/ [tell(
         oread(
-          LOCALS.po))] /*)*/))
+          LOCALS.po))] /*)*/)
+  }
 
-define(
-  well,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.well = 
+  () => {
+    cond(
     /*(*/ [GLOBALS.riddle_flag_X_flag,
       tell(
         "Well what?")] /*)*/,
@@ -3279,12 +2860,12 @@ define(
       tell(
         "There is a clap of thunder and the east door opens.")] /*)*/,
     /*(*/ [tell(
-        "Well what?")] /*)*/))
+        "Well what?")] /*)*/)
+  }
 
-define(
-  sinbad,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.sinbad = 
+  () => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           GLOBALS.here,
@@ -3303,13 +2884,14 @@ define(
         find_obj(
           "CYCLO"))] /*)*/,
     /*(*/ [tell(
-        "Wasn't he a sailor?")] /*)*/))
+        "Wasn't he a sailor?")] /*)*/)
+  }
 
-define(
-  granite,
-  /*(*/ [] /*)*/,
-  tell(
-    "I think you are taking this thing for granite."))
+FUNCTIONS.granite = 
+  () => {
+    tell(
+    "I think you are taking this thing for granite.")
+  }
 
 psetg(
   dummy,
@@ -3323,23 +2905,15 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  brush,
-  /*(*/ ["AUX",
+FUNCTIONS.brush = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object,
-      /*(*/ [prsi] /*)*/,
-      or(
-        object,
-        false)] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prso,
         find_obj(
@@ -3367,20 +2941,15 @@ define(
               LOCALS.prsi),
             "?")] /*)*/)] /*)*/,
     /*(*/ [tell(
-        "If you wish, but I can't understand why??")] /*)*/))
+        "If you wish, but I can't understand why??")] /*)*/)
+  }
 
-define(
-  ring,
-  /*(*/ ["AUX",
+FUNCTIONS.ring = 
+  ("AUX": unknown,
     /*(*/ [prsobj,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsobj] /*)*/,
-      or(
-        object,
-        false)] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsobj,
         find_obj(
@@ -3388,45 +2957,27 @@ define(
       tell(
         "Ding, dong.")] /*)*/,
     /*(*/ [tell(
-        "How, exactly, can I ring that?")] /*)*/))
+        "How, exactly, can I ring that?")] /*)*/)
+  }
 
-define(
-  eat,
-  /*(*/ ["AUX",
+FUNCTIONS.eat = 
+  ("AUX": unknown,
     /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [eat_Q,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [drink_Q,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [prsobj,
       2(
-        LOCALS.prsvec)] /*)*/,
-    nobj,
-    /*(*/ [aobjs,
-      aobjs(
-        GLOBALS.winner)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsobj] /*)*/,
-      object,
-      /*(*/ [nobj] /*)*/,
-      or(
+        LOCALS.prsvec)] /*)*/: unknown,
+    nobj: or(
         object,
         false),
-      /*(*/ [prsvec] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/),
-      /*(*/ [aobjs] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/),
-      /*(*/ [eat_Q,
-        drink_Q] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  cond(
+    /*(*/ [aobjs,
+      aobjs(
+        GLOBALS.winner)] /*)*/: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [and(
@@ -3488,20 +3039,21 @@ define(
           LOCALS.prsobj),
         "would agree with you.")] /*)*/,
     /*(*/ [tell(
-        "I think you should get that first.")] /*)*/))
+        "I think you should get that first.")] /*)*/)
+  }
 
-define(
-  jargon,
-  /*(*/ [] /*)*/,
-  tell(
-    "Well, FOO, BAR, and BLETCH to you too!"))
+FUNCTIONS.jargon = 
+  () => {
+    tell(
+    "Well, FOO, BAR, and BLETCH to you too!")
+  }
 
-define(
-  curses,
-  /*(*/ [] /*)*/,
-  tell(
+FUNCTIONS.curses = 
+  () => {
+    tell(
     pick_one(
-      GLOBALS.offended)))
+      GLOBALS.offended))
+  }
 
 psetg(
   offended,
@@ -3620,12 +3172,9 @@ define(
             LOCALS.here_Q = null] /*)*/),
         mapf(
           null,
-          function(
-            /*(*/ [x] /*)*/,
-            /*#*/ [decl,
-              /*(*/ [/*(*/ [x] /*)*/,
-                object] /*)*/] /*2*/,
-            cond(
+          /* FUNCTION */
+            (x: object) => {
+              cond(
               /*(*/ [g_Q(
                   otval(
                     LOCALS.x),
@@ -3638,7 +3187,8 @@ define(
                       LOCALS.hh)),
                 insert_object(
                   LOCALS.x,
-                  LOCALS.rm)] /*)*/)),
+                  LOCALS.rm)] /*)*/)
+            },
           LOCALS.hh)] /*)*/,
       /*(*/ [_EQ_Q(
           LOCALS.rm,
@@ -3869,12 +3419,9 @@ define(
                 GLOBALS.mazedesc)),
             mapf(
               null,
-              function(
-                /*(*/ [x] /*)*/,
-                /*#*/ [decl,
-                  /*(*/ [/*(*/ [x] /*)*/,
-                    object] /*)*/] /*2*/,
-                cond(
+              /* FUNCTION */
+                (x: object) => {
+                  cond(
                   /*(*/ [and(
                       can_take_Q(
                         LOCALS.x),
@@ -3907,17 +3454,15 @@ define(
                               _X,
                               LOCALS.hh] /*)*/)] /*)*/),
                     mapleave(
-                      )] /*)*/)),
+                      )] /*)*/)
+                },
               robjs(
                 LOCALS.rm))] /*)*/,
           /*(*/ [mapf(
               null,
-              function(
-                /*(*/ [x] /*)*/,
-                /*#*/ [decl,
-                  /*(*/ [/*(*/ [x] /*)*/,
-                    object] /*)*/] /*2*/,
-                cond(
+              /* FUNCTION */
+                (x: object) => {
+                  cond(
                   /*(*/ [and(
                       0_Q(
                         otval(
@@ -3951,7 +3496,8 @@ define(
                             LOCALS.x),
                           "vanished.")] /*)*/),
                     mapleave(
-                      )] /*)*/)),
+                      )] /*)*/)
+                },
               robjs(
                 LOCALS.rm)),
             cond(
@@ -4005,12 +3551,9 @@ define(
       LOCALS.treas),
     mapf(
       null,
-      function(
-        /*(*/ [x] /*)*/,
-        /*#*/ [decl,
-          /*(*/ [/*(*/ [x] /*)*/,
-            object] /*)*/] /*2*/,
-        cond(
+      /* FUNCTION */
+        (x: object) => {
+          cond(
           /*(*/ [and(
               0_Q(
                 otval(
@@ -4031,18 +3574,14 @@ define(
                 LOCALS.rm,
                 LOCALS.wroom),
               tell(
-                "The robber, rummaging through his bag, dropped a few items he found\nvalueless."))] /*)*/)),
+                "The robber, rummaging through his bag, dropped a few items he found\nvalueless."))] /*)*/)
+        },
       LOCALS.hh)))
 
-define(
-  snarf_object,
-  /*(*/ [who,
-    what] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [who,
-        what] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.snarf_object = 
+  (who: object,
+    what: object) => {
+    cond(
     /*(*/ [and(
         n_EQ_Q(
           ocan(
@@ -4066,65 +3605,37 @@ define(
           _X,
           ocontents(
             LOCALS.who)] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.who] /*)*/))
+    /*(*/ [LOCALS.who] /*)*/)
+  }
 
-define(
-  robber_function,
-  /*(*/ ["AUX",
+FUNCTIONS.robber_function = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [dem,
       get_demon(
-        "THIEF")] /*)*/,
+        "THIEF")] /*)*/: unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prsobj,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [flg,
-      null] /*)*/,
-    brick,
-    fuse,
-    st,
-    f,
+      null] /*)*/: unknown,
+    brick: object,
+    fuse: object,
+    st: object,
+    f: object,
     /*(*/ [t,
       hobj(
-        LOCALS.dem)] /*)*/,
+        LOCALS.dem)] /*)*/: unknown,
     /*(*/ [chali,
       find_obj(
-        "CHALI")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [dem] /*)*/,
-      hack,
-      /*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [prsobj] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [chali,
-        t,
-        hobj,
-        st,
-        brick,
-        fuse] /*)*/,
-      object,
-      /*(*/ [f] /*)*/,
-      vector(
-        any,
-        cevent),
-      /*(*/ [here] /*)*/,
-      room,
-      /*(*/ [flg] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  cond(
+        "CHALI")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.fight_X_words),
@@ -4165,17 +3676,15 @@ define(
             "His booty remains."),
           mapf(
             null,
-            function(
-              /*(*/ [x] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [x] /*)*/,
-                  object] /*)*/] /*2*/,
-              insert_object(
+            /* FUNCTION */
+              (x: object) => {
+                insert_object(
                 LOCALS.x,
-                LOCALS.here),
-              tro(
+                LOCALS.here)
+tro(
                 LOCALS.x,
-                GLOBALS.echo_room_bit)),
+                GLOBALS.echo_room_bit)
+              },
             hobjs(
               LOCALS.dem)),
           put(
@@ -4192,12 +3701,9 @@ define(
               "TREAS")),
           mapf(
             null,
-            function(
-              /*(*/ [x] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [x] /*)*/,
-                  object] /*)*/] /*2*/,
-              cond(
+            /* FUNCTION */
+              (x: object) => {
+                cond(
                 /*(*/ [and(
                     n_EQ_Q(
                       LOCALS.x,
@@ -4226,7 +3732,8 @@ define(
                         "A",
                         2,
                         odesc2(
-                          LOCALS.x))] /*)*/)] /*)*/)),
+                          LOCALS.x))] /*)*/)] /*)*/)
+              },
             robjs(
               LOCALS.here))] /*)*/),
       put(
@@ -4327,14 +3834,12 @@ define(
               /*(*/ [t,
                 mapf(
                   null,
-                  function(
-                    /*(*/ [x] /*)*/,
-                    /*#*/ [decl,
-                      /*(*/ [/*(*/ [x] /*)*/,
-                        object] /*)*/] /*2*/,
-                    insert_object(
+                  /* FUNCTION */
+                    (x: object) => {
+                      insert_object(
                       LOCALS.x,
-                      LOCALS.here)),
+                      LOCALS.here)
+                    },
                   hobjs(
                     LOCALS.dem)),
                 put(
@@ -4439,29 +3944,20 @@ define(
             LOCALS.prsact),
           take_X_words)),
       tell(
-        "Once you got him, what would you do with him?")] /*)*/))
+        "Once you got him, what would you do with him?")] /*)*/)
+  }
 
-define(
-  chalice,
-  /*(*/ ["AUX",
+FUNCTIONS.chalice = 
+  ("AUX": unknown,
     /*(*/ [prsa,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [ch,
       2(
-        GLOBALS.prsvec)] /*)*/,
-    tr,
-    t] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsa] /*)*/,
-      verb,
-      /*(*/ [ch] /*)*/,
-      object,
-      /*(*/ [tr] /*)*/,
-      room,
-      /*(*/ [t] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown,
+    tr: room,
+    t: room) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.take_X_words),
@@ -4485,26 +3981,20 @@ define(
             haction(
               GLOBALS.robber_demon)),
           tell(
-            "Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray.")] /*)*/)] /*)*/))
+            "Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray.")] /*)*/)] /*)*/)
+  }
 
-define(
-  burner,
-  /*(*/ ["AUX",
+FUNCTIONS.burner = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso,
-        prsi] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [flaming_Q(
         LOCALS.prsi),
       cond(
@@ -4558,26 +4048,20 @@ define(
         1,
         odesc2(
           LOCALS.prsi),
-        "??!?")] /*)*/))
+        "??!?")] /*)*/)
+  }
 
-define(
-  turner,
-  /*(*/ ["AUX",
+FUNCTIONS.turner = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso,
-        prsi] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [trnn(
         LOCALS.prso,
         GLOBALS.turnbit),
@@ -4594,7 +4078,8 @@ define(
               LOCALS.prsi),
             ".")] /*)*/)] /*)*/,
     /*(*/ [tell(
-        "You can't turn that!")] /*)*/))
+        "You can't turn that!")] /*)*/)
+  }
 
 psetg(
   doormungs,
@@ -4608,16 +4093,12 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  ddoor_function,
-  /*(*/ ["AUX",
+FUNCTIONS.ddoor_function = 
+  ("AUX": unknown,
     /*(*/ [pa,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
         GLOBALS.open_X_words),
@@ -4633,22 +4114,18 @@ define(
         GLOBALS.mung_X_words),
       tell(
         pick_one(
-          GLOBALS.doormungs))] /*)*/))
+          GLOBALS.doormungs))] /*)*/)
+  }
 
-define(
-  inflater,
-  /*(*/ ["AUX",
+FUNCTIONS.inflater = 
+  ("AUX": unknown,
     /*(*/ [prsi,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prso,
       3(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsi,
-        prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsi,
         find_obj(
@@ -4669,18 +4146,15 @@ define(
       tell(
         "Inflating it further would probably burst it.")] /*)*/,
     /*(*/ [tell(
-        "How can you inflate that?")] /*)*/))
+        "How can you inflate that?")] /*)*/)
+  }
 
-define(
-  deflater,
-  /*(*/ ["AUX",
+FUNCTIONS.deflater = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prso,
         find_obj(
@@ -4688,18 +4162,15 @@ define(
       object_action(
         )] /*)*/,
     /*(*/ [tell(
-        "Come on, now!")] /*)*/))
+        "Come on, now!")] /*)*/)
+  }
 
-define(
-  locker,
-  /*(*/ ["AUX",
+FUNCTIONS.locker = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prso,
         find_obj(
@@ -4709,15 +4180,12 @@ define(
         "The grate is locked."),
       mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              or(
+        /* FUNCTION */
+          (x: or(
                 cexit,
                 nexit,
-                room)] /*)*/] /*2*/,
-          cond(
+                room)) => {
+            cond(
             /*(*/ [and(
                 type_Q(
                   LOCALS.x,
@@ -4731,31 +4199,26 @@ define(
                 GLOBALS.cxstr,
                 "The grate is locked."),
               mapleave(
-                )] /*)*/)),
+                )] /*)*/)
+          },
         rexits(
           GLOBALS.here))] /*)*/,
     /*(*/ [tell(
-        "It doesn't seem to work.")] /*)*/))
+        "It doesn't seem to work.")] /*)*/)
+  }
 
-define(
-  unlocker,
-  /*(*/ ["AUX",
+FUNCTIONS.unlocker = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [r,
       find_room(
-        "MGRAT")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso,
-        prsi] /*)*/,
-      object,
-      /*(*/ [r] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+        "MGRAT")] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prso,
         find_obj(
@@ -4770,15 +4233,12 @@ define(
             "The grate is unlocked."),
           mapf(
             null,
-            function(
-              /*(*/ [x] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [x] /*)*/,
-                  or(
+            /* FUNCTION */
+              (x: or(
                     cexit,
                     nexit,
-                    room)] /*)*/] /*2*/,
-              cond(
+                    room)) => {
+                cond(
                 /*(*/ [and(
                     type_Q(
                       LOCALS.x,
@@ -4792,7 +4252,8 @@ define(
                     GLOBALS.cxstr,
                     "The grate is closed."),
                   mapleave(
-                    )] /*)*/)),
+                    )] /*)*/)
+              },
             rexits(
               LOCALS.r))] /*)*/,
         /*(*/ [tell(
@@ -4802,28 +4263,20 @@ define(
               LOCALS.prsi),
             "?")] /*)*/)] /*)*/,
     /*(*/ [tell(
-        "It doesn't seem to work.")] /*)*/))
+        "It doesn't seem to work.")] /*)*/)
+  }
 
-define(
-  killer,
-  /*(*/ ["AUX",
+FUNCTIONS.killer = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso,
-        prsi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [not(
         LOCALS.prso),
       tell(
@@ -4858,28 +4311,20 @@ define(
         orand(
           LOCALS.prsi),
         t,
-        null)] /*)*/))
+        null)] /*)*/)
+  }
 
-define(
-  attacker,
-  /*(*/ ["AUX",
+FUNCTIONS.attacker = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso,
-        prsi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [not(
         LOCALS.prso),
       tell(
@@ -4914,55 +4359,37 @@ define(
         orand(
           LOCALS.prsi),
         t,
-        null)] /*)*/))
+        null)] /*)*/)
+  }
 
-define(
-  swinger,
-  /*(*/ ["AUX",
+FUNCTIONS.swinger = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [prsi,
       3(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [prso,
-        prsi] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  put(
+        LOCALS.pv)] /*)*/: unknown) => {
+    put(
     LOCALS.pv,
     2,
-    LOCALS.prsi),
-  put(
+    LOCALS.prsi)
+put(
     LOCALS.pv,
     3,
-    LOCALS.prso),
-  attacker(
-    ))
+    LOCALS.prso)
+attacker(
+    )
+  }
 
-define(
-  hack_hack,
-  /*(*/ [obj,
-    str,
-    "OPTIONAL",
+FUNCTIONS.hack_hack = 
+  (obj: object,
+    str: string,
     /*(*/ [obj2,
-      null] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [str] /*)*/,
-      string,
-      /*(*/ [obj2] /*)*/,
-      or(
-        false,
-        string)] /*)*/] /*2*/,
-  cond(
+      null] /*)*/?: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [LOCALS.obj2,
@@ -4984,7 +4411,8 @@ define(
         odesc2(
           LOCALS.obj),
         pick_one(
-          GLOBALS.ho_hum))] /*)*/))
+          GLOBALS.ho_hum))] /*)*/)
+  }
 
 psetg(
   ho_hum,
@@ -5001,23 +4429,15 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-define(
-  munger,
-  /*(*/ ["AUX",
+FUNCTIONS.munger = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prsw,
       3(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsw] /*)*/,
-      or(
-        object,
-        false),
-      /*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [trnn(
         LOCALS.prso,
         GLOBALS.villain),
@@ -5055,87 +4475,72 @@ define(
             "with your bare hands is suicidal.")] /*)*/)] /*)*/,
     /*(*/ [hack_hack(
         LOCALS.prso,
-        "Munging a")] /*)*/))
+        "Munging a")] /*)*/)
+  }
 
-define(
-  kicker,
-  /*(*/ ["AUX",
+FUNCTIONS.kicker = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  hack_hack(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    hack_hack(
     LOCALS.prso,
-    "Munging a"))
+    "Munging a")
+  }
 
-define(
-  waver,
-  /*(*/ ["AUX",
+FUNCTIONS.waver = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  hack_hack(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    hack_hack(
     LOCALS.prso,
-    "Waving a"))
+    "Waving a")
+  }
 
-define(
-  r_l,
-  /*(*/ ["AUX",
+FUNCTIONS.r_l = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  hack_hack(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    hack_hack(
     LOCALS.prso,
-    "Playing in this way with a"))
+    "Playing in this way with a")
+  }
 
-define(
-  rubber,
-  /*(*/ ["AUX",
+FUNCTIONS.rubber = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  hack_hack(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    hack_hack(
     LOCALS.prso,
-    "Fiddling with a"))
+    "Fiddling with a")
+  }
 
-define(
-  exorcise,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.exorcise = 
+  () => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
-    /*(*/ [t] /*)*/))
+    /*(*/ [t] /*)*/)
+  }
 
-define(
-  plugger,
-  /*(*/ [] /*)*/,
-  cond(
+FUNCTIONS.plugger = 
+  () => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [tell(
-        "This has no effect.")] /*)*/))
+        "This has no effect.")] /*)*/)
+  }
 
-define(
-  untie,
-  /*(*/ ["AUX",
+FUNCTIONS.untie = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [trnn(
@@ -5144,18 +4549,15 @@ define(
       tell(
         "I don't think so.")] /*)*/,
     /*(*/ [tell(
-        "This cannot be tied, so it cannot be untied!")] /*)*/))
+        "This cannot be tied, so it cannot be untied!")] /*)*/)
+  }
 
-define(
-  pusher,
-  /*(*/ ["AUX",
+FUNCTIONS.pusher = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [memq(
@@ -5164,18 +4566,15 @@ define(
           LOCALS.prso))] /*)*/,
     /*(*/ [hack_hack(
         LOCALS.prso,
-        "Pushing the")] /*)*/))
+        "Pushing the")] /*)*/)
+  }
 
-define(
-  tie,
-  /*(*/ ["AUX",
+FUNCTIONS.tie = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [trnn(
         LOCALS.prso,
         GLOBALS.tiebit),
@@ -5185,18 +4584,15 @@ define(
         /*(*/ [tell(
             "You can't tie it to that.")] /*)*/)] /*)*/,
     /*(*/ [tell(
-        "How can you tie that to anything.")] /*)*/))
+        "How can you tie that to anything.")] /*)*/)
+  }
 
-define(
-  melter,
-  /*(*/ ["AUX",
+FUNCTIONS.melter = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [tell(
@@ -5204,20 +4600,17 @@ define(
         1,
         odesc2(
           LOCALS.prso),
-        "can be melted.")] /*)*/))
+        "can be melted.")] /*)*/)
+  }
 
 GLOBALS.on_pole_X_flag = null
 
-define(
-  body_function,
-  /*(*/ ["AUX",
+FUNCTIONS.body_function = 
+  ("AUX": unknown,
     /*(*/ [prsa,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.take_X_words),
@@ -5239,24 +4632,21 @@ define(
             find_room(
               "LLD2"))] /*)*/),
       jigs_up(
-        "The voice of the guardian of the dungeon booms out from the darkness \n'Your disrespect costs you your life!' and places your head on a pole.")] /*)*/))
+        "The voice of the guardian of the dungeon booms out from the darkness \n'Your disrespect costs you your life!' and places your head on a pole.")] /*)*/)
+  }
 
-define(
-  mumbler,
-  /*(*/ [] /*)*/,
-  tell(
-    "You'll have to speak up if you expect me to hear you!"))
+FUNCTIONS.mumbler = 
+  () => {
+    tell(
+    "You'll have to speak up if you expect me to hear you!")
+  }
 
-define(
-  alarm,
-  /*(*/ ["AUX",
+FUNCTIONS.alarm = 
+  ("AUX": unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prso] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [trnn(
         LOCALS.prso,
         GLOBALS.sleepbit),
@@ -5267,35 +4657,30 @@ define(
         1,
         odesc2(
           LOCALS.prso),
-        "isn't sleeping.")] /*)*/))
+        "isn't sleeping.")] /*)*/)
+  }
 
-define(
-  zork,
-  /*(*/ [] /*)*/,
-  tell(
-    "That word is replaced henceforth with DUNGEON."))
+FUNCTIONS.zork = 
+  () => {
+    tell(
+    "That word is replaced henceforth with DUNGEON.")
+  }
 
-define(
-  dungeon,
-  /*(*/ [] /*)*/,
-  tell(
-    "At your service!"))
+FUNCTIONS.dungeon = 
+  () => {
+    tell(
+    "At your service!")
+  }
 
-define(
-  painting,
-  /*(*/ ["AUX",
+FUNCTIONS.painting = 
+  ("AUX": unknown,
     /*(*/ [prsa,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [art,
       2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsa] /*)*/,
-      verb,
-      /*(*/ [art] /*)*/,
-      object] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
         GLOBALS.mung_X_words),
@@ -5312,7 +4697,8 @@ define(
         GLOBALS.odesc1,
         "There is a worthless piece of canvas here."),
       tell(
-        "Congratulations!  Unlike the other vandals, who merely stole the\nartist's masterpieces, you have destroyed one.")] /*)*/))
+        "Congratulations!  Unlike the other vandals, who merely stole the\nartist's masterpieces, you have destroyed one.")] /*)*/)
+  }
 
 psetg(
   dimmer,
@@ -5335,34 +4721,22 @@ psetg(
     GLOBALS.dimmer,
     "The lamp is dying."] /*]*/)
 
-define(
-  lantern,
-  /*(*/ ["AUX",
+FUNCTIONS.lantern = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [verb,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [rlamp,
       find_obj(
-        "LAMP")] /*)*/,
-    foo] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector,
-      /*(*/ [verb] /*)*/,
-      verb,
-      /*(*/ [here] /*)*/,
-      room,
-      /*(*/ [rlamp] /*)*/,
-      object,
-      /*(*/ [foo] /*)*/,
-      vector(
+        "LAMP")] /*)*/: unknown,
+    foo: vector(
         any,
-        cevent)] /*)*/] /*2*/,
-  cond(
+        cevent)) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.verb,
         GLOBALS.throw_X_words),
@@ -5398,33 +4772,23 @@ define(
         2(
           LOCALS.foo = orand(
               LOCALS.rlamp))),
-      null] /*)*/))
+      null] /*)*/)
+  }
 
-define(
-  sword_glow,
-  /*(*/ [dem,
-    "AUX",
+FUNCTIONS.sword_glow = 
+  (dem: hack,
+    "AUX": unknown,
     /*(*/ [sw,
       hobj(
-        LOCALS.dem)] /*)*/,
+        LOCALS.dem)] /*)*/: unknown,
     /*(*/ [g,
       otval(
-        LOCALS.sw)] /*)*/,
+        LOCALS.sw)] /*)*/: unknown,
     /*(*/ [here,
-      GLOBALS.here] /*)*/,
+      GLOBALS.here] /*)*/: unknown,
     /*(*/ [ng,
-      0] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [dem] /*)*/,
-      hack,
-      /*(*/ [sw] /*)*/,
-      object,
-      /*(*/ [ng,
-        g] /*)*/,
-      fix,
-      /*(*/ [here] /*)*/,
-      room] /*)*/] /*2*/,
-  cond(
+      0] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         not(
           oroom(
@@ -5442,16 +4806,13 @@ define(
           LOCALS.ng = 2] /*)*/,
         /*(*/ [mapf(
             null,
-            function(
-              /*(*/ [e] /*)*/,
-              /*#*/ [decl,
-                /*(*/ [/*(*/ [e] /*)*/,
-                  or(
+            /* FUNCTION */
+              (e: or(
                     room,
                     cexit,
                     nexit,
-                    atom)] /*)*/] /*2*/,
-              cond(
+                    atom)) => {
+                cond(
                 /*(*/ [type_Q(
                     LOCALS.e,
                     room),
@@ -5468,7 +4829,8 @@ define(
                       2(
                         LOCALS.e)),
                     mapleave(
-                      t))] /*)*/)),
+                      t))] /*)*/)
+              },
             rexits(
               LOCALS.here)),
           LOCALS.ng = 1] /*)*/),
@@ -5496,18 +4858,15 @@ define(
     /*(*/ [put(
         LOCALS.dem,
         GLOBALS.haction,
-        null)] /*)*/))
+        null)] /*)*/)
+  }
 
-define(
-  sword,
-  /*(*/ ["AUX",
+FUNCTIONS.sword = 
+  ("AUX": unknown,
     /*(*/ [pa,
       1(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pa] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        GLOBALS.prsvec)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           LOCALS.pa,
@@ -5524,27 +4883,18 @@ define(
               offset),
             GLOBALS.sword_glow] /*)*/,
           /*(*/ [sword_glow] /*)*/)),
-      null] /*)*/))
+      null] /*)*/)
+  }
 
-define(
-  infested_Q,
-  /*(*/ [r,
-    "AUX",
+FUNCTIONS.infested_Q = 
+  (r: room,
+    "AUX": unknown,
     /*(*/ [villains,
-      GLOBALS.villains] /*)*/,
+      GLOBALS.villains] /*)*/: unknown,
     /*(*/ [dem,
       get_demon(
-        "THIEF")] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [r] /*)*/,
-      room,
-      /*(*/ [villains] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/),
-      /*(*/ [dem] /*)*/,
-      hack] /*)*/] /*2*/,
-  or(
+        "THIEF")] /*)*/: unknown) => {
+    or(
     and(
       _EQ_Q(
         LOCALS.r,
@@ -5554,19 +4904,18 @@ define(
         LOCALS.dem)),
     mapf(
       null,
-      function(
-        /*(*/ [v] /*)*/,
-        /*#*/ [decl,
-          /*(*/ [/*(*/ [v] /*)*/,
-            object] /*)*/] /*2*/,
-        cond(
+      /* FUNCTION */
+        (v: object) => {
+          cond(
           /*(*/ [_EQ_Q(
               LOCALS.r,
               oroom(
                 LOCALS.v)),
             mapleave(
-              t)] /*)*/)),
-      LOCALS.villains)))
+              t)] /*)*/)
+        },
+      LOCALS.villains))
+  }
 
 psetg(
   cdimmer,
@@ -5585,29 +4934,21 @@ psetg(
     GLOBALS.cdimmer,
     "The candles are very short."] /*]*/)
 
-define(
-  match_function,
-  /*(*/ ["AUX",
+FUNCTIONS.match_function = 
+  ("AUX": unknown,
     /*(*/ [prsa,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [match,
       find_obj(
-        "MATCH")] /*)*/,
+        "MATCH")] /*)*/: unknown,
     /*(*/ [mc,
       orand(
-        LOCALS.match)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsa] /*)*/,
-      verb,
-      /*(*/ [match] /*)*/,
-      object,
-      /*(*/ [mc] /*)*/,
-      fix] /*)*/] /*2*/,
-  cond(
+        LOCALS.match)] /*)*/: unknown) => {
+    cond(
     /*(*/ [and(
         _EQ_Q(
           LOCALS.prsa,
@@ -5671,53 +5012,33 @@ define(
       put(
         LOCALS.match,
         GLOBALS.olight_Q,
-        0)] /*)*/))
+        0)] /*)*/)
+  }
 
-define(
-  candles,
-  /*(*/ ["AUX",
+FUNCTIONS.candles = 
+  ("AUX": unknown,
     /*(*/ [prsact,
       1(
-        GLOBALS.prsvec)] /*)*/,
+        GLOBALS.prsvec)] /*)*/: unknown,
     /*(*/ [c,
       find_obj(
-        "CANDL")] /*)*/,
+        "CANDL")] /*)*/: unknown,
     /*(*/ [winner,
-      GLOBALS.winner] /*)*/,
+      GLOBALS.winner] /*)*/: unknown,
     /*(*/ [ao,
       aobjs(
-        LOCALS.winner)] /*)*/,
+        LOCALS.winner)] /*)*/: unknown,
     /*(*/ [w,
       3(
-        GLOBALS.prsvec)] /*)*/,
-    match,
-    foo,
-    orphans] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [prsact] /*)*/,
-      verb,
-      /*(*/ [match,
-        c] /*)*/,
-      object,
-      /*(*/ [w] /*)*/,
-      or(
-        false,
-        object),
-      /*(*/ [winner] /*)*/,
-      adv,
-      /*(*/ [ao] /*)*/,
-      list(
-        /*[*/ [rest,
-          object] /*]*/),
-      /*(*/ [foo] /*)*/,
-      vector(
+        GLOBALS.prsvec)] /*)*/: unknown,
+    match: object,
+    foo: vector(
         fix,
         cevent),
-      /*(*/ [orphans] /*)*/,
-      vector(
+    orphans: vector(
         /*[*/ [4,
-          any] /*]*/)] /*)*/] /*2*/,
-  or(
+          any] /*]*/)) => {
+    or(
     orand(
       LOCALS.c),
     put(
@@ -5726,10 +5047,10 @@ define(
       /*[*/ [0,
         clock_int(
           GLOBALS.cndin,
-          50)] /*]*/)),
-  LOCALS.foo = orand(
-      LOCALS.c),
-  cond(
+          50)] /*]*/))
+LOCALS.foo = orand(
+      LOCALS.c)
+cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
         GLOBALS.light_X_words),
@@ -5839,29 +5160,20 @@ define(
         LOCALS.c,
         GLOBALS.cndin,
         GLOBALS.candle_ticks,
-        GLOBALS.candle_tells)] /*)*/))
+        GLOBALS.candle_tells)] /*)*/)
+  }
 
-define(
-  black_book,
-  /*(*/ ["AUX",
+FUNCTIONS.black_book = 
+  ("AUX": unknown,
     /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/,
+      GLOBALS.prsvec] /*)*/: unknown,
     /*(*/ [v,
       1(
-        LOCALS.pv)] /*)*/,
+        LOCALS.pv)] /*)*/: unknown,
     /*(*/ [b,
       2(
-        LOCALS.pv)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pv] /*)*/,
-      vector(
-        /*[*/ [3,
-          any] /*]*/),
-      /*(*/ [b] /*)*/,
-      object,
-      /*(*/ [v] /*)*/,
-      verb] /*)*/] /*2*/,
-  cond(
+        LOCALS.pv)] /*)*/: unknown) => {
+    cond(
     /*(*/ [_EQ_Q(
         LOCALS.v,
         GLOBALS.burn_X_words),
@@ -5873,53 +5185,37 @@ define(
         /*(*/ [drop_object(
             LOCALS.b)] /*)*/),
       jigs_up(
-        "A booming voice says 'Wrong, cretin!' and you notice that you have\nturned into a pile of dust.")] /*)*/))
+        "A booming voice says 'Wrong, cretin!' and you notice that you have\nturned into a pile of dust.")] /*)*/)
+  }
 
-define(
-  light_int,
-  /*(*/ [obj,
-    cev,
-    tick,
-    tell,
-    "AUX",
-    cnt,
-    tim,
-    /*(*/ [foo,
-      orand(
-        LOCALS.obj)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [fcn] /*)*/,
-      applicable,
-      /*(*/ [tick] /*)*/,
-      vector(
+FUNCTIONS.light_int = 
+  (obj: object,
+    cev: unknown,
+    tick: vector(
         /*[*/ [rest,
           fix] /*]*/),
-      /*(*/ [tell] /*)*/,
-      vector(
+    tell: vector(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [tim,
-        cnt] /*)*/,
-      fix,
-      /*(*/ [foo] /*)*/,
-      vector(
-        fix,
-        cevent)] /*)*/] /*2*/,
-  put(
+    "AUX": unknown,
+    cnt: fix,
+    tim: fix,
+    /*(*/ [foo,
+      orand(
+        LOCALS.obj)] /*)*/: unknown) => {
+    put(
     LOCALS.foo,
     1,
     LOCALS.cnt = _(
         1(
           LOCALS.foo),
-        1)),
-  clock_int(
+        1))
+clock_int(
     LOCALS.cev,
     LOCALS.tim = nth(
         LOCALS.tick,
-        LOCALS.cnt)),
-  cond(
+        LOCALS.cnt))
+cond(
     /*(*/ [0_Q(
         LOCALS.tim),
       cond(
@@ -5952,26 +5248,17 @@ define(
       tell(
         nth(
           LOCALS.tell,
-          LOCALS.cnt))] /*)*/))
+          LOCALS.cnt))] /*)*/)
+  }
 
-define(
-  hackable_Q,
-  /*(*/ [obj,
-    rm,
-    "AUX",
+FUNCTIONS.hackable_Q = 
+  (obj: object,
+    rm: room,
+    "AUX": unknown,
     /*(*/ [av,
       avehicle(
-        GLOBALS.winner)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [rm] /*)*/,
-      room,
-      /*(*/ [av] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
-  cond(
+        GLOBALS.winner)] /*)*/: unknown) => {
+    cond(
     /*(*/ [LOCALS.av,
       search_list(
         oid(
@@ -5984,4 +5271,5 @@ define(
           LOCALS.obj),
         robjs(
           LOCALS.rm),
-        null)] /*)*/))
+        null)] /*)*/)
+  }

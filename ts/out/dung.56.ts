@@ -5348,12 +5348,13 @@ add_object(
 mapf(
   null,
   /* FUNCTION */
-    (x) => (
-    rtro,
-    find_room(
+    (x) => {
+      rtro(
+      find_room(
         spname(
           LOCALS.x)),
-    GLOBALS.rfillbit),
+      GLOBALS.rfillbit)
+    },
   _X,
   /*[*/ [resen_X_rooms,
     reses_X_rooms,
@@ -5375,11 +5376,12 @@ mapf(
 mapf(
   null,
   /* FUNCTION */
-    (x) => (
-    rtro,
-    find_room(
+    (x) => {
+      rtro(
+      find_room(
         LOCALS.x),
-    GLOBALS.rhousebit),
+      GLOBALS.rhousebit)
+    },
   /*[*/ ["LROOM",
     "KITCH",
     "ATTIC"] /*]*/)
@@ -5387,11 +5389,12 @@ mapf(
 mapf(
   null,
   /* FUNCTION */
-    (x) => (
-    rtro,
-    find_room(
+    (x) => {
+      rtro(
+      find_room(
         LOCALS.x),
-    GLOBALS.rsacredbit),
+      GLOBALS.rsacredbit)
+    },
   /*[*/ ["BSHAF",
     "RIVR1",
     "DOCK",

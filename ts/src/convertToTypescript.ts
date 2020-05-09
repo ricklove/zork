@@ -27,12 +27,75 @@ const convertToTypescriptName = (node: ZToken): string => {
         }`;
 }
 
-const convertToTypescriptFunction = (name: undefined | ZToken, argsList: undefined | ZList, body: undefined | ZList, depth: number, ) => {
-    const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
-    const argsListText = getIndentedNodes(argsList?.nodes ?? [], depth, false, ',');
-    const bodyText = getIndentedNodes(body?.nodes ?? [], depth, true, ',');
+// const convertToTypescriptTypeName = (node: ZToken): string => {
+//     const raw = node._raw.toString();
+//     if (raw === 'FIX') { return 'number'; }
 
-    return `${nameText ? `/* FUNCTION ${nameText}*/` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => (${bodyText})`;
+//     return convertToTypescriptName(node);
+// }
+
+const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsList: undefined | ZList, declList: undefined | ZList, body: undefined | ZList[], depth: number, ) => {
+    const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
+    const bodyText = body?.map(n => convertToTypescript(n)).join('\n') ?? '';
+
+    const OPTIONAL = '"OPTIONAL"';
+
+    let argsListText = getIndentedNodes(argsList?.nodes.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
+
+    if (declList) {
+        // <DEFINE OPEN-CLOSE (VERB ATM STROPN STRCLS)
+        //   #DECL ((VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING)
+        const dNode = declList?.nodes[1];
+
+        // (VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING
+        const dMappingNodes = dNode?.kind === 'ZList' ? dNode.nodes : [];
+        const dMapNames = dMappingNodes.filter((x, i) => i % 2 === 0).map(x => ` ${x.toString()} `);
+        const dMapTypes = dMappingNodes.filter((x, i) => i % 2 === 1);
+
+        let _lastOptional = false;
+        const args = (argsList?.nodes as ZToken[]).map(x => ({
+            arg: x,
+            argName: x._raw.toString(),
+        })).map(x => {
+            if (x.argName === OPTIONAL) {
+                _lastOptional = true;
+                return null;
+            }
+
+            const dIndex = dMapNames.findIndex(d => d.includes(x.argName));
+            const dType = dIndex >= 0 ? dMapTypes[dIndex] : undefined;
+
+            const isOptional = _lastOptional;
+            _lastOptional = false;
+            return {
+                ...x,
+                dataType: dType,
+                isOptional,
+            };
+        }).filter(x => x).map(x => x!);
+        // const declListText = dInput ? getIndentedNodes(dInput, depth, false, ',') : undefined;
+        // typeDefText = declListText ? `\n${getIndentation(declList?.depth ?? 0)}: ( (${declListText}) => unknown )` : '';
+
+        const indent = getIndentation(depth + 1);
+        argsListText = `${args.map(x => `${convertToTypescript(x.arg)}${x.isOptional ? '?' : ''}: ${x.dataType ? convertToTypescript(x.dataType) : 'unknown'}`).join(`,\n${indent}`)}`;
+    }
+
+    return `${nameText ? `FUNCTIONS.${nameText} = ` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => {\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
+};
+
+const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, funNodes: ZNode[], depth: number) => {
+    const lists = funNodes.filter(x => x.kind === 'ZList' && x.openSymbol === '(') as ZList[];
+    const hashes = funNodes.filter(x => x.kind === 'ZList' && x.openSymbol === '#') as ZList[];
+    const forms = funNodes.filter(x => x.kind === 'ZList' && x.openSymbol === '<') as ZList[];
+    const argsList = lists[0];
+    const decl = hashes[0];
+    const body = forms;
+
+    if (lists.length > 1 || hashes.length > 1) {
+        let breakdance = 'begin';
+    }
+
+    return convertToTypescriptFunctionDeclaration(name, argsList, decl, body, depth);
 };
 
 
@@ -141,12 +204,10 @@ export const convertToTypescript = (node: ZNode): string => {
                 && nodes.length === 2 && nodes[1].kind === 'ZList' && nodes[1].openSymbol === '('
             ) {
                 const def = nodes[1];
-
                 const name = def.nodes[1].kind === 'ZToken' ? def.nodes[1] : undefined;
-                const argsList = def.nodes.find(x => x.kind === 'ZList' && x.openSymbol === '(') as ZList | undefined;
-                const forms = def.nodes.filter(x => x.kind === 'ZList' && x.openSymbol === '<') as ZList[];
-                const body = forms[forms.length - 1];
-                return convertToTypescriptFunction(name, argsList, body, depth);
+
+                const funNodes = nodes[1].nodes;
+                return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
             }
 
             // <SETG SQUARE #FUNCTION ((X) <* .X .X>)>
@@ -164,11 +225,8 @@ export const convertToTypescript = (node: ZNode): string => {
                 && nodes[2].nodes[1]?.openSymbol === '('
             ) {
                 const name = nodes[1];
-                const def = nodes[2].nodes[1];
-                const argsList = def.nodes.find(x => x.kind === 'ZList' && x.openSymbol === '(') as ZList | undefined;
-                const forms = def.nodes.filter(x => x.kind === 'ZList' && x.openSymbol === '<') as ZList[];
-                const body = forms[forms.length - 1];
-                return convertToTypescriptFunction(name, argsList, body, depth);
+                const funNodes = nodes[2].nodes[1].nodes;
+                return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
             }
 
             // <SETG SQUARE <FUNCTION (X) <* .X .X>>>
@@ -184,45 +242,43 @@ export const convertToTypescript = (node: ZNode): string => {
                 && nodes[2].nodes[0]?.toString() === 'FUNCTION'
             ) {
                 const name = nodes[1];
-                const def = nodes[2];
-                const argsList = def.nodes.find(x => x.kind === 'ZList' && x.openSymbol === '(') as ZList | undefined;
-                const forms = def.nodes.filter(x => x.kind === 'ZList' && x.openSymbol === '<') as ZList[];
-                const body = forms[forms.length - 1];
-                return convertToTypescriptFunction(name, argsList, body, depth);
+                const funNodes = nodes[2].nodes;
+                return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
             }
 
             // <DEFINE SQUARE (X) <* .X .X>>
+            // <DEFINE SQUARE (X) #DECL (...) <* .X .X>>
             if (openSymbol === '<'
-                && nodes.length === 3
+                // && nodes.length === 4
                 && nodes[0].kind === 'ZToken'
                 && nodes[0].toString() === 'DEFINE'
                 && nodes[1].kind === 'ZToken'
                 && nodes[2].kind === 'ZList'
                 && nodes[2].openSymbol === '('
-                && nodes[3].kind === 'ZList'
-                && nodes[3].openSymbol === '<'
+                // && nodes[3].kind === 'ZList'
+                // && nodes[3].openSymbol === '<'
             ) {
                 const name = nodes[1];
-                const argsList = nodes[2];
-                const body = nodes[3];
-                return convertToTypescriptFunction(name, argsList, body, depth);
+                const funNodes = nodes;
+                return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
             }
         }
 
         // Anonymous Functions: i.e. Declared and passed 
         // <FUNCTION (X) <RTRO <FIND-ROOM <SPNAME .X>> ,RFILLBIT>>
+        // <FUNCTION (X) #DECL (...) <RTRO <FIND-ROOM <SPNAME .X>> ,RFILLBIT>>
         if (openSymbol === '<'
-            && nodes.length === 3
+            // && nodes.length === 3
             && nodes[0].kind === 'ZToken'
             && nodes[0].toString() === 'FUNCTION'
             && nodes[1].kind === 'ZList'
             && nodes[1].openSymbol === '('
-            && nodes[2].kind === 'ZList'
-            && nodes[2].openSymbol === '<'
+            // && nodes[2].kind === 'ZList'
+            // && nodes[2].openSymbol === '<'
         ) {
-            const argsList = nodes[1];
-            const body = nodes[2];
-            return convertToTypescriptFunction(undefined, argsList, body, depth);
+            const name = undefined;
+            const funNodes = nodes;
+            return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
         }
 
         // Forms: <FUNC ...ARGS> (i.e. calling functions)

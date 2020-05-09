@@ -1,35 +1,23 @@
-define(
-  cevent,
-  /*(*/ [tick,
-    app,
-    flg,
-    name,
-    "AUX",
+FUNCTIONS.cevent = 
+  (tick: fix,
+    app: or(
+        applicable,
+        offset),
+    flg: or(
+        atom,
+        false),
+    name: or(
+        atom,
+        string),
+    "AUX": unknown,
     /*(*/ [obl,
       get(
         initial,
-        oblist)] /*)*/,
-    atm] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [tick] /*)*/,
-      fix,
-      /*(*/ [app] /*)*/,
-      or(
-        applicable,
-        offset),
-      /*(*/ [flg] /*)*/,
-      or(
+        oblist)] /*)*/: unknown,
+    atm: or(
         atom,
-        false),
-      /*(*/ [name] /*)*/,
-      or(
-        atom,
-        string),
-      /*(*/ [atm] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  cond(
+        false)) => {
+    cond(
     /*(*/ [type_Q(
         LOCALS.name,
         string),
@@ -41,42 +29,34 @@ define(
           LOCALS.atm = insert(
               LOCALS.name,
               LOCALS.obl)] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.atm = LOCALS.name] /*)*/),
-  setg(
+    /*(*/ [LOCALS.atm = LOCALS.name] /*)*/)
+setg(
     LOCALS.atm,
     chtype(
       /*[*/ [LOCALS.tick,
         LOCALS.app,
         LOCALS.flg,
         LOCALS.atm] /*]*/,
-      cevent)))
+      cevent))
+  }
 
-define(
-  cons_obj,
-  /*(*/ ["TUPLE",
-    objs,
-    "AUX",
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [objs] /*)*/,
-      tuple(
+FUNCTIONS.cons_obj = 
+  ("TUPLE": unknown,
+    objs: tuple(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [winner] /*)*/,
-      adv] /*)*/] /*2*/,
-  mapf(
+    "AUX": unknown,
+    /*(*/ [winner,
+      GLOBALS.winner] /*)*/: unknown) => {
+    mapf(
     null,
-    function(
-      /*(*/ [x,
-        "AUX",
+    /* FUNCTION */
+      (x: unknown,
+        "AUX": unknown,
         /*(*/ [y,
           find_obj(
-            LOCALS.x)] /*)*/] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [y] /*)*/,
-          object] /*)*/] /*2*/,
-      or(
+            LOCALS.x)] /*)*/: unknown) => {
+        or(
         memq(
           LOCALS.y,
           aobjs(
@@ -84,54 +64,37 @@ define(
         take_object(
           find_obj(
             LOCALS.x),
-          LOCALS.winner))),
-    LOCALS.objs))
+          LOCALS.winner))
+      },
+    LOCALS.objs)
+  }
 
-define(
-  cexit,
-  /*(*/ [flid,
-    rmid,
-    "OPTIONAL",
+FUNCTIONS.cexit = 
+  (flid: or(
+        atom,
+        string),
+    rmid: or(
+        atom,
+        string),
     /*(*/ [str,
-      null] /*)*/,
+      null] /*)*/?: unknown,
     /*(*/ [flag,
-      null] /*)*/,
+      null] /*)*/: unknown,
     /*(*/ [funct,
-      null] /*)*/,
-    "AUX",
+      null] /*)*/: unknown,
+    "AUX": unknown,
     /*(*/ [fval,
-      null] /*)*/,
-    atm] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [str] /*)*/,
-      or(
-        false,
-        string),
-      /*(*/ [flid,
-        rmid] /*)*/,
-      or(
+      null] /*)*/: unknown,
+    atm: or(
         atom,
-        string),
-      /*(*/ [atm,
-        funct] /*)*/,
-      or(
-        atom,
-        false),
-      /*(*/ [fval] /*)*/,
-      or(
-        applicable,
-        false),
-      /*(*/ [flag] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
-  cond(
+        false)) => {
+    cond(
     /*(*/ [type_Q(
         LOCALS.flid,
         atom),
       LOCALS.flid = spname(
-          LOCALS.flid)] /*)*/),
-  LOCALS.atm = or(
+          LOCALS.flid)] /*)*/)
+LOCALS.atm = or(
       lookup(
         LOCALS.flid,
         get(
@@ -141,33 +104,23 @@ define(
         LOCALS.flid,
         get(
           flag,
-          oblist))),
-  setg(
+          oblist)))
+setg(
     LOCALS.atm,
-    LOCALS.flag),
-  chtype(
+    LOCALS.flag)
+chtype(
     vector(
       LOCALS.atm,
       find_room(
         LOCALS.rmid),
       LOCALS.str,
       LOCALS.funct),
-    cexit))
+    cexit)
+  }
 
-define(
-  exit,
-  /*(*/ ["TUPLE",
-    pairs,
-    "AUX",
-    /*(*/ [dobl,
-      GLOBALS.directions] /*)*/,
-    /*(*/ [frob,
-      ivector(
-        length(
-          LOCALS.pairs))] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [pairs] /*)*/,
-      tuple(
+FUNCTIONS.exit = 
+  ("TUPLE": unknown,
+    pairs: tuple(
         /*[*/ [rest,
           string,
           or(
@@ -175,15 +128,14 @@ define(
             cexit,
             string,
             atom)] /*]*/),
-      /*(*/ [dir] /*)*/,
-      list(
-        /*[*/ [rest,
-          atom] /*]*/),
-      /*(*/ [frob] /*)*/,
-      vector,
-      /*(*/ [dobl] /*)*/,
-      oblist] /*)*/] /*2*/,
-  repeat(
+    "AUX": unknown,
+    /*(*/ [dobl,
+      GLOBALS.directions] /*)*/: unknown,
+    /*(*/ [frob,
+      ivector(
+        length(
+          LOCALS.pairs))] /*)*/: unknown) => {
+    repeat(
     /*(*/ [atm,
       rm,
       /*(*/ [f,
@@ -248,84 +200,63 @@ define(
               LOCALS.pairs,
               2)),
         return(
-          )] /*)*/)),
-  chtype(
+          )] /*)*/))
+chtype(
     LOCALS.frob,
-    exit))
+    exit)
+  }
 
-define(
-  room,
-  /*(*/ [id,
-    d1,
-    d2,
-    lit_Q,
-    ex,
-    "OPTIONAL",
-    /*(*/ [objs,
-      /*(*/ [] /*)*/] /*)*/,
-    /*(*/ [app,
-      null] /*)*/,
-    /*(*/ [val,
-      0] /*)*/,
-    /*(*/ [bit,
-      GLOBALS.rlandbit] /*)*/,
-    "AUX",
-    /*(*/ [rm,
-      find_room(
-        LOCALS.id)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [id] /*)*/,
-      or(
+FUNCTIONS.room = 
+  (id: or(
         string,
         atom),
-      /*(*/ [d1,
-        d2] /*)*/,
-      string,
-      /*(*/ [lit_Q] /*)*/,
-      or(
+    d1: string,
+    d2: string,
+    lit_Q: or(
         atom,
         form,
         false),
-      /*(*/ [ex] /*)*/,
-      exit,
-      /*(*/ [app] /*)*/,
-      or(
-        form,
-        false,
-        atom),
-      /*(*/ [val,
-        bit] /*)*/,
-      fix,
-      /*(*/ [rm] /*)*/,
-      room] /*)*/] /*2*/,
-  GLOBALS.score_max = _(
+    ex: exit,
+    /*(*/ [objs,
+      /*(*/ [] /*)*/] /*)*/?: unknown,
+    /*(*/ [app,
+      null] /*)*/: unknown,
+    /*(*/ [val,
+      0] /*)*/: unknown,
+    /*(*/ [bit,
+      GLOBALS.rlandbit] /*)*/: unknown,
+    "AUX": unknown,
+    /*(*/ [rm,
+      find_room(
+        LOCALS.id)] /*)*/: unknown) => {
+    GLOBALS.score_max = _(
       GLOBALS.score_max,
-      LOCALS.val),
-  put(
+      LOCALS.val)
+put(
     LOCALS.rm,
     GLOBALS.rbits,
-    LOCALS.bit),
-  put(
+    LOCALS.bit)
+put(
     LOCALS.rm,
     GLOBALS.rval,
-    LOCALS.val),
-  put(
+    LOCALS.val)
+put(
     LOCALS.rm,
     GLOBALS.robjs,
-    LOCALS.objs),
-  put(
+    LOCALS.objs)
+put(
     LOCALS.rm,
     GLOBALS.rdesc1,
-    LOCALS.d1),
-  put(
+    LOCALS.d1)
+put(
     LOCALS.rm,
     GLOBALS.rdesc2,
-    LOCALS.d2),
-  put(
+    LOCALS.d2)
+put(
     LOCALS.rm,
     GLOBALS.rexits,
-    LOCALS.ex),
-  put(
+    LOCALS.ex)
+put(
     LOCALS.rm,
     GLOBALS.raction,
     cond(
@@ -334,8 +265,8 @@ define(
           false,
           form),
         null] /*)*/,
-      /*(*/ [LOCALS.app] /*)*/)),
-  put(
+      /*(*/ [LOCALS.app] /*)*/))
+put(
     LOCALS.rm,
     GLOBALS.rlight_Q,
     cond(
@@ -344,34 +275,26 @@ define(
           form),
         null] /*)*/,
       /*(*/ [t,
-        LOCALS.lit_Q] /*)*/)),
-  mapf(
+        LOCALS.lit_Q] /*)*/))
+mapf(
     null,
-    function(
-      /*(*/ [x] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x] /*)*/,
-          object] /*)*/] /*2*/,
-      put(
+    /* FUNCTION */
+      (x: object) => {
+        put(
         LOCALS.x,
         GLOBALS.oroom,
-        LOCALS.rm)),
+        LOCALS.rm)
+      },
     robjs(
-      LOCALS.rm)),
-  LOCALS.rm)
+      LOCALS.rm))
+  }
 
-define(
-  sobject,
-  /*(*/ [id,
-    str,
-    "TUPLE",
-    tup] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [id] /*)*/,
-      string,
-      /*(*/ [tup] /*)*/,
-      tuple] /*)*/] /*2*/,
-  object(
+FUNCTIONS.sobject = 
+  (id: string,
+    str: unknown,
+    "TUPLE": unknown,
+    tup: tuple) => {
+    object(
     LOCALS.id,
     "",
     LOCALS.str,
@@ -381,23 +304,16 @@ define(
     null,
     _(
       _X,
-      LOCALS.tup)))
+      LOCALS.tup))
+  }
 
-define(
-  aobject,
-  /*(*/ [id,
-    str,
-    app,
-    "TUPLE",
-    tup] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [id] /*)*/,
-      string,
-      /*(*/ [tup] /*)*/,
-      tuple,
-      /*(*/ [app] /*)*/,
-      atom] /*)*/] /*2*/,
-  object(
+FUNCTIONS.aobject = 
+  (id: string,
+    str: unknown,
+    app: atom,
+    "TUPLE": unknown,
+    tup: tuple) => {
+    object(
     LOCALS.id,
     "",
     LOCALS.str,
@@ -407,75 +323,51 @@ define(
     null,
     _(
       _X,
-      LOCALS.tup)))
+      LOCALS.tup))
+  }
 
-define(
-  object,
-  /*(*/ [id,
-    desc1,
-    desc2,
-    desco,
-    app,
-    conts,
-    can,
-    flags,
-    "OPTIONAL",
-    /*(*/ [light_Q,
-      0] /*)*/,
-    /*(*/ [s1,
-      0] /*)*/,
-    /*(*/ [s2,
-      0] /*)*/,
-    /*(*/ [size,
-      5] /*)*/,
-    /*(*/ [capac,
-      0] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [id] /*)*/,
-      or(
+FUNCTIONS.object = 
+  (id: or(
         atom,
         string),
-      /*(*/ [desc1,
-        desc2] /*)*/,
-      string,
-      /*(*/ [app] /*)*/,
-      or(
+    desc1: string,
+    desc2: string,
+    desco: or(
+        string,
+        false),
+    app: or(
         false,
         form,
         atom),
-      /*(*/ [conts] /*)*/,
-      list(
+    conts: list(
         /*[*/ [rest,
           object] /*]*/),
-      /*(*/ [can] /*)*/,
-      or(
+    can: or(
         false,
         object),
-      /*(*/ [flags] /*)*/,
-      primtype(
+    flags: primtype(
         word),
-      /*(*/ [size,
-        capac] /*)*/,
-      fix,
-      /*(*/ [light_Q,
-        s1,
-        s2] /*)*/,
-      fix,
-      /*(*/ [desco] /*)*/,
-      or(
-        string,
-        false)] /*)*/] /*2*/,
-  GLOBALS.score_max = _(
+    /*(*/ [light_Q,
+      0] /*)*/?: unknown,
+    /*(*/ [s1,
+      0] /*)*/: unknown,
+    /*(*/ [s2,
+      0] /*)*/: unknown,
+    /*(*/ [size,
+      5] /*)*/: unknown,
+    /*(*/ [capac,
+      0] /*)*/: unknown) => {
+    GLOBALS.score_max = _(
       GLOBALS.score_max,
       LOCALS.s1,
-      LOCALS.s2),
-  or(
+      LOCALS.s2)
+or(
     0_Q(
       LOCALS.light_Q),
     LOCALS.flags = _(
         LOCALS.flags,
-        GLOBALS.lightbit)),
-  put(
+        GLOBALS.lightbit))
+put(
     put(
       put(
         put(
@@ -518,23 +410,16 @@ define(
           false,
           form),
         null] /*)*/,
-      /*(*/ [LOCALS.app] /*)*/)))
+      /*(*/ [LOCALS.app] /*)*/))
+  }
 
-define(
-  find_prep,
-  /*(*/ [str,
-    "AUX",
+FUNCTIONS.find_prep = 
+  (str: string,
+    "AUX": unknown,
     /*(*/ [atm,
       add_word(
-        LOCALS.str)] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [str] /*)*/,
-      string,
-      /*(*/ [atm] /*)*/,
-      or(
-        false,
-        atom)] /*)*/] /*2*/,
-  cond(
+        LOCALS.str)] /*)*/: unknown) => {
+    cond(
     /*(*/ [gassigned_Q(
         LOCALS.atm),
       cond(
@@ -548,15 +433,17 @@ define(
         LOCALS.atm,
         chtype(
           LOCALS.atm,
-          prep))] /*)*/))
+          prep))] /*)*/)
+  }
 
-define(
-  add_action,
-  /*(*/ [nam,
-    str,
-    "TUPLE",
-    decl,
-    "AUX",
+FUNCTIONS.add_action = 
+  (nam: string,
+    str: string,
+    "TUPLE": unknown,
+    decl: tuple(
+        /*[*/ [rest,
+          vector] /*]*/),
+    "AUX": unknown,
     /*(*/ [atm,
       or(
         lookup(
@@ -564,18 +451,8 @@ define(
           GLOBALS.actions),
         insert(
           LOCALS.nam,
-          GLOBALS.actions))] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [nam,
-        str] /*)*/,
-      string,
-      /*(*/ [decl] /*)*/,
-      tuple(
-        /*[*/ [rest,
-          vector] /*]*/),
-      /*(*/ [atm] /*)*/,
-      atom] /*)*/] /*2*/,
-  setg(
+          GLOBALS.actions))] /*)*/: unknown) => {
+    setg(
     LOCALS.atm,
     chtype(
       /*[*/ [LOCALS.atm,
@@ -583,105 +460,79 @@ define(
           _X,
           LOCALS.decl),
         LOCALS.str] /*]*/,
-      action)),
-  LOCALS.atm)
+      action))
+  }
 
-define(
-  add_directions,
-  /*(*/ ["TUPLE",
-    nms,
-    "AUX",
-    /*(*/ [dir,
-      GLOBALS.directions] /*)*/,
-    atm] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [nms] /*)*/,
-      tuple(
+FUNCTIONS.add_directions = 
+  ("TUPLE": unknown,
+    nms: tuple(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [dir] /*)*/,
-      oblist,
-      /*(*/ [atm] /*)*/,
-      atom] /*)*/] /*2*/,
-  mapf(
+    "AUX": unknown,
+    /*(*/ [dir,
+      GLOBALS.directions] /*)*/: unknown,
+    atm: atom) => {
+    mapf(
     null,
     /* FUNCTION */
-      (x) => (
-      setg,
-      LOCALS.atm = or(
+      (x) => {
+        setg(
+        LOCALS.atm = or(
             lookup(
               LOCALS.x,
               LOCALS.dir),
             insert(
               LOCALS.x,
               LOCALS.dir)),
-      chtype(
+        chtype(
           LOCALS.atm,
-          direction)),
-    LOCALS.nms))
+          direction))
+      },
+    LOCALS.nms)
+  }
 
-define(
-  dsynonym,
-  /*(*/ [str,
-    "TUPLE",
-    nms,
-    "AUX",
-    val,
-    /*(*/ [dir,
-      GLOBALS.directions] /*)*/,
-    atm] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [atm] /*)*/,
-      atom,
-      /*(*/ [str] /*)*/,
-      string,
-      /*(*/ [nms] /*)*/,
-      tuple(
+FUNCTIONS.dsynonym = 
+  (str: string,
+    "TUPLE": unknown,
+    nms: tuple(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [val] /*)*/,
-      direction,
-      /*(*/ [dir] /*)*/,
-      oblist] /*)*/] /*2*/,
-  LOCALS.val = add_directions(
-      LOCALS.str),
-  mapf(
+    "AUX": unknown,
+    val: direction,
+    /*(*/ [dir,
+      GLOBALS.directions] /*)*/: unknown,
+    atm: atom) => {
+    LOCALS.val = add_directions(
+      LOCALS.str)
+mapf(
     null,
     /* FUNCTION */
-      (x) => (
-      setg,
-      LOCALS.atm = or(
+      (x) => {
+        setg(
+        LOCALS.atm = or(
             lookup(
               LOCALS.x,
               LOCALS.dir),
             insert(
               LOCALS.x,
               LOCALS.dir)),
-      LOCALS.val),
-    LOCALS.nms))
+        LOCALS.val)
+      },
+    LOCALS.nms)
+  }
 
-define(
-  vsynonym,
-  /*(*/ [n1,
-    "TUPLE",
-    n2,
-    "AUX",
-    atm,
-    val] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [n1] /*)*/,
-      string,
-      /*(*/ [n2] /*)*/,
-      tuple(
+FUNCTIONS.vsynonym = 
+  (n1: string,
+    "TUPLE": unknown,
+    n2: tuple(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [atm] /*)*/,
-      or(
+    "AUX": unknown,
+    atm: or(
         false,
         atom),
-      /*(*/ [val] /*)*/,
-      any] /*)*/] /*2*/,
-  cond(
+    val: any) => {
+    cond(
     /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
           GLOBALS.words),
@@ -689,13 +540,14 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (x) => (
-          setg,
-          add_word(
+          (x) => {
+            setg(
+            add_word(
               LOCALS.x),
-          LOCALS.val),
-        LOCALS.n2)] /*)*/),
-  cond(
+            LOCALS.val)
+          },
+        LOCALS.n2)] /*)*/)
+cond(
     /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
           GLOBALS.actions),
@@ -703,166 +555,130 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (x) => (
-          setg,
-          or(
+          (x) => {
+            setg(
+            or(
               lookup(
                 LOCALS.x,
                 GLOBALS.actions),
               insert(
                 LOCALS.x,
                 GLOBALS.actions)),
-          LOCALS.val),
-        LOCALS.n2)] /*)*/))
+            LOCALS.val)
+          },
+        LOCALS.n2)] /*)*/)
+  }
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-define(
-  add_word,
-  /*(*/ [w] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [w] /*)*/,
-      string] /*)*/] /*2*/,
-  or(
+FUNCTIONS.add_word = 
+  (w: string) => {
+    or(
     lookup(
       LOCALS.w,
       GLOBALS.words),
     insert(
       LOCALS.w,
-      GLOBALS.words)))
+      GLOBALS.words))
+  }
 
-define(
-  add_buzz,
-  /*(*/ ["TUPLE",
-    w] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [w] /*)*/,
-      tuple(
+FUNCTIONS.add_buzz = 
+  ("TUPLE": unknown,
+    w: tuple(
         /*[*/ [rest,
-          string] /*]*/)] /*)*/] /*2*/,
-  mapf(
+          string] /*]*/)) => {
+    mapf(
     null,
-    function(
-      /*(*/ [x] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x] /*)*/,
-          string] /*)*/] /*2*/,
-      setg(
+    /* FUNCTION */
+      (x: string) => {
+        setg(
         add_word(
           LOCALS.x),
         chtype(
           LOCALS.x,
-          buzz))),
-    LOCALS.w))
+          buzz))
+      },
+    LOCALS.w)
+  }
 
-define(
-  add_zork,
-  /*(*/ [nm,
-    "TUPLE",
-    w] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [nm] /*)*/,
-      atom,
-      /*(*/ [w] /*)*/,
-      tuple(
+FUNCTIONS.add_zork = 
+  (nm: atom,
+    "TUPLE": unknown,
+    w: tuple(
         /*[*/ [rest,
-          string] /*]*/)] /*)*/] /*2*/,
-  mapf(
+          string] /*]*/)) => {
+    mapf(
     null,
-    function(
-      /*(*/ [x,
-        "AUX",
-        atm] /*)*/,
-      /*#*/ [decl,
-        /*(*/ [/*(*/ [x] /*)*/,
-          string,
-          /*(*/ [atm] /*)*/,
-          atom] /*)*/] /*2*/,
-      setg(
+    /* FUNCTION */
+      (x: string,
+        "AUX": unknown,
+        atm: atom) => {
+        setg(
         LOCALS.atm = add_word(
             LOCALS.x),
         chtype(
           LOCALS.atm,
-          LOCALS.nm))),
-    LOCALS.w))
+          LOCALS.nm))
+      },
+    LOCALS.w)
+  }
 
-define(
-  add_object,
-  /*(*/ [obj,
-    names,
-    "OPTIONAL",
-    /*(*/ [adj,
-      () => /*[*/ [] /*]*/] /*)*/,
-    "AUX",
-    /*(*/ [objs,
-      GLOBALS.object_obl] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [names,
-        adj] /*)*/,
-      vector(
+FUNCTIONS.add_object = 
+  (obj: object,
+    names: vector(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [objs] /*)*/,
-      oblist] /*)*/] /*2*/,
-  put(
+    /*(*/ [adj,
+      () => /*[*/ [] /*]*/] /*)*/?: unknown,
+    "AUX": unknown,
+    /*(*/ [objs,
+      GLOBALS.object_obl] /*)*/: unknown) => {
+    put(
     LOCALS.obj,
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
-      function(
-        /*(*/ [x] /*)*/,
-        /*#*/ [decl,
-          /*(*/ [/*(*/ [x] /*)*/,
-            string] /*)*/] /*2*/,
-        or(
+      /* FUNCTION */
+        (x: string) => {
+          or(
           lookup(
             LOCALS.x,
             LOCALS.objs),
           insert(
             LOCALS.x,
-            LOCALS.objs))),
-      LOCALS.names)),
-  put(
+            LOCALS.objs))
+        },
+      LOCALS.names))
+put(
     LOCALS.obj,
     GLOBALS.oadjs,
     mapf(
       GLOBALS.uvector,
       /* FUNCTION */
-        (w) => (
-        add_zork,
-        adjective,
-        LOCALS.w),
-      LOCALS.adj)),
-  chutype(
+        (w) => {
+          add_zork(
+          adjective,
+          LOCALS.w)
+        },
+      LOCALS.adj))
+chutype(
     oadjs(
       LOCALS.obj),
-    adjective),
-  LOCALS.obj)
+    adjective)
+  }
 
-define(
-  synonym,
-  /*(*/ [n1,
-    "TUPLE",
-    n2,
-    "AUX",
-    atm,
-    val] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [n1] /*)*/,
-      string,
-      /*(*/ [n2] /*)*/,
-      tuple(
+FUNCTIONS.synonym = 
+  (n1: string,
+    "TUPLE": unknown,
+    n2: tuple(
         /*[*/ [rest,
           string] /*]*/),
-      /*(*/ [atm] /*)*/,
-      or(
+    "AUX": unknown,
+    atm: or(
         false,
         atom),
-      /*(*/ [val] /*)*/,
-      any] /*)*/] /*2*/,
-  cond(
+    val: any) => {
+    cond(
     /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
           GLOBALS.words),
@@ -870,23 +686,20 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (x) => (
-          setg,
-          add_word(
+          (x) => {
+            setg(
+            add_word(
               LOCALS.x),
-          LOCALS.val),
-        LOCALS.n2)] /*)*/))
+            LOCALS.val)
+          },
+        LOCALS.n2)] /*)*/)
+  }
 
-define(
-  add_abbrev,
-  /*(*/ [x,
-    y,
-    "AUX"] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [x,
-        y] /*)*/,
-      string] /*)*/] /*2*/,
-  setg(
+FUNCTIONS.add_abbrev = 
+  (x: string,
+    y: string,
+    "AUX": unknown) => {
+    setg(
     add_word(
       LOCALS.x),
     or(
@@ -895,25 +708,19 @@ define(
         GLOBALS.words),
       insert(
         LOCALS.y,
-        GLOBALS.words))))
+        GLOBALS.words)))
+  }
 
-define(
-  add_demon,
-  /*(*/ [x] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [x] /*)*/,
-      hack] /*)*/] /*2*/,
-  cond(
+FUNCTIONS.add_demon = 
+  (x: hack) => {
+    cond(
     /*(*/ [mapr(
         null,
-        function(
-          /*(*/ [y] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [y] /*)*/,
-              list(
+        /* FUNCTION */
+          (y: list(
                 /*[*/ [rest,
-                  hack] /*]*/)] /*)*/] /*2*/,
-          cond(
+                  hack] /*]*/)) => {
+            cond(
             /*(*/ [_EQ_Q(
                 haction(
                   1(
@@ -925,100 +732,87 @@ define(
                 1,
                 LOCALS.x),
               mapleave(
-                t)] /*)*/)),
+                t)] /*)*/)
+          },
         GLOBALS.demons)] /*)*/,
     /*(*/ [GLOBALS.demons = /*(*/ [LOCALS.x,
           _X,
-          GLOBALS.demons] /*)*/] /*)*/))
+          GLOBALS.demons] /*)*/] /*)*/)
+  }
 
-define(
-  add_star,
-  /*(*/ [obj] /*)*/,
-  GLOBALS.stars = /*(*/ [LOCALS.obj,
+FUNCTIONS.add_star = 
+  (obj) => {
+    GLOBALS.stars = /*(*/ [LOCALS.obj,
       _X,
-      GLOBALS.stars] /*)*/)
+      GLOBALS.stars] /*)*/
+  }
 
-define(
-  add_actor,
-  /*(*/ [adv,
-    "AUX",
+FUNCTIONS.add_actor = 
+  (adv: adv,
+    "AUX": unknown,
     /*(*/ [actors,
-      GLOBALS.actors] /*)*/] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [adv] /*)*/,
-      adv,
-      /*(*/ [actors] /*)*/,
-      list(
-        /*[*/ [rest,
-          adv] /*]*/)] /*)*/] /*2*/,
-  cond(
+      GLOBALS.actors] /*)*/: unknown) => {
+    cond(
     /*(*/ [mapf(
         null,
-        function(
-          /*(*/ [x] /*)*/,
-          /*#*/ [decl,
-            /*(*/ [/*(*/ [x] /*)*/,
-              adv] /*)*/] /*2*/,
-          cond(
+        /* FUNCTION */
+          (x: adv) => {
+            cond(
             /*(*/ [_EQ_Q(
                 aobj(
                   LOCALS.x),
                 aobj(
                   LOCALS.adv)),
               mapleave(
-                t)] /*)*/)),
+                t)] /*)*/)
+          },
         LOCALS.actors)] /*)*/,
     /*(*/ [GLOBALS.actors = /*(*/ [LOCALS.adv,
           _X,
-          LOCALS.actors] /*)*/] /*)*/),
-  LOCALS.adv)
+          LOCALS.actors] /*)*/] /*)*/)
+  }
 
-define(
-  add_desc,
-  /*(*/ [obj,
-    str] /*)*/,
-  /*#*/ [decl,
-    /*(*/ [/*(*/ [obj] /*)*/,
-      object,
-      /*(*/ [str] /*)*/,
-      string] /*)*/] /*2*/,
-  put(
+FUNCTIONS.add_desc = 
+  (obj: object,
+    str: string) => {
+    put(
     LOCALS.obj,
     GLOBALS.oread,
-    LOCALS.str))
+    LOCALS.str)
+  }
 
-define(
-  sadd_action,
-  /*(*/ [str1,
-    atm] /*)*/,
-  add_action(
+FUNCTIONS.sadd_action = 
+  (str1,
+  atm) => {
+    add_action(
     LOCALS.str1,
     "",
     /*[*/ [/*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/))
+        LOCALS.atm] /*]*/] /*]*/)
+  }
 
-define(
-  1add_action,
-  /*(*/ [str1,
-    str2,
-    atm] /*)*/,
-  add_action(
+FUNCTIONS.1add_action = 
+  (str1,
+  str2,
+  atm) => {
+    add_action(
     LOCALS.str1,
     LOCALS.str2,
     /*[*/ [obj,
       /*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/))
+        LOCALS.atm] /*]*/] /*]*/)
+  }
 
-define(
-  aadd_action,
-  /*(*/ [str1,
-    str2,
-    atm] /*)*/,
-  add_action(
+FUNCTIONS.aadd_action = 
+  (str1,
+  str2,
+  atm) => {
+    add_action(
     LOCALS.str1,
     LOCALS.str2,
     /*[*/ [/*(*/ [_1,
         aobjs,
         no_take] /*)*/,
       /*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/))
+        LOCALS.atm] /*]*/] /*]*/)
+  }
