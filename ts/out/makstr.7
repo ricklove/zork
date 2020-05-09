@@ -30,7 +30,7 @@ define(
         atom,
         false)),
   cond(
-    (type_q(
+    (type_Q(
         _name,
         string)
       cond(
@@ -132,7 +132,7 @@ define(
         atom,
         false)),
   cond(
-    (type_q(
+    (type_Q(
         _flid,
         atom)
       set(
@@ -218,17 +218,17 @@ define(
                 1(
                   _pairs),
                 _dobl)),
-            gassigned_q(
+            gassigned_Q(
               _atm),
-            type_q(
-              _.atm,
+            type_Q(
+              __atm,
               direction)))
         put(
           _f,
           1,
           _atm)
         cond(
-          (type_q(
+          (type_Q(
               2(
                 _pairs),
               string)
@@ -257,7 +257,7 @@ define(
             1(
               _pairs))))),
     cond(
-      (empty_q(
+      (empty_Q(
           set(
             pairs,
             rest(
@@ -274,7 +274,7 @@ define(
   (id
     d1
     d2
-    lit_q
+    lit_Q
     ex
     "OPTIONAL"
     (objs
@@ -297,7 +297,7 @@ define(
       (d1
         d2)
       string
-      (lit_q)
+      (lit_Q)
       or(
         atom,
         form,
@@ -317,7 +317,7 @@ define(
   setg(
     score_max,
     _(
-      _score-max,
+      _score_max,
       _val)),
   put(
     _rm,
@@ -347,7 +347,7 @@ define(
     _rm,
     _raction,
     cond(
-      (type_q(
+      (type_Q(
           _app,
           false,
           form)
@@ -355,14 +355,14 @@ define(
       (_app))),
   put(
     _rm,
-    _rlight_q,
+    _rlight_Q,
     cond(
-      (type_q(
-          _lit_q,
+      (type_Q(
+          _lit_Q,
           form)
         <>),
       (t
-        _lit_q))),
+        _lit_Q))),
   mapf(
     <>,
     function(
@@ -399,7 +399,7 @@ define(
     (),
     <>,
     _(
-      _.tup)))
+      _X_tup)))
 
 define(
   aobject,
@@ -425,7 +425,7 @@ define(
     (),
     <>,
     _(
-      _.tup)))
+      _X_tup)))
 
 define(
   object,
@@ -438,7 +438,7 @@ define(
     can
     flags
     "OPTIONAL"
-    (light_q
+    (light_Q
       0)
     (s1
       0)
@@ -475,7 +475,7 @@ define(
       (size
         capac)
       fix
-      (light_q
+      (light_Q
         s1
         s2)
       fix
@@ -486,12 +486,12 @@ define(
   setg(
     score_max,
     _(
-      _score-max,
+      _score_max,
       _s1,
       _s2)),
   or(
-    0_q(
-      _light_q),
+    0_Q(
+      _light_Q),
     set(
       flags,
       _(
@@ -519,8 +519,8 @@ define(
                       _size),
                     _odesco,
                     _desco),
-                  _olight_q,
-                  _light_q),
+                  _olight_Q,
+                  _light_Q),
                 _oflags,
                 _flags),
               _ofval,
@@ -535,7 +535,7 @@ define(
       _desc2),
     _oaction,
     cond(
-      (type_q(
+      (type_Q(
           _app,
           false,
           form)
@@ -557,15 +557,15 @@ define(
         false,
         atom)),
   cond(
-    (gassigned_q(
+    (gassigned_Q(
         _atm)
       cond(
-        (type_q(
-            _.atm,
+        (type_Q(
+            __atm,
             prep)
-          _.atm),
+          __atm),
         (error(
-            no_prep!-errors)))),
+            no_prep_X_errors)))),
     (setg(
         _atm,
         chtype(
@@ -602,7 +602,7 @@ define(
     chtype(
       [_atm
         make_action(
-          _.decl)
+          _X_decl)
         _str],
       action)),
   _atm)
@@ -716,7 +716,7 @@ define(
           _words))
       set(
         val,
-        _.atm)
+        __atm)
       mapf(
         <>,
         function(
@@ -734,7 +734,7 @@ define(
           _actions))
       set(
         val,
-        _.atm)
+        __atm)
       mapf(
         <>,
         function(
@@ -832,7 +832,7 @@ define(
       () => [])
     "AUX"
     (objs
-      _object-obl)),
+      _object_obl)),
   #decl
     ((obj)
       object
@@ -907,7 +907,7 @@ define(
           _words))
       set(
         val,
-        _.atm)
+        __atm)
       mapf(
         <>,
         function(
@@ -955,7 +955,7 @@ define(
                 [rest
                   hack])),
           cond(
-            (eq_q(
+            (_EQ_Q(
                 haction(
                   1(
                     _y)),
@@ -971,7 +971,7 @@ define(
     (setg(
         demons,
         (_x
-          _,demons)))))
+          _X_demons)))))
 
 define(
   add_star,
@@ -979,7 +979,7 @@ define(
   setg(
     stars,
     (_obj
-      _,stars)))
+      _X_stars)))
 
 define(
   add_actor,
@@ -1003,7 +1003,7 @@ define(
             ((x)
               adv),
           cond(
-            (eq_q(
+            (_EQ_Q(
                 aobj(
                   _x),
                 aobj(
@@ -1014,7 +1014,7 @@ define(
     (setg(
         actors,
         (_adv
-          _.actors)))),
+          _X_actors)))),
   _adv)
 
 define(

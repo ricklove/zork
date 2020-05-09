@@ -1,5 +1,5 @@
 and(
-  l_q(
+  l_Q(
     _muddle,
     100),
   use(
@@ -46,7 +46,7 @@ defmac(
   (() => obj
     () => bit),
   form(
-    neq_q,
+    n_EQ_Q,
     form(
       chtype,
       form(
@@ -63,7 +63,7 @@ defmac(
   (() => rm
     () => bit),
   form(
-    neq_q,
+    n_EQ_Q,
     form(
       chtype,
       form(
@@ -172,12 +172,12 @@ newstruc(
   rdesc2,
   string,
   // short description,
-  rseen_q,
+  rseen_Q,
   or(
     atom,
     false),
   // visited?,
-  rlight_q,
+  rlight_Q,
   or(
     atom,
     false),
@@ -370,7 +370,7 @@ defmac(
   (() => v
     () => bit),
   form(
-    neq_q,
+    n_EQ_Q,
     form(
       chtype,
       form(
@@ -413,7 +413,7 @@ gdecl(
       false,
       atom)))
 
-and_q(
+and_Q(
   msetg(
     oflag,
     1),
@@ -484,7 +484,7 @@ newstruc(
 
 flagword(
   astaggered,
-  staggered_q,
+  staggered_Q,
   // staggered?)
 
 // object
@@ -528,12 +528,12 @@ newstruc(
   primtype(
     word),
   // flags THIS MUST BE SAME OFFSET AS AFLAGS!,
-  otouch_q,
+  otouch_Q,
   or(
     atom,
     false),
   // has this been touched?,
-  olight_q,
+  olight_Q,
   fix,
   // light producer?,
   ofval,
@@ -545,7 +545,7 @@ newstruc(
   orand,
   any,
   // random slot,
-  oopen_q,
+  oopen_Q,
   or(
     atom,
     false),
@@ -576,28 +576,28 @@ newstruc(
 
 flagword(
   ovison,
-  ovis_q,
+  ovis_Q,
   // visible?,
   readbit,
-  readable_q,
+  readable_Q,
   // readable?,
   takebit,
-  can_take_q,
+  can_take_Q,
   // takeable?,
   doorbit,
-  door_q,
+  door_Q,
   // object is door,
   transbit,
-  transparent_q,
+  transparent_Q,
   // object is transparent,
   foodbit,
-  edible_q,
+  edible_Q,
   // object is food,
   ndescbit,
   <>,
   // object not describable,
   drinkbit,
-  drinkable_q,
+  drinkable_Q,
   // object is drinkable,
   contbit,
   <>,
@@ -609,7 +609,7 @@ flagword(
   <>,
   // object is victim,
   burnbit,
-  burnable_q,
+  burnable_Q,
   // object is flammable,
   flamebit,
   <>,
@@ -638,7 +638,7 @@ flagword(
   tiebit,
   <>,
   // object can be tied,
-  echo_room-bit,
+  echo_room_bit,
   <>,
   // nothing can be taken in echo room,
   actorbit,
@@ -648,7 +648,7 @@ flagword(
   <>,
   // object is a weapon,
   fightbit,
-  fighting_q,
+  fighting_Q,
   // object is in melee,
   villain,
   <>,
@@ -659,7 +659,7 @@ flagword(
   trytakebit,
   <>,
   // object wants to handle not being taken,
-  no_check-bit,
+  no_check_bit,
   <>,
   // ignore checks (in put & drop):  for EVERY and VALUA)
 
@@ -669,12 +669,12 @@ flagword(
 
 msetg(
   ovisoff,
-  _777777777776*)
+  _777777777776_)
 
 "can i be opened?"
 
 defmac(
-  openable_q,
+  openable_Q,
   (() => obj),
   form(
     trnn,
@@ -687,7 +687,7 @@ defmac(
 "complement of the bit state"
 
 defmac(
-  describable_q,
+  describable_Q,
   (() => obj),
   form(
     not,
@@ -699,7 +699,7 @@ defmac(
 "if object is a light or aflame, then flaming"
 
 defmac(
-  flaming_q,
+  flaming_Q,
   (() => obj),
   form(
     and,
@@ -708,28 +708,28 @@ defmac(
       _obj,
       _flamebit),
     form(
-      1_q,
+      1_Q,
       form(
-        olight_q,
+        olight_Q,
         _obj))))
 
 "if object visible and open or transparent, can see inside it"
 
 defmac(
-  see_inside_q,
+  see_inside_Q,
   (() => obj),
   form(
     and,
     form(
-      ovis_q,
+      ovis_Q,
       _obj),
     form(
       or,
       form(
-        transparent_q,
+        transparent_Q,
         _obj),
       form(
-        oopen_q,
+        oopen_Q,
         _obj))))
 
 _
@@ -926,7 +926,7 @@ defmac(
             foo))
         <>),
       (form(
-          type_q,
+          type_Q,
           form(
             lval,
             foo),
@@ -1145,7 +1145,7 @@ define(
           object),
       cond(
         (and(
-            g_q(
+            g_Q(
               otval(
                 _x),
               0),
@@ -1163,7 +1163,7 @@ define(
           set(
             newlist,
             (_x
-              _.newlist))))),
+              _X_newlist))))),
     aobjs(
       _win)),
   _newlist)
@@ -1193,7 +1193,7 @@ define(
           object),
       cond(
         (and(
-            g_q(
+            g_Q(
               otval(
                 _x),
               0),
@@ -1201,7 +1201,7 @@ define(
               trnn(
                 _x,
                 _sacredbit)),
-            ovis_q(
+            ovis_Q(
               _x),
             prob(
               _prob))
@@ -1209,13 +1209,13 @@ define(
             _x)
           put(
             _x,
-            _otouch_q,
+            _otouch_Q,
             t)
           set(
             newlist,
             (_x
-              _.newlist))),
-        (type_q(
+              _X_newlist))),
+        (type_Q(
             orand(
               _x),
             adv)
@@ -1230,7 +1230,7 @@ define(
   _newlist)
 
 define(
-  valuables_q,
+  valuables_Q,
   (adv),
   #decl
     ((adv)
@@ -1243,7 +1243,7 @@ define(
         ((x)
           object),
       cond(
-        (g_q(
+        (g_Q(
             otval(
               _x),
             0)
@@ -1253,7 +1253,7 @@ define(
       _adv)))
 
 define(
-  armed_q,
+  armed_Q,
   (adv
     "AUX"
     (weapons
@@ -1289,8 +1289,8 @@ define(
       (x),
       cond(
         (not(
-            0_q(
-              olight_q(
+            0_Q(
+              olight_Q(
                 _x)))
           mapleave(
             _x)))),
@@ -1323,7 +1323,7 @@ define(
         ((x)
           hack),
       cond(
-        (eq_q(
+        (_EQ_Q(
             hobj(
               _x),
             _obj)
@@ -1368,7 +1368,7 @@ defmac(
 
 define(
   yes_no,
-  (no_is-bad_q
+  (no_is_bad_Q
     "AUX"
     (inbuf
       _inbuf)
@@ -1377,7 +1377,7 @@ define(
   #decl
     ((inbuf)
       string
-      (no_is-bad_q)
+      (no_is_bad_Q)
       or(
         atom,
         false)),
@@ -1386,9 +1386,9 @@ define(
   readstring(
     _inbuf,
     _inchan,
-    _reader-string),
+    _reader_string),
   cond(
-    (_no-is-bad_q
+    (_no_is_bad_Q
       not(
         memq(
           1(
@@ -1409,7 +1409,7 @@ defmac(
   form(
     cond,
     (form(
-        type_q,
+        type_Q,
         _frob,
         atom)
       cond(
@@ -1446,13 +1446,13 @@ define(
   prog(
     (),
     cond(
-      (type_q(
+      (type_Q(
           _fn,
           fix)
         dispatch(
           _fn,
           _foo)),
-      (applicable_q(
+      (applicable_Q(
           _fn)
         cond(
           (_foo
@@ -1461,15 +1461,15 @@ define(
               _foo)),
           (apply(
               _fn)))),
-      (gassigned_q(
+      (gassigned_Q(
           _fn)
         set(
           fn,
-          _.fn)
+          __fn)
         again(
           )),
       (error(
-          unassigned_variable!-errors,
+          unassigned_variable_X_errors,
           _fn,
           da)))))
 
@@ -1491,7 +1491,7 @@ psetg(
 
 psetg(
   null_syn,
-  _,
+  _X,
   [])
 
 define(
@@ -1514,7 +1514,7 @@ define(
         atom,
         false)),
   cond(
-    (type_q(
+    (type_Q(
         _id,
         atom)
       set(
@@ -1527,17 +1527,17 @@ define(
           atm,
           lookup(
             _id,
-            _room-obl)),
-        gassigned_q(
+            _room_obl)),
+        gassigned_Q(
           _atm))
-      _.atm),
+      __atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            _room-obl)))
+            _room_obl)))
       setg(
         _atm,
         set(
@@ -1545,11 +1545,11 @@ define(
           chtype(
             vector(
               _atm,
-              _null-desc,
-              _null-desc,
+              _null_desc,
+              _null_desc,
               <>,
               <>,
-              _null-exit,
+              _null_exit,
               (),
               <>,
               0,
@@ -1560,7 +1560,7 @@ define(
       setg(
         rooms,
         (_room
-          _,rooms))
+          _X_rooms))
       _room)))
 
 define(
@@ -1583,7 +1583,7 @@ define(
       (value)
       object),
   cond(
-    (type_q(
+    (type_Q(
         _id,
         atom)
       set(
@@ -1596,26 +1596,26 @@ define(
           atm,
           lookup(
             _id,
-            _object-obl)),
-        gassigned_q(
+            _object_obl)),
+        gassigned_Q(
           _atm))
-      _.atm),
+      __atm),
     (or(
         _atm,
         set(
           atm,
           insert(
             _id,
-            _object-obl)))
+            _object_obl)))
       setg(
         _atm,
         set(
           obj,
           chtype(
             [_atm
-              _null-syn
-              _null-desc
-              _null-desc
+              _null_syn
+              _null_desc
+              _null_desc
               <>
               <>
               ()
@@ -1629,14 +1629,14 @@ define(
               <>
               5
               0
-              _null-syn
+              _null_syn
               <>
               <>],
             object)))
       setg(
         objects,
         (_obj
-          _,objects))
+          _X_objects))
       _obj)))
 
 define(
@@ -1654,19 +1654,19 @@ define(
         _frob)
       princ(
         "<>")),
-    (type_q(
+    (type_Q(
         _frob,
         rsubr,
         rsubr_entry)
       prin1(
         2(
           _frob))),
-    (type_q(
+    (type_Q(
         _frob,
         atom)
       prin1(
         _frob)),
-    (type_q(
+    (type_Q(
         _frob,
         offset)
       princ(

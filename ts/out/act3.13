@@ -19,13 +19,13 @@ define(
       object),
   cond(
     (or(
-        eq_q(
+        _EQ_Q(
           _vb,
-          _throw!-words),
-        eq_q(
+          _throw_X_words),
+        _EQ_Q(
           vname(
             _vb),
-          mung_-words))
+          mung_X_words))
       tell(
         "Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately.")
       trz(
@@ -63,9 +63,9 @@ define(
       (lcase)
       object),
   cond(
-    (neq_q(
+    (n_EQ_Q(
         _vb,
-        _read!-words)
+        _read_X_words)
       tell(
         "Although the implementers are dead, they foresaw that some cretin\nwould tamper with their remains.  Therefore, they took steps to\nprevent this.")
       set(
@@ -81,7 +81,7 @@ define(
           100))
       cond(
         (not(
-            empty_q(
+            empty_Q(
               _nl))
           or(
             oroom(
@@ -93,10 +93,10 @@ define(
           put(
             _lcase,
             _ocontents,
-            (_
+            (_X
               ocontents(
                 _lcase)
-              _.nl))))
+              _X_nl))))
       jigs_up(
         "Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life.")
       t)))
@@ -106,7 +106,7 @@ setg(
   0)
 
 setg(
-  bucket_top!-flag,
+  bucket_top_X_flag,
   <>)
 
 define(
@@ -147,14 +147,14 @@ define(
         buck)
       object),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _arg,
         read_in)
       <>),
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _c-int!-words),
+          _c_int_X_words),
         cond(
           (memq(
               _w,
@@ -164,23 +164,23 @@ define(
               _w)
             <>),
           (t)))),
-    (eq_q(
+    (_EQ_Q(
         _arg,
         read_out)
       cond(
         (and(
-            eq_q(
+            _EQ_Q(
               ocan(
                 _w),
               _buck),
             not(
-              _bucket-top!-flag))
+              _bucket_top_X_flag))
           tell(
             "The bucket rises and comes to a stop.")
           setg(
-            bucket_top!-flag,
+            bucket_top_X_flag,
             t)
-          pass_the-bucket(
+          pass_the_bucket(
             find_room(
               "TWELL"),
             _pv,
@@ -190,24 +190,24 @@ define(
             100)
           <>),
         (and(
-            _bucket-top!-flag,
-            neq_q(
+            _bucket_top_X_flag,
+            n_EQ_Q(
               ocan(
                 _w),
               _buck))
           tell(
             "The bucket descends and comes to a stop.")
           setg(
-            bucket_top!-flag,
+            bucket_top_X_flag,
             <>)
-          pass_the-bucket(
+          pass_the_bucket(
             find_room(
               "BWELL"),
             _pv,
             _buck))))))
 
 define(
-  pass_the-bucket,
+  pass_the_bucket,
   (r
     pv
     b
@@ -237,7 +237,7 @@ define(
     _b,
     _r),
   cond(
-    (eq_q(
+    (_EQ_Q(
         avehicle(
           _winner),
         _b)
@@ -271,18 +271,18 @@ define(
       room),
   cond(
     (and(
-        eq_q(
+        _EQ_Q(
           1(
             _pv),
-          _eat!-words),
-        eq_q(
+          _eat_X_words),
+        _EQ_Q(
           2(
             _pv),
           set(
             c,
             find_obj(
               "ECAKE"))),
-        eq_q(
+        _EQ_Q(
           _here,
           find_room(
             "ALICE")))
@@ -367,19 +367,19 @@ define(
         r)
       room),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _read!-words)
+        _read_X_words)
       cond(
         (_pi
           cond(
-            (eq_q(
+            (_EQ_Q(
                 _pi,
                 find_obj(
                   "BOTTL"))
               tell(
                 "The letters appear larger, but still are too small to be read.")),
-            (eq_q(
+            (_EQ_Q(
                 _pi,
                 find_obj(
                   "FLASK"))
@@ -387,11 +387,11 @@ define(
                 "The icing, now visible, says '",
                 1,
                 cond(
-                  (eq_q(
+                  (_EQ_Q(
                       _po,
                       _rice)
                     "Evaporate"),
-                  (eq_q(
+                  (_EQ_Q(
                       _po,
                       _oice)
                     "Explode"),
@@ -402,16 +402,16 @@ define(
         (tell(
             "The only writing legible is a capital E.  The rest is too small to\nbe clearly visible.")))),
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _eat!-words),
+          _eat_X_words),
         member(
           "ALI",
           spname(
             rid(
               _here))))
       cond(
-        (eq_q(
+        (_EQ_Q(
             _po,
             _oice)
           kill_obj(
@@ -419,7 +419,7 @@ define(
             _winner)
           iceboom(
             )),
-        (eq_q(
+        (_EQ_Q(
             _po,
             _bice)
           kill_obj(
@@ -428,7 +428,7 @@ define(
           tell(
             "The room around you seems to be getting smaller.")
           cond(
-            (eq_q(
+            (_EQ_Q(
                 _here,
                 find_room(
                   "ALISM"))
@@ -466,10 +466,10 @@ define(
             (jigs_up(
                 _crushed)))))),
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _throw!-words),
-        eq_q(
+          _throw_X_words),
+        _EQ_Q(
           _po,
           _oice),
         member(
@@ -483,13 +483,13 @@ define(
       iceboom(
         )),
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _throw!-words),
-        eq_q(
+          _throw_X_words),
+        _EQ_Q(
           _po,
           _rice),
-        eq_q(
+        _EQ_Q(
           _pi,
           find_obj(
             "POOL")))
@@ -519,21 +519,21 @@ define(
       (pa)
       verb),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _open!-words)
+        _open_X_words)
       mung_room(
         _here,
         "Noxious vapors prevent your entry.")
       jigs_up(
         _vapors)),
     (or(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _mung!-words),
-        eq_q(
+          _mung_X_words),
+        _EQ_Q(
           _pa,
-          _throw!-words))
+          _throw_X_words))
       tell(
         "The flask breaks into pieces.")
       set(
@@ -602,30 +602,30 @@ define(
       (foo)
       cexit),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _look!-words)
+        _look_X_words)
       tell(
         "You are in a room with a low ceiling which is circular in shape. \nThere are exits to the east and the southeast.")),
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _walk-in!-words),
-        _carousel-flip!-flag)
+          _walk_in_X_words),
+        _carousel_flip_X_flag)
       cond(
-        (_carousel-zoom!-flag
+        (_carousel_zoom_X_flag
           jigs_up(
             _spindizzy)),
         (tell(
             "As you enter, your compass starts spinning wildly.")
           <>))),
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _walk!-words)
+        _walk_X_words)
       cond(
         (and(
-            _carousel-flip!-flag,
-            eq_q(
+            _carousel_flip_X_flag,
+            _EQ_Q(
               _winner,
               _player))
           tell(
@@ -680,18 +680,18 @@ define(
       (pa)
       verb),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _look!-words)
+        _look_X_words)
       tell(
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south."))))
 
 setg(
-  carousel_zoom!-flag,
+  carousel_zoom_X_flag,
   <>)
 
 setg(
-  carousel_flip!-flag,
+  carousel_flip_X_flag,
   <>)
 
 define(
@@ -714,49 +714,49 @@ define(
       (pa)
       verb),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _push!-words)
+        _push_X_words)
       cond(
-        (eq_q(
+        (_EQ_Q(
             _winner,
             _player)
           jigs_up(
             "There is a giant spark and you are fried to a crisp.")),
-        (eq_q(
+        (_EQ_Q(
             _po,
             find_obj(
               "SQBUT"))
           cond(
-            (_carousel-zoom!-flag
+            (_carousel_zoom_X_flag
               tell(
                 "Nothing seems to happen.")),
             (setg(
-                carousel_zoom!-flag,
+                carousel_zoom_X_flag,
                 t)
               tell(
                 "The whirring increases in intensity slightly.")))),
-        (eq_q(
+        (_EQ_Q(
             _po,
             find_obj(
               "RNBUT"))
           cond(
-            (_carousel-zoom!-flag
+            (_carousel_zoom_X_flag
               setg(
-                carousel_zoom!-flag,
+                carousel_zoom_X_flag,
                 <>)
               tell(
                 "The whirring decreases in intensity slightly.")),
             (tell(
                 "Nothing seems to happen.")))),
-        (eq_q(
+        (_EQ_Q(
             _po,
             find_obj(
               "TRBUT"))
           setg(
-            carousel_flip!-flag,
+            carousel_flip_X_flag,
             not(
-              _carousel-flip!-flag))
+              _carousel_flip_X_flag))
           cond(
             (memq(
                 set(
@@ -777,7 +777,7 @@ psetg(
   "According to Prof. TAA of MIT Tech, the rapidly changing magnetic\nfields in the room are so intense as to cause you to be electrocuted. \nI really don't know, but in any event, something just killed you.")
 
 setg(
-  cage_solve!-flag,
+  cage_solve_X_flag,
   <>)
 
 define(
@@ -815,20 +815,20 @@ define(
     fl,
     and(
       not(
-        _cage-solve!-flag),
-      eq_q(
+        _cage_solve_X_flag),
+      _EQ_Q(
         _pa,
-        _take!-words))),
+        _take_X_words))),
   cond(
     (and(
         _fl,
-        eq_q(
+        _EQ_Q(
           _player,
           _winner))
       tell(
         "As you reach for the sphere, an iron cage falls from the ceiling\nto entrap you.  To make matters worse, poisonous gas starts coming\ninto the room.")
       cond(
-        (eq_q(
+        (_EQ_Q(
             oroom(
               _r),
             _here)
@@ -887,9 +887,9 @@ define(
           "RCAGE"),
         _here)
       t),
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _c-int!-words)
+        _c_int_X_words)
       mung_room(
         find_room(
           "CAGER"),
@@ -905,7 +905,7 @@ define(
   caged_room,
   (),
   cond(
-    (_cage-solve!-flag
+    (_cage_solve_X_flag
       setg(
         here,
         find_room(
@@ -956,17 +956,17 @@ define(
       adv),
   cond(
     (and(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _raise!-words),
-        eq_q(
+          _raise_X_words),
+        _EQ_Q(
           _po,
           find_obj(
             "CAGE")))
       tell(
         "The cage shakes and is hurled across the room.")
       clock_disable(
-        _sphere-clock)
+        _sphere_clock)
       setg(
         winner,
         _player)
@@ -1007,25 +1007,25 @@ define(
         _aroom,
         _c)
       setg(
-        cage_solve!-flag,
+        cage_solve_X_flag,
         t)),
     (or(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _eat!-words),
-        eq_q(
+          _eat_X_words),
+        _EQ_Q(
           _pa,
-          _drink!-words))
+          _drink_X_words))
       tell(
         "\"I am sorry but that action is difficult in the absence of a mouth.\")),
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _read!-words)
+        _read_X_words)
       tell(
         "\"My vision is not that good without eyes.\")),
     (memq(
         _pa,
-        _robot-actions)
+        _robot_actions)
       <>),
     (tell(
         "\"I am only a stupid robot and cannot perform that command.\"))))
@@ -1061,9 +1061,9 @@ define(
         false,
         object)),
   cond(
-    (eq_q(
+    (_EQ_Q(
         _pa,
-        _give!-words)
+        _give_X_words)
       set(
         aa,
         orand(
@@ -1076,7 +1076,7 @@ define(
         _aa,
         _aobjs,
         (_po
-          _
+          _X
           aobjs(
             _aa)))
       tell(
@@ -1086,19 +1086,19 @@ define(
           _po),
         "and nods his head-like appendage in thanks.")),
     (or(
-        eq_q(
+        _EQ_Q(
           _pa,
-          _throw!-words),
-        eq_q(
+          _throw_X_words),
+        _EQ_Q(
           _pa,
-          _mung!-words))
+          _mung_X_words))
       tell(
         "The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes.")
       remove_object(
         cond(
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _throw!-words)
+              _throw_X_words)
             _pi),
           (_po))))))
 
@@ -1110,7 +1110,7 @@ define(
         _prsvec))),
   cond(
     (memq(
-        door_-objects,
+        door_X_objects,
         onames(
           _prso))
       tell(

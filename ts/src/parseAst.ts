@@ -71,15 +71,25 @@ export class ZToken implements ZNodeBase {
     }
 };
 
-type OpenSymbol = '<' | '(' | '{' | '[' | '"' | '\'' | ';' | '#';
+type OpenSymbol = '<' | '(' | '{' | '['
+    | '"'
+    | ',' | '#' | '\'' | ';' | '%';
 type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1 | 2;
 
 const isOpenSymbol = (c: string): c is OpenSymbol => {
     return (c === '<' || c === '(' || c === '{' || c === '['
         || c === '"'
-        || c === '\'' || c === ';' || c === '#'
+        //|| c === ',' 
+        || c === '#' || c === '\'' || c === ';'
+        // || c === '%'
     );
 }
+const isCloseSymbol = (c: string): c is OpenSymbol => {
+    return (c === '>' || c === ')' || c === '}' || c === ']'
+        || c === '"'
+    );
+}
+
 const getCloseSymbol = (s: OpenSymbol) => {
     switch (s) {
         case '<': return '>';
@@ -88,9 +98,11 @@ const getCloseSymbol = (s: OpenSymbol) => {
         case '[': return ']';
         case '"': return '"';
         // Take one token
+        case ',': return 1;
+        case '#': return 2;
         case '\'': return 1;
         case ';': return 1;
-        case '#': return 2;
+        case '%': return 1;
         default: throw new Error(`getCloseSymbol: Unknown Symbol ${s}`);
     }
 };
@@ -145,6 +157,13 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
 
             continue;
         }
+
+        // // Handle Token Escapes (ignore next char)
+        // if (c === '\\') {
+        //     i++;
+        //     end = i;
+        //     continue;
+        // }
 
         // Handle Close (Single Token)
         if (typeof closeSymbol === 'number') {

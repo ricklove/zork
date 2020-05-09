@@ -38,7 +38,7 @@ cond(
         "COMPILE",
         root(
           )),
-      gassigned_q(
+      gassigned_Q(
         group_glue))),
   (setg(
       prepvec,
@@ -78,7 +78,7 @@ define(
     (words
       _words)
     (objob
-      _object-obl)
+      _object_obl)
     (pv
       _prsvec)
     (pvr
@@ -175,7 +175,7 @@ define(
           ((x)
             string),
         cond(
-          (empty_q(
+          (empty_Q(
               _x)
             mapleave(
               t)),
@@ -189,7 +189,7 @@ define(
                   _actions)))
             set(
               action,
-              _.atm)),
+              __atm)),
           (and(
               not(
                 _action),
@@ -201,11 +201,11 @@ define(
             put(
               _pv,
               1,
-              _walk!-words)
+              _walk_X_words)
             put(
               _pv,
               2,
-              _.atm)
+              __atm)
             return(
               win,
               _sparout)),
@@ -216,10 +216,10 @@ define(
                   _x,
                   _words)),
               cond(
-                (type_q(
+                (type_Q(
                     set(
                       aval,
-                      _.atm),
+                      __atm),
                     prep)
                   cond(
                     (_prep
@@ -233,7 +233,7 @@ define(
                     (set(
                         prep,
                         _aval)))),
-                (type_q(
+                (type_Q(
                     _aval,
                     adjective)
                   set(
@@ -263,7 +263,7 @@ define(
                     _atm,
                     _adj))
                 and(
-                  empty_q(
+                  empty_Q(
                     _pvr),
                   or(
                     _vb,
@@ -303,12 +303,12 @@ define(
                     _pvr))),
               (t
                 cond(
-                  (empty_q(
+                  (empty_Q(
                       _obj)
                     or(
                       _vb,
                       cond(
-                        (lit_q(
+                        (lit_Q(
                             _here)
                           tell(
                             "I can't see a",
@@ -331,7 +331,7 @@ define(
                         (tell(
                             "It is too dark in here to see.",
                             0))))),
-                  (eq_q(
+                  (_EQ_Q(
                       _obj,
                       _nefals2)
                     or(
@@ -394,7 +394,7 @@ define(
           or(
             _vb,
             cond(
-              (type_q(
+              (type_Q(
                   2(
                     _pv),
                   object)
@@ -467,7 +467,7 @@ define(
             <>)),
         (_prep
           and(
-            type_q(
+            type_Q(
               set(
                 lobj,
                 1(
@@ -612,7 +612,7 @@ define(
                       2,
                       _o1))
                   mapleave(
-                    take_it-or-leave-it(
+                    take_it_or_leave_it(
                       _syn,
                       put(
                         _pv,
@@ -659,7 +659,7 @@ define(
             not(
               _o1),
             not(
-              0_q(
+              0_Q(
                 vbit(
                   _synn))),
             not(
@@ -694,7 +694,7 @@ define(
             not(
               _o2),
             not(
-              0_q(
+              0_Q(
                 vbit(
                   _synn))),
             not(
@@ -713,7 +713,7 @@ define(
             _synn,
             _action,
             _gwim)),
-        (take_it-or-leave-it(
+        (take_it_or_leave_it(
             _drive,
             put(
               _pv,
@@ -726,7 +726,7 @@ define(
       <>)))
 
 define(
-  take_it-or-leave-it,
+  take_it_or_leave_it,
   (syn
     pv
     "AUX"
@@ -761,11 +761,11 @@ define(
     set(
       obj,
       cond(
-        (type_q(
+        (type_Q(
             _pv1,
             object)
           _pv1),
-        (type_q(
+        (type_Q(
             _pv1,
             phrase)
           2(
@@ -787,11 +787,11 @@ define(
     set(
       obj,
       cond(
-        (type_q(
+        (type_Q(
             _pv2,
             object)
           _pv2),
-        (type_q(
+        (type_Q(
             _pv2,
             phrase)
           2(
@@ -843,7 +843,7 @@ define(
             _here),
           <>),
         or(
-          can_take_q(
+          can_take_Q(
             _obj),
           not(
             vtrnn(
@@ -852,7 +852,7 @@ define(
       put(
         _vec,
         1,
-        _take!-words)
+        _take_X_words)
       put(
         _vec,
         2,
@@ -1012,7 +1012,7 @@ define(
       cond(
         (and(
             _1st,
-            eq_q(
+            _EQ_Q(
               _x,
               _nam))
           put(
@@ -1148,7 +1148,7 @@ define(
             or(
               not(
                 _av),
-              eq_q(
+              _EQ_Q(
                 _av,
                 _nobj),
               memq(
@@ -1177,13 +1177,13 @@ define(
                 put(
                   _pv,
                   1,
-                  _take!-words),
+                  _take_X_words),
                 put(
                   _pv,
                   2,
                   _nobj),
                 or(
-                  eq_q(
+                  _EQ_Q(
                     _action,
                     1(
                       _pv)),
@@ -1207,7 +1207,7 @@ define(
         (or(
             _nobj,
             not(
-              empty_q(
+              empty_Q(
                 _nobj)))
           _nefals),
         (_obj))),
@@ -1249,7 +1249,7 @@ define(
           function(
             (itm),
             cond(
-              (type_q(
+              (type_Q(
                   _itm,
                   string)
                 set(
@@ -1257,14 +1257,14 @@ define(
                   find_prep(
                     _itm))),
               (and(
-                  eq_q(
+                  _EQ_Q(
                     _itm,
                     obj),
                   set(
                     itm,
                     () => (_1)),
                   <>)),
-              (type_q(
+              (type_Q(
                   _itm,
                   list)
                 set(
@@ -1337,11 +1337,11 @@ define(
                   _(
                     _whr,
                     1))),
-              (type_q(
+              (type_Q(
                   _itm,
                   vector)
                 cond(
-                  (gassigned_q(
+                  (gassigned_Q(
                       set(
                         atm,
                         add_word(
@@ -1350,7 +1350,7 @@ define(
                     put(
                       _syn,
                       _sfcn,
-                      _.atm)),
+                      __atm)),
                   (put(
                       _syn,
                       _sfcn,
@@ -1365,14 +1365,14 @@ define(
                             2(
                               _itm)],
                           verb)))))),
-              (eq_q(
+              (_EQ_Q(
                   _itm,
                   driver)
                 put(
                   _syn,
                   _sdriver,
                   t)),
-              (eq_q(
+              (_EQ_Q(
                   _itm,
                   flip)
                 put(
@@ -1427,11 +1427,11 @@ define(
       (vbit)
       fix),
   cond(
-    (type_q(
+    (type_Q(
         _pobj,
         phrase)
       and(
-        eq_q(
+        _EQ_Q(
           vprep(
             _varg),
           1(
@@ -1445,7 +1445,7 @@ define(
             2(
               _pobj),
             _vbit)))),
-    (type_q(
+    (type_Q(
         _pobj,
         object)
       and(
@@ -1463,7 +1463,7 @@ define(
     (and(
         not(
           _pobj),
-        0_q(
+        0_Q(
           _vbit)))))
 
 setg(
@@ -1496,7 +1496,7 @@ define(
           _vb))
       cond(
         (or(
-            eq_q(
+            _EQ_Q(
               _val,
               win),
             syn_match(
@@ -1581,14 +1581,14 @@ define(
         oobj,
         _obj)),
     (not(
-        empty_q(
+        empty_Q(
           _obj))
       return(
         _nefals,
-        _get-obj))),
+        _get_obj))),
   cond(
     (and(
-        lit_q(
+        lit_Q(
           _here),
         set(
           obj,
@@ -1600,7 +1600,7 @@ define(
       cond(
         (and(
             _av,
-            neq_q(
+            n_EQ_Q(
               _obj,
               _av),
             not(
@@ -1618,7 +1618,7 @@ define(
         (_oobj
           return(
             _nefals,
-            _get-obj)),
+            _get_obj)),
         (set(
             oobj,
             _obj)))),
@@ -1626,11 +1626,11 @@ define(
         not(
           _obj),
         not(
-          empty_q(
+          empty_Q(
             _obj)))
       return(
         _nefals,
-        _get-obj))),
+        _get_obj))),
   cond(
     (_av
       cond(
@@ -1648,11 +1648,11 @@ define(
             oobj,
             _obj)),
         (not(
-            empty_q(
+            empty_Q(
               _obj))
           return(
             _nefals,
-            _get-obj))))),
+            _get_obj))))),
   cond(
     (set(
         obj,
@@ -1666,7 +1666,7 @@ define(
           _nefals),
         (_obj))),
     (not(
-        empty_q(
+        empty_Q(
           _obj))
       _nefals),
     (_chomp
@@ -1692,7 +1692,7 @@ define(
     slist
     adj
     "OPTIONAL"
-    (first_q
+    (first_Q
       t)
     "AUX"
     (oobj
@@ -1716,7 +1716,7 @@ define(
       or(
         false,
         adjective)
-      (first_q)
+      (first_Q)
       or(
         atom,
         false)
@@ -1730,7 +1730,7 @@ define(
         ((obj)
           object),
       cond(
-        (this_it_q(
+        (this_it_Q(
             _objnam,
             _obj,
             _adj)
@@ -1744,15 +1744,15 @@ define(
                 _obj))))),
       cond(
         (and(
-            ovis_q(
+            ovis_Q(
               _obj),
             or(
-              oopen_q(
+              oopen_Q(
                 _obj),
-              transparent_q(
+              transparent_Q(
                 _obj)),
             or(
-              _first_q,
+              _first_Q,
               trnn(
                 _obj,
                 _searchbit)))
@@ -1773,7 +1773,7 @@ define(
                 (set(
                     oobj,
                     _nobj)))),
-            (eq_q(
+            (_EQ_Q(
                 _nobj,
                 _nefals)
               return(
@@ -1817,11 +1817,11 @@ define(
           object),
       cond(
         (and(
-            ovis_q(
+            ovis_Q(
               _x),
             or(
-              _no-take,
-              can_take_q(
+              _no_take,
+              can_take_Q(
                 _x)),
             trnn(
               _x,
@@ -1836,9 +1836,9 @@ define(
             _x))),
       cond(
         (and(
-            ovis_q(
+            ovis_Q(
               _x),
-            oopen_q(
+            oopen_Q(
               _x))
           mapf(
             <>,
@@ -1849,7 +1849,7 @@ define(
                   object),
               cond(
                 (and(
-                    ovis_q(
+                    ovis_Q(
                       _x),
                     trnn(
                       _x,

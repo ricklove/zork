@@ -4,19 +4,19 @@
 
 psetg(
   rmgvals,
-  () => _)
+  () => _X)
 
 // GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 
 psetg(
   objgvals,
-  () => _)
+  () => _X)
 
 // GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 
 psetg(
   mgvals,
-  () => _)
+  () => _X)
 
 psetg(
   cntuse,
@@ -171,7 +171,7 @@ or(
       )),
   cevent(
     0,
-    _cure-clock,
+    _cure_clock,
     <>,
     "CURIN"))
 
@@ -182,7 +182,7 @@ or(
       )),
   cevent(
     0,
-    _maint-room,
+    _maint_room,
     t,
     "MNTIN"))
 
@@ -204,7 +204,7 @@ or(
       )),
   cevent(
     0,
-    _match-function,
+    _match_function,
     t,
     matin))
 
@@ -248,7 +248,7 @@ or(
       )),
   cevent(
     0,
-    _fuse-function,
+    _fuse_function,
     t,
     "FUSIN"))
 
@@ -259,7 +259,7 @@ or(
       )),
   cevent(
     0,
-    _ledge-mung,
+    _ledge_mung,
     t,
     "LEDIN"))
 
@@ -270,7 +270,7 @@ or(
       )),
   cevent(
     0,
-    _safe-mung,
+    _safe_mung,
     t,
     "SAFIN"))
 
@@ -292,7 +292,7 @@ or(
       )),
   cevent(
     0,
-    _gnome-function,
+    _gnome_function,
     t,
     "GNOIN"))
 
@@ -314,7 +314,7 @@ or(
       )),
   cevent(
     0,
-    _sphere-function,
+    _sphere_function,
     t,
     "SPHIN"))
 
@@ -331,7 +331,7 @@ or(
     ()
     _
     <>
-    _,ovison}
+    __ovison}
 
 "MAZE"
 
@@ -644,7 +644,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       50},
   ["PDP10"
     "DRYER"
@@ -692,8 +692,8 @@ add_object(
       0
       0
       0
-      _,bigfix
-      _,bigfix},
+      __bigfix
+      __bigfix},
   ["CASE"],
   ["TROPH"])
 
@@ -812,7 +812,7 @@ add_object(
 add_melee(
   find_obj(
     "KNIFE"),
-  _knife-melee)
+  _knife_melee)
 
 #room
   {"LROOM"
@@ -875,7 +875,7 @@ add_object(
 add_melee(
   find_obj(
     "SWORD"),
-  _sword-melee)
+  _sword_melee)
 
 add_object(
   #object
@@ -939,7 +939,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["CARPE"],
   ["ORIEN"])
@@ -1009,17 +1009,17 @@ psetg(
         #cexit
           {"TROLL-FLAG"
             "CRAW4"
-            _,tchomp}
+            __tchomp}
         "NORTH"
         #cexit
           {"TROLL-FLAG"
             "PASS1"
-            _,tchomp}
+            __tchomp}
         "SOUTH"
         #cexit
           {"TROLL-FLAG"
             "MAZE1"
-            _,tchomp}}
+            __tchomp}}
     (#find_obj
         {"TROLL"})}
 
@@ -1070,7 +1070,7 @@ add_demon(
 
 #object
   {"TROLL"
-    _,trolldesc
+    __trolldesc
     "troll"
     _
     <>
@@ -1087,13 +1087,13 @@ add_demon(
     0
     0
     0
-    _,bigfix
+    __bigfix
     2}
 
 add_melee(
   find_obj(
     "TROLL"),
-  _troll-melee)
+  _troll_melee)
 
 add_demon(
   setg(
@@ -1144,8 +1144,8 @@ psetg(
 
 #room
   {"MAZE1"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1161,8 +1161,8 @@ psetg(
 
 #room
   {"MAZE2"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1176,8 +1176,8 @@ psetg(
 
 #room
   {"MAZE3"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1191,8 +1191,8 @@ psetg(
 
 #room
   {"MAZE4"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1206,8 +1206,8 @@ psetg(
 
 #room
   {"DEAD1"
-    _,deadend
-    _,deadend
+    __deadend
+    __deadend
     _
     <>
     #exit
@@ -1217,8 +1217,8 @@ psetg(
 
 #room
   {"MAZE5"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1265,7 +1265,7 @@ add_object(
 add_melee(
   find_obj(
     "RKNIF"),
-  _knife-melee)
+  _knife_melee)
 
 add_object(
   #object
@@ -1334,7 +1334,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["SKELE"
     "BODY"])
@@ -1413,8 +1413,8 @@ add_object(
 
 #room
   {"DEAD2"
-    _,deadend
-    _,deadend
+    __deadend
+    __deadend
     _
     <>
     #exit
@@ -1424,8 +1424,8 @@ add_object(
 
 #room
   {"MAZE6"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1441,8 +1441,8 @@ add_object(
 
 #room
   {"MAZE7"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1460,8 +1460,8 @@ add_object(
 
 #room
   {"MAZE8"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1475,8 +1475,8 @@ add_object(
 
 #room
   {"DEAD3"
-    _,deadend
-    _,deadend
+    __deadend
+    __deadend
     _
     <>
     #exit
@@ -1486,8 +1486,8 @@ add_object(
 
 #room
   {"MAZE9"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1507,8 +1507,8 @@ add_object(
 
 #room
   {"MAZ10"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1522,8 +1522,8 @@ add_object(
 
 #room
   {"MAZ11"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1556,8 +1556,8 @@ add_object(
 
 #room
   {"MAZ12"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1575,8 +1575,8 @@ add_object(
 
 #room
   {"DEAD4"
-    _,deadend
-    _,deadend
+    __deadend
+    __deadend
     _
     <>
     #exit
@@ -1586,8 +1586,8 @@ add_object(
 
 #room
   {"MAZ13"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1603,8 +1603,8 @@ add_object(
 
 #room
   {"MAZ14"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1619,8 +1619,8 @@ add_object(
 
 #room
   {"MAZ15"
-    _,mazedesc
-    _,mazedesc
+    __mazedesc
+    __mazedesc
     _
     <>
     #exit
@@ -1637,8 +1637,8 @@ psetg(
 
 #room
   {"FORE1"
-    _,stfore
-    _,forest
+    __stfore
+    __forest
     t
     #exit
       {"NORTH"
@@ -1654,7 +1654,7 @@ psetg(
 #room
   {"FORE4"
     "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
-    _,forest
+    __forest
     t
     #exit
       {"EAST"
@@ -1668,8 +1668,8 @@ psetg(
 
 #room
   {"FORE5"
-    _,stfore
-    _,forest
+    __stfore
+    __forest
     t
     #exit
       {"NORTH"
@@ -1687,8 +1687,8 @@ psetg(
 
 #room
   {"FORE2"
-    _,fordes
-    _,forest
+    __fordes
+    __forest
     t
     #exit
       {"NORTH"
@@ -1703,8 +1703,8 @@ psetg(
 
 #room
   {"FORE3"
-    _,fordes
-    _,forest
+    __fordes
+    __forest
     t
     #exit
       {"NORTH"
@@ -1908,7 +1908,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["MIRRO"])
 
@@ -1931,7 +1931,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["MIRRO"])
 
@@ -1953,7 +1953,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["GLACI"])
 
@@ -2301,12 +2301,12 @@ put(
         0
         0
         0
-        _,bigfix
+        __bigfix
         50},
     ["CAGE"
       "DUMBW"
       "BASKE"]),
-  _oopen_q,
+  _oopen_Q,
   t)
 
 add_object(
@@ -2320,11 +2320,11 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["CAGE"
     "DUMBW"
@@ -2411,8 +2411,8 @@ psetg(
 
 #room
   {"MINE1"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2425,8 +2425,8 @@ psetg(
 
 #room
   {"MINE2"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2441,8 +2441,8 @@ psetg(
 
 #room
   {"MINE3"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2455,8 +2455,8 @@ psetg(
 
 #room
   {"MINE4"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2471,8 +2471,8 @@ psetg(
 
 #room
   {"MINE5"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2491,8 +2491,8 @@ psetg(
 
 #room
   {"MINE6"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2505,8 +2505,8 @@ psetg(
 
 #room
   {"MINE7"
-    _,mindesc
-    _,mindesc
+    __mindesc
+    __mindesc
     _
     <>
     #exit
@@ -2562,7 +2562,7 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "BSHAF"
-            _,nofit}}
+            __nofit}}
     ()
     no_objs}
 
@@ -2579,12 +2579,12 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            _,nofit}
+            __nofit}
         "NE"
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            _,nofit}
+            __nofit}
         "UP"
         #nexit
           "Not a chance."
@@ -3027,7 +3027,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["SPIRI"
     "FIEND"])
@@ -3140,7 +3140,7 @@ add_object(
       ()
       _
       <>
-      _,takebit
+      __takebit
       0
       15
       8
@@ -3411,7 +3411,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       10},
   ["BOX"])
 
@@ -3538,7 +3538,7 @@ add_object(
 add_melee(
   find_obj(
     "CYCLO"),
-  _cyclops-melee)
+  _cyclops_melee)
 
 #room
   {"BLROO"
@@ -3574,7 +3574,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       10000},
   ["ONE-E"
     "MONST"])
@@ -3694,17 +3694,17 @@ add_demon(
       hack)))
 
 psetg(
-  robber_c-desc,
+  robber_c_desc,
   "There is a suspicious-looking individual, holding a bag, leaning\nagainst one wall.  He is armed with a vicious-looking stilletto.")
 
 psetg(
-  robber_u-desc,
+  robber_u_desc,
   "There is a suspicious-looking individual lying unconscious on the\nground.  His bag and stilletto seem to have vanished.")
 
 add_object(
   #object
     {"THIEF"
-      _,robber-c-desc
+      __robber_c_desc
       "thief"
       _
       <>
@@ -3721,7 +3721,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       4},
   ["ROBBE"
     "CROOK"
@@ -3739,7 +3739,7 @@ add_object(
 add_melee(
   find_obj(
     "THIEF"),
-  _thief-melee)
+  _thief_melee)
 
 add_object(
   #object
@@ -4043,7 +4043,7 @@ add_star(
       everything,
       _ovison,
       _takebit,
-      _no-check-bit,
+      _no_check_bit,
       _ndescbit),
     ["ALL"]))
 
@@ -4055,7 +4055,7 @@ add_star(
       valuables,
       _ovison,
       _takebit,
-      _no-check-bit,
+      _no_check_bit,
       _ndescbit),
     ["TREAS"]))
 
@@ -4203,12 +4203,12 @@ psetg(
 #room
   {"RIVR1"
     "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
-    _,riverdesc
+    __riverdesc
     _
     <>
     #exit
       {"UP"
-        _,current
+        __current
         "WEST"
         "DOCK"
         "LAND"
@@ -4216,41 +4216,41 @@ psetg(
         "DOWN"
         "RIVR2"
         "EAST"
-        _,cliffs}
+        __cliffs}
     ()
     _
     <>
     0
-    _,rwaterbit}
+    __rwaterbit}
 
 #room
   {"RIVR2"
     "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
-    _,riverdesc
+    __riverdesc
     _
     <>
     #exit
       {"UP"
-        _,current
+        __current
         "DOWN"
         "RIVR3"
         "EAST"
-        _,cliffs}
+        __cliffs}
     ()
     _
     <>
     0
-    _,rwaterbit}
+    __rwaterbit}
 
 #room
   {"RIVR3"
     "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
-    _,riverdesc
+    __riverdesc
     _
     <>
     #exit
       {"UP"
-        _,current
+        __current
         "DOWN"
         "RIVR4"
         "EAST"
@@ -4264,7 +4264,7 @@ psetg(
     _
     <>
     0
-    _,rwaterbit}
+    __rwaterbit}
 
 psetg(
   narrow,
@@ -4281,7 +4281,7 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF2"
-            _,narrow}
+            __narrow}
         "LAUNC"
         "RIVR3"}
     ()
@@ -4299,7 +4299,7 @@ psetg(
         #cexit
           {"DEFLATE"
             "WCLF1"
-            _,narrow}
+            __narrow}
         "LAUNC"
         "RIVR4"}
     ()
@@ -4309,12 +4309,12 @@ psetg(
 #room
   {"RIVR4"
     "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
-    _,riverdesc
+    __riverdesc
     _
     <>
     #exit
       {"UP"
-        _,current
+        __current
         "DOWN"
         "RIVR5"
         "EAST"
@@ -4328,17 +4328,17 @@ psetg(
         {"BUOY"})
     rivr4_room
     0
-    _,rwaterbit}
+    __rwaterbit}
 
 #room
   {"RIVR5"
     "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
-    _,riverdesc
+    __riverdesc
     _
     <>
     #exit
       {"UP"
-        _,current
+        __current
         "DOWN"
         "FCHMP"
         "LAND"
@@ -4347,7 +4347,7 @@ psetg(
     _
     <>
     0
-    _,rwaterbit}
+    __rwaterbit}
 
 #room
   {"FCHMP"
@@ -4490,11 +4490,11 @@ setg(
     t
     #exit
       {"UP"
-        _,crain
+        __crain
         "NW"
-        _,crain
+        __crain
         "WEST"
-        _,crain
+        __crain
         "SE"
         "CLBOT"}
     (#find_obj
@@ -4557,7 +4557,7 @@ add_object(
       ()
       _
       <>
-      _,takebit
+      __takebit
       0
       10
       10
@@ -4578,7 +4578,7 @@ add_object(
       ()
       _
       <>
-      _,takebit
+      __takebit
       0
       10
       13
@@ -4692,7 +4692,7 @@ add_object(
 put(
   find_obj(
     "RBOAT"),
-  _oopen_q,
+  _oopen_Q,
   t)
 
 put(
@@ -4870,7 +4870,7 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
@@ -4904,20 +4904,20 @@ setg(
 #room
   {"VAIR1"
     "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
-    _,volcore
+    __volcore
     _
     <>
-    _,nulexit
+    __nulexit
     ()
     _
     <>
     0
-    _,rairbit}
+    __rairbit}
 
 #room
   {"VAIR2"
     "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
-    _,volcore
+    __volcore
     _
     <>
     #exit
@@ -4929,25 +4929,25 @@ setg(
     _
     <>
     0
-    _,rairbit}
+    __rairbit}
 
 #room
   {"VAIR3"
     "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
-    _,volcore
+    __volcore
     _
     <>
-    _,nulexit
+    __nulexit
     ()
     _
     <>
     0
-    _,rairbit}
+    __rairbit}
 
 #room
   {"VAIR4"
     "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
-    _,volcore
+    __volcore
     _
     <>
     #exit
@@ -4959,7 +4959,7 @@ setg(
     _
     <>
     0
-    _,rairbit}
+    __rairbit}
 
 setg(
   cxgnome,
@@ -4980,7 +4980,7 @@ setg(
         "LAUNC"
         "VAIR2"
         "WEST"
-        _,cxgnome
+        __cxgnome
         "SOUTH"
         "LIBRA"}
     (#find_obj
@@ -5037,7 +5037,7 @@ setg(
         "LAUNC"
         "VAIR4"
         "WEST"
-        _,cxgnome
+        __cxgnome
         "SOUTH"
         "SAFE"}
     (#find_obj
@@ -5101,7 +5101,7 @@ add_object(
 put(
   find_obj(
     "BALLO"),
-  _oopen_q,
+  _oopen_Q,
   t)
 
 put(
@@ -5129,7 +5129,7 @@ put(
     0
     0
     0
-    _,bigfix
+    __bigfix
     6}
 
 add_object(
@@ -5144,11 +5144,11 @@ add_object(
       ()
       #find_obj
         {"BALLO"}
-      _,ovison
+      __ovison
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["BAG"],
   ["CLOTH"])
@@ -5171,7 +5171,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["WIRE"],
   ["BRAID"])
@@ -5188,11 +5188,11 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["HOOK"])
 
@@ -5208,11 +5208,11 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["HOOK"])
 
@@ -5266,7 +5266,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       15},
   ["BOX"])
 
@@ -5312,11 +5312,11 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
-      _,bigfix
+      __bigfix
       10},
   ["SLOT"
     "HOLE"])
@@ -5324,7 +5324,7 @@ add_object(
 put(
   find_obj(
     "SSLOT"),
-  _oopen_q,
+  _oopen_Q,
   t)
 
 add_object(
@@ -5380,7 +5380,7 @@ add_object(
 put(
   find_obj(
     "BRICK"),
-  _oopen_q,
+  _oopen_Q,
   t)
 
 add_object(
@@ -5427,7 +5427,7 @@ add_object(
       0
       0
       0
-      _,bigfix
+      __bigfix
       0},
   ["TROLL"])
 
@@ -5593,28 +5593,28 @@ add_object(
   ["WHITE"])
 
 psetg(
-  greek_to-me,
+  greek_to_me,
   "This book is written in a tongue with which I am unfamiliar.")
 
 add_desc(
   find_obj(
     "BLBK"),
-  _greek-to-me)
+  _greek_to_me)
 
 add_desc(
   find_obj(
     "GRBK"),
-  _greek-to-me)
+  _greek_to_me)
 
 add_desc(
   find_obj(
     "PUBK"),
-  _greek-to-me)
+  _greek_to_me)
 
 add_desc(
   find_obj(
     "WHBK"),
-  _greek-to-me)
+  _greek_to_me)
 
 #object
   {"STAMP"
@@ -5680,7 +5680,7 @@ psetg(
   rest(
     istring(
       8,
-      _\),
+      _X_),
     8))
 
 #room
@@ -5834,19 +5834,19 @@ mapf(
         spname(
           _x)),
       _rfillbit)),
-  _,
-  [resen_-rooms
-    reses_-rooms
-    dam_-rooms
-    strea_-rooms
-    rivr1_-rooms
-    rivr2_-rooms
-    rivr3_-rooms
-    rivr4_-rooms
-    rivr5_-rooms
-    beach_-rooms
-    rcave_-rooms
-    dock_-rooms
+  _X,
+  [resen_X_rooms
+    reses_X_rooms
+    dam_X_rooms
+    strea_X_rooms
+    rivr1_X_rooms
+    rivr2_X_rooms
+    rivr3_X_rooms
+    rivr4_X_rooms
+    rivr5_X_rooms
+    beach_X_rooms
+    rcave_X_rooms
+    dock_X_rooms
     wclf1
     wclf2
     fante
@@ -5909,7 +5909,7 @@ mapf(
     "FALLS"])
 
 setg(
-  bucket_top!-flag,
+  bucket_top_X_flag,
   <>)
 
 setg(
@@ -5934,21 +5934,21 @@ setg(
     <>
     #exit
       {"NORTH"
-        _,magcmach
+        __magcmach
         "SOUTH"
-        _,magcmach
+        __magcmach
         "WEST"
-        _,magcmach
+        __magcmach
         "NE"
-        _,magcmach
+        __magcmach
         "NW"
-        _,magalice
+        __magalice
         "SW"
-        _,magalice
+        __magalice
         "SE"
-        _,magalice
+        __magalice
         "EAST"
-        _,magcmach}
+        __magcmach}
     (#find_obj
         {"RBTLB"}
       #find_obj
@@ -6036,7 +6036,7 @@ add_object(
       ()
       _
       <>
-      _,ovison
+      __ovison
       0
       0
       0
@@ -6218,13 +6218,13 @@ psetg(
     <>
     #exit
       {"NW"
-        _,smdrop
+        __smdrop
         "EAST"
         "ALITR"
         "WEST"
-        _,smdrop
+        __smdrop
         "DOWN"
-        _,smdrop}
+        __smdrop}
     (#find_obj
         {"POSTS"})}
 
@@ -6306,7 +6306,7 @@ add_object(
       ()
       _
       <>
-      _,takebit
+      __takebit
       0
       5
       5
@@ -6464,7 +6464,7 @@ put(
   put(
     find_obj(
       "BUCKE"),
-    _oopen_q,
+    _oopen_Q,
     t),
   _orand,
   _rbuckbit)
@@ -6895,7 +6895,7 @@ sadd_action(
 
 sadd_action(
   "UNSUP",
-  un_super-brief)
+  un_super_brief)
 
 1add_action(
   "EXAMI",
@@ -7520,21 +7520,21 @@ add_buzz(
 
 setg(
   robot_actions,
-  _,
-  [_walk!-words
-    _take!-words
-    _drop!-words
-    _put!-words
-    _jump!-words
-    _push!-words
-    _throw!-words
-    _turn!-words])
+  _X,
+  [_walk_X_words
+    _take_X_words
+    _drop_X_words
+    _put_X_words
+    _jump_X_words
+    _push_X_words
+    _throw_X_words
+    _turn_X_words])
 
 setg(
   player,
   add_actor(
     chtype(
-      [_whous!-rooms
+      [_whous_X_rooms
         ()
         0
         <>

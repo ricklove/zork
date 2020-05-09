@@ -4,7 +4,7 @@ define(
   blo,
   (y),
   cond(
-    (type_q(
+    (type_Q(
         _rep,
         subr,
         fsubr)
@@ -16,10 +16,10 @@ define(
             0),
           chtype(
             ascii(
-              _\,
+              _X_,
               <>,
               fix),
-            _\)),
+            _X__)),
         evaltype(
           form,
           segment),
@@ -62,9 +62,9 @@ define(
             (type)
             fix),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _type,
-              _400000000000*)
+              _400000000000_)
             cond(
               (or(
                   and(
@@ -106,19 +106,19 @@ define(
             (prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are behind the white house.  In one corner of the house there\nis a small window which is",
               1,
               cond(
-                (_kitchen-window!-flag
+                (_kitchen_window_X_flag
                   "open."),
                 ("slightly ajar."))))))
       // HACK THE KITCHEN WINDOW
       setg(
-        grunlock_-flag,
+        grunlock_X_flag,
         <>)
       define(
         window_function,
@@ -131,7 +131,7 @@ define(
             verb),
         open_close(
           _prsact,
-          kitchen_window!-flag,
+          kitchen_window_X_flag,
           "With great effort, you open the window far enough to allow entry.",
           "The window closes (more easily than it opened)."))
       define(
@@ -149,11 +149,11 @@ define(
               strcls)
             string),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _verb,
-              _open!-words)
+              _open_X_words)
             cond(
-              (_.atm
+              (__atm
                 tell(
                   pick_one(
                     _dummy))),
@@ -162,11 +162,11 @@ define(
                 setg(
                   _atm,
                   t)))),
-          (eq_q(
+          (_EQ_Q(
               _verb,
-              _close!-words)
+              _close_X_words)
             cond(
-              (_.atm
+              (__atm
                 tell(
                   _strcls)
                 setg(
@@ -195,14 +195,14 @@ define(
             (prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in the kitchen of the white house.  A table seems to have\nbeen used recently for the preparation of food.  A passage leads to\nthe west and a dark staircase can be seen leading upward.  To the\neast is a small window which is",
               0)
             cond(
-              (_kitchen-window!-flag
+              (_kitchen_window_X_flag
                 tell(
                   "open.",
                   1)),
@@ -226,10 +226,10 @@ define(
             (l)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               1(
                 _pv),
-              _burn!-words)
+              _burn_X_words)
             put(
               _l,
               _orand,
@@ -246,10 +246,10 @@ define(
                   _l)
                 jigs_up(
                   "The sight of someone carrying a pile of burning leaves so offends\nthe neighbors that they come over and put you out.")))),
-          (eq_q(
+          (_EQ_Q(
               1(
                 _pv),
-              _move!-words)
+              _move_X_words)
             put(
               _l,
               _orand,
@@ -272,11 +272,11 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             cond(
-              (_glacier-flag!-flag
+              (_glacier_flag_X_flag
                 tell(
                   _gladesc)
                 tell(
@@ -295,9 +295,9 @@ define(
             ((prsact)
               verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _take!-words)
+              _take_X_words)
             tell(
               "The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it)."))))
       define(
@@ -320,12 +320,12 @@ define(
             (t)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              throw_-words)
+              throw_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   2(
                     _prsvec),
                   set(
@@ -353,26 +353,26 @@ define(
                   "There is a burned out ivory torch here.")
                 put(
                   _t,
-                  _olight_q,
+                  _olight_Q,
                   0)
                 trz(
                   _t,
                   _flamebit)
                 or(
-                  lit_q(
+                  lit_Q(
                     _here),
                   tell(
                     "The melting glacier seems to have carried the torch away, leaving\nyou in the dark."))
                 setg(
-                  glacier_flag!-flag,
+                  glacier_flag_X_flag,
                   t)),
               (tell(
                   "The glacier is unmoved by your ridiculous attempt.")
                 <>))),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              melt_-words)
+              melt_X_words)
             tell(
               "How exactly are you going to melt this glacier?"))))
       psetg(
@@ -392,11 +392,11 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             cond(
-              (_low-tide!-flag
+              (_low_tide_X_flag
                 tell(
                   "You are in the south end of a large cavernous room which was formerly\na reservoir.")
                 tell(
@@ -417,11 +417,11 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             cond(
-              (_low-tide!-flag
+              (_low_tide_X_flag
                 tell(
                   "You are in the north end of a large cavernous room which was formerly\na reservoir.")
                 tell(
@@ -440,7 +440,7 @@ define(
             _winner)
           (prsvec
             _prsvec)
-          rug_q
+          rug_Q
           (prsact
             1(
               _prsvec))
@@ -450,7 +450,7 @@ define(
             vector
             (win)
             adv
-            (rug_q)
+            (rug_Q)
             or(
               atom,
               false)
@@ -459,11 +459,11 @@ define(
             (tc)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             cond(
-              (_magic-flag!-flag
+              (_magic_flag_X_flag
                 tell(
                   "You are in the living room.  There is a door to the east.  To the\nwest is a cyclops-shaped hole in an old wooden door, above which is\nsome strange gothic lettering",
                   0)),
@@ -471,22 +471,22 @@ define(
                   "You are in the living room.  There is a door to the east, a wooden\ndoor with strange gothic lettering to the west, which appears to be\nnailed shut,",
                   0)))
             set(
-              rug_q,
+              rug_Q,
               orand(
                 find_obj(
                   "RUG")))
             cond(
               (and(
-                  _rug_q,
-                  _trap-door!-flag)
+                  _rug_Q,
+                  _trap_door_X_flag)
                 tell(
                   "and a rug lying beside an open trap-door.",
                   1)),
-              (_rug_q
+              (_rug_Q
                 tell(
                   "and a closed trap-door at your feet.",
                   1)),
-              (_trap-door!-flag
+              (_trap_door_X_flag
                 tell(
                   "and an open trap-door at your feet.",
                   1)),
@@ -500,14 +500,14 @@ define(
                 find_obj(
                   "TCASE")),
               or(
-                eq_q(
+                _EQ_Q(
                   _prsact,
-                  _take!-words),
+                  _take_X_words),
                 and(
-                  eq_q(
+                  _EQ_Q(
                     _prsact,
-                    _put!-words),
-                  eq_q(
+                    _put_X_words),
+                  _EQ_Q(
                     3(
                       _prsvec),
                     _tc))))
@@ -515,9 +515,9 @@ define(
               _winner,
               _ascore,
               _(
-                _raw-score,
+                _raw_score,
                 mapf(
-                  _+,
+                  __,
                   _otval,
                   ocontents(
                     _tc)))))))
@@ -535,44 +535,44 @@ define(
             (rm)
             room),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _rm,
               find_room(
                 "LROOM"))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsact,
-                  _open!-words)
+                  _open_X_words)
                 cond(
-                  (_trap-door!-flag
+                  (_trap_door_X_flag
                     tell(
                       "It's open.")),
                   (tell(
                       "The door reluctantly opens to reveal a rickety staircase descending\ninto darkness.")))
                 cond_open(
-                  down_-directions,
+                  down_X_directions,
                   _rm)),
-              (eq_q(
+              (_EQ_Q(
                   _prsact,
-                  _close!-words)
+                  _close_X_words)
                 cond(
-                  (_trap-door!-flag
+                  (_trap_door_X_flag
                     tell(
                       "The door swings shut and closes.")),
                   (tell(
                       "It's closed.")))
                 cond_close(
-                  down_-directions,
+                  down_X_directions,
                   _rm)
                 t))),
-          (eq_q(
+          (_EQ_Q(
               _rm,
               find_room(
                 "CELLA"))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsact,
-                  _open!-words)
+                  _open_X_words)
                 tell(
                   "The door is locked from above.")),
               (tell(
@@ -589,7 +589,7 @@ define(
             object),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _obj,
                 find_obj(
                   "RUG")),
@@ -597,15 +597,15 @@ define(
                 orand(
                   _obj)),
               not(
-                _trap-door!-flag))
+                _trap_door_X_flag))
             tell(
               "Underneath the rug is a closed trap door.")),
           (and(
-              eq_q(
+              _EQ_Q(
                 _obj,
                 find_obj(
                   "LEAVE")),
-              neq_q(
+              n_EQ_Q(
                 rvars(
                   find_room(
                     "CLEAR")),
@@ -645,41 +645,41 @@ define(
             (rv)
             fix),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a clearing, with a forest surrounding you on the west\nand south.")
             cond(
-              (_key-flag!-flag
+              (_key_flag_X_flag
                 tell(
                   "There is an open grating, descending into darkness.",
                   1)),
               (not(
-                  0_q(
+                  0_Q(
                     _rv))
                 tell(
                   "There is a grating securely fastened into the ground.",
                   1)))),
           (and(
-              0_q(
+              0_Q(
                 _rv),
               or(
                 and(
-                  eq_q(
+                  _EQ_Q(
                     _prsact,
-                    _burn!-words),
+                    _burn_X_words),
                   not(
-                    0_q(
+                    0_Q(
                       orand(
                         _leaves)))),
-                eq_q(
+                _EQ_Q(
                   _prsact,
-                  _take!-words),
-                eq_q(
+                  _take_X_words),
+                _EQ_Q(
                   _prsact,
-                  _move!-words)),
-              eq_q(
+                  _move_X_words)),
+              _EQ_Q(
                 2(
                   _prsvec),
                 _leaves))
@@ -712,26 +712,26 @@ define(
             (door)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a dark and damp cellar with a narrow passageway leading\neast, and a crawlway to the south.  On the west is the bottom of a\nsteep metal ramp which is unclimbable.")),
           (and(
-              eq_q(
+              _EQ_Q(
                 vname(
                   _prsact),
-                walk_in!-words),
-              _trap-door!-flag,
+                walk_in_X_words),
+              _trap_door_X_flag,
               not(
-                otouch_q(
+                otouch_Q(
                   _door)))
             setg(
-              trap_door!-flag,
+              trap_door_X_flag,
               <>)
             put(
               _door,
-              _otouch_q,
+              _otouch_Q,
               t)
             tell(
               "The trap door crashes shut, and you hear someone barring it.",
@@ -754,7 +754,7 @@ define(
                 object])),
         cond(
           (and(
-              l__q(
+              l__Q(
                 length(
                   _aobjs),
                 2),
@@ -763,21 +763,21 @@ define(
                   "LAMP"),
                 _aobjs))
             setg(
-              light_load!-flag,
+              light_load_X_flag,
               t)
             // Door will slam shut next time, too, since this way up don't count.
             cond(
               (not(
-                  _trap-door!-flag)
+                  _trap_door_X_flag)
                 put(
                   find_obj(
                     "DOOR"),
-                  _otouch_q,
+                  _otouch_Q,
                   <>)))
             <>),
           (t
             setg(
-              light_load!-flag,
+              light_load_X_flag,
               <>))))
       // OBJECT FUNCTIONS
       define(
@@ -797,14 +797,14 @@ define(
             (prsa)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _lift!-words)
+              _lift_X_words)
             tell(
               "The rug is too heavy to lift, but in trying to take it you have \nnoticed an irregularity beneath it.")),
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _move!-words)
+              _move_X_words)
             cond(
               (orand(
                   set(
@@ -823,9 +823,9 @@ define(
                   _obj,
                   _orand,
                   t)))),
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _take!-words)
+              _take_X_words)
             tell(
               "The rug is extremely heavy and cannot be carried."))))
       define(
@@ -849,9 +849,9 @@ define(
               false,
               object)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _take!-words)
+              _take_X_words)
             and(
               memq(
                 find_obj(
@@ -862,20 +862,20 @@ define(
                 "As you pick up the rusty knife, your sword gives a single pulse\nof blinding blue light."))
             <>),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsa,
-                _attac!-words),
-              eq_q(
+                _attac_X_words),
+              _EQ_Q(
                 _prsa,
-                _swing!-words),
+                _swing_X_words),
               and(
-                eq_q(
+                _EQ_Q(
                   _prsa,
-                  _throw!-words),
+                  _throw_X_words),
                 _prsi),
-              eq_q(
+              _EQ_Q(
                 _prsa,
-                _kill!-words))
+                _kill_X_words))
             kill_obj(
               find_obj(
                 "RKNIF"),
@@ -927,7 +927,7 @@ define(
           _l),
         cond(
           (not(
-              empty_q(
+              empty_Q(
                 _l))
             putrest(
               rest(
@@ -979,11 +979,11 @@ define(
             (pa)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _fight!-words)
+              _fight_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   ocan(
                     _a),
                   _t)
@@ -996,29 +996,29 @@ define(
                   _t,
                   _a)
                 and(
-                  eq_q(
+                  _EQ_Q(
                     _here,
                     oroom(
                       _t)),
                   tell(
                     "The troll, now worried about this encounter, recovers his bloody\naxe."))
                 t),
-              (eq_q(
+              (_EQ_Q(
                   _here,
                   oroom(
                     _t))
                 tell(
                   "The troll, disarmed, cowers in terror, pleading for his life in\nthe guttural tongue of the trolls.")
                 t))),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _dead\!!-words)
+              _dead__X_X_words)
             setg(
-              troll_flag!-flag,
+              troll_flag_X_flag,
               t)),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _out\!!-words)
+              _out__X_X_words)
             trz(
               find_obj(
                 "AXE"),
@@ -1028,17 +1028,17 @@ define(
               _odesc1,
               _trollout)
             setg(
-              troll_flag!-flag,
+              troll_flag_X_flag,
               t)),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _in\!!-words)
+              _in__X_X_words)
             tro(
               find_obj(
                 "AXE"),
               _ovison)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   oroom(
                     _t),
                   _here)
@@ -1049,26 +1049,26 @@ define(
               _odesc1,
               _trolldesc)
             setg(
-              troll_flag!-flag,
+              troll_flag_X_flag,
               <>)),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _first_q!-words)
+              _first_Q_X_words)
             prob(
               33)),
           (and(
               or(
-                eq_q(
+                _EQ_Q(
                   _pa,
-                  _throw!-words),
-                eq_q(
+                  _throw_X_words),
+                _EQ_Q(
                   _pa,
-                  _give!-words)),
+                  _give_X_words)),
               _prso)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _pa,
-                  _throw!-words)
+                  _throw_X_words)
                 tell(
                   "The troll, who is remarkably coordinated, catches the",
                   1,
@@ -1077,7 +1077,7 @@ define(
               (tell(
                   "The troll, who is not overly proud, graciously accepts the gift")))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "KNIFE"))
@@ -1092,18 +1092,18 @@ define(
                   2(
                     _pv))))),
           (or(
-              eq_q(
+              _EQ_Q(
                 _pa,
-                _take!-words),
-              eq_q(
+                _take_X_words),
+              _EQ_Q(
                 _pa,
-                _move!-words))
+                _move_X_words))
             tell(
               "The troll spits in your face, saying \"Better luck next time.\")),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _pa),
-              mung_-words)
+              mung_X_words)
             tell(
               "The troll laughs at your puny gesture."))))
       "MIRROR ROOM HACKERY"
@@ -1118,20 +1118,20 @@ define(
             verb),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _look!-words),
-              lit_q(
+                _look_X_words),
+              lit_Q(
                 _here))
             tell(
               "You are in a large square room with tall ceilings.  On the south wall\nis an enormous mirror which fills the entire wall.  There are exits\non the other three sides of the room.")
             cond(
-              (_mirror-mung!-flag
+              (_mirror_mung_X_flag
                 tell(
                   "Unfortunately, you have managed to destroy it by your reckless\nactions.",
                   1))))))
       setg(
-        mirror_mung!-flag,
+        mirror_mung_X_flag,
         <>)
       define(
         mirror_mirror,
@@ -1155,18 +1155,18 @@ define(
         cond(
           (and(
               not(
-                _mirror-mung!-flag),
-              eq_q(
+                _mirror_mung_X_flag),
+              _EQ_Q(
                 vname(
                   _prsact),
-                rub_-words))
+                rub_X_words))
             set(
               rm1,
               _here)
             set(
               rm2,
               cond(
-                (eq_q(
+                (_EQ_Q(
                     _rm1,
                     find_room(
                       "MIRR1"))
@@ -1218,38 +1218,38 @@ define(
             tell(
               "There is a rumble from deep within the earth and the room shakes.")),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _look!-words),
-              eq_q(
+                _look_X_words),
+              _EQ_Q(
                 _prsact,
-                _exami!-words))
+                _exami_X_words))
             cond(
-              (_mirror-mung!-flag
+              (_mirror_mung_X_flag
                 tell(
                   "The mirror is broken into many pieces.")),
               (tell(
                   "There is an ugly person staring at you.")))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _take!-words)
+              _take_X_words)
             tell(
               "Nobody but a greedy surgeon would allow you to attempt that trick.")),
           (or(
-              eq_q(
+              _EQ_Q(
                 vname(
                   _prsact),
-                mung_-words),
-              eq_q(
+                mung_X_words),
+              _EQ_Q(
                 vname(
                   _prsact),
-                throw_-words))
+                throw_X_words))
             cond(
-              (_mirror-mung!-flag
+              (_mirror_mung_X_flag
                 tell(
                   "Haven't you done enough already?")),
               (setg(
-                  mirror_mung!-flag,
+                  mirror_mung_X_flag,
                   t)
                 tell(
                   "You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy."))))))
@@ -1263,23 +1263,23 @@ define(
             vector),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 1(
                   _pv),
-                _walk-in!-words),
-              _carousel-zoom!-flag)
+                _walk_in_X_words),
+              _carousel_zoom_X_flag)
             jigs_up(
               _spindizzy)),
-          (eq_q(
+          (_EQ_Q(
               1(
                 _pv),
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a circular room with passages off in eight directions.",
               1)
             cond(
               (not(
-                  _carousel-flip!-flag)
+                  _carousel_flip_X_flag)
                 tell(
                   "Your compass needle spins wildly, and you can't get your bearings.",
                   1))))))
@@ -1294,7 +1294,7 @@ define(
               nexit,
               room)),
         cond(
-          (_carousel-flip!-flag
+          (_carousel_flip_X_flag
             <>),
           (tell(
               "Unfortunately, it is impossible to tell directions in here.",
@@ -1312,7 +1312,7 @@ define(
               nexit,
               room)),
         and(
-          type_q(
+          type_Q(
             set(
               cx,
               nth(
@@ -1339,13 +1339,13 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a large room with a prominent doorway leading to a down\nstaircase. To the west is a narrow twisting tunnel.  Above you is a\nlarge dome painted with scenes depicting elfin hacking rites. Up\naround the edge of the dome (20 feet up) is a wooden railing. In the\ncenter of the room there is a white marble pedestal.")
             cond(
-              (_dome-flag!-flag
+              (_dome_flag_X_flag
                 tell(
                   "A large piece of rope descends from the railing above, ending some\nfive feet above your head.",
                   1))))))
@@ -1359,20 +1359,20 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are at the periphery of a large dome, which forms the ceiling\nof another room below.  Protecting you from a precipitous drop is a\nwooden railing which circles the dome.")
             cond(
-              (_dome-flag!-flag
+              (_dome_flag_X_flag
                 tell(
                   "Hanging down from the railing is a rope which ends about ten feet\nfrom the floor below.",
                   1)))),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              jump_-words)
+              jump_X_words)
             jigs_up(
               "I'm afraid that the leap you attempted has done you in."))))
       define(
@@ -1385,11 +1385,11 @@ define(
               aobjs(
                 _winner))
             setg(
-              egypt_flag!-flag,
+              egypt_flag_X_flag,
               <>)),
           (else
             setg(
-              egypt_flag!-flag,
+              egypt_flag_X_flag,
               t))),
         <>)
       define(
@@ -1422,20 +1422,20 @@ define(
             (cand)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are outside a large gateway, on which is inscribed \n	\"Abandon every hope, all ye who enter here.\"  \nThe gate is open; through it you can see a desolation, with a pile of\nmangled corpses in one corner.  Thousands of voices, lamenting some\nhideous fate, can be heard.")
             cond(
               (not(
-                  _lld-flag!-flag)
+                  _lld_flag_X_flag)
                 tell(
                   "The way through the gate is barred by evil spirits, who jeer at your\nattempts to pass.")))),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _pa),
-              exorc_-words)
+              exorc_X_words)
             cond(
               (memq(
                   find_obj(
@@ -1458,8 +1458,8 @@ define(
                           find_obj(
                             "CANDL")),
                         _wobj),
-                      g_q(
-                        olight_q(
+                      g_Q(
+                        olight_Q(
                           _cand),
                         0))
                     tell(
@@ -1468,7 +1468,7 @@ define(
                       find_obj(
                         "GHOST"))
                     setg(
-                      lld_flag!-flag,
+                      lld_flag_X_flag,
                       t)),
                   (tell(
                       "You are not equipped for an exorcism.")))),
@@ -1484,14 +1484,14 @@ define(
           ((prsa)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _look!-words)
+              _look_X_words)
             tell(
               "You have entered the Land of the Living Dead, a large desolate room.\nAlthough it is apparently uninhabited, you can hear the sounds of\nthousands of lost souls weeping and moaning.  In the east corner are\nstacked the remains of dozens of previous adventurers who were less\nfortunate than yourself.  To the east is an ornate passage,\napparently recently constructed.",
               1,
               cond(
-                (_on-pole!-flag
+                (_on_pole_X_flag
                   "Amid the desolation, you spot what\nappears to be your head, at the end of a long pole."),
                 (""))))))
       define(
@@ -1508,14 +1508,14 @@ define(
             (g)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               3(
                 _pv),
               _g)
             tell(
               "How can you attack a spirit with material objects?")
             <>),
-          (eq_q(
+          (_EQ_Q(
               2(
                 _pv),
               _g)
@@ -1531,16 +1531,16 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a small room near the maze. There are twisty passages\nin the immediate vicinity.")
             cond(
-              (_key-flag!-flag
+              (_key_flag_X_flag
                 tell(
                   "Above you is an open grating with sunlight pouring in.")),
-              (_grunlock!-flag
+              (_grunlock_X_flag
                 tell(
                   "Above you is a grating.")),
               (tell(
@@ -1555,10 +1555,10 @@ define(
           ((prsact)
             verb),
         cond(
-          (_grunlock!-flag
+          (_grunlock_X_flag
             open_close(
               _prsact,
-              key_flag!-flag,
+              key_flag_X_flag,
               "The grating opens.",
               "The grating is closed.")),
           (tell(
@@ -1573,10 +1573,10 @@ define(
           ((prsact)
             verb),
         cond(
-          (_grunlock!-flag
+          (_grunlock_X_flag
             open_close(
               _prsact,
-              key_flag!-flag,
+              key_flag_X_flag,
               "The grating opens to reveal trees above you.",
               "The grating is closed.")
             tro(
@@ -1591,7 +1591,7 @@ define(
           (pv
             _prsvec)
           (hack
-            _robber-demon)
+            _robber_demon)
           hh
           chali
           (hobj
@@ -1631,15 +1631,15 @@ define(
           (and(
               haction(
                 _hack),
-              eq_q(
+              _EQ_Q(
                 vname(
                   1(
                     _pv)),
-                walk_in!-words))
+                walk_in_X_words))
             cond(
               (set(
                   flg,
-                  neq_q(
+                  n_EQ_Q(
                     oroom(
                       _hobj),
                     _here))
@@ -1661,7 +1661,7 @@ define(
                   _hack,
                   _hrooms,
                   cond(
-                    (empty_q(
+                    (empty_Q(
                         set(
                           tl,
                           rest(
@@ -1684,7 +1684,7 @@ define(
                     chali,
                     find_obj(
                       "CHALI")))),
-              eq_q(
+              _EQ_Q(
                 oroom(
                   _chali),
                 _here),
@@ -1693,7 +1693,7 @@ define(
                 _takebit))
             cond(
               (not(
-                  length_q(
+                  length_Q(
                     robjs(
                       _here),
                     2))
@@ -1708,10 +1708,10 @@ define(
                     object),
                 cond(
                   (and(
-                      neq_q(
+                      n_EQ_Q(
                         _x,
                         _chali),
-                      neq_q(
+                      n_EQ_Q(
                         _x,
                         _hobj))
                     trz(
@@ -1724,11 +1724,11 @@ define(
         (),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 1(
                   _prsvec),
-                _treas!-words),
-              eq_q(
+                _treas_X_words),
+              _EQ_Q(
                 _here,
                 find_room(
                   "TEMP1")))
@@ -1738,11 +1738,11 @@ define(
             room_desc(
               )),
           (and(
-              eq_q(
+              _EQ_Q(
                 1(
                   _prsvec),
-                _templ!-words),
-              eq_q(
+                _templ_X_words),
+              _EQ_Q(
                 _here,
                 find_room(
                   "TREAS")))
@@ -1759,7 +1759,7 @@ define(
         (),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _here,
                 find_room(
                   "TEMP2")),
@@ -1771,7 +1771,7 @@ define(
           (tell(
               "If you pray enough, your prayers may be answered."))))
       setg(
-        gate_flag!-flag,
+        gate_flag_X_flag,
         <>)
       define(
         dam_room,
@@ -1783,13 +1783,13 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _look!-words)
+              _look_X_words)
             tell(
               "You are standing on the top of the Flood Control Dam #3, which was\nquite a tourist attraction in times far distant.  There are paths to\nthe north, south, east, and down.")
             cond(
-              (_low-tide!-flag
+              (_low_tide_X_flag
                 tell(
                   "It appears that the dam has been opened since the water level behind\nit is low and the sluice gate has been opened.  Water is rushing\ndownstream through the gates.",
                   1)),
@@ -1800,7 +1800,7 @@ define(
               "There is a control panel here.  There is a large metal bolt on the \npanel. Above the bolt is a small green plastic bubble.",
               1)
             cond(
-              (_gate-flag!-flag
+              (_gate_flag_X_flag
                 tell(
                   "The green bubble is glowing.",
                   1))))))
@@ -1826,20 +1826,20 @@ define(
               false,
               object)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _turn!-words)
+              _turn_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsi,
                   find_obj(
                     "WRENC"))
                 cond(
-                  (_gate-flag!-flag
+                  (_gate_flag_X_flag
                     cond(
-                      (_low-tide!-flag
+                      (_low_tide_X_flag
                         setg(
-                          low_tide!-flag,
+                          low_tide_X_flag,
                           <>)
                         tell(
                           "The sluice gates close and water starts to collect behind the dam.")
@@ -1854,7 +1854,7 @@ define(
                             _ovison))
                         t),
                       (setg(
-                          low_tide!-flag,
+                          low_tide_X_flag,
                           t)
                         tell(
                           "The sluice gates open and water pours through the dam.")
@@ -1863,7 +1863,7 @@ define(
                           _ovison)))),
                   (tell(
                       "The bolt won't turn with your best effort.")))),
-              (type_q(
+              (type_Q(
                   _prsi,
                   object)
                 tell(
@@ -1905,8 +1905,8 @@ define(
           (mnt
             find_room(
               "MAINT"))
-          (here_q
-            eq_q(
+          (here_Q
+            _EQ_Q(
               _here,
               _mnt))
           hack),
@@ -1917,7 +1917,7 @@ define(
             or(
               false,
               object)
-            (here_q)
+            (here_Q)
             or(
               atom,
               false)
@@ -1928,9 +1928,9 @@ define(
             (hack)
             fix),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _c-int!-words)
+              _c_int_X_words)
             put(
               _mnt,
               _rvars,
@@ -1942,7 +1942,7 @@ define(
                     _mnt))))
             cond(
               (and(
-                  _here_q,
+                  _here_Q,
                   tell(
                     "The water level here is now",
                     1,
@@ -1957,7 +1957,7 @@ define(
                               _mnt)),
                           2)))))))
             cond(
-              (g__q(
+              (g__Q(
                   set(
                     hack,
                     rvars(
@@ -1970,21 +1970,21 @@ define(
                   _mntin,
                   0)
                 and(
-                  _here_q,
+                  _here_Q,
                   jigs_up(
                     "I'm afraid you have done drowned yourself.")))))),
         cond(
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              push_-words)
+              push_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "BLBUT"))
                 cond(
-                  (0_q(
+                  (0_Q(
                       set(
                         hack,
                         rvars(
@@ -2001,38 +2001,38 @@ define(
                     t),
                   (tell(
                       "The blue button appears to be jammed.")))),
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "RBUTT"))
                 put(
                   _here,
-                  _rlight_q,
+                  _rlight_Q,
                   not(
-                    rlight_q(
+                    rlight_Q(
                       _here)))
                 cond(
-                  (rlight_q(
+                  (rlight_Q(
                       _here)
                     tell(
                       "The lights within the room come on.")),
                   (tell(
                       "The lights within the room shut off.")))),
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "BRBUT"))
                 setg(
-                  gate_flag!-flag,
+                  gate_flag_X_flag,
                   <>)
                 tell(
                   "Click.")),
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "YBUTT"))
                 setg(
-                  gate_flag!-flag,
+                  gate_flag_X_flag,
                   t)
                 tell(
                   "Click."))))))
@@ -2062,25 +2062,25 @@ define(
             (hack)
             fix),
         cond(
-          (eq_q(
+          (_EQ_Q(
               2(
                 _prsvec),
               find_obj(
                 "LEAK"))
             cond(
               (and(
-                  eq_q(
+                  _EQ_Q(
                     vname(
                       _prsa),
-                    plug_-words),
-                  g_q(
+                    plug_X_words),
+                  g_Q(
                     set(
                       hack,
                       rvars(
                         _here)),
                     0))
                 cond(
-                  (eq_q(
+                  (_EQ_Q(
                       _prsi,
                       find_obj(
                         "PUTTY"))
@@ -2107,11 +2107,11 @@ define(
                 any])),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 1(
                   _prsvec),
-                _put!-words),
-              eq_q(
+                _put_X_words),
+              _EQ_Q(
                 3(
                   _prsvec),
                 find_obj(
@@ -2151,10 +2151,10 @@ define(
             (c)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              walk_in!-words)
+              walk_in_X_words)
             and(
               memq(
                 set(
@@ -2165,8 +2165,8 @@ define(
                   _winner)),
               prob(
                 50),
-              1_q(
-                olight_q(
+              1_Q(
+                olight_Q(
                   _c)),
               clock_disable(
                 set(
@@ -2178,7 +2178,7 @@ define(
                         _c))))),
               put(
                 _c,
-                _olight_q,
+                _olight_Q,
                 _1),
               tell(
                 "The cave is very windy at the moment and your candles have blown out.")))))
@@ -2192,19 +2192,19 @@ define(
           ((prsact)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               1(
                 _prsact),
-              throw_-words)
+              throw_X_words)
             tell(
               "The bottle hits the far wall and is decimated.")
             remove_object(
               2(
                 _prsvec))),
-          (eq_q(
+          (_EQ_Q(
               1(
                 _prsact),
-              mung_-words)
+              mung_X_words)
             cond(
               (memq(
                   2(
@@ -2268,19 +2268,19 @@ define(
               set(
                 rem,
                 or(
-                  eq_q(
+                  _EQ_Q(
                     ocan(
                       _w),
                     avehicle(
                       _winner)),
-                  eq_q(
+                  _EQ_Q(
                     oroom(
                       _w),
                     _here))))
             put(
               _prsvec,
               1,
-              _take!-words)
+              _take_X_words)
             put(
               _prsvec,
               3,
@@ -2345,16 +2345,16 @@ define(
               object)),
         cond(
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _take!-words),
-              eq_q(
+                _take_X_words),
+              _EQ_Q(
                 _prsact,
-                _put!-words))
+                _put_X_words))
             cond(
               (and(
                   _av,
-                  eq_q(
+                  _EQ_Q(
                     _av,
                     _can))
                 tell(
@@ -2380,7 +2380,7 @@ define(
                       _av,
                       _ocontents,
                       (_w
-                        _
+                        _X
                         ocontents(
                           _av)))
                     put(
@@ -2389,7 +2389,7 @@ define(
                       _av)))),
               (and(
                   _can,
-                  neq_q(
+                  n_EQ_Q(
                     _can,
                     _b))
                 tell(
@@ -2414,13 +2414,13 @@ define(
                     _me))
                 cond(
                   (not(
-                      empty_q(
+                      empty_Q(
                         ocontents(
                           _b)))
                     tell(
                       "The bottle is already full.")),
                   (not(
-                      oopen_q(
+                      oopen_Q(
                         _b))
                     tell(
                       "The bottle is closed.")),
@@ -2440,13 +2440,13 @@ define(
                     tell(
                       "The bottle is now full of water.")))),
               (and(
-                  eq_q(
+                  _EQ_Q(
                     ocan(
                       _w),
                     _b),
-                  eq_q(
+                  _EQ_Q(
                     _prsact,
-                    _take!-words),
+                    _take_X_words),
                   not(
                     _can))
                 put(
@@ -2462,15 +2462,15 @@ define(
               (tell(
                   "The water slips through your fingers.")))),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _drop!-words),
-              eq_q(
+                _drop_X_words),
+              _EQ_Q(
                 _prsact,
-                _pour!-words),
-              eq_q(
+                _pour_X_words),
+              _EQ_Q(
                 _prsact,
-                _give!-words))
+                _give_X_words))
             cond(
               (memq(
                   _w,
@@ -2491,9 +2491,9 @@ define(
                   "The water spills to the floor and evaporates immediately.")
                 remove_object(
                   _w)))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _throw!-words)
+              _throw_X_words)
             tell(
               "The water splashes on the walls, and evaporates immediately.")
             remove_object(
@@ -2522,43 +2522,43 @@ define(
             (droom)
             room),
         cond(
-          (neq_q(
+          (n_EQ_Q(
               _here,
               _droom)
             setg(
-              dome_flag!-flag,
+              dome_flag_X_flag,
               <>)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   vname(
                     _prsact),
-                  tie_-words)
+                  tie_X_words)
                 tell(
                   "There is nothing it can be tied to.")),
-              (eq_q(
+              (_EQ_Q(
                   vname(
                     _prsact),
-                  untie_-words)
+                  untie_X_words)
                 tell(
                   "It is not tied to anything.")))),
           (and(
-              eq_q(
+              _EQ_Q(
                 vname(
                   _prsact),
-                tie_-words),
-              eq_q(
+                tie_X_words),
+              _EQ_Q(
                 3(
                   _prsvec),
                 find_obj(
                   "RAILI")))
             cond(
-              (_dome-flag!-flag
+              (_dome_flag_X_flag
                 tell(
                   "The rope is already attached.")),
               (tell(
                   "The rope drops over the side and comes within ten feet of the floor.")
                 setg(
-                  dome_flag!-flag,
+                  dome_flag_X_flag,
                   t)
                 tro(
                   _rope,
@@ -2577,14 +2577,14 @@ define(
                     insert_object(
                       _rope,
                       _droom)))))),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              untie_-words)
+              untie_X_words)
             cond(
-              (_dome-flag!-flag
+              (_dome_flag_X_flag
                 setg(
-                  dome_flag!-flag,
+                  dome_flag_X_flag,
                   <>)
                 trz(
                   _rope,
@@ -2594,11 +2594,11 @@ define(
               (tell(
                   "It is not tied to anything.")))),
           (and(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _drop!-words),
+                _drop_X_words),
               not(
-                _dome-flag!-flag))
+                _dome_flag_X_flag))
             remove_object(
               _rope)
             insert_object(
@@ -2608,10 +2608,10 @@ define(
             tell(
               "The rope drops gently to the floor below.")),
           (and(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _take!-words),
-              _dome-flag!-flag,
+                _take_X_words),
+              _dome_flag_X_flag,
               tell(
                 "The rope is tied to the railing.")))))
       define(
@@ -2656,25 +2656,25 @@ define(
             (count)
             fix),
         cond(
-          (_cyclops-flag!-flag
+          (_cyclops_flag_X_flag
             cond(
               (or(
-                  eq_q(
+                  _EQ_Q(
                     _prsact,
-                    _awake!-words),
-                  eq_q(
+                    _awake_X_words),
+                  _EQ_Q(
                     _prsact,
-                    _mung!-words),
-                  eq_q(
+                    _mung_X_words),
+                  _EQ_Q(
                     _prsact,
-                    _burn!-words),
-                  eq_q(
+                    _burn_X_words),
+                  _EQ_Q(
                     _prsact,
-                    _fight!-words))
+                    _fight_X_words))
                 tell(
                   "The cyclops yawns and stares at the thing that woke him up.")
                 setg(
-                  cyclops_flag!-flag,
+                  cyclops_flag_X_flag,
                   <>)
                 trz(
                   set(
@@ -2692,22 +2692,22 @@ define(
                     rvars(
                       _rm)))
                 t))),
-          (g_q(
+          (g_Q(
               abs(
                 _count),
               5)
             jigs_up(
               "The cyclops, tired of all of your games and trickery, eats you.\nThe cyclops says 'Mmm.  Just like mom used to make 'em.'")),
-          (eq_q(
+          (_EQ_Q(
               vname(
                 _prsact),
-              give_-words)
+              give_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsob1,
                   _food)
                 cond(
-                  (g__q(
+                  (g__Q(
                       _count,
                       0)
                     remove_object(
@@ -2721,11 +2721,11 @@ define(
                         _1,
                         _(
                           _count)))))),
-              (eq_q(
+              (_EQ_Q(
                   _prsob1,
                   _drink)
                 cond(
-                  (l_q(
+                  (l_Q(
                       _count,
                       0)
                     remove_object(
@@ -2742,12 +2742,12 @@ define(
                     tell(
                       "The cyclops looks tired and quickly falls fast asleep (what did you\nput in that drink, anyway?).")
                     setg(
-                      cyclops_flag!-flag,
+                      cyclops_flag_X_flag,
                       t)),
                   (tell(
                       "The cyclops apparently was not thirsty at the time and refuses your\ngenerous gesture.")
                     <>))),
-              (eq_q(
+              (_EQ_Q(
                   _prsob1,
                   _garlic)
                 tell(
@@ -2765,12 +2765,12 @@ define(
                   aos_sos(
                     _count))))),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _first_q!-words),
-              eq_q(
+                _first_Q_X_words),
+              _EQ_Q(
                 _prsact,
-                _fight!-words))
+                _fight_X_words))
             <>),
           (and(
               put(
@@ -2780,13 +2780,13 @@ define(
                   _count)),
               <>)),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsact,
-                _throw!-words),
-              eq_q(
+                _throw_X_words),
+              _EQ_Q(
                 vname(
                   _prsact),
-                mung_-words))
+                mung_X_words))
             cond(
               (prob(
                   50)
@@ -2794,14 +2794,14 @@ define(
                   "Your actions don't appear to be doing much harm to the cyclops, but\nthey do not exactly lower your insurance premiums, either.")),
               (tell(
                   "The cyclops ignores all injury to his body with a shrug.")))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _take!-words)
+              _take_X_words)
             tell(
               "The cyclops is rather heavy and doesn't take kindly to being grabbed.")),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _tie!-words)
+              _tie_X_words)
             tell(
               "You cannot tie the cyclops, although he is fit to be tied."))))
       define(
@@ -2822,41 +2822,41 @@ define(
             (vars)
             fix),
         cond(
-          (eq_q(
+          (_EQ_Q(
               1(
                 _pv),
-              _look!-words)
+              _look_X_words)
             tell(
               "You are in a room with an exit on the west side, and a staircase\nleading up.")
             cond(
               (and(
-                  _cyclops-flag!-flag,
+                  _cyclops_flag_X_flag,
                   not(
-                    _magic-flag!-flag))
+                    _magic_flag_X_flag))
                 tell(
                   "The cyclops, perhaps affected by a drug in your drink, is sleeping\nblissfully at the foot of the stairs.")),
-              (_magic-flag!-flag
+              (_magic_flag_X_flag
                 tell(
                   "On the north of the room is a wall which used to be solid, but which\nnow has a cyclops-sized hole in it.")),
-              (0_q(
+              (0_Q(
                   _vars)
                 tell(
                   "A cyclops, who looks prepared to eat horses (much less mere\nadventurers), blocks the staircase.  From his state of health, and\nthe bloodstains on the walls, you gather that he is not very\nfriendly, though he likes people.",
                   1)),
-              (g_q(
+              (g_Q(
                   _vars,
                   0)
                 tell(
                   "The cyclops is standing in the corner, eyeing you closely.  I don't\nthink he likes you very much.  He looks extremely hungry even for a\ncyclops.")),
-              (l_q(
+              (l_Q(
                   _vars,
                   0)
                 tell(
                   "The cyclops, having eaten the hot peppers, appears to be gasping.\nHis enflamed tongue protrudes from his man-sized mouth.")))
             cond(
-              (_cyclops-flag!-flag),
+              (_cyclops_flag_X_flag),
               (or(
-                  0_q(
+                  0_Q(
                     _vars),
                   tell(
                     nth(
@@ -2883,7 +2883,7 @@ define(
           ((foo)
             fix),
         cond(
-          (l_q(
+          (l_Q(
               _foo,
               0)
             set(
@@ -2897,7 +2897,7 @@ define(
                 _foo,
                 1)))),
         cond(
-          (_cyclops-flag!-flag),
+          (_cyclops_flag_X_flag),
           (tell(
               nth(
                 _cyclomad,
@@ -2905,13 +2905,13 @@ define(
                   _foo))))),
         _foo)
       setg(
-        echo_flag!-flag,
+        echo_flag_X_flag,
         <>)
       define(
         echo_room,
         ("AUX"
           (reader_string
-            _reader-string)
+            _reader_string)
           (b
             _inbuf)
           l
@@ -2922,7 +2922,7 @@ define(
             _outchan)
           verb
           (walk
-            _walk!-words)),
+            _walk_X_words)),
         #decl
           ((outchan)
             channel
@@ -2940,7 +2940,7 @@ define(
             (rm)
             room),
         cond(
-          (_echo-flag!-flag),
+          (_echo_flag_X_flag),
           (unwind(
               prog(
                 (),
@@ -2952,11 +2952,11 @@ define(
                       ((obj)
                         object),
                     cond(
-                      (ovis_q(
+                      (ovis_Q(
                           _obj)
                         tro(
                           _obj,
-                          _echo-room-bit)
+                          _echo_room_bit)
                         trz(
                           _obj,
                           _ovison)))),
@@ -2974,11 +2974,11 @@ define(
                     readstring(
                       _b,
                       _inchan,
-                      _reader-string)),
+                      _reader_string)),
                   readchr(
                     _inchan),
                   or(
-                    _alt-flag,
+                    _alt_flag,
                     readchr(
                       _inchan)),
                   setg(
@@ -2996,7 +2996,7 @@ define(
                               _l),
                             t),
                           t),
-                        eq_q(
+                        _EQ_Q(
                           set(
                             verb,
                             1(
@@ -3016,9 +3016,9 @@ define(
                         vfcn(
                           _verb))
                       apply_random(
-                        _random-action)
+                        _random_action)
                       cond(
-                        (neq_q(
+                        (n_EQ_Q(
                             _here,
                             _rm)
                           mapf(
@@ -3031,10 +3031,10 @@ define(
                               cond(
                                 (trnn(
                                     _x,
-                                    _echo-room-bit)
+                                    _echo_room_bit)
                                   trz(
                                     _x,
-                                    _echo-room-bit)
+                                    _echo_room_bit)
                                   tro(
                                     _x,
                                     _ovison)))),
@@ -3052,7 +3052,7 @@ define(
                       crlf(
                         )
                       cond(
-                        (eq_q(
+                        (_EQ_Q(
                             member(
                               "ECHO",
                               uppercase(
@@ -3062,7 +3062,7 @@ define(
                             "The acoustics of the room change subtly.",
                             1)
                           setg(
-                            echo_flag!-flag,
+                            echo_flag_X_flag,
                             t)
                           mapf(
                             <>,
@@ -3074,10 +3074,10 @@ define(
                               cond(
                                 (trnn(
                                     _x,
-                                    _echo-room-bit)
+                                    _echo_room_bit)
                                   trz(
                                     _x,
-                                    _echo-room-bit)
+                                    _echo_room_bit)
                                   tro(
                                     _x,
                                     _ovison)))),
@@ -3105,10 +3105,10 @@ define(
                     cond(
                       (trnn(
                           _x,
-                          _echo-room-bit)
+                          _echo_room_bit)
                         trz(
                           _x,
-                          _echo-room-bit)
+                          _echo_room_bit)
                         tro(
                           _x,
                           _ovison)))),
@@ -3137,16 +3137,16 @@ define(
           (set(
               m,
               memq(
-                down_-words,
+                down_X_words,
                 _exits))
             cond(
               (or(
-                  type_q(
+                  type_Q(
                     2(
                       _m),
                     nexit),
                   and(
-                    type_q(
+                    type_Q(
                       2(
                         _m),
                       cexit),
@@ -3194,18 +3194,18 @@ define(
         cond(
           (_prsobj
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsobj,
                   find_obj(
                     "SAILO"))
                 cond(
-                  (0_q(
+                  (0_Q(
                       mod(
                         _amt,
                         20))
                     tell(
                       "You seem to be repeating yourself.")),
-                  (0_q(
+                  (0_Q(
                       mod(
                         _amt,
                         10))
@@ -3213,7 +3213,7 @@ define(
                       "I think that phrase is getting a bit worn out.")),
                   (tell(
                       "Nothing happens here.")))),
-              (eq_q(
+              (_EQ_Q(
                   _prsobj,
                   find_obj(
                     "AVIAT"))
@@ -3277,14 +3277,14 @@ define(
               object)),
         cond(
           (not(
-              lit_q(
+              lit_Q(
                 _here))
             tell(
               "It is impossible to read in the dark.")),
           (and(
               _pi,
               not(
-                transparent_q(
+                transparent_Q(
                   _pi)))
             tell(
               "How does one look through a",
@@ -3293,7 +3293,7 @@ define(
                 _pi),
               "?")),
           (not(
-              readable_q(
+              readable_Q(
                 _po))
             tell(
               "How can I read a",
@@ -3310,15 +3310,15 @@ define(
         well,
         (),
         cond(
-          (_riddle-flag!-flag
+          (_riddle_flag_X_flag
             tell(
               "Well what?")),
-          (eq_q(
+          (_EQ_Q(
               _here,
               find_room(
                 "RIDDL"))
             setg(
-              riddle_flag!-flag,
+              riddle_flag_X_flag,
               t)
             tell(
               "There is a clap of thunder and the east door opens.")),
@@ -3329,7 +3329,7 @@ define(
         (),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _here,
                 find_room(
                   "CYCLO")),
@@ -3339,12 +3339,12 @@ define(
                 robjs(
                   _here)))
             setg(
-              cyclops_flag!-flag,
+              cyclops_flag_X_flag,
               t)
             tell(
               "The cyclops, hearing the name of his deadly nemesis, flees the room\nby knocking down the wall on the north of the room.")
             setg(
-              magic_flag!-flag,
+              magic_flag_X_flag,
               t)
             remove_object(
               find_obj(
@@ -3383,13 +3383,13 @@ define(
               object,
               false)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prso,
               find_obj(
                 "TEETH"))
             cond(
               (and(
-                  eq_q(
+                  _EQ_Q(
                     _prsi,
                     find_obj(
                       "PUTTY")),
@@ -3423,7 +3423,7 @@ define(
               object,
               false)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsobj,
               find_obj(
                 "BELL"))
@@ -3436,9 +3436,9 @@ define(
         ("AUX"
           (prsvec
             _prsvec)
-          (eat_q
+          (eat_Q
             <>)
-          (drink_q
+          (drink_Q
             <>)
           (prsobj
             2(
@@ -3462,8 +3462,8 @@ define(
             list(
               [rest
                 object])
-            (eat_q
-              drink_q)
+            (eat_Q
+              drink_Q)
             or(
               atom,
               false)),
@@ -3472,17 +3472,17 @@ define(
               )),
           (and(
               set(
-                eat_q,
-                edible_q(
+                eat_Q,
+                edible_Q(
                   _prsobj)),
               memq(
                 _prsobj,
                 _aobjs))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   1(
                     _prsvec),
-                  _drink!-words)
+                  _drink_X_words)
                 tell(
                   "How can I drink that?")),
               (tell(
@@ -3495,8 +3495,8 @@ define(
                     _aobjs))))),
           (and(
               set(
-                drink_q,
-                drinkable_q(
+                drink_Q,
+                drinkable_Q(
                   _prsobj)),
               set(
                 nobj,
@@ -3506,7 +3506,7 @@ define(
                 _nobj,
                 _aobjs))
             cond(
-              (oopen_q(
+              (oopen_Q(
                   _nobj)
                 tell(
                   "Thank you very much.  I was rather thirsty (from all this talking,\nprobably).")),
@@ -3526,8 +3526,8 @@ define(
                   _nobj)))),
           (not(
               or(
-                _eat_q,
-                _drink_q))
+                _eat_Q,
+                _drink_Q))
             tell(
               "I don't think that the",
               1,
@@ -3569,8 +3569,8 @@ define(
             hroom(
               _hack))
           robj
-          (seen_q
-            rseen_q(
+          (seen_Q
+            rseen_Q(
               _rm))
           (win
             _winner)
@@ -3582,7 +3582,7 @@ define(
           (still
             find_obj(
               "STILL"))
-          here_q
+          here_Q
           (hh
             hobjs(
               _hack))
@@ -3600,7 +3600,7 @@ define(
             list(
               [rest
                 object])
-            (seen_q)
+            (seen_Q)
             or(
               atom,
               false)
@@ -3610,7 +3610,7 @@ define(
             object
             (robber)
             activation
-            (here_q)
+            (here_Q)
             or(
               room,
               false)
@@ -3633,12 +3633,12 @@ define(
                   object])),
           cond(
             (set(
-                here_q,
+                here_Q,
                 oroom(
                   _hobj))
               set(
                 rm,
-                _here_q))),
+                _here_Q))),
           set(
             robj,
             robjs(
@@ -3648,16 +3648,16 @@ define(
             _hh),
           cond(
             (and(
-                eq_q(
+                _EQ_Q(
                   _rm,
                   _treas),
-                neq_q(
+                n_EQ_Q(
                   _rm,
                   _wroom))
               cond(
-                (_here_q
+                (_here_Q
                   cond(
-                    (eq_q(
+                    (_EQ_Q(
                         oroom(
                           _still),
                         _treas)
@@ -3667,7 +3667,7 @@ define(
                   remove_object(
                     _hobj)
                   set(
-                    here_q,
+                    here_Q,
                     <>)))
               mapf(
                 <>,
@@ -3677,7 +3677,7 @@ define(
                     ((x)
                       object),
                   cond(
-                    (g_q(
+                    (g_Q(
                         otval(
                           _x),
                         0)
@@ -3693,12 +3693,12 @@ define(
                         _x,
                         _rm)))),
                 _hh)),
-            (eq_q(
+            (_EQ_Q(
                 _rm,
                 _wroom)
               // Adventurer is in room:  CHOMP, CHOMP
               cond(
-                (eq_q(
+                (_EQ_Q(
                     _rm,
                     _treas)),
                 // Don't move, Gertrude,
@@ -3708,11 +3708,11 @@ define(
                   cond(
                     (and(
                         not(
-                          _here_q),
+                          _here_Q),
                         prob(
                           30))
                       cond(
-                        (eq_q(
+                        (_EQ_Q(
                             ocan(
                               _still),
                             _hobj)
@@ -3729,12 +3729,12 @@ define(
                             t,
                             _robber)))),
                     (and(
-                        _here_q,
-                        fighting_q(
+                        _here_Q,
+                        fighting_Q(
                           _hobj),
                         cond(
                           (not(
-                              winning_q(
+                              winning_Q(
                                 _hobj,
                                 _win))
                             tell(
@@ -3753,7 +3753,7 @@ define(
                           (prob(
                               90))))),
                     (and(
-                        _here_q,
+                        _here_Q,
                         prob(
                           30))
                       tell(
@@ -3815,19 +3815,19 @@ define(
                         t)
                       cond(
                         (and(
-                            neq_q(
+                            n_EQ_Q(
                               _objt,
                               _hh),
                             not(
-                              _here_q))
+                              _here_Q))
                           tell(
                             "A seedy-looking individual with a large bag just wandered through\nthe room.  On the way through, he quietly abstracted all valuables\nfrom the room and from your possession, mumbling something about\n\"Doing unto others before..\")),
-                        (_here_q
+                        (_here_Q
                           snarf_object(
                             _hobj,
                             _still)
                           cond(
-                            (neq_q(
+                            (n_EQ_Q(
                                 _objt,
                                 _hh)
                               tell(
@@ -3837,14 +3837,14 @@ define(
                           remove_object(
                             _hobj)
                           set(
-                            here_q,
+                            here_Q,
                             <>)),
                         (t
                           tell(
                             "A 'lean and hungry' gentleman just wandered through.  Finding\nnothing of value, he left disgruntled.")))))),
                 (t
                   cond(
-                    (_here_q
+                    (_here_Q
                       // Here, already announced.
                       cond(
                         (prob(
@@ -3872,10 +3872,10 @@ define(
                                   "ROPE"),
                                 _hh)
                               setg(
-                                dome_flag!-flag,
+                                dome_flag_X_flag,
                                 <>)))
                           cond(
-                            (eq_q(
+                            (_EQ_Q(
                                 _objt,
                                 _hh)
                               tell(
@@ -3886,7 +3886,7 @@ define(
                           remove_object(
                             _hobj)
                           set(
-                            here_q,
+                            here_Q,
                             <>)
                           snarf_object(
                             _hobj,
@@ -3906,10 +3906,10 @@ define(
                 remove_object(
                   _hobj),
                 set(
-                  here_q,
+                  here_Q,
                   <>))),
             (and(
-                eq_q(
+                _EQ_Q(
                   oroom(
                     _still),
                   _rm),
@@ -3917,7 +3917,7 @@ define(
                   _hobj,
                   _still),
                 <>)),
-            (_seen_q
+            (_seen_Q
               // Hack the adventurer's belongings
               put(
                 _hack,
@@ -3930,11 +3930,11 @@ define(
                     75)))
               cond(
                 (and(
-                    eq_q(
+                    _EQ_Q(
                       rdesc2(
                         _rm),
                       _mazedesc),
-                    eq_q(
+                    _EQ_Q(
                       rdesc2(
                         _wroom),
                       _mazedesc))
@@ -3947,9 +3947,9 @@ define(
                           object),
                       cond(
                         (and(
-                            can_take_q(
+                            can_take_Q(
                               _x),
-                            ovis_q(
+                            ovis_Q(
                               _x),
                             prob(
                               40))
@@ -3969,7 +3969,7 @@ define(
                                 _x)
                               put(
                                 _x,
-                                _otouch_q,
+                                _otouch_Q,
                                 t)
                               put(
                                 _hack,
@@ -3977,7 +3977,7 @@ define(
                                 set(
                                   hh,
                                   (_x
-                                    _.hh)))))
+                                    _X_hh)))))
                           mapleave(
                             )))),
                     robjs(
@@ -3991,12 +3991,12 @@ define(
                           object),
                       cond(
                         (and(
-                            0_q(
+                            0_Q(
                               otval(
                                 _x)),
-                            can_take_q(
+                            can_take_Q(
                               _x),
-                            ovis_q(
+                            ovis_Q(
                               _x),
                             prob(
                               20))
@@ -4004,7 +4004,7 @@ define(
                             _x)
                           put(
                             _x,
-                            _otouch_q,
+                            _otouch_Q,
                             t)
                           put(
                             _hack,
@@ -4012,9 +4012,9 @@ define(
                             set(
                               hh,
                               (_x
-                                _.hh)))
+                                _X_hh)))
                           cond(
-                            (eq_q(
+                            (_EQ_Q(
                                 _rm,
                                 _wroom)
                               tell(
@@ -4033,7 +4033,7 @@ define(
                           "ROPE"),
                         _hh)
                       setg(
-                        dome_flag!-flag,
+                        dome_flag_X_flag,
                         <>))))))),
           cond(
             (set(
@@ -4050,7 +4050,7 @@ define(
                   1(
                     _rooms)),
                 cond(
-                  (empty_q(
+                  (empty_Q(
                       set(
                         rooms,
                         rest(
@@ -4078,14 +4078,14 @@ define(
                   _hrooms,
                   _rooms),
                 set(
-                  seen_q,
-                  rseen_q(
+                  seen_Q,
+                  rseen_Q(
                     _rm)))
               again(
                 )))),
         // Drop worthless cruft, sometimes,
         or(
-          eq_q(
+          _EQ_Q(
             _rm,
             _treas),
           mapf(
@@ -4097,7 +4097,7 @@ define(
                   object),
               cond(
                 (and(
-                    0_q(
+                    0_Q(
                       otval(
                         _x)),
                     prob(
@@ -4114,7 +4114,7 @@ define(
                     _x,
                     _rm)
                   and(
-                    eq_q(
+                    _EQ_Q(
                       _rm,
                       _wroom),
                     tell(
@@ -4130,7 +4130,7 @@ define(
             object),
         cond(
           (and(
-              neq_q(
+              n_EQ_Q(
                 ocan(
                   _what),
                 _who),
@@ -4149,7 +4149,7 @@ define(
               _who,
               _ocontents,
               (_what
-                _
+                _X
                 ocontents(
                   _who)))),
           (_who)))
@@ -4210,11 +4210,11 @@ define(
               atom,
               false)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _fight!-words)
+              _fight_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   ocan(
                     set(
                       st,
@@ -4222,7 +4222,7 @@ define(
                         "STILL"))),
                   _t)
                 <>),
-              (eq_q(
+              (_EQ_Q(
                   oroom(
                     _st),
                   _here)
@@ -4240,12 +4240,12 @@ define(
                   _takebit)
                 remove_object(
                   _t)))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _dead\!!-words)
+              _dead__X_X_words)
             cond(
               (not(
-                  empty_q(
+                  empty_Q(
                     hobjs(
                       _dem)))
                 tell(
@@ -4262,7 +4262,7 @@ define(
                       _here),
                     tro(
                       _x,
-                      _echo-room-bit)),
+                      _echo_room_bit)),
                   hobjs(
                     _dem))
                 put(
@@ -4273,7 +4273,7 @@ define(
               _chali,
               _takebit)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _here,
                   find_room(
                     "TREAS"))
@@ -4286,19 +4286,19 @@ define(
                         object),
                     cond(
                       (and(
-                          neq_q(
+                          n_EQ_Q(
                             _x,
                             _chali),
-                          neq_q(
+                          n_EQ_Q(
                             _x,
                             _t))
                         cond(
                           (trnn(
                               _x,
-                              _echo-room-bit)
+                              _echo_room_bit)
                             trz(
                               _x,
-                              _echo-room-bit)),
+                              _echo_room_bit)),
                           (tro(
                               _x,
                               _ovison)
@@ -4322,14 +4322,14 @@ define(
               _dem,
               _haction,
               <>)),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _first_q!-words)
+              _first_Q_X_words)
             prob(
               20)),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _out\!!-words)
+              _out__X_X_words)
             put(
               _dem,
               _haction,
@@ -4344,19 +4344,19 @@ define(
             put(
               _t,
               _odesc1,
-              _robber-u-desc)),
-          (eq_q(
+              _robber_u_desc)),
+          (_EQ_Q(
               _prsact,
-              _in\!!-words)
+              _in__X_X_words)
             cond(
-              (eq_q(
+              (_EQ_Q(
                   hroom(
                     _dem),
                   _here)
                 tell(
                   "The robber revives, briefly feigning continued unconsciousness, and\nwhen he sees his moment, scrambles away from you.")))
             cond(
-              (type_q(
+              (type_Q(
                   _robber,
                   offset)
                 put(
@@ -4370,10 +4370,10 @@ define(
             put(
               _t,
               _odesc1,
-              _robber-c-desc)
+              _robber_c_desc)
             cond(
               (and(
-                  eq_q(
+                  _EQ_Q(
                     _here,
                     find_room(
                       "TREAS")),
@@ -4389,17 +4389,17 @@ define(
                 "STILL"),
               _ovison)),
           (and(
-              type_q(
+              type_Q(
                 _prsobj,
                 object),
-              eq_q(
+              _EQ_Q(
                 2(
                   _pv),
-                _knife!-objects),
-              eq_q(
+                _knife_X_objects),
+              _EQ_Q(
                 vname(
                   _prsact),
-                throw_-words),
+                throw_X_words),
               not(
                 trnn(
                   _t,
@@ -4411,7 +4411,7 @@ define(
                   "You evidently frightened the robber, though you didn't hit him.  He\nflees",
                   1,
                   cond(
-                    (empty_q(
+                    (empty_Q(
                         hobjs(
                           _dem))
                       "."),
@@ -4443,21 +4443,21 @@ define(
                   _fightbit)))),
           (and(
               or(
-                eq_q(
+                _EQ_Q(
                   _prsact,
-                  _throw!-words),
-                eq_q(
+                  _throw_X_words),
+                _EQ_Q(
                   _prsact,
-                  _give!-words)),
-              type_q(
+                  _give_X_words)),
+              type_Q(
                 _prsobj,
                 object),
-              neq_q(
+              n_EQ_Q(
                 _prsobj,
                 hobj(
                   _dem)))
             cond(
-              (l_q(
+              (l_Q(
                   ocapac(
                     _t),
                   0)
@@ -4471,7 +4471,7 @@ define(
                   _dem,
                   _haction,
                   cond(
-                    (type_q(
+                    (type_Q(
                         _robber,
                         offset)
                       _robber),
@@ -4483,18 +4483,18 @@ define(
                 put(
                   _t,
                   _odesc1,
-                  _robber-c-desc)
+                  _robber_c_desc)
                 tell(
                   "Your proposed victim suddenly recovers consciousness.")))
             cond(
               (and(
-                  eq_q(
+                  _EQ_Q(
                     _prsobj,
                     set(
                       brick,
                       find_obj(
                         "BRICK"))),
-                  eq_q(
+                  _EQ_Q(
                     ocan(
                       set(
                         fuse,
@@ -4504,7 +4504,7 @@ define(
                   orand(
                     _fuse),
                   not(
-                    0_q(
+                    0_Q(
                       ctick(
                         2(
                           set(
@@ -4520,7 +4520,7 @@ define(
                   _dem,
                   _hobjs,
                   (_prsobj
-                    _
+                    _X
                     hobjs(
                       _dem)))
                 tell(
@@ -4531,10 +4531,10 @@ define(
                   "in his bag and thanks\nyou politely.")))),
           (and(
               _prsact,
-              eq_q(
+              _EQ_Q(
                 vname(
                   _prsact),
-                take_-words))
+                take_X_words))
             tell(
               "Once you got him, what would you do with him?"))))
       define(
@@ -4558,32 +4558,32 @@ define(
             (t)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _take!-words)
+              _take_X_words)
             cond(
               (and(
                   not(
                     ocan(
                       _ch)),
-                  eq_q(
+                  _EQ_Q(
                     oroom(
                       _ch),
                     set(
                       tr,
                       find_room(
                         "TREAS"))),
-                  eq_q(
+                  _EQ_Q(
                     oroom(
                       set(
                         t,
                         find_obj(
                           "THIEF"))),
                     _tr),
-                  fighting_q(
+                  fighting_Q(
                     _t),
                   haction(
-                    _robber-demon))
+                    _robber_demon))
                 tell(
                   "Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray."))))))
       define(
@@ -4604,13 +4604,13 @@ define(
               prsi)
             object),
         cond(
-          (flaming_q(
+          (flaming_Q(
               _prsi)
             cond(
               (object_action(
                   )),
               (and(
-                  eq_q(
+                  _EQ_Q(
                     avehicle(
                       _winner),
                     find_obj(
@@ -4618,7 +4618,7 @@ define(
                   balloon(
                     ))),
               (and(
-                  burnable_q(
+                  burnable_Q(
                     _prso),
                   cond(
                     (memq(
@@ -4633,7 +4633,7 @@ define(
                         "catches fire.")
                       jigs_up(
                         "Unfortunately, you were holding it at the time.")),
-                    (hackable_q(
+                    (hackable_Q(
                         _prso,
                         _here)
                       tell(
@@ -4713,19 +4713,19 @@ define(
           ((pa)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _open!-words)
+              _open_X_words)
             tell(
               "The door cannot be opened.")),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _burn!-words)
+              _burn_X_words)
             tell(
               "You cannot burn this door.")),
-          (eq_q(
+          (_EQ_Q(
               _pa,
-              _mung!-words)
+              _mung_X_words)
             tell(
               pick_one(
                 _doormungs)))))
@@ -4743,12 +4743,12 @@ define(
               prso)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsi,
               find_obj(
                 "IBOAT"))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prso,
                   find_obj(
                     "PUMP"))
@@ -4756,7 +4756,7 @@ define(
                   )),
               (tell(
                   "You would inflate it with that?")))),
-          (eq_q(
+          (_EQ_Q(
               _prsi,
               find_obj(
                 "RBOAT"))
@@ -4774,7 +4774,7 @@ define(
           ((prso)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prso,
               find_obj(
                 "RBOAT"))
@@ -4792,12 +4792,12 @@ define(
           ((prso)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prso,
               find_obj(
                 "GRAT2"))
             setg(
-              grunlock_-flag,
+              grunlock_X_flag,
               <>)
             tell(
               "The grate is locked.")
@@ -4813,13 +4813,13 @@ define(
                       room)),
                 cond(
                   (and(
-                      type_q(
+                      type_Q(
                         _x,
                         cexit),
-                      eq_q(
+                      _EQ_Q(
                         cxflag(
                           _x),
-                        key_flag!-flag))
+                        key_flag_X_flag))
                     put(
                       _x,
                       _cxstr,
@@ -4849,17 +4849,17 @@ define(
             (r)
             room),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prso,
               find_obj(
                 "GRAT2"))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _prsi,
                   find_obj(
                     "KEYS"))
                 setg(
-                  grunlock_-flag,
+                  grunlock_X_flag,
                   t)
                 tell(
                   "The grate is unlocked.")
@@ -4875,13 +4875,13 @@ define(
                           room)),
                     cond(
                       (and(
-                          type_q(
+                          type_Q(
                             _x,
                             cexit),
-                          eq_q(
+                          _EQ_Q(
                             cxflag(
                               _x),
-                            key_flag!-flag))
+                            key_flag_X_flag))
                         put(
                           _x,
                           _cxstr,
@@ -5067,7 +5067,7 @@ define(
               _obj2,
               1,
               pick_one(
-                _ho-hum))),
+                _ho_hum))),
           (else
             tell(
               _str,
@@ -5075,7 +5075,7 @@ define(
               odesc2(
                 _obj),
               pick_one(
-                _ho-hum)))))
+                _ho_hum)))))
       psetg(
         ho_hum,
         () => ["does not seem to do anything."
@@ -5239,7 +5239,7 @@ define(
           (object_action(
               )),
           (memq(
-              butto_-objects,
+              butto_X_objects,
               onames(
                 _prso))),
           (hack_hack(
@@ -5284,7 +5284,7 @@ define(
                 _prso),
               "can be melted."))))
       setg(
-        on_pole!-flag,
+        on_pole_X_flag,
         <>)
       define(
         body_function,
@@ -5296,22 +5296,22 @@ define(
           ((prsa)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _take!-words)
+              _take_X_words)
             tell(
               "A force keeps you from taking the bodies.")),
           (or(
-              eq_q(
+              _EQ_Q(
                 _prsa,
-                _mung!-words),
-              eq_q(
+                _mung_X_words),
+              _EQ_Q(
                 _prsa,
-                _burn!-words))
+                _burn_X_words))
             cond(
-              (_on-pole!-flag),
+              (_on_pole_X_flag),
               (setg(
-                  on_pole!-flag,
+                  on_pole_X_flag,
                   t)
                 insert_object(
                   find_obj(
@@ -5371,9 +5371,9 @@ define(
             (art)
             object),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _mung!-words)
+              _mung_X_words)
             put(
               _art,
               _otval,
@@ -5434,9 +5434,9 @@ define(
               any,
               cevent)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _verb,
-              _throw!-words)
+              _throw_X_words)
             tell(
               "The lamp has smashed into the floor and the light has gone out.")
             remove_object(
@@ -5446,17 +5446,17 @@ define(
               find_obj(
                 "BLAMP"),
               _here)),
-          (eq_q(
+          (_EQ_Q(
               _verb,
-              _c-int!-words)
+              _c_int_X_words)
             light_int(
               _rlamp,
               _lntin,
-              _lamp-ticks,
-              _lamp-tells)),
-          (eq_q(
+              _lamp_ticks,
+              _lamp_tells)),
+          (_EQ_Q(
               _verb,
-              _turn-on!-words)
+              _turn_on_X_words)
             clock_enable(
               2(
                 set(
@@ -5464,9 +5464,9 @@ define(
                   orand(
                     _rlamp))))
             <>),
-          (eq_q(
+          (_EQ_Q(
               _verb,
-              _turn-off!-words)
+              _turn_off_X_words)
             clock_disable(
               2(
                 set(
@@ -5511,7 +5511,7 @@ define(
                 aobjs(
                   _player)))
             cond(
-              (infested_q(
+              (infested_Q(
                   _here)
                 set(
                   ng,
@@ -5528,19 +5528,19 @@ define(
                           nexit,
                           atom)),
                     cond(
-                      (type_q(
+                      (type_Q(
                           _e,
                           room)
                         and(
-                          infested_q(
+                          infested_Q(
                             _e),
                           mapleave(
                             t))),
-                      (type_q(
+                      (type_Q(
                           _e,
                           cexit)
                         and(
-                          infested_q(
+                          infested_Q(
                             2(
                               _e)),
                           mapleave(
@@ -5551,19 +5551,19 @@ define(
                   ng,
                   1)))
             cond(
-              (eq_q(
+              (_EQ_Q(
                   _ng,
                   _g)),
-              (eq_q(
+              (_EQ_Q(
                   _ng,
                   2)
                 tell(
                   "Your sword has begun to glow very brightly.")),
-              (1_q(
+              (1_Q(
                   _ng)
                 tell(
                   "Your sword is glowing with a faint blue glow.")),
-              (0_q(
+              (0_Q(
                   _ng)
                 tell(
                   "Your sword is no longer glowing.")))
@@ -5586,24 +5586,24 @@ define(
             verb),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _pa,
-                _take!-words),
-              eq_q(
+                _take_X_words),
+              _EQ_Q(
                 _winner,
                 _player))
             put(
-              _sword-demon,
+              _sword_demon,
               _haction,
               cond(
-                (type_q(
-                    _sword-glow,
+                (type_Q(
+                    _sword_glow,
                     offset)
-                  _sword-glow),
+                  _sword_glow),
                 (sword_glow)))
             <>)))
       define(
-        infested_q,
+        infested_Q,
         (r
           "AUX"
           (villains
@@ -5622,7 +5622,7 @@ define(
             hack),
         or(
           and(
-            eq_q(
+            _EQ_Q(
               _r,
               hroom(
                 _dem)),
@@ -5636,7 +5636,7 @@ define(
                 ((v)
                   object),
               cond(
-                (eq_q(
+                (_EQ_Q(
                     _r,
                     oroom(
                       _v))
@@ -5681,10 +5681,10 @@ define(
             fix),
         cond(
           (and(
-              eq_q(
+              _EQ_Q(
                 _prsa,
-                _light!-words),
-              eq_q(
+                _light_X_words),
+              _EQ_Q(
                 _prso,
                 _match))
             cond(
@@ -5697,7 +5697,7 @@ define(
                       _(
                         _mc,
                         1))),
-                  l__q(
+                  l__Q(
                     _mc,
                     0))
                 tell(
@@ -5707,7 +5707,7 @@ define(
                   _flamebit)
                 put(
                   _match,
-                  _olight_q,
+                  _olight_Q,
                   1)
                 clock_int(
                   _matin,
@@ -5715,11 +5715,11 @@ define(
                 tell(
                   "One of the matches starts to burn.")))),
           (and(
-              eq_q(
+              _EQ_Q(
                 _prsa,
-                _turn-off!-words),
-              1_q(
-                olight_q(
+                _turn_off_X_words),
+              1_Q(
+                olight_Q(
                   _match)))
             tell(
               "The match is out.")
@@ -5728,15 +5728,15 @@ define(
               _flamebit)
             put(
               _match,
-              _olight_q,
+              _olight_Q,
               0)
             clock_int(
               _matin,
               0)
             t),
-          (eq_q(
+          (_EQ_Q(
               _prsa,
-              _c-int!-words)
+              _c_int_X_words)
             tell(
               "The match has gone out.")
             trz(
@@ -5744,7 +5744,7 @@ define(
               _flamebit)
             put(
               _match,
-              _olight_q,
+              _olight_Q,
               0))))
       define(
         candles,
@@ -5805,12 +5805,12 @@ define(
           orand(
             _c)),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _light!-words)
+              _light_X_words)
             cond(
-              (0_q(
-                  olight_q(
+              (0_Q(
+                  olight_Q(
                     _c))
                 tell(
                   "Alas, there's not much left of the candles.  Certainly not enough to\nburn.")),
@@ -5836,44 +5836,44 @@ define(
                   _orphans,
                   _oprep,
                   chtype(
-                    with_-words,
+                    with_X_words,
                     prep))
                 setg(
                   parse_won,
                   <>)
                 t),
               (and(
-                  eq_q(
+                  _EQ_Q(
                     _w,
                     set(
                       match,
                       find_obj(
                         "MATCH"))),
-                  1_q(
-                    olight_q(
+                  1_Q(
+                    olight_Q(
                       _match)))
                 cond(
-                  (1_q(
-                      olight_q(
+                  (1_Q(
+                      olight_Q(
                         _c))
                     tell(
                       "The candles are already lighted.")),
                   (put(
                       _c,
-                      _olight_q,
+                      _olight_Q,
                       1)
                     tell(
                       "The candles are lighted.")
                     clock_enable(
                       2(
                         _foo))))),
-              (eq_q(
+              (_EQ_Q(
                   _w,
                   find_obj(
                     "TORCH"))
                 cond(
-                  (1_q(
-                      olight_q(
+                  (1_Q(
+                      olight_Q(
                         _c))
                     tell(
                       "You realize, just in time, that the candles are already lighted.")),
@@ -5895,32 +5895,32 @@ define(
                             _ao))))))),
               (tell(
                   "You have to light them with something that's burning, you know.")))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _turn-off!-words)
+              _turn_off_X_words)
             clock_disable(
               2(
                 _foo))
             cond(
-              (1_q(
-                  olight_q(
+              (1_Q(
+                  olight_Q(
                     _c))
                 tell(
                   "The flame is extinguished.")
                 put(
                   _c,
-                  _olight_q,
+                  _olight_Q,
                   _1)),
               (tell(
                   "The candles are not lighted.")))),
-          (eq_q(
+          (_EQ_Q(
               _prsact,
-              _c-int!-words)
+              _c_int_X_words)
             light_int(
               _c,
               _cndin,
-              _candle-ticks,
-              _candle-tells))))
+              _candle_ticks,
+              _candle_tells))))
       define(
         black_book,
         ("AUX"
@@ -5942,9 +5942,9 @@ define(
             (v)
             verb),
         cond(
-          (eq_q(
+          (_EQ_Q(
               _v,
-              _burn!-words)
+              _burn_X_words)
             cond(
               (oroom(
                   _b)
@@ -6003,14 +6003,14 @@ define(
               _tick,
               _cnt))),
         cond(
-          (0_q(
+          (0_Q(
               _tim)
             cond(
               (or(
                   not(
                     oroom(
                       _obj)),
-                  eq_q(
+                  _EQ_Q(
                     oroom(
                       _obj),
                     _here))
@@ -6022,13 +6022,13 @@ define(
                   ".")))
             put(
               _obj,
-              _olight_q,
+              _olight_Q,
               0)),
           (or(
               not(
                 oroom(
                   _obj)),
-              eq_q(
+              _EQ_Q(
                 oroom(
                   _obj),
                 _here))
@@ -6037,7 +6037,7 @@ define(
                 _tell,
                 _cnt)))))
       define(
-        hackable_q,
+        hackable_Q,
         (obj
           rm
           "AUX"

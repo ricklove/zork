@@ -15,10 +15,11 @@ const convertToTypescriptComment = (node: ZList): string => {
 
 const converToTypescriptName = (node: ZToken): string => {
     return `${node._raw.toString()
-        .replace(/==/, 'EQ')
-        .replace(/\?/, '_q')
-        .replace(/[^A-Z0-9]/, '_')
         .toLowerCase()
+        .replace(/==/g, '_EQ')
+        .replace(/\?/g, '_Q')
+        .replace(/\!/g, '_X')
+        .replace(/[^A-Za-z0-9]/g, '_')
         }`;
 }
 
