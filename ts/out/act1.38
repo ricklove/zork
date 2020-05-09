@@ -50,14 +50,14 @@
           M1
           M2)
         #DECL
-        ((BODY
-            NM1
-            NM2
-            M1
-            M2)
-          STRING
-          (TYPE)
-          FIX)
+          ((BODY
+              NM1
+              NM2
+              M1
+              M2)
+            STRING
+            (TYPE)
+            FIX)
         <COND
           (<==?
               .TYPE
@@ -96,12 +96,12 @@
             <1
               .PRSVEC>))
         #DECL
-        ((PRSVEC)
-          VECTOR
-          (WIN)
-          ADV
-          (PRSACT)
-          VERB)
+          ((PRSVEC)
+            VECTOR
+            (WIN)
+            ADV
+            (PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -124,8 +124,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <OPEN-CLOSE
           .PRSACT
           KITCHEN-WINDOW!-FLAG
@@ -138,13 +138,13 @@
           STROPN
           STRCLS)
         #DECL
-        ((VERB)
-          VERB
-          (ATM)
-          ATOM
-          (STROPN
-            STRCLS)
-          STRING)
+          ((VERB)
+            VERB
+            (ATM)
+            ATOM
+            (STROPN
+              STRCLS)
+            STRING)
         <COND
           (<==?
               .VERB
@@ -185,12 +185,12 @@
             <1
               .PRSVEC>))
         #DECL
-        ((PRSVEC)
-          VECTOR
-          (WIN)
-          ADV
-          (PRSACT)
-          VERB)
+          ((PRSVEC)
+            VECTOR
+            (WIN)
+            ADV
+            (PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -216,12 +216,12 @@
             <2
               .PV>))
         #DECL
-        ((PV)
-          <VECTOR
-            [3
-              ANY]>
-          (L)
-          OBJECT)
+          ((PV)
+            <VECTOR
+              [3
+                ANY]>
+            (L)
+            OBJECT)
         <COND
           (<==?
               <1
@@ -266,8 +266,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -288,9 +288,9 @@
             <1
               ,PRSVEC>))
         #DECL
-        #DECL
-        ((PRSACT)
-          VERB)
+          #DECL
+            ((PRSACT)
+              VERB)
         <COND
           (<==?
               .PRSACT
@@ -307,15 +307,15 @@
               .PRSVEC>)
           T)
         #DECL
-        ((PRSVEC)
-          <VECTOR
+          ((PRSVEC)
+            <VECTOR
+              VERB
+              [2
+                ANY]>
+            (PRSACT)
             VERB
-            [2
-              ANY]>
-          (PRSACT)
-          VERB
-          (T)
-          OBJECT)
+            (T)
+            OBJECT)
         <COND
           (<==?
               <VNAME
@@ -386,8 +386,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -411,8 +411,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -443,18 +443,18 @@
               .PRSVEC>)
           TC)
         #DECL
-        ((PRSVEC)
-          VECTOR
-          (WIN)
-          ADV
-          (RUG?)
-          <OR
-            ATOM
-            FALSE>
-          (PRSACT)
-          VERB
-          (TC)
-          OBJECT)
+          ((PRSVEC)
+            VECTOR
+            (WIN)
+            ADV
+            (RUG?)
+            <OR
+              ATOM
+              FALSE>
+            (PRSACT)
+            VERB
+            (TC)
+            OBJECT)
         <COND
           (<==?
               .PRSACT
@@ -527,10 +527,10 @@
           (RM
             ,HERE))
         #DECL
-        ((PRSACT)
-          VERB
-          (RM)
-          ROOM)
+          ((PRSACT)
+            VERB
+            (RM)
+            ROOM)
         <COND
           (<==?
               .RM
@@ -582,8 +582,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((OBJ)
-          OBJECT)
+          ((OBJ)
+            OBJECT)
         <COND
           (<AND
               <==?
@@ -632,15 +632,15 @@
             <RVARS
               .RM>))
         #DECL
-        ((PRSACT)
-          VERB
-          (RM)
-          ROOM
-          (LEAVES
-            GRATE)
-          OBJECT
-          (RV)
-          FIX)
+          ((PRSACT)
+            VERB
+            (RM)
+            ROOM
+            (LEAVES
+              GRATE)
+            OBJECT
+            (RV)
+            FIX)
         <COND
           (<==?
               .PRSACT
@@ -702,12 +702,12 @@
             <FIND-OBJ
               "DOOR">))
         #DECL
-        ((WIN)
-          ADV
-          (PRSACT)
-          VERB
-          (DOOR)
-          OBJECT)
+          ((WIN)
+            ADV
+            (PRSACT)
+            VERB
+            (DOOR)
+            OBJECT)
         <COND
           (<==?
               .PRSACT
@@ -743,12 +743,12 @@
             <AOBJS
               .WINNER>))
         #DECL
-        ((WINNER)
-          ADV
-          (AOBJS)
-          <LIST
-            [REST
-              OBJECT]>)
+          ((WINNER)
+            ADV
+            (AOBJS)
+            <LIST
+              [REST
+                OBJECT]>)
         <COND
           (<AND
               <L=?
@@ -787,12 +787,12 @@
               .PRSVEC>)
           OBJ)
         #DECL
-        ((PRSVEC)
-          VECTOR
-          (OBJ)
-          OBJECT
-          (PRSA)
-          VERB)
+          ((PRSVEC)
+            VECTOR
+            (OBJ)
+            OBJECT
+            (PRSA)
+            VERB)
         <COND
           (<==?
               .PRSA
@@ -837,14 +837,14 @@
             <3
               .PRSVEC>))
         #DECL
-        ((PRSVEC)
-          VECTOR
-          (PRSA)
-          VERB
-          (PRSI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PRSVEC)
+            VECTOR
+            (PRSA)
+            VERB
+            (PRSI)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<==?
               .PRSA
@@ -890,13 +890,13 @@
               "LLD2">)
           L)
         #DECL
-        ((RM
-            LLD)
-          ROOM
-          (L)
-          <LIST
-            [REST
-              OBJECT]>)
+          ((RM
+              LLD)
+            ROOM
+            (L)
+            <LIST
+              [REST
+                OBJECT]>)
         <TELL
           "A ghost appears in the room and is appalled at your having desecrated the remains of a fellow adventurer.  He casts a curse on all of your valuables and orders them banished to the Land of the Living Dead.  The ghost leaves, muttering obscenities.">
         <SET
@@ -915,8 +915,8 @@
           <FUNCTION
             (X)
             #DECL
-            ((X)
-              OBJECT)
+              ((X)
+                OBJECT)
             <PUT
               .X
               ,OROOM
@@ -960,21 +960,21 @@
             <FIND-OBJ
               "AXE">))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO)
-          <OR
-            FALSE
-            OBJECT>
-          (WIN)
-          ADV
-          (HERE)
-          ROOM
-          (T
-            A)
-          OBJECT
-          (PA)
-          VERB)
+          ((PV)
+            VECTOR
+            (PRSO)
+            <OR
+              FALSE
+              OBJECT>
+            (WIN)
+            ADV
+            (HERE)
+            ROOM
+            (T
+              A)
+            OBJECT
+            (PA)
+            VERB)
         <COND
           (<==?
               .PA
@@ -1111,8 +1111,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<AND
               <==?
@@ -1140,15 +1140,15 @@
           RM2
           L1)
         #DECL
-        ((PRSACT)
-          VERB
-          (RM1
-            RM2)
-          ROOM
-          (L1)
-          <LIST
-            [REST
-              OBJECT]>)
+          ((PRSACT)
+            VERB
+            (RM1
+              RM2)
+            ROOM
+            (L1)
+            <LIST
+              [REST
+                OBJECT]>)
         <COND
           (<AND
               <NOT
@@ -1189,8 +1189,8 @@
               <FUNCTION
                 (X)
                 #DECL
-                ((X)
-                  OBJECT)
+                  ((X)
+                    OBJECT)
                 <PUT
                   .X
                   ,OROOM
@@ -1202,8 +1202,8 @@
               <FUNCTION
                 (X)
                 #DECL
-                ((X)
-                  OBJECT)
+                  ((X)
+                    OBJECT)
                 <PUT
                   .X
                   ,OROOM
@@ -1256,8 +1256,8 @@
           (PV
             ,PRSVEC))
         #DECL
-        ((PV)
-          VECTOR)
+          ((PV)
+            VECTOR)
         <COND
           (<AND
               <==?
@@ -1285,11 +1285,11 @@
         ("AUX"
           CX)
         #DECL
-        ((CX)
-          <OR
-            CEXIT
-            NEXIT
-            ROOM>)
+          ((CX)
+            <OR
+              CEXIT
+              NEXIT
+              ROOM>)
         <COND
           (,CAROUSEL-FLIP!-FLAG
             <>)
@@ -1302,11 +1302,11 @@
         ("AUX"
           CX)
         #DECL
-        ((CX)
-          <OR
-            CEXIT
-            NEXIT
-            ROOM>)
+          ((CX)
+            <OR
+              CEXIT
+              NEXIT
+              ROOM>)
         <AND
           <TYPE?
             <SET
@@ -1331,8 +1331,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -1351,8 +1351,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -1404,18 +1404,18 @@
             <FIND-OBJ
               "CANDL">))
         #DECL
-        ((PV)
-          VECTOR
-          (PA)
-          VERB
-          (WIN)
-          ADV
-          (WOBJ)
-          <LIST
-            [REST
-              OBJECT]>
-          (CAND)
-          OBJECT)
+          ((PV)
+            VECTOR
+            (PA)
+            VERB
+            (WIN)
+            ADV
+            (WOBJ)
+            <LIST
+              [REST
+                OBJECT]>
+            (CAND)
+            OBJECT)
         <COND
           (<==?
               .PA
@@ -1476,8 +1476,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSA)
-          VERB)
+          ((PRSA)
+            VERB)
         <COND
           (<==?
               .PRSA
@@ -1498,10 +1498,10 @@
             <FIND-OBJ
               "GHOST">))
         #DECL
-        ((PV)
-          VECTOR
-          (G)
-          OBJECT)
+          ((PV)
+            VECTOR
+            (G)
+            OBJECT)
         <COND
           (<==?
               <3
@@ -1523,8 +1523,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -1547,8 +1547,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (,GRUNLOCK!-FLAG
             <OPEN-CLOSE
@@ -1565,8 +1565,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (,GRUNLOCK!-FLAG
             <OPEN-CLOSE
@@ -1600,28 +1600,28 @@
           (ROOMS
             ,ROOMS))
         #DECL
-        ((HACK)
-          HACK
-          (PV)
-          <VECTOR
-            VERB>
-          (HH)
-          <LIST
-            [REST
-              OBJECT]>
-          (HOBJ)
-          OBJECT
-          (FLG)
-          <OR
-            ATOM
-            FALSE>
-          (TL
-            ROOMS)
-          <LIST
-            [REST
-              ROOM]>
-          (HERE)
-          ROOM)
+          ((HACK)
+            HACK
+            (PV)
+            <VECTOR
+              VERB>
+            (HH)
+            <LIST
+              [REST
+                OBJECT]>
+            (HOBJ)
+            OBJECT
+            (FLG)
+            <OR
+              ATOM
+              FALSE>
+            (TL
+              ROOMS)
+            <LIST
+              [REST
+                ROOM]>
+            (HERE)
+            ROOM)
         <COND
           (<AND
               <HACTION
@@ -1699,8 +1699,8 @@
               <FUNCTION
                 (X)
                 #DECL
-                ((X)
-                  OBJECT)
+                  ((X)
+                    OBJECT)
                 <COND
                   (<AND
                       <N==?
@@ -1772,8 +1772,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               .PRSACT
@@ -1809,14 +1809,14 @@
             <FIND-OBJ
               "TRUNK">))
         #DECL
-        ((PRSACT)
-          VERB
-          (TRUNK)
-          OBJECT
-          (PRSI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PRSACT)
+            VERB
+            (TRUNK)
+            OBJECT
+            (PRSI)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<==?
               .PRSACT
@@ -1903,22 +1903,22 @@
               .MNT>)
           HACK)
         #DECL
-        ((PRSACT)
-          VERB
-          (PRSI)
-          <OR
-            FALSE
-            OBJECT>
-          (HERE?)
-          <OR
-            ATOM
-            FALSE>
-          (MNT)
-          ROOM
-          (PRSO)
-          PRSOBJ
-          (HACK)
-          FIX)
+          ((PRSACT)
+            VERB
+            (PRSI)
+            <OR
+              FALSE
+              OBJECT>
+            (HERE?)
+            <OR
+              ATOM
+              FALSE>
+            (MNT)
+            ROOM
+            (PRSO)
+            PRSOBJ
+            (HACK)
+            FIX)
         <COND
           (<==?
               .PRSACT
@@ -2041,18 +2041,18 @@
             <3
               .PRSVEC>))
         #DECL
-        ((PRSVEC)
-          <VECTOR
-            [3
-              ANY]>
-          (PRSA)
-          VERB
-          (PRSI)
-          <OR
-            OBJECT
-            FALSE>
-          (HACK)
-          FIX)
+          ((PRSVEC)
+            <VECTOR
+              [3
+                ANY]>
+            (PRSA)
+            VERB
+            (PRSI)
+            <OR
+              OBJECT
+              FALSE>
+            (HACK)
+            FIX)
         <COND
           (<==?
               <2
@@ -2093,10 +2093,10 @@
           (PRSVEC
             ,PRSVEC))
         #DECL
-        ((PRSVEC)
-          <VECTOR
-            [3
-              ANY]>)
+          ((PRSVEC)
+            <VECTOR
+              [3
+                ANY]>)
         <COND
           (<AND
               <==?
@@ -2114,8 +2114,8 @@
         WITH-TELL
         (OBJ)
         #DECL
-        ((OBJ)
-          OBJECT)
+          ((OBJ)
+            OBJECT)
         <TELL
           "With a "
           1
@@ -2132,16 +2132,16 @@
               ,PRSVEC>)
           C)
         #DECL
-        ((FOO)
-          <VECTOR
-            FIX
-            CEVENT>
-          (BAR)
-          CEVENT
-          (PRSACT)
-          VERB
-          (C)
-          OBJECT)
+          ((FOO)
+            <VECTOR
+              FIX
+              CEVENT>
+            (BAR)
+            CEVENT
+            (PRSACT)
+            VERB
+            (C)
+            OBJECT)
         <COND
           (<==?
               <VNAME
@@ -2181,8 +2181,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB)
+          ((PRSACT)
+            VERB)
         <COND
           (<==?
               <1
@@ -2239,17 +2239,17 @@
             <FIND-OBJ
               "WATER">))
         #DECL
-        ((REM)
-          <OR
-            ATOM
-            FALSE>
-          (PRSVEC)
-          <VECTOR
-            VERB
-            OBJECT
-            ANY>
-          (W)
-          OBJECT)
+          ((REM)
+            <OR
+              ATOM
+              FALSE>
+            (PRSVEC)
+            <VECTOR
+              VERB
+              OBJECT
+              ANY>
+            (W)
+            OBJECT)
         <COND
           (<OBJECT-ACTION>)
           (<OR
@@ -2311,29 +2311,29 @@
             <3
               .PRSVEC>))
         #DECL
-        ((PRSACT)
-          VERB
-          (ME)
-          ADV
-          (B
-            W)
-          OBJECT
-          (REM)
-          <OR
-            ATOM
-            FALSE>
-          (PRSVEC)
-          <VECTOR
-            [3
-              ANY]>
-          (AV)
-          <OR
+          ((PRSACT)
+            VERB
+            (ME)
+            ADV
+            (B
+              W)
             OBJECT
-            FALSE>
-          (CAN)
-          <OR
-            FALSE
-            OBJECT>)
+            (REM)
+            <OR
+              ATOM
+              FALSE>
+            (PRSVEC)
+            <VECTOR
+              [3
+                ANY]>
+            (AV)
+            <OR
+              OBJECT
+              FALSE>
+            (CAN)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<OR
               <==?
@@ -2504,14 +2504,14 @@
           (WIN
             ,WINNER))
         #DECL
-        ((PRSACT)
-          VERB
-          (ROPE)
-          OBJECT
-          (WIN)
-          ADV
-          (DROOM)
-          ROOM)
+          ((PRSACT)
+            VERB
+            (ROPE)
+            OBJECT
+            (WIN)
+            ADV
+            (DROOM)
+            ROOM)
         <COND
           (<N==?
               ,HERE
@@ -2630,22 +2630,22 @@
               "GARLI">)
           CYC)
         #DECL
-        ((PRSACT)
-          VERB
-          (PRSOB1)
-          <OR
+          ((PRSACT)
+            VERB
+            (PRSOB1)
+            <OR
+              OBJECT
+              FALSE>
+            (RM)
+            ROOM
+            (FOOD
+              DRINK)
             OBJECT
-            FALSE>
-          (RM)
-          ROOM
-          (FOOD
-            DRINK)
-          OBJECT
-          (CYC
-            GARLIC)
-          OBJECT
-          (COUNT)
-          FIX)
+            (CYC
+              GARLIC)
+            OBJECT
+            (COUNT)
+            FIX)
         <COND
           (,CYCLOPS-FLAG!-FLAG
             <COND
@@ -2806,12 +2806,12 @@
             <RVARS
               .RM>))
         #DECL
-        ((PV)
-          VECTOR
-          (RM)
-          ROOM
-          (VARS)
-          FIX)
+          ((PV)
+            VECTOR
+            (RM)
+            ROOM
+            (VARS)
+            FIX)
         <COND
           (<==?
               <1
@@ -2871,8 +2871,8 @@
         AOS-SOS
         (FOO)
         #DECL
-        ((FOO)
-          FIX)
+          ((FOO)
+            FIX)
         <COND
           (<L?
               .FOO
@@ -2915,21 +2915,21 @@
           (WALK
             ,WALK!-WORDS))
         #DECL
-        ((OUTCHAN)
-          CHANNEL
-          (WALK
-            VERB)
-          VERB
-          (READER-STRING)
-          STRING
-          (PRSACT)
-          VERB
-          (B)
-          STRING
-          (L)
-          FIX
-          (RM)
-          ROOM)
+          ((OUTCHAN)
+            CHANNEL
+            (WALK
+              VERB)
+            VERB
+            (READER-STRING)
+            STRING
+            (PRSACT)
+            VERB
+            (B)
+            STRING
+            (L)
+            FIX
+            (RM)
+            ROOM)
         <COND
           (,ECHO-FLAG!-FLAG)
           (<UNWIND
@@ -2940,8 +2940,8 @@
                   <FUNCTION
                     (OBJ)
                     #DECL
-                    ((OBJ)
-                      OBJECT)
+                      ((OBJ)
+                        OBJECT)
                     <COND
                       (<OVIS?
                           .OBJ>
@@ -2958,8 +2958,8 @@
                       ,PRSVEC)
                     RANDOM-ACTION)
                   #DECL
-                  ((PRSVEC)
-                    VECTOR)
+                    ((PRSVEC)
+                      VECTOR)
                   <SET
                     L
                     <READSTRING
@@ -3017,8 +3017,8 @@
                             <FUNCTION
                               (X)
                               #DECL
-                              ((X)
-                                OBJECT)
+                                ((X)
+                                  OBJECT)
                               <COND
                                 (<TRNN
                                     .X
@@ -3059,8 +3059,8 @@
                             <FUNCTION
                               (X)
                               #DECL
-                              ((X)
-                                OBJECT)
+                                ((X)
+                                  OBJECT)
                               <COND
                                 (<TRNN
                                     .X
@@ -3090,8 +3090,8 @@
                   <FUNCTION
                     (X)
                     #DECL
-                    ((X)
-                      OBJECT)
+                      ((X)
+                        OBJECT)
                     <COND
                       (<TRNN
                           .X
@@ -3114,15 +3114,15 @@
               .RM>)
           M)
         #DECL
-        ((RM)
-          ROOM
-          (EXITS)
-          EXIT
-          (M)
-          <OR
-            <PRIMTYPE
-              VECTOR>
-            FALSE>)
+          ((RM)
+            ROOM
+            (EXITS)
+            EXIT
+            (M)
+            <OR
+              <PRIMTYPE
+                VECTOR>
+              FALSE>)
         <COND
           (<SET
               M
@@ -3175,12 +3175,12 @@
                 ,HS
                 1>>))
         #DECL
-        ((PRSOBJ)
-          <OR
-            OBJECT
-            FALSE>
-          (AMT)
-          FIX)
+          ((PRSOBJ)
+            <OR
+              OBJECT
+              FALSE>
+            (AMT)
+            FIX)
         <COND
           (.PRSOBJ
             <COND
@@ -3257,14 +3257,14 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PO)
-          OBJECT
-          (PI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PV)
+            VECTOR
+            (PO)
+            OBJECT
+            (PI)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<NOT
               <LIT?
@@ -3365,12 +3365,12 @@
             <3
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT
-          (PRSI)
-          <OR
+          ((PRSO)
             OBJECT
-            FALSE>)
+            (PRSI)
+            <OR
+              OBJECT
+              FALSE>)
         <COND
           (<==?
               .PRSO
@@ -3407,10 +3407,10 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSOBJ)
-          <OR
-            OBJECT
-            FALSE>)
+          ((PRSOBJ)
+            <OR
+              OBJECT
+              FALSE>)
         <COND
           (<==?
               .PRSOBJ
@@ -3437,25 +3437,25 @@
             <AOBJS
               ,WINNER>))
         #DECL
-        ((PRSOBJ)
-          OBJECT
-          (NOBJ)
-          <OR
+          ((PRSOBJ)
             OBJECT
-            FALSE>
-          (PRSVEC)
-          <VECTOR
-            [3
-              ANY]>
-          (AOBJS)
-          <LIST
-            [REST
-              OBJECT]>
-          (EAT?
-            DRINK?)
-          <OR
-            ATOM
-            FALSE>)
+            (NOBJ)
+            <OR
+              OBJECT
+              FALSE>
+            (PRSVEC)
+            <VECTOR
+              [3
+                ANY]>
+            (AOBJS)
+            <LIST
+              [REST
+                OBJECT]>
+            (EAT?
+              DRINK?)
+            <OR
+              ATOM
+              FALSE>)
         <COND
           (<OBJECT-ACTION>)
           (<AND
@@ -3578,47 +3578,47 @@
             <FIND-ROOM
               "TREAS">))
         #DECL
-        ((HACK)
-          HACK
-          (RM
-            WROOM)
-          ROOM
-          (ROBJ
-            HH)
-          <LIST
-            [REST
-              OBJECT]>
-          (SEEN?)
-          <OR
-            ATOM
-            FALSE>
-          (WIN)
-          ADV
-          (HOBJ)
-          OBJECT
-          (ROBBER)
-          ACTIVATION
-          (HERE?)
-          <OR
+          ((HACK)
+            HACK
+            (RM
+              WROOM)
             ROOM
-            FALSE>
-          (STILL)
-          OBJECT
-          (TREAS)
-          ROOM)
+            (ROBJ
+              HH)
+            <LIST
+              [REST
+                OBJECT]>
+            (SEEN?)
+            <OR
+              ATOM
+              FALSE>
+            (WIN)
+            ADV
+            (HOBJ)
+            OBJECT
+            (ROBBER)
+            ACTIVATION
+            (HERE?)
+            <OR
+              ROOM
+              FALSE>
+            (STILL)
+            OBJECT
+            (TREAS)
+            ROOM)
         <PROG
           ((ONCE
               <>)
             OBJT)
           #DECL
-          ((ONCE)
-            <OR
-              ATOM
-              FALSE>
-            (OBJT)
-            <LIST
-              [REST
-                OBJECT]>)
+            ((ONCE)
+              <OR
+                ATOM
+                FALSE>
+              (OBJT)
+              <LIST
+                [REST
+                  OBJECT]>)
           <COND
             (<SET
                 HERE?
@@ -3662,8 +3662,8 @@
                 <FUNCTION
                   (X)
                   #DECL
-                  ((X)
-                    OBJECT)
+                    ((X)
+                      OBJECT)
                   <COND
                     (<G?
                         <OTVAL
@@ -3931,8 +3931,8 @@
                     <FUNCTION
                       (X)
                       #DECL
-                      ((X)
-                        OBJECT)
+                        ((X)
+                          OBJECT)
                       <COND
                         (<AND
                             <CAN-TAKE?
@@ -3974,8 +3974,8 @@
                     <FUNCTION
                       (X)
                       #DECL
-                      ((X)
-                        OBJECT)
+                        ((X)
+                          OBJECT)
                       <COND
                         (<AND
                             <0?
@@ -4077,8 +4077,8 @@
             <FUNCTION
               (X)
               #DECL
-              ((X)
-                OBJECT)
+                ((X)
+                  OBJECT)
               <COND
                 (<AND
                     <0?
@@ -4109,9 +4109,9 @@
         (WHO
           WHAT)
         #DECL
-        ((WHO
-            WHAT)
-          OBJECT)
+          ((WHO
+              WHAT)
+            OBJECT)
         <COND
           (<AND
               <N==?
@@ -4166,33 +4166,33 @@
             <FIND-OBJ
               "CHALI">))
         #DECL
-        ((PV)
-          VECTOR
-          (DEM)
-          HACK
-          (PRSACT)
-          VERB
-          (PRSOBJ)
-          <OR
+          ((PV)
+            VECTOR
+            (DEM)
+            HACK
+            (PRSACT)
+            VERB
+            (PRSOBJ)
+            <OR
+              OBJECT
+              FALSE>
+            (CHALI
+              T
+              HOBJ
+              ST
+              BRICK
+              FUSE)
             OBJECT
-            FALSE>
-          (CHALI
-            T
-            HOBJ
-            ST
-            BRICK
-            FUSE)
-          OBJECT
-          (F)
-          <VECTOR
-            ANY
-            CEVENT>
-          (HERE)
-          ROOM
-          (FLG)
-          <OR
-            ATOM
-            FALSE>)
+            (F)
+            <VECTOR
+              ANY
+              CEVENT>
+            (HERE)
+            ROOM
+            (FLG)
+            <OR
+              ATOM
+              FALSE>)
         <COND
           (<==?
               .PRSACT
@@ -4239,8 +4239,8 @@
                   <FUNCTION
                     (X)
                     #DECL
-                    ((X)
-                      OBJECT)
+                      ((X)
+                        OBJECT)
                     <INSERT-OBJECT
                       .X
                       .HERE>
@@ -4266,8 +4266,8 @@
                   <FUNCTION
                     (X)
                     #DECL
-                    ((X)
-                      OBJECT)
+                      ((X)
+                        OBJECT)
                     <COND
                       (<AND
                           <N==?
@@ -4405,8 +4405,8 @@
                         <FUNCTION
                           (X)
                           #DECL
-                          ((X)
-                            OBJECT)
+                            ((X)
+                              OBJECT)
                           <INSERT-OBJECT
                             .X
                             .HERE>>
@@ -4533,14 +4533,14 @@
           TR
           T)
         #DECL
-        ((PRSA)
-          VERB
-          (CH)
-          OBJECT
-          (TR)
-          ROOM
-          (T)
-          OBJECT)
+          ((PRSA)
+            VERB
+            (CH)
+            OBJECT
+            (TR)
+            ROOM
+            (T)
+            OBJECT)
         <COND
           (<==?
               .PRSA
@@ -4582,11 +4582,11 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO
-            PRSI)
-          OBJECT)
+          ((PV)
+            VECTOR
+            (PRSO
+              PRSI)
+            OBJECT)
         <COND
           (<FLAMING?
               .PRSI>
@@ -4652,11 +4652,11 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO
-            PRSI)
-          OBJECT)
+          ((PV)
+            VECTOR
+            (PRSO
+              PRSI)
+            OBJECT)
         <COND
           (<TRNN
               .PRSO
@@ -4691,8 +4691,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PA)
-          VERB)
+          ((PA)
+            VERB)
         <COND
           (<==?
               .PA
@@ -4720,9 +4720,9 @@
             <3
               ,PRSVEC>))
         #DECL
-        ((PRSI
-            PRSO)
-          OBJECT)
+          ((PRSI
+              PRSO)
+            OBJECT)
         <COND
           (<==?
               .PRSI
@@ -4751,8 +4751,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<==?
               .PRSO
@@ -4768,8 +4768,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<==?
               .PRSO
@@ -4785,11 +4785,11 @@
               <FUNCTION
                 (X)
                 #DECL
-                ((X)
-                  <OR
-                    CEXIT
-                    NEXIT
-                    ROOM>)
+                  ((X)
+                    <OR
+                      CEXIT
+                      NEXIT
+                      ROOM>)
                 <COND
                   (<AND
                       <TYPE?
@@ -4821,11 +4821,11 @@
             <FIND-ROOM
               "MGRAT">))
         #DECL
-        ((PRSO
-            PRSI)
-          OBJECT
-          (R)
-          ROOM)
+          ((PRSO
+              PRSI)
+            OBJECT
+            (R)
+            ROOM)
         <COND
           (<==?
               .PRSO
@@ -4846,11 +4846,11 @@
                   <FUNCTION
                     (X)
                     #DECL
-                    ((X)
-                      <OR
-                        CEXIT
-                        NEXIT
-                        ROOM>)
+                      ((X)
+                        <OR
+                          CEXIT
+                          NEXIT
+                          ROOM>)
                     <COND
                       (<AND
                           <TYPE?
@@ -4887,13 +4887,13 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO
-            PRSI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PV)
+            VECTOR
+            (PRSO
+              PRSI)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<NOT
               .PRSO>
@@ -4942,13 +4942,13 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO
-            PRSI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PV)
+            VECTOR
+            (PRSO
+              PRSI)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (<NOT
               .PRSO>
@@ -4997,13 +4997,13 @@
             <3
               .PV>))
         #DECL
-        ((PV)
-          VECTOR
-          (PRSO
-            PRSI)
-          <OR
-            FALSE
-            OBJECT>)
+          ((PV)
+            VECTOR
+            (PRSO
+              PRSI)
+            <OR
+              FALSE
+              OBJECT>)
         <PUT
           .PV
           2
@@ -5021,14 +5021,14 @@
           (OBJ2
             <>))
         #DECL
-        ((OBJ)
-          OBJECT
-          (STR)
-          STRING
-          (OBJ2)
-          <OR
-            FALSE
-            STRING>)
+          ((OBJ)
+            OBJECT
+            (STR)
+            STRING
+            (OBJ2)
+            <OR
+              FALSE
+              STRING>)
         <COND
           (<OBJECT-ACTION>)
           (.OBJ2
@@ -5074,12 +5074,12 @@
             <3
               ,PRSVEC>))
         #DECL
-        ((PRSW)
-          <OR
-            OBJECT
-            FALSE>
-          (PRSO)
-          OBJECT)
+          ((PRSW)
+            <OR
+              OBJECT
+              FALSE>
+            (PRSO)
+            OBJECT)
         <COND
           (<TRNN
               .PRSO
@@ -5126,8 +5126,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <HACK-HACK
           .PRSO
           "Munging a ">>
@@ -5138,8 +5138,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <HACK-HACK
           .PRSO
           "Waving a ">>
@@ -5150,8 +5150,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <HACK-HACK
           .PRSO
           "Playing in this way with a ">>
@@ -5162,8 +5162,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <HACK-HACK
           .PRSO
           "Fiddling with a ">>
@@ -5187,8 +5187,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<OBJECT-ACTION>)
           (<TRNN
@@ -5205,8 +5205,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<OBJECT-ACTION>)
           (<MEMQ
@@ -5223,8 +5223,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<TRNN
               .PRSO
@@ -5242,8 +5242,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<OBJECT-ACTION>)
           (<TELL
@@ -5262,8 +5262,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PRSA)
-          VERB)
+          ((PRSA)
+            VERB)
         <COND
           (<==?
               .PRSA
@@ -5301,8 +5301,8 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSO)
-          OBJECT)
+          ((PRSO)
+            OBJECT)
         <COND
           (<TRNN
               .PRSO
@@ -5334,10 +5334,10 @@
             <2
               ,PRSVEC>))
         #DECL
-        ((PRSA)
-          VERB
-          (ART)
-          OBJECT)
+          ((PRSA)
+            VERB
+            (ART)
+            OBJECT)
         <COND
           (<==?
               .PRSA
@@ -5389,18 +5389,18 @@
               "LAMP">)
           FOO)
         #DECL
-        ((PV)
-          VECTOR
-          (VERB)
-          VERB
-          (HERE)
-          ROOM
-          (RLAMP)
-          OBJECT
-          (FOO)
-          <VECTOR
-            ANY
-            CEVENT>)
+          ((PV)
+            VECTOR
+            (VERB)
+            VERB
+            (HERE)
+            ROOM
+            (RLAMP)
+            OBJECT
+            (FOO)
+            <VECTOR
+              ANY
+              CEVENT>)
         <COND
           (<==?
               .VERB
@@ -5457,15 +5457,15 @@
           (NG
             0))
         #DECL
-        ((DEM)
-          HACK
-          (SW)
-          OBJECT
-          (NG
-            G)
-          FIX
-          (HERE)
-          ROOM)
+          ((DEM)
+            HACK
+            (SW)
+            OBJECT
+            (NG
+              G)
+            FIX
+            (HERE)
+            ROOM)
         <COND
           (<AND
               <NOT
@@ -5489,12 +5489,12 @@
                   <FUNCTION
                     (E)
                     #DECL
-                    ((E)
-                      <OR
-                        ROOM
-                        CEXIT
-                        NEXIT
-                        ATOM>)
+                      ((E)
+                        <OR
+                          ROOM
+                          CEXIT
+                          NEXIT
+                          ATOM>)
                     <COND
                       (<TYPE?
                           .E
@@ -5550,8 +5550,8 @@
             <1
               ,PRSVEC>))
         #DECL
-        ((PA)
-          VERB)
+          ((PA)
+            VERB)
         <COND
           (<AND
               <==?
@@ -5580,14 +5580,14 @@
             <GET-DEMON
               "THIEF">))
         #DECL
-        ((R)
-          ROOM
-          (VILLAINS)
-          <LIST
-            [REST
-              OBJECT]>
-          (DEM)
-          HACK)
+          ((R)
+            ROOM
+            (VILLAINS)
+            <LIST
+              [REST
+                OBJECT]>
+            (DEM)
+            HACK)
         <OR
           <AND
             <==?
@@ -5601,8 +5601,8 @@
             <FUNCTION
               (V)
               #DECL
-              ((V)
-                OBJECT)
+                ((V)
+                  OBJECT)
               <COND
                 (<==?
                     .R
@@ -5641,12 +5641,12 @@
             <ORAND
               .MATCH>))
         #DECL
-        ((PRSA)
-          VERB
-          (MATCH)
-          OBJECT
-          (MC)
-          FIX)
+          ((PRSA)
+            VERB
+            (MATCH)
+            OBJECT
+            (MC)
+            FIX)
         <COND
           (<AND
               <==?
@@ -5735,29 +5735,29 @@
           FOO
           ORPHANS)
         #DECL
-        ((PRSACT)
-          VERB
-          (MATCH
-            C)
-          OBJECT
-          (W)
-          <OR
-            FALSE
-            OBJECT>
-          (WINNER)
-          ADV
-          (AO)
-          <LIST
-            [REST
-              OBJECT]>
-          (FOO)
-          <VECTOR
-            FIX
-            CEVENT>
-          (ORPHANS)
-          <VECTOR
-            [4
-              ANY]>)
+          ((PRSACT)
+            VERB
+            (MATCH
+              C)
+            OBJECT
+            (W)
+            <OR
+              FALSE
+              OBJECT>
+            (WINNER)
+            ADV
+            (AO)
+            <LIST
+              [REST
+                OBJECT]>
+            (FOO)
+            <VECTOR
+              FIX
+              CEVENT>
+            (ORPHANS)
+            <VECTOR
+              [4
+                ANY]>)
         <OR
           <ORAND
             .C>
@@ -5901,14 +5901,14 @@
             <2
               .PV>))
         #DECL
-        ((PV)
-          <VECTOR
-            [3
-              ANY]>
-          (B)
-          OBJECT
-          (V)
-          VERB)
+          ((PV)
+            <VECTOR
+              [3
+                ANY]>
+            (B)
+            OBJECT
+            (V)
+            VERB)
         <COND
           (<==?
               .V
@@ -5935,25 +5935,25 @@
             <ORAND
               .OBJ>))
         #DECL
-        ((OBJ)
-          OBJECT
-          (FCN)
-          APPLICABLE
-          (TICK)
-          <VECTOR
-            [REST
-              FIX]>
-          (TELL)
-          <VECTOR
-            [REST
-              STRING]>
-          (TIM
-            CNT)
-          FIX
-          (FOO)
-          <VECTOR
+          ((OBJ)
+            OBJECT
+            (FCN)
+            APPLICABLE
+            (TICK)
+            <VECTOR
+              [REST
+                FIX]>
+            (TELL)
+            <VECTOR
+              [REST
+                STRING]>
+            (TIM
+              CNT)
             FIX
-            CEVENT>)
+            (FOO)
+            <VECTOR
+              FIX
+              CEVENT>)
         <PUT
           .FOO
           1
@@ -6013,14 +6013,14 @@
             <AVEHICLE
               ,WINNER>))
         #DECL
-        ((OBJ)
-          OBJECT
-          (RM)
-          ROOM
-          (AV)
-          <OR
-            FALSE
-            OBJECT>)
+          ((OBJ)
+            OBJECT
+            (RM)
+            ROOM
+            (AV)
+            <OR
+              FALSE
+              OBJECT>)
         <COND
           (.AV
             <SEARCH-LIST

@@ -776,11 +776,11 @@
             REXITS
             .RM>>>>
     #DECL
-    ((EL)
-      <<PRIMTYPE
-          VECTOR>
-        ATOM
-        CEXIT>)
+      ((EL)
+        <<PRIMTYPE
+            VECTOR>
+          ATOM
+          CEXIT>)
     <FORM
       SETG
       <FORM
@@ -807,11 +807,11 @@
             REXITS
             .RM>>>>
     #DECL
-    ((EL)
-      <<PRIMTYPE
-          VECTOR>
-        ATOM
-        CEXIT>)
+      ((EL)
+        <<PRIMTYPE
+            VECTOR>
+          ATOM
+          CEXIT>)
     <FORM
       SETG
       <FORM
@@ -866,16 +866,16 @@
     OCAN
     OROOM)
   #DECL
-  ((OBJ)
-    OBJECT
-    (OCAN)
-    <OR
+    ((OBJ)
       OBJECT
-      FALSE>
-    (OROOM)
-    <OR
-      FALSE
-      ROOM>)
+      (OCAN)
+      <OR
+        OBJECT
+        FALSE>
+      (OROOM)
+      <OR
+        FALSE
+        ROOM>)
   <COND
     (<SET
         OCAN
@@ -977,10 +977,10 @@
   (OBJ
     WINNER)
   #DECL
-  ((OBJ)
-    OBJECT
-    (WINNER)
-    ADV)
+    ((OBJ)
+      OBJECT
+      (WINNER)
+      ADV)
   <COND
     (<MEMQ
         .OBJ
@@ -1003,12 +1003,12 @@
     (WINNER
       ,WINNER))
   #DECL
-  ((OBJS)
-    <TUPLE
-      [REST
-        STRING]>
-    (WINNER)
-    ADV)
+    ((OBJS)
+      <TUPLE
+        [REST
+          STRING]>
+      (WINNER)
+      ADV)
   <MAPF
     <>
     <FUNCTION
@@ -1018,8 +1018,8 @@
           <FIND-OBJ
             .X>))
       #DECL
-      ((Y)
-        OBJECT)
+        ((Y)
+          OBJECT)
       <AND
         <MEMQ
           .Y
@@ -1036,19 +1036,19 @@
   (WIN
     NEWLIST)
   #DECL
-  ((WIN)
-    ADV
-    (NEWLIST)
-    <LIST
-      [REST
-        OBJECT]>)
+    ((WIN)
+      ADV
+      (NEWLIST)
+      <LIST
+        [REST
+          OBJECT]>)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <COND
         (<AND
             <G?
@@ -1080,21 +1080,21 @@
     NEWLIST
     PROB)
   #DECL
-  ((RM)
-    ROOM
-    (NEWLIST)
-    <LIST
-      [REST
-        OBJECT]>
-    (PROB)
-    FIX)
+    ((RM)
+      ROOM
+      (NEWLIST)
+      <LIST
+        [REST
+          OBJECT]>
+      (PROB)
+      FIX)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <COND
         (<AND
             <G?
@@ -1136,15 +1136,15 @@
   VALUABLES?
   (ADV)
   #DECL
-  ((ADV)
-    ADV)
+    ((ADV)
+      ADV)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <COND
         (<G?
             <OTVAL
@@ -1161,15 +1161,15 @@
     (WEAPONS
       ,WEAPONS))
   #DECL
-  ((ADV)
-    ADV)
+    ((ADV)
+      ADV)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <COND
         (<MEMQ
             .X
@@ -1182,8 +1182,8 @@
   LIGHT-SOURCE
   (ME)
   #DECL
-  ((ME)
-    ADV)
+    ((ME)
+      ADV)
   <MAPF
     <>
     <FUNCTION
@@ -1207,21 +1207,21 @@
     (DEMS
       ,DEMONS))
   #DECL
-  ((ID)
-    STRING
-    (OBJ)
-    OBJECT
-    (DEMS)
-    <LIST
-      [REST
-        HACK]>)
+    ((ID)
+      STRING
+      (OBJ)
+      OBJECT
+      (DEMS)
+      <LIST
+        [REST
+          HACK]>)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        HACK)
+        ((X)
+          HACK)
       <COND
         (<==?
             <HOBJ
@@ -1271,12 +1271,12 @@
     (INCHAN
       ,INCHAN))
   #DECL
-  ((INBUF)
-    STRING
-    (NO-IS-BAD?)
-    <OR
-      ATOM
-      FALSE>)
+    ((INBUF)
+      STRING
+      (NO-IS-BAD?)
+      <OR
+        ATOM
+        FALSE>)
   <RESET
     .INCHAN>
   <READSTRING
@@ -1332,11 +1332,11 @@
     (FOO
       <>))
   #DECL
-  ((FN)
-    <OR
-      APPLICABLE
-      ATOM
-      FIX>)
+    ((FN)
+      <OR
+        APPLICABLE
+        ATOM
+        FIX>)
   <PROG
     ()
     <COND
@@ -1388,18 +1388,18 @@
     ATM
     ROOM)
   #DECL
-  ((ID)
-    <OR
-      ATOM
-      STRING>
-    (VALUE)
-    ROOM
-    (ROOM)
-    ROOM
-    (ATM)
-    <OR
-      ATOM
-      FALSE>)
+    ((ID)
+      <OR
+        ATOM
+        STRING>
+      (VALUE)
+      ROOM
+      (ROOM)
+      ROOM
+      (ATM)
+      <OR
+        ATOM
+        FALSE>)
   <COND
     (<TYPE?
         .ID
@@ -1456,18 +1456,18 @@
     OBJ
     ATM)
   #DECL
-  ((ID)
-    <OR
-      ATOM
-      STRING>
-    (OBJ)
-    OBJECT
-    (ATM)
-    <OR
-      ATOM
-      FALSE>
-    (VALUE)
-    OBJECT)
+    ((ID)
+      <OR
+        ATOM
+        STRING>
+      (OBJ)
+      OBJECT
+      (ATM)
+      <OR
+        ATOM
+        FALSE>
+      (VALUE)
+      OBJECT)
   <COND
     (<TYPE?
         .ID
@@ -1528,12 +1528,12 @@
   FUNCTION-PRINT
   (FROB)
   #DECL
-  ((FROB)
-    <OR
-      ATOM
-      OFFSET
-      APPLICABLE
-      FALSE>)
+    ((FROB)
+      <OR
+        ATOM
+        OFFSET
+        APPLICABLE
+        FALSE>)
   <COND
     (<NOT
         .FROB>

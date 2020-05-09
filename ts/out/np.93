@@ -111,54 +111,54 @@
     LOBJ
     VAL)
   #DECL
-  ((SV)
-    <VECTOR
-      [REST
-        STRING]>
-    (VB
-      ORFL)
-    <OR
-      ATOM
-      FALSE>
-    (ACTIONS
-      WORDS
-      OBJOB
-      DIRS)
-    OBLIST
-    (PV
-      ORPH
-      PRV
-      PVR)
-    VECTOR
-    (ATM)
-    <OR
-      ATOM
-      FALSE>
-    (HERE)
-    ROOM
-    (ACTION)
-    <OR
-      FALSE
-      ACTION>
-    (NPREP
-      PREP)
-    <OR
-      FALSE
-      PREP>
-    (ADJ)
-    <OR
-      FALSE
-      ADJECTIVE>
-    (AVAL)
-    ANY
-    (LOBJ)
-    ANY
-    (OBJ)
-    <OR
-      FALSE
-      OBJECT>
-    (PPREP)
-    PHRASE)
+    ((SV)
+      <VECTOR
+        [REST
+          STRING]>
+      (VB
+        ORFL)
+      <OR
+        ATOM
+        FALSE>
+      (ACTIONS
+        WORDS
+        OBJOB
+        DIRS)
+      OBLIST
+      (PV
+        ORPH
+        PRV
+        PVR)
+      VECTOR
+      (ATM)
+      <OR
+        ATOM
+        FALSE>
+      (HERE)
+      ROOM
+      (ACTION)
+      <OR
+        FALSE
+        ACTION>
+      (NPREP
+        PREP)
+      <OR
+        FALSE
+        PREP>
+      (ADJ)
+      <OR
+        FALSE
+        ADJECTIVE>
+      (AVAL)
+      ANY
+      (LOBJ)
+      ANY
+      (OBJ)
+      <OR
+        FALSE
+        OBJECT>
+      (PPREP)
+      PHRASE)
   <SET
     VAL
     <MAPF
@@ -166,8 +166,8 @@
       <FUNCTION
         (X)
         #DECL
-        ((X)
-          STRING)
+          ((X)
+            STRING)
         <COND
           (<EMPTY?
               .X>
@@ -503,14 +503,14 @@
     (NAME
       <>))
   #DECL
-  ((FLAG)
-    <OR
-      ATOM
-      FALSE>
-    (NAME)
-    <OR
-      ATOM
-      FALSE>)
+    ((FLAG)
+      <OR
+        ATOM
+        FALSE>
+      (NAME)
+      <OR
+        ATOM
+        FALSE>)
   <PUT
     <PUT
       <PUT
@@ -551,36 +551,36 @@
       <>)
     SYNN)
   #DECL
-  ((ACTION)
-    ACTION
-    (PV
-      OBJS)
-    VECTOR
-    (DRIVE
-      DFORCE)
-    <OR
-      FALSE
-      SYNTAX>
-    (O1
-      O2)
-    <OR
-      FALSE
-      OBJECT
-      PHRASE>
-    (SYNN)
-    VARG
-    (GWIM)
-    <OR
-      FALSE
-      OBJECT>)
+    ((ACTION)
+      ACTION
+      (PV
+        OBJS)
+      VECTOR
+      (DRIVE
+        DFORCE)
+      <OR
+        FALSE
+        SYNTAX>
+      (O1
+        O2)
+      <OR
+        FALSE
+        OBJECT
+        PHRASE>
+      (SYNN)
+      VARG
+      (GWIM)
+      <OR
+        FALSE
+        OBJECT>)
   <COND
     (<MAPF
         <>
         <FUNCTION
           (SYN)
           #DECL
-          ((SYN)
-            SYNTAX)
+            ((SYN)
+              SYNTAX)
           <COND
             (<SYN-EQUAL
                 <SYN1
@@ -729,22 +729,22 @@
     OBJ
     VARG)
   #DECL
-  ((SYN)
-    SYNTAX
-    (PV)
-    VECTOR
-    (PV1
-      PV2)
-    <OR
-      FALSE
-      OBJECT
-      PHRASE>
-    (OBJ)
-    <OR
-      FALSE
-      OBJECT>
-    (VARG)
-    VARG)
+    ((SYN)
+      SYNTAX
+      (PV)
+      VECTOR
+      (PV1
+        PV2)
+      <OR
+        FALSE
+        OBJECT
+        PHRASE>
+      (OBJ)
+      <OR
+        FALSE
+        OBJECT>
+      (VARG)
+      VARG)
   <PUT
     .PV
     2
@@ -811,18 +811,18 @@
       <2
         .VEC>))
   #DECL
-  ((OBJ)
-    OBJECT
-    (VEC)
-    VECTOR
-    (SAV1)
-    VERB
-    (SAV2)
-    <OR
-      FALSE
-      OBJECT>
-    (VRB)
-    VARG)
+    ((OBJ)
+      OBJECT
+      (VEC)
+      VECTOR
+      (SAV1)
+      VERB
+      (SAV2)
+      <OR
+        FALSE
+        OBJECT>
+      (VRB)
+      VARG)
   <COND
     (<AND
         <SEARCH-LIST
@@ -868,20 +868,20 @@
         .ORPH>)
     SLOT1)
   #DECL
-  ((SYN)
-    VARG
-    (OBJS
-      ORPH)
-    VECTOR
-    (ORFL)
-    <OR
-      ATOM
-      FALSE>
-    (SLOT1)
-    <OR
-      FALSE
-      PHRASE
-      OBJECT>)
+    ((SYN)
+      VARG
+      (OBJS
+        ORPH)
+      VECTOR
+      (ORFL)
+      <OR
+        ATOM
+        FALSE>
+      (SLOT1)
+      <OR
+        FALSE
+        PHRASE
+        OBJECT>)
   <COND
     (<NOT
         .ORFL>
@@ -909,20 +909,20 @@
         .VARG>)
     SP)
   #DECL
-  ((VARG)
-    VARG
-    (ACTION)
-    ACTION
-    (PREP)
-    <OR
-      FALSE
-      PREP>
-    (SP)
-    STRING
-    (GWIM)
-    <OR
-      FALSE
-      OBJECT>)
+    ((VARG)
+      VARG
+      (ACTION)
+      ACTION
+      (PREP)
+      <OR
+        FALSE
+        PREP>
+      (SP)
+      STRING
+      (GWIM)
+      <OR
+        FALSE
+        OBJECT>)
   <COND
     (.PREP
       <AND
@@ -956,10 +956,10 @@
     "AUX"
     SP)
   #DECL
-  ((ATM)
-    ATOM
-    (SP)
-    STRING)
+    ((ATM)
+      ATOM
+      (SP)
+      STRING)
   <FOOSTR
     <SET
       SP
@@ -978,22 +978,22 @@
     (1ST
       T))
   #DECL
-  ((STR
-      NAM)
-    STRING
-    (1ST)
-    <OR
-      ATOM
-      FALSE>)
+    ((STR
+        NAM)
+      STRING
+      (1ST)
+      <OR
+        ATOM
+        FALSE>)
   <MAPR
     <>
     <FUNCTION
       (X
         Y)
       #DECL
-      ((X
-          Y)
-        STRING)
+        ((X
+            Y)
+          STRING)
       <COND
         (<AND
             .1ST
@@ -1027,18 +1027,18 @@
     "AUX"
     OBJ)
   #DECL
-  ((FX)
-    FIX
-    (VARG)
-    VARG
-    (ACTION)
-    ACTION
-    (OBJS)
-    VECTOR
-    (OBJ)
-    <OR
-      FALSE
-      OBJECT>)
+    ((FX)
+      FIX
+      (VARG)
+      VARG
+      (ACTION)
+      ACTION
+      (OBJS)
+      VECTOR
+      (OBJ)
+      <OR
+        FALSE
+        OBJECT>)
   <COND
     (<SET
         OBJ
@@ -1082,31 +1082,31 @@
         ,WINNER>)
     SF)
   #DECL
-  ((BIT)
-    FIX
-    (NTAKE
-      ROBJ
-      AOBJ)
-    <OR
-      ATOM
-      FALSE>
-    (OBJ
-      NOBJ
-      AV)
-    <OR
-      OBJECT
-      FALSE>
-    (PV)
-    VECTOR
-    (SAVOBJ)
-    <OR
-      FALSE
-      OBJECT
-      PHRASE>
-    (FWORD)
-    VARG
-    (ACTION)
-    ACTION)
+    ((BIT)
+      FIX
+      (NTAKE
+        ROBJ
+        AOBJ)
+      <OR
+        ATOM
+        FALSE>
+      (OBJ
+        NOBJ
+        AV)
+      <OR
+        OBJECT
+        FALSE>
+      (PV)
+      VECTOR
+      (SAVOBJ)
+      <OR
+        FALSE
+        OBJECT
+        PHRASE>
+      (FWORD)
+      VARG
+      (ACTION)
+      ACTION)
   <AND
     .AOBJ
     <SET
@@ -1217,12 +1217,12 @@
           (WHR
             1))
         #DECL
-        ((SP)
-          VECTOR
-          (SYN)
-          VECTOR
-          (WHR)
-          FIX)
+          ((SP)
+            VECTOR
+            (SYN)
+            VECTOR
+            (WHR)
+            FIX)
         <MAPF
           <>
           <FUNCTION
@@ -1394,15 +1394,15 @@
       <VBIT
         .VARG>))
   #DECL
-  ((VARG)
-    VARG
-    (POBJ)
-    <OR
-      FALSE
-      PHRASE
-      OBJECT>
-    (VBIT)
-    FIX)
+    ((VARG)
+      VARG
+      (POBJ)
+      <OR
+        FALSE
+        PHRASE
+        OBJECT>
+      (VBIT)
+      FIX)
   <COND
     (<TYPE?
         .POBJ
@@ -1453,16 +1453,16 @@
     "AUX"
     VAL)
   #DECL
-  ((VAL)
-    ANY
-    (PV)
-    <VECTOR
-      [REST
-        STRING]>
-    (VB)
-    <OR
-      ATOM
-      FALSE>)
+    ((VAL)
+      ANY
+      (PV)
+      <VECTOR
+        [REST
+          STRING]>
+      (VB)
+      <OR
+        ATOM
+        FALSE>)
   <COND
     (<SET
         VAL
@@ -1517,30 +1517,30 @@
     (CHOMP
       <>))
   #DECL
-  ((OOBJ
-      OBJ
-      AV)
-    <OR
-      OBJECT
-      FALSE>
-    (OBJNAM)
-    ATOM
-    (HERE)
-    ROOM
-    (ADJ)
-    <OR
-      ADJECTIVE
-      FALSE>
-    (CHOMP)
-    <OR
+    ((OOBJ
+        OBJ
+        AV)
+      <OR
+        OBJECT
+        FALSE>
+      (OBJNAM)
       ATOM
-      FALSE>
-    (OBJL)
-    <OR
-      FALSE
-      <LIST
-        [REST
-          OBJECT]>>)
+      (HERE)
+      ROOM
+      (ADJ)
+      <OR
+        ADJECTIVE
+        FALSE>
+      (CHOMP)
+      <OR
+        ATOM
+        FALSE>
+      (OBJL)
+      <OR
+        FALSE
+        <LIST
+          [REST
+            OBJECT]>>)
   <COND
     (<SET
         OBJ
@@ -1647,11 +1647,11 @@
 <SETG
   NEFALS
   #FALSE
-  (1)>
+    (1)>
 <SETG
   NEFALS2
   #FALSE
-  (2)>
+    (2)>
 <DEFINE
   SEARCH-LIST
   SL
@@ -1668,34 +1668,34 @@
       ,NEFALS)
     NOBJ)
   #DECL
-  ((OBJNAM)
-    ATOM
-    (SLIST)
-    <LIST
-      [REST
-        OBJECT]>
-    (OOBJ
-      NOBJ)
-    <OR
-      FALSE
-      OBJECT>
-    (ADJ)
-    <OR
-      FALSE
-      ADJECTIVE>
-    (FIRST?)
-    <OR
+    ((OBJNAM)
       ATOM
-      FALSE>
-    (NEFALS)
-    FALSE)
+      (SLIST)
+      <LIST
+        [REST
+          OBJECT]>
+      (OOBJ
+        NOBJ)
+      <OR
+        FALSE
+        OBJECT>
+      (ADJ)
+      <OR
+        FALSE
+        ADJECTIVE>
+      (FIRST?)
+      <OR
+        ATOM
+        FALSE>
+      (NEFALS)
+      FALSE)
   <MAPF
     <>
     <FUNCTION
       (OBJ)
       #DECL
-      ((OBJ)
-        OBJECT)
+        ((OBJ)
+          OBJECT)
       <COND
         (<THIS-IT?
             .OBJNAM
@@ -1759,27 +1759,27 @@
     (NOBJ
       <>))
   #DECL
-  ((NO-TAKE)
-    <OR
-      ATOM
-      FALSE>
-    (BIT)
-    FIX
-    (OBJS)
-    <LIST
-      [REST
-        OBJECT]>
-    (NOBJ)
-    <OR
-      FALSE
-      OBJECT>)
+    ((NO-TAKE)
+      <OR
+        ATOM
+        FALSE>
+      (BIT)
+      FIX
+      (OBJS)
+      <LIST
+        [REST
+          OBJECT]>
+      (NOBJ)
+      <OR
+        FALSE
+        OBJECT>)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <COND
         (<AND
             <OVIS?
@@ -1810,8 +1810,8 @@
             <FUNCTION
               (X)
               #DECL
-              ((X)
-                OBJECT)
+                ((X)
+                  OBJECT)
               <COND
                 (<AND
                     <OVIS?

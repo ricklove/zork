@@ -11,24 +11,24 @@
         OBLIST>)
     ATM)
   #DECL
-  ((TICK)
-    FIX
-    (APP)
-    <OR
-      APPLICABLE
-      OFFSET>
-    (FLG)
-    <OR
-      ATOM
-      FALSE>
-    (NAME)
-    <OR
-      ATOM
-      STRING>
-    (ATM)
-    <OR
-      ATOM
-      FALSE>)
+    ((TICK)
+      FIX
+      (APP)
+      <OR
+        APPLICABLE
+        OFFSET>
+      (FLG)
+      <OR
+        ATOM
+        FALSE>
+      (NAME)
+      <OR
+        ATOM
+        STRING>
+      (ATM)
+      <OR
+        ATOM
+        FALSE>)
   <COND
     (<TYPE?
         .NAME
@@ -64,12 +64,12 @@
     (WINNER
       ,WINNER))
   #DECL
-  ((OBJS)
-    <TUPLE
-      [REST
-        STRING]>
-    (WINNER)
-    ADV)
+    ((OBJS)
+      <TUPLE
+        [REST
+          STRING]>
+      (WINNER)
+      ADV)
   <MAPF
     <>
     <FUNCTION
@@ -79,8 +79,8 @@
           <FIND-OBJ
             .X>))
       #DECL
-      ((Y)
-        OBJECT)
+        ((Y)
+          OBJECT)
       <OR
         <MEMQ
           .Y
@@ -107,28 +107,28 @@
       <>)
     ATM)
   #DECL
-  ((STR)
-    <OR
-      FALSE
-      STRING>
-    (FLID
-      RMID)
-    <OR
-      ATOM
-      STRING>
-    (ATM
-      FUNCT)
-    <OR
-      ATOM
-      FALSE>
-    (FVAL)
-    <OR
-      APPLICABLE
-      FALSE>
-    (FLAG)
-    <OR
-      ATOM
-      FALSE>)
+    ((STR)
+      <OR
+        FALSE
+        STRING>
+      (FLID
+        RMID)
+      <OR
+        ATOM
+        STRING>
+      (ATM
+        FUNCT)
+      <OR
+        ATOM
+        FALSE>
+      (FVAL)
+      <OR
+        APPLICABLE
+        FALSE>
+      (FLAG)
+      <OR
+        ATOM
+        FALSE>)
   <COND
     (<TYPE?
         .FLID
@@ -173,39 +173,39 @@
         <LENGTH
           .PAIRS>>))
   #DECL
-  ((PAIRS)
-    <TUPLE
-      [REST
-        STRING
-        <OR
-          NEXIT
-          CEXIT
+    ((PAIRS)
+      <TUPLE
+        [REST
           STRING
-          ATOM>]>
-    (DIR)
-    <LIST
-      [REST
-        ATOM]>
-    (FROB)
-    VECTOR
-    (DOBL)
-    OBLIST)
+          <OR
+            NEXIT
+            CEXIT
+            STRING
+            ATOM>]>
+      (DIR)
+      <LIST
+        [REST
+          ATOM]>
+      (FROB)
+      VECTOR
+      (DOBL)
+      OBLIST)
   <REPEAT
     (ATM
       RM
       (F
         .FROB))
     #DECL
-    ((ATM)
-      <OR
-        ATOM
-        FALSE>
-      (RM)
-      <OR
-        ROOM
-        FALSE>
-      (F)
-      VECTOR)
+      ((ATM)
+        <OR
+          ATOM
+          FALSE>
+        (RM)
+        <OR
+          ROOM
+          FALSE>
+        (F)
+        VECTOR)
     <COND
       (<OR
           <AND
@@ -285,30 +285,30 @@
       <FIND-ROOM
         .ID>))
   #DECL
-  ((ID)
-    <OR
+    ((ID)
+      <OR
+        STRING
+        ATOM>
+      (D1
+        D2)
       STRING
-      ATOM>
-    (D1
-      D2)
-    STRING
-    (LIT?)
-    <OR
-      ATOM
-      FORM
-      FALSE>
-    (EX)
-    EXIT
-    (APP)
-    <OR
-      FORM
-      FALSE
-      ATOM>
-    (VAL
-      BIT)
-    FIX
-    (RM)
-    ROOM)
+      (LIT?)
+      <OR
+        ATOM
+        FORM
+        FALSE>
+      (EX)
+      EXIT
+      (APP)
+      <OR
+        FORM
+        FALSE
+        ATOM>
+      (VAL
+        BIT)
+      FIX
+      (RM)
+      ROOM)
   <SETG
     SCORE-MAX
     <+
@@ -363,8 +363,8 @@
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        OBJECT)
+        ((X)
+          OBJECT)
       <PUT
         .X
         ,OROOM
@@ -379,10 +379,10 @@
     "TUPLE"
     TUP)
   #DECL
-  ((ID)
-    STRING
-    (TUP)
-    TUPLE)
+    ((ID)
+      STRING
+      (TUP)
+      TUPLE)
   <OBJECT
     .ID
     ""
@@ -402,12 +402,12 @@
     "TUPLE"
     TUP)
   #DECL
-  ((ID)
-    STRING
-    (TUP)
-    TUPLE
-    (APP)
-    ATOM)
+    ((ID)
+      STRING
+      (TUP)
+      TUPLE
+      (APP)
+      ATOM)
   <OBJECT
     .ID
     ""
@@ -441,40 +441,40 @@
     (CAPAC
       0))
   #DECL
-  ((ID)
-    <OR
-      ATOM
-      STRING>
-    (DESC1
-      DESC2)
-    STRING
-    (APP)
-    <OR
-      FALSE
-      FORM
-      ATOM>
-    (CONTS)
-    <LIST
-      [REST
-        OBJECT]>
-    (CAN)
-    <OR
-      FALSE
-      OBJECT>
-    (FLAGS)
-    <PRIMTYPE
-      WORD>
-    (SIZE
-      CAPAC)
-    FIX
-    (LIGHT?
-      S1
-      S2)
-    FIX
-    (DESCO)
-    <OR
+    ((ID)
+      <OR
+        ATOM
+        STRING>
+      (DESC1
+        DESC2)
       STRING
-      FALSE>)
+      (APP)
+      <OR
+        FALSE
+        FORM
+        ATOM>
+      (CONTS)
+      <LIST
+        [REST
+          OBJECT]>
+      (CAN)
+      <OR
+        FALSE
+        OBJECT>
+      (FLAGS)
+      <PRIMTYPE
+        WORD>
+      (SIZE
+        CAPAC)
+      FIX
+      (LIGHT?
+        S1
+        S2)
+      FIX
+      (DESCO)
+      <OR
+        STRING
+        FALSE>)
   <SETG
     SCORE-MAX
     <+
@@ -541,12 +541,12 @@
       <ADD-WORD
         .STR>))
   #DECL
-  ((STR)
-    STRING
-    (ATM)
-    <OR
-      FALSE
-      ATOM>)
+    ((STR)
+      STRING
+      (ATM)
+      <OR
+        FALSE
+        ATOM>)
   <COND
     (<GASSIGNED?
         .ATM>
@@ -578,15 +578,15 @@
           .NAM
           ,ACTIONS>>))
   #DECL
-  ((NAM
-      STR)
-    STRING
-    (DECL)
-    <TUPLE
-      [REST
-        VECTOR]>
-    (ATM)
-    ATOM)
+    ((NAM
+        STR)
+      STRING
+      (DECL)
+      <TUPLE
+        [REST
+          VECTOR]>
+      (ATM)
+      ATOM)
   <SETG
     .ATM
     <CHTYPE
@@ -605,14 +605,14 @@
       ,DIRECTIONS)
     ATM)
   #DECL
-  ((NMS)
-    <TUPLE
-      [REST
-        STRING]>
-    (DIR)
-    OBLIST
-    (ATM)
-    ATOM)
+    ((NMS)
+      <TUPLE
+        [REST
+          STRING]>
+      (DIR)
+      OBLIST
+      (ATM)
+      ATOM)
   <MAPF
     <>
     <FUNCTION
@@ -642,18 +642,18 @@
       ,DIRECTIONS)
     ATM)
   #DECL
-  ((ATM)
-    ATOM
-    (STR)
-    STRING
-    (NMS)
-    <TUPLE
-      [REST
-        STRING]>
-    (VAL)
-    DIRECTION
-    (DIR)
-    OBLIST)
+    ((ATM)
+      ATOM
+      (STR)
+      STRING
+      (NMS)
+      <TUPLE
+        [REST
+          STRING]>
+      (VAL)
+      DIRECTION
+      (DIR)
+      OBLIST)
   <SET
     VAL
     <ADD-DIRECTIONS
@@ -683,18 +683,18 @@
     ATM
     VAL)
   #DECL
-  ((N1)
-    STRING
-    (N2)
-    <TUPLE
-      [REST
-        STRING]>
-    (ATM)
-    <OR
-      FALSE
-      ATOM>
-    (VAL)
-    ANY)
+    ((N1)
+      STRING
+      (N2)
+      <TUPLE
+        [REST
+          STRING]>
+      (ATM)
+      <OR
+        FALSE
+        ATOM>
+      (VAL)
+      ANY)
   <COND
     (<SET
         ATM
@@ -741,8 +741,8 @@
   ADD-WORD
   (W)
   #DECL
-  ((W)
-    STRING)
+    ((W)
+      STRING)
   <OR
     <LOOKUP
       .W
@@ -755,17 +755,17 @@
   ("TUPLE"
     W)
   #DECL
-  ((W)
-    <TUPLE
-      [REST
-        STRING]>)
+    ((W)
+      <TUPLE
+        [REST
+          STRING]>)
   <MAPF
     <>
     <FUNCTION
       (X)
       #DECL
-      ((X)
-        STRING)
+        ((X)
+          STRING)
       <SETG
         <ADD-WORD
           .X>
@@ -779,12 +779,12 @@
     "TUPLE"
     W)
   #DECL
-  ((NM)
-    ATOM
-    (W)
-    <TUPLE
-      [REST
-        STRING]>)
+    ((NM)
+      ATOM
+      (W)
+      <TUPLE
+        [REST
+          STRING]>)
   <MAPF
     <>
     <FUNCTION
@@ -792,10 +792,10 @@
         "AUX"
         ATM)
       #DECL
-      ((X)
-        STRING
-        (ATM)
-        ATOM)
+        ((X)
+          STRING
+          (ATM)
+          ATOM)
       <SETG
         <SET
           ATM
@@ -816,15 +816,15 @@
     (OBJS
       ,OBJECT-OBL))
   #DECL
-  ((OBJ)
-    OBJECT
-    (NAMES
-      ADJ)
-    <VECTOR
-      [REST
-        STRING]>
-    (OBJS)
-    OBLIST)
+    ((OBJ)
+      OBJECT
+      (NAMES
+        ADJ)
+      <VECTOR
+        [REST
+          STRING]>
+      (OBJS)
+      OBLIST)
   <PUT
     .OBJ
     ,ONAMES
@@ -833,8 +833,8 @@
       <FUNCTION
         (X)
         #DECL
-        ((X)
-          STRING)
+          ((X)
+            STRING)
         <OR
           <LOOKUP
             .X
@@ -868,18 +868,18 @@
     ATM
     VAL)
   #DECL
-  ((N1)
-    STRING
-    (N2)
-    <TUPLE
-      [REST
-        STRING]>
-    (ATM)
-    <OR
-      FALSE
-      ATOM>
-    (VAL)
-    ANY)
+    ((N1)
+      STRING
+      (N2)
+      <TUPLE
+        [REST
+          STRING]>
+      (ATM)
+      <OR
+        FALSE
+        ATOM>
+      (VAL)
+      ANY)
   <COND
     (<SET
         ATM
@@ -904,9 +904,9 @@
     Y
     "AUX")
   #DECL
-  ((X
-      Y)
-    STRING)
+    ((X
+        Y)
+      STRING)
   <SETG
     <ADD-WORD
       .X>
@@ -921,18 +921,18 @@
   ADD-DEMON
   (X)
   #DECL
-  ((X)
-    HACK)
+    ((X)
+      HACK)
   <COND
     (<MAPR
         <>
         <FUNCTION
           (Y)
           #DECL
-          ((Y)
-            <LIST
-              [REST
-                HACK]>)
+            ((Y)
+              <LIST
+                [REST
+                  HACK]>)
           <COND
             (<==?
                 <HACTION
@@ -965,20 +965,20 @@
     (ACTORS
       ,ACTORS))
   #DECL
-  ((ADV)
-    ADV
-    (ACTORS)
-    <LIST
-      [REST
-        ADV]>)
+    ((ADV)
+      ADV
+      (ACTORS)
+      <LIST
+        [REST
+          ADV]>)
   <COND
     (<MAPF
         <>
         <FUNCTION
           (X)
           #DECL
-          ((X)
-            ADV)
+            ((X)
+              ADV)
           <COND
             (<==?
                 <AOBJ
@@ -998,10 +998,10 @@
   (OBJ
     STR)
   #DECL
-  ((OBJ)
-    OBJECT
-    (STR)
-    STRING)
+    ((OBJ)
+      OBJECT
+      (STR)
+      STRING)
   <PUT
     .OBJ
     ,OREAD

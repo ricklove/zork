@@ -10,13 +10,13 @@
       <1
         .PV>))
   #DECL
-  ((PV)
-    <VECTOR
-      VERB>
-    (VB)
-    VERB
-    (BOTTL)
-    OBJECT)
+    ((PV)
+      <VECTOR
+        VERB>
+      (VB)
+      VERB
+      (BOTTL)
+      OBJECT)
   <COND
     (<OR
         <==?
@@ -50,17 +50,17 @@
       <FIND-OBJ
         "LCASE">))
   #DECL
-  ((PV)
-    <VECTOR
-      VERB>
-    (VB)
-    VERB
-    (NL)
-    <LIST
-      [REST
-        OBJECT]>
-    (LCASE)
-    OBJECT)
+    ((PV)
+      <VECTOR
+        VERB>
+      (VB)
+      VERB
+      (NL)
+      <LIST
+        [REST
+          OBJECT]>
+      (LCASE)
+      OBJECT)
   <COND
     (<N==?
         .VB
@@ -126,22 +126,22 @@
       <FIND-OBJ
         "BUCKE">))
   #DECL
-  ((ARG)
-    <OR
-      FALSE
-      ATOM>
-    (PV)
-    VECTOR
-    (PA)
-    VERB
-    (PO)
-    <OR
-      DIRECTION
-      FALSE
-      OBJECT>
-    (W
-      BUCK)
-    OBJECT)
+    ((ARG)
+      <OR
+        FALSE
+        ATOM>
+      (PV)
+      VECTOR
+      (PA)
+      VERB
+      (PO)
+      <OR
+        DIRECTION
+        FALSE
+        OBJECT>
+      (W
+        BUCK)
+      OBJECT)
   <COND
     (<==?
         .ARG
@@ -211,17 +211,17 @@
       <2
         .PV>))
   #DECL
-  ((R)
-    ROOM
-    (B)
-    OBJECT
-    (PV)
-    VECTOR
-    (PVS)
-    <OR
-      FALSE
+    ((R)
+      ROOM
+      (B)
       OBJECT
-      DIRECTION>)
+      (PV)
+      VECTOR
+      (PVS)
+      <OR
+        FALSE
+        OBJECT
+        DIRECTION>)
   <PUT
     .PV
     2
@@ -254,15 +254,15 @@
     (HERE
       ,HERE))
   #DECL
-  ((PV)
-    VECTOR
-    (C)
-    OBJECT
-    (PA)
-    VERB
-    (HERE
-      R)
-    ROOM)
+    ((PV)
+      VECTOR
+      (C)
+      OBJECT
+      (PA)
+      VERB
+      (HERE
+        R)
+      ROOM)
   <COND
     (<AND
         <==?
@@ -299,8 +299,8 @@
         <FUNCTION
           (X)
           #DECL
-          ((X)
-            OBJECT)
+            ((X)
+              OBJECT)
           <PUT
             .X
             ,OSIZE
@@ -343,22 +343,22 @@
       ,HERE)
     R)
   #DECL
-  ((PV)
-    VECTOR
-    (PA)
-    VERB
-    (PI
-      PO)
-    <OR
-      FALSE
-      OBJECT>
-    (RICE
-      OICE
-      BICE)
-    OBJECT
-    (HERE
-      R)
-    ROOM)
+    ((PV)
+      VECTOR
+      (PA)
+      VERB
+      (PI
+        PO)
+      <OR
+        FALSE
+        OBJECT>
+      (RICE
+        OICE
+        BICE)
+      OBJECT
+      (HERE
+        R)
+      ROOM)
   <COND
     (<==?
         .PA
@@ -438,8 +438,8 @@
                 <FUNCTION
                   (X)
                   #DECL
-                  ((X)
-                    OBJECT)
+                    ((X)
+                      OBJECT)
                   <PUT
                     .X
                     ,OROOM
@@ -502,12 +502,12 @@
       <1
         .PV>))
   #DECL
-  ((PV)
-    <VECTOR
-      VERB
-      OBJECT>
-    (PA)
-    VERB)
+    ((PV)
+      <VECTOR
+        VERB
+        OBJECT>
+      (PA)
+      VERB)
   <COND
     (<==?
         .PA
@@ -568,24 +568,24 @@
       ,HERE)
     M)
   #DECL
-  ((PV)
-    VECTOR
-    (PA)
-    VERB
-    (PO)
-    <OR
-      FALSE
-      OBJECT
-      DIRECTION>
-    (HERE)
-    ROOM
-    (M)
-    <OR
-      FALSE
-      <PRIMTYPE
-        VECTOR>>
-    (FOO)
-    CEXIT)
+    ((PV)
+      VECTOR
+      (PA)
+      VERB
+      (PO)
+      <OR
+        FALSE
+        OBJECT
+        DIRECTION>
+      (HERE)
+      ROOM
+      (M)
+      <OR
+        FALSE
+        <PRIMTYPE
+          VECTOR>>
+      (FOO)
+      CEXIT)
   <COND
     (<==?
         .PA
@@ -656,10 +656,10 @@
       <1
         .PV>))
   #DECL
-  ((PV)
-    VECTOR
-    (PA)
-    VERB)
+    ((PV)
+      VECTOR
+      (PA)
+      VERB)
   <COND
     (<==?
         .PA
@@ -685,12 +685,12 @@
       <1
         .PV>))
   #DECL
-  ((I)
-    OBJECT
-    (PV)
-    VECTOR
-    (PA)
-    VERB)
+    ((I)
+      OBJECT
+      (PV)
+      VECTOR
+      (PA)
+      VERB)
   <COND
     (<==?
         .PA
@@ -770,22 +770,22 @@
     FL
     RACT)
   #DECL
-  ((PV)
-    <VECTOR
+    ((PV)
+      <VECTOR
+        VERB
+        OBJECT>
+      (PA)
       VERB
-      OBJECT>
-    (PA)
-    VERB
-    (C)
-    ROOM
-    (R)
-    OBJECT
-    (FL)
-    <OR
-      ATOM
-      FALSE>
-    (RACT)
-    ADV)
+      (C)
+      ROOM
+      (R)
+      OBJECT
+      (FL)
+      <OR
+        ATOM
+        FALSE>
+      (RACT)
+      ADV)
   <SET
     FL
     <AND
@@ -908,23 +908,23 @@
         "ROBOT">)
     RACT)
   #DECL
-  ((C)
-    ROOM
-    (PA)
-    VERB
-    (PV)
-    VECTOR
-    (PO)
-    <OR
-      FALSE
+    ((C)
+      ROOM
+      (PA)
+      VERB
+      (PV)
+      VECTOR
+      (PO)
+      <OR
+        FALSE
+        OBJECT
+        DIRECTION>
+      (CAGE)
       OBJECT
-      DIRECTION>
-    (CAGE)
-    OBJECT
-    (R)
-    OBJECT
-    (RACT)
-    ADV)
+      (R)
+      OBJECT
+      (RACT)
+      ADV)
   <COND
     (<AND
         <==?
@@ -1017,19 +1017,19 @@
     PP
     AA)
   #DECL
-  ((AA)
-    ADV
-    (PV)
-    VECTOR
-    (PA)
-    VERB
-    (PP
-      PO)
-    OBJECT
-    (PI)
-    <OR
-      FALSE
-      OBJECT>)
+    ((AA)
+      ADV
+      (PV)
+      VECTOR
+      (PA)
+      VERB
+      (PP
+        PO)
+      OBJECT
+      (PI)
+      <OR
+        FALSE
+        OBJECT>)
   <COND
     (<==?
         .PA

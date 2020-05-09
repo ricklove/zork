@@ -71,6 +71,13 @@ export class ZToken implements ZNode {
 
 type OpenSymbol = '<' | '(' | '{' | '[' | '"' | '\'' | ';' | '#';
 type CloseSymbol = '>' | ')' | '}' | ']' | '"' | 1 | 2;
+
+const isOpenSymbol = (c: string): c is OpenSymbol => {
+    return (c === '<' || c === '(' || c === '{' || c === '['
+        || c === '"'
+        || c === '\'' || c === ';' || c === '#'
+    );
+}
 const getCloseSymbol = (s: OpenSymbol) => {
     switch (s) {
         case '<': return '>';
@@ -82,7 +89,7 @@ const getCloseSymbol = (s: OpenSymbol) => {
         case '\'': return 1;
         case ';': return 1;
         case '#': return 2;
-        default: throw new Error(`Unknown Symbol ${s}`);
+        default: throw new Error(`getCloseSymbol: Unknown Symbol ${s}`);
     }
 };
 
@@ -169,9 +176,7 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
         }
 
         // Handle Children 
-        if (c === '<' || c === '(' || c === '{' || c === '['
-            || c === '"'
-            || c === '\'' || c === ';') {
+        if (isOpenSymbol(c)) {
             closeText(i);
             const child = parseContent(source, i, depth + 1, c, getCloseSymbol(c), closeSymbol);
             nodes.push(child);

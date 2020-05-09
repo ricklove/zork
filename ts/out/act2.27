@@ -10,16 +10,16 @@
       ,WINNER)
     O)
   #DECL
-  ((DUMMY?)
-    <OR
-      ATOM
-      FALSE>
-    (PRSACT)
-    VERB
-    (WIN)
-    ADV
-    (O)
-    OBJECT)
+    ((DUMMY?)
+      <OR
+        ATOM
+        FALSE>
+      (PRSACT)
+      VERB
+      (WIN)
+      ADV
+      (O)
+      OBJECT)
   <COND
     (<OR
         <==?
@@ -88,8 +88,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSACT)
-    VERB)
+    ((PRSACT)
+      VERB)
   <COND
     (<AND
         <==?
@@ -122,10 +122,10 @@
     (BAT-DROPS
       ,BAT-DROPS))
   #DECL
-  ((BAT-DROPS)
-    <VECTOR
-      [REST
-        STRING]>)
+    ((BAT-DROPS)
+      <VECTOR
+        [REST
+          STRING]>)
   <UNWIND
     <PROG
       ()
@@ -155,9 +155,9 @@
     (SLP
       0))
   #DECL
-  ((NUM
-      SLP)
-    FIX)
+    ((NUM
+        SLP)
+      FIX)
   <REPEAT
     ((N
         .NUM))
@@ -220,24 +220,24 @@
     (DUMMY
       ,DUMMY))
   #DECL
-  ((PRSACT)
-    VERB
-    (FB
-      TB)
-    OBJECT
-    (TOP
-      BOT)
-    ROOM
-    (CT)
-    <OR
-      ATOM
-      FALSE>
-    (HERE)
-    ROOM
-    (DUMMY)
-    <VECTOR
-      [REST
-        STRING]>)
+    ((PRSACT)
+      VERB
+      (FB
+        TB)
+      OBJECT
+      (TOP
+        BOT)
+      ROOM
+      (CT)
+      <OR
+        ATOM
+        FALSE>
+      (HERE)
+      ROOM
+      (DUMMY)
+      <VECTOR
+        [REST
+          STRING]>)
   <COND
     (<==?
         .PRSACT
@@ -314,8 +314,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSACT)
-    VERB)
+    ((PRSACT)
+      VERB)
   <COND
     (<==?
         .PRSACT
@@ -342,14 +342,14 @@
       <FIND-OBJ
         "MACHI">))
   #DECL
-  ((PRSACT)
-    VERB
-    (MACH)
-    OBJECT
-    (DUMMY)
-    <VECTOR
-      [REST
-        STRING]>)
+    ((PRSACT)
+      VERB
+      (MACH)
+      OBJECT
+      (DUMMY)
+      <VECTOR
+        [REST
+          STRING]>)
   <COND
     (<==?
         ,HERE
@@ -412,15 +412,15 @@
       <FIND-OBJ
         "SCREW">))
   #DECL
-  ((PRSACT)
-    VERB
-    (IMP)
-    OBJECT
-    (MACH
-      SCREW
-      C
-      D)
-    OBJECT)
+    ((PRSACT)
+      VERB
+      (IMP)
+      OBJECT
+      (MACH
+        SCREW
+        C
+        D)
+      OBJECT)
   <COND
     (<==?
         .PRSACT
@@ -490,12 +490,12 @@
       <OCAN
         .G>))
   #DECL
-  ((G)
-    OBJECT
-    (M)
-    <OR
+    ((G)
       OBJECT
-      FALSE>)
+      (M)
+      <OR
+        OBJECT
+        FALSE>)
   <COND
     (.M
       <PUT
@@ -569,8 +569,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSACT)
-    VERB)
+    ((PRSACT)
+      VERB)
   <COND
     (<==?
         <VNAME
@@ -621,8 +621,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSACT)
-    VERB)
+    ((PRSACT)
+      VERB)
   <COND
     (<==?
         .PRSACT
@@ -642,8 +642,8 @@
       <2
         ,PRSVEC>))
   #DECL
-  ((PRSO)
-    OBJECT)
+    ((PRSO)
+      OBJECT)
   <COND
     (<==?
         .PRSO
@@ -679,16 +679,16 @@
       <FIND-OBJ
         "DBOAT">))
   #DECL
-  ((DBOAT)
-    OBJECT
-    (PRSACT)
-    VERB
-    (HERE)
-    ROOM
-    (PRSI)
-    <OR
-      FALSE
-      OBJECT>)
+    ((DBOAT)
+      OBJECT
+      (PRSACT)
+      VERB
+      (HERE)
+      ROOM
+      (PRSI)
+      <OR
+        FALSE
+        OBJECT>)
   <COND
     (<==?
         <VNAME
@@ -743,17 +743,17 @@
     (HERE
       ,HERE))
   #DECL
-  ((ARG)
-    <OR
-      FALSE
-      ATOM>
-    (PRSACT)
-    VERB
-    (IBOAT
-      RBOAT)
-    OBJECT
-    (HERE)
-    ROOM)
+    ((ARG)
+      <OR
+        FALSE
+        ATOM>
+      (PRSACT)
+      VERB
+      (IBOAT
+        RBOAT)
+      OBJECT
+      (HERE)
+      ROOM)
   <COND
     (.ARG
       <>)
@@ -829,13 +829,13 @@
     (HERE
       ,HERE))
   #DECL
-  ((PRSACT)
-    VERB
-    (IBOAT
-      RBOAT)
-    OBJECT
-    (HERE)
-    ROOM)
+    ((PRSACT)
+      VERB
+      (IBOAT
+        RBOAT)
+      OBJECT
+      (HERE)
+      ROOM)
   <COND
     (<==?
         <VNAME
@@ -888,10 +888,10 @@
     (HERE
       ,HERE))
   #DECL
-  ((PRSOBJ)
-    OBJECT
-    (HERE)
-    ROOM)
+    ((PRSOBJ)
+      OBJECT
+      (HERE)
+      ROOM)
   <COND
     (<OBJECT-ACTION>)
     (<AND
@@ -920,8 +920,8 @@
         <FUNCTION
           (X)
           #DECL
-          ((X)
-            OBJECT)
+            ((X)
+              OBJECT)
           <PUT
             .X
             ,OCAN
@@ -965,14 +965,14 @@
       ,HERE)
     CNT)
   #DECL
-  ((PRSACT)
-    VERB
-    (SHOV)
-    OBJECT
-    (HERE)
-    ROOM
-    (CNT)
-    FIX)
+    ((PRSACT)
+      VERB
+      (SHOV)
+      OBJECT
+      (HERE)
+      ROOM
+      (CNT)
+      FIX)
   <COND
     (<AND
         <==?
@@ -1035,14 +1035,14 @@
       ,HERE)
     CNT)
   #DECL
-  ((PRSACT)
-    VERB
-    (SHOV)
-    OBJECT
-    (HERE)
-    ROOM
-    (CNT)
-    FIX)
+    ((PRSACT)
+      VERB
+      (SHOV)
+      OBJECT
+      (HERE)
+      ROOM
+      (CNT)
+      FIX)
   <COND
     (<AND
         <==?
@@ -1124,10 +1124,10 @@
     (SWIMYUKS
       ,SWIMYUKS))
   #DECL
-  ((SWIMYUKS)
-    <VECTOR
-      [REST
-        STRING]>)
+    ((SWIMYUKS)
+      <VECTOR
+        [REST
+          STRING]>)
   <COND
     (<RTRNN
         ,HERE
@@ -1144,8 +1144,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSA)
-    VERB)
+    ((PRSA)
+      VERB)
   <COND
     (<==?
         .PRSA
@@ -1189,41 +1189,41 @@
       ,BINF!-FLAG)
     BLABE)
   #DECL
-  ((ARG)
-    <OR
-      ATOM
-      FALSE>
-    (BLABE
-      BALL
-      CONT
-      RECEP)
-    OBJECT
-    (PRSA)
-    VERB
-    (PRSO)
-    <OR
+    ((ARG)
+      <OR
+        ATOM
+        FALSE>
+      (BLABE
+        BALL
+        CONT
+        RECEP)
       OBJECT
-      DIRECTION>
-    (M)
-    <OR
-      FALSE
-      <PRIMTYPE
-        VECTOR>>
-    (PRSVEC)
-    <VECTOR
-      [3
-        ANY]>
-    (BINF)
-    <OR
-      FALSE
-      ROOM>
-    (M)
-    <OR
-      FALSE
-      <<PRIMTYPE
-          VECTOR>
-        ANY
-        ROOM>>)
+      (PRSA)
+      VERB
+      (PRSO)
+      <OR
+        OBJECT
+        DIRECTION>
+      (M)
+      <OR
+        FALSE
+        <PRIMTYPE
+          VECTOR>>
+      (PRSVEC)
+      <VECTOR
+        [3
+          ANY]>
+      (BINF)
+      <OR
+        FALSE
+        ROOM>
+      (M)
+      <OR
+        FALSE
+        <<PRIMTYPE
+            VECTOR>
+          ANY
+          ROOM>>)
   <COND
     (<==?
         .ARG
@@ -1452,23 +1452,23 @@
       ,BLOC)
     FOO)
   #DECL
-  ((BALL)
-    OBJECT
-    (HERE
-      BL)
-    ROOM
-    (M)
-    <OR
-      FALSE
-      STRING>
-    (S)
-    STRING
-    (IN?)
-    <OR
-      ATOM
-      FALSE>
-    (FOO)
-    CEVENT)
+    ((BALL)
+      OBJECT
+      (HERE
+        BL)
+      ROOM
+      (M)
+      <OR
+        FALSE
+        STRING>
+      (S)
+      STRING
+      (IN?)
+      <OR
+        ATOM
+        FALSE>
+      (FOO)
+      CEVENT)
   <CLOCK-INT
     ,BINT
     3>
@@ -1599,13 +1599,13 @@
     THERE
     STR)
   #DECL
-  ((BALL)
-    OBJECT
-    (HERE)
-    ROOM
-    (THERE
-      STR)
-    STRING)
+    ((BALL)
+      OBJECT
+      (HERE)
+      ROOM
+      (THERE
+        STR)
+      STRING)
   <AND
     <MEMBER
       "LEDG"
@@ -1645,23 +1645,23 @@
         .BALL>)
     FOO)
   #DECL
-  ((BALL)
-    OBJECT
-    (HERE
-      BL)
-    ROOM
-    (M)
-    <OR
-      FALSE
-      STRING>
-    (S)
-    STRING
-    (IN?)
-    <OR
-      ATOM
-      FALSE>
-    (FOO)
-    CEVENT)
+    ((BALL)
+      OBJECT
+      (HERE
+        BL)
+      ROOM
+      (M)
+      <OR
+        FALSE
+        STRING>
+      (S)
+      STRING
+      (IN?)
+      <OR
+        ATOM
+        FALSE>
+      (FOO)
+      CEVENT)
   <CLOCK-INT
     ,BINT
     3>
@@ -1767,15 +1767,15 @@
     (BINT
       ,BINT))
   #DECL
-  ((BINT)
-    CEVENT
-    (PV)
-    VECTOR
-    (PRSA)
-    VERB
-    (PRSO
-      PRSI)
-    PRSOBJ)
+    ((BINT)
+      CEVENT
+      (PV)
+      VECTOR
+      (PRSA)
+      VERB
+      (PRSO
+        PRSI)
+      PRSOBJ)
   <COND
     (<==?
         .PRSA
@@ -1836,9 +1836,9 @@
         <OCONTENTS
           .R>>))
   #DECL
-  ((R
-      OBJ)
-    OBJECT)
+    ((R
+        OBJ)
+      OBJECT)
   <PUT
     .R
     ,OCONTENTS
@@ -1866,8 +1866,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSA)
-    VERB)
+    ((PRSA)
+      VERB)
   <COND
     (<==?
         .PRSA
@@ -1887,8 +1887,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSA)
-    VERB)
+    ((PRSA)
+      VERB)
   <COND
     (<==?
         .PRSA
@@ -1928,8 +1928,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSA)
-    VERB)
+    ((PRSA)
+      VERB)
   <COND
     (<==?
         .PRSA
@@ -1951,19 +1951,19 @@
     BRICK-ROOM
     OC)
   #DECL
-  ((PRSA)
-    VERB
-    (FUSE
-      BRICK)
-    OBJECT
-    (BRICK-ROOM)
-    <OR
-      ROOM
-      FALSE>
-    (OC)
-    <OR
+    ((PRSA)
+      VERB
+      (FUSE
+        BRICK)
       OBJECT
-      FALSE>)
+      (BRICK-ROOM)
+      <OR
+        ROOM
+        FALSE>
+      (OC)
+      <OR
+        OBJECT
+        FALSE>)
   <COND
     (<==?
         .PRSA
@@ -2079,8 +2079,8 @@
                     <FUNCTION
                       (X)
                       #DECL
-                      ((X)
-                        OBJECT)
+                        ((X)
+                          OBJECT)
                       <PUT
                         .X
                         ,OCAN
@@ -2109,8 +2109,8 @@
     (RM
       ,MUNGED-ROOM))
   #DECL
-  ((RM)
-    ROOM)
+    ((RM)
+      ROOM)
   <COND
     (<==?
         ,HERE
@@ -2146,8 +2146,8 @@
       <FIND-ROOM
         "LEDG4">))
   #DECL
-  ((RM)
-    ROOM)
+    ((RM)
+      ROOM)
   <COND
     (<==?
         ,HERE
@@ -2200,8 +2200,8 @@
       <1
         ,PRSVEC>))
   #DECL
-  ((PRSA)
-    VERB)
+    ((PRSA)
+      VERB)
   <COND
     (<==?
         .PRSA
@@ -2271,12 +2271,12 @@
       <2
         .PV>))
   #DECL
-  ((PV)
-    VECTOR
-    (PRSA)
-    VERB
-    (PRSO)
-    PRSOBJ)
+    ((PV)
+      VECTOR
+      (PRSA)
+      VERB
+      (PRSO)
+      PRSOBJ)
   <COND
     (<AND
         <OR
