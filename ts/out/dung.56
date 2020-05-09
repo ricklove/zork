@@ -324,15 +324,11 @@ or(
   {"#####"
     "You are here"
     "cretin"
-    _
-    <>
-    _
-    <>
+    %<>
+    %<>
     ()
-    _
-    <>
-    _
-    ,ovison}
+    %<>
+    %,ovison}
 
 "MAZE"
 
@@ -349,8 +345,7 @@ psetg(
   {"PASS1"
     "You are in a narrow east-west passageway.  There is a narrow stairway\nleading down at the north end of the room."
     "East-West Passage"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "CAROU"
@@ -361,8 +356,7 @@ psetg(
         "NORTH"
         "RAVI1"}
     ()
-    _
-    <>
+    %<>
     5}
 
 #room
@@ -478,20 +472,17 @@ add_object(
       "A sandwich bag is here."
       "sandwich bag"
       "On the table is an elongated brown sack, smelling of hot peppers."
-      _
-      <>
+      %<>
       (#find_obj
           {"GARLI"}
         #find_obj
           {"FOOD"})
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,flamebit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,contbit,
+          ,flamebit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -507,18 +498,15 @@ add_object(
     {"GARLI"
       "There is a clove of garlic here."
       "clove of garlic"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"SBAG"}
-      _
-      _(
-        ,takebit,
-        ,foodbit,
-        ,ovison)
+      %_(
+          ,takebit,
+          ,foodbit,
+          ,ovison)
       0
       0
       0
@@ -531,18 +519,15 @@ add_object(
     {"FOOD"
       "A hot pepper sandwich is here."
       "\.lunch"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"SBAG"}
-      _
-      _(
-        ,foodbit,
-        ,takebit,
-        ,ovison)
+      %_(
+          ,foodbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -559,17 +544,14 @@ add_object(
     {"GUNK"
       "There is a small piece of vitreous slag here."
       "piece of vitreous slag"
-      _
-      <>
+      %<>
       gunk_function
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -584,18 +566,14 @@ add_object(
     {"COAL"
       "There is a small heap of coal here."
       "small pile of coal"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -609,17 +587,13 @@ add_object(
     {"JADE"
       "There is an exquisite jade figurine here."
       "jade figurine"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       5
       5
@@ -632,21 +606,17 @@ add_object(
     {"MACHI"
       ""
       "machine"
-      _
-      <>
+      %<>
       machine_function
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       50},
   ["PDP10"
     "DRYER"
@@ -657,17 +627,13 @@ add_object(
     {"DIAMO"
       "There is an enormous diamond (perfectly cut) here."
       "huge diamond"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       10
       6
@@ -680,24 +646,19 @@ add_object(
     {"TCASE"
       "There is a trophy case here."
       "trophy case"
-      _
-      <>
+      %<>
       trophy_case
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,transbit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,transbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
-      _
-      ,bigfix},
+      %,bigfix
+      %,bigfix},
   ["CASE"],
   ["TROPH"])
 
@@ -710,14 +671,12 @@ add_object(
       bottle_function
       (#find_obj
           {"WATER"})
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,transbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,transbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -737,11 +696,10 @@ add_object(
       ()
       #find_obj
         {"BOTTL"}
-      _
-      _(
-        ,drinkbit,
-        ,takebit,
-        ,ovison)
+      %_(
+          ,drinkbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -754,8 +712,7 @@ add_object(
   {"ATTIC"
     "You are in the attic.  The only exit is stairs that lead down."
     "Attic"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         "KITCH"}
@@ -774,13 +731,11 @@ add_object(
       "A large coil of rope is lying in the corner."
       rope_function
       ()
-      _
-      <>
-      _
-      _(
-        ,tiebit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,tiebit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -795,16 +750,13 @@ add_object(
       "There is a nasty-looking knife lying here."
       "knife"
       "On a table is a nasty-looking knife."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison,
-        ,weaponbit)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison,
+          ,weaponbit)
       0
       0
       0
@@ -859,13 +811,11 @@ add_object(
       "On hooks above the mantelpiece hangs an elvish sword of great\nantiquity."
       sword
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,weaponbit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit,
+          ,weaponbit)
       0
       0
       0
@@ -889,12 +839,10 @@ add_object(
       "A battery-powered brass lantern is on the trophy case."
       lantern
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       _1
       0
       0
@@ -908,17 +856,13 @@ add_object(
     {"BLAMP"
       "There is a broken brass lantern here."
       "broken lamp"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0},
   ["LAMP"
     "LANTE"],
@@ -929,22 +873,18 @@ add_object(
     {"RUG"
       ""
       "carpet"
-      _
-      <>
+      %<>
       rug
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,ndescbit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,ndescbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["CARPE"],
   ["ORIEN"])
@@ -954,17 +894,14 @@ add_object(
     {"LEAVE"
       "There is a pile of leaves on the ground."
       "pile of leaves"
-      _
-      <>
+      %<>
       leaf_pile
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -977,8 +914,7 @@ add_object(
   {"CELLA"
     ""
     "Cellar"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "MTROL"
@@ -1005,8 +941,7 @@ psetg(
   {"MTROL"
     "You are in a small room with passages off in all directions. \nBloodstains and deep scratches (perhaps made by an axe) mar the\nwalls."
     "The Troll Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "CELLA"
@@ -1014,20 +949,17 @@ psetg(
         #cexit
           {"TROLL-FLAG"
             "CRAW4"
-            _
-            ,tchomp}
+            %,tchomp}
         "NORTH"
         #cexit
           {"TROLL-FLAG"
             "PASS1"
-            _
-            ,tchomp}
+            %,tchomp}
         "SOUTH"
         #cexit
           {"TROLL-FLAG"
             "MAZE1"
-            _
-            ,tchomp}}
+            %,tchomp}}
     (#find_obj
         {"TROLL"})}
 
@@ -1078,26 +1010,21 @@ add_demon(
 
 #object
   {"TROLL"
-    _
-    ,trolldesc
+    %,trolldesc
     "troll"
-    _
-    <>
+    %<>
     troll
     (#find_obj
         {"AXE"})
-    _
-    <>
-    _
-    _(
-      ,vicbit,
-      ,ovison,
-      ,villain)
+    %<>
+    %_(
+        ,vicbit,
+        ,ovison,
+        ,villain)
     0
     0
     0
-    _
-    ,bigfix
+    %,bigfix
     2}
 
 add_melee(
@@ -1124,18 +1051,14 @@ add_object(
     {"AXE"
       "There is a bloody axe here."
       "bloody axe"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      find_obj(
-        "TROLL")
-      _
-      _(
-        ,ovison,
-        ,weaponbit)
+      %find_obj(
+          "TROLL")
+      %_(
+          ,ovison,
+          ,weaponbit)
       0
       0
       0
@@ -1154,12 +1077,9 @@ psetg(
 
 #room
   {"MAZE1"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MTROL"
@@ -1173,12 +1093,9 @@ psetg(
 
 #room
   {"MAZE2"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"SOUTH"
         "MAZE1"
@@ -1190,12 +1107,9 @@ psetg(
 
 #room
   {"MAZE3"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MAZE2"
@@ -1207,12 +1121,9 @@ psetg(
 
 #room
   {"MAZE4"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MAZE3"
@@ -1224,12 +1135,9 @@ psetg(
 
 #room
   {"DEAD1"
-    _
-    ,deadend
-    _
-    ,deadend
-    _
-    <>
+    %,deadend
+    %,deadend
+    %<>
     #exit
       {"SOUTH"
         "MAZE4"}
@@ -1237,12 +1145,9 @@ psetg(
 
 #room
   {"MAZE5"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"EAST"
         "DEAD2"
@@ -1269,13 +1174,11 @@ add_object(
       "Beside the skeleton is a rusty knife."
       rusty_knife
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,weaponbit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit,
+          ,weaponbit)
       0
       0
       0
@@ -1295,15 +1198,12 @@ add_object(
       "There is a burned-out lantern here."
       "burned-out lantern"
       "The deceased adventurer's useless lantern is here."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -1320,18 +1220,14 @@ add_object(
   {"KEYS"
     "There is a set of skeleton keys here."
     "set of skeleton keys"
-    _
-    <>
-    _
-    <>
+    %<>
+    %<>
     ()
-    _
-    <>
-    _
-    _(
-      ,toolbit,
-      ,takebit,
-      ,ovison)
+    %<>
+    %_(
+        ,toolbit,
+        ,takebit,
+        ,ovison)
     0
     0
     0
@@ -1343,21 +1239,17 @@ add_object(
     {"BONES"
       "A skeleton, probably the remains of a luckless adventurer, lies here."
       ""
-      _
-      <>
+      %<>
       skeleton
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["SKELE"
     "BODY"])
@@ -1367,17 +1259,13 @@ add_object(
     {"BAGCO"
       "An old leather bag, bulging with coins, is here."
       "bag of coins"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       10
       5
@@ -1392,18 +1280,14 @@ add_object(
     {"BAR"
       "There is a large platinum bar here."
       "platinum bar"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,sacredbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,sacredbit,
+          ,takebit,
+          ,ovison)
       0
       12
       10
@@ -1416,17 +1300,13 @@ add_object(
     {"PEARL"
       "There is a pearl necklace here with hundreds of large pearls."
       "pearl necklace"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       9
       5
@@ -1436,12 +1316,9 @@ add_object(
 
 #room
   {"DEAD2"
-    _
-    ,deadend
-    _
-    ,deadend
-    _
-    <>
+    %,deadend
+    %,deadend
+    %<>
     #exit
       {"WEST"
         "MAZE5"}
@@ -1449,12 +1326,9 @@ add_object(
 
 #room
   {"MAZE6"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"DOWN"
         "MAZE5"
@@ -1468,12 +1342,9 @@ add_object(
 
 #room
   {"MAZE7"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"UP"
         "MAZ14"
@@ -1489,12 +1360,9 @@ add_object(
 
 #room
   {"MAZE8"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"NE"
         "MAZE7"
@@ -1506,12 +1374,9 @@ add_object(
 
 #room
   {"DEAD3"
-    _
-    ,deadend
-    _
-    ,deadend
-    _
-    <>
+    %,deadend
+    %,deadend
+    %<>
     #exit
       {"NORTH"
         "MAZE8"}
@@ -1519,12 +1384,9 @@ add_object(
 
 #room
   {"MAZE9"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"NORTH"
         "MAZE6"
@@ -1542,12 +1404,9 @@ add_object(
 
 #room
   {"MAZ10"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"EAST"
         "MAZE9"
@@ -1559,12 +1418,9 @@ add_object(
 
 #room
   {"MAZ11"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"NE"
         "MGRAT"
@@ -1579,8 +1435,7 @@ add_object(
   {"MGRAT"
     ""
     "Grating Room"
-    _
-    <>
+    %<>
     #exit
       {"SW"
         "MAZ11"
@@ -1595,12 +1450,9 @@ add_object(
 
 #room
   {"MAZ12"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MAZE5"
@@ -1616,12 +1468,9 @@ add_object(
 
 #room
   {"DEAD4"
-    _
-    ,deadend
-    _
-    ,deadend
-    _
-    <>
+    %,deadend
+    %,deadend
+    %<>
     #exit
       {"SOUTH"
         "MAZ12"}
@@ -1629,12 +1478,9 @@ add_object(
 
 #room
   {"MAZ13"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"EAST"
         "MAZE9"
@@ -1648,12 +1494,9 @@ add_object(
 
 #room
   {"MAZ14"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MAZ15"
@@ -1666,12 +1509,9 @@ add_object(
 
 #room
   {"MAZ15"
-    _
-    ,mazedesc
-    _
-    ,mazedesc
-    _
-    <>
+    %,mazedesc
+    %,mazedesc
+    %<>
     #exit
       {"WEST"
         "MAZ14"
@@ -1686,10 +1526,8 @@ psetg(
 
 #room
   {"FORE1"
-    _
-    ,stfore
-    _
-    ,forest
+    %,stfore
+    %,forest
     t
     #exit
       {"NORTH"
@@ -1705,8 +1543,7 @@ psetg(
 #room
   {"FORE4"
     "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
-    _
-    ,forest
+    %,forest
     t
     #exit
       {"EAST"
@@ -1720,10 +1557,8 @@ psetg(
 
 #room
   {"FORE5"
-    _
-    ,stfore
-    _
-    ,forest
+    %,stfore
+    %,forest
     t
     #exit
       {"NORTH"
@@ -1741,10 +1576,8 @@ psetg(
 
 #room
   {"FORE2"
-    _
-    ,fordes
-    _
-    ,forest
+    %,fordes
+    %,forest
     t
     #exit
       {"NORTH"
@@ -1759,10 +1592,8 @@ psetg(
 
 #room
   {"FORE3"
-    _
-    ,fordes
-    _
-    ,forest
+    %,fordes
+    %,forest
     t
     #exit
       {"NORTH"
@@ -1807,8 +1638,7 @@ psetg(
   {"RAVI1"
     "You are in a deep ravine at a crossing with an east-west crawlway. \nSome stone steps are at the south of the ravine and a steep staircase\ndescends."
     "Deep Ravine"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "PASS1"
@@ -1823,8 +1653,7 @@ psetg(
   {"CRAW1"
     "You are in a crawlway with a three-foot high ceiling.  Your footing\nis very unsure here due to the assortment of rocks underfoot. \nPassages can be seen in the east, west, and northwest corners of the\npassage."
     "Rocky Crawl"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "RAVI1"
@@ -1837,8 +1666,7 @@ psetg(
   {"RESES"
     ""
     "Reservoir South"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         #cexit
@@ -1874,8 +1702,7 @@ psetg(
   {"RESEN"
     ""
     "Reservoir North"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "ATLAN"
@@ -1897,8 +1724,7 @@ psetg(
   {"STREA"
     "You are standing on a path beside a flowing stream.  The path\ntravels to the north and the east."
     "Stream"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "RESES"
@@ -1911,8 +1737,7 @@ psetg(
   {"EGYPT"
     "You are in a room which looks like an Egyptian tomb.  There is an\nascending staircase in the room as well as doors, east and south."
     "Egyptian Room"
-    _
-    <>
+    %<>
     #exit
       {"UP"
         "ICY"
@@ -1932,8 +1757,7 @@ psetg(
   {"ICY"
     ""
     "Glacier Room"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "STREA"
@@ -1952,22 +1776,18 @@ add_object(
     {"REFL1"
       ""
       "mirror"
-      _
-      <>
+      %<>
       mirror_mirror
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,vicbit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,vicbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["MIRRO"])
 
@@ -1976,22 +1796,18 @@ add_object(
     {"REFL2"
       ""
       "mirror"
-      _
-      <>
+      %<>
       mirror_mirror
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,vicbit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,vicbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["MIRRO"])
 
@@ -2000,21 +1816,17 @@ add_object(
     {"ICE"
       "A mass of ice fills the western half of the room."
       "glacier"
-      _
-      <>
+      %<>
       glacier
       ()
-      _
-      <>
-      _
-      _(
-        ,vicbit,
-        ,ovison)
+      %<>
+      %_(
+          ,vicbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["GLACI"])
 
@@ -2022,8 +1834,7 @@ add_object(
   {"RUBYR"
     "You are in a small chamber behind the remains of the Great Glacier.\nTo the south and west are small passageways."
     "Ruby Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "LAVA"
@@ -2036,8 +1847,7 @@ add_object(
   {"ATLAN"
     "You are in an ancient room, long buried by the Reservoir.  There are\nexits here to the southeast and upward."
     "Atlantis Room"
-    _
-    <>
+    %<>
     #exit
       {"SE"
         "RESEN"
@@ -2050,8 +1860,7 @@ add_object(
   {"CANY1"
     "You are on the south edge of a deep canyon.  Passages lead off\nto the east, south, and northwest.  You can hear the sound of\nflowing water below."
     "Deep Canyon"
-    _
-    <>
+    %<>
     #exit
       {"NW"
         "RESES"
@@ -2064,8 +1873,7 @@ add_object(
   {"ECHO"
     "You are in a large room with a ceiling which cannot be detected from\nthe ground. There is a narrow passage from east to west and a stone\nstairway leading upward.  The room is extremely noisy.  In fact, it is\ndifficult to hear yourself think."
     "Loud Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "CHAS3"
@@ -2082,15 +1890,12 @@ add_object(
     "There is a moby ruby lying here."
     "ruby"
     "On the floor lies a moby ruby."
-    _
-    <>
+    %<>
     ()
-    _
-    <>
-    _
-    _(
-      ,takebit,
-      ,ovison)
+    %<>
+    %_(
+        ,takebit,
+        ,ovison)
     0
     15
     8
@@ -2103,15 +1908,12 @@ add_object(
       "Neptune's own crystal trident is here."
       "crystal trident"
       "On the shore lies Neptune's own crystal trident."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       4
       11
@@ -2125,19 +1927,15 @@ add_object(
     {"COFFI"
       "There is a solid-gold coffin, used for the burial of Ramses II, here."
       "gold coffin"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,sacredbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,sacredbit,
+          ,takebit,
+          ,ovison)
       0
       3
       7
@@ -2152,17 +1950,14 @@ add_object(
       "There is an ivory torch here."
       "torch"
       "Sitting on the pedestal is a flaming torch, made of ivory."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,toolbit,
-        ,flamebit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,toolbit,
+          ,flamebit,
+          ,takebit,
+          ,ovison)
       1
       14
       6
@@ -2175,8 +1970,7 @@ add_object(
   {"MIRR1"
     ""
     "Mirror Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "PASS3"
@@ -2208,8 +2002,7 @@ add_object(
   {"CAVE1"
     "You are in a small cave with an entrance to the north and a stairway\nleading down."
     "Cave"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "MIRR1"
@@ -2220,8 +2013,7 @@ add_object(
   {"CAVE2"
     "You are in a tiny cave with entrances west and north, and a dark,\nforbidding staircase leading down."
     "Cave"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CRAW3"
@@ -2236,8 +2028,7 @@ add_object(
   {"CRAW2"
     "You are in a steep and narrow crawlway.  There are two exits nearby to\nthe south and southwest."
     "Steep Crawlway"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "MIRR1"
@@ -2248,8 +2039,7 @@ add_object(
   {"CRAW3"
     "You are in a narrow crawlway.  The crawlway leads from north to south.\nHowever the south passage divides to the south and southwest."
     "Narrow Crawlway"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "CAVE2"
@@ -2262,8 +2052,7 @@ add_object(
   {"PASS3"
     "You are in a cold and damp corridor where a long east-west passageway\nintersects with a northward path."
     "Cold Passage"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "MIRR1"
@@ -2276,8 +2065,7 @@ add_object(
   {"PASS4"
     "You are in a winding passage.  It seems that there is only an exit\non the east end although the whirring from the round room can be\nheard faintly to the north."
     "Winding Passage"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "MIRR2"
@@ -2289,8 +2077,7 @@ add_object(
   {"SLIDE"
     "You are in a small chamber, which appears to have been part of a\ncoal mine. On the south wall of the chamber the letters \"Granite\nWall\" are etched in the rock. To the east is a long passage and\nthere is a steep metal slide twisting downward. From the appearance\nof the slide, an attempt to climb up it would be impossible.  To the\nnorth is a small opening."
     "Slide Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "PASS3"
@@ -2303,8 +2090,7 @@ add_object(
   {"ENTRA"
     "You are standing at the entrance of what might have been a coal\nmine. To the northeast and the northwest are entrances to the mine,\nand there is another exit on the south end of the room."
     "Mine Entrance"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "SLIDE"
@@ -2317,8 +2103,7 @@ add_object(
   {"SQUEE"
     "You are a small room.  Strange squeaky sounds may be heard coming from\nthe passage at the west end.  You may also escape to the south."
     "Squeaky Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "BATS"
@@ -2329,8 +2114,7 @@ add_object(
   {"TSHAF"
     "You are in a large room, in the middle of which is a small shaft\ndescending through the floor into darkness below.  To the west and\nthe north are exits from this room.  Constructed over the top of the\nshaft is a metal framework to which a heavy iron chain is attached."
     "Shaft Room"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         #nexit
@@ -2348,22 +2132,18 @@ put(
       {"TBASK"
         "At the end of the chain is a basket."
         "basket"
-        _
-        <>
+        %<>
         dumbwaiter
         ()
-        _
-        <>
-        _
-        _(
-          ,contbit,
-          ,ovison,
-          ,transbit)
+        %<>
+        %_(
+            ,contbit,
+            ,ovison,
+            ,transbit)
         0
         0
         0
-        _
-        ,bigfix
+        %,bigfix
         50},
     ["CAGE"
       "DUMBW"
@@ -2376,19 +2156,15 @@ add_object(
     {"FBASK"
       ""
       ""
-      _
-      <>
+      %<>
       dumbwaiter
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["CAGE"
     "DUMBW"
@@ -2398,8 +2174,7 @@ add_object(
   {"TUNNE"
     "You are in a narrow tunnel with large wooden beams running across\nthe ceiling and around the walls.  A path from the south splits into\npaths running west and northeast."
     "Wooden Tunnel"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "TSHAF"
@@ -2412,8 +2187,7 @@ add_object(
   {"SMELL"
     "You are in a small non-descript room.  However, from the direction\nof a small descending staircase a foul odor can be detected.  To the\neast is a narrow path."
     "Smelly Room"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         "BOOM"
@@ -2424,8 +2198,7 @@ add_object(
   {"BOOM"
     "You are in a small room which smells strongly of coal gas."
     "Gas Room"
-    _
-    <>
+    %<>
     #exit
       {"UP"
         "SMELL"}
@@ -2438,17 +2211,13 @@ add_object(
     {"BRACE"
       "There is a sapphire-encrusted bracelet here."
       "sapphire bracelet"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       5
       3
@@ -2461,8 +2230,7 @@ add_object(
   {"TLADD"
     "You are in a very small room.  In the corner is a rickety wooden\nladder, leading downward.  It might be safe to descend.  There is\nalso a staircase leading upward."
     "Ladder Top"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         "BLADD"
@@ -2475,12 +2243,9 @@ psetg(
 
 #room
   {"MINE1"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"NORTH"
         "MINE4"
@@ -2491,12 +2256,9 @@ psetg(
 
 #room
   {"MINE2"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"SOUTH"
         "MINE1"
@@ -2509,12 +2271,9 @@ psetg(
 
 #room
   {"MINE3"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"WEST"
         "MINE2"
@@ -2525,12 +2284,9 @@ psetg(
 
 #room
   {"MINE4"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"UP"
         "MINE5"
@@ -2543,12 +2299,9 @@ psetg(
 
 #room
   {"MINE5"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"DOWN"
         "MINE6"
@@ -2565,12 +2318,9 @@ psetg(
 
 #room
   {"MINE6"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"SE"
         "MINE4"
@@ -2581,12 +2331,9 @@ psetg(
 
 #room
   {"MINE7"
-    _
-    ,mindesc
-    _
-    ,mindesc
-    _
-    <>
+    %,mindesc
+    %,mindesc
+    %<>
     #exit
       {"EAST"
         "MINE1"
@@ -2601,8 +2348,7 @@ psetg(
   {"BLADD"
     "You are in a rather wide room.  On one side is the bottom of a\nnarrow wooden ladder.  To the northeast and the south are passages\nleaving the room."
     "Ladder Bottom"
-    _
-    <>
+    %<>
     #exit
       {"NE"
         "DEAD7"
@@ -2615,8 +2361,7 @@ psetg(
   {"DEAD7"
     "Dead End"
     "Dead End"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "BLADD"}
@@ -2631,8 +2376,7 @@ psetg(
   {"TIMBE"
     "You are in a long and narrow passage, which is cluttered with broken\ntimbers.  A wide passage comes from the north and turns at the \nsouthwest corner of the room into a very narrow passageway."
     "Timber Room"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "BLADD"
@@ -2640,8 +2384,7 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "BSHAF"
-            _
-            ,nofit}}
+            %,nofit}}
     ()
     no_objs}
 
@@ -2649,8 +2392,7 @@ psetg(
   {"BSHAF"
     "You are in a small square room which is at the bottom of a long\nshaft. To the east is a passageway and to the northeast a very narrow\npassage. In the shaft can be seen a heavy iron chain."
     "Lower Shaft"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "MACHI"
@@ -2658,14 +2400,12 @@ psetg(
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            _
-            ,nofit}
+            %,nofit}
         "NE"
         #cexit
           {"EMPTY-HANDED"
             "TIMBE"
-            _
-            ,nofit}
+            %,nofit}
         "UP"
         #nexit
           "Not a chance."
@@ -2680,8 +2420,7 @@ psetg(
   {"MACHI"
     ""
     "Machine Room"
-    _
-    <>
+    %<>
     #exit
       {"NW"
         "BSHAF"}
@@ -2695,8 +2434,7 @@ psetg(
   {"BATS"
     ""
     "Bat Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "SQUEE"}
@@ -2710,8 +2448,7 @@ psetg(
   {"DOME"
     ""
     "Dome Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "CRAW1"
@@ -2733,8 +2470,7 @@ psetg(
   {"MTORC"
     ""
     "Torch Room"
-    _
-    <>
+    %<>
     #exit
       {"UP"
         #nexit
@@ -2751,8 +2487,7 @@ psetg(
   {"CRAW4"
     "You are in a north-south crawlway; a passage goes to the east also.\nThere is a hole above, but it provides no opportunities for climbing."
     "North-South Crawlway"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CHAS2"
@@ -2769,8 +2504,7 @@ psetg(
   {"CHAS2"
     "You are on the west edge of a chasm, the bottom of which cannot be\nseen. The east side is sheer rock, providing no exits.  A narrow\npassage goes west, and the path you are on continues to the north and\nsouth."
     "West of Chasm"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "CELLA"
@@ -2787,80 +2521,70 @@ psetg(
   {"CAROU"
     ""
     "Round room"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "SOUTH"
         #cexit
           {"CAROUSEL-FLIP"
             "CAVE4"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "EAST"
         #cexit
           {"CAROUSEL-FLIP"
             "MGRAI"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "WEST"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS1"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "NW"
         #cexit
           {"CAROUSEL-FLIP"
             "CANY1"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "NE"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS5"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "SE"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS4"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "SW"
         #cexit
           {"CAROUSEL-FLIP"
             "MAZE1"
             ""
-            _
-            <>
+            %<>
             carousel_exit}
         "EXIT"
         #cexit
           {"CAROUSEL-FLIP"
             "PASS3"
             ""
-            _
-            <>
+            %<>
             carousel_out}}
     (#find_obj
         {"IRBOX"})
@@ -2871,18 +2595,14 @@ add_object(
     {"IRBOX"
       "There is a dented iron box here."
       "iron box"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       (#find_obj
           {"STRAD"})
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,contbit)
+      %<>
+      %_(
+          ,takebit,
+          ,contbit)
       0
       0
       0
@@ -2897,17 +2617,14 @@ add_object(
     {"STRAD"
       "There is a Stradavarius here."
       "fancy violin"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"IRBOX"}
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %_(
+          ,ovison,
+          ,takebit)
       0
       10
       10
@@ -2920,8 +2637,7 @@ add_object(
   {"PASS5"
     "You are in a high north-south passage, which forks to the northeast."
     "North-South Passage"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CHAS1"
@@ -2935,8 +2651,7 @@ add_object(
   {"CHAS1"
     "A chasm runs southwest to northeast.  You are on the south edge; the\npath exits to the south and to the east."
     "Chasm"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "RAVI1"
@@ -2951,8 +2666,7 @@ add_object(
   {"CAVE3"
     "You are in a cave.  Passages exit to the south and to the east, but\nthe cave narrows to a crack to the west.  The earth is particularly\ndamp here."
     "Damp Cave"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "ECHO"
@@ -2967,8 +2681,7 @@ add_object(
   {"CHAS3"
     "A chasm, evidently produced by an ancient river, runs through the\ncave here.  Passages lead off in all directions."
     "Ancient Chasm"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "ECHO"
@@ -2984,8 +2697,7 @@ add_object(
   {"DEAD5"
     "Dead end"
     "Dead end"
-    _
-    <>
+    %<>
     #exit
       {"SW"
         "CHAS3"}
@@ -2995,8 +2707,7 @@ add_object(
   {"DEAD6"
     "Dead end"
     "Dead end"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "CHAS3"}
@@ -3006,8 +2717,7 @@ add_object(
   {"CAVE4"
     "You have entered a cave with passages leading north and southeast."
     "Engravings Cave"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CAROU"
@@ -3037,8 +2747,7 @@ put(
   {"RIDDL"
     "This is a room which is bare on all sides.  There is an exit down. \nTo the east is a great door made of stone.  Above the stone, the\nfollowing words are written: 'No man shall enter this room without\nsolving this riddle:\n  What is tall as a house,\n	  round as a cup, \n	  and all the king's horses can't draw it up?'"
     "Riddle Room"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         "CAVE4"
@@ -3054,8 +2763,7 @@ put(
   {"MPEAR"
     "This is a former broom closet.  The exits are to the east and west."
     "Pearl Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "BWELL"
@@ -3095,21 +2803,17 @@ add_object(
     {"GHOST"
       ""
       ""
-      _
-      <>
+      %<>
       ghost_function
       ()
-      _
-      <>
-      _
-      _(
-        ,vicbit,
-        ,ovison)
+      %<>
+      %_(
+          ,vicbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["SPIRI"
     "FIEND"])
@@ -3135,8 +2839,7 @@ add_object(
   {"MGRAI"
     "You are standing in a small circular room with a pedestal.  A set of\nstairs leads up, and passages leave to the east and west."
     "Grail Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "CAROU"
@@ -3152,18 +2855,14 @@ add_object(
     {"GRAIL"
       "There is an extremely valuable (perhaps original) grail here."
       "grail"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,takebit,
+          ,ovison)
       0
       2
       5
@@ -3217,13 +2916,10 @@ add_object(
       "There is an old trunk here, bulging with assorted jewels."
       "trunk with jewels"
       "Lying half buried in the mud is an old trunk, bulging with jewels."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      ,takebit
+      %<>
+      %,takebit
       0
       15
       8
@@ -3237,15 +2933,12 @@ add_object(
       "There is a small brass bell here."
       "bell"
       "Lying in a corner of the room is a small brass bell."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -3262,14 +2955,12 @@ add_object(
       "On the altar is a large black book, open to page 569."
       black_book
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -3288,13 +2979,11 @@ add_object(
       "On the two ends of the altar are burning candles."
       candles
       ()
-      _
-      <>
-      _
-      _(
-        ,flamebit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,flamebit,
+          ,takebit,
+          ,ovison)
       1
       0
       0
@@ -3347,17 +3036,14 @@ add_object(
       "There are tour guidebooks here."
       "tour guidebook"
       "Some guidebooks entitled 'Flood Control Dam #3' are on the reception\ndesk."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,readbit,
-        ,ovison)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,readbit,
+          ,ovison)
       0
       0
       0
@@ -3371,19 +3057,15 @@ add_object(
     {"PAPER"
       ""
       "newspaper"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,readbit,
-        ,ovison)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,readbit,
+          ,ovison)
       0
       0
       0
@@ -3399,8 +3081,7 @@ add_object(
   {"MAINT"
     "You are in what appears to have been the maintenance room for Flood\nControl Dam #3, judging by the assortment of tool chests around the\nroom.  Apparently, this room has been ransacked recently, for most of\nthe valuable equipment is gone. On the wall in front of you is a\npanel of buttons, which are labelled in EBCDIC. However, they are of\ndifferent colors:  Blue, Yellow, Brown, and Red. The doors to this\nroom are in the west and south ends."
     "Maintenance Room"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "LOBBY"
@@ -3429,17 +3110,14 @@ add_object(
     {"MATCH"
       "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
       "matchbook"
-      _
-      <>
+      %<>
       match_function
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -3452,19 +3130,16 @@ add_object(
     {"ADVER"
       "There is a small leaflet here."
       "leaflet"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"MAILB"}
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -3479,23 +3154,18 @@ add_object(
     {"MAILB"
       "There is a small mailbox here."
       "mailbox"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       (#find_obj
           {"ADVER"})
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       10},
   ["BOX"])
 
@@ -3503,18 +3173,15 @@ add_object(
   {"TUBE"
     "There is an object which looks like a tube of toothpaste here."
     "tube"
-    _
-    <>
+    %<>
     tube_function
     (#find_obj
         {"PUTTY"})
-    _
-    <>
-    _
-    _(
-      ,contbit,
-      ,takebit,
-      ,ovison)
+    %<>
+    %_(
+        ,contbit,
+        ,takebit,
+        ,ovison)
     0
     0
     0
@@ -3526,18 +3193,15 @@ add_object(
     {"PUTTY"
       "There is some gunk here"
       "viscous material"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"TUBE"}
-      _
-      _(
-        ,toolbit,
-        ,takebit,
-        ,ovison)
+      %_(
+          ,toolbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -3553,18 +3217,14 @@ add_object(
     {"WRENC"
       "There is a wrench here."
       "wrench"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,toolbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,toolbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -3577,18 +3237,14 @@ add_object(
     {"SCREW"
       "There is a screwdriver here."
       "screwdriver"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,toolbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,toolbit,
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -3600,8 +3256,7 @@ add_object(
   {"CYCLO"
     ""
     "Cyclops Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "MAZ15"
@@ -3628,8 +3283,7 @@ add_melee(
   {"BLROO"
     "You are in a long passage.  To the south is one entrance.  On the\neast there is an old wooden door, with a large hole in it (about\ncyclops sized)."
     "Strange Passage"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "CYCLO"
@@ -3644,22 +3298,18 @@ add_object(
     {"CYCLO"
       ""
       "cyclops"
-      _
-      <>
+      %<>
       cyclops
       ()
-      _
-      <>
-      _
-      _(
-        ,vicbit,
-        ,ovison,
-        ,villain)
+      %<>
+      %_(
+          ,vicbit,
+          ,ovison,
+          ,villain)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       10000},
   ["ONE-E"
     "MONST"])
@@ -3668,8 +3318,7 @@ add_object(
   {"TREAS"
     "This is a large room, whose north wall is solid granite.  A number\nof discarded bags, which crumble at your touch, are scattered about\non the floor."
     "Treasure Room"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         "CYCLO"}
@@ -3683,17 +3332,14 @@ add_object(
     {"CHALI"
       "There is a silver chalice, intricately engraved, here."
       "chalice"
-      _
-      <>
+      %<>
       chalice
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,takebit,
+          ,ovison)
       0
       10
       10
@@ -3706,8 +3352,7 @@ add_object(
   {"STUDI"
     "You are in what appears to have been an artist's studio.  The walls\nand floors are splattered with paints of 69 different colors. \nStrangely enough, nothing of value is hanging here.  At the north and\nnorthwest of the room are open doors (also covered with paint).  An\nextremely dark and narrow chimney leads up from a fireplace; although\nyou might be able to get up it, it seems unlikely you could get back\ndown."
     "Studio"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CRAW4"
@@ -3718,12 +3363,10 @@ add_object(
           {"LIGHT-LOAD"
             "KITCH"
             "The chimney is too narrow for you and all of your baggage."
-            _
-            <>
+            %<>
             chimney_function}}
     ()
-    _
-    <>}
+    %<>}
 
 #room
   {"GALLE"
@@ -3746,13 +3389,11 @@ add_object(
       "Fortunately, there is still one chance for you to be a vandal, for on\nthe far wall is a work of unparalleled beauty."
       painting
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,burnbit,
+          ,takebit,
+          ,ovison)
       0
       4
       7
@@ -3789,26 +3430,21 @@ psetg(
 add_object(
   #object
     {"THIEF"
-      _
-      ,robber_c_desc
+      %,robber_c_desc
       "thief"
-      _
-      <>
+      %<>
       robber_function
       (#find_obj
           {"STILL"})
-      _
-      <>
-      _
-      _(
-        ,vicbit,
-        ,ovison,
-        ,villain)
+      %<>
+      %_(
+          ,vicbit,
+          ,ovison,
+          ,villain)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       4},
   ["ROBBE"
     "CROOK"
@@ -3833,18 +3469,14 @@ add_object(
     {"STILL"
       "There is a vicious-looking stilletto here."
       "stilletto"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      find_obj(
-        "THIEF")
-      _
-      _(
-        ,ovison,
-        ,weaponbit)
+      %find_obj(
+          "THIEF")
+      %_(
+          ,ovison,
+          ,weaponbit)
       0
       0
       0
@@ -4284,20 +3916,16 @@ psetg(
         {"IBOAT"}
       #find_obj
         {"STICK"})
-    _
-    <>}
+    %<>}
 
 #room
   {"RIVR1"
     "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
-    _
-    ,riverdesc
-    _
-    <>
+    %,riverdesc
+    %<>
     #exit
       {"UP"
-        _
-        ,current
+        %,current
         "WEST"
         "DOCK"
         "LAND"
@@ -4305,49 +3933,37 @@ psetg(
         "DOWN"
         "RIVR2"
         "EAST"
-        _
-        ,cliffs}
+        %,cliffs}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rwaterbit}
+    %,rwaterbit}
 
 #room
   {"RIVR2"
     "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
-    _
-    ,riverdesc
-    _
-    <>
+    %,riverdesc
+    %<>
     #exit
       {"UP"
-        _
-        ,current
+        %,current
         "DOWN"
         "RIVR3"
         "EAST"
-        _
-        ,cliffs}
+        %,cliffs}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rwaterbit}
+    %,rwaterbit}
 
 #room
   {"RIVR3"
     "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
-    _
-    ,riverdesc
-    _
-    <>
+    %,riverdesc
+    %<>
     #exit
       {"UP"
-        _
-        ,current
+        %,current
         "DOWN"
         "RIVR4"
         "EAST"
@@ -4358,11 +3974,9 @@ psetg(
         #nexit
           "You must specify which direction here."}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rwaterbit}
+    %,rwaterbit}
 
 psetg(
   narrow,
@@ -4372,15 +3986,13 @@ psetg(
   {"WCLF1"
     "You are on a narrow strip of beach which runs along the base of the\nWhite Cliffs. The only path here is a narrow one, heading south\nalong the Cliffs."
     "White Cliffs Beach"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         #cexit
           {"DEFLATE"
             "WCLF2"
-            _
-            ,narrow}
+            %,narrow}
         "LAUNC"
         "RIVR3"}
     ()
@@ -4391,15 +4003,13 @@ psetg(
   {"WCLF2"
     "You are on a rocky, narrow strip of beach beside the Cliffs.  A\nnarrow path leads north along the shore."
     "White Cliffs Beach"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         #cexit
           {"DEFLATE"
             "WCLF1"
-            _
-            ,narrow}
+            %,narrow}
         "LAUNC"
         "RIVR4"}
     ()
@@ -4409,14 +4019,11 @@ psetg(
 #room
   {"RIVR4"
     "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
-    _
-    ,riverdesc
-    _
-    <>
+    %,riverdesc
+    %<>
     #exit
       {"UP"
-        _
-        ,current
+        %,current
         "DOWN"
         "RIVR5"
         "EAST"
@@ -4430,37 +4037,30 @@ psetg(
         {"BUOY"})
     rivr4_room
     0
-    _
-    ,rwaterbit}
+    %,rwaterbit}
 
 #room
   {"RIVR5"
     "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
-    _
-    ,riverdesc
-    _
-    <>
+    %,riverdesc
+    %<>
     #exit
       {"UP"
-        _
-        ,current
+        %,current
         "DOWN"
         "FCHMP"
         "LAND"
         "FANTE"}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rwaterbit}
+    %,rwaterbit}
 
 #room
   {"FCHMP"
     ""
     "Moby lossage"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         #nexit
@@ -4472,8 +4072,7 @@ psetg(
   {"FANTE"
     "You are on the shore of the River.  The river here seems somewhat\ntreacherous.  A path travels from north to south here, the south end\nquickly turning around a sharp corner."
     "Shore"
-    _
-    <>
+    %<>
     #exit
       {"LAUNC"
         "RIVR5"
@@ -4482,16 +4081,14 @@ psetg(
         "SOUTH"
         "FALLS"}
     ()
-    _
-    <>
+    %<>
     0}
 
 #room
   {"BEACH"
     "You are on a large sandy beach at the shore of the river, which is\nflowing quickly by.  A path runs beside the river to the south here."
     "Sandy Beach"
-    _
-    <>
+    %<>
     #exit
       {"LAUNC"
         "RIVR4"
@@ -4506,24 +4103,21 @@ psetg(
   {"RCAVE"
     "You are on the west shore of the river.  An entrance to a cave is\nto the northwest.  The shore is very rocky here."
     "Rocky Shore"
-    _
-    <>
+    %<>
     #exit
       {"LAUNC"
         "RIVR3"
         "NW"
         "TCAVE"}
     ()
-    _
-    <>
+    %<>
     0}
 
 #room
   {"TCAVE"
     "You are in a small cave whose exits are on the south and northwest."
     "Small Cave"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "RCAVE"
@@ -4539,8 +4133,7 @@ psetg(
   {"BARRE"
     "You are in a barrel.  Congratulations.  Etched into the side of the\nbarrel is the word 'Geronimo!'."
     "Barrel"
-    _
-    <>
+    %<>
     #exit
       {"EXIT"
         "FALLS"}}
@@ -4549,8 +4142,7 @@ psetg(
   {"FALLS"
     ""
     "Aragain Falls"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         #cexit
@@ -4596,22 +4188,18 @@ setg(
     t
     #exit
       {"UP"
-        _
-        ,crain
+        %,crain
         "NW"
-        _
-        ,crain
+        %,crain
         "WEST"
-        _
-        ,crain
+        %,crain
         "SE"
         "CLBOT"}
     (#find_obj
         {"RAINB"}
       #find_obj
         {"POT"})
-    _
-    <>
+    %<>
     0}
 
 #room
@@ -4661,13 +4249,10 @@ add_object(
       "There is a pot of gold here."
       "pot filled with gold"
       "At the end of the rainbow is a pot of gold."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      ,takebit
+      %<>
+      %,takebit
       0
       10
       10
@@ -4681,15 +4266,11 @@ add_object(
     {"STATU"
       "There is a beautiful statue here."
       "statue"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,takebit
+      %<>
+      %,takebit
       0
       10
       13
@@ -4703,17 +4284,14 @@ add_object(
     {"IBOAT"
       "There is a folded pile of plastic here which has a small valve\nattached."
       "plastic inflatable boat"
-      _
-      <>
+      %<>
       iboat_function
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,burnbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4728,17 +4306,14 @@ add_object(
     {"DBOAT"
       "There is a pile of plastic here with a large hole in it."
       "plastic boat (with hole)"
-      _
-      <>
+      %<>
       dboat_function
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,burnbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4753,18 +4328,14 @@ add_object(
     {"PUMP"
       "There is a small pump here."
       "hand-held air pump"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,toolbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,toolbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4778,19 +4349,16 @@ add_object(
     {"RBOAT"
       "There is an inflated boat here."
       "magic boat"
-      _
-      <>
+      %<>
       rboat_function
       (#find_obj
           {"LABEL"})
-      _
-      <>
-      _
-      _(
-        ,vehbit,
-        ,burnbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,vehbit,
+          ,burnbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4817,19 +4385,16 @@ add_object(
     {"LABEL"
       "There is a tan label here."
       "tan label"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"RBOAT"}
-      _
-      _(
-        ,burnbit,
-        ,ovison,
-        ,readbit,
-        ,takebit)
+      %_(
+          ,burnbit,
+          ,ovison,
+          ,readbit,
+          ,takebit)
       0
       0
       0
@@ -4851,12 +4416,10 @@ add_object(
       "A sharp stick, which appears to have been broken at one end, is here."
       stick_function
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4876,20 +4439,16 @@ add_object(
     {"BUOY"
       "There is a red buoy here (probably a warning)."
       "red buoy"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       (#find_obj
           {"EMERA"})
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,findmebit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,contbit,
+          ,findmebit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4903,17 +4462,14 @@ add_object(
     {"EMERA"
       "There is an emerald here."
       "large emerald"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"BUOY"}
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %_(
+          ,ovison,
+          ,takebit)
       0
       5
       10
@@ -4926,18 +4482,14 @@ add_object(
     {"SHOVE"
       "There is a large shovel here."
       "shovel"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,toolbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,toolbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4950,17 +4502,13 @@ add_object(
     {"GUANO"
       "There is a hunk of bat guano here."
       "hunk of bat guano"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -4975,14 +4523,11 @@ add_object(
     {"GRUE"
       ""
       "lurking grue"
-      _
-      <>
+      %<>
       grue_function
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
@@ -4995,8 +4540,7 @@ add_object(
   {"VLBOT"
     "You are at the bottom of a large dormant volcano.  High above you\nlight may be seen entering from the cone of the volcano.  The only\nexit here is to the north."
     "Volcano Bottom"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "LAVA"}
@@ -5016,72 +4560,54 @@ setg(
 #room
   {"VAIR1"
     "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
-    _
-    ,volcore
-    _
-    <>
-    _
-    ,nulexit
+    %,volcore
+    %<>
+    %,nulexit
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rairbit}
+    %,rairbit}
 
 #room
   {"VAIR2"
     "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
-    _
-    ,volcore
-    _
-    <>
+    %,volcore
+    %<>
     #exit
       {"WEST"
         "LEDG2"
         "LAND"
         "LEDG2"}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rairbit}
+    %,rairbit}
 
 #room
   {"VAIR3"
     "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
-    _
-    ,volcore
-    _
-    <>
-    _
-    ,nulexit
+    %,volcore
+    %<>
+    %,nulexit
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rairbit}
+    %,rairbit}
 
 #room
   {"VAIR4"
     "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
-    _
-    ,volcore
-    _
-    <>
+    %,volcore
+    %<>
     #exit
       {"LAND"
         "LEDG4"
         "EAST"
         "LEDG4"}
     ()
-    _
-    <>
+    %<>
     0
-    _
-    ,rairbit}
+    %,rairbit}
 
 setg(
   cxgnome,
@@ -5093,8 +4619,7 @@ setg(
   {"LEDG2"
     "You are on a narrow ledge overlooking the inside of an old dormant\nvolcano.  This ledge appears to be about in the middle between the\nfloor below and the rim above. There is an exit here to the south."
     "Narrow Ledge"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         #nexit
@@ -5102,8 +4627,7 @@ setg(
         "LAUNC"
         "VAIR2"
         "WEST"
-        _
-        ,cxgnome
+        %,cxgnome
         "SOUTH"
         "LIBRA"}
     (#find_obj
@@ -5115,8 +4639,7 @@ setg(
   {"LIBRA"
     "You are in a room which must have been a large library, probably\nfor the royal family.  All of the shelves appear to have been gnawed\nto pieces by unfriendly gnomes.  To the north is an exit."
     "Library"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "LEDG2"
@@ -5135,8 +4658,7 @@ setg(
   {"LEDG3"
     "You are on a ledge in the middle of a large volcano.  Below you\nthe volcano bottom can be seen and above is the rim of the volcano.\nA couple of ledges can be seen on the other side of the volcano;\nit appears that this ledge is intermediate in elevation between\nthose on the other side.  The exit from this room is to the east."
     "Volcano View"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         #nexit
@@ -5151,8 +4673,7 @@ setg(
   {"LEDG4"
     ""
     "Wide Ledge"
-    _
-    <>
+    %<>
     #exit
       {"DOWN"
         #nexit
@@ -5160,8 +4681,7 @@ setg(
         "LAUNC"
         "VAIR4"
         "WEST"
-        _
-        ,cxgnome
+        %,cxgnome
         "SOUTH"
         "SAFE"}
     (#find_obj
@@ -5186,8 +4706,7 @@ setg(
   {"LAVA"
     "You are in a small room, whose walls are formed by an old lava flow.\nThere are exits here to the west and the south."
     "Lava Room"
-    _
-    <>
+    %<>
     #exit
       {"SOUTH"
         "VLBOT"
@@ -5199,8 +4718,7 @@ add_object(
     {"BALLO"
       "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire."
       "basket"
-      _
-      <>
+      %<>
       balloon
       (#find_obj
           {"CBAG"}
@@ -5208,12 +4726,10 @@ add_object(
           {"BROPE"}
         #find_obj
           {"RECEP"})
-      _
-      <>
-      _
-      _(
-        ,vehbit,
-        ,ovison)
+      %<>
+      %_(
+          ,vehbit,
+          ,ovison)
       0
       0
       0
@@ -5238,23 +4754,19 @@ put(
   {"RECEP"
     ""
     "receptacle"
-    _
-    <>
-    _
-    <>
+    %<>
+    %<>
     ()
     #find_obj
       {"BALLO"}
-    _
-    _(
-      ,contbit,
-      ,ovison,
-      ,searchbit)
+    %_(
+        ,contbit,
+        ,ovison,
+        ,searchbit)
     0
     0
     0
-    _
-    ,bigfix
+    %,bigfix
     6}
 
 add_object(
@@ -5262,20 +4774,16 @@ add_object(
     {"CBAG"
       ""
       "cloth bag"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"BALLO"}
-      _
-      ,ovison
+      %,ovison
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["BAG"],
   ["CLOTH"])
@@ -5285,21 +4793,18 @@ add_object(
     {"BROPE"
       ""
       "braided wire"
-      _
-      <>
+      %<>
       wire_function
       ()
       #find_obj
         {"BALLO"}
-      _
-      _(
-        ,tiebit,
-        ,ovison)
+      %_(
+          ,tiebit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["WIRE"],
   ["BRAID"])
@@ -5309,20 +4814,15 @@ add_object(
     {"HOOK1"
       "There is a small hook attached to the rock here."
       "hook"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["HOOK"])
 
@@ -5331,20 +4831,15 @@ add_object(
     {"HOOK2"
       "There is a small hook attached to the rock here."
       "hook"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["HOOK"])
 
@@ -5354,16 +4849,13 @@ add_object(
       "There is an engraved zorkmid coin here."
       "priceless zorkmid"
       "On the floor is a gold zorkmid coin (a valuable collector's item)."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,readbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,readbit,
+          ,ovison,
+          ,takebit)
       0
       10
       12
@@ -5382,24 +4874,20 @@ add_object(
     {"SAFE"
       ""
       "box"
-      _
-      <>
+      %<>
       safe_function
       (#find_obj
           {"CROWN"}
         #find_obj
           {"CARD"})
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,ovison)
+      %<>
+      %_(
+          ,contbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       15},
   ["BOX"])
 
@@ -5408,19 +4896,16 @@ add_object(
     {"CARD"
       "There is a card with writing on it here."
       "card"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"SAFE"}
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,readbit,
-        ,burnbit)
+      %_(
+          ,ovison,
+          ,takebit,
+          ,readbit,
+          ,burnbit)
       0
       0
       0
@@ -5438,20 +4923,15 @@ add_object(
     {"SSLOT"
       ""
       "hole"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       10},
   ["SLOT"
     "HOLE"])
@@ -5468,15 +4948,13 @@ add_object(
       "Lord Dimwit's crown is here."
       "crown"
       "The excessively gaudy crown of Lord Dimwit Flathead is here."
-      _
-      <>
+      %<>
       ()
       #find_obj
         {"SAFE"}
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %_(
+          ,ovison,
+          ,takebit)
       0
       15
       10
@@ -5490,19 +4968,15 @@ add_object(
     {"BRICK"
       "There is a square brick here which feels like clay."
       "brick"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,searchbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,burnbit,
+          ,searchbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -5523,17 +4997,14 @@ add_object(
     {"FUSE"
       "There is a coil of thin shiny wire here."
       "wire coil"
-      _
-      <>
+      %<>
       fuse_function
       ()
-      _
-      <>
-      _
-      _(
-        ,burnbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,burnbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -5549,21 +5020,17 @@ add_object(
     {"GNOME"
       "There is a nervous Volcano Gnome here."
       "Volcano Gnome"
-      _
-      <>
+      %<>
       gnome_function
       ()
-      _
-      <>
-      _
-      _(
-        ,vicbit,
-        ,ovison)
+      %<>
+      %_(
+          ,vicbit,
+          ,ovison)
       0
       0
       0
-      _
-      ,bigfix
+      %,bigfix
       0},
   ["TROLL"])
 
@@ -5572,19 +5039,16 @@ add_object(
     {"BLABE"
       "There is a blue label here."
       "blue label"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
       #find_obj
         {"BALLO"}
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,readbit,
-        ,burnbit)
+      %_(
+          ,ovison,
+          ,takebit,
+          ,readbit,
+          ,burnbit)
       0
       0
       0
@@ -5603,17 +5067,13 @@ add_object(
     {"DBALL"
       "There is a balloon here, broken into pieces."
       "broken balloon"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison)
       0
       0
       0
@@ -5628,19 +5088,15 @@ add_object(
     {"BLBK"
       "There is a blue book here."
       "blue book"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %<>
+      %_(
+          ,contbit,
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -5654,19 +5110,15 @@ add_object(
     {"GRBK"
       "There is a green book here."
       "green book"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %<>
+      %_(
+          ,contbit,
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -5680,20 +5132,16 @@ add_object(
     {"PUBK"
       "There is a purple book here."
       "purple book"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       (#find_obj
           {"STAMP"})
-      _
-      <>
-      _
-      _(
-        ,takebit,
-        ,ovison,
-        ,readbit,
-        ,contbit)
+      %<>
+      %_(
+          ,takebit,
+          ,ovison,
+          ,readbit,
+          ,contbit)
       0
       0
       0
@@ -5707,19 +5155,15 @@ add_object(
     {"WHBK"
       "There is a white book here."
       "white book"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,contbit,
-        ,takebit,
-        ,ovison,
-        ,readbit)
+      %<>
+      %_(
+          ,contbit,
+          ,takebit,
+          ,ovison,
+          ,readbit)
       0
       0
       0
@@ -5756,19 +5200,16 @@ add_desc(
   {"STAMP"
     "There is a Flathead Commemorative stamp here."
     "stamp"
-    _
-    <>
-    _
-    <>
+    %<>
+    %<>
     ()
     #find_obj
       {"PUBK"}
-    _
-    _(
-      ,takebit,
-      ,readbit,
-      ,burnbit,
-      ,ovison)
+    %_(
+        ,takebit,
+        ,readbit,
+        ,burnbit,
+        ,ovison)
     0
     4
     10
@@ -5823,8 +5264,7 @@ psetg(
   {"TOMB"
     "You are in the Tomb of the Unknown Implementer.\nA hollow voice says:  \"That's not a bug, it's a feature!\"
     "Tomb of the Unknown Implementer"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "LLD2"}
@@ -5836,8 +5276,7 @@ psetg(
         {"COKES"}
       #find_obj
         {"LISTS"})
-    _
-    <>
+    %<>
     0}
 
 add_object(
@@ -5845,17 +5284,14 @@ add_object(
     {"TOMB"
       "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\""
       "tomb"
-      _
-      <>
+      %<>
       head_function
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,readbit,
-        ,ovison)},
+      %<>
+      %_(
+          ,trytakebit,
+          ,readbit,
+          ,ovison)},
   ["GRAVE"])
 
 add_desc(
@@ -5868,17 +5304,14 @@ add_object(
     {"HEADS"
       "There are four heads here, mounted securely on poles."
       "set of poled heads"
-      _
-      <>
+      %<>
       head_function
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,sacredbit,
-        ,ovison)},
+      %<>
+      %_(
+          ,trytakebit,
+          ,sacredbit,
+          ,ovison)},
   ["HEAD"
     "POLE"
     "POLES"
@@ -5897,12 +5330,10 @@ add_object(
       "There is a large pile of empty Coke bottles here, evidently produced\nby the implementers during their long struggle to win totally."
       coke_bottles
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -5916,17 +5347,14 @@ add_object(
       "There is an enormous stack of line-printer paper here.  It is barely\nreadable."
       "stack of listings"
       "There is a gigantic pile of line-printer output here.  Although the\npaper once contained useful information, almost nothing can be\ndistinguished now."
-      _
-      <>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,readbit,
-        ,burnbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,readbit,
+          ,burnbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -5947,17 +5375,13 @@ add_object(
     {"LCASE"
       "There is a large case here, containing objects which you used to\npossess."
       "large case"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,transbit)},
+      %<>
+      %_(
+          ,ovison,
+          ,transbit)},
   ["CASE"],
   ["LARGE"])
 
@@ -6066,33 +5490,24 @@ setg(
   {"MAGNE"
     ""
     "Low Room"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
-        _
-        ,magcmach
+        %,magcmach
         "SOUTH"
-        _
-        ,magcmach
+        %,magcmach
         "WEST"
-        _
-        ,magcmach
+        %,magcmach
         "NE"
-        _
-        ,magcmach
+        %,magcmach
         "NW"
-        _
-        ,magalice
+        %,magalice
         "SW"
-        _
-        ,magalice
+        %,magalice
         "SE"
-        _
-        ,magalice
+        %,magalice
         "EAST"
-        _
-        ,magcmach}
+        %,magcmach}
     (#find_obj
         {"RBTLB"}
       #find_obj
@@ -6103,8 +5518,7 @@ setg(
   {"CMACH"
     ""
     "Machine Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "MAGNE"
@@ -6122,8 +5536,7 @@ setg(
   {"CAGER"
     "You are in a dingy closet adjacent to the machine room.  On one wall\nis a small sticker which says\n		Protected by\n		  FROBOZZ\n	     Magic Alarm Company\n	      (Hello, footpad!)"
     "Dingy Closet"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         "CMACH"}
@@ -6134,8 +5547,7 @@ setg(
   {"CAGED"
     "You are trapped inside an iron cage."
     "Cage"
-    _
-    <>
+    %<>
     #exit
       {"NORTH"
         #nexit
@@ -6149,17 +5561,13 @@ add_object(
     {"CAGE"
       "There is a mangled cage here."
       "mangled cage"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,ndescbit)
+      %<>
+      %_(
+          ,ovison,
+          ,ndescbit)
       0
       0
       0
@@ -6173,15 +5581,11 @@ add_object(
     {"RCAGE"
       "There is an iron cage in the middle of the room."
       "iron cage"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,ovison
+      %<>
+      %,ovison
       0
       0
       0
@@ -6195,17 +5599,14 @@ add_object(
     {"SPHER"
       "There is a beautiful crystal sphere here."
       "crystal sphere"
-      _
-      <>
+      %<>
       sphere_function
       ()
-      _
-      <>
-      _
-      _(
-        ,trytakebit,
-        ,sacredbit,
-        ,ovison)
+      %<>
+      %_(
+          ,trytakebit,
+          ,sacredbit,
+          ,ovison)
       0
       6
       6
@@ -6249,8 +5650,7 @@ add_object(
   {"TWELL"
     "You are at the top of the well.  Well done.  There are etchings on\nthe side of the well. There is a small crack across the floor at the\nentrance to a room on the east, but it can be crossed easily."
     "Top of Well"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         "ALICE"
@@ -6259,20 +5659,17 @@ add_object(
           "It's a long way down!"}
     (#find_obj
         {"ETCH2"})
-    _
-    <>
+    %<>
     10
-    _
-    _(
-      ,rlandbit,
-      ,rbuckbit)}
+    %_(
+        ,rlandbit,
+        ,rbuckbit)}
 
 #room
   {"BWELL"
     "You are in a damp circular room, whose walls are made of brick and\nmortar.  The roof of this room is not visible, but there appear to be\nsome etchings on the walls.  There is a passageway to the west."
     "Circular Room"
-    _
-    <>
+    %<>
     #exit
       {"WEST"
         "MPEAR"
@@ -6283,13 +5680,11 @@ add_object(
         {"BUCKE"}
       #find_obj
         {"ETCH1"})
-    _
-    <>
+    %<>
     0
-    _
-    _(
-      ,rlandbit,
-      ,rbuckbit)}
+    %_(
+        ,rlandbit,
+        ,rbuckbit)}
 
 psetg(
   ewalls,
@@ -6329,8 +5724,7 @@ add_desc(
   {"ALICE"
     "You are in a small square room, in the center of which is a large\noblong table, no doubt set for afternoon tea.  It is clear from the\nobjects on the table that the users were indeed mad.  In the eastern\ncorner of the room is a small hole (no more that four inches high). \nThere are passageways leading away to the west and the northwest."
     "Tea Room"
-    _
-    <>
+    %<>
     #exit
       {"EAST"
         #nexit
@@ -6359,20 +5753,16 @@ psetg(
   {"ALISM"
     "You are in an enormous room, in the center of which are four wooden\nposts delineating a rectanular area, above which is what appears to\nbe a wooden roof.  In fact, all objects in this room appear to be\nabnormally large. To the east is a passageway.  There is a large\nchasm on the west and the northwest."
     "Posts Room"
-    _
-    <>
+    %<>
     #exit
       {"NW"
-        _
-        ,smdrop
+        %,smdrop
         "EAST"
         "ALITR"
         "WEST"
-        _
-        ,smdrop
+        %,smdrop
         "DOWN"
-        _
-        ,smdrop}
+        %,smdrop}
     (#find_obj
         {"POSTS"})}
 
@@ -6380,8 +5770,7 @@ psetg(
   {"ALITR"
     "You are in a large room, one half of which is depressed.  There is a\nlarge leak in the ceiling through which brown colored goop is\nfalling.  The only exit to this room is to the west."
     "Pool Room"
-    _
-    <>
+    %<>
     #exit
       {"EXIT"
         "ALISM"
@@ -6399,17 +5788,14 @@ add_object(
     {"FLASK"
       "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid."
       "glass flask filled with liquid"
-      _
-      <>
+      %<>
       flask_function
       ()
-      _
-      <>
-      _
-      _(
-        ,transbit,
-        ,ovison,
-        ,takebit)
+      %<>
+      %_(
+          ,transbit,
+          ,ovison,
+          ,takebit)
       0
       0
       0
@@ -6423,17 +5809,13 @@ add_object(
     {"POOL"
       "The leak has submerged the depressed area in a pool of sewage."
       "pool of sewage"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,vicbit)
+      %<>
+      %_(
+          ,ovison,
+          ,vicbit)
       0
       0
       0
@@ -6447,15 +5829,11 @@ add_object(
     {"SAFFR"
       "There is a tin of rare spices here."
       "tin of spices"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      ,takebit
+      %<>
+      %,takebit
       0
       5
       5
@@ -6487,16 +5865,13 @@ add_object(
     {"BUCKE"
       "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
       "wooden bucket"
-      _
-      <>
+      %<>
       bucket
       ()
-      _
-      <>
-      _
-      _(
-        ,vehbit,
-        ,ovison)
+      %<>
+      %_(
+          ,vehbit,
+          ,ovison)
       0
       0
       0
@@ -6510,17 +5885,14 @@ add_object(
     {"ECAKE"
       "There is a piece of cake here with the words 'Eat Me' on it."
       "piece of 'Eat Me' cake"
-      _
-      <>
+      %<>
       eatme_function
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,foodbit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit,
+          ,foodbit)
       0
       0
       0
@@ -6535,18 +5907,15 @@ add_object(
     {"ORICE"
       "There is a piece of cake with orange icing here."
       "piece of cake with orange icing"
-      _
-      <>
+      %<>
       cake_function
       ()
-      _
-      <>
-      _
-      _(
-        ,readbit,
-        ,ovison,
-        ,takebit,
-        ,foodbit)
+      %<>
+      %_(
+          ,readbit,
+          ,ovison,
+          ,takebit,
+          ,foodbit)
       0
       0
       0
@@ -6561,18 +5930,15 @@ add_object(
     {"RDICE"
       "There is a piece of cake with red icing here."
       "piece of cake with red icing"
-      _
-      <>
+      %<>
       cake_function
       ()
-      _
-      <>
-      _
-      _(
-        ,readbit,
-        ,ovison,
-        ,takebit,
-        ,foodbit)
+      %<>
+      %_(
+          ,readbit,
+          ,ovison,
+          ,takebit,
+          ,foodbit)
       0
       0
       0
@@ -6587,18 +5953,15 @@ add_object(
     {"BLICE"
       "There is a piece of cake with blue (ecch) icing here."
       "piece of cake with blue icing"
-      _
-      <>
+      %<>
       cake_function
       ()
-      _
-      <>
-      _
-      _(
-        ,readbit,
-        ,ovison,
-        ,takebit,
-        ,foodbit)
+      %<>
+      %_(
+          ,readbit,
+          ,ovison,
+          ,takebit,
+          ,foodbit)
       0
       0
       0
@@ -6623,18 +5986,15 @@ add_object(
     {"ROBOT"
       "There is a robot here."
       "robot"
-      _
-      <>
+      %<>
       robot_function
       ()
-      _
-      <>
-      _
-      _(
-        ,sacredbit,
-        ,vicbit,
-        ,ovison,
-        ,actorbit)
+      %<>
+      %_(
+          ,sacredbit,
+          ,vicbit,
+          ,ovison,
+          ,actorbit)
       0
       0
       0
@@ -6668,19 +6028,15 @@ add_object(
     {"RBTLB"
       "There is a green piece of paper here."
       "green piece of paper"
-      _
-      <>
-      _
-      <>
+      %<>
+      %<>
       ()
-      _
-      <>
-      _
-      _(
-        ,ovison,
-        ,takebit,
-        ,readbit,
-        ,burnbit)
+      %<>
+      %_(
+          ,ovison,
+          ,takebit,
+          ,readbit,
+          ,burnbit)
       0
       0
       0

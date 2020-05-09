@@ -81,7 +81,7 @@ const isOpenSymbol = (c: string): c is OpenSymbol => {
         || c === '"'
         || c === ','
         || c === '#' || c === '\'' || c === ';'
-        // || c === '%'
+        || c === '%'
     );
 }
 const isCloseSymbol = (c: string): c is OpenSymbol => {

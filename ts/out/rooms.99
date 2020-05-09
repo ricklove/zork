@@ -394,12 +394,11 @@ define(
               (memq(
                   1(
                     _cma),
-                  _,
-                  string(
-                    ascii(
-                      32),
-                    ascii(
-                      9)))
+                  %string(
+                      ascii(
+                        32),
+                      ascii(
+                        9)))
                 set(
                   cma,
                   rest(
