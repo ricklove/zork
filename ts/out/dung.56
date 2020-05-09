@@ -4,19 +4,62 @@
 
 psetg(
   rmgvals,
-  () => _X)
+  '_X
+    [bloc
+      here_X])
 
 // GLOBAL VARIABLES WHICH ARE OBJECTS MUST BE HERE!
 
 psetg(
   objgvals,
-  () => _X)
+  '_X
+    [_X])
 
 // GLOBAL VARIABLES WHICH ARE MONADS MUST BE HERE!
 
 psetg(
   mgvals,
-  () => _X)
+  '_X
+    [kitchen_window_X_flag
+      troll_flag_X_flag
+      cage_solve_X_flag
+      key_flag_X_flag
+      bucket_top_X_flag
+      carousel_flip_X_flag
+      carousel_zoom_X_flag
+      low_tide_X_flag
+      dome_flag_X_flag
+      glacier_flag_X_flag
+      echo_flag_X_flag
+      riddle_flag_X_flag
+      lld_flag_X_flag
+      cyclops_flag_X_flag
+      magic_flag_X_flag
+      trap_door_X_flag
+      light_load_X_flag
+      safe_flag_X_flag
+      gnome_flag_X_flag
+      gnome_door_X_flag
+      mirror_mung_X_flag
+      egypt_flag_X_flag
+      on_pole_X_flag
+      blab_X_flag
+      binf_X_flag
+      btie_X_flag
+      buoy_flag_X_flag
+      grunlock_X_flag
+      gate_flag_X_flag
+      rainbow_X_flag
+      cage_top_X_flag
+      empty_handed_X_flag
+      deflate_X_flag
+      light_shaft
+      played_time
+      moves
+      brief_X_flag
+      then
+      super_brief_X_flag
+      raw_score_X])
 
 psetg(
   cntuse,
@@ -992,7 +1035,7 @@ setg(
   ivector(
     length(
       ,villains),
-    () => <>))
+    '<>))
 
 add_demon(
   setg(
