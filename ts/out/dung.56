@@ -5300,7 +5300,7 @@ psetg(
   rest(
     istring(
       8,
-      _X_),
+      _X__),
     8))
 
 #room

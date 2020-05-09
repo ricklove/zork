@@ -37,8 +37,6 @@ newtype(
   prep,
   atom)
 
-_
-
 // generalized oflags tester
 
 defmac(
@@ -155,8 +153,6 @@ defmac(
         rbits,
         _rm),
       _bit)))
-
-_
 
 // room definition
 
@@ -275,8 +271,6 @@ newtype(
   string)
 
 // unusable exit description
-
-_
 
 // PARSER related types
 
@@ -439,8 +433,6 @@ newstruc(
   prep,
   pobj,
   object)
-
-_
 
 // adventurer
 
@@ -732,8 +724,6 @@ defmac(
         oopen_Q,
         _obj))))
 
-_
-
 // demons
 
 newstruc(
@@ -774,8 +764,6 @@ newstruc(
     false),
   cid,
   atom)
-
-_
 
 setg(
   load_max,
@@ -835,8 +823,6 @@ gdecl(
       string]),
   (sword_demon),
   hack)
-
-_
 
 "UTILITY FUNCTIONS"
 

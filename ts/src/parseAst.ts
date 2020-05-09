@@ -158,12 +158,12 @@ export const parseContent = (source: StringSpan, start: number, depth: number, o
             continue;
         }
 
-        // // Handle Token Escapes (ignore next char)
-        // if (c === '\\') {
-        //     i++;
-        //     end = i;
-        //     continue;
-        // }
+        // Handle Token Escapes (ignore next char)
+        if (c === '\\') {
+            i++;
+            end = i;
+            continue;
+        }
 
         // Handle Close (Single Token)
         if (typeof closeSymbol === 'number') {
