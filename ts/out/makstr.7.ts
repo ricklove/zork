@@ -48,14 +48,12 @@ define(
     (set(
         atm,
         _name))),
-  setg(
-    _atm,
-    chtype(
+  GLOBALS._atm = chtype(
       [_tick
         _app
         _flg
         _atm],
-      cevent)))
+      cevent))
 
 define(
   cons_obj,
@@ -152,9 +150,7 @@ define(
         get(
           flag,
           oblist)))),
-  setg(
-    _atm,
-    _flag),
+  GLOBALS._atm = _flag,
   chtype(
     vector(
       _atm,
@@ -314,11 +310,9 @@ define(
       fix
       (rm)
       room),
-  setg(
-    score_max,
-    _(
+  GLOBALS.score_max = _(
       GLOBALS.score_max,
-      _val)),
+      _val),
   put(
     _rm,
     GLOBALS.rbits,
@@ -481,12 +475,10 @@ define(
       or(
         string,
         false)),
-  setg(
-    score_max,
-    _(
+  GLOBALS.score_max = _(
       GLOBALS.score_max,
       _s1,
-      _s2)),
+      _s2),
   or(
     0_Q(
       _light_Q),
@@ -564,11 +556,9 @@ define(
           GLOBALS._atm),
         (error(
             no_prep_X_errors)))),
-    (setg(
-        _atm,
-        chtype(
+    (GLOBALS._atm = chtype(
           _atm,
-          prep)))))
+          prep))))
 
 define(
   add_action,
@@ -595,14 +585,12 @@ define(
           vector])
       (atm)
       atom),
-  setg(
-    _atm,
-    chtype(
+  GLOBALS._atm = chtype(
       [_atm
         make_action(
           _X_decl)
         _str],
-      action)),
+      action),
   _atm)
 
 define(
@@ -966,20 +954,16 @@ define(
               mapleave(
                 t)))),
         GLOBALS.demons)),
-    (setg(
-        demons,
-        (_x
+    (GLOBALS.demons = (_x
           _X
-          GLOBALS.demons)))))
+          GLOBALS.demons))))
 
 define(
   add_star,
   (obj),
-  setg(
-    stars,
-    (_obj
+  GLOBALS.stars = (_obj
       _X
-      GLOBALS.stars)))
+      GLOBALS.stars))
 
 define(
   add_actor,
@@ -1011,10 +995,8 @@ define(
               mapleave(
                 t)))),
         _actors)),
-    (setg(
-        actors,
-        (_adv
-          _X_actors)))),
+    (GLOBALS.actors = (_adv
+          _X_actors))),
   _adv)
 
 define(

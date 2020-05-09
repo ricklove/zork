@@ -120,9 +120,7 @@ define(
 
 // HACK THE KITCHEN WINDOW
 
-setg(
-  grunlock_X_flag,
-  <>)
+GLOBALS.grunlock_X_flag = <>
 
 define(
   window_function,
@@ -164,9 +162,7 @@ define(
               GLOBALS.dummy))),
         (tell(
             _stropn)
-          setg(
-            _atm,
-            t)))),
+          GLOBALS._atm = t))),
     (_EQ_Q(
         _verb,
         GLOBALS.close_X_words)
@@ -174,9 +170,7 @@ define(
         (GLOBALS._atm
           tell(
             _strcls)
-          setg(
-            _atm,
-            <>)
+          GLOBALS._atm = <>
           t),
         (tell(
             pick_one(
@@ -376,9 +370,7 @@ define(
               GLOBALS.here),
             tell(
               "The melting glacier seems to have carried the torch away, leaving\nyou in the dark."))
-          setg(
-            glacier_flag_X_flag,
-            t)),
+          GLOBALS.glacier_flag_X_flag = t),
         (tell(
             "The glacier is unmoved by your ridiculous attempt.")
           <>))),
@@ -750,9 +742,7 @@ define(
         not(
           otouch_Q(
             _door)))
-      setg(
-        trap_door_X_flag,
-        <>)
+      GLOBALS.trap_door_X_flag = <>
       put(
         _door,
         GLOBALS.otouch_Q,
@@ -788,9 +778,7 @@ define(
           find_obj(
             "LAMP"),
           _aobjs))
-      setg(
-        light_load_X_flag,
-        t)
+      GLOBALS.light_load_X_flag = t
       // Door will slam shut next time, too, since this way up don't count.
       cond(
         (not(
@@ -802,9 +790,7 @@ define(
             <>)))
       <>),
     (t
-      setg(
-        light_load_X_flag,
-        <>))))
+      GLOBALS.light_load_X_flag = <>)))
 
 // OBJECT FUNCTIONS
 
@@ -1044,9 +1030,7 @@ define(
     (_EQ_Q(
         _pa,
         GLOBALS.dead__X_X_words)
-      setg(
-        troll_flag_X_flag,
-        t)),
+      GLOBALS.troll_flag_X_flag = t),
     (_EQ_Q(
         _pa,
         GLOBALS.out__X_X_words)
@@ -1058,9 +1042,7 @@ define(
         _t,
         GLOBALS.odesc1,
         GLOBALS.trollout)
-      setg(
-        troll_flag_X_flag,
-        t)),
+      GLOBALS.troll_flag_X_flag = t),
     (_EQ_Q(
         _pa,
         GLOBALS.in__X_X_words)
@@ -1079,9 +1061,7 @@ define(
         _t,
         GLOBALS.odesc1,
         GLOBALS.trolldesc)
-      setg(
-        troll_flag_X_flag,
-        <>)),
+      GLOBALS.troll_flag_X_flag = <>),
     (_EQ_Q(
         _pa,
         GLOBALS.first_Q_X_words)
@@ -1164,9 +1144,7 @@ define(
             "Unfortunately, you have managed to destroy it by your reckless\nactions.",
             1))))))
 
-setg(
-  mirror_mung_X_flag,
-  <>)
+GLOBALS.mirror_mung_X_flag = <>
 
 define(
   mirror_mirror,
@@ -1283,9 +1261,7 @@ define(
         (GLOBALS.mirror_mung_X_flag
           tell(
             "Haven't you done enough already?")),
-        (setg(
-            mirror_mung_X_flag,
-            t)
+        (GLOBALS.mirror_mung_X_flag = t
           tell(
             "You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy."))))))
 
@@ -1425,13 +1401,9 @@ define(
           "COFFI"),
         aobjs(
           GLOBALS.winner))
-      setg(
-        egypt_flag_X_flag,
-        <>)),
+      GLOBALS.egypt_flag_X_flag = <>),
     (else
-      setg(
-        egypt_flag_X_flag,
-        t))),
+      GLOBALS.egypt_flag_X_flag = t)),
   <>)
 
 define(
@@ -1509,9 +1481,7 @@ define(
               remove_object(
                 find_obj(
                   "GHOST"))
-              setg(
-                lld_flag_X_flag,
-                t)),
+              GLOBALS.lld_flag_X_flag = t),
             (tell(
                 "You are not equipped for an exorcism.")))),
         (jigs_up(
@@ -1821,9 +1791,7 @@ define(
     (tell(
         "If you pray enough, your prayers may be answered."))))
 
-setg(
-  gate_flag_X_flag,
-  <>)
+GLOBALS.gate_flag_X_flag = <>
 
 define(
   dam_room,
@@ -1891,9 +1859,7 @@ define(
             (GLOBALS.gate_flag_X_flag
               cond(
                 (GLOBALS.low_tide_X_flag
-                  setg(
-                    low_tide_X_flag,
-                    <>)
+                  GLOBALS.low_tide_X_flag = <>
                   tell(
                     "The sluice gates close and water starts to collect behind the dam.")
                   and(
@@ -1906,9 +1872,7 @@ define(
                       _trunk,
                       GLOBALS.ovison))
                   t),
-                (setg(
-                    low_tide_X_flag,
-                    t)
+                (GLOBALS.low_tide_X_flag = t
                   tell(
                     "The sluice gates open and water pours through the dam.")
                   tro(
@@ -2078,18 +2042,14 @@ define(
             _prso,
             find_obj(
               "BRBUT"))
-          setg(
-            gate_flag_X_flag,
-            <>)
+          GLOBALS.gate_flag_X_flag = <>
           tell(
             "Click.")),
         (_EQ_Q(
             _prso,
             find_obj(
               "YBUTT"))
-          setg(
-            gate_flag_X_flag,
-            t)
+          GLOBALS.gate_flag_X_flag = t
           tell(
             "Click."))))))
 
@@ -2589,9 +2549,7 @@ define(
     (n_EQ_Q(
         GLOBALS.here,
         _droom)
-      setg(
-        dome_flag_X_flag,
-        <>)
+      GLOBALS.dome_flag_X_flag = <>
       cond(
         (_EQ_Q(
             vname(
@@ -2621,9 +2579,7 @@ define(
             "The rope is already attached.")),
         (tell(
             "The rope drops over the side and comes within ten feet of the floor.")
-          setg(
-            dome_flag_X_flag,
-            t)
+          GLOBALS.dome_flag_X_flag = t
           tro(
             _rope,
             GLOBALS.ndescbit)
@@ -2647,9 +2603,7 @@ define(
         untie_X_words)
       cond(
         (GLOBALS.dome_flag_X_flag
-          setg(
-            dome_flag_X_flag,
-            <>)
+          GLOBALS.dome_flag_X_flag = <>
           trz(
             _rope,
             GLOBALS.ndescbit)
@@ -2738,9 +2692,7 @@ define(
               GLOBALS.fight_X_words))
           tell(
             "The cyclops yawns and stares at the thing that woke him up.")
-          setg(
-            cyclops_flag_X_flag,
-            <>)
+          GLOBALS.cyclops_flag_X_flag = <>
           trz(
             set(
               cyc,
@@ -2806,9 +2758,7 @@ define(
                 GLOBALS.fightbit)
               tell(
                 "The cyclops looks tired and quickly falls fast asleep (what did you\nput in that drink, anyway?).")
-              setg(
-                cyclops_flag_X_flag,
-                t)),
+              GLOBALS.cyclops_flag_X_flag = t),
             (tell(
                 "The cyclops apparently was not thirsty at the time and refuses your\ngenerous gesture.")
               <>))),
@@ -2974,9 +2924,7 @@ define(
             _foo))))),
   _foo)
 
-setg(
-  echo_flag_X_flag,
-  <>)
+GLOBALS.echo_flag_X_flag = <>
 
 define(
   echo_room,
@@ -3052,11 +3000,9 @@ define(
               GLOBALS.alt_flag,
               readchr(
                 GLOBALS.inchan)),
-            setg(
-              moves,
-              _(
+            GLOBALS.moves = _(
                 GLOBALS.moves,
-                1)),
+                1),
             cond(
               (and(
                   eparse(
@@ -3117,9 +3063,7 @@ define(
                   _b,
                   _outchan,
                   _l)
-                setg(
-                  tell_flag,
-                  t)
+                GLOBALS.tell_flag = t
                 crlf(
                   )
                 cond(
@@ -3132,9 +3076,7 @@ define(
                     tell(
                       "The acoustics of the room change subtly.",
                       1)
-                    setg(
-                      echo_flag_X_flag,
-                      t)
+                    GLOBALS.echo_flag_X_flag = t
                     mapf(
                       <>,
                       function(
@@ -3161,11 +3103,9 @@ define(
           goto(
             find_room(
               "CHAS3")),
-          setg(
-            moves,
-            _(
+          GLOBALS.moves = _(
               GLOBALS.moves,
-              1)),
+              1),
           mapf(
             <>,
             function(
@@ -3240,9 +3180,7 @@ define(
     pick_one(
       GLOBALS.wheeeee)))
 
-setg(
-  hs,
-  0)
+GLOBALS.hs = 0
 
 gdecl(
   (hs),
@@ -3255,11 +3193,9 @@ define(
       2(
         GLOBALS.prsvec))
     (amt
-      setg(
-        hs,
-        _(
+      GLOBALS.hs = _(
           GLOBALS.hs,
-          1)))),
+          1))),
   #decl
     ((prsobj)
       or(
@@ -3399,9 +3335,7 @@ define(
         GLOBALS.here,
         find_room(
           "RIDDL"))
-      setg(
-        riddle_flag_X_flag,
-        t)
+      GLOBALS.riddle_flag_X_flag = t
       tell(
         "There is a clap of thunder and the east door opens.")),
     (tell(
@@ -3421,14 +3355,10 @@ define(
             "CYCLO"),
           robjs(
             GLOBALS.here)))
-      setg(
-        cyclops_flag_X_flag,
-        t)
+      GLOBALS.cyclops_flag_X_flag = t
       tell(
         "The cyclops, hearing the name of his deadly nemesis, flees the room\nby knocking down the wall on the north of the room.")
-      setg(
-        magic_flag_X_flag,
-        t)
+      GLOBALS.magic_flag_X_flag = t
       remove_object(
         find_obj(
           "CYCLO"))),
@@ -3966,9 +3896,7 @@ define(
                           find_obj(
                             "ROPE"),
                           _hh)
-                        setg(
-                          dome_flag_X_flag,
-                          <>)))
+                        GLOBALS.dome_flag_X_flag = <>))
                     cond(
                       (_EQ_Q(
                           _objt,
@@ -4127,9 +4055,7 @@ define(
                   find_obj(
                     "ROPE"),
                   _hh)
-                setg(
-                  dome_flag_X_flag,
-                  <>))))))),
+                GLOBALS.dome_flag_X_flag = <>)))))),
     cond(
       (set(
           once,
@@ -4902,9 +4828,7 @@ define(
         _prso,
         find_obj(
           "GRAT2"))
-      setg(
-        grunlock_X_flag,
-        <>)
+      GLOBALS.grunlock_X_flag = <>
       tell(
         "The grate is locked.")
       mapf(
@@ -4965,9 +4889,7 @@ define(
             _prsi,
             find_obj(
               "KEYS"))
-          setg(
-            grunlock_X_flag,
-            t)
+          GLOBALS.grunlock_X_flag = t
           tell(
             "The grate is unlocked.")
           mapf(
@@ -5408,9 +5330,7 @@ define(
           _prso),
         "can be melted."))))
 
-setg(
-  on_pole_X_flag,
-  <>)
+GLOBALS.on_pole_X_flag = <>
 
 define(
   body_function,
@@ -5436,9 +5356,7 @@ define(
           GLOBALS.burn_X_words))
       cond(
         (GLOBALS.on_pole_X_flag),
-        (setg(
-            on_pole_X_flag,
-            t)
+        (GLOBALS.on_pole_X_flag = t
           insert_object(
             find_obj(
               "HPOLE"),
@@ -5981,9 +5899,7 @@ define(
             chtype(
               with_X_words,
               prep))
-          setg(
-            parse_won,
-            <>)
+          GLOBALS.parse_won = <>
           t),
         (and(
             _EQ_Q(

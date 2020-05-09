@@ -1,36 +1,28 @@
-setg(
-  words,
-  or(
+GLOBALS.words = or(
     get(
       words,
       oblist),
     moblist(
       words,
-      23)))
+      23))
 
-setg(
-  object_obl,
-  or(
+GLOBALS.object_obl = or(
     get(
       objects,
       oblist),
     moblist(
       objects,
-      23)))
+      23))
 
-setg(
-  actions,
-  moblist(
+GLOBALS.actions = moblist(
     actions,
-    17))
+    17)
 
-setg(
-  orphans,
-  [<>
+GLOBALS.orphans = [<>
     <>
     <>
     <>
-    <>])
+    <>]
 
 cond(
   (or(
@@ -40,9 +32,7 @@ cond(
           )),
       gassigned_Q(
         group_glue))),
-  (setg(
-      prepvec,
-      [chtype(
+  (GLOBALS.prepvec = [chtype(
           [find_prep(
               "WITH")
             find_obj(
@@ -53,10 +43,8 @@ cond(
               "WITH")
             find_obj(
               "#####")],
-          phrase)])
-    setg(
-      prep2vec,
-      [chtype(
+          phrase)]
+    GLOBALS.prep2vec = [chtype(
           [find_prep(
               "WITH")
             find_obj(
@@ -67,7 +55,7 @@ cond(
               "WITH")
             find_obj(
               "#####")],
-          phrase)])))
+          phrase)]))
 
 define(
   sparse,
@@ -1400,13 +1388,11 @@ define(
       _specs),
     vspec))
 
-setg(
-  evarg,
-  chtype(
+GLOBALS.evarg = chtype(
     [0
       <>
       0],
-    varg))
+    varg)
 
 define(
   syn_equal,
@@ -1466,10 +1452,8 @@ define(
         0_Q(
           _vbit)))))
 
-setg(
-  directions,
-  moblist(
-    directions))
+GLOBALS.directions = moblist(
+    directions)
 
 define(
   eparse,
@@ -1514,18 +1498,14 @@ define(
           ""))
       <>)))
 
-setg(
-  scrstr,
-  rest(
+GLOBALS.scrstr = rest(
     istring(
       5),
-    5))
+    5)
 
-setg(
-  ssv,
-  ivector(
+GLOBALS.ssv = ivector(
     10,
-    <>))
+    <>)
 
 "GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS\nOVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL\nOF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE\nOBJECT OTHERWISE."
 
@@ -1675,15 +1655,11 @@ define(
 
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.\nIF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO\nONE LEVEL OF CONTAINMENT."
 
-setg(
-  nefals,
-  #false
-    (1))
+GLOBALS.nefals = #false
+    (1)
 
-setg(
-  nefals2,
-  #false
-    (2))
+GLOBALS.nefals2 = #false
+    (2)
 
 define(
   search_list,

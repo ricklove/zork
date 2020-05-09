@@ -22,50 +22,38 @@ psetg(
   cntuse,
   "You can't use that!")
 
-setg(
-  bigfix,
-  _(
+GLOBALS.bigfix = _(
     chtype(
       min(
         ),
       fix),
-    2))
+    2)
 
-setg(
-  words,
-  or(
+GLOBALS.words = or(
     get(
       words,
       oblist),
     moblist(
       words,
-      23)))
+      23))
 
-setg(
-  object_obl,
-  or(
+GLOBALS.object_obl = or(
     get(
       objects,
       oblist),
     moblist(
-      objects)))
+      objects))
 
-setg(
-  room_obl,
-  or(
+GLOBALS.room_obl = or(
     get(
       rooms,
       oblist),
     moblist(
-      rooms)))
+      rooms))
 
-setg(
-  actors,
-  ())
+GLOBALS.actors = ()
 
-setg(
-  stars,
-  ())
+GLOBALS.stars = ()
 
 add_buzz(
   "BY",
@@ -154,13 +142,9 @@ synonym(
   "INSID",
   "INTO")
 
-setg(
-  rooms,
-  ())
+GLOBALS.rooms = ()
 
-setg(
-  objects,
-  ())
+GLOBALS.objects = ()
 
 "CEVENT DEFINITIONS"
 
@@ -971,33 +955,25 @@ psetg(
   trollout,
   "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
 
-setg(
-  villains,
-  (find_obj(
+GLOBALS.villains = (find_obj(
       "TROLL")
     find_obj(
       "THIEF")
     find_obj(
-      "CYCLO")))
+      "CYCLO"))
 
-setg(
-  villain_probs,
-  iuvector(
+GLOBALS.villain_probs = iuvector(
     length(
       GLOBALS.villains),
-    0))
+    0)
 
-setg(
-  oppv,
-  ivector(
+GLOBALS.oppv = ivector(
     length(
       GLOBALS.villains),
-    () => <>))
+    () => <>)
 
 add_demon(
-  setg(
-    sword_demon,
-    chtype(
+  GLOBALS.sword_demon = chtype(
       [sword_glow
         GLOBALS.villains
         ()
@@ -1006,7 +982,7 @@ add_demon(
         find_obj(
           "SWORD")
         <>],
-      hack)))
+      hack))
 
 #object
   {"TROLL"
@@ -1033,9 +1009,7 @@ add_melee(
   GLOBALS.troll_melee)
 
 add_demon(
-  setg(
-    fight_demon,
-    chtype(
+  GLOBALS.fight_demon = chtype(
       [fighting
         GLOBALS.villains
         ()
@@ -1044,7 +1018,7 @@ add_demon(
         find_obj(
           "TROLL")
         <>],
-      hack)))
+      hack))
 
 add_object(
   #object
@@ -3406,9 +3380,7 @@ add_object(
 "LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS"
 
 add_demon(
-  setg(
-    robber_demon,
-    chtype(
+  GLOBALS.robber_demon = chtype(
       [robber
         ()
         GLOBALS.rooms
@@ -3417,7 +3389,7 @@ add_demon(
         find_obj(
           "THIEF")
         <>],
-      hack)))
+      hack))
 
 psetg(
   robber_c_desc,
@@ -3485,16 +3457,12 @@ add_object(
   [],
   ["VICIO"])
 
-setg(
-  weapons,
-  (find_obj(
+GLOBALS.weapons = (find_obj(
       "STICK")
     find_obj(
-      "KNIFE")))
+      "KNIFE"))
 
-setg(
-  random_list,
-  (find_room(
+GLOBALS.random_list = (find_room(
       "LROOM")
     find_room(
       "KITCH")
@@ -3511,7 +3479,7 @@ setg(
     find_room(
       "KITCH")
     find_room(
-      "EHOUS")))
+      "EHOUS"))
 
 add_desc(
   find_obj(
@@ -4175,11 +4143,9 @@ psetg(
         "WEST"
         "FALLS"}}
 
-setg(
-  crain,
-  #cexit
+GLOBALS.crain = #cexit
     {"RAINBOW"
-      "RAINB"})
+      "RAINB"}
 
 #room
   {"POG"
@@ -4551,11 +4517,9 @@ psetg(
   volcore,
   "Volcano Core")
 
-setg(
-  nulexit,
-  #exit
+GLOBALS.nulexit = #exit
     {"#!#!#"
-      "!"})
+      "!"}
 
 #room
   {"VAIR1"
@@ -4609,11 +4573,9 @@ setg(
     0
     %GLOBALS.rairbit}
 
-setg(
-  cxgnome,
-  #cexit
+GLOBALS.cxgnome = #cexit
     {"GNOME-DOOR"
-      "VLBOT"})
+      "VLBOT"}
 
 #room
   {"LEDG2"
@@ -5221,10 +5183,8 @@ add_desc(
     "STAMP"),
   "---v----v----v----v----v----v----v----v---\n|					 |\n|	   ||||||||||	     LORD	 |\n>         !||||	     |	    DIMWIT	 <\n|	  ||||    ---|	   FLATHEAD	 |\n|	  |||C	   CC \\  		 |\n>	   ||||	      _\\		 <\n|	    ||| (____|			 |\n|	     ||      |			 |\n>	      |______|	     Our	 <\n|		/   \\	  Excessive	 |\n|	       /     \\	    Leader	 |\n>	      |	      |			 <\n|	      |       |			 |\n|					 |\n>    G.U.E. POSTAGE	   3 Zorkmids    <\n|					 |\n---^----^----^----^----^----^----^----^---")
 
-setg(
-  bloc,
-  find_room(
-    "VLBOT"))
+GLOBALS.bloc = find_room(
+    "VLBOT")
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
@@ -5468,23 +5428,17 @@ mapf(
     "RAINB"
     "FALLS"])
 
-setg(
-  bucket_top_X_flag,
-  <>)
+GLOBALS.bucket_top_X_flag = <>
 
-setg(
-  magcmach,
-  #cexit
+GLOBALS.magcmach = #cexit
     {"FROBOZZ"
       "CMACH"
-      ""})
+      ""}
 
-setg(
-  magalice,
-  #cexit
+GLOBALS.magalice = #cexit
     {"FROBOZZ"
       "ALICE"
-      ""})
+      ""}
 
 #room
   {"MAGNE"
@@ -7035,9 +6989,7 @@ setg(
     GLOBALS.throw_X_words
     GLOBALS.turn_X_words])
 
-setg(
-  player,
-  add_actor(
+GLOBALS.player = add_actor(
     chtype(
       [GLOBALS.whous_X_rooms
         ()
@@ -7049,4 +7001,4 @@ setg(
         0
         t
         0],
-      adv)))
+      adv))

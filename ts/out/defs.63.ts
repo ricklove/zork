@@ -765,13 +765,9 @@ newstruc(
   cid,
   atom)
 
-setg(
-  load_max,
-  100)
+GLOBALS.load_max = 100
 
-setg(
-  score_max,
-  0)
+GLOBALS.score_max = 0
 
 gdecl(
   (raw_score
@@ -1524,9 +1520,7 @@ define(
           insert(
             _id,
             GLOBALS.room_obl)))
-      setg(
-        _atm,
-        set(
+      GLOBALS._atm = set(
           room,
           chtype(
             vector(
@@ -1542,12 +1536,10 @@ define(
               0,
               0,
               t),
-            room)))
-      setg(
-        rooms,
-        (_room
+            room))
+      GLOBALS.rooms = (_room
           _X
-          GLOBALS.rooms))
+          GLOBALS.rooms)
       _room)))
 
 define(
@@ -1594,9 +1586,7 @@ define(
           insert(
             _id,
             GLOBALS.object_obl)))
-      setg(
-        _atm,
-        set(
+      GLOBALS._atm = set(
           obj,
           chtype(
             [_atm
@@ -1619,12 +1609,10 @@ define(
               GLOBALS.null_syn
               <>
               <>],
-            object)))
-      setg(
-        objects,
-        (_obj
+            object))
+      GLOBALS.objects = (_obj
           _X
-          GLOBALS.objects))
+          GLOBALS.objects)
       _obj)))
 
 define(

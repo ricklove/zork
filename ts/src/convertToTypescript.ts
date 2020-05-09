@@ -83,15 +83,15 @@ export const convertToTypescript = (node: ZNode): string => {
         ) {
             return `GLOBALS.${convertToTypescriptName(nodes[1])}`;
         }
-        // // <SETG atom any>
-        // if (firstNode && openSymbol === '<'
-        //     && firstNode.kind === 'ZToken'
-        //     && firstNode.toString() === 'SETG'
-        //     && nodes.length === 3
-        //     && nodes[1].kind === 'ZToken'
-        // ) {
-        //     return `GLOBALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
-        // }
+        // <SETG atom any>
+        if (firstNode && openSymbol === '<'
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'SETG'
+            && nodes.length === 3
+            && nodes[1].kind === 'ZToken'
+        ) {
+            return `GLOBALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
+        }
 
         // Lazy Values
         if (firstNode && openSymbol === '\'') {

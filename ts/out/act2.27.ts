@@ -201,9 +201,7 @@ gdecl(
     [rest
       string]))
 
-setg(
-  cage_top_X_flag,
-  t)
+GLOBALS.cage_top_X_flag = t
 
 define(
   dumbwaiter,
@@ -269,9 +267,7 @@ define(
             _bot)
           tell(
             "The basket is raised to the top of the shaft.")
-          setg(
-            cage_top_X_flag,
-            t)))),
+          GLOBALS.cage_top_X_flag = t))),
     (_EQ_Q(
         _prsact,
         GLOBALS.lower_X_words)
@@ -293,9 +289,7 @@ define(
             _top)
           tell(
             "The basket is lowered to the bottom of the shaft.")
-          setg(
-            cage_top_X_flag,
-            <>)
+          GLOBALS.cage_top_X_flag = <>
           t))),
     (_EQ_Q(
         _prsact,
@@ -526,13 +520,9 @@ define(
       tell(
         "The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable."))))
 
-setg(
-  score_max,
-  _(
+GLOBALS.score_max = _(
     GLOBALS.score_max,
-    setg(
-      light_shaft,
-      10)))
+    GLOBALS.light_shaft = 10)
 
 define(
   no_objs,
@@ -541,12 +531,8 @@ define(
     (empty_Q(
         aobjs(
           GLOBALS.winner))
-      setg(
-        empty_handed_X_flag,
-        t)),
-    (setg(
-        empty_handed_X_flag,
-        <>))),
+      GLOBALS.empty_handed_X_flag = t),
+    (GLOBALS.empty_handed_X_flag = <>)),
   cond(
     (and(
         _EQ_Q(
@@ -557,9 +543,7 @@ define(
           GLOBALS.here))
       score_upd(
         GLOBALS.light_shaft)
-      setg(
-        light_shaft,
-        0))))
+      GLOBALS.light_shaft = 0)))
 
 gdecl(
   (light_shaft),
@@ -574,12 +558,8 @@ define(
           "RBOAT"),
         aobjs(
           GLOBALS.winner))
-      setg(
-        deflate_X_flag,
-        <>)),
-    (setg(
-        deflate_X_flag,
-        t))))
+      GLOBALS.deflate_X_flag = <>),
+    (GLOBALS.deflate_X_flag = t)))
 
 define(
   stick_function,
@@ -614,21 +594,15 @@ define(
                 GLOBALS.ovison)
               tell(
                 "Suddenly, the rainbow appears to become solid and, I venture,\nwalkable (I think the giveaway was the stairs and bannister).")
-              setg(
-                rainbow_X_flag,
-                t)),
+              GLOBALS.rainbow_X_flag = t),
             (tell(
                 "The rainbow seems to have become somewhat run-of-the-mill.")
-              setg(
-                rainbow_X_flag,
-                <>)))),
+              GLOBALS.rainbow_X_flag = <>))),
         (_EQ_Q(
             GLOBALS.here,
             find_room(
               "RAINB"))
-          setg(
-            rainbow_X_flag,
-            <>)
+          GLOBALS.rainbow_X_flag = <>
           jigs_up(
             "The structural integrity of the rainbow seems to have left it,\nleaving you about 450 feet in the air, supported by water vapor.")),
         (tell(
@@ -829,9 +803,7 @@ define(
             "The boat must be on the ground to be deflated.")),
         (tell(
             "The boat deflates.")
-          setg(
-            deflate_X_flag,
-            t)
+          GLOBALS.deflate_X_flag = t
           remove_object(
             _rboat)
           insert_object(
@@ -880,9 +852,7 @@ define(
               GLOBALS.winner))
           tell(
             "The boat inflates and appears seaworthy.")
-          setg(
-            deflate_X_flag,
-            <>)
+          GLOBALS.deflate_X_flag = <>
           remove_object(
             _iboat)
           insert_object(
@@ -902,9 +872,7 @@ define(
     (jigs_up(
         "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently."))))
 
-setg(
-  buoy_flag_X_flag,
-  t)
+GLOBALS.buoy_flag_X_flag = t
 
 define(
   shake,
@@ -978,9 +946,7 @@ define(
     GLOBALS.buoy_flag_X_flag,
     tell(
       "Something seems funny about the feel of the buoy."),
-    setg(
-      buoy_flag_X_flag,
-      <>)))
+    GLOBALS.buoy_flag_X_flag = <>))
 
 define(
   beach_room,
@@ -1197,13 +1163,9 @@ define(
       tell(
         "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!"))))
 
-setg(
-  btie_X_flag,
-  <>)
+GLOBALS.btie_X_flag = <>
 
-setg(
-  binf_X_flag,
-  <>)
+GLOBALS.binf_X_flag = <>
 
 define(
   balloon,
@@ -1323,10 +1285,8 @@ define(
                         2(
                           _m),
                         GLOBALS.rmungbit)),
-                    setg(
-                      bloc,
-                      2(
-                        _m)))
+                    GLOBALS.bloc = 2(
+                        _m))
                   return(
                     <>,
                     _ballact)))),
@@ -1386,14 +1346,12 @@ define(
             odesc2(
               _prso),
             "burns inside the receptacle.")
-          setg(
-            burnup_int,
-            clock_int(
+          GLOBALS.burnup_int = clock_int(
               GLOBALS.brnin,
               _(
                 osize(
                   _prso),
-                20)))
+                20))
           tro(
             _prso,
             GLOBALS.flamebit)
@@ -1427,12 +1385,8 @@ define(
                     _blabe,
                     GLOBALS.ocan,
                     _ball)))
-              setg(
-                blab_X_flag,
-                t)
-              setg(
-                binf_X_flag,
-                _prso)
+              GLOBALS.blab_X_flag = t
+              GLOBALS.binf_X_flag = _prso
               clock_int(
                 GLOBALS.bint,
                 3)))))),
@@ -1470,9 +1424,7 @@ define(
             _ball,
             GLOBALS.here))))))
 
-setg(
-  blab_X_flag,
-  <>)
+GLOBALS.blab_X_flag = <>
 
 gdecl(
   (burnup_int
@@ -1548,10 +1500,8 @@ define(
                 "Your balloon has hit the rim of the volcano, ripping the cloth and\ncausing you a 500 foot drop.  Did you get your flight insurance?")),
             (tell(
                 "You hear a boom and notice that the balloon is falling to the ground.")))
-          setg(
-            bloc,
-            find_room(
-              "VLBOT"))),
+          GLOBALS.bloc = find_room(
+              "VLBOT")),
         (substruc(
             spname(
               rid(
@@ -1573,10 +1523,8 @@ define(
           cond(
             (_in_Q
               goto(
-                setg(
-                  bloc,
-                  find_room(
-                    _s)))
+                GLOBALS.bloc = find_room(
+                    _s))
               tell(
                 "The balloon ascends.")
               room_info(
@@ -1606,10 +1554,8 @@ define(
       cond(
         (_in_Q
           goto(
-            setg(
-              bloc,
-              find_room(
-                _s)))
+            GLOBALS.bloc = find_room(
+                _s))
           tell(
             "The balloon leaves the ledge.")
           room_info(
@@ -1624,10 +1570,8 @@ define(
             "floats away.  It seems to be ascending,\ndue to its light load.")))),
     (_in_Q
       goto(
-        setg(
-          bloc,
-          find_room(
-            "VAIR1")))
+        GLOBALS.bloc = find_room(
+            "VAIR1"))
       tell(
         "The balloon rises slowly from the ground.")
       room_info(
@@ -1666,10 +1610,8 @@ define(
     _ball),
   insert_object(
     _ball,
-    setg(
-      bloc,
-      find_room(
-        _there))))
+    GLOBALS.bloc = find_room(
+        _there)))
 
 gdecl(
   (bloc),
@@ -1730,10 +1672,8 @@ define(
           cond(
             (_in_Q
               goto(
-                setg(
-                  bloc,
-                  find_room(
-                    "VLBOT")))
+                GLOBALS.bloc = find_room(
+                    "VLBOT"))
               cond(
                 (GLOBALS.binf_X_flag
                   tell(
@@ -1785,10 +1725,8 @@ define(
           cond(
             (_in_Q
               goto(
-                setg(
-                  bloc,
-                  find_room(
-                    _s)))
+                GLOBALS.bloc = find_room(
+                    _s))
               tell(
                 "The balloon descends.")
               room_info(
@@ -1844,9 +1782,7 @@ define(
                 _prsi,
                 find_obj(
                   "HOOK2"))))
-          setg(
-            btie_X_flag,
-            t)
+          GLOBALS.btie_X_flag = t
           clock_disable(
             _bint)
           tell(
@@ -1867,9 +1803,7 @@ define(
               clock_int(
                 GLOBALS.bint,
                 3)))
-          setg(
-            btie_X_flag,
-            <>)
+          GLOBALS.btie_X_flag = <>
           tell(
             "The wire falls off of the hook.")),
         (tell(
@@ -1902,14 +1836,10 @@ define(
     odesc2(
       _obj),
     "has burned out, and the cloth\nbag starts to collapse."),
-  setg(
-    binf_X_flag,
-    <>),
+  GLOBALS.binf_X_flag = <>,
   t)
 
-setg(
-  safe_flag_X_flag,
-  <>)
+GLOBALS.safe_flag_X_flag = <>
 
 define(
   safe_room,
@@ -2081,10 +2011,8 @@ define(
               clock_int(
                 GLOBALS.safin,
                 5)
-              setg(
-                munged_room,
-                oroom(
-                  _brick))
+              GLOBALS.munged_room = oroom(
+                  _brick)
               tell(
                 "There is an explosion nearby.")
               cond(
@@ -2102,17 +2030,13 @@ define(
                       "SAFE"),
                     GLOBALS.oopen_Q,
                     t)
-                  setg(
-                    safe_flag_X_flag,
-                    t)))),
+                  GLOBALS.safe_flag_X_flag = t))),
             (tell(
                 "There is an explosion nearby.")
               clock_int(
                 GLOBALS.safin,
                 5)
-              setg(
-                munged_room,
-                _brick_room)
+              GLOBALS.munged_room = _brick_room
               mapf(
                 <>,
                 /* FUNCTION */
@@ -2219,9 +2143,7 @@ define(
                 rm,
                 find_room(
                   "VLBOT"))
-              setg(
-                bloc,
-                _rm)
+              GLOBALS.bloc = _rm
               remove_object(
                 find_obj(
                   "BALLO"))
@@ -2229,12 +2151,8 @@ define(
                 find_obj(
                   "DBALL"),
                 _rm)
-              setg(
-                btie_X_flag,
-                <>)
-              setg(
-                binf_X_flag,
-                <>)
+              GLOBALS.btie_X_flag = <>
+              GLOBALS.binf_X_flag = <>
               clock_disable(
                 GLOBALS.bint)
               clock_disable(
@@ -2269,9 +2187,7 @@ define(
         GLOBALS.safe_flag_X_flag,
         tell(
           "Behind you, the walls of the safe room collapse into rubble."),
-        setg(
-          safe_flag_X_flag,
-          <>))),
+        GLOBALS.safe_flag_X_flag = <>)),
     (_EQ_Q(
         _prsa,
         GLOBALS.look_X_words)
@@ -2316,11 +2232,7 @@ define(
         GLOBALS.vlgin,
         1))))
 
-setg(
-  gnome_door_X_flag,
-  setg(
-    gnome_flag_X_flag,
-    <>))
+GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = <>
 
 define(
   gnome_function,
@@ -2363,9 +2275,7 @@ define(
               odesc2(
                 _prso),
               ".  I don't believe \nI've ever seen one as beautiful. 'Follow me', he says, and a door \nappears on the west end of the ledge.  Through the door, you can see\na narrow chimney sloping steeply downward.")
-            setg(
-              gnome_door_X_flag,
-              t)),
+            GLOBALS.gnome_door_X_flag = t),
           (tell(
               "'That wasn't quite what I had in mind', he says, crunching the",
               1,
@@ -2389,6 +2299,4 @@ define(
         clock_int(
           GLOBALS.gnoin,
           5))
-      setg(
-        gnome_flag_X_flag,
-        t))))
+      GLOBALS.gnome_flag_X_flag = t)))

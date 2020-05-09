@@ -101,13 +101,9 @@ define(
         "Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life.")
       t)))
 
-setg(
-  then,
-  0)
+GLOBALS.then = 0
 
-setg(
-  bucket_top_X_flag,
-  <>)
+GLOBALS.bucket_top_X_flag = <>
 
 define(
   bucket,
@@ -177,9 +173,7 @@ define(
               GLOBALS.bucket_top_X_flag))
           tell(
             "The bucket rises and comes to a stop.")
-          setg(
-            bucket_top_X_flag,
-            t)
+          GLOBALS.bucket_top_X_flag = t
           pass_the_bucket(
             find_room(
               "TWELL"),
@@ -197,9 +191,7 @@ define(
               _buck))
           tell(
             "The bucket descends and comes to a stop.")
-          setg(
-            bucket_top_X_flag,
-            <>)
+          GLOBALS.bucket_top_X_flag = <>
           pass_the_bucket(
             find_room(
               "BWELL"),
@@ -686,13 +678,9 @@ define(
       tell(
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south."))))
 
-setg(
-  carousel_zoom_X_flag,
-  <>)
+GLOBALS.carousel_zoom_X_flag = <>
 
-setg(
-  carousel_flip_X_flag,
-  <>)
+GLOBALS.carousel_flip_X_flag = <>
 
 define(
   buttons,
@@ -731,9 +719,7 @@ define(
             (GLOBALS.carousel_zoom_X_flag
               tell(
                 "Nothing seems to happen.")),
-            (setg(
-                carousel_zoom_X_flag,
-                t)
+            (GLOBALS.carousel_zoom_X_flag = t
               tell(
                 "The whirring increases in intensity slightly.")))),
         (_EQ_Q(
@@ -742,9 +728,7 @@ define(
               "RNBUT"))
           cond(
             (GLOBALS.carousel_zoom_X_flag
-              setg(
-                carousel_zoom_X_flag,
-                <>)
+              GLOBALS.carousel_zoom_X_flag = <>
               tell(
                 "The whirring decreases in intensity slightly.")),
             (tell(
@@ -753,10 +737,8 @@ define(
             _po,
             find_obj(
               "TRBUT"))
-          setg(
-            carousel_flip_X_flag,
-            not(
-              GLOBALS.carousel_flip_X_flag))
+          GLOBALS.carousel_flip_X_flag = not(
+              GLOBALS.carousel_flip_X_flag)
           cond(
             (memq(
                 set(
@@ -776,9 +758,7 @@ psetg(
   spindizzy,
   "According to Prof. TAA of MIT Tech, the rapidly changing magnetic\nfields in the room are so intense as to cause you to be electrocuted. \nI really don't know, but in any event, something just killed you.")
 
-setg(
-  cage_solve_X_flag,
-  <>)
+GLOBALS.cage_solve_X_flag = <>
 
 define(
   sphere_function,
@@ -852,11 +832,9 @@ define(
           tro(
             _r,
             GLOBALS.ndescbit)
-          setg(
-            sphere_clock,
-            clock_int(
+          GLOBALS.sphere_clock = clock_int(
               GLOBALS.sphin,
-              10))
+              10)
           t),
         (else
           trz(
@@ -906,10 +884,8 @@ define(
   (),
   cond(
     (GLOBALS.cage_solve_X_flag
-      setg(
-        here,
-        find_room(
-          "CAGER")))))
+      GLOBALS.here = find_room(
+          "CAGER"))))
 
 gdecl(
   (sphere_clock),
@@ -967,9 +943,7 @@ define(
         "The cage shakes and is hurled across the room.")
       clock_disable(
         GLOBALS.sphere_clock)
-      setg(
-        winner,
-        GLOBALS.player)
+      GLOBALS.winner = GLOBALS.player
       goto(
         set(
           c,
@@ -1006,9 +980,7 @@ define(
             _r)),
         GLOBALS.aroom,
         _c)
-      setg(
-        cage_solve_X_flag,
-        t)),
+      GLOBALS.cage_solve_X_flag = t),
     (or(
         _EQ_Q(
           _pa,

@@ -1,8 +1,6 @@
 // GUTS OF FROB:  BASIC VERBS, COMMAND READER, PARSER, VOCABULARY HACKERS.
 
-setg(
-  alt_flag,
-  t)
+GLOBALS.alt_flag = t
 
 gdecl(
   (muddle),
@@ -50,15 +48,9 @@ define(
     GLOBALS.odesc1,
     unspeakable_code(
       )),
-  setg(
-    vers,
-    _st),
-  setg(
-    script_channel,
-    <>),
-  setg(
-    raw_score,
-    0),
+  GLOBALS.vers = _st,
+  GLOBALS.script_channel = <>,
+  GLOBALS.raw_score = 0,
   set(
     ih,
     on(
@@ -72,24 +64,14 @@ define(
     (g_Q(
         _muddle,
         100)
-      setg(
-        scratch_str,
-        istring(
-          32))
-      setg(
-        dev,
-        "DSK")
-      setg(
-        snm,
-        "MDL")),
+      GLOBALS.scratch_str = istring(
+          32)
+      GLOBALS.dev = "DSK"
+      GLOBALS.snm = "MDL"),
     (sname(
         "")
-      setg(
-        dev,
-        "DSK")
-      setg(
-        snm,
-        "MADMAN"))),
+      GLOBALS.dev = "DSK"
+      GLOBALS.snm = "MADMAN")),
   int_level(
     100000),
   cond(
@@ -115,10 +97,8 @@ define(
               3))
           or(
             member(
-              setg(
-                xunm,
-                xuname(
-                  )),
+              GLOBALS.xunm = xuname(
+                  ),
               GLOBALS.winners),
             __Q(
               GLOBALS.xunm,
@@ -137,9 +117,7 @@ define(
         (type_Q(
             _stv,
             string)
-          setg(
-            snm,
-            substruc(
+          GLOBALS.snm = substruc(
               GLOBALS.scratch_str,
               0,
               _(
@@ -148,15 +126,13 @@ define(
                 length(
                   memq(
                     _X__,
-                    _stv)))))))
+                    _stv))))))
       cond(
         (g_Q(
             GLOBALS.muddle,
             100)
-          setg(
-            tenex_Q,
-            getsys(
-              ))),
+          GLOBALS.tenex_Q = getsys(
+              )),
         (apply(
             GLOBALS.ipc_off)
           apply(
@@ -176,25 +152,15 @@ define(
 
 "Stuff for diverting gc's"
 
-setg(
-  divert_cnt,
-  0)
+GLOBALS.divert_cnt = 0
 
-setg(
-  divert_max,
-  99)
+GLOBALS.divert_max = 99
 
-setg(
-  divert_inc,
-  4000)
+GLOBALS.divert_inc = 4000
 
-setg(
-  divert_amt,
-  0)
+GLOBALS.divert_amt = 0
 
-setg(
-  divert_lmt,
-  100000)
+GLOBALS.divert_lmt = 100000
 
 gdecl(
   (divert_cnt
@@ -208,17 +174,13 @@ define(
   divert_fcn,
   (amt
     reason),
-  setg(
-    divert_cnt,
-    _(
+  GLOBALS.divert_cnt = _(
       GLOBALS.divert_cnt,
-      1)),
-  setg(
-    divert_amt,
-    _(
+      1),
+  GLOBALS.divert_amt = _(
       GLOBALS.divert_amt,
       GLOBALS.divert_inc,
-      _amt)),
+      _amt),
   cond(
     (or(
         g_Q(
@@ -228,11 +190,7 @@ define(
           GLOBALS.divert_amt,
           GLOBALS.divert_lmt))
       // Too much diversion ?
-      setg(
-        divert_amt,
-        setg(
-          divert_cnt,
-          0))
+      GLOBALS.divert_amt = GLOBALS.divert_cnt = 0
       gc_fcn(
         )
       gc(
@@ -252,15 +210,11 @@ define(
           GLOBALS.divert_inc))
       // Get storage desired plus extra increment)))
 
-setg(
-  divert_hand,
-  handler(
-    setg(
-      divert_int,
-      event(
+GLOBALS.divert_hand = handler(
+    GLOBALS.divert_int = event(
         "DIVERT-AGC",
-        1000)),
-    GLOBALS.divert_fcn))
+        1000),
+    GLOBALS.divert_fcn)
 
 off(
   GLOBALS.divert_hand)
@@ -271,21 +225,13 @@ define(
     t),
   off(
     GLOBALS.gc_hand),
-  setg(
-    divert_amt,
-    setg(
-      divert_cnt,
-      0)))
+  GLOBALS.divert_amt = GLOBALS.divert_cnt = 0)
 
-setg(
-  gc_hand,
-  handler(
-    setg(
-      gc_int,
-      event(
+GLOBALS.gc_hand = handler(
+    GLOBALS.gc_int = event(
         "GC",
-        11)),
-    GLOBALS.gc_fcn))
+        11),
+    GLOBALS.gc_fcn)
 
 off(
   GLOBALS.gc_hand)
@@ -454,13 +400,9 @@ define(
               rest(
                 _tstr,
                 _llst)))
-          setg(
-            user_name,
-            _str)),
+          GLOBALS.user_name = _str),
         (else
-          setg(
-            user_name,
-            _nm))))))
+          GLOBALS.user_name = _nm)))))
 
 define(
   unspeakable_code,
@@ -566,9 +508,7 @@ define(
   tell(
     GLOBALS.vers))
 
-setg(
-  played_time,
-  0)
+GLOBALS.played_time = 0
 
 gdecl(
   (played_time),
@@ -669,9 +609,7 @@ define(
     time,
     get_time(
       )),
-  setg(
-    tell_flag,
-    t),
+  GLOBALS.tell_flag = t,
   cond(
     (_loser_Q
       princ(
@@ -781,9 +719,7 @@ define(
       and(
         gassigned_Q(
           saverep),
-        setg(
-          rep,
-          GLOBALS.saverep))
+        GLOBALS.rep = GLOBALS.saverep)
       and(
         assigned_Q(
           bh),
@@ -791,12 +727,8 @@ define(
           _bh))
       int_level(
         0)
-      setg(
-        dbg,
-        t)
-      setg(
-        alt_flag,
-        t)),
+      GLOBALS.dbg = t
+      GLOBALS.alt_flag = t),
     (t
       cond(
         (and(
@@ -907,9 +839,7 @@ or(
     get(
       package,
       oblist)),
-  setg(
-    errh,
-    handler(
+  GLOBALS.errh = handler(
       or(
         get(
           error_X_interrupts,
@@ -917,7 +847,7 @@ or(
         event(
           "ERROR",
           8)),
-      GLOBALS.handle)))
+      GLOBALS.handle))
 
 gdecl(
   (moves),
@@ -952,22 +882,16 @@ define(
       or(
         false,
         string)),
-  setg(
-    xunm,
-    _xunm),
-  setg(
-    ptemp,
-    chtype(
+  GLOBALS.xunm = _xunm,
+  GLOBALS.ptemp = chtype(
       [chtype(
           with_X_words,
           prep)
         find_obj(
           "!!!!!")],
-      phrase)),
-  setg(
-    intime,
-    dskdate(
-      )),
+      phrase),
+  GLOBALS.intime = dskdate(
+      ),
   cond(
     (l_Q(
         _muddle,
@@ -995,28 +919,16 @@ define(
           )))),
   cond(
     (_fn
-      setg(
-        user_name,
-        _fn)),
-    (setg(
-        user_name,
-        _xunm))),
-  setg(
-    deaths,
-    0),
-  setg(
-    moves,
-    0),
-  setg(
-    winner,
-    GLOBALS.player),
+      GLOBALS.user_name = _fn),
+    (GLOBALS.user_name = _xunm)),
+  GLOBALS.deaths = 0,
+  GLOBALS.moves = 0,
+  GLOBALS.winner = GLOBALS.player,
   put(
     GLOBALS.winner,
     GLOBALS.aroom,
-    setg(
-      here,
-      find_room(
-        _rm))),
+    GLOBALS.here = find_room(
+        _rm)),
   tell(
     "Welcome to Dungeon.",
     1,
@@ -1034,9 +946,7 @@ define(
 define(
   contin,
   (),
-  setg(
-    alt_flag,
-    <>),
+  GLOBALS.alt_flag = <>,
   put(
     1(
       back(
@@ -1056,26 +966,18 @@ define(
       (t
         #lose
           _000000000015_))),
-  setg(
-    saverep,
-    GLOBALS.rep),
-  setg(
-    rep,
-    GLOBALS.rdcom),
+  GLOBALS.saverep = GLOBALS.rep,
+  GLOBALS.rep = GLOBALS.rdcom,
   reset(
     GLOBALS.inchan),
-  setg(
-    winner,
-    GLOBALS.player),
+  GLOBALS.winner = GLOBALS.player,
   put(
     GLOBALS.prsvec,
     2,
     <>),
   GLOBALS.null)
 
-setg(
-  my_script,
-  <>)
+GLOBALS.my_script = <>
 
 gdecl(
   (my_script),
@@ -1113,12 +1015,8 @@ define(
           GLOBALS.outchan),
         1,
         (_ch))
-      setg(
-        script_channel,
-        _ch)
-      setg(
-        my_script,
-        t))))
+      GLOBALS.script_channel = _ch
+      GLOBALS.my_script = t)))
 
 define(
   flush_me,
@@ -1206,9 +1104,7 @@ define(
           GLOBALS.outchan),
         1,
         (_ch))
-      setg(
-        script_channel,
-        _ch)
+      GLOBALS.script_channel = _ch
       cond(
         (l_Q(
             GLOBALS.muddle,
@@ -1252,9 +1148,7 @@ define(
         ())
       close(
         GLOBALS.script_channel)
-      setg(
-        script_channel,
-        <>)
+      GLOBALS.script_channel = <>
       and(
         _verbose,
         tell(
@@ -1332,16 +1226,12 @@ define(
           off(
             "CHAR",
             GLOBALS.inchan)
-          setg(
-            then,
-            chtype(
+          GLOBALS.then = chtype(
               dskdate(
                 ),
-              fix))
-          setg(
-            played_time,
-            get_time(
-              ))
+              fix)
+          GLOBALS.played_time = get_time(
+              )
           cond(
             (set(
                 ch,
@@ -1522,9 +1412,7 @@ define(
                       "It's too soon.")
                     quit(
                       )))))
-            setg(
-              intime,
-              _now)
+            GLOBALS.intime = _now
             tell(
               "Restored.")),
           (tell(
@@ -1613,13 +1501,9 @@ define(
 
 // ROOM-INFO --  PRINT SOMETHING ABOUT THIS PLACE  1. CHECK FOR LIGHT --> ELSE WARN LOSER  2. GIVE A DESCRIPTION OF THE ROOM  3. TELL WHAT'S ON THE FLOOR IN THE WAY OF OBJECTS  4. SIGNAL ENTRY INTO THE ROOM
 
-setg(
-  brief_X_flag,
-  <>)
+GLOBALS.brief_X_flag = <>
 
-setg(
-  super_brief_X_flag,
-  <>)
+GLOBALS.super_brief_X_flag = <>
 
 gdecl(
   (super_brief_X_flag
@@ -1631,39 +1515,29 @@ gdecl(
 define(
   brief,
   (),
-  setg(
-    brief_X_flag,
-    t),
+  GLOBALS.brief_X_flag = t,
   tell(
     "Brief descriptions."))
 
 define(
   super_brief,
   (),
-  setg(
-    super_brief_X_flag,
-    t),
+  GLOBALS.super_brief_X_flag = t,
   tell(
     "No long descriptions."))
 
 define(
   un_brief,
   (),
-  setg(
-    brief_X_flag,
-    <>),
-  setg(
-    super_brief_X_flag,
-    <>),
+  GLOBALS.brief_X_flag = <>,
+  GLOBALS.super_brief_X_flag = <>,
   tell(
     "Long descriptions."))
 
 define(
   un_super_brief,
   (),
-  setg(
-    super_brief_X_flag,
-    <>),
+  GLOBALS.super_brief_X_flag = <>,
   tell(
     "Some long descriptions."))
 
@@ -1713,9 +1587,7 @@ define(
       or(
         atom,
         false)),
-  setg(
-    tell_flag,
-    t),
+  GLOBALS.tell_flag = t,
   and(
     type_Q(
       _prso,
@@ -2134,9 +2006,7 @@ define(
           GLOBALS.here)
         princ(
           ">")
-        setg(
-          tell_flag,
-          <>)
+        GLOBALS.tell_flag = <>
         set(
           inplen,
           readstring(
@@ -2161,15 +2031,11 @@ define(
       (g_Q(
           _inplen,
           0)
-        setg(
-          moves,
-          _(
+        GLOBALS.moves = _(
             GLOBALS.moves,
-            1))
+            1)
         cond(
-          (setg(
-              parse_won,
-              and(
+          (GLOBALS.parse_won = and(
                 eparse(
                   or(
                     _ivec,
@@ -2182,7 +2048,7 @@ define(
                       set(
                         rvec,
                         GLOBALS.prsvec))),
-                  verb)))
+                  verb))
             cond(
               (not(
                   set(
@@ -2241,9 +2107,7 @@ define(
           tell(
             "Nothing happens."))),
       (t
-        setg(
-          parse_won,
-          <>)
+        GLOBALS.parse_won = <>
         tell(
           "Beg pardon?"))),
     mapf(
@@ -2340,11 +2204,9 @@ define(
       ascore(
         _winner),
       _num)),
-  setg(
-    raw_score,
-    _(
+  GLOBALS.raw_score = _(
       GLOBALS.raw_score,
-      _num)))
+      _num))
 
 define(
   score,
@@ -2367,9 +2229,7 @@ define(
       channel
       (pct)
       float),
-  setg(
-    tell_flag,
-    t),
+  GLOBALS.tell_flag = t,
   crlf(
     ),
   cond(
@@ -2497,10 +2357,8 @@ define(
 
 "PRINT OUT DESCRIPTION OF LOSSAGE:  WHEN PLAYED, SCORE, # MOVES, ETC."
 
-setg(
-  record_string,
-  istring(
-    5))
+GLOBALS.record_string = istring(
+    5)
 
 gdecl(
   (record_string),
@@ -3134,11 +2992,9 @@ define(
                 "You clearly are a suicidal maniac.  We don't allow psychotics in the\ncave, since they may harm other adventurers.  Your remains will\ninstalled in the Land of the Living Dead, where your fellow adventurers \nmay gloat over them.")
               finish(
                 <>)),
-            (setg(
-                deaths,
-                _(
+            (GLOBALS.deaths = _(
                   _deaths,
-                  1))
+                  1)
               tell(
                 _desc)
               tell(
@@ -3211,9 +3067,7 @@ define(
                   goto(
                     find_room(
                       "FORE1"))
-                  setg(
-                    egypt_flag_X_flag,
-                    t)
+                  GLOBALS.egypt_flag_X_flag = t
                   set(
                     val_list,
                     rob_adv(
@@ -3390,9 +3244,7 @@ define(
                 1))),
           crlf(
             GLOBALS.outchan),
-          setg(
-            tell_flag,
-            t),
+          GLOBALS.tell_flag = t,
           repeat(
             (slen),
             #decl
@@ -4449,14 +4301,12 @@ define(
 
 "STUFF FOR 'EVERYTHING' AND 'VALUABLES'"
 
-setg(
-  obj_uv,
-  chutype(
+GLOBALS.obj_uv = chutype(
     rest(
       iuvector(
         20),
       20),
-    object))
+    object)
 
 gdecl(
   (obj_uv),
@@ -5008,9 +4858,7 @@ define(
                   _prso))
               tell(
                 "Opened.")),
-            (setg(
-                tell_flag,
-                t)
+            (GLOBALS.tell_flag = t
               tell(
                 "Opening the",
                 0,
@@ -5551,10 +5399,8 @@ define(
 
 "PARSER & AUXILIARIES"
 
-setg(
-  inbuf,
-  istring(
-    100))
+GLOBALS.inbuf = istring(
+    100)
 
 // SET UP INPUT ERROR HANDLER TO CAUSE EPARSE TO FALSE OUT
 
@@ -5562,12 +5408,10 @@ psetg(
   cntprs,
   "I can't parse that.")
 
-setg(
-  prsvec,
-  ivector(
+GLOBALS.prsvec = ivector(
     3,
     #false
-      ()))
+      ())
 
 define(
   word_Q,
@@ -5611,14 +5455,12 @@ define(
             oadjs(
               _obj)))))))
 
-setg(
-  lexv,
-  ivector(
+GLOBALS.lexv = ivector(
     10,
     () => rest(
         istring(
           5),
-        5)))
+        5))
 
 gdecl(
   (lexv),
@@ -6030,9 +5872,7 @@ define(
         GLOBALS.ctick,
         _num))))
 
-setg(
-  demons,
-  ())
+GLOBALS.demons = ()
 
 or(
   lookup(
@@ -6042,12 +5882,10 @@ or(
   gassigned_Q(
     group_glue),
   add_demon(
-    setg(
-      clocker,
-      chtype(
+    GLOBALS.clocker = chtype(
         [clock_demon
           ()],
-        hack))))
+        hack)))
 
 define(
   board,
@@ -6266,9 +6104,7 @@ define(
       put(
         GLOBALS.winner,
         GLOBALS.aroom,
-        setg(
-          here,
-          _rm))
+        GLOBALS.here = _rm)
       score_room(
         _rm)
       t)))
@@ -6343,17 +6179,11 @@ define(
     (trnn(
         _po,
         GLOBALS.actorbit)
-      setg(
-        winner,
-        orand(
-          _po))
+      GLOBALS.winner = orand(
+          _po)
       rdcom(
         _v)
-      setg(
-        winner,
-        _play)
-      setg(
-        here,
-        _hs)),
+      GLOBALS.winner = _play
+      GLOBALS.here = _hs),
     (tell(
         "You cannot talk to that!"))))
