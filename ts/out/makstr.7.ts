@@ -1,81 +1,81 @@
 define(
   cevent,
-  (tick
-    app
-    flg
-    name
-    "AUX"
-    (obl
+  /*(*/ [tick,
+    app,
+    flg,
+    name,
+    "AUX",
+    /*(*/ [obl,
       get(
         initial,
-        oblist))
-    atm),
-  #decl
-    ((tick)
-      fix
-      (app)
+        oblist)] /*)*/,
+    atm] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [tick] /*)*/,
+      fix,
+      /*(*/ [app] /*)*/,
       or(
         applicable,
-        offset)
-      (flg)
+        offset),
+      /*(*/ [flg] /*)*/,
       or(
         atom,
-        false)
-      (name)
+        false),
+      /*(*/ [name] /*)*/,
       or(
         atom,
-        string)
-      (atm)
+        string),
+      /*(*/ [atm] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   cond(
-    (type_Q(
+    /*(*/ [type_Q(
         LOCALS.name,
-        string)
+        string),
       cond(
-        (LOCALS.atm = lookup(
+        /*(*/ [LOCALS.atm = lookup(
               LOCALS.name,
-              LOCALS.obl)),
-        (t
+              LOCALS.obl)] /*)*/,
+        /*(*/ [t,
           LOCALS.atm = insert(
               LOCALS.name,
-              LOCALS.obl)))),
-    (LOCALS.atm = LOCALS.name)),
+              LOCALS.obl)] /*)*/)] /*)*/,
+    /*(*/ [LOCALS.atm = LOCALS.name] /*)*/),
   setg(
     LOCALS.atm,
     chtype(
-      [LOCALS.tick
-        LOCALS.app
-        LOCALS.flg
-        LOCALS.atm],
+      /*[*/ [LOCALS.tick,
+        LOCALS.app,
+        LOCALS.flg,
+        LOCALS.atm] /*]*/,
       cevent)))
 
 define(
   cons_obj,
-  ("TUPLE"
-    objs
-    "AUX"
-    (winner
-      GLOBALS.winner)),
-  #decl
-    ((objs)
+  /*(*/ ["TUPLE",
+    objs,
+    "AUX",
+    /*(*/ [winner,
+      GLOBALS.winner] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [objs] /*)*/,
       tuple(
-        [rest
-          string])
-      (winner)
-      adv),
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [winner] /*)*/,
+      adv] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x
-        "AUX"
-        (y
+      /*(*/ [x,
+        "AUX",
+        /*(*/ [y,
           find_obj(
-            LOCALS.x))),
-      #decl
-        ((y)
-          object),
+            LOCALS.x)] /*)*/] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [y] /*)*/,
+          object] /*)*/] /*2*/,
       or(
         memq(
           LOCALS.y,
@@ -89,48 +89,48 @@ define(
 
 define(
   cexit,
-  (flid
-    rmid
-    "OPTIONAL"
-    (str
-      null)
-    (flag
-      null)
-    (funct
-      null)
-    "AUX"
-    (fval
-      null)
-    atm),
-  #decl
-    ((str)
+  /*(*/ [flid,
+    rmid,
+    "OPTIONAL",
+    /*(*/ [str,
+      null] /*)*/,
+    /*(*/ [flag,
+      null] /*)*/,
+    /*(*/ [funct,
+      null] /*)*/,
+    "AUX",
+    /*(*/ [fval,
+      null] /*)*/,
+    atm] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [str] /*)*/,
       or(
         false,
-        string)
-      (flid
-        rmid)
+        string),
+      /*(*/ [flid,
+        rmid] /*)*/,
       or(
         atom,
-        string)
-      (atm
-        funct)
+        string),
+      /*(*/ [atm,
+        funct] /*)*/,
       or(
         atom,
-        false)
-      (fval)
+        false),
+      /*(*/ [fval] /*)*/,
       or(
         applicable,
-        false)
-      (flag)
+        false),
+      /*(*/ [flag] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   cond(
-    (type_Q(
+    /*(*/ [type_Q(
         LOCALS.flid,
-        atom)
+        atom),
       LOCALS.flid = spname(
-          LOCALS.flid))),
+          LOCALS.flid)] /*)*/),
   LOCALS.atm = or(
       lookup(
         LOCALS.flid,
@@ -156,51 +156,51 @@ define(
 
 define(
   exit,
-  ("TUPLE"
-    pairs
-    "AUX"
-    (dobl
-      GLOBALS.directions)
-    (frob
+  /*(*/ ["TUPLE",
+    pairs,
+    "AUX",
+    /*(*/ [dobl,
+      GLOBALS.directions] /*)*/,
+    /*(*/ [frob,
       ivector(
         length(
-          LOCALS.pairs)))),
-  #decl
-    ((pairs)
+          LOCALS.pairs))] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [pairs] /*)*/,
       tuple(
-        [rest
-          string
+        /*[*/ [rest,
+          string,
           or(
             nexit,
             cexit,
             string,
-            atom)])
-      (dir)
+            atom)] /*]*/),
+      /*(*/ [dir] /*)*/,
       list(
-        [rest
-          atom])
-      (frob)
-      vector
-      (dobl)
-      oblist),
+        /*[*/ [rest,
+          atom] /*]*/),
+      /*(*/ [frob] /*)*/,
+      vector,
+      /*(*/ [dobl] /*)*/,
+      oblist] /*)*/] /*2*/,
   repeat(
-    (atm
-      rm
-      (f
-        LOCALS.frob)),
-    #decl
-      ((atm)
+    /*(*/ [atm,
+      rm,
+      /*(*/ [f,
+        LOCALS.frob] /*)*/] /*)*/,
+    /*#*/ [decl,
+      /*(*/ [/*(*/ [atm] /*)*/,
         or(
           atom,
-          false)
-        (rm)
+          false),
+        /*(*/ [rm] /*)*/,
         or(
           room,
-          false)
-        (f)
-        vector),
+          false),
+        /*(*/ [f] /*)*/,
+        vector] /*)*/] /*2*/,
     cond(
-      (or(
+      /*(*/ [or(
           and(
             LOCALS.atm = lookup(
                 1(
@@ -209,95 +209,95 @@ define(
             gassigned_Q(
               LOCALS.atm),
             type_Q(
-              ,LOCALS.atm,
-              direction)))
+              /*,*/ [LOCALS.atm] /*1*/,
+              direction))),
         put(
           LOCALS.f,
           1,
-          LOCALS.atm)
+          LOCALS.atm),
         cond(
-          (type_Q(
+          /*(*/ [type_Q(
               2(
                 LOCALS.pairs),
-              string)
+              string),
             put(
               LOCALS.f,
               2,
               find_room(
                 2(
-                  LOCALS.pairs)))),
-          (put(
+                  LOCALS.pairs)))] /*)*/,
+          /*(*/ [put(
               LOCALS.f,
               2,
               2(
-                LOCALS.pairs))))
+                LOCALS.pairs))] /*)*/),
         LOCALS.f = rest(
             LOCALS.f,
-            2)),
-      (t
+            2)] /*)*/,
+      /*(*/ [t,
         put(
           LOCALS.pairs,
           1,
           error(
             illegal_direction,
             1(
-              LOCALS.pairs))))),
+              LOCALS.pairs)))] /*)*/),
     cond(
-      (empty_Q(
+      /*(*/ [empty_Q(
           LOCALS.pairs = rest(
               LOCALS.pairs,
-              2))
+              2)),
         return(
-          )))),
+          )] /*)*/)),
   chtype(
     LOCALS.frob,
     exit))
 
 define(
   room,
-  (id
-    d1
-    d2
-    lit_Q
-    ex
-    "OPTIONAL"
-    (objs
-      ())
-    (app
-      null)
-    (val
-      0)
-    (bit
-      GLOBALS.rlandbit)
-    "AUX"
-    (rm
+  /*(*/ [id,
+    d1,
+    d2,
+    lit_Q,
+    ex,
+    "OPTIONAL",
+    /*(*/ [objs,
+      /*(*/ [] /*)*/] /*)*/,
+    /*(*/ [app,
+      null] /*)*/,
+    /*(*/ [val,
+      0] /*)*/,
+    /*(*/ [bit,
+      GLOBALS.rlandbit] /*)*/,
+    "AUX",
+    /*(*/ [rm,
       find_room(
-        LOCALS.id))),
-  #decl
-    ((id)
+        LOCALS.id)] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
       or(
         string,
-        atom)
-      (d1
-        d2)
-      string
-      (lit_Q)
+        atom),
+      /*(*/ [d1,
+        d2] /*)*/,
+      string,
+      /*(*/ [lit_Q] /*)*/,
       or(
         atom,
         form,
-        false)
-      (ex)
-      exit
-      (app)
+        false),
+      /*(*/ [ex] /*)*/,
+      exit,
+      /*(*/ [app] /*)*/,
       or(
         form,
         false,
-        atom)
-      (val
-        bit)
-      fix
-      (rm)
-      room),
+        atom),
+      /*(*/ [val,
+        bit] /*)*/,
+      fix,
+      /*(*/ [rm] /*)*/,
+      room] /*)*/] /*2*/,
   GLOBALS.score_max = _(
       GLOBALS.score_max,
       LOCALS.val),
@@ -329,29 +329,29 @@ define(
     LOCALS.rm,
     GLOBALS.raction,
     cond(
-      (type_Q(
+      /*(*/ [type_Q(
           LOCALS.app,
           false,
-          form)
-        null),
-      (LOCALS.app))),
+          form),
+        null] /*)*/,
+      /*(*/ [LOCALS.app] /*)*/)),
   put(
     LOCALS.rm,
     GLOBALS.rlight_Q,
     cond(
-      (type_Q(
+      /*(*/ [type_Q(
           LOCALS.lit_Q,
-          form)
-        null),
-      (t
-        LOCALS.lit_Q))),
+          form),
+        null] /*)*/,
+      /*(*/ [t,
+        LOCALS.lit_Q] /*)*/)),
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       put(
         LOCALS.x,
         GLOBALS.oroom,
@@ -362,22 +362,22 @@ define(
 
 define(
   sobject,
-  (id
-    str
-    "TUPLE"
-    tup),
-  #decl
-    ((id)
-      string
-      (tup)
-      tuple),
+  /*(*/ [id,
+    str,
+    "TUPLE",
+    tup] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
+      string,
+      /*(*/ [tup] /*)*/,
+      tuple] /*)*/] /*2*/,
   object(
     LOCALS.id,
     "",
     LOCALS.str,
-    %null,
+    /*%*/ [null] /*1*/,
     null,
-    (),
+    /*(*/ [] /*)*/,
     null,
     _(
       _X,
@@ -385,25 +385,25 @@ define(
 
 define(
   aobject,
-  (id
-    str
-    app
-    "TUPLE"
-    tup),
-  #decl
-    ((id)
-      string
-      (tup)
-      tuple
-      (app)
-      atom),
+  /*(*/ [id,
+    str,
+    app,
+    "TUPLE",
+    tup] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
+      string,
+      /*(*/ [tup] /*)*/,
+      tuple,
+      /*(*/ [app] /*)*/,
+      atom] /*)*/] /*2*/,
   object(
     LOCALS.id,
     "",
     LOCALS.str,
-    %null,
+    /*%*/ [null] /*1*/,
     LOCALS.app,
-    (),
+    /*(*/ [] /*)*/,
     null,
     _(
       _X,
@@ -411,60 +411,60 @@ define(
 
 define(
   object,
-  (id
-    desc1
-    desc2
-    desco
-    app
-    conts
-    can
-    flags
-    "OPTIONAL"
-    (light_Q
-      0)
-    (s1
-      0)
-    (s2
-      0)
-    (size
-      5)
-    (capac
-      0)),
-  #decl
-    ((id)
+  /*(*/ [id,
+    desc1,
+    desc2,
+    desco,
+    app,
+    conts,
+    can,
+    flags,
+    "OPTIONAL",
+    /*(*/ [light_Q,
+      0] /*)*/,
+    /*(*/ [s1,
+      0] /*)*/,
+    /*(*/ [s2,
+      0] /*)*/,
+    /*(*/ [size,
+      5] /*)*/,
+    /*(*/ [capac,
+      0] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
       or(
         atom,
-        string)
-      (desc1
-        desc2)
-      string
-      (app)
+        string),
+      /*(*/ [desc1,
+        desc2] /*)*/,
+      string,
+      /*(*/ [app] /*)*/,
       or(
         false,
         form,
-        atom)
-      (conts)
+        atom),
+      /*(*/ [conts] /*)*/,
       list(
-        [rest
-          object])
-      (can)
+        /*[*/ [rest,
+          object] /*]*/),
+      /*(*/ [can] /*)*/,
       or(
         false,
-        object)
-      (flags)
+        object),
+      /*(*/ [flags] /*)*/,
       primtype(
-        word)
-      (size
-        capac)
-      fix
-      (light_Q
-        s1
-        s2)
-      fix
-      (desco)
+        word),
+      /*(*/ [size,
+        capac] /*)*/,
+      fix,
+      /*(*/ [light_Q,
+        s1,
+        s2] /*)*/,
+      fix,
+      /*(*/ [desco] /*)*/,
       or(
         string,
-        false)),
+        false)] /*)*/] /*2*/,
   GLOBALS.score_max = _(
       GLOBALS.score_max,
       LOCALS.s1,
@@ -513,96 +513,96 @@ define(
       LOCALS.desc2),
     GLOBALS.oaction,
     cond(
-      (type_Q(
+      /*(*/ [type_Q(
           LOCALS.app,
           false,
-          form)
-        null),
-      (LOCALS.app))))
+          form),
+        null] /*)*/,
+      /*(*/ [LOCALS.app] /*)*/)))
 
 define(
   find_prep,
-  (str
-    "AUX"
-    (atm
+  /*(*/ [str,
+    "AUX",
+    /*(*/ [atm,
       add_word(
-        LOCALS.str))),
-  #decl
-    ((str)
-      string
-      (atm)
+        LOCALS.str)] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [str] /*)*/,
+      string,
+      /*(*/ [atm] /*)*/,
       or(
         false,
-        atom)),
+        atom)] /*)*/] /*2*/,
   cond(
-    (gassigned_Q(
-        LOCALS.atm)
+    /*(*/ [gassigned_Q(
+        LOCALS.atm),
       cond(
-        (type_Q(
-            ,LOCALS.atm,
-            prep)
-          ,LOCALS.atm),
-        (error(
-            no_prep_X_errors)))),
-    (setg(
+        /*(*/ [type_Q(
+            /*,*/ [LOCALS.atm] /*1*/,
+            prep),
+          /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+        /*(*/ [error(
+            no_prep_X_errors)] /*)*/)] /*)*/,
+    /*(*/ [setg(
         LOCALS.atm,
         chtype(
           LOCALS.atm,
-          prep)))))
+          prep))] /*)*/))
 
 define(
   add_action,
-  (nam
-    str
-    "TUPLE"
-    decl
-    "AUX"
-    (atm
+  /*(*/ [nam,
+    str,
+    "TUPLE",
+    decl,
+    "AUX",
+    /*(*/ [atm,
       or(
         lookup(
           LOCALS.nam,
           GLOBALS.actions),
         insert(
           LOCALS.nam,
-          GLOBALS.actions)))),
-  #decl
-    ((nam
-        str)
-      string
-      (decl)
+          GLOBALS.actions))] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [nam,
+        str] /*)*/,
+      string,
+      /*(*/ [decl] /*)*/,
       tuple(
-        [rest
-          vector])
-      (atm)
-      atom),
+        /*[*/ [rest,
+          vector] /*]*/),
+      /*(*/ [atm] /*)*/,
+      atom] /*)*/] /*2*/,
   setg(
     LOCALS.atm,
     chtype(
-      [LOCALS.atm
+      /*[*/ [LOCALS.atm,
         make_action(
           _X,
-          LOCALS.decl)
-        LOCALS.str],
+          LOCALS.decl),
+        LOCALS.str] /*]*/,
       action)),
   LOCALS.atm)
 
 define(
   add_directions,
-  ("TUPLE"
-    nms
-    "AUX"
-    (dir
-      GLOBALS.directions)
-    atm),
-  #decl
-    ((nms)
+  /*(*/ ["TUPLE",
+    nms,
+    "AUX",
+    /*(*/ [dir,
+      GLOBALS.directions] /*)*/,
+    atm] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [nms] /*)*/,
       tuple(
-        [rest
-          string])
-      (dir)
-      oblist
-      (atm)
-      atom),
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [dir] /*)*/,
+      oblist,
+      /*(*/ [atm] /*)*/,
+      atom] /*)*/] /*2*/,
   mapf(
     null,
     /* FUNCTION */
@@ -622,27 +622,27 @@ define(
 
 define(
   dsynonym,
-  (str
-    "TUPLE"
-    nms
-    "AUX"
-    val
-    (dir
-      GLOBALS.directions)
-    atm),
-  #decl
-    ((atm)
-      atom
-      (str)
-      string
-      (nms)
+  /*(*/ [str,
+    "TUPLE",
+    nms,
+    "AUX",
+    val,
+    /*(*/ [dir,
+      GLOBALS.directions] /*)*/,
+    atm] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [atm] /*)*/,
+      atom,
+      /*(*/ [str] /*)*/,
+      string,
+      /*(*/ [nms] /*)*/,
       tuple(
-        [rest
-          string])
-      (val)
-      direction
-      (dir)
-      oblist),
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [val] /*)*/,
+      direction,
+      /*(*/ [dir] /*)*/,
+      oblist] /*)*/] /*2*/,
   LOCALS.val = add_directions(
       LOCALS.str),
   mapf(
@@ -662,30 +662,30 @@ define(
 
 define(
   vsynonym,
-  (n1
-    "TUPLE"
-    n2
-    "AUX"
-    atm
-    val),
-  #decl
-    ((n1)
-      string
-      (n2)
+  /*(*/ [n1,
+    "TUPLE",
+    n2,
+    "AUX",
+    atm,
+    val] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [n1] /*)*/,
+      string,
+      /*(*/ [n2] /*)*/,
       tuple(
-        [rest
-          string])
-      (atm)
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [atm] /*)*/,
       or(
         false,
-        atom)
-      (val)
-      any),
+        atom),
+      /*(*/ [val] /*)*/,
+      any] /*)*/] /*2*/,
   cond(
-    (LOCALS.atm = lookup(
+    /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
-          GLOBALS.words)
-      LOCALS.val = ,LOCALS.atm
+          GLOBALS.words),
+      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -694,12 +694,12 @@ define(
           add_word(
               LOCALS.x),
           LOCALS.val),
-        LOCALS.n2))),
+        LOCALS.n2)] /*)*/),
   cond(
-    (LOCALS.atm = lookup(
+    /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
-          GLOBALS.actions)
-      LOCALS.val = ,LOCALS.atm
+          GLOBALS.actions),
+      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -713,16 +713,16 @@ define(
                 LOCALS.x,
                 GLOBALS.actions)),
           LOCALS.val),
-        LOCALS.n2))))
+        LOCALS.n2)] /*)*/))
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
 define(
   add_word,
-  (w),
-  #decl
-    ((w)
-      string),
+  /*(*/ [w] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [w] /*)*/,
+      string] /*)*/] /*2*/,
   or(
     lookup(
       LOCALS.w,
@@ -733,20 +733,20 @@ define(
 
 define(
   add_buzz,
-  ("TUPLE"
-    w),
-  #decl
-    ((w)
+  /*(*/ ["TUPLE",
+    w] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [w] /*)*/,
       tuple(
-        [rest
-          string])),
+        /*[*/ [rest,
+          string] /*]*/)] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          string),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          string] /*)*/] /*2*/,
       setg(
         add_word(
           LOCALS.x),
@@ -757,27 +757,27 @@ define(
 
 define(
   add_zork,
-  (nm
-    "TUPLE"
-    w),
-  #decl
-    ((nm)
-      atom
-      (w)
+  /*(*/ [nm,
+    "TUPLE",
+    w] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [nm] /*)*/,
+      atom,
+      /*(*/ [w] /*)*/,
       tuple(
-        [rest
-          string])),
+        /*[*/ [rest,
+          string] /*]*/)] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x
-        "AUX"
-        atm),
-      #decl
-        ((x)
-          string
-          (atm)
-          atom),
+      /*(*/ [x,
+        "AUX",
+        atm] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          string,
+          /*(*/ [atm] /*)*/,
+          atom] /*)*/] /*2*/,
       setg(
         LOCALS.atm = add_word(
             LOCALS.x),
@@ -788,34 +788,34 @@ define(
 
 define(
   add_object,
-  (obj
-    names
-    "OPTIONAL"
-    (adj
-      () => [])
-    "AUX"
-    (objs
-      GLOBALS.object_obl)),
-  #decl
-    ((obj)
-      object
-      (names
-        adj)
+  /*(*/ [obj,
+    names,
+    "OPTIONAL",
+    /*(*/ [adj,
+      () => /*[*/ [] /*]*/] /*)*/,
+    "AUX",
+    /*(*/ [objs,
+      GLOBALS.object_obl] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [names,
+        adj] /*)*/,
       vector(
-        [rest
-          string])
-      (objs)
-      oblist),
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [objs] /*)*/,
+      oblist] /*)*/] /*2*/,
   put(
     LOCALS.obj,
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
       function(
-        (x),
-        #decl
-          ((x)
-            string),
+        /*(*/ [x] /*)*/,
+        /*#*/ [decl,
+          /*(*/ [/*(*/ [x] /*)*/,
+            string] /*)*/] /*2*/,
         or(
           lookup(
             LOCALS.x,
@@ -843,30 +843,30 @@ define(
 
 define(
   synonym,
-  (n1
-    "TUPLE"
-    n2
-    "AUX"
-    atm
-    val),
-  #decl
-    ((n1)
-      string
-      (n2)
+  /*(*/ [n1,
+    "TUPLE",
+    n2,
+    "AUX",
+    atm,
+    val] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [n1] /*)*/,
+      string,
+      /*(*/ [n2] /*)*/,
       tuple(
-        [rest
-          string])
-      (atm)
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [atm] /*)*/,
       or(
         false,
-        atom)
-      (val)
-      any),
+        atom),
+      /*(*/ [val] /*)*/,
+      any] /*)*/] /*2*/,
   cond(
-    (LOCALS.atm = lookup(
+    /*(*/ [LOCALS.atm = lookup(
           LOCALS.n1,
-          GLOBALS.words)
-      LOCALS.val = ,LOCALS.atm
+          GLOBALS.words),
+      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -875,17 +875,17 @@ define(
           add_word(
               LOCALS.x),
           LOCALS.val),
-        LOCALS.n2))))
+        LOCALS.n2)] /*)*/))
 
 define(
   add_abbrev,
-  (x
-    y
-    "AUX"),
-  #decl
-    ((x
-        y)
-      string),
+  /*(*/ [x,
+    y,
+    "AUX"] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [x,
+        y] /*)*/,
+      string] /*)*/] /*2*/,
   setg(
     add_word(
       LOCALS.x),
@@ -899,89 +899,89 @@ define(
 
 define(
   add_demon,
-  (x),
-  #decl
-    ((x)
-      hack),
+  /*(*/ [x] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [x] /*)*/,
+      hack] /*)*/] /*2*/,
   cond(
-    (mapr(
+    /*(*/ [mapr(
         null,
         function(
-          (y),
-          #decl
-            ((y)
+          /*(*/ [y] /*)*/,
+          /*#*/ [decl,
+            /*(*/ [/*(*/ [y] /*)*/,
               list(
-                [rest
-                  hack])),
+                /*[*/ [rest,
+                  hack] /*]*/)] /*)*/] /*2*/,
           cond(
-            (_EQ_Q(
+            /*(*/ [_EQ_Q(
                 haction(
                   1(
                     LOCALS.y)),
                 haction(
-                  LOCALS.x))
+                  LOCALS.x)),
               put(
                 LOCALS.y,
                 1,
-                LOCALS.x)
+                LOCALS.x),
               mapleave(
-                t)))),
-        GLOBALS.demons)),
-    (GLOBALS.demons = (LOCALS.x
-          _X
-          GLOBALS.demons))))
+                t)] /*)*/)),
+        GLOBALS.demons)] /*)*/,
+    /*(*/ [GLOBALS.demons = /*(*/ [LOCALS.x,
+          _X,
+          GLOBALS.demons] /*)*/] /*)*/))
 
 define(
   add_star,
-  (obj),
-  GLOBALS.stars = (LOCALS.obj
-      _X
-      GLOBALS.stars))
+  /*(*/ [obj] /*)*/,
+  GLOBALS.stars = /*(*/ [LOCALS.obj,
+      _X,
+      GLOBALS.stars] /*)*/)
 
 define(
   add_actor,
-  (adv
-    "AUX"
-    (actors
-      GLOBALS.actors)),
-  #decl
-    ((adv)
-      adv
-      (actors)
+  /*(*/ [adv,
+    "AUX",
+    /*(*/ [actors,
+      GLOBALS.actors] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [adv] /*)*/,
+      adv,
+      /*(*/ [actors] /*)*/,
       list(
-        [rest
-          adv])),
+        /*[*/ [rest,
+          adv] /*]*/)] /*)*/] /*2*/,
   cond(
-    (mapf(
+    /*(*/ [mapf(
         null,
         function(
-          (x),
-          #decl
-            ((x)
-              adv),
+          /*(*/ [x] /*)*/,
+          /*#*/ [decl,
+            /*(*/ [/*(*/ [x] /*)*/,
+              adv] /*)*/] /*2*/,
           cond(
-            (_EQ_Q(
+            /*(*/ [_EQ_Q(
                 aobj(
                   LOCALS.x),
                 aobj(
-                  LOCALS.adv))
+                  LOCALS.adv)),
               mapleave(
-                t)))),
-        LOCALS.actors)),
-    (GLOBALS.actors = (LOCALS.adv
-          _X
-          LOCALS.actors))),
+                t)] /*)*/)),
+        LOCALS.actors)] /*)*/,
+    /*(*/ [GLOBALS.actors = /*(*/ [LOCALS.adv,
+          _X,
+          LOCALS.actors] /*)*/] /*)*/),
   LOCALS.adv)
 
 define(
   add_desc,
-  (obj
-    str),
-  #decl
-    ((obj)
-      object
-      (str)
-      string),
+  /*(*/ [obj,
+    str] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [str] /*)*/,
+      string] /*)*/] /*2*/,
   put(
     LOCALS.obj,
     GLOBALS.oread,
@@ -989,36 +989,36 @@ define(
 
 define(
   sadd_action,
-  (str1
-    atm),
+  /*(*/ [str1,
+    atm] /*)*/,
   add_action(
     LOCALS.str1,
     "",
-    [[LOCALS.str1
-        LOCALS.atm]]))
+    /*[*/ [/*[*/ [LOCALS.str1,
+        LOCALS.atm] /*]*/] /*]*/))
 
 define(
   1add_action,
-  (str1
-    str2
-    atm),
+  /*(*/ [str1,
+    str2,
+    atm] /*)*/,
   add_action(
     LOCALS.str1,
     LOCALS.str2,
-    [obj
-      [LOCALS.str1
-        LOCALS.atm]]))
+    /*[*/ [obj,
+      /*[*/ [LOCALS.str1,
+        LOCALS.atm] /*]*/] /*]*/))
 
 define(
   aadd_action,
-  (str1
-    str2
-    atm),
+  /*(*/ [str1,
+    str2,
+    atm] /*)*/,
   add_action(
     LOCALS.str1,
     LOCALS.str2,
-    [(_1
-        aobjs
-        no_take)
-      [LOCALS.str1
-        LOCALS.atm]]))
+    /*[*/ [/*(*/ [_1,
+        aobjs,
+        no_take] /*)*/,
+      /*[*/ [LOCALS.str1,
+        LOCALS.atm] /*]*/] /*]*/))

@@ -233,7 +233,7 @@ export const convertToTypescript = (node: ZNode): string => {
 
 
         // TS List as Array
-        // return `/*${openSymbol ?? ''}*/ [${getIndentedNodes(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
+        return `/*${openSymbol ?? ''}*/ [${getIndentedNodes(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
 
         // Unknown
         const getDefaultWithIndentedChildren = () => {

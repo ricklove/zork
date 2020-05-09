@@ -51,9 +51,9 @@ GLOBALS.room_obl = or(
     moblist(
       rooms))
 
-GLOBALS.actors = ()
+GLOBALS.actors = /*(*/ [] /*)*/
 
-GLOBALS.stars = ()
+GLOBALS.stars = /*(*/ [] /*)*/
 
 add_buzz(
   "BY",
@@ -142,9 +142,9 @@ synonym(
   "INSID",
   "INTO")
 
-GLOBALS.rooms = ()
+GLOBALS.rooms = /*(*/ [] /*)*/
 
-GLOBALS.objects = ()
+GLOBALS.objects = /*(*/ [] /*)*/
 
 "CEVENT DEFINITIONS"
 
@@ -304,15 +304,15 @@ or(
 
 // KLUDGE
 
-#object
-  {"#####"
-    "You are here"
-    "cretin"
-    %null
-    %null
-    ()
-    %null
-    %GLOBALS.ovison}
+/*#*/ [object,
+  /*{*/ ["#####",
+    "You are here",
+    "cretin",
+    /*%*/ [null] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [GLOBALS.ovison] /*1*/] /*}*/] /*2*/
 
 "MAZE"
 
@@ -322,493 +322,493 @@ psetg(
 
 psetg(
   current,
-  #nexit
-    "You cannot go upstream due to strong currents.")
+  /*#*/ [nexit,
+    "You cannot go upstream due to strong currents."] /*2*/)
 
-#room
-  {"PASS1"
-    "You are in a narrow east-west passageway.  There is a narrow stairway\nleading down at the north end of the room."
-    "East-West Passage"
-    %null
-    #exit
-      {"EAST"
-        "CAROU"
-        "WEST"
-        "MTROL"
-        "DOWN"
-        "RAVI1"
-        "NORTH"
-        "RAVI1"}
-    ()
-    %null
-    5}
+/*#*/ [room,
+  /*{*/ ["PASS1",
+    "You are in a narrow east-west passageway.  There is a narrow stairway\nleading down at the north end of the room.",
+    "East-West Passage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "CAROU",
+        "WEST",
+        "MTROL",
+        "DOWN",
+        "RAVI1",
+        "NORTH",
+        "RAVI1"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    5] /*}*/] /*2*/
 
-#room
-  {"WHOUS"
-    "You are in an open field west of a big white house, with a boarded\nfront door."
-    "West of House"
-    t
-    #exit
-      {"NORTH"
-        "NHOUS"
-        "SOUTH"
-        "SHOUS"
-        "WEST"
-        "FORE1"
-        "EAST"
-        #nexit
-          "The door is locked, and there is evidently no key."}
-    (#find_obj
-        {"FDOOR"}
-      #find_obj
-        {"MAILB"})}
+/*#*/ [room,
+  /*{*/ ["WHOUS",
+    "You are in an open field west of a big white house, with a boarded\nfront door.",
+    "West of House",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "NHOUS",
+        "SOUTH",
+        "SHOUS",
+        "WEST",
+        "FORE1",
+        "EAST",
+        /*#*/ [nexit,
+          "The door is locked, and there is evidently no key."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["FDOOR"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["MAILB"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"NHOUS"
-    "You are facing the north side of a white house.  There is no door here,\nand all the windows are barred."
-    "North of House"
-    t
-    #exit
-      {"WEST"
-        "WHOUS"
-        "EAST"
-        "EHOUS"
-        "NORTH"
-        "FORE3"
-        "SOUTH"
-        #nexit
-          "The windows are all barred."}}
+/*#*/ [room,
+  /*{*/ ["NHOUS",
+    "You are facing the north side of a white house.  There is no door here,\nand all the windows are barred.",
+    "North of House",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "WHOUS",
+        "EAST",
+        "EHOUS",
+        "NORTH",
+        "FORE3",
+        "SOUTH",
+        /*#*/ [nexit,
+          "The windows are all barred."] /*2*/] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"SHOUS"
-    "You are facing the south side of a white house. There is no door here,\nand all the windows are barred."
-    "South of House"
-    t
-    #exit
-      {"WEST"
-        "WHOUS"
-        "EAST"
-        "EHOUS"
-        "SOUTH"
-        "FORE2"
-        "NORTH"
-        #nexit
-          "The windows are all barred."}
-    ()}
+/*#*/ [room,
+  /*{*/ ["SHOUS",
+    "You are facing the south side of a white house. There is no door here,\nand all the windows are barred.",
+    "South of House",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "WHOUS",
+        "EAST",
+        "EHOUS",
+        "SOUTH",
+        "FORE2",
+        "NORTH",
+        /*#*/ [nexit,
+          "The windows are all barred."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"EHOUS"
-    ""
-    "Behind House"
-    t
-    #exit
-      {"NORTH"
-        "NHOUS"
-        "SOUTH"
-        "SHOUS"
-        "EAST"
-        "CLEAR"
-        "WEST"
-        #cexit
-          {"KITCHEN-WINDOW"
-            "KITCH"}
-        "ENTER"
-        #cexit
-          {"KITCHEN-WINDOW"
-            "KITCH"}}
-    (#find_obj
-        {"WIND1"})
-    east_house}
+/*#*/ [room,
+  /*{*/ ["EHOUS",
+    "",
+    "Behind House",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "NHOUS",
+        "SOUTH",
+        "SHOUS",
+        "EAST",
+        "CLEAR",
+        "WEST",
+        /*#*/ [cexit,
+          /*{*/ ["KITCHEN-WINDOW",
+            "KITCH"] /*}*/] /*2*/,
+        "ENTER",
+        /*#*/ [cexit,
+          /*{*/ ["KITCHEN-WINDOW",
+            "KITCH"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["WIND1"] /*}*/] /*2*/] /*)*/,
+    east_house] /*}*/] /*2*/
 
-#room
-  {"KITCH"
-    ""
-    "Kitchen"
-    t
-    #exit
-      {"EAST"
-        #cexit
-          {"KITCHEN-WINDOW"
-            "EHOUS"}
-        "WEST"
-        "LROOM"
-        "EXIT"
-        #cexit
-          {"KITCHEN-WINDOW"
-            "EHOUS"}
-        "UP"
-        "ATTIC"
-        "DOWN"
-        #nexit
-          "Only Santa Claus climbs down chimneys."}
-    (#find_obj
-        {"WIND2"}
-      #find_obj
-        {"SBAG"}
-      #find_obj
-        {"BOTTL"})
-    kitchen
-    10}
+/*#*/ [room,
+  /*{*/ ["KITCH",
+    "",
+    "Kitchen",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        /*#*/ [cexit,
+          /*{*/ ["KITCHEN-WINDOW",
+            "EHOUS"] /*}*/] /*2*/,
+        "WEST",
+        "LROOM",
+        "EXIT",
+        /*#*/ [cexit,
+          /*{*/ ["KITCHEN-WINDOW",
+            "EHOUS"] /*}*/] /*2*/,
+        "UP",
+        "ATTIC",
+        "DOWN",
+        /*#*/ [nexit,
+          "Only Santa Claus climbs down chimneys."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["WIND2"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SBAG"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BOTTL"] /*}*/] /*2*/] /*)*/,
+    kitchen,
+    10] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"SBAG"
-      "A sandwich bag is here."
-      "sandwich bag"
-      "On the table is an elongated brown sack, smelling of hot peppers."
-      %null
-      (#find_obj
-          {"GARLI"}
-        #find_obj
-          {"FOOD"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SBAG",
+      "A sandwich bag is here.",
+      "sandwich bag",
+      "On the table is an elongated brown sack, smelling of hot peppers.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["GARLI"] /*}*/] /*2*/,
+        /*#*/ [find_obj,
+          /*{*/ ["FOOD"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.flamebit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      3
-      15},
-  ["BAG"
-    "SACK"
-    "BAGGI"],
-  ["BROWN"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      3,
+      15] /*}*/] /*2*/,
+  /*[*/ ["BAG",
+    "SACK",
+    "BAGGI"] /*]*/,
+  /*[*/ ["BROWN"] /*]*/)
 
 add_object(
-  #object
-    {"GARLI"
-      "There is a clove of garlic here."
-      "clove of garlic"
-      %null
-      %null
-      ()
-      #find_obj
-        {"SBAG"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GARLI",
+      "There is a clove of garlic here.",
+      "clove of garlic",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SBAG"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.takebit,
           GLOBALS.foodbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      0},
-  ["CLOVE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CLOVE"] /*]*/)
 
 add_object(
-  #object
-    {"FOOD"
-      "A hot pepper sandwich is here."
-      "\.lunch"
-      %null
-      %null
-      ()
-      #find_obj
-        {"SBAG"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["FOOD",
+      "A hot pepper sandwich is here.",
+      "\.lunch",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SBAG"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.foodbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      0},
-  ["SANDW"
-    "LUNCH"
-    "PEPPE"
-    "DINNE"
-    "SNACK"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["SANDW",
+    "LUNCH",
+    "PEPPE",
+    "DINNE",
+    "SNACK"] /*]*/)
 
 add_object(
-  #object
-    {"GUNK"
-      "There is a small piece of vitreous slag here."
-      "piece of vitreous slag"
-      %null
-      gunk_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GUNK",
+      "There is a small piece of vitreous slag here.",
+      "piece of vitreous slag",
+      /*%*/ [null] /*1*/,
+      gunk_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      10
-      0},
-  ["MESS"
-    "SLAG"],
-  ["VITRE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["MESS",
+    "SLAG"] /*]*/,
+  /*[*/ ["VITRE"] /*]*/)
 
 add_object(
-  #object
-    {"COAL"
-      "There is a small heap of coal here."
-      "small pile of coal"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["COAL",
+      "There is a small heap of coal here.",
+      "small pile of coal",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      20
-      0},
-  ["HEAP"
-    "CHARC"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["HEAP",
+    "CHARC"] /*]*/)
 
 add_object(
-  #object
-    {"JADE"
-      "There is an exquisite jade figurine here."
-      "jade figurine"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["JADE",
+      "There is an exquisite jade figurine here.",
+      "jade figurine",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      5
-      5
-      10
-      0},
-  ["FIGUR"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      5,
+      5,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["FIGUR"] /*]*/)
 
 add_object(
-  #object
-    {"MACHI"
-      ""
-      "machine"
-      %null
-      machine_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["MACHI",
+      "",
+      "machine",
+      /*%*/ [null] /*1*/,
+      machine_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      50},
-  ["PDP10"
-    "DRYER"
-    "LID"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      50] /*}*/] /*2*/,
+  /*[*/ ["PDP10",
+    "DRYER",
+    "LID"] /*]*/)
 
 add_object(
-  #object
-    {"DIAMO"
-      "There is an enormous diamond (perfectly cut) here."
-      "huge diamond"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["DIAMO",
+      "There is an enormous diamond (perfectly cut) here.",
+      "huge diamond",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      10
-      6
-      5
-      0},
-  ["PERFE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      10,
+      6,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["PERFE"] /*]*/)
 
 add_object(
-  #object
-    {"TCASE"
-      "There is a trophy case here."
-      "trophy case"
-      %null
-      trophy_case
-      ()
-      %null
-      %_(
-          GLOBALS.contbit,
-          GLOBALS.transbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      %GLOBALS.bigfix},
-  ["CASE"],
-  ["TROPH"])
-
-add_object(
-  #object
-    {"BOTTL"
-      "A clear glass bottle is here."
-      "glass bottle"
-      "A bottle is sitting on the table."
-      bottle_function
-      (#find_obj
-          {"WATER"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["TCASE",
+      "There is a trophy case here.",
+      "trophy case",
+      /*%*/ [null] /*1*/,
+      trophy_case,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.transbit,
-          GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      4},
-  ["CONTA"
-    "PITCH"],
-  ["GLASS"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      /*%*/ [GLOBALS.bigfix] /*1*/] /*}*/] /*2*/,
+  /*[*/ ["CASE"] /*]*/,
+  /*[*/ ["TROPH"] /*]*/)
 
 add_object(
-  #object
-    {"WATER"
-      "Water"
-      "quantity of water"
-      "There is some water here"
-      water_function
-      ()
-      #find_obj
-        {"BOTTL"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BOTTL",
+      "A clear glass bottle is here.",
+      "glass bottle",
+      "A bottle is sitting on the table.",
+      bottle_function,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["WATER"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
+          GLOBALS.contbit,
+          GLOBALS.transbit,
+          GLOBALS.takebit,
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      4] /*}*/] /*2*/,
+  /*[*/ ["CONTA",
+    "PITCH"] /*]*/,
+  /*[*/ ["GLASS"] /*]*/)
+
+add_object(
+  /*#*/ [object,
+    /*{*/ ["WATER",
+      "Water",
+      "quantity of water",
+      "There is some water here",
+      water_function,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BOTTL"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.drinkbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      4
-      0},
-  ["LIQUI"
-    "H2O"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      4,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LIQUI",
+    "H2O"] /*]*/)
 
-#room
-  {"ATTIC"
-    "You are in the attic.  The only exit is stairs that lead down."
-    "Attic"
-    %null
-    #exit
-      {"DOWN"
-        "KITCH"}
-    (#find_obj
-        {"BRICK"}
-      #find_obj
-        {"ROPE"}
-      #find_obj
-        {"KNIFE"})}
+/*#*/ [room,
+  /*{*/ ["ATTIC",
+    "You are in the attic.  The only exit is stairs that lead down.",
+    "Attic",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "KITCH"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BRICK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ROPE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["KNIFE"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"ROPE"
-      "There is a large coil of rope here."
-      "rope"
-      "A large coil of rope is lying in the corner."
-      rope_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ROPE",
+      "There is a large coil of rope here.",
+      "rope",
+      "A large coil of rope is lying in the corner.",
+      rope_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.tiebit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      10
-      0},
-  ["HEMP"
-    "COIL"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["HEMP",
+    "COIL"] /*]*/)
 
 add_object(
-  #object
-    {"KNIFE"
-      "There is a nasty-looking knife lying here."
-      "knife"
-      "On a table is a nasty-looking knife."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["KNIFE",
+      "There is a nasty-looking knife lying here.",
+      "knife",
+      "On a table is a nasty-looking knife.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.weaponbit)
-      0
-      0
-      0
-      5
-      0},
-  ["BLADE"],
-  ["NASTY"])
+          GLOBALS.weaponbit)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BLADE"] /*]*/,
+  /*[*/ ["NASTY"] /*]*/)
 
 add_melee(
   find_obj(
     "KNIFE"),
   GLOBALS.knife_melee)
 
-#room
-  {"LROOM"
-    ""
-    "Living Room"
-    t
-    #exit
-      {"EAST"
-        "KITCH"
-        "WEST"
-        #cexit
-          {"MAGIC-FLAG"
-            "BLROO"
-            "The door is nailed shut."}
-        "DOWN"
-        #cexit
-          {"TRAP-DOOR"
-            "CELLA"}}
-    (#find_obj
-        {"WDOOR"}
-      #find_obj
-        {"DOOR"}
-      #find_obj
-        {"TCASE"}
-      #find_obj
-        {"LAMP"}
-      #find_obj
-        {"RUG"}
-      #find_obj
-        {"PAPER"}
-      #find_obj
-        {"SWORD"})
-    living_room}
+/*#*/ [room,
+  /*{*/ ["LROOM",
+    "",
+    "Living Room",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "KITCH",
+        "WEST",
+        /*#*/ [cexit,
+          /*{*/ ["MAGIC-FLAG",
+            "BLROO",
+            "The door is nailed shut."] /*}*/] /*2*/,
+        "DOWN",
+        /*#*/ [cexit,
+          /*{*/ ["TRAP-DOOR",
+            "CELLA"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["WDOOR"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["DOOR"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["TCASE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["LAMP"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RUG"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["PAPER"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SWORD"] /*}*/] /*2*/] /*)*/,
+    living_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"SWORD"
-      "There is an elvish sword here."
-      "sword"
-      "On hooks above the mantelpiece hangs an elvish sword of great\nantiquity."
-      sword
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SWORD",
+      "There is an elvish sword here.",
+      "sword",
+      "On hooks above the mantelpiece hangs an elvish sword of great\nantiquity.",
+      sword,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.weaponbit)
-      0
-      0
-      0
-      30
-      0},
-  ["ORCRI"
-    "GLAMD"
-    "BLADE"],
-  ["ELVIS"])
+          GLOBALS.weaponbit)] /*1*/,
+      0,
+      0,
+      0,
+      30,
+      0] /*}*/] /*2*/,
+  /*[*/ ["ORCRI",
+    "GLAMD",
+    "BLADE"] /*]*/,
+  /*[*/ ["ELVIS"] /*]*/)
 
 add_melee(
   find_obj(
@@ -816,136 +816,136 @@ add_melee(
   GLOBALS.sword_melee)
 
 add_object(
-  #object
-    {"LAMP"
-      "There is a brass lantern (battery-powered) here."
-      "lamp"
-      "A battery-powered brass lantern is on the trophy case."
-      lantern
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["LAMP",
+      "There is a brass lantern (battery-powered) here.",
+      "lamp",
+      "A battery-powered brass lantern is on the trophy case.",
+      lantern,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      _1
-      0
-      0
-      15
-      0},
-  ["LANTE"],
-  ["BRASS"])
+          GLOBALS.ovison)] /*1*/,
+      _1,
+      0,
+      0,
+      15,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LANTE"] /*]*/,
+  /*[*/ ["BRASS"] /*]*/)
 
 add_object(
-  #object
-    {"BLAMP"
-      "There is a broken brass lantern here."
-      "broken lamp"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BLAMP",
+      "There is a broken brass lantern here.",
+      "broken lamp",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0},
-  ["LAMP"
-    "LANTE"],
-  ["BROKE"])
+          GLOBALS.ovison)] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LAMP",
+    "LANTE"] /*]*/,
+  /*[*/ ["BROKE"] /*]*/)
 
 add_object(
-  #object
-    {"RUG"
-      ""
-      "carpet"
-      %null
-      rug
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["RUG",
+      "",
+      "carpet",
+      /*%*/ [null] /*1*/,
+      rug,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.ndescbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["CARPE"],
-  ["ORIEN"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CARPE"] /*]*/,
+  /*[*/ ["ORIEN"] /*]*/)
 
 add_object(
-  #object
-    {"LEAVE"
-      "There is a pile of leaves on the ground."
-      "pile of leaves"
-      %null
-      leaf_pile
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["LEAVE",
+      "There is a pile of leaves on the ground.",
+      "pile of leaves",
+      /*%*/ [null] /*1*/,
+      leaf_pile,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      25
-      0},
-  ["LEAF"
-    "PILE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      25,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LEAF",
+    "PILE"] /*]*/)
 
-#room
-  {"CELLA"
-    ""
-    "Cellar"
-    %null
-    #exit
-      {"EAST"
-        "MTROL"
-        "SOUTH"
-        "CHAS2"
-        "UP"
-        #cexit
-          {"TRAP-DOOR"
-            "LROOM"
-            "The trap door has been barred from the other side."}
-        "WEST"
-        #nexit
-          "You try to ascend the ramp, but it is impossible, and you slide back down."}
-    (#find_obj
-        {"TDOOR"})
-    cellar
-    25}
+/*#*/ [room,
+  /*{*/ ["CELLA",
+    "",
+    "Cellar",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MTROL",
+        "SOUTH",
+        "CHAS2",
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["TRAP-DOOR",
+            "LROOM",
+            "The trap door has been barred from the other side."] /*}*/] /*2*/,
+        "WEST",
+        /*#*/ [nexit,
+          "You try to ascend the ramp, but it is impossible, and you slide back down."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TDOOR"] /*}*/] /*2*/] /*)*/,
+    cellar,
+    25] /*}*/] /*2*/
 
 psetg(
   tchomp,
   "The troll fends you off with a menacing gesture.")
 
-#room
-  {"MTROL"
-    "You are in a small room with passages off in all directions. \nBloodstains and deep scratches (perhaps made by an axe) mar the\nwalls."
-    "The Troll Room"
-    %null
-    #exit
-      {"WEST"
-        "CELLA"
-        "EAST"
-        #cexit
-          {"TROLL-FLAG"
-            "CRAW4"
-            %GLOBALS.tchomp}
-        "NORTH"
-        #cexit
-          {"TROLL-FLAG"
-            "PASS1"
-            %GLOBALS.tchomp}
-        "SOUTH"
-        #cexit
-          {"TROLL-FLAG"
-            "MAZE1"
-            %GLOBALS.tchomp}}
-    (#find_obj
-        {"TROLL"})}
+/*#*/ [room,
+  /*{*/ ["MTROL",
+    "You are in a small room with passages off in all directions. \nBloodstains and deep scratches (perhaps made by an axe) mar the\nwalls.",
+    "The Troll Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "CELLA",
+        "EAST",
+        /*#*/ [cexit,
+          /*{*/ ["TROLL-FLAG",
+            "CRAW4",
+            /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/,
+        "NORTH",
+        /*#*/ [cexit,
+          /*{*/ ["TROLL-FLAG",
+            "PASS1",
+            /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/,
+        "SOUTH",
+        /*#*/ [cexit,
+          /*{*/ ["TROLL-FLAG",
+            "MAZE1",
+            /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TROLL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 psetg(
   trolldesc,
@@ -955,12 +955,12 @@ psetg(
   trollout,
   "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
 
-GLOBALS.villains = (find_obj(
-      "TROLL")
+GLOBALS.villains = /*(*/ [find_obj(
+      "TROLL"),
     find_obj(
-      "THIEF")
+      "THIEF"),
     find_obj(
-      "CYCLO"))
+      "CYCLO")] /*)*/
 
 GLOBALS.villain_probs = iuvector(
     length(
@@ -974,34 +974,34 @@ GLOBALS.oppv = ivector(
 
 add_demon(
   GLOBALS.sword_demon = chtype(
-      [sword_glow
-        GLOBALS.villains
-        ()
+      /*[*/ [sword_glow,
+        GLOBALS.villains,
+        /*(*/ [] /*)*/,
         1(
-          GLOBALS.rooms)
+          GLOBALS.rooms),
         find_obj(
-          "SWORD")
-        null],
+          "SWORD"),
+        null] /*]*/,
       hack))
 
-#object
-  {"TROLL"
-    %GLOBALS.trolldesc
-    "troll"
-    %null
-    troll
-    (#find_obj
-        {"AXE"})
-    %null
-    %_(
+/*#*/ [object,
+  /*{*/ ["TROLL",
+    /*%*/ [GLOBALS.trolldesc] /*1*/,
+    "troll",
+    /*%*/ [null] /*1*/,
+    troll,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["AXE"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [_(
         GLOBALS.vicbit,
         GLOBALS.ovison,
-        GLOBALS.villain)
-    0
-    0
-    0
-    %GLOBALS.bigfix
-    2}
+        GLOBALS.villain)] /*1*/,
+    0,
+    0,
+    0,
+    /*%*/ [GLOBALS.bigfix] /*1*/,
+    2] /*}*/] /*2*/
 
 add_melee(
   find_obj(
@@ -1010,36 +1010,36 @@ add_melee(
 
 add_demon(
   GLOBALS.fight_demon = chtype(
-      [fighting
-        GLOBALS.villains
-        ()
+      /*[*/ [fighting,
+        GLOBALS.villains,
+        /*(*/ [] /*)*/,
         1(
-          GLOBALS.rooms)
+          GLOBALS.rooms),
         find_obj(
-          "TROLL")
-        null],
+          "TROLL"),
+        null] /*]*/,
       hack))
 
 add_object(
-  #object
-    {"AXE"
-      "There is a bloody axe here."
-      "bloody axe"
-      %null
-      %null
-      ()
-      %find_obj(
-          "TROLL")
-      %_(
+  /*#*/ [object,
+    /*{*/ ["AXE",
+      "There is a bloody axe here.",
+      "bloody axe",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [find_obj(
+          "TROLL")] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.weaponbit)
-      0
-      0
-      0
-      25
-      0},
-  [],
-  ["BLOOD"])
+          GLOBALS.weaponbit)] /*1*/,
+      0,
+      0,
+      0,
+      25,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["BLOOD"] /*]*/)
 
 psetg(
   mazedesc,
@@ -1049,117 +1049,117 @@ psetg(
   deadend,
   "Dead End")
 
-#room
-  {"MAZE1"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MTROL"
-        "NORTH"
-        "MAZE1"
-        "SOUTH"
-        "MAZE2"
-        "EAST"
-        "MAZE4"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE1",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MTROL",
+        "NORTH",
+        "MAZE1",
+        "SOUTH",
+        "MAZE2",
+        "EAST",
+        "MAZE4"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE2"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"SOUTH"
-        "MAZE1"
-        "NORTH"
-        "MAZE4"
-        "EAST"
-        "MAZE3"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE2",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "MAZE1",
+        "NORTH",
+        "MAZE4",
+        "EAST",
+        "MAZE3"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE3"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MAZE2"
-        "NORTH"
-        "MAZE4"
-        "UP"
-        "MAZE5"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE3",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZE2",
+        "NORTH",
+        "MAZE4",
+        "UP",
+        "MAZE5"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE4"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MAZE3"
-        "NORTH"
-        "MAZE1"
-        "EAST"
-        "DEAD1"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE4",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZE3",
+        "NORTH",
+        "MAZE1",
+        "EAST",
+        "DEAD1"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"DEAD1"
-    %GLOBALS.deadend
-    %GLOBALS.deadend
-    %null
-    #exit
-      {"SOUTH"
-        "MAZE4"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD1",
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "MAZE4"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE5"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"EAST"
-        "DEAD2"
-        "NORTH"
-        "MAZE3"
-        "SW"
-        "MAZE6"}
-    (#find_obj
-        {"BONES"}
-      #find_obj
-        {"BAGCO"}
-      #find_obj
-        {"KEYS"}
-      #find_obj
-        {"BLANT"}
-      #find_obj
-        {"RKNIF"})}
+/*#*/ [room,
+  /*{*/ ["MAZE5",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "DEAD2",
+        "NORTH",
+        "MAZE3",
+        "SW",
+        "MAZE6"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BONES"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BAGCO"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["KEYS"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BLANT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RKNIF"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"RKNIF"
-      "There is a rusty knife here."
-      "rusty knife"
-      "Beside the skeleton is a rusty knife."
-      rusty_knife
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["RKNIF",
+      "There is a rusty knife here.",
+      "rusty knife",
+      "Beside the skeleton is a rusty knife.",
+      rusty_knife,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.weaponbit)
-      0
-      0
-      0
-      20
-      0},
-  ["KNIFE"],
-  ["RUSTY"])
+          GLOBALS.weaponbit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["KNIFE"] /*]*/,
+  /*[*/ ["RUSTY"] /*]*/)
 
 add_melee(
   find_obj(
@@ -1167,1538 +1167,1538 @@ add_melee(
   GLOBALS.knife_melee)
 
 add_object(
-  #object
-    {"BLANT"
-      "There is a burned-out lantern here."
-      "burned-out lantern"
-      "The deceased adventurer's useless lantern is here."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BLANT",
+      "There is a burned-out lantern here.",
+      "burned-out lantern",
+      "The deceased adventurer's useless lantern is here.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      20
-      0},
-  ["LANTE"
-    "LAMP"],
-  ["USED"
-    "BURNE"
-    "DEAD"
-    "USELE"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LANTE",
+    "LAMP"] /*]*/,
+  /*[*/ ["USED",
+    "BURNE",
+    "DEAD",
+    "USELE"] /*]*/)
 
-#object
-  {"KEYS"
-    "There is a set of skeleton keys here."
-    "set of skeleton keys"
-    %null
-    %null
-    ()
-    %null
-    %_(
+/*#*/ [object,
+  /*{*/ ["KEYS",
+    "There is a set of skeleton keys here.",
+    "set of skeleton keys",
+    /*%*/ [null] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [_(
         GLOBALS.toolbit,
         GLOBALS.takebit,
-        GLOBALS.ovison)
-    0
-    0
-    0
-    10
-    0}
+        GLOBALS.ovison)] /*1*/,
+    0,
+    0,
+    0,
+    10,
+    0] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"BONES"
-      "A skeleton, probably the remains of a luckless adventurer, lies here."
-      ""
-      %null
-      skeleton
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BONES",
+      "A skeleton, probably the remains of a luckless adventurer, lies here.",
+      "",
+      /*%*/ [null] /*1*/,
+      skeleton,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["SKELE"
-    "BODY"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["SKELE",
+    "BODY"] /*]*/)
 
 add_object(
-  #object
-    {"BAGCO"
-      "An old leather bag, bulging with coins, is here."
-      "bag of coins"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BAGCO",
+      "An old leather bag, bulging with coins, is here.",
+      "bag of coins",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      10
-      5
-      15
-      0},
-  ["BAG"
-    "COINS"],
-  ["LEATH"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      10,
+      5,
+      15,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BAG",
+    "COINS"] /*]*/,
+  /*[*/ ["LEATH"] /*]*/)
 
 add_object(
-  #object
-    {"BAR"
-      "There is a large platinum bar here."
-      "platinum bar"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BAR",
+      "There is a large platinum bar here.",
+      "platinum bar",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.sacredbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      12
-      10
-      20
-      0},
-  ["PLATI"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      12,
+      10,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["PLATI"] /*]*/)
 
 add_object(
-  #object
-    {"PEARL"
-      "There is a pearl necklace here with hundreds of large pearls."
-      "pearl necklace"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PEARL",
+      "There is a pearl necklace here with hundreds of large pearls.",
+      "pearl necklace",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      9
-      5
-      10
-      0},
-  ["NECKL"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      9,
+      5,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["NECKL"] /*]*/)
 
-#room
-  {"DEAD2"
-    %GLOBALS.deadend
-    %GLOBALS.deadend
-    %null
-    #exit
-      {"WEST"
-        "MAZE5"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD2",
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZE5"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE6"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"DOWN"
-        "MAZE5"
-        "EAST"
-        "MAZE7"
-        "WEST"
-        "MAZE6"
-        "UP"
-        "MAZE9"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE6",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "MAZE5",
+        "EAST",
+        "MAZE7",
+        "WEST",
+        "MAZE6",
+        "UP",
+        "MAZE9"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE7"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"UP"
-        "MAZ14"
-        "WEST"
-        "MAZE6"
-        "NE"
-        "DEAD1"
-        "EAST"
-        "MAZE8"
-        "SOUTH"
-        "MAZ15"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE7",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "MAZ14",
+        "WEST",
+        "MAZE6",
+        "NE",
+        "DEAD1",
+        "EAST",
+        "MAZE8",
+        "SOUTH",
+        "MAZ15"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE8"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"NE"
-        "MAZE7"
-        "WEST"
-        "MAZE8"
-        "SE"
-        "DEAD3"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE8",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NE",
+        "MAZE7",
+        "WEST",
+        "MAZE8",
+        "SE",
+        "DEAD3"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"DEAD3"
-    %GLOBALS.deadend
-    %GLOBALS.deadend
-    %null
-    #exit
-      {"NORTH"
-        "MAZE8"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD3",
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "MAZE8"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZE9"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"NORTH"
-        "MAZE6"
-        "EAST"
-        "MAZ11"
-        "DOWN"
-        "MAZ10"
-        "SOUTH"
-        "MAZ13"
-        "WEST"
-        "MAZ12"
-        "NW"
-        "MAZE9"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZE9",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "MAZE6",
+        "EAST",
+        "MAZ11",
+        "DOWN",
+        "MAZ10",
+        "SOUTH",
+        "MAZ13",
+        "WEST",
+        "MAZ12",
+        "NW",
+        "MAZE9"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZ10"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"EAST"
-        "MAZE9"
-        "WEST"
-        "MAZ13"
-        "UP"
-        "MAZ11"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZ10",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MAZE9",
+        "WEST",
+        "MAZ13",
+        "UP",
+        "MAZ11"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZ11"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"NE"
-        "MGRAT"
-        "DOWN"
-        "MAZ10"
-        "NW"
-        "MAZ13"
-        "SW"
-        "MAZ12"}}
+/*#*/ [room,
+  /*{*/ ["MAZ11",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NE",
+        "MGRAT",
+        "DOWN",
+        "MAZ10",
+        "NW",
+        "MAZ13",
+        "SW",
+        "MAZ12"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MGRAT"
-    ""
-    "Grating Room"
-    %null
-    #exit
-      {"SW"
-        "MAZ11"
-        "UP"
-        #cexit
-          {"KEY-FLAG"
-            "CLEAR"
-            "The grating is locked"}}
-    (#find_obj
-        {"GRAT2"})
-    maze_11}
+/*#*/ [room,
+  /*{*/ ["MGRAT",
+    "",
+    "Grating Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SW",
+        "MAZ11",
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["KEY-FLAG",
+            "CLEAR",
+            "The grating is locked"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["GRAT2"] /*}*/] /*2*/] /*)*/,
+    maze_11] /*}*/] /*2*/
 
-#room
-  {"MAZ12"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MAZE5"
-        "SW"
-        "MAZ11"
-        "EAST"
-        "MAZ13"
-        "UP"
-        "MAZE9"
-        "NORTH"
-        "DEAD4"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZ12",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZE5",
+        "SW",
+        "MAZ11",
+        "EAST",
+        "MAZ13",
+        "UP",
+        "MAZE9",
+        "NORTH",
+        "DEAD4"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"DEAD4"
-    %GLOBALS.deadend
-    %GLOBALS.deadend
-    %null
-    #exit
-      {"SOUTH"
-        "MAZ12"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD4",
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [GLOBALS.deadend] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "MAZ12"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZ13"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"EAST"
-        "MAZE9"
-        "DOWN"
-        "MAZ12"
-        "SOUTH"
-        "MAZ10"
-        "WEST"
-        "MAZ11"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["MAZ13",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MAZE9",
+        "DOWN",
+        "MAZ12",
+        "SOUTH",
+        "MAZ10",
+        "WEST",
+        "MAZ11"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MAZ14"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MAZ15"
-        "NW"
-        "MAZ14"
-        "NE"
-        "MAZE7"
-        "SOUTH"
-        "MAZE7"}}
+/*#*/ [room,
+  /*{*/ ["MAZ14",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZ15",
+        "NW",
+        "MAZ14",
+        "NE",
+        "MAZE7",
+        "SOUTH",
+        "MAZE7"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MAZ15"
-    %GLOBALS.mazedesc
-    %GLOBALS.mazedesc
-    %null
-    #exit
-      {"WEST"
-        "MAZ14"
-        "SOUTH"
-        "MAZE7"
-        "NE"
-        "CYCLO"}}
+/*#*/ [room,
+  /*{*/ ["MAZ15",
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [GLOBALS.mazedesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZ14",
+        "SOUTH",
+        "MAZE7",
+        "NE",
+        "CYCLO"] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(
   stfore,
   "You are in a forest, with trees in all directions around you.")
 
-#room
-  {"FORE1"
-    %GLOBALS.stfore
-    %GLOBALS.forest
-    t
-    #exit
-      {"NORTH"
-        "FORE1"
-        "EAST"
-        "FORE3"
-        "SOUTH"
-        "FORE2"
-        "WEST"
-        "FORE1"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["FORE1",
+    /*%*/ [GLOBALS.stfore] /*1*/,
+    /*%*/ [GLOBALS.forest] /*1*/,
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "FORE1",
+        "EAST",
+        "FORE3",
+        "SOUTH",
+        "FORE2",
+        "WEST",
+        "FORE1"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"FORE4"
-    "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees."
-    %GLOBALS.forest
-    t
-    #exit
-      {"EAST"
-        "CLTOP"
-        "NORTH"
-        "FORE5"
-        "SOUTH"
-        "FORE4"
-        "WEST"
-        "FORE2"}}
+/*#*/ [room,
+  /*{*/ ["FORE4",
+    "You are in a large forest, with trees obstructing all views except\nto the east, where a small clearing may be seen through the trees.",
+    /*%*/ [GLOBALS.forest] /*1*/,
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "CLTOP",
+        "NORTH",
+        "FORE5",
+        "SOUTH",
+        "FORE4",
+        "WEST",
+        "FORE2"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"FORE5"
-    %GLOBALS.stfore
-    %GLOBALS.forest
-    t
-    #exit
-      {"NORTH"
-        "FORE5"
-        "SE"
-        "CLTOP"
-        "SOUTH"
-        "FORE4"
-        "WEST"
-        "FORE2"}}
+/*#*/ [room,
+  /*{*/ ["FORE5",
+    /*%*/ [GLOBALS.stfore] /*1*/,
+    /*%*/ [GLOBALS.forest] /*1*/,
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "FORE5",
+        "SE",
+        "CLTOP",
+        "SOUTH",
+        "FORE4",
+        "WEST",
+        "FORE2"] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(
   fordes,
   "You are in a dimly lit forest, with large trees all around.  To the\neast, there appears to be sunlight.")
 
-#room
-  {"FORE2"
-    %GLOBALS.fordes
-    %GLOBALS.forest
-    t
-    #exit
-      {"NORTH"
-        "SHOUS"
-        "EAST"
-        "CLEAR"
-        "SOUTH"
-        "FORE4"
-        "WEST"
-        "FORE1"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["FORE2",
+    /*%*/ [GLOBALS.fordes] /*1*/,
+    /*%*/ [GLOBALS.forest] /*1*/,
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "SHOUS",
+        "EAST",
+        "CLEAR",
+        "SOUTH",
+        "FORE4",
+        "WEST",
+        "FORE1"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"FORE3"
-    %GLOBALS.fordes
-    %GLOBALS.forest
-    t
-    #exit
-      {"NORTH"
-        "FORE2"
-        "EAST"
-        "CLEAR"
-        "SOUTH"
-        "CLEAR"
-        "WEST"
-        "NHOUS"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["FORE3",
+    /*%*/ [GLOBALS.fordes] /*1*/,
+    /*%*/ [GLOBALS.forest] /*1*/,
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "FORE2",
+        "EAST",
+        "CLEAR",
+        "SOUTH",
+        "CLEAR",
+        "WEST",
+        "NHOUS"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CLEAR"
-    ""
-    "Clearing"
-    t
-    #exit
-      {"SW"
-        "EHOUS"
-        "SE"
-        "FORE5"
-        "NORTH"
-        "CLEAR"
-        "EAST"
-        "CLEAR"
-        "WEST"
-        "FORE3"
-        "SOUTH"
-        "FORE2"
-        "DOWN"
-        #cexit
-          {"KEY-FLAG"
-            "MGRAT"}}
-    (#find_obj
-        {"GRAT1"}
-      #find_obj
-        {"LEAVE"})
-    clearing}
+/*#*/ [room,
+  /*{*/ ["CLEAR",
+    "",
+    "Clearing",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["SW",
+        "EHOUS",
+        "SE",
+        "FORE5",
+        "NORTH",
+        "CLEAR",
+        "EAST",
+        "CLEAR",
+        "WEST",
+        "FORE3",
+        "SOUTH",
+        "FORE2",
+        "DOWN",
+        /*#*/ [cexit,
+          /*{*/ ["KEY-FLAG",
+            "MGRAT"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["GRAT1"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["LEAVE"] /*}*/] /*2*/] /*)*/,
+    clearing] /*}*/] /*2*/
 
-#room
-  {"RAVI1"
-    "You are in a deep ravine at a crossing with an east-west crawlway. \nSome stone steps are at the south of the ravine and a steep staircase\ndescends."
-    "Deep Ravine"
-    %null
-    #exit
-      {"SOUTH"
-        "PASS1"
-        "DOWN"
-        "RESES"
-        "EAST"
-        "CHAS1"
-        "WEST"
-        "CRAW1"}}
+/*#*/ [room,
+  /*{*/ ["RAVI1",
+    "You are in a deep ravine at a crossing with an east-west crawlway. \nSome stone steps are at the south of the ravine and a steep staircase\ndescends.",
+    "Deep Ravine",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "PASS1",
+        "DOWN",
+        "RESES",
+        "EAST",
+        "CHAS1",
+        "WEST",
+        "CRAW1"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"CRAW1"
-    "You are in a crawlway with a three-foot high ceiling.  Your footing\nis very unsure here due to the assortment of rocks underfoot. \nPassages can be seen in the east, west, and northwest corners of the\npassage."
-    "Rocky Crawl"
-    %null
-    #exit
-      {"WEST"
-        "RAVI1"
-        "EAST"
-        "DOME"
-        "NW"
-        "EGYPT"}}
+/*#*/ [room,
+  /*{*/ ["CRAW1",
+    "You are in a crawlway with a three-foot high ceiling.  Your footing\nis very unsure here due to the assortment of rocks underfoot. \nPassages can be seen in the east, west, and northwest corners of the\npassage.",
+    "Rocky Crawl",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "RAVI1",
+        "EAST",
+        "DOME",
+        "NW",
+        "EGYPT"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"RESES"
-    ""
-    "Reservoir South"
-    %null
-    #exit
-      {"SOUTH"
-        #cexit
-          {"EGYPT-FLAG"
-            "RAVI1"
-            "The coffin will not fit through this passage."
-            t
-            coffin_cure}
-        "WEST"
-        "STREA"
-        "CROSS"
-        #cexit
-          {"LOW-TIDE"
-            "RESEN"
-            "You are not equipped for swimming."}
-        "NORTH"
-        #cexit
-          {"LOW-TIDE"
-            "RESEN"
-            "You are not equipped for swimming."}
-        "UP"
-        #cexit
-          {"EGYPT-FLAG"
-            "CANY1"
-            "The stairs are too steep for carrying the coffin."
-            t
-            coffin_cure}}
-    (#find_obj
-        {"TRUNK"})
-    reservoir_south}
+/*#*/ [room,
+  /*{*/ ["RESES",
+    "",
+    "Reservoir South",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        /*#*/ [cexit,
+          /*{*/ ["EGYPT-FLAG",
+            "RAVI1",
+            "The coffin will not fit through this passage.",
+            t,
+            coffin_cure] /*}*/] /*2*/,
+        "WEST",
+        "STREA",
+        "CROSS",
+        /*#*/ [cexit,
+          /*{*/ ["LOW-TIDE",
+            "RESEN",
+            "You are not equipped for swimming."] /*}*/] /*2*/,
+        "NORTH",
+        /*#*/ [cexit,
+          /*{*/ ["LOW-TIDE",
+            "RESEN",
+            "You are not equipped for swimming."] /*}*/] /*2*/,
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["EGYPT-FLAG",
+            "CANY1",
+            "The stairs are too steep for carrying the coffin.",
+            t,
+            coffin_cure] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TRUNK"] /*}*/] /*2*/] /*)*/,
+    reservoir_south] /*}*/] /*2*/
 
-#room
-  {"RESEN"
-    ""
-    "Reservoir North"
-    %null
-    #exit
-      {"NORTH"
-        "ATLAN"
-        "CROSS"
-        #cexit
-          {"LOW-TIDE"
-            "RESES"
-            "You are not equipped for swimming."}
-        "SOUTH"
-        #cexit
-          {"LOW-TIDE"
-            "RESES"
-            "You are not equipped for swimming."}}
-    (#find_obj
-        {"PUMP"})
-    reservoir_north}
+/*#*/ [room,
+  /*{*/ ["RESEN",
+    "",
+    "Reservoir North",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "ATLAN",
+        "CROSS",
+        /*#*/ [cexit,
+          /*{*/ ["LOW-TIDE",
+            "RESES",
+            "You are not equipped for swimming."] /*}*/] /*2*/,
+        "SOUTH",
+        /*#*/ [cexit,
+          /*{*/ ["LOW-TIDE",
+            "RESES",
+            "You are not equipped for swimming."] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["PUMP"] /*}*/] /*2*/] /*)*/,
+    reservoir_north] /*}*/] /*2*/
 
-#room
-  {"STREA"
-    "You are standing on a path beside a flowing stream.  The path\ntravels to the north and the east."
-    "Stream"
-    %null
-    #exit
-      {"EAST"
-        "RESES"
-        "NORTH"
-        "ICY"}
-    (#find_obj
-        {"FUSE"})}
+/*#*/ [room,
+  /*{*/ ["STREA",
+    "You are standing on a path beside a flowing stream.  The path\ntravels to the north and the east.",
+    "Stream",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "RESES",
+        "NORTH",
+        "ICY"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["FUSE"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"EGYPT"
-    "You are in a room which looks like an Egyptian tomb.  There is an\nascending staircase in the room as well as doors, east and south."
-    "Egyptian Room"
-    %null
-    #exit
-      {"UP"
-        "ICY"
-        "SOUTH"
-        "LEDG3"
-        "EAST"
-        #cexit
-          {"EGYPT-FLAG"
-            "CRAW1"
-            "The passage is too narrow to accomodate coffins."
-            t
-            coffin_cure}}
-    (#find_obj
-        {"COFFI"})}
+/*#*/ [room,
+  /*{*/ ["EGYPT",
+    "You are in a room which looks like an Egyptian tomb.  There is an\nascending staircase in the room as well as doors, east and south.",
+    "Egyptian Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "ICY",
+        "SOUTH",
+        "LEDG3",
+        "EAST",
+        /*#*/ [cexit,
+          /*{*/ ["EGYPT-FLAG",
+            "CRAW1",
+            "The passage is too narrow to accomodate coffins.",
+            t,
+            coffin_cure] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["COFFI"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"ICY"
-    ""
-    "Glacier Room"
-    %null
-    #exit
-      {"NORTH"
-        "STREA"
-        "EAST"
-        "EGYPT"
-        "WEST"
-        #cexit
-          {"GLACIER-FLAG"
-            "RUBYR"}}
-    (#find_obj
-        {"ICE"})
-    glacier_room}
+/*#*/ [room,
+  /*{*/ ["ICY",
+    "",
+    "Glacier Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "STREA",
+        "EAST",
+        "EGYPT",
+        "WEST",
+        /*#*/ [cexit,
+          /*{*/ ["GLACIER-FLAG",
+            "RUBYR"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["ICE"] /*}*/] /*2*/] /*)*/,
+    glacier_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"REFL1"
-      ""
-      "mirror"
-      %null
-      mirror_mirror
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["REFL1",
+      "",
+      "mirror",
+      /*%*/ [null] /*1*/,
+      mirror_mirror,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.vicbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["MIRRO"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["MIRRO"] /*]*/)
 
 add_object(
-  #object
-    {"REFL2"
-      ""
-      "mirror"
-      %null
-      mirror_mirror
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["REFL2",
+      "",
+      "mirror",
+      /*%*/ [null] /*1*/,
+      mirror_mirror,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.vicbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["MIRRO"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["MIRRO"] /*]*/)
 
 add_object(
-  #object
-    {"ICE"
-      "A mass of ice fills the western half of the room."
-      "glacier"
-      %null
-      glacier
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ICE",
+      "A mass of ice fills the western half of the room.",
+      "glacier",
+      /*%*/ [null] /*1*/,
+      glacier,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vicbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["GLACI"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["GLACI"] /*]*/)
 
-#room
-  {"RUBYR"
-    "You are in a small chamber behind the remains of the Great Glacier.\nTo the south and west are small passageways."
-    "Ruby Room"
-    %null
-    #exit
-      {"WEST"
-        "LAVA"
-        "SOUTH"
-        "ICY"}
-    (#find_obj
-        {"RUBY"})}
+/*#*/ [room,
+  /*{*/ ["RUBYR",
+    "You are in a small chamber behind the remains of the Great Glacier.\nTo the south and west are small passageways.",
+    "Ruby Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "LAVA",
+        "SOUTH",
+        "ICY"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["RUBY"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"ATLAN"
-    "You are in an ancient room, long buried by the Reservoir.  There are\nexits here to the southeast and upward."
-    "Atlantis Room"
-    %null
-    #exit
-      {"SE"
-        "RESEN"
-        "UP"
-        "CAVE1"}
-    (#find_obj
-        {"TRIDE"})}
+/*#*/ [room,
+  /*{*/ ["ATLAN",
+    "You are in an ancient room, long buried by the Reservoir.  There are\nexits here to the southeast and upward.",
+    "Atlantis Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SE",
+        "RESEN",
+        "UP",
+        "CAVE1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TRIDE"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CANY1"
-    "You are on the south edge of a deep canyon.  Passages lead off\nto the east, south, and northwest.  You can hear the sound of\nflowing water below."
-    "Deep Canyon"
-    %null
-    #exit
-      {"NW"
-        "RESES"
-        "EAST"
-        "DAM"
-        "SOUTH"
-        "CAROU"}}
+/*#*/ [room,
+  /*{*/ ["CANY1",
+    "You are on the south edge of a deep canyon.  Passages lead off\nto the east, south, and northwest.  You can hear the sound of\nflowing water below.",
+    "Deep Canyon",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NW",
+        "RESES",
+        "EAST",
+        "DAM",
+        "SOUTH",
+        "CAROU"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"ECHO"
-    "You are in a large room with a ceiling which cannot be detected from\nthe ground. There is a narrow passage from east to west and a stone\nstairway leading upward.  The room is extremely noisy.  In fact, it is\ndifficult to hear yourself think."
-    "Loud Room"
-    %null
-    #exit
-      {"EAST"
-        "CHAS3"
-        "WEST"
-        "PASS5"
-        "UP"
-        "CAVE3"}
-    (#find_obj
-        {"BAR"})
-    echo_room}
+/*#*/ [room,
+  /*{*/ ["ECHO",
+    "You are in a large room with a ceiling which cannot be detected from\nthe ground. There is a narrow passage from east to west and a stone\nstairway leading upward.  The room is extremely noisy.  In fact, it is\ndifficult to hear yourself think.",
+    "Loud Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "CHAS3",
+        "WEST",
+        "PASS5",
+        "UP",
+        "CAVE3"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BAR"] /*}*/] /*2*/] /*)*/,
+    echo_room] /*}*/] /*2*/
 
-#object
-  {"RUBY"
-    "There is a moby ruby lying here."
-    "ruby"
-    "On the floor lies a moby ruby."
-    %null
-    ()
-    %null
-    %_(
+/*#*/ [object,
+  /*{*/ ["RUBY",
+    "There is a moby ruby lying here.",
+    "ruby",
+    "On the floor lies a moby ruby.",
+    /*%*/ [null] /*1*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [_(
         GLOBALS.takebit,
-        GLOBALS.ovison)
-    0
-    15
-    8
-    5
-    0}
+        GLOBALS.ovison)] /*1*/,
+    0,
+    15,
+    8,
+    5,
+    0] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"TRIDE"
-      "Neptune's own crystal trident is here."
-      "crystal trident"
-      "On the shore lies Neptune's own crystal trident."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["TRIDE",
+      "Neptune's own crystal trident is here.",
+      "crystal trident",
+      "On the shore lies Neptune's own crystal trident.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      4
-      11
-      20
-      0},
-  ["FORK"],
-  ["CRYST"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      4,
+      11,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["FORK"] /*]*/,
+  /*[*/ ["CRYST"] /*]*/)
 
 add_object(
-  #object
-    {"COFFI"
-      "There is a solid-gold coffin, used for the burial of Ramses II, here."
-      "gold coffin"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["COFFI",
+      "There is a solid-gold coffin, used for the burial of Ramses II, here.",
+      "gold coffin",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.sacredbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      3
-      7
-      55
-      35},
-  ["CASKE"],
-  ["GOLD"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      3,
+      7,
+      55,
+      35] /*}*/] /*2*/,
+  /*[*/ ["CASKE"] /*]*/,
+  /*[*/ ["GOLD"] /*]*/)
 
 add_object(
-  #object
-    {"TORCH"
-      "There is an ivory torch here."
-      "torch"
-      "Sitting on the pedestal is a flaming torch, made of ivory."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["TORCH",
+      "There is an ivory torch here.",
+      "torch",
+      "Sitting on the pedestal is a flaming torch, made of ivory.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.flamebit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      1
-      14
-      6
-      20
-      0},
-  [],
-  ["IVORY"])
+          GLOBALS.ovison)] /*1*/,
+      1,
+      14,
+      6,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["IVORY"] /*]*/)
 
-#room
-  {"MIRR1"
-    ""
-    "Mirror Room"
-    %null
-    #exit
-      {"WEST"
-        "PASS3"
-        "NORTH"
-        "CRAW2"
-        "EAST"
-        "CAVE1"}
-    (#find_obj
-        {"REFL1"})
-    mirror_room}
+/*#*/ [room,
+  /*{*/ ["MIRR1",
+    "",
+    "Mirror Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "PASS3",
+        "NORTH",
+        "CRAW2",
+        "EAST",
+        "CAVE1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["REFL1"] /*}*/] /*2*/] /*)*/,
+    mirror_room] /*}*/] /*2*/
 
-#room
-  {"MIRR2"
-    ""
-    "Mirror Room"
-    t
-    #exit
-      {"WEST"
-        "PASS4"
-        "NORTH"
-        "CRAW3"
-        "EAST"
-        "CAVE2"}
-    (#find_obj
-        {"REFL2"})
-    mirror_room}
+/*#*/ [room,
+  /*{*/ ["MIRR2",
+    "",
+    "Mirror Room",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "PASS4",
+        "NORTH",
+        "CRAW3",
+        "EAST",
+        "CAVE2"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["REFL2"] /*}*/] /*2*/] /*)*/,
+    mirror_room] /*}*/] /*2*/
 
-#room
-  {"CAVE1"
-    "You are in a small cave with an entrance to the north and a stairway\nleading down."
-    "Cave"
-    %null
-    #exit
-      {"NORTH"
-        "MIRR1"
-        "DOWN"
-        "ATLAN"}}
+/*#*/ [room,
+  /*{*/ ["CAVE1",
+    "You are in a small cave with an entrance to the north and a stairway\nleading down.",
+    "Cave",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "MIRR1",
+        "DOWN",
+        "ATLAN"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"CAVE2"
-    "You are in a tiny cave with entrances west and north, and a dark,\nforbidding staircase leading down."
-    "Cave"
-    %null
-    #exit
-      {"NORTH"
-        "CRAW3"
-        "WEST"
-        "MIRR2"
-        "DOWN"
-        "LLD1"}
-    ()
-    cave2_room}
+/*#*/ [room,
+  /*{*/ ["CAVE2",
+    "You are in a tiny cave with entrances west and north, and a dark,\nforbidding staircase leading down.",
+    "Cave",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CRAW3",
+        "WEST",
+        "MIRR2",
+        "DOWN",
+        "LLD1"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    cave2_room] /*}*/] /*2*/
 
-#room
-  {"CRAW2"
-    "You are in a steep and narrow crawlway.  There are two exits nearby to\nthe south and southwest."
-    "Steep Crawlway"
-    %null
-    #exit
-      {"SOUTH"
-        "MIRR1"
-        "SW"
-        "PASS3"}}
+/*#*/ [room,
+  /*{*/ ["CRAW2",
+    "You are in a steep and narrow crawlway.  There are two exits nearby to\nthe south and southwest.",
+    "Steep Crawlway",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "MIRR1",
+        "SW",
+        "PASS3"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"CRAW3"
-    "You are in a narrow crawlway.  The crawlway leads from north to south.\nHowever the south passage divides to the south and southwest."
-    "Narrow Crawlway"
-    %null
-    #exit
-      {"SOUTH"
-        "CAVE2"
-        "SW"
-        "MIRR2"
-        "NORTH"
-        "MGRAI"}}
+/*#*/ [room,
+  /*{*/ ["CRAW3",
+    "You are in a narrow crawlway.  The crawlway leads from north to south.\nHowever the south passage divides to the south and southwest.",
+    "Narrow Crawlway",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "CAVE2",
+        "SW",
+        "MIRR2",
+        "NORTH",
+        "MGRAI"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"PASS3"
-    "You are in a cold and damp corridor where a long east-west passageway\nintersects with a northward path."
-    "Cold Passage"
-    %null
-    #exit
-      {"EAST"
-        "MIRR1"
-        "WEST"
-        "SLIDE"
-        "NORTH"
-        "CRAW2"}}
+/*#*/ [room,
+  /*{*/ ["PASS3",
+    "You are in a cold and damp corridor where a long east-west passageway\nintersects with a northward path.",
+    "Cold Passage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MIRR1",
+        "WEST",
+        "SLIDE",
+        "NORTH",
+        "CRAW2"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"PASS4"
-    "You are in a winding passage.  It seems that there is only an exit\non the east end although the whirring from the round room can be\nheard faintly to the north."
-    "Winding Passage"
-    %null
-    #exit
-      {"EAST"
-        "MIRR2"
-        "NORTH"
-        #nexit
-          "You hear the whir of the carousel room but can find no entrance."}}
+/*#*/ [room,
+  /*{*/ ["PASS4",
+    "You are in a winding passage.  It seems that there is only an exit\non the east end although the whirring from the round room can be\nheard faintly to the north.",
+    "Winding Passage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MIRR2",
+        "NORTH",
+        /*#*/ [nexit,
+          "You hear the whir of the carousel room but can find no entrance."] /*2*/] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"SLIDE"
-    "You are in a small chamber, which appears to have been part of a\ncoal mine. On the south wall of the chamber the letters \"Granite\nWall\" are etched in the rock. To the east is a long passage and\nthere is a steep metal slide twisting downward. From the appearance\nof the slide, an attempt to climb up it would be impossible.  To the\nnorth is a small opening."
-    "Slide Room"
-    %null
-    #exit
-      {"EAST"
-        "PASS3"
-        "DOWN"
-        "CELLA"
-        "NORTH"
-        "ENTRA"}}
+/*#*/ [room,
+  /*{*/ ["SLIDE",
+    "You are in a small chamber, which appears to have been part of a\ncoal mine. On the south wall of the chamber the letters \"Granite\nWall\" are etched in the rock. To the east is a long passage and\nthere is a steep metal slide twisting downward. From the appearance\nof the slide, an attempt to climb up it would be impossible.  To the\nnorth is a small opening.",
+    "Slide Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "PASS3",
+        "DOWN",
+        "CELLA",
+        "NORTH",
+        "ENTRA"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"ENTRA"
-    "You are standing at the entrance of what might have been a coal\nmine. To the northeast and the northwest are entrances to the mine,\nand there is another exit on the south end of the room."
-    "Mine Entrance"
-    %null
-    #exit
-      {"SOUTH"
-        "SLIDE"
-        "NW"
-        "SQUEE"
-        "NE"
-        "TSHAF"}}
+/*#*/ [room,
+  /*{*/ ["ENTRA",
+    "You are standing at the entrance of what might have been a coal\nmine. To the northeast and the northwest are entrances to the mine,\nand there is another exit on the south end of the room.",
+    "Mine Entrance",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "SLIDE",
+        "NW",
+        "SQUEE",
+        "NE",
+        "TSHAF"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"SQUEE"
-    "You are a small room.  Strange squeaky sounds may be heard coming from\nthe passage at the west end.  You may also escape to the south."
-    "Squeaky Room"
-    %null
-    #exit
-      {"WEST"
-        "BATS"
-        "SOUTH"
-        "ENTRA"}}
+/*#*/ [room,
+  /*{*/ ["SQUEE",
+    "You are a small room.  Strange squeaky sounds may be heard coming from\nthe passage at the west end.  You may also escape to the south.",
+    "Squeaky Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "BATS",
+        "SOUTH",
+        "ENTRA"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"TSHAF"
-    "You are in a large room, in the middle of which is a small shaft\ndescending through the floor into darkness below.  To the west and\nthe north are exits from this room.  Constructed over the top of the\nshaft is a metal framework to which a heavy iron chain is attached."
-    "Shaft Room"
-    %null
-    #exit
-      {"DOWN"
-        #nexit
-          "You wouldn't fit and would die if you could."
-        "WEST"
-        "ENTRA"
-        "NORTH"
-        "TUNNE"}
-    (#find_obj
-        {"TBASK"})}
+/*#*/ [room,
+  /*{*/ ["TSHAF",
+    "You are in a large room, in the middle of which is a small shaft\ndescending through the floor into darkness below.  To the west and\nthe north are exits from this room.  Constructed over the top of the\nshaft is a metal framework to which a heavy iron chain is attached.",
+    "Shaft Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        /*#*/ [nexit,
+          "You wouldn't fit and would die if you could."] /*2*/,
+        "WEST",
+        "ENTRA",
+        "NORTH",
+        "TUNNE"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TBASK"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 put(
   add_object(
-    #object
-      {"TBASK"
-        "At the end of the chain is a basket."
-        "basket"
-        %null
-        dumbwaiter
-        ()
-        %null
-        %_(
+    /*#*/ [object,
+      /*{*/ ["TBASK",
+        "At the end of the chain is a basket.",
+        "basket",
+        /*%*/ [null] /*1*/,
+        dumbwaiter,
+        /*(*/ [] /*)*/,
+        /*%*/ [null] /*1*/,
+        /*%*/ [_(
             GLOBALS.contbit,
             GLOBALS.ovison,
-            GLOBALS.transbit)
-        0
-        0
-        0
-        %GLOBALS.bigfix
-        50},
-    ["CAGE"
-      "DUMBW"
-      "BASKE"]),
+            GLOBALS.transbit)] /*1*/,
+        0,
+        0,
+        0,
+        /*%*/ [GLOBALS.bigfix] /*1*/,
+        50] /*}*/] /*2*/,
+    /*[*/ ["CAGE",
+      "DUMBW",
+      "BASKE"] /*]*/),
   GLOBALS.oopen_Q,
   t)
 
 add_object(
-  #object
-    {"FBASK"
-      ""
-      ""
-      %null
-      dumbwaiter
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["CAGE"
-    "DUMBW"
-    "BASKE"])
+  /*#*/ [object,
+    /*{*/ ["FBASK",
+      "",
+      "",
+      /*%*/ [null] /*1*/,
+      dumbwaiter,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAGE",
+    "DUMBW",
+    "BASKE"] /*]*/)
 
-#room
-  {"TUNNE"
-    "You are in a narrow tunnel with large wooden beams running across\nthe ceiling and around the walls.  A path from the south splits into\npaths running west and northeast."
-    "Wooden Tunnel"
-    %null
-    #exit
-      {"SOUTH"
-        "TSHAF"
-        "WEST"
-        "SMELL"
-        "NE"
-        "MINE1"}}
+/*#*/ [room,
+  /*{*/ ["TUNNE",
+    "You are in a narrow tunnel with large wooden beams running across\nthe ceiling and around the walls.  A path from the south splits into\npaths running west and northeast.",
+    "Wooden Tunnel",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "TSHAF",
+        "WEST",
+        "SMELL",
+        "NE",
+        "MINE1"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"SMELL"
-    "You are in a small non-descript room.  However, from the direction\nof a small descending staircase a foul odor can be detected.  To the\neast is a narrow path."
-    "Smelly Room"
-    %null
-    #exit
-      {"DOWN"
-        "BOOM"
-        "EAST"
-        "TUNNE"}}
+/*#*/ [room,
+  /*{*/ ["SMELL",
+    "You are in a small non-descript room.  However, from the direction\nof a small descending staircase a foul odor can be detected.  To the\neast is a narrow path.",
+    "Smelly Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "BOOM",
+        "EAST",
+        "TUNNE"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"BOOM"
-    "You are in a small room which smells strongly of coal gas."
-    "Gas Room"
-    %null
-    #exit
-      {"UP"
-        "SMELL"}
-    (#find_obj
-        {"BRACE"})
-    boom_room}
+/*#*/ [room,
+  /*{*/ ["BOOM",
+    "You are in a small room which smells strongly of coal gas.",
+    "Gas Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "SMELL"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BRACE"] /*}*/] /*2*/] /*)*/,
+    boom_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"BRACE"
-      "There is a sapphire-encrusted bracelet here."
-      "sapphire bracelet"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BRACE",
+      "There is a sapphire-encrusted bracelet here.",
+      "sapphire bracelet",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      5
-      3
-      10
-      0},
-  ["JEWEL"],
-  ["SAPPH"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      5,
+      3,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["JEWEL"] /*]*/,
+  /*[*/ ["SAPPH"] /*]*/)
 
-#room
-  {"TLADD"
-    "You are in a very small room.  In the corner is a rickety wooden\nladder, leading downward.  It might be safe to descend.  There is\nalso a staircase leading upward."
-    "Ladder Top"
-    %null
-    #exit
-      {"DOWN"
-        "BLADD"
-        "UP"
-        "MINE7"}}
+/*#*/ [room,
+  /*{*/ ["TLADD",
+    "You are in a very small room.  In the corner is a rickety wooden\nladder, leading downward.  It might be safe to descend.  There is\nalso a staircase leading upward.",
+    "Ladder Top",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "BLADD",
+        "UP",
+        "MINE7"] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(
   mindesc,
   "You are in a non-descript part of a coal mine.")
 
-#room
-  {"MINE1"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"NORTH"
-        "MINE4"
-        "SW"
-        "MINE2"
-        "EAST"
-        "TUNNE"}}
+/*#*/ [room,
+  /*{*/ ["MINE1",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "MINE4",
+        "SW",
+        "MINE2",
+        "EAST",
+        "TUNNE"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE2"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"SOUTH"
-        "MINE1"
-        "WEST"
-        "MINE5"
-        "UP"
-        "MINE3"
-        "NE"
-        "MINE4"}}
+/*#*/ [room,
+  /*{*/ ["MINE2",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "MINE1",
+        "WEST",
+        "MINE5",
+        "UP",
+        "MINE3",
+        "NE",
+        "MINE4"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE3"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"WEST"
-        "MINE2"
-        "NE"
-        "MINE5"
-        "EAST"
-        "MINE5"}}
+/*#*/ [room,
+  /*{*/ ["MINE3",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MINE2",
+        "NE",
+        "MINE5",
+        "EAST",
+        "MINE5"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE4"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"UP"
-        "MINE5"
-        "NE"
-        "MINE6"
-        "SOUTH"
-        "MINE1"
-        "WEST"
-        "MINE2"}}
+/*#*/ [room,
+  /*{*/ ["MINE4",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "MINE5",
+        "NE",
+        "MINE6",
+        "SOUTH",
+        "MINE1",
+        "WEST",
+        "MINE2"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE5"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"DOWN"
-        "MINE6"
-        "NORTH"
-        "MINE7"
-        "WEST"
-        "MINE2"
-        "SOUTH"
-        "MINE3"
-        "UP"
-        "MINE3"
-        "EAST"
-        "MINE4"}}
+/*#*/ [room,
+  /*{*/ ["MINE5",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "MINE6",
+        "NORTH",
+        "MINE7",
+        "WEST",
+        "MINE2",
+        "SOUTH",
+        "MINE3",
+        "UP",
+        "MINE3",
+        "EAST",
+        "MINE4"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE6"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"SE"
-        "MINE4"
-        "UP"
-        "MINE5"
-        "NW"
-        "MINE7"}}
+/*#*/ [room,
+  /*{*/ ["MINE6",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SE",
+        "MINE4",
+        "UP",
+        "MINE5",
+        "NW",
+        "MINE7"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"MINE7"
-    %GLOBALS.mindesc
-    %GLOBALS.mindesc
-    %null
-    #exit
-      {"EAST"
-        "MINE1"
-        "WEST"
-        "MINE5"
-        "DOWN"
-        "TLADD"
-        "SOUTH"
-        "MINE6"}}
+/*#*/ [room,
+  /*{*/ ["MINE7",
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [GLOBALS.mindesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MINE1",
+        "WEST",
+        "MINE5",
+        "DOWN",
+        "TLADD",
+        "SOUTH",
+        "MINE6"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"BLADD"
-    "You are in a rather wide room.  On one side is the bottom of a\nnarrow wooden ladder.  To the northeast and the south are passages\nleaving the room."
-    "Ladder Bottom"
-    %null
-    #exit
-      {"NE"
-        "DEAD7"
-        "SOUTH"
-        "TIMBE"
-        "UP"
-        "TLADD"}}
+/*#*/ [room,
+  /*{*/ ["BLADD",
+    "You are in a rather wide room.  On one side is the bottom of a\nnarrow wooden ladder.  To the northeast and the south are passages\nleaving the room.",
+    "Ladder Bottom",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NE",
+        "DEAD7",
+        "SOUTH",
+        "TIMBE",
+        "UP",
+        "TLADD"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"DEAD7"
-    "Dead End"
-    "Dead End"
-    %null
-    #exit
-      {"SOUTH"
-        "BLADD"}
-    (#find_obj
-        {"COAL"})}
+/*#*/ [room,
+  /*{*/ ["DEAD7",
+    "Dead End",
+    "Dead End",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "BLADD"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["COAL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 psetg(
   nofit,
   "You cannot fit through this passage with that load.")
 
-#room
-  {"TIMBE"
-    "You are in a long and narrow passage, which is cluttered with broken\ntimbers.  A wide passage comes from the north and turns at the \nsouthwest corner of the room into a very narrow passageway."
-    "Timber Room"
-    %null
-    #exit
-      {"NORTH"
-        "BLADD"
-        "SW"
-        #cexit
-          {"EMPTY-HANDED"
-            "BSHAF"
-            %GLOBALS.nofit}}
-    ()
-    no_objs}
+/*#*/ [room,
+  /*{*/ ["TIMBE",
+    "You are in a long and narrow passage, which is cluttered with broken\ntimbers.  A wide passage comes from the north and turns at the \nsouthwest corner of the room into a very narrow passageway.",
+    "Timber Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "BLADD",
+        "SW",
+        /*#*/ [cexit,
+          /*{*/ ["EMPTY-HANDED",
+            "BSHAF",
+            /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    no_objs] /*}*/] /*2*/
 
-#room
-  {"BSHAF"
-    "You are in a small square room which is at the bottom of a long\nshaft. To the east is a passageway and to the northeast a very narrow\npassage. In the shaft can be seen a heavy iron chain."
-    "Lower Shaft"
-    %null
-    #exit
-      {"EAST"
-        "MACHI"
-        "OUT"
-        #cexit
-          {"EMPTY-HANDED"
-            "TIMBE"
-            %GLOBALS.nofit}
-        "NE"
-        #cexit
-          {"EMPTY-HANDED"
-            "TIMBE"
-            %GLOBALS.nofit}
-        "UP"
-        #nexit
-          "Not a chance."
-        "CLIMB"
-        #nexit
-          "The chain is not climbable."}
-    (#find_obj
-        {"FBASK"})
-    no_objs}
+/*#*/ [room,
+  /*{*/ ["BSHAF",
+    "You are in a small square room which is at the bottom of a long\nshaft. To the east is a passageway and to the northeast a very narrow\npassage. In the shaft can be seen a heavy iron chain.",
+    "Lower Shaft",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "MACHI",
+        "OUT",
+        /*#*/ [cexit,
+          /*{*/ ["EMPTY-HANDED",
+            "TIMBE",
+            /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/,
+        "NE",
+        /*#*/ [cexit,
+          /*{*/ ["EMPTY-HANDED",
+            "TIMBE",
+            /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/,
+        "UP",
+        /*#*/ [nexit,
+          "Not a chance."] /*2*/,
+        "CLIMB",
+        /*#*/ [nexit,
+          "The chain is not climbable."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["FBASK"] /*}*/] /*2*/] /*)*/,
+    no_objs] /*}*/] /*2*/
 
-#room
-  {"MACHI"
-    ""
-    "Machine Room"
-    %null
-    #exit
-      {"NW"
-        "BSHAF"}
-    (#find_obj
-        {"MSWIT"}
-      #find_obj
-        {"MACHI"})
-    machine_room}
+/*#*/ [room,
+  /*{*/ ["MACHI",
+    "",
+    "Machine Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NW",
+        "BSHAF"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["MSWIT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["MACHI"] /*}*/] /*2*/] /*)*/,
+    machine_room] /*}*/] /*2*/
 
-#room
-  {"BATS"
-    ""
-    "Bat Room"
-    %null
-    #exit
-      {"EAST"
-        "SQUEE"}
-    (#find_obj
-        {"JADE"}
-      #find_obj
-        {"BAT"})
-    bats_room}
+/*#*/ [room,
+  /*{*/ ["BATS",
+    "",
+    "Bat Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "SQUEE"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["JADE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BAT"] /*}*/] /*2*/] /*)*/,
+    bats_room] /*}*/] /*2*/
 
-#room
-  {"DOME"
-    ""
-    "Dome Room"
-    %null
-    #exit
-      {"EAST"
-        "CRAW1"
-        "DOWN"
-        #cexit
-          {"DOME-FLAG"
-            "MTORC"
-            "You cannot go down without fracturing many bones."}
-        "CLIMB"
-        #cexit
-          {"DOME-FLAG"
-            "MTORC"
-            "You cannot go down without fracturing many bones."}}
-    (#find_obj
-        {"RAILI"})
-    dome_room}
+/*#*/ [room,
+  /*{*/ ["DOME",
+    "",
+    "Dome Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "CRAW1",
+        "DOWN",
+        /*#*/ [cexit,
+          /*{*/ ["DOME-FLAG",
+            "MTORC",
+            "You cannot go down without fracturing many bones."] /*}*/] /*2*/,
+        "CLIMB",
+        /*#*/ [cexit,
+          /*{*/ ["DOME-FLAG",
+            "MTORC",
+            "You cannot go down without fracturing many bones."] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["RAILI"] /*}*/] /*2*/] /*)*/,
+    dome_room] /*}*/] /*2*/
 
-#room
-  {"MTORC"
-    ""
-    "Torch Room"
-    %null
-    #exit
-      {"UP"
-        #nexit
-          "You cannot reach the rope."
-        "WEST"
-        "MTORC"
-        "DOWN"
-        "CRAW4"}
-    (#find_obj
-        {"TORCH"})
-    torch_room}
+/*#*/ [room,
+  /*{*/ ["MTORC",
+    "",
+    "Torch Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*#*/ [nexit,
+          "You cannot reach the rope."] /*2*/,
+        "WEST",
+        "MTORC",
+        "DOWN",
+        "CRAW4"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TORCH"] /*}*/] /*2*/] /*)*/,
+    torch_room] /*}*/] /*2*/
 
-#room
-  {"CRAW4"
-    "You are in a north-south crawlway; a passage goes to the east also.\nThere is a hole above, but it provides no opportunities for climbing."
-    "North-South Crawlway"
-    %null
-    #exit
-      {"NORTH"
-        "CHAS2"
-        "SOUTH"
-        "STUDI"
-        "EAST"
-        "MTROL"
-        "UP"
-        #nexit
-          "Not even a human fly could get up it."}
-    ()}
+/*#*/ [room,
+  /*{*/ ["CRAW4",
+    "You are in a north-south crawlway; a passage goes to the east also.\nThere is a hole above, but it provides no opportunities for climbing.",
+    "North-South Crawlway",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CHAS2",
+        "SOUTH",
+        "STUDI",
+        "EAST",
+        "MTROL",
+        "UP",
+        /*#*/ [nexit,
+          "Not even a human fly could get up it."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CHAS2"
-    "You are on the west edge of a chasm, the bottom of which cannot be\nseen. The east side is sheer rock, providing no exits.  A narrow\npassage goes west, and the path you are on continues to the north and\nsouth."
-    "West of Chasm"
-    %null
-    #exit
-      {"WEST"
-        "CELLA"
-        "NORTH"
-        "CRAW4"
-        "SOUTH"
-        "GALLE"
-        "DOWN"
-        #nexit
-          "The chasm probably leads straight to the infernal regions."}
-    ()}
+/*#*/ [room,
+  /*{*/ ["CHAS2",
+    "You are on the west edge of a chasm, the bottom of which cannot be\nseen. The east side is sheer rock, providing no exits.  A narrow\npassage goes west, and the path you are on continues to the north and\nsouth.",
+    "West of Chasm",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "CELLA",
+        "NORTH",
+        "CRAW4",
+        "SOUTH",
+        "GALLE",
+        "DOWN",
+        /*#*/ [nexit,
+          "The chasm probably leads straight to the infernal regions."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CAROU"
-    ""
-    "Round room"
-    %null
-    #exit
-      {"NORTH"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "CAVE4"
-            ""
-            %null
-            carousel_exit}
-        "SOUTH"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "CAVE4"
-            ""
-            %null
-            carousel_exit}
-        "EAST"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "MGRAI"
-            ""
-            %null
-            carousel_exit}
-        "WEST"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "PASS1"
-            ""
-            %null
-            carousel_exit}
-        "NW"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "CANY1"
-            ""
-            %null
-            carousel_exit}
-        "NE"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "PASS5"
-            ""
-            %null
-            carousel_exit}
-        "SE"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "PASS4"
-            ""
-            %null
-            carousel_exit}
-        "SW"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "MAZE1"
-            ""
-            %null
-            carousel_exit}
-        "EXIT"
-        #cexit
-          {"CAROUSEL-FLIP"
-            "PASS3"
-            ""
-            %null
-            carousel_out}}
-    (#find_obj
-        {"IRBOX"})
-    carousel_room}
+/*#*/ [room,
+  /*{*/ ["CAROU",
+    "",
+    "Round room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "CAVE4",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "SOUTH",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "CAVE4",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "EAST",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "MGRAI",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "WEST",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "PASS1",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "NW",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "CANY1",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "NE",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "PASS5",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "SE",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "PASS4",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "SW",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "MAZE1",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_exit] /*}*/] /*2*/,
+        "EXIT",
+        /*#*/ [cexit,
+          /*{*/ ["CAROUSEL-FLIP",
+            "PASS3",
+            "",
+            /*%*/ [null] /*1*/,
+            carousel_out] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["IRBOX"] /*}*/] /*2*/] /*)*/,
+    carousel_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"IRBOX"
-      "There is a dented iron box here."
-      "iron box"
-      %null
-      %null
-      (#find_obj
-          {"STRAD"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["IRBOX",
+      "There is a dented iron box here.",
+      "iron box",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["STRAD"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.contbit)
-      0
-      0
-      0
-      40
-      20},
-  ["BOX"],
-  ["IRON"
-    "DENTE"])
+          GLOBALS.contbit)] /*1*/,
+      0,
+      0,
+      0,
+      40,
+      20] /*}*/] /*2*/,
+  /*[*/ ["BOX"] /*]*/,
+  /*[*/ ["IRON",
+    "DENTE"] /*]*/)
 
 add_object(
-  #object
-    {"STRAD"
-      "There is a Stradavarius here."
-      "fancy violin"
-      %null
-      %null
-      ()
-      #find_obj
-        {"IRBOX"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["STRAD",
+      "There is a Stradavarius here.",
+      "fancy violin",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["IRBOX"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      10
-      10
-      10
-      0},
-  ["VIOLI"],
-  ["FANCY"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      10,
+      10,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["VIOLI"] /*]*/,
+  /*[*/ ["FANCY"] /*]*/)
 
-#room
-  {"PASS5"
-    "You are in a high north-south passage, which forks to the northeast."
-    "North-South Passage"
-    %null
-    #exit
-      {"NORTH"
-        "CHAS1"
-        "NE"
-        "ECHO"
-        "SOUTH"
-        "CAROU"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["PASS5",
+    "You are in a high north-south passage, which forks to the northeast.",
+    "North-South Passage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CHAS1",
+        "NE",
+        "ECHO",
+        "SOUTH",
+        "CAROU"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CHAS1"
-    "A chasm runs southwest to northeast.  You are on the south edge; the\npath exits to the south and to the east."
-    "Chasm"
-    %null
-    #exit
-      {"SOUTH"
-        "RAVI1"
-        "EAST"
-        "PASS5"
-        "DOWN"
-        #nexit
-          "Are you out of your mind?"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["CHAS1",
+    "A chasm runs southwest to northeast.  You are on the south edge; the\npath exits to the south and to the east.",
+    "Chasm",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "RAVI1",
+        "EAST",
+        "PASS5",
+        "DOWN",
+        /*#*/ [nexit,
+          "Are you out of your mind?"] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CAVE3"
-    "You are in a cave.  Passages exit to the south and to the east, but\nthe cave narrows to a crack to the west.  The earth is particularly\ndamp here."
-    "Damp Cave"
-    %null
-    #exit
-      {"SOUTH"
-        "ECHO"
-        "EAST"
-        "DAM"
-        "WEST"
-        #nexit
-          "It is too narrow for most insects."}
-    ()}
+/*#*/ [room,
+  /*{*/ ["CAVE3",
+    "You are in a cave.  Passages exit to the south and to the east, but\nthe cave narrows to a crack to the west.  The earth is particularly\ndamp here.",
+    "Damp Cave",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "ECHO",
+        "EAST",
+        "DAM",
+        "WEST",
+        /*#*/ [nexit,
+          "It is too narrow for most insects."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CHAS3"
-    "A chasm, evidently produced by an ancient river, runs through the\ncave here.  Passages lead off in all directions."
-    "Ancient Chasm"
-    %null
-    #exit
-      {"SOUTH"
-        "ECHO"
-        "EAST"
-        "TCAVE"
-        "NORTH"
-        "DEAD5"
-        "WEST"
-        "DEAD6"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["CHAS3",
+    "A chasm, evidently produced by an ancient river, runs through the\ncave here.  Passages lead off in all directions.",
+    "Ancient Chasm",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "ECHO",
+        "EAST",
+        "TCAVE",
+        "NORTH",
+        "DEAD5",
+        "WEST",
+        "DEAD6"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"DEAD5"
-    "Dead end"
-    "Dead end"
-    %null
-    #exit
-      {"SW"
-        "CHAS3"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD5",
+    "Dead end",
+    "Dead end",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SW",
+        "CHAS3"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"DEAD6"
-    "Dead end"
-    "Dead end"
-    %null
-    #exit
-      {"EAST"
-        "CHAS3"}
-    ()}
+/*#*/ [room,
+  /*{*/ ["DEAD6",
+    "Dead end",
+    "Dead end",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "CHAS3"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CAVE4"
-    "You have entered a cave with passages leading north and southeast."
-    "Engravings Cave"
-    %null
-    #exit
-      {"NORTH"
-        "CAROU"
-        "SE"
-        "RIDDL"}
-    (#find_obj
-        {"ENGRA"})}
+/*#*/ [room,
+  /*{*/ ["CAVE4",
+    "You have entered a cave with passages leading north and southeast.",
+    "Engravings Cave",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CAROU",
+        "SE",
+        "RIDDL"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["ENGRA"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
   sobject(
@@ -2707,9 +2707,9 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.readbit,
     GLOBALS.sacredbit),
-  ["INSCR"],
-  ["OLD"
-    "ANCIE"])
+  /*[*/ ["INSCR"] /*]*/,
+  /*[*/ ["OLD",
+    "ANCIE"] /*]*/)
 
 put(
   find_obj(
@@ -2717,147 +2717,147 @@ put(
   GLOBALS.odesc1,
   "There are old engravings on the walls here.")
 
-#room
-  {"RIDDL"
-    "This is a room which is bare on all sides.  There is an exit down. \nTo the east is a great door made of stone.  Above the stone, the\nfollowing words are written: 'No man shall enter this room without\nsolving this riddle:\n  What is tall as a house,\n	  round as a cup, \n	  and all the king's horses can't draw it up?'"
-    "Riddle Room"
-    %null
-    #exit
-      {"DOWN"
-        "CAVE4"
-        "EAST"
-        #cexit
-          {"RIDDLE-FLAG"
-            "MPEAR"
-            "Your way is blocked by an invisible force."}}
-    (#find_obj
-        {"SDOOR"})}
+/*#*/ [room,
+  /*{*/ ["RIDDL",
+    "This is a room which is bare on all sides.  There is an exit down. \nTo the east is a great door made of stone.  Above the stone, the\nfollowing words are written: 'No man shall enter this room without\nsolving this riddle:\n  What is tall as a house,\n	  round as a cup, \n	  and all the king's horses can't draw it up?'",
+    "Riddle Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "CAVE4",
+        "EAST",
+        /*#*/ [cexit,
+          /*{*/ ["RIDDLE-FLAG",
+            "MPEAR",
+            "Your way is blocked by an invisible force."] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["SDOOR"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"MPEAR"
-    "This is a former broom closet.  The exits are to the east and west."
-    "Pearl Room"
-    %null
-    #exit
-      {"EAST"
-        "BWELL"
-        "WEST"
-        "RIDDL"}
-    (#find_obj
-        {"PEARL"})}
+/*#*/ [room,
+  /*{*/ ["MPEAR",
+    "This is a former broom closet.  The exits are to the east and west.",
+    "Pearl Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "BWELL",
+        "WEST",
+        "RIDDL"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["PEARL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"LLD1"
-    ""
-    "Entrance to Hades"
-    t
-    #exit
-      {"EAST"
-        #cexit
-          {"LLD-FLAG"
-            "LLD2"
-            "Some invisible force prevents you from passing through the gate."}
-        "UP"
-        "CAVE2"
-        "ENTER"
-        #cexit
-          {"LLD-FLAG"
-            "LLD2"
-            "Some invisible force prevents you from passing through the gate."}}
-    (#find_obj
-        {"CORPS"}
-      #find_obj
-        {"GATES"}
-      #find_obj
-        {"GHOST"})
-    lld_room}
+/*#*/ [room,
+  /*{*/ ["LLD1",
+    "",
+    "Entrance to Hades",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        /*#*/ [cexit,
+          /*{*/ ["LLD-FLAG",
+            "LLD2",
+            "Some invisible force prevents you from passing through the gate."] /*}*/] /*2*/,
+        "UP",
+        "CAVE2",
+        "ENTER",
+        /*#*/ [cexit,
+          /*{*/ ["LLD-FLAG",
+            "LLD2",
+            "Some invisible force prevents you from passing through the gate."] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["CORPS"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["GATES"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["GHOST"] /*}*/] /*2*/] /*)*/,
+    lld_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"GHOST"
-      ""
-      ""
-      %null
-      ghost_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GHOST",
+      "",
+      "",
+      /*%*/ [null] /*1*/,
+      ghost_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vicbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["SPIRI"
-    "FIEND"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["SPIRI",
+    "FIEND"] /*]*/)
 
-#room
-  {"LLD2"
-    ""
-    "Land of the Living Dead"
-    t
-    #exit
-      {"EAST"
-        "TOMB"
-        "EXIT"
-        "LLD1"
-        "WEST"
-        "LLD1"}
-    (#find_obj
-        {"BODIE"})
-    lld2_room
-    30}
+/*#*/ [room,
+  /*{*/ ["LLD2",
+    "",
+    "Land of the Living Dead",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "TOMB",
+        "EXIT",
+        "LLD1",
+        "WEST",
+        "LLD1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BODIE"] /*}*/] /*2*/] /*)*/,
+    lld2_room,
+    30] /*}*/] /*2*/
 
-#room
-  {"MGRAI"
-    "You are standing in a small circular room with a pedestal.  A set of\nstairs leads up, and passages leave to the east and west."
-    "Grail Room"
-    %null
-    #exit
-      {"WEST"
-        "CAROU"
-        "EAST"
-        "CRAW3"
-        "UP"
-        "TEMP1"}
-    (#find_obj
-        {"GRAIL"})}
+/*#*/ [room,
+  /*{*/ ["MGRAI",
+    "You are standing in a small circular room with a pedestal.  A set of\nstairs leads up, and passages leave to the east and west.",
+    "Grail Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "CAROU",
+        "EAST",
+        "CRAW3",
+        "UP",
+        "TEMP1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["GRAIL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"GRAIL"
-      "There is an extremely valuable (perhaps original) grail here."
-      "grail"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GRAIL",
+      "There is an extremely valuable (perhaps original) grail here.",
+      "grail",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      2
-      5
-      10
-      5},
-  [])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      2,
+      5,
+      10,
+      5] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
-#room
-  {"TEMP1"
-    "You are in the west end of a large temple.  On the south wall is an \nancient inscription, probably a prayer in a long-forgotten language. \nThe north wall is solid granite.  The entrance at the west end of the\nroom is through huge marble pillars."
-    "Temple"
-    t
-    #exit
-      {"WEST"
-        "MGRAI"
-        "EAST"
-        "TEMP2"}
-    (#find_obj
-        {"PRAYE"}
-      #find_obj
-        {"BELL"})}
+/*#*/ [room,
+  /*{*/ ["TEMP1",
+    "You are in the west end of a large temple.  On the south wall is an \nancient inscription, probably a prayer in a long-forgotten language. \nThe north wall is solid granite.  The entrance at the west end of the\nroom is through huge marble pillars.",
+    "Temple",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MGRAI",
+        "EAST",
+        "TEMP2"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["PRAYE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BELL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
   sobject(
@@ -2867,528 +2867,528 @@ add_object(
       GLOBALS.readbit,
       GLOBALS.sacredbit,
       GLOBALS.ovison)),
-  ["INSCR"],
-  ["ANCIE"
-    "OLD"])
+  /*[*/ ["INSCR"] /*]*/,
+  /*[*/ ["ANCIE",
+    "OLD"] /*]*/)
 
-#room
-  {"TEMP2"
-    "You are in the east end of a large temple.  In front of you is what\nappears to be an altar."
-    "Altar"
-    t
-    #exit
-      {"WEST"
-        "TEMP1"}
-    (#find_obj
-        {"BOOK"}
-      #find_obj
-        {"CANDL"})}
-
-add_object(
-  #object
-    {"TRUNK"
-      "There is an old trunk here, bulging with assorted jewels."
-      "trunk with jewels"
-      "Lying half buried in the mud is an old trunk, bulging with jewels."
-      %null
-      ()
-      %null
-      %GLOBALS.takebit
-      0
-      15
-      8
-      35
-      0},
-  ["CHEST"])
+/*#*/ [room,
+  /*{*/ ["TEMP2",
+    "You are in the east end of a large temple.  In front of you is what\nappears to be an altar.",
+    "Altar",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "TEMP1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BOOK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["CANDL"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"BELL"
-      "There is a small brass bell here."
-      "bell"
-      "Lying in a corner of the room is a small brass bell."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["TRUNK",
+      "There is an old trunk here, bulging with assorted jewels.",
+      "trunk with jewels",
+      "Lying half buried in the mud is an old trunk, bulging with jewels.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.takebit] /*1*/,
+      0,
+      15,
+      8,
+      35,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CHEST"] /*]*/)
+
+add_object(
+  /*#*/ [object,
+    /*{*/ ["BELL",
+      "There is a small brass bell here.",
+      "bell",
+      "Lying in a corner of the room is a small brass bell.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      0},
-  [],
-  ["BRASS"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["BRASS"] /*]*/)
 
 add_object(
-  #object
-    {"BOOK"
-      "There is a large black book here."
-      "book"
-      "On the altar is a large black book, open to page 569."
-      black_book
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BOOK",
+      "There is a large black book here.",
+      "book",
+      "On the altar is a large black book, open to page 569.",
+      black_book,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      10
-      0},
-  ["PRAYE"
-    "BIBLE"
-    "GOODB"],
-  ["BLACK"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["PRAYE",
+    "BIBLE",
+    "GOODB"] /*]*/,
+  /*[*/ ["BLACK"] /*]*/)
 
 add_object(
-  #object
-    {"CANDL"
-      "There are two candles here."
-      "pair of candles"
-      "On the two ends of the altar are burning candles."
-      candles
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CANDL",
+      "There are two candles here.",
+      "pair of candles",
+      "On the two ends of the altar are burning candles.",
+      candles,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.flamebit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      1
-      0
-      0
-      10
-      0},
-  [])
+          GLOBALS.ovison)] /*1*/,
+      1,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
-#room
-  {"DAM"
-    ""
-    "Dam"
-    t
-    #exit
-      {"SOUTH"
-        "CANY1"
-        "DOWN"
-        "DOCK"
-        "EAST"
-        "CAVE3"
-        "NORTH"
-        "LOBBY"}
-    (#find_obj
-        {"BOLT"}
-      #find_obj
-        {"DAM"}
-      #find_obj
-        {"BUBBL"})
-    dam_room}
+/*#*/ [room,
+  /*{*/ ["DAM",
+    "",
+    "Dam",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "CANY1",
+        "DOWN",
+        "DOCK",
+        "EAST",
+        "CAVE3",
+        "NORTH",
+        "LOBBY"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BOLT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["DAM"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BUBBL"] /*}*/] /*2*/] /*)*/,
+    dam_room] /*}*/] /*2*/
 
-#room
-  {"LOBBY"
-    "This room appears to have been the waiting room for groups touring\nthe dam.  There are exits here to the north and east marked\n'Private', though the doors are open, and an exit to the south."
-    "Dam Lobby"
-    t
-    #exit
-      {"SOUTH"
-        "DAM"
-        "NORTH"
-        "MAINT"
-        "EAST"
-        "MAINT"}
-    (#find_obj
-        {"MATCH"}
-      #find_obj
-        {"GUIDE"})}
+/*#*/ [room,
+  /*{*/ ["LOBBY",
+    "This room appears to have been the waiting room for groups touring\nthe dam.  There are exits here to the north and east marked\n'Private', though the doors are open, and an exit to the south.",
+    "Dam Lobby",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "DAM",
+        "NORTH",
+        "MAINT",
+        "EAST",
+        "MAINT"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["MATCH"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["GUIDE"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"GUIDE"
-      "There are tour guidebooks here."
-      "tour guidebook"
-      "Some guidebooks entitled 'Flood Control Dam #3' are on the reception\ndesk."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GUIDE",
+      "There are tour guidebooks here.",
+      "tour guidebook",
+      "Some guidebooks entitled 'Flood Control Dam #3' are on the reception\ndesk.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
           GLOBALS.readbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      0},
-  ["BOOK"],
-  ["TOUR"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BOOK"] /*]*/,
+  /*[*/ ["TOUR"] /*]*/)
 
 add_object(
-  #object
-    {"PAPER"
-      ""
-      "newspaper"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PAPER",
+      "",
+      "newspaper",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
           GLOBALS.readbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      2
-      0},
-  ["NEWSP"
-    "ISSUE"
-    "REPOR"
-    "MAGAZ"
-    "NEWS"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      2,
+      0] /*}*/] /*2*/,
+  /*[*/ ["NEWSP",
+    "ISSUE",
+    "REPOR",
+    "MAGAZ",
+    "NEWS"] /*]*/)
 
-#room
-  {"MAINT"
-    "You are in what appears to have been the maintenance room for Flood\nControl Dam #3, judging by the assortment of tool chests around the\nroom.  Apparently, this room has been ransacked recently, for most of\nthe valuable equipment is gone. On the wall in front of you is a\npanel of buttons, which are labelled in EBCDIC. However, they are of\ndifferent colors:  Blue, Yellow, Brown, and Red. The doors to this\nroom are in the west and south ends."
-    "Maintenance Room"
-    %null
-    #exit
-      {"SOUTH"
-        "LOBBY"
-        "WEST"
-        "LOBBY"}
-    (#find_obj
-        {"LEAK"}
-      #find_obj
-        {"TUBE"}
-      #find_obj
-        {"WRENC"}
-      #find_obj
-        {"BLBUT"}
-      #find_obj
-        {"RBUTT"}
-      #find_obj
-        {"BRBUT"}
-      #find_obj
-        {"YBUTT"}
-      #find_obj
-        {"SCREW"})
-    maint_room}
+/*#*/ [room,
+  /*{*/ ["MAINT",
+    "You are in what appears to have been the maintenance room for Flood\nControl Dam #3, judging by the assortment of tool chests around the\nroom.  Apparently, this room has been ransacked recently, for most of\nthe valuable equipment is gone. On the wall in front of you is a\npanel of buttons, which are labelled in EBCDIC. However, they are of\ndifferent colors:  Blue, Yellow, Brown, and Red. The doors to this\nroom are in the west and south ends.",
+    "Maintenance Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "LOBBY",
+        "WEST",
+        "LOBBY"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["LEAK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["TUBE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["WRENC"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BLBUT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RBUTT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BRBUT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["YBUTT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SCREW"] /*}*/] /*2*/] /*)*/,
+    maint_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"MATCH"
-      "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here."
-      "matchbook"
-      %null
-      match_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["MATCH",
+      "There is a matchbook whose cover says 'Visit Beautiful FCD#3' here.",
+      "matchbook",
+      /*%*/ [null] /*1*/,
+      match_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      2
-      0},
-  ["FLINT"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      2,
+      0] /*}*/] /*2*/,
+  /*[*/ ["FLINT"] /*]*/)
 
 add_object(
-  #object
-    {"ADVER"
-      "There is a small leaflet here."
-      "leaflet"
-      %null
-      %null
-      ()
-      #find_obj
-        {"MAILB"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ADVER",
+      "There is a small leaflet here.",
+      "leaflet",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["MAILB"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      2
-      0},
-  ["PAMPH"
-    "LEAFL"
-    "BOOKL"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      2,
+      0] /*}*/] /*2*/,
+  /*[*/ ["PAMPH",
+    "LEAFL",
+    "BOOKL"] /*]*/)
 
 add_object(
-  #object
-    {"MAILB"
-      "There is a small mailbox here."
-      "mailbox"
-      %null
-      %null
-      (#find_obj
-          {"ADVER"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["MAILB",
+      "There is a small mailbox here.",
+      "mailbox",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["ADVER"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      10},
-  ["BOX"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      10] /*}*/] /*2*/,
+  /*[*/ ["BOX"] /*]*/)
 
-#object
-  {"TUBE"
-    "There is an object which looks like a tube of toothpaste here."
-    "tube"
-    %null
-    tube_function
-    (#find_obj
-        {"PUTTY"})
-    %null
-    %_(
+/*#*/ [object,
+  /*{*/ ["TUBE",
+    "There is an object which looks like a tube of toothpaste here.",
+    "tube",
+    /*%*/ [null] /*1*/,
+    tube_function,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["PUTTY"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [_(
         GLOBALS.contbit,
         GLOBALS.takebit,
-        GLOBALS.ovison)
-    0
-    0
-    0
-    10
-    7}
+        GLOBALS.ovison)] /*1*/,
+    0,
+    0,
+    0,
+    10,
+    7] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"PUTTY"
-      "There is some gunk here"
-      "viscous material"
-      %null
-      %null
-      ()
-      #find_obj
-        {"TUBE"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PUTTY",
+      "There is some gunk here",
+      "viscous material",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["TUBE"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      6
-      0},
-  ["MATER"
-    "GUNK"
-    "GLUE"],
-  ["VISCO"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      6,
+      0] /*}*/] /*2*/,
+  /*[*/ ["MATER",
+    "GUNK",
+    "GLUE"] /*]*/,
+  /*[*/ ["VISCO"] /*]*/)
 
 add_object(
-  #object
-    {"WRENC"
-      "There is a wrench here."
-      "wrench"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["WRENC",
+      "There is a wrench here.",
+      "wrench",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      10
-      0},
-  [])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
 add_object(
-  #object
-    {"SCREW"
-      "There is a screwdriver here."
-      "screwdriver"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SCREW",
+      "There is a screwdriver here.",
+      "screwdriver",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      5
-      0},
-  [])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
-#room
-  {"CYCLO"
-    ""
-    "Cyclops Room"
-    %null
-    #exit
-      {"WEST"
-        "MAZ15"
-        "NORTH"
-        #cexit
-          {"MAGIC-FLAG"
-            "BLROO"
-            "The north wall is solid rock."}
-        "UP"
-        #cexit
-          {"CYCLOPS-FLAG"
-            "TREAS"
-            "The cyclops doesn't look like he'll let you past."}}
-    (#find_obj
-        {"CYCLO"})
-    cyclops_room}
+/*#*/ [room,
+  /*{*/ ["CYCLO",
+    "",
+    "Cyclops Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAZ15",
+        "NORTH",
+        /*#*/ [cexit,
+          /*{*/ ["MAGIC-FLAG",
+            "BLROO",
+            "The north wall is solid rock."] /*}*/] /*2*/,
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["CYCLOPS-FLAG",
+            "TREAS",
+            "The cyclops doesn't look like he'll let you past."] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["CYCLO"] /*}*/] /*2*/] /*)*/,
+    cyclops_room] /*}*/] /*2*/
 
 add_melee(
   find_obj(
     "CYCLO"),
   GLOBALS.cyclops_melee)
 
-#room
-  {"BLROO"
-    "You are in a long passage.  To the south is one entrance.  On the\neast there is an old wooden door, with a large hole in it (about\ncyclops sized)."
-    "Strange Passage"
-    %null
-    #exit
-      {"SOUTH"
-        "CYCLO"
-        "EAST"
-        "LROOM"}
-    ()
-    time
-    10}
+/*#*/ [room,
+  /*{*/ ["BLROO",
+    "You are in a long passage.  To the south is one entrance.  On the\neast there is an old wooden door, with a large hole in it (about\ncyclops sized).",
+    "Strange Passage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "CYCLO",
+        "EAST",
+        "LROOM"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    time,
+    10] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"CYCLO"
-      ""
-      "cyclops"
-      %null
-      cyclops
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CYCLO",
+      "",
+      "cyclops",
+      /*%*/ [null] /*1*/,
+      cyclops,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vicbit,
           GLOBALS.ovison,
-          GLOBALS.villain)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      10000},
-  ["ONE-E"
-    "MONST"])
+          GLOBALS.villain)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      10000] /*}*/] /*2*/,
+  /*[*/ ["ONE-E",
+    "MONST"] /*]*/)
 
-#room
-  {"TREAS"
-    "This is a large room, whose north wall is solid granite.  A number\nof discarded bags, which crumble at your touch, are scattered about\non the floor."
-    "Treasure Room"
-    %null
-    #exit
-      {"DOWN"
-        "CYCLO"}
-    (#find_obj
-        {"CHALI"})
-    treasure_room
-    25}
+/*#*/ [room,
+  /*{*/ ["TREAS",
+    "This is a large room, whose north wall is solid granite.  A number\nof discarded bags, which crumble at your touch, are scattered about\non the floor.",
+    "Treasure Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "CYCLO"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["CHALI"] /*}*/] /*2*/] /*)*/,
+    treasure_room,
+    25] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"CHALI"
-      "There is a silver chalice, intricately engraved, here."
-      "chalice"
-      %null
-      chalice
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CHALI",
+      "There is a silver chalice, intricately engraved, here.",
+      "chalice",
+      /*%*/ [null] /*1*/,
+      chalice,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      10
-      10
-      10
-      5},
-  ["CUP"
-    "GOBLE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      10,
+      10,
+      10,
+      5] /*}*/] /*2*/,
+  /*[*/ ["CUP",
+    "GOBLE"] /*]*/)
 
-#room
-  {"STUDI"
-    "You are in what appears to have been an artist's studio.  The walls\nand floors are splattered with paints of 69 different colors. \nStrangely enough, nothing of value is hanging here.  At the north and\nnorthwest of the room are open doors (also covered with paint).  An\nextremely dark and narrow chimney leads up from a fireplace; although\nyou might be able to get up it, it seems unlikely you could get back\ndown."
-    "Studio"
-    %null
-    #exit
-      {"NORTH"
-        "CRAW4"
-        "NW"
-        "GALLE"
-        "UP"
-        #cexit
-          {"LIGHT-LOAD"
-            "KITCH"
-            "The chimney is too narrow for you and all of your baggage."
-            %null
-            chimney_function}}
-    ()
-    %null}
+/*#*/ [room,
+  /*{*/ ["STUDI",
+    "You are in what appears to have been an artist's studio.  The walls\nand floors are splattered with paints of 69 different colors. \nStrangely enough, nothing of value is hanging here.  At the north and\nnorthwest of the room are open doors (also covered with paint).  An\nextremely dark and narrow chimney leads up from a fireplace; although\nyou might be able to get up it, it seems unlikely you could get back\ndown.",
+    "Studio",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CRAW4",
+        "NW",
+        "GALLE",
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["LIGHT-LOAD",
+            "KITCH",
+            "The chimney is too narrow for you and all of your baggage.",
+            /*%*/ [null] /*1*/,
+            chimney_function] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/] /*}*/] /*2*/
 
-#room
-  {"GALLE"
-    "You are in an art gallery.  Most of the paintings which were here\nhave been stolen by vandals with exceptional taste.  The vandals\nleft through either the north or south exits."
-    "Gallery"
-    t
-    #exit
-      {"NORTH"
-        "CHAS2"
-        "SOUTH"
-        "STUDI"}
-    (#find_obj
-        {"PAINT"})}
+/*#*/ [room,
+  /*{*/ ["GALLE",
+    "You are in an art gallery.  Most of the paintings which were here\nhave been stolen by vandals with exceptional taste.  The vandals\nleft through either the north or south exits.",
+    "Gallery",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CHAS2",
+        "SOUTH",
+        "STUDI"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["PAINT"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"PAINT"
-      "A masterpiece by a neglected genius is here."
-      "painting"
-      "Fortunately, there is still one chance for you to be a vandal, for on\nthe far wall is a work of unparalleled beauty."
-      painting
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PAINT",
+      "A masterpiece by a neglected genius is here.",
+      "painting",
+      "Fortunately, there is still one chance for you to be a vandal, for on\nthe far wall is a work of unparalleled beauty.",
+      painting,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      4
-      7
-      15
-      0},
-  ["ART"
-    "CANVA"
-    "MASTE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      4,
+      7,
+      15,
+      0] /*}*/] /*2*/,
+  /*[*/ ["ART",
+    "CANVA",
+    "MASTE"] /*]*/)
 
 "LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS"
 
 add_demon(
   GLOBALS.robber_demon = chtype(
-      [robber
-        ()
-        GLOBALS.rooms
+      /*[*/ [robber,
+        /*(*/ [] /*)*/,
+        GLOBALS.rooms,
         1(
-          GLOBALS.rooms)
+          GLOBALS.rooms),
         find_obj(
-          "THIEF")
-        null],
+          "THIEF"),
+        null] /*]*/,
       hack))
 
 psetg(
@@ -3400,36 +3400,36 @@ psetg(
   "There is a suspicious-looking individual lying unconscious on the\nground.  His bag and stilletto seem to have vanished.")
 
 add_object(
-  #object
-    {"THIEF"
-      %GLOBALS.robber_c_desc
-      "thief"
-      %null
-      robber_function
-      (#find_obj
-          {"STILL"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["THIEF",
+      /*%*/ [GLOBALS.robber_c_desc] /*1*/,
+      "thief",
+      /*%*/ [null] /*1*/,
+      robber_function,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["STILL"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vicbit,
           GLOBALS.ovison,
-          GLOBALS.villain)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      4},
-  ["ROBBE"
-    "CROOK"
-    "CRIME"
-    "CRIMI"
-    "BANDI"
-    "GENT"
-    "GENTL"
-    "MAN"
-    "SHADY"
-    "THUG"
-    "BAGMA"
-    "MAFIA"])
+          GLOBALS.villain)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      4] /*}*/] /*2*/,
+  /*[*/ ["ROBBE",
+    "CROOK",
+    "CRIME",
+    "CRIMI",
+    "BANDI",
+    "GENT",
+    "GENTL",
+    "MAN",
+    "SHADY",
+    "THUG",
+    "BAGMA",
+    "MAFIA"] /*]*/)
 
 add_melee(
   find_obj(
@@ -3437,49 +3437,49 @@ add_melee(
   GLOBALS.thief_melee)
 
 add_object(
-  #object
-    {"STILL"
-      "There is a vicious-looking stilletto here."
-      "stilletto"
-      %null
-      %null
-      ()
-      %find_obj(
-          "THIEF")
-      %_(
+  /*#*/ [object,
+    /*{*/ ["STILL",
+      "There is a vicious-looking stilletto here.",
+      "stilletto",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [find_obj(
+          "THIEF")] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.weaponbit)
-      0
-      0
-      0
-      10
-      0},
-  [],
-  ["VICIO"])
+          GLOBALS.weaponbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["VICIO"] /*]*/)
 
-GLOBALS.weapons = (find_obj(
-      "STICK")
+GLOBALS.weapons = /*(*/ [find_obj(
+      "STICK"),
     find_obj(
-      "KNIFE"))
+      "KNIFE")] /*)*/
 
-GLOBALS.random_list = (find_room(
-      "LROOM")
+GLOBALS.random_list = /*(*/ [find_room(
+      "LROOM"),
     find_room(
-      "KITCH")
+      "KITCH"),
     find_room(
-      "CLEAR")
+      "CLEAR"),
     find_room(
-      "FORE3")
+      "FORE3"),
     find_room(
-      "FORE2")
+      "FORE2"),
     find_room(
-      "SHOUS")
+      "SHOUS"),
     find_room(
-      "FORE2")
+      "FORE2"),
     find_room(
-      "KITCH")
+      "KITCH"),
     find_room(
-      "EHOUS"))
+      "EHOUS")] /*)*/
 
 add_desc(
   find_obj(
@@ -3534,8 +3534,8 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["WINDO"],
-  [])
+  /*[*/ ["WINDO"] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
   aobject(
@@ -3545,8 +3545,8 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["WINDO"],
-  [])
+  /*[*/ ["WINDO"] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
   aobject(
@@ -3557,9 +3557,9 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["BOLT"
-    "NUT"],
-  [])
+  /*[*/ ["BOLT",
+    "NUT"] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
   aobject(
@@ -3568,9 +3568,9 @@ add_object(
     grat1_function,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["GRATI"
-    "GRATE"],
-  [])
+  /*[*/ ["GRATI",
+    "GRATE"] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
   aobject(
@@ -3580,9 +3580,9 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["GRATI"
-    "GRATE"],
-  [])
+  /*[*/ ["GRATI",
+    "GRATE"] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
   aobject(
@@ -3591,9 +3591,9 @@ add_object(
     trap_door,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["TRAPD"
-    "TRAP-"],
-  ["TRAP"])
+  /*[*/ ["TRAPD",
+    "TRAP-"] /*]*/,
+  /*[*/ ["TRAP"] /*]*/)
 
 add_object(
   aobject(
@@ -3602,9 +3602,9 @@ add_object(
     trap_door,
     GLOBALS.doorbit,
     GLOBALS.ndescbit),
-  ["TRAPD"
-    "TRAP-"],
-  ["TRAP"])
+  /*[*/ ["TRAPD",
+    "TRAP-"] /*]*/,
+  /*[*/ ["TRAP"] /*]*/)
 
 add_object(
   aobject(
@@ -3614,8 +3614,8 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.ndescbit,
     GLOBALS.readbit),
-  ["DOOR"],
-  ["WOODE"])
+  /*[*/ ["DOOR"] /*]*/,
+  /*[*/ ["WOODE"] /*]*/)
 
 add_desc(
   find_obj(
@@ -3629,8 +3629,8 @@ add_object(
     ddoor_function,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["DOOR"],
-  ["FRONT"])
+  /*[*/ ["DOOR"] /*]*/,
+  /*[*/ ["FRONT"] /*]*/)
 
 add_object(
   aobject(
@@ -3639,8 +3639,8 @@ add_object(
     ddoor_function,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["DOOR"],
-  ["STONE"])
+  /*[*/ ["DOOR"] /*]*/,
+  /*[*/ ["STONE"] /*]*/)
 
 add_object(
   aobject(
@@ -3650,7 +3650,7 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.ndescbit,
     GLOBALS.turnbit),
-  ["SWITC"])
+  /*[*/ ["SWITC"] /*]*/)
 
 // ASSORTED GARBAGE
 
@@ -3659,15 +3659,15 @@ add_object(
     "HPOLE",
     "head on a pole",
     GLOBALS.ovison),
-  ["HEAD"])
+  /*[*/ ["HEAD"] /*]*/)
 
 add_object(
   sobject(
     "CORPS",
     "corpses",
     GLOBALS.ovison),
-  [],
-  ["MANGL"])
+  /*[*/ [] /*]*/,
+  /*[*/ ["MANGL"] /*]*/)
 
 add_object(
   aobject(
@@ -3677,8 +3677,8 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.ndescbit,
     GLOBALS.trytakebit),
-  ["BODY"
-    "CORPS"])
+  /*[*/ ["BODY",
+    "CORPS"] /*]*/)
 
 add_object(
   sobject(
@@ -3686,9 +3686,9 @@ add_object(
     "dam",
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["GATE"
-    "GATES"
-    "FCD"])
+  /*[*/ ["GATE",
+    "GATES",
+    "FCD"] /*]*/)
 
 add_object(
   sobject(
@@ -3696,7 +3696,7 @@ add_object(
     "railing",
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["RAIL"])
+  /*[*/ ["RAIL"] /*]*/)
 
 add_object(
   sobject(
@@ -3704,7 +3704,7 @@ add_object(
     "button",
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["SWITC"])
+  /*[*/ ["SWITC"] /*]*/)
 
 sobject(
   "BUBBL",
@@ -3719,8 +3719,8 @@ add_object(
     leak_function,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["DRIP"
-    "HOLE"])
+  /*[*/ ["DRIP",
+    "HOLE"] /*]*/)
 
 add_star(
   add_object(
@@ -3732,7 +3732,7 @@ add_star(
       GLOBALS.takebit,
       GLOBALS.no_check_bit,
       GLOBALS.ndescbit),
-    ["ALL"]))
+    /*[*/ ["ALL"] /*]*/))
 
 add_star(
   add_object(
@@ -3744,7 +3744,7 @@ add_star(
       GLOBALS.takebit,
       GLOBALS.no_check_bit,
       GLOBALS.ndescbit),
-    ["TREAS"]))
+    /*[*/ ["TREAS"] /*]*/))
 
 add_star(
   sobject(
@@ -3779,8 +3779,8 @@ add_star(
       GLOBALS.ovison,
       GLOBALS.ndescbit,
       GLOBALS.toolbit),
-    ["HAND"],
-    ["BARE"]))
+    /*[*/ ["HAND"] /*]*/,
+    /*[*/ ["BARE"] /*]*/))
 
 add_star(
   add_object(
@@ -3790,8 +3790,8 @@ add_star(
       GLOBALS.ovison,
       GLOBALS.ndescbit,
       GLOBALS.toolbit),
-    ["LUNG"
-      "AIR"]))
+    /*[*/ ["LUNG",
+      "AIR"] /*]*/))
 
 add_star(
   sobject(
@@ -3806,9 +3806,9 @@ add_object(
     GLOBALS.butstr,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"
-    "SWITC"],
-  ["RED"])
+  /*[*/ ["BUTTO",
+    "SWITC"] /*]*/,
+  /*[*/ ["RED"] /*]*/)
 
 add_object(
   sobject(
@@ -3816,9 +3816,9 @@ add_object(
     GLOBALS.butstr,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"
-    "SWITC"],
-  ["YELLO"])
+  /*[*/ ["BUTTO",
+    "SWITC"] /*]*/,
+  /*[*/ ["YELLO"] /*]*/)
 
 add_object(
   sobject(
@@ -3826,9 +3826,9 @@ add_object(
     GLOBALS.butstr,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"
-    "SWITC"],
-  ["BLUE"])
+  /*[*/ ["BUTTO",
+    "SWITC"] /*]*/,
+  /*[*/ ["BLUE"] /*]*/)
 
 add_object(
   sobject(
@@ -3836,9 +3836,9 @@ add_object(
     GLOBALS.butstr,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"
-    "SWITC"],
-  ["BROWN"])
+  /*[*/ ["BUTTO",
+    "SWITC"] /*]*/,
+  /*[*/ ["BROWN"] /*]*/)
 
 add_object(
   aobject(
@@ -3848,8 +3848,8 @@ add_object(
     GLOBALS.ovison,
     GLOBALS.ndescbit,
     GLOBALS.trytakebit),
-  ["VAMPI"],
-  [])
+  /*[*/ ["VAMPI"] /*]*/,
+  /*[*/ [] /*]*/)
 
 "MORE VOCABULARY"
 
@@ -3861,478 +3861,478 @@ sobject(
 
 psetg(
   cliffs,
-  #nexit
-    "The White Cliffs prevent your landing here.")
+  /*#*/ [nexit,
+    "The White Cliffs prevent your landing here."] /*2*/)
 
 psetg(
   riverdesc,
   "Frigid River")
 
-#room
-  {"DOCK"
-    "You are at the base of Flood Control Dam #3, which looms above you\nand to the north.  The river Frigid is flowing by here.  Across the\nriver are the White Cliffs which seem to form a giant wall stretching\nfrom north to south along the east shore of the river as it winds its\nway downstream."
-    "Dam Base"
-    t
-    #exit
-      {"NORTH"
-        "DAM"
-        "UP"
-        "DAM"
-        "LAUNC"
-        "RIVR1"}
-    (#find_obj
-        {"IBOAT"}
-      #find_obj
-        {"STICK"})
-    %null}
+/*#*/ [room,
+  /*{*/ ["DOCK",
+    "You are at the base of Flood Control Dam #3, which looms above you\nand to the north.  The river Frigid is flowing by here.  Across the\nriver are the White Cliffs which seem to form a giant wall stretching\nfrom north to south along the east shore of the river as it winds its\nway downstream.",
+    "Dam Base",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "DAM",
+        "UP",
+        "DAM",
+        "LAUNC",
+        "RIVR1"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["IBOAT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["STICK"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/] /*}*/] /*2*/
 
-#room
-  {"RIVR1"
-    "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore."
-    %GLOBALS.riverdesc
-    %null
-    #exit
-      {"UP"
-        %GLOBALS.current
-        "WEST"
-        "DOCK"
-        "LAND"
-        "DOCK"
-        "DOWN"
-        "RIVR2"
-        "EAST"
-        %GLOBALS.cliffs}
-    ()
-    %null
-    0
-    %GLOBALS.rwaterbit}
+/*#*/ [room,
+  /*{*/ ["RIVR1",
+    "You are on the River Frigid in the vicinity of the Dam.  The river\nflows quietly here.  There is a landing on the west shore.",
+    /*%*/ [GLOBALS.riverdesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.current] /*1*/,
+        "WEST",
+        "DOCK",
+        "LAND",
+        "DOCK",
+        "DOWN",
+        "RIVR2",
+        "EAST",
+        /*%*/ [GLOBALS.cliffs] /*1*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"RIVR2"
-    "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west."
-    %GLOBALS.riverdesc
-    %null
-    #exit
-      {"UP"
-        %GLOBALS.current
-        "DOWN"
-        "RIVR3"
-        "EAST"
-        %GLOBALS.cliffs}
-    ()
-    %null
-    0
-    %GLOBALS.rwaterbit}
+/*#*/ [room,
+  /*{*/ ["RIVR2",
+    "The River turns a corner here making it impossible to see the\nDam.  The White Cliffs loom on the east bank and large rocks prevent\nlanding on the west.",
+    /*%*/ [GLOBALS.riverdesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.current] /*1*/,
+        "DOWN",
+        "RIVR3",
+        "EAST",
+        /*%*/ [GLOBALS.cliffs] /*1*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"RIVR3"
-    "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard."
-    %GLOBALS.riverdesc
-    %null
-    #exit
-      {"UP"
-        %GLOBALS.current
-        "DOWN"
-        "RIVR4"
-        "EAST"
-        "WCLF1"
-        "WEST"
-        "RCAVE"
-        "LAND"
-        #nexit
-          "You must specify which direction here."}
-    ()
-    %null
-    0
-    %GLOBALS.rwaterbit}
+/*#*/ [room,
+  /*{*/ ["RIVR3",
+    "The river descends here into a valley.  There is a narrow beach on\nthe east below the cliffs and there is some shore on the west which\nmay be suitable.  In the distance a faint rumbling can be heard.",
+    /*%*/ [GLOBALS.riverdesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.current] /*1*/,
+        "DOWN",
+        "RIVR4",
+        "EAST",
+        "WCLF1",
+        "WEST",
+        "RCAVE",
+        "LAND",
+        /*#*/ [nexit,
+          "You must specify which direction here."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
 
 psetg(
   narrow,
   "The path is too narrow.")
 
-#room
-  {"WCLF1"
-    "You are on a narrow strip of beach which runs along the base of the\nWhite Cliffs. The only path here is a narrow one, heading south\nalong the Cliffs."
-    "White Cliffs Beach"
-    %null
-    #exit
-      {"SOUTH"
-        #cexit
-          {"DEFLATE"
-            "WCLF2"
-            %GLOBALS.narrow}
-        "LAUNC"
-        "RIVR3"}
-    ()
-    cliff_function
-    0}
+/*#*/ [room,
+  /*{*/ ["WCLF1",
+    "You are on a narrow strip of beach which runs along the base of the\nWhite Cliffs. The only path here is a narrow one, heading south\nalong the Cliffs.",
+    "White Cliffs Beach",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        /*#*/ [cexit,
+          /*{*/ ["DEFLATE",
+            "WCLF2",
+            /*%*/ [GLOBALS.narrow] /*1*/] /*}*/] /*2*/,
+        "LAUNC",
+        "RIVR3"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    cliff_function,
+    0] /*}*/] /*2*/
 
-#room
-  {"WCLF2"
-    "You are on a rocky, narrow strip of beach beside the Cliffs.  A\nnarrow path leads north along the shore."
-    "White Cliffs Beach"
-    %null
-    #exit
-      {"NORTH"
-        #cexit
-          {"DEFLATE"
-            "WCLF1"
-            %GLOBALS.narrow}
-        "LAUNC"
-        "RIVR4"}
-    ()
-    cliff_function
-    0}
+/*#*/ [room,
+  /*{*/ ["WCLF2",
+    "You are on a rocky, narrow strip of beach beside the Cliffs.  A\nnarrow path leads north along the shore.",
+    "White Cliffs Beach",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        /*#*/ [cexit,
+          /*{*/ ["DEFLATE",
+            "WCLF1",
+            /*%*/ [GLOBALS.narrow] /*1*/] /*}*/] /*2*/,
+        "LAUNC",
+        "RIVR4"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    cliff_function,
+    0] /*}*/] /*2*/
 
-#room
-  {"RIVR4"
-    "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs."
-    %GLOBALS.riverdesc
-    %null
-    #exit
-      {"UP"
-        %GLOBALS.current
-        "DOWN"
-        "RIVR5"
-        "EAST"
-        "WCLF2"
-        "WEST"
-        "BEACH"
-        "LAND"
-        #nexit
-          "Specify the direction to land."}
-    (#find_obj
-        {"BUOY"})
-    rivr4_room
-    0
-    %GLOBALS.rwaterbit}
+/*#*/ [room,
+  /*{*/ ["RIVR4",
+    "The river is running faster here and the sound ahead appears to be\nthat of rushing water.  On the west shore is a sandy beach.  A small\narea of beach can also be seen below the Cliffs.",
+    /*%*/ [GLOBALS.riverdesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.current] /*1*/,
+        "DOWN",
+        "RIVR5",
+        "EAST",
+        "WCLF2",
+        "WEST",
+        "BEACH",
+        "LAND",
+        /*#*/ [nexit,
+          "Specify the direction to land."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BUOY"] /*}*/] /*2*/] /*)*/,
+    rivr4_room,
+    0,
+    /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"RIVR5"
-    "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area."
-    %GLOBALS.riverdesc
-    %null
-    #exit
-      {"UP"
-        %GLOBALS.current
-        "DOWN"
-        "FCHMP"
-        "LAND"
-        "FANTE"}
-    ()
-    %null
-    0
-    %GLOBALS.rwaterbit}
+/*#*/ [room,
+  /*{*/ ["RIVR5",
+    "The sound of rushing water is nearly unbearable here.  On the west\nshore is a large landing area.",
+    /*%*/ [GLOBALS.riverdesc] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.current] /*1*/,
+        "DOWN",
+        "FCHMP",
+        "LAND",
+        "FANTE"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"FCHMP"
-    ""
-    "Moby lossage"
-    %null
-    #exit
-      {"NORTH"
-        #nexit
-          ""}
-    ()
-    over_falls}
+/*#*/ [room,
+  /*{*/ ["FCHMP",
+    "",
+    "Moby lossage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        /*#*/ [nexit,
+          ""] /*2*/] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    over_falls] /*}*/] /*2*/
 
-#room
-  {"FANTE"
-    "You are on the shore of the River.  The river here seems somewhat\ntreacherous.  A path travels from north to south here, the south end\nquickly turning around a sharp corner."
-    "Shore"
-    %null
-    #exit
-      {"LAUNC"
-        "RIVR5"
-        "NORTH"
-        "BEACH"
-        "SOUTH"
-        "FALLS"}
-    ()
-    %null
-    0}
+/*#*/ [room,
+  /*{*/ ["FANTE",
+    "You are on the shore of the River.  The river here seems somewhat\ntreacherous.  A path travels from north to south here, the south end\nquickly turning around a sharp corner.",
+    "Shore",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["LAUNC",
+        "RIVR5",
+        "NORTH",
+        "BEACH",
+        "SOUTH",
+        "FALLS"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0] /*}*/] /*2*/
 
-#room
-  {"BEACH"
-    "You are on a large sandy beach at the shore of the river, which is\nflowing quickly by.  A path runs beside the river to the south here."
-    "Sandy Beach"
-    %null
-    #exit
-      {"LAUNC"
-        "RIVR4"
-        "SOUTH"
-        "FANTE"}
-    (#find_obj
-        {"STATU"})
-    beach_room
-    0}
+/*#*/ [room,
+  /*{*/ ["BEACH",
+    "You are on a large sandy beach at the shore of the river, which is\nflowing quickly by.  A path runs beside the river to the south here.",
+    "Sandy Beach",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["LAUNC",
+        "RIVR4",
+        "SOUTH",
+        "FANTE"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["STATU"] /*}*/] /*2*/] /*)*/,
+    beach_room,
+    0] /*}*/] /*2*/
 
-#room
-  {"RCAVE"
-    "You are on the west shore of the river.  An entrance to a cave is\nto the northwest.  The shore is very rocky here."
-    "Rocky Shore"
-    %null
-    #exit
-      {"LAUNC"
-        "RIVR3"
-        "NW"
-        "TCAVE"}
-    ()
-    %null
-    0}
+/*#*/ [room,
+  /*{*/ ["RCAVE",
+    "You are on the west shore of the river.  An entrance to a cave is\nto the northwest.  The shore is very rocky here.",
+    "Rocky Shore",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["LAUNC",
+        "RIVR3",
+        "NW",
+        "TCAVE"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0] /*}*/] /*2*/
 
-#room
-  {"TCAVE"
-    "You are in a small cave whose exits are on the south and northwest."
-    "Small Cave"
-    %null
-    #exit
-      {"SOUTH"
-        "RCAVE"
-        "NW"
-        "CHAS3"}
-    (#find_obj
-        {"GUANO"}
-      #find_obj
-        {"SHOVE"})
-    tcave_room}
+/*#*/ [room,
+  /*{*/ ["TCAVE",
+    "You are in a small cave whose exits are on the south and northwest.",
+    "Small Cave",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "RCAVE",
+        "NW",
+        "CHAS3"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["GUANO"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SHOVE"] /*}*/] /*2*/] /*)*/,
+    tcave_room] /*}*/] /*2*/
 
-#room
-  {"BARRE"
-    "You are in a barrel.  Congratulations.  Etched into the side of the\nbarrel is the word 'Geronimo!'."
-    "Barrel"
-    %null
-    #exit
-      {"EXIT"
-        "FALLS"}}
+/*#*/ [room,
+  /*{*/ ["BARRE",
+    "You are in a barrel.  Congratulations.  Etched into the side of the\nbarrel is the word 'Geronimo!'.",
+    "Barrel",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EXIT",
+        "FALLS"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"FALLS"
-    ""
-    "Aragain Falls"
-    %null
-    #exit
-      {"EAST"
-        #cexit
-          {"RAINBOW"
-            "RAINB"}
-        "DOWN"
-        "FCHMP"
-        "NORTH"
-        "FANTE"
-        "ENTER"
-        "BARRE"
-        "UP"
-        #cexit
-          {"RAINBOW"
-            "RAINB"}}
-    (#find_obj
-        {"RAINB"}
-      #find_obj
-        {"BARRE"})
-    falls_room}
+/*#*/ [room,
+  /*{*/ ["FALLS",
+    "",
+    "Aragain Falls",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        /*#*/ [cexit,
+          /*{*/ ["RAINBOW",
+            "RAINB"] /*}*/] /*2*/,
+        "DOWN",
+        "FCHMP",
+        "NORTH",
+        "FANTE",
+        "ENTER",
+        "BARRE",
+        "UP",
+        /*#*/ [cexit,
+          /*{*/ ["RAINBOW",
+            "RAINB"] /*}*/] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["RAINB"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BARRE"] /*}*/] /*2*/] /*)*/,
+    falls_room] /*}*/] /*2*/
 
-#room
-  {"RAINB"
-    "You are on top of a rainbow (I bet you never thought you would walk\non a rainbow), with a magnificent view of the Falls.  The rainbow\ntravels east-west here.  There is an NBC Commissary here."
-    "Rainbow Room"
-    t
-    #exit
-      {"EAST"
-        "POG"
-        "WEST"
-        "FALLS"}}
+/*#*/ [room,
+  /*{*/ ["RAINB",
+    "You are on top of a rainbow (I bet you never thought you would walk\non a rainbow), with a magnificent view of the Falls.  The rainbow\ntravels east-west here.  There is an NBC Commissary here.",
+    "Rainbow Room",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "POG",
+        "WEST",
+        "FALLS"] /*}*/] /*2*/] /*}*/] /*2*/
 
-GLOBALS.crain = #cexit
-    {"RAINBOW"
-      "RAINB"}
+GLOBALS.crain = /*#*/ [cexit,
+    /*{*/ ["RAINBOW",
+      "RAINB"] /*}*/] /*2*/
 
-#room
-  {"POG"
-    "You are on a small beach on the continuation of the Frigid River\npast the Falls.  The beach is narrow due to the presence of the White\nCliffs.  The river canyon opens here and sunlight shines in from\nabove. A rainbow crosses over the falls to the west and a narrow path\ncontinues to the southeast."
-    "End of Rainbow"
-    t
-    #exit
-      {"UP"
-        %GLOBALS.crain
-        "NW"
-        %GLOBALS.crain
-        "WEST"
-        %GLOBALS.crain
-        "SE"
-        "CLBOT"}
-    (#find_obj
-        {"RAINB"}
-      #find_obj
-        {"POT"})
-    %null
-    0}
+/*#*/ [room,
+  /*{*/ ["POG",
+    "You are on a small beach on the continuation of the Frigid River\npast the Falls.  The beach is narrow due to the presence of the White\nCliffs.  The river canyon opens here and sunlight shines in from\nabove. A rainbow crosses over the falls to the west and a narrow path\ncontinues to the southeast.",
+    "End of Rainbow",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        /*%*/ [GLOBALS.crain] /*1*/,
+        "NW",
+        /*%*/ [GLOBALS.crain] /*1*/,
+        "WEST",
+        /*%*/ [GLOBALS.crain] /*1*/,
+        "SE",
+        "CLBOT"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["RAINB"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["POT"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    0] /*}*/] /*2*/
 
-#room
-  {"CLBOT"
-    "You are beneath the walls of the river canyon which may be climbable\nhere.  There is a small stream here, which is the lesser part of the\nrunoff of Aragain Falls. To the north is a narrow path."
-    "Canyon Bottom"
-    t
-    #exit
-      {"UP"
-        "CLMID"
-        "CLIMB"
-        "CLMID"
-        "NORTH"
-        "POG"}}
+/*#*/ [room,
+  /*{*/ ["CLBOT",
+    "You are beneath the walls of the river canyon which may be climbable\nhere.  There is a small stream here, which is the lesser part of the\nrunoff of Aragain Falls. To the north is a narrow path.",
+    "Canyon Bottom",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "CLMID",
+        "CLIMB",
+        "CLMID",
+        "NORTH",
+        "POG"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"CLMID"
-    "You are on a ledge about halfway up the wall of the river canyon.\nYou can see from here that the main flow from Aragain Falls twists\nalong a passage which it is impossible to enter.  Below you is the\ncanyon bottom.  Above you is more cliff, which still appears\nclimbable."
-    "Rocky Ledge"
-    t
-    #exit
-      {"UP"
-        "CLTOP"
-        "CLIMB"
-        "CLTOP"
-        "DOWN"
-        "CLBOT"}}
+/*#*/ [room,
+  /*{*/ ["CLMID",
+    "You are on a ledge about halfway up the wall of the river canyon.\nYou can see from here that the main flow from Aragain Falls twists\nalong a passage which it is impossible to enter.  Below you is the\ncanyon bottom.  Above you is more cliff, which still appears\nclimbable.",
+    "Rocky Ledge",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["UP",
+        "CLTOP",
+        "CLIMB",
+        "CLTOP",
+        "DOWN",
+        "CLBOT"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"CLTOP"
-    "You are at the top of the Great Canyon on its south wall.  From here\nthere is a marvelous view of the Canyon and parts of the Frigid River\nupstream.  Across the canyon, the walls of the White Cliffs still\nappear to loom far above.  Following the Canyon upstream (north and\nnorthwest), Aragain Falls may be seen, complete with rainbow. \nFortunately, my vision is better than average and I can discern the\ntop of the Flood Control Dam #3 far to the distant north.  To the\nwest and south can be seen an immense forest, stretching for miles\naround.  It is possible to climb down into the canyon from here."
-    "Canyon View"
-    t
-    #exit
-      {"DOWN"
-        "CLMID"
-        "CLIMB"
-        "CLMID"
-        "SOUTH"
-        "FORE4"
-        "WEST"
-        "FORE5"}}
-
-add_object(
-  #object
-    {"POT"
-      "There is a pot of gold here."
-      "pot filled with gold"
-      "At the end of the rainbow is a pot of gold."
-      %null
-      ()
-      %null
-      %GLOBALS.takebit
-      0
-      10
-      10
-      15
-      0},
-  [],
-  ["GOLD"])
+/*#*/ [room,
+  /*{*/ ["CLTOP",
+    "You are at the top of the Great Canyon on its south wall.  From here\nthere is a marvelous view of the Canyon and parts of the Frigid River\nupstream.  Across the canyon, the walls of the White Cliffs still\nappear to loom far above.  Following the Canyon upstream (north and\nnorthwest), Aragain Falls may be seen, complete with rainbow. \nFortunately, my vision is better than average and I can discern the\ntop of the Flood Control Dam #3 far to the distant north.  To the\nwest and south can be seen an immense forest, stretching for miles\naround.  It is possible to climb down into the canyon from here.",
+    "Canyon View",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        "CLMID",
+        "CLIMB",
+        "CLMID",
+        "SOUTH",
+        "FORE4",
+        "WEST",
+        "FORE5"] /*}*/] /*2*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"STATU"
-      "There is a beautiful statue here."
-      "statue"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.takebit
-      0
-      10
-      13
-      8
-      0},
-  ["SCULP"
-    "ROCK"])
+  /*#*/ [object,
+    /*{*/ ["POT",
+      "There is a pot of gold here.",
+      "pot filled with gold",
+      "At the end of the rainbow is a pot of gold.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.takebit] /*1*/,
+      0,
+      10,
+      10,
+      15,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["GOLD"] /*]*/)
 
 add_object(
-  #object
-    {"IBOAT"
-      "There is a folded pile of plastic here which has a small valve\nattached."
-      "plastic inflatable boat"
-      %null
-      iboat_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["STATU",
+      "There is a beautiful statue here.",
+      "statue",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.takebit] /*1*/,
+      0,
+      10,
+      13,
+      8,
+      0] /*}*/] /*2*/,
+  /*[*/ ["SCULP",
+    "ROCK"] /*]*/)
+
+add_object(
+  /*#*/ [object,
+    /*{*/ ["IBOAT",
+      "There is a folded pile of plastic here which has a small valve\nattached.",
+      "plastic inflatable boat",
+      /*%*/ [null] /*1*/,
+      iboat_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      20
-      0},
-  ["BOAT"
-    "PLAST"
-    "PILE"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BOAT",
+    "PLAST",
+    "PILE"] /*]*/)
 
 add_object(
-  #object
-    {"DBOAT"
-      "There is a pile of plastic here with a large hole in it."
-      "plastic boat (with hole)"
-      %null
-      dboat_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["DBOAT",
+      "There is a pile of plastic here with a large hole in it.",
+      "plastic boat (with hole)",
+      /*%*/ [null] /*1*/,
+      dboat_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      20
-      0},
-  ["BOAT"
-    "PLAST"
-    "PILE"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BOAT",
+    "PLAST",
+    "PILE"] /*]*/)
 
 add_object(
-  #object
-    {"PUMP"
-      "There is a small pump here."
-      "hand-held air pump"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PUMP",
+      "There is a small pump here.",
+      "hand-held air pump",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      5
-      0},
-  ["AIR-P"
-    "AIRPU"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ ["AIR-P",
+    "AIRPU"] /*]*/)
 
 add_object(
-  #object
-    {"RBOAT"
-      "There is an inflated boat here."
-      "magic boat"
-      %null
-      rboat_function
-      (#find_obj
-          {"LABEL"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["RBOAT",
+      "There is an inflated boat here.",
+      "magic boat",
+      /*%*/ [null] /*1*/,
+      rboat_function,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["LABEL"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vehbit,
           GLOBALS.burnbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      20
-      100},
-  ["BOAT"],
-  ["PLAST"
-    "SEAWO"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      100] /*}*/] /*2*/,
+  /*[*/ ["BOAT"] /*]*/,
+  /*[*/ ["PLAST",
+    "SEAWO"] /*]*/)
 
 put(
   find_obj(
@@ -4347,27 +4347,27 @@ put(
   GLOBALS.rwaterbit)
 
 add_object(
-  #object
-    {"LABEL"
-      "There is a tan label here."
-      "tan label"
-      %null
-      %null
-      ()
-      #find_obj
-        {"RBOAT"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["LABEL",
+      "There is a tan label here.",
+      "tan label",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RBOAT"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
           GLOBALS.readbit,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      2
-      0},
-  ["FINEP"],
-  ["TAN"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      2,
+      0] /*}*/] /*2*/,
+  /*[*/ ["FINEP"] /*]*/,
+  /*[*/ ["TAN"] /*]*/)
 
 add_desc(
   find_obj(
@@ -4375,25 +4375,25 @@ add_desc(
   "!!!! 	FROBOZZ MAGIC BOAT COMPANY  !!!!\n\nHello, Sailor!\n\nInstructions for use:\n   \n   To get into boat, say 'Board'\n   To leave boat, say 'Disembark'\n\n   To get into a body of water, say 'Launch'\n   To get to shore, say 'Land'\n    \nWarranty:\n\n  This boat is guaranteed against all defects in parts and\nworkmanship for a period of 76 milliseconds from date of purchase or\nuntil first used, whichever comes first.\n\nWarning:\n   This boat is made of plastic.		Good Luck!")
 
 add_object(
-  #object
-    {"STICK"
-      "There is a broken sharp stick here."
-      "broken sharp stick"
-      "A sharp stick, which appears to have been broken at one end, is here."
-      stick_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["STICK",
+      "There is a broken sharp stick here.",
+      "broken sharp stick",
+      "A sharp stick, which appears to have been broken at one end, is here.",
+      stick_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      3
-      0},
-  [],
-  ["SHARP"
-    "BROKE"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      3,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["SHARP",
+    "BROKE"] /*]*/)
 
 sobject(
   "BARRE",
@@ -4401,304 +4401,304 @@ sobject(
   GLOBALS.ovison)
 
 add_object(
-  #object
-    {"BUOY"
-      "There is a red buoy here (probably a warning)."
-      "red buoy"
-      %null
-      %null
-      (#find_obj
-          {"EMERA"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BUOY",
+      "There is a red buoy here (probably a warning).",
+      "red buoy",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["EMERA"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.findmebit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      10
-      20},
-  [],
-  ["RED"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      20] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["RED"] /*]*/)
 
 add_object(
-  #object
-    {"EMERA"
-      "There is an emerald here."
-      "large emerald"
-      %null
-      %null
-      ()
-      #find_obj
-        {"BUOY"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["EMERA",
+      "There is an emerald here.",
+      "large emerald",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BUOY"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      5
-      10
-      5
-      0},
-  [])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      5,
+      10,
+      5,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
 add_object(
-  #object
-    {"SHOVE"
-      "There is a large shovel here."
-      "shovel"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SHOVE",
+      "There is a large shovel here.",
+      "shovel",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.toolbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      15
-      0},
-  [])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      15,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/)
 
 add_object(
-  #object
-    {"GUANO"
-      "There is a hunk of bat guano here."
-      "hunk of bat guano"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GUANO",
+      "There is a hunk of bat guano here.",
+      "hunk of bat guano",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      20
-      0},
-  ["CRAP"
-    "SHIT"
-    "HUNK"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      20,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CRAP",
+    "SHIT",
+    "HUNK"] /*]*/)
 
 add_object(
-  #object
-    {"GRUE"
-      ""
-      "lurking grue"
-      %null
-      grue_function
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      0
-      0},
-  [],
-  ["LURKI"])
+  /*#*/ [object,
+    /*{*/ ["GRUE",
+      "",
+      "lurking grue",
+      /*%*/ [null] /*1*/,
+      grue_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      0,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["LURKI"] /*]*/)
 
-#room
-  {"VLBOT"
-    "You are at the bottom of a large dormant volcano.  High above you\nlight may be seen entering from the cone of the volcano.  The only\nexit here is to the north."
-    "Volcano Bottom"
-    %null
-    #exit
-      {"NORTH"
-        "LAVA"}
-    (#find_obj
-        {"BALLO"})}
+/*#*/ [room,
+  /*{*/ ["VLBOT",
+    "You are at the bottom of a large dormant volcano.  High above you\nlight may be seen entering from the cone of the volcano.  The only\nexit here is to the north.",
+    "Volcano Bottom",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "LAVA"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BALLO"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 psetg(
   volcore,
   "Volcano Core")
 
-GLOBALS.nulexit = #exit
-    {"#!#!#"
-      "!"}
+GLOBALS.nulexit = /*#*/ [exit,
+    /*{*/ ["#!#!#",
+      "!"] /*}*/] /*2*/
 
-#room
-  {"VAIR1"
-    "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here."
-    %GLOBALS.volcore
-    %null
-    %GLOBALS.nulexit
-    ()
-    %null
-    0
-    %GLOBALS.rairbit}
+/*#*/ [room,
+  /*{*/ ["VAIR1",
+    "You are about one hundred feet above the bottom of the volcano.  The\ntop of the volcano is clearly visible here.",
+    /*%*/ [GLOBALS.volcore] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [GLOBALS.nulexit] /*1*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"VAIR2"
-    "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside."
-    %GLOBALS.volcore
-    %null
-    #exit
-      {"WEST"
-        "LEDG2"
-        "LAND"
-        "LEDG2"}
-    ()
-    %null
-    0
-    %GLOBALS.rairbit}
+/*#*/ [room,
+  /*{*/ ["VAIR2",
+    "You are about two hundred feet above the volcano floor.  Looming\nabove is the rim of the volcano.  There is a small ledge on the west\nside.",
+    /*%*/ [GLOBALS.volcore] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "LEDG2",
+        "LAND",
+        "LEDG2"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"VAIR3"
-    "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on."
-    %GLOBALS.volcore
-    %null
-    %GLOBALS.nulexit
-    ()
-    %null
-    0
-    %GLOBALS.rairbit}
+/*#*/ [room,
+  /*{*/ ["VAIR3",
+    "You are high above the floor of the volcano.  From here the rim of\nthe volcano looks very narrow and you are very near it.  To the \neast is what appears to be a viewing ledge, too thin to land on.",
+    /*%*/ [GLOBALS.volcore] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*%*/ [GLOBALS.nulexit] /*1*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
 
-#room
-  {"VAIR4"
-    "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge."
-    %GLOBALS.volcore
-    %null
-    #exit
-      {"LAND"
-        "LEDG4"
-        "EAST"
-        "LEDG4"}
-    ()
-    %null
-    0
-    %GLOBALS.rairbit}
+/*#*/ [room,
+  /*{*/ ["VAIR4",
+    "You are near the rim of the volcano which is only about 15 feet\nacross.  To the west, there is a place to land on a wide ledge.",
+    /*%*/ [GLOBALS.volcore] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["LAND",
+        "LEDG4",
+        "EAST",
+        "LEDG4"] /*}*/] /*2*/,
+    /*(*/ [] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
 
-GLOBALS.cxgnome = #cexit
-    {"GNOME-DOOR"
-      "VLBOT"}
+GLOBALS.cxgnome = /*#*/ [cexit,
+    /*{*/ ["GNOME-DOOR",
+      "VLBOT"] /*}*/] /*2*/
 
-#room
-  {"LEDG2"
-    "You are on a narrow ledge overlooking the inside of an old dormant\nvolcano.  This ledge appears to be about in the middle between the\nfloor below and the rim above. There is an exit here to the south."
-    "Narrow Ledge"
-    %null
-    #exit
-      {"DOWN"
-        #nexit
-          "I wouldn't jump from here."
-        "LAUNC"
-        "VAIR2"
-        "WEST"
-        %GLOBALS.cxgnome
-        "SOUTH"
-        "LIBRA"}
-    (#find_obj
-        {"HOOK1"}
-      #find_obj
-        {"ZORKM"})}
+/*#*/ [room,
+  /*{*/ ["LEDG2",
+    "You are on a narrow ledge overlooking the inside of an old dormant\nvolcano.  This ledge appears to be about in the middle between the\nfloor below and the rim above. There is an exit here to the south.",
+    "Narrow Ledge",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        /*#*/ [nexit,
+          "I wouldn't jump from here."] /*2*/,
+        "LAUNC",
+        "VAIR2",
+        "WEST",
+        /*%*/ [GLOBALS.cxgnome] /*1*/,
+        "SOUTH",
+        "LIBRA"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["HOOK1"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ZORKM"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"LIBRA"
-    "You are in a room which must have been a large library, probably\nfor the royal family.  All of the shelves appear to have been gnawed\nto pieces by unfriendly gnomes.  To the north is an exit."
-    "Library"
-    %null
-    #exit
-      {"NORTH"
-        "LEDG2"
-        "OUT"
-        "LEDG2"}
-    (#find_obj
-        {"BLBK"}
-      #find_obj
-        {"GRBK"}
-      #find_obj
-        {"PUBK"}
-      #find_obj
-        {"WHBK"})}
+/*#*/ [room,
+  /*{*/ ["LIBRA",
+    "You are in a room which must have been a large library, probably\nfor the royal family.  All of the shelves appear to have been gnawed\nto pieces by unfriendly gnomes.  To the north is an exit.",
+    "Library",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "LEDG2",
+        "OUT",
+        "LEDG2"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BLBK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["GRBK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["PUBK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["WHBK"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"LEDG3"
-    "You are on a ledge in the middle of a large volcano.  Below you\nthe volcano bottom can be seen and above is the rim of the volcano.\nA couple of ledges can be seen on the other side of the volcano;\nit appears that this ledge is intermediate in elevation between\nthose on the other side.  The exit from this room is to the east."
-    "Volcano View"
-    %null
-    #exit
-      {"DOWN"
-        #nexit
-          "I wouldn't try that."
-        "CROSS"
-        #nexit
-          "It is impossible to cross this distance."
-        "EAST"
-        "EGYPT"}}
+/*#*/ [room,
+  /*{*/ ["LEDG3",
+    "You are on a ledge in the middle of a large volcano.  Below you\nthe volcano bottom can be seen and above is the rim of the volcano.\nA couple of ledges can be seen on the other side of the volcano;\nit appears that this ledge is intermediate in elevation between\nthose on the other side.  The exit from this room is to the east.",
+    "Volcano View",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        /*#*/ [nexit,
+          "I wouldn't try that."] /*2*/,
+        "CROSS",
+        /*#*/ [nexit,
+          "It is impossible to cross this distance."] /*2*/,
+        "EAST",
+        "EGYPT"] /*}*/] /*2*/] /*}*/] /*2*/
 
-#room
-  {"LEDG4"
-    ""
-    "Wide Ledge"
-    %null
-    #exit
-      {"DOWN"
-        #nexit
-          "It's a long way down."
-        "LAUNC"
-        "VAIR4"
-        "WEST"
-        %GLOBALS.cxgnome
-        "SOUTH"
-        "SAFE"}
-    (#find_obj
-        {"HOOK2"})
-    ledge_function}
+/*#*/ [room,
+  /*{*/ ["LEDG4",
+    "",
+    "Wide Ledge",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["DOWN",
+        /*#*/ [nexit,
+          "It's a long way down."] /*2*/,
+        "LAUNC",
+        "VAIR4",
+        "WEST",
+        /*%*/ [GLOBALS.cxgnome] /*1*/,
+        "SOUTH",
+        "SAFE"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["HOOK2"] /*}*/] /*2*/] /*)*/,
+    ledge_function] /*}*/] /*2*/
 
-#room
-  {"SAFE"
-    ""
-    "Dusty Room"
-    t
-    #exit
-      {"NORTH"
-        "LEDG4"}
-    (#find_obj
-        {"SSLOT"}
-      #find_obj
-        {"SAFE"})
-    safe_room}
+/*#*/ [room,
+  /*{*/ ["SAFE",
+    "",
+    "Dusty Room",
+    t,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "LEDG4"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["SSLOT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SAFE"] /*}*/] /*2*/] /*)*/,
+    safe_room] /*}*/] /*2*/
 
-#room
-  {"LAVA"
-    "You are in a small room, whose walls are formed by an old lava flow.\nThere are exits here to the west and the south."
-    "Lava Room"
-    %null
-    #exit
-      {"SOUTH"
-        "VLBOT"
-        "WEST"
-        "RUBYR"}}
+/*#*/ [room,
+  /*{*/ ["LAVA",
+    "You are in a small room, whose walls are formed by an old lava flow.\nThere are exits here to the west and the south.",
+    "Lava Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["SOUTH",
+        "VLBOT",
+        "WEST",
+        "RUBYR"] /*}*/] /*2*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"BALLO"
-      "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire."
-      "basket"
-      %null
-      balloon
-      (#find_obj
-          {"CBAG"}
-        #find_obj
-          {"BROPE"}
-        #find_obj
-          {"RECEP"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BALLO",
+      "There is a very large and extremely heavy wicker basket with a cloth\nbag here. Inside the basket is a metal receptacle of some kind. \nAttached to the basket on the outside is a piece of wire.",
+      "basket",
+      /*%*/ [null] /*1*/,
+      balloon,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["CBAG"] /*}*/] /*2*/,
+        /*#*/ [find_obj,
+          /*{*/ ["BROPE"] /*}*/] /*2*/,
+        /*#*/ [find_obj,
+          /*{*/ ["RECEP"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vehbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      70
-      100},
-  ["BASKE"],
-  ["WICKE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      70,
+      100] /*}*/] /*2*/,
+  /*[*/ ["BASKE"] /*]*/,
+  /*[*/ ["WICKE"] /*]*/)
 
 put(
   find_obj(
@@ -4712,119 +4712,119 @@ put(
   GLOBALS.orand,
   GLOBALS.rairbit)
 
-#object
-  {"RECEP"
-    ""
-    "receptacle"
-    %null
-    %null
-    ()
-    #find_obj
-      {"BALLO"}
-    %_(
+/*#*/ [object,
+  /*{*/ ["RECEP",
+    "",
+    "receptacle",
+    /*%*/ [null] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*(*/ [] /*)*/,
+    /*#*/ [find_obj,
+      /*{*/ ["BALLO"] /*}*/] /*2*/,
+    /*%*/ [_(
         GLOBALS.contbit,
         GLOBALS.ovison,
-        GLOBALS.searchbit)
-    0
-    0
-    0
-    %GLOBALS.bigfix
-    6}
+        GLOBALS.searchbit)] /*1*/,
+    0,
+    0,
+    0,
+    /*%*/ [GLOBALS.bigfix] /*1*/,
+    6] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"CBAG"
-      ""
-      "cloth bag"
-      %null
-      %null
-      ()
-      #find_obj
-        {"BALLO"}
-      %GLOBALS.ovison
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["BAG"],
-  ["CLOTH"])
+  /*#*/ [object,
+    /*{*/ ["CBAG",
+      "",
+      "cloth bag",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BALLO"] /*}*/] /*2*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BAG"] /*]*/,
+  /*[*/ ["CLOTH"] /*]*/)
 
 add_object(
-  #object
-    {"BROPE"
-      ""
-      "braided wire"
-      %null
-      wire_function
-      ()
-      #find_obj
-        {"BALLO"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BROPE",
+      "",
+      "braided wire",
+      /*%*/ [null] /*1*/,
+      wire_function,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BALLO"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.tiebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["WIRE"],
-  ["BRAID"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["WIRE"] /*]*/,
+  /*[*/ ["BRAID"] /*]*/)
 
 add_object(
-  #object
-    {"HOOK1"
-      "There is a small hook attached to the rock here."
-      "hook"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["HOOK"])
+  /*#*/ [object,
+    /*{*/ ["HOOK1",
+      "There is a small hook attached to the rock here.",
+      "hook",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["HOOK"] /*]*/)
 
 add_object(
-  #object
-    {"HOOK2"
-      "There is a small hook attached to the rock here."
-      "hook"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["HOOK"])
+  /*#*/ [object,
+    /*{*/ ["HOOK2",
+      "There is a small hook attached to the rock here.",
+      "hook",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["HOOK"] /*]*/)
 
 add_object(
-  #object
-    {"ZORKM"
-      "There is an engraved zorkmid coin here."
-      "priceless zorkmid"
-      "On the floor is a gold zorkmid coin (a valuable collector's item)."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ZORKM",
+      "There is an engraved zorkmid coin here.",
+      "priceless zorkmid",
+      "On the floor is a gold zorkmid coin (a valuable collector's item).",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.readbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      10
-      12
-      10
-      0},
-  ["COIN"],
-  ["GOLD"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      10,
+      12,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["COIN"] /*]*/,
+  /*[*/ ["GOLD"] /*]*/)
 
 add_desc(
   find_obj(
@@ -4832,48 +4832,48 @@ add_desc(
   "--------------------------\n	      /      Gold Zorkmid	 \\\n	     /  T e n   T h o u s a n d   \\\n	    /        Z O R K M I D S	   \\\n	   /				    \\\n	  /        ||||||||||||||||||	     \\\n	 /        !||||		 ||||!	      \\\n	|	   |||   ^^  ^^   |||	       |\n	|	   |||	 OO  OO   |||	       |\n	| In Frobs  |||	   <<    |||  We Trust |\n	|	     || (______) ||	       |\n	|	      |          |	       |\n	|	      |__________|	       |\n	 \\				      /\n	  \\    -- Lord Dimwit Flathead --    /\n	   \\    -- Beloved of Zorkers --    /\n	    \\				   /\n	     \\	     * 722 G.U.E. *       /\n	      \\				 /\n	       --------------------------")
 
 add_object(
-  #object
-    {"SAFE"
-      ""
-      "box"
-      %null
-      safe_function
-      (#find_obj
-          {"CROWN"}
-        #find_obj
-          {"CARD"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SAFE",
+      "",
+      "box",
+      /*%*/ [null] /*1*/,
+      safe_function,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["CROWN"] /*}*/] /*2*/,
+        /*#*/ [find_obj,
+          /*{*/ ["CARD"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      15},
-  ["BOX"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      15] /*}*/] /*2*/,
+  /*[*/ ["BOX"] /*]*/)
 
 add_object(
-  #object
-    {"CARD"
-      "There is a card with writing on it here."
-      "card"
-      %null
-      %null
-      ()
-      #find_obj
-        {"SAFE"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CARD",
+      "There is a card with writing on it here.",
+      "card",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SAFE"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
           GLOBALS.readbit,
-          GLOBALS.burnbit)
-      0
-      0
-      0
-      1
-      0},
-  ["NOTE"])
+          GLOBALS.burnbit)] /*1*/,
+      0,
+      0,
+      0,
+      1,
+      0] /*}*/] /*2*/,
+  /*[*/ ["NOTE"] /*]*/)
 
 add_desc(
   find_obj(
@@ -4881,22 +4881,22 @@ add_desc(
   "Warning:\n    This room was constructed over very weak rock strata.  Detonation\nof explosives in this room is strictly prohibited!\n			Frobozz Magic Cave Company\n			per M. Agrippa, foreman")
 
 add_object(
-  #object
-    {"SSLOT"
-      ""
-      "hole"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      10},
-  ["SLOT"
-    "HOLE"])
+  /*#*/ [object,
+    /*{*/ ["SSLOT",
+      "",
+      "hole",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      10] /*}*/] /*2*/,
+  /*[*/ ["SLOT",
+    "HOLE"] /*]*/)
 
 put(
   find_obj(
@@ -4905,48 +4905,48 @@ put(
   t)
 
 add_object(
-  #object
-    {"CROWN"
-      "Lord Dimwit's crown is here."
-      "crown"
-      "The excessively gaudy crown of Lord Dimwit Flathead is here."
-      %null
-      ()
-      #find_obj
-        {"SAFE"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CROWN",
+      "Lord Dimwit's crown is here.",
+      "crown",
+      "The excessively gaudy crown of Lord Dimwit Flathead is here.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SAFE"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      15
-      10
-      10
-      0},
-  [],
-  ["GAUDY"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      15,
+      10,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["GAUDY"] /*]*/)
 
 add_object(
-  #object
-    {"BRICK"
-      "There is a square brick here which feels like clay."
-      "brick"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BRICK",
+      "There is a square brick here which feels like clay.",
+      "brick",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.searchbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      9
-      2},
-  ["BRICK"],
-  ["SQUAR"
-    "CLAY"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      9,
+      2] /*}*/] /*2*/,
+  /*[*/ ["BRICK"] /*]*/,
+  /*[*/ ["SQUAR",
+    "CLAY"] /*]*/)
 
 put(
   find_obj(
@@ -4955,69 +4955,69 @@ put(
   t)
 
 add_object(
-  #object
-    {"FUSE"
-      "There is a coil of thin shiny wire here."
-      "wire coil"
-      %null
-      fuse_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["FUSE",
+      "There is a coil of thin shiny wire here.",
+      "wire coil",
+      /*%*/ [null] /*1*/,
+      fuse_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.burnbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      1
-      0},
-  ["COIL"
-    "WIRE"],
-  ["SHINY"
-    "THIN"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      1,
+      0] /*}*/] /*2*/,
+  /*[*/ ["COIL",
+    "WIRE"] /*]*/,
+  /*[*/ ["SHINY",
+    "THIN"] /*]*/)
 
 add_object(
-  #object
-    {"GNOME"
-      "There is a nervous Volcano Gnome here."
-      "Volcano Gnome"
-      %null
-      gnome_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GNOME",
+      "There is a nervous Volcano Gnome here.",
+      "Volcano Gnome",
+      /*%*/ [null] /*1*/,
+      gnome_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vicbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      %GLOBALS.bigfix
-      0},
-  ["TROLL"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      /*%*/ [GLOBALS.bigfix] /*1*/,
+      0] /*}*/] /*2*/,
+  /*[*/ ["TROLL"] /*]*/)
 
 add_object(
-  #object
-    {"BLABE"
-      "There is a blue label here."
-      "blue label"
-      %null
-      %null
-      ()
-      #find_obj
-        {"BALLO"}
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BLABE",
+      "There is a blue label here.",
+      "blue label",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BALLO"] /*}*/] /*2*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
           GLOBALS.readbit,
-          GLOBALS.burnbit)
-      0
-      0
-      0
-      1
-      0},
-  ["LABEL"],
-  ["BLUE"])
+          GLOBALS.burnbit)] /*1*/,
+      0,
+      0,
+      0,
+      1,
+      0] /*}*/] /*2*/,
+  /*[*/ ["LABEL"] /*]*/,
+  /*[*/ ["BLUE"] /*]*/)
 
 add_desc(
   find_obj(
@@ -5025,114 +5025,114 @@ add_desc(
   "!!!!  FROBOZZ MAGIC BALLOON COMPANY !!!!\n\nHello, Aviator!\n\nInstructions for use:\n   \n   To get into balloon, say 'Board'\n   To leave balloon, say 'Disembark'\n   To land, say 'Land'\n    \nWarranty:\n   \n   No warranty is expressed or implied.  You're on your own, sport!\n\n					Good Luck.")
 
 add_object(
-  #object
-    {"DBALL"
-      "There is a balloon here, broken into pieces."
-      "broken balloon"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["DBALL",
+      "There is a balloon here, broken into pieces.",
+      "broken balloon",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      40
-      0},
-  ["BALLO"
-    "BASKE"],
-  ["BROKE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      40,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BALLO",
+    "BASKE"] /*]*/,
+  /*[*/ ["BROKE"] /*]*/)
 
 add_object(
-  #object
-    {"BLBK"
-      "There is a blue book here."
-      "blue book"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BLBK",
+      "There is a blue book here.",
+      "blue book",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      10
-      2},
-  ["BOOK"],
-  ["BLUE"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      2] /*}*/] /*2*/,
+  /*[*/ ["BOOK"] /*]*/,
+  /*[*/ ["BLUE"] /*]*/)
 
 add_object(
-  #object
-    {"GRBK"
-      "There is a green book here."
-      "green book"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["GRBK",
+      "There is a green book here.",
+      "green book",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      10
-      2},
-  ["BOOK"],
-  ["GREEN"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      2] /*}*/] /*2*/,
+  /*[*/ ["BOOK"] /*]*/,
+  /*[*/ ["GREEN"] /*]*/)
 
 add_object(
-  #object
-    {"PUBK"
-      "There is a purple book here."
-      "purple book"
-      %null
-      %null
-      (#find_obj
-          {"STAMP"})
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["PUBK",
+      "There is a purple book here.",
+      "purple book",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [/*#*/ [find_obj,
+          /*{*/ ["STAMP"] /*}*/] /*2*/] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.takebit,
           GLOBALS.ovison,
           GLOBALS.readbit,
-          GLOBALS.contbit)
-      0
-      0
-      0
-      10
-      2},
-  ["BOOK"],
-  ["PURPL"])
+          GLOBALS.contbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      2] /*}*/] /*2*/,
+  /*[*/ ["BOOK"] /*]*/,
+  /*[*/ ["PURPL"] /*]*/)
 
 add_object(
-  #object
-    {"WHBK"
-      "There is a white book here."
-      "white book"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["WHBK",
+      "There is a white book here.",
+      "white book",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.contbit,
           GLOBALS.takebit,
           GLOBALS.ovison,
-          GLOBALS.readbit)
-      0
-      0
-      0
-      10
-      2},
-  ["BOOK"],
-  ["WHITE"])
+          GLOBALS.readbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      2] /*}*/] /*2*/,
+  /*[*/ ["BOOK"] /*]*/,
+  /*[*/ ["WHITE"] /*]*/)
 
 psetg(
   greek_to_me,
@@ -5158,25 +5158,25 @@ add_desc(
     "WHBK"),
   GLOBALS.greek_to_me)
 
-#object
-  {"STAMP"
-    "There is a Flathead Commemorative stamp here."
-    "stamp"
-    %null
-    %null
-    ()
-    #find_obj
-      {"PUBK"}
-    %_(
+/*#*/ [object,
+  /*{*/ ["STAMP",
+    "There is a Flathead Commemorative stamp here.",
+    "stamp",
+    /*%*/ [null] /*1*/,
+    /*%*/ [null] /*1*/,
+    /*(*/ [] /*)*/,
+    /*#*/ [find_obj,
+      /*{*/ ["PUBK"] /*}*/] /*2*/,
+    /*%*/ [_(
         GLOBALS.takebit,
         GLOBALS.readbit,
         GLOBALS.burnbit,
-        GLOBALS.ovison)
-    0
-    4
-    10
-    1
-    0}
+        GLOBALS.ovison)] /*1*/,
+    0,
+    4,
+    10,
+    1,
+    0] /*}*/] /*2*/
 
 add_desc(
   find_obj(
@@ -5192,11 +5192,11 @@ put(
   find_obj(
     "LAMP"),
   GLOBALS.orand,
-  [0
+  /*[*/ [0,
     clock_disable(
       clock_int(
         GLOBALS.lntin,
-        350))])
+        350))] /*]*/)
 
 put(
   find_obj(
@@ -5220,39 +5220,39 @@ psetg(
       _X__),
     8))
 
-#room
-  {"TOMB"
-    "You are in the Tomb of the Unknown Implementer.\nA hollow voice says:  \"That's not a bug, it's a feature!\"
-    "Tomb of the Unknown Implementer"
-    %null
-    #exit
-      {"WEST"
-        "LLD2"}
-    (#find_obj
-        {"TOMB"}
-      #find_obj
-        {"HEADS"}
-      #find_obj
-        {"COKES"}
-      #find_obj
-        {"LISTS"})
-    %null
-    0}
+/*#*/ [room,
+  /*{*/ ["TOMB",
+    "You are in the Tomb of the Unknown Implementer.\nA hollow voice says:  \"That's not a bug, it's a feature!\",
+    "Tomb of the Unknown Implementer",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "LLD2"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["TOMB"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["HEADS"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["COKES"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["LISTS"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    0] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"TOMB"
-      "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\""
-      "tomb"
-      %null
-      head_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["TOMB",
+      "There is a tomb here, made of the finest marble, and large enough\nfor four headless corpses.  On one end is the cryptic inscription:\n		    \n		      \"Feel Free.\"",
+      "tomb",
+      /*%*/ [null] /*1*/,
+      head_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.readbit,
-          GLOBALS.ovison)},
-  ["GRAVE"])
+          GLOBALS.ovison)] /*1*/] /*}*/] /*2*/,
+  /*[*/ ["GRAVE"] /*]*/)
 
 add_desc(
   find_obj(
@@ -5260,70 +5260,70 @@ add_desc(
   "Here lie the implementers, whose heads were placed on poles by the\nKeeper of the Dungeon for amazing untastefulness.")
 
 add_object(
-  #object
-    {"HEADS"
-      "There are four heads here, mounted securely on poles."
-      "set of poled heads"
-      %null
-      head_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["HEADS",
+      "There are four heads here, mounted securely on poles.",
+      "set of poled heads",
+      /*%*/ [null] /*1*/,
+      head_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.sacredbit,
-          GLOBALS.ovison)},
-  ["HEAD"
-    "POLE"
-    "POLES"
-    "PDL"
-    "BKD"
-    "TAA"
-    "MARC"
-    "IMPLE"
-    "LOSER"])
+          GLOBALS.ovison)] /*1*/] /*}*/] /*2*/,
+  /*[*/ ["HEAD",
+    "POLE",
+    "POLES",
+    "PDL",
+    "BKD",
+    "TAA",
+    "MARC",
+    "IMPLE",
+    "LOSER"] /*]*/)
 
 add_object(
-  #object
-    {"COKES"
-      "Many empty Coke bottles are here.  Alas, they can't hold water."
-      "bunch of Coke bottles"
-      "There is a large pile of empty Coke bottles here, evidently produced\nby the implementers during their long struggle to win totally."
-      coke_bottles
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["COKES",
+      "Many empty Coke bottles are here.  Alas, they can't hold water.",
+      "bunch of Coke bottles",
+      "There is a large pile of empty Coke bottles here, evidently produced\nby the implementers during their long struggle to win totally.",
+      coke_bottles,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      15},
-  ["BOTTL"],
-  ["COKE"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      15] /*}*/] /*2*/,
+  /*[*/ ["BOTTL"] /*]*/,
+  /*[*/ ["COKE"] /*]*/)
 
 add_object(
-  #object
-    {"LISTS"
-      "There is an enormous stack of line-printer paper here.  It is barely\nreadable."
-      "stack of listings"
-      "There is a gigantic pile of line-printer output here.  Although the\npaper once contained useful information, almost nothing can be\ndistinguished now."
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["LISTS",
+      "There is an enormous stack of line-printer paper here.  It is barely\nreadable.",
+      "stack of listings",
+      "There is a gigantic pile of line-printer output here.  Although the\npaper once contained useful information, almost nothing can be\ndistinguished now.",
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.readbit,
           GLOBALS.burnbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      70},
-  ["PAPER"
-    "LIST"
-    "PRINT"
-    "LISTI"
-    "STACK"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      70] /*}*/] /*2*/,
+  /*[*/ ["PAPER",
+    "LIST",
+    "PRINT",
+    "LISTI",
+    "STACK"] /*]*/)
 
 add_desc(
   find_obj(
@@ -5331,19 +5331,19 @@ add_desc(
   "<DEFINE FEEL-FREE (LOSER)\n		   <TELL \"FEEL FREE, CHOMPER!\">>\n			...\nThe rest is, alas, unintelligible (as were the implementers).")
 
 add_object(
-  #object
-    {"LCASE"
-      "There is a large case here, containing objects which you used to\npossess."
-      "large case"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["LCASE",
+      "There is a large case here, containing objects which you used to\npossess.",
+      "large case",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.transbit)},
-  ["CASE"],
-  ["LARGE"])
+          GLOBALS.transbit)] /*1*/] /*}*/] /*2*/,
+  /*[*/ ["CASE"] /*]*/,
+  /*[*/ ["LARGE"] /*]*/)
 
 mapf(
   null,
@@ -5355,22 +5355,22 @@ mapf(
           LOCALS.x)),
     GLOBALS.rfillbit),
   _X,
-  [resen_X_rooms
-    reses_X_rooms
-    dam_X_rooms
-    strea_X_rooms
-    rivr1_X_rooms
-    rivr2_X_rooms
-    rivr3_X_rooms
-    rivr4_X_rooms
-    rivr5_X_rooms
-    beach_X_rooms
-    rcave_X_rooms
-    dock_X_rooms
-    wclf1
-    wclf2
-    fante
-    pog])
+  /*[*/ [resen_X_rooms,
+    reses_X_rooms,
+    dam_X_rooms,
+    strea_X_rooms,
+    rivr1_X_rooms,
+    rivr2_X_rooms,
+    rivr3_X_rooms,
+    rivr4_X_rooms,
+    rivr5_X_rooms,
+    beach_X_rooms,
+    rcave_X_rooms,
+    dock_X_rooms,
+    wclf1,
+    wclf2,
+    fante,
+    pog] /*]*/)
 
 mapf(
   null,
@@ -5380,9 +5380,9 @@ mapf(
     find_room(
         LOCALS.x),
     GLOBALS.rhousebit),
-  ["LROOM"
-    "KITCH"
-    "ATTIC"])
+  /*[*/ ["LROOM",
+    "KITCH",
+    "ATTIC"] /*]*/)
 
 mapf(
   null,
@@ -5392,183 +5392,183 @@ mapf(
     find_room(
         LOCALS.x),
     GLOBALS.rsacredbit),
-  ["BSHAF"
-    "RIVR1"
-    "DOCK"
-    "FANTE"
-    "FALLS"
-    "BEACH"
-    "RCAVE"
-    "VAIR1"
-    "VAIR2"
-    "VAIR3"
-    "VAIR4"
-    "RIVR2"
-    "RIVR3"
-    "RIVR4"
-    "RIVR5"
-    "TIMBE"
-    "WHOUS"
-    "NHOUS"
-    "EHOUS"
-    "SHOUS"
-    "KITCH"
-    "LROOM"
-    "FORE1"
-    "FORE2"
-    "FORE3"
-    "FORE4"
-    "FORE5"
-    "CLEAR"
-    "TEMP1"
-    "TEMP2"
-    "CLTOP"
-    "CLMID"
-    "CLBOT"
-    "RAINB"
-    "FALLS"])
+  /*[*/ ["BSHAF",
+    "RIVR1",
+    "DOCK",
+    "FANTE",
+    "FALLS",
+    "BEACH",
+    "RCAVE",
+    "VAIR1",
+    "VAIR2",
+    "VAIR3",
+    "VAIR4",
+    "RIVR2",
+    "RIVR3",
+    "RIVR4",
+    "RIVR5",
+    "TIMBE",
+    "WHOUS",
+    "NHOUS",
+    "EHOUS",
+    "SHOUS",
+    "KITCH",
+    "LROOM",
+    "FORE1",
+    "FORE2",
+    "FORE3",
+    "FORE4",
+    "FORE5",
+    "CLEAR",
+    "TEMP1",
+    "TEMP2",
+    "CLTOP",
+    "CLMID",
+    "CLBOT",
+    "RAINB",
+    "FALLS"] /*]*/)
 
 GLOBALS.bucket_top_X_flag = null
 
-GLOBALS.magcmach = #cexit
-    {"FROBOZZ"
-      "CMACH"
-      ""}
+GLOBALS.magcmach = /*#*/ [cexit,
+    /*{*/ ["FROBOZZ",
+      "CMACH",
+      ""] /*}*/] /*2*/
 
-GLOBALS.magalice = #cexit
-    {"FROBOZZ"
-      "ALICE"
-      ""}
+GLOBALS.magalice = /*#*/ [cexit,
+    /*{*/ ["FROBOZZ",
+      "ALICE",
+      ""] /*}*/] /*2*/
 
-#room
-  {"MAGNE"
-    ""
-    "Low Room"
-    %null
-    #exit
-      {"NORTH"
-        %GLOBALS.magcmach
-        "SOUTH"
-        %GLOBALS.magcmach
-        "WEST"
-        %GLOBALS.magcmach
-        "NE"
-        %GLOBALS.magcmach
-        "NW"
-        %GLOBALS.magalice
-        "SW"
-        %GLOBALS.magalice
-        "SE"
-        %GLOBALS.magalice
-        "EAST"
-        %GLOBALS.magcmach}
-    (#find_obj
-        {"RBTLB"}
-      #find_obj
-        {"ROBOT"})
-    magnet_room}
+/*#*/ [room,
+  /*{*/ ["MAGNE",
+    "",
+    "Low Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        /*%*/ [GLOBALS.magcmach] /*1*/,
+        "SOUTH",
+        /*%*/ [GLOBALS.magcmach] /*1*/,
+        "WEST",
+        /*%*/ [GLOBALS.magcmach] /*1*/,
+        "NE",
+        /*%*/ [GLOBALS.magcmach] /*1*/,
+        "NW",
+        /*%*/ [GLOBALS.magalice] /*1*/,
+        "SW",
+        /*%*/ [GLOBALS.magalice] /*1*/,
+        "SE",
+        /*%*/ [GLOBALS.magalice] /*1*/,
+        "EAST",
+        /*%*/ [GLOBALS.magcmach] /*1*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["RBTLB"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ROBOT"] /*}*/] /*2*/] /*)*/,
+    magnet_room] /*}*/] /*2*/
 
-#room
-  {"CMACH"
-    ""
-    "Machine Room"
-    %null
-    #exit
-      {"WEST"
-        "MAGNE"
-        "SOUTH"
-        "CAGER"}
-    (#find_obj
-        {"SQBUT"}
-      #find_obj
-        {"RNBUT"}
-      #find_obj
-        {"TRBUT"})
-    cmach_room}
+/*#*/ [room,
+  /*{*/ ["CMACH",
+    "",
+    "Machine Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MAGNE",
+        "SOUTH",
+        "CAGER"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["SQBUT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RNBUT"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["TRBUT"] /*}*/] /*2*/] /*)*/,
+    cmach_room] /*}*/] /*2*/
 
-#room
-  {"CAGER"
-    "You are in a dingy closet adjacent to the machine room.  On one wall\nis a small sticker which says\n		Protected by\n		  FROBOZZ\n	     Magic Alarm Company\n	      (Hello, footpad!)"
-    "Dingy Closet"
-    %null
-    #exit
-      {"NORTH"
-        "CMACH"}
-    (#find_obj
-        {"SPHER"})}
+/*#*/ [room,
+  /*{*/ ["CAGER",
+    "You are in a dingy closet adjacent to the machine room.  On one wall\nis a small sticker which says\n		Protected by\n		  FROBOZZ\n	     Magic Alarm Company\n	      (Hello, footpad!)",
+    "Dingy Closet",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        "CMACH"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["SPHER"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"CAGED"
-    "You are trapped inside an iron cage."
-    "Cage"
-    %null
-    #exit
-      {"NORTH"
-        #nexit
-          ""}
-    (#find_obj
-        {"CAGE"})
-    caged_room}
+/*#*/ [room,
+  /*{*/ ["CAGED",
+    "You are trapped inside an iron cage.",
+    "Cage",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NORTH",
+        /*#*/ [nexit,
+          ""] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["CAGE"] /*}*/] /*2*/] /*)*/,
+    caged_room] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"CAGE"
-      "There is a mangled cage here."
-      "mangled cage"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["CAGE",
+      "There is a mangled cage here.",
+      "mangled cage",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.ndescbit)
-      0
-      0
-      0
-      60
-      0},
-  [],
-  [])
+          GLOBALS.ndescbit)] /*1*/,
+      0,
+      0,
+      0,
+      60,
+      0] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ [] /*]*/)
 
 add_object(
-  #object
-    {"RCAGE"
-      "There is an iron cage in the middle of the room."
-      "iron cage"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.ovison
-      0
-      0
-      0
-      0
-      0},
-  ["CAGE"],
-  ["IRON"])
+  /*#*/ [object,
+    /*{*/ ["RCAGE",
+      "There is an iron cage in the middle of the room.",
+      "iron cage",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.ovison] /*1*/,
+      0,
+      0,
+      0,
+      0,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAGE"] /*]*/,
+  /*[*/ ["IRON"] /*]*/)
 
 add_object(
-  #object
-    {"SPHER"
-      "There is a beautiful crystal sphere here."
-      "crystal sphere"
-      %null
-      sphere_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["SPHER",
+      "There is a beautiful crystal sphere here.",
+      "crystal sphere",
+      /*%*/ [null] /*1*/,
+      sphere_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.trytakebit,
           GLOBALS.sacredbit,
-          GLOBALS.ovison)
-      0
-      6
-      6
-      10
-      0},
-  ["BALL"],
-  ["CRYST"
-    "GLASS"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      6,
+      6,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["BALL"] /*]*/,
+  /*[*/ ["CRYST",
+    "GLASS"] /*]*/)
 
 add_object(
   aobject(
@@ -5577,8 +5577,8 @@ add_object(
     buttons,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"],
-  ["SQUAR"])
+  /*[*/ ["BUTTO"] /*]*/,
+  /*[*/ ["SQUAR"] /*]*/)
 
 add_object(
   aobject(
@@ -5587,8 +5587,8 @@ add_object(
     buttons,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"],
-  ["ROUND"])
+  /*[*/ ["BUTTO"] /*]*/,
+  /*[*/ ["ROUND"] /*]*/)
 
 add_object(
   aobject(
@@ -5597,54 +5597,54 @@ add_object(
     buttons,
     GLOBALS.ovison,
     GLOBALS.ndescbit),
-  ["BUTTO"],
-  ["TRIAN"])
+  /*[*/ ["BUTTO"] /*]*/,
+  /*[*/ ["TRIAN"] /*]*/)
 
-#room
-  {"TWELL"
-    "You are at the top of the well.  Well done.  There are etchings on\nthe side of the well. There is a small crack across the floor at the\nentrance to a room on the east, but it can be crossed easily."
-    "Top of Well"
-    %null
-    #exit
-      {"EAST"
-        "ALICE"
-        "DOWN"
-        #nexit
-          "It's a long way down!"}
-    (#find_obj
-        {"ETCH2"})
-    %null
-    10
-    %_(
+/*#*/ [room,
+  /*{*/ ["TWELL",
+    "You are at the top of the well.  Well done.  There are etchings on\nthe side of the well. There is a small crack across the floor at the\nentrance to a room on the east, but it can be crossed easily.",
+    "Top of Well",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        "ALICE",
+        "DOWN",
+        /*#*/ [nexit,
+          "It's a long way down!"] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["ETCH2"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    10,
+    /*%*/ [_(
         GLOBALS.rlandbit,
-        GLOBALS.rbuckbit)}
+        GLOBALS.rbuckbit)] /*1*/] /*}*/] /*2*/
 
-#room
-  {"BWELL"
-    "You are in a damp circular room, whose walls are made of brick and\nmortar.  The roof of this room is not visible, but there appear to be\nsome etchings on the walls.  There is a passageway to the west."
-    "Circular Room"
-    %null
-    #exit
-      {"WEST"
-        "MPEAR"
-        "UP"
-        #nexit
-          "The walls cannot be climbed."}
-    (#find_obj
-        {"BUCKE"}
-      #find_obj
-        {"ETCH1"})
-    %null
-    0
-    %_(
+/*#*/ [room,
+  /*{*/ ["BWELL",
+    "You are in a damp circular room, whose walls are made of brick and\nmortar.  The roof of this room is not visible, but there appear to be\nsome etchings on the walls.  There is a passageway to the west.",
+    "Circular Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["WEST",
+        "MPEAR",
+        "UP",
+        /*#*/ [nexit,
+          "The walls cannot be climbed."] /*2*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["BUCKE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ETCH1"] /*}*/] /*2*/] /*)*/,
+    /*%*/ [null] /*1*/,
+    0,
+    /*%*/ [_(
         GLOBALS.rlandbit,
-        GLOBALS.rbuckbit)}
+        GLOBALS.rbuckbit)] /*1*/] /*}*/] /*2*/
 
 psetg(
   ewalls,
-  ["ETCHI"
-    "WALLS"
-    "WALL"])
+  /*[*/ ["ETCHI",
+    "WALLS",
+    "WALL"] /*]*/)
 
 add_object(
   sobject(
@@ -5674,257 +5674,257 @@ add_desc(
     "ETCH1"),
   "o  b  o\n		      		  \n		        A  G  I  \n		         E   L  \n		    		  \n		        m  p  a")
 
-#room
-  {"ALICE"
-    "You are in a small square room, in the center of which is a large\noblong table, no doubt set for afternoon tea.  It is clear from the\nobjects on the table that the users were indeed mad.  In the eastern\ncorner of the room is a small hole (no more that four inches high). \nThere are passageways leading away to the west and the northwest."
-    "Tea Room"
-    %null
-    #exit
-      {"EAST"
-        #nexit
-          "Only a mouse could get in there."
-        "WEST"
-        "TWELL"
-        "NW"
-        "MAGNE"}
-    (#find_obj
-        {"ATABL"}
-      #find_obj
-        {"ECAKE"}
-      #find_obj
-        {"ORICE"}
-      #find_obj
-        {"RDICE"}
-      #find_obj
-        {"BLICE"})}
+/*#*/ [room,
+  /*{*/ ["ALICE",
+    "You are in a small square room, in the center of which is a large\noblong table, no doubt set for afternoon tea.  It is clear from the\nobjects on the table that the users were indeed mad.  In the eastern\ncorner of the room is a small hole (no more that four inches high). \nThere are passageways leading away to the west and the northwest.",
+    "Tea Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EAST",
+        /*#*/ [nexit,
+          "Only a mouse could get in there."] /*2*/,
+        "WEST",
+        "TWELL",
+        "NW",
+        "MAGNE"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["ATABL"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ECAKE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["ORICE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["RDICE"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["BLICE"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 psetg(
   smdrop,
-  #nexit
-    "There is a chasm too large to jump across.")
+  /*#*/ [nexit,
+    "There is a chasm too large to jump across."] /*2*/)
 
-#room
-  {"ALISM"
-    "You are in an enormous room, in the center of which are four wooden\nposts delineating a rectanular area, above which is what appears to\nbe a wooden roof.  In fact, all objects in this room appear to be\nabnormally large. To the east is a passageway.  There is a large\nchasm on the west and the northwest."
-    "Posts Room"
-    %null
-    #exit
-      {"NW"
-        %GLOBALS.smdrop
-        "EAST"
-        "ALITR"
-        "WEST"
-        %GLOBALS.smdrop
-        "DOWN"
-        %GLOBALS.smdrop}
-    (#find_obj
-        {"POSTS"})}
+/*#*/ [room,
+  /*{*/ ["ALISM",
+    "You are in an enormous room, in the center of which are four wooden\nposts delineating a rectanular area, above which is what appears to\nbe a wooden roof.  In fact, all objects in this room appear to be\nabnormally large. To the east is a passageway.  There is a large\nchasm on the west and the northwest.",
+    "Posts Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["NW",
+        /*%*/ [GLOBALS.smdrop] /*1*/,
+        "EAST",
+        "ALITR",
+        "WEST",
+        /*%*/ [GLOBALS.smdrop] /*1*/,
+        "DOWN",
+        /*%*/ [GLOBALS.smdrop] /*1*/] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["POSTS"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-#room
-  {"ALITR"
-    "You are in a large room, one half of which is depressed.  There is a\nlarge leak in the ceiling through which brown colored goop is\nfalling.  The only exit to this room is to the west."
-    "Pool Room"
-    %null
-    #exit
-      {"EXIT"
-        "ALISM"
-        "WEST"
-        "ALISM"}
-    (#find_obj
-        {"FLASK"}
-      #find_obj
-        {"POOL"}
-      #find_obj
-        {"SAFFR"})}
+/*#*/ [room,
+  /*{*/ ["ALITR",
+    "You are in a large room, one half of which is depressed.  There is a\nlarge leak in the ceiling through which brown colored goop is\nfalling.  The only exit to this room is to the west.",
+    "Pool Room",
+    /*%*/ [null] /*1*/,
+    /*#*/ [exit,
+      /*{*/ ["EXIT",
+        "ALISM",
+        "WEST",
+        "ALISM"] /*}*/] /*2*/,
+    /*(*/ [/*#*/ [find_obj,
+        /*{*/ ["FLASK"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["POOL"] /*}*/] /*2*/,
+      /*#*/ [find_obj,
+        /*{*/ ["SAFFR"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(
-  #object
-    {"FLASK"
-      "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid."
-      "glass flask filled with liquid"
-      %null
-      flask_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["FLASK",
+      "A stoppered glass flask with a skull-and-crossbones marking is here.\nThe flask is filled with some clear liquid.",
+      "glass flask filled with liquid",
+      /*%*/ [null] /*1*/,
+      flask_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.transbit,
           GLOBALS.ovison,
-          GLOBALS.takebit)
-      0
-      0
-      0
-      10
-      5},
-  [],
-  ["GLASS"])
+          GLOBALS.takebit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      5] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["GLASS"] /*]*/)
 
 add_object(
-  #object
-    {"POOL"
-      "The leak has submerged the depressed area in a pool of sewage."
-      "pool of sewage"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["POOL",
+      "The leak has submerged the depressed area in a pool of sewage.",
+      "pool of sewage",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
-          GLOBALS.vicbit)
-      0
-      0
-      0
-      0
-      0},
-  ["SEWAG"],
-  ["LARGE"])
+          GLOBALS.vicbit)] /*1*/,
+      0,
+      0,
+      0,
+      0,
+      0] /*}*/] /*2*/,
+  /*[*/ ["SEWAG"] /*]*/,
+  /*[*/ ["LARGE"] /*]*/)
 
 add_object(
-  #object
-    {"SAFFR"
-      "There is a tin of rare spices here."
-      "tin of spices"
-      %null
-      %null
-      ()
-      %null
-      %GLOBALS.takebit
-      0
-      5
-      5
-      8
-      0},
-  ["TIN"
-    "SPICE"],
-  ["RARE"])
+  /*#*/ [object,
+    /*{*/ ["SAFFR",
+      "There is a tin of rare spices here.",
+      "tin of spices",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [GLOBALS.takebit] /*1*/,
+      0,
+      5,
+      5,
+      8,
+      0] /*}*/] /*2*/,
+  /*[*/ ["TIN",
+    "SPICE"] /*]*/,
+  /*[*/ ["RARE"] /*]*/)
 
 add_object(
   sobject(
     "ATABL",
     "large oblong table",
     GLOBALS.ovison),
-  [],
-  ["LARGE"
-    "OBLON"])
+  /*[*/ [] /*]*/,
+  /*[*/ ["LARGE",
+    "OBLON"] /*]*/)
 
 add_object(
   sobject(
     "POSTS",
     "wooden posts",
     GLOBALS.ovison),
-  ["POST"],
-  ["WOODE"])
+  /*[*/ ["POST"] /*]*/,
+  /*[*/ ["WOODE"] /*]*/)
 
 add_object(
-  #object
-    {"BUCKE"
-      "There is a wooden bucket here, 3 feet in diameter and 3 feet high."
-      "wooden bucket"
-      %null
-      bucket
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BUCKE",
+      "There is a wooden bucket here, 3 feet in diameter and 3 feet high.",
+      "wooden bucket",
+      /*%*/ [null] /*1*/,
+      bucket,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.vehbit,
-          GLOBALS.ovison)
-      0
-      0
-      0
-      100
-      100},
-  [],
-  ["WOODE"])
+          GLOBALS.ovison)] /*1*/,
+      0,
+      0,
+      0,
+      100,
+      100] /*}*/] /*2*/,
+  /*[*/ [] /*]*/,
+  /*[*/ ["WOODE"] /*]*/)
 
 add_object(
-  #object
-    {"ECAKE"
-      "There is a piece of cake here with the words 'Eat Me' on it."
-      "piece of 'Eat Me' cake"
-      %null
-      eatme_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ECAKE",
+      "There is a piece of cake here with the words 'Eat Me' on it.",
+      "piece of 'Eat Me' cake",
+      /*%*/ [null] /*1*/,
+      eatme_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.foodbit)
-      0
-      0
-      0
-      10
-      0},
-  ["CAKE"],
-  ["EATME"
-    "EAT-M"])
+          GLOBALS.foodbit)] /*1*/,
+      0,
+      0,
+      0,
+      10,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAKE"] /*]*/,
+  /*[*/ ["EATME",
+    "EAT-M"] /*]*/)
 
 add_object(
-  #object
-    {"ORICE"
-      "There is a piece of cake with orange icing here."
-      "piece of cake with orange icing"
-      %null
-      cake_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ORICE",
+      "There is a piece of cake with orange icing here.",
+      "piece of cake with orange icing",
+      /*%*/ [null] /*1*/,
+      cake_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.readbit,
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.foodbit)
-      0
-      0
-      0
-      4
-      0},
-  ["CAKE"
-    "ICING"],
-  ["ORANG"])
+          GLOBALS.foodbit)] /*1*/,
+      0,
+      0,
+      0,
+      4,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAKE",
+    "ICING"] /*]*/,
+  /*[*/ ["ORANG"] /*]*/)
 
 add_object(
-  #object
-    {"RDICE"
-      "There is a piece of cake with red icing here."
-      "piece of cake with red icing"
-      %null
-      cake_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["RDICE",
+      "There is a piece of cake with red icing here.",
+      "piece of cake with red icing",
+      /*%*/ [null] /*1*/,
+      cake_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.readbit,
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.foodbit)
-      0
-      0
-      0
-      4
-      0},
-  ["CAKE"
-    "ICING"],
-  ["RED"])
+          GLOBALS.foodbit)] /*1*/,
+      0,
+      0,
+      0,
+      4,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAKE",
+    "ICING"] /*]*/,
+  /*[*/ ["RED"] /*]*/)
 
 add_object(
-  #object
-    {"BLICE"
-      "There is a piece of cake with blue (ecch) icing here."
-      "piece of cake with blue icing"
-      %null
-      cake_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["BLICE",
+      "There is a piece of cake with blue (ecch) icing here.",
+      "piece of cake with blue icing",
+      /*%*/ [null] /*1*/,
+      cake_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.readbit,
           GLOBALS.ovison,
           GLOBALS.takebit,
-          GLOBALS.foodbit)
-      0
-      0
-      0
-      4
-      0},
-  ["CAKE"
-    "ICING"],
-  ["BLUE"
-    "ECCH"])
+          GLOBALS.foodbit)] /*1*/,
+      0,
+      0,
+      0,
+      4,
+      0] /*}*/] /*2*/,
+  /*[*/ ["CAKE",
+    "ICING"] /*]*/,
+  /*[*/ ["BLUE",
+    "ECCH"] /*]*/)
 
 put(
   put(
@@ -5936,27 +5936,27 @@ put(
   GLOBALS.rbuckbit)
 
 add_object(
-  #object
-    {"ROBOT"
-      "There is a robot here."
-      "robot"
-      %null
-      robot_function
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["ROBOT",
+      "There is a robot here.",
+      "robot",
+      /*%*/ [null] /*1*/,
+      robot_function,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.sacredbit,
           GLOBALS.vicbit,
           GLOBALS.ovison,
-          GLOBALS.actorbit)
-      0
-      0
-      0
-      0
-      0},
-  ["R2D2"
-    "C3PO"
-    "ROBBY"])
+          GLOBALS.actorbit)] /*1*/,
+      0,
+      0,
+      0,
+      0,
+      0] /*}*/] /*2*/,
+  /*[*/ ["R2D2",
+    "C3PO",
+    "ROBBY"] /*]*/)
 
 put(
   find_obj(
@@ -5964,40 +5964,40 @@ put(
   GLOBALS.orand,
   add_actor(
     chtype(
-      [find_room(
-          "MAGNE")
-        ()
-        0
-        null
+      /*[*/ [find_room(
+          "MAGNE"),
+        /*(*/ [] /*)*/,
+        0,
+        null,
         find_obj(
-          "ROBOT")
-        robot_actor
-        3
-        t
-        0],
+          "ROBOT"),
+        robot_actor,
+        3,
+        t,
+        0] /*]*/,
       adv)))
 
 add_object(
-  #object
-    {"RBTLB"
-      "There is a green piece of paper here."
-      "green piece of paper"
-      %null
-      %null
-      ()
-      %null
-      %_(
+  /*#*/ [object,
+    /*{*/ ["RBTLB",
+      "There is a green piece of paper here.",
+      "green piece of paper",
+      /*%*/ [null] /*1*/,
+      /*%*/ [null] /*1*/,
+      /*(*/ [] /*)*/,
+      /*%*/ [null] /*1*/,
+      /*%*/ [_(
           GLOBALS.ovison,
           GLOBALS.takebit,
           GLOBALS.readbit,
-          GLOBALS.burnbit)
-      0
-      0
-      0
-      3
-      0},
-  ["PAPER"],
-  ["GREEN"])
+          GLOBALS.burnbit)] /*1*/,
+      0,
+      0,
+      0,
+      3,
+      0] /*}*/] /*2*/,
+  /*[*/ ["PAPER"] /*]*/,
+  /*[*/ ["GREEN"] /*]*/)
 
 add_desc(
   find_obj(
@@ -6044,24 +6044,24 @@ vsynonym(
 add_action(
   "PUT",
   "Put",
-  [obj
-    "IN"
-    obj
-    ["PUT"
-      putter]
-    driver],
-  ["DOWN"
-    obj
-    ["DROP"
-      dropper]])
+  /*[*/ [obj,
+    "IN",
+    obj,
+    /*[*/ ["PUT",
+      putter] /*]*/,
+    driver] /*]*/,
+  /*[*/ ["DOWN",
+    obj,
+    /*[*/ ["DROP",
+      dropper] /*]*/] /*]*/)
 
 add_action(
   "PICK",
   "Pick",
-  ["UP"
-    obj
-    ["TAKE"
-      take]])
+  /*[*/ ["UP",
+    obj,
+    /*[*/ ["TAKE",
+      take] /*]*/] /*]*/)
 
 vsynonym(
   "PUT",
@@ -6077,14 +6077,14 @@ vsynonym(
 add_action(
   "RAISE",
   "Raise",
-  [obj
-    ["RAISE"
-      r_l]
-    driver],
-  ["UP"
-    obj
-    ["RAISE"
-      r_l]])
+  /*[*/ [obj,
+    /*[*/ ["RAISE",
+      r_l] /*]*/,
+    driver] /*]*/,
+  /*[*/ ["UP",
+    obj,
+    /*[*/ ["RAISE",
+      r_l] /*]*/] /*]*/)
 
 vsynonym(
   "RAISE",
@@ -6102,31 +6102,31 @@ vsynonym(
 add_action(
   "LIGHT",
   "Light",
-  [(GLOBALS.lightbit
-      aobjs
-      robjs
-      no_take)
-    ["LIGHT"
-      lamp_on]
-    driver],
-  [(GLOBALS.lightbit
-      aobjs
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.flamebit
-      aobjs)
-    ["LIGHT"
-      lamp_on]])
+  /*[*/ [/*(*/ [GLOBALS.lightbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["LIGHT",
+      lamp_on] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [GLOBALS.lightbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.flamebit,
+      aobjs] /*)*/,
+    /*[*/ ["LIGHT",
+      lamp_on] /*]*/] /*]*/)
 
 add_action(
   "EXTIN",
   "Turn off",
-  [(GLOBALS.lightbit
-      aobjs
-      robjs)
-    ["EXTIN"
-      lamp_off]])
+  /*[*/ [/*(*/ [GLOBALS.lightbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["EXTIN",
+      lamp_off] /*]*/] /*]*/)
 
 vsynonym(
   "EXTIN",
@@ -6135,48 +6135,48 @@ vsynonym(
 add_action(
   "TURN",
   "Turn",
-  [(GLOBALS.turnbit
-      aobjs
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.toolbit
-      robjs
-      aobjs)
-    ["TURN"
-      turner]
-    driver],
-  ["ON"
-    (GLOBALS.lightbit
-      aobjs
-      robjs)
-    ["TURN-ON"
-      lamp_on]],
-  ["OFF"
-    (GLOBALS.lightbit
-      aobjs
-      robjs)
-    ["TURN-OFF"
-      lamp_off]],
-  [(GLOBALS.turnbit
-      aobjs
-      robjs
-      no_take)
-    "TO"
-    (_1
-      robjs)
-    ["TURN-TO"
-      time]])
+  /*[*/ [/*(*/ [GLOBALS.turnbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.toolbit,
+      robjs,
+      aobjs] /*)*/,
+    /*[*/ ["TURN",
+      turner] /*]*/,
+    driver] /*]*/,
+  /*[*/ ["ON",
+    /*(*/ [GLOBALS.lightbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["TURN-ON",
+      lamp_on] /*]*/] /*]*/,
+  /*[*/ ["OFF",
+    /*(*/ [GLOBALS.lightbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["TURN-OFF",
+      lamp_off] /*]*/] /*]*/,
+  /*[*/ [/*(*/ [GLOBALS.turnbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    "TO",
+    /*(*/ [_1,
+      robjs] /*)*/,
+    /*[*/ ["TURN-TO",
+      time] /*]*/] /*]*/)
 
 add_action(
   "TAKE",
   "Take",
-  [(_1
-      robjs
-      aobjs
-      no_take)
-    ["TAKE"
-      take]])
+  /*[*/ [/*(*/ [_1,
+      robjs,
+      aobjs,
+      no_take] /*)*/,
+    /*[*/ ["TAKE",
+      take] /*]*/] /*]*/)
 
 vsynonym(
   "TAKE",
@@ -6187,35 +6187,35 @@ vsynonym(
 add_action(
   "LOOK",
   "Look",
-  [["LOOK"
-      room_desc]],
-  ["AT"
-    obj
-    ["LOOK-AT"
-      room_desc]],
-  ["UNDER"
-    obj
-    ["LOOK-UNDER"
-      look_under]])
+  /*[*/ [/*[*/ ["LOOK",
+      room_desc] /*]*/] /*]*/,
+  /*[*/ ["AT",
+    obj,
+    /*[*/ ["LOOK-AT",
+      room_desc] /*]*/] /*]*/,
+  /*[*/ ["UNDER",
+    obj,
+    /*[*/ ["LOOK-UNDER",
+      look_under] /*]*/] /*]*/)
 
 add_action(
   "GIVE",
   "Give",
-  [obj
-    "TO"
-    (GLOBALS.vicbit
-      robjs
-      no_take)
-    ["GIVE"
-      dropper]
-    driver],
-  [(GLOBALS.vicbit
-      robjs
-      no_take)
-    obj
-    ["GIVE"
-      dropper]
-    flip])
+  /*[*/ [obj,
+    "TO",
+    /*(*/ [GLOBALS.vicbit,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["GIVE",
+      dropper] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [GLOBALS.vicbit,
+      robjs,
+      no_take] /*)*/,
+    obj,
+    /*[*/ ["GIVE",
+      dropper] /*]*/,
+    flip] /*]*/)
 
 vsynonym(
   "GIVE",
@@ -6225,28 +6225,28 @@ vsynonym(
 add_action(
   "STRIK",
   "Strike",
-  [(GLOBALS.vicbit
-      _
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.weaponbit
-      aobjs
-      robjs)
-    ["ATTAC"
-      attacker]],
-  [(GLOBALS.vicbit
-      _
-      robjs
-      no_take)
-    ["ATTAC"
-      attacker]
-    driver],
-  [(_1
-      robjs
-      aobjs)
-    ["LIGHT"
-      lamp_on]])
+  /*[*/ [/*(*/ [GLOBALS.vicbit,
+      _,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.weaponbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["ATTAC",
+      attacker] /*]*/] /*]*/,
+  /*[*/ [/*(*/ [GLOBALS.vicbit,
+      _,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["ATTAC",
+      attacker] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [_1,
+      robjs,
+      aobjs] /*)*/,
+    /*[*/ ["LIGHT",
+      lamp_on] /*]*/] /*]*/)
 
 aadd_action(
   "MOVE",
@@ -6270,17 +6270,17 @@ vsynonym(
 add_action(
   "DROP",
   "Drop",
-  [(_1
-      aobjs)
-    ["DROP"
-      dropper]
-    driver],
-  [(_1
-      aobjs)
-    "IN"
-    obj
-    ["DROP"
-      dropper]])
+  /*[*/ [/*(*/ [_1,
+      aobjs] /*)*/,
+    /*[*/ ["DROP",
+      dropper] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [_1,
+      aobjs] /*)*/,
+    "IN",
+    obj,
+    /*[*/ ["DROP",
+      dropper] /*]*/] /*]*/)
 
 vsynonym(
   "DROP",
@@ -6289,17 +6289,17 @@ vsynonym(
 add_action(
   "POUR",
   "Pour",
-  [(_1
-      aobjs)
-    ["POUR"
-      dropper]
-    driver],
-  [(_1
-      aobjs)
-    "IN"
-    obj
-    ["POUR"
-      dropper]])
+  /*[*/ [/*(*/ [_1,
+      aobjs] /*)*/,
+    /*[*/ ["POUR",
+      dropper] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [_1,
+      aobjs] /*)*/,
+    "IN",
+    obj,
+    /*[*/ ["POUR",
+      dropper] /*]*/] /*]*/)
 
 vsynonym(
   "POUR",
@@ -6308,14 +6308,14 @@ vsynonym(
 add_action(
   "THROW",
   "Throw",
-  [(_1
-      aobjs)
-    "AT"
-    (GLOBALS.vicbit
-      robjs
-      no_take)
-    ["THROW"
-      dropper]])
+  /*[*/ [/*(*/ [_1,
+      aobjs] /*)*/,
+    "AT",
+    /*(*/ [GLOBALS.vicbit,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["THROW",
+      dropper] /*]*/] /*]*/)
 
 vsynonym(
   "THROW",
@@ -6325,9 +6325,9 @@ vsynonym(
 add_action(
   "TELL",
   "Tell",
-  [(GLOBALS.actorbit)
-    ["TELL"
-      command]])
+  /*[*/ [/*(*/ [GLOBALS.actorbit] /*)*/,
+    /*[*/ ["TELL",
+      command] /*]*/] /*]*/)
 
 vsynonym(
   "TELL",
@@ -6458,11 +6458,11 @@ sadd_action(
 add_action(
   "PLUG",
   "Plug",
-  [obj
-    "WITH"
-    obj
-    ["PLUG"
-      plugger]])
+  /*[*/ [obj,
+    "WITH",
+    obj,
+    /*[*/ ["PLUG",
+      plugger] /*]*/] /*]*/)
 
 vsynonym(
   "PLUG",
@@ -6492,16 +6492,16 @@ vsynonym(
 add_action(
   "BURN",
   "Burn",
-  [(GLOBALS.burnbit
-      aobjs
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.flamebit
-      aobjs
-      robjs)
-    ["BURN"
-      burner]])
+  /*[*/ [/*(*/ [GLOBALS.burnbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.flamebit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["BURN",
+      burner] /*]*/] /*]*/)
 
 vsynonym(
   "BURN",
@@ -6511,14 +6511,14 @@ vsynonym(
 add_action(
   "KILL",
   "Kill",
-  [(GLOBALS.villain
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.weaponbit
-      aobjs)
-    ["KILL"
-      killer]])
+  /*[*/ [/*(*/ [GLOBALS.villain,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.weaponbit,
+      aobjs] /*)*/,
+    /*[*/ ["KILL",
+      killer] /*]*/] /*]*/)
 
 vsynonym(
   "KILL",
@@ -6529,14 +6529,14 @@ vsynonym(
 add_action(
   "ATTAC",
   "Attack",
-  [(GLOBALS.villain
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.weaponbit
-      aobjs)
-    ["ATTAC"
-      attacker]])
+  /*[*/ [/*(*/ [GLOBALS.villain,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.weaponbit,
+      aobjs] /*)*/,
+    /*[*/ ["ATTAC",
+      attacker] /*]*/] /*]*/)
 
 vsynonym(
   "ATTAC",
@@ -6552,14 +6552,14 @@ vsynonym(
 add_action(
   "SWING",
   "Swing",
-  [(GLOBALS.weaponbit
-      aobjs)
-    "AT"
-    (GLOBALS.villain
-      robjs
-      no_take)
-    ["SWING"
-      swinger]])
+  /*[*/ [/*(*/ [GLOBALS.weaponbit,
+      aobjs] /*)*/,
+    "AT",
+    /*(*/ [GLOBALS.villain,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["SWING",
+      swinger] /*]*/] /*]*/)
 
 vsynonym(
   "SWING",
@@ -6568,14 +6568,14 @@ vsynonym(
 add_action(
   "POKE",
   "Poke",
-  [(GLOBALS.villain
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.weaponbit
-      aobjs)
-    ["POKE"
-      munger]])
+  /*[*/ [/*(*/ [GLOBALS.villain,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.weaponbit,
+      aobjs] /*)*/,
+    /*[*/ ["POKE",
+      munger] /*]*/] /*]*/)
 
 vsynonym(
   "POKE",
@@ -6604,14 +6604,14 @@ vsynonym(
 add_action(
   "OPEN",
   "Open",
-  [(_(
+  /*[*/ [/*(*/ [_(
         GLOBALS.doorbit,
-        GLOBALS.contbit)
-      aobjs
-      robjs
-      no_take)
-    ["OPEN"
-      opener]])
+        GLOBALS.contbit),
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["OPEN",
+      opener] /*]*/] /*]*/)
 
 vsynonym(
   "OPEN")
@@ -6619,14 +6619,14 @@ vsynonym(
 add_action(
   "CLOSE",
   "Close",
-  [(_(
+  /*[*/ [/*(*/ [_(
         GLOBALS.doorbit,
-        GLOBALS.contbit)
-      aobjs
-      robjs
-      no_take)
-    ["CLOSE"
-      closer]])
+        GLOBALS.contbit),
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["CLOSE",
+      closer] /*]*/] /*]*/)
 
 vsynonym(
   "CLOSE")
@@ -6634,33 +6634,33 @@ vsynonym(
 add_action(
   "UNLOC",
   "Unlock",
-  [(_1
-      robjs
-      no_take)
-    "WITH"
-    (GLOBALS.toolbit
-      aobjs
-      robjs)
-    ["UNLOC"
-      unlocker]])
+  /*[*/ [/*(*/ [_1,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    /*(*/ [GLOBALS.toolbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["UNLOC",
+      unlocker] /*]*/] /*]*/)
 
 add_action(
   "LOCK",
   "Lock",
-  [(_1
-      robjs
-      no_take)
-    ["LOCK"
-      locker]])
+  /*[*/ [/*(*/ [_1,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["LOCK",
+      locker] /*]*/] /*]*/)
 
 add_action(
   "TIE",
   "Tie",
-  [obj
-    "TO"
-    obj
-    ["TIE"
-      tie]])
+  /*[*/ [obj,
+    "TO",
+    obj,
+    /*[*/ ["TIE",
+      tie] /*]*/] /*]*/)
 
 vsynonym(
   "TIE",
@@ -6679,11 +6679,11 @@ vsynonym(
 add_action(
   "EAT",
   "Eat",
-  [(GLOBALS.foodbit
-      aobjs
-      robjs)
-    ["EAT"
-      eat]])
+  /*[*/ [/*(*/ [GLOBALS.foodbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["EAT",
+      eat] /*]*/] /*]*/)
 
 vsynonym(
   "EAT",
@@ -6695,11 +6695,11 @@ vsynonym(
 add_action(
   "DRINK",
   "Drink",
-  [(GLOBALS.drinkbit
-      aobjs
-      robjs)
-    ["DRINK"
-      eat]])
+  /*[*/ [/*(*/ [GLOBALS.drinkbit,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["DRINK",
+      eat] /*]*/] /*]*/)
 
 vsynonym(
   "DRINK",
@@ -6709,19 +6709,19 @@ vsynonym(
 add_action(
   "BRUSH",
   "Brush",
-  [(_1
-      aobjs
-      robjs)
-    ["BRUSH"
-      brush]
-    driver],
-  [(_1
-      aobjs
-      robjs)
-    "WITH"
-    obj
-    ["BRUSH"
-      brush]])
+  /*[*/ [/*(*/ [_1,
+      aobjs,
+      robjs] /*)*/,
+    /*[*/ ["BRUSH",
+      brush] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [_1,
+      aobjs,
+      robjs] /*)*/,
+    "WITH",
+    obj,
+    /*[*/ ["BRUSH",
+      brush] /*]*/] /*]*/)
 
 vsynonym(
   "BRUSH",
@@ -6818,11 +6818,11 @@ sadd_action(
 add_action(
   "WAKE",
   "Wake",
-  [(GLOBALS.vicbit
-      robjs
-      no_take)
-    ["WAKE"
-      alarm]])
+  /*[*/ [/*(*/ [GLOBALS.vicbit,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["WAKE",
+      alarm] /*]*/] /*]*/)
 
 vsynonym(
   "WAKE",
@@ -6833,12 +6833,12 @@ vsynonym(
 add_action(
   "HELLO",
   "Hello",
-  [["HELLO"
-      hello]
-    driver],
-  [obj
-    ["HELLO"
-      hello]])
+  /*[*/ [/*[*/ ["HELLO",
+      hello] /*]*/,
+    driver] /*]*/,
+  /*[*/ [obj,
+    /*[*/ ["HELLO",
+      hello] /*]*/] /*]*/)
 
 vsynonym(
   "HELLO",
@@ -6874,21 +6874,21 @@ vsynonym(
 add_action(
   "READ",
   "Read",
-  [(GLOBALS.readbit
-      aobjs
-      robjs
-      no_take)
-    ["READ"
-      reader]
-    driver],
-  [(GLOBALS.readbit
-      aobjs
-      robjs
-      no_take)
-    "WITH"
-    obj
-    ["READ"
-      reader]])
+  /*[*/ [/*(*/ [GLOBALS.readbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["READ",
+      reader] /*]*/,
+    driver] /*]*/,
+  /*[*/ [/*(*/ [GLOBALS.readbit,
+      aobjs,
+      robjs,
+      no_take] /*)*/,
+    "WITH",
+    obj,
+    /*[*/ ["READ",
+      reader] /*]*/] /*]*/)
 
 vsynonym(
   "READ",
@@ -6903,61 +6903,61 @@ vsynonym(
 add_action(
   "INFLA",
   "Inflate",
-  [obj
-    "WITH"
-    (GLOBALS.toolbit
-      robjs
-      aobjs
-      no_take)
-    ["INFLA"
-      inflater]])
+  /*[*/ [obj,
+    "WITH",
+    /*(*/ [GLOBALS.toolbit,
+      robjs,
+      aobjs,
+      no_take] /*)*/,
+    /*[*/ ["INFLA",
+      inflater] /*]*/] /*]*/)
 
 add_action(
   "DISEM",
   "Disembark from",
-  [(GLOBALS.vehbit
-      robjs
-      no_take)
-    ["DISEM"
-      unboard]])
+  /*[*/ [/*(*/ [GLOBALS.vehbit,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["DISEM",
+      unboard] /*]*/] /*]*/)
 
 add_action(
   "DIG",
   "Dig",
-  ["WITH"
-    (GLOBALS.toolbit
-      aobjs)
-    ["DIG"
-      digger]])
+  /*[*/ ["WITH",
+    /*(*/ [GLOBALS.toolbit,
+      aobjs] /*)*/,
+    /*[*/ ["DIG",
+      digger] /*]*/] /*]*/)
 
 add_action(
   "BOARD",
   "Board",
-  [(GLOBALS.vehbit
-      robjs
-      no_take)
-    ["BOARD"
-      board]])
+  /*[*/ [/*(*/ [GLOBALS.vehbit,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["BOARD",
+      board] /*]*/] /*]*/)
 
 add_action(
   "KNOCK",
   "Knock",
-  ["AT"
-    obj
-    ["KNOCK"
-      knock]
-    driver],
-  ["ON"
-    obj
-    ["KNOCK"
-      knock]],
-  ["DOWN"
-    (GLOBALS.vicbit
-      _
-      robjs
-      no_take)
-    ["ATTAC"
-      attacker]])
+  /*[*/ ["AT",
+    obj,
+    /*[*/ ["KNOCK",
+      knock] /*]*/,
+    driver] /*]*/,
+  /*[*/ ["ON",
+    obj,
+    /*[*/ ["KNOCK",
+      knock] /*]*/] /*]*/,
+  /*[*/ ["DOWN",
+    /*(*/ [GLOBALS.vicbit,
+      _,
+      robjs,
+      no_take] /*)*/,
+    /*[*/ ["ATTAC",
+      attacker] /*]*/] /*]*/)
 
 sadd_action(
   "GERON",
@@ -6980,25 +6980,25 @@ add_buzz(
 setg(
   robot_actions,
   _X,
-  [GLOBALS.walk_X_words
-    GLOBALS.take_X_words
-    GLOBALS.drop_X_words
-    GLOBALS.put_X_words
-    GLOBALS.jump_X_words
-    GLOBALS.push_X_words
-    GLOBALS.throw_X_words
-    GLOBALS.turn_X_words])
+  /*[*/ [GLOBALS.walk_X_words,
+    GLOBALS.take_X_words,
+    GLOBALS.drop_X_words,
+    GLOBALS.put_X_words,
+    GLOBALS.jump_X_words,
+    GLOBALS.push_X_words,
+    GLOBALS.throw_X_words,
+    GLOBALS.turn_X_words] /*]*/)
 
 GLOBALS.player = add_actor(
     chtype(
-      [GLOBALS.whous_X_rooms
-        ()
-        0
-        null
+      /*[*/ [GLOBALS.whous_X_rooms,
+        /*(*/ [] /*)*/,
+        0,
+        null,
         find_obj(
-          "#####")
-        null
-        0
-        t
-        0],
+          "#####"),
+        null,
+        0,
+        t,
+        0] /*]*/,
       adv))

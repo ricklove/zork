@@ -18,58 +18,58 @@ GLOBALS.actions = moblist(
     actions,
     17)
 
-GLOBALS.orphans = [null
-    null
-    null
-    null
-    null]
+GLOBALS.orphans = /*[*/ [null,
+    null,
+    null,
+    null,
+    null] /*]*/
 
 cond(
-  (or(
+  /*(*/ [or(
       lookup(
         "COMPILE",
         root(
           )),
       gassigned_Q(
-        group_glue))),
-  (GLOBALS.prepvec = [chtype(
-          [find_prep(
-              "WITH")
+        group_glue))] /*)*/,
+  /*(*/ [GLOBALS.prepvec = /*[*/ [chtype(
+          /*[*/ [find_prep(
+              "WITH"),
             find_obj(
-              "#####")],
-          phrase)
+              "#####")] /*]*/,
+          phrase),
         chtype(
-          [find_prep(
-              "WITH")
+          /*[*/ [find_prep(
+              "WITH"),
             find_obj(
-              "#####")],
-          phrase)]
-    GLOBALS.prep2vec = [chtype(
-          [find_prep(
-              "WITH")
+              "#####")] /*]*/,
+          phrase)] /*]*/,
+    GLOBALS.prep2vec = /*[*/ [chtype(
+          /*[*/ [find_prep(
+              "WITH"),
             find_obj(
-              "#####")],
-          phrase)
+              "#####")] /*]*/,
+          phrase),
         chtype(
-          [find_prep(
-              "WITH")
+          /*[*/ [find_prep(
+              "WITH"),
             find_obj(
-              "#####")],
-          phrase)]))
+              "#####")] /*]*/,
+          phrase)] /*]*/] /*)*/)
 
 define(
   sparse,
   sparout,
-  (sv
-    vb
-    "AUX"
-    (words
-      GLOBALS.words)
-    (objob
-      GLOBALS.object_obl)
-    (pv
-      GLOBALS.prsvec)
-    (pvr
+  /*(*/ [sv,
+    vb,
+    "AUX",
+    /*(*/ [words,
+      GLOBALS.words] /*)*/,
+    /*(*/ [objob,
+      GLOBALS.object_obl] /*)*/,
+    /*(*/ [pv,
+      GLOBALS.prsvec] /*)*/,
+    /*(*/ [pvr,
       put(
         put(
           rest(
@@ -77,155 +77,155 @@ define(
           1,
           null),
         2,
-        null))
-    (actions
-      GLOBALS.actions)
-    (dirs
-      GLOBALS.directions)
-    (orph
-      GLOBALS.orphans)
-    (orfl
+        null)] /*)*/,
+    /*(*/ [actions,
+      GLOBALS.actions] /*)*/,
+    /*(*/ [dirs,
+      GLOBALS.directions] /*)*/,
+    /*(*/ [orph,
+      GLOBALS.orphans] /*)*/,
+    /*(*/ [orfl,
       oflag(
-        LOCALS.orph))
-    (prv
-      GLOBALS.prepvec)
-    (here
-      GLOBALS.here)
-    (action
-      null)
-    (prep
-      null)
-    nprep
-    (adj
-      null)
-    atm
-    aval
-    obj
-    pprep
-    lobj
-    val),
-  #decl
-    ((sv)
+        LOCALS.orph)] /*)*/,
+    /*(*/ [prv,
+      GLOBALS.prepvec] /*)*/,
+    /*(*/ [here,
+      GLOBALS.here] /*)*/,
+    /*(*/ [action,
+      null] /*)*/,
+    /*(*/ [prep,
+      null] /*)*/,
+    nprep,
+    /*(*/ [adj,
+      null] /*)*/,
+    atm,
+    aval,
+    obj,
+    pprep,
+    lobj,
+    val] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [sv] /*)*/,
       vector(
-        [rest
-          string])
-      (vb
-        orfl)
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [vb,
+        orfl] /*)*/,
       or(
         atom,
-        false)
-      (actions
-        words
-        objob
-        dirs)
-      oblist
-      (pv
-        orph
-        prv
-        pvr)
-      vector
-      (atm)
+        false),
+      /*(*/ [actions,
+        words,
+        objob,
+        dirs] /*)*/,
+      oblist,
+      /*(*/ [pv,
+        orph,
+        prv,
+        pvr] /*)*/,
+      vector,
+      /*(*/ [atm] /*)*/,
       or(
         atom,
-        false)
-      (here)
-      room
-      (action)
+        false),
+      /*(*/ [here] /*)*/,
+      room,
+      /*(*/ [action] /*)*/,
       or(
         false,
-        action)
-      (nprep
-        prep)
+        action),
+      /*(*/ [nprep,
+        prep] /*)*/,
       or(
         false,
-        prep)
-      (adj)
+        prep),
+      /*(*/ [adj] /*)*/,
       or(
         false,
-        adjective)
-      (aval)
-      any
-      (lobj)
-      any
-      (obj)
+        adjective),
+      /*(*/ [aval] /*)*/,
+      any,
+      /*(*/ [lobj] /*)*/,
+      any,
+      /*(*/ [obj] /*)*/,
       or(
         false,
-        object)
-      (pprep)
-      phrase),
+        object),
+      /*(*/ [pprep] /*)*/,
+      phrase] /*)*/] /*2*/,
   LOCALS.val = mapf(
       null,
       function(
-        (x),
-        #decl
-          ((x)
-            string),
+        /*(*/ [x] /*)*/,
+        /*#*/ [decl,
+          /*(*/ [/*(*/ [x] /*)*/,
+            string] /*)*/] /*2*/,
         cond(
-          (empty_Q(
-              LOCALS.x)
+          /*(*/ [empty_Q(
+              LOCALS.x),
             mapleave(
-              t)),
-          (and(
+              t)] /*)*/,
+          /*(*/ [and(
               not(
                 LOCALS.action),
               LOCALS.atm = lookup(
                   LOCALS.x,
-                  LOCALS.actions))
-            LOCALS.action = ,LOCALS.atm),
-          (and(
+                  LOCALS.actions)),
+            LOCALS.action = /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+          /*(*/ [and(
               not(
                 LOCALS.action),
               LOCALS.atm = lookup(
                   LOCALS.x,
-                  LOCALS.dirs))
+                  LOCALS.dirs)),
             put(
               LOCALS.pv,
               1,
-              GLOBALS.walk_X_words)
+              GLOBALS.walk_X_words),
             put(
               LOCALS.pv,
               2,
-              ,LOCALS.atm)
+              /*,*/ [LOCALS.atm] /*1*/),
             return(
               win,
-              LOCALS.sparout)),
-          (and(
+              LOCALS.sparout)] /*)*/,
+          /*(*/ [and(
               LOCALS.atm = lookup(
                   LOCALS.x,
                   LOCALS.words),
               cond(
-                (type_Q(
-                    LOCALS.aval = ,LOCALS.atm,
-                    prep)
+                /*(*/ [type_Q(
+                    LOCALS.aval = /*,*/ [LOCALS.atm] /*1*/,
+                    prep),
                   cond(
-                    (LOCALS.prep
+                    /*(*/ [LOCALS.prep,
                       or(
                         LOCALS.vb,
                         tell(
                           "Double preposition?",
-                          0))
+                          0)),
                       mapleave(
-                        null)),
-                    (LOCALS.prep = LOCALS.aval))),
-                (type_Q(
+                        null)] /*)*/,
+                    /*(*/ [LOCALS.prep = LOCALS.aval] /*)*/)] /*)*/,
+                /*(*/ [type_Q(
                     LOCALS.aval,
-                    adjective)
-                  LOCALS.adj = LOCALS.aval
+                    adjective),
+                  LOCALS.adj = LOCALS.aval,
                   not(
                     and(
                       LOCALS.orfl,
                       LOCALS.atm = oname(
                           LOCALS.orph),
                       LOCALS.x = spname(
-                          LOCALS.atm)))),
-                (t)))),
-          (LOCALS.atm = lookup(
+                          LOCALS.atm)))] /*)*/,
+                /*(*/ [t] /*)*/))] /*)*/,
+          /*(*/ [LOCALS.atm = lookup(
                 LOCALS.x,
-                LOCALS.objob)
+                LOCALS.objob),
             cond(
-              (LOCALS.obj = get_object(
+              /*(*/ [LOCALS.obj = get_object(
                     LOCALS.atm,
-                    LOCALS.adj)
+                    LOCALS.adj),
                 and(
                   empty_Q(
                     LOCALS.pvr),
@@ -235,61 +235,61 @@ define(
                       "Too many objects specified?",
                       0)),
                   mapleave(
-                    null))
+                    null)),
                 put(
                   LOCALS.pvr,
                   1,
                   cond(
-                    (LOCALS.prep
+                    /*(*/ [LOCALS.prep,
                       LOCALS.pprep = 1(
-                          LOCALS.prv)
+                          LOCALS.prv),
                       LOCALS.prv = rest(
-                          LOCALS.prv)
+                          LOCALS.prv),
                       put(
                         LOCALS.pprep,
                         1,
-                        LOCALS.prep)
-                      LOCALS.prep = null
+                        LOCALS.prep),
+                      LOCALS.prep = null,
                       put(
                         LOCALS.pprep,
                         2,
-                        LOCALS.obj)),
-                    (LOCALS.obj)))
+                        LOCALS.obj)] /*)*/,
+                    /*(*/ [LOCALS.obj] /*)*/)),
                 LOCALS.pvr = rest(
-                    LOCALS.pvr)),
-              (t
+                    LOCALS.pvr)] /*)*/,
+              /*(*/ [t,
                 cond(
-                  (empty_Q(
-                      LOCALS.obj)
+                  /*(*/ [empty_Q(
+                      LOCALS.obj),
                     or(
                       LOCALS.vb,
                       cond(
-                        (lit_Q(
-                            LOCALS.here)
+                        /*(*/ [lit_Q(
+                            LOCALS.here),
                           tell(
                             "I can't see a",
-                            0)
+                            0),
                           cond(
-                            (LOCALS.adj
+                            /*(*/ [LOCALS.adj,
                               tell(
                                 "",
                                 0,
                                 prstr(
                                   chtype(
                                     LOCALS.adj,
-                                    atom)))))
+                                    atom)))] /*)*/),
                           tell(
                             "",
                             0,
                             prstr(
                               LOCALS.atm),
-                            "here.")),
-                        (tell(
+                            "here.")] /*)*/,
+                        /*(*/ [tell(
                             "It is too dark in here to see.",
-                            0))))),
-                  (_EQ_Q(
+                            0)] /*)*/))] /*)*/,
+                  /*(*/ [_EQ_Q(
                       LOCALS.obj,
-                      GLOBALS.nefals2)
+                      GLOBALS.nefals2),
                     or(
                       LOCALS.vb,
                       tell(
@@ -298,15 +298,15 @@ define(
                         odesc2(
                           avehicle(
                             GLOBALS.winner)),
-                        "."))),
-                  (or(
+                        "."))] /*)*/,
+                  /*(*/ [or(
                       LOCALS.vb,
                       tell(
                         "Which",
                         0,
                         prstr(
                           LOCALS.atm),
-                        "?"))
+                        "?")),
                     orphan(
                       t,
                       or(
@@ -318,67 +318,67 @@ define(
                       2(
                         LOCALS.pv),
                       LOCALS.prep,
-                      LOCALS.atm)))
+                      LOCALS.atm)] /*)*/),
                 mapleave(
-                  null)))
-            LOCALS.adj = null
-            t),
-          (or(
+                  null)] /*)*/),
+            LOCALS.adj = null,
+            t] /*)*/,
+          /*(*/ [or(
               LOCALS.vb,
               tell(
                 "I don't know the word",
                 0,
-                LOCALS.x))
+                LOCALS.x)),
             mapleave(
-              null)))),
+              null)] /*)*/)),
       LOCALS.sv),
   cond(
-    (LOCALS.val
+    /*(*/ [LOCALS.val,
       cond(
-        (and(
+        /*(*/ [and(
             not(
               LOCALS.action),
             not(
               LOCALS.action = and(
                   LOCALS.orfl,
                   overb(
-                    LOCALS.orph))))
+                    LOCALS.orph)))),
           or(
             LOCALS.vb,
             cond(
-              (type_Q(
+              /*(*/ [type_Q(
                   2(
                     LOCALS.pv),
-                  object)
+                  object),
                 tell(
                   "What should I do with the",
                   0,
                   odesc2(
                     2(
                       LOCALS.pv)),
-                  "?")),
-              (tell(
+                  "?")] /*)*/,
+              /*(*/ [tell(
                   "Huh?",
-                  0))))
+                  0)] /*)*/)),
           orphan(
             t,
             null,
             2(
-              LOCALS.pv))
-          null),
-        (and(
+              LOCALS.pv)),
+          null] /*)*/,
+        /*(*/ [and(
             put(
               LOCALS.pv,
               1,
               LOCALS.action),
-            LOCALS.adj)
+            LOCALS.adj),
           or(
             LOCALS.vb,
             tell(
               "Dangling adjective?",
-              0))
-          null),
-        (and(
+              0)),
+          null] /*)*/,
+        /*(*/ [and(
             LOCALS.orfl,
             LOCALS.nprep = oprep(
                 LOCALS.orph),
@@ -394,22 +394,22 @@ define(
               2,
               LOCALS.obj),
             cond(
-              (LOCALS.obj = oslot1(
-                    LOCALS.orph)
+              /*(*/ [LOCALS.obj = oslot1(
+                    LOCALS.orph),
                 put(
                   LOCALS.pv,
                   2,
-                  LOCALS.obj)
+                  LOCALS.obj),
                 put(
                   LOCALS.pv,
                   3,
-                  LOCALS.pprep)),
-              (put(
+                  LOCALS.pprep)] /*)*/,
+              /*(*/ [put(
                   LOCALS.pv,
                   2,
-                  LOCALS.pprep))),
-            null)),
-        (LOCALS.prep
+                  LOCALS.pprep)] /*)*/),
+            null)] /*)*/,
+        /*(*/ [LOCALS.prep,
           and(
             type_Q(
               LOCALS.lobj = 1(
@@ -428,12 +428,12 @@ define(
                     1,
                     LOCALS.prep),
                   2,
-                  LOCALS.lobj))))),
-        (LOCALS.pv)))))
+                  LOCALS.lobj))))] /*)*/,
+        /*(*/ [LOCALS.pv] /*)*/)] /*)*/))
 
 define(
   sp,
-  (str),
+  /*(*/ [str] /*)*/,
   parse(
     lex(
       LOCALS.str),
@@ -441,26 +441,26 @@ define(
 
 define(
   orphan,
-  ("OPTIONAL"
-    (flag
-      null)
-    (action
-      null)
-    (slot1
-      null)
-    (prep
-      null)
-    (name
-      null)),
-  #decl
-    ((flag)
+  /*(*/ ["OPTIONAL",
+    /*(*/ [flag,
+      null] /*)*/,
+    /*(*/ [action,
+      null] /*)*/,
+    /*(*/ [slot1,
+      null] /*)*/,
+    /*(*/ [prep,
+      null] /*)*/,
+    /*(*/ [name,
+      null] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [flag] /*)*/,
       or(
         atom,
-        false)
-      (name)
+        false),
+      /*(*/ [name] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   put(
     put(
       put(
@@ -480,68 +480,68 @@ define(
 
 define(
   syn_match,
-  (pv
-    "AUX"
-    (action
+  /*(*/ [pv,
+    "AUX",
+    /*(*/ [action,
       1(
-        LOCALS.pv))
-    (objs
+        LOCALS.pv)] /*)*/,
+    /*(*/ [objs,
       rest(
-        LOCALS.pv))
-    (o1
+        LOCALS.pv)] /*)*/,
+    /*(*/ [o1,
       1(
-        LOCALS.objs))
-    (o2
+        LOCALS.objs)] /*)*/,
+    /*(*/ [o2,
       2(
-        LOCALS.objs))
-    (dforce
-      null)
-    (drive
-      null)
-    (gwim
-      null)
-    synn),
-  #decl
-    ((action)
-      action
-      (pv
-        objs)
-      vector
-      (drive
-        dforce)
+        LOCALS.objs)] /*)*/,
+    /*(*/ [dforce,
+      null] /*)*/,
+    /*(*/ [drive,
+      null] /*)*/,
+    /*(*/ [gwim,
+      null] /*)*/,
+    synn] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [action] /*)*/,
+      action,
+      /*(*/ [pv,
+        objs] /*)*/,
+      vector,
+      /*(*/ [drive,
+        dforce] /*)*/,
       or(
         false,
-        syntax)
-      (o1
-        o2)
+        syntax),
+      /*(*/ [o1,
+        o2] /*)*/,
       or(
         false,
         object,
-        phrase)
-      (synn)
-      varg
-      (gwim)
+        phrase),
+      /*(*/ [synn] /*)*/,
+      varg,
+      /*(*/ [gwim] /*)*/,
       or(
         false,
-        object)),
+        object)] /*)*/] /*2*/,
   cond(
-    (mapf(
+    /*(*/ [mapf(
         null,
         function(
-          (syn),
-          #decl
-            ((syn)
-              syntax),
+          /*(*/ [syn] /*)*/,
+          /*#*/ [decl,
+            /*(*/ [/*(*/ [syn] /*)*/,
+              syntax] /*)*/] /*2*/,
           cond(
-            (syn_equal(
+            /*(*/ [syn_equal(
                 syn1(
                   LOCALS.syn),
-                LOCALS.o1)
+                LOCALS.o1),
               cond(
-                (syn_equal(
+                /*(*/ [syn_equal(
                     syn2(
                       LOCALS.syn),
-                    LOCALS.o2)
+                    LOCALS.o2),
                   and(
                     sflip(
                       LOCALS.syn),
@@ -552,7 +552,7 @@ define(
                     put(
                       LOCALS.objs,
                       2,
-                      LOCALS.o1))
+                      LOCALS.o1)),
                   mapleave(
                     take_it_or_leave_it(
                       LOCALS.syn,
@@ -560,30 +560,30 @@ define(
                         LOCALS.pv,
                         1,
                         sfcn(
-                          LOCALS.syn))))),
-                (not(
-                    LOCALS.o2)
+                          LOCALS.syn))))] /*)*/,
+                /*(*/ [not(
+                    LOCALS.o2),
                   cond(
-                    (sdriver(
-                        LOCALS.syn)
-                      LOCALS.dforce = LOCALS.syn),
-                    (LOCALS.drive = LOCALS.syn))
-                  null))),
-            (not(
-                LOCALS.o1)
+                    /*(*/ [sdriver(
+                        LOCALS.syn),
+                      LOCALS.dforce = LOCALS.syn] /*)*/,
+                    /*(*/ [LOCALS.drive = LOCALS.syn] /*)*/),
+                  null] /*)*/)] /*)*/,
+            /*(*/ [not(
+                LOCALS.o1),
               cond(
-                (sdriver(
-                    LOCALS.syn)
-                  LOCALS.dforce = LOCALS.syn),
-                (LOCALS.drive = LOCALS.syn))
-              null))),
+                /*(*/ [sdriver(
+                    LOCALS.syn),
+                  LOCALS.dforce = LOCALS.syn] /*)*/,
+                /*(*/ [LOCALS.drive = LOCALS.syn] /*)*/),
+              null] /*)*/)),
         vdecl(
-          LOCALS.action))),
-    (LOCALS.drive = or(
+          LOCALS.action))] /*)*/,
+    /*(*/ [LOCALS.drive = or(
           LOCALS.dforce,
-          LOCALS.drive)
+          LOCALS.drive),
       cond(
-        (and(
+        /*(*/ [and(
             LOCALS.synn = syn1(
                 LOCALS.drive),
             not(
@@ -601,18 +601,18 @@ define(
                     1,
                     LOCALS.synn,
                     LOCALS.action,
-                    LOCALS.objs)))
+                    LOCALS.objs))),
           orphan(
             t,
             LOCALS.action,
             null,
             vprep(
-              LOCALS.synn))
+              LOCALS.synn)),
           ortell(
             LOCALS.synn,
             LOCALS.action,
-            LOCALS.gwim)),
-        (and(
+            LOCALS.gwim)] /*)*/,
+        /*(*/ [and(
             LOCALS.synn = syn2(
                 LOCALS.drive),
             not(
@@ -626,132 +626,132 @@ define(
                 2,
                 LOCALS.synn,
                 LOCALS.action,
-                LOCALS.objs)))
+                LOCALS.objs))),
           orphan(
             t,
             LOCALS.action,
             LOCALS.o1,
             vprep(
-              LOCALS.synn))
+              LOCALS.synn)),
           ortell(
             LOCALS.synn,
             LOCALS.action,
-            LOCALS.gwim)),
-        (take_it_or_leave_it(
+            LOCALS.gwim)] /*)*/,
+        /*(*/ [take_it_or_leave_it(
             LOCALS.drive,
             put(
               LOCALS.pv,
               1,
               sfcn(
-                LOCALS.drive)))))),
-    (tell(
+                LOCALS.drive)))] /*)*/)] /*)*/,
+    /*(*/ [tell(
         "I can't make sense out of that.",
-        0)
-      null)))
+        0),
+      null] /*)*/))
 
 define(
   take_it_or_leave_it,
-  (syn
-    pv
-    "AUX"
-    (pv1
+  /*(*/ [syn,
+    pv,
+    "AUX",
+    /*(*/ [pv1,
       2(
-        LOCALS.pv))
-    (pv2
+        LOCALS.pv)] /*)*/,
+    /*(*/ [pv2,
       3(
-        LOCALS.pv))
-    obj
-    varg),
-  #decl
-    ((syn)
-      syntax
-      (pv)
-      vector
-      (pv1
-        pv2)
+        LOCALS.pv)] /*)*/,
+    obj,
+    varg] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [syn] /*)*/,
+      syntax,
+      /*(*/ [pv] /*)*/,
+      vector,
+      /*(*/ [pv1,
+        pv2] /*)*/,
       or(
         false,
         object,
-        phrase)
-      (obj)
+        phrase),
+      /*(*/ [obj] /*)*/,
       or(
         false,
-        object)
-      (varg)
-      varg),
+        object),
+      /*(*/ [varg] /*)*/,
+      varg] /*)*/] /*2*/,
   put(
     LOCALS.pv,
     2,
     LOCALS.obj = cond(
-        (type_Q(
+        /*(*/ [type_Q(
             LOCALS.pv1,
-            object)
-          LOCALS.pv1),
-        (type_Q(
+            object),
+          LOCALS.pv1] /*)*/,
+        /*(*/ [type_Q(
             LOCALS.pv1,
-            phrase)
+            phrase),
           2(
-            LOCALS.pv1)))),
+            LOCALS.pv1)] /*)*/)),
   cond(
-    (vtrnn(
+    /*(*/ [vtrnn(
         LOCALS.varg = syn1(
             LOCALS.syn),
-        GLOBALS.vrbit)
+        GLOBALS.vrbit),
       take_it(
         LOCALS.obj,
         LOCALS.pv,
-        LOCALS.varg))),
+        LOCALS.varg)] /*)*/),
   put(
     LOCALS.pv,
     3,
     LOCALS.obj = cond(
-        (type_Q(
+        /*(*/ [type_Q(
             LOCALS.pv2,
-            object)
-          LOCALS.pv2),
-        (type_Q(
+            object),
+          LOCALS.pv2] /*)*/,
+        /*(*/ [type_Q(
             LOCALS.pv2,
-            phrase)
+            phrase),
           2(
-            LOCALS.pv2)))),
+            LOCALS.pv2)] /*)*/)),
   cond(
-    (vtrnn(
+    /*(*/ [vtrnn(
         LOCALS.varg = syn2(
             LOCALS.syn),
-        GLOBALS.vrbit)
+        GLOBALS.vrbit),
       take_it(
         LOCALS.obj,
         LOCALS.pv,
-        LOCALS.varg))),
+        LOCALS.varg)] /*)*/),
   t)
 
 define(
   take_it,
-  (obj
-    vec
-    vrb
-    "AUX"
-    (sav1
+  /*(*/ [obj,
+    vec,
+    vrb,
+    "AUX",
+    /*(*/ [sav1,
       1(
-        LOCALS.vec))
-    (sav2
+        LOCALS.vec)] /*)*/,
+    /*(*/ [sav2,
       2(
-        LOCALS.vec))),
-  #decl
-    ((obj)
-      object
-      (vec)
-      vector
-      (sav1)
-      verb
-      (sav2)
+        LOCALS.vec)] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [vec] /*)*/,
+      vector,
+      /*(*/ [sav1] /*)*/,
+      verb,
+      /*(*/ [sav2] /*)*/,
       or(
         false,
-        object)
-      (vrb)
-      varg),
+        object),
+      /*(*/ [vrb] /*)*/,
+      varg] /*)*/] /*2*/,
   cond(
-    (and(
+    /*(*/ [and(
         search_list(
           oid(
             LOCALS.obj),
@@ -764,58 +764,58 @@ define(
           not(
             vtrnn(
               LOCALS.vrb,
-              GLOBALS.vtbit))))
+              GLOBALS.vtbit)))),
       put(
         LOCALS.vec,
         1,
-        GLOBALS.take_X_words)
+        GLOBALS.take_X_words),
       put(
         LOCALS.vec,
         2,
-        LOCALS.obj)
+        LOCALS.obj),
       take(
-        t)
+        t),
       put(
         LOCALS.vec,
         1,
-        LOCALS.sav1)
+        LOCALS.sav1),
       put(
         LOCALS.vec,
         2,
-        LOCALS.sav2))))
+        LOCALS.sav2)] /*)*/))
 
 define(
   orfeo,
-  (syn
-    objs
-    "AUX"
-    (orph
-      GLOBALS.orphans)
-    (orfl
+  /*(*/ [syn,
+    objs,
+    "AUX",
+    /*(*/ [orph,
+      GLOBALS.orphans] /*)*/,
+    /*(*/ [orfl,
       oflag(
-        LOCALS.orph))
-    slot1),
-  #decl
-    ((syn)
-      varg
-      (objs
-        orph)
-      vector
-      (orfl)
+        LOCALS.orph)] /*)*/,
+    slot1] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [syn] /*)*/,
+      varg,
+      /*(*/ [objs,
+        orph] /*)*/,
+      vector,
+      /*(*/ [orfl] /*)*/,
       or(
         atom,
-        false)
-      (slot1)
+        false),
+      /*(*/ [slot1] /*)*/,
       or(
         false,
         phrase,
-        object)),
+        object)] /*)*/] /*2*/,
   cond(
-    (not(
-        LOCALS.orfl)
-      null),
-    (LOCALS.slot1 = oslot1(
-          LOCALS.orph)
+    /*(*/ [not(
+        LOCALS.orfl),
+      null] /*)*/,
+    /*(*/ [LOCALS.slot1 = oslot1(
+          LOCALS.orph),
       and(
         syn_equal(
           LOCALS.syn,
@@ -823,35 +823,35 @@ define(
         put(
           LOCALS.objs,
           1,
-          LOCALS.slot1)))))
+          LOCALS.slot1))] /*)*/))
 
 define(
   ortell,
-  (varg
-    action
-    gwim
-    "AUX"
-    (prep
+  /*(*/ [varg,
+    action,
+    gwim,
+    "AUX",
+    /*(*/ [prep,
       vprep(
-        LOCALS.varg))
-    sp),
-  #decl
-    ((varg)
-      varg
-      (action)
-      action
-      (prep)
+        LOCALS.varg)] /*)*/,
+    sp] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [varg] /*)*/,
+      varg,
+      /*(*/ [action] /*)*/,
+      action,
+      /*(*/ [prep] /*)*/,
       or(
         false,
-        prep)
-      (sp)
-      string
-      (gwim)
+        prep),
+      /*(*/ [sp] /*)*/,
+      string,
+      /*(*/ [gwim] /*)*/,
       or(
         false,
-        object)),
+        object)] /*)*/] /*2*/,
   cond(
-    (LOCALS.prep
+    /*(*/ [LOCALS.prep,
       and(
         LOCALS.gwim,
         tell(
@@ -863,31 +863,31 @@ define(
           odesc2(
             LOCALS.gwim),
           0,
-          ""))
+          "")),
       tell(
         prstr(
           chtype(
             LOCALS.prep,
             atom)),
         0,
-        "what?")),
-    (tell(
+        "what?")] /*)*/,
+    /*(*/ [tell(
         vstr(
           LOCALS.action),
         0,
-        "what?"))),
+        "what?")] /*)*/),
   null)
 
 define(
   prstr,
-  (atm
-    "AUX"
-    sp),
-  #decl
-    ((atm)
-      atom
-      (sp)
-      string),
+  /*(*/ [atm,
+    "AUX",
+    sp] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [atm] /*)*/,
+      atom,
+      /*(*/ [sp] /*)*/,
+      string] /*)*/] /*2*/,
   foostr(
     LOCALS.sp = spname(
         LOCALS.atm),
@@ -899,40 +899,40 @@ define(
 
 define(
   foostr,
-  (nam
-    str
-    "OPTIONAL"
-    (1st
-      t)),
-  #decl
-    ((str
-        nam)
-      string
-      (1st)
+  /*(*/ [nam,
+    str,
+    "OPTIONAL",
+    /*(*/ [1st,
+      t] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [str,
+        nam] /*)*/,
+      string,
+      /*(*/ [1st] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   mapr(
     null,
     function(
-      (x
-        y),
-      #decl
-        ((x
-            y)
-          string),
+      /*(*/ [x,
+        y] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x,
+            y] /*)*/,
+          string] /*)*/] /*2*/,
       cond(
-        (and(
+        /*(*/ [and(
             LOCALS.1st,
             _EQ_Q(
               LOCALS.x,
-              LOCALS.nam))
+              LOCALS.nam)),
           put(
             LOCALS.y,
             1,
             1(
-              LOCALS.x))),
-        (put(
+              LOCALS.x))] /*)*/,
+        /*(*/ [put(
             LOCALS.y,
             1,
             chtype(
@@ -941,100 +941,100 @@ define(
                 ascii(
                   1(
                     LOCALS.x))),
-              character))))),
+              character))] /*)*/)),
     LOCALS.nam,
     LOCALS.str),
   LOCALS.str)
 
 define(
   gwim_slot,
-  (fx
-    varg
-    action
-    objs
-    "AUX"
-    obj),
-  #decl
-    ((fx)
-      fix
-      (varg)
-      varg
-      (action)
-      action
-      (objs)
-      vector
-      (obj)
+  /*(*/ [fx,
+    varg,
+    action,
+    objs,
+    "AUX",
+    obj] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [fx] /*)*/,
+      fix,
+      /*(*/ [varg] /*)*/,
+      varg,
+      /*(*/ [action] /*)*/,
+      action,
+      /*(*/ [objs] /*)*/,
+      vector,
+      /*(*/ [obj] /*)*/,
       or(
         false,
-        object)),
+        object)] /*)*/] /*2*/,
   cond(
-    (LOCALS.obj = gwim(
+    /*(*/ [LOCALS.obj = gwim(
           vbit(
             LOCALS.varg),
           LOCALS.varg,
-          LOCALS.action)
+          LOCALS.action),
       put(
         LOCALS.objs,
         LOCALS.fx,
-        LOCALS.obj)
-      LOCALS.obj)))
+        LOCALS.obj),
+      LOCALS.obj] /*)*/))
 
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
 define(
   gwim,
-  (bit
-    fword
-    action
-    "AUX"
-    (aobj
+  /*(*/ [bit,
+    fword,
+    action,
+    "AUX",
+    /*(*/ [aobj,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vabit))
-    (ntake
+        GLOBALS.vabit)] /*)*/,
+    /*(*/ [ntake,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vtbit))
-    (robj
+        GLOBALS.vtbit)] /*)*/,
+    /*(*/ [robj,
       vtrnn(
         LOCALS.fword,
-        GLOBALS.vrbit))
-    (obj
-      null)
-    nobj
-    (pv
-      GLOBALS.prsvec)
-    savobj
-    (av
+        GLOBALS.vrbit)] /*)*/,
+    /*(*/ [obj,
+      null] /*)*/,
+    nobj,
+    /*(*/ [pv,
+      GLOBALS.prsvec] /*)*/,
+    savobj,
+    /*(*/ [av,
       avehicle(
-        GLOBALS.winner))
-    sf),
-  #decl
-    ((bit)
-      fix
-      (ntake
-        robj
-        aobj)
+        GLOBALS.winner)] /*)*/,
+    sf] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [bit] /*)*/,
+      fix,
+      /*(*/ [ntake,
+        robj,
+        aobj] /*)*/,
       or(
         atom,
-        false)
-      (obj
-        nobj
-        av)
+        false),
+      /*(*/ [obj,
+        nobj,
+        av] /*)*/,
       or(
         object,
-        false)
-      (pv)
-      vector
-      (savobj)
+        false),
+      /*(*/ [pv] /*)*/,
+      vector,
+      /*(*/ [savobj] /*)*/,
       or(
         false,
         object,
-        phrase)
-      (fword)
-      varg
-      (action)
-      action),
+        phrase),
+      /*(*/ [fword] /*)*/,
+      varg,
+      /*(*/ [action] /*)*/,
+      action] /*)*/] /*2*/,
   and(
     LOCALS.aobj,
     LOCALS.obj = fwim(
@@ -1043,9 +1043,9 @@ define(
           GLOBALS.winner),
         LOCALS.ntake)),
   cond(
-    (LOCALS.robj
+    /*(*/ [LOCALS.robj,
       cond(
-        (and(
+        /*(*/ [and(
             LOCALS.nobj = fwim(
                 LOCALS.bit,
                 robjs(
@@ -1063,9 +1063,9 @@ define(
                   LOCALS.av)),
               trnn(
                 LOCALS.nobj,
-                GLOBALS.findmebit)))
+                GLOBALS.findmebit))),
           cond(
-            (and(
+            /*(*/ [and(
                 or(
                   LOCALS.savobj = 2(
                       LOCALS.pv),
@@ -1100,138 +1100,138 @@ define(
                   LOCALS.pv,
                   1,
                   LOCALS.sf),
-                LOCALS.nobj)),
-            (put(
+                LOCALS.nobj)] /*)*/,
+            /*(*/ [put(
                 LOCALS.pv,
                 2,
-                LOCALS.savobj)
-              null))),
-        (or(
+                LOCALS.savobj),
+              null] /*)*/)] /*)*/,
+        /*(*/ [or(
             LOCALS.nobj,
             not(
               empty_Q(
-                LOCALS.nobj)))
-          GLOBALS.nefals),
-        (LOCALS.obj))),
-    (LOCALS.obj)))
+                LOCALS.nobj))),
+          GLOBALS.nefals] /*)*/,
+        /*(*/ [LOCALS.obj] /*)*/)] /*)*/,
+    /*(*/ [LOCALS.obj] /*)*/))
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
 define(
   make_action,
-  ("TUPLE"
-    specs
-    "AUX"
-    vv
-    sum
-    (prep
-      null)
-    atm),
+  /*(*/ ["TUPLE",
+    specs,
+    "AUX",
+    vv,
+    sum,
+    /*(*/ [prep,
+      null] /*)*/,
+    atm] /*)*/,
   chtype(
     mapf(
       GLOBALS.uvector,
       function(
-        (sp
-          "AUX"
-          (syn
+        /*(*/ [sp,
+          "AUX",
+          /*(*/ [syn,
             ivector(
               5,
-              null))
-          (whr
-            1)),
-        #decl
-          ((sp)
-            vector
-            (syn)
-            vector
-            (whr)
-            fix),
+              null)] /*)*/,
+          /*(*/ [whr,
+            1] /*)*/] /*)*/,
+        /*#*/ [decl,
+          /*(*/ [/*(*/ [sp] /*)*/,
+            vector,
+            /*(*/ [syn] /*)*/,
+            vector,
+            /*(*/ [whr] /*)*/,
+            fix] /*)*/] /*2*/,
         mapf(
           null,
           /* FUNCTION */
             (itm) => (
             cond,
-            (type_Q(
+            /*(*/ [type_Q(
                   LOCALS.itm,
-                  string)
+                  string),
                 LOCALS.prep = find_prep(
-                    LOCALS.itm)),
-            (and(
+                    LOCALS.itm)] /*)*/,
+            /*(*/ [and(
                   _EQ_Q(
                     LOCALS.itm,
                     obj),
-                  LOCALS.itm = () => (_1),
-                  null)),
-            (type_Q(
+                  LOCALS.itm = () => /*(*/ [_1] /*)*/,
+                  null)] /*)*/,
+            /*(*/ [type_Q(
                   LOCALS.itm,
-                  list)
+                  list),
                 LOCALS.vv = ivector(
-                    3)
+                    3),
                 put(
                   LOCALS.vv,
                   1,
                   1(
-                    LOCALS.itm))
+                    LOCALS.itm)),
                 put(
                   LOCALS.vv,
                   2,
-                  LOCALS.prep)
-                LOCALS.sum = 0
-                LOCALS.prep = null
+                  LOCALS.prep),
+                LOCALS.sum = 0,
+                LOCALS.prep = null,
                 and(
                   memq(
                     aobjs,
                     LOCALS.itm),
                   LOCALS.sum = _(
                       LOCALS.sum,
-                      GLOBALS.vabit))
+                      GLOBALS.vabit)),
                 and(
                   memq(
                     robjs,
                     LOCALS.itm),
                   LOCALS.sum = _(
                       LOCALS.sum,
-                      GLOBALS.vrbit))
+                      GLOBALS.vrbit)),
                 and(
                   memq(
                     no_take,
                     LOCALS.itm),
                   LOCALS.sum = _(
                       LOCALS.sum,
-                      GLOBALS.vtbit))
+                      GLOBALS.vtbit)),
                 and(
                   memq(
                     _,
                     LOCALS.itm),
                   LOCALS.sum = _(
                       LOCALS.sum,
-                      GLOBALS.vxbit))
+                      GLOBALS.vxbit)),
                 put(
                   LOCALS.vv,
                   3,
-                  LOCALS.sum)
+                  LOCALS.sum),
                 put(
                   LOCALS.syn,
                   LOCALS.whr,
                   chtype(
                     LOCALS.vv,
-                    varg))
+                    varg)),
                 LOCALS.whr = _(
                     LOCALS.whr,
-                    1)),
-            (type_Q(
+                    1)] /*)*/,
+            /*(*/ [type_Q(
                   LOCALS.itm,
-                  vector)
+                  vector),
                 cond(
-                  (gassigned_Q(
+                  /*(*/ [gassigned_Q(
                       LOCALS.atm = add_word(
                           1(
-                            LOCALS.itm)))
+                            LOCALS.itm))),
                     put(
                       LOCALS.syn,
                       GLOBALS.sfcn,
-                      ,LOCALS.atm)),
-                  (put(
+                      /*,*/ [LOCALS.atm] /*1*/)] /*)*/,
+                  /*(*/ [put(
                       LOCALS.syn,
                       GLOBALS.sfcn,
                       setg(
@@ -1239,24 +1239,24 @@ define(
                             1(
                               LOCALS.itm)),
                         chtype(
-                          [LOCALS.atm
+                          /*[*/ [LOCALS.atm,
                             2(
-                              LOCALS.itm)],
-                          verb)))))),
-            (_EQ_Q(
+                              LOCALS.itm)] /*]*/,
+                          verb)))] /*)*/)] /*)*/,
+            /*(*/ [_EQ_Q(
                   LOCALS.itm,
-                  driver)
+                  driver),
                 put(
                   LOCALS.syn,
                   GLOBALS.sdriver,
-                  t)),
-            (_EQ_Q(
+                  t)] /*)*/,
+            /*(*/ [_EQ_Q(
                   LOCALS.itm,
-                  flip)
+                  flip),
                 put(
                   LOCALS.syn,
                   GLOBALS.sflip,
-                  t))),
+                  t)] /*)*/),
           LOCALS.sp),
         or(
           syn1(
@@ -1279,33 +1279,33 @@ define(
     vspec))
 
 GLOBALS.evarg = chtype(
-    [0
-      null
-      0],
+    /*[*/ [0,
+      null,
+      0] /*]*/,
     varg)
 
 define(
   syn_equal,
-  (varg
-    pobj
-    "AUX"
-    (vbit
+  /*(*/ [varg,
+    pobj,
+    "AUX",
+    /*(*/ [vbit,
       vbit(
-        LOCALS.varg))),
-  #decl
-    ((varg)
-      varg
-      (pobj)
+        LOCALS.varg)] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [varg] /*)*/,
+      varg,
+      /*(*/ [pobj] /*)*/,
       or(
         false,
         phrase,
-        object)
-      (vbit)
-      fix),
+        object),
+      /*(*/ [vbit] /*)*/,
+      fix] /*)*/] /*2*/,
   cond(
-    (type_Q(
+    /*(*/ [type_Q(
         LOCALS.pobj,
-        phrase)
+        phrase),
       and(
         _EQ_Q(
           vprep(
@@ -1320,10 +1320,10 @@ define(
           trnn(
             2(
               LOCALS.pobj),
-            LOCALS.vbit)))),
-    (type_Q(
+            LOCALS.vbit)))] /*)*/,
+    /*(*/ [type_Q(
         LOCALS.pobj,
-        object)
+        object),
       and(
         not(
           vprep(
@@ -1335,56 +1335,56 @@ define(
               GLOBALS.vxbit)),
           trnn(
             LOCALS.pobj,
-            LOCALS.vbit)))),
-    (and(
+            LOCALS.vbit)))] /*)*/,
+    /*(*/ [and(
         not(
           LOCALS.pobj),
         0_Q(
-          LOCALS.vbit)))))
+          LOCALS.vbit))] /*)*/))
 
 GLOBALS.directions = moblist(
     directions)
 
 define(
   eparse,
-  (pv
-    vb
-    "AUX"
-    val),
-  #decl
-    ((val)
-      any
-      (pv)
+  /*(*/ [pv,
+    vb,
+    "AUX",
+    val] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [val] /*)*/,
+      any,
+      /*(*/ [pv] /*)*/,
       vector(
-        [rest
-          string])
-      (vb)
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [vb] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   cond(
-    (LOCALS.val = sparse(
+    /*(*/ [LOCALS.val = sparse(
           LOCALS.pv,
-          LOCALS.vb)
+          LOCALS.vb),
       cond(
-        (or(
+        /*(*/ [or(
             _EQ_Q(
               LOCALS.val,
               win),
             syn_match(
-              LOCALS.val))
+              LOCALS.val)),
           orphan(
-            null)),
-        (or(
+            null)] /*)*/,
+        /*(*/ [or(
             LOCALS.vb,
             tell(
-              ""))
-          null))),
-    (or(
+              "")),
+          null] /*)*/)] /*)*/,
+    /*(*/ [or(
         LOCALS.vb,
         tell(
-          ""))
-      null)))
+          "")),
+      null] /*)*/))
 
 GLOBALS.scrstr = rest(
     istring(
@@ -1400,67 +1400,67 @@ GLOBALS.ssv = ivector(
 define(
   get_object,
   get_obj,
-  (objnam
-    adj
-    "AUX"
-    obj
-    (oobj
-      null)
-    (here
-      GLOBALS.here)
-    (av
+  /*(*/ [objnam,
+    adj,
+    "AUX",
+    obj,
+    /*(*/ [oobj,
+      null] /*)*/,
+    /*(*/ [here,
+      GLOBALS.here] /*)*/,
+    /*(*/ [av,
       avehicle(
-        GLOBALS.winner))
-    (chomp
-      null)),
-  #decl
-    ((oobj
-        obj
-        av)
+        GLOBALS.winner)] /*)*/,
+    /*(*/ [chomp,
+      null] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [oobj,
+        obj,
+        av] /*)*/,
       or(
         object,
-        false)
-      (objnam)
-      atom
-      (here)
-      room
-      (adj)
+        false),
+      /*(*/ [objnam] /*)*/,
+      atom,
+      /*(*/ [here] /*)*/,
+      room,
+      /*(*/ [adj] /*)*/,
       or(
         adjective,
-        false)
-      (chomp)
+        false),
+      /*(*/ [chomp] /*)*/,
       or(
         atom,
-        false)
-      (objl)
+        false),
+      /*(*/ [objl] /*)*/,
       or(
         false,
         list(
-          [rest
-            object]))),
+          /*[*/ [rest,
+            object] /*]*/))] /*)*/] /*2*/,
   cond(
-    (LOCALS.obj = search_list(
+    /*(*/ [LOCALS.obj = search_list(
           LOCALS.objnam,
           GLOBALS.stars,
-          LOCALS.adj)
-      LOCALS.oobj = LOCALS.obj),
-    (not(
+          LOCALS.adj),
+      LOCALS.oobj = LOCALS.obj] /*)*/,
+    /*(*/ [not(
         empty_Q(
-          LOCALS.obj))
+          LOCALS.obj)),
       return(
         GLOBALS.nefals,
-        LOCALS.get_obj))),
+        LOCALS.get_obj)] /*)*/),
   cond(
-    (and(
+    /*(*/ [and(
         lit_Q(
           LOCALS.here),
         LOCALS.obj = search_list(
             LOCALS.objnam,
             robjs(
               GLOBALS.here),
-            LOCALS.adj))
+            LOCALS.adj)),
       cond(
-        (and(
+        /*(*/ [and(
             LOCALS.av,
             n_EQ_Q(
               LOCALS.obj,
@@ -1473,121 +1473,121 @@ define(
             not(
               trnn(
                 LOCALS.obj,
-                GLOBALS.findmebit)))
-          LOCALS.chomp = t),
-        (LOCALS.oobj
+                GLOBALS.findmebit))),
+          LOCALS.chomp = t] /*)*/,
+        /*(*/ [LOCALS.oobj,
           return(
             GLOBALS.nefals,
-            LOCALS.get_obj)),
-        (LOCALS.oobj = LOCALS.obj))),
-    (and(
+            LOCALS.get_obj)] /*)*/,
+        /*(*/ [LOCALS.oobj = LOCALS.obj] /*)*/)] /*)*/,
+    /*(*/ [and(
         not(
           LOCALS.obj),
         not(
           empty_Q(
-            LOCALS.obj)))
+            LOCALS.obj))),
       return(
         GLOBALS.nefals,
-        LOCALS.get_obj))),
+        LOCALS.get_obj)] /*)*/),
   cond(
-    (LOCALS.av
+    /*(*/ [LOCALS.av,
       cond(
-        (LOCALS.obj = search_list(
+        /*(*/ [LOCALS.obj = search_list(
               LOCALS.objnam,
               ocontents(
                 LOCALS.av),
-              LOCALS.adj)
-          LOCALS.chomp = null
-          LOCALS.oobj = LOCALS.obj),
-        (not(
+              LOCALS.adj),
+          LOCALS.chomp = null,
+          LOCALS.oobj = LOCALS.obj] /*)*/,
+        /*(*/ [not(
             empty_Q(
-              LOCALS.obj))
+              LOCALS.obj)),
           return(
             GLOBALS.nefals,
-            LOCALS.get_obj))))),
+            LOCALS.get_obj)] /*)*/)] /*)*/),
   cond(
-    (LOCALS.obj = search_list(
+    /*(*/ [LOCALS.obj = search_list(
           LOCALS.objnam,
           aobjs(
             GLOBALS.winner),
-          LOCALS.adj)
+          LOCALS.adj),
       cond(
-        (LOCALS.oobj
-          GLOBALS.nefals),
-        (LOCALS.obj))),
-    (not(
+        /*(*/ [LOCALS.oobj,
+          GLOBALS.nefals] /*)*/,
+        /*(*/ [LOCALS.obj] /*)*/)] /*)*/,
+    /*(*/ [not(
         empty_Q(
-          LOCALS.obj))
-      GLOBALS.nefals),
-    (LOCALS.chomp
-      GLOBALS.nefals2),
-    (LOCALS.oobj)))
+          LOCALS.obj)),
+      GLOBALS.nefals] /*)*/,
+    /*(*/ [LOCALS.chomp,
+      GLOBALS.nefals2] /*)*/,
+    /*(*/ [LOCALS.oobj] /*)*/))
 
 "SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.\nIF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO\nONE LEVEL OF CONTAINMENT."
 
-GLOBALS.nefals = #false
-    (1)
+GLOBALS.nefals = /*#*/ [false,
+    /*(*/ [1] /*)*/] /*2*/
 
-GLOBALS.nefals2 = #false
-    (2)
+GLOBALS.nefals2 = /*#*/ [false,
+    /*(*/ [2] /*)*/] /*2*/
 
 define(
   search_list,
   sl,
-  (objnam
-    slist
-    adj
-    "OPTIONAL"
-    (first_Q
-      t)
-    "AUX"
-    (oobj
-      null)
-    (nefals
-      GLOBALS.nefals)
-    nobj),
-  #decl
-    ((objnam)
-      atom
-      (slist)
+  /*(*/ [objnam,
+    slist,
+    adj,
+    "OPTIONAL",
+    /*(*/ [first_Q,
+      t] /*)*/,
+    "AUX",
+    /*(*/ [oobj,
+      null] /*)*/,
+    /*(*/ [nefals,
+      GLOBALS.nefals] /*)*/,
+    nobj] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [objnam] /*)*/,
+      atom,
+      /*(*/ [slist] /*)*/,
       list(
-        [rest
-          object])
-      (oobj
-        nobj)
+        /*[*/ [rest,
+          object] /*]*/),
+      /*(*/ [oobj,
+        nobj] /*)*/,
       or(
         false,
-        object)
-      (adj)
+        object),
+      /*(*/ [adj] /*)*/,
       or(
         false,
-        adjective)
-      (first_Q)
+        adjective),
+      /*(*/ [first_Q] /*)*/,
       or(
         atom,
-        false)
-      (nefals)
-      false),
+        false),
+      /*(*/ [nefals] /*)*/,
+      false] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (obj),
-      #decl
-        ((obj)
-          object),
+      /*(*/ [obj] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [obj] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (this_it_Q(
+        /*(*/ [this_it_Q(
             LOCALS.objnam,
             LOCALS.obj,
-            LOCALS.adj)
+            LOCALS.adj),
           cond(
-            (LOCALS.oobj
+            /*(*/ [LOCALS.oobj,
               return(
                 LOCALS.nefals,
-                LOCALS.sl)),
-            (LOCALS.oobj = LOCALS.obj)))),
+                LOCALS.sl)] /*)*/,
+            /*(*/ [LOCALS.oobj = LOCALS.obj] /*)*/)] /*)*/),
       cond(
-        (and(
+        /*(*/ [and(
             ovis_Q(
               LOCALS.obj),
             or(
@@ -1599,26 +1599,26 @@ define(
               LOCALS.first_Q,
               trnn(
                 LOCALS.obj,
-                GLOBALS.searchbit)))
+                GLOBALS.searchbit))),
           cond(
-            (LOCALS.nobj = search_list(
+            /*(*/ [LOCALS.nobj = search_list(
                   LOCALS.objnam,
                   ocontents(
                     LOCALS.obj),
                   LOCALS.adj,
-                  null)
+                  null),
               cond(
-                (LOCALS.oobj
+                /*(*/ [LOCALS.oobj,
                   return(
                     LOCALS.nefals,
-                    LOCALS.sl)),
-                (LOCALS.oobj = LOCALS.nobj))),
-            (_EQ_Q(
+                    LOCALS.sl)] /*)*/,
+                /*(*/ [LOCALS.oobj = LOCALS.nobj] /*)*/)] /*)*/,
+            /*(*/ [_EQ_Q(
                 LOCALS.nobj,
-                LOCALS.nefals)
+                LOCALS.nefals),
               return(
                 LOCALS.nefals,
-                LOCALS.sl)))))),
+                LOCALS.sl)] /*)*/)] /*)*/)),
     LOCALS.slist),
   LOCALS.oobj)
 
@@ -1627,36 +1627,36 @@ define(
 define(
   fwim,
   dwim,
-  (bit
-    objs
-    no_take
-    "AUX"
-    (nobj
-      null)),
-  #decl
-    ((no_take)
+  /*(*/ [bit,
+    objs,
+    no_take,
+    "AUX",
+    /*(*/ [nobj,
+      null] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [no_take] /*)*/,
       or(
         atom,
-        false)
-      (bit)
-      fix
-      (objs)
+        false),
+      /*(*/ [bit] /*)*/,
+      fix,
+      /*(*/ [objs] /*)*/,
       list(
-        [rest
-          object])
-      (nobj)
+        /*[*/ [rest,
+          object] /*]*/),
+      /*(*/ [nobj] /*)*/,
       or(
         false,
-        object)),
+        object)] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (and(
+        /*(*/ [and(
             ovis_Q(
               LOCALS.x),
             or(
@@ -1665,40 +1665,40 @@ define(
                 LOCALS.x)),
             trnn(
               LOCALS.x,
-              LOCALS.bit))
+              LOCALS.bit)),
           cond(
-            (LOCALS.nobj
+            /*(*/ [LOCALS.nobj,
               return(
                 GLOBALS.nefals,
-                LOCALS.dwim)))
-          LOCALS.nobj = LOCALS.x)),
+                LOCALS.dwim)] /*)*/),
+          LOCALS.nobj = LOCALS.x] /*)*/),
       cond(
-        (and(
+        /*(*/ [and(
             ovis_Q(
               LOCALS.x),
             oopen_Q(
-              LOCALS.x))
+              LOCALS.x)),
           mapf(
             null,
             function(
-              (x),
-              #decl
-                ((x)
-                  object),
+              /*(*/ [x] /*)*/,
+              /*#*/ [decl,
+                /*(*/ [/*(*/ [x] /*)*/,
+                  object] /*)*/] /*2*/,
               cond(
-                (and(
+                /*(*/ [and(
                     ovis_Q(
                       LOCALS.x),
                     trnn(
                       LOCALS.x,
-                      LOCALS.bit))
+                      LOCALS.bit)),
                   cond(
-                    (LOCALS.nobj
+                    /*(*/ [LOCALS.nobj,
                       return(
                         GLOBALS.nefals,
-                        LOCALS.dwim)),
-                    (LOCALS.nobj = LOCALS.x))))),
+                        LOCALS.dwim)] /*)*/,
+                    /*(*/ [LOCALS.nobj = LOCALS.x] /*)*/)] /*)*/)),
             ocontents(
-              LOCALS.x))))),
+              LOCALS.x))] /*)*/)),
     LOCALS.objs),
   LOCALS.nobj)

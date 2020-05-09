@@ -41,8 +41,8 @@ newtype(
 
 defmac(
   trnn,
-  (() => obj
-    () => bit),
+  /*(*/ [() => obj,
+    () => bit] /*)*/,
   form(
     n_EQ_Q,
     form(
@@ -58,8 +58,8 @@ defmac(
 
 defmac(
   rtrnn,
-  (() => rm
-    () => bit),
+  /*(*/ [() => rm,
+    () => bit] /*)*/,
   form(
     n_EQ_Q,
     form(
@@ -75,8 +75,8 @@ defmac(
 
 defmac(
   rtrz,
-  (() => rm
-    () => bit),
+  /*(*/ [() => rm,
+    () => bit] /*)*/,
   form(
     put,
     LOCALS.rm,
@@ -93,8 +93,8 @@ defmac(
 
 defmac(
   trc,
-  (() => obj
-    () => bit),
+  /*(*/ [() => obj,
+    () => bit] /*)*/,
   form(
     put,
     LOCALS.obj,
@@ -108,8 +108,8 @@ defmac(
 
 defmac(
   trz,
-  (() => obj
-    () => bit),
+  /*(*/ [() => obj,
+    () => bit] /*)*/,
   form(
     put,
     LOCALS.obj,
@@ -126,8 +126,8 @@ defmac(
 
 defmac(
   tro,
-  (() => obj
-    () => bit),
+  /*(*/ [() => obj,
+    () => bit] /*)*/,
   form(
     put,
     LOCALS.obj,
@@ -141,8 +141,8 @@ defmac(
 
 defmac(
   rtro,
-  (() => rm
-    () => bit),
+  /*(*/ [() => rm,
+    () => bit] /*)*/,
   form(
     put,
     LOCALS.rm,
@@ -183,8 +183,8 @@ newstruc(
   // list of exits,
   robjs,
   list(
-    [rest
-      object]),
+    /*[*/ [rest,
+      object] /*]*/),
   // objects in room,
   raction,
   rapplic,
@@ -237,14 +237,14 @@ flagword(
 newtype(
   exit,
   vector,
-  () => <primtype(
-        vector)
-      [rest
-        atom
+  () => /*<*/ [primtype(
+        vector),
+      /*[*/ [rest,
+        atom,
         or(
           room,
           cexit,
-          nexit)]>)
+          nexit)] /*]*/] /*>*/)
 
 // conditional exit
 
@@ -294,10 +294,10 @@ newstruc(
 newtype(
   vspec,
   uvector,
-  () => <primtype(
-        uvector)
-      [rest
-        syntax]>)
+  () => /*<*/ [primtype(
+        uvector),
+      /*[*/ [rest,
+        syntax] /*]*/] /*>*/)
 
 // SYNTAX -- a legal syntax for a sentence involving this verb
 
@@ -361,8 +361,8 @@ flagword(
 
 defmac(
   vtrnn,
-  (() => v
-    () => bit),
+  /*(*/ [() => v,
+    () => bit] /*)*/,
   form(
     n_EQ_Q,
     form(
@@ -389,7 +389,7 @@ newstruc(
 // ORPHANS -- mysterious vector of orphan data
 
 gdecl(
-  (orphans),
+  /*(*/ [orphans] /*)*/,
   vector(
     or(
       false,
@@ -444,8 +444,8 @@ newstruc(
   // where he is,
   aobjs,
   list(
-    [rest
-      object]),
+    /*[*/ [rest,
+      object] /*]*/),
   // what he's carrying,
   ascore,
   fix,
@@ -489,8 +489,8 @@ newstruc(
   // unique name, SETG'd to this,
   onames,
   uvector(
-    [rest
-      atom]),
+    /*[*/ [rest,
+      atom] /*]*/),
   // synonyms,
   odesc1,
   string,
@@ -508,8 +508,8 @@ newstruc(
   // object-action,
   ocontents,
   list(
-    [rest
-      object]),
+    /*[*/ [rest,
+      object] /*]*/),
   // list of contents,
   ocan,
   or(
@@ -550,8 +550,8 @@ newstruc(
   // how much can it hold?,
   oadjs,
   uvector(
-    [rest
-      adjective]),
+    /*[*/ [rest,
+      adjective] /*]*/),
   // adjectives for this,
   oroom,
   or(
@@ -667,7 +667,7 @@ msetg(
 
 defmac(
   openable_Q,
-  (() => obj),
+  /*(*/ [() => obj] /*)*/,
   form(
     trnn,
     LOCALS.obj,
@@ -680,7 +680,7 @@ defmac(
 
 defmac(
   describable_Q,
-  (() => obj),
+  /*(*/ [() => obj] /*)*/,
   form(
     not,
     form(
@@ -692,7 +692,7 @@ defmac(
 
 defmac(
   flaming_Q,
-  (() => obj),
+  /*(*/ [() => obj] /*)*/,
   form(
     and,
     form(
@@ -709,7 +709,7 @@ defmac(
 
 defmac(
   see_inside_Q,
-  (() => obj),
+  /*(*/ [() => obj] /*)*/,
   form(
     and,
     form(
@@ -733,13 +733,13 @@ newstruc(
   rapplic,
   hobjs,
   list(
-    [rest
-      any]),
+    /*[*/ [rest,
+      any] /*]*/),
   "REST",
   hrooms,
   list(
-    [rest
-      room]),
+    /*[*/ [rest,
+      room] /*]*/),
   hroom,
   room,
   hobj,
@@ -770,24 +770,24 @@ GLOBALS.load_max = 100
 GLOBALS.score_max = 0
 
 gdecl(
-  (raw_score
-    load_max
-    score_max),
+  /*(*/ [raw_score,
+    load_max,
+    score_max] /*)*/,
   fix,
-  (random_list
-    rooms
-    sacred_places),
+  /*(*/ [random_list,
+    rooms,
+    sacred_places] /*)*/,
   list(
-    [rest
-      room]),
-  (stars
-    objects
-    weapons
-    nasties),
+    /*[*/ [rest,
+      room] /*]*/),
+  /*(*/ [stars,
+    objects,
+    weapons,
+    nasties] /*)*/,
   list(
-    [rest
-      object]),
-  (prsvec),
+    /*[*/ [rest,
+      object] /*]*/),
+  /*(*/ [prsvec] /*)*/,
   vector(
     or(
       false,
@@ -799,25 +799,25 @@ gdecl(
     or(
       false,
       object)),
-  (winner
-    player),
+  /*(*/ [winner,
+    player] /*)*/,
   adv,
-  (here),
+  /*(*/ [here] /*)*/,
   room,
-  (inchan
-    outchan),
+  /*(*/ [inchan,
+    outchan] /*)*/,
   channel,
-  (demons),
+  /*(*/ [demons] /*)*/,
   list,
-  (moves
-    deaths),
+  /*(*/ [moves,
+    deaths] /*)*/,
   fix,
-  (dummy
-    yuks),
+  /*(*/ [dummy,
+    yuks] /*)*/,
   vector(
-    [rest
-      string]),
-  (sword_demon),
+    /*[*/ [rest,
+      string] /*]*/),
+  /*(*/ [sword_demon] /*)*/,
   hack)
 
 "UTILITY FUNCTIONS"
@@ -826,8 +826,8 @@ gdecl(
 
 defmac(
   cond_open,
-  (() => dir
-    () => rm),
+  /*(*/ [() => dir,
+    () => rm] /*)*/,
   form(
     prog,
     list(
@@ -839,12 +839,12 @@ defmac(
           form(
             rexits,
             LOCALS.rm)))),
-    #decl
-      ((el)
-        <primtype(
-            vector)
-          atom
-          cexit>),
+    /*#*/ [decl,
+      /*(*/ [/*(*/ [el] /*)*/,
+        /*<*/ [primtype(
+            vector),
+          atom,
+          cexit] /*>*/] /*)*/] /*2*/,
     form(
       setg,
       form(
@@ -858,8 +858,8 @@ defmac(
 
 defmac(
   cond_close,
-  (() => dir
-    () => rm),
+  /*(*/ [() => dir,
+    () => rm] /*)*/,
   form(
     prog,
     list(
@@ -871,12 +871,12 @@ defmac(
           form(
             rexits,
             LOCALS.rm)))),
-    #decl
-      ((el)
-        <primtype(
-            vector)
-          atom
-          cexit>),
+    /*#*/ [decl,
+      /*(*/ [/*(*/ [el] /*)*/,
+        /*<*/ [primtype(
+            vector),
+          atom,
+          cexit] /*>*/] /*)*/] /*2*/,
     form(
       setg,
       form(
@@ -892,89 +892,89 @@ defmac(
 
 defmac(
   apply_object,
-  (() => obj),
+  /*(*/ [() => obj] /*)*/,
   form(
     prog,
-    ((foo
+    /*(*/ [/*(*/ [foo,
         form(
           oaction,
-          LOCALS.obj))),
+          LOCALS.obj)] /*)*/] /*)*/,
     form(
       cond,
-      (form(
+      /*(*/ [form(
           not,
           form(
             lval,
-            foo))
-        null),
-      (form(
+            foo)),
+        null] /*)*/,
+      /*(*/ [form(
           type_Q,
           form(
             lval,
             foo),
-          atom)
+          atom),
         form(
           apply,
           form(
             gval,
             form(
               lval,
-              foo)))),
-      (form(
+              foo)))] /*)*/,
+      /*(*/ [form(
           dispatch,
           form(
             lval,
-            foo))))))
+            foo))] /*)*/)))
 
 "FLUSH AN OBJECT FROM A ROOM"
 
 define(
   remove_object,
-  (obj
-    "AUX"
-    ocan
-    oroom),
-  #decl
-    ((obj)
-      object
-      (ocan)
+  /*(*/ [obj,
+    "AUX",
+    ocan,
+    oroom] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [ocan] /*)*/,
       or(
         object,
-        false)
-      (oroom)
+        false),
+      /*(*/ [oroom] /*)*/,
       or(
         false,
-        room)),
+        room)] /*)*/] /*2*/,
   cond(
-    (LOCALS.ocan = ocan(
-          LOCALS.obj)
+    /*(*/ [LOCALS.ocan = ocan(
+          LOCALS.obj),
       put(
         LOCALS.ocan,
         GLOBALS.ocontents,
         splice_out(
           LOCALS.obj,
           ocontents(
-            LOCALS.ocan)))),
-    (LOCALS.oroom = oroom(
-          LOCALS.obj)
+            LOCALS.ocan)))] /*)*/,
+    /*(*/ [LOCALS.oroom = oroom(
+          LOCALS.obj),
       put(
         LOCALS.oroom,
         GLOBALS.robjs,
         splice_out(
           LOCALS.obj,
           robjs(
-            LOCALS.oroom)))),
-    (memq(
+            LOCALS.oroom)))] /*)*/,
+    /*(*/ [memq(
         LOCALS.obj,
         robjs(
-          GLOBALS.here))
+          GLOBALS.here)),
       put(
         GLOBALS.here,
         GLOBALS.robjs,
         splice_out(
           LOCALS.obj,
           robjs(
-            GLOBALS.here))))),
+            GLOBALS.here)))] /*)*/),
   put(
     LOCALS.obj,
     GLOBALS.oroom,
@@ -986,50 +986,50 @@ define(
 
 defmac(
   insert_object,
-  (() => obj
-    () => room),
+  /*(*/ [() => obj,
+    () => room] /*)*/,
   form(
     put,
     LOCALS.room,
     GLOBALS.robjs,
-    (form(
+    /*(*/ [form(
         put,
         LOCALS.obj,
         GLOBALS.oroom,
-        LOCALS.room)
+        LOCALS.room),
       chtype(
         form(
           robjs,
           LOCALS.room),
-        segment))))
+        segment)] /*)*/))
 
 defmac(
   take_object,
-  (() => obj
-    "OPTIONAL"
-    (() => winner
-      () => GLOBALS.winner)),
+  /*(*/ [() => obj,
+    "OPTIONAL",
+    /*(*/ [() => winner,
+      () => GLOBALS.winner] /*)*/] /*)*/,
   form(
     put,
     LOCALS.winner,
     GLOBALS.aobjs,
-    (form(
+    /*(*/ [form(
         put,
         LOCALS.obj,
         GLOBALS.oroom,
-        null)
+        null),
       chtype(
         form(
           aobjs,
           LOCALS.winner),
-        segment))))
+        segment)] /*)*/))
 
 defmac(
   drop_object,
-  (() => obj
-    "OPTIONAL"
-    (() => winner
-      () => GLOBALS.winner)),
+  /*(*/ [() => obj,
+    "OPTIONAL",
+    /*(*/ [() => winner,
+      () => GLOBALS.winner] /*)*/] /*)*/,
   form(
     put,
     LOCALS.winner,
@@ -1043,53 +1043,53 @@ defmac(
 
 define(
   kill_obj,
-  (obj
-    winner),
-  #decl
-    ((obj)
-      object
-      (winner)
-      adv),
+  /*(*/ [obj,
+    winner] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [winner] /*)*/,
+      adv] /*)*/] /*2*/,
   cond(
-    (memq(
+    /*(*/ [memq(
         LOCALS.obj,
         aobjs(
-          LOCALS.winner))
+          LOCALS.winner)),
       put(
         LOCALS.winner,
         GLOBALS.aobjs,
         splice_out(
           LOCALS.obj,
           aobjs(
-            LOCALS.winner)))),
-    (remove_object(
-        LOCALS.obj))))
+            LOCALS.winner)))] /*)*/,
+    /*(*/ [remove_object(
+        LOCALS.obj)] /*)*/))
 
 define(
   flush_obj,
-  ("TUPLE"
-    objs
-    "AUX"
-    (winner
-      GLOBALS.winner)),
-  #decl
-    ((objs)
+  /*(*/ ["TUPLE",
+    objs,
+    "AUX",
+    /*(*/ [winner,
+      GLOBALS.winner] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [objs] /*)*/,
       tuple(
-        [rest
-          string])
-      (winner)
-      adv),
+        /*[*/ [rest,
+          string] /*]*/),
+      /*(*/ [winner] /*)*/,
+      adv] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x
-        "AUX"
-        (y
+      /*(*/ [x,
+        "AUX",
+        /*(*/ [y,
           find_obj(
-            LOCALS.x))),
-      #decl
-        ((y)
-          object),
+            LOCALS.x)] /*)*/] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [y] /*)*/,
+          object] /*)*/] /*2*/,
       and(
         memq(
           LOCALS.y,
@@ -1105,24 +1105,24 @@ define(
 
 define(
   rob_adv,
-  (win
-    newlist),
-  #decl
-    ((win)
-      adv
-      (newlist)
+  /*(*/ [win,
+    newlist] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [win] /*)*/,
+      adv,
+      /*(*/ [newlist] /*)*/,
       list(
-        [rest
-          object])),
+        /*[*/ [rest,
+          object] /*]*/)] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (and(
+        /*(*/ [and(
             g_Q(
               otval(
                 LOCALS.x),
@@ -1130,17 +1130,17 @@ define(
             not(
               trnn(
                 LOCALS.x,
-                GLOBALS.sacredbit)))
+                GLOBALS.sacredbit))),
           put(
             LOCALS.win,
             GLOBALS.aobjs,
             splice_out(
               LOCALS.x,
               aobjs(
-                LOCALS.win)))
-          LOCALS.newlist = (LOCALS.x
-              _X
-              LOCALS.newlist)))),
+                LOCALS.win))),
+          LOCALS.newlist = /*(*/ [LOCALS.x,
+              _X,
+              LOCALS.newlist] /*)*/] /*)*/)),
     aobjs(
       LOCALS.win)),
   LOCALS.newlist)
@@ -1149,27 +1149,27 @@ define(
 
 define(
   rob_room,
-  (rm
-    newlist
-    prob),
-  #decl
-    ((rm)
-      room
-      (newlist)
+  /*(*/ [rm,
+    newlist,
+    prob] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [rm] /*)*/,
+      room,
+      /*(*/ [newlist] /*)*/,
       list(
-        [rest
-          object])
-      (prob)
-      fix),
+        /*[*/ [rest,
+          object] /*]*/),
+      /*(*/ [prob] /*)*/,
+      fix] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (and(
+        /*(*/ [and(
             g_Q(
               otval(
                 LOCALS.x),
@@ -1181,133 +1181,133 @@ define(
             ovis_Q(
               LOCALS.x),
             prob(
-              LOCALS.prob))
+              LOCALS.prob)),
           remove_object(
-            LOCALS.x)
+            LOCALS.x),
           put(
             LOCALS.x,
             GLOBALS.otouch_Q,
-            t)
-          LOCALS.newlist = (LOCALS.x
-              _X
-              LOCALS.newlist)),
-        (type_Q(
+            t),
+          LOCALS.newlist = /*(*/ [LOCALS.x,
+              _X,
+              LOCALS.newlist] /*)*/] /*)*/,
+        /*(*/ [type_Q(
             orand(
               LOCALS.x),
-            adv)
+            adv),
           LOCALS.newlist = rob_adv(
               orand(
                 LOCALS.x),
-              LOCALS.newlist)))),
+              LOCALS.newlist)] /*)*/)),
     robjs(
       LOCALS.rm)),
   LOCALS.newlist)
 
 define(
   valuables_Q,
-  (adv),
-  #decl
-    ((adv)
-      adv),
+  /*(*/ [adv] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [adv] /*)*/,
+      adv] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (g_Q(
+        /*(*/ [g_Q(
             otval(
               LOCALS.x),
-            0)
+            0),
           mapleave(
-            t)))),
+            t)] /*)*/)),
     aobjs(
       LOCALS.adv)))
 
 define(
   armed_Q,
-  (adv
-    "AUX"
-    (weapons
-      GLOBALS.weapons)),
-  #decl
-    ((adv)
-      adv),
+  /*(*/ [adv,
+    "AUX",
+    /*(*/ [weapons,
+      GLOBALS.weapons] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [adv] /*)*/,
+      adv] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          object),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          object] /*)*/] /*2*/,
       cond(
-        (memq(
+        /*(*/ [memq(
             LOCALS.x,
-            LOCALS.weapons)
+            LOCALS.weapons),
           mapleave(
-            t)))),
+            t)] /*)*/)),
     aobjs(
       LOCALS.adv)))
 
 define(
   light_source,
-  (me),
-  #decl
-    ((me)
-      adv),
+  /*(*/ [me] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [me] /*)*/,
+      adv] /*)*/] /*2*/,
   mapf(
     null,
     /* FUNCTION */
       (x) => (
       cond,
-      (not(
+      /*(*/ [not(
             0_Q(
               olight_Q(
-                LOCALS.x)))
+                LOCALS.x))),
           mapleave(
-            LOCALS.x))),
+            LOCALS.x)] /*)*/),
     aobjs(
       LOCALS.me)))
 
 define(
   get_demon,
-  (id
-    "AUX"
-    (obj
+  /*(*/ [id,
+    "AUX",
+    /*(*/ [obj,
       find_obj(
-        LOCALS.id))
-    (dems
-      GLOBALS.demons)),
-  #decl
-    ((id)
-      string
-      (obj)
-      object
-      (dems)
+        LOCALS.id)] /*)*/,
+    /*(*/ [dems,
+      GLOBALS.demons] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
+      string,
+      /*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [dems] /*)*/,
       list(
-        [rest
-          hack])),
+        /*[*/ [rest,
+          hack] /*]*/)] /*)*/] /*2*/,
   mapf(
     null,
     function(
-      (x),
-      #decl
-        ((x)
-          hack),
+      /*(*/ [x] /*)*/,
+      /*#*/ [decl,
+        /*(*/ [/*(*/ [x] /*)*/,
+          hack] /*)*/] /*2*/,
       cond(
-        (_EQ_Q(
+        /*(*/ [_EQ_Q(
             hobj(
               LOCALS.x),
-            LOCALS.obj)
+            LOCALS.obj),
           mapleave(
-            LOCALS.x)))),
+            LOCALS.x)] /*)*/)),
     LOCALS.dems))
 
 defmac(
   pick_one,
-  (() => vec),
+  /*(*/ [() => vec] /*)*/,
   form(
     nth,
     LOCALS.vec,
@@ -1324,7 +1324,7 @@ defmac(
 
 defmac(
   clock_disable,
-  (() => ev),
+  /*(*/ [() => ev] /*)*/,
   form(
     put,
     LOCALS.ev,
@@ -1333,7 +1333,7 @@ defmac(
 
 defmac(
   clock_enable,
-  (() => ev),
+  /*(*/ [() => ev] /*)*/,
   form(
     put,
     LOCALS.ev,
@@ -1342,19 +1342,19 @@ defmac(
 
 define(
   yes_no,
-  (no_is_bad_Q
-    "AUX"
-    (inbuf
-      GLOBALS.inbuf)
-    (inchan
-      GLOBALS.inchan)),
-  #decl
-    ((inbuf)
-      string
-      (no_is_bad_Q)
+  /*(*/ [no_is_bad_Q,
+    "AUX",
+    /*(*/ [inbuf,
+      GLOBALS.inbuf] /*)*/,
+    /*(*/ [inchan,
+      GLOBALS.inchan] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [inbuf] /*)*/,
+      string,
+      /*(*/ [no_is_bad_Q] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   reset(
     LOCALS.inchan),
   readstring(
@@ -1362,88 +1362,88 @@ define(
     LOCALS.inchan,
     GLOBALS.reader_string),
   cond(
-    (LOCALS.no_is_bad_Q
+    /*(*/ [LOCALS.no_is_bad_Q,
       not(
         memq(
           1(
             LOCALS.inbuf),
-          "NnfF"))),
-    (t
+          "NnfF"))] /*)*/,
+    /*(*/ [t,
       memq(
         1(
           LOCALS.inbuf),
-        "TtYy"))))
+        "TtYy")] /*)*/))
 
 defmac(
   apply_random,
-  (() => frob
-    "OPTIONAL"
-    (() => mumble
-      null)),
+  /*(*/ [() => frob,
+    "OPTIONAL",
+    /*(*/ [() => mumble,
+      null] /*)*/] /*)*/,
   form(
     cond,
-    (form(
+    /*(*/ [form(
         type_Q,
         LOCALS.frob,
-        atom)
+        atom),
       cond(
-        (LOCALS.mumble
+        /*(*/ [LOCALS.mumble,
           form(
             apply,
             form(
               gval,
               LOCALS.frob),
-            LOCALS.mumble)),
-        (form(
+            LOCALS.mumble)] /*)*/,
+        /*(*/ [form(
             apply,
             form(
               gval,
-              LOCALS.frob))))),
-    (t
+              LOCALS.frob))] /*)*/)] /*)*/,
+    /*(*/ [t,
       form(
         dispatch,
         LOCALS.frob,
-        LOCALS.mumble))))
+        LOCALS.mumble)] /*)*/))
 
 define(
   da,
-  (fn
-    "OPTIONAL"
-    (foo
-      null)),
-  #decl
-    ((fn)
+  /*(*/ [fn,
+    "OPTIONAL",
+    /*(*/ [foo,
+      null] /*)*/] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [fn] /*)*/,
       or(
         applicable,
         atom,
-        fix)),
+        fix)] /*)*/] /*2*/,
   prog(
-    (),
+    /*(*/ [] /*)*/,
     cond(
-      (type_Q(
+      /*(*/ [type_Q(
           LOCALS.fn,
-          fix)
+          fix),
         dispatch(
           LOCALS.fn,
-          LOCALS.foo)),
-      (applicable_Q(
-          LOCALS.fn)
+          LOCALS.foo)] /*)*/,
+      /*(*/ [applicable_Q(
+          LOCALS.fn),
         cond(
-          (LOCALS.foo
+          /*(*/ [LOCALS.foo,
             apply(
               LOCALS.fn,
-              LOCALS.foo)),
-          (apply(
-              LOCALS.fn)))),
-      (gassigned_Q(
-          LOCALS.fn)
-        LOCALS.fn = ,LOCALS.fn
+              LOCALS.foo)] /*)*/,
+          /*(*/ [apply(
+              LOCALS.fn)] /*)*/)] /*)*/,
+      /*(*/ [gassigned_Q(
+          LOCALS.fn),
+        LOCALS.fn = /*,*/ [LOCALS.fn] /*1*/,
         again(
-          )),
-      (error(
+          )] /*)*/,
+      /*(*/ [error(
           unassigned_variable_X_errors,
           LOCALS.fn,
-          da)))))
+          da)] /*)*/)))
 
 "OLD MAZER"
 
@@ -1458,52 +1458,52 @@ psetg(
 psetg(
   null_exit,
   chtype(
-    [],
+    /*[*/ [] /*]*/,
     exit))
 
 psetg(
   null_syn,
   _X,
-  [])
+  /*[*/ [] /*]*/)
 
 define(
   find_room,
-  (id
-    "AUX"
-    atm
-    room),
-  #decl
-    ((id)
+  /*(*/ [id,
+    "AUX",
+    atm,
+    room] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
       or(
         atom,
-        string)
-      (value)
-      room
-      (room)
-      room
-      (atm)
+        string),
+      /*(*/ [value] /*)*/,
+      room,
+      /*(*/ [room] /*)*/,
+      room,
+      /*(*/ [atm] /*)*/,
       or(
         atom,
-        false)),
+        false)] /*)*/] /*2*/,
   cond(
-    (type_Q(
+    /*(*/ [type_Q(
         LOCALS.id,
-        atom)
+        atom),
       LOCALS.id = spname(
-          LOCALS.id))),
+          LOCALS.id)] /*)*/),
   cond(
-    (and(
+    /*(*/ [and(
         LOCALS.atm = lookup(
             LOCALS.id,
             GLOBALS.room_obl),
         gassigned_Q(
-          LOCALS.atm))
-      ,LOCALS.atm),
-    (or(
+          LOCALS.atm)),
+      /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+    /*(*/ [or(
         LOCALS.atm,
         LOCALS.atm = insert(
             LOCALS.id,
-            GLOBALS.room_obl))
+            GLOBALS.room_obl)),
       setg(
         LOCALS.atm,
         LOCALS.room = chtype(
@@ -1514,122 +1514,122 @@ define(
               null,
               null,
               GLOBALS.null_exit,
-              (),
+              /*(*/ [] /*)*/,
               null,
               0,
               0,
               0,
               t),
-            room))
-      GLOBALS.rooms = (LOCALS.room
-          _X
-          GLOBALS.rooms)
-      LOCALS.room)))
+            room)),
+      GLOBALS.rooms = /*(*/ [LOCALS.room,
+          _X,
+          GLOBALS.rooms] /*)*/,
+      LOCALS.room] /*)*/))
 
 define(
   find_obj,
-  (id
-    "AUX"
-    obj
-    atm),
-  #decl
-    ((id)
+  /*(*/ [id,
+    "AUX",
+    obj,
+    atm] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [id] /*)*/,
       or(
         atom,
-        string)
-      (obj)
-      object
-      (atm)
+        string),
+      /*(*/ [obj] /*)*/,
+      object,
+      /*(*/ [atm] /*)*/,
       or(
         atom,
-        false)
-      (value)
-      object),
+        false),
+      /*(*/ [value] /*)*/,
+      object] /*)*/] /*2*/,
   cond(
-    (type_Q(
+    /*(*/ [type_Q(
         LOCALS.id,
-        atom)
+        atom),
       LOCALS.id = spname(
-          LOCALS.id))),
+          LOCALS.id)] /*)*/),
   cond(
-    (and(
+    /*(*/ [and(
         LOCALS.atm = lookup(
             LOCALS.id,
             GLOBALS.object_obl),
         gassigned_Q(
-          LOCALS.atm))
-      ,LOCALS.atm),
-    (or(
+          LOCALS.atm)),
+      /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+    /*(*/ [or(
         LOCALS.atm,
         LOCALS.atm = insert(
             LOCALS.id,
-            GLOBALS.object_obl))
+            GLOBALS.object_obl)),
       setg(
         LOCALS.atm,
         LOCALS.obj = chtype(
-            [LOCALS.atm
-              GLOBALS.null_syn
-              GLOBALS.null_desc
-              GLOBALS.null_desc
-              null
-              null
-              ()
-              null
-              0
-              null
-              0
-              0
-              0
-              null
-              null
-              5
-              0
-              GLOBALS.null_syn
-              null
-              null],
-            object))
-      GLOBALS.objects = (LOCALS.obj
-          _X
-          GLOBALS.objects)
-      LOCALS.obj)))
+            /*[*/ [LOCALS.atm,
+              GLOBALS.null_syn,
+              GLOBALS.null_desc,
+              GLOBALS.null_desc,
+              null,
+              null,
+              /*(*/ [] /*)*/,
+              null,
+              0,
+              null,
+              0,
+              0,
+              0,
+              null,
+              null,
+              5,
+              0,
+              GLOBALS.null_syn,
+              null,
+              null] /*]*/,
+            object)),
+      GLOBALS.objects = /*(*/ [LOCALS.obj,
+          _X,
+          GLOBALS.objects] /*)*/,
+      LOCALS.obj] /*)*/))
 
 define(
   function_print,
-  (frob),
-  #decl
-    ((frob)
+  /*(*/ [frob] /*)*/,
+  /*#*/ [decl,
+    /*(*/ [/*(*/ [frob] /*)*/,
       or(
         atom,
         offset,
         applicable,
-        false)),
+        false)] /*)*/] /*2*/,
   cond(
-    (not(
-        LOCALS.frob)
+    /*(*/ [not(
+        LOCALS.frob),
       princ(
-        "<>")),
-    (type_Q(
+        "<>")] /*)*/,
+    /*(*/ [type_Q(
         LOCALS.frob,
         rsubr,
-        rsubr_entry)
+        rsubr_entry),
       prin1(
         2(
-          LOCALS.frob))),
-    (type_Q(
+          LOCALS.frob))] /*)*/,
+    /*(*/ [type_Q(
         LOCALS.frob,
-        atom)
+        atom),
       prin1(
-        LOCALS.frob)),
-    (type_Q(
+        LOCALS.frob)] /*)*/,
+    /*(*/ [type_Q(
         LOCALS.frob,
-        offset)
+        offset),
       princ(
-        "#OFFSET")
+        "#OFFSET"),
       prin1(
         get_atom(
-          LOCALS.frob))),
-    (princ(
-        "#FUNCTION")
+          LOCALS.frob))] /*)*/,
+    /*(*/ [princ(
+        "#FUNCTION"),
       prin1(
         get_atom(
-          LOCALS.frob)))))
+          LOCALS.frob))] /*)*/))
