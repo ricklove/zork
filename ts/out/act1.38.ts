@@ -391,7 +391,7 @@ define(
 
 psetg(
   yuks,
-  '["Nice try."
+  () => ["Nice try."
       "You can't be serious."
       "Chomp, Chomp."
       "Not a prayer."
@@ -1928,7 +1928,7 @@ define(
 
 psetg(
   drownings,
-  '["up to your ankles."
+  () => ["up to your ankles."
       "up to your shin."
       "up to your knees."
       "up to your hips."
@@ -2932,7 +2932,7 @@ define(
 
 psetg(
   cyclomad,
-  '["The cyclops seems somewhat agitated."
+  () => ["The cyclops seems somewhat agitated."
       "The cyclops appears to be getting more agitated."
       "The cyclops is moving about the room, looking for something."
       "The cyclops was looking for salt and pepper.  I think he is gathering\ncondiments for his upcoming snack."
@@ -3307,7 +3307,7 @@ define(
 
 psetg(
   hellos,
-  '["Hello."
+  () => ["Hello."
       "Good day."
       "Nice weather we've been having lately"
       "How are you?"
@@ -3315,7 +3315,7 @@ psetg(
 
 psetg(
   wheeeee,
-  '["Very good.  Now you can go to the second grade."
+  () => ["Very good.  Now you can go to the second grade."
       "Have you tried hopping around the dungeon, too?"
       "Are you enjoying yourself?"
       "Wheeeeeeeeee!!!!!"
@@ -3323,7 +3323,7 @@ psetg(
 
 psetg(
   jumploss,
-  '["You should have looked before you leaped."
+  () => ["You should have looked before you leaped."
       "I'm afraid that leap was a bit much for your weak frame."
       "In the movies, your life would be passing in front of your eyes."
       "Geronimo....."])
@@ -3443,7 +3443,7 @@ define(
 
 psetg(
   dummy,
-  '["Look around."
+  () => ["Look around."
       "You think it isn't?"
       "I think you've already done that."])
 
@@ -3641,7 +3641,7 @@ define(
 
 psetg(
   offended,
-  '["Such language in a high-class establishment like this!"
+  () => ["Such language in a high-class establishment like this!"
       "You ought to be ashamed of yourself."
       "Its not so bad.  You could have been killed already."
       "Tough shit, asshole."
@@ -4796,7 +4796,7 @@ define(
 
 psetg(
   doormungs,
-  '["The door is invulnerable."
+  () => ["The door is invulnerable."
       "You cannot damage this door."
       "The door is still under warranty."])
 
@@ -5190,7 +5190,7 @@ define(
 
 psetg(
   ho_hum,
-  '["does not seem to do anything."
+  () => ["does not seem to do anything."
       "is not notably useful."
       "isn't very interesting."
       "doesn't appear worthwhile."

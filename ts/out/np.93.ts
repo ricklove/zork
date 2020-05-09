@@ -1262,7 +1262,7 @@ define(
                     obj),
                   set(
                     itm,
-                    '(_1)),
+                    () => (_1)),
                   <>)),
               (type_Q(
                   _itm,

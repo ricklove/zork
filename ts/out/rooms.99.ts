@@ -885,7 +885,7 @@ define(
 
 psetg(
   winners,
-  '["BKD"
+  () => ["BKD"
       "TAA"
       "MARC"
       "PDL"
@@ -1364,7 +1364,7 @@ define(
                 _ch)
               finish(
                 chtype(
-                  '(". Saved."),
+                  () => (". Saved."),
                   false))),
             (tell(
                 "Save failed.")
@@ -4321,7 +4321,7 @@ define(
             vname(
               1(
                 _vec)),
-            '[drop_X_words
+            () => [drop_X_words
                 pour_X_words]),
           _pi)
         put(
@@ -5615,7 +5615,7 @@ setg(
   lexv,
   ivector(
     10,
-    'rest(
+    () => rest(
         istring(
           5),
         5)))

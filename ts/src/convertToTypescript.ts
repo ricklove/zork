@@ -55,10 +55,10 @@ export const convertToTypescript = (node: ZNode): string => {
 
         const firstNode = +!undefined && nodes[0];
 
-        // // Lookups
-        // if (firstNode && openSymbol === '\'') {
-        //     return `() => ${convertToTypescript(firstNode)}`;
-        // }
+        // Lookups
+        if (firstNode && openSymbol === '\'') {
+            return `() => ${convertToTypescript(firstNode)}`;
+        }
 
         // <Functions ...>
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {

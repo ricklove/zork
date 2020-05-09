@@ -14,7 +14,7 @@ newtype(
 put(
   rapplic,
   decl,
-  'or(
+  () => or(
       atom,
       false,
       offset))
@@ -41,8 +41,8 @@ newtype(
 
 defmac(
   trnn,
-  ('obj
-    'bit),
+  (() => obj
+    () => bit),
   form(
     n_EQ_Q,
     form(
@@ -58,8 +58,8 @@ defmac(
 
 defmac(
   rtrnn,
-  ('rm
-    'bit),
+  (() => rm
+    () => bit),
   form(
     n_EQ_Q,
     form(
@@ -75,8 +75,8 @@ defmac(
 
 defmac(
   rtrz,
-  ('rm
-    'bit),
+  (() => rm
+    () => bit),
   form(
     put,
     _rm,
@@ -93,8 +93,8 @@ defmac(
 
 defmac(
   trc,
-  ('obj
-    'bit),
+  (() => obj
+    () => bit),
   form(
     put,
     _obj,
@@ -108,8 +108,8 @@ defmac(
 
 defmac(
   trz,
-  ('obj
-    'bit),
+  (() => obj
+    () => bit),
   form(
     put,
     _obj,
@@ -126,8 +126,8 @@ defmac(
 
 defmac(
   tro,
-  ('obj
-    'bit),
+  (() => obj
+    () => bit),
   form(
     put,
     _obj,
@@ -141,8 +141,8 @@ defmac(
 
 defmac(
   rtro,
-  ('rm
-    'bit),
+  (() => rm
+    () => bit),
   form(
     put,
     _rm,
@@ -237,7 +237,7 @@ flagword(
 newtype(
   exit,
   vector,
-  '<primtype(
+  () => <primtype(
         vector)
       [rest
         atom
@@ -294,7 +294,7 @@ newstruc(
 newtype(
   vspec,
   uvector,
-  '<primtype(
+  () => <primtype(
         uvector)
       [rest
         syntax]>)
@@ -361,8 +361,8 @@ flagword(
 
 defmac(
   vtrnn,
-  ('v
-    'bit),
+  (() => v
+    () => bit),
   form(
     n_EQ_Q,
     form(
@@ -667,7 +667,7 @@ msetg(
 
 defmac(
   openable_Q,
-  ('obj),
+  (() => obj),
   form(
     trnn,
     _obj,
@@ -680,7 +680,7 @@ defmac(
 
 defmac(
   describable_Q,
-  ('obj),
+  (() => obj),
   form(
     not,
     form(
@@ -692,7 +692,7 @@ defmac(
 
 defmac(
   flaming_Q,
-  ('obj),
+  (() => obj),
   form(
     and,
     form(
@@ -709,7 +709,7 @@ defmac(
 
 defmac(
   see_inside_Q,
-  ('obj),
+  (() => obj),
   form(
     and,
     form(
@@ -830,8 +830,8 @@ gdecl(
 
 defmac(
   cond_open,
-  ('dir
-    'rm),
+  (() => dir
+    () => rm),
   form(
     prog,
     list(
@@ -862,8 +862,8 @@ defmac(
 
 defmac(
   cond_close,
-  ('dir
-    'rm),
+  (() => dir
+    () => rm),
   form(
     prog,
     list(
@@ -896,7 +896,7 @@ defmac(
 
 defmac(
   apply_object,
-  ('obj),
+  (() => obj),
   form(
     prog,
     ((foo
@@ -994,8 +994,8 @@ define(
 
 defmac(
   insert_object,
-  ('obj
-    'room),
+  (() => obj
+    () => room),
   form(
     put,
     _room,
@@ -1013,10 +1013,10 @@ defmac(
 
 defmac(
   take_object,
-  ('obj
+  (() => obj
     "OPTIONAL"
-    ('winner
-      ',winner)),
+    (() => winner
+      () => ,winner)),
   form(
     put,
     _winner,
@@ -1034,10 +1034,10 @@ defmac(
 
 defmac(
   drop_object,
-  ('obj
+  (() => obj
     "OPTIONAL"
-    ('winner
-      ',winner)),
+    (() => winner
+      () => ,winner)),
   form(
     put,
     _winner,
@@ -1319,7 +1319,7 @@ define(
 
 defmac(
   pick_one,
-  ('vec),
+  (() => vec),
   form(
     nth,
     _vec,
@@ -1336,7 +1336,7 @@ defmac(
 
 defmac(
   clock_disable,
-  ('ev),
+  (() => ev),
   form(
     put,
     _ev,
@@ -1345,7 +1345,7 @@ defmac(
 
 defmac(
   clock_enable,
-  ('ev),
+  (() => ev),
   form(
     put,
     _ev,
@@ -1388,9 +1388,9 @@ define(
 
 defmac(
   apply_random,
-  ('frob
+  (() => frob
     "OPTIONAL"
-    ('mumble
+    (() => mumble
       <>)),
   form(
     cond,

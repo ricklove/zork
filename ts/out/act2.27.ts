@@ -185,7 +185,7 @@ define(
 
 psetg(
   bat_drops,
-  '["MINE1"
+  () => ["MINE1"
       "MINE2"
       "MINE3"
       "MINE4"
@@ -1114,13 +1114,13 @@ define(
 
 psetg(
   cdigs,
-  '["You are digging into a pile of bat guano."
+  () => ["You are digging into a pile of bat guano."
       "You seem to be getting knee deep in guano."
       "You are covered with bat turds, cretin."])
 
 psetg(
   bdigs,
-  '["You seem to be digging a hole here."
+  () => ["You seem to be digging a hole here."
       "The hole is getting deeper, but that's about it."
       "You are surrounded by a wall of sand on all sides."])
 
@@ -1146,7 +1146,7 @@ define(
 
 psetg(
   swimyuks,
-  '["I don't really see how."
+  () => ["I don't really see how."
       "I think that swimming is best performed in water."
       "Perhaps it is your head that is swimming."])
 

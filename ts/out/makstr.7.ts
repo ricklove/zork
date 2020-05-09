@@ -827,7 +827,7 @@ define(
     names
     "OPTIONAL"
     (adj
-      '[])
+      () => [])
     "AUX"
     (objs
       ,object_obl)),
