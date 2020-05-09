@@ -9,14 +9,14 @@ define(
     (vb
       1(
         _pv))),
-  decl(
-    (pv),
-    vector(
-        verb),
-    (vb),
-    verb,
-    (bottl),
-    object),
+  #decl
+    ((pv)
+      vector(
+        verb)
+      (vb)
+      verb
+      (bottl)
+      object),
   cond(
     (or(
         _EQ_Q(
@@ -50,18 +50,18 @@ define(
     (lcase
       find_obj(
         "LCASE"))),
-  decl(
-    (pv),
-    vector(
-        verb),
-    (vb),
-    verb,
-    (nl),
-    list(
+  #decl
+    ((pv)
+      vector(
+        verb)
+      (vb)
+      verb
+      (nl)
+      list(
         [rest
-          object]),
-    (lcase),
-    object),
+          object])
+      (lcase)
+      object),
   cond(
     (n_EQ_Q(
         _vb,
@@ -129,23 +129,23 @@ define(
     (buck
       find_obj(
         "BUCKE"))),
-  decl(
-    (arg),
-    or(
+  #decl
+    ((arg)
+      or(
         false,
-        atom),
-    (pv),
-    vector,
-    (pa),
-    verb,
-    (po),
-    or(
+        atom)
+      (pv)
+      vector
+      (pa)
+      verb
+      (po)
+      or(
         direction,
         false,
-        object),
-    (w
-        buck),
-    object),
+        object)
+      (w
+        buck)
+      object),
   cond(
     (_EQ_Q(
         _arg,
@@ -215,15 +215,15 @@ define(
     (pvs
       2(
         _pv))),
-  decl(
-    (r),
-    room,
-    (b),
-    object,
-    (pv),
-    vector,
-    (pvs),
-    or(
+  #decl
+    ((r)
+      room
+      (b)
+      object
+      (pv)
+      vector
+      (pvs)
+      or(
         false,
         object,
         direction)),
@@ -259,16 +259,16 @@ define(
       ,prsvec)
     (here
       ,here)),
-  decl(
-    (pv),
-    vector,
-    (c),
-    object,
-    (pa),
-    verb,
-    (here
-        r),
-    room),
+  #decl
+    ((pv)
+      vector
+      (c)
+      object
+      (pa)
+      verb
+      (here
+        r)
+      room),
   cond(
     (and(
         _EQ_Q(
@@ -304,9 +304,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           put(
             _x,
             ,osize,
@@ -349,23 +349,23 @@ define(
     (here
       ,here)
     r),
-  decl(
-    (pv),
-    vector,
-    (pa),
-    verb,
-    (pi
-        po),
-    or(
+  #decl
+    ((pv)
+      vector
+      (pa)
+      verb
+      (pi
+        po)
+      or(
         false,
-        object),
-    (rice
+        object)
+      (rice
         oice
-        bice),
-    object,
-    (here
-        r),
-    room),
+        bice)
+      object
+      (here
+        r)
+      room),
   cond(
     (_EQ_Q(
         _pa,
@@ -445,9 +445,9 @@ define(
                 <>,
                 function(
                   (x),
-                  decl(
-                    (x),
-                    object),
+                  #decl
+                    ((x)
+                      object),
                   put(
                     _x,
                     ,oroom,
@@ -511,13 +511,13 @@ define(
     (pa
       1(
         _pv))),
-  decl(
-    (pv),
-    vector(
+  #decl
+    ((pv)
+      vector(
         verb,
-        object),
-    (pa),
-    verb),
+        object)
+      (pa)
+      verb),
   cond(
     (_EQ_Q(
         _pa,
@@ -582,25 +582,25 @@ define(
     (here
       ,here)
     m),
-  decl(
-    (pv),
-    vector,
-    (pa),
-    verb,
-    (po),
-    or(
+  #decl
+    ((pv)
+      vector
+      (pa)
+      verb
+      (po)
+      or(
         false,
         object,
-        direction),
-    (here),
-    room,
-    (m),
-    or(
+        direction)
+      (here)
+      room
+      (m)
+      or(
         false,
         primtype(
-          vector)),
-    (foo),
-    cexit),
+          vector))
+      (foo)
+      cexit),
   cond(
     (_EQ_Q(
         _pa,
@@ -674,11 +674,11 @@ define(
     (pa
       1(
         _pv))),
-  decl(
-    (pv),
-    vector,
-    (pa),
-    verb),
+  #decl
+    ((pv)
+      vector
+      (pa)
+      verb),
   cond(
     (_EQ_Q(
         _pa,
@@ -706,13 +706,13 @@ define(
     (pa
       1(
         _pv))),
-  decl(
-    (i),
-    object,
-    (pv),
-    vector,
-    (pa),
-    verb),
+  #decl
+    ((i)
+      object
+      (pv)
+      vector
+      (pa)
+      verb),
   cond(
     (_EQ_Q(
         _pa,
@@ -794,23 +794,23 @@ define(
     c
     fl
     ract),
-  decl(
-    (pv),
-    vector(
+  #decl
+    ((pv)
+      vector(
         verb,
-        object),
-    (pa),
-    verb,
-    (c),
-    room,
-    (r),
-    object,
-    (fl),
-    or(
+        object)
+      (pa)
+      verb
+      (c)
+      room
+      (r)
+      object
+      (fl)
+      or(
         atom,
-        false),
-    (ract),
-    adv),
+        false)
+      (ract)
+      adv),
   set(
     fl,
     and(
@@ -936,24 +936,24 @@ define(
       find_obj(
         "ROBOT"))
     ract),
-  decl(
-    (c),
-    room,
-    (pa),
-    verb,
-    (pv),
-    vector,
-    (po),
-    or(
+  #decl
+    ((c)
+      room
+      (pa)
+      verb
+      (pv)
+      vector
+      (po)
+      or(
         false,
         object,
-        direction),
-    (cage),
-    object,
-    (r),
-    object,
-    (ract),
-    adv),
+        direction)
+      (cage)
+      object
+      (r)
+      object
+      (ract)
+      adv),
   cond(
     (and(
         _EQ_Q(
@@ -1046,18 +1046,18 @@ define(
         _pv))
     pp
     aa),
-  decl(
-    (aa),
-    adv,
-    (pv),
-    vector,
-    (pa),
-    verb,
-    (pp
-        po),
-    object,
-    (pi),
-    or(
+  #decl
+    ((aa)
+      adv
+      (pv)
+      vector
+      (pa)
+      verb
+      (pp
+        po)
+      object
+      (pi)
+      or(
         false,
         object)),
   cond(

@@ -116,64 +116,64 @@ define(
     pprep
     lobj
     val),
-  decl(
-    (sv),
-    vector(
+  #decl
+    ((sv)
+      vector(
         [rest
-          string]),
-    (vb
-        orfl),
-    or(
+          string])
+      (vb
+        orfl)
+      or(
         atom,
-        false),
-    (actions
+        false)
+      (actions
         words
         objob
-        dirs),
-    oblist,
-    (pv
+        dirs)
+      oblist
+      (pv
         orph
         prv
-        pvr),
-    vector,
-    (atm),
-    or(
+        pvr)
+      vector
+      (atm)
+      or(
         atom,
-        false),
-    (here),
-    room,
-    (action),
-    or(
+        false)
+      (here)
+      room
+      (action)
+      or(
         false,
-        action),
-    (nprep
-        prep),
-    or(
+        action)
+      (nprep
+        prep)
+      or(
         false,
-        prep),
-    (adj),
-    or(
+        prep)
+      (adj)
+      or(
         false,
-        adjective),
-    (aval),
-    any,
-    (lobj),
-    any,
-    (obj),
-    or(
+        adjective)
+      (aval)
+      any
+      (lobj)
+      any
+      (obj)
+      or(
         false,
-        object),
-    (pprep),
-    phrase),
+        object)
+      (pprep)
+      phrase),
   set(
     val,
     mapf(
       <>,
       function(
         (x),
-        decl(
-          (x),
-          string),
+        #decl
+          ((x)
+            string),
         cond(
           (empty_Q(
               _x)
@@ -510,13 +510,13 @@ define(
       <>)
     (name
       <>)),
-  decl(
-    (flag),
-    or(
+  #decl
+    ((flag)
+      or(
         atom,
-        false),
-    (name),
-    or(
+        false)
+      (name)
+      or(
         atom,
         false)),
   put(
@@ -559,27 +559,27 @@ define(
     (gwim
       <>)
     synn),
-  decl(
-    (action),
-    action,
-    (pv
-        objs),
-    vector,
-    (drive
-        dforce),
-    or(
+  #decl
+    ((action)
+      action
+      (pv
+        objs)
+      vector
+      (drive
+        dforce)
+      or(
         false,
-        syntax),
-    (o1
-        o2),
-    or(
+        syntax)
+      (o1
+        o2)
+      or(
         false,
         object,
-        phrase),
-    (synn),
-    varg,
-    (gwim),
-    or(
+        phrase)
+      (synn)
+      varg
+      (gwim)
+      or(
         false,
         object)),
   cond(
@@ -587,9 +587,9 @@ define(
         <>,
         function(
           (syn),
-          decl(
-            (syn),
-            syntax),
+          #decl
+            ((syn)
+              syntax),
           cond(
             (syn_equal(
                 syn1(
@@ -738,23 +738,23 @@ define(
         _pv))
     obj
     varg),
-  decl(
-    (syn),
-    syntax,
-    (pv),
-    vector,
-    (pv1
-        pv2),
-    or(
+  #decl
+    ((syn)
+      syntax
+      (pv)
+      vector
+      (pv1
+        pv2)
+      or(
         false,
         object,
-        phrase),
-    (obj),
-    or(
+        phrase)
+      (obj)
+      or(
         false,
-        object),
-    (varg),
-    varg),
+        object)
+      (varg)
+      varg),
   put(
     _pv,
     2,
@@ -821,19 +821,19 @@ define(
     (sav2
       2(
         _vec))),
-  decl(
-    (obj),
-    object,
-    (vec),
-    vector,
-    (sav1),
-    verb,
-    (sav2),
-    or(
+  #decl
+    ((obj)
+      object
+      (vec)
+      vector
+      (sav1)
+      verb
+      (sav2)
+      or(
         false,
-        object),
-    (vrb),
-    varg),
+        object)
+      (vrb)
+      varg),
   cond(
     (and(
         search_list(
@@ -879,18 +879,18 @@ define(
       oflag(
         _orph))
     slot1),
-  decl(
-    (syn),
-    varg,
-    (objs
-        orph),
-    vector,
-    (orfl),
-    or(
+  #decl
+    ((syn)
+      varg
+      (objs
+        orph)
+      vector
+      (orfl)
+      or(
         atom,
-        false),
-    (slot1),
-    or(
+        false)
+      (slot1)
+      or(
         false,
         phrase,
         object)),
@@ -921,19 +921,19 @@ define(
       vprep(
         _varg))
     sp),
-  decl(
-    (varg),
-    varg,
-    (action),
-    action,
-    (prep),
-    or(
+  #decl
+    ((varg)
+      varg
+      (action)
+      action
+      (prep)
+      or(
         false,
-        prep),
-    (sp),
-    string,
-    (gwim),
-    or(
+        prep)
+      (sp)
+      string
+      (gwim)
+      or(
         false,
         object)),
   cond(
@@ -969,11 +969,11 @@ define(
   (atm
     "AUX"
     sp),
-  decl(
-    (atm),
-    atom,
-    (sp),
-    string),
+  #decl
+    ((atm)
+      atom
+      (sp)
+      string),
   foostr(
     set(
       sp,
@@ -992,12 +992,12 @@ define(
     "OPTIONAL"
     (1st
       t)),
-  decl(
-    (str
-        nam),
-    string,
-    (1st),
-    or(
+  #decl
+    ((str
+        nam)
+      string
+      (1st)
+      or(
         atom,
         false)),
   mapr(
@@ -1005,10 +1005,10 @@ define(
     function(
       (x
         y),
-      decl(
-        (x
-            y),
-        string),
+      #decl
+        ((x
+            y)
+          string),
       cond(
         (and(
             _1st,
@@ -1042,17 +1042,17 @@ define(
     objs
     "AUX"
     obj),
-  decl(
-    (fx),
-    fix,
-    (varg),
-    varg,
-    (action),
-    action,
-    (objs),
-    vector,
-    (obj),
-    or(
+  #decl
+    ((fx)
+      fix
+      (varg)
+      varg
+      (action)
+      action
+      (objs)
+      vector
+      (obj)
+      or(
         false,
         object)),
   cond(
@@ -1099,32 +1099,32 @@ define(
       avehicle(
         ,winner))
     sf),
-  decl(
-    (bit),
-    fix,
-    (ntake
+  #decl
+    ((bit)
+      fix
+      (ntake
         robj
-        aobj),
-    or(
+        aobj)
+      or(
         atom,
-        false),
-    (obj
+        false)
+      (obj
         nobj
-        av),
-    or(
+        av)
+      or(
         object,
-        false),
-    (pv),
-    vector,
-    (savobj),
-    or(
+        false)
+      (pv)
+      vector
+      (savobj)
+      or(
         false,
         object,
-        phrase),
-    (fword),
-    varg,
-    (action),
-    action),
+        phrase)
+      (fword)
+      varg
+      (action)
+      action),
   and(
     _aobj,
     set(
@@ -1237,13 +1237,13 @@ define(
               <>))
           (whr
             1)),
-        decl(
-          (sp),
-          vector,
-          (syn),
-          vector,
-          (whr),
-          fix),
+        #decl
+          ((sp)
+            vector
+            (syn)
+            vector
+            (whr)
+            fix),
         mapf(
           <>,
           function(
@@ -1416,16 +1416,16 @@ define(
     (vbit
       vbit(
         _varg))),
-  decl(
-    (varg),
-    varg,
-    (pobj),
-    or(
+  #decl
+    ((varg)
+      varg
+      (pobj)
+      or(
         false,
         phrase,
-        object),
-    (vbit),
-    fix),
+        object)
+      (vbit)
+      fix),
   cond(
     (type_Q(
         _pobj,
@@ -1477,15 +1477,15 @@ define(
     vb
     "AUX"
     val),
-  decl(
-    (val),
-    any,
-    (pv),
-    vector(
+  #decl
+    ((val)
+      any
+      (pv)
+      vector(
         [rest
-          string]),
-    (vb),
-    or(
+          string])
+      (vb)
+      or(
         atom,
         false)),
   cond(
@@ -1545,27 +1545,27 @@ define(
         ,winner))
     (chomp
       <>)),
-  decl(
-    (oobj
+  #decl
+    ((oobj
         obj
-        av),
-    or(
+        av)
+      or(
         object,
-        false),
-    (objnam),
-    atom,
-    (here),
-    room,
-    (adj),
-    or(
+        false)
+      (objnam)
+      atom
+      (here)
+      room
+      (adj)
+      or(
         adjective,
-        false),
-    (chomp),
-    or(
+        false)
+      (chomp)
+      or(
         atom,
-        false),
-    (objl),
-    or(
+        false)
+      (objl)
+      or(
         false,
         list(
           [rest
@@ -1677,13 +1677,13 @@ define(
 
 setg(
   nefals,
-  false(
-    1))
+  #false
+    (1))
 
 setg(
   nefals2,
-  false(
-    2))
+  #false
+    (2))
 
 define(
   search_list,
@@ -1700,35 +1700,35 @@ define(
     (nefals
       ,nefals)
     nobj),
-  decl(
-    (objnam),
-    atom,
-    (slist),
-    list(
+  #decl
+    ((objnam)
+      atom
+      (slist)
+      list(
         [rest
-          object]),
-    (oobj
-        nobj),
-    or(
+          object])
+      (oobj
+        nobj)
+      or(
         false,
-        object),
-    (adj),
-    or(
+        object)
+      (adj)
+      or(
         false,
-        adjective),
-    (first_Q),
-    or(
+        adjective)
+      (first_Q)
+      or(
         atom,
-        false),
-    (nefals),
-    false),
+        false)
+      (nefals)
+      false),
   mapf(
     <>,
     function(
       (obj),
-      decl(
-        (obj),
-        object),
+      #decl
+        ((obj)
+          object),
       cond(
         (this_it_Q(
             _objnam,
@@ -1793,28 +1793,28 @@ define(
     "AUX"
     (nobj
       <>)),
-  decl(
-    (no_take),
-    or(
+  #decl
+    ((no_take)
+      or(
         atom,
-        false),
-    (bit),
-    fix,
-    (objs),
-    list(
+        false)
+      (bit)
+      fix
+      (objs)
+      list(
         [rest
-          object]),
-    (nobj),
-    or(
+          object])
+      (nobj)
+      or(
         false,
         object)),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (and(
             ovis_Q(
@@ -1844,9 +1844,9 @@ define(
             <>,
             function(
               (x),
-              decl(
-                (x),
-                object),
+              #decl
+                ((x)
+                  object),
               cond(
                 (and(
                     ovis_Q(

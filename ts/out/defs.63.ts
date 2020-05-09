@@ -843,9 +843,9 @@ defmac(
           form(
             rexits,
             _rm)))),
-    decl(
-      (el),
-      <primtype(
+    #decl
+      ((el)
+        <primtype(
             vector)
           atom
           cexit>),
@@ -875,9 +875,9 @@ defmac(
           form(
             rexits,
             _rm)))),
-    decl(
-      (el),
-      <primtype(
+    #decl
+      ((el)
+        <primtype(
             vector)
           atom
           cexit>),
@@ -938,15 +938,15 @@ define(
     "AUX"
     ocan
     oroom),
-  decl(
-    (obj),
-    object,
-    (ocan),
-    or(
+  #decl
+    ((obj)
+      object
+      (ocan)
+      or(
         object,
-        false),
-    (oroom),
-    or(
+        false)
+      (oroom)
+      or(
         false,
         room)),
   cond(
@@ -1053,11 +1053,11 @@ define(
   kill_obj,
   (obj
     winner),
-  decl(
-    (obj),
-    object,
-    (winner),
-    adv),
+  #decl
+    ((obj)
+      object
+      (winner)
+      adv),
   cond(
     (memq(
         _obj,
@@ -1080,13 +1080,13 @@ define(
     "AUX"
     (winner
       ,winner)),
-  decl(
-    (objs),
-    tuple(
+  #decl
+    ((objs)
+      tuple(
         [rest
-          string]),
-    (winner),
-    adv),
+          string])
+      (winner)
+      adv),
   mapf(
     <>,
     function(
@@ -1095,9 +1095,9 @@ define(
         (y
           find_obj(
             _x))),
-      decl(
-        (y),
-        object),
+      #decl
+        ((y)
+          object),
       and(
         memq(
           _y,
@@ -1115,20 +1115,20 @@ define(
   rob_adv,
   (win
     newlist),
-  decl(
-    (win),
-    adv,
-    (newlist),
-    list(
+  #decl
+    ((win)
+      adv
+      (newlist)
+      list(
         [rest
           object])),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (and(
             g_Q(
@@ -1161,22 +1161,22 @@ define(
   (rm
     newlist
     prob),
-  decl(
-    (rm),
-    room,
-    (newlist),
-    list(
+  #decl
+    ((rm)
+      room
+      (newlist)
+      list(
         [rest
-          object]),
-    (prob),
-    fix),
+          object])
+      (prob)
+      fix),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (and(
             g_Q(
@@ -1218,16 +1218,16 @@ define(
 define(
   valuables_Q,
   (adv),
-  decl(
-    (adv),
-    adv),
+  #decl
+    ((adv)
+      adv),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (g_Q(
             otval(
@@ -1244,16 +1244,16 @@ define(
     "AUX"
     (weapons
       ,weapons)),
-  decl(
-    (adv),
-    adv),
+  #decl
+    ((adv)
+      adv),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (memq(
             _x,
@@ -1266,9 +1266,9 @@ define(
 define(
   light_source,
   (me),
-  decl(
-    (me),
-    adv),
+  #decl
+    ((me)
+      adv),
   mapf(
     <>,
     function(
@@ -1292,22 +1292,22 @@ define(
         _id))
     (dems
       ,demons)),
-  decl(
-    (id),
-    string,
-    (obj),
-    object,
-    (dems),
-    list(
+  #decl
+    ((id)
+      string
+      (obj)
+      object
+      (dems)
+      list(
         [rest
           hack])),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        hack),
+      #decl
+        ((x)
+          hack),
       cond(
         (_EQ_Q(
             hobj(
@@ -1360,11 +1360,11 @@ define(
       ,inbuf)
     (inchan
       ,inchan)),
-  decl(
-    (inbuf),
-    string,
-    (no_is_bad_Q),
-    or(
+  #decl
+    ((inbuf)
+      string
+      (no_is_bad_Q)
+      or(
         atom,
         false)),
   reset(
@@ -1423,9 +1423,9 @@ define(
     "OPTIONAL"
     (foo
       <>)),
-  decl(
-    (fn),
-    or(
+  #decl
+    ((fn)
+      or(
         applicable,
         atom,
         fix)),
@@ -1486,17 +1486,17 @@ define(
     "AUX"
     atm
     room),
-  decl(
-    (id),
-    or(
+  #decl
+    ((id)
+      or(
         atom,
-        string),
-    (value),
-    room,
-    (room),
-    room,
-    (atm),
-    or(
+        string)
+      (value)
+      room
+      (room)
+      room
+      (atm)
+      or(
         atom,
         false)),
   cond(
@@ -1556,19 +1556,19 @@ define(
     "AUX"
     obj
     atm),
-  decl(
-    (id),
-    or(
+  #decl
+    ((id)
+      or(
         atom,
-        string),
-    (obj),
-    object,
-    (atm),
-    or(
+        string)
+      (obj)
+      object
+      (atm)
+      or(
         atom,
-        false),
-    (value),
-    object),
+        false)
+      (value)
+      object),
   cond(
     (type_Q(
         _id,
@@ -1630,9 +1630,9 @@ define(
 define(
   function_print,
   (frob),
-  decl(
-    (frob),
-    or(
+  #decl
+    ((frob)
+      or(
         atom,
         offset,
         applicable,

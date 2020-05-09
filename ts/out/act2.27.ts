@@ -9,17 +9,17 @@ define(
     (win
       ,winner)
     o),
-  decl(
-    (dummy_Q),
-    or(
+  #decl
+    ((dummy_Q)
+      or(
         atom,
-        false),
-    (prsact),
-    verb,
-    (win),
-    adv,
-    (o),
-    object),
+        false)
+      (prsact)
+      verb
+      (win)
+      adv
+      (o)
+      object),
   cond(
     (or(
         _EQ_Q(
@@ -88,9 +88,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  decl(
-    (prsact),
-    verb),
+  #decl
+    ((prsact)
+      verb),
   cond(
     (and(
         _EQ_Q(
@@ -124,9 +124,9 @@ define(
   ("AUX"
     (bat_drops
       ,bat_drops)),
-  decl(
-    (bat_drops),
-    vector(
+  #decl
+    ((bat_drops)
+      vector(
         [rest
           string])),
   unwind(
@@ -159,10 +159,10 @@ define(
     "OPTIONAL"
     (slp
       0)),
-  decl(
-    (num
-        slp),
-    fix),
+  #decl
+    ((num
+        slp)
+      fix),
   repeat(
     ((n
         _num)),
@@ -229,23 +229,23 @@ define(
       ,here)
     (dummy
       ,dummy)),
-  decl(
-    (prsact),
-    verb,
-    (fb
-        tb),
-    object,
-    (top
-        bot),
-    room,
-    (ct),
-    or(
+  #decl
+    ((prsact)
+      verb
+      (fb
+        tb)
+      object
+      (top
+        bot)
+      room
+      (ct)
+      or(
         atom,
-        false),
-    (here),
-    room,
-    (dummy),
-    vector(
+        false)
+      (here)
+      room
+      (dummy)
+      vector(
         [rest
           string])),
   cond(
@@ -324,9 +324,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  decl(
-    (prsact),
-    verb),
+  #decl
+    ((prsact)
+      verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -353,13 +353,13 @@ define(
     (mach
       find_obj(
         "MACHI"))),
-  decl(
-    (prsact),
-    verb,
-    (mach),
-    object,
-    (dummy),
-    vector(
+  #decl
+    ((prsact)
+      verb
+      (mach)
+      object
+      (dummy)
+      vector(
         [rest
           string])),
   cond(
@@ -424,16 +424,16 @@ define(
     (screw
       find_obj(
         "SCREW"))),
-  decl(
-    (prsact),
-    verb,
-    (imp),
-    object,
-    (mach
+  #decl
+    ((prsact)
+      verb
+      (imp)
+      object
+      (mach
         screw
         c
-        d),
-    object),
+        d)
+      object),
   cond(
     (_EQ_Q(
         _prsact,
@@ -503,11 +503,11 @@ define(
     (m
       ocan(
         _g))),
-  decl(
-    (g),
-    object,
-    (m),
-    or(
+  #decl
+    ((g)
+      object
+      (m)
+      or(
         object,
         false)),
   cond(
@@ -587,9 +587,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  decl(
-    (prsact),
-    verb),
+  #decl
+    ((prsact)
+      verb),
   cond(
     (_EQ_Q(
         vname(
@@ -640,9 +640,9 @@ define(
     (prsact
       1(
         ,prsvec))),
-  decl(
-    (prsact),
-    verb),
+  #decl
+    ((prsact)
+      verb),
   cond(
     (_EQ_Q(
         _prsact,
@@ -662,9 +662,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  decl(
-    (prso),
-    object),
+  #decl
+    ((prso)
+      object),
   cond(
     (_EQ_Q(
         _prso,
@@ -700,15 +700,15 @@ define(
     (dboat
       find_obj(
         "DBOAT"))),
-  decl(
-    (dboat),
-    object,
-    (prsact),
-    verb,
-    (here),
-    room,
-    (prsi),
-    or(
+  #decl
+    ((dboat)
+      object
+      (prsact)
+      verb
+      (here)
+      room
+      (prsi)
+      or(
         false,
         object)),
   cond(
@@ -765,18 +765,18 @@ define(
         "IBOAT"))
     (here
       ,here)),
-  decl(
-    (arg),
-    or(
+  #decl
+    ((arg)
+      or(
         false,
-        atom),
-    (prsact),
-    verb,
-    (iboat
-        rboat),
-    object,
-    (here),
-    room),
+        atom)
+      (prsact)
+      verb
+      (iboat
+        rboat)
+      object
+      (here)
+      room),
   cond(
     (_arg
       <>),
@@ -852,14 +852,14 @@ define(
         "RBOAT"))
     (here
       ,here)),
-  decl(
-    (prsact),
-    verb,
-    (iboat
-        rboat),
-    object,
-    (here),
-    room),
+  #decl
+    ((prsact)
+      verb
+      (iboat
+        rboat)
+      object
+      (here)
+      room),
   cond(
     (_EQ_Q(
         vname(
@@ -914,11 +914,11 @@ define(
         ,prsvec))
     (here
       ,here)),
-  decl(
-    (prsobj),
-    object,
-    (here),
-    room),
+  #decl
+    ((prsobj)
+      object
+      (here)
+      room),
   cond(
     (object_action(
         )),
@@ -947,9 +947,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           put(
             _x,
             ,ocan,
@@ -994,15 +994,15 @@ define(
     (here
       ,here)
     cnt),
-  decl(
-    (prsact),
-    verb,
-    (shov),
-    object,
-    (here),
-    room,
-    (cnt),
-    fix),
+  #decl
+    ((prsact)
+      verb
+      (shov)
+      object
+      (here)
+      room
+      (cnt)
+      fix),
   cond(
     (and(
         _EQ_Q(
@@ -1065,15 +1065,15 @@ define(
     (here
       ,here)
     cnt),
-  decl(
-    (prsact),
-    verb,
-    (shov),
-    object,
-    (here),
-    room,
-    (cnt),
-    fix),
+  #decl
+    ((prsact)
+      verb
+      (shov)
+      object
+      (here)
+      room
+      (cnt)
+      fix),
   cond(
     (and(
         _EQ_Q(
@@ -1161,9 +1161,9 @@ define(
   ("AUX"
     (swimyuks
       ,swimyuks)),
-  decl(
-    (swimyuks),
-    vector(
+  #decl
+    ((swimyuks)
+      vector(
         [rest
           string])),
   cond(
@@ -1182,9 +1182,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  decl(
-    (prsa),
-    verb),
+  #decl
+    ((prsa)
+      verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -1230,37 +1230,37 @@ define(
     (binf
       ,binf_X_flag)
     blabe),
-  decl(
-    (arg),
-    or(
+  #decl
+    ((arg)
+      or(
         atom,
-        false),
-    (blabe
+        false)
+      (blabe
         ball
         cont
-        recep),
-    object,
-    (prsa),
-    verb,
-    (prso),
-    or(
+        recep)
+      object
+      (prsa)
+      verb
+      (prso)
+      or(
         object,
-        direction),
-    (m),
-    or(
+        direction)
+      (m)
+      or(
         false,
         primtype(
-          vector)),
-    (prsvec),
-    vector(
+          vector))
+      (prsvec)
+      vector(
         [3
-          any]),
-    (binf),
-    or(
+          any])
+      (binf)
+      or(
         false,
-        room),
-    (m),
-    or(
+        room)
+      (m)
+      or(
         false,
         <primtype(
             vector)
@@ -1496,24 +1496,24 @@ define(
     (bl
       ,bloc)
     foo),
-  decl(
-    (ball),
-    object,
-    (here
-        bl),
-    room,
-    (m),
-    or(
+  #decl
+    ((ball)
+      object
+      (here
+        bl)
+      room
+      (m)
+      or(
         false,
-        string),
-    (s),
-    string,
-    (in_Q),
-    or(
+        string)
+      (s)
+      string
+      (in_Q)
+      or(
         atom,
-        false),
-    (foo),
-    cevent),
+        false)
+      (foo)
+      cevent),
   clock_int(
     ,bint,
     3),
@@ -1644,14 +1644,14 @@ define(
     here
     there
     str),
-  decl(
-    (ball),
-    object,
-    (here),
-    room,
-    (there
-        str),
-    string),
+  #decl
+    ((ball)
+      object
+      (here)
+      room
+      (there
+        str)
+      string),
   and(
     member(
       "LEDG",
@@ -1692,24 +1692,24 @@ define(
           ,winner),
         _ball))
     foo),
-  decl(
-    (ball),
-    object,
-    (here
-        bl),
-    room,
-    (m),
-    or(
+  #decl
+    ((ball)
+      object
+      (here
+        bl)
+      room
+      (m)
+      or(
         false,
-        string),
-    (s),
-    string,
-    (in_Q),
-    or(
+        string)
+      (s)
+      string
+      (in_Q)
+      or(
         atom,
-        false),
-    (foo),
-    cevent),
+        false)
+      (foo)
+      cevent),
   clock_int(
     ,bint,
     3),
@@ -1815,16 +1815,16 @@ define(
         _pv))
     (bint
       ,bint)),
-  decl(
-    (bint),
-    cevent,
-    (pv),
-    vector,
-    (prsa),
-    verb,
-    (prso
-        prsi),
-    prsobj),
+  #decl
+    ((bint)
+      cevent
+      (pv)
+      vector
+      (prsa)
+      verb
+      (prso
+        prsi)
+      prsobj),
   cond(
     (_EQ_Q(
         _prsa,
@@ -1885,10 +1885,10 @@ define(
       1(
         ocontents(
           _r)))),
-  decl(
-    (r
-        obj),
-    object),
+  #decl
+    ((r
+        obj)
+      object),
   put(
     _r,
     ,ocontents,
@@ -1917,9 +1917,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  decl(
-    (prsa),
-    verb),
+  #decl
+    ((prsa)
+      verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -1939,9 +1939,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  decl(
-    (prsa),
-    verb),
+  #decl
+    ((prsa)
+      verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -1982,9 +1982,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  decl(
-    (prsa),
-    verb),
+  #decl
+    ((prsa)
+      verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -2006,18 +2006,18 @@ define(
         "BRICK"))
     brick_room
     oc),
-  decl(
-    (prsa),
-    verb,
-    (fuse
-        brick),
-    object,
-    (brick_room),
-    or(
+  #decl
+    ((prsa)
+      verb
+      (fuse
+        brick)
+      object
+      (brick_room)
+      or(
         room,
-        false),
-    (oc),
-    or(
+        false)
+      (oc)
+      or(
         object,
         false)),
   cond(
@@ -2134,9 +2134,9 @@ define(
                     <>,
                     function(
                       (x),
-                      decl(
-                        (x),
-                        object),
+                      #decl
+                        ((x)
+                          object),
                       put(
                         _x,
                         ,ocan,
@@ -2165,9 +2165,9 @@ define(
   ("AUX"
     (rm
       ,munged_room)),
-  decl(
-    (rm),
-    room),
+  #decl
+    ((rm)
+      room),
   cond(
     (_EQ_Q(
         ,here,
@@ -2203,9 +2203,9 @@ define(
     (rm
       find_room(
         "LEDG4"))),
-  decl(
-    (rm),
-    room),
+  #decl
+    ((rm)
+      room),
   cond(
     (_EQ_Q(
         ,here,
@@ -2258,9 +2258,9 @@ define(
     (prsa
       1(
         ,prsvec))),
-  decl(
-    (prsa),
-    verb),
+  #decl
+    ((prsa)
+      verb),
   cond(
     (_EQ_Q(
         _prsa,
@@ -2333,13 +2333,13 @@ define(
     (prso
       2(
         _pv))),
-  decl(
-    (pv),
-    vector,
-    (prsa),
-    verb,
-    (prso),
-    prsobj),
+  #decl
+    ((pv)
+      vector
+      (prsa)
+      verb
+      (prso)
+      prsobj),
   cond(
     (and(
         or(

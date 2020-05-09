@@ -35,13 +35,13 @@ define(
     (st
       remarkably_disgusting_code(
         ))),
-  decl(
-    (fn),
-    string,
-    (muddle),
-    fix,
-    (stv),
-    or(
+  #decl
+    ((fn)
+      string
+      (muddle)
+      fix
+      (stv)
+      or(
         string,
         fix)),
   put(
@@ -293,16 +293,16 @@ off(
 define(
   xuname,
   (),
-  decl(
-    (value),
-    string),
+  #decl
+    ((value)
+      string),
   mapf(
     ,string,
     function(
       (x),
-      decl(
-        (x),
-        character),
+      #decl
+        ((x)
+          character),
       cond(
         (or(
             0_Q(
@@ -334,21 +334,21 @@ define(
     tlen
     tstr
     str),
-  decl(
-    (str
+  #decl
+    ((str
         tstr
-        uname),
-    string,
-    (nm
+        uname)
+      string
+      (nm
         cma
-        jr),
-    or(
+        jr)
+      or(
         string,
-        false),
-    (tlen
+        false)
+      (tlen
         llst
-        lfst),
-    fix),
+        lfst)
+      fix),
   cond(
     (_nm
       cond(
@@ -472,14 +472,14 @@ define(
     (o
       find_obj(
         "PAPER"))),
-  decl(
-    (o),
-    object,
-    (nstr
-        str),
-    string,
-    (len_i),
-    fix),
+  #decl
+    ((o)
+      object
+      (nstr
+        str)
+      string
+      (len_i)
+      fix),
   set(
     str,
     memq(
@@ -534,9 +534,9 @@ define(
     (n
       dskdate(
         ))),
-  decl(
-    (n),
-    primtype(
+  #decl
+    ((n)
+      primtype(
         word)),
   string(
     "This version created",
@@ -582,10 +582,10 @@ define(
         ))
     (then
       ,intime)),
-  decl(
-    (now
-        then),
-    primtype(
+  #decl
+    ((now
+        then)
+      primtype(
         word)),
   _(
     cond(
@@ -654,15 +654,15 @@ define(
     "AUX"
     time
     mins),
-  decl(
-    (mins
-        time),
-    fix,
-    (outchan),
-    special(
-        channel),
-    (loser_Q),
-    or(
+  #decl
+    ((mins
+        time)
+      fix
+      (outchan)
+      special(
+        channel)
+      (loser_Q)
+      or(
         atom,
         false)),
   set(
@@ -753,9 +753,9 @@ define(
     zork
     "AUX"
     zf),
-  decl(
-    (zf),
-    any),
+  #decl
+    ((zf)
+      any),
   put(
     ,outchan,
     13,
@@ -880,8 +880,8 @@ define(
                 _x)),
             _zork)
           finish(
-            false(
-              ". Error.")))))))
+            #false
+              (". Error.")))))))
 
 psetg(
   winners,
@@ -940,16 +940,16 @@ define(
     (xunm
       xuname(
         ))),
-  decl(
-    (st
-        rm),
-    string,
-    (muddle),
-    fix,
-    (xunm),
-    string,
-    (fn),
-    or(
+  #decl
+    ((st
+        rm)
+      string
+      (muddle)
+      fix
+      (xunm)
+      string
+      (fn)
+      or(
         false,
         string)),
   setg(
@@ -1087,9 +1087,9 @@ define(
   make_script,
   ("AUX"
     ch),
-  decl(
-    (ch),
-    or(
+  #decl
+    ((ch)
+      or(
         channel,
         false)),
   cond(
@@ -1141,15 +1141,15 @@ define(
       ,xunm)
     (muddle
       ,muddle)),
-  decl(
-    (ch),
-    or(
+  #decl
+    ((ch)
+      or(
         channel,
-        false),
-    (unm),
-    string,
-    (muddle),
-    fix),
+        false)
+      (unm)
+      string
+      (muddle)
+      fix),
   cond(
     (,my_script
       do_unscript(
@@ -1233,9 +1233,9 @@ define(
   ("OPTIONAL"
     (verbose
       t)),
-  decl(
-    (verbose),
-    or(
+  #decl
+    ((verbose)
+      or(
         atom,
         false)),
   cond(
@@ -1276,15 +1276,15 @@ define(
     ch
     (unm
       ,xunm)),
-  decl(
-    (ch),
-    or(
+  #decl
+    ((ch)
+      or(
         channel,
-        false),
-    (muddle),
-    fix,
-    (unm),
-    string),
+        false)
+      (muddle)
+      fix
+      (unm)
+      string),
   cond(
     (or(
         g_Q(
@@ -1391,18 +1391,18 @@ define(
     nowd
     now
     thend),
-  decl(
-    (ch),
-    or(
+  #decl
+    ((ch)
+      or(
         channel,
-        false),
-    (str),
-    string,
-    (nowd
+        false)
+      (str)
+      string
+      (nowd
         now
         thend
-        muddle),
-    fix),
+        muddle)
+      fix),
   cond(
     (l_Q(
         _muddle,
@@ -1426,13 +1426,13 @@ define(
       (snm
         sname(
           ))),
-    decl(
-      (foo),
-      or(
+    #decl
+      ((foo)
+        or(
           atom,
-          false),
-      (snm),
-      special(
+          false)
+        (snm)
+        special(
           string)),
     cond(
       (set(
@@ -1558,9 +1558,9 @@ define(
 define(
   prob,
   (num),
-  decl(
-    (num),
-    fix),
+  #decl
+    ((num)
+      fix),
   l__Q(
     mod(
       random(
@@ -1579,25 +1579,25 @@ define(
       get(
         initial,
         oblist))),
-  decl(
-    (o),
-    oblist),
+  #decl
+    ((o)
+      oblist),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        list(
+      #decl
+        ((x)
+          list(
             [rest
               atom])),
       mapf(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            atom),
+          #decl
+            ((x)
+              atom),
           cond(
             (and(
                 gassigned_Q(
@@ -1693,24 +1693,24 @@ define(
     (outchan
       ,outchan)
     ra),
-  decl(
-    (rm),
-    room,
-    (winobj),
-    object,
-    (av),
-    or(
+  #decl
+    ((rm)
+      room
+      (winobj)
+      object
+      (av)
+      or(
         false,
-        object),
-    (outchan),
-    channel,
-    (prso),
-    or(
+        object)
+      (outchan)
+      channel
+      (prso)
+      or(
         direction,
         false,
-        object),
-    (full),
-    or(
+        object)
+      (full)
+      or(
         atom,
         false)),
   setg(
@@ -1822,9 +1822,9 @@ define(
       <>,
       function(
         (x),
-        decl(
-          (x),
-          object),
+        #decl
+          ((x)
+            object),
         cond(
           (and(
               ovis_Q(
@@ -1910,22 +1910,22 @@ define(
     (cont
       ocontents(
         _obj))),
-  decl(
-    (av),
-    or(
+  #decl
+    ((av)
+      or(
         false,
-        object),
-    (obj
-        winobj),
-    object,
-    (indent),
-    string,
-    (cont),
-    list(
+        object)
+      (obj
+        winobj)
+      object
+      (indent)
+      string
+      (cont)
+      list(
         [rest
-          object]),
-    (case_Q),
-    or(
+          object])
+      (case_Q)
+      or(
         atom,
         false)),
   cond(
@@ -1972,9 +1972,9 @@ define(
         <>,
         function(
           (y),
-          decl(
-            (y),
-            object),
+          #decl
+            ((y)
+              object),
           cond(
             (and(
                 _av,
@@ -2015,9 +2015,9 @@ define(
   (obj
     "AUX"
     str),
-  decl(
-    (obj),
-    object),
+  #decl
+    ((obj)
+      object),
   cond(
     (or(
         otouch_Q(
@@ -2080,31 +2080,31 @@ define(
     (outchan
       ,outchan)
     random_action),
-  decl(
-    (rvec),
-    or(
+  #decl
+    ((rvec)
+      or(
         false,
-        vector),
-    (rm),
-    room,
-    (inplen),
-    fix,
-    (inbuf),
-    string,
-    (winner),
-    adv,
-    (av),
-    or(
+        vector)
+      (rm)
+      room
+      (inplen)
+      fix
+      (inbuf)
+      string
+      (winner)
+      adv
+      (av)
+      or(
         false,
-        object),
-    (outchan),
-    channel,
-    (ivec),
-    or(
+        object)
+      (outchan)
+      channel
+      (ivec)
+      or(
         false,
-        vector),
-    (vc),
-    vector),
+        vector)
+      (vc)
+      vector),
   or(
     _ivec,
     prog(
@@ -2118,9 +2118,9 @@ define(
   repeat(
     (vval
       cv),
-    decl(
-      (cv),
-      or(
+    #decl
+      ((cv)
+        or(
           false,
           verb)),
     set(
@@ -2250,9 +2250,9 @@ define(
       <>,
       function(
         (x),
-        decl(
-          (x),
-          hack),
+        #decl
+          ((x)
+            hack),
         cond(
           (set(
               random_action,
@@ -2285,9 +2285,9 @@ define(
   (obj
     "AUX"
     temp),
-  decl(
-    (obj),
-    object),
+  #decl
+    ((obj)
+      object),
   cond(
     (g_Q(
         set(
@@ -2307,9 +2307,9 @@ define(
   (rm
     "AUX"
     temp),
-  decl(
-    (rm),
-    room),
+  #decl
+    ((rm)
+      room),
   cond(
     (g_Q(
         set(
@@ -2330,9 +2330,9 @@ define(
     "AUX"
     (winner
       ,winner)),
-  decl(
-    (num),
-    fix),
+  #decl
+    ((num)
+      fix),
   put(
     _winner,
     ,ascore,
@@ -2356,17 +2356,17 @@ define(
     (outchan
       _outchan)
     pct),
-  decl(
-    (ask_Q),
-    or(
+  #decl
+    ((ask_Q)
+      or(
         atom,
-        false),
-    (scor),
-    fix,
-    (outchan),
-    channel,
-    (pct),
-    float),
+        false)
+      (scor)
+      fix
+      (outchan)
+      channel
+      (pct)
+      float),
   setg(
     tell_flag,
     t),
@@ -2460,13 +2460,13 @@ define(
       t)
     "AUX"
     scor),
-  decl(
-    (ask_Q),
-    or(
+  #decl
+    ((ask_Q)
+      or(
         atom,
-        false),
-    (scor),
-    fix),
+        false)
+      (scor)
+      fix),
   unwind(
     prog(
       (),
@@ -2540,31 +2540,31 @@ define(
     (snm
       value(
         snm))),
-  decl(
-    (muddle
+  #decl
+    ((muddle
         score
         moves
-        deaths),
-    fix,
-    (quit_Q),
-    or(
+        deaths)
+      fix
+      (quit_Q)
+      or(
         atom,
-        false),
-    (loc),
-    room,
-    (ch),
-    or(
+        false)
+      (loc)
+      room
+      (ch)
+      or(
         channel(
           fix),
-        false),
-    (str),
-    string,
-    (ct
-        fl),
-    fix,
-    (dev
-        snm),
-    string),
+        false)
+      (str)
+      string
+      (ct
+        fl)
+      fix
+      (dev
+        snm)
+      string),
   unwind(
     prog(
       (),
@@ -2778,11 +2778,11 @@ define(
         function(
           (x
             y),
-          decl(
-            (x),
-            atom,
-            (y),
-            string),
+          #decl
+            ((x)
+              atom
+              (y)
+              string),
           cond(
             (,_x
               princ(
@@ -2798,11 +2798,11 @@ define(
         function(
           (x
             y),
-          decl(
-            (x),
-            atom,
-            (y),
-            string),
+          #decl
+            ((x)
+              atom
+              (y)
+              string),
           cond(
             (0_Q(
                 ,_x)
@@ -2921,17 +2921,17 @@ define(
     (a_p
       "AM")
     hr),
-  decl(
-    (wd),
-    primtype(
-        word),
-    (tim
-        hr),
-    fix,
-    (a_p),
-    string,
-    (ch),
-    channel),
+  #decl
+    ((wd)
+      primtype(
+        word)
+      (tim
+        hr)
+      fix
+      (a_p)
+      string
+      (ch)
+      channel),
   princ(
     "",
     _ch),
@@ -3061,31 +3061,31 @@ define(
     (val_list
       ())
     lc),
-  decl(
-    (desc),
-    string,
-    (deaths),
-    fix,
-    (aobjs),
-    list(
+  #decl
+    ((desc)
+      string
+      (deaths)
+      fix
+      (aobjs)
+      list(
         [rest
-          object]),
-    (val_list),
-    list(
+          object])
+      (val_list)
+      list(
         [rest
-          object]),
-    (lamp_location),
-    or(
+          object])
+      (lamp_location)
+      or(
         false,
-        room),
-    (winner),
-    adv,
-    (random_list),
-    list(
+        room)
+      (winner)
+      adv
+      (random_list)
+      list(
         [rest
-          room]),
-    (lamp),
-    object),
+          room])
+      (lamp)
+      object),
   cond(
     (,dbg
       tell(
@@ -3224,11 +3224,11 @@ define(
                     function(
                       (x
                         y),
-                      decl(
-                        (x),
-                        object,
-                        (y),
-                        room),
+                      #decl
+                        ((x)
+                          object
+                          (y)
+                          room),
                       insert_object(
                         _x,
                         _y)),
@@ -3274,11 +3274,11 @@ define(
                     function(
                       (x
                         y),
-                      decl(
-                        (x),
-                        object,
-                        (y),
-                        room),
+                      #decl
+                        ((x)
+                          object
+                          (y)
+                          room),
                       insert_object(
                         _x,
                         _y)),
@@ -3349,21 +3349,21 @@ define(
       length(
         _buf))
     iter),
-  decl(
-    (buf
+  #decl
+    ((buf
         file1
         file2
         dev
-        snm),
-    string,
-    (ch),
-    or(
+        snm)
+      string
+      (ch)
+      or(
         channel,
-        false),
-    (iter
+        false)
+      (iter
         len
-        buflen),
-    fix),
+        buflen)
+      fix),
   cond(
     (_ch
       unwind(
@@ -3395,9 +3395,9 @@ define(
             t),
           repeat(
             (slen),
-            decl(
-              (slen),
-              fix),
+            #decl
+              ((slen)
+                fix),
             cond(
               (1_Q(
                   _iter)
@@ -3444,22 +3444,22 @@ define(
       <>)
     (outchan
       ,outchan)),
-  decl(
-    (any),
-    or(
+  #decl
+    ((any)
+      or(
         atom,
-        false),
-    (outchan),
-    channel,
-    (win),
-    adv),
+        false)
+      (outchan)
+      channel
+      (win)
+      adv),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (ovis_Q(
             _x)
@@ -3520,20 +3520,20 @@ define(
     "AUX"
     (outchan
       ,outchan)),
-  decl(
-    (olst),
-    list(
+  #decl
+    ((olst)
+      list(
         [rest
-          object]),
-    (outchan),
-    channel),
+          object])
+      (outchan)
+      channel),
   mapr(
     <>,
     function(
       (y),
-      decl(
-        (y),
-        list(
+      #decl
+        ((y)
+          list(
             [rest
               object])),
       princ(
@@ -3565,11 +3565,11 @@ define(
     "AUX"
     (win
       ,winner)),
-  decl(
-    (rm),
-    room,
-    (win),
-    adv),
+  #decl
+    ((rm)
+      room
+      (win)
+      adv),
   or(
     rlight_Q(
       _rm),
@@ -3597,20 +3597,20 @@ define(
   (l
     "AUX"
     y),
-  decl(
-    (l),
-    list(
+  #decl
+    ((l)
+      list(
         [rest
-          object]),
-    (y),
-    adv),
+          object])
+      (y)
+      adv),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       and(
         g_Q(
           olight_Q(
@@ -3631,9 +3631,9 @@ define(
             <>,
             function(
               (x),
-              decl(
-                (x),
-                object),
+              #decl
+                ((x)
+                  object),
               cond(
                 (g_Q(
                     olight_Q(
@@ -3679,21 +3679,21 @@ define(
     nl
     random_action
     cxs),
-  decl(
-    (where),
-    atom,
-    (me),
-    adv,
-    (rm),
-    room,
-    (leavings),
-    or(
+  #decl
+    ((where)
+      atom
+      (me)
+      adv
+      (rm)
+      room
+      (leavings)
+      or(
         atom,
         room,
         cexit,
-        nexit),
-    (nrm),
-    or(
+        nexit)
+      (nrm)
+      or(
         false,
         <primtype(
             vector)
@@ -3702,9 +3702,9 @@ define(
             or(
               room,
               nexit,
-              cexit)]>),
-    (nl),
-    or(
+              cexit)]>)
+      (nl)
+      or(
         atom,
         room,
         false)),
@@ -3867,26 +3867,26 @@ define(
         _win))
     (load_max
       ,load_max)),
-  decl(
-    (win),
-    adv,
-    (vec),
-    vector,
-    (obj
-        nobj),
-    object,
-    (rm),
-    room,
-    (getter_Q
-        take_Q),
-    or(
+  #decl
+    ((win)
+      adv
+      (vec)
+      vector
+      (obj
+        nobj)
+      object
+      (rm)
+      room
+      (getter_Q
+        take_Q)
+      or(
         atom,
-        false),
-    (load_max),
-    fix,
-    (robjs
-        aobjs),
-    list(
+        false)
+      (load_max)
+      fix
+      (robjs
+        aobjs)
+      list(
         [rest
           object])),
   prog(
@@ -4053,30 +4053,30 @@ define(
         ,here))
     (ocan
       <>)),
-  decl(
-    (pv),
-    vector(
+  #decl
+    ((pv)
+      vector(
         [3
-          any]),
-    (objo
-        obji),
-    object,
-    (win),
-    adv,
-    (aobjs
-        robjs),
-    list(
+          any])
+      (objo
+        obji)
+      object
+      (win)
+      adv
+      (aobjs
+        robjs)
+      list(
         [rest
-          object]),
-    (crock
-        can),
-    object,
-    (ocan),
-    or(
+          object])
+      (crock
+        can)
+      object
+      (ocan)
+      or(
         false,
-        object),
-    (objact),
-    or(
+        object)
+      (objact)
+      or(
         atom,
         false)),
   prog(
@@ -4291,26 +4291,26 @@ define(
       3(
         _vec))
     nobj),
-  decl(
-    (vec),
-    vector(
+  #decl
+    ((vec)
+      vector(
         verb,
         object,
         or(
           false,
-          object)),
-    (obj
-        nobj),
-    object,
-    (pi
-        av),
-    or(
+          object))
+      (obj
+        nobj)
+      object
+      (pi
+        av)
+      or(
         false,
-        object),
-    (rm),
-    room,
-    (getter_Q),
-    or(
+        object)
+      (rm)
+      room
+      (getter_Q)
+      or(
         atom,
         false)),
   prog(
@@ -4481,28 +4481,28 @@ define(
       ,winner)
     (here
       ,here)),
-  decl(
-    (uv),
-    uvector(
+  #decl
+    ((uv)
+      uvector(
         [rest
-          object]),
-    (prsvec),
-    vector(
+          object])
+      (prsvec)
+      vector(
         verb,
         [2
-          any]),
-    (pa),
-    verb,
-    (ra),
-    rapplic,
-    (pi),
-    or(
+          any])
+      (pa)
+      verb
+      (ra)
+      rapplic
+      (pi)
+      or(
         object,
-        false),
-    (winner),
-    adv,
-    (here),
-    room),
+        false)
+      (winner)
+      adv
+      (here)
+      room),
   cond(
     (_EQ_Q(
         _pa,
@@ -4511,9 +4511,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           cond(
             (or(
                 can_take_Q(
@@ -4551,9 +4551,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           put(
             _prsvec,
             2,
@@ -4600,22 +4600,22 @@ define(
       ,here)
     (winner
       ,winner)),
-  decl(
-    (pa),
-    verb,
-    (suv
-        tuv),
-    uvector(
+  #decl
+    ((pa)
+      verb
+      (suv
+        tuv)
+      uvector(
         [rest
-          object]),
-    (lu),
-    fix,
-    (here),
-    room,
-    (winner),
-    adv,
-    (pi),
-    object),
+          object])
+      (lu)
+      fix
+      (here)
+      room
+      (winner)
+      adv
+      (pi)
+      object),
   cond(
     (_EQ_Q(
         _pa,
@@ -4624,9 +4624,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           cond(
             (and(
                 ovis_Q(
@@ -4660,9 +4660,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           set(
             suv,
             back(
@@ -4687,9 +4687,9 @@ define(
           <>,
           function(
             (x),
-            decl(
-              (x),
-              object),
+            #decl
+              ((x)
+                object),
             cond(
               (and(
                   ovis_Q(
@@ -4724,9 +4724,9 @@ define(
           <>,
           function(
             (x),
-            decl(
-              (x),
-              object),
+            #decl
+              ((x)
+                object),
             cond(
               (and(
                   _EQ_Q(
@@ -4779,22 +4779,22 @@ define(
       ,here)
     (winner
       ,winner)),
-  decl(
-    (pa),
-    verb,
-    (suv
-        tuv),
-    uvector(
+  #decl
+    ((pa)
+      verb
+      (suv
+        tuv)
+      uvector(
         [rest
-          object]),
-    (lu),
-    fix,
-    (here),
-    room,
-    (winner),
-    adv,
-    (pi),
-    object),
+          object])
+      (lu)
+      fix
+      (here)
+      room
+      (winner)
+      adv
+      (pi)
+      object),
   cond(
     (_EQ_Q(
         _pa,
@@ -4803,9 +4803,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           cond(
             (and(
                 ovis_Q(
@@ -4843,9 +4843,9 @@ define(
         <>,
         function(
           (x),
-          decl(
-            (x),
-            object),
+          #decl
+            ((x)
+              object),
           cond(
             (not(
                 0_Q(
@@ -4875,9 +4875,9 @@ define(
           <>,
           function(
             (x),
-            decl(
-              (x),
-              object),
+            #decl
+              ((x)
+                object),
             cond(
               (and(
                   _EQ_Q(
@@ -4913,9 +4913,9 @@ define(
           <>,
           function(
             (x),
-            decl(
-              (x),
-              object),
+            #decl
+              ((x)
+                object),
             cond(
               (and(
                   _EQ_Q(
@@ -4963,15 +4963,15 @@ define(
         _pv))
     (outchan
       ,outchan)),
-  decl(
-    (prso),
-    object,
-    (pv),
-    vector(
+  #decl
+    ((prso)
+      object
+      (pv)
+      vector(
         [3
-          any]),
-    (outchan),
-    channel),
+          any])
+      (outchan)
+      channel),
   cond(
     (object_action(
         )),
@@ -5040,13 +5040,13 @@ define(
     (prso
       2(
         _pv))),
-  decl(
-    (pv),
-    vector(
+  #decl
+    ((pv)
+      vector(
         [3
-          any]),
-    (prso),
-    object),
+          any])
+      (prso)
+      object),
   cond(
     (object_action(
         )),
@@ -5085,9 +5085,9 @@ define(
     (prso
       2(
         ,prsvec))),
-  decl(
-    (prso),
-    or(
+  #decl
+    ((prso)
+      or(
         false,
         object)),
   cond(
@@ -5123,24 +5123,24 @@ define(
     str1
     str2
     str3),
-  decl(
-    (obj),
-    object,
-    (objl),
-    list(
+  #decl
+    ((obj)
+      object
+      (objl)
+      list(
         [rest
-          object]),
-    (str1
+          object])
+      (str1
         str2
-        str3),
-    string),
+        str3)
+      string),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (_EQ_Q(
             _x,
@@ -5163,9 +5163,9 @@ define(
             <>,
             function(
               (y),
-              decl(
-                (y),
-                object),
+              #decl
+                ((y)
+                  object),
               cond(
                 (_EQ_Q(
                     _y,
@@ -5199,14 +5199,14 @@ define(
     (prsi
       3(
         _vec))),
-  decl(
-    (prso
-        prsi),
-    or(
+  #decl
+    ((prso
+        prsi)
+      or(
         object,
-        false),
-    (vec),
-    vector),
+        false)
+      (vec)
+      vector),
   prog(
     (),
     cond(
@@ -5232,15 +5232,15 @@ define(
       ,here)
     (win
       ,winner)),
-  decl(
-    (obj),
-    object,
-    (rm),
-    room,
-    (win),
-    adv,
-    (nobj),
-    or(
+  #decl
+    ((obj)
+      object
+      (rm)
+      room
+      (win)
+      adv
+      (nobj)
+      or(
         false,
         object)),
   prog(
@@ -5277,9 +5277,9 @@ define(
   splice_out,
   (obj
     al),
-  decl(
-    (al),
-    list),
+  #decl
+    ((al)
+      list),
   cond(
     (_EQ_Q(
         1(
@@ -5294,10 +5294,10 @@ define(
               _al))
           (ol
             _al)),
-        decl(
-          (nl
-              ol),
-          list),
+        #decl
+          ((nl
+              ol)
+            list),
         cond(
           (_EQ_Q(
               1(
@@ -5325,22 +5325,22 @@ define(
     "AUX"
     (bigfix
       ,bigfix)),
-  decl(
-    (objl),
-    list(
+  #decl
+    ((objl)
+      list(
         [rest
-          object]),
-    (bigfix),
-    fix,
-    (value),
-    fix),
+          object])
+      (bigfix)
+      fix
+      (value)
+      fix),
   mapf(
     ,_,
     function(
       (obj),
-      decl(
-        (obj),
-        object),
+      #decl
+        ((obj)
+          object),
       _(
         cond(
           (_EQ_Q(
@@ -5371,13 +5371,13 @@ define(
     (obj
       2(
         _vec))),
-  decl(
-    (vec),
-    vector,
-    (rm),
-    room,
-    (obj),
-    or(
+  #decl
+    ((vec)
+      vector
+      (rm)
+      room
+      (obj)
+      or(
         atom,
         object)),
   cond(
@@ -5394,16 +5394,16 @@ define(
 define(
   victims_Q,
   (rm),
-  decl(
-    (rm),
-    room),
+  #decl
+    ((rm)
+      room),
   mapf(
     <>,
     function(
       (x),
-      decl(
-        (x),
-        object),
+      #decl
+        ((x)
+          object),
       cond(
         (trnn(
             _x,
@@ -5427,13 +5427,13 @@ define(
     (lit_Q
       lit_Q(
         ,here))),
-  decl(
-    (me),
-    adv,
-    (obj),
-    object,
-    (lampo),
-    activation),
+  #decl
+    ((me)
+      adv
+      (obj)
+      object
+      (lampo)
+      activation),
   cond(
     (and(
         trnn(
@@ -5501,13 +5501,13 @@ define(
     (obj
       2(
         ,prsvec))),
-  decl(
-    (me),
-    adv,
-    (obj),
-    object,
-    (lampo),
-    activation),
+  #decl
+    ((me)
+      adv
+      (obj)
+      object
+      (lampo)
+      activation),
   cond(
     (object_action(
         )),
@@ -5566,8 +5566,8 @@ setg(
   prsvec,
   ivector(
     3,
-    false(
-      )))
+    #false
+      ()))
 
 define(
   word_Q,
@@ -5581,13 +5581,13 @@ define(
   (objnam
     obj
     adj),
-  decl(
-    (objnam),
-    atom,
-    (obj),
-    object,
-    (adj),
-    or(
+  #decl
+    ((objnam)
+      atom
+      (obj)
+      object
+      (adj)
+      or(
         false,
         adjective)),
   cond(
@@ -5648,23 +5648,23 @@ define(
       _s)
     (quot
       <>)),
-  decl(
-    (s
+  #decl
+    ((s
         s1
         sx
-        brks),
-    string,
-    (silent_Q
-        quot),
-    or(
+        brks)
+      string
+      (silent_Q
+        quot)
+      or(
         atom,
-        false),
-    (value),
-    or(
+        false)
+      (value)
+      or(
         false,
-        vector),
-    (v),
-    vector(
+        vector)
+      (v)
+      vector(
         [rest
           string])),
   mapr(
@@ -5675,13 +5675,13 @@ define(
         (str
           1(
             _x))),
-      decl(
-        (x),
-        vector(
+      #decl
+        ((x)
+          vector(
             [rest
-              string]),
-        (str),
-        string),
+              string])
+          (str)
+          string),
       put(
         _x,
         1,
@@ -5708,9 +5708,9 @@ define(
             4)))),
     (repeat(
         (slen),
-        decl(
-          (slen),
-          fix),
+        #decl
+          ((slen)
+            fix),
         cond(
           (or(
               _EQ_Q(
@@ -5807,10 +5807,10 @@ define(
   anything,
   (s
     sx),
-  decl(
-    (s
-        sx),
-    string),
+  #decl
+    ((s
+        sx)
+      string),
   mapr(
     <>,
     function(
@@ -5833,9 +5833,9 @@ define(
 define(
   uppercase,
   (str),
-  decl(
-    (str),
-    string),
+  #decl
+    ((str)
+      string),
   mapr(
     <>,
     function(
@@ -5868,17 +5868,17 @@ define(
   ("OPTIONAL"
     (num
       3)),
-  decl(
-    (num),
-    fix),
+  #decl
+    ((num)
+      fix),
   tell(
     "Time passes..."),
   repeat(
     ((n
         _num)),
-    decl(
-      (n),
-      fix),
+    #decl
+      ((n)
+        fix),
     cond(
       (or(
           l_Q(
@@ -5902,11 +5902,11 @@ define(
     ca
     (flg
       <>)),
-  decl(
-    (hack),
-    hack,
-    (flg),
-    or(
+  #decl
+    ((hack)
+      hack
+      (flg)
+      or(
         atom,
         false)),
   cond(
@@ -5927,11 +5927,11 @@ define(
             (tick
               ctick(
                 _ev))),
-          decl(
-            (ev),
-            cevent,
-            (tick),
-            fix),
+          #decl
+            ((ev)
+              cevent
+              (tick)
+              fix),
           cond(
             (not(
                 cflag(
@@ -6001,15 +6001,15 @@ define(
       <>)
     (clocker
       ,clocker)),
-  decl(
-    (cev),
-    cevent,
-    (num),
-    or(
+  #decl
+    ((cev)
+      cevent
+      (num)
+      or(
         fix,
-        false),
-    (clocker),
-    hack),
+        false)
+      (clocker)
+      hack),
   cond(
     (not(
         memq(
@@ -6060,13 +6060,13 @@ define(
     (av
       avehicle(
         _win))),
-  decl(
-    (obj),
-    object,
-    (win),
-    adv,
-    (av),
-    or(
+  #decl
+    ((obj)
+      object
+      (win)
+      adv
+      (av)
+      or(
         false,
         object)),
   cond(
@@ -6132,13 +6132,13 @@ define(
     (av
       avehicle(
         _win))),
-  decl(
-    (obj),
-    object,
-    (win),
-    adv,
-    (av),
-    or(
+  #decl
+    ((obj)
+      object
+      (win)
+      adv
+      (av)
+      or(
         false,
         object)),
   cond(
@@ -6185,18 +6185,18 @@ define(
       rtrnn(
         _rm,
         ,rlandbit))),
-  decl(
-    (here
-        rm),
-    room,
-    (win),
-    adv,
-    (av),
-    or(
+  #decl
+    ((here
+        rm)
+      room
+      (win)
+      adv
+      (av)
+      or(
         false,
-        object),
-    (lb),
-    or(
+        object)
+      (lb)
+      or(
         atom,
         false)),
   cond(
@@ -6291,11 +6291,11 @@ define(
   mung_room,
   (rm
     str),
-  decl(
-    (rm),
-    room,
-    (str),
-    string),
+  #decl
+    ((rm)
+      room
+      (str)
+      string),
   rtro(
     _rm,
     ,rmungbit),
@@ -6323,17 +6323,17 @@ define(
       ,winner)
     (play
       ,player)),
-  decl(
-    (po),
-    object,
-    (pv
-        v),
-    vector,
-    (hs),
-    room,
-    (win
-        play),
-    adv),
+  #decl
+    ((po)
+      object
+      (pv
+        v)
+      vector
+      (hs)
+      room
+      (win
+        play)
+      adv),
   cond(
     (n_EQ_Q(
         _win,
