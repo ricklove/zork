@@ -64,16 +64,13 @@
               <COND
                 (.DUMMY?
                   <TELL
-                    "I didn't realize that adventurers are stupid enough to light a 
-"
+                    "I didn't realize that adventurers are stupid enough to light a   "
                     1
                     <ODESC2
                       .O>
-                    " in a room which reeks of coal gas.
-Fortunately, there is justice in the world.">)
+                    " in a room which reeks of coal gas.  Fortunately, there is justice in the world.">)
                 (<TELL
-                    "Oh dear.  It appears that the smell coming from this room was coal
-gas.  I would have thought twice about carrying a "
+                    "Oh dear.  It appears that the smell coming from this room was coal  gas.  I would have thought twice about carrying a "
                     1
                     <ODESC2
                       .O>
@@ -118,8 +115,7 @@ gas.  I would have thought twice about carrying a "
           <AOBJS
             ,WINNER>>
         <TELL
-          "In the corner of the room on the ceiling is a large vampire bat who
-is obviously deranged and holding his nose.">>)>>
+          "In the corner of the room on the ceiling is a large vampire bat who  is obviously deranged and holding his nose.">>)>>
 <DEFINE
   FLY-ME
   ("AUX"
@@ -137,8 +133,7 @@ is obviously deranged and holding his nose.">>)>>
         4
         1>
       <TELL
-        "A deranged giant vampire bat (a reject from WUMPUS) swoops down
-from his belfry and lifts you away....">
+        "A deranged giant vampire bat (a reject from WUMPUS) swoops down  from his belfry and lifts you away....">
       <GOTO
         <FIND-ROOM
           <PICK-ONE
@@ -326,13 +321,7 @@ from his belfry and lifts you away....">
         .PRSACT
         ,LOOK!-WORDS>
       <TELL
-        "You are in a large room which seems to be air-conditioned.  In one
-corner there is a machine (?) which is shaped somewhat like a clothes
-dryer.  On the 'panel' there is a switch which is labelled in a
-dialect of Swahili.  Fortunately, I know this dialect and the label
-translates to START.  The switch does not appear to be manipulable by
-any human hand (unless the fingers are about 1/16 by 1/4 inch).  On
-the front of the machine is a large lid.">
+        "You are in a large room which seems to be air-conditioned.  In one  corner there is a machine (?) which is shaped somewhat like a clothes  dryer.  On the 'panel' there is a switch which is labelled in a  dialect of Swahili.  Fortunately, I know this dialect and the label  translates to START.  The switch does not appear to be manipulable by  any human hand (unless the fingers are about 1/16 by 1/4 inch).  On  the front of the machine is a large lid.">
       <COND
         (<OOPEN?
             <FIND-OBJ
@@ -446,9 +435,7 @@ the front of the machine is a large lid.">
               <TELL
                 "The machine doesn't seem to want to do anything.">)
             (<TELL
-                "The machine comes to life (figuratively) with a dazzling display of
-colored lights and bizarre noises.  After a few moments, the
-excitement abates.">
+                "The machine comes to life (figuratively) with a dazzling display of  colored lights and bizarre noises.  After a few moments, the  excitement abates.">
               <COND
                 (<MEMQ
                     .C
@@ -523,8 +510,7 @@ excitement abates.">
         ,OCAN
         <>>
       <TELL
-        "The slag turns out to be rather insubstantial, and crumbles into dust
-at your touch.  It must not have been very valuable.">)>>
+        "The slag turns out to be rather insubstantial, and crumbles into dust  at your touch.  It must not have been very valuable.">)>>
 <SETG
   SCORE-MAX
   <+
@@ -608,8 +594,7 @@ at your touch.  It must not have been very valuable.">)>>
                   "POT">
                 ,OVISON>
               <TELL
-                "Suddenly, the rainbow appears to become solid and, I venture,
-walkable (I think the giveaway was the stairs and bannister).">
+                "Suddenly, the rainbow appears to become solid and, I venture,  walkable (I think the giveaway was the stairs and bannister).">
               <SETG
                 RAINBOW!-FLAG
                 T>)
@@ -626,8 +611,7 @@ walkable (I think the giveaway was the stairs and bannister).">
             RAINBOW!-FLAG
             <>>
           <JIGS-UP
-            "The structural integrity of the rainbow seems to have left it,
-leaving you about 450 feet in the air, supported by water vapor.">)
+            "The structural integrity of the rainbow seems to have left it,  leaving you about 450 feet in the air, supported by water vapor.">)
         (<TELL
             "Very good.">)>)>>
 <DEFINE
@@ -644,9 +628,7 @@ leaving you about 450 feet in the air, supported by water vapor.">)
         .PRSACT
         ,LOOK!-WORDS>
       <TELL
-        "You are at the top of Aragain Falls, an enormous waterfall with a
-drop of about 450 feet.  The only path here is on the north end.
-There is a man-sized barrel here which you could fit into.">
+        "You are at the top of Aragain Falls, an enormous waterfall with a  drop of about 450 feet.  The only path here is on the north end.  There is a man-sized barrel here which you could fit into.">
       <COND
         (,RAINBOW!-FLAG
           <TELL
@@ -893,8 +875,7 @@ There is a man-sized barrel here which you could fit into.">
           ,PRSVEC>
         ,LOOK!-WORDS>)
     (<JIGS-UP
-        "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart
-thing to do, apparently.">)>>
+        "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart  thing to do, apparently.">)>>
 <SETG
   BUOY-FLAG!-FLAG
   T>
@@ -1124,10 +1105,7 @@ thing to do, apparently.">)>>
         <FIND-ROOM
           "BARRE">>
       <JIGS-UP
-        "I didn't think you would REALLY try to go over the falls in a
-barrel. It seems that some 450 feet below, you were met by a number
-of  unfriendly rocks and boulders, causing your immediate demise.  Is
-this what 'over a barrel' means?">)
+        "I didn't think you would REALLY try to go over the falls in a  barrel. It seems that some 450 feet below, you were met by a number  of  unfriendly rocks and boulders, causing your immediate demise.  Is  this what 'over a barrel' means?">)
     (<TELL
         "Wasn't he an Indian?">)>>
 <PSETG
@@ -1173,18 +1151,12 @@ this what 'over a barrel' means?">)
         .PRSA
         ,EXAMI!-WORDS>
       <TELL
-        "The grue is a sinister, lurking presence in the dark places of the
-earth.  Its favorite diet is adventurers, but its insatiable
-appetite is tempered by its fear of light.  No grue has ever been
-seen by the light of day, and few have survived its fearsome jaws
-to tell the tale.">)
+        "The grue is a sinister, lurking presence in the dark places of the  earth.  Its favorite diet is adventurers, but its insatiable  appetite is tempered by its fear of light.  No grue has ever been  seen by the light of day, and few have survived its fearsome jaws  to tell the tale.">)
     (<==?
         .PRSA
         ,FIND!-WORDS>
       <TELL
-        "There is no grue here, but I'm sure there is at least one lurking
-in the darkness nearby.  I wouldn't let my light go out if I were
-you!">)>>
+        "There is no grue here, but I'm sure there is at least one lurking  in the darkness nearby.  I wouldn't let my light go out if I were  you!">)>>
 <SETG
   BTIE!-FLAG
   <>>
@@ -1528,8 +1500,7 @@ you!">)>>
           <COND
             (.IN?
               <JIGS-UP
-                "Your balloon has hit the rim of the volcano, ripping the cloth and
-causing you a 500 foot drop.  Did you get your flight insurance?">)
+                "Your balloon has hit the rim of the volcano, ripping the cloth and  causing you a 500 foot drop.  Did you get your flight insurance?">)
             (<TELL
                 "You hear a boom and notice that the balloon is falling to the ground.">)>
           <SETG
@@ -1605,8 +1576,7 @@ causing you a 500 foot drop.  Did you get your flight insurance?">)
             .BALL
             .BL
             .S
-            "floats away.  It seems to be ascending,
-due to its light load.">)>)
+            "floats away.  It seems to be ascending,  due to its light load.">)>)
     (.IN?
       <GOTO
         <SETG
@@ -1881,8 +1851,7 @@ due to its light load.">)>)
     1
     <ODESC2
       .OBJ>
-    " has burned out, and the cloth
-bag starts to collapse.">
+    " has burned out, and the cloth  bag starts to collapse.">
   <SETG
     BINF!-FLAG
     <>>
@@ -1904,18 +1873,13 @@ bag starts to collapse.">
         .PRSA
         ,LOOK!-WORDS>
       <TELL
-        "You are in a dusty old room which is virtually featureless, except
-for an exit on the north side."
+        "You are in a dusty old room which is virtually featureless, except  for an exit on the north side."
         1
         <COND
           (<NOT
               ,SAFE-FLAG!-FLAG>
-            "
-Imbedded in the far wall, there is a rusty old box.  It appears that
-the box is somewhat damaged, since an oblong hole has been chipped
-out of the front of it.")
-          ("
-On the far wall is a rusty box, whose door has been blown off.")>>)>>
+            "  Imbedded in the far wall, there is a rusty old box.  It appears that  the box is somewhat damaged, since an oblong hole has been chipped  out of the front of it.")
+          ("  On the far wall is a rusty box, whose door has been blown off.")>>)>>
 <DEFINE
   SAFE-FUNCTION
   ("AUX"
@@ -1956,8 +1920,7 @@ On the far wall is a rusty box, whose door has been blown off.")>>)>>
         "What do you expect, BOOM?">)>>
 <PSETG
   BRICK-BOOM
-  "Now you've done it.  It seems that the brick has other properties
-than weight, namely the ability to blow you to smithereens.">
+  "Now you've done it.  It seems that the brick has other properties  than weight, namely the ability to blow you to smithereens.">
 <DEFINE
   BRICK-FUNCTION
   ("AUX"
@@ -2157,14 +2120,10 @@ than weight, namely the ability to blow you to smithereens.">
           (<RTRNN
               .RM
               ,RHOUSEBIT>
-            "The house shakes, and the ceiling of the room you're in collapses,
-turning you into a pancake.")
-          ("The room trembles and 50,000 pounds of rock fall on you, turning you
-into a pancake.")>>)
+            "The house shakes, and the ceiling of the room you're in collapses,  turning you into a pancake.")
+          ("The room trembles and 50,000 pounds of rock fall on you, turning you  into a pancake.")>>)
     (<TELL
-        "You may recall your recent explosion.  Well, probably as a result of
-that, you hear an ominous rumbling, as if one of the rooms in the
-dungeon had collapsed.">
+        "You may recall your recent explosion.  Well, probably as a result of  that, you hear an ominous rumbling, as if one of the rooms in the  dungeon had collapsed.">
       <AND
         <==?
           .RM
@@ -2223,15 +2182,12 @@ dungeon had collapsed.">
               <CLOCK-DISABLE
                 ,BRNIN>
               <JIGS-UP
-                "The ledge collapses, probably as a result of the explosion.  A large
-chunk of it, which is attached to the hook, drags you down to the
-ground.  Fatally.">)
+                "The ledge collapses, probably as a result of the explosion.  A large  chunk of it, which is attached to the hook, drags you down to the  ground.  Fatally.">)
             (<TELL
                 "The ledge collapses, leaving you with no place to land.">)>)
         (T
           <JIGS-UP
-            "The force of the explosion has caused the ledge to collapse
-belatedly.">)>)
+            "The force of the explosion has caused the ledge to collapse  belatedly.">)>)
     (<TELL
         "The ledge collapses, giving you a narrow escape.">)>
   <MUNG-ROOM
@@ -2261,9 +2217,7 @@ belatedly.">)>)
         .PRSA
         ,LOOK!-WORDS>
       <TELL
-        "You are on a wide ledge high into the volcano.  The rim of the
-volcano is about 200 feet above and there is a precipitous drop below
-to the bottom."
+        "You are on a wide ledge high into the volcano.  The rim of the  volcano is about 200 feet above and there is a precipitous drop below  to the bottom."
         1
         <COND
           (<RTRNN
@@ -2292,10 +2246,7 @@ to the bottom."
           <RID
             ,HERE>>>
       <TELL
-        "A volcano gnome seems to walk straight out of the wall and says
-'I have a very busy appointment schedule and little time to waste on
-tresspassers, but for a small fee, I'll show you the way out.'  You
-notice the gnome nervously glancing at his watch.">
+        "A volcano gnome seems to walk straight out of the wall and says  'I have a very busy appointment schedule and little time to waste on  tresspassers, but for a small fee, I'll show you the way out.'  You  notice the gnome nervously glancing at his watch.">
       <INSERT-OBJECT
         <FIND-OBJ
           "GNOME">
@@ -2348,16 +2299,12 @@ notice the gnome nervously glancing at his watch.">
               1
               <ODESC2
                 .PRSO>
-              ".  I don't believe 
-I've ever seen one as beautiful. 'Follow me', he says, and a door 
-appears on the west end of the ledge.  Through the door, you can see
-a narrow chimney sloping steeply downward.">
+              ".  I don't believe   I've ever seen one as beautiful. 'Follow me', he says, and a door   appears on the west end of the ledge.  Through the door, you can see  a narrow chimney sloping steeply downward.">
             <SETG
               GNOME-DOOR!-FLAG
               T>)
           (<TELL
-              "'That wasn't quite what I had in mind', he says, crunching the
-"
+              "'That wasn't quite what I had in mind', he says, crunching the  "
               1
               <ODESC2
                 .PRSO>
@@ -2368,8 +2315,7 @@ a narrow chimney sloping steeply downward.">
         .PRSA
         ,C-INT!-WORDS>
       <TELL
-        "The gnome glances at his watch.  'Oops.  I'm late for an
-appointment!' He disappears, leaving you alone on the ledge.">
+        "The gnome glances at his watch.  'Oops.  I'm late for an  appointment!' He disappears, leaving you alone on the ledge.">
       <REMOVE-OBJECT
         <FIND-OBJ
           "GNOME">>)

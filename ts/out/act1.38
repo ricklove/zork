@@ -107,8 +107,7 @@
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are behind the white house.  In one corner of the house there
-is a small window which is "
+              "You are behind the white house.  In one corner of the house there is a small window which is "
               1
               <COND
                 (,KITCHEN-WINDOW!-FLAG
@@ -197,10 +196,7 @@ is a small window which is "
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are in the kitchen of the white house.  A table seems to have
-been used recently for the preparation of food.  A passage leads to
-the west and a dark staircase can be seen leading upward.  To the
-east is a small window which is "
+              "You are in the kitchen of the white house.  A table seems to have been used recently for the preparation of food.  A passage leads to the west and a dark staircase can be seen leading upward.  To the east is a small window which is "
               0>
             <COND
               (,KITCHEN-WINDOW!-FLAG
@@ -246,8 +242,7 @@ east is a small window which is "
                 <DROP-OBJECT
                   .L>
                 <JIGS-UP
-                  "The sight of someone carrying a pile of burning leaves so offends
-the neighbors that they come over and put you out.">)>)
+                  "The sight of someone carrying a pile of burning leaves so offends the neighbors that they come over and put you out.">)>)
           (<==?
               <1
                 .PV>
@@ -260,12 +255,10 @@ the neighbors that they come over and put you out.">)>)
               "Done.">)>>
       <PSETG
         RESDESC
-        "However, with the water level lowered, there is merely a wide stream
-running through the center of the room.">
+        "However, with the water level lowered, there is merely a wide stream running through the center of the room.">
       <PSETG
         GLADESC
-        "You are in a large room, with giant icicles hanging from the walls
-and ceiling.  There are passages to the north and east.">
+        "You are in a large room, with giant icicles hanging from the walls and ceiling.  There are passages to the north and east.">
       <DEFINE
         GLACIER-ROOM
         ("AUX"
@@ -303,8 +296,7 @@ and ceiling.  There are passages to the north and east.">
               .PRSACT
               ,TAKE!-WORDS>
             <TELL
-              "The trophy case is securely fastened to the wall (perhaps to foil any
-attempt by robbers to remove it).">)>>
+              "The trophy case is securely fastened to the wall (perhaps to foil any attempt by robbers to remove it).">)>>
       <DEFINE
         GLACIER
         ("AUX"
@@ -338,10 +330,7 @@ attempt by robbers to remove it).">)>>
                     <FIND-OBJ
                       "TORCH">>>
                 <TELL
-                  "The torch hits the glacier and explodes into a great ball of flame,
-devouring the glacier.  The water from the melting glacier rushes
-downstream, carrying the torch with it.  In the place of the glacier,
-there is a passageway leading west.">
+                  "The torch hits the glacier and explodes into a great ball of flame, devouring the glacier.  The water from the melting glacier rushes downstream, carrying the torch with it.  In the place of the glacier, there is a passageway leading west.">
                 <REMOVE-OBJECT
                   <FIND-OBJ
                     "ICE">>
@@ -370,8 +359,7 @@ there is a passageway leading west.">
                   <LIT?
                     ,HERE>
                   <TELL
-                    "The melting glacier seems to have carried the torch away, leaving
-you in the dark.">>
+                    "The melting glacier seems to have carried the torch away, leaving you in the dark.">>
                 <SETG
                   GLACIER-FLAG!-FLAG
                   T>)
@@ -407,16 +395,14 @@ you in the dark.">>
             <COND
               (,LOW-TIDE!-FLAG
                 <TELL
-                  "You are in the south end of a large cavernous room which was formerly
-a reservoir.">
+                  "You are in the south end of a large cavernous room which was formerly a reservoir.">
                 <TELL
                   ,RESDESC
                   1>)
               (<TELL
                   "You are at the south end of a large reservoir.">)>
             <TELL
-              "There is a western exit, a passageway south, and a steep pathway
-climbing up along the edge of a cliff."
+              "There is a western exit, a passageway south, and a steep pathway climbing up along the edge of a cliff."
               1>)>>
       <DEFINE
         RESERVOIR-NORTH
@@ -434,8 +420,7 @@ climbing up along the edge of a cliff."
             <COND
               (,LOW-TIDE!-FLAG
                 <TELL
-                  "You are in the north end of a large cavernous room which was formerly
-a reservoir.">
+                  "You are in the north end of a large cavernous room which was formerly a reservoir.">
                 <TELL
                   ,RESDESC
                   1>)
@@ -477,14 +462,10 @@ a reservoir.">
             <COND
               (,MAGIC-FLAG!-FLAG
                 <TELL
-                  "You are in the living room.  There is a door to the east.  To the
-west is a cyclops-shaped hole in an old wooden door, above which is
-some strange gothic lettering "
+                  "You are in the living room.  There is a door to the east.  To the west is a cyclops-shaped hole in an old wooden door, above which is some strange gothic lettering "
                   0>)
               (<TELL
-                  "You are in the living room.  There is a door to the east, a wooden
-door with strange gothic lettering to the west, which appears to be
-nailed shut, "
+                  "You are in the living room.  There is a door to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, "
                   0>)>
             <SET
               RUG?
@@ -564,8 +545,7 @@ nailed shut, "
                     <TELL
                       "It's open.">)
                   (<TELL
-                      "The door reluctantly opens to reveal a rickety staircase descending
-into darkness.">)>
+                      "The door reluctantly opens to reveal a rickety staircase descending into darkness.">)>
                 <COND-OPEN
                   DOWN!-DIRECTIONS
                   .RM>)
@@ -666,8 +646,7 @@ into darkness.">)>
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are in a clearing, with a forest surrounding you on the west
-and south.">
+              "You are in a clearing, with a forest surrounding you on the west and south.">
             <COND
               (,KEY-FLAG!-FLAG
                 <TELL
@@ -734,9 +713,7 @@ and south.">
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are in a dark and damp cellar with a narrow passageway leading
-east, and a crawlway to the south.  On the west is the bottom of a
-steep metal ramp which is unclimbable.">)
+              "You are in a dark and damp cellar with a narrow passageway leading east, and a crawlway to the south.  On the west is the bottom of a steep metal ramp which is unclimbable.">)
           (<AND
               <==?
                 <VNAME
@@ -821,8 +798,7 @@ steep metal ramp which is unclimbable.">)
               .PRSA
               ,LIFT!-WORDS>
             <TELL
-              "The rug is too heavy to lift, but in trying to take it you have 
-noticed an irregularity beneath it.">)
+              "The rug is too heavy to lift, but in trying to take it you have  noticed an irregularity beneath it.">)
           (<==?
               .PRSA
               ,MOVE!-WORDS>
@@ -833,11 +809,9 @@ noticed an irregularity beneath it.">)
                     <FIND-OBJ
                       "RUG">>>
                 <TELL
-                  "Having moved the carpet previously, you find it impossible to move
-it again.">)
+                  "Having moved the carpet previously, you find it impossible to move it again.">)
               (<TELL
-                  "With a great effort, the rug is moved to one side of the room.
-With the rug moved, the dusty cover of a closed trap-door appears.">
+                  "With a great effort, the rug is moved to one side of the room. With the rug moved, the dusty cover of a closed trap-door appears.">
                 <TRO
                   <FIND-OBJ
                     "DOOR">
@@ -882,8 +856,7 @@ With the rug moved, the dusty cover of a closed trap-door appears.">
                 <AOBJS
                   ,WINNER>>
               <TELL
-                "As you pick up the rusty knife, your sword gives a single pulse
-of blinding blue light.">>
+                "As you pick up the rusty knife, your sword gives a single pulse of blinding blue light.">>
             <>)
           (<OR
               <==?
@@ -905,10 +878,7 @@ of blinding blue light.">>
                 "RKNIF">
               ,WINNER>
             <JIGS-UP
-              "As the knife approaches its victim, your mind is submerged by an
-overmastering will.  Slowly, your hand turns, until the rusty blade
-is an inch from your neck.  The knife seems to sing as it savagely
-slits your throat.">)>>
+              "As the knife approaches its victim, your mind is submerged by an overmastering will.  Slowly, your hand turns, until the rusty blade is an inch from your neck.  The knife seems to sing as it savagely slits your throat.">)>>
       <DEFINE
         SKELETON
         ("AUX"
@@ -928,10 +898,7 @@ slits your throat.">)>>
             [REST
               OBJECT]>)
         <TELL
-          "A ghost appears in the room and is appalled at your having
-desecrated the remains of a fellow adventurer.  He casts a curse
-on all of your valuables and orders them banished to the Land of
-the Living Dead.  The ghost leaves, muttering obscenities.">
+          "A ghost appears in the room and is appalled at your having desecrated the remains of a fellow adventurer.  He casts a curse on all of your valuables and orders them banished to the Land of the Living Dead.  The ghost leaves, muttering obscenities.">
         <SET
           L
           <ROB-ROOM
@@ -1031,16 +998,14 @@ the Living Dead.  The ghost leaves, muttering obscenities.">
                     <OROOM
                       .T>>
                   <TELL
-                    "The troll, now worried about this encounter, recovers his bloody
-axe.">>
+                    "The troll, now worried about this encounter, recovers his bloody axe.">>
                 T)
               (<==?
                   .HERE
                   <OROOM
                     .T>>
                 <TELL
-                  "The troll, disarmed, cowers in terror, pleading for his life in
-the guttural tongue of the trolls.">
+                  "The troll, disarmed, cowers in terror, pleading for his life in the guttural tongue of the trolls.">
                 T)>)
           (<==?
               .PA
@@ -1114,9 +1079,7 @@ the guttural tongue of the trolls.">
                   <FIND-OBJ
                     "KNIFE">>
                 <TELL
-                  "and being for the moment sated, throws it back.  Fortunately, the
-troll has poor control, and the knife falls to the floor.  He does
-not look pleased.">
+                  "and being for the moment sated, throws it back.  Fortunately, the troll has poor control, and the knife falls to the floor.  He does not look pleased.">
                 <TRO
                   .T
                   ,FIGHTBIT>)
@@ -1158,14 +1121,11 @@ not look pleased.">
               <LIT?
                 ,HERE>>
             <TELL
-              "You are in a large square room with tall ceilings.  On the south wall
-is an enormous mirror which fills the entire wall.  There are exits
-on the other three sides of the room.">
+              "You are in a large square room with tall ceilings.  On the south wall is an enormous mirror which fills the entire wall.  There are exits on the other three sides of the room.">
             <COND
               (,MIRROR-MUNG!-FLAG
                 <TELL
-                  "Unfortunately, you have managed to destroy it by your reckless
-actions."
+                  "Unfortunately, you have managed to destroy it by your reckless actions."
                   1>)>)>>
       <SETG
         MIRROR-MUNG!-FLAG
@@ -1289,8 +1249,7 @@ actions."
                   MIRROR-MUNG!-FLAG
                   T>
                 <TELL
-                  "You have broken the mirror.  I hope you have a seven years supply of
-good luck handy.">)>)>>
+                  "You have broken the mirror.  I hope you have a seven years supply of good luck handy.">)>)>>
       <DEFINE
         CAROUSEL-ROOM
         ("AUX"
@@ -1379,16 +1338,11 @@ good luck handy.">)>)>>
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are in a large room with a prominent doorway leading to a down
-staircase. To the west is a narrow twisting tunnel.  Above you is a
-large dome painted with scenes depicting elfin hacking rites. Up
-around the edge of the dome (20 feet up) is a wooden railing. In the
-center of the room there is a white marble pedestal.">
+              "You are in a large room with a prominent doorway leading to a down staircase. To the west is a narrow twisting tunnel.  Above you is a large dome painted with scenes depicting elfin hacking rites. Up around the edge of the dome (20 feet up) is a wooden railing. In the center of the room there is a white marble pedestal.">
             <COND
               (,DOME-FLAG!-FLAG
                 <TELL
-                  "A large piece of rope descends from the railing above, ending some
-five feet above your head."
+                  "A large piece of rope descends from the railing above, ending some five feet above your head."
                   1>)>)>>
       <DEFINE
         DOME-ROOM
@@ -1404,14 +1358,11 @@ five feet above your head."
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are at the periphery of a large dome, which forms the ceiling
-of another room below.  Protecting you from a precipitous drop is a
-wooden railing which circles the dome.">
+              "You are at the periphery of a large dome, which forms the ceiling of another room below.  Protecting you from a precipitous drop is a wooden railing which circles the dome.">
             <COND
               (,DOME-FLAG!-FLAG
                 <TELL
-                  "Hanging down from the railing is a rope which ends about ten feet
-from the floor below."
+                  "Hanging down from the railing is a rope which ends about ten feet from the floor below."
                   1>)>)
           (<==?
               <VNAME
@@ -1470,17 +1421,12 @@ from the floor below."
               .PA
               ,LOOK!-WORDS>
             <TELL
-              "You are outside a large gateway, on which is inscribed 
-	\"Abandon every hope, all ye who enter here.\"  
-The gate is open; through it you can see a desolation, with a pile of
-mangled corpses in one corner.  Thousands of voices, lamenting some
-hideous fate, can be heard.">
+              "You are outside a large gateway, on which is inscribed   \"Abandon every hope, all ye who enter here.\"   The gate is open; through it you can see a desolation, with a pile of mangled corpses in one corner.  Thousands of voices, lamenting some hideous fate, can be heard.">
             <COND
               (<NOT
                   ,LLD-FLAG!-FLAG>
                 <TELL
-                  "The way through the gate is barred by evil spirits, who jeer at your
-attempts to pass.">)>)
+                  "The way through the gate is barred by evil spirits, who jeer at your attempts to pass.">)>)
           (<==?
               <VNAME
                 .PA>
@@ -1512,9 +1458,7 @@ attempts to pass.">)>)
                           .CAND>
                         0>>
                     <TELL
-                      "There is a clap of thunder, and a voice echoes through the cavern: 
-\"Begone, fiends!\"  The spirits, sensing the presence of a greater
-power, flee through the walls.">
+                      "There is a clap of thunder, and a voice echoes through the cavern:  \"Begone, fiends!\"  The spirits, sensing the presence of a greater power, flee through the walls.">
                     <REMOVE-OBJECT
                       <FIND-OBJ
                         "GHOST">>
@@ -1524,9 +1468,7 @@ power, flee through the walls.">
                   (<TELL
                       "You are not equipped for an exorcism.">)>)
               (<JIGS-UP
-                  "There is a clap of thunder, and a voice echoes through the
-cavern: \"Begone, chomper!\"  Apparently, the voice thinks you
-are an evil spirit, and dismisses you from the realm of the living.">)>)>>
+                  "There is a clap of thunder, and a voice echoes through the cavern: \"Begone, chomper!\"  Apparently, the voice thinks you are an evil spirit, and dismisses you from the realm of the living.">)>)>>
       <DEFINE
         LLD2-ROOM
         ("AUX"
@@ -1541,17 +1483,11 @@ are an evil spirit, and dismisses you from the realm of the living.">)>)>>
               .PRSA
               ,LOOK!-WORDS>
             <TELL
-              "You have entered the Land of the Living Dead, a large desolate room.
-Although it is apparently uninhabited, you can hear the sounds of
-thousands of lost souls weeping and moaning.  In the east corner are
-stacked the remains of dozens of previous adventurers who were less
-fortunate than yourself.  To the east is an ornate passage,
-apparently recently constructed. "
+              "You have entered the Land of the Living Dead, a large desolate room. Although it is apparently uninhabited, you can hear the sounds of thousands of lost souls weeping and moaning.  In the east corner are stacked the remains of dozens of previous adventurers who were less fortunate than yourself.  To the east is an ornate passage, apparently recently constructed. "
               1
               <COND
                 (,ON-POLE!-FLAG
-                  " Amid the desolation, you spot what
-appears to be your head, at the end of a long pole.")
+                  " Amid the desolation, you spot what appears to be your head, at the end of a long pole.")
                 ("")>>)>>
       <DEFINE
         GHOST-FUNCTION
@@ -1594,8 +1530,7 @@ appears to be your head, at the end of a long pole.")
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are in a small room near the maze. There are twisty passages
-in the immediate vicinity.">
+              "You are in a small room near the maze. There are twisty passages in the immediate vicinity.">
             <COND
               (,KEY-FLAG!-FLAG
                 <TELL
@@ -1704,8 +1639,7 @@ in the immediate vicinity.">
                       .HOBJ>
                     .HERE>>
                 <TELL
-                  "You hear a scream of anguish as you violate the robber's hideaway. 
-Using passages unknown to you, he rushes to its defense.">
+                  "You hear a scream of anguish as you violate the robber's hideaway.  Using passages unknown to you, he rushes to its defense.">
                 <COND
                   (<OROOM
                       .HOBJ>
@@ -1759,8 +1693,7 @@ Using passages unknown to you, he rushes to its defense.">
                       .HERE>
                     2>>
                 <TELL
-                  "The thief gestures mysteriously, and the treasures in the room
-suddenly vanish.">)>
+                  "The thief gestures mysteriously, and the treasures in the room suddenly vanish.">)>
             <MAPF
               <>
               <FUNCTION
@@ -1846,24 +1779,17 @@ suddenly vanish.">)>
               .PRSACT
               ,LOOK!-WORDS>
             <TELL
-              "You are standing on the top of the Flood Control Dam #3, which was
-quite a tourist attraction in times far distant.  There are paths to
-the north, south, east, and down.">
+              "You are standing on the top of the Flood Control Dam #3, which was quite a tourist attraction in times far distant.  There are paths to the north, south, east, and down.">
             <COND
               (,LOW-TIDE!-FLAG
                 <TELL
-                  "It appears that the dam has been opened since the water level behind
-it is low and the sluice gate has been opened.  Water is rushing
-downstream through the gates."
+                  "It appears that the dam has been opened since the water level behind it is low and the sluice gate has been opened.  Water is rushing downstream through the gates."
                   1>)
               (<TELL
-                  "The sluice gates on the dam are closed.  Behind the dam, there can be
-seen a wide lake.  A small stream is formed by the runoff from the
-lake."
+                  "The sluice gates on the dam are closed.  Behind the dam, there can be seen a wide lake.  A small stream is formed by the runoff from the lake."
                   1>)>
             <TELL
-              "There is a control panel here.  There is a large metal bolt on the 
-panel. Above the bolt is a small green plastic bubble."
+              "There is a control panel here.  There is a large metal bolt on the  panel. Above the bolt is a small green plastic bubble."
               1>
             <COND
               (,GATE-FLAG!-FLAG
@@ -2056,9 +1982,7 @@ panel. Above the bolt is a small green plastic bubble."
                         <RVARS
                           ,HERE>>>
                     <TELL
-                      "There is a rumbling sound and a stream of water appears to burst
-from the east wall of the room (apparently, a leak has occurred in a
-pipe.)">
+                      "There is a rumbling sound and a stream of water appears to burst from the east wall of the room (apparently, a leak has occurred in a pipe.)">
                     <PUT
                       ,HERE
                       ,RVARS
@@ -2160,8 +2084,7 @@ pipe.)">
                       ,MNTIN
                       0>
                     <TELL
-                      "By some miracle of elven technology, you have managed to stop the
-leak in the dam.">)
+                      "By some miracle of elven technology, you have managed to stop the leak in the dam.">)
                   (<WITH-TELL
                       .PRSI>)>)>)>>
       <DEFINE
@@ -2765,8 +2688,7 @@ leak in the dam.">)
                 .COUNT>
               5>
             <JIGS-UP
-              "The cyclops, tired of all of your games and trickery, eats you.
-The cyclops says 'Mmm.  Just like mom used to make 'em.'">)
+              "The cyclops, tired of all of your games and trickery, eats you. The cyclops says 'Mmm.  Just like mom used to make 'em.'">)
           (<==?
               <VNAME
                 .PRSACT>
@@ -2782,9 +2704,7 @@ The cyclops says 'Mmm.  Just like mom used to make 'em.'">)
                     <REMOVE-OBJECT
                       .FOOD>
                     <TELL
-                      "The cyclops says 'Mmm Mmm.  I love hot peppers!  But oh, could I use
-a drink.  Perhaps I could drink the blood of that thing'.  From the
-gleam in his eye, it could be surmised that you are 'that thing'.">
+                      "The cyclops says 'Mmm Mmm.  I love hot peppers!  But oh, could I use a drink.  Perhaps I could drink the blood of that thing'.  From the gleam in his eye, it could be surmised that you are 'that thing'.">
                     <PUT
                       .RM
                       ,RVARS
@@ -2811,14 +2731,12 @@ gleam in his eye, it could be surmised that you are 'that thing'.">
                       .CYC
                       ,FIGHTBIT>
                     <TELL
-                      "The cyclops looks tired and quickly falls fast asleep (what did you
-put in that drink, anyway?).">
+                      "The cyclops looks tired and quickly falls fast asleep (what did you put in that drink, anyway?).">
                     <SETG
                       CYCLOPS-FLAG!-FLAG
                       T>)
                   (<TELL
-                      "The cyclops apparently was not thirsty at the time and refuses your
-generous gesture.">
+                      "The cyclops apparently was not thirsty at the time and refuses your generous gesture.">
                     <>)>)
               (<==?
                   .PRSOB1
@@ -2864,8 +2782,7 @@ generous gesture.">
               (<PROB
                   50>
                 <TELL
-                  "Your actions don't appear to be doing much harm to the cyclops, but
-they do not exactly lower your insurance premiums, either.">)
+                  "Your actions don't appear to be doing much harm to the cyclops, but they do not exactly lower your insurance premiums, either.">)
               (<TELL
                   "The cyclops ignores all injury to his body with a shrug.">)>)
           (<==?
@@ -2901,41 +2818,32 @@ they do not exactly lower your insurance premiums, either.">)
                 .PV>
               ,LOOK!-WORDS>
             <TELL
-              "You are in a room with an exit on the west side, and a staircase
-leading up.">
+              "You are in a room with an exit on the west side, and a staircase leading up.">
             <COND
               (<AND
                   ,CYCLOPS-FLAG!-FLAG
                   <NOT
                     ,MAGIC-FLAG!-FLAG>>
                 <TELL
-                  "The cyclops, perhaps affected by a drug in your drink, is sleeping
-blissfully at the foot of the stairs.">)
+                  "The cyclops, perhaps affected by a drug in your drink, is sleeping blissfully at the foot of the stairs.">)
               (,MAGIC-FLAG!-FLAG
                 <TELL
-                  "On the north of the room is a wall which used to be solid, but which
-now has a cyclops-sized hole in it.">)
+                  "On the north of the room is a wall which used to be solid, but which now has a cyclops-sized hole in it.">)
               (<0?
                   .VARS>
                 <TELL
-                  "A cyclops, who looks prepared to eat horses (much less mere
-adventurers), blocks the staircase.  From his state of health, and
-the bloodstains on the walls, you gather that he is not very
-friendly, though he likes people."
+                  "A cyclops, who looks prepared to eat horses (much less mere adventurers), blocks the staircase.  From his state of health, and the bloodstains on the walls, you gather that he is not very friendly, though he likes people."
                   1>)
               (<G?
                   .VARS
                   0>
                 <TELL
-                  "The cyclops is standing in the corner, eyeing you closely.  I don't
-think he likes you very much.  He looks extremely hungry even for a
-cyclops.">)
+                  "The cyclops is standing in the corner, eyeing you closely.  I don't think he likes you very much.  He looks extremely hungry even for a cyclops.">)
               (<L?
                   .VARS
                   0>
                 <TELL
-                  "The cyclops, having eaten the hot peppers, appears to be gasping.
-His enflamed tongue protrudes from his man-sized mouth.">)>
+                  "The cyclops, having eaten the hot peppers, appears to be gasping. His enflamed tongue protrudes from his man-sized mouth.">)>
             <COND
               (,CYCLOPS-FLAG!-FLAG)
               (<OR
@@ -2951,8 +2859,7 @@ His enflamed tongue protrudes from his man-sized mouth.">)>
         '["The cyclops seems somewhat agitated."
             "The cyclops appears to be getting more agitated."
             "The cyclops is moving about the room, looking for something."
-            "The cyclops was looking for salt and pepper.  I think he is gathering
-condiments for his upcoming snack."
+            "The cyclops was looking for salt and pepper.  I think he is gathering condiments for his upcoming snack."
             "The cyclops is moving toward you in an unfriendly manner."
             "You have two choices: 1. Leave  2. Become dinner."]>
       <GDECL
@@ -3424,8 +3331,7 @@ condiments for his upcoming snack."
               CYCLOPS-FLAG!-FLAG
               T>
             <TELL
-              "The cyclops, hearing the name of his deadly nemesis, flees the room
-by knocking down the wall on the north of the room.">
+              "The cyclops, hearing the name of his deadly nemesis, flees the room by knocking down the wall on the north of the room.">
             <SETG
               MAGIC-FLAG!-FLAG
               T>
@@ -3481,14 +3387,11 @@ by knocking down the wall on the north of the room.">
                     <AOBJS
                       ,WINNER>>>
                 <JIGS-UP
-                  "Well, you seem to have been brushing your teeth with some sort of
-glue. As a result, your mouth gets glued together (with your nose)
-and you die of respiratory failure.">)
+                  "Well, you seem to have been brushing your teeth with some sort of glue. As a result, your mouth gets glued together (with your nose) and you die of respiratory failure.">)
               (<NOT
                   .PRSI>
                 <TELL
-                  "Dental hygiene is highly recommended, but I'm not sure what you want
-to brush them with.">)
+                  "Dental hygiene is highly recommended, but I'm not sure what you want to brush them with.">)
               (<TELL
                   "A nice idea, but with a "
                   1
@@ -3594,8 +3497,7 @@ to brush them with.">)
               (<OOPEN?
                   .NOBJ>
                 <TELL
-                  "Thank you very much.  I was rather thirsty (from all this talking,
-probably).">)
+                  "Thank you very much.  I was rather thirsty (from all this talking, probably).">)
               (T
                 <TELL
                   "I'd like to, but I can't get to it.">)>
@@ -3806,9 +3708,7 @@ probably).">)
                             .HOBJ
                             .RM>
                           <TELL
-                            "Someone carrying a large bag is casually leaning against one of the
-walls here.  He does not speak, but it is clear from his aspect that
-the bag will be taken only over his dead body.">
+                            "Someone carrying a large bag is casually leaning against one of the walls here.  He does not speak, but it is clear from his aspect that the bag will be taken only over his dead body.">
                           <PUT
                             .HACK
                             ,HFLAG
@@ -3826,9 +3726,7 @@ the bag will be taken only over his dead body.">
                                 .HOBJ
                                 .WIN>>
                             <TELL
-                              "Your opponent, determining discretion to be the better part of
-valor, decides to terminate this little contretemps.  With a rueful
-nod of his head, he steps backward into the gloom and disappears.">
+                              "Your opponent, determining discretion to be the better part of valor, decides to terminate this little contretemps.  With a rueful nod of his head, he steps backward into the gloom and disappears.">
                             <REMOVE-OBJECT
                               .HOBJ>
                             <TRZ
@@ -3847,8 +3745,7 @@ nod of his head, he steps backward into the gloom and disappears.">
                         <PROB
                           30>>
                       <TELL
-                        "The holder of the large bag just left, looking disgusted. 
-Fortunately, he took nothing.">
+                        "The holder of the large bag just left, looking disgusted.  Fortunately, he took nothing.">
                       <REMOVE-OBJECT
                         .HOBJ>
                       <SNARF-OBJECT
@@ -3912,10 +3809,7 @@ Fortunately, he took nothing.">
                             <NOT
                               .HERE?>>
                           <TELL
-                            "A seedy-looking individual with a large bag just wandered through
-the room.  On the way through, he quietly abstracted all valuables
-from the room and from your possession, mumbling something about
-\"Doing unto others before..\"">)
+                            "A seedy-looking individual with a large bag just wandered through the room.  On the way through, he quietly abstracted all valuables from the room and from your possession, mumbling something about \"Doing unto others before..\"">)
                         (.HERE?
                           <SNARF-OBJECT
                             .HOBJ
@@ -3925,11 +3819,9 @@ from the room and from your possession, mumbling something about
                                 .OBJT
                                 .HH>
                               <TELL
-                                "The other occupant just left, still carrying his large bag.  You may
-not have noticed that he robbed you blind first.">)
+                                "The other occupant just left, still carrying his large bag.  You may not have noticed that he robbed you blind first.">)
                             (<TELL
-                                "The other occupant (he of the large bag), finding nothing of value,
-left disgusted.">)>
+                                "The other occupant (he of the large bag), finding nothing of value, left disgusted.">)>
                           <REMOVE-OBJECT
                             .HOBJ>
                           <SET
@@ -3937,8 +3829,7 @@ left disgusted.">)>
                             <>>)
                         (T
                           <TELL
-                            "A 'lean and hungry' gentleman just wandered through.  Finding
-nothing of value, he left disgruntled.">)>)>)
+                            "A 'lean and hungry' gentleman just wandered through.  Finding nothing of value, he left disgruntled.">)>)>)
                 (T
                   <COND
                     (.HERE?
@@ -3976,12 +3867,10 @@ nothing of value, he left disgruntled.">)>)>)
                                 .OBJT
                                 .HH>
                               <TELL
-                                "The other occupant (he of the large bag), finding nothing of value,
-left disgusted.">)
+                                "The other occupant (he of the large bag), finding nothing of value, left disgusted.">)
                             (T
                               <TELL
-                                "The other occupant just left, still carrying his large bag.  You may
-not have noticed that he robbed you blind first.">)>
+                                "The other occupant just left, still carrying his large bag.  You may not have noticed that he robbed you blind first.">)>
                           <REMOVE-OBJECT
                             .HOBJ>
                           <SET
@@ -4053,8 +3942,7 @@ not have noticed that he robbed you blind first.">)>
                             <PROB
                               40>>
                           <TELL
-                            "You hear, off in the distance, someone saying \"My, I wonder what
-this fine "
+                            "You hear, off in the distance, someone saying \"My, I wonder what this fine "
                             3
                             <ODESC2
                               .X>
@@ -4214,8 +4102,7 @@ this fine "
                       .RM
                       .WROOM>
                     <TELL
-                      "The robber, rummaging through his bag, dropped a few items he found
-valueless.">>)>>
+                      "The robber, rummaging through his bag, dropped a few items he found valueless.">>)>>
             .HH>>>
       <DEFINE
         SNARF-OBJECT
@@ -4327,13 +4214,11 @@ valueless.">>)>>
                   .T
                   .ST>
                 <TELL
-                  "The robber, somewhat surprised at this turn of events, nimbly
-retrieves his stilletto.">
+                  "The robber, somewhat surprised at this turn of events, nimbly retrieves his stilletto.">
                 T)
               (ELSE
                 <TELL
-                  "Annoyed to be left unarmed in such an obviously dangerous
-neighborhood, the thief slips off into the shadows.">
+                  "Annoyed to be left unarmed in such an obviously dangerous neighborhood, the thief slips off into the shadows.">
                 <TRO
                   .CHALI
                   ,TAKEBIT>
@@ -4408,8 +4293,7 @@ neighborhood, the thief slips off into the shadows.">
                                   FLG
                                   T>
                                 <TELL
-                                  "As the thief dies, the power of his magic decreases, and his
-treasures reappear:"
+                                  "As the thief dies, the power of his magic decreases, and his treasures reappear:"
                                   2>)>
                             <TELL
                               "  A "
@@ -4454,8 +4338,7 @@ treasures reappear:"
                     .DEM>
                   .HERE>
                 <TELL
-                  "The robber revives, briefly feigning continued unconsciousness, and
-when he sees his moment, scrambles away from you.">)>
+                  "The robber revives, briefly feigning continued unconsciousness, and when he sees his moment, scrambles away from you.">)>
             <COND
               (<TYPE?
                   ,ROBBER
@@ -4509,8 +4392,7 @@ when he sees his moment, scrambles away from you.">)>
               (<PROB
                   10>
                 <TELL
-                  "You evidently frightened the robber, though you didn't hit him.  He
-flees"
+                  "You evidently frightened the robber, though you didn't hit him.  He flees"
                   1
                   <COND
                     (<EMPTY?
@@ -4539,9 +4421,7 @@ flees"
                   .T>)
               (T
                 <TELL
-                  "You missed.  The thief makes no attempt to take the knife, though it
-would be a fine addition to the collection in his bag.  He does seem
-angered by your attempt.">
+                  "You missed.  The thief makes no attempt to take the knife, though it would be a fine addition to the collection in his bag.  He does seem angered by your attempt.">
                 <TRO
                   .T
                   ,FIGHTBIT>)>)
@@ -4617,8 +4497,7 @@ angered by your attempt.">
                               .FUSE>>>>>>>
                 ;"I.e., he's trying to give us the brick with a lighted fuse."
                 <TELL
-                  "The thief seems rather offended by your offer.  Do you think he's as
-stupid as you are?">)
+                  "The thief seems rather offended by your offer.  Do you think he's as stupid as you are?">)
               (<REMOVE-OBJECT
                   .PRSOBJ>
                 <PUT
@@ -4633,8 +4512,7 @@ stupid as you are?">)
                   1
                   <ODESC2
                     .PRSOBJ>
-                  " in his bag and thanks
-you politely.">)>)
+                  " in his bag and thanks you politely.">)>)
           (<AND
               .PRSACT
               <==?
@@ -4691,8 +4569,7 @@ you politely.">)>)
                   <HACTION
                     ,ROBBER-DEMON>>
                 <TELL
-                  "Realizing just in time that you'd be stabbed in the back if you
-attempted to take the chalice, you return to the fray.">)>)>>
+                  "Realizing just in time that you'd be stabbed in the back if you attempted to take the chalice, you return to the fray.">)>)>>
       <DEFINE
         BURNER
         ("AUX"
@@ -5411,8 +5288,7 @@ attempted to take the chalice, you return to the fray.">)>)>>
                   <FIND-ROOM
                     "LLD2">>)>
             <JIGS-UP
-              "The voice of the guardian of the dungeon booms out from the darkness 
-'Your disrespect costs you your life!' and places your head on a pole.">)>>
+              "The voice of the guardian of the dungeon booms out from the darkness  'Your disrespect costs you your life!' and places your head on a pole.">)>>
       <DEFINE
         MUMBLER
         ()
@@ -5479,8 +5355,7 @@ attempted to take the chalice, you return to the fray.">)>)>>
               ,ODESC1
               "There is a worthless piece of canvas here.">
             <TELL
-              "Congratulations!  Unlike the other vandals, who merely stole the
-artist's masterpieces, you have destroyed one.">)>>
+              "Congratulations!  Unlike the other vandals, who merely stole the artist's masterpieces, you have destroyed one.">)>>
       <PSETG
         DIMMER
         "The lamp appears to be getting dimmer.">
@@ -5906,8 +5781,7 @@ artist's masterpieces, you have destroyed one.">)>>
                   <OLIGHT?
                     .C>>
                 <TELL
-                  "Alas, there's not much left of the candles.  Certainly not enough to
-burn.">)
+                  "Alas, there's not much left of the candles.  Certainly not enough to burn.">)
               (<NOT
                   .W>
                 <TELL
@@ -6047,8 +5921,7 @@ burn.">)
               (<DROP-OBJECT
                   .B>)>
             <JIGS-UP
-              "A booming voice says 'Wrong, cretin!' and you notice that you have
-turned into a pile of dust.">)>>
+              "A booming voice says 'Wrong, cretin!' and you notice that you have turned into a pile of dust.">)>>
       <DEFINE
         LIGHT-INT
         (OBJ

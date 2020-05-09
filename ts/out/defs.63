@@ -187,8 +187,7 @@
   RRAND
   ANY
   ;"random slot">
-;"flagword for <RBITS room>:
-	  bit-name   bit-tester"
+;"flagword for <RBITS room>:    bit-name   bit-tester"
 <FLAGWORD
   RLANDBIT
   <>
@@ -294,8 +293,7 @@
     ATOM
     FALSE>
   ;"(?)">
-;"VARG -- types and locations of objects acceptable as args to verbs,
-   these go in the SYN1 and SYN2 slots of a SYNTAX."
+;"VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX."
 <NEWSTRUC
   VARG
   VECTOR
@@ -429,8 +427,7 @@
   <PRIMTYPE
     WORD>
   ;"flags THIS MUST BE SAME OFFSET AS OFLAGS!">
-"bits in <AFLAGS adv>:
-	  bit-name  bit-tester"
+"bits in <AFLAGS adv>:    bit-name  bit-tester"
 <FLAGWORD
   ASTAGGERED
   STAGGERED?
@@ -518,8 +515,7 @@
     FALSE
     STRING>
   ;"reading material">
-"bits in <OFLAGS object>:
-	  bit-name  bit-tester"
+"bits in <OFLAGS object>:    bit-name  bit-tester"
 <FLAGWORD
   OVISON
   OVIS?

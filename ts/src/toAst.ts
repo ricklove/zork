@@ -65,7 +65,7 @@ export class ZToken implements ZNode {
         }
     }
     toString() {
-        return this._raw + '';
+        return this._raw.toString().replace(/\s/g, ' ') + '';
     }
 };
 

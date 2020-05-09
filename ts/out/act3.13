@@ -27,9 +27,7 @@
             .VB>
           MUNG!-WORDS>>
       <TELL
-        "Congratulations!  You've managed to break all those bottles.
-Fortunately for your feet, they were made of magic glass and disappear
-immediately.">
+        "Congratulations!  You've managed to break all those bottles. Fortunately for your feet, they were made of magic glass and disappear immediately.">
       <TRZ
         .BOTTL
         ,OVISON>
@@ -68,9 +66,7 @@ immediately.">
         .VB
         ,READ!-WORDS>
       <TELL
-        "Although the implementers are dead, they foresaw that some cretin
-would tamper with their remains.  Therefore, they took steps to
-prevent this.">
+        "Although the implementers are dead, they foresaw that some cretin would tamper with their remains.  Therefore, they took steps to prevent this.">
       <SET
         NL
         <ROB-ADV
@@ -101,9 +97,7 @@ prevent this.">
                 .LCASE>
               !.NL)>)>
       <JIGS-UP
-        "Unfortunately, we've run out of poles.  Therefore, in punishment for
-your most grievous sin, we shall deprive you of all your valuables,
-and of your life.">
+        "Unfortunately, we've run out of poles.  Therefore, in punishment for your most grievous sin, we shall deprive you of all your valuables, and of your life.">
       T)>>
 <SETG
   THEN
@@ -399,8 +393,7 @@ and of your life.">
             (<TELL
                 "You can't see through that!">)>)
         (<TELL
-            "The only writing legible is a capital E.  The rest is too small to
-be clearly visible.">)>)
+            "The only writing legible is a capital E.  The rest is too small to be clearly visible.">)>)
     (<AND
         <==?
           .PA
@@ -544,21 +537,16 @@ be clearly visible.">)>)
         ,VAPORS>)>>
 <PSETG
   VAPORS
-  "Just before you pass out, you notice that the vapors from the
-flask's contents are fatal.">
+  "Just before you pass out, you notice that the vapors from the flask's contents are fatal.">
 <PSETG
   CRUSHED
-  "The room seems to have become too small to hold you.  It seems that
-the  walls are not as compressible as your body, which is somewhat
-demolished.">
+  "The room seems to have become too small to hold you.  It seems that the  walls are not as compressible as your body, which is somewhat demolished.">
 <DEFINE
   ICEBOOM
   ()
   <MUNG-ROOM
     ,HERE
-    "The door to the room seems to be blocked by sticky orange rubble
-from an explosion.  Probably some careless adventurer was playing
-with blasting cakes.">
+    "The door to the room seems to be blocked by sticky orange rubble from an explosion.  Probably some careless adventurer was playing with blasting cakes.">
   <JIGS-UP
     ,ICEBLAST>>
 <PSETG
@@ -603,8 +591,7 @@ with blasting cakes.">
         .PA
         ,LOOK!-WORDS>
       <TELL
-        "You are in a room with a low ceiling which is circular in shape. 
-There are exits to the east and the southeast.">)
+        "You are in a room with a low ceiling which is circular in shape.  There are exits to the east and the southeast.">)
     (<AND
         <==?
           .PA
@@ -678,14 +665,7 @@ There are exits to the east and the southeast.">)
         .PA
         ,LOOK!-WORDS>
       <TELL
-        "You are in a large room full of assorted heavy machinery.  The room
-smells of burned resistors. The room is noisy from the whirring
-sounds of the machines. Along one wall of the room are three buttons
-which are, respectively, round, triangular, and square.  Naturally,
-above these buttons are instructions written in EBCDIC.  A large sign
-in English above all the buttons says
-		'DANGER -- HIGH VOLTAGE '.
-There are exits to the west and the south.">)>>
+        "You are in a large room full of assorted heavy machinery.  The room smells of burned resistors. The room is noisy from the whirring sounds of the machines. Along one wall of the room are three buttons which are, respectively, round, triangular, and square.  Naturally, above these buttons are instructions written in EBCDIC.  A large sign in English above all the buttons says   'DANGER -- HIGH VOLTAGE '. There are exits to the west and the south.">)>>
 <SETG
   CAROUSEL-ZOOM!-FLAG
   <>>
@@ -771,9 +751,7 @@ There are exits to the west and the south.">)>>
                 ,OVISON>)>)>)>>
 <PSETG
   SPINDIZZY
-  "According to Prof. TAA of MIT Tech, the rapidly changing magnetic
-fields in the room are so intense as to cause you to be electrocuted. 
-I really don't know, but in any event, something just killed you.">
+  "According to Prof. TAA of MIT Tech, the rapidly changing magnetic fields in the room are so intense as to cause you to be electrocuted.  I really don't know, but in any event, something just killed you.">
 <SETG
   CAGE-SOLVE!-FLAG
   <>>
@@ -823,9 +801,7 @@ I really don't know, but in any event, something just killed you.">
           ,PLAYER
           ,WINNER>>
       <TELL
-        "As you reach for the sphere, an iron cage falls from the ceiling
-to entrap you.  To make matters worse, poisonous gas starts coming
-into the room.">
+        "As you reach for the sphere, an iron cage falls from the ceiling to entrap you.  To make matters worse, poisonous gas starts coming into the room.">
       <COND
         (<==?
             <OROOM
@@ -874,10 +850,7 @@ into the room.">
           "SPHER">
         ,OVISON>
       <JIGS-UP
-        "As the robot reaches for the sphere, an iron cage falls from the
-ceiling.  The robot attempts to fend it off, but is trapped below it.
-Alas, the robot short-circuits in his vain attempt to escape, and
-crushes the sphere beneath him as he falls to the floor.">
+        "As the robot reaches for the sphere, an iron cage falls from the ceiling.  The robot attempts to fend it off, but is trapped below it. Alas, the robot short-circuits in his vain attempt to escape, and crushes the sphere beneath him as he falls to the floor.">
       <REMOVE-OBJECT
         .R>
       <TRZ
@@ -1081,8 +1054,7 @@ crushes the sphere beneath him as he falls to the floor.">
         1
         <ODESC2
           .PO>
-        "
-and nods his head-like appendage in thanks.">)
+        " and nods his head-like appendage in thanks.">)
     (<OR
         <==?
           .PA
@@ -1091,8 +1063,7 @@ and nods his head-like appendage in thanks.">)
           .PA
           ,MUNG!-WORDS>>
       <TELL
-        "The robot is injured (being of shoddy construction) and falls to the
-floor in a pile of garbage, which disintegrates before your eyes.">
+        "The robot is injured (being of shoddy construction) and falls to the floor in a pile of garbage, which disintegrates before your eyes.">
       <REMOVE-OBJECT
         <COND
           (<==?
