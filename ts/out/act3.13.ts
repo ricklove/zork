@@ -1,7 +1,7 @@
 export function coke_bottles() {
-    let pv: vector(verb) = G_prsvec;
-    let bottl: object = pv[2];
-    let vb: verb = pv[1];
+    let pv: VECTOR(VERB) = G_prsvec;
+    let bottl: OBJECT = pv[2];
+    let vb: VERB = pv[1];
     cond(/*(*/ [(vb === G_throw_X_words || vname(vb) === mung_X_words),
 	 tell(`Congratulations!  You've managed to break all those bottles.
 Fortunately for your feet, they were made of magic glass and disappear
@@ -12,10 +12,10 @@ immediately.`),
   }
 
 export function head_function() {
-    let pv: vector(verb) = G_prsvec;
-    let vb: verb = pv[1];
-    let nl: list(/*[*/ [rest, object] /*]*/) = /*(*/ [] /*)*/;
-    let lcase: object = find_obj(`LCASE`);
+    let pv: VECTOR(VERB) = G_prsvec;
+    let vb: VERB = pv[1];
+    let nl: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
+    let lcase: OBJECT = find_obj(`LCASE`);
     cond(/*(*/ [vb !== G_read_X_words,
 	 tell(`Although the implementers are dead, they foresaw that some cretin
 would tamper with their remains.  Therefore, they took steps to
@@ -35,12 +35,12 @@ G_then = 0
 
 G_bucket_top_X_flag = false
 
-export function bucket(arg?: (false | atom)) {
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
-    let po: (direction | false | object) = pv[2];
-    let w: object = find_obj(`WATER`);
-    let buck: object = find_obj(`BUCKE`);
+export function bucket(arg?: (FALSE | ATOM)) {
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
+    let po: (DIRECTION | FALSE | OBJECT) = pv[2];
+    let w: OBJECT = find_obj(`WATER`);
+    let buck: OBJECT = find_obj(`BUCKE`);
     cond(/*(*/ [arg === read_in, false] /*)*/,
 	      /*(*/ [(pa === G_c_int_X_words && cond(/*(*/ [memq(w,ocontents(buck)),
 			   remove_object(w),
@@ -59,8 +59,8 @@ export function bucket(arg?: (false | atom)) {
 		      pass_the_bucket(find_room(`BWELL`), pv,buck)] /*)*/)] /*)*/);
   }
 
-export function pass_the_bucket(r: room, pv: vector, b: object) {
-    let pvs: (false | object | direction) = pv[2];
+export function pass_the_bucket(r: ROOM, pv: VECTOR, b: OBJECT) {
+    let pvs: (FALSE | OBJECT | DIRECTION) = pv[2];
     pv[2] = false;
 remove_object(b);
 insert_object(b,r);
@@ -71,17 +71,17 @@ pv[2] = pvs;
   }
 
 export function eatme_function() {
-    let r: room = null;
-    let c: object = null;
-    let pv: vector = G_prsvec;
-    let here: room = G_here;
+    let r: ROOM = null;
+    let c: OBJECT = null;
+    let pv: VECTOR = G_prsvec;
+    let here: ROOM = G_here;
     cond(/*(*/ [(pv[1] === G_eat_X_words && pv[2] === c = find_obj(`ECAKE`) && here === find_room(`ALICE`)),
 	   tell(`Suddenly, the room appears to have become very large.`),
 	   kill_obj(c,G_winner),
 	   r = find_room(`ALISM`),
 	   r[G_robjs] = robjs(here),
 	   mapf(false,
-		 function(x: object) {
+		 function(x: OBJECT) {
             x[G_osize] = _(64, osize(x));
 x[G_oroom] = r;
           },
@@ -90,15 +90,15 @@ x[G_oroom] = r;
   }
 
 export function cake_function() {
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
-    let po: (false | object) = pv[2];
-    let pi: (false | object) = pv[3];
-    let rice: object = find_obj(`RDICE`);
-    let oice: object = find_obj(`ORICE`);
-    let bice: object = find_obj(`BLICE`);
-    let here: room = G_here;
-    let r: object = null;
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
+    let po: (FALSE | OBJECT) = pv[2];
+    let pi: (FALSE | OBJECT) = pv[3];
+    let rice: OBJECT = find_obj(`RDICE`);
+    let oice: OBJECT = find_obj(`ORICE`);
+    let bice: OBJECT = find_obj(`BLICE`);
+    let here: ROOM = G_here;
+    let r: OBJECT = null;
     cond(/*(*/ [pa === G_read_X_words,
 	       cond(/*(*/ [pi,		      cond(/*(*/ [pi === find_obj(`BOTTL`),
 			     tell(`The letters appear larger, but still are too small to be read.`)] /*)*/,
@@ -123,7 +123,7 @@ be clearly visible.`)] /*)*/)] /*)*/,
 			     r = find_room(`ALICE`),
 			     r[G_robjs] = robjs(here),
 			     mapf(false,
-				   function(x: object) {
+				   function(x: OBJECT) {
                     x[G_oroom] = r;
 x[G_osize] = _(osize(x), 64);
                   },
@@ -141,8 +141,8 @@ x[G_osize] = _(osize(x), 64);
 
 export function flask_function() {
     let f = null;
-    let pv: vector(verb, object) = G_prsvec;
-    let pa: verb = pv[1];
+    let pv: VECTOR(VERB, OBJECT) = G_prsvec;
+    let pa: VERB = pv[1];
     cond(/*(*/ [pa === G_open_X_words,
 	   mung_room(G_here,`Noxious vapors prevent your entry.`),
 	   jigs_up(G_vapors)] /*)*/,
@@ -172,12 +172,12 @@ jigs_up(G_iceblast);
 psetg(iceblast, `You have been blasted to smithereens (wherever they are).`)
 
 export function magnet_room() {
-    let foo: cexit = null;
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
-    let po: (false | object | direction) = pv[2];
-    let here: room = G_here;
-    let m: (false | primtype(vector)) = null;
+    let foo: CEXIT = null;
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
+    let po: (FALSE | OBJECT | DIRECTION) = pv[2];
+    let here: ROOM = G_here;
+    let m: (FALSE | PRIMTYPE(VECTOR)) = null;
     cond(/*(*/ [pa === G_look_X_words,
 	       tell(`You are in a room with a low ceiling which is circular in shape. 
 There are exits to the east and the southeast.`)] /*)*/,
@@ -196,8 +196,8 @@ There are exits to the east and the southeast.`)] /*)*/,
   }
 
 export function cmach_room() {
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
     cond(/*(*/ [pa === G_look_X_words,
 	   tell(`You are in a large room full of assorted heavy machinery.  The room
 smells of burned resistors. The room is noisy from the whirring
@@ -214,10 +214,10 @@ G_carousel_zoom_X_flag = false
 G_carousel_flip_X_flag = false
 
 export function buttons() {
-    let i: object = null;
-    let pv: vector = G_prsvec;
+    let i: OBJECT = null;
+    let pv: VECTOR = G_prsvec;
     let po = pv[2];
-    let pa: verb = pv[1];
+    let pa: VERB = pv[1];
     cond(/*(*/ [pa === G_push_X_words,
 	       cond(/*(*/ [G_winner === G_player,
 		      jigs_up(`There is a giant spark and you are fried to a crisp.`)] /*)*/,
@@ -245,12 +245,12 @@ I really don't know, but in any event, something just killed you.`)
 G_cage_solve_X_flag = false
 
 export function sphere_function() {
-    let pv: vector(verb, object) = G_prsvec;
-    let pa: verb = pv[1];
-    let r: object = find_obj(`ROBOT`);
-    let c: room = null;
-    let fl: (atom | false) = null;
-    let ract: adv = null;
+    let pv: VECTOR(VERB, OBJECT) = G_prsvec;
+    let pa: VERB = pv[1];
+    let r: OBJECT = find_obj(`ROBOT`);
+    let c: ROOM = null;
+    let fl: (ATOM | FALSE) = null;
+    let ract: ADV = null;
     fl = (!G_cage_solve_X_flag && pa === G_take_X_words);
 cond(/*(*/ [(fl && G_player === G_winner),
 	       tell(`As you reach for the sphere, an iron cage falls from the ceiling
@@ -290,15 +290,15 @@ export function caged_room() {
     cond(/*(*/ [G_cage_solve_X_flag,G_here = find_room(`CAGER`)] /*)*/);
   }
 
-export let G_sphere_clock: cevent;export let G_robot_actions: uvector(/*[*/ [rest, verb] /*]*/);
+export let G_sphere_clock: CEVENT;export let G_robot_actions: UVECTOR(/*[*/ [REST, VERB] /*]*/);
 export function robot_actor() {
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
-    let po: (false | object | direction) = pv[2];
-    let c: room = null;
-    let cage: object = null;
-    let r: object = find_obj(`ROBOT`);
-    let ract: adv = null;
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
+    let po: (FALSE | OBJECT | DIRECTION) = pv[2];
+    let c: ROOM = null;
+    let cage: OBJECT = null;
+    let r: OBJECT = find_obj(`ROBOT`);
+    let ract: ADV = null;
     cond(/*(*/ [(pa === G_raise_X_words && po === find_obj(`CAGE`)),
 	       tell(`The cage shakes and is hurled across the room.`),
 	       clock_disable(G_sphere_clock),
@@ -322,12 +322,12 @@ export function robot_actor() {
   }
 
 export function robot_function() {
-    let pv: vector = G_prsvec;
-    let pa: verb = pv[1];
-    let po: object = pv[2];
-    let pi: (false | object) = pv[3];
-    let pp: object = null;
-    let aa: adv = null;
+    let pv: VECTOR = G_prsvec;
+    let pa: VERB = pv[1];
+    let po: OBJECT = pv[2];
+    let pi: (FALSE | OBJECT) = pv[3];
+    let pp: OBJECT = null;
+    let aa: ADV = null;
     cond(/*(*/ [pa === G_give_X_words,
 	       aa = orand(pp = pi),
 	       remove_object(po),

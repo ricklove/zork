@@ -1,8 +1,8 @@
 export function boom_room() {
-    let dummy_Q: (atom | false) = false;
-    let prsact: verb = G_prsvec[1];
-    let win: adv = G_winner;
-    let o: object = null;
+    let dummy_Q: (ATOM | FALSE) = false;
+    let prsact: VERB = G_prsvec[1];
+    let win: ADV = G_winner;
+    let o: OBJECT = null;
     cond(/*(*/ [(vname(prsact) === walk_in_X_words || (vname(prsact) === on_X_words && dummy_Q = t)),
 	   cond(/*(*/ [((memq(o = find_obj(`CANDL`), aobjs(win)) && 1_Q(olight_Q(o))) || (memq(o = find_obj(`TORCH`), aobjs(win)) && 1_Q(olight_Q(o)))),
 		  unwind(prog(/*(*/ [] /*)*/,
@@ -18,7 +18,7 @@ gas.  I would have thought twice about carrying a `, 1, odesc2(o), `in here.`)] 
   }    
 
 export function bats_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [(vname(prsact) === walk_in_X_words && !memq(find_obj(`GARLI`), aobjs(G_winner))),
 	   fly_me()] /*)*/,
 	  /*(*/ [prsact === G_look_X_words,
@@ -28,7 +28,7 @@ is obviously deranged and holding his nose.`))] /*)*/);
   }
 
 export function fly_me() {
-    let bat_drops: vector(/*[*/ [rest, string] /*]*/) = G_bat_drops;
+    let bat_drops: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_bat_drops;
     unwind(prog(/*(*/ [] /*)*/,
 	      fweep(4, 1),
 	      tell(`A deranged giant vampire bat (a reject from WUMPUS) swoops down
@@ -39,7 +39,7 @@ G_prsvec[2] = false;
 room_desc();
   }
 
-export function fweep(num: number, slp?: number) {
+export function fweep(num: FIX, slp?: FIX) {
     repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	(0_Q(n = _(n,1)) && return()),
 	image(7),
@@ -56,19 +56,19 @@ psetg(bat_drops,
 	`MINE7`,
 	`TLADD`,
 	`BLADD`] /*]*/)
-export let G_bat_drops: vector(/*[*/ [rest, string] /*]*/);
+export let G_bat_drops: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 G_cage_top_X_flag = t
 
 export function dumbwaiter() {
-    let prsact: verb = G_prsvec[1];
-    let tb: object = find_obj(`TBASK`);
-    let top: room = find_room(`TSHAF`);
-    let bot: room = find_room(`BSHAF`);
-    let fb: object = find_obj(`FBASK`);
-    let ct: verb = G_cage_top_X_flag;
-    let here: room = G_here;
-    let dummy: vector(/*[*/ [rest, string] /*]*/) = G_dummy;
+    let prsact: VERB = G_prsvec[1];
+    let tb: OBJECT = find_obj(`TBASK`);
+    let top: ROOM = find_room(`TSHAF`);
+    let bot: ROOM = find_room(`BSHAF`);
+    let fb: OBJECT = find_obj(`FBASK`);
+    let ct: VERB = G_cage_top_X_flag;
+    let here: ROOM = G_here;
+    let dummy: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_dummy;
     cond(/*(*/ [prsact === G_raise_X_words,
 	   cond(/*(*/ [ct,
 		  tell(pick_one(G_dummy))] /*)*/,
@@ -95,7 +95,7 @@ export function dumbwaiter() {
   }
 
 export function machine_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	   tell(`You are in a large room which seems to be air-conditioned.  In one
 corner there is a machine (?) which is shaped somewhat like a clothes
@@ -110,9 +110,9 @@ the front of the machine is a large lid.`),
   }
 
 export function machine_function() {
-    let dummy: vector(/*[*/ [rest, string] /*]*/) = G_dummy;
-    let prsact: verb = G_prsvec[1];
-    let mach: object = find_obj(`MACHI`);
+    let dummy: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_dummy;
+    let prsact: VERB = G_prsvec[1];
+    let mach: OBJECT = find_obj(`MACHI`);
     cond(/*(*/ [G_here === find_room(`MACHI`),
      cond(/*(*/ [vname(prsact) === open_X_words,
        cond(/*(*/ [oopen_Q(mach),
@@ -129,12 +129,12 @@ export function machine_function() {
   }
 
 export function mswitch_function() {
-    let prsact: verb = G_prsvec[1];
-    let c: verb = find_obj(`COAL`);
-    let imp: object = G_prsvec[3];
-    let d: object = null;
-    let mach: object = find_obj(`MACHI`);
-    let screw: object = find_obj(`SCREW`);
+    let prsact: VERB = G_prsvec[1];
+    let c: VERB = find_obj(`COAL`);
+    let imp: OBJECT = G_prsvec[3];
+    let d: OBJECT = null;
+    let mach: OBJECT = find_obj(`MACHI`);
+    let screw: OBJECT = find_obj(`SCREW`);
     cond(/*(*/ [prsact === G_turn_X_words,
 	   cond(/*(*/ [imp === screw,
 		  cond(/*(*/ [oopen_Q(mach),
@@ -154,8 +154,8 @@ excitement abates.`),
   }
 
 export function gunk_function() {
-    let g: object = find_obj(`GUNK`);
-    let m: (object | false) = ocan(g);
+    let g: OBJECT = find_obj(`GUNK`);
+    let m: (OBJECT | FALSE) = ocan(g);
     cond(/*(*/ [m,
 	 m[G_ocontents] = splice_out(g,ocontents(m)),
 	 g[G_ocan] = false,
@@ -173,7 +173,7 @@ cond(/*(*/ [(G_here === find_room(`BSHAF`) && lit_Q(G_here)),
 	   score_upd(G_light_shaft),
 	   G_light_shaft = 0] /*)*/);
   }
-export let G_light_shaft: number;
+export let G_light_shaft: FIX;
 
 export function cliff_function() {
     cond(/*(*/ [memq(find_obj(`RBOAT`), aobjs(G_winner)),
@@ -182,7 +182,7 @@ export function cliff_function() {
   }
 
 export function stick_function() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [vname(prsact) === wave_X_words,
 	   cond(/*(*/ [(G_here === find_room(`FALLS`) || G_here === find_room(`POG`)),
 		  cond(/*(*/ [!G_rainbow_X_flag,
@@ -200,7 +200,7 @@ leaving you about 450 feet in the air, supported by water vapor.`)] /*)*/,
   }
 
 export function falls_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	   tell(`You are at the top of Aragain Falls, an enormous waterfall with a
 drop of about 450 feet.  The only path here is on the north end.
@@ -211,7 +211,7 @@ There is a man-sized barrel here which you could fit into.`),
   }
 
 export function digger() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [prso === find_obj(`SHOVE`)] /*)*/,
 	  /*(*/ [trnn(prso,G_toolbit),
 	   tell(`Digging with the `, 1, odesc2(prso), ` is slow and tedious.`)] /*)*/,
@@ -219,10 +219,10 @@ export function digger() {
   }
 
 export function dboat_function() {
-    let prsact: verb = G_prsvec[1];
-    let here: room = G_here;
-    let prsi: (false | object) = G_prsvec[3];
-    let dboat: object = find_obj(`DBOAT`);
+    let prsact: VERB = G_prsvec[1];
+    let here: ROOM = G_here;
+    let prsi: (FALSE | OBJECT) = G_prsvec[3];
+    let dboat: OBJECT = find_obj(`DBOAT`);
     cond(/*(*/ [vname(prsact) === infla_X_words,
 	   tell(`This boat will not inflate since some moron put a hole in it.`)] /*)*/,
 	  /*(*/ [vname(prsact) === plug_X_words,
@@ -236,11 +236,11 @@ export function dboat_function() {
 		 /*(*/ [with_tell(prsi)] /*)*/)] /*)*/);
   }
 
-export function rboat_function(arg?: (false | atom)) {
-    let prsact: verb = G_prsvec[1];
-    let rboat: object = find_obj(`RBOAT`);
-    let iboat: object = find_obj(`IBOAT`);
-    let here: room = G_here;
+export function rboat_function(arg?: (FALSE | ATOM)) {
+    let prsact: VERB = G_prsvec[1];
+    let rboat: OBJECT = find_obj(`RBOAT`);
+    let iboat: OBJECT = find_obj(`IBOAT`);
+    let here: ROOM = G_here;
     cond(/*(*/ [arg,false] /*)*/,
 	  /*(*/ [prsact === G_board_X_words,
 	   cond(/*(*/ [memq(find_obj(`STICK`), aobjs(G_winner)),
@@ -262,10 +262,10 @@ export function rboat_function(arg?: (false | atom)) {
   }
 
 export function iboat_function() {
-    let prsact: verb = G_prsvec[1];
-    let iboat: object = find_obj(`IBOAT`);
-    let rboat: object = find_obj(`RBOAT`);
-    let here: room = G_here;
+    let prsact: VERB = G_prsvec[1];
+    let iboat: OBJECT = find_obj(`IBOAT`);
+    let rboat: OBJECT = find_obj(`RBOAT`);
+    let here: ROOM = G_here;
     cond(/*(*/ [vname(prsact) === infla_X_words,
 	   cond(/*(*/ [!memq(iboat,robjs(here)),
 		  tell(`The boat must be on the ground to be inflated.`)] /*)*/,
@@ -286,13 +286,13 @@ thing to do, apparently.`)] /*)*/);
 G_buoy_flag_X_flag = t
 
 export function shake() {
-    let prsobj: object = G_prsvec[2];
-    let here: room = G_here;
+    let prsobj: OBJECT = G_prsvec[2];
+    let here: ROOM = G_here;
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [(!oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)) && tell(`It sounds like there is something inside the `, 1, odesc2(prsobj), `.`))] /*)*/,
 	  /*(*/ [(oopen_Q(prsobj) && !empty_Q(ocontents(prsobj))),
 	   mapf(false,
-		 function(x: object) {
+		 function(x: OBJECT) {
             x[G_ocan] = false;
 insert_object(x,here);
           },
@@ -306,10 +306,10 @@ export function rivr4_room() {
   } 
 
 export function beach_room() {
-    let prsact: verb = G_prsvec[1];
-    let shov: object = find_obj(`SHOVE`);
-    let here: room = G_here;
-    let cnt: number = null;
+    let prsact: VERB = G_prsvec[1];
+    let shov: OBJECT = find_obj(`SHOVE`);
+    let here: ROOM = G_here;
+    let cnt: FIX = null;
     cond(/*(*/ [(vname(prsact) === dig_X_words && shov === G_prsvec[2]),
 	   here[G_rvars] = cnt = _(1, rvars(here)),
 	   cond(/*(*/ [cnt > 4,
@@ -324,10 +324,10 @@ export function beach_room() {
   }
 
 export function tcave_room() {
-    let prsact: verb = G_prsvec[1];
-    let shov: object = find_obj(`SHOVE`);
-    let here: room = G_here;
-    let cnt: number = null;
+    let prsact: VERB = G_prsvec[1];
+    let shov: OBJECT = find_obj(`SHOVE`);
+    let here: ROOM = G_here;
+    let cnt: FIX = null;
     cond(/*(*/ [(vname(prsact) === dig_X_words && G_prsvec[2] === shov),
 	   cond(/*(*/ [memq(find_obj(`GUANO`), robjs(here)),
 		  here[G_rvars] = cnt = _(1, rvars(here)),
@@ -346,7 +346,7 @@ psetg(bdigs,
    () => /*[*/ [`You seem to be digging a hole here.`,
      `The hole is getting deeper, but that's about it.`,
      `You are surrounded by a wall of sand on all sides.`] /*]*/)
-export let G_bdigs: vector(/*[*/ [rest, string] /*]*/);export let G_cdigs: vector(/*[*/ [rest, string] /*]*/);
+export let G_bdigs: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_cdigs: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function geronimo() {
     cond(/*(*/ [G_here === find_room(`BARRE`),
@@ -361,10 +361,10 @@ psetg(swimyuks,
    () => /*[*/ [`I don't really see how.`,
      `I think that swimming is best performed in water.`,
      `Perhaps it is your head that is swimming.`] /*]*/)
-export let G_swimyuks: vector(/*[*/ [rest, string] /*]*/);
+export let G_swimyuks: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function swimmer() {
-    let swimyuks: vector(/*[*/ [rest, string] /*]*/) = G_swimyuks;
+    let swimyuks: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_swimyuks;
     cond(/*(*/ [rtrnn(G_here,G_rfillbit),
 	   tell(`Swimming is not allowed in this dungeon.`)] /*)*/,
 	  /*(*/ [tell(pick_one(swimyuks))] /*)*/);
@@ -372,7 +372,7 @@ export function swimmer() {
 
 
 export function grue_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_exami_X_words,
 	   tell(`The grue is a sinister, lurking presence in the dark places of the
 earth.  Its favorite diet is adventurers, but its insatiable
@@ -461,13 +461,13 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
 
 G_blab_X_flag = false
 
-export let G_burnup_int: cevent;export let G_bint: cevent;
-export function rise_and_shine(ball: object, here: room) {
-    let s: string = top(G_scrstr);
-    let m: (false | string) = null;
-    let in_Q: (atom | false) = avehicle(G_winner) === ball;
-    let bl: room = G_bloc;
-    let foo: cevent = null;
+export let G_burnup_int: CEVENT;export let G_bint: CEVENT;
+export function rise_and_shine(ball: OBJECT, here: ROOM) {
+    let s: STRING = top(G_scrstr);
+    let m: (FALSE | STRING) = null;
+    let in_Q: (ATOM | FALSE) = avehicle(G_winner) === ball;
+    let bl: ROOM = G_bloc;
+    let foo: CEVENT = null;
     clock_int(G_bint,3);
 cond(/*(*/ [m = spname(rid(bl))[`VAIR`],
 	       cond(/*(*/ [rest(m,4) == `4`,
@@ -504,20 +504,20 @@ due to its light load.`)] /*)*/)] /*)*/,
 	      /*(*/ [put_balloon(ball,bl,`VAIR1`, `lifts off.`)] /*)*/);
   }
 
-export function put_balloon(ball: object, here: room, there: string, str: string) {
+export function put_balloon(ball: OBJECT, here: ROOM, there: STRING, str: STRING) {
     (spname(rid(G_here))[`LEDG`] && tell(`You watch as the balloon slowly `, 1, str));
 remove_object(ball);
 insert_object(ball,G_bloc = find_room(there));
   }
 
-export let G_bloc: room;
+export let G_bloc: ROOM;
 
-export function decline_and_fall(ball: object, here: room) {
-    let s: string = top(G_scrstr);
-    let m: (false | string) = null;
-    let bl: room = G_bloc;
-    let in_Q: (atom | false) = avehicle(G_winner) === ball;
-    let foo: cevent = null;
+export function decline_and_fall(ball: OBJECT, here: ROOM) {
+    let s: STRING = top(G_scrstr);
+    let m: (FALSE | STRING) = null;
+    let bl: ROOM = G_bloc;
+    let in_Q: (ATOM | FALSE) = avehicle(G_winner) === ball;
+    let foo: CEVENT = null;
     clock_int(G_bint,3);
 cond(/*(*/ [m = spname(rid(bl))[`VAIR`],
 	   cond(/*(*/ [rest(m,4) == `1`,
@@ -543,11 +543,11 @@ cond(/*(*/ [m = spname(rid(bl))[`VAIR`],
   }
 
 export function wire_function() {
-    let pv: vector = G_prsvec;
-    let prsa: verb = pv[1];
-    let prso: prsobj = pv[2];
-    let prsi: prsobj = pv[3];
-    let bint: cevent = G_bint;
+    let pv: VECTOR = G_prsvec;
+    let prsa: VERB = pv[1];
+    let prso: PRSOBJ = pv[2];
+    let prsi: PRSOBJ = pv[3];
+    let bint: CEVENT = G_bint;
     cond(/*(*/ [prsa === G_tie_X_words,
 	       cond(/*(*/ [(prso === find_obj(`BROPE`) && (prsi === find_obj(`HOOK1`) || prsi === find_obj(`HOOK2`))),
 		      G_btie_X_flag = t,
@@ -562,8 +562,8 @@ export function wire_function() {
   }
 
 export function burnup() {
-    let r: object = find_obj(`RECEP`);
-    let obj: object = ocontents(r)[1];
+    let r: OBJECT = find_obj(`RECEP`);
+    let obj: OBJECT = ocontents(r)[1];
     r[G_ocontents] = splice_out(obj,ocontents(r));
 tell(`It seems that the `, 1, odesc2(obj), ` has burned out, and the cloth
 bag starts to collapse.`);
@@ -573,7 +573,7 @@ G_binf_X_flag = false;
 G_safe_flag_X_flag = false
 
 export function safe_room() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_look_X_words,
 	   tell(`You are in a dusty old room which is virtually featureless, except
 for an exit on the north side.`,
@@ -588,7 +588,7 @@ On the far wall is a rusty box, whose door has been blown off.`] /*)*/))] /*)*/)
   }
 
 export function safe_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_take_X_words,
 	       tell(`The box is imbedded in the wall.`)] /*)*/,
 	      /*(*/ [prsa === G_open_X_words,
@@ -605,16 +605,16 @@ psetg(brick_boom,
 than weight, namely the ability to blow you to smithereens.`)
 
 export function brick_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_burn_X_words, jigs_up(G_brick_boom)] /*)*/);
   }
 
 export function fuse_function() {
-    let prsa: verb = G_prsvec[1];
-    let fuse: object = find_obj(`FUSE`);
-    let brick: object = find_obj(`BRICK`);
-    let brick_room: (room | false) = null;
-    let oc: (object | false) = null;
+    let prsa: VERB = G_prsvec[1];
+    let fuse: OBJECT = find_obj(`FUSE`);
+    let brick: OBJECT = find_obj(`BRICK`);
+    let brick_room: (ROOM | FALSE) = null;
+    let oc: (OBJECT | FALSE) = null;
     cond(/*(*/ [prsa === G_burn_X_words,
 	       tell(`The wire starts to burn.`),
 	       fuse[G_orand] = /*[*/ [0, clock_int(G_fusin,2)] /*]*/] /*)*/,
@@ -649,7 +649,7 @@ export function fuse_function() {
 				   robjs(brick_room)),
 			     cond(/*(*/ [brick_room === find_room(`LROOM`),
 				    mapf(false,
-					  function(x: object) {
+					  function(x: OBJECT) {
                         x[G_ocan] = false;
                       },
 					  ocontents(find_obj(`TCASE`))),
@@ -659,7 +659,7 @@ export function fuse_function() {
   }
 
 export function safe_mung() {
-    let rm: room = G_munged_room;
+    let rm: ROOM = G_munged_room;
     cond(/*(*/ [G_here === rm,
 	       jigs_up(cond(/*(*/ [rtrnn(rm,G_rhousebit),
 `The house shakes, and the ceiling of the room you're in collapses,
@@ -675,7 +675,7 @@ mung_room((oroom(find_obj(`BRICK`)) || G_here),
   }
 
 export function ledge_mung() {
-    let rm: room = find_room(`LEDG4`);
+    let rm: ROOM = find_room(`LEDG4`);
     cond(/*(*/ [G_here === rm,
 	   cond(/*(*/ [avehicle(G_winner),
 		  cond(/*(*/ [G_btie_X_flag,
@@ -699,7 +699,7 @@ mung_room(rm,`The ledge has collapsed and cannot be landed on.`);
   }
 
 export function ledge_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_walk_in_X_words,
 	   (G_safe_flag_X_flag && tell(`Behind you, the walls of the safe room collapse into rubble.`) && G_safe_flag_X_flag = false)] /*)*/,
 	  /*(*/ [prsa === G_look_X_words,
@@ -729,9 +729,9 @@ notice the gnome nervously glancing at his watch.`),
 G_gnome_door_X_flag = G_gnome_flag_X_flag = false
 
 export function gnome_function() {
-    let pv: vector = G_prsvec;
-    let prsa: verb = pv[1];
-    let prso: prsobj = pv[2];
+    let pv: VECTOR = G_prsvec;
+    let prsa: VERB = pv[1];
+    let prso: PRSOBJ = pv[2];
     cond(/*(*/ [((prsa === G_give_X_words || prsa === G_throw_X_words) && type_Q(prso,object) && cond(/*(*/ [otval(prso) !== 0,
 		       tell(`Thank you very much for the `, 1, odesc2(prso), `.  I don't believe 
 I've ever seen one as beautiful. 'Follow me', he says, and a door 

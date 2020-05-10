@@ -10,8 +10,8 @@ export function blo(y) {
 	       off(bh)] /*)*/);
   }
 
-export let G_ff: string;
-export function ilo(body: string, type: number, nm1: string, nm2: string, m1?: string, m2: string) {
+export let G_ff: STRING;
+export function ilo(body: STRING, type: FIX, nm1: STRING, nm2: STRING, m1?: STRING, m2: STRING) {
     cond(/*(*/ [type === _400000000000_,
 	       cond(/*(*/ [((body[`<FLUSH-ME>`] && !G_winners[G_xunm]) || (G_winners[nm1] && body[G_ff])),
 		      eval(parse(body))] /*)*/)] /*)*/);
@@ -21,9 +21,9 @@ dismiss(t);
 // ROOM FUNCTIONS
 
 export function east_house() {
-    let win: adv = G_winner;
-    let prsvec: vector = G_prsvec;
-    let prsact: verb = prsvec[1];
+    let win: ADV = G_winner;
+    let prsvec: VECTOR = G_prsvec;
+    let prsact: VERB = prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	   tell(`You are behind the white house.  In one corner of the house there
 is a small window which is `, 1, cond(/*(*/ [G_kitchen_window_X_flag,		  		      `open.`] /*)*/,
@@ -35,13 +35,13 @@ is a small window which is `, 1, cond(/*(*/ [G_kitchen_window_X_flag,		  		     
 G_grunlock_X_flag = false
 
 export function window_function() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     open_close(prsact,		kitchen_window_X_flag,
 `With great effort, you open the window far enough to allow entry.`,
 `The window closes (more easily than it opened).`);
   }
 
-export function open_close(verb: verb, atm: atom, stropn: string, strcls: string) {
+export function open_close(verb: VERB, atm: ATOM, stropn: STRING, strcls: STRING) {
     cond(/*(*/ [verb === G_open_X_words,
 	   cond(/*(*/ [/*,*/ [atm] /*1*/,		  tell(pick_one(G_dummy))] /*)*/,
 		 /*(*/ [tell(stropn),
@@ -56,9 +56,9 @@ export function open_close(verb: verb, atm: atom, stropn: string, strcls: string
 // KITCHEN -- CHECK THE WINDOW
 
 export function kitchen() {
-    let win: adv = G_winner;
-    let prsvec: vector = G_prsvec;
-    let prsact: verb = prsvec[1];
+    let win: ADV = G_winner;
+    let prsvec: VECTOR = G_prsvec;
+    let prsact: VERB = prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	   tell(`You are in the kitchen of the white house.  A table seems to have
 been used recently for the preparation of food.  A passage leads to
@@ -70,8 +70,8 @@ east is a small window which is `, 0),
   }
 
 export function leaf_pile() {
-    let pv: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let l: object = pv[2];
+    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let l: OBJECT = pv[2];
     cond(/*(*/ [pv[1] === G_burn_X_words,
 	       l[G_orand] = 1,
 	       cond(/*(*/ [oroom(l),
@@ -95,7 +95,7 @@ psetg(gladesc,
 and ceiling.  There are passages to the north and east.`)
 
 export function glacier_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	   cond(/*(*/ [G_glacier_flag_X_flag,		  tell(G_gladesc),
 		  tell(`There is a large passageway leading westward.`, 1)] /*)*/,
@@ -110,9 +110,9 @@ attempt by robbers to remove it).`)] /*)*/);
   }
 	  
 export function glacier() {
-    let prsvec: vector(verb, /*[*/ [2, any] /*]*/) = G_prsvec;
-    let prsact: verb = prsvec[1];
-    let t: verb = null;
+    let prsvec: VECTOR(VERB, /*[*/ [2, ANY] /*]*/) = G_prsvec;
+    let prsact: VERB = prsvec[1];
+    let t: VERB = null;
     cond(/*(*/ [vname(prsact) === throw_X_words,
 	   cond(/*(*/ [prsvec[2] === t = find_obj(`TORCH`),
 		  tell(`The torch hits the glacier and explodes into a great ball of flame,
@@ -143,7 +143,7 @@ psetg(yuks,
 	`I don't think so.`] /*]*/)
 
 export function reservoir_south() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	       cond(/*(*/ [G_low_tide_X_flag,		      tell(`You are in the south end of a large cavernous room which was formerly
 a reservoir.`),
@@ -154,7 +154,7 @@ climbing up along the edge of a cliff.`, 1)] /*)*/);
   }
 
 export function reservoir_north() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	       cond(/*(*/ [G_low_tide_X_flag,		      tell(`You are in the north end of a large cavernous room which was formerly
 a reservoir.`),
@@ -166,11 +166,11 @@ a reservoir.`),
 // LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE
 
 export function living_room() {
-    let win: adv = G_winner;
-    let prsvec: vector = G_prsvec;
-    let rug_Q: (atom | false) = null;
-    let prsact: verb = prsvec[1];
-    let tc: object = null;
+    let win: ADV = G_winner;
+    let prsvec: VECTOR = G_prsvec;
+    let rug_Q: (ATOM | FALSE) = null;
+    let prsact: VERB = prsvec[1];
+    let tc: OBJECT = null;
     cond(/*(*/ [prsact === G_look_X_words,
 	       cond(/*(*/ [G_magic_flag_X_flag,		      tell(`You are in the living room.  There is a door to the east.  To the
 west is a cyclops-shaped hole in an old wooden door, above which is
@@ -190,8 +190,8 @@ nailed shut, `, 0)] /*)*/),
   }
 
 export function trap_door() {
-    let prsact: verb = G_prsvec[1];
-    let rm: room = G_here;
+    let prsact: VERB = G_prsvec[1];
+    let rm: ROOM = G_here;
     cond(/*(*/ [rm === find_room(`LROOM`),
 	   cond(/*(*/ [prsact === G_open_X_words,
 		  cond(/*(*/ [G_trap_door_X_flag,			 tell(`It's open.`)] /*)*/,
@@ -210,7 +210,7 @@ into darkness.`)] /*)*/),
   }
 
 export function look_under() {
-    let obj: object = G_prsvec[2];
+    let obj: OBJECT = G_prsvec[2];
     cond(/*(*/ [(obj === find_obj(`RUG`) && !orand(obj) && !G_trap_door_X_flag),
 	   tell(`Underneath the rug is a closed trap door.`)] /*)*/,
 	  /*(*/ [(obj === find_obj(`LEAVE`) && rvars(find_room(`CLEAR`)) !== 1),
@@ -222,11 +222,11 @@ export function repent() {
   }
 
 export function clearing() {
-    let prsact: verb = G_prsvec[1];
-    let rm: room = G_here;
-    let grate: object = find_obj(`GRAT1`);
-    let leaves: object = find_obj(`LEAVE`);
-    let rv: number = rvars(rm);
+    let prsact: VERB = G_prsvec[1];
+    let rm: ROOM = G_here;
+    let grate: OBJECT = find_obj(`GRAT1`);
+    let leaves: OBJECT = find_obj(`LEAVE`);
+    let rv: FIX = rvars(rm);
     cond(/*(*/ [prsact === G_look_X_words,
 	 tell(`You are in a clearing, with a forest surrounding you on the west
 and south.`),
@@ -242,9 +242,9 @@ and south.`),
 // CELLAR--FIRST ROOM IN BASEMENT.
 
 export function cellar() {
-    let win: adv = G_winner;
-    let prsact: verb = G_prsvec[1];
-    let door: object = find_obj(`DOOR`);
+    let win: ADV = G_winner;
+    let prsact: VERB = G_prsvec[1];
+    let door: OBJECT = find_obj(`DOOR`);
     cond(/*(*/ [prsact === G_look_X_words,
 	 tell(`You are in a dark and damp cellar with a narrow passageway leading
 east, and a crawlway to the south.  On the west is the bottom of a
@@ -258,8 +258,8 @@ steep metal ramp which is unclimbable.`)] /*)*/,
 `STUDIO:  LET PEOPLE UP THE CHIMNEY IF THEY DON'T HAVE MUCH STUFF`
 
 export function chimney_function() {
-    let winner: adv = G_winner;
-    let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(winner);
+    let winner: ADV = G_winner;
+    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
     cond(/*(*/ [(l__Q(aobjs.length, 2) && memq(find_obj(`LAMP`), aobjs)),
 	 G_light_load_X_flag = t,
 	 // Door will slam shut next time, too, since this way up don't count.,
@@ -273,9 +273,9 @@ export function chimney_function() {
 // OBJECT FUNCTIONS
 
 export function rug() {
-    let prsvec: vector = G_prsvec;
-    let prsa: verb = prsvec[1];
-    let obj: object = null;
+    let prsvec: VECTOR = G_prsvec;
+    let prsa: VERB = prsvec[1];
+    let obj: OBJECT = null;
     cond(/*(*/ [prsa === G_lift_X_words,
 	  tell(`The rug is too heavy to lift, but in trying to take it you have 
 noticed an irregularity beneath it.`)] /*)*/,
@@ -292,9 +292,9 @@ With the rug moved, the dusty cover of a closed trap-door appears.`),
   }
 
 export function rusty_knife() {
-    let prsvec: vector = G_prsvec;
-    let prsa: verb = prsvec[1];
-    let prsi: (false | object) = prsvec[3];
+    let prsvec: VECTOR = G_prsvec;
+    let prsa: VERB = prsvec[1];
+    let prsi: (FALSE | OBJECT) = prsvec[3];
     cond(/*(*/ [prsa === G_take_X_words,
 	       (memq(find_obj(`SWORD`), aobjs(G_winner)) && tell(`As you pick up the rusty knife, your sword gives a single pulse
 of blinding blue light.`)),
@@ -308,9 +308,9 @@ slits your throat.`)] /*)*/);
   }
 
 export function skeleton() {
-    let rm: room = G_winner[1];
-    let lld: room = find_room(`LLD2`);
-    let l: room = null;
+    let rm: ROOM = G_winner[1];
+    let lld: ROOM = find_room(`LLD2`);
+    let l: ROOM = null;
     tell(`A ghost appears in the room and is appalled at your having
 desecrated the remains of a fellow adventurer.  He casts a curse
 on all of your valuables and orders them banished to the Land of
@@ -318,7 +318,7 @@ the Living Dead.  The ghost leaves, muttering obscenities.`);
 l = rob_room(rm,/*(*/ [] /*)*/, 100);
 l = rob_adv(G_player,l);
 mapf(false,
-	 function(x: object) {
+	 function(x: OBJECT) {
         x[G_oroom] = lld;
       },
 	 l);
@@ -328,12 +328,12 @@ cond(/*(*/ [!empty_Q(l),
   }
 
 export function troll() {
-    let pa: verb = G_prsvec[1];
-    let pv: vector = G_prsvec;
-    let prso: (false | object) = pv[2];
-    let here: room = G_here;
-    let t: object = find_obj(`TROLL`);
-    let a: object = find_obj(`AXE`);
+    let pa: VERB = G_prsvec[1];
+    let pv: VECTOR = G_prsvec;
+    let prso: (FALSE | OBJECT) = pv[2];
+    let here: ROOM = G_here;
+    let t: OBJECT = find_obj(`TROLL`);
+    let a: OBJECT = find_obj(`AXE`);
     cond(/*(*/ [pa === G_fight_X_words,
 	       cond(/*(*/ [ocan(a) === t, false] /*)*/,
 		     /*(*/ [memq(a,robjs(G_here)),
@@ -377,7 +377,7 @@ not look pleased.`),
 `MIRROR ROOM HACKERY`
 
 export function mirror_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [(prsact === G_look_X_words && lit_Q(G_here)),
 	       tell(`You are in a large square room with tall ceilings.  On the south wall
 is an enormous mirror which fills the entire wall.  There are exits
@@ -389,10 +389,10 @@ actions.`, 1)] /*)*/)] /*)*/);
 G_mirror_mung_X_flag = false
 
 export function mirror_mirror() {
-    let prsact: verb = G_prsvec[1];
-    let rm1: room = null;
-    let rm2: room = null;
-    let l1: list(/*[*/ [rest, object] /*]*/) = null;
+    let prsact: VERB = G_prsvec[1];
+    let rm1: ROOM = null;
+    let rm2: ROOM = null;
+    let l1: LIST(/*[*/ [REST, OBJECT] /*]*/) = null;
     cond(/*(*/ [(!G_mirror_mung_X_flag && vname(prsact) === rub_X_words),
 	       rm1 = G_here,
 	       rm2 = cond(/*(*/ [rm1 === find_room(`MIRR1`),
@@ -401,11 +401,11 @@ export function mirror_mirror() {
 	       l1 = robjs(rm1),
 	       rm1[G_robjs] = robjs(rm2),
 	       rm2[G_robjs] = l1,
-	       mapf(false, function(x: object) {
+	       mapf(false, function(x: OBJECT) {
             x[G_oroom] = rm1;
           },
 		     robjs(rm1)),
-	       mapf(false, function(x: object) {
+	       mapf(false, function(x: OBJECT) {
             x[G_oroom] = rm2;
           },
 		     robjs(rm2)),
@@ -424,7 +424,7 @@ good luck handy.`)] /*)*/)] /*)*/);
   } 
 
 export function carousel_room() {
-    let pv: vector = G_prsvec;
+    let pv: VECTOR = G_prsvec;
     cond(/*(*/ [(pv[1] === G_walk_in_X_words && G_carousel_zoom_X_flag),
 	       jigs_up(G_spindizzy)] /*)*/,
 	      /*(*/ [pv[1] === G_look_X_words,
@@ -434,19 +434,19 @@ export function carousel_room() {
   }
 
 export function carousel_exit() {
-    let cx: (cexit | nexit | room) = null;
+    let cx: (CEXIT | NEXIT | ROOM) = null;
     cond(/*(*/ [G_carousel_flip_X_flag,false] /*)*/,
 	      /*(*/ [tell(`Unfortunately, it is impossible to tell directions in here.`, 1),
 	       carousel_out()] /*)*/);
   }
 
 export function carousel_out() {
-    let cx: (cexit | nexit | room) = null;
+    let cx: (CEXIT | NEXIT | ROOM) = null;
     (type_Q(cx = rexits(G_here)[_(2, _(1, mod(random(), 8)))], cexit) && cxroom(cx));
   }
 
 export function torch_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	tell(`You are in a large room with a prominent doorway leading to a down
 staircase. To the west is a narrow twisting tunnel.  Above you is a
@@ -458,7 +458,7 @@ five feet above your head.`, 1)] /*)*/)] /*)*/);
   }
 
 export function dome_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	       tell(`You are at the periphery of a large dome, which forms the ceiling
 of another room below.  Protecting you from a precipitous drop is a
@@ -477,11 +477,11 @@ false;
   }
 
 export function lld_room() {
-    let pv: vector = G_prsvec;
-    let win: adv = G_winner;
-    let wobj: list(/*[*/ [rest, object] /*]*/) = aobjs(win);
-    let pa: verb = pv[1];
-    let cand: object = find_obj(`CANDL`);
+    let pv: VECTOR = G_prsvec;
+    let win: ADV = G_winner;
+    let wobj: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let pa: VERB = pv[1];
+    let cand: OBJECT = find_obj(`CANDL`);
     cond(/*(*/ [pa === G_look_X_words,
 	       tell(`You are outside a large gateway, on which is inscribed 
 	\"Abandon every hope, all ye who enter here.\"  
@@ -506,7 +506,7 @@ are an evil spirit, and dismisses you from the realm of the living.`)] /*)*/)] /
   }
 
 export function lld2_room() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_look_X_words,
 	   tell(`You have entered the Land of the Living Dead, a large desolate room.
 Although it is apparently uninhabited, you can hear the sounds of
@@ -520,8 +520,8 @@ appears to be your head, at the end of a long pole.`] /*)*/, /*(*/ [``] /*)*/))]
   }
 
 export function ghost_function() {
-    let pv: vector = G_prsvec;
-    let g: object = find_obj(`GHOST`);
+    let pv: VECTOR = G_prsvec;
+    let g: OBJECT = find_obj(`GHOST`);
     cond(/*(*/ [pv[3] === g,
 	 tell(`How can you attack a spirit with material objects?`),
 	 false] /*)*/,
@@ -530,7 +530,7 @@ export function ghost_function() {
   }
 
 export function maze_11() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
 	 tell(`You are in a small room near the maze. There are twisty passages
 in the immediate vicinity.`),
@@ -540,7 +540,7 @@ in the immediate vicinity.`),
   }
 
 export function grat1_function() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [G_grunlock_X_flag,	   open_close(prsact,		       key_flag_X_flag,
  		      `The grating opens.`,
 		      `The grating is closed.`)] /*)*/,
@@ -548,7 +548,7 @@ export function grat1_function() {
   }
 
 export function grat2_function() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [G_grunlock_X_flag,	   open_close(prsact,		       key_flag_X_flag,
  		      `The grating opens to reveal trees above you.`,
 		      `The grating is closed.`),
@@ -557,15 +557,15 @@ export function grat2_function() {
   }
 
 export function treasure_room() {
-    let pv: vector(verb) = G_prsvec;
-    let hack: hack = G_robber_demon;
-    let hh: list(/*[*/ [rest, object] /*]*/) = null;
+    let pv: VECTOR(VERB) = G_prsvec;
+    let hack: HACK = G_robber_demon;
+    let hh: LIST(/*[*/ [REST, OBJECT] /*]*/) = null;
     let chali = null;
-    let hobj: object = hobj(hack);
-    let flg: (atom | false) = false;
-    let tl: list(/*[*/ [rest, room] /*]*/) = null;
-    let here: room = G_here;
-    let rooms: list(/*[*/ [rest, room] /*]*/) = G_rooms;
+    let hobj: OBJECT = hobj(hack);
+    let flg: (ATOM | FALSE) = false;
+    let tl: LIST(/*[*/ [REST, ROOM] /*]*/) = null;
+    let here: ROOM = G_here;
+    let rooms: LIST(/*[*/ [REST, ROOM] /*]*/) = G_rooms;
     cond(/*(*/ [(haction(hack) && vname(pv[1]) === walk_in_X_words),
 	 cond(/*(*/ [flg = oroom(hobj) !== here,
 		tell(`You hear a scream of anguish as you violate the robber's hideaway. 
@@ -585,7 +585,7 @@ Using passages unknown to you, he rushes to its defense.`),
 		tell(`The thief gestures mysteriously, and the treasures in the room
 suddenly vanish.`)] /*)*/),
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             cond(/*(*/ [(x !== chali && x !== hobj),
 		    trz(x,G_ovison)] /*)*/);
           },
@@ -611,7 +611,7 @@ export function prayer() {
 G_gate_flag_X_flag = false
 
 export function dam_room() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact === G_look_X_words,
      tell(`You are standing on the top of the Flood Control Dam #3, which was
 quite a tourist attraction in times far distant.  There are paths to
@@ -628,9 +628,9 @@ panel. Above the bolt is a small green plastic bubble.`, 1),
   }
 
 export function bolt_function() {
-    let prsact: verb = G_prsvec[1];
-    let prsi: (false | object) = G_prsvec[3];
-    let trunk: object = find_obj(`TRUNK`);
+    let prsact: VERB = G_prsvec[1];
+    let prsi: (FALSE | OBJECT) = G_prsvec[3];
+    let trunk: OBJECT = find_obj(`TRUNK`);
     cond(/*(*/ [prsact === G_turn_X_words,
 	       cond(/*(*/ [prsi === find_obj(`WRENC`),
 		      cond(/*(*/ [G_gate_flag_X_flag,			     cond(/*(*/ [G_low_tide_X_flag,				    G_low_tide_X_flag = false,
@@ -656,16 +656,16 @@ psetg(drownings,
 	`over your head.`,
 	`high in your lungs.`] /*]*/)
 
-export let G_drownings: vector(/*[*/ [rest, string] /*]*/);
+export let G_drownings: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function maint_room() {
     let pv = G_prsvec;
-    let prsact: verb = pv[1];
-    let prso: prsobj = pv[2];
-    let prsi: (false | object) = pv[3];
-    let mnt: room = find_room(`MAINT`);
-    let here_Q: (atom | false) = G_here === mnt;
-    let hack: number = null;
+    let prsact: VERB = pv[1];
+    let prso: PRSOBJ = pv[2];
+    let prsi: (FALSE | OBJECT) = pv[3];
+    let mnt: ROOM = find_room(`MAINT`);
+    let here_Q: (ATOM | FALSE) = G_here === mnt;
+    let hack: FIX = null;
     cond(/*(*/ [prsact === G_c_int_X_words,
 	       mnt[G_rvars] = _(1, hack = rvars(mnt)),
 	       cond(/*(*/ [(here_Q && tell(`The water level here is now `,
@@ -701,10 +701,10 @@ pipe.)`),
   }
 
 export function leak_function() {
-    let hack: number = null;
-    let prsvec: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let prsa: verb = prsvec[1];
-    let prsi: (object | false) = prsvec[3];
+    let hack: FIX = null;
+    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsa: VERB = prsvec[1];
+    let prsi: (OBJECT | FALSE) = prsvec[3];
     cond(/*(*/ [prsvec[2] === find_obj(`LEAK`),
 	       cond(/*(*/ [(vname(prsa) === plug_X_words && hack = rvars(G_here) > 0),
 		      cond(/*(*/ [prsi === find_obj(`PUTTY`),
@@ -716,26 +716,26 @@ leak in the dam.`)] /*)*/,
   }
 
 export function tube_function() {
-    let prsvec: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
+    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
     cond(/*(*/ [(prsvec[1] === G_put_X_words && prsvec[3] === find_obj(`TUBE`)),
 	       tell(`The tube refuses to accept anything.`)] /*)*/);
   }
 
-export function with_tell(obj: object) {
+export function with_tell(obj: OBJECT) {
     tell(`With a `, 1, odesc2(obj), `?`);
   }
 
 export function cave2_room() {
-    let foo: vector(number, cevent) = null;
-    let bar: cevent = null;
-    let prsact: verb = G_prsvec[1];
-    let c: verb = null;
+    let foo: VECTOR(FIX, CEVENT) = null;
+    let bar: CEVENT = null;
+    let prsact: VERB = G_prsvec[1];
+    let c: VERB = null;
     cond(/*(*/ [vname(prsact) === walk_in_X_words,
 	 (memq(c = find_obj(`CANDL`), aobjs(G_winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && c[G_olight_Q] = _1 && tell(`The cave is very windy at the moment and your candles have blown out.`))] /*)*/);
   }
 
 export function bottle_function() {
-    let prsact: verb = G_prsvec[1];
+    let prsact: VERB = G_prsvec[1];
     cond(/*(*/ [prsact[1] === throw_X_words,
 	 tell(`The bottle hits the far wall and is decimated.`),
 	 remove_object(G_prsvec[2])] /*)*/,
@@ -749,9 +749,9 @@ export function bottle_function() {
   }
 	
 export function fill() {
-    let rem: (atom | false) = false;
-    let prsvec: vector(verb, object, any) = G_prsvec;
-    let w: object = find_obj(`WATER`);
+    let rem: (ATOM | FALSE) = false;
+    let prsvec: VECTOR(VERB, OBJECT, ANY) = G_prsvec;
+    let w: OBJECT = find_obj(`WATER`);
     cond(/*(*/ [object_action()] /*)*/,
 	/*(*/ [(rtrnn(G_here,G_rfillbit) || rem = (ocan(w) === avehicle(G_winner) || oroom(w) === G_here)),
 	 prsvec[1] = G_take_X_words,
@@ -761,14 +761,14 @@ export function fill() {
 	/*(*/ [tell(`I can't find any water here.`)] /*)*/);
   }
 
-export function water_function(rem?: (atom | false)) {
-    let prsvec: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let prsact: verb = prsvec[1];
-    let me: adv = G_winner;
-    let b: object = find_obj(`BOTTL`);
-    let w: object = prsvec[2];
-    let av: (object | false) = avehicle(me);
-    let can: (false | object) = prsvec[3];
+export function water_function(rem?: (ATOM | FALSE)) {
+    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsact: VERB = prsvec[1];
+    let me: ADV = G_winner;
+    let b: OBJECT = find_obj(`BOTTL`);
+    let w: OBJECT = prsvec[2];
+    let av: (OBJECT | FALSE) = avehicle(me);
+    let can: (FALSE | OBJECT) = prsvec[3];
     cond(/*(*/ [(prsact === G_take_X_words || prsact === G_put_X_words),
 	       cond(/*(*/ [(av && av === can),
 		     tell(`There is now a puddle in the bottom of the `,
@@ -816,10 +816,10 @@ export function water_function(rem?: (atom | false)) {
   }
 
 export function rope_function() {
-    let prsact: verb = G_prsvec[1];
-    let droom: room = find_room(`DOME`);
-    let rope: object = find_obj(`ROPE`);
-    let win: adv = G_winner;
+    let prsact: VERB = G_prsvec[1];
+    let droom: ROOM = find_room(`DOME`);
+    let rope: OBJECT = find_obj(`ROPE`);
+    let win: ADV = G_winner;
     cond(/*(*/ [G_here !== droom,
 	 G_dome_flag_X_flag = false,
 	 cond(/*(*/ [vname(prsact) === tie_X_words,
@@ -847,14 +847,14 @@ export function rope_function() {
   }
 
 export function cyclops() {
-    let prsact: verb = G_prsvec[1];
-    let prsob1: (object | false) = G_prsvec[2];
-    let rm: room = G_here;
-    let food: object = find_obj(`FOOD`);
-    let drink: object = find_obj(`WATER`);
-    let count: number = rvars(rm);
-    let garlic: object = find_obj(`GARLI`);
-    let cyc: object = null;
+    let prsact: VERB = G_prsvec[1];
+    let prsob1: (OBJECT | FALSE) = G_prsvec[2];
+    let rm: ROOM = G_here;
+    let food: OBJECT = find_obj(`FOOD`);
+    let drink: OBJECT = find_obj(`WATER`);
+    let count: FIX = rvars(rm);
+    let garlic: OBJECT = find_obj(`GARLI`);
+    let cyc: OBJECT = null;
     cond(/*(*/ [G_cyclops_flag_X_flag,	       cond(/*(*/ [(prsact === G_awake_X_words || prsact === G_mung_X_words || prsact === G_burn_X_words || prsact === G_fight_X_words),
 		      tell(`The cyclops yawns and stares at the thing that woke him up.`),
 		      G_cyclops_flag_X_flag = false,
@@ -903,9 +903,9 @@ they do not exactly lower your insurance premiums, either.`)] /*)*/,
   }
 
 export function cyclops_room() {
-    let pv: vector = G_prsvec;
-    let rm: room = G_here;
-    let vars: number = rvars(rm);
+    let pv: VECTOR = G_prsvec;
+    let rm: ROOM = G_here;
+    let vars: FIX = rvars(rm);
     cond(/*(*/ [pv[1] === G_look_X_words,
 	       tell(`You are in a room with an exit on the west side, and a staircase
 leading up.`),
@@ -940,9 +940,9 @@ condiments for his upcoming snack.`,
 	`The cyclops is moving toward you in an unfriendly manner.`,
 	`You have two choices: 1. Leave  2. Become dinner.`] /*]*/)
 
-export let G_cyclomad: vector(/*[*/ [rest, string] /*]*/);
+export let G_cyclomad: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
-export function aos_sos(foo: number) {
+export function aos_sos(foo: FIX) {
     cond(/*(*/ [foo < 0, foo = _(foo,1)] /*)*/,
 	/*(*/ [foo = _(foo,1)] /*)*/);
 cond(/*(*/ [G_cyclops_flag_X_flag] /*)*/,
@@ -952,17 +952,17 @@ cond(/*(*/ [G_cyclops_flag_X_flag] /*)*/,
 G_echo_flag_X_flag = false
 
 export function echo_room() {
-    let reader_string: string = G_reader_string;
-    let b: verb = G_inbuf;
-    let l: verb = null;
-    let rm: room = find_room(`ECHO`);
-    let outchan: channel = G_outchan;
-    let verb: verb = null;
-    let walk: verb = G_walk_X_words;
+    let reader_string: STRING = G_reader_string;
+    let b: VERB = G_inbuf;
+    let l: VERB = null;
+    let rm: ROOM = find_room(`ECHO`);
+    let outchan: CHANNEL = G_outchan;
+    let verb: VERB = null;
+    let walk: VERB = G_walk_X_words;
     cond(/*(*/ [G_echo_flag_X_flag] /*)*/,
 	      /*(*/ [unwind(prog(/*(*/ [] /*)*/,
 		 mapf(false,
-		   function(obj: object) {
+		   function(obj: OBJECT) {
                 cond(/*(*/ [ovis_Q(obj),
 			    tro(obj,G_echo_room_bit),
 			    trz(obj,G_ovison)] /*)*/);
@@ -980,7 +980,7 @@ export function echo_room() {
 			      apply_random(random_action),
 			      cond(/*(*/ [G_here !== rm,
 				     mapf(false,
-				       function(x: object) {
+				       function(x: OBJECT) {
                           cond(/*(*/ [trnn(x,G_echo_room_bit),
 						trz(x,G_echo_room_bit),
 						tro(x,G_ovison)] /*)*/);
@@ -995,7 +995,7 @@ export function echo_room() {
 					   1),
 				     G_echo_flag_X_flag = t,
 				     mapf(false,
-					   function(x: object) {
+					   function(x: OBJECT) {
                           cond(/*(*/ [trnn(x,G_echo_room_bit),
 							    trz(x,G_echo_room_bit),
 							    tro(x,G_ovison)] /*)*/);
@@ -1006,7 +1006,7 @@ export function echo_room() {
 		      goto(find_room(`CHAS3`)),
 		      G_moves = _(G_moves,1),
 		      mapf(false,
-			    function(x: object) {
+			    function(x: OBJECT) {
                 cond(/*(*/ [trnn(x,G_echo_room_bit),
 				     trz(x,G_echo_room_bit),
 				     tro(x,G_ovison)] /*)*/);
@@ -1015,9 +1015,9 @@ export function echo_room() {
   }
 
 export function leaper() {
-    let rm: room = G_here;
-    let exits: exit = rexits(rm);
-    let m: room = null;
+    let rm: ROOM = G_here;
+    let exits: EXIT = rexits(rm);
+    let m: ROOM = null;
     cond(/*(*/ [m = memq(down_X_words, exits),
 	  cond(/*(*/ [(type_Q(m[2], nexit) || (type_Q(m[2], cexit) && !cxflag(m[2]))),
 		 jigs_up(pick_one(G_jumploss))] /*)*/)] /*)*/,
@@ -1029,10 +1029,10 @@ export function skipper() {
   }
 
 G_hs = 0
-export let G_hs: number;
+export let G_hs: FIX;
 export function hello() {
-    let prsobj: (object | false) = G_prsvec[2];
-    let amt: number = G_hs = _(G_hs,1);
+    let prsobj: (OBJECT | FALSE) = G_prsvec[2];
+    let amt: FIX = G_hs = _(G_hs,1);
     cond(/*(*/ [prsobj,	   cond(/*(*/ [prsobj === find_obj(`SAILO`),
 		  cond(/*(*/ [0_Q(mod(amt,20)),
 			 tell(`You seem to be repeating yourself.`)] /*)*/,
@@ -1065,12 +1065,12 @@ psetg(jumploss,
 	`In the movies, your life would be passing in front of your eyes.`,
 	`Geronimo.....`] /*]*/)
 
-export let G_hellos: vector(/*[*/ [rest, string] /*]*/);export let G_wheeeee: vector(/*[*/ [rest, string] /*]*/);export let G_jumploss: vector(/*[*/ [rest, string] /*]*/);
+export let G_hellos: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_wheeeee: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_jumploss: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function reader() {
-    let pv: vector = G_prsvec;
-    let po: object = pv[2];
-    let pi: (false | object) = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let po: OBJECT = pv[2];
+    let pi: (FALSE | OBJECT) = pv[3];
     cond(/*(*/ [!lit_Q(G_here),
 	   tell(`It is impossible to read in the dark.`)] /*)*/,
 	  /*(*/ [(pi && !transparent_Q(pi)),
@@ -1108,11 +1108,11 @@ psetg(dummy,
 	`You think it isn't?`,
 	`I think you've already done that.`] /*]*/)
 
-export let G_dummy: vector(/*[*/ [rest, string] /*]*/);
+export let G_dummy: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function brush() {
-    let prso: object = G_prsvec[2];
-    let prsi: (object | false) = G_prsvec[3];
+    let prso: OBJECT = G_prsvec[2];
+    let prsi: (OBJECT | FALSE) = G_prsvec[3];
     cond(/*(*/ [prso === find_obj(`TEETH`),
 	   cond(/*(*/ [(prsi === find_obj(`PUTTY`) && memq(prsi,aobjs(G_winner))),
 		  jigs_up(`Well, you seem to have been brushing your teeth with some sort of
@@ -1126,19 +1126,19 @@ to brush them with.`)] /*)*/,
   }
 
 export function ring() {
-    let prsobj: (object | false) = G_prsvec[2];
+    let prsobj: (OBJECT | FALSE) = G_prsvec[2];
     cond(/*(*/ [prsobj === find_obj(`BELL`),
 	   tell(`Ding, dong.`)] /*)*/,
 	  /*(*/ [tell(`How, exactly, can I ring that?`)] /*)*/);
   }
 
 export function eat() {
-    let prsvec: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let eat_Q: (atom | false) = false;
-    let drink_Q: (atom | false) = false;
-    let prsobj: object = prsvec[2];
-    let nobj: (object | false) = null;
-    let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(G_winner);
+    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let eat_Q: (ATOM | FALSE) = false;
+    let drink_Q: (ATOM | FALSE) = false;
+    let prsobj: OBJECT = prsvec[2];
+    let nobj: (OBJECT | FALSE) = null;
+    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(G_winner);
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [(eat_Q = edible_Q(prsobj) && memq(prsobj,aobjs)),
 	   cond(/*(*/ [prsvec[1] === G_drink_X_words,
@@ -1173,7 +1173,7 @@ psetg(offended,
     `Tough shit, asshole.`,
     `Oh, dear.  Such language from a supposed winning adventurer!`] /*]*/)
 
-export let G_offended: vector(/*[*/ [rest, string] /*]*/);
+export let G_offended: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 `ROBBER`
 
@@ -1197,7 +1197,7 @@ define(robber, robber, /*(*/ [hack,
 	      remove_object(hobj),
 	      here_Q = false] /*)*/),
        mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
               cond(/*(*/ [otval(x) > 0,
 			    hack[G_hobjs] = hh = splice_out(x,hh),
 			    insert_object(x,rm)] /*)*/);
@@ -1277,7 +1277,7 @@ not have noticed that he robbed you blind first.`)] /*)*/),
        hack[G_hobjs] = hh = rob_room(rm,hh,75),
        cond(/*(*/ [(rdesc2(rm) === G_mazedesc && rdesc2(wroom) === G_mazedesc),
 	 mapf(false,
-	       function(x: object) {
+	       function(x: OBJECT) {
                   cond(/*(*/ [(can_take_Q(x) && ovis_Q(x) && prob(40)),
 			      tell(`You hear, off in the distance, someone saying \"My, I wonder what
 this fine `,		      3, odesc2(x), ` is doing here.\`),
@@ -1290,7 +1290,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\`),
                 },
 	       robjs(rm))] /*)*/,
 	/*(*/ [mapf(false,
-	       function(x: object) {
+	       function(x: OBJECT) {
                   cond(/*(*/ [(0_Q(otval(x)) && can_take_Q(x) && ovis_Q(x) && prob(20)),
 			      remove_object(x),
 			      x[G_otouch_Q] = t,
@@ -1318,7 +1318,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\`),
 	      seen_Q = rseen_Q(rm)),
 	    again()] /*)*/)),			      // Drop worthless cruft, sometimes,
    (rm === treas || mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
           cond(/*(*/ [(0_Q(otval(x)) && prob(30)),
 			    hack[G_hobjs] = hh = splice_out(x,hh),
 			    insert_object(x,rm),
@@ -1327,7 +1327,7 @@ valueless.`))] /*)*/);
         },
 	      hh)))
 
-export function snarf_object(who: object, what: object) {
+export function snarf_object(who: OBJECT, what: OBJECT) {
     cond(/*(*/ [(ocan(what) !== who && (oroom(what) || ocan(what))),
 	       remove_object(what),
 	       what[G_ocan] = who,
@@ -1336,18 +1336,18 @@ export function snarf_object(who: object, what: object) {
   }
 
 export function robber_function() {
-    let prsact: verb = G_prsvec[1];
-    let dem: hack = get_demon(`THIEF`);
-    let pv: vector = G_prsvec;
-    let prsobj: (object | false) = pv[2];
-    let here: room = G_here;
-    let flg: (atom | false) = false;
-    let brick: object = null;
-    let fuse: object = null;
-    let st: object = null;
-    let f: object = null;
-    let t: verb = hobj(dem);
-    let chali: object = find_obj(`CHALI`);
+    let prsact: VERB = G_prsvec[1];
+    let dem: HACK = get_demon(`THIEF`);
+    let pv: VECTOR = G_prsvec;
+    let prsobj: (OBJECT | FALSE) = pv[2];
+    let here: ROOM = G_here;
+    let flg: (ATOM | FALSE) = false;
+    let brick: OBJECT = null;
+    let fuse: OBJECT = null;
+    let st: OBJECT = null;
+    let f: OBJECT = null;
+    let t: VERB = hobj(dem);
+    let chali: OBJECT = find_obj(`CHALI`);
     cond(/*(*/ [prsact === G_fight_X_words,
 	 cond(/*(*/ [ocan(st = find_obj(`STILL`)) === t, false] /*)*/,
 	       /*(*/ [oroom(st) === here,
@@ -1363,7 +1363,7 @@ neighborhood, the thief slips off into the shadows.`),
 	/*(*/ [prsact === G_dead__X_X_words,
 	 cond(/*(*/ [!empty_Q(hobjs(dem)),
 		tell(`  His booty remains.`),
-		mapf(false, function(x: object) {
+		mapf(false, function(x: OBJECT) {
                 insert_object(x,here);
 tro(x,G_echo_room_bit);
               },
@@ -1372,7 +1372,7 @@ tro(x,G_echo_room_bit);
 	 tro(chali,G_takebit),
 	 cond(/*(*/ [here === find_room(`TREAS`),
 		mapf(false,
-		  function(x: object) {
+		  function(x: OBJECT) {
                 cond(/*(*/ [(x !== chali && x !== t),
 			   cond(/*(*/ [trnn(x,G_echo_room_bit),
 				  trz(x,G_echo_room_bit)] /*)*/,
@@ -1408,7 +1408,7 @@ flees`,		 1,
 		 cond(/*(*/ [empty_Q(hobjs(dem)),
 		        `.`] /*)*/,
 		       /*(*/ [t,
-		        mapf(false, function(x: object) {
+		        mapf(false, function(x: OBJECT) {
                       insert_object(x,here);
                     }, hobjs(dem)),
 			dem[G_hobjs] = /*(*/ [] /*)*/,
@@ -1440,10 +1440,10 @@ you politely.`)] /*)*/)] /*)*/,
   }
 
 export function chalice() {
-    let prsa: verb = G_prsvec[1];
-    let ch: object = G_prsvec[2];
-    let tr: room = null;
-    let t: room = null;
+    let prsa: VERB = G_prsvec[1];
+    let ch: OBJECT = G_prsvec[2];
+    let tr: ROOM = null;
+    let t: ROOM = null;
     cond(/*(*/ [prsa === G_take_X_words,
 	       cond(/*(*/ [(!ocan(ch) && oroom(ch) === tr = find_room(`TREAS`) && oroom(t = find_obj(`THIEF`)) === tr && fighting_Q(t) && haction(G_robber_demon)),
 		      tell(`Realizing just in time that you'd be stabbed in the back if you
@@ -1453,9 +1453,9 @@ attempted to take the chalice, you return to the fray.`)] /*)*/)] /*)*/);
 
 
 export function burner() {
-    let pv: vector = G_prsvec;
-    let prso: object = pv[2];
-    let prsi: object = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let prso: OBJECT = pv[2];
+    let prsi: OBJECT = pv[3];
     cond(/*(*/ [flaming_Q(prsi),
 	    cond(/*(*/ [object_action()] /*)*/,
 		  /*(*/ [(avehicle(G_winner) === find_obj(`BALLO`) && balloon())] /*)*/,
@@ -1471,9 +1471,9 @@ export function burner() {
   }  
 
 export function turner() {
-    let pv: vector = G_prsvec;
-    let prso: object = pv[2];
-    let prsi: object = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let prso: OBJECT = pv[2];
+    let prsi: OBJECT = pv[3];
     cond(/*(*/ [trnn(prso,G_turnbit),
 	   cond(/*(*/ [trnn(prsi,G_toolbit),
 		  object_action()] /*)*/,
@@ -1486,10 +1486,10 @@ psetg(doormungs,
     `You cannot damage this door.`,
     `The door is still under warranty.`] /*]*/)
 
-export let G_doormungs: vector(/*[*/ [rest, string] /*]*/);
+export let G_doormungs: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function ddoor_function() {
-    let pa: verb = G_prsvec[1];
+    let pa: VERB = G_prsvec[1];
     cond(/*(*/ [pa === G_open_X_words,
 	   tell(`The door cannot be opened.`)] /*)*/,
 	  /*(*/ [pa === G_burn_X_words,
@@ -1499,8 +1499,8 @@ export function ddoor_function() {
   }
 
  export function inflater() {
-    let prsi: object = G_prsvec[2];
-    let prso: object = G_prsvec[3];
+    let prsi: OBJECT = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[3];
     cond(/*(*/ [prsi === find_obj(`IBOAT`),
 	   cond(/*(*/ [prso === find_obj(`PUMP`),
 		  object_action()] /*)*/,
@@ -1511,19 +1511,19 @@ export function ddoor_function() {
   }
 
 export function deflater() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [prso === find_obj(`RBOAT`),
 	   object_action()] /*)*/,
 	  /*(*/ [tell(`Come on, now!`)] /*)*/);
   }
 
 export function locker() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [prso === find_obj(`GRAT2`),
 	   G_grunlock_X_flag = false,
 	   tell(`The grate is locked.`),
 	   mapf(false,
-		 function(x: (cexit | nexit | room)) {
+		 function(x: (CEXIT | NEXIT | ROOM)) {
             cond(/*(*/ [(type_Q(x,cexit) && cxflag(x) === key_flag_X_flag),
 				  x[G_cxstr] = `The grate is locked.`,
 				  mapleave()] /*)*/);
@@ -1533,15 +1533,15 @@ export function locker() {
   }
 
 export function unlocker() {
-    let prso: object = G_prsvec[2];
-    let prsi: object = G_prsvec[3];
-    let r: object = find_room(`MGRAT`);
+    let prso: OBJECT = G_prsvec[2];
+    let prsi: OBJECT = G_prsvec[3];
+    let r: OBJECT = find_room(`MGRAT`);
     cond(/*(*/ [prso === find_obj(`GRAT2`),
 	   cond(/*(*/ [prsi === find_obj(`KEYS`),
 		  G_grunlock_X_flag = t,
 		  tell(`The grate is unlocked.`),
 		  mapf(false,
-			function(x: (cexit | nexit | room)) {
+			function(x: (CEXIT | NEXIT | ROOM)) {
                 cond(/*(*/ [(type_Q(x,cexit) && cxflag(x) === key_flag_X_flag),
 				 x[G_cxstr] = `The grate is closed.`,
 				 mapleave()] /*)*/);
@@ -1552,9 +1552,9 @@ export function unlocker() {
   }
 
 export function killer() {
-    let pv: vector = G_prsvec;
-    let prso: (false | object) = pv[2];
-    let prsi: (false | object) = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let prso: (FALSE | OBJECT) = pv[2];
+    let prsi: (FALSE | OBJECT) = pv[3];
     cond(/*(*/ [!prso,
 	       tell(`There is nothing here to kill.`)] /*)*/,
 	      /*(*/ [!prsi,
@@ -1569,9 +1569,9 @@ export function killer() {
   }
 
 export function attacker() {
-    let pv: vector = G_prsvec;
-    let prso: (false | object) = pv[2];
-    let prsi: (false | object) = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let prso: (FALSE | OBJECT) = pv[2];
+    let prsi: (FALSE | OBJECT) = pv[3];
     cond(/*(*/ [!prso,
 	       tell(`There is nothing here to attack.`)] /*)*/,
 	      /*(*/ [!prsi,
@@ -1586,15 +1586,15 @@ export function attacker() {
   }
 
 export function swinger() {
-    let pv: vector = G_prsvec;
-    let prso: (false | object) = pv[2];
-    let prsi: (false | object) = pv[3];
+    let pv: VECTOR = G_prsvec;
+    let prso: (FALSE | OBJECT) = pv[2];
+    let prsi: (FALSE | OBJECT) = pv[3];
     pv[2] = prsi;
 pv[3] = prso;
 attacker();
   }
 
-export function hack_hack(obj: object, str: string, obj2?: (false | string)) {
+export function hack_hack(obj: OBJECT, str: STRING, obj2?: (FALSE | STRING)) {
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [obj2,	   tell(str,0, odesc2(obj), ` with a `),
 	   tell(obj2,1, pick_one(G_ho_hum))] /*)*/,
@@ -1610,11 +1610,11 @@ psetg(ho_hum,
    ` has no effect.`,
    ` doesn't do anything.`] /*]*/)
 
-export let G_ho_hum: vector(/*[*/ [rest, string] /*]*/);
+export let G_ho_hum: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 export function munger() {
-    let prso: object = G_prsvec[2];
-    let prsw: (object | false) = G_prsvec[3];
+    let prso: OBJECT = G_prsvec[2];
+    let prsw: (OBJECT | FALSE) = G_prsvec[3];
     cond(/*(*/ [trnn(prso,G_villain),
 	   cond(/*(*/ [prsw,		  cond(/*(*/ [trnn(prsw,G_weaponbit),
 			 blow(G_player,prso,orand(prsw), t, false)] /*)*/,
@@ -1627,22 +1627,22 @@ export function munger() {
   }
 
 export function kicker() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     hack_hack(prso,`Munging a `);
   }
 
 export function waver() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     hack_hack(prso,`Waving a `);
   }
 
 export function r_l() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     hack_hack(prso,`Playing in this way with a `);
   }
 
 export function rubber() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     hack_hack(prso,`Fiddling with a `);
   }
 
@@ -1656,7 +1656,7 @@ export function plugger() {
   }
 
 export function untie() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [trnn(prso,G_tiebit),
 	   tell(`I don't think so.`)] /*)*/,
@@ -1664,14 +1664,14 @@ export function untie() {
   }
 
 export function pusher() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [memq(butto_X_objects, onames(prso))] /*)*/,
 	  /*(*/ [hack_hack(prso,`Pushing the `)] /*)*/);
   }
 
 export function tie() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [trnn(prso,G_tiebit),
 	   cond(/*(*/ [object_action()] /*)*/,
 		 /*(*/ [tell(`You can't tie it to that.`)] /*)*/)] /*)*/,
@@ -1679,7 +1679,7 @@ export function tie() {
   }
 
 export function melter() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [tell(`I'm not sure that a `, 1, odesc2(prso), ` can be melted.`)] /*)*/);
   }
@@ -1687,7 +1687,7 @@ export function melter() {
 G_on_pole_X_flag = false
 
 export function body_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     cond(/*(*/ [prsa === G_take_X_words,
 	   tell(`A force keeps you from taking the bodies.`)] /*)*/,
 	  /*(*/ [(prsa === G_mung_X_words || prsa === G_burn_X_words),
@@ -1703,7 +1703,7 @@ export function mumbler() {
   }
 
 export function alarm() {
-    let prso: object = G_prsvec[2];
+    let prso: OBJECT = G_prsvec[2];
     cond(/*(*/ [trnn(prso,G_sleepbit),
 	   object_action()] /*)*/,
 	  /*(*/ [tell(`The `, 1, odesc2(prso), ` isn't sleeping.`)] /*)*/);
@@ -1718,8 +1718,8 @@ export function dungeon() {
   }
 
 export function painting() {
-    let prsa: verb = G_prsvec[1];
-    let art: object = G_prsvec[2];
+    let prsa: VERB = G_prsvec[1];
+    let art: OBJECT = G_prsvec[2];
     cond(/*(*/ [prsa === G_mung_X_words,
 	   art[G_otval] = 0,
 	   art[G_odesc2] = `worthless piece of canvas`,
@@ -1735,11 +1735,11 @@ psetg(lamp_ticks, /*[*/ [50, 30, 20, 10, 4, 0] /*]*/)
 psetg(lamp_tells, /*[*/ [G_dimmer,G_dimmer,G_dimmer,G_dimmer,`The lamp is dying.`] /*]*/)
 
 export function lantern() {
-    let pv: vector = G_prsvec;
-    let verb: verb = pv[1];
-    let here: room = G_here;
-    let rlamp: object = find_obj(`LAMP`);
-    let foo: vector(any, cevent) = null;
+    let pv: VECTOR = G_prsvec;
+    let verb: VERB = pv[1];
+    let here: ROOM = G_here;
+    let rlamp: OBJECT = find_obj(`LAMP`);
+    let foo: VECTOR(ANY, CEVENT) = null;
     cond(/*(*/ [verb === G_throw_X_words,
 	       tell(`The lamp has smashed into the floor and the light has gone out.`),
 	       remove_object(find_obj(`LAMP`)),
@@ -1754,15 +1754,15 @@ export function lantern() {
 	       false] /*)*/);
   }
 
-export function sword_glow(dem: hack) {
-    let sw: object = hobj(dem);
-    let g: number = otval(sw);
-    let here: room = G_here;
-    let ng: number = 0;
+export function sword_glow(dem: HACK) {
+    let sw: OBJECT = hobj(dem);
+    let g: FIX = otval(sw);
+    let here: ROOM = G_here;
+    let ng: FIX = 0;
     cond(/*(*/ [(!oroom(sw) && !ocan(sw) && memq(sw,aobjs(G_player))),
 	  cond(/*(*/ [infested_Q(here), ng = 2] /*)*/,
 		/*(*/ [mapf(false,
-		       function(e: (room | cexit | nexit | atom)) {
+		       function(e: (ROOM | CEXIT | NEXIT | ATOM)) {
                 cond(/*(*/ [type_Q(e,room),
 					(infested_Q(e) && mapleave(t))] /*)*/,
 				       /*(*/ [type_Q(e,cexit),
@@ -1779,7 +1779,7 @@ export function sword_glow(dem: hack) {
   }
 
 export function sword() {
-    let pa: verb = G_prsvec[1];
+    let pa: VERB = G_prsvec[1];
     cond(/*(*/ [(pa === G_take_X_words && G_winner === G_player),
 	       G_sword_demon[G_haction] = cond(/*(*/ [type_Q(G_sword_glow,offset),
 						 G_sword_glow] /*)*/,
@@ -1787,11 +1787,11 @@ export function sword() {
 	       false] /*)*/);
   }
 
-export function infested_Q(r: room) {
-    let villains: list(/*[*/ [rest, object] /*]*/) = G_villains;
-    let dem: hack = get_demon(`THIEF`);
+export function infested_Q(r: ROOM) {
+    let villains: LIST(/*[*/ [REST, OBJECT] /*]*/) = G_villains;
+    let dem: HACK = get_demon(`THIEF`);
     ((r === hroom(dem) && haction(dem)) || mapf(false,
-		  function(v: object) {
+		  function(v: OBJECT) {
           cond(/*(*/ [r === oroom(v), mapleave(t)] /*)*/);
         },
 		  villains));
@@ -1805,10 +1805,10 @@ psetg(candle_ticks, /*[*/ [20, 10, 5, 0] /*]*/)
 psetg(candle_tells, /*[*/ [G_cdimmer,G_cdimmer,`The candles are very short.`] /*]*/)
 
 export function match_function() {
-    let prsa: verb = G_prsvec[1];
+    let prsa: VERB = G_prsvec[1];
     let prso = G_prsvec[2];
-    let match: object = find_obj(`MATCH`);
-    let mc: number = orand(match);
+    let match: OBJECT = find_obj(`MATCH`);
+    let mc: FIX = orand(match);
     cond(/*(*/ [(prsa === G_light_X_words && prso === match),
 	   cond(/*(*/ [(match[G_orand] = mc = _(mc,1) && l__Q(mc,0)),
 		  tell(`I'm afraid that you have run out of matches.`)] /*)*/,
@@ -1829,14 +1829,14 @@ export function match_function() {
   }
 
 export function candles() {
-    let prsact: verb = G_prsvec[1];
-    let c: verb = find_obj(`CANDL`);
-    let winner: adv = G_winner;
-    let ao: list(/*[*/ [rest, object] /*]*/) = aobjs(winner);
-    let w: (false | object) = G_prsvec[3];
-    let match: object = null;
-    let foo: vector(number, cevent) = null;
-    let orphans: vector(/*[*/ [4, any] /*]*/) = null;
+    let prsact: VERB = G_prsvec[1];
+    let c: VERB = find_obj(`CANDL`);
+    let winner: ADV = G_winner;
+    let ao: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
+    let w: (FALSE | OBJECT) = G_prsvec[3];
+    let match: OBJECT = null;
+    let foo: VECTOR(FIX, CEVENT) = null;
+    let orphans: VECTOR(/*[*/ [4, ANY] /*]*/) = null;
     (orand(c) || c[G_orand] = /*[*/ [0, clock_int(G_cndin,50)] /*]*/);
 foo = orand(c);
 cond(/*(*/ [prsact === G_light_X_words,
@@ -1876,9 +1876,9 @@ burn.`)] /*)*/,
   }
 
 export function black_book() {
-    let pv: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let v: vector(/*[*/ [3, any] /*]*/) = pv[1];
-    let b: object = pv[2];
+    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let v: VECTOR(/*[*/ [3, ANY] /*]*/) = pv[1];
+    let b: OBJECT = pv[2];
     cond(/*(*/ [v === G_burn_X_words,
 	 cond(/*(*/ [oroom(b),
 		remove_object(b)] /*)*/,
@@ -1887,10 +1887,10 @@ export function black_book() {
 turned into a pile of dust.`)] /*)*/);
   }
 
-export function light_int(obj: object, cev, tick: vector(/*[*/ [rest, number] /*]*/), tell: vector(/*[*/ [rest, string] /*]*/)) {
-    let cnt: number = null;
-    let tim: number = null;
-    let foo: vector(number, cevent) = orand(obj);
+export function light_int(obj: OBJECT, cev, tick: VECTOR(/*[*/ [REST, FIX] /*]*/), tell: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
+    let cnt: FIX = null;
+    let tim: FIX = null;
+    let foo: VECTOR(FIX, CEVENT) = orand(obj);
     foo[1] = cnt = _(foo[1], 1);
 clock_int(cev,tim = tick[cnt]);
 cond(/*(*/ [0_Q(tim),
@@ -1901,8 +1901,8 @@ cond(/*(*/ [0_Q(tim),
 	   tell(tell[cnt])] /*)*/);
   }
 
-export function hackable_Q(obj: object, rm: room) {
-    let av: (false | object) = avehicle(G_winner);
+export function hackable_Q(obj: OBJECT, rm: ROOM) {
+    let av: (FALSE | OBJECT) = avehicle(G_winner);
     cond(/*(*/ [av,	   search_list(oid(obj), ocontents(av), false)] /*)*/,
 	  /*(*/ [search_list(oid(obj), robjs(rm), false)] /*)*/);
   }

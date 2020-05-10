@@ -62,10 +62,9 @@ const convertToTypescriptType = (node: ZNode): string => {
     const t = convertToTypescript(node);
 
     return t
-        .replace(/fix/g, 'number')
-        .replace(/float/g, 'number')
         .replace(/\|\|/g, '|')
         .replace(/&&/g, '&')
+        .toUpperCase()
         ;
 }
 

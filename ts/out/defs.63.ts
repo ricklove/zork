@@ -127,11 +127,11 @@ newstruc(verb, vector,
 
 // ORPHANS -- mysterious vector of orphan data
 
-export let G_orphans: vector((false | atom),
-	       (false | verb),
-	       (false | object),
-	       (false | prep),
-	       (false | atom));
+export let G_orphans: VECTOR((FALSE | ATOM),
+	       (FALSE | VERB),
+	       (FALSE | OBJECT),
+	       (FALSE | PREP),
+	       (FALSE | ATOM));
 
 and_Q(msetg(oflag, 1),
       msetg(overb, 2),
@@ -269,8 +269,8 @@ newstruc(cevent, vector,
 G_load_max = 100
 G_score_max = 0
 
-export let G_raw_score: number;export let G_load_max: number;export let G_score_max: number;export let G_random_list: list(/*[*/ [rest, room] /*]*/);export let G_rooms: list(/*[*/ [rest, room] /*]*/);export let G_sacred_places: list(/*[*/ [rest, room] /*]*/);export let G_stars: list(/*[*/ [rest, object] /*]*/);export let G_objects: list(/*[*/ [rest, object] /*]*/);export let G_weapons: list(/*[*/ [rest, object] /*]*/);export let G_nasties: list(/*[*/ [rest, object] /*]*/);export let G_prsvec: vector((false | verb), (false | object | direction),
-					(false | object));export let G_winner: adv;export let G_player: adv;export let G_here: room;export let G_inchan: channel;export let G_outchan: channel;export let G_demons: list;export let G_moves: number;export let G_deaths: number;export let G_dummy: vector(/*[*/ [rest, string] /*]*/);export let G_yuks: vector(/*[*/ [rest, string] /*]*/);export let G_sword_demon: hack;
+export let G_raw_score: FIX;export let G_load_max: FIX;export let G_score_max: FIX;export let G_random_list: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_rooms: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_sacred_places: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_stars: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_objects: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_weapons: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_nasties: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_prsvec: VECTOR((FALSE | VERB), (FALSE | OBJECT | DIRECTION),
+					(FALSE | OBJECT));export let G_winner: ADV;export let G_player: ADV;export let G_here: ROOM;export let G_inchan: CHANNEL;export let G_outchan: CHANNEL;export let G_demons: LIST;export let G_moves: FIX;export let G_deaths: FIX;export let G_dummy: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_yuks: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_sword_demon: HACK;
 
 \
 
@@ -299,9 +299,9 @@ defmac(apply_object, /*(*/ [() => obj] /*)*/,
 
 `FLUSH AN OBJECT FROM A ROOM`
 
-export function remove_object(obj: object) {
-    let ocan: (object | false) = null;
-    let oroom: (false | room) = null;
+export function remove_object(obj: OBJECT) {
+    let ocan: (OBJECT | FALSE) = null;
+    let oroom: (FALSE | ROOM) = null;
     cond(/*(*/ [ocan = ocan(obj),
 	       ocan[G_ocontents] = splice_out(obj,ocontents(ocan))] /*)*/,
 	      /*(*/ [oroom = oroom(obj),
@@ -323,17 +323,17 @@ defmac(take_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_win
 defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_winner] /*)*/] /*)*/,
 	form(put, winner,G_aobjs,form(splice_out, obj,form(aobjs, winner))))
 
-export function kill_obj(obj: object, winner: adv) {
+export function kill_obj(obj: OBJECT, winner: ADV) {
     cond(/*(*/ [memq(obj,aobjs(winner)),
 	       winner[G_aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
 	      /*(*/ [remove_object(obj)] /*)*/);
   }
 
-export function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
-    let winner: adv = G_winner;
+export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+    let winner: ADV = G_winner;
     mapf(false,
 	function(x) {
-        let y: object = find_obj(x);
+        let y: OBJECT = find_obj(x);
         (memq(y,aobjs(winner)) && drop_object(find_obj(x), winner));
       },
 	objs);
@@ -341,9 +341,9 @@ export function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
 
 `ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING`
 
-export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
+export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
     mapf(false,
-    function(x: object) {
+    function(x: OBJECT) {
         cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit)),
 	     win[G_aobjs] = splice_out(x,aobjs(win)),
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/);
@@ -353,9 +353,9 @@ export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
 
 `ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY`
 
-export function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), prob: number) {
+export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), prob: FIX) {
     mapf(false,
-    function(x: object) {
+    function(x: OBJECT) {
         cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob)),
 	     remove_object(x),
 	     x[G_otouch_Q] = t,
@@ -366,25 +366,25 @@ export function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), pr
     robjs(rm));
   }
 
-export function valuables_Q(adv: adv) {
+export function valuables_Q(adv: ADV) {
     mapf(false,
-    function(x: object) {
+    function(x: OBJECT) {
         cond(/*(*/ [otval(x) > 0, mapleave(t)] /*)*/);
       },
     aobjs(adv));
   }
 
-export function armed_Q(adv: adv) {
+export function armed_Q(adv: ADV) {
     let weapons = G_weapons;
     mapf(false,
-    function(x: object) {
+    function(x: OBJECT) {
         cond(/*(*/ [memq(x,weapons),
 	     mapleave(t)] /*)*/);
       },
     aobjs(adv));
   }
 
-export function light_source(me: adv) {
+export function light_source(me: ADV) {
     mapf(false,
 	      function(x) {
         cond(/*(*/ [!0_Q(olight_Q(x)),
@@ -393,11 +393,11 @@ export function light_source(me: adv) {
 	      aobjs(me));
   }
 
-export function get_demon(id: string) {
-    let obj: object = find_obj(id);
-    let dems: list(/*[*/ [rest, hack] /*]*/) = G_demons;
+export function get_demon(id: STRING) {
+    let obj: OBJECT = find_obj(id);
+    let dems: LIST(/*[*/ [REST, HACK] /*]*/) = G_demons;
     mapf(false,
-    function(x: hack) {
+    function(x: HACK) {
         cond(/*(*/ [hobj(x) === obj, mapleave(x)] /*)*/);
       },
     dems);
@@ -412,8 +412,8 @@ defmac(clock_disable, /*(*/ [() => ev] /*)*/,
 defmac(clock_enable, /*(*/ [() => ev] /*)*/,
     form(put, ev,G_cflag,t))
 
-export function yes_no(no_is_bad_Q: (atom | false)) {
-    let inbuf: string = G_inbuf;
+export function yes_no(no_is_bad_Q: (ATOM | FALSE)) {
+    let inbuf: STRING = G_inbuf;
     let inchan = G_inchan;
     reset(inchan);
 readstring(inbuf,inchan,G_reader_string);
@@ -429,7 +429,7 @@ defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*
 		     /*(*/ [form(apply, form(gval, frob))] /*)*/)] /*)*/,
 	      /*(*/ [t, form(dispatch, frob,mumble)] /*)*/))
 
-export function da(fn: (applicable | atom | number), foo?) {
+export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
     prog(/*(*/ [] /*)*/,
     cond(/*(*/ [type_Q(fn,fix), dispatch(fn,foo)] /*)*/,
 	  /*(*/ [applicable_Q(fn),
@@ -451,9 +451,9 @@ psetg(null_exit, chtype(/*[*/ [] /*]*/, exit))
 
 psetg(null_syn, _X,/*[*/ [] /*]*/)
 
-export function find_room(id: (atom | string)) {
-    let atm: (atom | false) = null;
-    let room: room = null;
+export function find_room(id: (ATOM | STRING)) {
+    let atm: (ATOM | FALSE) = null;
+    let room: ROOM = null;
     cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
 cond(/*(*/ [(atm = lookup(id,G_room_obl) && gassigned_Q(atm)),
 		    /*,*/ [atm] /*1*/] /*)*/,
@@ -464,9 +464,9 @@ cond(/*(*/ [(atm = lookup(id,G_room_obl) && gassigned_Q(atm)),
 	       room] /*)*/);
   }
 
-export function find_obj(id: (atom | string)) {
-    let obj: object = null;
-    let atm: (atom | false) = null;
+export function find_obj(id: (ATOM | STRING)) {
+    let obj: OBJECT = null;
+    let atm: (ATOM | FALSE) = null;
     cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
 cond(/*(*/ [(atm = lookup(id,G_object_obl) && gassigned_Q(atm)),
 	       /*,*/ [atm] /*1*/] /*)*/,
@@ -478,7 +478,7 @@ cond(/*(*/ [(atm = lookup(id,G_object_obl) && gassigned_Q(atm)),
 	       obj] /*)*/);
   }
 
-export function function_print(frob: (atom | offset | applicable | false)) {
+export function function_print(frob: (ATOM | OFFSET | APPLICABLE | FALSE)) {
     cond(/*(*/ [!frob, princ(`<>`)] /*)*/,
 	/*(*/ [type_Q(frob,rsubr, rsubr_entry),
 	 prin1(frob[2])] /*)*/,

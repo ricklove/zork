@@ -2,12 +2,12 @@
 
 G_alt_flag = t
 
-export let G_muddle: number;export let G_tenex_Q: (atom | false);export let G_vers: string;export let G_dev: string;export let G_snm: string;export let G_scratch_str: string;
+export let G_muddle: FIX;export let G_tenex_Q: (ATOM | FALSE);export let G_vers: STRING;export let G_dev: STRING;export let G_snm: STRING;export let G_scratch_str: STRING;
 
-export function save_it(fn?: string) {
-    let muddle: number = G_muddle;
-    let stv: (string | number) = null;
-    let st: (string | number) = remarkably_disgusting_code();
+export function save_it(fn?: STRING) {
+    let muddle: FIX = G_muddle;
+    let stv: (STRING | FIX) = null;
+    let st: (STRING | FIX) = remarkably_disgusting_code();
     find_obj(`PAPER`)[G_odesc1] = unspeakable_code();
 G_vers = st;
 G_script_channel = false;
@@ -63,7 +63,7 @@ G_divert_amt = 0
 
 G_divert_lmt = 100000
 
-export let G_divert_cnt: number;export let G_divert_max: number;export let G_divert_inc: number;export let G_divert_amt: number;export let G_divert_lmt: number;
+export let G_divert_cnt: FIX;export let G_divert_max: FIX;export let G_divert_inc: FIX;export let G_divert_amt: FIX;export let G_divert_lmt: FIX;
 
 export function divert_fcn(amt, reason) {
     G_divert_cnt = _(G_divert_cnt,1);
@@ -97,7 +97,7 @@ off(G_gc_hand)
 
 
 export function xuname() {
-    mapf(G_string,	function(x: character) {
+    mapf(G_string,	function(x: CHARACTER) {
         cond(/*(*/ [(0_Q(ascii(x)) || ascii(x) === 32),
 		  mapstop()] /*)*/,
 		 /*(*/ [t, x] /*)*/);
@@ -105,15 +105,15 @@ export function xuname() {
 	gxuname());
   }
 
-export function its_get_name(uname: string) {
-    let nm: (string | false) = field(uname,G__name);
-    let cma: (string | false) = null;
-    let jr: (string | false) = null;
-    let lfst: number = null;
-    let llst: number = null;
-    let tlen: number = null;
-    let tstr: string = null;
-    let str: string = null;
+export function its_get_name(uname: STRING) {
+    let nm: (STRING | FALSE) = field(uname,G__name);
+    let cma: (STRING | FALSE) = null;
+    let jr: (STRING | FALSE) = null;
+    let lfst: FIX = null;
+    let llst: FIX = null;
+    let tlen: FIX = null;
+    let tstr: STRING = null;
+    let str: STRING = null;
     cond(/*(*/ [nm,	       cond(/*(*/ [cma = memq(_X__, nm),
 		      llst = _(nm.length, cma.length),
 		      cma = rest(cma),
@@ -138,10 +138,10 @@ export function its_get_name(uname: string) {
   }
 
 export function unspeakable_code() {
-    let str: string = null;
-    let nstr: string = null;
-    let len_i: number = 0;
-    let o: object = find_obj(`PAPER`);
+    let str: STRING = null;
+    let nstr: STRING = null;
+    let len_i: FIX = 0;
+    let o: OBJECT = find_obj(`PAPER`);
     str = memq(_X__, oread(o));
 cond(/*(*/ [back(str,2)[1] === _X_1,
 	   str = back(str,2),
@@ -154,7 +154,7 @@ string(`There is an issue of US NEWS & DUNGEON REPORT dated `,
   }
 
 export function remarkably_disgusting_code() {
-    let n: primtype(word) = dskdate();
+    let n: PRIMTYPE(WORD) = dskdate();
     string(`This version created `,
 	 G_months[chtype(getbits(n,bits(4, 23)), fix)],
 	 _X__,
@@ -168,11 +168,11 @@ export function version() {
 
 G_played_time = 0
 
-export let G_played_time: number;
+export let G_played_time: FIX;
 
 export function get_time() {
-    let now: primtype(word) = dskdate();
-    let then: primtype(word) = G_intime;
+    let now: PRIMTYPE(WORD) = dskdate();
+    let then: PRIMTYPE(WORD) = G_intime;
     _(cond(/*(*/ [chtype(getbits(now,bits(18, 18)), fix) !== chtype(getbits(then,bits(18, 18)), fix),
 		  _(_(_(chtype(getbits(now,bits(18, 0)), fix),
 			   _(24, 7200)),
@@ -184,9 +184,9 @@ export function get_time() {
 	   G_played_time);
   }
 
-export function play_time(outchan?: special(channel), loser_Q: (atom | false)) {
-    let time: number = null;
-    let mins: number = null;
+export function play_time(outchan?: SPECIAL(CHANNEL), loser_Q: (ATOM | FALSE)) {
+    let time: FIX = null;
+    let mins: FIX = null;
     time = get_time();
 G_tell_flag = t;
 cond(/*(*/ [loser_Q,princ(`You have been playing DUNGEON for `)] /*)*/,
@@ -210,7 +210,7 @@ export function pc() {
       }
 
 export function handle(frm, _tuple_, zork) {
-    let zf: any = null;
+    let zf: ANY = null;
     G_outchan[13] = 80;
 back(G_inchan)[1][6] = /*#*/ [lose, 27] /*2*/;
 cond(/*(*/ [((!gassigned_Q(xunm) || G_winners[G_xunm]) && pc()),
@@ -244,17 +244,17 @@ Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`),
 
 psetg(winners, () => /*[*/ [`BKD`, `TAA`, `MARC`, `PDL`, `MDL`] /*]*/)
 
-export let G_winners: vector(/*[*/ [rest, string] /*]*/);
+export let G_winners: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 (lookup(`COMPILE`, root()) || lookup(`GLUE`, package[oblist]) || G_errh = handler((error_X_interrupts[interrupt] || event(`ERROR`, 8)),
 		   G_handle))
 
-export let G_moves: number;export let G_script_channel: (channel | false);
+export let G_moves: FIX;export let G_script_channel: (CHANNEL | FALSE);
 
-export function start(rm: string, st?: string) {
-    let fn: (false | string) = null;
-    let muddle: number = G_muddle;
-    let xunm: string = xuname();
+export function start(rm: STRING, st?: STRING) {
+    let fn: (FALSE | STRING) = null;
+    let muddle: FIX = G_muddle;
+    let xunm: STRING = xuname();
     G_xunm = xunm;
 G_ptemp = chtype(/*[*/ [chtype(with_X_words, prep), find_obj(`!!!!!`)] /*]*/, phrase);
 G_intime = dskdate();
@@ -290,10 +290,10 @@ G_prsvec[2] = false;
 
 G_my_script = false
 
-export let G_my_script: (atom | false);
+export let G_my_script: (ATOM | FALSE);
 
 export function make_script() {
-    let ch: (channel | false) = null;
+    let ch: (CHANNEL | FALSE) = null;
     cond(/*(*/ [G_script_channel,	 false] /*)*/,
 	/*(*/ [ch = open(`PRINT`, string(`MARC;%Z`, G_xunm,` >`)),
 	 top(G_inchan)[1] = /*(*/ [ch] /*)*/,
@@ -321,9 +321,9 @@ the ground.
   }
 
 export function do_script() {
-    let ch: (channel | false) = null;
-    let unm: string = G_xunm;
-    let muddle: number = G_muddle;
+    let ch: (CHANNEL | FALSE) = null;
+    let unm: STRING = G_xunm;
+    let muddle: FIX = G_muddle;
     cond(/*(*/ [G_my_script,	 do_unscript(false)] /*)*/);
 cond(/*(*/ [G_script_channel,	 tell(`You are already scripting.`)] /*)*/,
 	/*(*/ [((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch) && ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))) && ch = open(`PRINT`, `ZORK`, `SCRIPT`, `DSK`, unm)),
@@ -338,7 +338,7 @@ cond(/*(*/ [G_script_channel,	 tell(`You are already scripting.`)] /*)*/,
 	 tell(`I can't open the script channel.`)] /*)*/);
   }
 
-export function do_unscript(verbose?: (atom | false)) {
+export function do_unscript(verbose?: (ATOM | FALSE)) {
     cond(/*(*/ [G_script_channel,	 top(G_inchan)[1] = /*(*/ [] /*)*/,
 	 top(G_outchan)[1] = /*(*/ [] /*)*/,
 	 close(G_script_channel),
@@ -347,12 +347,12 @@ export function do_unscript(verbose?: (atom | false)) {
 	/*(*/ [(verbose && tell(`Scripting wasn't on.`))] /*)*/);
   }
 
-export let G_then: number;
+export let G_then: FIX;
 
 export function do_save() {
-    let muddle: number = G_muddle;
-    let ch: (channel | false) = null;
-    let unm: string = G_xunm;
+    let muddle: FIX = G_muddle;
+    let ch: (CHANNEL | FALSE) = null;
+    let unm: STRING = G_xunm;
     cond(/*(*/ [(muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch))),
 	 cond(/*(*/ [(muddle > 100 || (ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))),
 		(G_script_channel && do_unscript()),
@@ -375,12 +375,12 @@ export function do_save() {
   }
 
 export function do_restore() {
-    let ch: (channel | false) = null;
-    let str: string = null;
-    let muddle: number = G_muddle;
-    let nowd: number = null;
-    let now: number = null;
-    let thend: number = null;
+    let ch: (CHANNEL | FALSE) = null;
+    let str: STRING = null;
+    let muddle: FIX = G_muddle;
+    let nowd: FIX = null;
+    let now: FIX = null;
+    let thend: FIX = null;
     cond(/*(*/ [muddle < 100,
 	  str = string(`DSK:`, G_xunm,`;ZORK SAVE`)] /*)*/,
 	 /*(*/ [t,
@@ -418,7 +418,7 @@ prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	       /*(*/ [tell(ch[2], 1, ` `, ch[1])] /*)*/));
   }
 
-export function prob(num: number) {
+export function prob(num: FIX) {
     l__Q(mod(random(), 100), num);
   }
 
@@ -428,9 +428,9 @@ SETG'ED TO THAT.`
 define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/,
   /*#*/ [decl, /*(*/ [/*(*/ [o] /*)*/, oblist] /*)*/] /*2*/,
   mapf(false,
-    function(x: list(/*[*/ [rest, atom] /*]*/)) {
+    function(x: LIST(/*[*/ [REST, ATOM] /*]*/)) {
         mapf(false,
-        function(x: atom) {
+        function(x: ATOM) {
             cond(/*(*/ [(gassigned_Q(x) && /*,*/ [x] /*1*/ === val),
 		 return(x,act)] /*)*/);
           },
@@ -442,7 +442,7 @@ define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/
 G_brief_X_flag = false
 G_super_brief_X_flag = false
 
-export let G_super_brief_X_flag: (atom | false);export let G_brief_X_flag: (atom | false);
+export let G_super_brief_X_flag: (ATOM | FALSE);export let G_brief_X_flag: (ATOM | FALSE);
 
 export function brief() {
     G_brief_X_flag = t;
@@ -469,12 +469,12 @@ export function room_desc() {
     room_info(t);
   }
 
-export function room_info(full?: (atom | false)) {
-    let av: (false | object) = avehicle(G_winner);
-    let rm: room = G_here;
-    let prso: (direction | false | object) = G_prsvec[2];
-    let winobj: object = find_obj(`#####`);
-    let outchan: channel = G_outchan;
+export function room_info(full?: (ATOM | FALSE)) {
+    let av: (FALSE | OBJECT) = avehicle(G_winner);
+    let rm: ROOM = G_here;
+    let prso: (DIRECTION | FALSE | OBJECT) = G_prsvec[2];
+    let winobj: OBJECT = find_obj(`#####`);
+    let outchan: CHANNEL = G_outchan;
     let ra = null;
     G_tell_flag = t;
 (type_Q(prso,direction) && G_prsvec[2] = false);
@@ -505,7 +505,7 @@ prog(/*(*/ [] /*)*/,
      rm[G_rseen_Q] = t,
      (av && tell(`You are in the `, 1, odesc2(av), `.`)),
      mapf(false,
-      function(x: object) {
+      function(x: OBJECT) {
           cond(/*(*/ [(ovis_Q(x) && describable_Q(x)),
 	   cond(/*(*/ [x === av] /*)*/,
 		 /*(*/ [t,
@@ -543,7 +543,7 @@ define(print_cont, print_c, /*(*/ [obj, av, winobj, indent, `OPTIONAL`, /*(*/ [c
 		  tell(`The `, 1, odesc2(obj), ` contains:`)] /*)*/,
 		 /*(*/ [return(t, print_c)] /*)*/),
 	   mapf(false,
-	     function(y: object) {
+	     function(y: OBJECT) {
             cond(/*(*/ [(av && y === winobj)] /*)*/,
 		     /*(*/ [(ovis_Q(y) && describable_Q(y) && !empty_Q(odesc2(y))),
 		      tell(indent,1, ` A `, odesc2(y))] /*)*/);
@@ -554,7 +554,7 @@ cond(/*(*/ [see_inside_Q(y),
 
 `GIVE LONG DESCRIPTION OF OBJECT`
 
-export function long_desc_obj(obj: object) {
+export function long_desc_obj(obj: OBJECT) {
     let str = null;
     cond(/*(*/ [(otouch_Q(obj) || !odesco(obj)),
 	       str = odesc1(obj)] /*)*/,
@@ -565,20 +565,20 @@ cond(/*(*/ [empty_Q(str), false] /*)*/,
 
 `TRUE IF PARSER WON:  OTHERWISE INHIBITS OBJECT ACTIONS, CLOCKS (BUT NOT THIEF).`
 
-export let G_parse_won: (atom | false);
+export let G_parse_won: (ATOM | FALSE);
 
 psetg(reader_string, string(ascii(27), ascii(13), ascii(10)))
 
-export function rdcom(ivec?: (false | vector)) {
+export function rdcom(ivec?: (FALSE | VECTOR)) {
     let str = G_reader_string;
-    let vc: vector = null;
-    let rvec: (false | vector) = null;
-    let rm: room = null;
-    let inplen: number = 1;
-    let inbuf: string = G_inbuf;
-    let winner: adv = G_winner;
-    let av: (false | object) = null;
-    let outchan: channel = G_outchan;
+    let vc: VECTOR = null;
+    let rvec: (FALSE | VECTOR) = null;
+    let rm: ROOM = null;
+    let inplen: FIX = 1;
+    let inbuf: STRING = G_inbuf;
+    let winner: ADV = G_winner;
+    let av: (FALSE | OBJECT) = null;
+    let outchan: CHANNEL = G_outchan;
     let random_action = null;
     (ivec || prog(/*(*/ [] /*)*/,
 		   outchan[13] = 1000,
@@ -609,7 +609,7 @@ repeat(/*(*/ [vval, cv] /*)*/,
 		  (G_tell_flag || tell(`Nothing happens.`))] /*)*/,
 		 /*(*/ [t, G_parse_won = false, tell(`Beg pardon?`)] /*)*/),
 	   mapf(false,
-		 function(x: hack) {
+		 function(x: HACK) {
           cond(/*(*/ [random_action = haction(x),
 				apply_random(random_action,x)] /*)*/);
         },
@@ -618,30 +618,30 @@ repeat(/*(*/ [vval, cv] /*)*/,
 	   (ivec && return()));
   }
 
-export function score_obj(obj: object) {
+export function score_obj(obj: OBJECT) {
     let temp = null;
     cond(/*(*/ [temp = ofval(obj) > 0,
 	       score_upd(temp),
 	       obj[G_ofval] = 0] /*)*/);
   }
 
-export function score_room(rm: room) {
+export function score_room(rm: ROOM) {
     let temp = null;
     cond(/*(*/ [temp = rval(rm) > 0,
 	       score_upd(temp),
 	       rm[G_rval] = 0] /*)*/);
   }
 
-export function score_upd(num: number) {
+export function score_upd(num: FIX) {
     let winner = G_winner;
     winner[G_ascore] = _(ascore(winner), num);
 G_raw_score = _(G_raw_score,num);
   }
 
-export function score(ask_Q?: (atom | false)) {
-    let scor: number = null;
-    let outchan: channel = outchan;
-    let pct: number = null;
+export function score(ask_Q?: (ATOM | FALSE)) {
+    let scor: FIX = null;
+    let outchan: CHANNEL = outchan;
+    let pct: FLOAT = null;
     G_tell_flag = t;
 crlf();
 cond(/*(*/ [ask_Q,princ(`Your score would be `)] /*)*/,
@@ -670,8 +670,8 @@ princ(`.`);
 crlf();
   }
 
-export function finish(ask_Q?: (atom | false)) {
-    let scor: number = null;
+export function finish(ask_Q?: (ATOM | FALSE)) {
+    let scor: FIX = null;
     unwind(prog(/*(*/ [] /*)*/,
 	  scor = score(ask_Q),
 	  cond(/*(*/ [((ask_Q && tell(`Do you wish to leave the game? (Y is affirmative): `) && yes_no(false)) || !ask_Q),
@@ -684,7 +684,7 @@ export function finish(ask_Q?: (atom | false)) {
 
 G_record_string = istring(5)
 
-export let G_record_string: string;
+export let G_record_string: STRING;
 
 psetg(recorder_string, string(ascii(26), ascii(3), ascii(0)))
 
@@ -746,12 +746,12 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 		/*(*/ [princ(quit_Q[1], ch)] /*)*/),
 	  crlf(ch),
 	  mapf(false,
-		function(x: atom, y: string) {
+		function(x: ATOM, y: STRING) {
             cond(/*(*/ [/*,*/ [x] /*1*/,princ(`/`, ch), princ(y,ch)] /*)*/);
           },
 		G_flag_names,		G_short_names),
 	  mapf(false,
-		function(x: atom, y: string) {
+		function(x: ATOM, y: STRING) {
             cond(/*(*/ [0_Q(/*,*/ [x] /*1*/), princ(`/`, ch), princ(y,ch)] /*)*/);
           },
 		G_val_names,		G_short_val_names),
@@ -761,7 +761,7 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 
 flag_names 
 
-export let G_flag_names: uvector(/*[*/ [rest, atom] /*]*/);export let G_val_names: uvector(/*[*/ [rest, atom] /*]*/);export let G_short_names: vector(/*[*/ [rest, string] /*]*/);export let G_short_val_names: vector(/*[*/ [rest, string] /*]*/);
+export let G_flag_names: UVECTOR(/*[*/ [REST, ATOM] /*]*/);export let G_val_names: UVECTOR(/*[*/ [REST, ATOM] /*]*/);export let G_short_names: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_short_val_names: VECTOR(/*[*/ [REST, STRING] /*]*/);
 
 block(/*(*/ [(flag[oblist] || moblist(flag)), initial[oblist], root()] /*)*/)
 
@@ -792,10 +792,10 @@ psetg(val_names, uvector(light_shaft))
 
 psetg(short_val_names, vector(`LI`))
 
-export function pdskdate(wd: primtype(word), ch: channel) {
-    let tim: number = chtype(getbits(wd,bits(18, 0)), fix);
-    let a_p: string = ` AM`;
-    let hr: number = null;
+export function pdskdate(wd: PRIMTYPE(WORD), ch: CHANNEL) {
+    let tim: FIX = chtype(getbits(wd,bits(18, 0)), fix);
+    let a_p: STRING = ` AM`;
+    let hr: FIX = null;
     princ(` `, ch);
 cond(/*(*/ [0_Q(chtype(wd,fix)), princ(`unknown `, ch)] /*)*/,
 	      /*(*/ [t,
@@ -828,16 +828,16 @@ psetg(months,
        `November`,
        `December`] /*]*/)
 
-export let G_months: vector(/*[*/ [12, string] /*]*/);
+export let G_months: VECTOR(/*[*/ [12, STRING] /*]*/);
 
-export function jigs_up(desc: string) {
-    let winner: adv = G_winner;
-    let deaths: number = G_deaths;
-    let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(winner);
-    let random_list: list(/*[*/ [rest, room] /*]*/) = G_random_list;
-    let lamp: (false | room) = find_obj(`LAMP`);
-    let lamp_location: (false | room) = null;
-    let val_list: list(/*[*/ [rest, object] /*]*/) = /*(*/ [] /*)*/;
+export function jigs_up(desc: STRING) {
+    let winner: ADV = G_winner;
+    let deaths: FIX = G_deaths;
+    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
+    let random_list: LIST(/*[*/ [REST, ROOM] /*]*/) = G_random_list;
+    let lamp: (FALSE | ROOM) = find_obj(`LAMP`);
+    let lamp_location: (FALSE | ROOM) = null;
+    let val_list: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
     let lc = null;
     cond(/*(*/ [G_dbg,    tell(desc)] /*)*/,
    /*(*/ [unwind(prog(/*(*/ [] /*)*/,
@@ -883,7 +883,7 @@ everything.`),
 		      G_egypt_flag_X_flag = t,
 		      val_list = rob_adv(winner,val_list),
 		      mapf(false,
-			    function(x: object, y: room) {
+			    function(x: OBJECT, y: ROOM) {
                         insert_object(x,y);
                       },
 			    aobjs = aobjs(winner),
@@ -897,7 +897,7 @@ everything.`),
 				      rest(aobjs,random_list.length)),
 			     aobjs = val_list] /*)*/),
 		      mapf(false,
-			    function(x: object, y: room) {
+			    function(x: OBJECT, y: ROOM) {
                         insert_object(x,y);
                       },
 			    aobjs,			    G_rooms),
@@ -918,12 +918,12 @@ export function help() {
 
 psetg(breaks, string(ascii(3), ascii(0)))
 
-export function file_to_tty(file1: string, file2: string, dev?: string, snm: string) {
-    let ch: (channel | false) = open(`READ`, file1,file2,dev,snm);
-    let len: number = null;
-    let buf: string = G_inbuf;
-    let buflen: number = buf.length;
-    let iter: number = null;
+export function file_to_tty(file1: STRING, file2: STRING, dev?: STRING, snm: STRING) {
+    let ch: (CHANNEL | FALSE) = open(`READ`, file1,file2,dev,snm);
+    let len: FIX = null;
+    let buf: STRING = G_inbuf;
+    let buflen: FIX = buf.length;
+    let iter: FIX = null;
     cond(/*(*/ [ch,	       unwind(prog(/*(*/ [] /*)*/,
 		      len = file_length(ch),
 		      iter = _(len,buflen),
@@ -943,11 +943,11 @@ export function file_to_tty(file1: string, file2: string, dev?: string, snm: str
 	      /*(*/ [tell(`File not found.`)] /*)*/);
   }
 
-export function invent(win?: adv) {
-    let any: (atom | false) = false;
-    let outchan: channel = G_outchan;
+export function invent(win?: ADV) {
+    let any: (ATOM | FALSE) = false;
+    let outchan: CHANNEL = G_outchan;
     mapf(false,
-    function(x: object) {
+    function(x: OBJECT) {
         cond(/*(*/ [ovis_Q(x),
 		   (any || prog(/*(*/ [] /*)*/,
 				  cond(/*(*/ [win === G_player,
@@ -967,10 +967,10 @@ export function invent(win?: adv) {
 (any || win !== G_player || tell(`You are empty handed.`));
   }
 
-export function print_contents(olst: list(/*[*/ [rest, object] /*]*/)) {
-    let outchan: channel = G_outchan;
+export function print_contents(olst: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+    let outchan: CHANNEL = G_outchan;
     mapr(false,
-	function(y: list(/*[*/ [rest, object] /*]*/)) {
+	function(y: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
         princ(`a `);
 princ(odesc2(y[1]));
 cond(/*(*/ [y.length > 2,
@@ -984,19 +984,19 @@ cond(/*(*/ [y.length > 2,
 
 // LIT? --  IS THERE ANY LIGHT SOURCE IN THIS ROOM
 
-export function lit_Q(rm: room) {
-    let win: adv = G_winner;
+export function lit_Q(rm: ROOM) {
+    let win: ADV = G_winner;
     (rlight_Q(rm) || lfcn(robjs(rm)) || lfcn(aobjs(win)) || (win !== G_player && G_here === aroom(G_player) && lfcn(aobjs(G_player))));
   }
 
 define(lfcn, lfcn, /*(*/ [l, `AUX`, y] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [l] /*)*/, list(/*[*/ [rest, object] /*]*/), /*(*/ [y] /*)*/, adv] /*)*/] /*2*/,
 	mapf(false,
-	      function(x: object) {
+	      function(x: OBJECT) {
         (olight_Q(x) > 0 && mapleave(t));
 cond(/*(*/ [(ovis_Q(x) && (oopen_Q(x) || transparent_Q(x))),
 			     mapf(false,
-			       function(x: object) {
+			       function(x: OBJECT) {
                 cond(/*(*/ [olight_Q(x) > 0,
 					return(t, lfcn)] /*)*/);
               },
@@ -1009,12 +1009,12 @@ cond(/*(*/ [(trnn(x,G_actorbit) && lfcn(aobjs(y = orand(x)))),
 // WALK --  GIVEN A DIRECTION, WILL ATTEMPT TO WALK THERE
 
 export function walk() {
-    let leavings: (atom | room | cexit | nexit) = null;
-    let nrm: (false | /*<*/ [primtype(vector), /*[*/ [rest, atom, (room | nexit | cexit)] /*]*/] /*>*/) = null;
-    let where: atom = chtype(G_prsvec[2], atom);
-    let me: adv = G_winner;
-    let rm: room = me[1];
-    let nl: (atom | room | false) = null;
+    let leavings: (ATOM | ROOM | CEXIT | NEXIT) = null;
+    let nrm: (FALSE | /*<*/ [PRIMTYPE(VECTOR), /*[*/ [REST, ATOM, (ROOM | NEXIT | CEXIT)] /*]*/] /*>*/) = null;
+    let where: ATOM = chtype(G_prsvec[2], atom);
+    let me: ADV = G_winner;
+    let rm: ROOM = me[1];
+    let nl: (ATOM | ROOM | FALSE) = null;
     let random_action = null;
     let cxs = null;
     cond(/*(*/ [(me === G_player && !lit_Q(rm) && prob(75)),
@@ -1041,16 +1041,16 @@ export function walk() {
 	      /*(*/ [tell(`There is no way to go in that direction.`)] /*)*/);
   }
 
-export function take(take_Q?: (atom | false)) {
-    let win: adv = G_winner;
-    let vec: vector = G_prsvec;
-    let rm: room = aroom(win);
-    let nobj: object = null;
-    let obj: object = vec[2];
-    let getter_Q: (atom | false) = false;
-    let robjs: list(/*[*/ [rest, object] /*]*/) = robjs(rm);
-    let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(win);
-    let load_max: number = G_load_max;
+export function take(take_Q?: (ATOM | FALSE)) {
+    let win: ADV = G_winner;
+    let vec: VECTOR = G_prsvec;
+    let rm: ROOM = aroom(win);
+    let nobj: OBJECT = null;
+    let obj: OBJECT = vec[2];
+    let getter_Q: (ATOM | FALSE) = false;
+    let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(rm);
+    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let load_max: FIX = G_load_max;
     prog(/*(*/ [] /*)*/,
 	 cond(/*(*/ [trnn(obj,G_no_check_bit),
 		return(object_action())] /*)*/),
@@ -1086,16 +1086,16 @@ export function take(take_Q?: (atom | false)) {
 	  /*(*/ [tell(`I can't see one here.`), false] /*)*/));
   }
 
-export function putter(objact?: (atom | false)) {
-    let pv: vector(/*[*/ [3, any] /*]*/) = G_prsvec;
-    let objo: object = pv[2];
-    let obji: object = pv[3];
-    let win: adv = G_winner;
-    let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(win);
-    let crock: object = null;
-    let can: object = null;
-    let robjs: list(/*[*/ [rest, object] /*]*/) = robjs(G_here);
-    let ocan: (false | object) = false;
+export function putter(objact?: (ATOM | FALSE)) {
+    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let objo: OBJECT = pv[2];
+    let obji: OBJECT = pv[3];
+    let win: ADV = G_winner;
+    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let crock: OBJECT = null;
+    let can: OBJECT = null;
+    let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(G_here);
+    let ocan: (FALSE | OBJECT) = false;
     prog(/*(*/ [] /*)*/,
 	      cond(/*(*/ [trnn(objo,G_no_check_bit),
 		     return(object_action())] /*)*/),
@@ -1141,14 +1141,14 @@ export function putter(objact?: (atom | false)) {
  
 export function dropper() {
     let winner = G_winner;
-    let av: (false | object) = avehicle(winner);
+    let av: (FALSE | OBJECT) = avehicle(winner);
     let aobjs = aobjs(winner);
-    let getter_Q: (atom | false) = false;
-    let vec: vector(verb, object, (false | object)) = G_prsvec;
-    let rm: room = aroom(winner);
-    let obj: object = vec[2];
-    let pi: (false | object) = vec[3];
-    let nobj: object = null;
+    let getter_Q: (ATOM | FALSE) = false;
+    let vec: VECTOR(VERB, OBJECT, (FALSE | OBJECT)) = G_prsvec;
+    let rm: ROOM = aroom(winner);
+    let obj: OBJECT = vec[2];
+    let pi: (FALSE | OBJECT) = vec[3];
+    let nobj: OBJECT = null;
     prog(/*(*/ [] /*)*/,
 	      cond(/*(*/ [(memq(vname(vec[1]), () => /*[*/ [drop_X_words, pour_X_words] /*]*/) && pi),
 		     vec[1] = G_put_X_words,
@@ -1183,18 +1183,18 @@ export function dropper() {
 
 `STUFF FOR 'EVERYTHING' AND 'VALUABLES'`
 G_obj_uv = chutype(rest(iuvector(20), 20), object)
-export let G_obj_uv: uvector(/*[*/ [rest, object] /*]*/);
+export let G_obj_uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/);
 
-export function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
-    let prsvec: vector(verb, /*[*/ [2, any] /*]*/) = G_prsvec;
-    let pa: verb = prsvec[1];
-    let ra: rapplic = vfcn(pa);
-    let pi: (object | false) = null;
-    let winner: adv = G_winner;
-    let here: room = G_here;
+export function frob_lots(uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/)) {
+    let prsvec: VECTOR(VERB, /*[*/ [2, ANY] /*]*/) = G_prsvec;
+    let pa: VERB = prsvec[1];
+    let ra: RAPPLIC = vfcn(pa);
+    let pi: (OBJECT | FALSE) = null;
+    let winner: ADV = G_winner;
+    let here: ROOM = G_here;
     cond(/*(*/ [pa === G_take_X_words,
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             cond(/*(*/ [(can_take_Q(x) || trnn(x,G_trytakebit)),
 		    prsvec[2] = x,
 		    tell(odesc2(x), 0, `:
@@ -1206,7 +1206,7 @@ export function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
 	   uv)] /*)*/,
 	/*(*/ [(pa === G_drop_X_words || pa === G_put_X_words),
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             prsvec[2] = x;
 tell(odesc2(x), 0, `:
   `);
@@ -1221,16 +1221,16 @@ psetg(losstr, `I can't do everything, because I ran out of room.`)
 
 export function everything() {
     let prsvec = G_prsvec;
-    let pa: verb = prsvec[1];
-    let pi: object = null;
-    let suv: uvector(/*[*/ [rest, object] /*]*/) = G_obj_uv;
-    let tuv: uvector(/*[*/ [rest, object] /*]*/) = top(suv);
-    let lu: number = tuv.length;
-    let here: room = G_here;
-    let winner: adv = G_winner;
+    let pa: VERB = prsvec[1];
+    let pi: OBJECT = null;
+    let suv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = G_obj_uv;
+    let tuv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = top(suv);
+    let lu: FIX = tuv.length;
+    let here: ROOM = G_here;
+    let winner: ADV = G_winner;
     cond(/*(*/ [pa === G_take_X_words,
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             cond(/*(*/ [(ovis_Q(x) && !trnn(x,G_actorbit)),
 		    cond(/*(*/ [suv === tuv,
 			   tell(G_losstr),
@@ -1241,7 +1241,7 @@ export function everything() {
 	   robjs(here))] /*)*/,
 	/*(*/ [pa === G_drop_X_words,
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             suv = back(suv);
 suv[1] = x;
           },
@@ -1250,7 +1250,7 @@ suv[1] = x;
 	 pi = prsvec[3],
 	 prog(rp, /*(*/ [] /*)*/,
 	   mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
               cond(/*(*/ [(ovis_Q(x) && x !== pi && !trnn(x,G_actorbit)),
 		      cond(/*(*/ [suv === tuv,
 			     tell(G_losstr),
@@ -1260,7 +1260,7 @@ suv[1] = x;
             },
 	     robjs(here)),
 	   mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
               cond(/*(*/ [(suv === tuv && x !== pi),
 		      tell(G_losstr),
 		      return(t, rp)] /*)*/);
@@ -1275,16 +1275,16 @@ cond(/*(*/ [empty_Q(suv),
 
 export function valuables() {
     let prsvec = G_prsvec;
-    let pa: verb = prsvec[1];
-    let suv: uvector(/*[*/ [rest, object] /*]*/) = G_obj_uv;
-    let tuv: uvector(/*[*/ [rest, object] /*]*/) = top(suv);
-    let pi: object = null;
-    let lu: number = tuv.length;
-    let here: room = G_here;
-    let winner: adv = G_winner;
+    let pa: VERB = prsvec[1];
+    let suv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = G_obj_uv;
+    let tuv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = top(suv);
+    let pi: OBJECT = null;
+    let lu: FIX = tuv.length;
+    let here: ROOM = G_here;
+    let winner: ADV = G_winner;
     cond(/*(*/ [pa === G_take_X_words,
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             cond(/*(*/ [(ovis_Q(x) && !trnn(x,G_actorbit) && !0_Q(otval(x))),
 		    cond(/*(*/ [suv === tuv,
 			   tell(G_losstr),
@@ -1295,7 +1295,7 @@ export function valuables() {
 	   robjs(here))] /*)*/,
 	/*(*/ [pa === G_drop_X_words,
 	 mapf(false,
-	   function(x: object) {
+	   function(x: OBJECT) {
             cond(/*(*/ [!0_Q(otval(x)),
 		    suv = back(suv),
 		    suv[1] = x] /*)*/);
@@ -1305,7 +1305,7 @@ export function valuables() {
 	 pi = prsvec[3],
 	 prog(rp, /*(*/ [] /*)*/,
 	   mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
               cond(/*(*/ [(suv === tuv && x !== pi),
 		      tell(G_losstr),
 		      return(t, rp)] /*)*/);
@@ -1315,7 +1315,7 @@ cond(/*(*/ [(ovis_Q(x) && !0_Q(otval(x))),
             },
 	     robjs(here)),
 	   mapf(false,
-	     function(x: object) {
+	     function(x: OBJECT) {
               cond(/*(*/ [(suv === tuv && x !== pi),
 		      tell(G_losstr),
 		      return(t, rp)] /*)*/);
@@ -1360,7 +1360,7 @@ define(closer, close_act, /*(*/ [`AUX`, /*(*/ [pv, G_prsvec] /*)*/, /*(*/ [prso,
 	      /*(*/ [tell(`You cannot close that.`)] /*)*/))
 
 export function find() {
-    let prso: (false | object) = G_prsvec[2];
+    let prso: (FALSE | OBJECT) = G_prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	/*(*/ [prso,	 find_frob(prso,		    robjs(G_here),
 		    `, which is in the room.`,
@@ -1375,14 +1375,14 @@ export function find() {
 	/*(*/ [tell(`I don't know what that is.`)] /*)*/);
   }
 
-export function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: string, str2: string, str3: string) {
+export function find_frob(prso, objl: LIST(/*[*/ [REST, OBJECT] /*]*/), str1: STRING, str2: STRING, str3: STRING) {
     mapf(false,
-	function(x: object) {
+	function(x: OBJECT) {
         cond(/*(*/ [x === prso,
 			 tell(str2,1, odesc2(x), str3)] /*)*/,
 			/*(*/ [(transparent_Q(x) || (openable_Q(x) && oopen_Q(x))),
 			 mapf(false,
-			       function(y: object) {
+			       function(y: OBJECT) {
                 cond(/*(*/ [y === prso,
 						tell(str2,1, odesc2(y), str3),
 						tell(`It is in the `,
@@ -1398,9 +1398,9 @@ export function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: st
 // OBJECT-ACTION --  CALL OBJECT FUNCTIONS FOR DIRECT AND INDIRECT OBJECTS
 
 export function object_action() {
-    let vec: vector = G_prsvec;
-    let prso: (object | false) = vec[2];
-    let prsi: (object | false) = vec[3];
+    let vec: VECTOR = G_prsvec;
+    let prso: (OBJECT | FALSE) = vec[2];
+    let prsi: (OBJECT | FALSE) = vec[3];
     prog(/*(*/ [] /*)*/,
 	      cond(/*(*/ [prsi,(apply_object(prsi) && return(t))] /*)*/),
 	      cond(/*(*/ [prso,apply_object(prso)] /*)*/));
@@ -1409,10 +1409,10 @@ export function object_action() {
 `SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL
 SEARCH, USE GET-OBJECT`
 
-export function obj_here_Q(obj: object) {
-    let nobj: (false | object) = null;
-    let rm: room = G_here;
-    let win: adv = G_winner;
+export function obj_here_Q(obj: OBJECT) {
+    let nobj: (FALSE | OBJECT) = null;
+    let rm: ROOM = G_here;
+    let win: ADV = G_winner;
     prog(/*(*/ [] /*)*/,
 	      cond(/*(*/ [!ovis_Q(obj), return(false)] /*)*/,
 		    /*(*/ [nobj = ocan(obj),
@@ -1420,7 +1420,7 @@ export function obj_here_Q(obj: object) {
 	      (memq(obj,robjs(rm)) || memq(obj,aobjs(win))));
   }
 
-export function splice_out(obj, al: list) {
+export function splice_out(obj, al: LIST) {
     cond(/*(*/ [al[1] === obj, rest(al)] /*)*/,
 	      /*(*/ [t,
 	       repeat(/*(*/ [/*(*/ [nl, rest(al)] /*)*/, /*(*/ [ol, al] /*)*/] /*)*/,
@@ -1433,9 +1433,9 @@ export function splice_out(obj, al: list) {
 
 `WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level.`
 
-export function weight(objl: list(/*[*/ [rest, object] /*]*/)) {
-    let bigfix: number = G_bigfix;
-    mapf(G__,	      function(obj: object) {
+export function weight(objl: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+    let bigfix: FIX = G_bigfix;
+    mapf(G__,	      function(obj: OBJECT) {
         _(cond(/*(*/ [osize(obj) === G_bigfix, 0] /*)*/,
 			       /*(*/ [osize(obj)] /*)*/),
 			 weight(ocontents(obj)));
@@ -1447,16 +1447,16 @@ export function pour() {
       }
 
 export function move() {
-    let vec: vector = G_prsvec;
-    let rm: room = aroom(G_winner);
-    let obj: (atom | object) = vec[2];
+    let vec: VECTOR = G_prsvec;
+    let rm: ROOM = aroom(G_winner);
+    let obj: (ATOM | OBJECT) = vec[2];
     cond(/*(*/ [memq(obj,robjs(rm)), object_action()] /*)*/,
 	      /*(*/ [obj,	       tell(`I can't get to that to move it.`)] /*)*/);
   }
 
-export function victims_Q(rm: room) {
+export function victims_Q(rm: ROOM) {
     mapf(false,
-	      function(x: object) {
+	      function(x: OBJECT) {
         cond(/*(*/ [trnn(x,G_vicbit), mapleave(x)] /*)*/);
       },
 	      robjs(rm));
@@ -1501,23 +1501,23 @@ export function word_Q(w) {
     lookup(w,G_words);
   }
 
-export function this_it_Q(objnam: atom, obj: atom, adj: (false | adjective)) {
+export function this_it_Q(objnam: ATOM, obj: ATOM, adj: (FALSE | ADJECTIVE)) {
     cond(/*(*/ [(ovis_Q(obj) && (objnam === oid(obj) || memq(objnam,onames(obj)))),
 	       cond(/*(*/ [!adj] /*)*/, /*(*/ [memq(adj,oadjs(obj))] /*)*/)] /*)*/);
   }
 
 G_lexv = ivector(10, () => rest(istring(5), 5))
 
-export let G_lexv: vector(/*[*/ [rest, string] /*]*/);export let G_brks: string;
+export let G_lexv: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_brks: STRING;
 
-export function lex(s: string, sx?: string, silent_Q: (atom | false)) {
-    let brks: string = G_brks;
-    let v: (false | vector) = G_lexv;
-    let s1: string = s;
-    let quot: (atom | false) = false;
+export function lex(s: STRING, sx?: STRING, silent_Q: (ATOM | FALSE)) {
+    let brks: STRING = G_brks;
+    let v: (FALSE | VECTOR) = G_lexv;
+    let s1: STRING = s;
+    let quot: (ATOM | FALSE) = false;
     mapr(false,
-	 function(x: vector(/*[*/ [rest, string] /*]*/)) {
-        let str: string = x[1];
+	 function(x: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
+        let str: STRING = x[1];
         x[1] = rest(str,str.length);
       },
 	 v);
@@ -1541,7 +1541,7 @@ cond(/*(*/ [s[1] === _X__Q, v[1] = substruc(`HELP`, 0, 4, back(v[1], 4))] /*)*/,
 psetg(brks, `\"' 	:;.,?!
 `)
 
-export function anything(s: string, sx: string) {
+export function anything(s: STRING, sx: STRING) {
     mapr(false,
 	      function(x) {
         cond(/*(*/ [x === sx, mapleave(false)] /*)*/,
@@ -1550,7 +1550,7 @@ export function anything(s: string, sx: string) {
 	      s);
   }
 
-export function uppercase(str: string) {
+export function uppercase(str: STRING) {
     mapr(false,
 	      function(s) {`AUX`, /*(*/ [c, ascii(s[1])] /*)*/
         cond(/*(*/ [(c > 96 && l__Q(c,122)),
@@ -1559,7 +1559,7 @@ export function uppercase(str: string) {
 	      str);
   }
 
-export function wait(num?: number) {
+export function wait(num?: FIX) {
     tell(`Time passes...`);
 repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [n] /*)*/, fix] /*)*/] /*2*/,
@@ -1569,14 +1569,14 @@ repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 
 `RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS.`
 
-export function clock_demon(hack: hack) {
+export function clock_demon(hack: HACK) {
     let ca = null;
-    let flg: (atom | false) = false;
+    let flg: (ATOM | FALSE) = false;
     cond(/*(*/ [G_parse_won,	   G_prsvec[2] = false,
 	   G_prsvec[3] = false,
 	   mapf(false,
-		 function(ev: cevent) {
-            let tick: number = ctick(ev);
+		 function(ev: CEVENT) {
+            let tick: FIX = ctick(ev);
             cond(/*(*/ [!cflag(ev)] /*)*/,
 				 /*(*/ [0_Q(tick)] /*)*/,
 				 /*(*/ [tick < 0,
@@ -1592,9 +1592,9 @@ export function clock_demon(hack: hack) {
 		 hobjs(hack))] /*)*/);
   }
 
-export let G_clocker: hack;
+export let G_clocker: HACK;
 
-export function clock_int(cev: cevent, num?: (number | false), clocker: hack) {
+export function clock_int(cev: CEVENT, num?: (FIX | FALSE), clocker: HACK) {
     cond(/*(*/ [!memq(cev,hobjs(clocker)),
 	   clocker[G_hobjs] = /*(*/ [cev,_X,hobjs(clocker)] /*)*/] /*)*/);
 cond(/*(*/ [num,cev[G_ctick] = num] /*)*/);
@@ -1605,9 +1605,9 @@ G_demons = /*(*/ [] /*)*/
 (lookup(`COMPILE`, root()) || gassigned_Q(group_glue) || add_demon(G_clocker = chtype(/*[*/ [clock_demon, /*(*/ [] /*)*/] /*]*/, hack)))
 
 export function board() {
-    let obj: object = G_prsvec[2];
-    let win: adv = G_winner;
-    let av: (false | object) = avehicle(win);
+    let obj: OBJECT = G_prsvec[2];
+    let win: ADV = G_winner;
+    let av: (FALSE | OBJECT) = avehicle(win);
     cond(/*(*/ [!memq(obj,robjs(G_here)),
 	       tell(`The `, 1, odesc2(obj), ` must be on the ground to be boarded.`)] /*)*/,
 	      /*(*/ [trnn(obj,G_vehbit),
@@ -1627,9 +1627,9 @@ export function board() {
   }
 
 export function unboard() {
-    let obj: object = G_prsvec[2];
-    let win: adv = G_winner;
-    let av: (false | object) = avehicle(win);
+    let obj: OBJECT = G_prsvec[2];
+    let win: ADV = G_winner;
+    let av: (FALSE | OBJECT) = avehicle(win);
     cond(/*(*/ [av === obj,
 	       cond(/*(*/ [object_action()] /*)*/,
 		     /*(*/ [rtrnn(G_here,G_rlandbit),
@@ -1641,11 +1641,11 @@ fatal.`)] /*)*/)] /*)*/,
 	      /*(*/ [tell(`You aren't in that!`)] /*)*/);
   }
 
-export function goto(rm: room) {
-    let win: adv = G_winner;
-    let av: (false | object) = avehicle(G_winner);
-    let here: room = G_here;
-    let lb: (atom | false) = rtrnn(rm,G_rlandbit);
+export function goto(rm: ROOM) {
+    let win: ADV = G_winner;
+    let av: (FALSE | OBJECT) = avehicle(G_winner);
+    let here: ROOM = G_here;
+    let lb: (ATOM | FALSE) = rtrnn(rm,G_rlandbit);
     cond(/*(*/ [((!lb && (!av || !rtrnn(rm,orand(av)))) || (rtrnn(here,G_rlandbit) && lb && av && orand(av) !== G_rlandbit && !rtrnn(rm,orand(av)))),
 	       cond(/*(*/ [av,tell(`You can't go there in a `, 1, odesc2(av), `.`)] /*)*/,
 		     /*(*/ [tell(`You can't go there without a vehicle.`)] /*)*/),
@@ -1670,18 +1670,18 @@ export function act_hack() {
     (object_action() || t);
   }
 
-export function mung_room(rm: room, str: string) {
+export function mung_room(rm: ROOM, str: STRING) {
     rtro(rm,G_rmungbit);
 rm[G_rrand] = str;
   }
 
 export function command() {
-    let pv: vector = G_prsvec;
-    let po: object = pv[2];
-    let v: vector = rest(G_lexv[``]);
-    let hs: room = G_here;
-    let win: adv = G_winner;
-    let play: adv = G_player;
+    let pv: VECTOR = G_prsvec;
+    let po: OBJECT = pv[2];
+    let v: VECTOR = rest(G_lexv[``]);
+    let hs: ROOM = G_here;
+    let win: ADV = G_winner;
+    let play: ADV = G_player;
     cond(/*(*/ [win !== play,
 	   tell(`You cannot talk through another person!`)] /*)*/,
 	  /*(*/ [trnn(po,G_actorbit),
