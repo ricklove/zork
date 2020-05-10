@@ -399,6 +399,8 @@ export const convertToTypescript = (node: ZNode): string => {
             return `${convertToTypescript(nodes[1])}.length`;
         }
 
+
+
         // // Array Init: <ILIST, IVECTOR, IUVECTOR
         // if (openSymbol === '<'
         //     && firstNode
@@ -420,7 +422,16 @@ export const convertToTypescript = (node: ZNode): string => {
         //     return `[...new Array(${convertToTypescript(nodes[1])})].join(()=>${defaultVal})`;
         // }
 
-
+        // MEMBER
+        // NOTE: Technically this returns a sublist starting with the found item
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && (firstNode.toString() === 'MEMBER')
+            && (nodes.length === 3)
+        ) {
+            return `${convertToTypescript(nodes[2])}[${convertToTypescript(nodes[1])}]`;
+        }
 
         // Unary Operators
         if (openSymbol === '<'

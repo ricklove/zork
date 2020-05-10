@@ -26,7 +26,7 @@ cond(/*(*/ [save(fn) == "SAVED", int_level(0), t] /*)*/,
 	      /*(*/ [t,
 	       // STARTER on 10x sets up tty correctly, setg's DEV to \"MDL\"     if that device exists; if not, (sort of) returns directory muddle     came from.  On its it returns # zorkers currently in existence.,
 	       cond(/*(*/ [(type_Q(stv = starter(), fix) && stv > 3),
-		      (member(GLOBALS.xunm = xuname(), GLOBALS.winners) || GLOBALS.xunm == "SEC" || GLOBALS.xunm == "ELBOW" || (off("CHAR", GLOBALS.inchan) && tell("There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you.") && quit()))] /*)*/,
+		      (GLOBALS.winners[GLOBALS.xunm = xuname()] || GLOBALS.xunm == "SEC" || GLOBALS.xunm == "ELBOW" || (off("CHAR", GLOBALS.inchan) && tell("There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you.") && quit()))] /*)*/,
 		     /*(*/ [type_Q(stv,string),
 		      GLOBALS.snm = substruc(GLOBALS.scratch_str,					  0,
 					  _(GLOBALS.scratch_str.length,
@@ -201,7 +201,7 @@ function handle(frm, _tuple_, zork) {
     let zf: any = null;
     GLOBALS.outchan[13] = 80;
 back(GLOBALS.inchan)[1][6] = /*#*/ [lose, 27] /*2*/;
-cond(/*(*/ [((!gassigned_Q(xunm) || member(GLOBALS.xunm,GLOBALS.winners)) && pc()),
+cond(/*(*/ [((!gassigned_Q(xunm) || GLOBALS.winners[GLOBALS.xunm]) && pc()),
 	       (gassigned_Q(saverep) && GLOBALS.rep = GLOBALS.saverep),
 	       (assigned_Q(bh) && off(bh)),
 	       int_level(0),
@@ -301,7 +301,7 @@ function do_script() {
     let muddle: number = GLOBALS.muddle;
     cond(/*(*/ [GLOBALS.my_script,	 do_unscript(false)] /*)*/);
 cond(/*(*/ [GLOBALS.script_channel,	 tell("You are already scripting.")] /*)*/,
-	/*(*/ [((muddle > 100 || (!member("GUEST", unm) && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch) && ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch))) && ch = open("PRINT", "ZORK", "SCRIPT", "DSK", unm)),
+	/*(*/ [((muddle > 100 || (!unm["GUEST"] && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch) && ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch))) && ch = open("PRINT", "ZORK", "SCRIPT", "DSK", unm)),
 	 top(GLOBALS.inchan)[1] = /*(*/ [ch] /*)*/,
 	 top(GLOBALS.outchan)[1] = /*(*/ [ch] /*)*/,
 	 GLOBALS.script_channel = ch,
@@ -328,7 +328,7 @@ function do_save() {
     let muddle: number = GLOBALS.muddle;
     let ch: (channel | false) = null;
     let unm: string = GLOBALS.xunm;
-    cond(/*(*/ [(muddle > 100 || (!member("GUEST", unm) && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch))),
+    cond(/*(*/ [(muddle > 100 || (!unm["GUEST"] && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch))),
 	 cond(/*(*/ [(muddle > 100 || (ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch))),
 		(GLOBALS.script_channel && do_unscript()),
 		tell("Saving."),
@@ -364,7 +364,7 @@ prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	 /*#*/ [decl, /*(*/ [/*(*/ [foo] /*)*/, (atom || false), /*(*/ [snm] /*)*/, special(string)] /*)*/] /*2*/,
 	 cond(/*(*/ [ch = open("READB", str),
 		cond(/*(*/ [restore_game(ch),
-		       cond(/*(*/ [member(GLOBALS.xunm,GLOBALS.winners)] /*)*/,
+		       cond(/*(*/ [GLOBALS.winners[GLOBALS.xunm]] /*)*/,
 			     /*(*/ [nowd = chtype(getbits(now = chtype(dskdate(), fix),
 							 bits(18, 18)),
 						fix) === thend = chtype(getbits(GLOBALS.then,bits(18, 18)), fix),
@@ -1643,7 +1643,7 @@ rm[GLOBALS.rrand] = str;
 function command() {
     let pv: vector = GLOBALS.prsvec;
     let po: object = pv[2];
-    let v: vector = rest(member("", GLOBALS.lexv));
+    let v: vector = rest(GLOBALS.lexv[""]);
     let hs: room = GLOBALS.here;
     let win: adv = GLOBALS.winner;
     let play: adv = GLOBALS.player;

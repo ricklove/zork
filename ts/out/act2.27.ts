@@ -231,7 +231,7 @@ function rboat_function(arg?: (false | atom)) {
 		  insert_object(find_obj("DBOAT"), here),
 		  t] /*)*/)] /*)*/,
 	  /*(*/ [prsact === GLOBALS.disem_X_words,
-	   (member("RIVR", spname(rid(here))) && jigs_up("Unfortunately, that leaves you in the water, where you drown."))] /*)*/,
+	   (spname(rid(here))["RIVR"] && jigs_up("Unfortunately, that leaves you in the water, where you drown."))] /*)*/,
 	  /*(*/ [vname(prsact) === defla_X_words,
 	   cond(/*(*/ [avehicle(GLOBALS.winner) === rboat,
 		  tell("You can't deflate the boat while you're in it.")] /*)*/,
@@ -427,7 +427,7 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 		      clock_int(GLOBALS.bint,3)] /*)*/),
 	       false] /*)*/,
 	      /*(*/ [prsa === GLOBALS.c_int_X_words,
-	       cond(/*(*/ [((oopen_Q(cont) && GLOBALS.binf_X_flag) || member("LEDG", spname(rid(GLOBALS.here)))),
+	       cond(/*(*/ [((oopen_Q(cont) && GLOBALS.binf_X_flag) || spname(rid(GLOBALS.here))["LEDG"]),
 		      rise_and_shine(ball,GLOBALS.here)] /*)*/,
 		     /*(*/ [decline_and_fall(ball,GLOBALS.here)] /*)*/)] /*)*/))
 
@@ -441,7 +441,7 @@ function rise_and_shine(ball: object, here: room) {
     let bl: room = GLOBALS.bloc;
     let foo: cevent = null;
     clock_int(GLOBALS.bint,3);
-cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
+cond(/*(*/ [m = spname(rid(bl))["VAIR"],
 	       cond(/*(*/ [rest(m,4) == "4",
 		      clock_disable(GLOBALS.burnup_int),
 		      clock_disable(GLOBALS.bint),
@@ -458,7 +458,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 			     tell("The balloon ascends."),
 			     room_info(t)] /*)*/,
 			    /*(*/ [put_balloon(ball,bl,s,"ascends.")] /*)*/)] /*)*/)] /*)*/,
-	      /*(*/ [m = member("LEDG", spname(rid(bl))),
+	      /*(*/ [m = spname(rid(bl))["LEDG"],
 	       substruc("VAIR", 0, 4, s),
 	       s[5] = m[5],
 	       cond(/*(*/ [in_Q,
@@ -475,7 +475,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
   }
 
 function put_balloon(ball: object, here: room, there: string, str: string) {
-    (member("LEDG", spname(rid(GLOBALS.here))) && tell("You watch as the balloon slowly", 1, str));
+    (spname(rid(GLOBALS.here))["LEDG"] && tell("You watch as the balloon slowly", 1, str));
 remove_object(ball);
 insert_object(ball,GLOBALS.bloc = find_room(there));
   }
@@ -489,7 +489,7 @@ function decline_and_fall(ball: object, here: room) {
     let in_Q: (atom | false) = avehicle(GLOBALS.winner) === ball;
     let foo: cevent = null;
     clock_int(GLOBALS.bint,3);
-cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
+cond(/*(*/ [m = spname(rid(bl))["VAIR"],
 	   cond(/*(*/ [rest(m,4) == "1",
 		  cond(/*(*/ [in_Q,
 			 goto(GLOBALS.bloc = find_room("VLBOT")),
@@ -671,7 +671,7 @@ function blast() {
   }
 
 function volgnome() {
-    cond(/*(*/ [member("LEDG", spname(rid(GLOBALS.here))),
+    cond(/*(*/ [spname(rid(GLOBALS.here))["LEDG"],
 	   tell("A volcano gnome seems to walk straight out of the wall and says\n'I have a very busy appointment schedule and little time to waste on\ntresspassers, but for a small fee, I'll show you the way out.'  You\nnotice the gnome nervously glancing at his watch."),
 	   insert_object(find_obj("GNOME"), GLOBALS.here)] /*)*/,
 	  /*(*/ [clock_int(GLOBALS.vlgin,1)] /*)*/);

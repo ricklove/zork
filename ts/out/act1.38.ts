@@ -13,7 +13,7 @@ function blo(y) {
 gdecl(/*(*/ [ff] /*)*/, string)
 function ilo(body: string, type: number, nm1: string, nm2: string, m1?: string, m2: string) {
     cond(/*(*/ [type === _400000000000_,
-	       cond(/*(*/ [((member("<FLUSH-ME>", body) && !member(GLOBALS.xunm,GLOBALS.winners)) || (member(nm1,GLOBALS.winners) && member(GLOBALS.ff,body))),
+	       cond(/*(*/ [((body["<FLUSH-ME>"] && !GLOBALS.winners[GLOBALS.xunm]) || (GLOBALS.winners[nm1] && body[GLOBALS.ff])),
 		      eval(parse(body))] /*)*/)] /*)*/);
 dismiss(t);
   }
@@ -897,7 +897,7 @@ function echo_room() {
 			     /*(*/ [printstring(b,outchan,l),
 			      GLOBALS.tell_flag = t,
 			      crlf(),
-			      cond(/*(*/ [member("ECHO", uppercase(b)) === b,
+			      cond(/*(*/ [uppercase(b)["ECHO"] === b,
 				     tell("The acoustics of the room change subtly.",
 					   1),
 				     GLOBALS.echo_flag_X_flag = t,
