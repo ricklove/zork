@@ -4,9 +4,40 @@ function getIndentation(depth: number) {
     return [...new Array(depth + 1)].join('  ');
 }
 
-const getIndentedNodes = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
+const getNodesWithSpace = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
+    return getNodesWithOriginalDecorations(nodes, depth, indentFirst, delimeter);
+};
+
+const getNodesWithIndent = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
     const indent = getIndentation(depth);
     return `${indentFirst ? `\n${indent}` : ''}${nodes.map(x => `${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
+};
+
+const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
+    if (nodes.length === 0) { return ''; }
+
+    const start = nodes[0]._raw.start;
+
+    let text = '';
+    let s = start;
+
+    for (let n of nodes) {
+        // Get extra stuff
+        const extraLen = n._raw.start - s;
+        if (extraLen > 0) {
+            const extra = n._raw.source.substr(s, extraLen);
+            text += extra;
+            s += extraLen;
+        }
+
+        // Get node content
+        text += convertToTypescript(n) + delimeter;
+        s += n._raw.length;
+    }
+
+    text = text.substr(0, text.length - delimeter.length);
+
+    return text;
 };
 
 const convertToTypescriptString = (node: ZList): string => {
@@ -54,8 +85,8 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
         const argsBeforeAux = iAux >= 0 ? argNodes.slice(0, iAux) : argNodes;
         const argsAfterAux = iAux >= 0 ? argNodes.slice(iAux) : [];
 
-        argsListText = getIndentedNodes(argsBeforeAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
-        varsListText = getIndentedNodes(argsAfterAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
+        argsListText = getNodesWithSpace(argsBeforeAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
+        varsListText = getNodesWithSpace(argsAfterAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
 
         if (declList) {
             // <DEFINE OPEN-CLOSE (VERB ATM STROPN STRCLS)
@@ -414,16 +445,16 @@ export const convertToTypescript = (node: ZNode): string => {
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
             const name = convertToTypescriptName(firstNode);
-            return `${name}(${getIndentedNodes(nodes.slice(1), depth, true, ',')})`;
+            return `${name}(${getNodesWithSpace(nodes.slice(1), depth, true, ',')})`;
         }
 
 
         // TS List as Array
-        return `/*${openSymbol ?? ''}*/ [${getIndentedNodes(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
+        return `/*${openSymbol ?? ''}*/ [${getNodesWithOriginalDecorations(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
 
         // Unknown
         const getDefaultWithIndentedChildren = () => {
-            return `${openSymbol ?? ''}${getIndentedNodes(nodes, depth)}${typeof closeSymbol === 'number' ? '' : (closeSymbol ?? '')}`;
+            return `${openSymbol ?? ''}${getNodesWithSpace(nodes, depth)}${typeof closeSymbol === 'number' ? '' : (closeSymbol ?? '')}`;
         };
         return getDefaultWithIndentedChildren();
     }
