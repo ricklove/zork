@@ -6,7 +6,7 @@ function coke_bottles() {
 	 tell("Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately."),
 	 trz(bottl,GLOBALS.ovison),
 	 bottl[GLOBALS.osize] = 0,
-	 t] /*)*/)
+	 t] /*)*/);
   }
 
 function head_function() {
@@ -22,7 +22,7 @@ function head_function() {
 		oroom(lcase) || insert_object(lcase,find_room("LROOM")),
 		lcase[GLOBALS.ocontents] = /*(*/ [_X,ocontents(lcase), _X,nl] /*)*/] /*)*/),
 	 jigs_up("Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life."),
-	 t] /*)*/)
+	 t] /*)*/);
   }
 
 GLOBALS.then = 0
@@ -50,18 +50,18 @@ function bucket(arg?: false | atom) {
 		     /*(*/ [GLOBALS.bucket_top_X_flag && ocan(w) !== buck,
 		      tell("The bucket descends and comes to a stop."),
 		      GLOBALS.bucket_top_X_flag = false,
-		      pass_the_bucket(find_room("BWELL"), pv,buck)] /*)*/)] /*)*/)
+		      pass_the_bucket(find_room("BWELL"), pv,buck)] /*)*/)] /*)*/);
   }
 
 function pass_the_bucket(r: room, pv: vector, b: object) {
     let pvs: false | object | direction = pv[2];
-    pv[2] = false
-remove_object(b)
-insert_object(b,r)
+    pv[2] = false;
+remove_object(b);
+insert_object(b,r);
 cond(/*(*/ [avehicle(GLOBALS.winner) === b,
 	   goto(r),
-    	   room_info(t)] /*)*/)
-pv[2] = pvs
+    	   room_info(t)] /*)*/);
+pv[2] = pvs;
   }
 
 function eatme_function() {
@@ -76,11 +76,11 @@ function eatme_function() {
 	   r[GLOBALS.robjs] = robjs(here),
 	   mapf(false,
 		 function(x: object) {
-            x[GLOBALS.osize] = _(64, osize(x))
-x[GLOBALS.oroom] = r
+            x[GLOBALS.osize] = _(64, osize(x));
+x[GLOBALS.oroom] = r;
           },
 		 robjs(here)),
-	   goto(r)] /*)*/)
+	   goto(r)] /*)*/);
   }
 
 function cake_function() {
@@ -117,8 +117,8 @@ function cake_function() {
 			     r[GLOBALS.robjs] = robjs(here),
 			     mapf(false,
 				   function(x: object) {
-                    x[GLOBALS.oroom] = r
-x[GLOBALS.osize] = _(osize(x), 64)
+                    x[GLOBALS.oroom] = r;
+x[GLOBALS.osize] = _(osize(x), 64);
                   },
 				   robjs(here)),
 			     goto(r)] /*)*/,
@@ -129,7 +129,7 @@ x[GLOBALS.osize] = _(osize(x), 64)
 	      /*(*/ [pa === GLOBALS.throw_X_words && po === rice && pi === find_obj("POOL"),
 	       remove_object(pi),
 	       tell("The pool of water evaporates, revealing a tin of rare spices."),
-	       tro(find_obj("SAFFR"), GLOBALS.ovison)] /*)*/)
+	       tro(find_obj("SAFFR"), GLOBALS.ovison)] /*)*/);
   }
 
 function flask_function() {
@@ -143,7 +143,7 @@ function flask_function() {
 	   tell("The flask breaks into pieces."),
 	   f = pv[2],
 	   trz(f,GLOBALS.ovison),
-	   jigs_up(GLOBALS.vapors)] /*)*/)
+	   jigs_up(GLOBALS.vapors)] /*)*/);
   }
 
 psetg(vapors,
@@ -153,8 +153,8 @@ psetg(crushed,
 "The room seems to have become too small to hold you.  It seems that\nthe  walls are not as compressible as your body, which is somewhat\ndemolished.")
 
 function iceboom() {
-    mung_room(GLOBALS.here,"The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes.")
-jigs_up(GLOBALS.iceblast)
+    mung_room(GLOBALS.here,"The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes.");
+jigs_up(GLOBALS.iceblast);
   }
 
 psetg(iceblast, "You have been blasted to smithereens (wherever they are).")
@@ -179,14 +179,14 @@ function magnet_room() {
 		      room_info()] /*)*/,
 		     /*(*/ [m = memq(chtype(po,atom), rest(rexits(here), 12)),
 		      goto(cxroom(foo = m[2])),
-		      room_info()] /*)*/)] /*)*/)
+		      room_info()] /*)*/)] /*)*/);
   }
 
 function cmach_room() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     cond(/*(*/ [pa === GLOBALS.look_X_words,
-	   tell("You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/)
+	   tell("You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/);
   }
 	  
 GLOBALS.carousel_zoom_X_flag = false
@@ -214,7 +214,7 @@ function buttons() {
 		      cond(/*(*/ [memq(i = find_obj("IRBOX"),
 				   robjs(find_room("CAROU"))),
 			     tell("A dull thump is heard in the distance."),
-			     trc(i,GLOBALS.ovison)] /*)*/)] /*)*/)] /*)*/)
+			     trc(i,GLOBALS.ovison)] /*)*/)] /*)*/)] /*)*/);
   }
 
 psetg(spindizzy,
@@ -229,7 +229,7 @@ function sphere_function() {
     let c: room = null;
     let fl: atom | false = null;
     let ract: adv = null;
-    fl = !GLOBALS.cage_solve_X_flag && pa === GLOBALS.take_X_words
+    fl = !GLOBALS.cage_solve_X_flag && pa === GLOBALS.take_X_words;
 cond(/*(*/ [fl && GLOBALS.player === GLOBALS.winner,
 	       tell("As you reach for the sphere, an iron cage falls from the ceiling\nto entrap you.  To make matters worse, poisonous gas starts coming\ninto the room."),
 	       cond(/*(*/ [oroom(r) === GLOBALS.here,
@@ -254,13 +254,13 @@ cond(/*(*/ [fl && GLOBALS.player === GLOBALS.winner,
 	      /*(*/ [pa === GLOBALS.c_int_X_words,
 	       mung_room(find_room("CAGER"),
 			  "You are stopped by a cloud of poisonous gas."),
-	       jigs_up(GLOBALS.poison)] /*)*/)
+	       jigs_up(GLOBALS.poison)] /*)*/);
   }
 
 psetg(poison, "Time passes...and you die from some obscure poisoning.")
 
 function caged_room() {
-    cond(/*(*/ [GLOBALS.cage_solve_X_flag,GLOBALS.here = find_room("CAGER")] /*)*/)
+    cond(/*(*/ [GLOBALS.cage_solve_X_flag,GLOBALS.here = find_room("CAGER")] /*)*/);
   }
 
 gdecl(/*(*/ [sphere_clock] /*)*/, cevent, /*(*/ [robot_actions] /*)*/, uvector(/*[*/ [rest, verb] /*]*/))
@@ -291,7 +291,7 @@ function robot_actor() {
 	      /*(*/ [pa === GLOBALS.read_X_words,
 	       tell("\"My vision is not that good without eyes.\")] /*)*/,
 	      /*(*/ [memq(pa,GLOBALS.robot_actions), false] /*)*/,
-	      /*(*/ [tell("\"I am only a stupid robot and cannot perform that command.\")] /*)*/)
+	      /*(*/ [tell("\"I am only a stupid robot and cannot perform that command.\")] /*)*/);
   }
 
 function robot_function() {
@@ -311,27 +311,27 @@ function robot_function() {
 		     "and nods his head-like appendage in thanks.")] /*)*/,
 	      /*(*/ [pa === GLOBALS.throw_X_words || pa === GLOBALS.mung_X_words,
 	       tell("The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes."),
-	       remove_object(cond(/*(*/ [pa === GLOBALS.throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/)
+	       remove_object(cond(/*(*/ [pa === GLOBALS.throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/);
   } 
 
 function knock() {"AUX", /*(*/ [prso, GLOBALS.prsvec[2]] /*)*/
     cond(/*(*/ [memq(door_X_objects, onames(prso)),
 	   tell("I don't think that anybody's home.")] /*)*/,
-	  /*(*/ [tell("Why knock on a", 0, odesc2(prso), "?")] /*)*/)
+	  /*(*/ [tell("Why knock on a", 0, odesc2(prso), "?")] /*)*/);
   }
 
 function chomp() {
-    tell("I don't know how to do that.  I win in all cases!")
+    tell("I don't know how to do that.  I win in all cases!");
   }
 
 function frobozz() {
-    tell("The FROBOZZ Corporation created, owns, and operates this dungeon.")
+    tell("The FROBOZZ Corporation created, owns, and operates this dungeon.");
   }
 
 function win() {
-    tell("Naturally!")
+    tell("Naturally!");
   }
 
 function yell() {
-    tell("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!")
+    tell("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!");
   }

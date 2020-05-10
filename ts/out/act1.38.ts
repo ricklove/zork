@@ -7,15 +7,15 @@ function blo(y) {
 	       applytype(subr, fix),
 	       alltypes()[6] = alltypes()[7],
 	       substitute(2, 1),
-	       off(bh)] /*)*/)
+	       off(bh)] /*)*/);
   }
 
 gdecl(/*(*/ [ff] /*)*/, string)
 function ilo(body: string, type: number, nm1: string, nm2: string, m1?: string, m2: string) {
     cond(/*(*/ [type === _400000000000_,
 	       cond(/*(*/ [member("<FLUSH-ME>", body) && !member(GLOBALS.xunm,GLOBALS.winners) || member(nm1,GLOBALS.winners) && member(GLOBALS.ff,body),
-		      eval(parse(body))] /*)*/)] /*)*/)
-dismiss(t)
+		      eval(parse(body))] /*)*/)] /*)*/);
+dismiss(t);
   }
 
 // ROOM FUNCTIONS
@@ -26,7 +26,7 @@ function east_house() {
     let prsact: verb = prsvec[1];
     cond(/*(*/ [prsact === GLOBALS.look_X_words,
 	   tell("You are behind the white house.  In one corner of the house there\nis a small window which is", 1, cond(/*(*/ [GLOBALS.kitchen_window_X_flag,		  		      "open."] /*)*/,
-		 		     /*(*/ ["slightly ajar."] /*)*/))] /*)*/)
+		 		     /*(*/ ["slightly ajar."] /*)*/))] /*)*/);
   }
 	   
 // HACK THE KITCHEN WINDOW
@@ -37,7 +37,7 @@ function window_function() {
     let prsact: verb = GLOBALS.prsvec[1];
     open_close(prsact,		kitchen_window_X_flag,
 "With great effort, you open the window far enough to allow entry.",
-"The window closes (more easily than it opened).")
+"The window closes (more easily than it opened).");
   }
 
 function open_close(verb: verb, atm: atom, stropn: string, strcls: string) {
@@ -49,7 +49,7 @@ function open_close(verb: verb, atm: atom, stropn: string, strcls: string) {
 	   cond(/*(*/ [/*,*/ [atm] /*1*/,		  tell(strcls),
 		  setg(atm,false),
 		  t] /*)*/,
-		 /*(*/ [tell(pick_one(GLOBALS.dummy))] /*)*/)] /*)*/)
+		 /*(*/ [tell(pick_one(GLOBALS.dummy))] /*)*/)] /*)*/);
   }
 
 // KITCHEN -- CHECK THE WINDOW
@@ -62,7 +62,7 @@ function kitchen() {
 	   tell("You are in the kitchen of the white house.  A table seems to have\nbeen used recently for the preparation of food.  A passage leads to\nthe west and a dark staircase can be seen leading upward.  To the\neast is a small window which is", 0),
 	   cond(/*(*/ [GLOBALS.kitchen_window_X_flag,		  tell("open.", 1)] /*)*/,
 		 /*(*/ [tell("slightly ajar.", 1)] /*)*/)] /*)*/,
-	  /*(*/ [t] /*)*/)
+	  /*(*/ [t] /*)*/);
   }
 
 function leaf_pile() {
@@ -78,7 +78,7 @@ function leaf_pile() {
 		      jigs_up("The sight of someone carrying a pile of burning leaves so offends\nthe neighbors that they come over and put you out.")] /*)*/)] /*)*/,
 	      /*(*/ [pv[1] === GLOBALS.move_X_words,
 	       l[GLOBALS.orand] = 1,
-	       tell("Done.")] /*)*/)
+	       tell("Done.")] /*)*/);
   }
 
 psetg(resdesc,
@@ -92,13 +92,13 @@ function glacier_room() {
     cond(/*(*/ [prsact === GLOBALS.look_X_words,
 	   cond(/*(*/ [GLOBALS.glacier_flag_X_flag,		  tell(GLOBALS.gladesc),
 		  tell("There is a large passageway leading westward.", 1)] /*)*/,
-		 /*(*/ [tell(GLOBALS.gladesc)] /*)*/)] /*)*/)
+		 /*(*/ [tell(GLOBALS.gladesc)] /*)*/)] /*)*/);
   }
 
 function trophy_case() {
     let prsact = GLOBALS.prsvec[1];
     cond(/*(*/ [prsact === GLOBALS.take_X_words,
-	   tell("The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it).")] /*)*/)
+	   tell("The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it).")] /*)*/);
   }
 	  
 function glacier() {
@@ -120,7 +120,7 @@ function glacier() {
 		 /*(*/ [tell("The glacier is unmoved by your ridiculous attempt."),
 		  false] /*)*/)] /*)*/,
 	  /*(*/ [vname(prsact) === melt_X_words,
-	   tell("How exactly are you going to melt this glacier?")] /*)*/)
+	   tell("How exactly are you going to melt this glacier?")] /*)*/);
   }
 
 psetg(yuks,
@@ -136,7 +136,7 @@ function reservoir_south() {
 	       cond(/*(*/ [GLOBALS.low_tide_X_flag,		      tell("You are in the south end of a large cavernous room which was formerly\na reservoir."),
 		      tell(GLOBALS.resdesc,1)] /*)*/,
 		     /*(*/ [tell("You are at the south end of a large reservoir.")] /*)*/),
-	       tell("There is a western exit, a passageway south, and a steep pathway\nclimbing up along the edge of a cliff.", 1)] /*)*/)
+	       tell("There is a western exit, a passageway south, and a steep pathway\nclimbing up along the edge of a cliff.", 1)] /*)*/);
   }
 
 function reservoir_north() {
@@ -145,7 +145,7 @@ function reservoir_north() {
 	       cond(/*(*/ [GLOBALS.low_tide_X_flag,		      tell("You are in the north end of a large cavernous room which was formerly\na reservoir."),
 		      tell(GLOBALS.resdesc,1)] /*)*/,
 		     /*(*/ [tell("You are at the north end of a large reservoir.")] /*)*/),
-	       tell("There is a tunnel leaving the room to the north.", 1)] /*)*/)
+	       tell("There is a tunnel leaving the room to the north.", 1)] /*)*/);
   }
 
 // LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE
@@ -167,7 +167,7 @@ function living_room() {
 		     /*(*/ [tell("and a large oriental rug in the center of the room.", 1)] /*)*/),
 	       t] /*)*/,
 	      /*(*/ [tc = find_obj("TCASE") && prsact === GLOBALS.take_X_words || prsact === GLOBALS.put_X_words && prsvec[3] === tc,
-	       GLOBALS.winner[GLOBALS.ascore] = _(GLOBALS.raw_score,				       mapf(GLOBALS._,GLOBALS.otval,ocontents(tc)))] /*)*/)
+	       GLOBALS.winner[GLOBALS.ascore] = _(GLOBALS.raw_score,				       mapf(GLOBALS._,GLOBALS.otval,ocontents(tc)))] /*)*/);
   }
 
 function trap_door() {
@@ -186,7 +186,7 @@ function trap_door() {
 	  /*(*/ [rm === find_room("CELLA"),
 	   cond(/*(*/ [prsact === GLOBALS.open_X_words,
 		  tell("The door is locked from above.")] /*)*/,
-		 /*(*/ [tell(pick_one(GLOBALS.dummy))] /*)*/)] /*)*/)
+		 /*(*/ [tell(pick_one(GLOBALS.dummy))] /*)*/)] /*)*/);
   }
 
 function look_under() {
@@ -194,11 +194,11 @@ function look_under() {
     cond(/*(*/ [obj === find_obj("RUG") && !orand(obj) && !GLOBALS.trap_door_X_flag,
 	   tell("Underneath the rug is a closed trap door.")] /*)*/,
 	  /*(*/ [obj === find_obj("LEAVE") && rvars(find_room("CLEAR")) !== 1,
-	   tell("Underneath the pile of leaves is a grating.")] /*)*/)
+	   tell("Underneath the pile of leaves is a grating.")] /*)*/);
   }
 
 function repent() {
-    tell("It could very well be too late!")
+    tell("It could very well be too late!");
   }
 
 function clearing() {
@@ -215,7 +215,7 @@ function clearing() {
 	/*(*/ [0_Q(rv) && prsact === GLOBALS.burn_X_words && !0_Q(orand(leaves)) || prsact === GLOBALS.take_X_words || prsact === GLOBALS.move_X_words && GLOBALS.prsvec[2] === leaves,
 	 tell("A grating appears on the ground."),
 	 tro(grate,GLOBALS.ovison),
-	 rm[GLOBALS.rvars] = 1] /*)*/)
+	 rm[GLOBALS.rvars] = 1] /*)*/);
   }
 
 // CELLAR--FIRST ROOM IN BASEMENT.
@@ -229,7 +229,7 @@ function cellar() {
 	/*(*/ [vname(prsact) === walk_in_X_words && GLOBALS.trap_door_X_flag && !otouch_Q(door),
 	 GLOBALS.trap_door_X_flag = false,
 	 door[GLOBALS.otouch_Q] = t,
-	 tell("The trap door crashes shut, and you hear someone barring it.", 1)] /*)*/)
+	 tell("The trap door crashes shut, and you hear someone barring it.", 1)] /*)*/);
   }
 
 "STUDIO:  LET PEOPLE UP THE CHIMNEY IF THEY DON'T HAVE MUCH STUFF"
@@ -244,7 +244,7 @@ function chimney_function() {
 		find_obj("DOOR")[GLOBALS.otouch_Q] = false] /*)*/),
 	 false] /*)*/,
 	/*(*/ [t,
-	 GLOBALS.light_load_X_flag = false] /*)*/)
+	 GLOBALS.light_load_X_flag = false] /*)*/);
   }
 
 // OBJECT FUNCTIONS
@@ -262,7 +262,7 @@ function rug() {
 		 tro(find_obj("DOOR"), GLOBALS.ovison),
 		 obj[GLOBALS.orand] = t] /*)*/)] /*)*/,
 	 /*(*/ [prsa === GLOBALS.take_X_words,
-	  tell("The rug is extremely heavy and cannot be carried.")] /*)*/)
+	  tell("The rug is extremely heavy and cannot be carried.")] /*)*/);
   }
 
 function rusty_knife() {
@@ -274,24 +274,24 @@ function rusty_knife() {
 	       false] /*)*/,
 	      /*(*/ [prsa === GLOBALS.attac_X_words || prsa === GLOBALS.swing_X_words || prsa === GLOBALS.throw_X_words && prsi || prsa === GLOBALS.kill_X_words,
 	       kill_obj(find_obj("RKNIF"), GLOBALS.winner),
-	       jigs_up("As the knife approaches its victim, your mind is submerged by an\novermastering will.  Slowly, your hand turns, until the rusty blade\nis an inch from your neck.  The knife seems to sing as it savagely\nslits your throat.")] /*)*/)
+	       jigs_up("As the knife approaches its victim, your mind is submerged by an\novermastering will.  Slowly, your hand turns, until the rusty blade\nis an inch from your neck.  The knife seems to sing as it savagely\nslits your throat.")] /*)*/);
   }
 
 function skeleton() {
     let rm: room = GLOBALS.winner[1];
     let lld: room = find_room("LLD2");
     let l: room = null;
-    tell("A ghost appears in the room and is appalled at your having\ndesecrated the remains of a fellow adventurer.  He casts a curse\non all of your valuables and orders them banished to the Land of\nthe Living Dead.  The ghost leaves, muttering obscenities.")
-l = rob_room(rm,/*(*/ [] /*)*/, 100)
-l = rob_adv(GLOBALS.player,l)
+    tell("A ghost appears in the room and is appalled at your having\ndesecrated the remains of a fellow adventurer.  He casts a curse\non all of your valuables and orders them banished to the Land of\nthe Living Dead.  The ghost leaves, muttering obscenities.");
+l = rob_room(rm,/*(*/ [] /*)*/, 100);
+l = rob_adv(GLOBALS.player,l);
 mapf(false,
 	 function(x: object) {
-        x[GLOBALS.oroom] = lld
+        x[GLOBALS.oroom] = lld;
       },
-	 l)
+	 l);
 cond(/*(*/ [!empty_Q(l),
 	  putrest(rest(l,_(l.length, 1)), robjs(lld)),
-	  lld[GLOBALS.robjs] = l] /*)*/)
+	  lld[GLOBALS.robjs] = l] /*)*/);
   }
 
 function troll() {
@@ -334,7 +334,7 @@ function troll() {
 	      /*(*/ [pa === GLOBALS.take_X_words || pa === GLOBALS.move_X_words,
 	       tell("The troll spits in your face, saying \"Better luck next time.\")] /*)*/,
 	      /*(*/ [vname(pa) === mung_X_words,
-	       tell("The troll laughs at your puny gesture.")] /*)*/)
+	       tell("The troll laughs at your puny gesture.")] /*)*/);
   }
 
 "MIRROR ROOM HACKERY"
@@ -343,7 +343,7 @@ function mirror_room() {
     let prsact: verb = GLOBALS.prsvec[1];
     cond(/*(*/ [prsact === GLOBALS.look_X_words && lit_Q(GLOBALS.here),
 	       tell("You are in a large square room with tall ceilings.  On the south wall\nis an enormous mirror which fills the entire wall.  There are exits\non the other three sides of the room."),
-	       cond(/*(*/ [GLOBALS.mirror_mung_X_flag,		      tell("Unfortunately, you have managed to destroy it by your reckless\nactions.", 1)] /*)*/)] /*)*/)
+	       cond(/*(*/ [GLOBALS.mirror_mung_X_flag,		      tell("Unfortunately, you have managed to destroy it by your reckless\nactions.", 1)] /*)*/)] /*)*/);
   }
 
 GLOBALS.mirror_mung_X_flag = false
@@ -362,11 +362,11 @@ function mirror_mirror() {
 	       rm1[GLOBALS.robjs] = robjs(rm2),
 	       rm2[GLOBALS.robjs] = l1,
 	       mapf(false, function(x: object) {
-            x[GLOBALS.oroom] = rm1
+            x[GLOBALS.oroom] = rm1;
           },
 		     robjs(rm1)),
 	       mapf(false, function(x: object) {
-            x[GLOBALS.oroom] = rm2
+            x[GLOBALS.oroom] = rm2;
           },
 		     robjs(rm2)),
 	       goto(rm2),
@@ -379,7 +379,7 @@ function mirror_mirror() {
 	      /*(*/ [vname(prsact) === mung_X_words || vname(prsact) === throw_X_words,
 	       cond(/*(*/ [GLOBALS.mirror_mung_X_flag,		      tell("Haven't you done enough already?")] /*)*/,
 		     /*(*/ [GLOBALS.mirror_mung_X_flag = t,
-		      tell("You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy.")] /*)*/)] /*)*/)
+		      tell("You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy.")] /*)*/)] /*)*/);
   } 
 
 function carousel_room() {
@@ -389,26 +389,26 @@ function carousel_room() {
 	      /*(*/ [pv[1] === GLOBALS.look_X_words,
 	       tell("You are in a circular room with passages off in eight directions.", 1),
 	       cond(/*(*/ [!GLOBALS.carousel_flip_X_flag,
-		      tell("Your compass needle spins wildly, and you can't get your bearings.", 1)] /*)*/)] /*)*/)
+		      tell("Your compass needle spins wildly, and you can't get your bearings.", 1)] /*)*/)] /*)*/);
   }
 
 function carousel_exit() {
     let cx: cexit | nexit | room = null;
     cond(/*(*/ [GLOBALS.carousel_flip_X_flag,false] /*)*/,
 	      /*(*/ [tell("Unfortunately, it is impossible to tell directions in here.", 1),
-	       carousel_out()] /*)*/)
+	       carousel_out()] /*)*/);
   }
 
 function carousel_out() {
     let cx: cexit | nexit | room = null;
-    type_Q(cx = rexits(GLOBALS.here)[_(2, _(1, mod(random(), 8)))], cexit) && cxroom(cx)
+    type_Q(cx = rexits(GLOBALS.here)[_(2, _(1, mod(random(), 8)))], cexit) && cxroom(cx);
   }
 
 function torch_room() {
     let prsact: verb = GLOBALS.prsvec[1];
     cond(/*(*/ [prsact === GLOBALS.look_X_words,
 	tell("You are in a large room with a prominent doorway leading to a down\nstaircase. To the west is a narrow twisting tunnel.  Above you is a\nlarge dome painted with scenes depicting elfin hacking rites. Up\naround the edge of the dome (20 feet up) is a wooden railing. In the\ncenter of the room there is a white marble pedestal."),
-	cond(/*(*/ [GLOBALS.dome_flag_X_flag,	       tell("A large piece of rope descends from the railing above, ending some\nfive feet above your head.", 1)] /*)*/)] /*)*/)
+	cond(/*(*/ [GLOBALS.dome_flag_X_flag,	       tell("A large piece of rope descends from the railing above, ending some\nfive feet above your head.", 1)] /*)*/)] /*)*/);
   }
 
 function dome_room() {
@@ -417,14 +417,14 @@ function dome_room() {
 	       tell("You are at the periphery of a large dome, which forms the ceiling\nof another room below.  Protecting you from a precipitous drop is a\nwooden railing which circles the dome."),
 	       cond(/*(*/ [GLOBALS.dome_flag_X_flag,		      tell("Hanging down from the railing is a rope which ends about ten feet\nfrom the floor below.", 1)] /*)*/)] /*)*/,
 	      /*(*/ [vname(prsact) === jump_X_words,
-	       jigs_up("I'm afraid that the leap you attempted has done you in.")] /*)*/)
+	       jigs_up("I'm afraid that the leap you attempted has done you in.")] /*)*/);
   }
 
 function coffin_cure() {
     cond(/*(*/ [memq(find_obj("COFFI"), aobjs(GLOBALS.winner)),
 	       GLOBALS.egypt_flag_X_flag = false] /*)*/,
-	      /*(*/ [else, GLOBALS.egypt_flag_X_flag = t] /*)*/)
-false
+	      /*(*/ [else, GLOBALS.egypt_flag_X_flag = t] /*)*/);
+false;
   }
 
 function lld_room() {
@@ -444,7 +444,7 @@ function lld_room() {
 		             remove_object(find_obj("GHOST")),
 		             GLOBALS.lld_flag_X_flag = t] /*)*/,
 		            /*(*/ [tell("You are not equipped for an exorcism.")] /*)*/)] /*)*/,
-		     /*(*/ [jigs_up("There is a clap of thunder, and a voice echoes through the\ncavern: \"Begone, chomper!\"  Apparently, the voice thinks you\nare an evil spirit, and dismisses you from the realm of the living.")] /*)*/)] /*)*/)
+		     /*(*/ [jigs_up("There is a clap of thunder, and a voice echoes through the\ncavern: \"Begone, chomper!\"  Apparently, the voice thinks you\nare an evil spirit, and dismisses you from the realm of the living.")] /*)*/)] /*)*/);
   }
 
 function lld2_room() {
@@ -452,7 +452,7 @@ function lld2_room() {
     cond(/*(*/ [prsa === GLOBALS.look_X_words,
 	   tell("You have entered the Land of the Living Dead, a large desolate room.\nAlthough it is apparently uninhabited, you can hear the sounds of\nthousands of lost souls weeping and moaning.  In the east corner are\nstacked the remains of dozens of previous adventurers who were less\nfortunate than yourself.  To the east is an ornate passage,\napparently recently constructed.",
 		1,
-		cond(/*(*/ [GLOBALS.on_pole_X_flag,		                "Amid the desolation, you spot what\nappears to be your head, at the end of a long pole."] /*)*/, /*(*/ [""] /*)*/))] /*)*/)
+		cond(/*(*/ [GLOBALS.on_pole_X_flag,		                "Amid the desolation, you spot what\nappears to be your head, at the end of a long pole."] /*)*/, /*(*/ [""] /*)*/))] /*)*/);
   }
 
 function ghost_function() {
@@ -462,7 +462,7 @@ function ghost_function() {
 	 tell("How can you attack a spirit with material objects?"),
 	 false] /*)*/,
 	/*(*/ [pv[2] === g,
-	 tell("You seem unable to affect these spirits.")] /*)*/)
+	 tell("You seem unable to affect these spirits.")] /*)*/);
   }
 
 function maze_11() {
@@ -471,7 +471,7 @@ function maze_11() {
 	 tell("You are in a small room near the maze. There are twisty passages\nin the immediate vicinity."),
 	 cond(/*(*/ [GLOBALS.key_flag_X_flag,		tell("Above you is an open grating with sunlight pouring in.")] /*)*/,
 	       /*(*/ [GLOBALS.grunlock_X_flag,		tell("Above you is a grating.")] /*)*/,
-	       /*(*/ [tell("Above you is a grating locked with a skull-and-crossbones lock.")] /*)*/)] /*)*/)
+	       /*(*/ [tell("Above you is a grating locked with a skull-and-crossbones lock.")] /*)*/)] /*)*/);
   }
 
 function grat1_function() {
@@ -479,7 +479,7 @@ function grat1_function() {
     cond(/*(*/ [GLOBALS.grunlock_X_flag,	   open_close(prsact,		       key_flag_X_flag,
  		      "The grating opens.",
 		      "The grating is closed.")] /*)*/,
-	  /*(*/ [tell("The grating is locked.")] /*)*/)
+	  /*(*/ [tell("The grating is locked.")] /*)*/);
   }
 
 function grat2_function() {
@@ -488,7 +488,7 @@ function grat2_function() {
  		      "The grating opens to reveal trees above you.",
 		      "The grating is closed."),
 	   tro(find_obj("GRAT1"), GLOBALS.ovison)] /*)*/,
-	  /*(*/ [tell("The grating is locked.")] /*)*/)
+	  /*(*/ [tell("The grating is locked.")] /*)*/);
   }
 
 function treasure_room() {
@@ -520,9 +520,9 @@ function treasure_room() {
 	 mapf(false,
 	   function(x: object) {
             cond(/*(*/ [x !== chali && x !== hobj,
-		    trz(x,GLOBALS.ovison)] /*)*/)
+		    trz(x,GLOBALS.ovison)] /*)*/);
           },
-	   robjs(here))] /*)*/)
+	   robjs(here))] /*)*/);
   }
 
 function treas() {
@@ -532,13 +532,13 @@ function treas() {
 	      /*(*/ [GLOBALS.prsvec[1] === GLOBALS.templ_X_words && GLOBALS.here === find_room("TREAS"),
 	       goto(find_room("TEMP1")),
 	       room_desc()] /*)*/,
-	      /*(*/ [t, tell("Nothing happens.")] /*)*/)
+	      /*(*/ [t, tell("Nothing happens.")] /*)*/);
   }
 
 function prayer() {
     cond(/*(*/ [GLOBALS.here === find_room("TEMP2") && goto(find_room("FORE1")),
 	 room_desc()] /*)*/,
-	/*(*/ [tell("If you pray enough, your prayers may be answered.")] /*)*/)
+	/*(*/ [tell("If you pray enough, your prayers may be answered.")] /*)*/);
   }
 
 GLOBALS.gate_flag_X_flag = false
@@ -550,7 +550,7 @@ function dam_room() {
      cond(/*(*/ [GLOBALS.low_tide_X_flag,	    tell("It appears that the dam has been opened since the water level behind\nit is low and the sluice gate has been opened.  Water is rushing\ndownstream through the gates.", 1)] /*)*/,
 	   /*(*/ [tell("The sluice gates on the dam are closed.  Behind the dam, there can be\nseen a wide lake.  A small stream is formed by the runoff from the\nlake.", 1)] /*)*/),
      tell("There is a control panel here.  There is a large metal bolt on the \npanel. Above the bolt is a small green plastic bubble.", 1),
-     cond(/*(*/ [GLOBALS.gate_flag_X_flag,tell("The green bubble is glowing.", 1)] /*)*/)] /*)*/)
+     cond(/*(*/ [GLOBALS.gate_flag_X_flag,tell("The green bubble is glowing.", 1)] /*)*/)] /*)*/);
   }
 
 function bolt_function() {
@@ -568,7 +568,7 @@ function bolt_function() {
 				    tro(trunk,GLOBALS.ovison)] /*)*/)] /*)*/,
 			    /*(*/ [tell("The bolt won't turn with your best effort.")] /*)*/)] /*)*/,
 		     /*(*/ [type_Q(prsi,object),
-		      tell("The bolt won't turn using the", 1, odesc2(prsi), ".")] /*)*/)] /*)*/)
+		      tell("The bolt won't turn using the", 1, odesc2(prsi), ".")] /*)*/)] /*)*/);
   }
 
 psetg(drownings,
@@ -602,7 +602,7 @@ function maint_room() {
 		      mung_room(mnt,				 
 "The room is full of water and cannot be entered."),
 		      clock_int(GLOBALS.mntin,0),
-		      here_Q && jigs_up("I'm afraid you have done drowned yourself.")] /*)*/)] /*)*/)
+		      here_Q && jigs_up("I'm afraid you have done drowned yourself.")] /*)*/)] /*)*/);
 cond(/*(*/ [vname(prsact) === push_X_words,
 	       cond(/*(*/ [prso === find_obj("BLBUT"),
 		      cond(/*(*/ [0_Q(hack = rvars(GLOBALS.here)),
@@ -621,7 +621,7 @@ cond(/*(*/ [vname(prsact) === push_X_words,
 		      tell("Click.")] /*)*/,
 		     /*(*/ [prso === find_obj("YBUTT"),
 		      GLOBALS.gate_flag_X_flag = t,
-		      tell("Click.")] /*)*/)] /*)*/)
+		      tell("Click.")] /*)*/)] /*)*/);
   }
 
 function leak_function() {
@@ -635,17 +635,17 @@ function leak_function() {
 			     GLOBALS.here[GLOBALS.rvars] = _1,
 			     clock_int(GLOBALS.mntin,0),
 			     tell("By some miracle of elven technology, you have managed to stop the\nleak in the dam.")] /*)*/,
-			    /*(*/ [with_tell(prsi)] /*)*/)] /*)*/)] /*)*/)
+			    /*(*/ [with_tell(prsi)] /*)*/)] /*)*/)] /*)*/);
   }
 
 function tube_function() {
     let prsvec: vector(/*[*/ [3, any] /*]*/) = GLOBALS.prsvec;
     cond(/*(*/ [prsvec[1] === GLOBALS.put_X_words && prsvec[3] === find_obj("TUBE"),
-	       tell("The tube refuses to accept anything.")] /*)*/)
+	       tell("The tube refuses to accept anything.")] /*)*/);
   }
 
 function with_tell(obj: object) {
-    tell("With a", 1, odesc2(obj), "?")
+    tell("With a", 1, odesc2(obj), "?");
   }
 
 function cave2_room() {
@@ -654,7 +654,7 @@ function cave2_room() {
     let prsact: verb = GLOBALS.prsvec[1];
     let c: verb = null;
     cond(/*(*/ [vname(prsact) === walk_in_X_words,
-	 memq(c = find_obj("CANDL"), aobjs(GLOBALS.winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && c[GLOBALS.olight_Q] = _1 && tell("The cave is very windy at the moment and your candles have blown out.")] /*)*/)
+	 memq(c = find_obj("CANDL"), aobjs(GLOBALS.winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && c[GLOBALS.olight_Q] = _1 && tell("The cave is very windy at the moment and your candles have blown out.")] /*)*/);
   }
 
 function bottle_function() {
@@ -668,7 +668,7 @@ function bottle_function() {
 		tell("You have destroyed the bottle.  Well done.")] /*)*/,
 	       /*(*/ [memq(GLOBALS.prsvec[2], robjs(GLOBALS.here)),
 		GLOBALS.here[GLOBALS.robjs] = splice_out(GLOBALS.prsvec[2], robjs(GLOBALS.here)),
-		tell("A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/)
+		tell("A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/);
   }
 	
 function fill() {
@@ -681,7 +681,7 @@ function fill() {
 	 prsvec[3] = prsvec[2],
 	 prsvec[2] = w,
 	 water_function(rem)] /*)*/,
-	/*(*/ [tell("I can't find any water here.")] /*)*/)
+	/*(*/ [tell("I can't find any water here.")] /*)*/);
   }
 
 function water_function(rem?: atom | false) {
@@ -735,7 +735,7 @@ function water_function(rem?: atom | false) {
 	       	      remove_object(w)] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.throw_X_words,
 	       tell("The water splashes on the walls, and evaporates immediately."),
-	       remove_object(w)] /*)*/)
+	       remove_object(w)] /*)*/);
   }
 
 function rope_function() {
@@ -766,7 +766,7 @@ function rope_function() {
 	 remove_object(rope),
 	 insert_object(rope,find_room("TORCH")),
 	 tell("The rope drops gently to the floor below.")] /*)*/,
-	/*(*/ [prsact === GLOBALS.take_X_words && GLOBALS.dome_flag_X_flag && tell("The rope is tied to the railing.")] /*)*/)
+	/*(*/ [prsact === GLOBALS.take_X_words && GLOBALS.dome_flag_X_flag && tell("The rope is tied to the railing.")] /*)*/);
   }
 
 function cyclops() {
@@ -816,7 +816,7 @@ function cyclops() {
 	      /*(*/ [prsact === GLOBALS.take_X_words,
 	       tell("The cyclops is rather heavy and doesn't take kindly to being grabbed.")] /*)*/,
 	      /*(*/ [prsact === GLOBALS.tie_X_words,
-	       tell("You cannot tie the cyclops, although he is fit to be tied.")] /*)*/)
+	       tell("You cannot tie the cyclops, although he is fit to be tied.")] /*)*/);
   }
 
 function cyclops_room() {
@@ -835,7 +835,7 @@ function cyclops_room() {
 		     /*(*/ [vars < 0,
 		      tell("The cyclops, having eaten the hot peppers, appears to be gasping.\nHis enflamed tongue protrudes from his man-sized mouth.")] /*)*/),
 	       cond(/*(*/ [GLOBALS.cyclops_flag_X_flag] /*)*/,
-	             /*(*/ [0_Q(vars) || tell(GLOBALS.cyclomad[abs(vars)])] /*)*/)] /*)*/)
+	             /*(*/ [0_Q(vars) || tell(GLOBALS.cyclomad[abs(vars)])] /*)*/)] /*)*/);
   }
 
 psetg(cyclomad,
@@ -851,9 +851,9 @@ gdecl(/*(*/ [cyclomad] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
 function aos_sos(foo: number) {
     cond(/*(*/ [foo < 0, foo = _(foo,1)] /*)*/,
-	/*(*/ [foo = _(foo,1)] /*)*/)
+	/*(*/ [foo = _(foo,1)] /*)*/);
 cond(/*(*/ [GLOBALS.cyclops_flag_X_flag] /*)*/,
-	/*(*/ [tell(GLOBALS.cyclomad[abs(foo)])] /*)*/)
+	/*(*/ [tell(GLOBALS.cyclomad[abs(foo)])] /*)*/);
   }
 
 GLOBALS.echo_flag_X_flag = false
@@ -872,7 +872,7 @@ function echo_room() {
 		   function(obj: object) {
                 cond(/*(*/ [ovis_Q(obj),
 			    tro(obj,GLOBALS.echo_room_bit),
-			    trz(obj,GLOBALS.ovison)] /*)*/)
+			    trz(obj,GLOBALS.ovison)] /*)*/);
               },
 		   robjs(rm)),
 	        repeat(/*(*/ [/*(*/ [prsvec, GLOBALS.prsvec] /*)*/, random_action] /*)*/,
@@ -890,7 +890,7 @@ function echo_room() {
 				       function(x: object) {
                           cond(/*(*/ [trnn(x,GLOBALS.echo_room_bit),
 						trz(x,GLOBALS.echo_room_bit),
-						tro(x,GLOBALS.ovison)] /*)*/)
+						tro(x,GLOBALS.ovison)] /*)*/);
                         },
 				       robjs(rm))] /*)*/),
 			      return(t)] /*)*/,
@@ -905,7 +905,7 @@ function echo_room() {
 					   function(x: object) {
                           cond(/*(*/ [trnn(x,GLOBALS.echo_room_bit),
 							    trz(x,GLOBALS.echo_room_bit),
-							    tro(x,GLOBALS.ovison)] /*)*/)
+							    tro(x,GLOBALS.ovison)] /*)*/);
                         },
 					   robjs(rm)),
 				     return(t)] /*)*/)] /*)*/))),
@@ -916,9 +916,9 @@ function echo_room() {
 			    function(x: object) {
                 cond(/*(*/ [trnn(x,GLOBALS.echo_room_bit),
 				     trz(x,GLOBALS.echo_room_bit),
-				     tro(x,GLOBALS.ovison)] /*)*/)
+				     tro(x,GLOBALS.ovison)] /*)*/);
               },
-			    robjs(rm))))] /*)*/)
+			    robjs(rm))))] /*)*/);
   }
 
 function leaper() {
@@ -928,11 +928,11 @@ function leaper() {
     cond(/*(*/ [m = memq(down_X_words, exits),
 	  cond(/*(*/ [type_Q(m[2], nexit) || type_Q(m[2], cexit) && !cxflag(m[2]),
 		 jigs_up(pick_one(GLOBALS.jumploss))] /*)*/)] /*)*/,
-	 /*(*/ [tell(pick_one(GLOBALS.wheeeee))] /*)*/)
+	 /*(*/ [tell(pick_one(GLOBALS.wheeeee))] /*)*/);
   }
 
 function skipper() {
-    tell(pick_one(GLOBALS.wheeeee))
+    tell(pick_one(GLOBALS.wheeeee));
   }
 
 GLOBALS.hs = 0
@@ -949,7 +949,7 @@ function hello() {
 		 /*(*/ [prsobj === find_obj("AVIAT"),
 		  tell("Here, nothing happens.")] /*)*/,
 		 /*(*/ [tell("I think that only schizophrenics say 'Hello' to a", 1, odesc2(prsobj), ".")] /*)*/)] /*)*/,
-	  /*(*/ [tell(pick_one(GLOBALS.hellos))] /*)*/)
+	  /*(*/ [tell(pick_one(GLOBALS.hellos))] /*)*/);
   }
 
 psetg(hellos,
@@ -985,7 +985,7 @@ function reader() {
 	  /*(*/ [!readable_Q(po),
 	   tell("How can I read a", 1, odesc2(po), "?")] /*)*/,
 	  /*(*/ [object_action()] /*)*/,
-	  /*(*/ [tell(oread(po))] /*)*/)
+	  /*(*/ [tell(oread(po))] /*)*/);
   }
 	  
 function well() {
@@ -993,7 +993,7 @@ function well() {
 	  /*(*/ [GLOBALS.here === find_room("RIDDL"),
 	   GLOBALS.riddle_flag_X_flag = t,
 	   tell("There is a clap of thunder and the east door opens.")] /*)*/,
-	  /*(*/ [tell("Well what?")] /*)*/)
+	  /*(*/ [tell("Well what?")] /*)*/);
   }
 
 function sinbad() {
@@ -1002,11 +1002,11 @@ function sinbad() {
 	   tell("The cyclops, hearing the name of his deadly nemesis, flees the room\nby knocking down the wall on the north of the room."),
 	   GLOBALS.magic_flag_X_flag = t,
 	   remove_object(find_obj("CYCLO"))] /*)*/,
-	  /*(*/ [tell("Wasn't he a sailor?")] /*)*/)
+	  /*(*/ [tell("Wasn't he a sailor?")] /*)*/);
   }
 
 function granite() {
-    tell("I think you are taking this thing for granite.")
+    tell("I think you are taking this thing for granite.");
   }
 
 psetg(dummy,
@@ -1025,14 +1025,14 @@ function brush() {
 		 /*(*/ [!prsi,
 		  tell("Dental hygiene is highly recommended, but I'm not sure what you want\nto brush them with.")] /*)*/,
 		 /*(*/ [tell("A nice idea, but with a", 1, odesc2(prsi), "?")] /*)*/)] /*)*/,
-	  /*(*/ [tell("If you wish, but I can't understand why??")] /*)*/)
+	  /*(*/ [tell("If you wish, but I can't understand why??")] /*)*/);
   }
 
 function ring() {
     let prsobj: object | false = GLOBALS.prsvec[2];
     cond(/*(*/ [prsobj === find_obj("BELL"),
 	   tell("Ding, dong.")] /*)*/,
-	  /*(*/ [tell("How, exactly, can I ring that?")] /*)*/)
+	  /*(*/ [tell("How, exactly, can I ring that?")] /*)*/);
   }
 
 function eat() {
@@ -1057,15 +1057,15 @@ function eat() {
 	   nobj[GLOBALS.ocontents] = splice_out(prsobj,ocontents(nobj))] /*)*/,
 	  /*(*/ [!eat_Q || drink_Q,
 	   tell("I don't think that the", 1, odesc2(prsobj), "would agree with you.")] /*)*/,
-	  /*(*/ [tell("I think you should get that first.")] /*)*/)
+	  /*(*/ [tell("I think you should get that first.")] /*)*/);
   }
 
 function jargon() {
-    tell("Well, FOO, BAR, and BLETCH to you too!")
+    tell("Well, FOO, BAR, and BLETCH to you too!");
   }
 
 function curses() {
-    tell(pick_one(GLOBALS.offended))
+    tell(pick_one(GLOBALS.offended));
   }
 
 psetg(offended, 
@@ -1102,7 +1102,7 @@ define(robber, robber, /*(*/ [hack,
 	     function(x: object) {
               cond(/*(*/ [otval(x) > 0,
 			    hack[GLOBALS.hobjs] = hh = splice_out(x,hh),
-			    insert_object(x,rm)] /*)*/)
+			    insert_object(x,rm)] /*)*/);
             },
 	     hh)] /*)*/,
       /*(*/ [rm === wroom,		 // Adventurer is in room:  CHOMP, CHOMP,
@@ -1174,7 +1174,7 @@ define(robber, robber, /*(*/ [hack,
 				     remove_object(x),
 				     x[GLOBALS.otouch_Q] = t,
 				     hack[GLOBALS.hobjs] = hh = /*(*/ [x,_X,hh] /*)*/] /*)*/),
-			      mapleave()] /*)*/)
+			      mapleave()] /*)*/);
                 },
 	       robjs(rm))] /*)*/,
 	/*(*/ [mapf(false,
@@ -1188,7 +1188,7 @@ define(robber, robber, /*(*/ [hack,
 					   1,
 					   odesc2(x),
 					   "vanished.")] /*)*/),
-			      mapleave()] /*)*/)
+			      mapleave()] /*)*/);
                 },
 	       robjs(rm)),
 	 cond(/*(*/ [memq(find_obj("ROPE"), hh),
@@ -1210,7 +1210,7 @@ define(robber, robber, /*(*/ [hack,
           cond(/*(*/ [0_Q(otval(x)) && prob(30),
 			    hack[GLOBALS.hobjs] = hh = splice_out(x,hh),
 			    insert_object(x,rm),
-			    rm === wroom && tell("The robber, rummaging through his bag, dropped a few items he found\nvalueless.")] /*)*/)
+			    rm === wroom && tell("The robber, rummaging through his bag, dropped a few items he found\nvalueless.")] /*)*/);
         },
 	      hh))
 
@@ -1219,7 +1219,7 @@ function snarf_object(who: object, what: object) {
 	       remove_object(what),
 	       what[GLOBALS.ocan] = who,
 	       who[GLOBALS.ocontents] = /*(*/ [what,_X,ocontents(who)] /*)*/] /*)*/,
-	      /*(*/ [who] /*)*/)
+	      /*(*/ [who] /*)*/);
   }
 
 function robber_function() {
@@ -1249,8 +1249,8 @@ function robber_function() {
 	 cond(/*(*/ [!empty_Q(hobjs(dem)),
 		tell("His booty remains."),
 		mapf(false, function(x: object) {
-                insert_object(x,here)
-tro(x,GLOBALS.echo_room_bit)
+                insert_object(x,here);
+tro(x,GLOBALS.echo_room_bit);
               },
 		      hobjs(dem)),
 		dem[GLOBALS.hobjs] = /*(*/ [] /*)*/] /*)*/),
@@ -1265,7 +1265,7 @@ tro(x,GLOBALS.echo_room_bit)
 				  cond(/*(*/ [!flg,
 					 flg = t,
 					 tell("As the thief dies, the power of his magic decreases, and his\ntreasures reappear:", 2)] /*)*/),
-				  tell("A", 2, odesc2(x))] /*)*/)] /*)*/)
+				  tell("A", 2, odesc2(x))] /*)*/)] /*)*/);
               },
 		  robjs(here))] /*)*/),
 	 dem[GLOBALS.haction] = false] /*)*/,
@@ -1291,7 +1291,7 @@ tro(x,GLOBALS.echo_room_bit)
 		        "."] /*)*/,
 		       /*(*/ [t,
 		        mapf(false, function(x: object) {
-                      insert_object(x,here)
+                      insert_object(x,here);
                     }, hobjs(dem)),
 			dem[GLOBALS.hobjs] = /*(*/ [] /*)*/,
 		        ", but the contents of his bag fall on the floor."] /*)*/)),
@@ -1314,7 +1314,7 @@ tro(x,GLOBALS.echo_room_bit)
 		dem[GLOBALS.hobjs] = /*(*/ [prsobj,_X,hobjs(dem)] /*)*/,
 		tell("The thief places the", 1, odesc2(prsobj), "in his bag and thanks\nyou politely.")] /*)*/)] /*)*/,
 	/*(*/ [prsact && vname(prsact) === take_X_words,
-	 tell("Once you got him, what would you do with him?")] /*)*/)
+	 tell("Once you got him, what would you do with him?")] /*)*/);
   }
 
 function chalice() {
@@ -1324,7 +1324,7 @@ function chalice() {
     let t: room = null;
     cond(/*(*/ [prsa === GLOBALS.take_X_words,
 	       cond(/*(*/ [!ocan(ch) && oroom(ch) === tr = find_room("TREAS") && oroom(t = find_obj("THIEF")) === tr && fighting_Q(t) && haction(GLOBALS.robber_demon),
-		      tell("Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray.")] /*)*/)] /*)*/)
+		      tell("Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray.")] /*)*/)] /*)*/);
   }
 
 
@@ -1344,7 +1344,7 @@ function burner() {
 			       remove_object(prso)] /*)*/,
 			      /*(*/ [tell("You don't have that.")] /*)*/)] /*)*/,
 		  /*(*/ [tell("I don't think you can burn a", 1, odesc2(prso), ".")] /*)*/)] /*)*/,
-	   /*(*/ [tell("With a", 1, odesc2(prsi), "??!?")] /*)*/)
+	   /*(*/ [tell("With a", 1, odesc2(prsi), "??!?")] /*)*/);
   }  
 
 function turner() {
@@ -1355,7 +1355,7 @@ function turner() {
 	   cond(/*(*/ [trnn(prsi,GLOBALS.toolbit),
 		  object_action()] /*)*/,
 		 /*(*/ [tell("You certainly can't turn it with a", 1, odesc2(prsi), ".")] /*)*/)] /*)*/,
-	  /*(*/ [tell("You can't turn that!")] /*)*/)
+	  /*(*/ [tell("You can't turn that!")] /*)*/);
   }
 
 psetg(doormungs,
@@ -1372,7 +1372,7 @@ function ddoor_function() {
 	  /*(*/ [pa === GLOBALS.burn_X_words,
 	   tell("You cannot burn this door.")] /*)*/,
 	  /*(*/ [pa === GLOBALS.mung_X_words,
-	   tell(pick_one(GLOBALS.doormungs))] /*)*/)
+	   tell(pick_one(GLOBALS.doormungs))] /*)*/);
   }
 
  function inflater() {
@@ -1384,14 +1384,14 @@ function ddoor_function() {
 		 /*(*/ [tell("You would inflate it with that?")] /*)*/)] /*)*/,
 	  /*(*/ [prsi === find_obj("RBOAT"),
 	   tell("Inflating it further would probably burst it.")] /*)*/,
-	  /*(*/ [tell("How can you inflate that?")] /*)*/)
+	  /*(*/ [tell("How can you inflate that?")] /*)*/);
   }
 
 function deflater() {
     let prso: object = GLOBALS.prsvec[2];
     cond(/*(*/ [prso === find_obj("RBOAT"),
 	   object_action()] /*)*/,
-	  /*(*/ [tell("Come on, now!")] /*)*/)
+	  /*(*/ [tell("Come on, now!")] /*)*/);
   }
 
 function locker() {
@@ -1403,10 +1403,10 @@ function locker() {
 		 function(x: cexit | nexit | room) {
             cond(/*(*/ [type_Q(x,cexit) && cxflag(x) === key_flag_X_flag,
 				  x[GLOBALS.cxstr] = "The grate is locked.",
-				  mapleave()] /*)*/)
+				  mapleave()] /*)*/);
           },
 		 rexits(GLOBALS.here))] /*)*/,
-	  /*(*/ [tell("It doesn't seem to work.")] /*)*/)
+	  /*(*/ [tell("It doesn't seem to work.")] /*)*/);
   }
 
 function unlocker() {
@@ -1421,11 +1421,11 @@ function unlocker() {
 			function(x: cexit | nexit | room) {
                 cond(/*(*/ [type_Q(x,cexit) && cxflag(x) === key_flag_X_flag,
 				 x[GLOBALS.cxstr] = "The grate is closed.",
-				 mapleave()] /*)*/)
+				 mapleave()] /*)*/);
               },
 			rexits(r))] /*)*/,
 		 /*(*/ [tell("Can you unlock a grating with a", 1, odesc2(prsi), "?")] /*)*/)] /*)*/,
-	  /*(*/ [tell("It doesn't seem to work.")] /*)*/)
+	  /*(*/ [tell("It doesn't seem to work.")] /*)*/);
   }
 
 function killer() {
@@ -1442,7 +1442,7 @@ function killer() {
 		     "with a"),
 	       tell(odesc2(prsi), 1, "is suicidal.")] /*)*/, 
 	      /*(*/ [else,
-	       blow(GLOBALS.player,prso,orand(prsi), t, false)] /*)*/)
+	       blow(GLOBALS.player,prso,orand(prsi), t, false)] /*)*/);
   }
 
 function attacker() {
@@ -1459,16 +1459,16 @@ function attacker() {
 		      "with a"),
 	       tell(odesc2(prsi), 1, "is suicidal.")] /*)*/,
 	      /*(*/ [else,
-	       blow(GLOBALS.player,prso,orand(prsi), t, false)] /*)*/)
+	       blow(GLOBALS.player,prso,orand(prsi), t, false)] /*)*/);
   }
 
 function swinger() {
     let pv: vector = GLOBALS.prsvec;
     let prso: false | object = pv[2];
     let prsi: false | object = pv[3];
-    pv[2] = prsi
-pv[3] = prso
-attacker()
+    pv[2] = prsi;
+pv[3] = prso;
+attacker();
   }
 
 function hack_hack(obj: object, str: string, obj2?: false | string) {
@@ -1476,7 +1476,7 @@ function hack_hack(obj: object, str: string, obj2?: false | string) {
 	  /*(*/ [obj2,	   tell(str,0, odesc2(obj), "with a"),
 	   tell(obj2,1, pick_one(GLOBALS.ho_hum))] /*)*/,
 	  /*(*/ [else,
-	   tell(str,1, odesc2(obj), pick_one(GLOBALS.ho_hum))] /*)*/)
+	   tell(str,1, odesc2(obj), pick_one(GLOBALS.ho_hum))] /*)*/);
   }
 
 psetg(ho_hum,
@@ -1500,36 +1500,36 @@ function munger() {
 			 tell(odesc2(prsw), 1, "is quite self-destructive.")] /*)*/)] /*)*/,
 		 /*(*/ [t,
 		  tell("Munging a", 1, odesc2(prso), "with your bare hands is suicidal.")] /*)*/)] /*)*/,
-	  /*(*/ [hack_hack(prso,"Munging a")] /*)*/)
+	  /*(*/ [hack_hack(prso,"Munging a")] /*)*/);
   }
 
 function kicker() {
     let prso: object = GLOBALS.prsvec[2];
-    hack_hack(prso,"Munging a")
+    hack_hack(prso,"Munging a");
   }
 
 function waver() {
     let prso: object = GLOBALS.prsvec[2];
-    hack_hack(prso,"Waving a")
+    hack_hack(prso,"Waving a");
   }
 
 function r_l() {
     let prso: object = GLOBALS.prsvec[2];
-    hack_hack(prso,"Playing in this way with a")
+    hack_hack(prso,"Playing in this way with a");
   }
 
 function rubber() {
     let prso: object = GLOBALS.prsvec[2];
-    hack_hack(prso,"Fiddling with a")
+    hack_hack(prso,"Fiddling with a");
   }
 
 function exorcise() {
-    cond(/*(*/ [object_action()] /*)*/, /*(*/ [t] /*)*/)
+    cond(/*(*/ [object_action()] /*)*/, /*(*/ [t] /*)*/);
   }
 	  
 function plugger() {
     cond(/*(*/ [object_action()] /*)*/,
-	  /*(*/ [tell("This has no effect.")] /*)*/)
+	  /*(*/ [tell("This has no effect.")] /*)*/);
   }
 
 function untie() {
@@ -1537,14 +1537,14 @@ function untie() {
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [trnn(prso,GLOBALS.tiebit),
 	   tell("I don't think so.")] /*)*/,
-	  /*(*/ [tell("This cannot be tied, so it cannot be untied!")] /*)*/)
+	  /*(*/ [tell("This cannot be tied, so it cannot be untied!")] /*)*/);
   }
 
 function pusher() {
     let prso: object = GLOBALS.prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [memq(butto_X_objects, onames(prso))] /*)*/,
-	  /*(*/ [hack_hack(prso,"Pushing the")] /*)*/)
+	  /*(*/ [hack_hack(prso,"Pushing the")] /*)*/);
   }
 
 function tie() {
@@ -1552,13 +1552,13 @@ function tie() {
     cond(/*(*/ [trnn(prso,GLOBALS.tiebit),
 	   cond(/*(*/ [object_action()] /*)*/,
 		 /*(*/ [tell("You can't tie it to that.")] /*)*/)] /*)*/,
-	  /*(*/ [tell("How can you tie that to anything.")] /*)*/)
+	  /*(*/ [tell("How can you tie that to anything.")] /*)*/);
   }
 
 function melter() {
     let prso: object = GLOBALS.prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
-	  /*(*/ [tell("I'm not sure that a", 1, odesc2(prso), "can be melted.")] /*)*/)
+	  /*(*/ [tell("I'm not sure that a", 1, odesc2(prso), "can be melted.")] /*)*/);
   }
 
 GLOBALS.on_pole_X_flag = false
@@ -1571,26 +1571,26 @@ function body_function() {
 	   cond(/*(*/ [GLOBALS.on_pole_X_flag] /*)*/,
 		 /*(*/ [GLOBALS.on_pole_X_flag = t,
 		  insert_object(find_obj("HPOLE"), find_room("LLD2"))] /*)*/),
-	   jigs_up("The voice of the guardian of the dungeon booms out from the darkness \n'Your disrespect costs you your life!' and places your head on a pole.")] /*)*/)
+	   jigs_up("The voice of the guardian of the dungeon booms out from the darkness \n'Your disrespect costs you your life!' and places your head on a pole.")] /*)*/);
   }
 
 function mumbler() {
-    tell("You'll have to speak up if you expect me to hear you!")
+    tell("You'll have to speak up if you expect me to hear you!");
   }
 
 function alarm() {
     let prso: object = GLOBALS.prsvec[2];
     cond(/*(*/ [trnn(prso,GLOBALS.sleepbit),
 	   object_action()] /*)*/,
-	  /*(*/ [tell("The", 1, odesc2(prso), "isn't sleeping.")] /*)*/)
+	  /*(*/ [tell("The", 1, odesc2(prso), "isn't sleeping.")] /*)*/);
   }
 
 function zork() {
-    tell("That word is replaced henceforth with DUNGEON.")
+    tell("That word is replaced henceforth with DUNGEON.");
   }
 
 function dungeon() {
-    tell("At your service!")
+    tell("At your service!");
   }
 
 function painting() {
@@ -1600,7 +1600,7 @@ function painting() {
 	   art[GLOBALS.otval] = 0,
 	   art[GLOBALS.odesc2] = "worthless piece of canvas",
 	   art[GLOBALS.odesc1] = "There is a worthless piece of canvas here.",
-	   tell("Congratulations!  Unlike the other vandals, who merely stole the\nartist's masterpieces, you have destroyed one.")] /*)*/)
+	   tell("Congratulations!  Unlike the other vandals, who merely stole the\nartist's masterpieces, you have destroyed one.")] /*)*/);
   }
 
 psetg(dimmer, "The lamp appears to be getting dimmer.")
@@ -1626,7 +1626,7 @@ function lantern() {
 	       false] /*)*/,
 	      /*(*/ [verb === GLOBALS.turn_off_X_words,
 	       clock_disable(foo = orand(rlamp)[2]),
-	       false] /*)*/)
+	       false] /*)*/);
   }
 
 function sword_glow(dem: hack) {
@@ -1641,7 +1641,7 @@ function sword_glow(dem: hack) {
                 cond(/*(*/ [type_Q(e,room),
 					infested_Q(e) && mapleave(t)] /*)*/,
 				       /*(*/ [type_Q(e,cexit),
-					infested_Q(e[2]) && mapleave(t)] /*)*/)
+					infested_Q(e[2]) && mapleave(t)] /*)*/);
               },
 		       rexits(here)),
 		 ng = 1] /*)*/),
@@ -1650,7 +1650,7 @@ function sword_glow(dem: hack) {
 		/*(*/ [1_Q(ng), tell("Your sword is glowing with a faint blue glow.")] /*)*/,
 		/*(*/ [0_Q(ng), tell("Your sword is no longer glowing.")] /*)*/),
 	  sw[GLOBALS.otval] = ng] /*)*/,
-	 /*(*/ [dem[GLOBALS.haction] = false] /*)*/)
+	 /*(*/ [dem[GLOBALS.haction] = false] /*)*/);
   }
 
 function sword() {
@@ -1659,7 +1659,7 @@ function sword() {
 	       GLOBALS.sword_demon[GLOBALS.haction] = cond(/*(*/ [type_Q(GLOBALS.sword_glow,offset),
 						 GLOBALS.sword_glow] /*)*/,
 						/*(*/ [sword_glow] /*)*/),
-	       false] /*)*/)
+	       false] /*)*/);
   }
 
 function infested_Q(r: room) {
@@ -1667,9 +1667,9 @@ function infested_Q(r: room) {
     let dem: hack = get_demon("THIEF");
     r === hroom(dem) && haction(dem) || mapf(false,
 		  function(v: object) {
-          cond(/*(*/ [r === oroom(v), mapleave(t)] /*)*/)
+          cond(/*(*/ [r === oroom(v), mapleave(t)] /*)*/);
         },
-		  villains)
+		  villains);
   }
 
 
@@ -1700,7 +1700,7 @@ function match_function() {
 	  /*(*/ [prsa === GLOBALS.c_int_X_words,
 	   tell("The match has gone out."),
 	   trz(match,GLOBALS.flamebit),
-	   match[GLOBALS.olight_Q] = 0] /*)*/)
+	   match[GLOBALS.olight_Q] = 0] /*)*/);
   }
 
 function candles() {
@@ -1712,8 +1712,8 @@ function candles() {
     let match: object = null;
     let foo: vector(number, cevent) = null;
     let orphans: vector(/*[*/ [4, any] /*]*/) = null;
-    orand(c) || c[GLOBALS.orand] = /*[*/ [0, clock_int(GLOBALS.cndin,50)] /*]*/
-foo = orand(c)
+    orand(c) || c[GLOBALS.orand] = /*[*/ [0, clock_int(GLOBALS.cndin,50)] /*]*/;
+foo = orand(c);
 cond(/*(*/ [prsact === GLOBALS.light_X_words,
 	       cond(/*(*/ [0_Q(olight_Q(c)),
 		      tell("Alas, there's not much left of the candles.  Certainly not enough to\nburn.")] /*)*/,
@@ -1746,7 +1746,7 @@ cond(/*(*/ [prsact === GLOBALS.light_X_words,
 		      c[GLOBALS.olight_Q] = _1] /*)*/,
 		     /*(*/ [tell("The candles are not lighted.")] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.c_int_X_words,
-	       light_int(c,GLOBALS.cndin,GLOBALS.candle_ticks,GLOBALS.candle_tells)] /*)*/)
+	       light_int(c,GLOBALS.cndin,GLOBALS.candle_ticks,GLOBALS.candle_tells)] /*)*/);
   }
 
 function black_book() {
@@ -1757,25 +1757,25 @@ function black_book() {
 	 cond(/*(*/ [oroom(b),
 		remove_object(b)] /*)*/,
 	       /*(*/ [drop_object(b)] /*)*/),
-	 jigs_up("A booming voice says 'Wrong, cretin!' and you notice that you have\nturned into a pile of dust.")] /*)*/)
+	 jigs_up("A booming voice says 'Wrong, cretin!' and you notice that you have\nturned into a pile of dust.")] /*)*/);
   }
 
 function light_int(obj: object, cev, tick: vector(/*[*/ [rest, number] /*]*/), tell: vector(/*[*/ [rest, string] /*]*/)) {
     let cnt: number = null;
     let tim: number = null;
     let foo: vector(number, cevent) = orand(obj);
-    foo[1] = cnt = _(foo[1], 1)
-clock_int(cev,tim = tick[cnt])
+    foo[1] = cnt = _(foo[1], 1);
+clock_int(cev,tim = tick[cnt]);
 cond(/*(*/ [0_Q(tim),
  	   cond(/*(*/ [!oroom(obj) || oroom(obj) === GLOBALS.here,
 		  tell("I hope you have more light than from a", 1, odesc2(obj), ".")] /*)*/),
 	   obj[GLOBALS.olight_Q] = 0] /*)*/,
 	  /*(*/ [!oroom(obj) || oroom(obj) === GLOBALS.here,
-	   tell(tell[cnt])] /*)*/)
+	   tell(tell[cnt])] /*)*/);
   }
 
 function hackable_Q(obj: object, rm: room) {
     let av: false | object = avehicle(GLOBALS.winner);
     cond(/*(*/ [av,	   search_list(oid(obj), ocontents(av), false)] /*)*/,
-	  /*(*/ [search_list(oid(obj), robjs(rm), false)] /*)*/)
+	  /*(*/ [search_list(oid(obj), robjs(rm), false)] /*)*/);
   }

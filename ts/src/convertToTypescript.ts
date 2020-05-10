@@ -71,7 +71,7 @@ const convertToTypescriptType = (node: ZNode): string => {
 
 const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsList: undefined | ZList, declList: undefined | ZList, body: undefined | ZList[], depth: number, ) => {
     const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
-    const bodyText = body?.map(n => convertToTypescript(n)).join('\n') ?? '';
+    const bodyText = body?.map(n => `${convertToTypescript(n)};\n`).join('') ?? '';
 
     let argsListText = '';
     let varsListText = '';
@@ -150,7 +150,7 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
         }
     }
 
-    return `${nameText ? `function ${nameText}` : 'function'}(${argsListText}) {${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
+    return `${nameText ? `function ${nameText}` : 'function'}(${argsListText}) {${varsListText}\n${getIndentation(depth + 1)}${bodyText}${getIndentation(depth)}}`;
 };
 
 const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, funNodes: ZNode[], depth: number) => {

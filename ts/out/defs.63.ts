@@ -312,9 +312,9 @@ function remove_object(obj: object) {
 	      /*(*/ [oroom = oroom(obj),
 	       oroom[GLOBALS.robjs] = splice_out(obj,robjs(oroom))] /*)*/,
 	      /*(*/ [memq(obj,robjs(GLOBALS.here)),
-	       GLOBALS.here[GLOBALS.robjs] = splice_out(obj,robjs(GLOBALS.here))] /*)*/)
-obj[GLOBALS.oroom] = false
-obj[GLOBALS.ocan] = false
+	       GLOBALS.here[GLOBALS.robjs] = splice_out(obj,robjs(GLOBALS.here))] /*)*/);
+obj[GLOBALS.oroom] = false;
+obj[GLOBALS.ocan] = false;
   }
 
 defmac(insert_object, /*(*/ [() => obj,() => room] /*)*/,
@@ -331,7 +331,7 @@ defmac(drop_object, /*(*/ [() => obj,"OPTIONAL", /*(*/ [() => winner,() => GLOBA
 function kill_obj(obj: object, winner: adv) {
     cond(/*(*/ [memq(obj,aobjs(winner)),
 	       winner[GLOBALS.aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
-	      /*(*/ [remove_object(obj)] /*)*/)
+	      /*(*/ [remove_object(obj)] /*)*/);
   }
 
 function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
@@ -339,9 +339,9 @@ function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
     mapf(false,
 	function(x) {
         let y: object = find_obj(x);
-        memq(y,aobjs(winner)) && drop_object(find_obj(x), winner)
+        memq(y,aobjs(winner)) && drop_object(find_obj(x), winner);
       },
-	objs)
+	objs);
   }
 
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
@@ -351,9 +351,9 @@ function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
     function(x: object) {
         cond(/*(*/ [otval(x) > 0 && !trnn(x,GLOBALS.sacredbit),
 	     win[GLOBALS.aobjs] = splice_out(x,aobjs(win)),
-	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/)
+	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/);
       },
-    aobjs(win))
+    aobjs(win));
   }
 
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
@@ -366,17 +366,17 @@ function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), prob: num
 	     x[GLOBALS.otouch_Q] = t,
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/,
 	    /*(*/ [type_Q(orand(x), adv),
-	     newlist = rob_adv(orand(x), newlist)] /*)*/)
+	     newlist = rob_adv(orand(x), newlist)] /*)*/);
       },
-    robjs(rm))
+    robjs(rm));
   }
 
 function valuables_Q(adv: adv) {
     mapf(false,
     function(x: object) {
-        cond(/*(*/ [otval(x) > 0, mapleave(t)] /*)*/)
+        cond(/*(*/ [otval(x) > 0, mapleave(t)] /*)*/);
       },
-    aobjs(adv))
+    aobjs(adv));
   }
 
 function armed_Q(adv: adv) {
@@ -384,18 +384,18 @@ function armed_Q(adv: adv) {
     mapf(false,
     function(x: object) {
         cond(/*(*/ [memq(x,weapons),
-	     mapleave(t)] /*)*/)
+	     mapleave(t)] /*)*/);
       },
-    aobjs(adv))
+    aobjs(adv));
   }
 
 function light_source(me: adv) {
     mapf(false,
 	      function(x) {
         cond(/*(*/ [!0_Q(olight_Q(x)),
-			mapleave(x)] /*)*/)
+			mapleave(x)] /*)*/);
       },
-	      aobjs(me))
+	      aobjs(me));
   }
 
 function get_demon(id: string) {
@@ -403,9 +403,9 @@ function get_demon(id: string) {
     let dems: list(/*[*/ [rest, hack] /*]*/) = GLOBALS.demons;
     mapf(false,
     function(x: hack) {
-        cond(/*(*/ [hobj(x) === obj, mapleave(x)] /*)*/)
+        cond(/*(*/ [hobj(x) === obj, mapleave(x)] /*)*/);
       },
-    dems)
+    dems);
   }
 
 defmac(pick_one, /*(*/ [() => vec] /*)*/, 
@@ -420,11 +420,11 @@ defmac(clock_enable, /*(*/ [() => ev] /*)*/,
 function yes_no(no_is_bad_Q: atom | false) {
     let inbuf: string = GLOBALS.inbuf;
     let inchan = GLOBALS.inchan;
-    reset(inchan)
-readstring(inbuf,inchan,GLOBALS.reader_string)
+    reset(inchan);
+readstring(inbuf,inchan,GLOBALS.reader_string);
 cond(/*(*/ [no_is_bad_Q,	       !memq(inbuf[1], "NnfF")] /*)*/,
 	      /*(*/ [t,
-	       memq(inbuf[1], "TtYy")] /*)*/)
+	       memq(inbuf[1], "TtYy")] /*)*/);
   }
 
 defmac(apply_random, /*(*/ [() => frob,"OPTIONAL", /*(*/ [() => mumble,false] /*)*/] /*)*/,
@@ -443,7 +443,7 @@ function da(fn: applicable | atom | number, foo?) {
 	  /*(*/ [gassigned_Q(fn),
 	   fn = /*,*/ [fn] /*1*/,
 	   again()] /*)*/,
-	  /*(*/ [error(unassigned_variable_X_errors, fn,da)] /*)*/))
+	  /*(*/ [error(unassigned_variable_X_errors, fn,da)] /*)*/));
   }
 
 "OLD MAZER"
@@ -459,20 +459,20 @@ psetg(null_syn, _X,/*[*/ [] /*]*/)
 function find_room(id: atom | string) {
     let atm: atom | false = null;
     let room: room = null;
-    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/)
+    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
 cond(/*(*/ [atm = lookup(id,GLOBALS.room_obl) && gassigned_Q(atm),
 		    /*,*/ [atm] /*1*/] /*)*/,
 	      /*(*/ [atm || atm = insert(id,GLOBALS.room_obl),
 	       setg(atm,		     room = chtype(vector(atm,GLOBALS.null_desc,GLOBALS.null_desc,					  false, false, GLOBALS.null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
 				 room)),
 	       GLOBALS.rooms = /*(*/ [room,_X,GLOBALS.rooms] /*)*/,
-	       room] /*)*/)
+	       room] /*)*/);
   }
 
 function find_obj(id: atom | string) {
     let obj: object = null;
     let atm: atom | false = null;
-    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/)
+    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
 cond(/*(*/ [atm = lookup(id,GLOBALS.object_obl) && gassigned_Q(atm),
 	       /*,*/ [atm] /*1*/] /*)*/,
 	      /*(*/ [atm || atm = insert(id,GLOBALS.object_obl),
@@ -480,7 +480,7 @@ cond(/*(*/ [atm = lookup(id,GLOBALS.object_obl) && gassigned_Q(atm),
 				   false, /*(*/ [] /*)*/, false, 0, false, 0, 0, 0, false, false, 5, 0, GLOBALS.null_syn,false, false] /*]*/,
 				  object)),
 	       GLOBALS.objects = /*(*/ [obj,_X,GLOBALS.objects] /*)*/,
-	       obj] /*)*/)
+	       obj] /*)*/);
   }
 
 function function_print(frob: atom | offset | applicable | false) {
@@ -493,5 +493,5 @@ function function_print(frob: atom | offset | applicable | false) {
 	 princ("#OFFSET"),
 	 prin1(get_atom(frob))] /*)*/,
 	/*(*/ [princ("#FUNCTION"),
-	 prin1(get_atom(frob))] /*)*/)
+	 prin1(get_atom(frob))] /*)*/);
   }

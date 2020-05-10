@@ -71,7 +71,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	    mapleave(false)] /*)*/),
 	  adj = false,
 	  t] /*)*/,
-	 /*(*/ [vb || tell("I don't know the word", 0, x), mapleave(false)] /*)*/)
+	 /*(*/ [vb || tell("I don't know the word", 0, x), mapleave(false)] /*)*/);
         },
      sv),
    cond(/*(*/ [val,	  cond(/*(*/ [!action && !action = orfl && overb(orph),
@@ -94,11 +94,11 @@ define(sparse, sparout, /*(*/ [sv, vb,
 		/*(*/ [pv] /*)*/)] /*)*/))
 
 function sp(str) {
-    parse(lex(str), false)
+    parse(lex(str), false);
   }
 
 function orphan(flag?: atom | false, action, slot1, prep, name: atom | false) {
-    GLOBALS.orphans[GLOBALS.oname] = name[GLOBALS.oprep] = prep[GLOBALS.oslot1] = slot1[GLOBALS.overb] = action[GLOBALS.oflag] = flag
+    GLOBALS.orphans[GLOBALS.oname] = name[GLOBALS.oprep] = prep[GLOBALS.oslot1] = slot1[GLOBALS.overb] = action[GLOBALS.oflag] = flag;
   }
 
 function syn_match(pv: vector) {
@@ -121,7 +121,7 @@ function syn_match(pv: vector) {
 		  false] /*)*/)] /*)*/,
 	  /*(*/ [!o1,
 	   cond(/*(*/ [sdriver(syn), dforce = syn] /*)*/, /*(*/ [drive = syn] /*)*/),
-	   false] /*)*/)
+	   false] /*)*/);
           },
       vdecl(action))] /*)*/,
     /*(*/ [drive = dforce || drive,
@@ -132,7 +132,7 @@ function syn_match(pv: vector) {
 	    orphan(t, action,o1,vprep(synn)),
 	    ortell(synn,action,gwim)] /*)*/,
 	   /*(*/ [take_it_or_leave_it(drive,pv[1] = sfcn(drive))] /*)*/)] /*)*/,
-    /*(*/ [tell("I can't make sense out of that.", 0), false] /*)*/)
+    /*(*/ [tell("I can't make sense out of that.", 0), false] /*)*/);
   }
 
 function take_it_or_leave_it(syn: syntax, pv: vector) {
@@ -141,13 +141,13 @@ function take_it_or_leave_it(syn: syntax, pv: vector) {
     let obj: false | object = null;
     let varg: varg = null;
     pv[2] = obj = cond(/*(*/ [type_Q(pv1,object), pv1] /*)*/,
-			/*(*/ [type_Q(pv1,phrase), pv1[2]] /*)*/)
+			/*(*/ [type_Q(pv1,phrase), pv1[2]] /*)*/);
 cond(/*(*/ [vtrnn(varg = syn1(syn), GLOBALS.vrbit),
-	       take_it(obj,pv,varg)] /*)*/)
+	       take_it(obj,pv,varg)] /*)*/);
 pv[3] = obj = cond(/*(*/ [type_Q(pv2,object), pv2] /*)*/,
-			/*(*/ [type_Q(pv2,phrase), pv2[2]] /*)*/)
+			/*(*/ [type_Q(pv2,phrase), pv2[2]] /*)*/);
 cond(/*(*/ [vtrnn(varg = syn2(syn), GLOBALS.vrbit),
-	       take_it(obj,pv,varg)] /*)*/)
+	       take_it(obj,pv,varg)] /*)*/);
   }
 
 function take_it(obj: object, vec: vector, vrb: varg) {
@@ -158,7 +158,7 @@ function take_it(obj: object, vec: vector, vrb: varg) {
 	       vec[2] = obj,
 	       take(t),
 	       vec[1] = sav1,
-	       vec[2] = sav2] /*)*/)
+	       vec[2] = sav2] /*)*/);
   }
 
 function orfeo(syn: varg, objs: vector) {
@@ -167,7 +167,7 @@ function orfeo(syn: varg, objs: vector) {
     let slot1: false | phrase | object = null;
     cond(/*(*/ [!orfl, false] /*)*/,
 	      /*(*/ [slot1 = oslot1(orph),
-	       syn_equal(syn,slot1) && objs[1] = slot1] /*)*/)
+	       syn_equal(syn,slot1) && objs[1] = slot1] /*)*/);
   }
 
 function ortell(varg: varg, action: action, gwim: false | object) {
@@ -175,13 +175,13 @@ function ortell(varg: varg, action: action, gwim: false | object) {
     let sp: string = null;
     cond(/*(*/ [prep,	       gwim && tell(vstr(action), 0, "") && tell(odesc2(gwim), 0, ""),
 	       tell(prstr(chtype(prep,atom)), 0, "what?")] /*)*/,
-	      /*(*/ [tell(vstr(action), 0, "what?")] /*)*/)
-false
+	      /*(*/ [tell(vstr(action), 0, "what?")] /*)*/);
+false;
   }
 
 function prstr(atm: atom) {
     let sp: string = null;
-    foostr(sp = spname(atm), back(GLOBALS.scrstr,sp.length), false)
+    foostr(sp = spname(atm), back(GLOBALS.scrstr,sp.length), false);
   }
 
 function foostr(nam: string, str: string, 1st?: atom | false) {
@@ -189,16 +189,16 @@ function foostr(nam: string, str: string, 1st?: atom | false) {
 	function(x: string, y: string) {
         cond(/*(*/ [1st && x === nam,
 		   y[1] = x[1]] /*)*/,
-		  /*(*/ [y[1] = chtype(_(32, ascii(x[1])), character)] /*)*/)
+		  /*(*/ [y[1] = chtype(_(32, ascii(x[1])), character)] /*)*/);
       },
-	nam,	str)
+	nam,	str);
   }
 
 function gwim_slot(fx: number, varg: varg, action: action, objs: vector) {
     let obj: vector = null;
     cond(/*(*/ [obj = gwim(vbit(varg), varg,action),
 	       objs[fx] = obj,
-	       obj] /*)*/)
+	       obj] /*)*/);
   }
 
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
@@ -213,13 +213,13 @@ function gwim(bit: number, fword: varg, action: action) {
     let savobj: false | object | phrase = null;
     let av: object | false = avehicle(GLOBALS.winner);
     let sf = null;
-    aobj && obj = fwim(bit,aobjs(GLOBALS.winner), ntake)
+    aobj && obj = fwim(bit,aobjs(GLOBALS.winner), ntake);
 cond(/*(*/ [robj,	       cond(/*(*/ [nobj = fwim(bit,robjs(GLOBALS.here), ntake) && !av || av === nobj || memq(nobj,ocontents(av)) || trnn(nobj,GLOBALS.findmebit),
 		      cond(/*(*/ [savobj = pv[2] || t && !obj && sf = pv[1] || t && pv[1] = GLOBALS.take_X_words && pv[2] = nobj && action === pv[1] || ntake || take() && pv[2] = savobj && pv[1] = sf && nobj] /*)*/,
 			    /*(*/ [pv[2] = savobj, false] /*)*/)] /*)*/,
 		     /*(*/ [nobj || !empty_Q(nobj), GLOBALS.nefals] /*)*/,
 		     /*(*/ [obj] /*)*/)] /*)*/,
-	      /*(*/ [obj] /*)*/)
+	      /*(*/ [obj] /*)*/);
   }
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
@@ -252,15 +252,15 @@ function make_action("TUPLE", specs) {"AUX", vv, sum, /*(*/ [prep, false] /*)*/,
 					/*(*/ [syn[GLOBALS.sfcn] = setg(atm = add_word(itm[1]),
 						    chtype(/*[*/ [atm,itm[2]] /*]*/, verb))] /*)*/)] /*)*/,
 				 /*(*/ [itm === driver, syn[GLOBALS.sdriver] = t] /*)*/,
-				 /*(*/ [itm === flip, syn[GLOBALS.sflip] = t] /*)*/)
+				 /*(*/ [itm === flip, syn[GLOBALS.sflip] = t] /*)*/);
             },
-		   sp)
-syn1(syn) || syn[GLOBALS.syn1] = GLOBALS.evarg
-syn2(syn) || syn[GLOBALS.syn2] = GLOBALS.evarg
-chtype(syn,syntax)
+		   sp);
+syn1(syn) || syn[GLOBALS.syn1] = GLOBALS.evarg;
+syn2(syn) || syn[GLOBALS.syn2] = GLOBALS.evarg;
+chtype(syn,syntax);
         },
      specs),
-    vspec)
+    vspec);
   }
 
 GLOBALS.evarg = chtype(/*[*/ [0, false, 0] /*]*/, varg)
@@ -271,7 +271,7 @@ function syn_equal(varg: varg, pobj: false | phrase | object) {
 	   vprep(varg) === pobj[1] && !vtrnn(varg,GLOBALS.vxbit) || trnn(pobj[2], vbit)] /*)*/,
 	  /*(*/ [type_Q(pobj,object),
 	   !vprep(varg) && !vtrnn(varg,GLOBALS.vxbit) || trnn(pobj,vbit)] /*)*/,
-	  /*(*/ [!pobj && 0_Q(vbit)] /*)*/)
+	  /*(*/ [!pobj && 0_Q(vbit)] /*)*/);
   }
 
 GLOBALS.directions = moblist(directions)
@@ -281,7 +281,7 @@ function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: atom | false) {
     cond(/*(*/ [val = sparse(pv,vb),
 	       cond(/*(*/ [val === win || syn_match(val), orphan(false)] /*)*/,
 		     /*(*/ [vb || tell(""), false] /*)*/)] /*)*/,
-	      /*(*/ [vb || tell(""), false] /*)*/)
+	      /*(*/ [vb || tell(""), false] /*)*/);
   }
 
 GLOBALS.scrstr = rest(istring(5), 5)
@@ -328,12 +328,12 @@ define(search_list, sl, /*(*/ [objnam, slist, adj, "OPTIONAL", /*(*/ [first_Q, t
    mapf(false,
     function(obj: object) {
         cond(/*(*/ [this_it_Q(objnam,obj,adj),
-		   cond(/*(*/ [oobj,return(nefals,sl)] /*)*/, /*(*/ [oobj = obj] /*)*/)] /*)*/)
+		   cond(/*(*/ [oobj,return(nefals,sl)] /*)*/, /*(*/ [oobj = obj] /*)*/)] /*)*/);
 cond(/*(*/ [ovis_Q(obj) && oopen_Q(obj) || transparent_Q(obj) && first_Q || trnn(obj,GLOBALS.searchbit),
 	      cond(/*(*/ [nobj = search_list(objnam,ocontents(obj), adj,false),
 		     cond(/*(*/ [oobj,return(nefals,sl)] /*)*/,
 			   /*(*/ [oobj = nobj] /*)*/)] /*)*/,
-		    /*(*/ [nobj === nefals, return(nefals,sl)] /*)*/)] /*)*/)
+		    /*(*/ [nobj === nefals, return(nefals,sl)] /*)*/)] /*)*/);
       },
     slist),
    oobj)
@@ -347,15 +347,15 @@ define(fwim, dwim, /*(*/ [bit, objs, no_take, "AUX", /*(*/ [nobj, false] /*)*/] 
     function(x: object) {
         cond(/*(*/ [ovis_Q(x) && no_take || can_take_Q(x) && trnn(x,bit),
 		   cond(/*(*/ [nobj,return(GLOBALS.nefals,dwim)] /*)*/),
-		   nobj = x] /*)*/)
+		   nobj = x] /*)*/);
 cond(/*(*/ [ovis_Q(x) && oopen_Q(x),
 	      mapf(false,
 		    function(x: object) {
                 cond(/*(*/ [ovis_Q(x) && trnn(x,bit),
 				   cond(/*(*/ [nobj,return(GLOBALS.nefals,dwim)] /*)*/,
-					 /*(*/ [nobj = x] /*)*/)] /*)*/)
+					 /*(*/ [nobj = x] /*)*/)] /*)*/);
               },
-		    ocontents(x))] /*)*/)
+		    ocontents(x))] /*)*/);
       },
     objs),
    nobj)

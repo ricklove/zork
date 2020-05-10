@@ -1892,7 +1892,7 @@ add_object(/*#*/ [object, /*{*/ ["LCASE",
 
 mapf(false,
    function(x) {
-      rtro(find_room(spname(x)), GLOBALS.rfillbit)
+      rtro(find_room(spname(x)), GLOBALS.rfillbit);
     },
  _X,/*[*/ [resen_X_rooms, reses_X_rooms, dam_X_rooms, strea_X_rooms,
    rivr1_X_rooms, rivr2_X_rooms, rivr3_X_rooms, rivr4_X_rooms, rivr5_X_rooms,
@@ -1900,13 +1900,13 @@ mapf(false,
 
 mapf(false,
   function(x) {
-      rtro(find_room(x), GLOBALS.rhousebit)
+      rtro(find_room(x), GLOBALS.rhousebit);
     },
   /*[*/ ["LROOM", "KITCH", "ATTIC"] /*]*/)
 
 mapf(false,
    function(x) {
-      rtro(find_room(x), GLOBALS.rsacredbit)
+      rtro(find_room(x), GLOBALS.rsacredbit);
     },
       /*[*/ ["BSHAF",
        "RIVR1",

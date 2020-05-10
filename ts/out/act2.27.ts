@@ -11,7 +11,7 @@ function boom_room() {
 			  /*(*/ [tell("Oh dear.  It appears that the smell coming from this room was coal\ngas.  I would have thought twice about carrying a", 1, odesc2(o), "in here.")] /*)*/),
 		    fweep(7),
 		    jigs_up("BOOOOOOOOOOOM")),
-		   jigs_up("BOOOOOOOOOOOM"))] /*)*/)] /*)*/)
+		   jigs_up("BOOOOOOOOOOOM"))] /*)*/)] /*)*/);
   }    
 
 function bats_room() {
@@ -20,7 +20,7 @@ function bats_room() {
 	   fly_me()] /*)*/,
 	  /*(*/ [prsact === GLOBALS.look_X_words,
 	   tell("You are in a small room which has only one door, to the east."),
-	   memq(find_obj("GARLI"), aobjs(GLOBALS.winner)) && tell("In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")] /*)*/)
+	   memq(find_obj("GARLI"), aobjs(GLOBALS.winner)) && tell("In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")] /*)*/);
   }
 
 function fly_me() {
@@ -29,16 +29,16 @@ function fly_me() {
 	      fweep(4, 1),
 	      tell("A deranged giant vampire bat (a reject from WUMPUS) swoops down\nfrom his belfry and lifts you away...."),
 	      goto(find_room(pick_one(bat_drops)))),
-	goto(find_room(pick_one(bat_drops))))
-GLOBALS.prsvec[2] = false
-room_desc()
+	goto(find_room(pick_one(bat_drops))));
+GLOBALS.prsvec[2] = false;
+room_desc();
   }
 
 function fweep(num: number, slp?: number) {
     repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	0_Q(n = _(n,1)) && return(),
 	image(7),
-	0_Q(slp) || sleep(slp))
+	0_Q(slp) || sleep(slp));
   }
 
 psetg(bat_drops,
@@ -86,7 +86,7 @@ function dumbwaiter() {
 	  /*(*/ [prsact === GLOBALS.take_X_words,
 	   cond(/*(*/ [ct && here === top || !ct && here === bot,
 		  tell("The cage is securely fastened to the iron chain.")] /*)*/,
-		 /*(*/ [tell("I can't see that here.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("I can't see that here.")] /*)*/)] /*)*/);
   }
 
 function machine_room() {
@@ -95,7 +95,7 @@ function machine_room() {
 	   tell("You are in a large room which seems to be air-conditioned.  In one\ncorner there is a machine (?) which is shaped somewhat like a clothes\ndryer.  On the 'panel' there is a switch which is labelled in a\ndialect of Swahili.  Fortunately, I know this dialect and the label\ntranslates to START.  The switch does not appear to be manipulable by\nany human hand (unless the fingers are about 1/16 by 1/4 inch).  On\nthe front of the machine is a large lid."),
 	   cond(/*(*/ [oopen_Q(find_obj("MACHI")),
 		  tell("The lid on the machine is open.")] /*)*/,
-		 /*(*/ [tell("The lid on the machine is closed.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("The lid on the machine is closed.")] /*)*/)] /*)*/);
   }
 
 function machine_function() {
@@ -114,7 +114,7 @@ function machine_function() {
 	      mach[GLOBALS.oopen_Q] = false,
 	      t] /*)*/,
 	     /*(*/ [tell(pick_one(dummy))] /*)*/)] /*)*/,
-      /*(*/ [prsact === GLOBALS.take_X_words] /*)*/)] /*)*/)
+      /*(*/ [prsact === GLOBALS.take_X_words] /*)*/)] /*)*/);
   }
 
 function mswitch_function() {
@@ -137,7 +137,7 @@ function mswitch_function() {
 			       /*(*/ [!empty_Q(ocontents(mach)),
 				mach[GLOBALS.ocontents] = /*(*/ [d = find_obj("GUNK")] /*)*/] /*)*/,
 			       /*(*/ [t] /*)*/)] /*)*/)] /*)*/,
-		 /*(*/ [tell("It seems that a", 1, odesc2(imp), "won't do.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("It seems that a", 1, odesc2(imp), "won't do.")] /*)*/)] /*)*/);
   }
 
 function gunk_function() {
@@ -146,7 +146,7 @@ function gunk_function() {
     cond(/*(*/ [m,
 	 m[GLOBALS.ocontents] = splice_out(g,ocontents(m)),
 	 g[GLOBALS.ocan] = false,
-	 tell("The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable.")] /*)*/)
+	 tell("The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable.")] /*)*/);
   }
 
 GLOBALS.score_max = _(GLOBALS.score_max,GLOBALS.light_shaft = 10)
@@ -154,17 +154,17 @@ GLOBALS.score_max = _(GLOBALS.score_max,GLOBALS.light_shaft = 10)
 function no_objs() {
     cond(/*(*/ [empty_Q(aobjs(GLOBALS.winner)),
 	   GLOBALS.empty_handed_X_flag = t] /*)*/,
-	  /*(*/ [GLOBALS.empty_handed_X_flag = false] /*)*/)
+	  /*(*/ [GLOBALS.empty_handed_X_flag = false] /*)*/);
 cond(/*(*/ [GLOBALS.here === find_room("BSHAF") && lit_Q(GLOBALS.here),
 	   score_upd(GLOBALS.light_shaft),
-	   GLOBALS.light_shaft = 0] /*)*/)
+	   GLOBALS.light_shaft = 0] /*)*/);
   }
 gdecl(/*(*/ [light_shaft] /*)*/, fix)
 
 function cliff_function() {
     cond(/*(*/ [memq(find_obj("RBOAT"), aobjs(GLOBALS.winner)),
 	   GLOBALS.deflate_X_flag = false] /*)*/,
-	  /*(*/ [GLOBALS.deflate_X_flag = t] /*)*/)
+	  /*(*/ [GLOBALS.deflate_X_flag = t] /*)*/);
   }
 
 function stick_function() {
@@ -180,7 +180,7 @@ function stick_function() {
 		 /*(*/ [GLOBALS.here === find_room("RAINB"),
 		  GLOBALS.rainbow_X_flag = false,
 		  jigs_up("The structural integrity of the rainbow seems to have left it,\nleaving you about 450 feet in the air, supported by water vapor.")] /*)*/,
-		 /*(*/ [tell("Very good.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("Very good.")] /*)*/)] /*)*/);
   }
 
 function falls_room() {
@@ -189,7 +189,7 @@ function falls_room() {
 	   tell("You are at the top of Aragain Falls, an enormous waterfall with a\ndrop of about 450 feet.  The only path here is on the north end.\nThere is a man-sized barrel here which you could fit into."),
 	   cond(/*(*/ [GLOBALS.rainbow_X_flag,
 		  tell("A solid rainbow spans the falls.")] /*)*/,
-		 /*(*/ [tell("A beautiful rainbow can be seen over the falls and to the east.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("A beautiful rainbow can be seen over the falls and to the east.")] /*)*/)] /*)*/);
   }
 
 function digger() {
@@ -197,7 +197,7 @@ function digger() {
     cond(/*(*/ [prso === find_obj("SHOVE")] /*)*/,
 	  /*(*/ [trnn(prso,GLOBALS.toolbit),
 	   tell("Digging with the", 1, odesc2(prso), "is slow and tedious.")] /*)*/,
-	  /*(*/ [tell("Digging with a", 1, odesc2(prso), "is silly.")] /*)*/)
+	  /*(*/ [tell("Digging with a", 1, odesc2(prso), "is silly.")] /*)*/);
   }
 
 function dboat_function() {
@@ -215,7 +215,7 @@ function dboat_function() {
 			 take_object(find_obj("IBOAT"))] /*)*/,
 			/*(*/ [remove_object(find_obj("DBOAT")),
 			 insert_object(find_obj("IBOAT"), here)] /*)*/)] /*)*/,
-		 /*(*/ [with_tell(prsi)] /*)*/)] /*)*/)
+		 /*(*/ [with_tell(prsi)] /*)*/)] /*)*/);
   }
 
 function rboat_function(arg?: false | atom) {
@@ -240,7 +240,7 @@ function rboat_function(arg?: false | atom) {
 		 /*(*/ [tell("The boat deflates."),
 		  GLOBALS.deflate_X_flag = t,
 		  remove_object(rboat),
-		  insert_object(iboat,here)] /*)*/)] /*)*/)
+		  insert_object(iboat,here)] /*)*/)] /*)*/);
   }
 
 function iboat_function() {
@@ -256,12 +256,12 @@ function iboat_function() {
 		  GLOBALS.deflate_X_flag = false,
 		  remove_object(iboat),
 	    	  insert_object(rboat,here)] /*)*/,
-		 /*(*/ [tell("I don't think you have enough lung-power to inflate this boat.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("I don't think you have enough lung-power to inflate this boat.")] /*)*/)] /*)*/);
   }
 
 function over_falls() {
     cond(/*(*/ [GLOBALS.prsvec[1] === GLOBALS.look_X_words] /*)*/,
-	  /*(*/ [jigs_up("Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently.")] /*)*/)
+	  /*(*/ [jigs_up("Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently.")] /*)*/);
   }
 
 GLOBALS.buoy_flag_X_flag = t
@@ -274,16 +274,16 @@ function shake() {
 	  /*(*/ [oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)),
 	   mapf(false,
 		 function(x: object) {
-            x[GLOBALS.ocan] = false
-insert_object(x,here)
+            x[GLOBALS.ocan] = false;
+insert_object(x,here);
           },
 		 ocontents(prsobj)),
 	   prsobj[GLOBALS.ocontents] = /*(*/ [] /*)*/,
-	   tell("All of the objects spill onto the floor.")] /*)*/)
+	   tell("All of the objects spill onto the floor.")] /*)*/);
   }
 
 function rivr4_room() {
-    memq(find_obj("BUOY"), aobjs(GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell("Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false
+    memq(find_obj("BUOY"), aobjs(GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell("Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false;
   } 
 
 function beach_room() {
@@ -301,7 +301,7 @@ function beach_room() {
 		  tro(find_obj("STATU"), GLOBALS.ovison),
 		  here[GLOBALS.rvars] = cnt] /*)*/,
 		 /*(*/ [cnt < 0] /*)*/,
-		 /*(*/ [tell(GLOBALS.bdigs[cnt])] /*)*/)] /*)*/)
+		 /*(*/ [tell(GLOBALS.bdigs[cnt])] /*)*/)] /*)*/);
   }
 
 function tcave_room() {
@@ -315,7 +315,7 @@ function tcave_room() {
 		  cond(/*(*/ [cnt > 3,
 		  	 tell("This is getting you nowhere.")] /*)*/,
 		 	/*(*/ [tell(GLOBALS.cdigs[cnt])] /*)*/)] /*)*/,
-		 /*(*/ [tell("There's nothing to dig into here.")] /*)*/)] /*)*/)
+		 /*(*/ [tell("There's nothing to dig into here.")] /*)*/)] /*)*/);
   }
 	   
 psetg(cdigs,
@@ -332,7 +332,7 @@ gdecl(/*(*/ [bdigs, cdigs] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 function geronimo() {
     cond(/*(*/ [GLOBALS.here === find_room("BARRE"),
 	   jigs_up("I didn't think you would REALLY try to go over the falls in a\nbarrel. It seems that some 450 feet below, you were met by a number\nof  unfriendly rocks and boulders, causing your immediate demise.  Is\nthis what 'over a barrel' means?")] /*)*/,
-	  /*(*/ [tell("Wasn't he an Indian?")] /*)*/)
+	  /*(*/ [tell("Wasn't he an Indian?")] /*)*/);
   }
 
 psetg(swimyuks,
@@ -345,7 +345,7 @@ function swimmer() {
     let swimyuks: vector(/*[*/ [rest, string] /*]*/) = GLOBALS.swimyuks;
     cond(/*(*/ [rtrnn(GLOBALS.here,GLOBALS.rfillbit),
 	   tell("Swimming is not allowed in this dungeon.")] /*)*/,
-	  /*(*/ [tell(pick_one(swimyuks))] /*)*/)
+	  /*(*/ [tell(pick_one(swimyuks))] /*)*/);
   }
 
 
@@ -354,7 +354,7 @@ function grue_function() {
     cond(/*(*/ [prsa === GLOBALS.exami_X_words,
 	   tell("The grue is a sinister, lurking presence in the dark places of the\nearth.  Its favorite diet is adventurers, but its insatiable\nappetite is tempered by its fear of light.  No grue has ever been\nseen by the light of day, and few have survived its fearsome jaws\nto tell the tale.")] /*)*/,
 	  /*(*/ [prsa === GLOBALS.find_X_words,
-	   tell("There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!")] /*)*/)
+	   tell("There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!")] /*)*/);
   }
 
 GLOBALS.btie_X_flag = false
@@ -440,7 +440,7 @@ function rise_and_shine(ball: object, here: room) {
     let in_Q: atom | false = avehicle(GLOBALS.winner) === ball;
     let bl: room = GLOBALS.bloc;
     let foo: cevent = null;
-    clock_int(GLOBALS.bint,3)
+    clock_int(GLOBALS.bint,3);
 cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 	       cond(/*(*/ [rest(m,4) == "4",
 		      clock_disable(GLOBALS.burnup_int),
@@ -471,13 +471,13 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 	       goto(GLOBALS.bloc = find_room("VAIR1")),
 	       tell("The balloon rises slowly from the ground."),
 	       room_info(t)] /*)*/,
-	      /*(*/ [put_balloon(ball,bl,"VAIR1", "lifts off.")] /*)*/)
+	      /*(*/ [put_balloon(ball,bl,"VAIR1", "lifts off.")] /*)*/);
   }
 
 function put_balloon(ball: object, here: room, there: string, str: string) {
-    member("LEDG", spname(rid(GLOBALS.here))) && tell("You watch as the balloon slowly", 1, str)
-remove_object(ball)
-insert_object(ball,GLOBALS.bloc = find_room(there))
+    member("LEDG", spname(rid(GLOBALS.here))) && tell("You watch as the balloon slowly", 1, str);
+remove_object(ball);
+insert_object(ball,GLOBALS.bloc = find_room(there));
   }
 
 gdecl(/*(*/ [bloc] /*)*/, room)
@@ -488,7 +488,7 @@ function decline_and_fall(ball: object, here: room) {
     let bl: room = GLOBALS.bloc;
     let in_Q: atom | false = avehicle(GLOBALS.winner) === ball;
     let foo: cevent = null;
-    clock_int(GLOBALS.bint,3)
+    clock_int(GLOBALS.bint,3);
 cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 	   cond(/*(*/ [rest(m,4) == "1",
 		  cond(/*(*/ [in_Q,
@@ -509,7 +509,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 			 goto(GLOBALS.bloc = find_room(s)),
 			 tell("The balloon descends."),
 			 room_info(t)] /*)*/,
-			/*(*/ [put_balloon(ball,bl,s,"descends.")] /*)*/)] /*)*/)] /*)*/)
+			/*(*/ [put_balloon(ball,bl,s,"descends.")] /*)*/)] /*)*/)] /*)*/);
   }
 
 function wire_function() {
@@ -528,15 +528,15 @@ function wire_function() {
 		      clock_enable(bint = clock_int(GLOBALS.bint,3)),
 	       	      GLOBALS.btie_X_flag = false,
 	              tell("The wire falls off of the hook.")] /*)*/,
-		     /*(*/ [tell("The wire is not tied to anything.")] /*)*/)] /*)*/)
+		     /*(*/ [tell("The wire is not tied to anything.")] /*)*/)] /*)*/);
   }
 
 function burnup() {
     let r: object = find_obj("RECEP");
     let obj: object = ocontents(r)[1];
-    r[GLOBALS.ocontents] = splice_out(obj,ocontents(r))
-tell("It seems that the", 1, odesc2(obj), "has burned out, and the cloth\nbag starts to collapse.")
-GLOBALS.binf_X_flag = false
+    r[GLOBALS.ocontents] = splice_out(obj,ocontents(r));
+tell("It seems that the", 1, odesc2(obj), "has burned out, and the cloth\nbag starts to collapse.");
+GLOBALS.binf_X_flag = false;
   }
 
 GLOBALS.safe_flag_X_flag = false
@@ -548,7 +548,7 @@ function safe_room() {
 	         1,
 		 cond(/*(*/ [!GLOBALS.safe_flag_X_flag,
 			"Imbedded in the far wall, there is a rusty old box.  It appears that\nthe box is somewhat damaged, since an oblong hole has been chipped\nout of the front of it."] /*)*/,
-		       /*(*/ ["On the far wall is a rusty box, whose door has been blown off."] /*)*/))] /*)*/)
+		       /*(*/ ["On the far wall is a rusty box, whose door has been blown off."] /*)*/))] /*)*/);
   }
 
 function safe_function() {
@@ -561,7 +561,7 @@ function safe_function() {
 	      /*(*/ [prsa === GLOBALS.close_X_words,
 	       cond(/*(*/ [GLOBALS.safe_flag_X_flag,tell("The box has no door!")] /*)*/,
 		     /*(*/ [tell("The box is not open, chomper!")] /*)*/)] /*)*/,
-	      /*(*/ [prsa === GLOBALS.blast_X_words, tell("What do you expect, BOOM?")] /*)*/)
+	      /*(*/ [prsa === GLOBALS.blast_X_words, tell("What do you expect, BOOM?")] /*)*/);
   }
 
 psetg(brick_boom, 
@@ -569,7 +569,7 @@ psetg(brick_boom,
 
 function brick_function() {
     let prsa: verb = GLOBALS.prsvec[1];
-    cond(/*(*/ [prsa === GLOBALS.burn_X_words, jigs_up(GLOBALS.brick_boom)] /*)*/)
+    cond(/*(*/ [prsa === GLOBALS.burn_X_words, jigs_up(GLOBALS.brick_boom)] /*)*/);
   }
 
 function fuse_function() {
@@ -607,18 +607,18 @@ function fuse_function() {
 			     mapf(false,
 				   function(x) {
                     cond(/*(*/ [can_take_Q(x),
-					    trz(x,GLOBALS.ovison)] /*)*/)
+					    trz(x,GLOBALS.ovison)] /*)*/);
                   },
 				   robjs(brick_room)),
 			     cond(/*(*/ [brick_room === find_room("LROOM"),
 				    mapf(false,
 					  function(x: object) {
-                        x[GLOBALS.ocan] = false
+                        x[GLOBALS.ocan] = false;
                       },
 					  ocontents(find_obj("TCASE"))),
 				    find_obj("TCASE")[GLOBALS.ocontents] = /*(*/ [] /*)*/] /*)*/)] /*)*/)] /*)*/,
 		     /*(*/ [!oroom(fuse) || GLOBALS.here === oroom(fuse),
-		      tell("The wire rapidly burns into nothingness.")] /*)*/)] /*)*/)
+		      tell("The wire rapidly burns into nothingness.")] /*)*/)] /*)*/);
   }
 
 function safe_mung() {
@@ -628,9 +628,9 @@ function safe_mung() {
 "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."] /*)*/, 
 /*(*/ ["The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake."] /*)*/))] /*)*/,
 	      /*(*/ [tell("You may recall your recent explosion.  Well, probably as a result of\nthat, you hear an ominous rumbling, as if one of the rooms in the\ndungeon had collapsed."),
-	       rm === find_room("SAFE") && clock_int(GLOBALS.ledin,8)] /*)*/)
+	       rm === find_room("SAFE") && clock_int(GLOBALS.ledin,8)] /*)*/);
 mung_room(oroom(find_obj("BRICK")) || GLOBALS.here,
-		   "The way is blocked by debris from an explosion.")
+		   "The way is blocked by debris from an explosion.");
   }
 
 function ledge_mung() {
@@ -650,8 +650,8 @@ function ledge_mung() {
 			/*(*/ [tell("The ledge collapses, leaving you with no place to land.")] /*)*/)] /*)*/,
 		 /*(*/ [t,
 		  jigs_up("The force of the explosion has caused the ledge to collapse\nbelatedly.")] /*)*/)] /*)*/,
-	  /*(*/ [tell("The ledge collapses, giving you a narrow escape.")] /*)*/)
-mung_room(rm,"The ledge has collapsed and cannot be landed on.")
+	  /*(*/ [tell("The ledge collapses, giving you a narrow escape.")] /*)*/);
+mung_room(rm,"The ledge has collapsed and cannot be landed on.");
   }
 
 function ledge_function() {
@@ -662,19 +662,19 @@ function ledge_function() {
 	   tell("You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.", 1,
 		cond(/*(*/ [rtrnn(find_room("SAFE"), GLOBALS.rmungbit),
 		       "The way to the south is blocked by rubble."] /*)*/,
-		      /*(*/ ["There is a small door to the south."] /*)*/))] /*)*/)
+		      /*(*/ ["There is a small door to the south."] /*)*/))] /*)*/);
   }
 
 function blast() {
     cond(/*(*/ [GLOBALS.here === find_room("SAFE")] /*)*/,
-	  /*(*/ [tell("I don't really know how to do that.")] /*)*/)
+	  /*(*/ [tell("I don't really know how to do that.")] /*)*/);
   }
 
 function volgnome() {
     cond(/*(*/ [member("LEDG", spname(rid(GLOBALS.here))),
 	   tell("A volcano gnome seems to walk straight out of the wall and says\n'I have a very busy appointment schedule and little time to waste on\ntresspassers, but for a small fee, I'll show you the way out.'  You\nnotice the gnome nervously glancing at his watch."),
 	   insert_object(find_obj("GNOME"), GLOBALS.here)] /*)*/,
-	  /*(*/ [clock_int(GLOBALS.vlgin,1)] /*)*/)
+	  /*(*/ [clock_int(GLOBALS.vlgin,1)] /*)*/);
   }
 
 GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = false
@@ -693,5 +693,5 @@ function gnome_function() {
 	   remove_object(find_obj("GNOME"))] /*)*/,
 	  /*(*/ [tell("The gnome appears increasingly nervous."),
 	   GLOBALS.gnome_flag_X_flag || clock_int(GLOBALS.gnoin,5),
-	   GLOBALS.gnome_flag_X_flag = t] /*)*/)
+	   GLOBALS.gnome_flag_X_flag = t] /*)*/);
   }
