@@ -8,39 +8,50 @@ export function save_it(fn?: string) {
     let muddle: number = GLOBALS.muddle;
     let stv: (string | number) = null;
     let st: (string | number) = remarkably_disgusting_code();
-    find_obj("PAPER")[GLOBALS.odesc1] = unspeakable_code();
+    find_obj(`PAPER`)[GLOBALS.odesc1] = unspeakable_code();
 GLOBALS.vers = st;
 GLOBALS.script_channel = false;
 GLOBALS.raw_score = 0;
-ih = on("IPC", GLOBALS.ilo,1);
+ih = on(`IPC`, GLOBALS.ilo,1);
 handler(GLOBALS.divert_int,GLOBALS.divert_hand);
 cond(/*(*/ [muddle > 100,
 	       GLOBALS.scratch_str = istring(32),
-	       GLOBALS.dev = "DSK",
-	       GLOBALS.snm = "MDL"] /*)*/,
-	      /*(*/ [sname(""),
-	       GLOBALS.dev = "DSK",
-	       GLOBALS.snm = "MADMAN"] /*)*/);
+	       GLOBALS.dev = `DSK`,
+	       GLOBALS.snm = `MDL`] /*)*/,
+	      /*(*/ [sname(``),
+	       GLOBALS.dev = `DSK`,
+	       GLOBALS.snm = `MADMAN`] /*)*/);
 int_level(100000);
-cond(/*(*/ [save(fn) == "SAVED", int_level(0), t] /*)*/,
+cond(/*(*/ [save(fn) == `SAVED`, int_level(0), t] /*)*/,
 	      /*(*/ [t,
 	       // STARTER on 10x sets up tty correctly, setg's DEV to \"MDL\"     if that device exists; if not, (sort of) returns directory muddle     came from.  On its it returns # zorkers currently in existence.,
 	       cond(/*(*/ [(type_Q(stv = starter(), fix) && stv > 3),
-		      (GLOBALS.winners[GLOBALS.xunm = xuname()] || GLOBALS.xunm == "SEC" || GLOBALS.xunm == "ELBOW" || (off("CHAR", GLOBALS.inchan) && tell("There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you.") && quit()))] /*)*/,
+		      (GLOBALS.winners[GLOBALS.xunm = xuname()] || GLOBALS.xunm == `SEC` || GLOBALS.xunm == `ELBOW` || (off(`CHAR`, GLOBALS.inchan) && tell(`There appears before you a threatening figure clad all over
+in heavy black armor.  His legs seem like the massive trunk
+of the oak tree.  His broad shoulders and helmeted head loom
+high over your own puny frame and you realize that his powerful
+arms could easily crush the very life from your body.  There
+hangs from his belt a veritable arsenal of deadly weapons:
+sword, mace, ball and chain, dagger, lance, and trident.
+He speaks with a commanding voice:
+
+		\"YOU SHALL NOT PASS \"
+
+As he grabs you by the neck all grows dim about you.`) && quit()))] /*)*/,
 		     /*(*/ [type_Q(stv,string),
 		      GLOBALS.snm = substruc(GLOBALS.scratch_str,					  0,
 					  _(GLOBALS.scratch_str.length,
 					     memq(_X__, stv).length))] /*)*/),
 	       cond(/*(*/ [GLOBALS.muddle > 100, GLOBALS.tenex_Q = getsys()] /*)*/,
 		     /*(*/ [apply(GLOBALS.ipc_off),
-		      apply(GLOBALS.ipc_on,uname(), "ZORK")] /*)*/),
-	       bh = on("BLOCKED", GLOBALS.blo,100),
-	       start("WHOUS", st)] /*)*/);
+		      apply(GLOBALS.ipc_on,uname(), `ZORK`)] /*)*/),
+	       bh = on(`BLOCKED`, GLOBALS.blo,100),
+	       start(`WHOUS`, st)] /*)*/);
   }
 
 
 
-"Stuff for diverting gc's"
+`Stuff for diverting gc's`
 
 GLOBALS.divert_cnt = 0
 
@@ -68,17 +79,17 @@ cond(/*(*/ [(GLOBALS.divert_cnt > GLOBALS.divert_max || GLOBALS.divert_amt > GLO
 				// Get storage desired plus extra increment] /*)*/);
   }
 
-GLOBALS.divert_hand = handler(GLOBALS.divert_int = event("DIVERT-AGC", 1000),
+GLOBALS.divert_hand = handler(GLOBALS.divert_int = event(`DIVERT-AGC`, 1000),
 			GLOBALS.divert_fcn)
 
 off(GLOBALS.divert_hand)
 
-export function gc_fcn("TUPLE", t) {
+export function gc_fcn(`TUPLE`, t) {
     off(GLOBALS.gc_hand);
 GLOBALS.divert_amt = GLOBALS.divert_cnt = 0;
   }
 
-GLOBALS.gc_hand = handler(GLOBALS.gc_int = event("GC", 11),
+GLOBALS.gc_hand = handler(GLOBALS.gc_int = event(`GC`, 11),
 			GLOBALS.gc_fcn)
 
 off(GLOBALS.gc_hand)
@@ -130,21 +141,21 @@ export function unspeakable_code() {
     let str: string = null;
     let nstr: string = null;
     let len_i: number = 0;
-    let o: object = find_obj("PAPER");
+    let o: object = find_obj(`PAPER`);
     str = memq(_X__, oread(o));
 cond(/*(*/ [back(str,2)[1] === _X_1,
 	   str = back(str,2),
 	   len_i = 1] /*)*/,
 	  /*(*/ [str = back(str,1)] /*)*/);
 nstr = rest(memq(_X__, rest(memq(_X__, str))), 3);
-string("There is an issue of US NEWS & DUNGEON REPORT dated",
+string(`There is an issue of US NEWS & DUNGEON REPORT dated `,
 	    substruc(str,0, _(str.length, nstr.length)),
-	    "here.");
+	    ` here.`);
   }
 
 export function remarkably_disgusting_code() {
     let n: primtype(word) = dskdate();
-    string("This version created",
+    string(`This version created `,
 	 GLOBALS.months[chtype(getbits(n,bits(4, 23)), fix)],
 	 _X__,
 	 unparse(chtype(getbits(n,bits(5, 18)), fix)),
@@ -178,20 +189,21 @@ export function play_time(outchan?: special(channel), loser_Q: (atom | false)) {
     let mins: number = null;
     time = get_time();
 GLOBALS.tell_flag = t;
-cond(/*(*/ [loser_Q,princ("You have been playing DUNGEON for")] /*)*/,
+cond(/*(*/ [loser_Q,princ(`You have been playing DUNGEON for `)] /*)*/,
 	      /*(*/ [t,
-	       princ("Played for")] /*)*/);
-(mins = _(time,3600) > 0 && prin1(mins) && princ("hour") && (1_Q(mins) || princ("s")) && princ(","));
+	       princ(`Played for `)] /*)*/);
+(mins = _(time,3600) > 0 && prin1(mins) && princ(` hour`) && (1_Q(mins) || princ(`s`)) && princ(`, `));
 cond(/*(*/ [mins = mod(_(time,60), 60) > 0,
 	       prin1(mins),
-	       princ("minute"),
-	       cond(/*(*/ [!1_Q(mins), princ("s")] /*)*/),
-	       princ(", and")] /*)*/);
+	       princ(` minute`),
+	       cond(/*(*/ [!1_Q(mins), princ(`s`)] /*)*/),
+	       princ(`, and `)] /*)*/);
 prin1(mins = mod(time,60));
-princ("second");
-(1_Q(mins) || princ("s"));
-cond(/*(*/ [loser_Q,princ(".")] /*)*/,
-	      /*(*/ [princ(".")] /*)*/);
+princ(` second`);
+(1_Q(mins) || princ(`s`));
+cond(/*(*/ [loser_Q,princ(`.
+`)] /*)*/,
+	      /*(*/ [princ(`.`)] /*)*/);
   } 
 
 export function pc() {
@@ -216,24 +228,25 @@ cond(/*(*/ [((!gassigned_Q(xunm) || GLOBALS.winners[GLOBALS.xunm]) && pc()),
 							     /*(*/ [t, /*#*/ [lose, _000000000012_] /*2*/] /*)*/)] /*)*/,
 						      /*(*/ [t, /*#*/ [lose, _000000000015_] /*2*/] /*)*/),
 		      erret(t, frm)] /*)*/,
-		     /*(*/ [(zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY"),
+		     /*(*/ [(zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == `ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY`),
 		      // HACK FOR ILLEGAL CHR AFTER CTRL-P,
 		      back(GLOBALS.inchan)[1][6] = /*#*/ [lose, _000000000015_] /*2*/,
 		      int_level(0),
 		      erret(t, frm)] /*)*/,
-		     /*(*/ [tell("I'm sorry, you seem to have encountered an error in the program.\nSend mail to DUNGEON@MIT-DMS describing what it was you tried to do."),
+		     /*(*/ [tell(`I'm sorry, you seem to have encountered an error in the program.
+Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`),
 		      tell(GLOBALS.vers),
 		      mapf(false, function(x) {
                 print(x);
               }, zork),
-		      finish(/*#*/ [false, /*(*/ [". Error."] /*)*/] /*2*/)] /*)*/)] /*)*/);
+		      finish(/*#*/ [false, /*(*/ [`. Error.`] /*)*/] /*2*/)] /*)*/)] /*)*/);
   }
 
-psetg(winners, () => /*[*/ ["BKD", "TAA", "MARC", "PDL", "MDL"] /*]*/)
+psetg(winners, () => /*[*/ [`BKD`, `TAA`, `MARC`, `PDL`, `MDL`] /*]*/)
 
 gdecl(/*(*/ [winners] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
-(lookup("COMPILE", root()) || lookup("GLUE", package[oblist]) || GLOBALS.errh = handler((error_X_interrupts[interrupt] || event("ERROR", 8)),
+(lookup(`COMPILE`, root()) || lookup(`GLUE`, package[oblist]) || GLOBALS.errh = handler((error_X_interrupts[interrupt] || event(`ERROR`, 8)),
 		   GLOBALS.handle))
 
 gdecl(/*(*/ [moves] /*)*/, fix, /*(*/ [script_channel] /*)*/, (channel || false))
@@ -243,10 +256,10 @@ export function start(rm: string, st?: string) {
     let muddle: number = GLOBALS.muddle;
     let xunm: string = xuname();
     GLOBALS.xunm = xunm;
-GLOBALS.ptemp = chtype(/*[*/ [chtype(with_X_words, prep), find_obj("!!!!!")] /*]*/, phrase);
+GLOBALS.ptemp = chtype(/*[*/ [chtype(with_X_words, prep), find_obj(`!!!!!`)] /*]*/, phrase);
 GLOBALS.intime = dskdate();
 cond(/*(*/ [muddle < 100,
-	       (xunm.length > 2 && substruc(xunm,0, 3) == "___" && quit()),
+	       (xunm.length > 2 && substruc(xunm,0, 3) == `___` && quit()),
 	       fn = its_get_name(xunm)] /*)*/,
 	      /*(*/ [fn = get_name()] /*)*/);
 cond(/*(*/ [fn,	       GLOBALS.user_name = fn] /*)*/,
@@ -255,7 +268,8 @@ GLOBALS.deaths = 0;
 GLOBALS.moves = 0;
 GLOBALS.winner = GLOBALS.player;
 GLOBALS.winner[GLOBALS.aroom] = GLOBALS.here = find_room(rm);
-tell("Welcome to Dungeon.", 1, st);
+tell(`Welcome to Dungeon.
+`, 1, st);
 random(chtype(dskdate(), fix));
 int_level(0);
 contin();
@@ -281,7 +295,7 @@ gdecl(/*(*/ [my_script] /*)*/, (atom || false))
 export function make_script() {
     let ch: (channel | false) = null;
     cond(/*(*/ [GLOBALS.script_channel,	 false] /*)*/,
-	/*(*/ [ch = open("PRINT", string("MARC;%Z", GLOBALS.xunm,">")),
+	/*(*/ [ch = open(`PRINT`, string(`MARC;%Z`, GLOBALS.xunm,` >`)),
 	 top(GLOBALS.inchan)[1] = /*(*/ [ch] /*)*/,
 	 top(GLOBALS.outchan)[1] = /*(*/ [ch] /*)*/,
 	 GLOBALS.script_channel = ch,
@@ -290,7 +304,18 @@ export function make_script() {
 
 export function flush_me() {
     unwind(prog(/*(*/ [] /*)*/,
-	 tell("Suddenly, a sinister, wraithlike figure appears before you, seeming\nto float in the air.  He glows with an eldritch light.  In a barely\naudible voice he says, \"Begone, defiler!  Your presence upsets the\nvery balance of the System itself!\"  With a sinister chuckle, he\nraises his oaken staff, taps you on the head, and fades into the\ngloom.  In his place appears a tastefully lettered sign reading:\n\n			DUNGEON CLOSED\n\nAt that instant, you disappear, and all your belongings clatter to\nthe ground."),
+	 tell(`Suddenly, a sinister, wraithlike figure appears before you, seeming
+to float in the air.  He glows with an eldritch light.  In a barely
+audible voice he says, \"Begone, defiler!  Your presence upsets the
+very balance of the System itself!\"  With a sinister chuckle, he
+raises his oaken staff, taps you on the head, and fades into the
+gloom.  In his place appears a tastefully lettered sign reading:
+
+			DUNGEON CLOSED
+
+At that instant, you disappear, and all your belongings clatter to
+the ground.
+`),
 	 finish(false)),
    finish(false));
   }
@@ -300,17 +325,17 @@ export function do_script() {
     let unm: string = GLOBALS.xunm;
     let muddle: number = GLOBALS.muddle;
     cond(/*(*/ [GLOBALS.my_script,	 do_unscript(false)] /*)*/);
-cond(/*(*/ [GLOBALS.script_channel,	 tell("You are already scripting.")] /*)*/,
-	/*(*/ [((muddle > 100 || (!unm["GUEST"] && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch) && ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch))) && ch = open("PRINT", "ZORK", "SCRIPT", "DSK", unm)),
+cond(/*(*/ [GLOBALS.script_channel,	 tell(`You are already scripting.`)] /*)*/,
+	/*(*/ [((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch) && ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))) && ch = open(`PRINT`, `ZORK`, `SCRIPT`, `DSK`, unm)),
 	 top(GLOBALS.inchan)[1] = /*(*/ [ch] /*)*/,
 	 top(GLOBALS.outchan)[1] = /*(*/ [ch] /*)*/,
 	 GLOBALS.script_channel = ch,
 	 cond(/*(*/ [GLOBALS.muddle < 100,
-		tell("Scripting to", 1, GLOBALS.xunm,";ZORK SCRIPT")] /*)*/,
+		tell(`Scripting to `, 1, GLOBALS.xunm,`;ZORK SCRIPT`)] /*)*/,
 	       /*(*/ [t,
-		tell("Scripting to <", 1, GLOBALS.xunm,">ZORK.SCRIPT")] /*)*/)] /*)*/,
+		tell(`Scripting to <`, 1, GLOBALS.xunm,`>ZORK.SCRIPT`)] /*)*/)] /*)*/,
 	/*(*/ [t,
-	 tell("I can't open the script channel.")] /*)*/);
+	 tell(`I can't open the script channel.`)] /*)*/);
   }
 
 export function do_unscript(verbose?: (atom | false)) {
@@ -318,8 +343,8 @@ export function do_unscript(verbose?: (atom | false)) {
 	 top(GLOBALS.outchan)[1] = /*(*/ [] /*)*/,
 	 close(GLOBALS.script_channel),
 	 GLOBALS.script_channel = false,
-	 (verbose && tell("Scripting off."))] /*)*/,
-	/*(*/ [(verbose && tell("Scripting wasn't on."))] /*)*/);
+	 (verbose && tell(`Scripting off.`))] /*)*/,
+	/*(*/ [(verbose && tell(`Scripting wasn't on.`))] /*)*/);
   }
 
 gdecl(/*(*/ [then] /*)*/, fix)
@@ -328,25 +353,25 @@ export function do_save() {
     let muddle: number = GLOBALS.muddle;
     let ch: (channel | false) = null;
     let unm: string = GLOBALS.xunm;
-    cond(/*(*/ [(muddle > 100 || (!unm["GUEST"] && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch))),
-	 cond(/*(*/ [(muddle > 100 || (ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch))),
+    cond(/*(*/ [(muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch))),
+	 cond(/*(*/ [(muddle > 100 || (ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))),
 		(GLOBALS.script_channel && do_unscript()),
-		tell("Saving."),
+		tell(`Saving.`),
 		int_level(100000),
-		off("CHAR", GLOBALS.inchan),
+		off(`CHAR`, GLOBALS.inchan),
 		GLOBALS.then = chtype(dskdate(), fix),
 		GLOBALS.played_time = get_time(),
-		cond(/*(*/ [ch = open("PRINTB",
+		cond(/*(*/ [ch = open(`PRINTB`,
 				     cond(/*(*/ [muddle < 100,
-					    string("DSK:", unm,";ZORK SAVE")] /*)*/,
+					    string(`DSK:`, unm,`;ZORK SAVE`)] /*)*/,
 					   /*(*/ [t,
-					    string("DSK:<", unm,">ZORK.SAVE")] /*)*/)),
+					    string(`DSK:<`, unm,`>ZORK.SAVE`)] /*)*/)),
 		       save_game(ch),
-		       finish(chtype(() => /*(*/ [". Saved."] /*)*/, false))] /*)*/,
-		      /*(*/ [tell("Save failed."),
-		       tell(ch[1], 1, "", ch[2])] /*)*/)] /*)*/,
-	       /*(*/ [tell("Can't open channel for save.")] /*)*/)] /*)*/,
-	/*(*/ [t, tell("Can't open channel for save.")] /*)*/);
+		       finish(chtype(() => /*(*/ [`. Saved.`] /*)*/, false))] /*)*/,
+		      /*(*/ [tell(`Save failed.`),
+		       tell(ch[1], 1, ` `, ch[2])] /*)*/)] /*)*/,
+	       /*(*/ [tell(`Can't open channel for save.`)] /*)*/)] /*)*/,
+	/*(*/ [t, tell(`Can't open channel for save.`)] /*)*/);
   }
 
 export function do_restore() {
@@ -357,21 +382,21 @@ export function do_restore() {
     let now: number = null;
     let thend: number = null;
     cond(/*(*/ [muddle < 100,
-	  str = string("DSK:", GLOBALS.xunm,";ZORK SAVE")] /*)*/,
+	  str = string(`DSK:`, GLOBALS.xunm,`;ZORK SAVE`)] /*)*/,
 	 /*(*/ [t,
-	  str = string("DSK:<", GLOBALS.xunm,">ZORK.SAVE")] /*)*/);
+	  str = string(`DSK:<`, GLOBALS.xunm,`>ZORK.SAVE`)] /*)*/);
 prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	 /*#*/ [decl, /*(*/ [/*(*/ [foo] /*)*/, (atom || false), /*(*/ [snm] /*)*/, special(string)] /*)*/] /*2*/,
-	 cond(/*(*/ [ch = open("READB", str),
+	 cond(/*(*/ [ch = open(`READB`, str),
 		cond(/*(*/ [restore_game(ch),
 		       cond(/*(*/ [GLOBALS.winners[GLOBALS.xunm]] /*)*/,
 			     /*(*/ [nowd = chtype(getbits(now = chtype(dskdate(), fix),
 							 bits(18, 18)),
 						fix) === thend = chtype(getbits(GLOBALS.then,bits(18, 18)), fix),
 			      cond(/*(*/ [g__Q(_(now,GLOBALS.then), 2400)] /*)*/,
-				    /*(*/ [tell("It's too soon."),
+				    /*(*/ [tell(`It's too soon.`),
 				     cond(/*(*/ [GLOBALS.muddle > 100,
-					    off("CHAR", GLOBALS.inchan),
+					    off(`CHAR`, GLOBALS.inchan),
 					    int_level(10000),
 					    quit()] /*)*/),
 				     quit()] /*)*/)] /*)*/,
@@ -380,26 +405,27 @@ prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 						_(24, 7200)),
 					     chtype(getbits(now,bits(18, 0)), fix)),
 					  2400)] /*)*/,
-				    /*(*/ [tell("It's too soon."),
+				    /*(*/ [tell(`It's too soon.`),
 				     quit()] /*)*/)] /*)*/),
 		       GLOBALS.intime = now,
-		       tell("Restored.")] /*)*/,
-		      /*(*/ [tell("Restore failed.")] /*)*/),
+		       tell(`Restored.`)] /*)*/,
+		      /*(*/ [tell(`Restore failed.`)] /*)*/),
 		room_desc()] /*)*/,
 	       /*(*/ [(foo && muddle > 100),
-		str = string(sname(), "ZORK.SAVE"),
+		str = string(sname(), `ZORK.SAVE`),
 		foo = false,
 		again()] /*)*/,
-	       /*(*/ [tell(ch[2], 1, "", ch[1])] /*)*/));
+	       /*(*/ [tell(ch[2], 1, ` `, ch[1])] /*)*/));
   }
 
 export function prob(num: number) {
     l__Q(mod(random(), 100), num);
   }
 
-"GET-ATOM TAKES A VALUE AND SEARCHES INITIAL FOR FIRST ATOM\nSETG'ED TO THAT."
+`GET-ATOM TAKES A VALUE AND SEARCHES INITIAL FOR FIRST ATOM
+SETG'ED TO THAT.`
 
-define(get_atom, act, /*(*/ [val, "AUX", /*(*/ [o, initial[oblist]] /*)*/] /*)*/,
+define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/,
   /*#*/ [decl, /*(*/ [/*(*/ [o] /*)*/, oblist] /*)*/] /*2*/,
   mapf(false,
     function(x: list(/*[*/ [rest, atom] /*]*/)) {
@@ -420,23 +446,23 @@ gdecl(/*(*/ [super_brief_X_flag, brief_X_flag] /*)*/, (atom || false))
 
 export function brief() {
     GLOBALS.brief_X_flag = t;
-tell("Brief descriptions.");
+tell(`Brief descriptions.`);
   }
 
 export function super_brief() {
     GLOBALS.super_brief_X_flag = t;
-tell("No long descriptions.");
+tell(`No long descriptions.`);
   }
 
 export function un_brief() {
     GLOBALS.brief_X_flag = false;
 GLOBALS.super_brief_X_flag = false;
-tell("Long descriptions.");
+tell(`Long descriptions.`);
   }
 
 export function un_super_brief() {
     GLOBALS.super_brief_X_flag = false;
-tell("Some long descriptions.");
+tell(`Some long descriptions.`);
   }
 
 export function room_desc() {
@@ -447,7 +473,7 @@ export function room_info(full?: (atom | false)) {
     let av: (false | object) = avehicle(GLOBALS.winner);
     let rm: room = GLOBALS.here;
     let prso: (direction | false | object) = GLOBALS.prsvec[2];
-    let winobj: object = find_obj("#####");
+    let winobj: object = find_obj(`#####`);
     let outchan: channel = GLOBALS.outchan;
     let ra = null;
     GLOBALS.tell_flag = t;
@@ -455,19 +481,19 @@ export function room_info(full?: (atom | false)) {
 prog(/*(*/ [] /*)*/,
      cond(/*(*/ [GLOBALS.here !== aroom(GLOBALS.player),
 	    GLOBALS.prsvec[1] = GLOBALS.walk_in_X_words,
-	    tell("Done."),
+	    tell(`Done.`),
 	    return()] /*)*/,
 	   /*(*/ [(prso && type_Q(prso,object)),
 	    cond(/*(*/ [object_action()] /*)*/,
 		  /*(*/ [oread(prso),
 		   tell(oread(prso))] /*)*/,
-		  /*(*/ [tell("I see nothing special about the",
+		  /*(*/ [tell(`I see nothing special about the `,
 			 1,
 			 odesc2(prso),
-			 ".")] /*)*/),
+			 `.`)] /*)*/),
 	    return()] /*)*/,
 	   /*(*/ [!lit_Q(rm),
-	    tell("It is pitch black.  You are likely to be eaten by a grue."),
+	    tell(`It is pitch black.  You are likely to be eaten by a grue.`),
 	    return(false)] /*)*/,
 	   /*(*/ [((!full && GLOBALS.super_brief_X_flag) || (rseen_Q(rm) && (GLOBALS.brief_X_flag || prob(80)) && !full)),
 	    tell(rdesc2(rm))] /*)*/,
@@ -477,14 +503,14 @@ prog(/*(*/ [] /*)*/,
 	    GLOBALS.prsvec[1] = GLOBALS.foo_X_words, // Something innocuous] /*)*/,
 	   /*(*/ [tell(rdesc1(rm))] /*)*/),
      rm[GLOBALS.rseen_Q] = t,
-     (av && tell("You are in the", 1, odesc2(av), ".")),
+     (av && tell(`You are in the `, 1, odesc2(av), `.`)),
      mapf(false,
       function(x: object) {
           cond(/*(*/ [(ovis_Q(x) && describable_Q(x)),
 	   cond(/*(*/ [x === av] /*)*/,
 		 /*(*/ [t,
 		  cond(/*(*/ [long_desc_obj(x),
-		  	 (av && tell("[in the room]", 0)),
+		  	 (av && tell(` [in the room]`, 0)),
 		  	 crlf()] /*)*/)] /*)*/),
 	   cond(/*(*/ [trnn(x,GLOBALS.actorbit),
 	   	  invent(orand(x))] /*)*/,
@@ -504,29 +530,29 @@ prog(/*(*/ [] /*)*/,
 
 psetg(indentstr, rest(istring(8), 8))
 
-define(print_cont, print_c, /*(*/ [obj, av, winobj, indent, "OPTIONAL", /*(*/ [case_Q, t] /*)*/,
-			    "AUX", /*(*/ [cont, ocontents(obj)] /*)*/] /*)*/,
+define(print_cont, print_c, /*(*/ [obj, av, winobj, indent, `OPTIONAL`, /*(*/ [case_Q, t] /*)*/,
+			    `AUX`, /*(*/ [cont, ocontents(obj)] /*)*/] /*)*/,
     /*#*/ [decl, /*(*/ [/*(*/ [av] /*)*/, (false || object), /*(*/ [obj, winobj] /*)*/, object, /*(*/ [indent] /*)*/, string,
 	   /*(*/ [cont] /*)*/, list(/*[*/ [rest, object] /*]*/), /*(*/ [case_Q] /*)*/, (atom || false)] /*)*/] /*2*/,
     cond(/*(*/ [!empty_Q(cont),
-	   cond(/*(*/ [obj === find_obj("TCASE"),
+	   cond(/*(*/ [obj === find_obj(`TCASE`),
 		  cond(/*(*/ [!case_Q, return(t, print_c)] /*)*/),
-		  tell("Your collection of treasures consists of:")] /*)*/,
-		 /*(*/ [!(cont.length === 1 && cont[1] === find_obj("#####")),
+		  tell(`Your collection of treasures consists of:`)] /*)*/,
+		 /*(*/ [!(cont.length === 1 && cont[1] === find_obj(`#####`)),
 		  tell(indent,0),
-		  tell("The", 1, odesc2(obj), "contains:")] /*)*/,
+		  tell(`The `, 1, odesc2(obj), ` contains:`)] /*)*/,
 		 /*(*/ [return(t, print_c)] /*)*/),
 	   mapf(false,
 	     function(y: object) {
             cond(/*(*/ [(av && y === winobj)] /*)*/,
 		     /*(*/ [(ovis_Q(y) && describable_Q(y) && !empty_Q(odesc2(y))),
-		      tell(indent,1, "A", odesc2(y))] /*)*/);
+		      tell(indent,1, ` A `, odesc2(y))] /*)*/);
 cond(/*(*/ [see_inside_Q(y),
 		      print_cont(y,av,winobj,back(indent))] /*)*/);
           },
 	     ocontents(obj))] /*)*/))
 
-"GIVE LONG DESCRIPTION OF OBJECT"
+`GIVE LONG DESCRIPTION OF OBJECT`
 
 export function long_desc_obj(obj: object) {
     let str = null;
@@ -537,7 +563,7 @@ cond(/*(*/ [empty_Q(str), false] /*)*/,
 	      /*(*/ [tell(str,0)] /*)*/);
   }
 
-"TRUE IF PARSER WON:  OTHERWISE INHIBITS OBJECT ACTIONS, CLOCKS (BUT NOT THIEF)."
+`TRUE IF PARSER WON:  OTHERWISE INHIBITS OBJECT ACTIONS, CLOCKS (BUT NOT THIEF).`
 
 gdecl(/*(*/ [parse_won] /*)*/, (atom || false))
 
@@ -562,7 +588,7 @@ repeat(/*(*/ [vval, cv] /*)*/,
 	   vval = t,
 	   cond(/*(*/ [!ivec,
 		  rm = GLOBALS.here,
-		  princ(">"),
+		  princ(`>`),
 		  GLOBALS.tell_flag = false,
 		  inplen = readstring(inbuf,GLOBALS.inchan,str),
 		  readchr(GLOBALS.inchan),
@@ -577,11 +603,11 @@ repeat(/*(*/ [vval, cv] /*)*/,
 			 (av = avehicle(winner) && random_action = oaction(av) && vval = !apply_random(random_action,read_in)),
 			 cond(/*(*/ [(vval && random_action = vfcn(cv) && apply_random(random_action)),
 				cond(/*(*/ [(random_action = raction(rm = GLOBALS.here) && apply_random(random_action))] /*)*/)] /*)*/)] /*)*/,
-			/*(*/ [ivec,			 cond(/*(*/ [GLOBALS.tell_flag,				tell("Please input entire command again.")] /*)*/,
-			       /*(*/ [tell("Nothing happens.")] /*)*/),
+			/*(*/ [ivec,			 cond(/*(*/ [GLOBALS.tell_flag,				tell(`Please input entire command again.`)] /*)*/,
+			       /*(*/ [tell(`Nothing happens.`)] /*)*/),
 			 return()] /*)*/),
-		  (GLOBALS.tell_flag || tell("Nothing happens."))] /*)*/,
-		 /*(*/ [t, GLOBALS.parse_won = false, tell("Beg pardon?")] /*)*/),
+		  (GLOBALS.tell_flag || tell(`Nothing happens.`))] /*)*/,
+		 /*(*/ [t, GLOBALS.parse_won = false, tell(`Beg pardon?`)] /*)*/),
 	   mapf(false,
 		 function(x: hack) {
           cond(/*(*/ [random_action = haction(x),
@@ -618,29 +644,29 @@ export function score(ask_Q?: (atom | false)) {
     let pct: number = null;
     GLOBALS.tell_flag = t;
 crlf();
-cond(/*(*/ [ask_Q,princ("Your score would be")] /*)*/,
-	      /*(*/ [princ("Your score is")] /*)*/);
+cond(/*(*/ [ask_Q,princ(`Your score would be `)] /*)*/,
+	      /*(*/ [princ(`Your score is `)] /*)*/);
 prin1(scor = ascore(GLOBALS.winner));
-princ("[total of");
+princ(` [total of `);
 prin1(GLOBALS.score_max);
-princ("points], in");
+princ(` points], in `);
 prin1(GLOBALS.moves);
-cond(/*(*/ [1_Q(GLOBALS.moves), princ("move.")] /*)*/,
-	      /*(*/ [princ("moves.")] /*)*/);
+cond(/*(*/ [1_Q(GLOBALS.moves), princ(` move.`)] /*)*/,
+	      /*(*/ [princ(` moves.`)] /*)*/);
 crlf();
-princ("This score gives you the rank of");
+princ(`This score gives you the rank of `);
 pct = _(float(scor), float(GLOBALS.score_max));
-princ(cond(/*(*/ [1_Q(pct), "Cheater"] /*)*/,
-		     /*(*/ [pct > 0_95000000, "Wizard"] /*)*/,
-		     /*(*/ [pct > 0_89999999, "Master"] /*)*/,
-		     /*(*/ [pct > 0_79999999, "Winner"] /*)*/,
-		     /*(*/ [pct > 0_60000000, "Hacker"] /*)*/,
-		     /*(*/ [pct > 0_39999999, "Adventurer"] /*)*/,
-		     /*(*/ [pct > 0_19999999, "Junior Adventurer"] /*)*/,
-		     /*(*/ [pct > 0_09999999, "Novice Adventurer"] /*)*/,
-		     /*(*/ [pct > 0_04999999, "Amateur Adventurer"] /*)*/,
-		     /*(*/ ["Beginner"] /*)*/));
-princ(".");
+princ(cond(/*(*/ [1_Q(pct), `Cheater`] /*)*/,
+		     /*(*/ [pct > 0_95000000, `Wizard`] /*)*/,
+		     /*(*/ [pct > 0_89999999, `Master`] /*)*/,
+		     /*(*/ [pct > 0_79999999, `Winner`] /*)*/,
+		     /*(*/ [pct > 0_60000000, `Hacker`] /*)*/,
+		     /*(*/ [pct > 0_39999999, `Adventurer`] /*)*/,
+		     /*(*/ [pct > 0_19999999, `Junior Adventurer`] /*)*/,
+		     /*(*/ [pct > 0_09999999, `Novice Adventurer`] /*)*/,
+		     /*(*/ [pct > 0_04999999, `Amateur Adventurer`] /*)*/,
+		     /*(*/ [`Beginner`] /*)*/));
+princ(`.`);
 crlf();
   }
 
@@ -648,13 +674,13 @@ export function finish(ask_Q?: (atom | false)) {
     let scor: number = null;
     unwind(prog(/*(*/ [] /*)*/,
 	  scor = score(ask_Q),
-	  cond(/*(*/ [((ask_Q && tell("Do you wish to leave the game? (Y is affirmative):") && yes_no(false)) || !ask_Q),
+	  cond(/*(*/ [((ask_Q && tell(`Do you wish to leave the game? (Y is affirmative): `) && yes_no(false)) || !ask_Q),
 	         record(scor,GLOBALS.moves,GLOBALS.deaths,ask_Q,GLOBALS.here),
 	         quit()] /*)*/)),
 	 quit());
   }
 
-"PRINT OUT DESCRIPTION OF LOSSAGE:  WHEN PLAYED, SCORE, # MOVES, ETC."
+`PRINT OUT DESCRIPTION OF LOSSAGE:  WHEN PLAYED, SCORE, # MOVES, ETC.`
 
 GLOBALS.record_string = istring(5)
 
@@ -663,19 +689,19 @@ gdecl(/*(*/ [record_string] /*)*/, string)
 psetg(recorder_string, string(ascii(26), ascii(3), ascii(0)))
 
 define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
-		"AUX", /*(*/ [ch, false] /*)*/, /*(*/ [str, GLOBALS.record_string] /*)*/, fl, /*(*/ [ct, 0] /*)*/, /*(*/ [muddle, GLOBALS.muddle] /*)*/,
+		`AUX`, /*(*/ [ch, false] /*)*/, /*(*/ [str, GLOBALS.record_string] /*)*/, fl, /*(*/ [ct, 0] /*)*/, /*(*/ [muddle, GLOBALS.muddle] /*)*/,
 		/*(*/ [dev, value(dev)] /*)*/, /*(*/ [snm, value(snm)] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [muddle, score, moves, deaths] /*)*/, fix, /*(*/ [quit_Q] /*)*/, (atom || false), /*(*/ [loc] /*)*/, room,
 	       /*(*/ [ch] /*)*/, (channel(fix) || false), /*(*/ [str] /*)*/, string, /*(*/ [ct, fl] /*)*/, fix,
 	       /*(*/ [dev, snm] /*)*/, string] /*)*/] /*2*/,
 	unwind(prog(/*(*/ [] /*)*/,
 	  prog(/*(*/ [] /*)*/,
-		cond(/*(*/ [ch = open("READB", "ZORK", "LOG", dev,snm),
+		cond(/*(*/ [ch = open(`READB`, `ZORK`, `LOG`, dev,snm),
 		       cond(/*(*/ [g__Q(fl = file_length(ch), 1),
 			      access(ch,_(fl,1)),
 			      ct = readstring(str,ch,GLOBALS.recorder_string)] /*)*/),
 		       close(ch),
-		       cond(/*(*/ [ch = open("PRINTO", "ZORK", "LOG", dev,snm)] /*)*/,
+		       cond(/*(*/ [ch = open(`PRINTO`, `ZORK`, `LOG`, dev,snm)] /*)*/,
 			     /*(*/ [(muddle > 100 && ch[3] === _600123_),
 			      // Can't win--no write access,
 			      return(t, record)] /*)*/,
@@ -686,19 +712,19 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 		       // on 10x, must get FILE BUSY to try again,
 		       sleep(1),
 		       again()] /*)*/,
-		      /*(*/ [ch = open("PRINT", "ZORK", "LOG", dev,snm)] /*)*/,
+		      /*(*/ [ch = open(`PRINT`, `ZORK`, `LOG`, dev,snm)] /*)*/,
 		      /*(*/ [(muddle > 100 && ch[3] === _600117_),
 		       // No write access,
 		       return(t, record)] /*)*/,
 		      /*(*/ [return(t, record)] /*)*/)),
 	  crlf(ch),
-	  princ("", ch),
+	  princ(`	`, ch),
 	  princ(GLOBALS.user_name,ch),
 	  cond(/*(*/ [GLOBALS.user_name != GLOBALS.xunm,
-		 princ("(", ch),
+		 princ(`  (`, ch),
 		 princ(GLOBALS.xunm,ch),
 		 princ(_X__, ch)] /*)*/),
-	  princ("", ch),
+	  princ(`	`, ch),
 	  pdskdate(dskdate(), ch),
 	  crlf(ch),
 	  play_time(ch,false),
@@ -706,27 +732,27 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 	  prin1(score,ch),
 	  princ(_X__, ch),
 	  prin1(GLOBALS.score_max,ch),
-	  princ("points,", ch),
+	  princ(` points, `, ch),
 	  prin1(moves,ch),
-	  princ("moves,", ch),
+	  princ(` moves, `, ch),
 	  prin1(deaths,ch),
-	  princ("death", ch),
-	  cond(/*(*/ [1_Q(deaths), princ(".", ch)] /*)*/,
-		/*(*/ [t, princ("s.", ch)] /*)*/),
-	  princ("In", ch),
+	  princ(` death`, ch),
+	  cond(/*(*/ [1_Q(deaths), princ(`.`, ch)] /*)*/,
+		/*(*/ [t, princ(`s.`, ch)] /*)*/),
+	  princ(`  In `, ch),
 	  princ(rdesc2(loc), ch),
-	  cond(/*(*/ [quit_Q,princ(". Quit.", ch)] /*)*/,
-		/*(*/ [empty_Q(quit_Q), princ(". Died.", ch)] /*)*/,
+	  cond(/*(*/ [quit_Q,princ(`. Quit.`, ch)] /*)*/,
+		/*(*/ [empty_Q(quit_Q), princ(`. Died.`, ch)] /*)*/,
 		/*(*/ [princ(quit_Q[1], ch)] /*)*/),
 	  crlf(ch),
 	  mapf(false,
 		function(x: atom, y: string) {
-            cond(/*(*/ [/*,*/ [x] /*1*/,princ("/", ch), princ(y,ch)] /*)*/);
+            cond(/*(*/ [/*,*/ [x] /*1*/,princ(`/`, ch), princ(y,ch)] /*)*/);
           },
 		GLOBALS.flag_names,		GLOBALS.short_names),
 	  mapf(false,
 		function(x: atom, y: string) {
-            cond(/*(*/ [0_Q(/*,*/ [x] /*1*/), princ("/", ch), princ(y,ch)] /*)*/);
+            cond(/*(*/ [0_Q(/*,*/ [x] /*1*/), princ(`/`, ch), princ(y,ch)] /*)*/);
           },
 		GLOBALS.val_names,		GLOBALS.short_val_names),
 	  crlf(ch),
@@ -762,48 +788,48 @@ psetg(flag_names,
 endblock()
 
 psetg(short_names,
-      vector("KI", "TR", "KE", "LO", "DO", "GL", "EC",
-	      "RI", "LL", "CY", "MA", "RA", "GN", "CA", "CG"))
+      vector(`KI`, `TR`, `KE`, `LO`, `DO`, `GL`, `EC`,
+	      `RI`, `LL`, `CY`, `MA`, `RA`, `GN`, `CA`, `CG`))
 
 psetg(val_names, uvector(light_shaft))
 
-psetg(short_val_names, vector("LI"))
+psetg(short_val_names, vector(`LI`))
 
 export function pdskdate(wd: primtype(word), ch: channel) {
     let tim: number = chtype(getbits(wd,bits(18, 0)), fix);
-    let a_p: string = "AM";
+    let a_p: string = ` AM`;
     let hr: number = null;
-    princ("", ch);
-cond(/*(*/ [0_Q(chtype(wd,fix)), princ("unknown", ch)] /*)*/,
+    princ(` `, ch);
+cond(/*(*/ [0_Q(chtype(wd,fix)), princ(`unknown `, ch)] /*)*/,
 	      /*(*/ [t,
 	       princ(GLOBALS.months[chtype(getbits(wd,bits(4, 23)), fix)], ch),
-	       princ("", ch),
+	       princ(` `, ch),
 	       prin1(chtype(getbits(wd,bits(5, 18)), fix), ch),
-	       princ("at", ch),
+	       princ(` at `, ch),
 	       hr = _(tim,7200),
-	       cond(/*(*/ [g__Q(hr,12), hr = _(hr,12), a_p = "PM"] /*)*/),
+	       cond(/*(*/ [g__Q(hr,12), hr = _(hr,12), a_p = ` PM`] /*)*/),
 	       cond(/*(*/ [0_Q(hr), hr = 12] /*)*/),
 	       prin1(hr,ch),
-	       princ(":", ch),
+	       princ(`:`, ch),
 	       hr = _(mod(tim,7200), 120),
-	       cond(/*(*/ [hr < 10, princ("0", ch)] /*)*/),
+	       cond(/*(*/ [hr < 10, princ(`0`, ch)] /*)*/),
 	       prin1(hr,ch),
 	       princ(a_p,ch)] /*)*/);
   }
 
 psetg(months,
-      /*[*/ ["January",
-       "February",
-       "March",
-       "April",
-       "May",
-       "June",
-       "July",
-       "August",
-       "September",
-       "October",
-       "November",
-       "December"] /*]*/)
+      /*[*/ [`January`,
+       `February`,
+       `March`,
+       `April`,
+       `May`,
+       `June`,
+       `July`,
+       `August`,
+       `September`,
+       `October`,
+       `November`,
+       `December`] /*]*/)
 
 gdecl(/*(*/ [months] /*)*/, vector(/*[*/ [12, string] /*]*/))
 
@@ -812,7 +838,7 @@ export function jigs_up(desc: string) {
     let deaths: number = GLOBALS.deaths;
     let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(winner);
     let random_list: list(/*[*/ [rest, room] /*]*/) = GLOBALS.random_list;
-    let lamp: (false | room) = find_obj("LAMP");
+    let lamp: (false | room) = find_obj(`LAMP`);
     let lamp_location: (false | room) = null;
     let val_list: list(/*[*/ [rest, object] /*]*/) = /*(*/ [] /*)*/;
     let lc = null;
@@ -820,25 +846,31 @@ export function jigs_up(desc: string) {
    /*(*/ [unwind(prog(/*(*/ [] /*)*/,
         cond(/*(*/ [winner !== GLOBALS.player,
 	       tell(desc),
-	       tell("The", 1, odesc2(aobj(winner)), "has died."),
+	       tell(`The `, 1, odesc2(aobj(winner)), ` has died.`),
 	       remove_object(aobj(winner)),
-	       winner[GLOBALS.aroom] = find_room("FCHMP"),
+	       winner[GLOBALS.aroom] = find_room(`FCHMP`),
 	       return()] /*)*/),
 	reset(GLOBALS.inchan),
 	score_upd(_10),
 	winner[GLOBALS.avehicle] = false,
 	cond(/*(*/ [g__Q(deaths,2),
 	       tell(desc),
-	       tell("You clearly are a suicidal maniac.  We don't allow psychotics in the\ncave, since they may harm other adventurers.  Your remains will\ninstalled in the Land of the Living Dead, where your fellow adventurers \nmay gloat over them."),
+	       tell(`You clearly are a suicidal maniac.  We don't allow psychotics in the
+cave, since they may harm other adventurers.  Your remains will
+installed in the Land of the Living Dead, where your fellow adventurers 
+may gloat over them.`),
 	       finish(false)] /*)*/,
 	      /*(*/ [GLOBALS.deaths = _(deaths,1),
 	       tell(desc),
-	       tell("Do you want me to try to patch you?", 0),
+	       tell(`Do you want me to try to patch you?`, 0),
 	       cond(/*(*/ [!yes_no(t),
-		      tell("What?  You don't trust me?  Why, only last week I patched a running ITS\nand it survived for over 30 seconds.  Oh, well.", 2),
+		      tell(`What?  You don't trust me?  Why, only last week I patched a running ITS
+and it survived for over 30 seconds.  Oh, well.`, 2),
 		      finish(false)] /*)*/,
 		     /*(*/ [t,
-		      tell("Now, let me see...\nWell, we weren't quite able to restore your state.  You can't have\neverything."),
+		      tell(`Now, let me see...
+Well, we weren't quite able to restore your state.  You can't have
+everything.`),
 		      cond(/*(*/ [lamp_location = oroom(lamp),
 			     winner[GLOBALS.aobjs] = /*(*/ [lamp,_X,aobjs] /*)*/,
 			     cond(/*(*/ [memq(lamp,robjs(lamp_location)),
@@ -849,8 +881,8 @@ export function jigs_up(desc: string) {
 				    lamp[GLOBALS.ocan] = false] /*)*/)] /*)*/,
 			    /*(*/ [memq(lamp,aobjs),
 			     winner[GLOBALS.aobjs] = /*(*/ [lamp,_X,splice_out(lamp,aobjs)] /*)*/] /*)*/),
-		      find_obj("DOOR")[GLOBALS.otouch_Q] = false,
-		      goto(find_room("FORE1")),
+		      find_obj(`DOOR`)[GLOBALS.otouch_Q] = false,
+		      goto(find_room(`FORE1`)),
 		      GLOBALS.egypt_flag_X_flag = t,
 		      val_list = rob_adv(winner,val_list),
 		      mapf(false,
@@ -880,17 +912,17 @@ export function jigs_up(desc: string) {
   }
 
 export function info() {
-    file_to_tty("MADADV", "INFO");
+    file_to_tty(`MADADV`, `INFO`);
   }
 
 export function help() {
-    file_to_tty("MADADV", "HELP");
+    file_to_tty(`MADADV`, `HELP`);
   }
 
 psetg(breaks, string(ascii(3), ascii(0)))
 
 export function file_to_tty(file1: string, file2: string, dev?: string, snm: string) {
-    let ch: (channel | false) = open("READ", file1,file2,dev,snm);
+    let ch: (channel | false) = open(`READ`, file1,file2,dev,snm);
     let len: number = null;
     let buf: string = GLOBALS.inbuf;
     let buflen: number = buf.length;
@@ -911,7 +943,7 @@ export function file_to_tty(file1: string, file2: string, dev?: string, snm: str
 				     crlf(GLOBALS.outchan),
 				     return(close(ch))] /*)*/))),
 		close(ch))] /*)*/,
-	      /*(*/ [tell("File not found.")] /*)*/);
+	      /*(*/ [tell(`File not found.`)] /*)*/);
   }
 
 export function invent(win?: adv) {
@@ -922,32 +954,32 @@ export function invent(win?: adv) {
         cond(/*(*/ [ovis_Q(x),
 		   (any || prog(/*(*/ [] /*)*/,
 				  cond(/*(*/ [win === GLOBALS.player,
-					 tell("You are carrying:")] /*)*/,
-					/*(*/ [tell("The",
+					 tell(`You are carrying:`)] /*)*/,
+					/*(*/ [tell(`The `,
 					       1,
 					       odesc2(aobj(win)),
-					       "is carrying:")] /*)*/),
+					       ` is carrying:`)] /*)*/),
 				  any = t)),
-		   tell("A", 0, odesc2(x)),
+		   tell(`A `, 0, odesc2(x)),
 		   cond(/*(*/ [(empty_Q(ocontents(x)) || !see_inside_Q(x))] /*)*/,
-			 /*(*/ [tell("with", 0),
+			 /*(*/ [tell(` with `, 0),
 			  print_contents(ocontents(x))] /*)*/),
 		   crlf()] /*)*/);
       },
     aobjs(win));
-(any || win !== GLOBALS.player || tell("You are empty handed."));
+(any || win !== GLOBALS.player || tell(`You are empty handed.`));
   }
 
 export function print_contents(olst: list(/*[*/ [rest, object] /*]*/)) {
     let outchan: channel = GLOBALS.outchan;
     mapr(false,
 	function(y: list(/*[*/ [rest, object] /*]*/)) {
-        princ("a");
+        princ(`a `);
 princ(odesc2(y[1]));
 cond(/*(*/ [y.length > 2,
-		       princ(",")] /*)*/,
+		       princ(`, `)] /*)*/,
 		      /*(*/ [y.length === 2,
-		       princ(", and")] /*)*/);
+		       princ(`, and `)] /*)*/);
       },
 	olst);
   }
@@ -960,7 +992,7 @@ export function lit_Q(rm: room) {
     (rlight_Q(rm) || lfcn(robjs(rm)) || lfcn(aobjs(win)) || (win !== GLOBALS.player && GLOBALS.here === aroom(GLOBALS.player) && lfcn(aobjs(GLOBALS.player))));
   }
 
-define(lfcn, lfcn, /*(*/ [l, "AUX", y] /*)*/, 
+define(lfcn, lfcn, /*(*/ [l, `AUX`, y] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [l] /*)*/, list(/*[*/ [rest, object] /*]*/), /*(*/ [y] /*)*/, adv] /*)*/] /*2*/,
 	mapf(false,
 	      function(x: object) {
@@ -997,8 +1029,8 @@ export function walk() {
 					     /*(*/ [/*,*/ [cxflag(leavings)] /*1*/,
 					      cxroom(leavings)] /*)*/) && lit_Q(leavings)),
 			     (type_Q(leavings,atom) || (goto(leavings) && room_info(false)))] /*)*/,
-			    /*(*/ [jigs_up("Oh, no!  A fearsome grue slithered into the room and devoured you.")] /*)*/)] /*)*/,
-		     /*(*/ [jigs_up("Oh, no!  You walked into the slavering fangs of a lurking grue.")] /*)*/)] /*)*/,
+			    /*(*/ [jigs_up(`Oh, no!  A fearsome grue slithered into the room and devoured you.`)] /*)*/)] /*)*/,
+		     /*(*/ [jigs_up(`Oh, no!  You walked into the slavering fangs of a lurking grue.`)] /*)*/)] /*)*/,
 	      /*(*/ [nrm = memq(where,rexits(rm)),
 	       leavings = nrm[2],
 	       cond(/*(*/ [type_Q(leavings,room), (goto(leavings) && room_info(false))] /*)*/,
@@ -1007,9 +1039,9 @@ export function walk() {
 			     (type_Q(nl,atom) || (goto(nl) && room_info(false)))] /*)*/,
 			    /*(*/ [cxs = cxstr(leavings),
 			     (empty_Q(cxs) || tell(cxs))] /*)*/,
-			    /*(*/ [tell("There is no way to go in that direction.")] /*)*/)] /*)*/,
+			    /*(*/ [tell(`There is no way to go in that direction.`)] /*)*/)] /*)*/,
 		     /*(*/ [t, tell(leavings)] /*)*/)] /*)*/,
-	      /*(*/ [tell("There is no way to go in that direction.")] /*)*/);
+	      /*(*/ [tell(`There is no way to go in that direction.`)] /*)*/);
   }
 
 export function take(take_Q?: (atom | false)) {
@@ -1029,10 +1061,10 @@ export function take(take_Q?: (atom | false)) {
 		nobj = ocan(obj),
 		cond(/*(*/ [see_inside_Q(nobj),
 		       cond(/*(*/ [oopen_Q(nobj), getter_Q = t] /*)*/,
-			     /*(*/ [tell("I can't reach that."), return(false)] /*)*/)] /*)*/,
-		      /*(*/ [tell("I can't see one here."), return(false)] /*)*/)] /*)*/),
+			     /*(*/ [tell(`I can't reach that.`), return(false)] /*)*/)] /*)*/,
+		      /*(*/ [tell(`I can't see one here.`), return(false)] /*)*/)] /*)*/),
 	 cond(/*(*/ [obj === avehicle(win),
-	   tell("You are in it, loser!"),
+	   tell(`You are in it, loser!`),
 	   return(false)] /*)*/,
 	  /*(*/ [!can_take_Q(obj),
 	   (apply_object(obj) || tell(pick_one(GLOBALS.yuks))),
@@ -1041,7 +1073,7 @@ export function take(take_Q?: (atom | false)) {
 	   load_max = _(load_max,fix(_(_(1_0, load_max), astrength(win)))),
 	   cond(/*(*/ [(getter_Q && memq(nobj,aobjs))] /*)*/,
 		 /*(*/ [_(weight(aobjs), weight(ocontents(obj)), osize(obj)) > load_max,
-		  tell("Your load is too heavy.  You will have to leave something behind."),
+		  tell(`Your load is too heavy.  You will have to leave something behind.`),
 		  return(false)] /*)*/),
 	   cond(/*(*/ [!apply_object(obj),
 		  cond(/*(*/ [getter_Q,			 nobj[GLOBALS.ocontents] = splice_out(obj,ocontents(nobj)),
@@ -1051,10 +1083,10 @@ export function take(take_Q?: (atom | false)) {
 		  win[GLOBALS.aobjs] = /*(*/ [obj,_X,aobjs] /*)*/,
 		  obj[GLOBALS.otouch_Q] = t,
 		  score_obj(obj),
-		  cond(/*(*/ [take_Q,tell("Taken.")] /*)*/, /*(*/ [t] /*)*/)] /*)*/,
+		  cond(/*(*/ [take_Q,tell(`Taken.`)] /*)*/, /*(*/ [t] /*)*/)] /*)*/,
 		 /*(*/ [t] /*)*/)] /*)*/,
-	  /*(*/ [memq(obj,aobjs), tell("You already have it.")] /*)*/,
-	  /*(*/ [tell("I can't see one here."), false] /*)*/));
+	  /*(*/ [memq(obj,aobjs), tell(`You already have it.`)] /*)*/,
+	  /*(*/ [tell(`I can't see one here.`), false] /*)*/));
   }
 
 export function putter(objact?: (atom | false)) {
@@ -1071,20 +1103,20 @@ export function putter(objact?: (atom | false)) {
 	      cond(/*(*/ [trnn(objo,GLOBALS.no_check_bit),
 		     return(object_action())] /*)*/),
 	      cond(/*(*/ [(memq(objo,GLOBALS.stars) || memq(obji,GLOBALS.stars)),
-		     tell("Nice try."),
+		     tell(`Nice try.`),
 		     return(false)] /*)*/),
 	      cond(/*(*/ [(oopen_Q(obji) || openable_Q(obji) || trnn(obji,GLOBALS.vehbit)),
 		     can = obji,
 		     crock = objo] /*)*/,
-		    /*(*/ [tell("I can't do that."), return(false)] /*)*/),
+		    /*(*/ [tell(`I can't do that.`), return(false)] /*)*/),
 	      cond(/*(*/ [!oopen_Q(can),
-		     tell("I can't reach inside."),
+		     tell(`I can't reach inside.`),
 		     return(false)] /*)*/,
 		    /*(*/ [can === crock,
-		     tell("How can you do that?"),
+		     tell(`How can you do that?`),
 		     return(false)] /*)*/,
 		    /*(*/ [_(weight(ocontents(can)), osize(crock)) > ocapac(can),
-		     tell("It won't fit."),
+		     tell(`It won't fit.`),
 		     return(false)] /*)*/),
 	      cond(/*(*/ [(memq(crock,robjs) || (ocan = ocan(crock) && memq(ocan,robjs)) || (ocan && ocan = ocan(ocan) && memq(ocan,robjs))),
 		     pv[1] = GLOBALS.take_X_words,
@@ -1097,7 +1129,7 @@ export function putter(objact?: (atom | false)) {
 			    win[GLOBALS.aobjs] = aobjs = /*(*/ [crock,_X,aobjs] /*)*/,
 			    ocan[GLOBALS.ocontents] = splice_out(crock,ocontents(ocan)),
 			    crock[GLOBALS.ocan] = false] /*)*/,
-			   /*(*/ [tell("I can't reach the", 1, odesc2(crock)),
+			   /*(*/ [tell(`I can't reach the `, 1, odesc2(crock)),
 			    return(false)] /*)*/)] /*)*/),
 	      pv[1] = GLOBALS.put_X_words,
 	      pv[2] = crock,
@@ -1107,7 +1139,7 @@ export function putter(objact?: (atom | false)) {
 		     can[GLOBALS.ocontents] = /*(*/ [crock,_X,ocontents(can)] /*)*/,
 		     crock[GLOBALS.ocan] = can,
 		     crock[GLOBALS.oroom] = GLOBALS.here,
-		     tell("Done.")] /*)*/));
+		     tell(`Done.`)] /*)*/));
   }
  
 export function dropper() {
@@ -1133,9 +1165,9 @@ export function dropper() {
 	      cond(/*(*/ [(ocan(obj) && nobj = ocan(obj) && memq(nobj,aobjs)),
 		     cond(/*(*/ [oopen_Q(nobj), getter_Q = t] /*)*/,
 			   /*(*/ [transparent_Q(nobj),
-			    tell("I can't reach that."),
+			    tell(`I can't reach that.`),
 			    return()] /*)*/,
-			   /*(*/ [tell("I can't see that here.")] /*)*/)] /*)*/),
+			   /*(*/ [tell(`I can't see that here.`)] /*)*/)] /*)*/),
 	      cond(/*(*/ [(getter_Q || memq(obj,aobjs)),
 		     cond(/*(*/ [av] /*)*/,
 			   /*(*/ [getter_Q,			    nobj[GLOBALS.ocontents] = splice_out(obj,ocontents(nobj)),
@@ -1145,14 +1177,14 @@ export function dropper() {
 			   /*(*/ [insert_object(obj,rm)] /*)*/),
 		     cond(/*(*/ [object_action()] /*)*/,
 			   /*(*/ [vname(vec[1]) === drop_X_words,
-			    tell("Dropped.")] /*)*/,
+			    tell(`Dropped.`)] /*)*/,
 			   /*(*/ [vname(vec[1]) === throw_X_words,
-			    tell("Thrown.")] /*)*/)] /*)*/,
-		    /*(*/ [tell("You are not carrying that.")] /*)*/));
+			    tell(`Thrown.`)] /*)*/)] /*)*/,
+		    /*(*/ [tell(`You are not carrying that.`)] /*)*/));
   }
 
 
-"STUFF FOR 'EVERYTHING' AND 'VALUABLES'"
+`STUFF FOR 'EVERYTHING' AND 'VALUABLES'`
 GLOBALS.obj_uv = chutype(rest(iuvector(20), 20), object)
 gdecl(/*(*/ [obj_uv] /*)*/, uvector(/*[*/ [rest, object] /*]*/))
 
@@ -1168,7 +1200,8 @@ export function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
 	   function(x: object) {
             cond(/*(*/ [(can_take_Q(x) || trnn(x,GLOBALS.trytakebit)),
 		    prsvec[2] = x,
-		    tell(odesc2(x), 0, ":"),
+		    tell(odesc2(x), 0, `:
+  `),
 		    apply_random(ra),
 		    cond(/*(*/ [here !== aroom(winner),
 			   mapleave()] /*)*/)] /*)*/);
@@ -1178,7 +1211,8 @@ export function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
 	 mapf(false,
 	   function(x: object) {
             prsvec[2] = x;
-tell(odesc2(x), 0, ":");
+tell(odesc2(x), 0, `:
+  `);
 apply_random(ra);
 cond(/*(*/ [here !== aroom(winner),
 		    mapleave()] /*)*/);
@@ -1186,7 +1220,7 @@ cond(/*(*/ [here !== aroom(winner),
 	   uv)] /*)*/);
   }
 
-psetg(losstr, "I can't do everything, because I ran out of room.")
+psetg(losstr, `I can't do everything, because I ran out of room.`)
 
 export function everything() {
     let prsvec = GLOBALS.prsvec;
@@ -1238,7 +1272,7 @@ suv[1] = x;
             },
 	     aobjs(winner)))] /*)*/);
 cond(/*(*/ [empty_Q(suv),
-	 tell("I couldn't find anything.")] /*)*/,
+	 tell(`I couldn't find anything.`)] /*)*/,
 	/*(*/ [frob_lots(suv)] /*)*/);
   }
 
@@ -1294,54 +1328,54 @@ cond(/*(*/ [!0_Q(otval(x)),
             },
 	     aobjs(winner)))] /*)*/);
 cond(/*(*/ [empty_Q(suv),
-	 tell("I couldn't find any valuables.")] /*)*/,
+	 tell(`I couldn't find any valuables.`)] /*)*/,
 	/*(*/ [frob_lots(suv)] /*)*/);
   }
 
 
 
-define(opener, open_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/, /*(*/ [outchan, GLOBALS.outchan] /*)*/] /*)*/, 
+define(opener, open_act, /*(*/ [`AUX`, /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/, /*(*/ [outchan, GLOBALS.outchan] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [prso] /*)*/, object, /*(*/ [pv] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [outchan] /*)*/, channel] /*)*/] /*2*/,
 	cond(/*(*/ [object_action()] /*)*/,
 	      /*(*/ [!trnn(prso,GLOBALS.contbit),
-	       tell("You must tell me how to do that to a", 1, odesc2(prso), ".")] /*)*/,
+	       tell(`You must tell me how to do that to a `, 1, odesc2(prso), `.`)] /*)*/,
 	      /*(*/ [ocapac(prso) !== 0,
-	       cond(/*(*/ [oopen_Q(prso), tell("It is already open.")] /*)*/,
+	       cond(/*(*/ [oopen_Q(prso), tell(`It is already open.`)] /*)*/,
 		     /*(*/ [t,
 		      prso[GLOBALS.oopen_Q] = t,
 		      cond(/*(*/ [(empty_Q(ocontents(prso)) || transparent_Q(prso)),
-			     tell("Opened.")] /*)*/,
+			     tell(`Opened.`)] /*)*/,
 			    /*(*/ [GLOBALS.tell_flag = t,
-			     tell("Opening the", 0, odesc2(prso), "reveals"),
+			     tell(`Opening the `, 0, odesc2(prso), ` reveals `),
 			     print_contents(ocontents(prso)),
 			     princ(_X__),
 			     crlf()] /*)*/)] /*)*/)] /*)*/,
-	      /*(*/ [tell("The", 1, odesc2(prso), "cannot be opened.")] /*)*/))
+	      /*(*/ [tell(`The `, 1, odesc2(prso), ` cannot be opened.`)] /*)*/))
 
-define(closer, close_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/] /*)*/, 
+define(closer, close_act, /*(*/ [`AUX`, /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [pv] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [prso] /*)*/, object] /*)*/] /*2*/,
 	cond(/*(*/ [object_action()] /*)*/,
 	      /*(*/ [!trnn(prso,GLOBALS.contbit),
-	       tell("You must tell me how to do that to a", 1, odesc2(prso), ".")] /*)*/,
+	       tell(`You must tell me how to do that to a `, 1, odesc2(prso), `.`)] /*)*/,
 	      /*(*/ [ocapac(prso) !== 0,
-	       cond(/*(*/ [oopen_Q(prso), prso[GLOBALS.oopen_Q] = false, tell("Closed.")] /*)*/,
-		     /*(*/ [t, tell("It is already closed.")] /*)*/)] /*)*/,
-	      /*(*/ [tell("You cannot close that.")] /*)*/))
+	       cond(/*(*/ [oopen_Q(prso), prso[GLOBALS.oopen_Q] = false, tell(`Closed.`)] /*)*/,
+		     /*(*/ [t, tell(`It is already closed.`)] /*)*/)] /*)*/,
+	      /*(*/ [tell(`You cannot close that.`)] /*)*/))
 
 export function find() {
     let prso: (false | object) = GLOBALS.prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	/*(*/ [prso,	 find_frob(prso,		    robjs(GLOBALS.here),
-		    ", which is in the room.",
-		    "There is a",
-		    "here."),
+		    `, which is in the room.`,
+		    `There is a `,
+		    ` here.`),
 	 find_frob(prso,		    aobjs(GLOBALS.winner),
-		    ", which you are carrying.",
-		    "You are carrying a",
-		    "."),
+		    `, which you are carrying.`,
+		    `You are carrying a `,
+		    `.`),
 	 cond(/*(*/ [!GLOBALS.tell_flag,
-		tell("I can't see that here.")] /*)*/)] /*)*/,
-	/*(*/ [tell("I don't know what that is.")] /*)*/);
+		tell(`I can't see that here.`)] /*)*/)] /*)*/,
+	/*(*/ [tell(`I don't know what that is.`)] /*)*/);
   }
 
 export function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: string, str2: string, str3: string) {
@@ -1354,7 +1388,7 @@ export function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: st
 			       function(y: object) {
                 cond(/*(*/ [y === prso,
 						tell(str2,1, odesc2(y), str3),
-						tell("It is in the",
+						tell(`It is in the `,
 						      1,
 						      odesc2(x),
 						      str1)] /*)*/);
@@ -1375,7 +1409,8 @@ export function object_action() {
 	      cond(/*(*/ [prso,apply_object(prso)] /*)*/));
   }
 
-"SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL\nSEARCH, USE GET-OBJECT"
+`SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL
+SEARCH, USE GET-OBJECT`
 
 export function obj_here_Q(obj: object) {
     let nobj: (false | object) = null;
@@ -1399,7 +1434,7 @@ export function splice_out(obj, al: list) {
 			     /*(*/ [ol = nl, nl = rest(nl)] /*)*/))] /*)*/);
   }
 
-"WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level."
+`WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level.`
 
 export function weight(objl: list(/*[*/ [rest, object] /*]*/)) {
     let bigfix: number = GLOBALS.bigfix;
@@ -1419,7 +1454,7 @@ export function move() {
     let rm: room = aroom(GLOBALS.winner);
     let obj: (atom | object) = vec[2];
     cond(/*(*/ [memq(obj,robjs(rm)), object_action()] /*)*/,
-	      /*(*/ [obj,	       tell("I can't get to that to move it.")] /*)*/);
+	      /*(*/ [obj,	       tell(`I can't get to that to move it.`)] /*)*/);
   }
 
 export function victims_Q(rm: room) {
@@ -1430,38 +1465,38 @@ export function victims_Q(rm: room) {
 	      robjs(rm));
   }
 
-define(lamp_on, lampo, /*(*/ ["AUX", /*(*/ [prsvec, GLOBALS.prsvec] /*)*/, /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, prsvec[2]] /*)*/, /*(*/ [lit_Q,
+define(lamp_on, lampo, /*(*/ [`AUX`, /*(*/ [prsvec, GLOBALS.prsvec] /*)*/, /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, prsvec[2]] /*)*/, /*(*/ [lit_Q,
 							     lit_Q(GLOBALS.here)] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [me] /*)*/, adv, /*(*/ [obj] /*)*/, object, /*(*/ [lampo] /*)*/, activation] /*)*/] /*2*/,
 	cond(/*(*/ [(trnn(obj,GLOBALS.burnbit) && prsvec[3] && prsvec[1] = GLOBALS.burn_X_words),
 	       burner()] /*)*/,
 	      /*(*/ [object_action()] /*)*/,
 	      /*(*/ [cond(/*(*/ [(olight_Q(obj) !== 0 && memq(obj,aobjs(me)))] /*)*/,
-		     /*(*/ [t, tell("You can't turn that on."), return(t, lampo)] /*)*/),
-	       cond(/*(*/ [olight_Q(obj) > 0, tell("It is already on.")] /*)*/,
+		     /*(*/ [t, tell(`You can't turn that on.`), return(t, lampo)] /*)*/),
+	       cond(/*(*/ [olight_Q(obj) > 0, tell(`It is already on.`)] /*)*/,
 		     /*(*/ [obj[GLOBALS.olight_Q] = 1,
-		      tell("The", 1, odesc2(obj), "is now on."),
+		      tell(`The `, 1, odesc2(obj), ` is now on.`),
 		      cond(/*(*/ [!lit_Q,
 			     GLOBALS.prsvec[2] = false,
 			     room_info(false)] /*)*/)] /*)*/)] /*)*/))
 
-define(lamp_off, lampo, /*(*/ ["AUX", /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, GLOBALS.prsvec[2]] /*)*/] /*)*/, 
+define(lamp_off, lampo, /*(*/ [`AUX`, /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, GLOBALS.prsvec[2]] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [me] /*)*/, adv, /*(*/ [obj] /*)*/, object, /*(*/ [lampo] /*)*/, activation] /*)*/] /*2*/,
 	cond(/*(*/ [object_action()] /*)*/,
 	      /*(*/ [cond(/*(*/ [(olight_Q(obj) !== 0 && memq(obj,aobjs(me)))] /*)*/,
-		     /*(*/ [tell("You can't turn that off."), return(t, lampo)] /*)*/),
-	       cond(/*(*/ [olight_Q(obj) < 0, tell("It is already off.")] /*)*/,
+		     /*(*/ [tell(`You can't turn that off.`), return(t, lampo)] /*)*/),
+	       cond(/*(*/ [olight_Q(obj) < 0, tell(`It is already off.`)] /*)*/,
 		     /*(*/ [obj[GLOBALS.olight_Q] = _1,
-		      tell("The", 1, odesc2(obj), "is now off."),
-		      (lit_Q(GLOBALS.here) || tell("It is now pitch black."))] /*)*/)] /*)*/))
+		      tell(`The `, 1, odesc2(obj), ` is now off.`),
+		      (lit_Q(GLOBALS.here) || tell(`It is now pitch black.`))] /*)*/)] /*)*/))
 
-"PARSER & AUXILIARIES"
+`PARSER & AUXILIARIES`
 
 GLOBALS.inbuf = istring(100)
 
 // SET UP INPUT ERROR HANDLER TO CAUSE EPARSE TO FALSE OUT
 
-psetg(cntprs, "I can't parse that.")
+psetg(cntprs, `I can't parse that.`)
 
 GLOBALS.prsvec = ivector(3, /*#*/ [false, /*(*/ [] /*)*/] /*2*/)
 
@@ -1489,13 +1524,13 @@ export function lex(s: string, sx?: string, silent_Q: (atom | false)) {
         x[1] = rest(str,str.length);
       },
 	 v);
-cond(/*(*/ [s[1] === _X__Q, v[1] = substruc("HELP", 0, 4, back(v[1], 4))] /*)*/,
+cond(/*(*/ [s[1] === _X__Q, v[1] = substruc(`HELP`, 0, 4, back(v[1], 4))] /*)*/,
     /*(*/ [repeat(/*(*/ [slen] /*)*/,
        /*#*/ [decl, /*(*/ [/*(*/ [slen] /*)*/, fix] /*)*/] /*2*/,
        cond(/*(*/ [(s1.length === sx.length || memq(s1[1], brks)),
 	 (s1.length > sx.length && (s1[1] === _X__ || s1[1] === _X__) && !quot && quot = t && v = rest(v)),
 	 cond(/*(*/ [s !== s1,
-	   cond(/*(*/ [empty_Q(v), (silent_Q || tell("I'm too simple-minded for that."))] /*)*/,
+	   cond(/*(*/ [empty_Q(v), (silent_Q || tell(`I'm too simple-minded for that.`))] /*)*/,
 	    /*(*/ [v[1] = uppercase(substruc(s,				       0,
 				       slen = min(_(s.length, s1.length),
 						 5),
@@ -1506,7 +1541,8 @@ cond(/*(*/ [s[1] === _X__Q, v[1] = substruc("HELP", 0, 4, back(v[1], 4))] /*)*/,
        s1 = rest(s1))] /*)*/);
   }
 
-psetg(brks, "\"' 	:;.,?!")
+psetg(brks, `\"' 	:;.,?!
+`)
 
 export function anything(s: string, sx: string) {
     mapr(false,
@@ -1519,7 +1555,7 @@ export function anything(s: string, sx: string) {
 
 export function uppercase(str: string) {
     mapr(false,
-	      function(s) {"AUX", /*(*/ [c, ascii(s[1])] /*)*/
+	      function(s) {`AUX`, /*(*/ [c, ascii(s[1])] /*)*/
         cond(/*(*/ [(c > 96 && l__Q(c,122)),
 			     s[1] = ascii(_(c,32))] /*)*/);
       },
@@ -1527,14 +1563,14 @@ export function uppercase(str: string) {
   }
 
 export function wait(num?: number) {
-    tell("Time passes...");
+    tell(`Time passes...`);
 repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [n] /*)*/, fix] /*)*/] /*2*/,
 	cond(/*(*/ [(n = _(n,1) < 0 || clock_demon(GLOBALS.clocker)),
 	       return()] /*)*/));
   }
 
-"RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS."
+`RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS.`
 
 export function clock_demon(hack: hack) {
     let ca = null;
@@ -1569,28 +1605,28 @@ cond(/*(*/ [num,cev[GLOBALS.ctick] = num] /*)*/);
 
 GLOBALS.demons = /*(*/ [] /*)*/
 
-(lookup("COMPILE", root()) || gassigned_Q(group_glue) || add_demon(GLOBALS.clocker = chtype(/*[*/ [clock_demon, /*(*/ [] /*)*/] /*]*/, hack)))
+(lookup(`COMPILE`, root()) || gassigned_Q(group_glue) || add_demon(GLOBALS.clocker = chtype(/*[*/ [clock_demon, /*(*/ [] /*)*/] /*]*/, hack)))
 
 export function board() {
     let obj: object = GLOBALS.prsvec[2];
     let win: adv = GLOBALS.winner;
     let av: (false | object) = avehicle(win);
     cond(/*(*/ [!memq(obj,robjs(GLOBALS.here)),
-	       tell("The", 1, odesc2(obj), "must be on the ground to be boarded.")] /*)*/,
+	       tell(`The `, 1, odesc2(obj), ` must be on the ground to be boarded.`)] /*)*/,
 	      /*(*/ [trnn(obj,GLOBALS.vehbit),
-	       cond(/*(*/ [av,		      tell("You are already in a",
+	       cond(/*(*/ [av,		      tell(`You are already in a `,
 			    1,
 			    odesc2(obj),
-			    ", cretin!")] /*)*/,
+			    `, cretin!`)] /*)*/,
 		     /*(*/ [t,
 		      cond(/*(*/ [object_action()] /*)*/,
-			    /*(*/ [tell("You are in the", 1, odesc2(obj), "."),
+			    /*(*/ [tell(`You are in the `, 1, odesc2(obj), `.`),
 		      	     win[GLOBALS.avehicle] = obj,
-		             obj[GLOBALS.ocontents] = /*(*/ [find_obj("#####"), _X,ocontents(obj)] /*)*/] /*)*/)] /*)*/)] /*)*/,
-	      /*(*/ [tell("I suppose you have a theory on boarding",
+		             obj[GLOBALS.ocontents] = /*(*/ [find_obj(`#####`), _X,ocontents(obj)] /*)*/] /*)*/)] /*)*/)] /*)*/,
+	      /*(*/ [tell(`I suppose you have a theory on boarding `,
 		     1,
 		     odesc2(obj),
-		     "s.")] /*)*/);
+		     `s.`)] /*)*/);
   }
 
 export function unboard() {
@@ -1600,11 +1636,12 @@ export function unboard() {
     cond(/*(*/ [av === obj,
 	       cond(/*(*/ [object_action()] /*)*/,
 		     /*(*/ [rtrnn(GLOBALS.here,GLOBALS.rlandbit),
-		      tell("You are on your own feet again."),
+		      tell(`You are on your own feet again.`),
 		      win[GLOBALS.avehicle] = false,
-		      obj[GLOBALS.ocontents] = splice_out(find_obj("#####"), ocontents(obj))] /*)*/,
-		     /*(*/ [tell("You realize, just in time, that disembarking here would probably be\nfatal.")] /*)*/)] /*)*/,
-	      /*(*/ [tell("You aren't in that!")] /*)*/);
+		      obj[GLOBALS.ocontents] = splice_out(find_obj(`#####`), ocontents(obj))] /*)*/,
+		     /*(*/ [tell(`You realize, just in time, that disembarking here would probably be
+fatal.`)] /*)*/)] /*)*/,
+	      /*(*/ [tell(`You aren't in that!`)] /*)*/);
   }
 
 export function goto(rm: room) {
@@ -1613,8 +1650,8 @@ export function goto(rm: room) {
     let here: room = GLOBALS.here;
     let lb: (atom | false) = rtrnn(rm,GLOBALS.rlandbit);
     cond(/*(*/ [((!lb && (!av || !rtrnn(rm,orand(av)))) || (rtrnn(here,GLOBALS.rlandbit) && lb && av && orand(av) !== GLOBALS.rlandbit && !rtrnn(rm,orand(av)))),
-	       cond(/*(*/ [av,tell("You can't go there in a", 1, odesc2(av), ".")] /*)*/,
-		     /*(*/ [tell("You can't go there without a vehicle.")] /*)*/),
+	       cond(/*(*/ [av,tell(`You can't go there in a `, 1, odesc2(av), `.`)] /*)*/,
+		     /*(*/ [tell(`You can't go there without a vehicle.`)] /*)*/),
 	       false] /*)*/,
 	      /*(*/ [rtrnn(rm,GLOBALS.rmungbit), tell(rrand(rm))] /*)*/,
 	      /*(*/ [t,
@@ -1628,7 +1665,8 @@ export function goto(rm: room) {
   }
 
 export function backer() {
-    tell("He who puts his hand to the plow and looks back is not fit for the\nkingdom of winners.  In any case, \"back\" doesn't work.");
+    tell(`He who puts his hand to the plow and looks back is not fit for the
+kingdom of winners.  In any case, \"back\" doesn't work.`);
   }
 
 export function act_hack() {
@@ -1643,16 +1681,16 @@ rm[GLOBALS.rrand] = str;
 export function command() {
     let pv: vector = GLOBALS.prsvec;
     let po: object = pv[2];
-    let v: vector = rest(GLOBALS.lexv[""]);
+    let v: vector = rest(GLOBALS.lexv[``]);
     let hs: room = GLOBALS.here;
     let win: adv = GLOBALS.winner;
     let play: adv = GLOBALS.player;
     cond(/*(*/ [win !== play,
-	   tell("You cannot talk through another person!")] /*)*/,
+	   tell(`You cannot talk through another person!`)] /*)*/,
 	  /*(*/ [trnn(po,GLOBALS.actorbit),
 	   GLOBALS.winner = orand(po),
 	   rdcom(v),
 	   GLOBALS.winner = play,
 	   GLOBALS.here = hs] /*)*/,
-	  /*(*/ [tell("You cannot talk to that!")] /*)*/);
+	  /*(*/ [tell(`You cannot talk to that!`)] /*)*/);
   }

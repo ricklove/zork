@@ -1,4 +1,4 @@
-(GLOBALS.muddle < 100 && use("LSRTNS"))
+(GLOBALS.muddle < 100 && use(`LSRTNS`))
 
 // applicables
 newtype(offset, word)
@@ -161,7 +161,8 @@ newstruc(adv, vector,
   arand,     any,				// ** reserved for future expansion **,
   aflags,    primtype(word),		// flags THIS MUST BE SAME OFFSET AS OFLAGS!)
 
-"bits in <AFLAGS adv>:\n	  bit-name  bit-tester"
+`bits in <AFLAGS adv>:
+	  bit-name  bit-tester`
 
 flagword(astaggered, staggered_Q,		// staggered?)
 
@@ -189,7 +190,8 @@ newstruc(object, vector,
   oroom,     (false || room),		// what room its in,
   oread,     (false || string),		// reading material)
 
-"bits in <OFLAGS object>:\n	  bit-name  bit-tester"
+`bits in <OFLAGS object>:
+	  bit-name  bit-tester`
 
 flagword(ovison,    ovis_Q,		// visible?,
 	  readbit,   readable_Q,		// readable?,
@@ -221,22 +223,22 @@ flagword(ovison,    ovis_Q,		// visible?,
 	  trytakebit, false,			// object wants to handle not being taken,
 	  no_check_bit, false,		// ignore checks (in put & drop):  for EVERY and VALUA)
 
-"extra stuff for flagword for objects"
+`extra stuff for flagword for objects`
 
-"complement of the visible bit"
+`complement of the visible bit`
 msetg(ovisoff, _777777777776_)
 
-"can i be opened?"
+`can i be opened?`
 defmac(openable_Q, /*(*/ [() => obj] /*)*/, form(trnn, obj,form(_, GLOBALS.doorbit,GLOBALS.contbit)))
 
-"complement of the bit state" 
+`complement of the bit state` 
 defmac(describable_Q, /*(*/ [() => obj] /*)*/, form(not, form(trnn, obj,GLOBALS.ndescbit)))
 
-"if object is a light or aflame, then flaming"
+`if object is a light or aflame, then flaming`
 defmac(flaming_Q, /*(*/ [() => obj] /*)*/,
     form(and, form(trnn, obj,GLOBALS.flamebit), form(1_Q, form(olight_Q, obj))))
 
-"if object visible and open or transparent, can see inside it"
+`if object visible and open or transparent, can see inside it`
 defmac(see_inside_Q, /*(*/ [() => obj] /*)*/,
     form(and, form(ovis_Q, obj),
 	  form(or, form(transparent_Q, obj), form(oopen_Q, obj))))
@@ -248,7 +250,7 @@ defmac(see_inside_Q, /*(*/ [() => obj] /*)*/,
 newstruc(hack, vector,
 	  haction, rapplic,
 	  hobjs,   list(/*[*/ [rest, any] /*]*/),
-	  "REST",
+	  `REST`,
 	  hrooms,  list(/*[*/ [rest, room] /*]*/),
 	  hroom,   room,
 	  hobj,    object,
@@ -279,9 +281,9 @@ gdecl(/*(*/ [raw_score, load_max, score_max] /*)*/, fix,
 
 \
 
-"UTILITY FUNCTIONS"
+`UTILITY FUNCTIONS`
 
-"TO OPEN DOORS"
+`TO OPEN DOORS`
 
 defmac(cond_open, /*(*/ [() => dir,() => rm] /*)*/,
   form(prog, list(list(el, form(memq, dir,form(rexits, rm)))),
@@ -293,7 +295,7 @@ defmac(cond_close, /*(*/ [() => dir,() => rm] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [el] /*)*/, /*<*/ [primtype(vector), atom, cexit] /*>*/] /*)*/] /*2*/,
 	form(setg, form(cxflag, form(2, form(lval, el))), false)))
 
-"APPLY AN OBJECT FUNCTION"
+`APPLY AN OBJECT FUNCTION`
 
 defmac(apply_object, /*(*/ [() => obj] /*)*/,
     form(prog, /*(*/ [/*(*/ [foo, form(oaction, obj)] /*)*/] /*)*/,
@@ -302,7 +304,7 @@ defmac(apply_object, /*(*/ [() => obj] /*)*/,
 		 form(apply, form(gval, form(lval, foo)))] /*)*/,
 		/*(*/ [form(dispatch, form(lval, foo))] /*)*/)))
 
-"FLUSH AN OBJECT FROM A ROOM"
+`FLUSH AN OBJECT FROM A ROOM`
 
 export function remove_object(obj: object) {
     let ocan: (object | false) = null;
@@ -321,11 +323,11 @@ defmac(insert_object, /*(*/ [() => obj,() => room] /*)*/,
 	form(put,
 	      room,	      GLOBALS.robjs,	      /*(*/ [form(put, obj,GLOBALS.oroom,room), chtype(form(robjs, room), segment)] /*)*/))
 
-defmac(take_object, /*(*/ [() => obj,"OPTIONAL", /*(*/ [() => winner,() => GLOBALS.winner] /*)*/] /*)*/,
+defmac(take_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => GLOBALS.winner] /*)*/] /*)*/,
 	form(put,
 	      winner,	      GLOBALS.aobjs,	      /*(*/ [form(put, obj,GLOBALS.oroom,false), chtype(form(aobjs, winner), segment)] /*)*/))
 
-defmac(drop_object, /*(*/ [() => obj,"OPTIONAL", /*(*/ [() => winner,() => GLOBALS.winner] /*)*/] /*)*/,
+defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => GLOBALS.winner] /*)*/] /*)*/,
 	form(put, winner,GLOBALS.aobjs,form(splice_out, obj,form(aobjs, winner))))
 
 export function kill_obj(obj: object, winner: adv) {
@@ -344,7 +346,7 @@ export function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
 	objs);
   }
 
-"ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
+`ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING`
 
 export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
     mapf(false,
@@ -356,7 +358,7 @@ export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
     aobjs(win));
   }
 
-"ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
+`ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY`
 
 export function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), prob: number) {
     mapf(false,
@@ -422,12 +424,12 @@ export function yes_no(no_is_bad_Q: (atom | false)) {
     let inchan = GLOBALS.inchan;
     reset(inchan);
 readstring(inbuf,inchan,GLOBALS.reader_string);
-cond(/*(*/ [no_is_bad_Q,	       !memq(inbuf[1], "NnfF")] /*)*/,
+cond(/*(*/ [no_is_bad_Q,	       !memq(inbuf[1], `NnfF`)] /*)*/,
 	      /*(*/ [t,
-	       memq(inbuf[1], "TtYy")] /*)*/);
+	       memq(inbuf[1], `TtYy`)] /*)*/);
   }
 
-defmac(apply_random, /*(*/ [() => frob,"OPTIONAL", /*(*/ [() => mumble,false] /*)*/] /*)*/,
+defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*)*/] /*)*/,
 	form(cond,
 	      /*(*/ [form(type_Q, frob,atom),
 	       cond(/*(*/ [mumble,		      form(apply, form(gval, frob), mumble)] /*)*/,
@@ -446,11 +448,11 @@ export function da(fn: (applicable | atom | number), foo?) {
 	  /*(*/ [error(unassigned_variable_X_errors, fn,da)] /*)*/));
   }
 
-"OLD MAZER"
+`OLD MAZER`
 
 moblist(flag, 17)
 
-psetg(null_desc, "")
+psetg(null_desc, ``)
 
 psetg(null_exit, chtype(/*[*/ [] /*]*/, exit))
 
@@ -484,14 +486,14 @@ cond(/*(*/ [(atm = lookup(id,GLOBALS.object_obl) && gassigned_Q(atm)),
   }
 
 export function function_print(frob: (atom | offset | applicable | false)) {
-    cond(/*(*/ [!frob, princ("<>")] /*)*/,
+    cond(/*(*/ [!frob, princ(`<>`)] /*)*/,
 	/*(*/ [type_Q(frob,rsubr, rsubr_entry),
 	 prin1(frob[2])] /*)*/,
 	/*(*/ [type_Q(frob,atom),
 	 prin1(frob)] /*)*/,
 	/*(*/ [type_Q(frob,offset),
-	 princ("#OFFSET"),
+	 princ(`#OFFSET `),
 	 prin1(get_atom(frob))] /*)*/,
-	/*(*/ [princ("#FUNCTION"),
+	/*(*/ [princ(`#FUNCTION `),
 	 prin1(get_atom(frob))] /*)*/);
   }

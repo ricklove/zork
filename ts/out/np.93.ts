@@ -6,14 +6,14 @@ GLOBALS.actions = moblist(actions, 17)
 
 GLOBALS.orphans = /*[*/ [false, false, false, false, false] /*]*/
 
-cond(/*(*/ [(lookup("COMPILE", root()) || gassigned_Q(group_glue))] /*)*/,
-      /*(*/ [GLOBALS.prepvec = /*[*/ [chtype(/*[*/ [find_prep("WITH"), find_obj("#####")] /*]*/, phrase),
-	      chtype(/*[*/ [find_prep("WITH"), find_obj("#####")] /*]*/, phrase)] /*]*/,
-       GLOBALS.prep2vec = /*[*/ [chtype(/*[*/ [find_prep("WITH"), find_obj("#####")] /*]*/, phrase),
-	      chtype(/*[*/ [find_prep("WITH"), find_obj("#####")] /*]*/, phrase)] /*]*/] /*)*/)
+cond(/*(*/ [(lookup(`COMPILE`, root()) || gassigned_Q(group_glue))] /*)*/,
+      /*(*/ [GLOBALS.prepvec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
+	      chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase)] /*]*/,
+       GLOBALS.prep2vec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
+	      chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase)] /*]*/] /*)*/)
 
 define(sparse, sparout, /*(*/ [sv, vb,
-			"AUX", /*(*/ [words, GLOBALS.words] /*)*/, /*(*/ [objob, GLOBALS.object_obl] /*)*/, /*(*/ [pv, GLOBALS.prsvec] /*)*/,
+			`AUX`, /*(*/ [words, GLOBALS.words] /*)*/, /*(*/ [objob, GLOBALS.object_obl] /*)*/, /*(*/ [pv, GLOBALS.prsvec] /*)*/,
 			      /*(*/ [pvr, rest(pv)[1] = false[2] = false] /*)*/,
 			      /*(*/ [actions, GLOBALS.actions] /*)*/, /*(*/ [dirs, GLOBALS.directions] /*)*/, /*(*/ [orph, GLOBALS.orphans] /*)*/,
 			      /*(*/ [orfl, oflag(orph)] /*)*/, /*(*/ [prv, GLOBALS.prepvec] /*)*/, /*(*/ [here, GLOBALS.here] /*)*/,
@@ -34,7 +34,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	  pv[2] = /*,*/ [atm] /*1*/,
 	  return(win, sparout)] /*)*/,
 	 /*(*/ [(atm = lookup(x,words) && cond(/*(*/ [type_Q(aval = /*,*/ [atm] /*1*/, prep),
-		      cond(/*(*/ [prep,			     (vb || tell("Double preposition?", 0)),
+		      cond(/*(*/ [prep,			     (vb || tell(`Double preposition?`, 0)),
 			     mapleave(false)] /*)*/,
 			    /*(*/ [prep = aval] /*)*/)] /*)*/,
 		     /*(*/ [type_Q(aval,adjective),
@@ -43,7 +43,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
 		     /*(*/ [t] /*)*/))] /*)*/,
 	 /*(*/ [atm = lookup(x,objob),
 	  cond(/*(*/ [obj = get_object(atm,adj),
-	    (empty_Q(pvr) && (vb || tell("Too many objects specified?", 0)) && mapleave(false)),
+	    (empty_Q(pvr) && (vb || tell(`Too many objects specified?`, 0)) && mapleave(false)),
 	    pvr[1] = cond(/*(*/ [prep,			pprep = prv[1],
 			prv = rest(prv),
 			pprep[1] = prep,
@@ -54,16 +54,16 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	   /*(*/ [t,
 	    cond(/*(*/ [empty_Q(obj),
 		   (vb || cond(/*(*/ [lit_Q(here),
-			      tell("I can't see a", 0),
-			      cond(/*(*/ [adj,				     tell("", 0, prstr(chtype(adj,atom)))] /*)*/),
-			      tell("", 0, prstr(atm), "here.")] /*)*/,
-			     /*(*/ [tell("It is too dark in here to see.", 0)] /*)*/))] /*)*/,
+			      tell(`I can't see a`, 0),
+			      cond(/*(*/ [adj,				     tell(` `, 0, prstr(chtype(adj,atom)))] /*)*/),
+			      tell(` `, 0, prstr(atm), ` here.`)] /*)*/,
+			     /*(*/ [tell(`It is too dark in here to see.`, 0)] /*)*/))] /*)*/,
 		  /*(*/ [obj === GLOBALS.nefals2,
-		   (vb || tell("I can't reach that from inside the",
+		   (vb || tell(`I can't reach that from inside the `,
 			     0,
 			     odesc2(avehicle(GLOBALS.winner)),
-			     "."))] /*)*/,
-		  /*(*/ [(vb || tell("Which", 0, prstr(atm), "?")),
+			     `.`))] /*)*/,
+		  /*(*/ [(vb || tell(`Which `, 0, prstr(atm), `?`)),
 		   orphan(t,
 			   (action || (orfl && overb(orph))),
 			   pv[2],
@@ -71,20 +71,20 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	    mapleave(false)] /*)*/),
 	  adj = false,
 	  t] /*)*/,
-	 /*(*/ [(vb || tell("I don't know the word", 0, x)), mapleave(false)] /*)*/);
+	 /*(*/ [(vb || tell(`I don't know the word `, 0, x)), mapleave(false)] /*)*/);
         },
      sv),
    cond(/*(*/ [val,	  cond(/*(*/ [(!action && !action = (orfl && overb(orph))),
 		 (vb || cond(/*(*/ [type_Q(pv[2], object),
-			    tell("What should I do with the",
+			    tell(`What should I do with the `,
 				  0,
 				  odesc2(pv[2]),
-				  "?")] /*)*/,
-			   /*(*/ [tell("Huh?", 0)] /*)*/)),
+				  `?`)] /*)*/,
+			   /*(*/ [tell(`Huh?`, 0)] /*)*/)),
 		 orphan(t, false, pv[2]),
 		 false] /*)*/,
 		/*(*/ [(pv[1] = action && adj),
-		 (vb || tell("Dangling adjective?", 0)),
+		 (vb || tell(`Dangling adjective?`, 0)),
 		 false] /*)*/,
 		/*(*/ [(orfl && nprep = oprep(orph) && obj = pv[2] && pprep = prv[1][1] = nprep && pprep[2] = obj && cond(/*(*/ [obj = oslot1(orph),
 			     pv[2] = obj,
@@ -132,7 +132,7 @@ export function syn_match(pv: vector) {
 	    orphan(t, action,o1,vprep(synn)),
 	    ortell(synn,action,gwim)] /*)*/,
 	   /*(*/ [take_it_or_leave_it(drive,pv[1] = sfcn(drive))] /*)*/)] /*)*/,
-    /*(*/ [tell("I can't make sense out of that.", 0), false] /*)*/);
+    /*(*/ [tell(`I can't make sense out of that.`, 0), false] /*)*/);
   }
 
 export function take_it_or_leave_it(syn: syntax, pv: vector) {
@@ -173,9 +173,9 @@ export function orfeo(syn: varg, objs: vector) {
 export function ortell(varg: varg, action: action, gwim: (false | object)) {
     let prep: (false | prep) = vprep(varg);
     let sp: string = null;
-    cond(/*(*/ [prep,	       (gwim && tell(vstr(action), 0, "") && tell(odesc2(gwim), 0, "")),
-	       tell(prstr(chtype(prep,atom)), 0, "what?")] /*)*/,
-	      /*(*/ [tell(vstr(action), 0, "what?")] /*)*/);
+    cond(/*(*/ [prep,	       (gwim && tell(vstr(action), 0, ` `) && tell(odesc2(gwim), 0, ` `)),
+	       tell(prstr(chtype(prep,atom)), 0, ` what?`)] /*)*/,
+	      /*(*/ [tell(vstr(action), 0, ` what?`)] /*)*/);
 false;
   }
 
@@ -201,7 +201,8 @@ export function gwim_slot(fx: number, varg: varg, action: action, objs: vector) 
 	       obj] /*)*/);
   }
 
-"GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
+`GET WHAT I MEAN - GWIM
+ TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY`
 
 export function gwim(bit: number, fword: varg, action: action) {
     let aobj: (atom | false) = vtrnn(fword,GLOBALS.vabit);
@@ -224,7 +225,7 @@ cond(/*(*/ [robj,	       cond(/*(*/ [(nobj = fwim(bit,robjs(GLOBALS.here), ntake
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
-export function make_action("TUPLE", specs) {"AUX", vv, sum, /*(*/ [prep, false] /*)*/, atm
+export function make_action(`TUPLE`, specs) {`AUX`, vv, sum, /*(*/ [prep, false] /*)*/, atm
     chtype(mapf(GLOBALS.uvector,     function(sp: vector) {
           let syn: vector = ivector(5, false);
           let whr: number = 1;
@@ -280,18 +281,21 @@ export function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: (atom | false
     let val: any = null;
     cond(/*(*/ [val = sparse(pv,vb),
 	       cond(/*(*/ [(val === win || syn_match(val)), orphan(false)] /*)*/,
-		     /*(*/ [(vb || tell("")), false] /*)*/)] /*)*/,
-	      /*(*/ [(vb || tell("")), false] /*)*/);
+		     /*(*/ [(vb || tell(``)), false] /*)*/)] /*)*/,
+	      /*(*/ [(vb || tell(``)), false] /*)*/);
   }
 
 GLOBALS.scrstr = rest(istring(5), 5)
 
 GLOBALS.ssv = ivector(10, false)
 
-"GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS\nOVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL\nOF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE\nOBJECT OTHERWISE."
+`GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS
+OVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL
+OF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE
+OBJECT OTHERWISE.`
 
 define(get_object, get_obj, /*(*/ [objnam, adj,
-			    "AUX", obj, /*(*/ [oobj, false] /*)*/, /*(*/ [here, GLOBALS.here] /*)*/,
+			    `AUX`, obj, /*(*/ [oobj, false] /*)*/, /*(*/ [here, GLOBALS.here] /*)*/,
 				  /*(*/ [av, avehicle(GLOBALS.winner)] /*)*/, /*(*/ [chomp, false] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [oobj, obj, av] /*)*/, (object || false), /*(*/ [objnam] /*)*/, atom, /*(*/ [here] /*)*/, room,
 	       /*(*/ [adj] /*)*/, (adjective || false), /*(*/ [chomp] /*)*/, (atom || false),
@@ -314,13 +318,15 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
 	      /*(*/ [chomp,GLOBALS.nefals2] /*)*/,
 	      /*(*/ [oobj] /*)*/))
 
-"SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.\nIF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO\nONE LEVEL OF CONTAINMENT."
+`SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.
+IF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO
+ONE LEVEL OF CONTAINMENT.`
 
 GLOBALS.nefals = /*#*/ [false, /*(*/ [1] /*)*/] /*2*/
 
 GLOBALS.nefals2 = /*#*/ [false, /*(*/ [2] /*)*/] /*2*/
 
-define(search_list, sl, /*(*/ [objnam, slist, adj, "OPTIONAL", /*(*/ [first_Q, t] /*)*/, "AUX", /*(*/ [oobj, false] /*)*/,
+define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, t] /*)*/, `AUX`, /*(*/ [oobj, false] /*)*/,
 			/*(*/ [nefals, GLOBALS.nefals] /*)*/, nobj] /*)*/, 
    /*#*/ [decl, /*(*/ [/*(*/ [objnam] /*)*/, atom, /*(*/ [slist] /*)*/, list(/*[*/ [rest, object] /*]*/),
 	  /*(*/ [oobj, nobj] /*)*/, (false || object), /*(*/ [adj] /*)*/, (false || adjective),
@@ -338,9 +344,10 @@ cond(/*(*/ [(ovis_Q(obj) && (oopen_Q(obj) || transparent_Q(obj)) && (first_Q || 
     slist),
    oobj)
 
-"FWIM:  TAKE LIST OF FROBS, FIND ONE THAT CAN BE MANIPULATED (VISIBLE\nAND TAKEABLE, OR VISIBLE AND IN SOMETHING THAT'S VISIBLE AND OPEN)"
+`FWIM:  TAKE LIST OF FROBS, FIND ONE THAT CAN BE MANIPULATED (VISIBLE
+AND TAKEABLE, OR VISIBLE AND IN SOMETHING THAT'S VISIBLE AND OPEN)`
 
-define(fwim, dwim, /*(*/ [bit, objs, no_take, "AUX", /*(*/ [nobj, false] /*)*/] /*)*/, 
+define(fwim, dwim, /*(*/ [bit, objs, no_take, `AUX`, /*(*/ [nobj, false] /*)*/] /*)*/, 
    /*#*/ [decl, /*(*/ [/*(*/ [no_take] /*)*/, (atom || false), /*(*/ [bit] /*)*/, fix, /*(*/ [objs] /*)*/, list(/*[*/ [rest, object] /*]*/),
 	  /*(*/ [nobj] /*)*/, (false || object)] /*)*/] /*2*/,
    mapf(false,

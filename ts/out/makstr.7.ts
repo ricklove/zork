@@ -66,11 +66,11 @@ mapf(false,
   }
 
 export function sobject(id: string, str, _tuple_, tup: tuple) {
-    object(id,"", str,/*%*/ [false] /*1*/, false, /*(*/ [] /*)*/, false, _(_X,tup));
+    object(id,``, str,/*%*/ [false] /*1*/, false, /*(*/ [] /*)*/, false, _(_X,tup));
   }
 
 export function aobject(id: string, str, app: atom, _tuple_, tup: tuple) {
-    object(id,"", str,/*%*/ [false] /*1*/, app,/*(*/ [] /*)*/, false, _(_X,tup));
+    object(id,``, str,/*%*/ [false] /*1*/, app,/*(*/ [] /*)*/, false, _(_X,tup));
   }
 
 export function object(id: (atom | string), desc1: string, desc2: string, desco: (string | false), app: (false | form | atom), conts: list(/*[*/ [rest, object] /*]*/), can: (false | object), flags: primtype(word), light_Q?: number, s1: number, s2: number, size: number, capac: number) {
@@ -131,7 +131,7 @@ cond(/*(*/ [atm = lookup(n1,GLOBALS.actions),
           }, n2)] /*)*/);
   }
 
-"STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
+`STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE).`
 
 export function add_word(w: string) {
     (lookup(w,GLOBALS.words) || insert(w,GLOBALS.words));
@@ -211,7 +211,7 @@ export function add_desc(obj: object, str: string) {
   }
 
 export function sadd_action(str1, atm) {
-    add_action(str1,"", /*[*/ [/*[*/ [str1,atm] /*]*/] /*]*/);
+    add_action(str1,``, /*[*/ [/*[*/ [str1,atm] /*]*/] /*]*/);
   }
 
 export function 1add_action(str1, str2, atm) {
