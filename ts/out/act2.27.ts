@@ -12,7 +12,7 @@ function boom_room() {
 		    fweep(7),
 		    jigs_up("BOOOOOOOOOOOM")),
 		   jigs_up("BOOOOOOOOOOOM"))] /*)*/)] /*)*/)
-  }
+  }    
 
 function bats_room() {
     let prsact: verb = GLOBALS.prsvec[1];
@@ -51,7 +51,6 @@ psetg(bat_drops,
 	"MINE7",
 	"TLADD",
 	"BLADD"] /*]*/)
-
 gdecl(/*(*/ [bat_drops] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
 GLOBALS.cage_top_X_flag = t
@@ -164,7 +163,6 @@ cond(/*(*/ [GLOBALS.here === find_room("BSHAF") && lit_Q(GLOBALS.here),
 	   score_upd(GLOBALS.light_shaft),
 	   GLOBALS.light_shaft = 0] /*)*/)
   }
-
 gdecl(/*(*/ [light_shaft] /*)*/, fix)
 
 function cliff_function() {
@@ -290,7 +288,7 @@ insert_object(x,here)
 
 function rivr4_room() {
     memq(find_obj("BUOY"), aobjs(GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell("Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false
-  }
+  } 
 
 function beach_room() {
     let prsact: verb = GLOBALS.prsvec[1];
@@ -323,7 +321,7 @@ function tcave_room() {
 		 	/*(*/ [tell(GLOBALS.cdigs[cnt])] /*)*/)] /*)*/,
 		 /*(*/ [tell("There's nothing to dig into here.")] /*)*/)] /*)*/)
   }
-
+	   
 psetg(cdigs,
    () => /*[*/ ["You are digging into a pile of bat guano.",
      "You seem to be getting knee deep in guano.",
@@ -333,7 +331,6 @@ psetg(bdigs,
    () => /*[*/ ["You seem to be digging a hole here.",
      "The hole is getting deeper, but that's about it.",
      "You are surrounded by a wall of sand on all sides."] /*]*/)
-
 gdecl(/*(*/ [bdigs, cdigs] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
 function geronimo() {
@@ -346,7 +343,6 @@ psetg(swimyuks,
    () => /*[*/ ["I don't really see how.",
      "I think that swimming is best performed in water.",
      "Perhaps it is your head that is swimming."] /*]*/)
-
 gdecl(/*(*/ [swimyuks] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
 function swimmer() {
@@ -355,6 +351,7 @@ function swimmer() {
 	   tell("Swimming is not allowed in this dungeon.")] /*)*/,
 	  /*(*/ [tell(pick_one(swimyuks))] /*)*/)
   }
+
 
 function grue_function() {
     let prsa: verb = GLOBALS.prsvec[1];
@@ -443,7 +440,6 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 GLOBALS.blab_X_flag = false
 
 gdecl(/*(*/ [burnup_int, bint] /*)*/, cevent)
-
 function rise_and_shine(ball: object, here: room) {
     let s: string = top(GLOBALS.scrstr);
     let m: false | string = null;

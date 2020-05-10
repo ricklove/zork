@@ -38,6 +38,8 @@ cond(/*(*/ [save(fn) == "SAVED", int_level(0), t] /*)*/,
 	       start("WHOUS", st)] /*)*/)
   }
 
+
+
 "Stuff for diverting gc's"
 
 GLOBALS.divert_cnt = 0
@@ -80,6 +82,8 @@ GLOBALS.gc_hand = handler(GLOBALS.gc_int = event("GC", 11),
 			GLOBALS.gc_fcn)
 
 off(GLOBALS.gc_hand)
+
+
 
 function xuname() {
     mapf(GLOBALS.string,	function(x: character) {
@@ -188,7 +192,7 @@ princ("second")
 1_Q(mins) || princ("s")
 cond(/*(*/ [loser_Q,princ(".")] /*)*/,
 	      /*(*/ [princ(".")] /*)*/)
-  }
+  } 
 
 function pc() {
     
@@ -410,9 +414,7 @@ define(get_atom, act, /*(*/ [val, "AUX", /*(*/ [o, get(initial, oblist)] /*)*/] 
     o))
 
 // ROOM-INFO --  PRINT SOMETHING ABOUT THIS PLACE  1. CHECK FOR LIGHT --> ELSE WARN LOSER  2. GIVE A DESCRIPTION OF THE ROOM  3. TELL WHAT'S ON THE FLOOR IN THE WAY OF OBJECTS  4. SIGNAL ENTRY INTO THE ROOM
-
 GLOBALS.brief_X_flag = false
-
 GLOBALS.super_brief_X_flag = false
 
 gdecl(/*(*/ [super_brief_X_flag, brief_X_flag] /*)*/, atom || false)
@@ -732,7 +734,7 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 	  close(ch)),
 	 ch && !0_Q(ch[1]) && close(ch)))
 
-flag_names
+flag_names 
 
 gdecl(/*(*/ [flag_names, val_names] /*)*/,
        uvector(/*[*/ [rest, atom] /*]*/),
@@ -951,6 +953,7 @@ cond(/*(*/ [y.length > 2,
 	olst)
   }
 
+
 // LIT? --  IS THERE ANY LIGHT SOURCE IN THIS ROOM
 
 function lit_Q(rm: room) {
@@ -1107,7 +1110,7 @@ function putter(objact?: atom | false) {
 		     put(crock,GLOBALS.oroom,GLOBALS.here),
 		     tell("Done.")] /*)*/))
   }
-
+ 
 function dropper() {
     let winner = GLOBALS.winner;
     let av: false | object = avehicle(winner);
@@ -1149,10 +1152,9 @@ function dropper() {
 		    /*(*/ [tell("You are not carrying that.")] /*)*/))
   }
 
+
 "STUFF FOR 'EVERYTHING' AND 'VALUABLES'"
-
 GLOBALS.obj_uv = chutype(rest(iuvector(20), 20), object)
-
 gdecl(/*(*/ [obj_uv] /*)*/, uvector(/*[*/ [rest, object] /*]*/))
 
 function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
@@ -1296,6 +1298,8 @@ cond(/*(*/ [empty_Q(suv),
 	 tell("I couldn't find any valuables.")] /*)*/,
 	/*(*/ [frob_lots(suv)] /*)*/)
   }
+
+
 
 define(opener, open_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/, /*(*/ [outchan, GLOBALS.outchan] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [prso] /*)*/, object, /*(*/ [pv] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [outchan] /*)*/, channel] /*)*/] /*2*/,

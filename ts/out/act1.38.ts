@@ -11,7 +11,6 @@ function blo(y) {
   }
 
 gdecl(/*(*/ [ff] /*)*/, string)
-
 function ilo(body: string, type: number, nm1: string, nm2: string, m1?: string, m2: string) {
     cond(/*(*/ [type === _400000000000_,
 	       cond(/*(*/ [member("<FLUSH-ME>", body) && !member(GLOBALS.xunm,GLOBALS.winners) || member(nm1,GLOBALS.winners) && member(GLOBALS.ff,body),
@@ -29,7 +28,7 @@ function east_house() {
 	   tell("You are behind the white house.  In one corner of the house there\nis a small window which is", 1, cond(/*(*/ [GLOBALS.kitchen_window_X_flag,		  		      "open."] /*)*/,
 		 		     /*(*/ ["slightly ajar."] /*)*/))] /*)*/)
   }
-
+	   
 // HACK THE KITCHEN WINDOW
 
 GLOBALS.grunlock_X_flag = false
@@ -101,7 +100,7 @@ function trophy_case() {
     cond(/*(*/ [prsact === GLOBALS.take_X_words,
 	   tell("The trophy case is securely fastened to the wall (perhaps to foil any\nattempt by robbers to remove it).")] /*)*/)
   }
-
+	  
 function glacier() {
     let prsvec: vector(verb, /*[*/ [2, any] /*]*/) = GLOBALS.prsvec;
     let prsact: verb = prsvec[1];
@@ -381,7 +380,7 @@ function mirror_mirror() {
 	       cond(/*(*/ [GLOBALS.mirror_mung_X_flag,		      tell("Haven't you done enough already?")] /*)*/,
 		     /*(*/ [GLOBALS.mirror_mung_X_flag = t,
 		      tell("You have broken the mirror.  I hope you have a seven years supply of\ngood luck handy.")] /*)*/)] /*)*/)
-  }
+  } 
 
 function carousel_room() {
     let pv: vector = GLOBALS.prsvec;
@@ -671,7 +670,7 @@ function bottle_function() {
 		put(GLOBALS.here,GLOBALS.robjs,splice_out(GLOBALS.prsvec[2], robjs(GLOBALS.here))),
 		tell("A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/)
   }
-
+	
 function fill() {
     let rem: atom | false = false;
     let prsvec: vector(verb, object, any) = GLOBALS.prsvec;
@@ -937,9 +936,7 @@ function skipper() {
   }
 
 GLOBALS.hs = 0
-
 gdecl(/*(*/ [hs] /*)*/, fix)
-
 function hello() {
     let prsobj: object | false = GLOBALS.prsvec[2];
     let amt: number = GLOBALS.hs = _(GLOBALS.hs,1);
@@ -990,7 +987,7 @@ function reader() {
 	  /*(*/ [object_action()] /*)*/,
 	  /*(*/ [tell(oread(po))] /*)*/)
   }
-
+	  
 function well() {
     cond(/*(*/ [GLOBALS.riddle_flag_X_flag,tell("Well what?")] /*)*/,
 	  /*(*/ [GLOBALS.here === find_room("RIDDL"),
@@ -1330,6 +1327,8 @@ function chalice() {
 		      tell("Realizing just in time that you'd be stabbed in the back if you\nattempted to take the chalice, you return to the fray.")] /*)*/)] /*)*/)
   }
 
+
+
 function burner() {
     let pv: vector = GLOBALS.prsvec;
     let prso: object = pv[2];
@@ -1346,7 +1345,7 @@ function burner() {
 			      /*(*/ [tell("You don't have that.")] /*)*/)] /*)*/,
 		  /*(*/ [tell("I don't think you can burn a", 1, odesc2(prso), ".")] /*)*/)] /*)*/,
 	   /*(*/ [tell("With a", 1, odesc2(prsi), "??!?")] /*)*/)
-  }
+  }  
 
 function turner() {
     let pv: vector = GLOBALS.prsvec;
@@ -1376,7 +1375,7 @@ function ddoor_function() {
 	   tell(pick_one(GLOBALS.doormungs))] /*)*/)
   }
 
-function inflater() {
+ function inflater() {
     let prsi: object = GLOBALS.prsvec[2];
     let prso: object = GLOBALS.prsvec[3];
     cond(/*(*/ [prsi === find_obj("IBOAT"),
@@ -1527,7 +1526,7 @@ function rubber() {
 function exorcise() {
     cond(/*(*/ [object_action()] /*)*/, /*(*/ [t] /*)*/)
   }
-
+	  
 function plugger() {
     cond(/*(*/ [object_action()] /*)*/,
 	  /*(*/ [tell("This has no effect.")] /*)*/)
@@ -1672,6 +1671,7 @@ function infested_Q(r: room) {
         },
 		  villains)
   }
+
 
 psetg(cdimmer, "The candles grow shorter.")
 

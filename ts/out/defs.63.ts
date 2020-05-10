@@ -1,43 +1,36 @@
 GLOBALS.muddle < 100 && use("LSRTNS")
 
 // applicables
-
 newtype(offset, word)
-
 put(rapplic, decl, () => atom || false || offset)
 
 // newtypes for parser
 
 newtype(buzz, string)
-
 newtype(direction, atom)
-
 newtype(adjective, atom)
-
 newtype(prep, atom)
+
+\
 
 // generalized oflags tester
 
 defmac(trnn, /*(*/ [() => obj,() => bit] /*)*/,
   form(n_EQ_Q, form(chtype, form(andb, bit,form(oflags, obj)), fix), 0))
-
 defmac(rtrnn, /*(*/ [() => rm,() => bit] /*)*/,
   form(n_EQ_Q, form(chtype, form(andb, bit,form(rbits, rm)), fix), 0))
-
 defmac(rtrz, /*(*/ [() => rm,() => bit] /*)*/,
   form(put, rm,GLOBALS.rbits,form(andb, form(rbits, rm), form(xorb, bit,_1))))
-
 defmac(trc, /*(*/ [() => obj,() => bit] /*)*/,
   form(put, obj,GLOBALS.oflags,form(xorb, form(oflags, obj), bit)))
-
 defmac(trz, /*(*/ [() => obj,() => bit] /*)*/,
   form(put, obj,GLOBALS.oflags,form(andb, form(oflags, obj), form(xorb, bit,_1))))
-
 defmac(tro, /*(*/ [() => obj,() => bit] /*)*/,
   form(put, obj,GLOBALS.oflags,form(orb, form(oflags, obj), bit)))
-
 defmac(rtro, /*(*/ [() => rm,() => bit] /*)*/,
   form(put, rm,GLOBALS.rbits,form(orb, form(rbits, rm), bit)))
+
+\
 
 // room definition
 
@@ -73,16 +66,16 @@ newtype(exit,
 	 () => /*<*/ [primtype(vector), /*[*/ [rest, atom, room || cexit || nexit] /*]*/] /*>*/)
 
 // conditional exit
-
+   
 newstruc(cexit, vector,
   cxflag,   atom,			// condition flag,
   cxroom,   room,			// room it protects,
   cxstr,    false || string,	// description,
   cxaction, rapplic,		// exit function)
 
-newtype(nexit, string)
+newtype(nexit, string)		// unusable exit description
 
-// unusable exit description
+\
 
 // PARSER related types
 
@@ -152,6 +145,8 @@ and_Q(msetg(oflag, 1),
 newstruc(phrase, vector,
   pprep, prep,
   pobj,  object)
+
+\
 
 // adventurer
 
@@ -229,27 +224,24 @@ flagword(ovison,    ovis_Q,		// visible?,
 "extra stuff for flagword for objects"
 
 "complement of the visible bit"
-
 msetg(ovisoff, _777777777776_)
 
 "can i be opened?"
-
 defmac(openable_Q, /*(*/ [() => obj] /*)*/, form(trnn, obj,form(_, GLOBALS.doorbit,GLOBALS.contbit)))
 
-"complement of the bit state"
-
+"complement of the bit state" 
 defmac(describable_Q, /*(*/ [() => obj] /*)*/, form(not, form(trnn, obj,GLOBALS.ndescbit)))
 
 "if object is a light or aflame, then flaming"
-
 defmac(flaming_Q, /*(*/ [() => obj] /*)*/,
     form(and, form(trnn, obj,GLOBALS.flamebit), form(1_Q, form(olight_Q, obj))))
 
 "if object visible and open or transparent, can see inside it"
-
 defmac(see_inside_Q, /*(*/ [() => obj] /*)*/,
     form(and, form(ovis_Q, obj),
 	  form(or, form(transparent_Q, obj), form(oopen_Q, obj))))
+
+\
 
 // demons
 
@@ -270,8 +262,10 @@ newstruc(cevent, vector,
 	  cflag,   atom || false,
 	  cid, atom)
 
-GLOBALS.load_max = 100
+\
 
+
+GLOBALS.load_max = 100
 GLOBALS.score_max = 0
 
 gdecl(/*(*/ [raw_score, load_max, score_max] /*)*/, fix,
@@ -282,6 +276,8 @@ gdecl(/*(*/ [raw_score, load_max, score_max] /*)*/, fix,
        /*(*/ [winner, player] /*)*/, adv, /*(*/ [here] /*)*/, room, /*(*/ [inchan, outchan] /*)*/, channel, /*(*/ [demons] /*)*/, list,
        /*(*/ [moves, deaths] /*)*/, fix, /*(*/ [dummy, yuks] /*)*/, vector(/*[*/ [rest, string] /*]*/),
        /*(*/ [sword_demon] /*)*/, hack)
+
+\
 
 "UTILITY FUNCTIONS"
 
@@ -449,7 +445,7 @@ function da(fn: applicable | atom | number, foo?) {
 	   again()] /*)*/,
 	  /*(*/ [error(unassigned_variable_X_errors, fn,da)] /*)*/))
   }
-
+
 "OLD MAZER"
 
 moblist(flag, 17)

@@ -176,10 +176,10 @@ export const convertToTypescript = (node: ZNode): string => {
         if (node.content.kind === 'ZList') {
             const firstNode = +!undefined && node.content.nodes[0];
             if (firstNode && firstNode.kind === 'ZList' && firstNode.openSymbol === '"') {
-                return `${convertToTypescriptComment(firstNode)}\n\n${node.content.nodes.slice(1).map(convertToTypescript).join('\n\n')}`;
+                return `${convertToTypescriptComment(firstNode)}\n\n${getNodesWithSpace(node.content.nodes.slice(1), 0)}`;
             }
 
-            return `${node.content.nodes.map(convertToTypescript).join('\n\n')}`;
+            return getNodesWithSpace(node.content.nodes, 0);
         }
 
         return convertToTypescript(node.content);

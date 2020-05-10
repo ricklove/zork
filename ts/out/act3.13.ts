@@ -188,7 +188,7 @@ function cmach_room() {
     cond(/*(*/ [pa === GLOBALS.look_X_words,
 	   tell("You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/)
   }
-
+	  
 GLOBALS.carousel_zoom_X_flag = false
 
 GLOBALS.carousel_flip_X_flag = false
@@ -264,7 +264,6 @@ function caged_room() {
   }
 
 gdecl(/*(*/ [sphere_clock] /*)*/, cevent, /*(*/ [robot_actions] /*)*/, uvector(/*[*/ [rest, verb] /*]*/))
-
 function robot_actor() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
@@ -313,7 +312,7 @@ function robot_function() {
 	      /*(*/ [pa === GLOBALS.throw_X_words || pa === GLOBALS.mung_X_words,
 	       tell("The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes."),
 	       remove_object(cond(/*(*/ [pa === GLOBALS.throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/)
-  }
+  } 
 
 function knock() {"AUX", /*(*/ [prso, GLOBALS.prsvec[2]] /*)*/
     cond(/*(*/ [memq(door_X_objects, onames(prso)),

@@ -33,21 +33,13 @@ add_directions("#!#!#", "NORTH", "SOUTH", "EAST", "WEST", "LAUNC", "LAND",
 	"SE", "SW", "NE", "NW", "UP", "DOWN", "ENTER", "EXIT", "CROSS", "CLIMB")
 
 dsynonym("NORTH", "N")
-
 dsynonym("SOUTH", "S")
-
 dsynonym("EAST", "E")
-
 dsynonym("WEST", "W")
-
 dsynonym("UP", "U")
-
 dsynonym("DOWN", "D")
-
 dsynonym("ENTER", "IN")
-
 dsynonym("EXIT", "OUT", "LEAVE")
-
 dsynonym("CROSS", "TRAVE")
 
 add_zork(prep, "WITH", "AT", "TO", "IN", "DOWN", "UP", "UNDER")
@@ -60,8 +52,8 @@ GLOBALS.rooms = /*(*/ [] /*)*/
 
 GLOBALS.objects = /*(*/ [] /*)*/
 
+
 "CEVENT DEFINITIONS"
-
 lookup("COMPILE", root()) || cevent(0, GLOBALS.cure_clock,false, "CURIN")
 
 lookup("COMPILE", root()) || cevent(0, GLOBALS.maint_room,t, "MNTIN")
@@ -90,10 +82,11 @@ lookup("COMPILE", root()) || cevent(0, GLOBALS.bucket,t, "BCKIN")
 
 lookup("COMPILE", root()) || cevent(0, GLOBALS.sphere_function,t, "SPHIN")
 
+
 // KLUDGE
 
 /*#*/ [object, /*{*/ ["#####",
-	 "You are here", "cretin", /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/] /*}*/] /*2*/
+	 "You are here", "cretin", /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/] /*}*/] /*2*/ 
 
 "MAZE"
 
@@ -164,6 +157,7 @@ add_object(/*#*/ [object, /*{*/ ["GARLI",
 	  "clove of garlic",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ ["SBAG"] /*}*/] /*2*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.foodbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ ["CLOVE"] /*]*/)
+
 
 add_object(/*#*/ [object, /*{*/ ["FOOD",
 	  "A hot pepper sandwich is here.",
@@ -242,6 +236,7 @@ add_object(/*#*/ [object, /*{*/ ["ROPE",
 	  "A large coil of rope is lying in the corner.",
 	  rope_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.tiebit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
 /*[*/ ["HEMP", "COIL"] /*]*/)
+
 
 add_object(/*#*/ [object, /*{*/ ["KNIFE",
 	  "There is a nasty-looking knife lying here.",
@@ -334,15 +329,13 @@ psetg(trollout,
 "An unconscious troll is sprawled on the floor.  All passages out of\nthe room are open.")
 
 GLOBALS.villains = /*(*/ [find_obj("TROLL"), find_obj("THIEF"), find_obj("CYCLO")] /*)*/
-
 GLOBALS.villain_probs = iuvector(GLOBALS.villains.length, 0)
-
 GLOBALS.oppv = ivector(GLOBALS.villains.length, () => false)
 
 add_demon(GLOBALS.sword_demon = chtype(/*[*/ [sword_glow, GLOBALS.villains,/*(*/ [] /*)*/, GLOBALS.rooms[1], find_obj("SWORD"), false] /*]*/,
 			  hack))
 
-/*#*/ [object, /*{*/ ["TROLL",
+ /*#*/ [object, /*{*/ ["TROLL",
 	  /*%*/ [GLOBALS.trolldesc] /*1*/,	  "troll",
 	  /*%*/ [false] /*1*/,
 	  troll,
@@ -471,7 +464,7 @@ add_object(/*#*/ [object, /*{*/ ["PEARL",
 /*#*/ [room, /*{*/ ["MAZ11",
        /*%*/ [GLOBALS.mazedesc] /*1*/,       /*%*/ [GLOBALS.mazedesc] /*1*/,	/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ ["NE", "MGRAT", "DOWN", "MAZ10", "NW", "MAZ13", "SW", "MAZ12"] /*}*/] /*2*/] /*}*/] /*2*/
-
+	      
 /*#*/ [room, /*{*/ ["MGRAT",
        "",
        "Grating Room", /*%*/ [false] /*1*/,
@@ -646,7 +639,7 @@ add_object(/*#*/ [object, /*{*/ ["ICE",
        /*(*/ [/*#*/ [find_obj, /*{*/ ["BAR"] /*}*/] /*2*/] /*)*/,
        echo_room] /*}*/] /*2*/
 
-/*#*/ [object, /*{*/ ["RUBY",
+ /*#*/ [object, /*{*/ ["RUBY",
 	  "There is a moby ruby lying here.",
 	  "ruby",
 	  "On the floor lies a moby ruby.",
@@ -1025,7 +1018,7 @@ add_object(/*#*/ [object, /*{*/ ["GHOST",
 	  "",
 	  "", /*%*/ [false] /*1*/, ghost_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0,
 	  /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
-/*[*/ ["SPIRI", "FIEND"] /*]*/)
+/*[*/ ["SPIRI", "FIEND"] /*]*/)	 
 
 /*#*/ [room, /*{*/ ["LLD2",
        "",
@@ -1112,7 +1105,7 @@ add_object(/*#*/ [object, /*{*/ ["PAPER",
 	  "",
 	  "newspaper",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 2, 0] /*}*/] /*2*/,
-/*[*/ ["NEWSP", "ISSUE", "REPOR", "MAGAZ", "NEWS"] /*]*/)
+/*[*/ ["NEWSP", "ISSUE", "REPOR", "MAGAZ", "NEWS"] /*]*/)	  
 
 /*#*/ [room, /*{*/ ["MAINT",
 
@@ -1141,7 +1134,7 @@ add_object(/*#*/ [object, /*{*/ ["MAILB",
 	  "mailbox",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ ["ADVER"] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,10] /*}*/] /*2*/,/*[*/ ["BOX"] /*]*/)
 
-/*#*/ [object, /*{*/ ["TUBE",
+ /*#*/ [object, /*{*/ ["TUBE",
 	  "There is an object which looks like a tube of toothpaste here.",
 	  "tube",
 	  /*%*/ [false] /*1*/, tube_function, /*(*/ [/*#*/ [find_obj, /*{*/ ["PUTTY"] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 7] /*}*/] /*2*/
@@ -1161,6 +1154,7 @@ add_object(/*#*/ [object, /*{*/ ["SCREW",
 	  "There is a screwdriver here.",
 	  "screwdriver",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+
 
 /*#*/ [room, /*{*/ ["CYCLO",
        "", "Cyclops Room",
@@ -1208,6 +1202,7 @@ add_object(/*#*/ [object, /*{*/ ["CHALI",
 "You are in an art gallery.  Most of the paintings which were here\nhave been stolen by vandals with exceptional taste.  The vandals\nleft through either the north or south exits.",
        "Gallery",
        t, /*#*/ [exit, /*{*/ ["NORTH", "CHAS2", "SOUTH", "STUDI"] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ ["PAINT"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
+
 
 add_object(/*#*/ [object, /*{*/ ["PAINT",
 	  "A masterpiece by a neglected genius is here.",
@@ -1276,7 +1271,6 @@ add_desc(find_obj("PRAYE"),
 // ASSORTED DOORS
 
 psetg(butstr, "button")
-
 psetg(doorstr, "door")
 
 add_object(aobject("WIND1", "window", window_function, GLOBALS.ovison,GLOBALS.doorbit,GLOBALS.ndescbit),
@@ -1318,51 +1312,35 @@ add_object(aobject("MSWIT", "switch", mswitch_function, GLOBALS.ovison,GLOBALS.n
 // ASSORTED GARBAGE
 
 add_object(sobject("HPOLE", "head on a pole", GLOBALS.ovison), /*[*/ ["HEAD"] /*]*/)
-
 add_object(sobject("CORPS", "corpses", GLOBALS.ovison), /*[*/ [] /*]*/, /*[*/ ["MANGL"] /*]*/)
-
 add_object(aobject("BODIE", "pile of bodies", body_function,
 		     GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.trytakebit),
 	    /*[*/ ["BODY", "CORPS"] /*]*/)
 
 add_object(sobject("DAM", "dam", GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["GATE", "GATES", "FCD"] /*]*/)
-
 add_object(sobject("RAILI", "railing", GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["RAIL"] /*]*/)
-
 add_object(sobject("BUTTO", "button", GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["SWITC"] /*]*/)
-
 sobject("BUBBL", "bubble", GLOBALS.ovison,GLOBALS.ndescbit)
-
 add_object(aobject("LEAK", "leak", leak_function, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["DRIP", "HOLE"] /*]*/)
-
 add_star(add_object(aobject("EVERY", "everything",
 		   everything, GLOBALS.ovison,GLOBALS.takebit,GLOBALS.no_check_bit,GLOBALS.ndescbit),
 	   /*[*/ ["ALL"] /*]*/))
-
 add_star(add_object(aobject("VALUA", "valuables",
 		    valuables, GLOBALS.ovison,GLOBALS.takebit,GLOBALS.no_check_bit,GLOBALS.ndescbit),
 	   /*[*/ ["TREAS"] /*]*/))
-
 add_star(sobject("SAILO", "sailor", GLOBALS.ovison,GLOBALS.ndescbit))
-
 add_star(sobject("TEETH", "set of teeth", GLOBALS.ovison,GLOBALS.ndescbit))
-
 add_star(sobject("WALL", "wall", GLOBALS.ovison,GLOBALS.ndescbit))
-
 add_star(find_obj("GRUE"))
-
 add_star(add_object(sobject("HANDS", "pair of hands", GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.toolbit),
 		      /*[*/ ["HAND"] /*]*/, /*[*/ ["BARE"] /*]*/))
-
 add_star(add_object(sobject("LUNGS", "breath", GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.toolbit),
 		      /*[*/ ["LUNG", "AIR"] /*]*/))
-
 add_star(sobject("AVIAT", "flyer", GLOBALS.ovison,GLOBALS.ndescbit))
 
 add_object(sobject("RBUTT", GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
 	    /*[*/ ["BUTTO", "SWITC"] /*]*/,
 	    /*[*/ ["RED"] /*]*/)
-
 add_object(sobject("YBUTT", GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
 	    /*[*/ ["BUTTO", "SWITC"] /*]*/,
 	    /*[*/ ["YELLO"] /*]*/)
@@ -1376,13 +1354,12 @@ add_object(sobject("BRBUT", GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
 	    /*[*/ ["BROWN"] /*]*/)
 
 add_object(aobject("BAT", "bat", fly_me, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.trytakebit), /*[*/ ["VAMPI"] /*]*/,/*[*/ [] /*]*/)
-
+
 "MORE VOCABULARY"
 
 sobject("RAINB", "rainbow", GLOBALS.ovison,GLOBALS.ndescbit)
 
 psetg(cliffs, /*#*/ [nexit, "The White Cliffs prevent your landing here."] /*2*/)
-
 psetg(riverdesc, "Frigid River")
 
 /*#*/ [room, /*{*/ ["DOCK",
@@ -1566,7 +1543,6 @@ add_object(/*#*/ [object, /*{*/ ["RBOAT",
 /*[*/ ["BOAT"] /*]*/, /*[*/ ["PLAST", "SEAWO"] /*]*/)
 
 put(find_obj("RBOAT"), GLOBALS.oopen_Q,t)
-
 put(find_obj("RBOAT"), GLOBALS.orand,GLOBALS.rwaterbit)
 
 add_object(/*#*/ [object, /*{*/ ["LABEL",
@@ -1703,10 +1679,9 @@ add_object(/*#*/ [object, /*{*/ ["BALLO",
  /*[*/ ["BASKE"] /*]*/, /*[*/ ["WICKE"] /*]*/)
 
 put(find_obj("BALLO"), GLOBALS.oopen_Q,t)
-
 put(find_obj("BALLO"), GLOBALS.orand,GLOBALS.rairbit)
 
-/*#*/ [object, /*{*/ ["RECEP",
+ /*#*/ [object, /*{*/ ["RECEP",
 	  "",
 	  "receptacle",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ ["BALLO"] /*}*/] /*2*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison,GLOBALS.searchbit)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,6] /*}*/] /*2*/
@@ -1722,7 +1697,7 @@ add_object(/*#*/ [object, /*{*/ ["BROPE",
 	  /*#*/ [find_obj, /*{*/ ["BALLO"] /*}*/] /*2*/, /*%*/ [_(GLOBALS.tiebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ ["WIRE"] /*]*/, /*[*/ ["BRAID"] /*]*/)
 
-add_object(/*#*/ [object, /*{*/ ["HOOK1",
+ add_object(/*#*/ [object, /*{*/ ["HOOK1",
 	  "There is a small hook attached to the rock here.",
 	  "hook",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
@@ -1743,6 +1718,7 @@ add_object(/*#*/ [object, /*{*/ ["ZORKM",
 
 add_desc(find_obj("ZORKM"),
 	  "--------------------------\n	      /      Gold Zorkmid	 \\\n	     /  T e n   T h o u s a n d   \\\n	    /        Z O R K M I D S	   \\\n	   /				    \\\n	  /        ||||||||||||||||||	     \\\n	 /        !||||		 ||||!	      \\\n	|	   |||   ^^  ^^   |||	       |\n	|	   |||	 OO  OO   |||	       |\n	| In Frobs  |||	   <<    |||  We Trust |\n	|	     || (______) ||	       |\n	|	      |          |	       |\n	|	      |__________|	       |\n	 \\				      /\n	  \\    -- Lord Dimwit Flathead --    /\n	   \\    -- Beloved of Zorkers --    /\n	    \\				   /\n	     \\	     * 722 G.U.E. *       /\n	      \\				 /\n	       --------------------------")
+
 
 add_object(/*#*/ [object, /*{*/ ["SAFE",
 	  "",
@@ -1789,6 +1765,7 @@ add_object(/*#*/ [object, /*{*/ ["FUSE",
 	  "wire coil",
 	  /*%*/ [false] /*1*/, fuse_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
  /*[*/ ["COIL", "WIRE"] /*]*/, /*[*/ ["SHINY", "THIN"] /*]*/)
+
 
 add_object(/*#*/ [object, /*{*/ ["GNOME",
 	  "There is a nervous Volcano Gnome here.",
@@ -1840,14 +1817,11 @@ psetg(greek_to_me,
 "This book is written in a tongue with which I am unfamiliar.")
 
 add_desc(find_obj("BLBK"), GLOBALS.greek_to_me)
-
 add_desc(find_obj("GRBK"), GLOBALS.greek_to_me)
-
 add_desc(find_obj("PUBK"), GLOBALS.greek_to_me)
-
 add_desc(find_obj("WHBK"), GLOBALS.greek_to_me)
 
-/*#*/ [object, /*{*/ ["STAMP",	
+ /*#*/ [object, /*{*/ ["STAMP",	
 	  "There is a Flathead Commemorative stamp here.",
 	  "stamp",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ ["PUBK"] /*}*/] /*2*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.readbit,GLOBALS.burnbit,GLOBALS.ovison)] /*1*/,
@@ -1864,9 +1838,7 @@ put(find_obj("LAMP"), GLOBALS.orand,/*[*/ [0, clock_disable(clock_int(GLOBALS.ln
 
 put(find_obj("CANDL"), GLOBALS.orand,false)
 
-put(find_obj("MATCH"), GLOBALS.orand,5)
-
-// NUMBER OF MATCHES
+put(find_obj("MATCH"), GLOBALS.orand,5)		// NUMBER OF MATCHES
 
 psetg(indentstr, rest(istring(8, _X__), 8))
 
@@ -1975,7 +1947,6 @@ mapf(false,
 GLOBALS.bucket_top_X_flag = false
 
 GLOBALS.magcmach = /*#*/ [cexit, /*{*/ ["FROBOZZ", "CMACH", ""] /*}*/] /*2*/
-
 GLOBALS.magalice = /*#*/ [cexit, /*{*/ ["FROBOZZ", "ALICE", ""] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ ["MAGNE",
@@ -2026,9 +1997,7 @@ add_object(/*#*/ [object, /*{*/ ["SPHER",
  /*[*/ ["BALL"] /*]*/, /*[*/ ["CRYST", "GLASS"] /*]*/)
 
 add_object(aobject("SQBUT", GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["BUTTO"] /*]*/, /*[*/ ["SQUAR"] /*]*/)
-
 add_object(aobject("RNBUT", GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["BUTTO"] /*]*/, /*[*/ ["ROUND"] /*]*/)
-
 add_object(aobject("TRBUT", GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ ["BUTTO"] /*]*/, /*[*/ ["TRIAN"] /*]*/)
 
 /*#*/ [room, /*{*/ ["TWELL",
@@ -2048,9 +2017,7 @@ add_object(aobject("TRBUT", GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndesc
        /*(*/ [/*#*/ [find_obj, /*{*/ ["BUCKE"] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ ["ETCH1"] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [_(GLOBALS.rlandbit,GLOBALS.rbuckbit)] /*1*/] /*}*/] /*2*/
 
 psetg(ewalls, /*[*/ ["ETCHI", "WALLS", "WALL"] /*]*/)
-
 add_object(sobject("ETCH1", "wall with etchings", GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.readbit), GLOBALS.ewalls)
-
 add_object(sobject("ETCH2", "wall with etchings", GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.readbit), GLOBALS.ewalls)
 
 add_desc(find_obj("ETCH2"),
@@ -2158,7 +2125,6 @@ add_object(/*#*/ [object, /*{*/ ["RBTLB",
 
 add_desc(find_obj("RBTLB"),
 "!!!! 	FROBOZZ MAGIC ROBOT COMPANY  !!!!\n\nHello, Master!\n   \n   I am a late-model robot, trained at MIT Tech to perform various\nsimple household functions. \n\nInstructions for use:\n   To activate me, use the following formula:\n	>TELL ROBOT '<something to do>' <cr>\n   The quotation marks are required!\n       \nWarranty:\n   No warranty is expressed or implied.\n				\n					At your service!")
-
 // VERBS
 
 sadd_action("BACK", backer)
@@ -2170,18 +2136,16 @@ sadd_action("TIME", play_time)
 sadd_action("WAIT", wait)
 
 sadd_action("CURSE", curses)
-
 vsynonym("CURSE", "SHIT", "FUCK", "DAMN")
 
 sadd_action("JARGON", jargon)
-
 vsynonym("JARGON", "FOO", "BLETCH")
 
 add_action("PUT",
 	    "Put",
 	    /*[*/ [obj, "IN", obj, /*[*/ ["PUT", putter] /*]*/, driver] /*]*/,
-	    /*[*/ ["DOWN", obj, /*[*/ ["DROP", dropper] /*]*/] /*]*/)
-
+	    /*[*/ ["DOWN", obj, /*[*/ ["DROP", dropper] /*]*/] /*]*/) 
+	
 add_action("PICK",
 	    "Pick",
 	    /*[*/ ["UP", obj, /*[*/ ["TAKE", take] /*]*/] /*]*/)
@@ -2198,7 +2162,6 @@ add_action("RAISE",
 vsynonym("RAISE", "LIFT")
 
 1add_action("MELT", "Melt", melter)
-
 vsynonym("MELT", "LIQUI")
 
 add_action("LIGHT",
@@ -2210,7 +2173,6 @@ add_action("LIGHT",
 add_action("EXTIN",
 	    "Turn off",
 	    /*[*/ [/*(*/ [GLOBALS.lightbit,aobjs, robjs] /*)*/, /*[*/ ["EXTIN", lamp_off] /*]*/] /*]*/)
-
 vsynonym("EXTIN", "DOUSE")
 
 add_action("TURN",
@@ -2228,7 +2190,6 @@ add_action("TURN",
 	     /*[*/ ["TURN-TO", time] /*]*/] /*]*/)
 
 add_action("TAKE", "Take", /*[*/ [/*(*/ [_1, robjs, aobjs, no_take] /*)*/, /*[*/ ["TAKE", take] /*]*/] /*]*/)
-
 vsynonym("TAKE", "GET", "HOLD", "CARRY")
 
 add_action("LOOK",
@@ -2241,7 +2202,6 @@ add_action("GIVE",
 	    "Give",
 	    /*[*/ [obj, "TO", /*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ ["GIVE", dropper] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, obj, /*[*/ ["GIVE", dropper] /*]*/, flip] /*]*/)
-
 vsynonym("GIVE", "HAND", "DONAT")
 
 add_action("STRIK",
@@ -2254,37 +2214,31 @@ add_action("STRIK",
 	    /*[*/ [/*(*/ [_1, robjs, aobjs] /*)*/, /*[*/ ["LIGHT", lamp_on] /*]*/] /*]*/)
 
 aadd_action("MOVE", "Move", move)
-
 vsynonym("MOVE", "PULL", "TUG")
 
 aadd_action("WAVE", "Wave", waver)
-
 vsynonym("BRAND", "FLAUN")
 
 add_action("DROP",
 	    "Drop",
 	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, /*[*/ ["DROP", dropper] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, "IN", obj, /*[*/ ["DROP", dropper] /*]*/] /*]*/)
-
 vsynonym("DROP", "RELEA")
 
 add_action("POUR",
 	    "Pour",
 	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, /*[*/ ["POUR", dropper] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, "IN", obj, /*[*/ ["POUR", dropper] /*]*/] /*]*/)
-
 vsynonym("POUR", "SPILL")
 
 add_action("THROW",
 	    "Throw",
 	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, "AT", /*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ ["THROW", dropper] /*]*/] /*]*/)
-
 vsynonym("THROW", "HURL", "CHUCK")
 
 add_action("TELL",
 	    "Tell",
 	    /*[*/ [/*(*/ [GLOBALS.actorbit] /*)*/, /*[*/ ["TELL", command] /*]*/] /*]*/)
-
 vsynonym("TELL", "COMMA", "REQUE")
 
 vsynonym("LOOK", "L", "STARE", "GAZE")
@@ -2298,15 +2252,12 @@ sadd_action("SUPER", super_brief)
 sadd_action("UNSUP", un_super_brief)
 
 1add_action("EXAMI", "Examine", room_info)
-
 vsynonym("EXAMI", "DESCR", "WHAT", "WHATS", "WHAT'")
 
 1add_action("FIND", "Find", find)
-
 vsynonym("WHERE", "FIND", "SEEK", "SEE")
 
 sadd_action("INVEN", invent)
-
 vsynonym("INVEN", "LIST")
 
 sadd_action("VERSI", version)
@@ -2321,23 +2272,15 @@ sadd_action("RESTO", do_restore)
 
 sadd_action("WALK-IN", time)
 
-sadd_action("C-INT", time)
+sadd_action("C-INT", time)	// funny verb for clock ints
 
-// funny verb for clock ints
+sadd_action("DEAD!", time)	// funny verb for killing villains
 
-sadd_action("DEAD!", time)
-
-// funny verb for killing villains
-
-sadd_action("FIRST?", time)
-
-// funny verb for surprise by villains
+sadd_action("FIRST?", time)	// funny verb for surprise by villains
 
 sadd_action("DIAGN", diagnose)
 
-sadd_action("HACK?", time)
-
-// funny verb for villain fight decisions
+sadd_action("HACK?", time)	// funny verb for villain fight decisions
 
 sadd_action("SCORE", score)
 
@@ -2350,28 +2293,23 @@ sadd_action("HELP", help)
 add_action("PLUG",
 	    "Plug",
 	    /*[*/ [obj, "WITH", obj, /*[*/ ["PLUG", plugger] /*]*/] /*]*/)
-
 vsynonym("PLUG", "GLUE", "PATCH")
 
 1add_action("RUB", "Rub", rubber)
-
 vsynonym("RUB", "CARES", "TOUCH", "FONDL")
 
 sadd_action("SWIM", swimmer)
-
 vsynonym("SWIM", "BATHE", "WADE")
 
 add_action("BURN",
 	    "Burn",
 	    /*[*/ [/*(*/ [GLOBALS.burnbit,aobjs, robjs, no_take] /*)*/, "WITH", /*(*/ [GLOBALS.flamebit,aobjs, robjs] /*)*/,
 			/*[*/ ["BURN", burner] /*]*/] /*]*/)
-
 vsynonym("BURN", "INCIN", "IGNIT")
 
 add_action("KILL",
 	    "Kill",
 	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, "WITH", /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ ["KILL", killer] /*]*/] /*]*/)
-
 vsynonym("KILL",
 	 "MURDE",
 	 "SLAY",
@@ -2380,7 +2318,6 @@ vsynonym("KILL",
 add_action("ATTAC",
 	    "Attack",
 	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, "WITH", /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ ["ATTAC", attacker] /*]*/] /*]*/)
-
 vsynonym("ATTAC",
 	 "FIGHT",
 	 "MUNG",
@@ -2394,38 +2331,32 @@ vsynonym("ATTAC",
 add_action("SWING",
 	    "Swing",
 	    /*[*/ [/*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, "AT", /*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, /*[*/ ["SWING", swinger] /*]*/] /*]*/)
-
 vsynonym("SWING",
 	 "THRUS")
 
 add_action("POKE",
 	    "Poke",
 	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, "WITH", /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ ["POKE", munger] /*]*/] /*]*/)
-
 vsynonym("POKE",
 	 "JAB",
 	 "BREAK")
 
 1add_action("KICK", "Kick", kicker)
-
 vsynonym("KICK",
 	 "BITE",
 	 "TAUNT")
 
 1add_action("PUSH", "Push", pusher)
-
 vsynonym("PUSH", "PRESS")
 
 add_action("OPEN",
 	    "Open",
 	    /*[*/ [/*(*/ [_(GLOBALS.doorbit,GLOBALS.contbit), aobjs, robjs, no_take] /*)*/, /*[*/ ["OPEN", opener] /*]*/] /*]*/)
-
 vsynonym("OPEN")
 
 add_action("CLOSE",
 	    "Close",
 	    /*[*/ [/*(*/ [_(GLOBALS.doorbit,GLOBALS.contbit), aobjs, robjs, no_take] /*)*/, /*[*/ ["CLOSE", closer] /*]*/] /*]*/)
-
 vsynonym("CLOSE")
 
 add_action("UNLOC",
@@ -2439,50 +2370,40 @@ add_action("LOCK",
 add_action("TIE",
 	    "Tie",
 	    /*[*/ [obj, "TO", obj, /*[*/ ["TIE", tie] /*]*/] /*]*/)
-
 vsynonym("TIE", "KNOT", "FASTE")
 
 1add_action("RING", "Ring", ring)
-
 vsynonym("RING", "PEAL")
 
 add_action("EAT",
 	    "Eat",
 	    /*[*/ [/*(*/ [GLOBALS.foodbit,aobjs, robjs] /*)*/, /*[*/ ["EAT", eat] /*]*/] /*]*/)
-
 vsynonym("EAT", "CONSU", "GOBBL", "MUNCH", "TASTE")
 
 add_action("DRINK",
 	    "Drink",
 	    /*[*/ [/*(*/ [GLOBALS.drinkbit,aobjs, robjs] /*)*/, /*[*/ ["DRINK", eat] /*]*/] /*]*/)
-
 vsynonym("DRINK", "IMBIB", "SWALL")
 
 add_action("BRUSH",
 	    "Brush",
 	    /*[*/ [/*(*/ [_1, aobjs, robjs] /*)*/, /*[*/ ["BRUSH", brush] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [_1, aobjs, robjs] /*)*/, "WITH", obj, /*[*/ ["BRUSH", brush] /*]*/] /*]*/)
-
 vsynonym("BRUSH", "CLEAN")
 
 1add_action("UNTIE", "Untie", untie)
-
 vsynonym("UNTIE", "RELEA", "FREE")
 
 sadd_action("EXORC", exorcise)
-
 vsynonym("EXORC", "XORCI")
 
 sadd_action("CHOMP", chomp)
-
 vsynonym("CHOMP", "LOSE", "BARF")
 
 sadd_action("YELL", yell)
-
 vsynonym("YELL", "SCREA", "SHOUT")
 
 sadd_action("WIN", win)
-
 vsynonym("WIN", "WINNA")
 
 sadd_action("FROBO", frobozz)
@@ -2496,11 +2417,9 @@ sadd_action("PRAY", prayer)
 sadd_action("JUMP", leaper)
 
 sadd_action("SKIP", skipper)
-
 vsynonym("SKIP", "HOP")
 
 sadd_action("MUMBL", mumbler)
-
 vsynonym("MUMBL", "SIGH")
 
 sadd_action("ZORK", zork)
@@ -2510,14 +2429,12 @@ sadd_action("DUNGE", dungeon)
 add_action("WAKE",
 	    "Wake",
 	    /*[*/ [/*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ ["WAKE", alarm] /*]*/] /*]*/)
-
 vsynonym("WAKE", "AWAKE", "SURPR", "START")
 
 add_action("HELLO",
 	    "Hello",
 	    /*[*/ [/*[*/ ["HELLO", hello] /*]*/, driver] /*]*/,
 	    /*[*/ [obj, /*[*/ ["HELLO", hello] /*]*/] /*]*/)
-
 vsynonym("HELLO", "HI")
 
 1add_action("GRANI", "Granite", granite)
@@ -2529,14 +2446,12 @@ vsynonym("JUMP", "LEAP", "VAULT")
 sadd_action("WELL", well)
 
 sadd_action("ODYSS", sinbad)
-
 vsynonym("ODYSS", "ULYSS")
 
 add_action("READ",
 	    "Read",
 	    /*[*/ [/*(*/ [GLOBALS.readbit,aobjs, robjs, no_take] /*)*/, /*[*/ ["READ", reader] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [GLOBALS.readbit,aobjs, robjs, no_take] /*)*/, "WITH", obj, /*[*/ ["READ", reader] /*]*/] /*]*/)
-
 vsynonym("READ", "SKIM", "SCAN")
 
 1add_action("DEFLA", "Deflate", deflater)
