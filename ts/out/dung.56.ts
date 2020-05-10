@@ -15,17 +15,17 @@ psetg(mgvals,
 
 psetg(cntuse, `You can't use that!`)
 
-GLOBALS.bigfix = _(chtype(min(), fix), 2)
+bigfix = _(chtype(min(), fix), 2)
 
-GLOBALS.words = (words[oblist] || moblist(words, 23))
+words = (words[oblist] || moblist(words, 23))
 
-GLOBALS.object_obl = (objects[oblist] || moblist(objects))
+object_obl = (objects[oblist] || moblist(objects))
 
-GLOBALS.room_obl = (rooms[oblist] || moblist(rooms))
+room_obl = (rooms[oblist] || moblist(rooms))
 
-GLOBALS.actors = /*(*/ [] /*)*/
+actors = /*(*/ [] /*)*/
 
-GLOBALS.stars = /*(*/ [] /*)*/
+stars = /*(*/ [] /*)*/
 
 add_buzz(`BY`, `IS`, `ONE`, `IT`, `A`, `THE`, `AN`, `THIS`, `OVER`)
 
@@ -48,45 +48,45 @@ synonym(`WITH`, `USING`, `THROU`)
 
 synonym(`IN`, `INSID`, `INTO`)
 
-GLOBALS.rooms = /*(*/ [] /*)*/
+rooms = /*(*/ [] /*)*/
 
-GLOBALS.objects = /*(*/ [] /*)*/
+objects = /*(*/ [] /*)*/
 
 
 `CEVENT DEFINITIONS`
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.cure_clock,false, `CURIN`))
+(lookup(`COMPILE`, root()) || cevent(0, cure_clock,false, `CURIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.maint_room,t, `MNTIN`))
+(lookup(`COMPILE`, root()) || cevent(0, maint_room,t, `MNTIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.lantern,t, `LNTIN`))
+(lookup(`COMPILE`, root()) || cevent(0, lantern,t, `LNTIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.match_function,t, matin))
+(lookup(`COMPILE`, root()) || cevent(0, match_function,t, matin))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.candles,t, `CNDIN`))
+(lookup(`COMPILE`, root()) || cevent(0, candles,t, `CNDIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.balloon,t, `BINT`))
+(lookup(`COMPILE`, root()) || cevent(0, balloon,t, `BINT`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.burnup,t, `BRNIN`))
+(lookup(`COMPILE`, root()) || cevent(0, burnup,t, `BRNIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.fuse_function,t, `FUSIN`))
+(lookup(`COMPILE`, root()) || cevent(0, fuse_function,t, `FUSIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.ledge_mung,t, `LEDIN`))
+(lookup(`COMPILE`, root()) || cevent(0, ledge_mung,t, `LEDIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.safe_mung,t, `SAFIN`))
+(lookup(`COMPILE`, root()) || cevent(0, safe_mung,t, `SAFIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.volgnome,t, `VLGIN`))
+(lookup(`COMPILE`, root()) || cevent(0, volgnome,t, `VLGIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.gnome_function,t, `GNOIN`))
+(lookup(`COMPILE`, root()) || cevent(0, gnome_function,t, `GNOIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.bucket,t, `BCKIN`))
+(lookup(`COMPILE`, root()) || cevent(0, bucket,t, `BCKIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, GLOBALS.sphere_function,t, `SPHIN`))
+(lookup(`COMPILE`, root()) || cevent(0, sphere_function,t, `SPHIN`))
 
 
 // KLUDGE
 
 /*#*/ [object, /*{*/ [`#####`,
-	 `You are here`, `cretin`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/] /*}*/] /*2*/ 
+	 `You are here`, `cretin`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/] /*}*/] /*2*/ 
 
 `MAZE`
 
@@ -153,13 +153,13 @@ add_object(/*#*/ [object, /*{*/ [`SBAG`,
 	  `sandwich bag`,
 	  `On the table is an elongated brown sack, smelling of hot peppers.`,
 	  /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`GARLI`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`FOOD`] /*}*/] /*2*/] /*)*/,
-	  /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.flamebit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 3, 15] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [_(contbit,flamebit,ovison,takebit)] /*1*/, 0, 0, 0, 3, 15] /*}*/] /*2*/,
 /*[*/ [`BAG`, `SACK`, `BAGGI`] /*]*/, /*[*/ [`BROWN`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`GARLI`,
 	  `There is a clove of garlic here.`,
 	  `clove of garlic`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SBAG`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.foodbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SBAG`] /*}*/] /*2*/, /*%*/ [_(takebit,foodbit,ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ [`CLOVE`] /*]*/)
 
 
@@ -167,45 +167,45 @@ add_object(/*#*/ [object, /*{*/ [`FOOD`,
 	  `A hot pepper sandwich is here.`,
 	  `\.lunch`,
 	  /*%*/ [false] /*1*/,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SBAG`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.foodbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SBAG`] /*}*/] /*2*/, /*%*/ [_(foodbit,takebit,ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ [`SANDW`, `LUNCH`, `PEPPE`, `DINNE`, `SNACK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`GUNK`,
 	  `There is a small piece of vitreous slag here.`,
 	  `piece of vitreous slag`,
-	  /*%*/ [false] /*1*/, gunk_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, gunk_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,takebit,ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
 /*[*/ [`MESS`, `SLAG`] /*]*/, /*[*/ [`VITRE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`COAL`,
 	  `There is a small heap of coal here.`,
 	  `small pile of coal`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,ovison)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
 /*[*/ [`HEAP`, `CHARC`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`JADE`,
 	  `There is an exquisite jade figurine here.`,
 	  `jade figurine`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 5, 5, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 5, 5, 10, 0] /*}*/] /*2*/,
 /*[*/ [`FIGUR`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`MACHI`,
 	  ``,
 	  `machine`,
-	  /*%*/ [false] /*1*/, machine_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,50] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, machine_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,50] /*}*/] /*2*/,
 /*[*/ [`PDP10`, `DRYER`, `LID`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`DIAMO`,
 	  `There is an enormous diamond (perfectly cut) here.`,
 	  `huge diamond`,
 	  /*%*/ [false] /*1*/,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 10, 6, 5, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 10, 6, 5, 0] /*}*/] /*2*/,
  /*[*/ [`PERFE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`TCASE`,
 	  `There is a trophy case here.`,
 	  `trophy case`,
-	  /*%*/ [false] /*1*/, trophy_case, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.transbit,GLOBALS.ovison)] /*1*/,
-	  0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,/*%*/ [GLOBALS.bigfix] /*1*/] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, trophy_case, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,transbit,ovison)] /*1*/,
+	  0, 0, 0, /*%*/ [bigfix] /*1*/,/*%*/ [bigfix] /*1*/] /*}*/] /*2*/,
  /*[*/ [`CASE`] /*]*/, /*[*/ [`TROPH`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BOTTL`,
@@ -215,7 +215,7 @@ add_object(/*#*/ [object, /*{*/ [`BOTTL`,
 	 bottle_function,
 	 /*(*/ [/*#*/ [find_obj, /*{*/ [`WATER`] /*}*/] /*2*/] /*)*/,
 	 /*%*/ [false] /*1*/,
-	 /*%*/ [_(GLOBALS.contbit,GLOBALS.transbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 4] /*}*/] /*2*/,
+	 /*%*/ [_(contbit,transbit,takebit,ovison)] /*1*/, 0, 0, 0, 5, 4] /*}*/] /*2*/,
 /*[*/ [`CONTA`, `PITCH`] /*]*/, /*[*/ [`GLASS`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`WATER`,
@@ -225,7 +225,7 @@ add_object(/*#*/ [object, /*{*/ [`WATER`,
 	 water_function,
 	 /*(*/ [] /*)*/,
 	 /*#*/ [find_obj, /*{*/ [`BOTTL`] /*}*/] /*2*/,
-	 /*%*/ [_(GLOBALS.drinkbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,/*[*/ [`LIQUI`, `H2O`] /*]*/)
+	 /*%*/ [_(drinkbit,takebit,ovison)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,/*[*/ [`LIQUI`, `H2O`] /*]*/)
 
 /*#*/ [room, /*{*/ [`ATTIC`,
 `You are in the attic.  The only exit is stairs that lead down.`,
@@ -238,7 +238,7 @@ add_object(/*#*/ [object, /*{*/ [`ROPE`,
 	  `There is a large coil of rope here.`,
 	  `rope`,
 	  `A large coil of rope is lying in the corner.`,
-	  rope_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.tiebit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
+	  rope_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(tiebit,takebit,ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
 /*[*/ [`HEMP`, `COIL`] /*]*/)
 
 
@@ -246,10 +246,10 @@ add_object(/*#*/ [object, /*{*/ [`KNIFE`,
 	  `There is a nasty-looking knife lying here.`,
 	  `knife`,
 	  `On a table is a nasty-looking knife.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison,GLOBALS.weaponbit)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison,weaponbit)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ [`BLADE`] /*]*/, /*[*/ [`NASTY`] /*]*/)
 
-add_melee(find_obj(`KNIFE`), GLOBALS.knife_melee)
+add_melee(find_obj(`KNIFE`), knife_melee)
 
 /*#*/ [room, /*{*/ [`LROOM`,
        ``,
@@ -267,37 +267,37 @@ add_object(/*#*/ [object, /*{*/ [`SWORD`,
 	  `There is an elvish sword here.`,
 	  `sword`,
 	  `On hooks above the mantelpiece hangs an elvish sword of great
-antiquity.`, sword, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.weaponbit)] /*1*/, 0, 0, 0, 30, 0] /*}*/] /*2*/,
+antiquity.`, sword, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit,weaponbit)] /*1*/, 0, 0, 0, 30, 0] /*}*/] /*2*/,
  /*[*/ [`ORCRI`, `GLAMD`, `BLADE`] /*]*/, /*[*/ [`ELVIS`] /*]*/)
 
-add_melee(find_obj(`SWORD`), GLOBALS.sword_melee)
+add_melee(find_obj(`SWORD`), sword_melee)
 
 add_object(/*#*/ [object, /*{*/ [`LAMP`,
 	  `There is a brass lantern (battery-powered) here.`,
 	  `lamp`,
 	  `A battery-powered brass lantern is on the trophy case.`,
-	  lantern, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, _1, 0, 0, 15, 0] /*}*/] /*2*/,
+	  lantern, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, _1, 0, 0, 15, 0] /*}*/] /*2*/,
 /*[*/ [`LANTE`] /*]*/, /*[*/ [`BRASS`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BLAMP`,
 	   `There is a broken brass lantern here.`,
 	   `broken lamp`,
 	   /*%*/ [false] /*1*/,
-	   /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0] /*}*/] /*2*/,
+	   /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0] /*}*/] /*2*/,
 /*[*/ [`LAMP`, `LANTE`] /*]*/, /*[*/ [`BROKE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`RUG`,
 	 ``,
 	 `carpet`,
 	 /*%*/ [false] /*1*/,
-	 rug, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.ndescbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	 rug, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,ndescbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
 /*[*/ [`CARPE`] /*]*/, /*[*/ [`ORIEN`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`LEAVE`,
 	  `There is a pile of leaves on the ground.`,
 	  `pile of leaves`,
 	  /*%*/ [false] /*1*/,
-	  leaf_pile, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 25, 0] /*}*/] /*2*/,
+	  leaf_pile, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,ovison)] /*1*/, 0, 0, 0, 25, 0] /*}*/] /*2*/,
 /*[*/ [`LEAF`, `PILE`] /*]*/)
 
 /*#*/ [room, /*{*/ [`CELLA`,
@@ -324,9 +324,9 @@ Bloodstains and deep scratches (perhaps made by an axe) mar the
 walls.`,
        `The Troll Room`,
        /*%*/ [false] /*1*/, /*#*/ [exit, /*{*/ [`WEST`, `CELLA`,
-		  `EAST`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `CRAW4`, /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/,
-		  `NORTH`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `PASS1`, /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/,
-		  `SOUTH`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `MAZE1`, /*%*/ [GLOBALS.tchomp] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/,
+		  `EAST`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `CRAW4`, /*%*/ [tchomp] /*1*/] /*}*/] /*2*/,
+		  `NORTH`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `PASS1`, /*%*/ [tchomp] /*1*/] /*}*/] /*2*/,
+		  `SOUTH`, /*#*/ [cexit, /*{*/ [`TROLL-FLAG`, `MAZE1`, /*%*/ [tchomp] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`TROLL`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 psetg(trolldesc,
@@ -337,28 +337,28 @@ psetg(trollout,
 `An unconscious troll is sprawled on the floor.  All passages out of
 the room are open.`)
 
-GLOBALS.villains = /*(*/ [find_obj(`TROLL`), find_obj(`THIEF`), find_obj(`CYCLO`)] /*)*/
-GLOBALS.villain_probs = iuvector(GLOBALS.villains.length, 0)
-GLOBALS.oppv = ivector(GLOBALS.villains.length, () => false)
+villains = /*(*/ [find_obj(`TROLL`), find_obj(`THIEF`), find_obj(`CYCLO`)] /*)*/
+villain_probs = iuvector(villains.length, 0)
+oppv = ivector(villains.length, () => false)
 
-add_demon(GLOBALS.sword_demon = chtype(/*[*/ [sword_glow, GLOBALS.villains,/*(*/ [] /*)*/, GLOBALS.rooms[1], find_obj(`SWORD`), false] /*]*/,
+add_demon(sword_demon = chtype(/*[*/ [sword_glow, villains,/*(*/ [] /*)*/, rooms[1], find_obj(`SWORD`), false] /*]*/,
 			  hack))
 
  /*#*/ [object, /*{*/ [`TROLL`,
-	  /*%*/ [GLOBALS.trolldesc] /*1*/,	  `troll`,
+	  /*%*/ [trolldesc] /*1*/,	  `troll`,
 	  /*%*/ [false] /*1*/,
 	  troll,
-	  /*(*/ [/*#*/ [find_obj, /*{*/ [`AXE`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison,GLOBALS.villain)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,2] /*}*/] /*2*/
+	  /*(*/ [/*#*/ [find_obj, /*{*/ [`AXE`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison,villain)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,2] /*}*/] /*2*/
 
-add_melee(find_obj(`TROLL`), GLOBALS.troll_melee)
+add_melee(find_obj(`TROLL`), troll_melee)
 
-add_demon(GLOBALS.fight_demon = chtype(/*[*/ [fighting, GLOBALS.villains,/*(*/ [] /*)*/, GLOBALS.rooms[1], find_obj(`TROLL`), false] /*]*/,
+add_demon(fight_demon = chtype(/*[*/ [fighting, villains,/*(*/ [] /*)*/, rooms[1], find_obj(`TROLL`), false] /*]*/,
 			 hack))
 
 add_object(/*#*/ [object, /*{*/ [`AXE`,
 	  `There is a bloody axe here.`,
 	  `bloody axe`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [find_obj(`TROLL`)] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.weaponbit)] /*1*/, 0, 0, 0, 25, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [find_obj(`TROLL`)] /*1*/, /*%*/ [_(ovison,weaponbit)] /*1*/, 0, 0, 0, 25, 0] /*}*/] /*2*/,
  /*[*/ [] /*]*/,/*[*/ [`BLOOD`] /*]*/)
 
 psetg(mazedesc, `You are in a maze of twisty little passages, all alike.`)
@@ -366,32 +366,32 @@ psetg(mazedesc, `You are in a maze of twisty little passages, all alike.`)
 psetg(deadend, `Dead End`)
 
 /*#*/ [room, /*{*/ [`MAZE1`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MTROL`,
 	      `NORTH`, `MAZE1`,
 	      `SOUTH`, `MAZE2`,
 	      `EAST`, `MAZE4`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE2`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`SOUTH`, `MAZE1`,
 	      `NORTH`, `MAZE4`,
 	      `EAST`, `MAZE3`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE3`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZE2`, `NORTH`, `MAZE4`, `UP`, `MAZE5`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE4`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZE3`, `NORTH`, `MAZE1`, `EAST`, `DEAD1`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`DEAD1`,
-       /*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [deadend] /*1*/,/*%*/ [deadend] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`SOUTH`, `MAZE4`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE5`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `DEAD2`, `NORTH`, `MAZE3`, `SW`, `MAZE6`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`BONES`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`BAGCO`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`KEYS`] /*}*/] /*2*/,
 	/*#*/ [find_obj, /*{*/ [`BLANT`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`RKNIF`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
@@ -400,78 +400,78 @@ add_object(/*#*/ [object, /*{*/ [`RKNIF`,
 	  `There is a rusty knife here.`,
 	  `rusty knife`,
 	  `Beside the skeleton is a rusty knife.`,
-	  rusty_knife, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.weaponbit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
+	  rusty_knife, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit,weaponbit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
  /*[*/ [`KNIFE`] /*]*/, /*[*/ [`RUSTY`] /*]*/)
 
-add_melee(find_obj(`RKNIF`), GLOBALS.knife_melee)
+add_melee(find_obj(`RKNIF`), knife_melee)
 
 add_object(/*#*/ [object, /*{*/ [`BLANT`,
 	  `There is a burned-out lantern here.`,
 	  `burned-out lantern`,
 	  `The deceased adventurer's useless lantern is here.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,
  /*[*/ [`LANTE`, `LAMP`] /*]*/, /*[*/ [`USED`, `BURNE`, `DEAD`, `USELE`] /*]*/)
 
 /*#*/ [object, /*{*/ [`KEYS`,
 	 `There is a set of skeleton keys here.`,
 	 `set of skeleton keys`,
-	 /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/
+	 /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,takebit,ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/
 
 add_object(/*#*/ [object, /*{*/ [`BONES`,
 `A skeleton, probably the remains of a luckless adventurer, lies here.`,
-	  ``, /*%*/ [false] /*1*/, skeleton, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  ``, /*%*/ [false] /*1*/, skeleton, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
 /*[*/ [`SKELE`, `BODY`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BAGCO`,
 	  `An old leather bag, bulging with coins, is here.`,
 	  `bag of coins`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 10, 5, 15, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 10, 5, 15, 0] /*}*/] /*2*/,
 /*[*/ [`BAG`, `COINS`] /*]*/, /*[*/ [`LEATH`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BAR`,
 	  `There is a large platinum bar here.`,
 	  `platinum bar`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.sacredbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 12, 10, 20, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(sacredbit,takebit,ovison)] /*1*/, 0, 12, 10, 20, 0] /*}*/] /*2*/,
 /*[*/ [`PLATI`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`PEARL`,
 	  `There is a pearl necklace here with hundreds of large pearls.`,
 	  `pearl necklace`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 9, 5, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 9, 5, 10, 0] /*}*/] /*2*/,
 /*[*/ [`NECKL`] /*]*/)
 
 /*#*/ [room, /*{*/ [`DEAD2`,
-       /*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [deadend] /*1*/,/*%*/ [deadend] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZE5`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE6`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`DOWN`, `MAZE5`, `EAST`, `MAZE7`, `WEST`, `MAZE6`, `UP`, `MAZE9`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE7`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`UP`, `MAZ14`, `WEST`, `MAZE6`, `NE`, `DEAD1`, `EAST`, `MAZE8`, `SOUTH`, `MAZ15`] /*}*/] /*2*/,
        /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE8`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NE`, `MAZE7`, `WEST`, `MAZE8`, `SE`, `DEAD3`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`DEAD3`,
-       /*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [deadend] /*1*/,/*%*/ [deadend] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NORTH`, `MAZE8`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZE9`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NORTH`, `MAZE6`, `EAST`, `MAZ11`, `DOWN`, `MAZ10`, `SOUTH`, `MAZ13`,
 	      `WEST`, `MAZ12`, `NW`, `MAZE9`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ10`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `MAZE9`, `WEST`, `MAZ13`, `UP`, `MAZ11`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ11`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,       /*%*/ [GLOBALS.mazedesc] /*1*/,	/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,       /*%*/ [mazedesc] /*1*/,	/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NE`, `MGRAT`, `DOWN`, `MAZ10`, `NW`, `MAZ13`, `SW`, `MAZ12`] /*}*/] /*2*/] /*}*/] /*2*/
 	      
 /*#*/ [room, /*{*/ [`MGRAT`,
@@ -481,39 +481,39 @@ add_object(/*#*/ [object, /*{*/ [`PEARL`,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`GRAT2`] /*}*/] /*2*/] /*)*/, maze_11] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ12`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZE5`, `SW`, `MAZ11`, `EAST`, `MAZ13`, `UP`, `MAZE9`, `NORTH`, `DEAD4`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`DEAD4`,
-       /*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [GLOBALS.deadend] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [deadend] /*1*/,/*%*/ [deadend] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`SOUTH`, `MAZ12`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ13`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `MAZE9`, `DOWN`, `MAZ12`, `SOUTH`, `MAZ10`, `WEST`, `MAZ11`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ14`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZ15`, `NW`, `MAZ14`, `NE`, `MAZE7`, `SOUTH`, `MAZE7`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAZ15`,
-       /*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [GLOBALS.mazedesc] /*1*/,/*%*/ [false] /*1*/,
+       /*%*/ [mazedesc] /*1*/,/*%*/ [mazedesc] /*1*/,/*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MAZ14`, `SOUTH`, `MAZE7`, `NE`, `CYCLO`] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(stfore,        `You are in a forest, with trees in all directions around you.`)
 
 /*#*/ [room, /*{*/ [`FORE1`,
-       /*%*/ [GLOBALS.stfore] /*1*/,       /*%*/ [GLOBALS.forest] /*1*/,t,
+       /*%*/ [stfore] /*1*/,       /*%*/ [forest] /*1*/,t,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE1`, `EAST`, `FORE3`, `SOUTH`, `FORE2`, `WEST`, `FORE1`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE4`,
        `You are in a large forest, with trees obstructing all views except
 to the east, where a small clearing may be seen through the trees.`,
-       /*%*/ [GLOBALS.forest] /*1*/,       t,
+       /*%*/ [forest] /*1*/,       t,
        /*#*/ [exit, /*{*/ [`EAST`, `CLTOP`, `NORTH`, `FORE5`, `SOUTH`, `FORE4`, `WEST`, `FORE2`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE5`,
-       /*%*/ [GLOBALS.stfore] /*1*/,       /*%*/ [GLOBALS.forest] /*1*/,       t,
+       /*%*/ [stfore] /*1*/,       /*%*/ [forest] /*1*/,       t,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE5`, `SE`, `CLTOP`, `SOUTH`, `FORE4`, `WEST`, `FORE2`] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(fordes,
@@ -521,11 +521,11 @@ psetg(fordes,
 east, there appears to be sunlight.`)
 
 /*#*/ [room, /*{*/ [`FORE2`,
-       /*%*/ [GLOBALS.fordes] /*1*/,       /*%*/ [GLOBALS.forest] /*1*/,t,
+       /*%*/ [fordes] /*1*/,       /*%*/ [forest] /*1*/,t,
        /*#*/ [exit, /*{*/ [`NORTH`, `SHOUS`, `EAST`, `CLEAR`, `SOUTH`, `FORE4`, `WEST`, `FORE1`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE3`,
-       /*%*/ [GLOBALS.fordes] /*1*/,       /*%*/ [GLOBALS.forest] /*1*/,t,
+       /*%*/ [fordes] /*1*/,       /*%*/ [forest] /*1*/,t,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE2`, `EAST`, `CLEAR`, `SOUTH`, `CLEAR`, `WEST`, `NHOUS`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CLEAR`,
@@ -615,18 +615,18 @@ ascending staircase in the room as well as doors, east and south.`,
 add_object(/*#*/ [object, /*{*/ [`REFL1`,
 	  ``,
 	  `mirror`,
-	  /*%*/ [false] /*1*/, mirror_mirror, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, mirror_mirror, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,vicbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`MIRRO`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`REFL2`,
 	  ``,
 	  `mirror`,
-	  /*%*/ [false] /*1*/, mirror_mirror, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, mirror_mirror, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,vicbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`MIRRO`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`ICE`,
 	  `A mass of ice fills the western half of the room.`,
-	  `glacier`, /*%*/ [false] /*1*/, glacier, /*(*/ [] /*)*/,  /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  `glacier`, /*%*/ [false] /*1*/, glacier, /*(*/ [] /*)*/,  /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
 /*[*/ [`GLACI`] /*]*/)
 
 /*#*/ [room, /*{*/ [`RUBYR`,
@@ -671,7 +671,7 @@ difficult to hear yourself think.`,
 	  /*%*/ [false] /*1*/,
 	  /*(*/ [] /*)*/,
 	  /*%*/ [false] /*1*/,
-	  /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/,
+	  /*%*/ [_(takebit,ovison)] /*1*/,
 	  0,
 	  15,
 	  8,
@@ -682,20 +682,20 @@ add_object(/*#*/ [object, /*{*/ [`TRIDE`,
 	  `Neptune's own crystal trident is here.`,
 	  `crystal trident`,
 	  `On the shore lies Neptune's own crystal trident.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 4, 11, 20, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 4, 11, 20, 0] /*}*/] /*2*/,
 /*[*/ [`FORK`] /*]*/, /*[*/ [`CRYST`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`COFFI`,
 `There is a solid-gold coffin, used for the burial of Ramses II, here.`,
 	  `gold coffin`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.sacredbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 3, 7, 55, 35] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,sacredbit,takebit,ovison)] /*1*/, 0, 3, 7, 55, 35] /*}*/] /*2*/,
 /*[*/ [`CASKE`] /*]*/, /*[*/ [`GOLD`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`TORCH`,
 	  `There is an ivory torch here.`,
 	  `torch`,
 	  `Sitting on the pedestal is a flaming torch, made of ivory.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.flamebit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 1, 14, 6, 20, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,flamebit,takebit,ovison)] /*1*/, 1, 14, 6, 20, 0] /*}*/] /*2*/,
 /*[*/ [] /*]*/, /*[*/ [`IVORY`] /*]*/)
 
 /*#*/ [room, /*{*/ [`MIRR1`,
@@ -802,14 +802,14 @@ add_object(/*#*/ [object, /*{*/ [`TBASK`,
 	  `At the end of the chain is a basket.`,
 	  `basket`,
 	  /*%*/ [false] /*1*/,
-	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison,GLOBALS.transbit)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,50] /*}*/] /*2*/,
-/*[*/ [`CAGE`, `DUMBW`, `BASKE`] /*]*/)[GLOBALS.oopen_Q] = t
+	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,ovison,transbit)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,50] /*}*/] /*2*/,
+/*[*/ [`CAGE`, `DUMBW`, `BASKE`] /*]*/)[oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ [`FBASK`,
 	  ``, 
 	  ``,
 	  /*%*/ [false] /*1*/,
-	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
 /*[*/ [`CAGE`, `DUMBW`, `BASKE`] /*]*/)
 
 /*#*/ [room, /*{*/ [`TUNNE`,
@@ -841,7 +841,7 @@ east is a narrow path.`,
 add_object(/*#*/ [object, /*{*/ [`BRACE`,
 	  `There is a sapphire-encrusted bracelet here.`,
 	  `sapphire bracelet`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 5, 3, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 5, 3, 10, 0] /*}*/] /*2*/,
 /*[*/ [`JEWEL`] /*]*/, /*[*/ [`SAPPH`] /*]*/)
 
 /*#*/ [room, /*{*/ [`TLADD`,
@@ -857,32 +857,32 @@ psetg(mindesc,
 `You are in a non-descript part of a coal mine.`)
 
 /*#*/ [room, /*{*/ [`MINE1`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NORTH`, `MINE4`, `SW`, `MINE2`, `EAST`, `TUNNE`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE2`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`SOUTH`, `MINE1`, `WEST`, `MINE5`, `UP`, `MINE3`, `NE`, `MINE4`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE3`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MINE2`, `NE`, `MINE5`, `EAST`, `MINE5`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE4`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`UP`, `MINE5`, `NE`, `MINE6`, `SOUTH`, `MINE1`, `WEST`, `MINE2`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE5`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`DOWN`, `MINE6`, `NORTH`, `MINE7`, `WEST`, `MINE2`, `SOUTH`, `MINE3`,
               `UP`, `MINE3`, `EAST`, `MINE4`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE6`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`SE`, `MINE4`, `UP`, `MINE5`, `NW`, `MINE7`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MINE7`,
-       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [GLOBALS.mindesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [mindesc] /*1*/,       /*%*/ [mindesc] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `MINE1`, `WEST`, `MINE5`, `DOWN`, `TLADD`, `SOUTH`, `MINE6`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`BLADD`,
@@ -909,7 +909,7 @@ southwest corner of the room into a very narrow passageway.`,
        `Timber Room`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`NORTH`, `BLADD`,
-	      `SW`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `BSHAF`, /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/, /*(*/ [] /*)*/, no_objs] /*}*/] /*2*/
+	      `SW`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `BSHAF`, /*%*/ [nofit] /*1*/] /*}*/] /*2*/] /*}*/] /*2*/, /*(*/ [] /*)*/, no_objs] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`BSHAF`, 
 
@@ -919,8 +919,8 @@ passage. In the shaft can be seen a heavy iron chain.`,
        `Lower Shaft`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `MACHI`,
-	      `OUT`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `TIMBE`, /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/,
-	      `NE`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `TIMBE`, /*%*/ [GLOBALS.nofit] /*1*/] /*}*/] /*2*/,
+	      `OUT`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `TIMBE`, /*%*/ [nofit] /*1*/] /*}*/] /*2*/,
+	      `NE`, /*#*/ [cexit, /*{*/ [`EMPTY-HANDED`, `TIMBE`, /*%*/ [nofit] /*1*/] /*}*/] /*2*/,
 	      `UP`, /*#*/ [nexit, `Not a chance.`] /*2*/,
 	      `CLIMB`, /*#*/ [nexit, `The chain is not climbable.`] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`FBASK`] /*}*/] /*2*/] /*)*/, no_objs] /*}*/] /*2*/
@@ -991,13 +991,13 @@ south.`,
 add_object(/*#*/ [object, /*{*/ [`IRBOX`,
 	  `There is a dented iron box here.`,
 	  `iron box`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`STRAD`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.contbit)] /*1*/, 0, 0, 0, 40, 20] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`STRAD`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,contbit)] /*1*/, 0, 0, 0, 40, 20] /*}*/] /*2*/,
  /*[*/ [`BOX`] /*]*/, /*[*/ [`IRON`, `DENTE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`STRAD`,
 	  `There is a Stradavarius here.`,
 	  `fancy violin`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`IRBOX`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 10, 10, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`IRBOX`] /*}*/] /*2*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 10, 10, 10, 0] /*}*/] /*2*/,
  /*[*/ [`VIOLI`] /*]*/, /*[*/ [`FANCY`] /*]*/)
 
 /*#*/ [room, /*{*/ [`PASS5`,
@@ -1043,10 +1043,10 @@ cave here.  Passages lead off in all directions.`,
        `Engravings Cave`,
        /*%*/ [false] /*1*/, /*#*/ [exit, /*{*/ [`NORTH`, `CAROU`, `SE`, `RIDDL`] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`ENGRA`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-add_object(sobject(`ENGRA`, `wall with engravings`, GLOBALS.ovison,GLOBALS.readbit,	 GLOBALS.sacredbit),
+add_object(sobject(`ENGRA`, `wall with engravings`, ovison,readbit,	 sacredbit),
 	    /*[*/ [`INSCR`] /*]*/, /*[*/ [`OLD`, `ANCIE`] /*]*/)
 
-find_obj(`ENGRA`)[GLOBALS.odesc1] = `There are old engravings on the walls here.`
+find_obj(`ENGRA`)[odesc1] = `There are old engravings on the walls here.`
 
 /*#*/ [room, /*{*/ [`RIDDL`,
 
@@ -1085,8 +1085,8 @@ solving this riddle:
 
 add_object(/*#*/ [object, /*{*/ [`GHOST`,
 	  ``,
-	  ``, /*%*/ [false] /*1*/, ghost_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0,
-	  /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  ``, /*%*/ [false] /*1*/, ghost_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison)] /*1*/, 0, 0, 0,
+	  /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
 /*[*/ [`SPIRI`, `FIEND`] /*]*/)	 
 
 /*#*/ [room, /*{*/ [`LLD2`,
@@ -1104,7 +1104,7 @@ stairs leads up, and passages leave to the east and west.`,
 
 add_object(/*#*/ [object, /*{*/ [`GRAIL`,
 	  `There is an extremely valuable (perhaps original) grail here.`,
-	  `grail`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 2, 5, 10, 5] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  `grail`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison)] /*1*/, 0, 2, 5, 10, 5] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 /*#*/ [room, /*{*/ [`TEMP1`,
 
@@ -1116,7 +1116,7 @@ room is through huge marble pillars.`,
        t, /*#*/ [exit, /*{*/ [`WEST`, `MGRAI`, `EAST`, `TEMP2`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`PRAYE`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`BELL`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-add_object(sobject(`PRAYE`, `prayer`, _(GLOBALS.readbit,GLOBALS.sacredbit,GLOBALS.ovison)),
+add_object(sobject(`PRAYE`, `prayer`, _(readbit,sacredbit,ovison)),
 	    /*[*/ [`INSCR`] /*]*/, /*[*/ [`ANCIE`, `OLD`] /*]*/)
 
 /*#*/ [room, /*{*/ [`TEMP2`,
@@ -1130,28 +1130,28 @@ add_object(/*#*/ [object, /*{*/ [`TRUNK`,
 	  `There is an old trunk here, bulging with assorted jewels.`,
 	  `trunk with jewels`,
 	  `Lying half buried in the mud is an old trunk, bulging with jewels.`,
-	   /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.takebit] /*1*/,0, 15, 8, 35, 0] /*}*/] /*2*/,
+	   /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [takebit] /*1*/,0, 15, 8, 35, 0] /*}*/] /*2*/,
 /*[*/ [`CHEST`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BELL`,
 	  `There is a small brass bell here.`,
 	  `bell`,
 	  `Lying in a corner of the room is a small brass bell.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ [] /*]*/, /*[*/ [`BRASS`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BOOK`,
 	  `There is a large black book here.`,
 	  `book`,
 	  `On the altar is a large black book, open to page 569.`,
-	  black_book, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
+	  black_book, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,ovison,readbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
 /*[*/ [`PRAYE`, `BIBLE`, `GOODB`] /*]*/, /*[*/ [`BLACK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`CANDL`,
 	  `There are two candles here.`,
 	  `pair of candles`,
 	  `On the two ends of the altar are burning candles.`,
-	  candles, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.flamebit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 1, 0, 0, 10, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  candles, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(flamebit,takebit,ovison)] /*1*/, 1, 0, 0, 10, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 /*#*/ [room, /*{*/ [`DAM`,
        ``,
@@ -1174,14 +1174,14 @@ add_object(/*#*/ [object, /*{*/ [`GUIDE`,
 	  `There are tour guidebooks here.`,
 	  `tour guidebook`,
 `Some guidebooks entitled 'Flood Control Dam #3' are on the reception
-desk.`, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.ovison)] /*1*/,
+desk.`, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,readbit,ovison)] /*1*/,
 	   0, 0, 0, 5, 0] /*}*/] /*2*/,
 /*[*/ [`BOOK`] /*]*/, /*[*/ [`TOUR`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`PAPER`,
 	  ``,
 	  `newspaper`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 2, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,readbit,ovison)] /*1*/, 0, 0, 0, 2, 0] /*}*/] /*2*/,
 /*[*/ [`NEWSP`, `ISSUE`, `REPOR`, `MAGAZ`, `NEWS`] /*]*/)	  
 
 /*#*/ [room, /*{*/ [`MAINT`,
@@ -1202,41 +1202,41 @@ room are in the west and south ends.`,
 add_object(/*#*/ [object, /*{*/ [`MATCH`,
 	  `There is a matchbook whose cover says 'Visit Beautiful FCD#3' here.`,
 	  `matchbook`,
-	  /*%*/ [false] /*1*/, match_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/, 0, 0, 0, 2, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, match_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison,readbit)] /*1*/, 0, 0, 0, 2, 0] /*}*/] /*2*/,
 /*[*/ [`FLINT`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`ADVER`,
 	  `There is a small leaflet here.`,
 	  `leaflet`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`MAILB`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`MAILB`] /*}*/] /*2*/, /*%*/ [_(burnbit,takebit,ovison,readbit)] /*1*/,
 	  0, 0, 0, 2, 0] /*}*/] /*2*/,
 /*[*/ [`PAMPH`, `LEAFL`, `BOOKL`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`MAILB`,
 	  `There is a small mailbox here.`,
 	  `mailbox`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`ADVER`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,10] /*}*/] /*2*/,/*[*/ [`BOX`] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`ADVER`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,10] /*}*/] /*2*/,/*[*/ [`BOX`] /*]*/)
 
  /*#*/ [object, /*{*/ [`TUBE`,
 	  `There is an object which looks like a tube of toothpaste here.`,
 	  `tube`,
-	  /*%*/ [false] /*1*/, tube_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`PUTTY`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 7] /*}*/] /*2*/
+	  /*%*/ [false] /*1*/, tube_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`PUTTY`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison)] /*1*/, 0, 0, 0, 10, 7] /*}*/] /*2*/
 
 add_object(/*#*/ [object, /*{*/ [`PUTTY`,
 	  `There is some gunk here`,
 	  `viscous material`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`TUBE`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 6, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`TUBE`] /*}*/] /*2*/, /*%*/ [_(toolbit,takebit,ovison)] /*1*/, 0, 0, 0, 6, 0] /*}*/] /*2*/,
  /*[*/ [`MATER`, `GUNK`, `GLUE`] /*]*/, /*[*/ [`VISCO`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`WRENC`,
 	  `There is a wrench here.`,
 	  `wrench`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,takebit,ovison)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`SCREW`,
 	  `There is a screwdriver here.`,
 	  `screwdriver`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,takebit,ovison)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 
 /*#*/ [room, /*{*/ [`CYCLO`,
@@ -1245,7 +1245,7 @@ add_object(/*#*/ [object, /*{*/ [`SCREW`,
 		  `UP`, /*#*/ [cexit, /*{*/ [`CYCLOPS-FLAG`, `TREAS`, `The cyclops doesn't look like he'll let you past.`] /*}*/] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`CYCLO`] /*}*/] /*2*/] /*)*/, cyclops_room] /*}*/] /*2*/
 
-add_melee(find_obj(`CYCLO`), GLOBALS.cyclops_melee)
+add_melee(find_obj(`CYCLO`), cyclops_melee)
 
 /*#*/ [room, /*{*/ [`BLROO`,
 `You are in a long passage.  To the south is one entrance.  On the
@@ -1256,7 +1256,7 @@ cyclops sized).`,
 
 add_object(/*#*/ [object, /*{*/ [`CYCLO`,
 	  ``, `cyclops`, /*%*/ [false] /*1*/,
-	  cyclops, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison,GLOBALS.villain)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,10000] /*}*/] /*2*/,
+	  cyclops, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison,villain)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,10000] /*}*/] /*2*/,
  /*[*/ [`ONE-E`, `MONST`] /*]*/)
 
 /*#*/ [room, /*{*/ [`TREAS`,
@@ -1269,7 +1269,7 @@ on the floor.`,
 
 add_object(/*#*/ [object, /*{*/ [`CHALI`,
 	  `There is a silver chalice, intricately engraved, here.`,
-	  `chalice`, /*%*/ [false] /*1*/, chalice, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 10, 10, 10, 5] /*}*/] /*2*/,
+	  `chalice`, /*%*/ [false] /*1*/, chalice, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison)] /*1*/, 0, 10, 10, 10, 5] /*}*/] /*2*/,
  /*[*/ [`CUP`, `GOBLE`] /*]*/)
 
 /*#*/ [room, /*{*/ [`STUDI`, 
@@ -1304,12 +1304,12 @@ add_object(/*#*/ [object, /*{*/ [`PAINT`,
 	  `painting`,
 `Fortunately, there is still one chance for you to be a vandal, for on
 the far wall is a work of unparalleled beauty.`,
- 	  painting, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 4, 7, 15, 0] /*}*/] /*2*/,
+ 	  painting, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,takebit,ovison)] /*1*/, 0, 4, 7, 15, 0] /*}*/] /*2*/,
 /*[*/ [`ART`, `CANVA`, `MASTE`] /*]*/)
 
 `LISTS OF CRUFT:  WEAPONS, AND IMMOVABLE OBJECTS`
 
-add_demon(GLOBALS.robber_demon = chtype(/*[*/ [robber, /*(*/ [] /*)*/, GLOBALS.rooms,GLOBALS.rooms[1], find_obj(`THIEF`), false] /*]*/, hack))
+add_demon(robber_demon = chtype(/*[*/ [robber, /*(*/ [] /*)*/, rooms,rooms[1], find_obj(`THIEF`), false] /*]*/, hack))
 
 psetg(robber_c_desc,
 `There is a suspicious-looking individual, holding a bag, leaning
@@ -1320,22 +1320,22 @@ psetg(robber_u_desc,
 ground.  His bag and stilletto seem to have vanished.`)
 
 add_object(/*#*/ [object, /*{*/ [`THIEF`,
-	  /*%*/ [GLOBALS.robber_c_desc] /*1*/,	  `thief`,
+	  /*%*/ [robber_c_desc] /*1*/,	  `thief`,
 	  /*%*/ [false] /*1*/,
-	  robber_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`STILL`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison,GLOBALS.villain)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,4] /*}*/] /*2*/,/*[*/ [`ROBBE`, `CROOK`, `CRIME`, `CRIMI`, `BANDI`, `GENT`, `GENTL`,
+	  robber_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`STILL`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison,villain)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,4] /*}*/] /*2*/,/*[*/ [`ROBBE`, `CROOK`, `CRIME`, `CRIMI`, `BANDI`, `GENT`, `GENTL`,
  `MAN`, `SHADY`, `THUG`, `BAGMA`, `MAFIA`] /*]*/)
 
-add_melee(find_obj(`THIEF`), GLOBALS.thief_melee)
+add_melee(find_obj(`THIEF`), thief_melee)
 
 add_object(/*#*/ [object, /*{*/ [`STILL`,
 	  `There is a vicious-looking stilletto here.`,
 	  `stilletto`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [find_obj(`THIEF`)] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.weaponbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [find_obj(`THIEF`)] /*1*/, /*%*/ [_(ovison,weaponbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [`VICIO`] /*]*/)
 
-GLOBALS.weapons = /*(*/ [find_obj(`STICK`), find_obj(`KNIFE`)] /*)*/
+weapons = /*(*/ [find_obj(`STICK`), find_obj(`KNIFE`)] /*)*/
 
-GLOBALS.random_list = /*(*/ [find_room(`LROOM`),
+random_list = /*(*/ [find_room(`LROOM`),
        find_room(`KITCH`),
        find_room(`CLEAR`),
        find_room(`FORE3`),
@@ -1493,91 +1493,91 @@ Zorkers were obscure.`)
 psetg(butstr, `button`)
 psetg(doorstr, `door`)
 
-add_object(aobject(`WIND1`, `window`, window_function, GLOBALS.ovison,GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`WIND1`, `window`, window_function, ovison,doorbit,ndescbit),
    /*[*/ [`WINDO`] /*]*/, /*[*/ [] /*]*/)
 
-add_object(aobject(`WIND2`, `window`, window_function, GLOBALS.ovison,GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`WIND2`, `window`, window_function, ovison,doorbit,ndescbit),
    /*[*/ [`WINDO`] /*]*/, /*[*/ [] /*]*/)
 
-add_object(aobject(`BOLT`, `bolt`, bolt_function, GLOBALS.turnbit,GLOBALS.ovison,GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`BOLT`, `bolt`, bolt_function, turnbit,ovison,doorbit,ndescbit),
 	    /*[*/ [`BOLT`, `NUT`] /*]*/, /*[*/ [] /*]*/)
 
-add_object(aobject(`GRAT1`, `grating`, grat1_function, GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`GRAT1`, `grating`, grat1_function, doorbit,ndescbit),
   /*[*/ [`GRATI`, `GRATE`] /*]*/, /*[*/ [] /*]*/)
 
-add_object(aobject(`GRAT2`, `grating`, grat2_function, GLOBALS.ovison,GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`GRAT2`, `grating`, grat2_function, ovison,doorbit,ndescbit),
   /*[*/ [`GRATI`, `GRATE`] /*]*/, /*[*/ [] /*]*/)
 
-add_object(aobject(`DOOR`, GLOBALS.doorstr,trap_door, GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`DOOR`, doorstr,trap_door, doorbit,ndescbit),
 	    /*[*/ [`TRAPD`, `TRAP-`] /*]*/, /*[*/ [`TRAP`] /*]*/)
 
-add_object(aobject(`TDOOR`, GLOBALS.doorstr,trap_door, GLOBALS.doorbit,GLOBALS.ndescbit),
+add_object(aobject(`TDOOR`, doorstr,trap_door, doorbit,ndescbit),
 	    /*[*/ [`TRAPD`, `TRAP-`] /*]*/, /*[*/ [`TRAP`] /*]*/)
 
-add_object(aobject(`WDOOR`, GLOBALS.doorstr,ddoor_function, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.readbit),
+add_object(aobject(`WDOOR`, doorstr,ddoor_function, ovison,ndescbit,readbit),
 	    /*[*/ [`DOOR`] /*]*/, /*[*/ [`WOODE`] /*]*/)
 
 add_desc(find_obj(`WDOOR`),
 `The engravings translate to 'This space intentionally left blank'`)
 
-add_object(aobject(`FDOOR`, GLOBALS.doorstr,ddoor_function, GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(aobject(`FDOOR`, doorstr,ddoor_function, ovison,ndescbit),
 	    /*[*/ [`DOOR`] /*]*/, /*[*/ [`FRONT`] /*]*/)
 
-add_object(aobject(`SDOOR`, GLOBALS.doorstr,ddoor_function, GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(aobject(`SDOOR`, doorstr,ddoor_function, ovison,ndescbit),
 	    /*[*/ [`DOOR`] /*]*/, /*[*/ [`STONE`] /*]*/)
 
-add_object(aobject(`MSWIT`, `switch`, mswitch_function, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.turnbit),
+add_object(aobject(`MSWIT`, `switch`, mswitch_function, ovison,ndescbit,turnbit),
 	    /*[*/ [`SWITC`] /*]*/)
 
 // ASSORTED GARBAGE
 
-add_object(sobject(`HPOLE`, `head on a pole`, GLOBALS.ovison), /*[*/ [`HEAD`] /*]*/)
-add_object(sobject(`CORPS`, `corpses`, GLOBALS.ovison), /*[*/ [] /*]*/, /*[*/ [`MANGL`] /*]*/)
+add_object(sobject(`HPOLE`, `head on a pole`, ovison), /*[*/ [`HEAD`] /*]*/)
+add_object(sobject(`CORPS`, `corpses`, ovison), /*[*/ [] /*]*/, /*[*/ [`MANGL`] /*]*/)
 add_object(aobject(`BODIE`, `pile of bodies`, body_function,
-		     GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.trytakebit),
+		     ovison,ndescbit,trytakebit),
 	    /*[*/ [`BODY`, `CORPS`] /*]*/)
 
-add_object(sobject(`DAM`, `dam`, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`GATE`, `GATES`, `FCD`] /*]*/)
-add_object(sobject(`RAILI`, `railing`, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`RAIL`] /*]*/)
-add_object(sobject(`BUTTO`, `button`, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`SWITC`] /*]*/)
-sobject(`BUBBL`, `bubble`, GLOBALS.ovison,GLOBALS.ndescbit)
-add_object(aobject(`LEAK`, `leak`, leak_function, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`DRIP`, `HOLE`] /*]*/)
+add_object(sobject(`DAM`, `dam`, ovison,ndescbit), /*[*/ [`GATE`, `GATES`, `FCD`] /*]*/)
+add_object(sobject(`RAILI`, `railing`, ovison,ndescbit), /*[*/ [`RAIL`] /*]*/)
+add_object(sobject(`BUTTO`, `button`, ovison,ndescbit), /*[*/ [`SWITC`] /*]*/)
+sobject(`BUBBL`, `bubble`, ovison,ndescbit)
+add_object(aobject(`LEAK`, `leak`, leak_function, ovison,ndescbit), /*[*/ [`DRIP`, `HOLE`] /*]*/)
 add_star(add_object(aobject(`EVERY`, `everything`,
-		   everything, GLOBALS.ovison,GLOBALS.takebit,GLOBALS.no_check_bit,GLOBALS.ndescbit),
+		   everything, ovison,takebit,no_check_bit,ndescbit),
 	   /*[*/ [`ALL`] /*]*/))
 add_star(add_object(aobject(`VALUA`, `valuables`,
-		    valuables, GLOBALS.ovison,GLOBALS.takebit,GLOBALS.no_check_bit,GLOBALS.ndescbit),
+		    valuables, ovison,takebit,no_check_bit,ndescbit),
 	   /*[*/ [`TREAS`] /*]*/))
-add_star(sobject(`SAILO`, `sailor`, GLOBALS.ovison,GLOBALS.ndescbit))
-add_star(sobject(`TEETH`, `set of teeth`, GLOBALS.ovison,GLOBALS.ndescbit))
-add_star(sobject(`WALL`, `wall`, GLOBALS.ovison,GLOBALS.ndescbit))
+add_star(sobject(`SAILO`, `sailor`, ovison,ndescbit))
+add_star(sobject(`TEETH`, `set of teeth`, ovison,ndescbit))
+add_star(sobject(`WALL`, `wall`, ovison,ndescbit))
 add_star(find_obj(`GRUE`))
-add_star(add_object(sobject(`HANDS`, `pair of hands`, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.toolbit),
+add_star(add_object(sobject(`HANDS`, `pair of hands`, ovison,ndescbit,toolbit),
 		      /*[*/ [`HAND`] /*]*/, /*[*/ [`BARE`] /*]*/))
-add_star(add_object(sobject(`LUNGS`, `breath`, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.toolbit),
+add_star(add_object(sobject(`LUNGS`, `breath`, ovison,ndescbit,toolbit),
 		      /*[*/ [`LUNG`, `AIR`] /*]*/))
-add_star(sobject(`AVIAT`, `flyer`, GLOBALS.ovison,GLOBALS.ndescbit))
+add_star(sobject(`AVIAT`, `flyer`, ovison,ndescbit))
 
-add_object(sobject(`RBUTT`, GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(sobject(`RBUTT`, butstr,ovison,ndescbit),
 	    /*[*/ [`BUTTO`, `SWITC`] /*]*/,
 	    /*[*/ [`RED`] /*]*/)
-add_object(sobject(`YBUTT`, GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(sobject(`YBUTT`, butstr,ovison,ndescbit),
 	    /*[*/ [`BUTTO`, `SWITC`] /*]*/,
 	    /*[*/ [`YELLO`] /*]*/)
 
-add_object(sobject(`BLBUT`, GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(sobject(`BLBUT`, butstr,ovison,ndescbit),
 	    /*[*/ [`BUTTO`, `SWITC`] /*]*/,
 	    /*[*/ [`BLUE`] /*]*/)
 
-add_object(sobject(`BRBUT`, GLOBALS.butstr,GLOBALS.ovison,GLOBALS.ndescbit),
+add_object(sobject(`BRBUT`, butstr,ovison,ndescbit),
 	    /*[*/ [`BUTTO`, `SWITC`] /*]*/,
 	    /*[*/ [`BROWN`] /*]*/)
 
-add_object(aobject(`BAT`, `bat`, fly_me, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.trytakebit), /*[*/ [`VAMPI`] /*]*/,/*[*/ [] /*]*/)
+add_object(aobject(`BAT`, `bat`, fly_me, ovison,ndescbit,trytakebit), /*[*/ [`VAMPI`] /*]*/,/*[*/ [] /*]*/)
 
 `MORE VOCABULARY`
 
-sobject(`RAINB`, `rainbow`, GLOBALS.ovison,GLOBALS.ndescbit)
+sobject(`RAINB`, `rainbow`, ovison,ndescbit)
 
 psetg(cliffs, /*#*/ [nexit, `The White Cliffs prevent your landing here.`] /*2*/)
 psetg(riverdesc, `Frigid River`)
@@ -1597,27 +1597,27 @@ way downstream.`,
 /*#*/ [room, /*{*/ [`RIVR1`,
 `You are on the River Frigid in the vicinity of the Dam.  The river
 flows quietly here.  There is a landing on the west shore.`,
-       /*%*/ [GLOBALS.riverdesc] /*1*/,       /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.current] /*1*/,`WEST`, `DOCK`, `LAND`, `DOCK`, `DOWN`, `RIVR2`,
-	      `EAST`, /*%*/ [GLOBALS.cliffs] /*1*/] /*}*/] /*2*/,
-       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
+       /*%*/ [riverdesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [current] /*1*/,`WEST`, `DOCK`, `LAND`, `DOCK`, `DOWN`, `RIVR2`,
+	      `EAST`, /*%*/ [cliffs] /*1*/] /*}*/] /*2*/,
+       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rwaterbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`RIVR2`,
 `The River turns a corner here making it impossible to see the
 Dam.  The White Cliffs loom on the east bank and large rocks prevent
 landing on the west.`,
-       /*%*/ [GLOBALS.riverdesc] /*1*/,       /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.current] /*1*/,`DOWN`, `RIVR3`, `EAST`, /*%*/ [GLOBALS.cliffs] /*1*/] /*}*/] /*2*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0,
-       /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
+       /*%*/ [riverdesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [current] /*1*/,`DOWN`, `RIVR3`, `EAST`, /*%*/ [cliffs] /*1*/] /*}*/] /*2*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0,
+       /*%*/ [rwaterbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`RIVR3`,
 `The river descends here into a valley.  There is a narrow beach on
 the east below the cliffs and there is some shore on the west which
 may be suitable.  In the distance a faint rumbling can be heard.`,
-       /*%*/ [GLOBALS.riverdesc] /*1*/,       /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.current] /*1*/,`DOWN`, `RIVR4`, `EAST`, `WCLF1`, `WEST`, `RCAVE`,
+       /*%*/ [riverdesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [current] /*1*/,`DOWN`, `RIVR4`, `EAST`, `WCLF1`, `WEST`, `RCAVE`,
 	      `LAND`, /*#*/ [nexit, `You must specify which direction here.`] /*2*/] /*}*/] /*2*/,
-       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
+       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rwaterbit] /*1*/] /*}*/] /*2*/
 
 psetg(narrow, `The path is too narrow.`)
 
@@ -1627,7 +1627,7 @@ White Cliffs. The only path here is a narrow one, heading south
 along the Cliffs.`,
        `White Cliffs Beach`,
        /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`SOUTH`, /*#*/ [cexit, /*{*/ [`DEFLATE`, `WCLF2`, /*%*/ [GLOBALS.narrow] /*1*/] /*}*/] /*2*/, `LAUNC`, `RIVR3`] /*}*/] /*2*/,
+       /*#*/ [exit, /*{*/ [`SOUTH`, /*#*/ [cexit, /*{*/ [`DEFLATE`, `WCLF2`, /*%*/ [narrow] /*1*/] /*}*/] /*2*/, `LAUNC`, `RIVR3`] /*}*/] /*2*/,
        /*(*/ [] /*)*/, cliff_function, 0] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`WCLF2`,
@@ -1636,7 +1636,7 @@ along the Cliffs.`,
 narrow path leads north along the shore.`,
        `White Cliffs Beach`,
        /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`NORTH`, /*#*/ [cexit, /*{*/ [`DEFLATE`, `WCLF1`, /*%*/ [GLOBALS.narrow] /*1*/] /*}*/] /*2*/, `LAUNC`, `RIVR4`] /*}*/] /*2*/,
+       /*#*/ [exit, /*{*/ [`NORTH`, /*#*/ [cexit, /*{*/ [`DEFLATE`, `WCLF1`, /*%*/ [narrow] /*1*/] /*}*/] /*2*/, `LAUNC`, `RIVR4`] /*}*/] /*2*/,
        /*(*/ [] /*)*/, cliff_function, 0] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`RIVR4`,
@@ -1644,18 +1644,18 @@ narrow path leads north along the shore.`,
 `The river is running faster here and the sound ahead appears to be
 that of rushing water.  On the west shore is a sandy beach.  A small
 area of beach can also be seen below the Cliffs.`,
-       /*%*/ [GLOBALS.riverdesc] /*1*/,       /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.current] /*1*/,`DOWN`, `RIVR5`, `EAST`, `WCLF2`, `WEST`, `BEACH`,
+       /*%*/ [riverdesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [current] /*1*/,`DOWN`, `RIVR5`, `EAST`, `WCLF2`, `WEST`, `BEACH`,
 	      `LAND`, /*#*/ [nexit, `Specify the direction to land.`] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`BUOY`] /*}*/] /*2*/] /*)*/,
-       rivr4_room, 0, /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
+       rivr4_room, 0, /*%*/ [rwaterbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`RIVR5`,
 `The sound of rushing water is nearly unbearable here.  On the west
 shore is a large landing area.`,
-       /*%*/ [GLOBALS.riverdesc] /*1*/,       /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.current] /*1*/,`DOWN`, `FCHMP`, `LAND`, `FANTE`] /*}*/] /*2*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0,
-       /*%*/ [GLOBALS.rwaterbit] /*1*/] /*}*/] /*2*/
+       /*%*/ [riverdesc] /*1*/,       /*%*/ [false] /*1*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [current] /*1*/,`DOWN`, `FCHMP`, `LAND`, `FANTE`] /*}*/] /*2*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0,
+       /*%*/ [rwaterbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FCHMP`,
        ``,
@@ -1719,7 +1719,7 @@ travels east-west here.  There is an NBC Commissary here.`,
        t,
        /*#*/ [exit, /*{*/ [`EAST`, `POG`, `WEST`, `FALLS`] /*}*/] /*2*/] /*}*/] /*2*/
 
-GLOBALS.crain = /*#*/ [cexit, /*{*/ [`RAINBOW`, `RAINB`] /*}*/] /*2*/
+crain = /*#*/ [cexit, /*{*/ [`RAINBOW`, `RAINB`] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`POG`,
 `You are on a small beach on the continuation of the Frigid River
@@ -1729,7 +1729,7 @@ above. A rainbow crosses over the falls to the west and a narrow path
 continues to the southeast.`,
        `End of Rainbow`,
        t,
-       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [GLOBALS.crain] /*1*/,`NW`, /*%*/ [GLOBALS.crain] /*1*/,`WEST`, /*%*/ [GLOBALS.crain] /*1*/,`SE`, `CLBOT`] /*}*/] /*2*/,
+       /*#*/ [exit, /*{*/ [`UP`, /*%*/ [crain] /*1*/,`NW`, /*%*/ [crain] /*1*/,`WEST`, /*%*/ [crain] /*1*/,`SE`, `CLBOT`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`RAINB`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`POT`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 0] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CLBOT`,
@@ -1770,46 +1770,46 @@ add_object(/*#*/ [object, /*{*/ [`POT`,
 	  `There is a pot of gold here.`,
 	  `pot filled with gold`,
 	  `At the end of the rainbow is a pot of gold.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.takebit] /*1*/,0, 10, 10, 15, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [takebit] /*1*/,0, 10, 10, 15, 0] /*}*/] /*2*/,
 /*[*/ [] /*]*/, /*[*/ [`GOLD`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`STATU`,
 	  `There is a beautiful statue here.`,
 	  `statue`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.takebit] /*1*/,0, 10, 13, 8, 0] /*}*/] /*2*/,/*[*/ [`SCULP`, `ROCK`] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [takebit] /*1*/,0, 10, 13, 8, 0] /*}*/] /*2*/,/*[*/ [`SCULP`, `ROCK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`IBOAT`,
 
 `There is a folded pile of plastic here which has a small valve
 attached.`, `plastic inflatable boat`, /*%*/ [false] /*1*/, iboat_function, /*(*/ [] /*)*/,
-	  /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`BOAT`, `PLAST`, `PILE`] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [_(burnbit,ovison,takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`BOAT`, `PLAST`, `PILE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`DBOAT`,
 	  `There is a pile of plastic here with a large hole in it.`,
 	  `plastic boat (with hole)`,
-	  /*%*/ [false] /*1*/, dboat_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`BOAT`, `PLAST`, `PILE`] /*]*/)
+	  /*%*/ [false] /*1*/, dboat_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,ovison,takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`BOAT`, `PLAST`, `PILE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`PUMP`,
 	  `There is a small pump here.`,
 	  `hand-held air pump`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,/*[*/ [`AIR-P`, `AIRPU`] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,ovison,takebit)] /*1*/, 0, 0, 0, 5, 0] /*}*/] /*2*/,/*[*/ [`AIR-P`, `AIRPU`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`RBOAT`,
 	  `There is an inflated boat here.`,
 	  `magic boat`,
 	  /*%*/ [false] /*1*/,
 	  rboat_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`LABEL`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 
-	  /*%*/ [_(GLOBALS.vehbit,GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/,
+	  /*%*/ [_(vehbit,burnbit,ovison,takebit)] /*1*/,
 	  0, 0, 0, 20, 100] /*}*/] /*2*/,
 /*[*/ [`BOAT`] /*]*/, /*[*/ [`PLAST`, `SEAWO`] /*]*/)
 
-find_obj(`RBOAT`)[GLOBALS.oopen_Q] = t
-find_obj(`RBOAT`)[GLOBALS.orand] = GLOBALS.rwaterbit
+find_obj(`RBOAT`)[oopen_Q] = t
+find_obj(`RBOAT`)[orand] = rwaterbit
 
 add_object(/*#*/ [object, /*{*/ [`LABEL`,
 	  `There is a tan label here.`,
 	  `tan label`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`RBOAT`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.readbit,GLOBALS.takebit)] /*1*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`RBOAT`] /*}*/] /*2*/, /*%*/ [_(burnbit,ovison,readbit,takebit)] /*1*/,
 	  0, 0, 0, 2, 0] /*}*/] /*2*/,
 /*[*/ [`FINEP`] /*]*/, /*[*/ [`TAN`] /*]*/)
 
@@ -1840,35 +1840,35 @@ add_object(/*#*/ [object, /*{*/ [`STICK`,
 	  `There is a broken sharp stick here.`,
 	  `broken sharp stick`,
 	  `A sharp stick, which appears to have been broken at one end, is here.`,
-	  stick_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 3, 0] /*}*/] /*2*/,
+	  stick_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 0, 0, 3, 0] /*}*/] /*2*/,
 /*[*/ [] /*]*/, /*[*/ [`SHARP`, `BROKE`] /*]*/)
 
-sobject(`BARRE`, `barrel`, GLOBALS.ovison)
+sobject(`BARRE`, `barrel`, ovison)
 
 add_object(/*#*/ [object, /*{*/ [`BUOY`,
 	  `There is a red buoy here (probably a warning).`,
 	  `red buoy`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`EMERA`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.findmebit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`EMERA`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,findmebit,ovison,takebit)] /*1*/,
 	  0, 0, 0, 10, 20] /*}*/] /*2*/,
 /*[*/ [] /*]*/,/*[*/ [`RED`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`EMERA`,
 	  `There is an emerald here.`,
 	  `large emerald`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BUOY`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 5, 10, 5, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BUOY`] /*}*/] /*2*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 5, 10, 5, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`SHOVE`,
 	  `There is a large shovel here.`,
 	  `shovel`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.toolbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 15, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(toolbit,ovison,takebit)] /*1*/, 0, 0, 0, 15, 0] /*}*/] /*2*/,/*[*/ [] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`GUANO`,
 	  `There is a hunk of bat guano here.`,
 	  `hunk of bat guano`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`CRAP`, `SHIT`, `HUNK`] /*]*/)
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 0, 0, 20, 0] /*}*/] /*2*/,/*[*/ [`CRAP`, `SHIT`, `HUNK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`GRUE`,
-	  ``, `lurking grue`, /*%*/ [false] /*1*/, grue_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, 0, 0] /*}*/] /*2*/,
+	  ``, `lurking grue`, /*%*/ [false] /*1*/, grue_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [`LURKI`] /*]*/)
 
 /*#*/ [room, /*{*/ [`VLBOT`,
@@ -1882,35 +1882,35 @@ exit here is to the north.`,
 
 psetg(volcore, `Volcano Core`)
 
-GLOBALS.nulexit = /*#*/ [exit, /*{*/ [`#!#!#`, `!`] /*}*/] /*2*/
+nulexit = /*#*/ [exit, /*{*/ [`#!#!#`, `!`] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`VAIR1`,
 `You are about one hundred feet above the bottom of the volcano.  The
 top of the volcano is clearly visible here.`,
-       /*%*/ [GLOBALS.volcore] /*1*/,/*%*/ [false] /*1*/, /*%*/ [GLOBALS.nulexit] /*1*/,/*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
+       /*%*/ [volcore] /*1*/,/*%*/ [false] /*1*/, /*%*/ [nulexit] /*1*/,/*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rairbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`VAIR2`,
 `You are about two hundred feet above the volcano floor.  Looming
 above is the rim of the volcano.  There is a small ledge on the west
 side.`,
-       /*%*/ [GLOBALS.volcore] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [volcore] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `LEDG2`, `LAND`, `LEDG2`] /*}*/] /*2*/,
-       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
+       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rairbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`VAIR3`,
 `You are high above the floor of the volcano.  From here the rim of
 the volcano looks very narrow and you are very near it.  To the 
 east is what appears to be a viewing ledge, too thin to land on.`,
-       /*%*/ [GLOBALS.volcore] /*1*/,/*%*/ [false] /*1*/, /*%*/ [GLOBALS.nulexit] /*1*/,/*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
+       /*%*/ [volcore] /*1*/,/*%*/ [false] /*1*/, /*%*/ [nulexit] /*1*/,/*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rairbit] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`VAIR4`,
 `You are near the rim of the volcano which is only about 15 feet
 across.  To the west, there is a place to land on a wide ledge.`,
-       /*%*/ [GLOBALS.volcore] /*1*/,       /*%*/ [false] /*1*/,
+       /*%*/ [volcore] /*1*/,       /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`LAND`, `LEDG4`, `EAST`, `LEDG4`] /*}*/] /*2*/,
-       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [GLOBALS.rairbit] /*1*/] /*}*/] /*2*/
+       /*(*/ [] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [rairbit] /*1*/] /*}*/] /*2*/
 
-GLOBALS.cxgnome = /*#*/ [cexit, /*{*/ [`GNOME-DOOR`, `VLBOT`] /*}*/] /*2*/
+cxgnome = /*#*/ [cexit, /*{*/ [`GNOME-DOOR`, `VLBOT`] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`LEDG2`,
 `You are on a narrow ledge overlooking the inside of an old dormant
@@ -1919,7 +1919,7 @@ floor below and the rim above. There is an exit here to the south.`,
        `Narrow Ledge`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`DOWN`, /*#*/ [nexit, `I wouldn't jump from here.`] /*2*/,
-	      `LAUNC`, `VAIR2`, `WEST`, /*%*/ [GLOBALS.cxgnome] /*1*/,`SOUTH`, `LIBRA`] /*}*/] /*2*/,
+	      `LAUNC`, `VAIR2`, `WEST`, /*%*/ [cxgnome] /*1*/,`SOUTH`, `LIBRA`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`HOOK1`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`ZORKM`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`LIBRA`,
@@ -1949,7 +1949,7 @@ those on the other side.  The exit from this room is to the east.`,
        `Wide Ledge`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`DOWN`, /*#*/ [nexit, `It's a long way down.`] /*2*/,
-	      `LAUNC`, `VAIR4`, `WEST`, /*%*/ [GLOBALS.cxgnome] /*1*/,`SOUTH`, `SAFE`] /*}*/] /*2*/,
+	      `LAUNC`, `VAIR4`, `WEST`, /*%*/ [cxgnome] /*1*/,`SOUTH`, `SAFE`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`HOOK2`] /*}*/] /*2*/] /*)*/,
        ledge_function] /*}*/] /*2*/
 
@@ -1975,45 +1975,45 @@ Attached to the basket on the outside is a piece of wire.`,
 	  `basket`,
 	  /*%*/ [false] /*1*/,
 	  balloon, /*(*/ [/*#*/ [find_obj, /*{*/ [`CBAG`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`BROPE`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`RECEP`] /*}*/] /*2*/] /*)*/,
-	  /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vehbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 70, 100] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [_(vehbit,ovison)] /*1*/, 0, 0, 0, 70, 100] /*}*/] /*2*/,
  /*[*/ [`BASKE`] /*]*/, /*[*/ [`WICKE`] /*]*/)
 
-find_obj(`BALLO`)[GLOBALS.oopen_Q] = t
-find_obj(`BALLO`)[GLOBALS.orand] = GLOBALS.rairbit
+find_obj(`BALLO`)[oopen_Q] = t
+find_obj(`BALLO`)[orand] = rairbit
 
  /*#*/ [object, /*{*/ [`RECEP`,
 	  ``,
 	  `receptacle`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison,GLOBALS.searchbit)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,6] /*}*/] /*2*/
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [_(contbit,ovison,searchbit)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,6] /*}*/] /*2*/
 
 add_object(/*#*/ [object, /*{*/ [`CBAG`,
 	  ``,
 	  `cloth bag`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [ovison] /*1*/,0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`BAG`] /*]*/, /*[*/ [`CLOTH`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BROPE`,
 	  ``, `braided wire`, /*%*/ [false] /*1*/, wire_function, /*(*/ [] /*)*/,
-	  /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.tiebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/, /*%*/ [_(tiebit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`WIRE`] /*]*/, /*[*/ [`BRAID`] /*]*/)
 
  add_object(/*#*/ [object, /*{*/ [`HOOK1`,
 	  `There is a small hook attached to the rock here.`,
 	  `hook`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`HOOK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`HOOK2`,
 	  `There is a small hook attached to the rock here.`,
 	  `hook`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`HOOK`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`ZORKM`,
 	  `There is an engraved zorkmid coin here.`,
 	  `priceless zorkmid`,
 	  `On the floor is a gold zorkmid coin (a valuable collector's item).`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 10, 12, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(readbit,ovison,takebit)] /*1*/, 0, 10, 12, 10, 0] /*}*/] /*2*/,
  /*[*/ [`COIN`] /*]*/, /*[*/ [`GOLD`] /*]*/)
 
 add_desc(find_obj(`ZORKM`),
@@ -2044,15 +2044,15 @@ add_desc(find_obj(`ZORKM`),
 add_object(/*#*/ [object, /*{*/ [`SAFE`,
 	  ``,
 	  `box`,
-	  /*%*/ [false] /*1*/, safe_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`CROWN`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`CARD`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison)] /*1*/,
-	  0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,15] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, safe_function, /*(*/ [/*#*/ [find_obj, /*{*/ [`CROWN`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`CARD`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,ovison)] /*1*/,
+	  0, 0, 0, /*%*/ [bigfix] /*1*/,15] /*}*/] /*2*/,
  /*[*/ [`BOX`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`CARD`,
 	  `There is a card with writing on it here.`,
 	  `card`,
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SAFE`] /*}*/] /*2*/,
-	  /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.burnbit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
+	  /*%*/ [_(ovison,takebit,readbit,burnbit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
  /*[*/ [`NOTE`] /*]*/)
 
 add_desc(find_obj(`CARD`),
@@ -2067,43 +2067,43 @@ of explosives in this room is strictly prohibited!
 add_object(/*#*/ [object, /*{*/ [`SSLOT`,
 	  ``,
 	  `hole`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,10] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, /*%*/ [bigfix] /*1*/,10] /*}*/] /*2*/,
  /*[*/ [`SLOT`, `HOLE`] /*]*/)
 
-find_obj(`SSLOT`)[GLOBALS.oopen_Q] = t
+find_obj(`SSLOT`)[oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ [`CROWN`,
 	  `Lord Dimwit's crown is here.`,
 	  `crown`,
 	  `The excessively gaudy crown of Lord Dimwit Flathead is here.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SAFE`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 15, 10, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`SAFE`] /*}*/] /*2*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 15, 10, 10, 0] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [`GAUDY`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BRICK`,
 	  `There is a square brick here which feels like clay.`,
 	  `brick`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.searchbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 9, 2] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,searchbit,ovison,takebit)] /*1*/, 0, 0, 0, 9, 2] /*}*/] /*2*/,
  /*[*/ [`BRICK`] /*]*/, /*[*/ [`SQUAR`, `CLAY`] /*]*/)
 
-find_obj(`BRICK`)[GLOBALS.oopen_Q] = t
+find_obj(`BRICK`)[oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ [`FUSE`,
 	  `There is a coil of thin shiny wire here.`,
 	  `wire coil`,
-	  /*%*/ [false] /*1*/, fuse_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, fuse_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(burnbit,ovison,takebit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
  /*[*/ [`COIL`, `WIRE`] /*]*/, /*[*/ [`SHINY`, `THIN`] /*]*/)
 
 
 add_object(/*#*/ [object, /*{*/ [`GNOME`,
 	  `There is a nervous Volcano Gnome here.`,
 	  `Volcano Gnome`,
-	  /*%*/ [false] /*1*/, gnome_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vicbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, gnome_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vicbit,ovison)] /*1*/, 0, 0, 0, /*%*/ [bigfix] /*1*/,0] /*}*/] /*2*/,
  /*[*/ [`TROLL`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BLABE`,
 	  `There is a blue label here.`,
 	  `blue label`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`BALLO`] /*}*/] /*2*/,
-	  /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.burnbit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
+	  /*%*/ [_(ovison,takebit,readbit,burnbit)] /*1*/, 0, 0, 0, 1, 0] /*}*/] /*2*/,
  /*[*/ [`LABEL`] /*]*/, /*[*/ [`BLUE`] /*]*/)
 
 add_desc(find_obj(`BLABE`),
@@ -2128,46 +2128,46 @@ Warranty:
 add_object(/*#*/ [object, /*{*/ [`DBALL`,
 	  `There is a balloon here, broken into pieces.`,
 	  `broken balloon`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 40, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison)] /*1*/, 0, 0, 0, 40, 0] /*}*/] /*2*/,
  /*[*/ [`BALLO`, `BASKE`] /*]*/, /*[*/ [`BROKE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BLBK`,
 	  `There is a blue book here.`,
 	  `blue book`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison,readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
  /*[*/ [`BOOK`] /*]*/, /*[*/ [`BLUE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`GRBK`,
 	  `There is a green book here.`,
 	  `green book`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison,readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
  /*[*/ [`BOOK`] /*]*/, /*[*/ [`GREEN`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`PUBK`,
 	  `There is a purple book here.`,
 	  `purple book`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`STAMP`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit,GLOBALS.contbit)] /*1*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`STAMP`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(takebit,ovison,readbit,contbit)] /*1*/,
 	  0, 0, 0, 10, 2] /*}*/] /*2*/,
  /*[*/ [`BOOK`] /*]*/, /*[*/ [`PURPL`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`WHBK`,
 	  `There is a white book here.`,
 	  `white book`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.takebit,GLOBALS.ovison,GLOBALS.readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(contbit,takebit,ovison,readbit)] /*1*/, 0, 0, 0, 10, 2] /*}*/] /*2*/,
  /*[*/ [`BOOK`] /*]*/, /*[*/ [`WHITE`] /*]*/)
 
 psetg(greek_to_me, 
 `This book is written in a tongue with which I am unfamiliar.`)
 
-add_desc(find_obj(`BLBK`), GLOBALS.greek_to_me)
-add_desc(find_obj(`GRBK`), GLOBALS.greek_to_me)
-add_desc(find_obj(`PUBK`), GLOBALS.greek_to_me)
-add_desc(find_obj(`WHBK`), GLOBALS.greek_to_me)
+add_desc(find_obj(`BLBK`), greek_to_me)
+add_desc(find_obj(`GRBK`), greek_to_me)
+add_desc(find_obj(`PUBK`), greek_to_me)
+add_desc(find_obj(`WHBK`), greek_to_me)
 
  /*#*/ [object, /*{*/ [`STAMP`,	
 	  `There is a Flathead Commemorative stamp here.`,
 	  `stamp`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`PUBK`] /*}*/] /*2*/, /*%*/ [_(GLOBALS.takebit,GLOBALS.readbit,GLOBALS.burnbit,GLOBALS.ovison)] /*1*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*#*/ [find_obj, /*{*/ [`PUBK`] /*}*/] /*2*/, /*%*/ [_(takebit,readbit,burnbit,ovison)] /*1*/,
 	  0, 4, 10, 1, 0] /*}*/] /*2*/
 
 add_desc(find_obj(`STAMP`),
@@ -2192,15 +2192,15 @@ add_desc(find_obj(`STAMP`),
 ---^----^----^----^----^----^----^----^---
 `)
 
-GLOBALS.bloc = find_room(`VLBOT`)
+bloc = find_room(`VLBOT`)
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
-find_obj(`LAMP`)[GLOBALS.orand] = /*[*/ [0, clock_disable(clock_int(GLOBALS.lntin,350))] /*]*/
+find_obj(`LAMP`)[orand] = /*[*/ [0, clock_disable(clock_int(lntin,350))] /*]*/
 
-find_obj(`CANDL`)[GLOBALS.orand] = false
+find_obj(`CANDL`)[orand] = false
 
-find_obj(`MATCH`)[GLOBALS.orand] = 5		// NUMBER OF MATCHES
+find_obj(`MATCH`)[orand] = 5		// NUMBER OF MATCHES
 
 psetg(indentstr, rest(istring(8, _X__), 8))
 
@@ -2221,7 +2221,7 @@ for four headless corpses.  On one end is the cryptic inscription:
 		      \"Feel Free.\"
 `,
 	  `tomb`, /*%*/ [false] /*1*/,
-	  head_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.readbit,GLOBALS.ovison)] /*1*/] /*}*/] /*2*/,
+	  head_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,readbit,ovison)] /*1*/] /*}*/] /*2*/,
  /*[*/ [`GRAVE`] /*]*/)
 
 add_desc(find_obj(`TOMB`),
@@ -2232,7 +2232,7 @@ add_object(/*#*/ [object, /*{*/ [`HEADS`,
 	  `There are four heads here, mounted securely on poles.`,
 	  `set of poled heads`, /*%*/ [false] /*1*/,
 	  head_function,
-	  /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.sacredbit,GLOBALS.ovison)] /*1*/] /*}*/] /*2*/,
+	  /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,sacredbit,ovison)] /*1*/] /*}*/] /*2*/,
  /*[*/ [`HEAD`, `POLE`, `POLES`, `PDL`, `BKD`, `TAA`, `MARC`, `IMPLE`, `LOSER`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`COKES`,
@@ -2241,7 +2241,7 @@ add_object(/*#*/ [object, /*{*/ [`COKES`,
 `There is a large pile of empty Coke bottles here, evidently produced
 by the implementers during their long struggle to win totally.`,
 	  coke_bottles,
-	  /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 15] /*}*/] /*2*/,
+	  /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit)] /*1*/, 0, 0, 0, 15] /*}*/] /*2*/,
  /*[*/ [`BOTTL`] /*]*/, /*[*/ [`COKE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`LISTS`,
@@ -2251,7 +2251,7 @@ readable.`,
 `There is a gigantic pile of line-printer output here.  Although the
 paper once contained useful information, almost nothing can be
 distinguished now.`,
-	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.burnbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 70] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(readbit,burnbit,ovison,takebit)] /*1*/, 0, 0, 0, 70] /*}*/] /*2*/,
  /*[*/ [`PAPER`, `LIST`, `PRINT`, `LISTI`, `STACK`] /*]*/)
 
 add_desc(find_obj(`LISTS`),
@@ -2263,12 +2263,12 @@ The rest is, alas, unintelligible (as were the implementers).`)
 add_object(/*#*/ [object, /*{*/ [`LCASE`,
 `There is a large case here, containing objects which you used to
 possess.`,
-`large case`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.transbit)] /*1*/] /*}*/] /*2*/,
+`large case`, /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,transbit)] /*1*/] /*}*/] /*2*/,
  /*[*/ [`CASE`] /*]*/, /*[*/ [`LARGE`] /*]*/)
 
 mapf(false,
    function(x) {
-      rtro(find_room(spname(x)), GLOBALS.rfillbit);
+      rtro(find_room(spname(x)), rfillbit);
     },
  _X,/*[*/ [resen_X_rooms, reses_X_rooms, dam_X_rooms, strea_X_rooms,
    rivr1_X_rooms, rivr2_X_rooms, rivr3_X_rooms, rivr4_X_rooms, rivr5_X_rooms,
@@ -2276,13 +2276,13 @@ mapf(false,
 
 mapf(false,
   function(x) {
-      rtro(find_room(x), GLOBALS.rhousebit);
+      rtro(find_room(x), rhousebit);
     },
   /*[*/ [`LROOM`, `KITCH`, `ATTIC`] /*]*/)
 
 mapf(false,
    function(x) {
-      rtro(find_room(x), GLOBALS.rsacredbit);
+      rtro(find_room(x), rsacredbit);
     },
       /*[*/ [`BSHAF`,
        `RIVR1`,
@@ -2320,16 +2320,16 @@ mapf(false,
        `RAINB`,
        `FALLS`] /*]*/)
 
-GLOBALS.bucket_top_X_flag = false
+bucket_top_X_flag = false
 
-GLOBALS.magcmach = /*#*/ [cexit, /*{*/ [`FROBOZZ`, `CMACH`, ``] /*}*/] /*2*/
-GLOBALS.magalice = /*#*/ [cexit, /*{*/ [`FROBOZZ`, `ALICE`, ``] /*}*/] /*2*/
+magcmach = /*#*/ [cexit, /*{*/ [`FROBOZZ`, `CMACH`, ``] /*}*/] /*2*/
+magalice = /*#*/ [cexit, /*{*/ [`FROBOZZ`, `ALICE`, ``] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MAGNE`,
        ``,
        `Low Room`,
        /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`NORTH`, /*%*/ [GLOBALS.magcmach] /*1*/,`SOUTH`, /*%*/ [GLOBALS.magcmach] /*1*/,`WEST`, /*%*/ [GLOBALS.magcmach] /*1*/,`NE`, /*%*/ [GLOBALS.magcmach] /*1*/,	      `NW`, /*%*/ [GLOBALS.magalice] /*1*/,`SW`, /*%*/ [GLOBALS.magalice] /*1*/,`SE`, /*%*/ [GLOBALS.magalice] /*1*/,`EAST`, /*%*/ [GLOBALS.magcmach] /*1*/] /*}*/] /*2*/,
+       /*#*/ [exit, /*{*/ [`NORTH`, /*%*/ [magcmach] /*1*/,`SOUTH`, /*%*/ [magcmach] /*1*/,`WEST`, /*%*/ [magcmach] /*1*/,`NE`, /*%*/ [magcmach] /*1*/,	      `NW`, /*%*/ [magalice] /*1*/,`SW`, /*%*/ [magalice] /*1*/,`SE`, /*%*/ [magalice] /*1*/,`EAST`, /*%*/ [magcmach] /*1*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`RBTLB`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`ROBOT`] /*}*/] /*2*/] /*)*/, magnet_room] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CMACH`,
@@ -2363,24 +2363,24 @@ is a small sticker which says
 add_object(/*#*/ [object, /*{*/ [`CAGE`,
 	  `There is a mangled cage here.`,
 	  `mangled cage`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.ndescbit)] /*1*/, 0, 0, 0, 60, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,ndescbit)] /*1*/, 0, 0, 0, 60, 0] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`RCAGE`,
 	  `There is an iron cage in the middle of the room.`,
 	  `iron cage`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, 0, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [ovison] /*1*/,0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ [`CAGE`] /*]*/, /*[*/ [`IRON`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`SPHER`,
 	  `There is a beautiful crystal sphere here.`,
 	  `crystal sphere`,
-	  /*%*/ [false] /*1*/, sphere_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.trytakebit,GLOBALS.sacredbit,GLOBALS.ovison)] /*1*/, 0, 6, 6, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, sphere_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(trytakebit,sacredbit,ovison)] /*1*/, 0, 6, 6, 10, 0] /*}*/] /*2*/,
  /*[*/ [`BALL`] /*]*/, /*[*/ [`CRYST`, `GLASS`] /*]*/)
 
-add_object(aobject(`SQBUT`, GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`SQUAR`] /*]*/)
-add_object(aobject(`RNBUT`, GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`ROUND`] /*]*/)
-add_object(aobject(`TRBUT`, GLOBALS.butstr,buttons, GLOBALS.ovison,GLOBALS.ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`TRIAN`] /*]*/)
+add_object(aobject(`SQBUT`, butstr,buttons, ovison,ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`SQUAR`] /*]*/)
+add_object(aobject(`RNBUT`, butstr,buttons, ovison,ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`ROUND`] /*]*/)
+add_object(aobject(`TRBUT`, butstr,buttons, ovison,ndescbit), /*[*/ [`BUTTO`] /*]*/, /*[*/ [`TRIAN`] /*]*/)
 
 /*#*/ [room, /*{*/ [`TWELL`,
 
@@ -2390,7 +2390,7 @@ entrance to a room on the east, but it can be crossed easily.`,
        `Top of Well`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`EAST`, `ALICE`, `DOWN`, /*#*/ [nexit, `It's a long way down!`] /*2*/] /*}*/] /*2*/,
-       /*(*/ [/*#*/ [find_obj, /*{*/ [`ETCH2`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 10, /*%*/ [_(GLOBALS.rlandbit,GLOBALS.rbuckbit)] /*1*/] /*}*/] /*2*/
+       /*(*/ [/*#*/ [find_obj, /*{*/ [`ETCH2`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 10, /*%*/ [_(rlandbit,rbuckbit)] /*1*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`BWELL`,
        
@@ -2400,11 +2400,11 @@ some etchings on the walls.  There is a passageway to the west.`,
        `Circular Room`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`WEST`, `MPEAR`, `UP`, /*#*/ [nexit, `The walls cannot be climbed.`] /*2*/] /*}*/] /*2*/,
-       /*(*/ [/*#*/ [find_obj, /*{*/ [`BUCKE`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`ETCH1`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [_(GLOBALS.rlandbit,GLOBALS.rbuckbit)] /*1*/] /*}*/] /*2*/
+       /*(*/ [/*#*/ [find_obj, /*{*/ [`BUCKE`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`ETCH1`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 0, /*%*/ [_(rlandbit,rbuckbit)] /*1*/] /*}*/] /*2*/
 
 psetg(ewalls, /*[*/ [`ETCHI`, `WALLS`, `WALL`] /*]*/)
-add_object(sobject(`ETCH1`, `wall with etchings`, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.readbit), GLOBALS.ewalls)
-add_object(sobject(`ETCH2`, `wall with etchings`, GLOBALS.ovison,GLOBALS.ndescbit,GLOBALS.readbit), GLOBALS.ewalls)
+add_object(sobject(`ETCH1`, `wall with etchings`, ovison,ndescbit,readbit), ewalls)
+add_object(sobject(`ETCH2`, `wall with etchings`, ovison,ndescbit,readbit), ewalls)
 
 add_desc(find_obj(`ETCH2`),
 `		        o  b  o
@@ -2449,7 +2449,7 @@ abnormally large. To the east is a passageway.  There is a large
 chasm on the west and the northwest.`,
        `Posts Room`,
        /*%*/ [false] /*1*/,
-       /*#*/ [exit, /*{*/ [`NW`, /*%*/ [GLOBALS.smdrop] /*1*/,`EAST`, `ALITR`, `WEST`, /*%*/ [GLOBALS.smdrop] /*1*/,`DOWN`, /*%*/ [GLOBALS.smdrop] /*1*/] /*}*/] /*2*/,
+       /*#*/ [exit, /*{*/ [`NW`, /*%*/ [smdrop] /*1*/,`EAST`, `ALITR`, `WEST`, /*%*/ [smdrop] /*1*/,`DOWN`, /*%*/ [smdrop] /*1*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`POSTS`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`ALITR`,
@@ -2466,69 +2466,69 @@ add_object(/*#*/ [object, /*{*/ [`FLASK`,
 `A stoppered glass flask with a skull-and-crossbones marking is here.
 The flask is filled with some clear liquid.`,
 	  `glass flask filled with liquid`,
-	  /*%*/ [false] /*1*/, flask_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.transbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 10, 5] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, flask_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(transbit,ovison,takebit)] /*1*/, 0, 0, 0, 10, 5] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [`GLASS`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`POOL`,
 	  `The leak has submerged the depressed area in a pool of sewage.`,
 	  `pool of sewage`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.vicbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,vicbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ [`SEWAG`] /*]*/, /*[*/ [`LARGE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`SAFFR`,
 	  `There is a tin of rare spices here.`,
 	  `tin of spices`,
-	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.takebit] /*1*/,0, 5, 5, 8, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [takebit] /*1*/,0, 5, 5, 8, 0] /*}*/] /*2*/,
  /*[*/ [`TIN`, `SPICE`] /*]*/, /*[*/ [`RARE`] /*]*/)
 
-add_object(sobject(`ATABL`, `large oblong table`, GLOBALS.ovison), /*[*/ [] /*]*/, /*[*/ [`LARGE`, `OBLON`] /*]*/)
+add_object(sobject(`ATABL`, `large oblong table`, ovison), /*[*/ [] /*]*/, /*[*/ [`LARGE`, `OBLON`] /*]*/)
 
-add_object(sobject(`POSTS`, `wooden posts`, GLOBALS.ovison), /*[*/ [`POST`] /*]*/, /*[*/ [`WOODE`] /*]*/)
+add_object(sobject(`POSTS`, `wooden posts`, ovison), /*[*/ [`POST`] /*]*/, /*[*/ [`WOODE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BUCKE`,
 `There is a wooden bucket here, 3 feet in diameter and 3 feet high.`,
 	  `wooden bucket`,
-	  /*%*/ [false] /*1*/, bucket, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vehbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 100, 100] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, bucket, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(vehbit,ovison)] /*1*/, 0, 0, 0, 100, 100] /*}*/] /*2*/,
  /*[*/ [] /*]*/, /*[*/ [`WOODE`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`ECAKE`,
  `There is a piece of cake here with the words 'Eat Me' on it.`,
  	  `piece of 'Eat Me' cake`,
-	  /*%*/ [false] /*1*/, eatme_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.foodbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, eatme_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit,foodbit)] /*1*/, 0, 0, 0, 10, 0] /*}*/] /*2*/,
  /*[*/ [`CAKE`] /*]*/, /*[*/ [`EATME`, `EAT-M`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`ORICE`,
  `There is a piece of cake with orange icing here.`,
  	  `piece of cake with orange icing`,
-	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.ovison,GLOBALS.takebit,GLOBALS.foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(readbit,ovison,takebit,foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
  /*[*/ [`CAKE`, `ICING`] /*]*/, /*[*/ [`ORANG`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`RDICE`,
  `There is a piece of cake with red icing here.`,
  	  `piece of cake with red icing`,
-	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.ovison,GLOBALS.takebit,GLOBALS.foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(readbit,ovison,takebit,foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
  /*[*/ [`CAKE`, `ICING`] /*]*/, /*[*/ [`RED`] /*]*/)
 
 add_object(/*#*/ [object, /*{*/ [`BLICE`,
  `There is a piece of cake with blue (ecch) icing here.`,
  	  `piece of cake with blue icing`,
-	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.ovison,GLOBALS.takebit,GLOBALS.foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(readbit,ovison,takebit,foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
  /*[*/ [`CAKE`, `ICING`] /*]*/, /*[*/ [`BLUE`, `ECCH`] /*]*/)
 
-find_obj(`BUCKE`)[GLOBALS.oopen_Q] = t[GLOBALS.orand] = GLOBALS.rbuckbit
+find_obj(`BUCKE`)[oopen_Q] = t[orand] = rbuckbit
 
 add_object(/*#*/ [object, /*{*/ [`ROBOT`,
 	  `There is a robot here.`,
 	  `robot`,
-	  /*%*/ [false] /*1*/, robot_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.sacredbit,GLOBALS.vicbit,GLOBALS.ovison,GLOBALS.actorbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/, robot_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(sacredbit,vicbit,ovison,actorbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ [`R2D2`, `C3PO`, `ROBBY`] /*]*/)
 
-find_obj(`ROBOT`)[GLOBALS.orand] = add_actor(chtype(/*[*/ [find_room(`MAGNE`), /*(*/ [] /*)*/, 0, false, find_obj(`ROBOT`), robot_actor, 3, t, 0] /*]*/, adv))
+find_obj(`ROBOT`)[orand] = add_actor(chtype(/*[*/ [find_room(`MAGNE`), /*(*/ [] /*)*/, 0, false, find_obj(`ROBOT`), robot_actor, 3, t, 0] /*]*/, adv))
 
 add_object(/*#*/ [object, /*{*/ [`RBTLB`,
 	  `There is a green piece of paper here.`,
 	  `green piece of paper`,
-	  /*%*/ [false] /*1*/,  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.ovison,GLOBALS.takebit,GLOBALS.readbit,GLOBALS.burnbit)] /*1*/, 0, 0, 0, 3, 0] /*}*/] /*2*/,
+	  /*%*/ [false] /*1*/,  /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(ovison,takebit,readbit,burnbit)] /*1*/, 0, 0, 0, 3, 0] /*}*/] /*2*/,
  /*[*/ [`PAPER`] /*]*/, /*[*/ [`GREEN`] /*]*/)
 
 add_desc(find_obj(`RBTLB`),
@@ -2590,25 +2590,25 @@ vsynonym(`MELT`, `LIQUI`)
 
 add_action(`LIGHT`,
 	    `Light`,
-	    /*[*/ [/*(*/ [GLOBALS.lightbit,aobjs, robjs, no_take] /*)*/, /*[*/ [`LIGHT`, lamp_on] /*]*/, driver] /*]*/,
-	    /*[*/ [/*(*/ [GLOBALS.lightbit,aobjs, robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.flamebit,aobjs] /*)*/,
+	    /*[*/ [/*(*/ [lightbit,aobjs, robjs, no_take] /*)*/, /*[*/ [`LIGHT`, lamp_on] /*]*/, driver] /*]*/,
+	    /*[*/ [/*(*/ [lightbit,aobjs, robjs, no_take] /*)*/, `WITH`, /*(*/ [flamebit,aobjs] /*)*/,
 					     /*[*/ [`LIGHT`, lamp_on] /*]*/] /*]*/)
 
 add_action(`EXTIN`,
 	    `Turn off`,
-	    /*[*/ [/*(*/ [GLOBALS.lightbit,aobjs, robjs] /*)*/, /*[*/ [`EXTIN`, lamp_off] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [lightbit,aobjs, robjs] /*)*/, /*[*/ [`EXTIN`, lamp_off] /*]*/] /*]*/)
 vsynonym(`EXTIN`, `DOUSE`)
 
 add_action(`TURN`,
 	    `Turn`,
-	    /*[*/ [/*(*/ [GLOBALS.turnbit,aobjs, robjs, no_take] /*)*/,
+	    /*[*/ [/*(*/ [turnbit,aobjs, robjs, no_take] /*)*/,
 	     `WITH`,
-	     /*(*/ [GLOBALS.toolbit,robjs, aobjs] /*)*/,
+	     /*(*/ [toolbit,robjs, aobjs] /*)*/,
 	     /*[*/ [`TURN`, turner] /*]*/,
 	     driver] /*]*/,
-	    /*[*/ [`ON`, /*(*/ [GLOBALS.lightbit,aobjs, robjs] /*)*/, /*[*/ [`TURN-ON`, lamp_on] /*]*/] /*]*/,
-	    /*[*/ [`OFF`, /*(*/ [GLOBALS.lightbit,aobjs, robjs] /*)*/, /*[*/ [`TURN-OFF`, lamp_off] /*]*/] /*]*/,
-	    /*[*/ [/*(*/ [GLOBALS.turnbit,aobjs, robjs, no_take] /*)*/,
+	    /*[*/ [`ON`, /*(*/ [lightbit,aobjs, robjs] /*)*/, /*[*/ [`TURN-ON`, lamp_on] /*]*/] /*]*/,
+	    /*[*/ [`OFF`, /*(*/ [lightbit,aobjs, robjs] /*)*/, /*[*/ [`TURN-OFF`, lamp_off] /*]*/] /*]*/,
+	    /*[*/ [/*(*/ [turnbit,aobjs, robjs, no_take] /*)*/,
 	     `TO`,
 	     /*(*/ [_1, robjs] /*)*/,
 	     /*[*/ [`TURN-TO`, time] /*]*/] /*]*/)
@@ -2624,17 +2624,17 @@ add_action(`LOOK`,
 
 add_action(`GIVE`,
 	    `Give`,
-	    /*[*/ [obj, `TO`, /*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ [`GIVE`, dropper] /*]*/, driver] /*]*/,
-	    /*[*/ [/*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, obj, /*[*/ [`GIVE`, dropper] /*]*/, flip] /*]*/)
+	    /*[*/ [obj, `TO`, /*(*/ [vicbit,robjs, no_take] /*)*/, /*[*/ [`GIVE`, dropper] /*]*/, driver] /*]*/,
+	    /*[*/ [/*(*/ [vicbit,robjs, no_take] /*)*/, obj, /*[*/ [`GIVE`, dropper] /*]*/, flip] /*]*/)
 vsynonym(`GIVE`, `HAND`, `DONAT`)
 
 add_action(`STRIK`,
 	    `Strike`,
-	    /*[*/ [/*(*/ [GLOBALS.vicbit,_, robjs, no_take] /*)*/,
+	    /*[*/ [/*(*/ [vicbit,_, robjs, no_take] /*)*/,
 	     `WITH`,
-	     /*(*/ [GLOBALS.weaponbit,aobjs, robjs] /*)*/,
+	     /*(*/ [weaponbit,aobjs, robjs] /*)*/,
 	     /*[*/ [`ATTAC`, attacker] /*]*/] /*]*/,
-	    /*[*/ [/*(*/ [GLOBALS.vicbit,_, robjs, no_take] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/, driver] /*]*/,
+	    /*[*/ [/*(*/ [vicbit,_, robjs, no_take] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/, driver] /*]*/,
 	    /*[*/ [/*(*/ [_1, robjs, aobjs] /*)*/, /*[*/ [`LIGHT`, lamp_on] /*]*/] /*]*/)
 
 aadd_action(`MOVE`, `Move`, move)
@@ -2657,12 +2657,12 @@ vsynonym(`POUR`, `SPILL`)
 
 add_action(`THROW`,
 	    `Throw`,
-	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, `AT`, /*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ [`THROW`, dropper] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [_1, aobjs] /*)*/, `AT`, /*(*/ [vicbit,robjs, no_take] /*)*/, /*[*/ [`THROW`, dropper] /*]*/] /*]*/)
 vsynonym(`THROW`, `HURL`, `CHUCK`)
 
 add_action(`TELL`,
 	    `Tell`,
-	    /*[*/ [/*(*/ [GLOBALS.actorbit] /*)*/, /*[*/ [`TELL`, command] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [actorbit] /*)*/, /*[*/ [`TELL`, command] /*]*/] /*]*/)
 vsynonym(`TELL`, `COMMA`, `REQUE`)
 
 vsynonym(`LOOK`, `L`, `STARE`, `GAZE`)
@@ -2727,13 +2727,13 @@ vsynonym(`SWIM`, `BATHE`, `WADE`)
 
 add_action(`BURN`,
 	    `Burn`,
-	    /*[*/ [/*(*/ [GLOBALS.burnbit,aobjs, robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.flamebit,aobjs, robjs] /*)*/,
+	    /*[*/ [/*(*/ [burnbit,aobjs, robjs, no_take] /*)*/, `WITH`, /*(*/ [flamebit,aobjs, robjs] /*)*/,
 			/*[*/ [`BURN`, burner] /*]*/] /*]*/)
 vsynonym(`BURN`, `INCIN`, `IGNIT`)
 
 add_action(`KILL`,
 	    `Kill`,
-	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ [`KILL`, killer] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [weaponbit,aobjs] /*)*/, /*[*/ [`KILL`, killer] /*]*/] /*]*/)
 vsynonym(`KILL`,
 	 `MURDE`,
 	 `SLAY`,
@@ -2741,7 +2741,7 @@ vsynonym(`KILL`,
 
 add_action(`ATTAC`,
 	    `Attack`,
-	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [weaponbit,aobjs] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/] /*]*/)
 vsynonym(`ATTAC`,
 	 `FIGHT`,
 	 `MUNG`,
@@ -2754,13 +2754,13 @@ vsynonym(`ATTAC`,
 
 add_action(`SWING`,
 	    `Swing`,
-	    /*[*/ [/*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, `AT`, /*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, /*[*/ [`SWING`, swinger] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [weaponbit,aobjs] /*)*/, `AT`, /*(*/ [villain,robjs, no_take] /*)*/, /*[*/ [`SWING`, swinger] /*]*/] /*]*/)
 vsynonym(`SWING`,
 	 `THRUS`)
 
 add_action(`POKE`,
 	    `Poke`,
-	    /*[*/ [/*(*/ [GLOBALS.villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.weaponbit,aobjs] /*)*/, /*[*/ [`POKE`, munger] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [villain,robjs, no_take] /*)*/, `WITH`, /*(*/ [weaponbit,aobjs] /*)*/, /*[*/ [`POKE`, munger] /*]*/] /*]*/)
 vsynonym(`POKE`,
 	 `JAB`,
 	 `BREAK`)
@@ -2775,17 +2775,17 @@ vsynonym(`PUSH`, `PRESS`)
 
 add_action(`OPEN`,
 	    `Open`,
-	    /*[*/ [/*(*/ [_(GLOBALS.doorbit,GLOBALS.contbit), aobjs, robjs, no_take] /*)*/, /*[*/ [`OPEN`, opener] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [_(doorbit,contbit), aobjs, robjs, no_take] /*)*/, /*[*/ [`OPEN`, opener] /*]*/] /*]*/)
 vsynonym(`OPEN`)
 
 add_action(`CLOSE`,
 	    `Close`,
-	    /*[*/ [/*(*/ [_(GLOBALS.doorbit,GLOBALS.contbit), aobjs, robjs, no_take] /*)*/, /*[*/ [`CLOSE`, closer] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [_(doorbit,contbit), aobjs, robjs, no_take] /*)*/, /*[*/ [`CLOSE`, closer] /*]*/] /*]*/)
 vsynonym(`CLOSE`)
 
 add_action(`UNLOC`,
 	    `Unlock`,
-	    /*[*/ [/*(*/ [_1, robjs, no_take] /*)*/, `WITH`, /*(*/ [GLOBALS.toolbit,aobjs, robjs] /*)*/, /*[*/ [`UNLOC`, unlocker] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [_1, robjs, no_take] /*)*/, `WITH`, /*(*/ [toolbit,aobjs, robjs] /*)*/, /*[*/ [`UNLOC`, unlocker] /*]*/] /*]*/)
 
 add_action(`LOCK`,
 	    `Lock`,
@@ -2801,12 +2801,12 @@ vsynonym(`RING`, `PEAL`)
 
 add_action(`EAT`,
 	    `Eat`,
-	    /*[*/ [/*(*/ [GLOBALS.foodbit,aobjs, robjs] /*)*/, /*[*/ [`EAT`, eat] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [foodbit,aobjs, robjs] /*)*/, /*[*/ [`EAT`, eat] /*]*/] /*]*/)
 vsynonym(`EAT`, `CONSU`, `GOBBL`, `MUNCH`, `TASTE`)
 
 add_action(`DRINK`,
 	    `Drink`,
-	    /*[*/ [/*(*/ [GLOBALS.drinkbit,aobjs, robjs] /*)*/, /*[*/ [`DRINK`, eat] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [drinkbit,aobjs, robjs] /*)*/, /*[*/ [`DRINK`, eat] /*]*/] /*]*/)
 vsynonym(`DRINK`, `IMBIB`, `SWALL`)
 
 add_action(`BRUSH`,
@@ -2852,7 +2852,7 @@ sadd_action(`DUNGE`, dungeon)
 
 add_action(`WAKE`,
 	    `Wake`,
-	    /*[*/ [/*(*/ [GLOBALS.vicbit,robjs, no_take] /*)*/, /*[*/ [`WAKE`, alarm] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [vicbit,robjs, no_take] /*)*/, /*[*/ [`WAKE`, alarm] /*]*/] /*]*/)
 vsynonym(`WAKE`, `AWAKE`, `SURPR`, `START`)
 
 add_action(`HELLO`,
@@ -2874,33 +2874,33 @@ vsynonym(`ODYSS`, `ULYSS`)
 
 add_action(`READ`,
 	    `Read`,
-	    /*[*/ [/*(*/ [GLOBALS.readbit,aobjs, robjs, no_take] /*)*/, /*[*/ [`READ`, reader] /*]*/, driver] /*]*/,
-	    /*[*/ [/*(*/ [GLOBALS.readbit,aobjs, robjs, no_take] /*)*/, `WITH`, obj, /*[*/ [`READ`, reader] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [readbit,aobjs, robjs, no_take] /*)*/, /*[*/ [`READ`, reader] /*]*/, driver] /*]*/,
+	    /*[*/ [/*(*/ [readbit,aobjs, robjs, no_take] /*)*/, `WITH`, obj, /*[*/ [`READ`, reader] /*]*/] /*]*/)
 vsynonym(`READ`, `SKIM`, `SCAN`)
 
 1add_action(`DEFLA`, `Deflate`, deflater)
 
 add_action(`INFLA`,
 	    `Inflate`,
-	    /*[*/ [obj, `WITH`, /*(*/ [GLOBALS.toolbit,robjs, aobjs, no_take] /*)*/, /*[*/ [`INFLA`, inflater] /*]*/] /*]*/)
+	    /*[*/ [obj, `WITH`, /*(*/ [toolbit,robjs, aobjs, no_take] /*)*/, /*[*/ [`INFLA`, inflater] /*]*/] /*]*/)
 
 add_action(`DISEM`,
 	    `Disembark from`,
-	    /*[*/ [/*(*/ [GLOBALS.vehbit,robjs, no_take] /*)*/, /*[*/ [`DISEM`, unboard] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [vehbit,robjs, no_take] /*)*/, /*[*/ [`DISEM`, unboard] /*]*/] /*]*/)
 
 add_action(`DIG`,
 	    `Dig`,
-	    /*[*/ [`WITH`, /*(*/ [GLOBALS.toolbit,aobjs] /*)*/, /*[*/ [`DIG`, digger] /*]*/] /*]*/)
+	    /*[*/ [`WITH`, /*(*/ [toolbit,aobjs] /*)*/, /*[*/ [`DIG`, digger] /*]*/] /*]*/)
 
 add_action(`BOARD`,
 	    `Board`,
-	    /*[*/ [/*(*/ [GLOBALS.vehbit,robjs, no_take] /*)*/, /*[*/ [`BOARD`, board] /*]*/] /*]*/)
+	    /*[*/ [/*(*/ [vehbit,robjs, no_take] /*)*/, /*[*/ [`BOARD`, board] /*]*/] /*]*/)
 
 add_action(`KNOCK`,
 	    `Knock`,
 	    /*[*/ [`AT`, obj, /*[*/ [`KNOCK`, knock] /*]*/, driver] /*]*/,
 	    /*[*/ [`ON`, obj, /*[*/ [`KNOCK`, knock] /*]*/] /*]*/,
-	    /*[*/ [`DOWN`, /*(*/ [GLOBALS.vicbit,_, robjs, no_take] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/] /*]*/)
+	    /*[*/ [`DOWN`, /*(*/ [vicbit,_, robjs, no_take] /*)*/, /*[*/ [`ATTAC`, attacker] /*]*/] /*]*/)
 
 sadd_action(`GERON`, geronimo)
 
@@ -2910,7 +2910,7 @@ sadd_action(`BLAST`, blast)
 
 add_buzz(`RUN`, `GO`, `PROCE`)
 
-setg(robot_actions, _X,/*[*/ [GLOBALS.walk_X_words,GLOBALS.take_X_words,GLOBALS.drop_X_words,GLOBALS.put_X_words,    GLOBALS.jump_X_words,GLOBALS.push_X_words,GLOBALS.throw_X_words,GLOBALS.turn_X_words] /*]*/)
+setg(robot_actions, _X,/*[*/ [walk_X_words,take_X_words,drop_X_words,put_X_words,    jump_X_words,push_X_words,throw_X_words,turn_X_words] /*]*/)
 
-GLOBALS.player = add_actor(chtype(/*[*/ [GLOBALS.whous_X_rooms,			  /*(*/ [] /*)*/, 0, false, find_obj(`#####`), false, 0, t, 0] /*]*/,
+player = add_actor(chtype(/*[*/ [whous_X_rooms,			  /*(*/ [] /*)*/, 0, false, find_obj(`#####`), false, 0, t, 0] /*]*/,
 			 adv))

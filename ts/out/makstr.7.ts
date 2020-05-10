@@ -9,7 +9,7 @@ setg(atm,chtype(/*[*/ [tick,app,flg,atm] /*]*/, cevent));
   }
 
 export function cons_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
-    let winner: adv = GLOBALS.winner;
+    let winner: adv = winner;
     mapf(false,
 	function(x) {
         let y: object = find_obj(x);
@@ -28,7 +28,7 @@ chtype(vector(atm,find_room(rmid), str,funct), cexit);
   }
 
 export function exit(_tuple_, pairs: tuple(/*[*/ [rest, string, (nexit | cexit | string | atom)] /*]*/)) {
-    let dobl: oblist = GLOBALS.directions;
+    let dobl: oblist = directions;
     let frob: vector = ivector(pairs.length);
     repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
 	  /*#*/ [decl, /*(*/ [/*(*/ [atm] /*)*/, (atom || false), /*(*/ [rm] /*)*/, (room || false), /*(*/ [f] /*)*/, vector] /*)*/] /*2*/,
@@ -47,20 +47,20 @@ chtype(frob,exit);
 
 export function room(id: (string | atom), d1: string, d2: string, lit_Q: (atom | form | false), ex: exit, objs?, app: (form | false | atom), val: number, bit: number) {
     let rm: room = find_room(id);
-    GLOBALS.score_max = _(GLOBALS.score_max,val);
-rm[GLOBALS.rbits] = bit;
-rm[GLOBALS.rval] = val;
-rm[GLOBALS.robjs] = objs;
-rm[GLOBALS.rdesc1] = d1;
-rm[GLOBALS.rdesc2] = d2;
-rm[GLOBALS.rexits] = ex;
-rm[GLOBALS.raction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
+    score_max = _(score_max,val);
+rm[rbits] = bit;
+rm[rval] = val;
+rm[robjs] = objs;
+rm[rdesc1] = d1;
+rm[rdesc2] = d2;
+rm[rexits] = ex;
+rm[raction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
 				/*(*/ [app] /*)*/);
-rm[GLOBALS.rlight_Q] = cond(/*(*/ [type_Q(lit_Q,form), false] /*)*/,
+rm[rlight_Q] = cond(/*(*/ [type_Q(lit_Q,form), false] /*)*/,
 				/*(*/ [t, lit_Q] /*)*/);
 mapf(false,
 	      function(x: object) {
-        x[GLOBALS.oroom] = rm;
+        x[oroom] = rm;
       },
 	      robjs(rm));
   }
@@ -74,9 +74,9 @@ export function aobject(id: string, str, app: atom, _tuple_, tup: tuple) {
   }
 
 export function object(id: (atom | string), desc1: string, desc2: string, desco: (string | false), app: (false | form | atom), conts: list(/*[*/ [rest, object] /*]*/), can: (false | object), flags: primtype(word), light_Q?: number, s1: number, s2: number, size: number, capac: number) {
-    GLOBALS.score_max = _(GLOBALS.score_max,s1,s2);
-(0_Q(light_Q) || flags = _(flags,GLOBALS.lightbit));
-find_obj(id)[GLOBALS.odesc1] = desc1[GLOBALS.ocapac] = capac[GLOBALS.osize] = size[GLOBALS.odesco] = desco[GLOBALS.olight_Q] = light_Q[GLOBALS.oflags] = flags[GLOBALS.ofval] = s1[GLOBALS.otval] = s2[GLOBALS.ocan] = can[GLOBALS.ocontents] = conts[GLOBALS.odesc2] = desc2[GLOBALS.oaction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
+    score_max = _(score_max,s1,s2);
+(0_Q(light_Q) || flags = _(flags,lightbit));
+find_obj(id)[odesc1] = desc1[ocapac] = capac[osize] = size[odesco] = desco[olight_Q] = light_Q[oflags] = flags[ofval] = s1[otval] = s2[ocan] = can[ocontents] = conts[odesc2] = desc2[oaction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
 	       /*(*/ [app] /*)*/);
   }
 
@@ -89,12 +89,12 @@ export function find_prep(str: string) {
   }
 
 export function add_action(nam: string, str: string, _tuple_, decl: tuple(/*[*/ [rest, vector] /*]*/)) {
-    let atm: atom = (lookup(nam,GLOBALS.actions) || insert(nam,GLOBALS.actions));
+    let atm: atom = (lookup(nam,actions) || insert(nam,actions));
     setg(atm,chtype(/*[*/ [atm,make_action(_X,decl), str] /*]*/, action));
   }
 
 export function add_directions(_tuple_, nms: tuple(/*[*/ [rest, string] /*]*/)) {
-    let dir: oblist = GLOBALS.directions;
+    let dir: oblist = directions;
     let atm: atom = null;
     mapf(false, function(x) {
         setg(atm = (lookup(x,dir) || insert(x,dir)),
@@ -105,7 +105,7 @@ export function add_directions(_tuple_, nms: tuple(/*[*/ [rest, string] /*]*/)) 
 
 export function dsynonym(str: string, _tuple_, nms: tuple(/*[*/ [rest, string] /*]*/)) {
     let val: direction = null;
-    let dir: oblist = GLOBALS.directions;
+    let dir: oblist = directions;
     let atm: atom = null;
     val = add_directions(str);
 mapf(false, function(x) {
@@ -118,15 +118,15 @@ mapf(false, function(x) {
 export function vsynonym(n1: string, _tuple_, n2: tuple(/*[*/ [rest, string] /*]*/)) {
     let atm: (false | atom) = null;
     let val: any = null;
-    cond(/*(*/ [atm = lookup(n1,GLOBALS.words),
+    cond(/*(*/ [atm = lookup(n1,words),
 	       val = /*,*/ [atm] /*1*/,
 	       mapf(false, function(x) {
             setg(add_word(x), val);
           }, n2)] /*)*/);
-cond(/*(*/ [atm = lookup(n1,GLOBALS.actions),
+cond(/*(*/ [atm = lookup(n1,actions),
 	       val = /*,*/ [atm] /*1*/,
 	       mapf(false, function(x) {
-            setg((lookup(x,GLOBALS.actions) || insert(x,GLOBALS.actions)),
+            setg((lookup(x,actions) || insert(x,actions)),
 					    val);
           }, n2)] /*)*/);
   }
@@ -134,7 +134,7 @@ cond(/*(*/ [atm = lookup(n1,GLOBALS.actions),
 `STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE).`
 
 export function add_word(w: string) {
-    (lookup(w,GLOBALS.words) || insert(w,GLOBALS.words));
+    (lookup(w,words) || insert(w,words));
   }
 
 export function add_buzz(_tuple_, w: tuple(/*[*/ [rest, string] /*]*/)) {
@@ -155,12 +155,12 @@ export function add_zork(nm: atom, _tuple_, w: tuple(/*[*/ [rest, string] /*]*/)
   }
 
 export function add_object(obj: object, names: vector(/*[*/ [rest, string] /*]*/), adj?: vector(/*[*/ [rest, string] /*]*/)) {
-    let objs: oblist = GLOBALS.object_obl;
-    obj[GLOBALS.onames] = mapf(GLOBALS.uvector,		   function(x: string) {
+    let objs: oblist = object_obl;
+    obj[onames] = mapf(uvector,		   function(x: string) {
           (lookup(x,objs) || insert(x,objs));
         },
 		   names);
-obj[GLOBALS.oadjs] = mapf(GLOBALS.uvector,function(w) {
+obj[oadjs] = mapf(uvector,function(w) {
           add_zork(adjective, w);
         }, adj);
 chutype(oadjs(obj), adjective);
@@ -169,7 +169,7 @@ chutype(oadjs(obj), adjective);
 export function synonym(n1: string, _tuple_, n2: tuple(/*[*/ [rest, string] /*]*/)) {
     let atm: (false | atom) = null;
     let val: any = null;
-    cond(/*(*/ [atm = lookup(n1,GLOBALS.words),
+    cond(/*(*/ [atm = lookup(n1,words),
 	       val = /*,*/ [atm] /*1*/,
 	       mapf(false, function(x) {
             setg(add_word(x), val);
@@ -177,7 +177,7 @@ export function synonym(n1: string, _tuple_, n2: tuple(/*[*/ [rest, string] /*]*
   }
 
 export function add_abbrev(x: string, y: string) {
-    setg(add_word(x), (lookup(y,GLOBALS.words) || insert(y,GLOBALS.words)));
+    setg(add_word(x), (lookup(y,words) || insert(y,words)));
   }
 
 export function add_demon(x: hack) {
@@ -187,27 +187,27 @@ export function add_demon(x: hack) {
 		   y[1] = x,
 		   mapleave(t)] /*)*/);
           },
-	  GLOBALS.demons)] /*)*/,
-	/*(*/ [GLOBALS.demons = /*(*/ [x,_X,GLOBALS.demons] /*)*/] /*)*/);
+	  demons)] /*)*/,
+	/*(*/ [demons = /*(*/ [x,_X,demons] /*)*/] /*)*/);
   }
 
 export function add_star(obj) {
-    GLOBALS.stars = /*(*/ [obj,_X,GLOBALS.stars] /*)*/;
+    stars = /*(*/ [obj,_X,stars] /*)*/;
   }
 
 export function add_actor(adv: adv) {
-    let actors: list(/*[*/ [rest, adv] /*]*/) = GLOBALS.actors;
+    let actors: list(/*[*/ [rest, adv] /*]*/) = actors;
     cond(/*(*/ [mapf(false,
 	       function(x: adv) {
             cond(/*(*/ [aobj(x) === aobj(adv),
 			mapleave(t)] /*)*/);
           },
 	       actors)] /*)*/,
-	/*(*/ [GLOBALS.actors = /*(*/ [adv,_X,actors] /*)*/] /*)*/);
+	/*(*/ [actors = /*(*/ [adv,_X,actors] /*)*/] /*)*/);
   }
 
 export function add_desc(obj: object, str: string) {
-    obj[GLOBALS.oread] = str;
+    obj[oread] = str;
   }
 
 export function sadd_action(str1, atm) {
