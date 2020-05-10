@@ -302,12 +302,13 @@ defmac(apply_object, /*(*/ [() => obj] /*)*/,
 export function remove_object(obj: OBJECT) {
     let ocan: (OBJECT | FALSE) = null;
     let oroom: (FALSE | ROOM) = null;
-    cond(/*(*/ [ocan = ocan(obj),
-	       ocan[G_ocontents] = splice_out(obj,ocontents(ocan))] /*)*/,
-	      /*(*/ [oroom = oroom(obj),
-	       oroom[G_robjs] = splice_out(obj,robjs(oroom))] /*)*/,
-	      /*(*/ [memq(obj,robjs(G_here)),
-	       G_here[G_robjs] = splice_out(obj,robjs(G_here))] /*)*/);
+    if(ocan = ocan(obj)) {
+      ocan[G_ocontents] = splice_out(obj,ocontents(ocan));
+    } else if(oroom = oroom(obj)) {
+      oroom[G_robjs] = splice_out(obj,robjs(oroom));
+    } else {
+      G_here[G_robjs] = splice_out(obj,robjs(G_here));
+    };
 obj[G_oroom] = false;
 obj[G_ocan] = false;
   }
@@ -324,9 +325,11 @@ defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_win
 	form(put, winner,G_aobjs,form(splice_out, obj,form(aobjs, winner))))
 
 export function kill_obj(obj: OBJECT, winner: ADV) {
-    cond(/*(*/ [memq(obj,aobjs(winner)),
-	       winner[G_aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
-	      /*(*/ [remove_object(obj)] /*)*/);
+    if(memq(obj,aobjs(winner))) {
+      winner[G_aobjs] = splice_out(obj,aobjs(winner));
+    } else {
+      ;
+    };
   }
 
 export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
@@ -344,9 +347,10 @@ export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
 export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
     mapf(false,
     function(x: OBJECT) {
-        cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit)),
-	     win[G_aobjs] = splice_out(x,aobjs(win)),
-	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/);
+        if((otval(x) > 0 && !trnn(x,G_sacredbit))) {
+          win[G_aobjs] = splice_out(x,aobjs(win));
+          newlist = /*(*/ [x,_X,newlist] /*)*/;
+        };
       },
     aobjs(win));
   }
@@ -356,12 +360,13 @@ export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
 export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), prob: FIX) {
     mapf(false,
     function(x: OBJECT) {
-        cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob)),
-	     remove_object(x),
-	     x[G_otouch_Q] = t,
-	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/,
-	    /*(*/ [type_Q(orand(x), adv),
-	     newlist = rob_adv(orand(x), newlist)] /*)*/);
+        if((otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob))) {
+          remove_object(x);
+          x[G_otouch_Q] = t;
+          newlist = /*(*/ [x,_X,newlist] /*)*/;
+        } else {
+          newlist = rob_adv(orand(x), newlist);
+        };
       },
     robjs(rm));
   }
@@ -369,7 +374,9 @@ export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), pr
 export function valuables_Q(adv: ADV) {
     mapf(false,
     function(x: OBJECT) {
-        cond(/*(*/ [otval(x) > 0, mapleave(t)] /*)*/);
+        if(otval(x) > 0) {
+          mapleave(t);
+        };
       },
     aobjs(adv));
   }
@@ -378,8 +385,9 @@ export function armed_Q(adv: ADV) {
     let weapons = G_weapons;
     mapf(false,
     function(x: OBJECT) {
-        cond(/*(*/ [memq(x,weapons),
-	     mapleave(t)] /*)*/);
+        if(memq(x,weapons)) {
+          mapleave(t);
+        };
       },
     aobjs(adv));
   }
@@ -387,8 +395,9 @@ export function armed_Q(adv: ADV) {
 export function light_source(me: ADV) {
     mapf(false,
 	      function(x) {
-        cond(/*(*/ [!0_Q(olight_Q(x)),
-			mapleave(x)] /*)*/);
+        if(!0_Q(olight_Q(x))) {
+          mapleave(x);
+        };
       },
 	      aobjs(me));
   }
@@ -398,7 +407,9 @@ export function get_demon(id: STRING) {
     let dems: LIST(/*[*/ [REST, HACK] /*]*/) = G_demons;
     mapf(false,
     function(x: HACK) {
-        cond(/*(*/ [hobj(x) === obj, mapleave(x)] /*)*/);
+        if(hobj(x) === obj) {
+          mapleave(x);
+        };
       },
     dems);
   }
@@ -417,28 +428,43 @@ export function yes_no(no_is_bad_Q: (ATOM | FALSE)) {
     let inchan = G_inchan;
     reset(inchan);
 readstring(inbuf,inchan,G_reader_string);
-cond(/*(*/ [no_is_bad_Q,	       !memq(inbuf[1], `NnfF`)] /*)*/,
-	      /*(*/ [t,
-	       memq(inbuf[1], `TtYy`)] /*)*/);
+if(true) {
+      no_is_bad_Q;
+      !memq(inbuf[1], `NnfF`);
+    } else {
+      t;
+      memq(inbuf[1], `TtYy`);
+    };
   }
 
 defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*)*/] /*)*/,
 	form(cond,
 	      /*(*/ [form(type_Q, frob,atom),
-	       cond(/*(*/ [mumble,		      form(apply, form(gval, frob), mumble)] /*)*/,
-		     /*(*/ [form(apply, form(gval, frob))] /*)*/)] /*)*/,
+	       if(true) {
+          mumble;
+          form(apply, form(gval, frob), mumble);
+        } else {
+          ;
+        }] /*)*/,
 	      /*(*/ [t, form(dispatch, frob,mumble)] /*)*/))
 
 export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
     prog(/*(*/ [] /*)*/,
-    cond(/*(*/ [type_Q(fn,fix), dispatch(fn,foo)] /*)*/,
-	  /*(*/ [applicable_Q(fn),
-	   cond(/*(*/ [foo,		  apply(fn,foo)] /*)*/,
-		 /*(*/ [apply(fn)] /*)*/)] /*)*/,
-	  /*(*/ [gassigned_Q(fn),
-	   fn = /*,*/ [fn] /*1*/,
-	   again()] /*)*/,
-	  /*(*/ [error(unassigned_variable_X_errors, fn,da)] /*)*/));
+    if(type_Q(fn,fix)) {
+        dispatch(fn,foo);
+      } else if(applicable_Q(fn)) {
+        if(true) {
+            foo;
+            apply(fn,foo);
+          } else {
+            ;
+          };
+      } else if(gassigned_Q(fn)) {
+        fn = /*,*/ [fn] /*1*/;
+        again();
+      } else {
+        ;
+      });
   }
 
 `OLD MAZER`
@@ -454,39 +480,47 @@ psetg(null_syn, _X,/*[*/ [] /*]*/)
 export function find_room(id: (ATOM | STRING)) {
     let atm: (ATOM | FALSE) = null;
     let room: ROOM = null;
-    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
-cond(/*(*/ [(atm = lookup(id,G_room_obl) && gassigned_Q(atm)),
-		    /*,*/ [atm] /*1*/] /*)*/,
-	      /*(*/ [(atm || atm = insert(id,G_room_obl)),
-	       setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
-				 room)),
-	       G_rooms = /*(*/ [room,_X,G_rooms] /*)*/,
-	       room] /*)*/);
+    if(type_Q(id,atom)) {
+      id = spname(id);
+    };
+if((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) {
+      /*,*/ [atm] /*1*/;
+    } else {
+      setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
+				 room));
+      G_rooms = /*(*/ [room,_X,G_rooms] /*)*/;
+      room;
+    };
   }
 
 export function find_obj(id: (ATOM | STRING)) {
     let obj: OBJECT = null;
     let atm: (ATOM | FALSE) = null;
-    cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
-cond(/*(*/ [(atm = lookup(id,G_object_obl) && gassigned_Q(atm)),
-	       /*,*/ [atm] /*1*/] /*)*/,
-	      /*(*/ [(atm || atm = insert(id,G_object_obl)),
-	       setg(atm,		     obj = chtype(/*[*/ [atm,G_null_syn,G_null_desc,G_null_desc,false,
+    if(type_Q(id,atom)) {
+      id = spname(id);
+    };
+if((atm = lookup(id,G_object_obl) && gassigned_Q(atm))) {
+      /*,*/ [atm] /*1*/;
+    } else {
+      setg(atm,		     obj = chtype(/*[*/ [atm,G_null_syn,G_null_desc,G_null_desc,false,
 				   false, /*(*/ [] /*)*/, false, 0, false, 0, 0, 0, false, false, 5, 0, G_null_syn,false, false] /*]*/,
-				  object)),
-	       G_objects = /*(*/ [obj,_X,G_objects] /*)*/,
-	       obj] /*)*/);
+				  object));
+      G_objects = /*(*/ [obj,_X,G_objects] /*)*/;
+      obj;
+    };
   }
 
 export function function_print(frob: (ATOM | OFFSET | APPLICABLE | FALSE)) {
-    cond(/*(*/ [!frob, princ(`<>`)] /*)*/,
-	/*(*/ [type_Q(frob,rsubr, rsubr_entry),
-	 prin1(frob[2])] /*)*/,
-	/*(*/ [type_Q(frob,atom),
-	 prin1(frob)] /*)*/,
-	/*(*/ [type_Q(frob,offset),
-	 princ(`#OFFSET `),
-	 prin1(get_atom(frob))] /*)*/,
-	/*(*/ [princ(`#FUNCTION `),
-	 prin1(get_atom(frob))] /*)*/);
+    if(!frob) {
+      princ(`<>`);
+    } else if(type_Q(frob,rsubr, rsubr_entry)) {
+      prin1(frob[2]);
+    } else if(type_Q(frob,atom)) {
+      prin1(frob);
+    } else if(type_Q(frob,offset)) {
+      princ(`#OFFSET `);
+      prin1(get_atom(frob));
+    } else {
+      prin1(get_atom(frob));
+    };
   }

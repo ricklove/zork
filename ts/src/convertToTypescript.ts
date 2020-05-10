@@ -85,6 +85,23 @@ const getDeclarationMap = (dMappingNodes: ZNode[]) => {
     };
 };
 
+const getConditionMap = (nodes: ZNode[]) => {
+    const conditionBlocks = nodes
+        .map(x => {
+            const cNodes = x.kind === 'ZList' && x.openSymbol === '(' && x.nodes || [];
+            const condition = cNodes[0] && cNodes[0].kind === 'ZList' && cNodes[0].openSymbol === '<' && cNodes[0] || undefined;
+            const bodyNodes = condition ? cNodes.slice(1) : cNodes;
+            return {
+                condition,
+                bodyNodes,
+            };
+        });
+
+    return {
+        conditionBlocks,
+    };
+};
+
 const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsList: undefined | ZList, declList: undefined | ZList, body: undefined | ZList[], depth: number, isFileScope = false) => {
     const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
     const bodyText = body?.map(n => `${convertToTypescript(n)};\n`).join('') ?? '';
@@ -518,6 +535,31 @@ export const convertToTypescript = (node: ZNode): string => {
             }
         }
 
+        // Conditions
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'COND'
+        ) {
+            const c = getConditionMap(nodes.slice(1));
+            const indent = getIndentation(depth);
+            const indent1 = getIndentation(depth + 1);
+            return `${c.conditionBlocks.map((x, i) => {
+                const isFirst = i === 0;
+                const isLast = i === c.conditionBlocks.length - 1;
+                const cond = x.condition ? convertToTypescript(x.condition) : true;
+                //const body = getNodesWithSpace(x.bodyNodes, depth, false, ';');
+                const body = getNodesWithIndent(x.bodyNodes, depth + 1, false, ';') + ';';
+
+                if (isFirst) {
+                    return `if(${cond}) {\n${indent1}${body}\n${indent}}`;
+                } else if (!isLast) {
+                    return `else if(${cond}) {\n${indent1}${body}\n${indent}}`;
+                } else {
+                    return `else {\n${indent1}${body}\n${indent}}`;
+                }
+            }).join(` `)}`;
+        }
 
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
