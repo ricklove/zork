@@ -1,7 +1,7 @@
 function boom_room
   () {
     
-    let dummy_Q: atom | false = null;
+    let dummy_Q: atom | false = false;
     let prsact: verb = GLOBALS.prsvec[1];
     let win: adv = GLOBALS.winner;
     let o: object = null;
@@ -97,7 +97,7 @@ function fly_me
 put(
     GLOBALS.prsvec,
     2,
-    null)
+    false)
 room_desc(
     )
   }
@@ -196,7 +196,7 @@ function dumbwaiter
             top),
           tell(
             "The basket is lowered to the bottom of the shaft."),
-          GLOBALS.cage_top_X_flag = null,
+          GLOBALS.cage_top_X_flag = false,
           t] /*)*/)] /*)*/,
     /*(*/ [prsact === GLOBALS.take_X_words,
       cond(
@@ -262,7 +262,7 @@ function machine_function
               put(
                 mach,
                 GLOBALS.oopen_Q,
-                null),
+                false),
               t] /*)*/,
             /*(*/ [tell(
                 pick_one(
@@ -353,7 +353,7 @@ function gunk_function
       put(
         g,
         GLOBALS.ocan,
-        null),
+        false),
       tell(
         "The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable.")] /*)*/)
   }
@@ -370,7 +370,7 @@ function no_objs
         aobjs(
           GLOBALS.winner)),
       GLOBALS.empty_handed_X_flag = t] /*)*/,
-    /*(*/ [GLOBALS.empty_handed_X_flag = null] /*)*/)
+    /*(*/ [GLOBALS.empty_handed_X_flag = false] /*)*/)
 cond(
     /*(*/ [GLOBALS.here === find_room(
             "BSHAF") && lit_Q(
@@ -393,7 +393,7 @@ function cliff_function
           "RBOAT"),
         aobjs(
           GLOBALS.winner)),
-      GLOBALS.deflate_X_flag = null] /*)*/,
+      GLOBALS.deflate_X_flag = false] /*)*/,
     /*(*/ [GLOBALS.deflate_X_flag = t] /*)*/)
   }
 
@@ -419,10 +419,10 @@ function stick_function
               GLOBALS.rainbow_X_flag = t] /*)*/,
             /*(*/ [tell(
                 "The rainbow seems to have become somewhat run-of-the-mill."),
-              GLOBALS.rainbow_X_flag = null] /*)*/)] /*)*/,
+              GLOBALS.rainbow_X_flag = false] /*)*/)] /*)*/,
         /*(*/ [GLOBALS.here === find_room(
               "RAINB"),
-          GLOBALS.rainbow_X_flag = null,
+          GLOBALS.rainbow_X_flag = false,
           jigs_up(
             "The structural integrity of the rainbow seems to have left it,\nleaving you about 450 feet in the air, supported by water vapor.")] /*)*/,
         /*(*/ [tell(
@@ -519,7 +519,7 @@ function rboat_function
     let here: room = GLOBALS.here;
     cond(
     /*(*/ [arg,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [prsact === GLOBALS.board_X_words,
       cond(
         /*(*/ [memq(
@@ -592,7 +592,7 @@ function iboat_function
               GLOBALS.winner)),
           tell(
             "The boat inflates and appears seaworthy."),
-          GLOBALS.deflate_X_flag = null,
+          GLOBALS.deflate_X_flag = false,
           remove_object(
             iboat),
           insert_object(
@@ -635,14 +635,14 @@ function shake
             ocontents(
               prsobj)),
       mapf(
-        null,
+        false,
         function
           (x: object) {
             
             put(
             x,
             GLOBALS.ocan,
-            null)
+            false)
 insert_object(
             x,
             here)
@@ -665,7 +665,7 @@ function rivr4_room
         "BUOY"),
       aobjs(
         GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell(
-      "Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = null
+      "Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false
   }
 
 function beach_room
@@ -817,16 +817,16 @@ function grue_function
         "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!")] /*)*/)
   }
 
-GLOBALS.btie_X_flag = null
+GLOBALS.btie_X_flag = false
 
-GLOBALS.binf_X_flag = null
+GLOBALS.binf_X_flag = false
 
 define(
   balloon,
   ballact,
   /*(*/ ["OPTIONAL",
     /*(*/ [arg,
-      null] /*)*/,
+      false] /*)*/,
     "AUX",
     /*(*/ [prsvec,
       GLOBALS.prsvec] /*)*/,
@@ -889,7 +889,7 @@ define(
               tell(
                 "The balloon is tied to the hook.")] /*)*/)] /*)*/),
       return(
-        null,
+        false,
         ballact)] /*)*/),
   cond(
     /*(*/ [arg === read_in,
@@ -914,7 +914,7 @@ define(
                         m[2],
                         GLOBALS.rmungbit) && GLOBALS.bloc = m[2],
                   return(
-                    null,
+                    false,
                     ballact)] /*)*/)] /*)*/,
             /*(*/ [tell(
                 "I'm afraid you can't control the balloon in this way."),
@@ -940,7 +940,7 @@ define(
             t,
             ballact)] /*)*/,
         /*(*/ [return(
-            null,
+            false,
             ballact)] /*)*/)] /*)*/),
   cond(
     /*(*/ [prsa === GLOBALS.burn_X_words,
@@ -1004,7 +1004,7 @@ define(
           clock_int(
             GLOBALS.bint,
             3)] /*)*/),
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [prsa === GLOBALS.c_int_X_words,
       cond(
         /*(*/ [oopen_Q(
@@ -1020,7 +1020,7 @@ define(
             ball,
             GLOBALS.here)] /*)*/)] /*)*/))
 
-GLOBALS.blab_X_flag = null
+GLOBALS.blab_X_flag = false
 
 gdecl(
   /*(*/ [burnup_int,
@@ -1218,7 +1218,7 @@ cond(
                   put(
                     GLOBALS.winner,
                     GLOBALS.avehicle,
-                    null),
+                    false),
                   clock_disable(
                     foo = clock_int(
                         GLOBALS.bint,
@@ -1291,7 +1291,7 @@ function wire_function
             bint = clock_int(
                 GLOBALS.bint,
                 3)),
-          GLOBALS.btie_X_flag = null,
+          GLOBALS.btie_X_flag = false,
           tell(
             "The wire falls off of the hook.")] /*)*/,
         /*(*/ [tell(
@@ -1318,10 +1318,10 @@ tell(
     odesc2(
       obj),
     "has burned out, and the cloth\nbag starts to collapse.")
-GLOBALS.binf_X_flag = null
+GLOBALS.binf_X_flag = false
   }
 
-GLOBALS.safe_flag_X_flag = null
+GLOBALS.safe_flag_X_flag = false
 
 function safe_room
   () {
@@ -1457,7 +1457,7 @@ function fuse_function
                 5),
               GLOBALS.munged_room = brick_room,
               mapf(
-                null,
+                false,
                 function
                   (x) {
                     
@@ -1474,14 +1474,14 @@ function fuse_function
                 /*(*/ [brick_room === find_room(
                       "LROOM"),
                   mapf(
-                    null,
+                    false,
                     function
                       (x: object) {
                         
                         put(
                         x,
                         GLOBALS.ocan,
-                        null)
+                        false)
                       },
                     ocontents(
                       find_obj(
@@ -1546,8 +1546,8 @@ function ledge_mung
                 find_obj(
                   "DBALL"),
                 rm),
-              GLOBALS.btie_X_flag = null,
-              GLOBALS.binf_X_flag = null,
+              GLOBALS.btie_X_flag = false,
+              GLOBALS.binf_X_flag = false,
               clock_disable(
                 GLOBALS.bint),
               clock_disable(
@@ -1573,7 +1573,7 @@ function ledge_function
     cond(
     /*(*/ [prsa === GLOBALS.walk_in_X_words,
       GLOBALS.safe_flag_X_flag && tell(
-          "Behind you, the walls of the safe room collapse into rubble.") && GLOBALS.safe_flag_X_flag = null] /*)*/,
+          "Behind you, the walls of the safe room collapse into rubble.") && GLOBALS.safe_flag_X_flag = false] /*)*/,
     /*(*/ [prsa === GLOBALS.look_X_words,
       tell(
         "You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.",
@@ -1617,7 +1617,7 @@ function volgnome
         1)] /*)*/)
   }
 
-GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = null
+GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = false
 
 function gnome_function
   () {

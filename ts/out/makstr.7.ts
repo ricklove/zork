@@ -39,7 +39,7 @@ function cons_obj
     
     let winner: adv = GLOBALS.winner;
     mapf(
-    null,
+    false,
     function
       (x) {
         
@@ -63,7 +63,7 @@ function cexit
     flag: atom | false,
     funct: atom | false) {
     
-    let fval: applicable | false = null;
+    let fval: applicable | false = false;
     let atm: atom | false = null;
     cond(
     /*(*/ [type_Q(
@@ -210,7 +210,7 @@ put(
           app,
           false,
           form),
-        null] /*)*/,
+        false] /*)*/,
       /*(*/ [app] /*)*/))
 put(
     rm,
@@ -219,11 +219,11 @@ put(
       /*(*/ [type_Q(
           lit_Q,
           form),
-        null] /*)*/,
+        false] /*)*/,
       /*(*/ [t,
         lit_Q] /*)*/))
 mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -246,10 +246,10 @@ function sobject
     id,
     "",
     str,
-    /*%*/ [null] /*1*/,
-    null,
+    /*%*/ [false] /*1*/,
+    false,
     /*(*/ [] /*)*/,
-    null,
+    false,
     _(
       _X,
       tup))
@@ -266,10 +266,10 @@ function aobject
     id,
     "",
     str,
-    /*%*/ [null] /*1*/,
+    /*%*/ [false] /*1*/,
     app,
     /*(*/ [] /*)*/,
-    null,
+    false,
     _(
       _X,
       tup))
@@ -343,7 +343,7 @@ put(
           app,
           false,
           form),
-        null] /*)*/,
+        false] /*)*/,
       /*(*/ [app] /*)*/))
   }
 
@@ -402,7 +402,7 @@ function add_directions
     let dir: oblist = GLOBALS.directions;
     let atm: atom = null;
     mapf(
-    null,
+    false,
     function
       (x) {
         
@@ -432,7 +432,7 @@ function dsynonym
     val = add_directions(
       str)
 mapf(
-    null,
+    false,
     function
       (x) {
         
@@ -462,7 +462,7 @@ function vsynonym
           GLOBALS.words),
       val = /*,*/ [atm] /*1*/,
       mapf(
-        null,
+        false,
         function
           (x) {
             
@@ -478,7 +478,7 @@ cond(
           GLOBALS.actions),
       val = /*,*/ [atm] /*1*/,
       mapf(
-        null,
+        false,
         function
           (x) {
             
@@ -512,7 +512,7 @@ function add_buzz
           string] /*]*/)) {
     
     mapf(
-    null,
+    false,
     function
       (x: string) {
         
@@ -534,7 +534,7 @@ function add_zork
           string] /*]*/)) {
     
     mapf(
-    null,
+    false,
     function
       (x: string) {
         
@@ -608,7 +608,7 @@ function synonym
           GLOBALS.words),
       val = /*,*/ [atm] /*1*/,
       mapf(
-        null,
+        false,
         function
           (x) {
             
@@ -639,7 +639,7 @@ function add_demon
     
     cond(
     /*(*/ [mapr(
-        null,
+        false,
         function
           (y: list(
                 /*[*/ [rest,
@@ -678,7 +678,7 @@ function add_actor
           adv] /*]*/) = GLOBALS.actors;
     cond(
     /*(*/ [mapf(
-        null,
+        false,
         function
           (x: adv) {
             

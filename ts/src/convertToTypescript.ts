@@ -167,9 +167,9 @@ export const convertToTypescript = (node: ZNode): string => {
             return convertToTypescriptString(node);
         }
 
-        // Null: <>
+        // False: <> (null)
         if (openSymbol === '<' && nodes.length === 0) {
-            return 'null';
+            return 'false';
         }
 
         const firstNode = +!undefined && nodes[0];

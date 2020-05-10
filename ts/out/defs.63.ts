@@ -197,28 +197,28 @@ newstruc(
 
 flagword(
   rlandbit,
-  null,
+  false,
   // on land,
   rwaterbit,
-  null,
+  false,
   // water room,
   rairbit,
-  null,
+  false,
   // mid-air room,
   rsacredbit,
-  null,
+  false,
   // thief not allowed,
   rfillbit,
-  null,
+  false,
   // can fill bottle here,
   rmungbit,
-  null,
+  false,
   // room has been munged,
   rbuckbit,
-  null,
+  false,
   // this room is a bucket,
   rhousebit,
-  null,
+  false,
   // This room is part of the house)
 
 // exit
@@ -323,16 +323,16 @@ newstruc(
 
 flagword(
   vabit,
-  null,
+  false,
   // look in AOBJS,
   vrbit,
-  null,
+  false,
   // look in ROBJS,
   vtbit,
-  null,
+  false,
   // no-take,
   vxbit,
-  null,
+  false,
   // (?) turned on by '=' in VARG spec)
 
 // VTRNN -- test a bit in the VWORD slot of a VARG
@@ -540,73 +540,73 @@ flagword(
   edible_Q,
   // object is food,
   ndescbit,
-  null,
+  false,
   // object not describable,
   drinkbit,
   drinkable_Q,
   // object is drinkable,
   contbit,
-  null,
+  false,
   // object can be opened/closed,
   lightbit,
-  null,
+  false,
   // object can provide light,
   vicbit,
-  null,
+  false,
   // object is victim,
   burnbit,
   burnable_Q,
   // object is flammable,
   flamebit,
-  null,
+  false,
   // object is on fire,
   toolbit,
-  null,
+  false,
   // object is a tool,
   turnbit,
-  null,
+  false,
   // object can be turned,
   vehbit,
-  null,
+  false,
   // object is a vehicle,
   findmebit,
-  null,
+  false,
   // can be reached from a vehicle,
   sleepbit,
-  null,
+  false,
   // object is asleep,
   searchbit,
-  null,
+  false,
   // allow multi-level access into this,
   sacredbit,
-  null,
+  false,
   // thief can't take this,
   tiebit,
-  null,
+  false,
   // object can be tied,
   echo_room_bit,
-  null,
+  false,
   // nothing can be taken in echo room,
   actorbit,
-  null,
+  false,
   // object is an actor,
   weaponbit,
-  null,
+  false,
   // object is a weapon,
   fightbit,
   fighting_Q,
   // object is in melee,
   villain,
-  null,
+  false,
   // object is a bad guy,
   staggered,
-  null,
+  false,
   // object can't fight this turn,
   trytakebit,
-  null,
+  false,
   // object wants to handle not being taken,
   no_check_bit,
-  null,
+  false,
   // ignore checks (in put & drop):  for EVERY and VALUA)
 
 "extra stuff for flagword for objects"
@@ -829,7 +829,7 @@ defmac(
           form(
             lval,
             el))),
-      null)))
+      false)))
 
 "APPLY AN OBJECT FUNCTION"
 
@@ -849,7 +849,7 @@ defmac(
           form(
             lval,
             foo)),
-        null] /*)*/,
+        false] /*)*/,
       /*(*/ [form(
           type_Q,
           form(
@@ -909,11 +909,11 @@ function remove_object
 put(
     obj,
     GLOBALS.oroom,
-    null)
+    false)
 put(
     obj,
     GLOBALS.ocan,
-    null)
+    false)
   }
 
 defmac(
@@ -949,7 +949,7 @@ defmac(
         put,
         obj,
         GLOBALS.oroom,
-        null),
+        false),
       chtype(
         form(
           aobjs,
@@ -1001,7 +1001,7 @@ function flush_obj
     
     let winner: adv = GLOBALS.winner;
     mapf(
-    null,
+    false,
     function
       (x) {
         
@@ -1027,7 +1027,7 @@ function rob_adv
           object] /*]*/)) {
     
     mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -1061,7 +1061,7 @@ function rob_room
     prob: number) {
     
     mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -1098,7 +1098,7 @@ function valuables_Q
   (adv: adv) {
     
     mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -1117,7 +1117,7 @@ function armed_Q
     
     let weapons = GLOBALS.weapons;
     mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -1136,7 +1136,7 @@ function light_source
   (me: adv) {
     
     mapf(
-    null,
+    false,
     function
       (x) {
         
@@ -1160,7 +1160,7 @@ function get_demon
         /*[*/ [rest,
           hack] /*]*/) = GLOBALS.demons;
     mapf(
-    null,
+    false,
     function
       (x: hack) {
         
@@ -1197,7 +1197,7 @@ defmac(
     put,
     ev,
     GLOBALS.cflag,
-    null))
+    false))
 
 defmac(
   clock_enable,
@@ -1235,7 +1235,7 @@ defmac(
   /*(*/ [() => frob,
     "OPTIONAL",
     /*(*/ [() => mumble,
-      null] /*)*/] /*)*/,
+      false] /*)*/] /*)*/,
   form(
     cond,
     /*(*/ [form(
@@ -1342,11 +1342,11 @@ cond(
               atm,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
-              null,
-              null,
+              false,
+              false,
               GLOBALS.null_exit,
               /*(*/ [] /*)*/,
-              null,
+              false,
               0,
               0,
               0,
@@ -1385,22 +1385,22 @@ cond(
               GLOBALS.null_syn,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
-              null,
-              null,
+              false,
+              false,
               /*(*/ [] /*)*/,
-              null,
+              false,
               0,
-              null,
+              false,
               0,
               0,
               0,
-              null,
-              null,
+              false,
+              false,
               5,
               0,
               GLOBALS.null_syn,
-              null,
-              null] /*]*/,
+              false,
+              false] /*]*/,
             object)),
       GLOBALS.objects = /*(*/ [obj,
           _X,

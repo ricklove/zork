@@ -65,7 +65,7 @@ function head_function
 
 GLOBALS.then = 0
 
-GLOBALS.bucket_top_X_flag = null
+GLOBALS.bucket_top_X_flag = false
 
 function bucket
   (arg?: false | atom) {
@@ -79,7 +79,7 @@ function bucket
         "BUCKE");
     cond(
     /*(*/ [arg === read_in,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [pa === GLOBALS.c_int_X_words && cond(
           /*(*/ [memq(
               w,
@@ -87,7 +87,7 @@ function bucket
                 buck)),
             remove_object(
               w),
-            null] /*)*/,
+            false] /*)*/,
           /*(*/ [t] /*)*/)] /*)*/,
     /*(*/ [arg === read_out,
       cond(
@@ -104,12 +104,12 @@ function bucket
           clock_int(
             GLOBALS.bckin,
             100),
-          null] /*)*/,
+          false] /*)*/,
         /*(*/ [GLOBALS.bucket_top_X_flag && ocan(
                 w) !== buck,
           tell(
             "The bucket descends and comes to a stop."),
-          GLOBALS.bucket_top_X_flag = null,
+          GLOBALS.bucket_top_X_flag = false,
           pass_the_bucket(
             find_room(
               "BWELL"),
@@ -126,7 +126,7 @@ function pass_the_bucket
     put(
     pv,
     2,
-    null)
+    false)
 remove_object(
     b)
 insert_object(
@@ -169,7 +169,7 @@ function eatme_function
         robjs(
           here)),
       mapf(
-        null,
+        false,
         function
           (x: object) {
             
@@ -260,7 +260,7 @@ function cake_function
                 robjs(
                   here)),
               mapf(
-                null,
+                false,
                 function
                   (x: object) {
                     
@@ -373,7 +373,7 @@ function magnet_room
             GLOBALS.spindizzy)] /*)*/,
         /*(*/ [tell(
             "As you enter, your compass starts spinning wildly."),
-          null] /*)*/)] /*)*/,
+          false] /*)*/)] /*)*/,
     /*(*/ [pa === GLOBALS.walk_X_words,
       cond(
         /*(*/ [GLOBALS.carousel_flip_X_flag && GLOBALS.winner === GLOBALS.player,
@@ -418,9 +418,9 @@ function cmach_room
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/)
   }
 
-GLOBALS.carousel_zoom_X_flag = null
+GLOBALS.carousel_zoom_X_flag = false
 
-GLOBALS.carousel_flip_X_flag = null
+GLOBALS.carousel_flip_X_flag = false
 
 function buttons
   () {
@@ -448,7 +448,7 @@ function buttons
               "RNBUT"),
           cond(
             /*(*/ [GLOBALS.carousel_zoom_X_flag,
-              GLOBALS.carousel_zoom_X_flag = null,
+              GLOBALS.carousel_zoom_X_flag = false,
               tell(
                 "The whirring decreases in intensity slightly.")] /*)*/,
             /*(*/ [tell(
@@ -474,7 +474,7 @@ psetg(
   spindizzy,
   "According to Prof. TAA of MIT Tech, the rapidly changing magnetic\nfields in the room are so intense as to cause you to be electrocuted. \nI really don't know, but in any event, something just killed you.")
 
-GLOBALS.cage_solve_X_flag = null
+GLOBALS.cage_solve_X_flag = false
 
 function sphere_function
   () {
@@ -633,7 +633,7 @@ function robot_actor
     /*(*/ [memq(
         pa,
         GLOBALS.robot_actions),
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [tell(
         "\"I am only a stupid robot and cannot perform that command.\")] /*)*/)
   }

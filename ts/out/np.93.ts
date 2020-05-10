@@ -14,11 +14,11 @@ GLOBALS.actions = moblist(
     actions,
     17)
 
-GLOBALS.orphans = /*[*/ [null,
-    null,
-    null,
-    null,
-    null] /*]*/
+GLOBALS.orphans = /*[*/ [false,
+    false,
+    false,
+    false,
+    false] /*]*/
 
 cond(
   /*(*/ [lookup(
@@ -69,9 +69,9 @@ define(
           rest(
             pv),
           1,
-          null),
+          false),
         2,
-        null)] /*)*/,
+        false)] /*)*/,
     /*(*/ [actions,
       GLOBALS.actions] /*)*/,
     /*(*/ [dirs,
@@ -86,12 +86,12 @@ define(
     /*(*/ [here,
       GLOBALS.here] /*)*/,
     /*(*/ [action,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [prep,
-      null] /*)*/,
+      false] /*)*/,
     nprep,
     /*(*/ [adj,
-      null] /*)*/,
+      false] /*)*/,
     atm,
     aval,
     obj,
@@ -136,7 +136,7 @@ define(
       /*(*/ [pprep] /*)*/,
       phrase] /*)*/] /*2*/,
   val = mapf(
-      null,
+      false,
       function
         (x: string) {
           
@@ -175,7 +175,7 @@ define(
                           "Double preposition?",
                           0),
                       mapleave(
-                        null)] /*)*/,
+                        false)] /*)*/,
                     /*(*/ [prep = aval] /*)*/)] /*)*/,
                 /*(*/ [type_Q(
                     aval,
@@ -196,7 +196,7 @@ define(
                     pvr) && vb || tell(
                       "Too many objects specified?",
                       0) && mapleave(
-                    null),
+                    false),
                 put(
                   pvr,
                   1,
@@ -209,7 +209,7 @@ define(
                         pprep,
                         1,
                         prep),
-                      prep = null,
+                      prep = false,
                       put(
                         pprep,
                         2,
@@ -267,15 +267,15 @@ define(
                       prep,
                       atm)] /*)*/),
                 mapleave(
-                  null)] /*)*/),
-            adj = null,
+                  false)] /*)*/),
+            adj = false,
             t] /*)*/,
           /*(*/ [vb || tell(
                 "I don't know the word",
                 0,
                 x),
             mapleave(
-              null)] /*)*/)
+              false)] /*)*/)
         },
       sv),
   cond(
@@ -298,9 +298,9 @@ define(
                   0)] /*)*/),
           orphan(
             t,
-            null,
+            false,
             pv[2]),
-          null] /*)*/,
+          false] /*)*/,
         /*(*/ [put(
               pv,
               1,
@@ -308,7 +308,7 @@ define(
           vb || tell(
               "Dangling adjective?",
               0),
-          null] /*)*/,
+          false] /*)*/,
         /*(*/ [orfl && nprep = oprep(
                 orph) && obj = pv[2] && put(
               pprep = prv[1],
@@ -330,7 +330,7 @@ define(
               /*(*/ [put(
                   pv,
                   2,
-                  pprep)] /*)*/) && null] /*)*/,
+                  pprep)] /*)*/) && false] /*)*/,
         /*(*/ [prep,
           type_Q(
               lobj = back(
@@ -355,7 +355,7 @@ function sp
     parse(
     lex(
       str),
-    null)
+    false)
   }
 
 function orphan
@@ -391,13 +391,13 @@ function syn_match
         pv);
     let o1: false | object | phrase = objs[1];
     let o2: false | object | phrase = objs[2];
-    let dforce: false | syntax = null;
-    let drive: false | syntax = null;
-    let gwim: false | object = null;
+    let dforce: false | syntax = false;
+    let drive: false | syntax = false;
+    let gwim: false | object = false;
     let synn: varg = null;
     cond(
     /*(*/ [mapf(
-        null,
+        false,
         function
           (syn: syntax) {
             
@@ -433,14 +433,14 @@ function syn_match
                         syn),
                       dforce = syn] /*)*/,
                     /*(*/ [drive = syn] /*)*/),
-                  null] /*)*/)] /*)*/,
+                  false] /*)*/)] /*)*/,
             /*(*/ [!o1,
               cond(
                 /*(*/ [sdriver(
                     syn),
                   dforce = syn] /*)*/,
                 /*(*/ [drive = syn] /*)*/),
-              null] /*)*/)
+              false] /*)*/)
           },
         vdecl(
           action))] /*)*/,
@@ -459,7 +459,7 @@ function syn_match
           orphan(
             t,
             action,
-            null,
+            false,
             vprep(
               synn)),
           ortell(
@@ -494,7 +494,7 @@ function syn_match
     /*(*/ [tell(
         "I can't make sense out of that.",
         0),
-      null] /*)*/)
+      false] /*)*/)
   }
 
 function take_it_or_leave_it
@@ -562,7 +562,7 @@ function take_it
             obj),
           robjs(
             GLOBALS.here),
-          null) && can_take_Q(
+          false) && can_take_Q(
             obj) || !vtrnn(
               vrb,
               GLOBALS.vtbit),
@@ -596,7 +596,7 @@ function orfeo
     let slot1: false | phrase | object = null;
     cond(
     /*(*/ [!orfl,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [slot1 = oslot1(
           orph),
       syn_equal(
@@ -638,7 +638,7 @@ function ortell
           action),
         0,
         "what?")] /*)*/)
-null
+false
   }
 
 function prstr
@@ -651,7 +651,7 @@ function prstr
     back(
       GLOBALS.scrstr,
       sp.length),
-    null)
+    false)
   }
 
 function foostr
@@ -660,7 +660,7 @@ function foostr
     1st?: atom | false) {
     
     mapr(
-    null,
+    false,
     function
       (x: string,
         y: string) {
@@ -721,7 +721,7 @@ function gwim
     let robj: atom | false = vtrnn(
         fword,
         GLOBALS.vrbit);
-    let obj: atom | false = null;
+    let obj: atom | false = false;
     let nobj: object | false = null;
     let pv: vector = GLOBALS.prsvec;
     let savobj: false | object | phrase = null;
@@ -765,7 +765,7 @@ cond(
                 pv,
                 2,
                 savobj),
-              null] /*)*/)] /*)*/,
+              false] /*)*/)] /*)*/,
         /*(*/ [nobj || !empty_Q(
                 nobj),
           GLOBALS.nefals] /*)*/,
@@ -782,7 +782,7 @@ function make_action
   vv,
   sum,
   /*(*/ [prep,
-      null] /*)*/,
+      false] /*)*/,
   atm
     chtype(
     mapf(
@@ -792,10 +792,10 @@ function make_action
           
           let syn: vector = ivector(
               5,
-              null);
+              false);
           let whr: number = 1;
           mapf(
-          null,
+          false,
           function
             (itm) {
               
@@ -805,7 +805,7 @@ function make_action
                   string),
                 prep = find_prep(
                     itm)] /*)*/,
-              /*(*/ [itm === obj && itm = () => /*(*/ [_1] /*)*/ && null] /*)*/,
+              /*(*/ [itm === obj && itm = () => /*(*/ [_1] /*)*/ && false] /*)*/,
               /*(*/ [type_Q(
                   itm,
                   list),
@@ -820,7 +820,7 @@ function make_action
                   2,
                   prep),
                 sum = 0,
-                prep = null,
+                prep = false,
                 memq(
                     aobjs,
                     itm) && sum = _(
@@ -907,7 +907,7 @@ chtype(
 
 GLOBALS.evarg = chtype(
     /*[*/ [0,
-      null,
+      false,
       0] /*]*/,
     varg)
 
@@ -958,13 +958,13 @@ function eparse
         /*(*/ [val === win || syn_match(
               val),
           orphan(
-            null)] /*)*/,
+            false)] /*)*/,
         /*(*/ [vb || tell(
               ""),
-          null] /*)*/)] /*)*/,
+          false] /*)*/)] /*)*/,
     /*(*/ [vb || tell(
           ""),
-      null] /*)*/)
+      false] /*)*/)
   }
 
 GLOBALS.scrstr = rest(
@@ -974,7 +974,7 @@ GLOBALS.scrstr = rest(
 
 GLOBALS.ssv = ivector(
     10,
-    null)
+    false)
 
 "GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS\nOVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL\nOF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE\nOBJECT OTHERWISE."
 
@@ -986,14 +986,14 @@ define(
     "AUX",
     obj,
     /*(*/ [oobj,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [here,
       GLOBALS.here] /*)*/,
     /*(*/ [av,
       avehicle(
         GLOBALS.winner)] /*)*/,
     /*(*/ [chomp,
-      null] /*)*/] /*)*/,
+      false] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [oobj,
         obj,
@@ -1055,7 +1055,7 @@ define(
               ocontents(
                 av),
               adj),
-          chomp = null,
+          chomp = false,
           oobj = obj] /*)*/,
         /*(*/ [!empty_Q(
               obj),
@@ -1098,7 +1098,7 @@ define(
       t] /*)*/,
     "AUX",
     /*(*/ [oobj,
-      null] /*)*/,
+      false] /*)*/,
     /*(*/ [nefals,
       GLOBALS.nefals] /*)*/,
     nobj] /*)*/,
@@ -1119,7 +1119,7 @@ define(
       /*(*/ [nefals] /*)*/,
       false] /*)*/] /*2*/,
   mapf(
-    null,
+    false,
     function
       (obj: object) {
         
@@ -1147,7 +1147,7 @@ cond(
                   ocontents(
                     obj),
                   adj,
-                  null),
+                  false),
               cond(
                 /*(*/ [oobj,
                   return(
@@ -1172,7 +1172,7 @@ define(
     no_take,
     "AUX",
     /*(*/ [nobj,
-      null] /*)*/] /*)*/,
+      false] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [no_take] /*)*/,
       atom || false,
@@ -1185,7 +1185,7 @@ define(
       /*(*/ [nobj] /*)*/,
       false || object] /*)*/] /*2*/,
   mapf(
-    null,
+    false,
     function
       (x: object) {
         
@@ -1206,7 +1206,7 @@ cond(
               x) && oopen_Q(
               x),
           mapf(
-            null,
+            false,
             function
               (x: object) {
                 
