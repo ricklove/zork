@@ -346,6 +346,17 @@ export const convertToTypescript = (node: ZNode): string => {
             return `${convertToTypescript(nodes[1])}.length`;
         }
 
+        // Unary Operators
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && nodes.length === 2
+        ) {
+            if (firstNode.toString() === 'NOT') {
+                return `!${convertToTypescript(nodes[1])}`;
+            }
+        }
+
         // Binary Operators
         if (openSymbol === '<'
             && firstNode
@@ -357,6 +368,12 @@ export const convertToTypescript = (node: ZNode): string => {
             }
             if (firstNode.toString() === 'N==?') {
                 return `${convertToTypescript(nodes[1])} !== ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === '=?') {
+                return `${convertToTypescript(nodes[1])} == ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'N=?') {
+                return `${convertToTypescript(nodes[1])} != ${convertToTypescript(nodes[2])}`;
             }
             if (firstNode.toString() === 'L?') {
                 return `${convertToTypescript(nodes[1])} < ${convertToTypescript(nodes[2])}`;
@@ -371,6 +388,22 @@ export const convertToTypescript = (node: ZNode): string => {
                 return `${convertToTypescript(nodes[1])} <= ${convertToTypescript(nodes[2])}`;
             }
         }
+
+
+        // N-nary Operators
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && nodes.length >= 3
+        ) {
+            if (firstNode.toString() === 'AND') {
+                return nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' && ');
+            }
+            if (firstNode.toString() === 'OR') {
+                return nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' || ');
+            }
+        }
+
 
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {

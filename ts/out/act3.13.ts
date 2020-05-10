@@ -5,10 +5,8 @@ function coke_bottles
     let bottl = pv[2];
     let vb = pv[1];
     cond(
-    /*(*/ [or(
-        vb === GLOBALS.throw_X_words,
-        vname(
-            vb) === mung_X_words),
+    /*(*/ [vb === GLOBALS.throw_X_words || vname(
+            vb) === mung_X_words,
       tell(
         "Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately."),
       trz(
@@ -41,16 +39,13 @@ function head_function
           nl,
           100),
       cond(
-        /*(*/ [not(
-            empty_Q(
-              nl)),
-          or(
-            oroom(
-              lcase),
-            insert_object(
+        /*(*/ [!empty_Q(
+              nl),
+          oroom(
+              lcase) || insert_object(
               lcase,
               find_room(
-                "LROOM"))),
+                "LROOM")),
           put(
             lcase,
             GLOBALS.ocontents,
@@ -81,9 +76,7 @@ function bucket
     cond(
     /*(*/ [arg === read_in,
       null] /*)*/,
-    /*(*/ [and(
-        pa === GLOBALS.c_int_X_words,
-        cond(
+    /*(*/ [pa === GLOBALS.c_int_X_words && cond(
           /*(*/ [memq(
               w,
               ocontents(
@@ -91,14 +84,11 @@ function bucket
             remove_object(
               w),
             null] /*)*/,
-          /*(*/ [t] /*)*/))] /*)*/,
+          /*(*/ [t] /*)*/)] /*)*/,
     /*(*/ [arg === read_out,
       cond(
-        /*(*/ [and(
-            ocan(
-                w) === buck,
-            not(
-              GLOBALS.bucket_top_X_flag)),
+        /*(*/ [ocan(
+                w) === buck && !GLOBALS.bucket_top_X_flag,
           tell(
             "The bucket rises and comes to a stop."),
           GLOBALS.bucket_top_X_flag = t,
@@ -111,10 +101,8 @@ function bucket
             GLOBALS.bckin,
             100),
           null] /*)*/,
-        /*(*/ [and(
-            GLOBALS.bucket_top_X_flag,
-            ocan(
-                w) !== buck),
+        /*(*/ [GLOBALS.bucket_top_X_flag && ocan(
+                w) !== buck,
           tell(
             "The bucket descends and comes to a stop."),
           GLOBALS.bucket_top_X_flag = null,
@@ -161,12 +149,9 @@ function eatme_function
     let pv = GLOBALS.prsvec;
     let here = GLOBALS.here;
     cond(
-    /*(*/ [and(
-        pv[1] === GLOBALS.eat_X_words,
-        pv[2] === c = find_obj(
-              "ECAKE"),
-        here === find_room(
-            "ALICE")),
+    /*(*/ [pv[1] === GLOBALS.eat_X_words && pv[2] === c = find_obj(
+              "ECAKE") && here === find_room(
+            "ALICE"),
       tell(
         "Suddenly, the room appears to have become very large."),
       kill_obj(
@@ -242,13 +227,11 @@ function cake_function
                 "You can't see through that!")] /*)*/)] /*)*/,
         /*(*/ [tell(
             "The only writing legible is a capital E.  The rest is too small to\nbe clearly visible.")] /*)*/)] /*)*/,
-    /*(*/ [and(
-        pa === GLOBALS.eat_X_words,
-        member(
+    /*(*/ [pa === GLOBALS.eat_X_words && member(
           "ALI",
           spname(
             rid(
-              here)))),
+              here))),
       cond(
         /*(*/ [po === oice,
           kill_obj(
@@ -295,24 +278,18 @@ put(
                 r)] /*)*/,
             /*(*/ [jigs_up(
                 GLOBALS.crushed)] /*)*/)] /*)*/)] /*)*/,
-    /*(*/ [and(
-        pa === GLOBALS.throw_X_words,
-        po === oice,
-        member(
+    /*(*/ [pa === GLOBALS.throw_X_words && po === oice && member(
           "ALI",
           spname(
             rid(
-              here)))),
+              here))),
       kill_obj(
         po,
         GLOBALS.winner),
       iceboom(
         )] /*)*/,
-    /*(*/ [and(
-        pa === GLOBALS.throw_X_words,
-        po === rice,
-        pi === find_obj(
-            "POOL")),
+    /*(*/ [pa === GLOBALS.throw_X_words && po === rice && pi === find_obj(
+            "POOL"),
       remove_object(
         pi),
       tell(
@@ -336,9 +313,7 @@ function flask_function
         "Noxious vapors prevent your entry."),
       jigs_up(
         GLOBALS.vapors)] /*)*/,
-    /*(*/ [or(
-        pa === GLOBALS.mung_X_words,
-        pa === GLOBALS.throw_X_words),
+    /*(*/ [pa === GLOBALS.mung_X_words || pa === GLOBALS.throw_X_words,
       tell(
         "The flask breaks into pieces."),
       f = pv[2],
@@ -384,9 +359,7 @@ function magnet_room
     /*(*/ [pa === GLOBALS.look_X_words,
       tell(
         "You are in a room with a low ceiling which is circular in shape. \nThere are exits to the east and the southeast.")] /*)*/,
-    /*(*/ [and(
-        pa === GLOBALS.walk_in_X_words,
-        GLOBALS.carousel_flip_X_flag),
+    /*(*/ [pa === GLOBALS.walk_in_X_words && GLOBALS.carousel_flip_X_flag,
       cond(
         /*(*/ [GLOBALS.carousel_zoom_X_flag,
           jigs_up(
@@ -396,9 +369,7 @@ function magnet_room
           null] /*)*/)] /*)*/,
     /*(*/ [pa === GLOBALS.walk_X_words,
       cond(
-        /*(*/ [and(
-            GLOBALS.carousel_flip_X_flag,
-            GLOBALS.winner === GLOBALS.player),
+        /*(*/ [GLOBALS.carousel_flip_X_flag && GLOBALS.winner === GLOBALS.player,
           tell(
             "You cannot get your bearings..."),
           goto(
@@ -477,8 +448,7 @@ function buttons
                 "Nothing seems to happen.")] /*)*/)] /*)*/,
         /*(*/ [po === find_obj(
               "TRBUT"),
-          GLOBALS.carousel_flip_X_flag = not(
-              GLOBALS.carousel_flip_X_flag),
+          GLOBALS.carousel_flip_X_flag = !GLOBALS.carousel_flip_X_flag,
           cond(
             /*(*/ [memq(
                 i = find_obj(
@@ -509,14 +479,9 @@ function sphere_function
     let c = null;
     let fl = null;
     let ract = null;
-    fl = and(
-      not(
-        GLOBALS.cage_solve_X_flag),
-      pa === GLOBALS.take_X_words)
+    fl = !GLOBALS.cage_solve_X_flag && pa === GLOBALS.take_X_words
 cond(
-    /*(*/ [and(
-        fl,
-        GLOBALS.player === GLOBALS.winner),
+    /*(*/ [fl && GLOBALS.player === GLOBALS.winner,
       tell(
         "As you reach for the sphere, an iron cage falls from the ceiling\nto entrap you.  To make matters worse, poisonous gas starts coming\ninto the room."),
       cond(
@@ -612,10 +577,8 @@ function robot_actor
         "ROBOT");
     let ract = null;
     cond(
-    /*(*/ [and(
-        pa === GLOBALS.raise_X_words,
-        po === find_obj(
-            "CAGE")),
+    /*(*/ [pa === GLOBALS.raise_X_words && po === find_obj(
+            "CAGE"),
       tell(
         "The cage shakes and is hurled across the room."),
       clock_disable(
@@ -652,9 +615,7 @@ function robot_actor
         GLOBALS.aroom,
         c),
       GLOBALS.cage_solve_X_flag = t] /*)*/,
-    /*(*/ [or(
-        pa === GLOBALS.eat_X_words,
-        pa === GLOBALS.drink_X_words),
+    /*(*/ [pa === GLOBALS.eat_X_words || pa === GLOBALS.drink_X_words,
       tell(
         "\"I am sorry but that action is difficult in the absence of a mouth.\")] /*)*/,
     /*(*/ [pa === GLOBALS.read_X_words,
@@ -696,9 +657,7 @@ function robot_function
         odesc2(
           po),
         "and nods his head-like appendage in thanks.")] /*)*/,
-    /*(*/ [or(
-        pa === GLOBALS.throw_X_words,
-        pa === GLOBALS.mung_X_words),
+    /*(*/ [pa === GLOBALS.throw_X_words || pa === GLOBALS.mung_X_words,
       tell(
         "The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes."),
       remove_object(

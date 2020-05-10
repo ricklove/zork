@@ -1,7 +1,5 @@
-and(
-  GLOBALS.muddle < 100,
-  use(
-    "LSRTNS"))
+GLOBALS.muddle < 100 && use(
+    "LSRTNS")
 
 // applicables
 
@@ -12,10 +10,7 @@ newtype(
 put(
   rapplic,
   decl,
-  () => or(
-      atom,
-      false,
-      offset))
+  () => atom || false || offset)
 
 // newtypes for parser
 
@@ -167,14 +162,10 @@ newstruc(
   string,
   // short description,
   rseen_Q,
-  or(
-    atom,
-    false),
+  atom || false,
   // visited?,
   rlight_Q,
-  or(
-    atom,
-    false),
+  atom || false,
   // endogenous light source?,
   rexits,
   exit,
@@ -239,10 +230,7 @@ newtype(
         vector),
       /*[*/ [rest,
         atom,
-        or(
-          room,
-          cexit,
-          nexit)] /*]*/] /*>*/)
+        room || cexit || nexit] /*]*/] /*>*/)
 
 // conditional exit
 
@@ -256,9 +244,7 @@ newstruc(
   room,
   // room it protects,
   cxstr,
-  or(
-    false,
-    string),
+  false || string,
   // description,
   cxaction,
   rapplic,
@@ -312,14 +298,10 @@ newstruc(
   verb,
   // function to handle this action,
   sflip,
-  or(
-    atom,
-    false),
+  atom || false,
   // (?),
   sdriver,
-  or(
-    atom,
-    false),
+  atom || false,
   // (?))
 
 // VARG -- types and locations of objects acceptable as args to verbs,    these go in the SYN1 and SYN2 slots of a SYNTAX.
@@ -331,9 +313,7 @@ newstruc(
   fix,
   // acceptable object characteristics,
   vprep,
-  or(
-    prep,
-    false),
+  prep || false,
   // preposition that must precede(?) object,
   vword,
   fix,
@@ -389,21 +369,11 @@ newstruc(
 gdecl(
   /*(*/ [orphans] /*)*/,
   vector(
-    or(
-      false,
-      atom),
-    or(
-      false,
-      verb),
-    or(
-      false,
-      object),
-    or(
-      false,
-      prep),
-    or(
-      false,
-      atom)))
+    false || atom,
+    false || verb,
+    false || object,
+    false || prep,
+    false || atom))
 
 and_Q(
   msetg(
@@ -449,9 +419,7 @@ newstruc(
   fix,
   // score,
   avehicle,
-  or(
-    false,
-    object),
+  false || object,
   // what he's riding in,
   aobj,
   object,
@@ -497,9 +465,7 @@ newstruc(
   string,
   // short description,
   odesco,
-  or(
-    string,
-    false),
+  string || false,
   // description when untouched,
   oaction,
   rapplic,
@@ -510,18 +476,14 @@ newstruc(
       object] /*]*/),
   // list of contents,
   ocan,
-  or(
-    false,
-    object),
+  false || object,
   // what contains this,
   oflags,
   primtype(
     word),
   // flags THIS MUST BE SAME OFFSET AS AFLAGS!,
   otouch_Q,
-  or(
-    atom,
-    false),
+  atom || false,
   // has this been touched?,
   olight_Q,
   fix,
@@ -536,9 +498,7 @@ newstruc(
   any,
   // random slot,
   oopen_Q,
-  or(
-    atom,
-    false),
+  atom || false,
   // is this open?,
   osize,
   fix,
@@ -552,14 +512,10 @@ newstruc(
       adjective] /*]*/),
   // adjectives for this,
   oroom,
-  or(
-    false,
-    room),
+  false || room,
   // what room its in,
   oread,
-  or(
-    false,
-    string),
+  false || string,
   // reading material)
 
 "bits in <OFLAGS object>:\n	  bit-name  bit-tester"
@@ -753,13 +709,9 @@ newstruc(
   ctick,
   fix,
   caction,
-  or(
-    applicable,
-    offset),
+  applicable || offset,
   cflag,
-  or(
-    atom,
-    false),
+  atom || false,
   cid,
   atom)
 
@@ -787,16 +739,9 @@ gdecl(
       object] /*]*/),
   /*(*/ [prsvec] /*)*/,
   vector(
-    or(
-      false,
-      verb),
-    or(
-      false,
-      object,
-      direction),
-    or(
-      false,
-      object)),
+    false || verb,
+    false || object || direction,
+    false || object),
   /*(*/ [winner,
     player] /*)*/,
   adv,
@@ -1060,15 +1005,13 @@ function flush_obj
         
         let y = find_obj(
             x);
-        and(
         memq(
           y,
           aobjs(
-            winner)),
-        drop_object(
+            winner)) && drop_object(
           find_obj(
             x),
-          winner))
+          winner)
       },
     objs)
   }
@@ -1085,13 +1028,10 @@ function rob_adv
       (x) {
         
         cond(
-        /*(*/ [and(
-            otval(
-                x) > 0,
-            not(
-              trnn(
+        /*(*/ [otval(
+                x) > 0 && !trnn(
                 x,
-                GLOBALS.sacredbit))),
+                GLOBALS.sacredbit),
           put(
             win,
             GLOBALS.aobjs,
@@ -1120,17 +1060,12 @@ function rob_room
       (x) {
         
         cond(
-        /*(*/ [and(
-            otval(
-                x) > 0,
-            not(
-              trnn(
+        /*(*/ [otval(
+                x) > 0 && !trnn(
                 x,
-                GLOBALS.sacredbit)),
-            ovis_Q(
-              x),
-            prob(
-              prob)),
+                GLOBALS.sacredbit) && ovis_Q(
+              x) && prob(
+              prob),
           remove_object(
             x),
           put(
@@ -1200,10 +1135,9 @@ function light_source
       (x) {
         
         cond(
-        /*(*/ [not(
-            0_Q(
+        /*(*/ [!0_Q(
               olight_Q(
-                x))),
+                x)),
           mapleave(
             x)] /*)*/)
       },
@@ -1279,10 +1213,9 @@ readstring(
     GLOBALS.reader_string)
 cond(
     /*(*/ [no_is_bad_Q,
-      not(
-        memq(
+      !memq(
           inbuf[1],
-          "NnfF"))] /*)*/,
+          "NnfF")] /*)*/,
     /*(*/ [t,
       memq(
         inbuf[1],
@@ -1386,18 +1319,14 @@ function find_room
       id = spname(
           id)] /*)*/)
 cond(
-    /*(*/ [and(
-        atm = lookup(
+    /*(*/ [atm = lookup(
+            id,
+            GLOBALS.room_obl) && gassigned_Q(
+          atm),
+      /*,*/ [atm] /*1*/] /*)*/,
+    /*(*/ [atm || atm = insert(
             id,
             GLOBALS.room_obl),
-        gassigned_Q(
-          atm)),
-      /*,*/ [atm] /*1*/] /*)*/,
-    /*(*/ [or(
-        atm,
-        atm = insert(
-            id,
-            GLOBALS.room_obl)),
       setg(
         atm,
         room = chtype(
@@ -1433,18 +1362,14 @@ function find_obj
       id = spname(
           id)] /*)*/)
 cond(
-    /*(*/ [and(
-        atm = lookup(
+    /*(*/ [atm = lookup(
+            id,
+            GLOBALS.object_obl) && gassigned_Q(
+          atm),
+      /*,*/ [atm] /*1*/] /*)*/,
+    /*(*/ [atm || atm = insert(
             id,
             GLOBALS.object_obl),
-        gassigned_Q(
-          atm)),
-      /*,*/ [atm] /*1*/] /*)*/,
-    /*(*/ [or(
-        atm,
-        atm = insert(
-            id,
-            GLOBALS.object_obl)),
       setg(
         atm,
         obj = chtype(
@@ -1479,8 +1404,7 @@ function function_print
   (frob) {
     
     cond(
-    /*(*/ [not(
-        frob),
+    /*(*/ [!frob,
       princ(
         "<>")] /*)*/,
     /*(*/ [type_Q(

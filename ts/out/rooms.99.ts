@@ -6,9 +6,7 @@ gdecl(
   /*(*/ [muddle] /*)*/,
   fix,
   /*(*/ [tenex_Q] /*)*/,
-  or(
-    atom,
-    false),
+  atom || false,
   /*(*/ [vers,
     dev,
     snm,
@@ -51,41 +49,26 @@ cond(
 int_level(
     100000)
 cond(
-    /*(*/ [__Q(
-        save(
-          fn),
-        "SAVED"),
+    /*(*/ [save(
+          fn) == "SAVED",
       int_level(
         0),
       t] /*)*/,
     /*(*/ [t,
       // STARTER on 10x sets up tty correctly, setg's DEV to \"MDL\"     if that device exists; if not, (sort of) returns directory muddle     came from.  On its it returns # zorkers currently in existence.,
       cond(
-        /*(*/ [and(
-            type_Q(
+        /*(*/ [type_Q(
               stv = starter(
                   ),
-              fix),
-            stv > 3),
-          or(
-            member(
+              fix) && stv > 3,
+          member(
               GLOBALS.xunm = xuname(
                   ),
-              GLOBALS.winners),
-            __Q(
-              GLOBALS.xunm,
-              "SEC"),
-            __Q(
-              GLOBALS.xunm,
-              "ELBOW"),
-            and(
-              off(
+              GLOBALS.winners) || GLOBALS.xunm == "SEC" || GLOBALS.xunm == "ELBOW" || off(
                 "CHAR",
-                GLOBALS.inchan),
-              tell(
-                "There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you."),
-              quit(
-                )))] /*)*/,
+                GLOBALS.inchan) && tell(
+                "There appears before you a threatening figure clad all over\nin heavy black armor.  His legs seem like the massive trunk\nof the oak tree.  His broad shoulders and helmeted head loom\nhigh over your own puny frame and you realize that his powerful\narms could easily crush the very life from your body.  There\nhangs from his belt a veritable arsenal of deadly weapons:\nsword, mace, ball and chain, dagger, lance, and trident.\nHe speaks with a commanding voice:\n\n		\"YOU SHALL NOT PASS \"\n\nAs he grabs you by the neck all grows dim about you.") && quit(
+                )] /*)*/,
         /*(*/ [type_Q(
             stv,
             string),
@@ -149,9 +132,7 @@ GLOBALS.divert_amt = _(
       GLOBALS.divert_inc,
       amt)
 cond(
-    /*(*/ [or(
-        GLOBALS.divert_cnt > GLOBALS.divert_max,
-        GLOBALS.divert_amt > GLOBALS.divert_lmt),
+    /*(*/ [GLOBALS.divert_cnt > GLOBALS.divert_max || GLOBALS.divert_amt > GLOBALS.divert_lmt,
       // Too much diversion ?,
       GLOBALS.divert_amt = GLOBALS.divert_cnt = 0,
       gc_fcn(
@@ -210,12 +191,10 @@ function xuname
       (x) {
         
         cond(
-        /*(*/ [or(
-            0_Q(
+        /*(*/ [0_Q(
               ascii(
-                x)),
-            ascii(
-                x) === 32),
+                x)) || ascii(
+                x) === 32,
           mapstop(
             )] /*)*/,
         /*(*/ [t,
@@ -303,15 +282,13 @@ function its_get_name
             0,
             llst,
             tstr),
-          and(
-            jr,
-            substruc(
+          jr && substruc(
               jr,
               0,
               jr.length,
               rest(
                 tstr,
-                llst))),
+                llst)),
           GLOBALS.user_name = str] /*)*/,
         /*(*/ [else,
           GLOBALS.user_name = nm] /*)*/)] /*)*/)
@@ -476,21 +453,14 @@ cond(
     /*(*/ [t,
       princ(
         "Played for")] /*)*/)
-and(
-    mins = _(
+mins = _(
           time,
-          3600) > 0,
-    prin1(
-      mins),
-    princ(
-      "hour"),
-    or(
-      1_Q(
-        mins),
-      princ(
-        "s")),
-    princ(
-      ","))
+          3600) > 0 && prin1(
+      mins) && princ(
+      "hour") && 1_Q(
+        mins) || princ(
+        "s") && princ(
+      ",")
 cond(
     /*(*/ [mins = mod(
             _(
@@ -502,9 +472,8 @@ cond(
       princ(
         "minute"),
       cond(
-        /*(*/ [not(
-            1_Q(
-              mins)),
+        /*(*/ [!1_Q(
+              mins),
           princ(
             "s")] /*)*/),
       princ(
@@ -515,11 +484,9 @@ prin1(
         60))
 princ(
     "second")
-or(
-    1_Q(
-      mins),
-    princ(
-      "s"))
+1_Q(
+      mins) || princ(
+      "s")
 cond(
     /*(*/ [loser_Q,
       princ(
@@ -551,36 +518,24 @@ put(
     /*#*/ [lose,
       27] /*2*/)
 cond(
-    /*(*/ [and(
-        or(
-          not(
-            gassigned_Q(
-              xunm)),
-          member(
+    /*(*/ [!gassigned_Q(
+              xunm) || member(
             GLOBALS.xunm,
-            GLOBALS.winners)),
-        pc(
-          )),
-      and(
-        gassigned_Q(
-          saverep),
-        GLOBALS.rep = GLOBALS.saverep),
-      and(
-        assigned_Q(
+            GLOBALS.winners) && pc(
+          ),
+      gassigned_Q(
+          saverep) && GLOBALS.rep = GLOBALS.saverep,
+      assigned_Q(
+          bh) && off(
           bh),
-        off(
-          bh)),
       int_level(
         0),
       GLOBALS.dbg = t,
       GLOBALS.alt_flag = t] /*)*/,
     /*(*/ [t,
       cond(
-        /*(*/ [and(
-            not(
-              empty_Q(
-                zork)),
-            zork[1] === control_g_Q_X_errors),
+        /*(*/ [!empty_Q(
+                zork) && zork[1] === control_g_Q_X_errors,
           int_level(
             0),
           finish(
@@ -604,15 +559,7 @@ cond(
           erret(
             t,
             frm)] /*)*/,
-        /*(*/ [and(
-            zork.length === 3,
-            zork[1] === file_system_error_X_errors,
-            not(
-              zf = zork[3]),
-            zf.length === 3,
-            __Q(
-              zf[1],
-              "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY")),
+        /*(*/ [zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY",
           // HACK FOR ILLEGAL CHR AFTER CTRL-P,
           put(
             back(
@@ -657,33 +604,26 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  lookup(
+      )) || lookup(
     "GLUE",
     get(
       package,
-      oblist)),
-  GLOBALS.errh = handler(
-      or(
-        get(
+      oblist)) || GLOBALS.errh = handler(
+      get(
           error_X_interrupts,
-          interrupt),
-        event(
+          interrupt) || event(
           "ERROR",
-          8)),
-      GLOBALS.handle))
+          8),
+      GLOBALS.handle)
 
 gdecl(
   /*(*/ [moves] /*)*/,
   fix,
   /*(*/ [script_channel] /*)*/,
-  or(
-    channel,
-    false))
+  channel || false)
 
 function start
   (rm,
@@ -705,16 +645,11 @@ GLOBALS.intime = dskdate(
       )
 cond(
     /*(*/ [muddle < 100,
-      and(
-        xunm.length > 2,
-        __Q(
-          substruc(
+      xunm.length > 2 && substruc(
             xunm,
             0,
-            3),
-          "___"),
-        quit(
-          )),
+            3) == "___" && quit(
+          ),
       fn = its_get_name(
           xunm)] /*)*/,
     /*(*/ [fn = get_name(
@@ -781,9 +716,7 @@ GLOBALS.my_script = null
 
 gdecl(
   /*(*/ [my_script] /*)*/,
-  or(
-    atom,
-    false))
+  atom || false)
 
 function make_script
   () {
@@ -840,36 +773,26 @@ cond(
     /*(*/ [GLOBALS.script_channel,
       tell(
         "You are already scripting.")] /*)*/,
-    /*(*/ [and(
-        or(
-          muddle > 100,
-          and(
-            not(
-              member(
+    /*(*/ [muddle > 100 || !member(
                 "GUEST",
-                unm)),
-            ch = open(
+                unm) && ch = open(
                 "READ",
                 ".FILE.",
                 "(DIR)",
                 "DSK",
-                unm),
-            close(
-              ch),
-            ch = open(
+                unm) && close(
+              ch) && ch = open(
                 "READ",
                 "_MSGS_",
                 unm,
                 "DSK",
-                unm),
-            close(
-              ch))),
-        ch = open(
+                unm) && close(
+              ch) && ch = open(
             "PRINT",
             "ZORK",
             "SCRIPT",
             "DSK",
-            unm)),
+            unm),
       put(
         top(
           GLOBALS.inchan),
@@ -917,14 +840,10 @@ function do_unscript
       close(
         GLOBALS.script_channel),
       GLOBALS.script_channel = null,
-      and(
-        verbose,
-        tell(
-          "Scripting off."))] /*)*/,
-    /*(*/ [and(
-        verbose,
-        tell(
-          "Scripting wasn't on."))] /*)*/)
+      verbose && tell(
+          "Scripting off.")] /*)*/,
+    /*(*/ [verbose && tell(
+          "Scripting wasn't on.")] /*)*/)
   }
 
 gdecl(
@@ -938,37 +857,25 @@ function do_save
     let ch = null;
     let unm = GLOBALS.xunm;
     cond(
-    /*(*/ [or(
-        muddle > 100,
-        and(
-          not(
-            member(
+    /*(*/ [muddle > 100 || !member(
               "GUEST",
-              unm)),
-          ch = open(
+              unm) && ch = open(
               "READ",
               ".FILE.",
               "(DIR)",
               "DSK",
-              unm),
-          close(
-            ch))),
+              unm) && close(
+            ch),
       cond(
-        /*(*/ [or(
-            muddle > 100,
-            and(
-              ch = open(
+        /*(*/ [muddle > 100 || ch = open(
                   "READ",
                   "_MSGS_",
                   unm,
                   "DSK",
-                  unm),
-              close(
-                ch))),
-          and(
-            GLOBALS.script_channel,
-            do_unscript(
-              )),
+                  unm) && close(
+                ch),
+          GLOBALS.script_channel && do_unscript(
+              ),
           tell(
             "Saving."),
           int_level(
@@ -1044,9 +951,7 @@ prog(
           )] /*)*/] /*)*/,
     /*#*/ [decl,
       /*(*/ [/*(*/ [foo] /*)*/,
-        or(
-          atom,
-          false),
+        atom || false,
         /*(*/ [snm] /*)*/,
         special(
           string)] /*)*/] /*2*/,
@@ -1133,9 +1038,7 @@ prog(
               "Restore failed.")] /*)*/),
         room_desc(
           )] /*)*/,
-      /*(*/ [and(
-          foo,
-          muddle > 100),
+      /*(*/ [foo && muddle > 100,
         str = string(
             sname(
               ),
@@ -1186,10 +1089,8 @@ define(
           (x) {
             
             cond(
-            /*(*/ [and(
-                gassigned_Q(
-                  x),
-                /*,*/ [x] /*1*/ === val),
+            /*(*/ [gassigned_Q(
+                  x) && /*,*/ [x] /*1*/ === val,
               return(
                 x,
                 act)] /*)*/)
@@ -1207,9 +1108,7 @@ GLOBALS.super_brief_X_flag = null
 gdecl(
   /*(*/ [super_brief_X_flag,
     brief_X_flag] /*)*/,
-  or(
-    atom,
-    false))
+  atom || false)
 
 function brief
   () {
@@ -1263,14 +1162,12 @@ function room_info
     let outchan = GLOBALS.outchan;
     let ra = null;
     GLOBALS.tell_flag = t
-and(
-    type_Q(
+type_Q(
       prso,
-      direction),
-    put(
+      direction) && put(
       GLOBALS.prsvec,
       2,
-      null))
+      null)
 prog(
     /*(*/ [] /*)*/,
     cond(
@@ -1284,11 +1181,9 @@ prog(
           "Done."),
         return(
           )] /*)*/,
-      /*(*/ [and(
-          prso,
-          type_Q(
+      /*(*/ [prso && type_Q(
             prso,
-            object)),
+            object),
         cond(
           /*(*/ [object_action(
               )] /*)*/,
@@ -1305,36 +1200,22 @@ prog(
               ".")] /*)*/),
         return(
           )] /*)*/,
-      /*(*/ [not(
-          lit_Q(
-            rm)),
+      /*(*/ [!lit_Q(
+            rm),
         tell(
           "It is pitch black.  You are likely to be eaten by a grue."),
         return(
           null)] /*)*/,
-      /*(*/ [or(
-          and(
-            not(
-              full),
-            GLOBALS.super_brief_X_flag),
-          and(
-            rseen_Q(
-              rm),
-            or(
-              GLOBALS.brief_X_flag,
-              prob(
-                80)),
-            not(
-              full))),
+      /*(*/ [!full && GLOBALS.super_brief_X_flag || rseen_Q(
+              rm) && GLOBALS.brief_X_flag || prob(
+                80) && !full,
         tell(
           rdesc2(
             rm))] /*)*/,
-      /*(*/ [and(
-          empty_Q(
+      /*(*/ [empty_Q(
             rdesc1(
-              rm)),
-          ra = raction(
-              rm)),
+              rm)) && ra = raction(
+              rm),
         put(
           GLOBALS.prsvec,
           1,
@@ -1353,36 +1234,30 @@ prog(
       rm,
       GLOBALS.rseen_Q,
       t),
-    and(
-      av,
-      tell(
+    av && tell(
         "You are in the",
         1,
         odesc2(
           av),
-        ".")),
+        "."),
     mapf(
       null,
       function
         (x) {
           
           cond(
-          /*(*/ [and(
-              ovis_Q(
+          /*(*/ [ovis_Q(
+                x) && describable_Q(
                 x),
-              describable_Q(
-                x)),
             cond(
               /*(*/ [x === av] /*)*/,
               /*(*/ [t,
                 cond(
                   /*(*/ [long_desc_obj(
                       x),
-                    and(
-                      av,
-                      tell(
+                    av && tell(
                         "[in the room]",
-                        0)),
+                        0),
                     crlf(
                       )] /*)*/)] /*)*/),
             cond(
@@ -1410,11 +1285,8 @@ prog(
       robjs(
         rm)),
     cond(
-      /*(*/ [and(
-          ra = raction(
-              rm),
-          not(
-            full)),
+      /*(*/ [ra = raction(
+              rm) && !full,
         put(
           GLOBALS.prsvec,
           1,
@@ -1451,9 +1323,7 @@ define(
         obj)] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [av] /*)*/,
-      or(
-        false,
-        object),
+      false || object,
       /*(*/ [obj,
         winobj] /*)*/,
       object,
@@ -1464,29 +1334,22 @@ define(
         /*[*/ [rest,
           object] /*]*/),
       /*(*/ [case_Q] /*)*/,
-      or(
-        atom,
-        false)] /*)*/] /*2*/,
+      atom || false] /*)*/] /*2*/,
   cond(
-    /*(*/ [not(
-        empty_Q(
-          cont)),
+    /*(*/ [!empty_Q(
+          cont),
       cond(
         /*(*/ [obj === find_obj(
               "TCASE"),
           cond(
-            /*(*/ [not(
-                case_Q),
+            /*(*/ [!case_Q,
               return(
                 t,
                 print_c)] /*)*/),
           tell(
             "Your collection of treasures consists of:")] /*)*/,
-        /*(*/ [not(
-            and(
-              cont.length === 1,
-              cont[1] === find_obj(
-                  "#####"))),
+        /*(*/ [!cont.length === 1 && cont[1] === find_obj(
+                  "#####"),
           tell(
             indent,
             0),
@@ -1505,18 +1368,12 @@ define(
           (y) {
             
             cond(
-            /*(*/ [and(
-                av,
-                y === winobj)] /*)*/,
-            /*(*/ [and(
-                ovis_Q(
-                  y),
-                describable_Q(
-                  y),
-                not(
-                  empty_Q(
+            /*(*/ [av && y === winobj] /*)*/,
+            /*(*/ [ovis_Q(
+                  y) && describable_Q(
+                  y) && !empty_Q(
                     odesc2(
-                      y)))),
+                      y)),
               tell(
                 indent,
                 1,
@@ -1543,12 +1400,9 @@ function long_desc_obj
     
     let str = null;
     cond(
-    /*(*/ [or(
-        otouch_Q(
-          obj),
-        not(
-          odesco(
-            obj))),
+    /*(*/ [otouch_Q(
+          obj) || !odesco(
+            obj),
       str = odesc1(
           obj)] /*)*/,
     /*(*/ [str = odesco(
@@ -1566,9 +1420,7 @@ cond(
 
 gdecl(
   /*(*/ [parse_won] /*)*/,
-  or(
-    atom,
-    false))
+  atom || false)
 
 psetg(
   reader_string,
@@ -1593,28 +1445,23 @@ function rdcom
     let av = null;
     let outchan = GLOBALS.outchan;
     let random_action = null;
-    or(
-    ivec,
-    prog(
+    ivec || prog(
       /*(*/ [] /*)*/,
       put(
         outchan,
         13,
         1000),
       room_info(
-        t)))
+        t))
 repeat(
     /*(*/ [vval,
       cv] /*)*/,
     /*#*/ [decl,
       /*(*/ [/*(*/ [cv] /*)*/,
-        or(
-          false,
-          verb)] /*)*/] /*2*/,
+        false || verb] /*)*/] /*2*/,
     vval = t,
     cond(
-      /*(*/ [not(
-          ivec),
+      /*(*/ [!ivec,
         rm = GLOBALS.here,
         princ(
           ">"),
@@ -1625,10 +1472,8 @@ repeat(
             str),
         readchr(
           GLOBALS.inchan),
-        or(
-          GLOBALS.alt_flag,
-          readchr(
-            GLOBALS.inchan)),
+        GLOBALS.alt_flag || readchr(
+            GLOBALS.inchan),
         vc = lex(
             inbuf,
             rest(
@@ -1641,45 +1486,31 @@ repeat(
             GLOBALS.moves,
             1),
         cond(
-          /*(*/ [GLOBALS.parse_won = and(
-                eparse(
-                  or(
-                    ivec,
-                    vc),
-                  null),
-                type_Q(
+          /*(*/ [GLOBALS.parse_won = eparse(
+                  ivec || vc,
+                  null) && type_Q(
                   cv = rvec = GLOBALS.prsvec[1],
-                  verb)),
+                  verb),
             cond(
-              /*(*/ [not(
-                  random_action = aaction(
-                      winner))] /*)*/,
+              /*(*/ [!random_action = aaction(
+                      winner)] /*)*/,
               /*(*/ [apply_random(
                   random_action),
                 return(
                   )] /*)*/),
-            and(
-              av = avehicle(
-                  winner),
-              random_action = oaction(
-                  av),
-              vval = not(
-                  apply_random(
+            av = avehicle(
+                  winner) && random_action = oaction(
+                  av) && vval = !apply_random(
                     random_action,
-                    read_in))),
+                    read_in),
             cond(
-              /*(*/ [and(
-                  vval,
-                  random_action = vfcn(
-                      cv),
-                  apply_random(
-                    random_action)),
+              /*(*/ [vval && random_action = vfcn(
+                      cv) && apply_random(
+                    random_action),
                 cond(
-                  /*(*/ [and(
-                      random_action = raction(
-                          rm = GLOBALS.here),
-                      apply_random(
-                        random_action))] /*)*/)] /*)*/)] /*)*/,
+                  /*(*/ [random_action = raction(
+                          rm = GLOBALS.here) && apply_random(
+                        random_action)] /*)*/)] /*)*/)] /*)*/,
           /*(*/ [ivec,
             cond(
               /*(*/ [GLOBALS.tell_flag,
@@ -1689,10 +1520,8 @@ repeat(
                   "Nothing happens.")] /*)*/),
             return(
               )] /*)*/),
-        or(
-          GLOBALS.tell_flag,
-          tell(
-            "Nothing happens."))] /*)*/,
+        GLOBALS.tell_flag || tell(
+            "Nothing happens.")] /*)*/,
       /*(*/ [t,
         GLOBALS.parse_won = null,
         tell(
@@ -1710,19 +1539,13 @@ repeat(
               x)] /*)*/)
         },
       GLOBALS.demons),
-    and(
-      GLOBALS.parse_won,
-      av = avehicle(
-          winner),
-      random_action = oaction(
-          av),
-      apply_random(
+    GLOBALS.parse_won && av = avehicle(
+          winner) && random_action = oaction(
+          av) && apply_random(
         random_action,
-        read_out)),
-    and(
-      ivec,
-      return(
-        )))
+        read_out),
+    ivec && return(
+        ))
   }
 
 function score_obj
@@ -1851,15 +1674,9 @@ function finish
       scor = score(
           ask_Q),
       cond(
-        /*(*/ [or(
-            and(
-              ask_Q,
-              tell(
-                "Do you wish to leave the game? (Y is affirmative):"),
-              yes_no(
-                null)),
-            not(
-              ask_Q)),
+        /*(*/ [ask_Q && tell(
+                "Do you wish to leave the game? (Y is affirmative):") && yes_no(
+                null) || !ask_Q,
           record(
             scor,
             GLOBALS.moves,
@@ -1922,16 +1739,12 @@ define(
         deaths] /*)*/,
       fix,
       /*(*/ [quit_Q] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [loc] /*)*/,
       room,
       /*(*/ [ch] /*)*/,
-      or(
-        channel(
-          fix),
-        false),
+      channel(
+          fix) || false,
       /*(*/ [str] /*)*/,
       string,
       /*(*/ [ct,
@@ -1975,9 +1788,7 @@ define(
                     "LOG",
                     dev,
                     snm)] /*)*/,
-              /*(*/ [and(
-                  muddle > 100,
-                  ch[3] === _600123_),
+              /*(*/ [muddle > 100 && ch[3] === _600123_,
                 // Can't win--no write access,
                 return(
                   t,
@@ -1998,13 +1809,7 @@ define(
               str,
               ch,
               ct)] /*)*/,
-          /*(*/ [or(
-              and(
-                muddle < 100,
-                ch[3] !== _4000000_),
-              and(
-                muddle > 100,
-                ch[3] === _600130_)),
+          /*(*/ [muddle < 100 && ch[3] !== _4000000_ || muddle > 100 && ch[3] === _600130_,
             // on 10x, must get FILE BUSY to try again,
             sleep(
               1),
@@ -2016,9 +1821,7 @@ define(
                 "LOG",
                 dev,
                 snm)] /*)*/,
-          /*(*/ [and(
-              muddle > 100,
-              ch[3] === _600117_),
+          /*(*/ [muddle > 100 && ch[3] === _600117_,
             // No write access,
             return(
               t,
@@ -2035,9 +1838,7 @@ define(
         GLOBALS.user_name,
         ch),
       cond(
-        /*(*/ [n__Q(
-            GLOBALS.user_name,
-            GLOBALS.xunm),
+        /*(*/ [GLOBALS.user_name != GLOBALS.xunm,
           princ(
             "(",
             ch),
@@ -2156,13 +1957,9 @@ define(
         ch),
       close(
         ch)),
-    and(
-      ch,
-      not(
-        0_Q(
-          ch[1])),
-      close(
-        ch))))
+    ch && !0_Q(
+          ch[1]) && close(
+        ch)))
 
 flag_names
 
@@ -2179,12 +1976,10 @@ gdecl(
       string] /*]*/))
 
 block(
-  /*(*/ [or(
-      get(
+  /*(*/ [get(
         flag,
-        oblist),
-      moblist(
-        flag)),
+        oblist) || moblist(
+        flag),
     get(
       initial,
       oblist),
@@ -2419,9 +2214,8 @@ function jigs_up
                 "Do you want me to try to patch you?",
                 0),
               cond(
-                /*(*/ [not(
-                    yes_no(
-                      t)),
+                /*(*/ [!yes_no(
+                      t),
                   tell(
                     "What?  You don't trust me?  Why, only last week I patched a running ITS\nand it survived for over 30 seconds.  Oh, well.",
                     2),
@@ -2600,14 +2394,12 @@ function file_to_tty
           iter = _(
               len,
               buflen),
-          or(
-            0_Q(
+          0_Q(
               mod(
                 len,
-                buflen)),
-            iter = _(
+                buflen)) || iter = _(
                 iter,
-                1)),
+                1),
           crlf(
             GLOBALS.outchan),
           GLOBALS.tell_flag = t,
@@ -2660,9 +2452,7 @@ function invent
         cond(
         /*(*/ [ovis_Q(
             x),
-          or(
-            any,
-            prog(
+          any || prog(
               /*(*/ [] /*)*/,
               cond(
                 /*(*/ [win === GLOBALS.player,
@@ -2675,20 +2465,17 @@ function invent
                       aobj(
                         win)),
                     "is carrying:")] /*)*/),
-              any = t)),
+              any = t),
           tell(
             "A",
             0,
             odesc2(
               x)),
           cond(
-            /*(*/ [or(
-                empty_Q(
+            /*(*/ [empty_Q(
                   ocontents(
-                    x)),
-                not(
-                  see_inside_Q(
-                    x)))] /*)*/,
+                    x)) || !see_inside_Q(
+                    x)] /*)*/,
             /*(*/ [tell(
                 "with",
                 0),
@@ -2700,11 +2487,8 @@ function invent
       },
     aobjs(
       win))
-or(
-    any,
-    win !== GLOBALS.player,
-    tell(
-      "You are empty handed."))
+any || win !== GLOBALS.player || tell(
+      "You are empty handed.")
   }
 
 function print_contents
@@ -2738,22 +2522,15 @@ function lit_Q
   (rm) {
     
     let win = GLOBALS.winner;
-    or(
     rlight_Q(
-      rm),
-    lfcn(
+      rm) || lfcn(
       robjs(
-        rm)),
-    lfcn(
+        rm)) || lfcn(
       aobjs(
-        win)),
-    and(
-      win !== GLOBALS.player,
-      GLOBALS.here === aroom(
-          GLOBALS.player),
-      lfcn(
+        win)) || win !== GLOBALS.player && GLOBALS.here === aroom(
+          GLOBALS.player) && lfcn(
         aobjs(
-          GLOBALS.player))))
+          GLOBALS.player))
   }
 
 define(
@@ -2774,20 +2551,14 @@ define(
     function
       (x) {
         
-        and(
         olight_Q(
-            x) > 0,
-        mapleave(
-          t))
+            x) > 0 && mapleave(
+          t)
 cond(
-        /*(*/ [and(
-            ovis_Q(
-              x),
-            or(
-              oopen_Q(
+        /*(*/ [ovis_Q(
+              x) && oopen_Q(
+                x) || transparent_Q(
                 x),
-              transparent_Q(
-                x))),
           mapf(
             null,
             function
@@ -2803,14 +2574,12 @@ cond(
             ocontents(
               x))] /*)*/)
 cond(
-        /*(*/ [and(
-            trnn(
+        /*(*/ [trnn(
               x,
-              GLOBALS.actorbit),
-            lfcn(
+              GLOBALS.actorbit) && lfcn(
               aobjs(
                 y = orand(
-                    x)))),
+                    x))),
           mapleave(
             t)] /*)*/)
       },
@@ -2832,13 +2601,9 @@ function walk
     let random_action = null;
     let cxs = null;
     cond(
-    /*(*/ [and(
-        me === GLOBALS.player,
-        not(
-          lit_Q(
-            rm)),
-        prob(
-          75)),
+    /*(*/ [me === GLOBALS.player && !lit_Q(
+            rm) && prob(
+          75),
       cond(
         /*(*/ [nrm = memq(
               where,
@@ -2846,42 +2611,29 @@ function walk
                 rm)),
           leavings = nrm[2],
           cond(
-            /*(*/ [and(
-                type_Q(
+            /*(*/ [type_Q(
                   leavings,
-                  room),
-                lit_Q(
-                  leavings)),
-              and(
-                goto(
+                  room) && lit_Q(
                   leavings),
-                room_info(
-                  null))] /*)*/,
-            /*(*/ [and(
-                type_Q(
+              goto(
+                  leavings) && room_info(
+                  null)] /*)*/,
+            /*(*/ [type_Q(
                   leavings,
-                  cexit),
-                leavings = cond(
-                    /*(*/ [and(
-                        random_action = cxaction(
-                            leavings),
-                        apply_random(
-                          random_action))] /*)*/,
+                  cexit) && leavings = cond(
+                    /*(*/ [random_action = cxaction(
+                            leavings) && apply_random(
+                          random_action)] /*)*/,
                     /*(*/ [/*,*/ [cxflag(
                           leavings)] /*1*/,
                       cxroom(
-                        leavings)] /*)*/),
-                lit_Q(
-                  leavings)),
-              or(
-                type_Q(
+                        leavings)] /*)*/) && lit_Q(
+                  leavings),
+              type_Q(
                   leavings,
-                  atom),
-                and(
-                  goto(
-                    leavings),
-                  room_info(
-                    null)))] /*)*/,
+                  atom) || goto(
+                    leavings) && room_info(
+                    null)] /*)*/,
             /*(*/ [jigs_up(
                 "Oh, no!  A fearsome grue slithered into the room and devoured you.")] /*)*/)] /*)*/,
         /*(*/ [jigs_up(
@@ -2895,42 +2647,28 @@ function walk
         /*(*/ [type_Q(
             leavings,
             room),
-          and(
-            goto(
-              leavings),
-            room_info(
-              null))] /*)*/,
+          goto(
+              leavings) && room_info(
+              null)] /*)*/,
         /*(*/ [type_Q(
             leavings,
             cexit),
           cond(
-            /*(*/ [or(
-                and(
-                  random_action = cxaction(
+            /*(*/ [random_action = cxaction(
+                      leavings) && nl = apply_random(
+                      random_action) || /*,*/ [cxflag(
+                      leavings)] /*1*/ && nl = cxroom(
                       leavings),
-                  nl = apply_random(
-                      random_action)),
-                and(
-                  /*,*/ [cxflag(
-                      leavings)] /*1*/,
-                  nl = cxroom(
-                      leavings))),
-              or(
-                type_Q(
+              type_Q(
                   nl,
-                  atom),
-                and(
-                  goto(
-                    nl),
-                  room_info(
-                    null)))] /*)*/,
+                  atom) || goto(
+                    nl) && room_info(
+                    null)] /*)*/,
             /*(*/ [cxs = cxstr(
                   leavings),
-              or(
-                empty_Q(
-                  cxs),
-                tell(
-                  cxs))] /*)*/,
+              empty_Q(
+                  cxs) || tell(
+                  cxs)] /*)*/,
             /*(*/ [tell(
                 "There is no way to go in that direction.")] /*)*/)] /*)*/,
         /*(*/ [t,
@@ -2991,22 +2729,17 @@ function take
           "You are in it, loser!"),
         return(
           null)] /*)*/,
-      /*(*/ [not(
-          can_take_Q(
-            obj)),
-        or(
-          apply_object(
+      /*(*/ [!can_take_Q(
             obj),
-          tell(
+        apply_object(
+            obj) || tell(
             pick_one(
-              GLOBALS.yuks))),
+              GLOBALS.yuks)),
         return(
           null)] /*)*/,
-      /*(*/ [or(
-          getter_Q,
-          memq(
+      /*(*/ [getter_Q || memq(
             obj,
-            robjs)),
+            robjs),
         load_max = _(
             load_max,
             fix(
@@ -3017,11 +2750,9 @@ function take
                 astrength(
                   win)))),
         cond(
-          /*(*/ [and(
-              getter_Q,
-              memq(
+          /*(*/ [getter_Q && memq(
                 nobj,
-                aobjs))] /*)*/,
+                aobjs)] /*)*/,
           /*(*/ [_(
                 weight(
                   aobjs),
@@ -3035,9 +2766,8 @@ function take
             return(
               null)] /*)*/),
         cond(
-          /*(*/ [not(
-              apply_object(
-                obj)),
+          /*(*/ [!apply_object(
+                obj),
             cond(
               /*(*/ [getter_Q,
                 put(
@@ -3109,26 +2839,21 @@ function putter
           object_action(
             ))] /*)*/),
     cond(
-      /*(*/ [or(
-          memq(
+      /*(*/ [memq(
             objo,
-            GLOBALS.stars),
-          memq(
+            GLOBALS.stars) || memq(
             obji,
-            GLOBALS.stars)),
+            GLOBALS.stars),
         tell(
           "Nice try."),
         return(
           null)] /*)*/),
     cond(
-      /*(*/ [or(
-          oopen_Q(
-            obji),
-          openable_Q(
-            obji),
-          trnn(
+      /*(*/ [oopen_Q(
+            obji) || openable_Q(
+            obji) || trnn(
             obji,
-            GLOBALS.vehbit)),
+            GLOBALS.vehbit),
         can = obji,
         crock = objo] /*)*/,
       /*(*/ [tell(
@@ -3136,9 +2861,8 @@ function putter
         return(
           null)] /*)*/),
     cond(
-      /*(*/ [not(
-          oopen_Q(
-            can)),
+      /*(*/ [!oopen_Q(
+            can),
         tell(
           "I can't reach inside."),
         return(
@@ -3160,23 +2884,15 @@ function putter
         return(
           null)] /*)*/),
     cond(
-      /*(*/ [or(
-          memq(
+      /*(*/ [memq(
             crock,
-            robjs),
-          and(
-            ocan = ocan(
-                crock),
-            memq(
+            robjs) || ocan = ocan(
+                crock) && memq(
               ocan,
-              robjs)),
-          and(
-            ocan,
-            ocan = ocan(
-                ocan),
-            memq(
+              robjs) || ocan && ocan = ocan(
+                ocan) && memq(
               ocan,
-              robjs))),
+              robjs),
         put(
           pv,
           1,
@@ -3190,9 +2906,8 @@ function putter
           3,
           null),
         cond(
-          /*(*/ [not(
-              take(
-                null)),
+          /*(*/ [!take(
+                null),
             return(
               null)] /*)*/,
           /*(*/ [aobjs = aobjs(
@@ -3239,10 +2954,8 @@ function putter
       3,
       can),
     cond(
-      /*(*/ [and(
-          objact,
-          object_action(
-            )),
+      /*(*/ [objact && object_action(
+            ),
         return(
           )] /*)*/,
       /*(*/ [put(
@@ -3288,13 +3001,11 @@ function dropper
     prog(
     /*(*/ [] /*)*/,
     cond(
-      /*(*/ [and(
-          memq(
+      /*(*/ [memq(
             vname(
               vec[1]),
             () => /*[*/ [drop_X_words,
-                pour_X_words] /*]*/),
-          pi),
+                pour_X_words] /*]*/) && pi,
         put(
           vec,
           1,
@@ -3302,17 +3013,12 @@ function dropper
         return(
           putter(
             ))] /*)*/,
-      /*(*/ [and(
-          pi,
-          not(
-            or(
-              memq(
+      /*(*/ [pi && !memq(
                 obj,
-                aobjs),
-              memq(
+                aobjs) || memq(
                 ocan(
                   obj),
-                aobjs)))),
+                aobjs),
         put(
           vec,
           2,
@@ -3330,14 +3036,11 @@ function dropper
           object_action(
             ))] /*)*/),
     cond(
-      /*(*/ [and(
-          ocan(
-            obj),
-          nobj = ocan(
-              obj),
-          memq(
+      /*(*/ [ocan(
+            obj) && nobj = ocan(
+              obj) && memq(
             nobj,
-            aobjs)),
+            aobjs),
         cond(
           /*(*/ [oopen_Q(
               nobj),
@@ -3351,11 +3054,9 @@ function dropper
           /*(*/ [tell(
               "I can't see that here.")] /*)*/)] /*)*/),
     cond(
-      /*(*/ [or(
-          getter_Q,
-          memq(
+      /*(*/ [getter_Q || memq(
             obj,
-            aobjs)),
+            aobjs),
         cond(
           /*(*/ [av] /*)*/,
           /*(*/ [getter_Q,
@@ -3439,12 +3140,10 @@ function frob_lots
           (x) {
             
             cond(
-            /*(*/ [or(
-                can_take_Q(
-                  x),
-                trnn(
+            /*(*/ [can_take_Q(
+                  x) || trnn(
                   x,
-                  GLOBALS.trytakebit)),
+                  GLOBALS.trytakebit),
               put(
                 prsvec,
                 2,
@@ -3463,9 +3162,7 @@ function frob_lots
                     )] /*)*/)] /*)*/)
           },
         uv)] /*)*/,
-    /*(*/ [or(
-        pa === GLOBALS.drop_X_words,
-        pa === GLOBALS.put_X_words),
+    /*(*/ [pa === GLOBALS.drop_X_words || pa === GLOBALS.put_X_words,
       mapf(
         null,
         function
@@ -3515,13 +3212,10 @@ function everything
           (x) {
             
             cond(
-            /*(*/ [and(
-                ovis_Q(
-                  x),
-                not(
-                  trnn(
+            /*(*/ [ovis_Q(
+                  x) && !trnn(
                     x,
-                    GLOBALS.actorbit))),
+                    GLOBALS.actorbit),
               cond(
                 /*(*/ [suv === tuv,
                   tell(
@@ -3563,14 +3257,10 @@ put(
             (x) {
               
               cond(
-              /*(*/ [and(
-                  ovis_Q(
-                    x),
-                  x !== pi,
-                  not(
-                    trnn(
+              /*(*/ [ovis_Q(
+                    x) && x !== pi && !trnn(
                       x,
-                      GLOBALS.actorbit))),
+                      GLOBALS.actorbit),
                 cond(
                   /*(*/ [suv === tuv,
                     tell(
@@ -3593,9 +3283,7 @@ put(
             (x) {
               
               cond(
-              /*(*/ [and(
-                  suv === tuv,
-                  x !== pi),
+              /*(*/ [suv === tuv && x !== pi,
                 tell(
                   GLOBALS.losstr),
                 return(
@@ -3639,17 +3327,12 @@ function valuables
           (x) {
             
             cond(
-            /*(*/ [and(
-                ovis_Q(
-                  x),
-                not(
-                  trnn(
+            /*(*/ [ovis_Q(
+                  x) && !trnn(
                     x,
-                    GLOBALS.actorbit)),
-                not(
-                  0_Q(
+                    GLOBALS.actorbit) && !0_Q(
                     otval(
-                      x)))),
+                      x)),
               cond(
                 /*(*/ [suv === tuv,
                   tell(
@@ -3672,10 +3355,9 @@ function valuables
           (x) {
             
             cond(
-            /*(*/ [not(
-                0_Q(
+            /*(*/ [!0_Q(
                   otval(
-                    x))),
+                    x)),
               suv = back(
                   suv),
               put(
@@ -3696,22 +3378,17 @@ function valuables
             (x) {
               
               cond(
-              /*(*/ [and(
-                  suv === tuv,
-                  x !== pi),
+              /*(*/ [suv === tuv && x !== pi,
                 tell(
                   GLOBALS.losstr),
                 return(
                   t,
                   rp)] /*)*/)
 cond(
-              /*(*/ [and(
-                  ovis_Q(
-                    x),
-                  not(
-                    0_Q(
+              /*(*/ [ovis_Q(
+                    x) && !0_Q(
                       otval(
-                        x)))),
+                        x)),
                 suv = back(
                     suv),
                 put(
@@ -3727,19 +3404,16 @@ cond(
             (x) {
               
               cond(
-              /*(*/ [and(
-                  suv === tuv,
-                  x !== pi),
+              /*(*/ [suv === tuv && x !== pi,
                 tell(
                   GLOBALS.losstr),
                 return(
                   t,
                   rp)] /*)*/)
 cond(
-              /*(*/ [not(
-                  0_Q(
+              /*(*/ [!0_Q(
                     otval(
-                      x))),
+                      x)),
                 suv = back(
                     suv),
                 put(
@@ -3780,10 +3454,9 @@ define(
   cond(
     /*(*/ [object_action(
         )] /*)*/,
-    /*(*/ [not(
-        trnn(
+    /*(*/ [!trnn(
           prso,
-          GLOBALS.contbit)),
+          GLOBALS.contbit),
       tell(
         "You must tell me how to do that to a",
         1,
@@ -3803,12 +3476,10 @@ define(
             GLOBALS.oopen_Q,
             t),
           cond(
-            /*(*/ [or(
-                empty_Q(
+            /*(*/ [empty_Q(
                   ocontents(
-                    prso)),
-                transparent_Q(
-                  prso)),
+                    prso)) || transparent_Q(
+                  prso),
               tell(
                 "Opened.")] /*)*/,
             /*(*/ [GLOBALS.tell_flag = t,
@@ -3850,10 +3521,9 @@ define(
   cond(
     /*(*/ [object_action(
         )] /*)*/,
-    /*(*/ [not(
-        trnn(
+    /*(*/ [!trnn(
           prso,
-          GLOBALS.contbit)),
+          GLOBALS.contbit),
       tell(
         "You must tell me how to do that to a",
         1,
@@ -3900,8 +3570,7 @@ function find
         "You are carrying a",
         "."),
       cond(
-        /*(*/ [not(
-            GLOBALS.tell_flag),
+        /*(*/ [!GLOBALS.tell_flag,
           tell(
             "I can't see that here.")] /*)*/)] /*)*/,
     /*(*/ [tell(
@@ -3928,14 +3597,10 @@ function find_frob
             odesc2(
               x),
             str3)] /*)*/,
-        /*(*/ [or(
-            transparent_Q(
-              x),
-            and(
-              openable_Q(
+        /*(*/ [transparent_Q(
+              x) || openable_Q(
+                x) && oopen_Q(
                 x),
-              oopen_Q(
-                x))),
           mapf(
             null,
             function
@@ -3974,11 +3639,9 @@ function object_action
     /*(*/ [] /*)*/,
     cond(
       /*(*/ [prsi,
-        and(
-          apply_object(
-            prsi),
-          return(
-            t))] /*)*/),
+        apply_object(
+            prsi) && return(
+            t)] /*)*/),
     cond(
       /*(*/ [prso,
         apply_object(
@@ -3996,9 +3659,8 @@ function obj_here_Q
     prog(
     /*(*/ [] /*)*/,
     cond(
-      /*(*/ [not(
-          ovis_Q(
-            obj)),
+      /*(*/ [!ovis_Q(
+            obj),
         return(
           null)] /*)*/,
       /*(*/ [nobj = ocan(
@@ -4009,15 +3671,13 @@ function obj_here_Q
             obj = nobj] /*)*/,
           /*(*/ [return(
               null)] /*)*/)] /*)*/),
-    or(
-      memq(
+    memq(
         obj,
         robjs(
-          rm)),
-      memq(
+          rm)) || memq(
         obj,
         aobjs(
-          win))))
+          win)))
   }
 
 function splice_out
@@ -4142,27 +3802,22 @@ define(
       /*(*/ [lampo] /*)*/,
       activation] /*)*/] /*2*/,
   cond(
-    /*(*/ [and(
-        trnn(
+    /*(*/ [trnn(
           obj,
-          GLOBALS.burnbit),
-        prsvec[3],
-        put(
+          GLOBALS.burnbit) && prsvec[3] && put(
           prsvec,
           1,
-          GLOBALS.burn_X_words)),
+          GLOBALS.burn_X_words),
       burner(
         )] /*)*/,
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [cond(
-        /*(*/ [and(
-            olight_Q(
-                obj) !== 0,
-            memq(
+        /*(*/ [olight_Q(
+                obj) !== 0 && memq(
               obj,
               aobjs(
-                me)))] /*)*/,
+                me))] /*)*/,
         /*(*/ [t,
           tell(
             "You can't turn that on."),
@@ -4185,8 +3840,7 @@ define(
               obj),
             "is now on."),
           cond(
-            /*(*/ [not(
-                lit_Q),
+            /*(*/ [!lit_Q,
               put(
                 GLOBALS.prsvec,
                 2,
@@ -4213,13 +3867,11 @@ define(
     /*(*/ [object_action(
         )] /*)*/,
     /*(*/ [cond(
-        /*(*/ [and(
-            olight_Q(
-                obj) !== 0,
-            memq(
+        /*(*/ [olight_Q(
+                obj) !== 0 && memq(
               obj,
               aobjs(
-                me)))] /*)*/,
+                me))] /*)*/,
         /*(*/ [tell(
             "You can't turn that off."),
           return(
@@ -4240,11 +3892,9 @@ define(
             odesc2(
               obj),
             "is now off."),
-          or(
-            lit_Q(
-              GLOBALS.here),
-            tell(
-              "It is now pitch black."))] /*)*/)] /*)*/))
+          lit_Q(
+              GLOBALS.here) || tell(
+              "It is now pitch black.")] /*)*/)] /*)*/))
 
 "PARSER & AUXILIARIES"
 
@@ -4276,19 +3926,14 @@ function this_it_Q
     adj) {
     
     cond(
-    /*(*/ [and(
-        ovis_Q(
-          obj),
-        or(
-          objnam === oid(
-              obj),
-          memq(
+    /*(*/ [ovis_Q(
+          obj) && objnam === oid(
+              obj) || memq(
             objnam,
             onames(
-              obj)))),
+              obj)),
       cond(
-        /*(*/ [not(
-            adj)] /*)*/,
+        /*(*/ [!adj] /*)*/,
         /*(*/ [memq(
             adj,
             oadjs(
@@ -4351,30 +3996,18 @@ cond(
           /*(*/ [/*(*/ [slen] /*)*/,
             fix] /*)*/] /*2*/,
         cond(
-          /*(*/ [or(
-              s1.length === sx.length,
-              memq(
+          /*(*/ [s1.length === sx.length || memq(
                 s1[1],
-                brks)),
-            and(
-              s1.length > sx.length,
-              or(
-                s1[1] === _X__,
-                s1[1] === _X__),
-              not(
-                quot),
-              quot = t,
-              v = rest(
-                  v)),
+                brks),
+            s1.length > sx.length && s1[1] === _X__ || s1[1] === _X__ && !quot && quot = t && v = rest(
+                  v),
             cond(
               /*(*/ [s !== s1,
                 cond(
                   /*(*/ [empty_Q(
                       v),
-                    or(
-                      silent_Q,
-                      tell(
-                        "I'm too simple-minded for that."))] /*)*/,
+                    silent_Q || tell(
+                        "I'm too simple-minded for that.")] /*)*/,
                   /*(*/ [put(
                       v,
                       1,
@@ -4419,10 +4052,9 @@ function anything
         /*(*/ [x === sx,
           mapleave(
             null)] /*)*/,
-        /*(*/ [not(
-            memq(
+        /*(*/ [!memq(
               x[1],
-              GLOBALS.brks)),
+              GLOBALS.brks),
           mapleave(
             x)] /*)*/)
       },
@@ -4441,11 +4073,9 @@ function uppercase
           ascii(
             s[1])] /*)*/
         cond(
-        /*(*/ [and(
-            c > 96,
-            l__Q(
+        /*(*/ [c > 96 && l__Q(
               c,
-              122)),
+              122),
           put(
             s,
             1,
@@ -4469,12 +4099,10 @@ repeat(
       /*(*/ [/*(*/ [n] /*)*/,
         fix] /*)*/] /*2*/,
     cond(
-      /*(*/ [or(
-          n = _(
+      /*(*/ [n = _(
                 n,
-                1) < 0,
-          clock_demon(
-            GLOBALS.clocker)),
+                1) < 0 || clock_demon(
+            GLOBALS.clocker),
         return(
           )] /*)*/))
   }
@@ -4504,9 +4132,8 @@ function clock_demon
             let tick = ctick(
                 ev);
             cond(
-            /*(*/ [not(
-                cflag(
-                  ev))] /*)*/,
+            /*(*/ [!cflag(
+                  ev)] /*)*/,
             /*(*/ [0_Q(
                 tick)] /*)*/,
             /*(*/ [tick < 0,
@@ -4529,15 +4156,11 @@ function clock_demon
                 tick = _(
                     tick,
                     1)),
-              and(
-                0_Q(
-                  tick),
-                flg = t,
-                put(
+              0_Q(
+                  tick) && flg = t && put(
                   GLOBALS.prsvec,
                   1,
-                  GLOBALS.c_int_X_words),
-                cond(
+                  GLOBALS.c_int_X_words) && cond(
                   /*(*/ [type_Q(
                       ca = caction(
                           ev),
@@ -4545,7 +4168,7 @@ function clock_demon
                     dispatch(
                       ca)] /*)*/,
                   /*(*/ [apply(
-                      ca)] /*)*/))] /*)*/)
+                      ca)] /*)*/)] /*)*/)
           },
         hobjs(
           hack))] /*)*/)
@@ -4561,11 +4184,10 @@ function clock_int
     clocker) {
     
     cond(
-    /*(*/ [not(
-        memq(
+    /*(*/ [!memq(
           cev,
           hobjs(
-            clocker))),
+            clocker)),
       put(
         clocker,
         GLOBALS.hobjs,
@@ -4583,18 +4205,15 @@ cond(
 
 GLOBALS.demons = /*(*/ [] /*)*/
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  gassigned_Q(
-    group_glue),
-  add_demon(
+      )) || gassigned_Q(
+    group_glue) || add_demon(
     GLOBALS.clocker = chtype(
         /*[*/ [clock_demon,
           /*(*/ [] /*)*/] /*]*/,
-        hack)))
+        hack))
 
 function board
   () {
@@ -4604,11 +4223,10 @@ function board
     let av = avehicle(
         win);
     cond(
-    /*(*/ [not(
-        memq(
+    /*(*/ [!memq(
           obj,
           robjs(
-            GLOBALS.here))),
+            GLOBALS.here)),
       tell(
         "The",
         1,
@@ -4702,31 +4320,16 @@ function goto
         rm,
         GLOBALS.rlandbit);
     cond(
-    /*(*/ [or(
-        and(
-          not(
-            lb),
-          or(
-            not(
-              av),
-            not(
-              rtrnn(
+    /*(*/ [!lb && !av || !rtrnn(
                 rm,
                 orand(
-                  av))))),
-        and(
-          rtrnn(
+                  av)) || rtrnn(
             here,
-            GLOBALS.rlandbit),
-          lb,
-          av,
-          orand(
-              av) !== GLOBALS.rlandbit,
-          not(
-            rtrnn(
+            GLOBALS.rlandbit) && lb && av && orand(
+              av) !== GLOBALS.rlandbit && !rtrnn(
               rm,
               orand(
-                av))))),
+                av)),
       cond(
         /*(*/ [av,
           tell(
@@ -4780,10 +4383,8 @@ function backer
 function act_hack
   () {
     
-    or(
     object_action(
-      ),
-    t)
+      ) || t
   }
 
 function mung_room

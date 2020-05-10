@@ -29,27 +29,21 @@ GLOBALS.bigfix = _(
       fix),
     2)
 
-GLOBALS.words = or(
-    get(
+GLOBALS.words = get(
       words,
-      oblist),
-    moblist(
+      oblist) || moblist(
       words,
-      23))
+      23)
 
-GLOBALS.object_obl = or(
-    get(
+GLOBALS.object_obl = get(
       objects,
-      oblist),
-    moblist(
-      objects))
+      oblist) || moblist(
+      objects)
 
-GLOBALS.room_obl = or(
-    get(
+GLOBALS.room_obl = get(
       rooms,
-      oblist),
-    moblist(
-      rooms))
+      oblist) || moblist(
+      rooms)
 
 GLOBALS.actors = /*(*/ [] /*)*/
 
@@ -148,159 +142,131 @@ GLOBALS.objects = /*(*/ [] /*)*/
 
 "CEVENT DEFINITIONS"
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.cure_clock,
     null,
-    "CURIN"))
+    "CURIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.maint_room,
     t,
-    "MNTIN"))
+    "MNTIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.lantern,
     t,
-    "LNTIN"))
+    "LNTIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.match_function,
     t,
-    matin))
+    matin)
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.candles,
     t,
-    "CNDIN"))
+    "CNDIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.balloon,
     t,
-    "BINT"))
+    "BINT")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.burnup,
     t,
-    "BRNIN"))
+    "BRNIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.fuse_function,
     t,
-    "FUSIN"))
+    "FUSIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.ledge_mung,
     t,
-    "LEDIN"))
+    "LEDIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.safe_mung,
     t,
-    "SAFIN"))
+    "SAFIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.volgnome,
     t,
-    "VLGIN"))
+    "VLGIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.gnome_function,
     t,
-    "GNOIN"))
+    "GNOIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.bucket,
     t,
-    "BCKIN"))
+    "BCKIN")
 
-or(
-  lookup(
+lookup(
     "COMPILE",
     root(
-      )),
-  cevent(
+      )) || cevent(
     0,
     GLOBALS.sphere_function,
     t,
-    "SPHIN"))
+    "SPHIN")
 
 // KLUDGE
 

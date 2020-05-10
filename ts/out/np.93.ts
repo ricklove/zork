@@ -1,18 +1,14 @@
-GLOBALS.words = or(
-    get(
+GLOBALS.words = get(
       words,
-      oblist),
-    moblist(
+      oblist) || moblist(
       words,
-      23))
+      23)
 
-GLOBALS.object_obl = or(
-    get(
+GLOBALS.object_obl = get(
       objects,
-      oblist),
-    moblist(
+      oblist) || moblist(
       objects,
-      23))
+      23)
 
 GLOBALS.actions = moblist(
     actions,
@@ -25,13 +21,11 @@ GLOBALS.orphans = /*[*/ [null,
     null] /*]*/
 
 cond(
-  /*(*/ [or(
-      lookup(
+  /*(*/ [lookup(
         "COMPILE",
         root(
-          )),
-      gassigned_Q(
-        group_glue))] /*)*/,
+          )) || gassigned_Q(
+        group_glue)] /*)*/,
   /*(*/ [GLOBALS.prepvec = /*[*/ [chtype(
           /*[*/ [find_prep(
               "WITH"),
@@ -111,9 +105,7 @@ define(
           string] /*]*/),
       /*(*/ [vb,
         orfl] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [actions,
         words,
         objob,
@@ -125,32 +117,22 @@ define(
         pvr] /*)*/,
       vector,
       /*(*/ [atm] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [here] /*)*/,
       room,
       /*(*/ [action] /*)*/,
-      or(
-        false,
-        action),
+      false || action,
       /*(*/ [nprep,
         prep] /*)*/,
-      or(
-        false,
-        prep),
+      false || prep,
       /*(*/ [adj] /*)*/,
-      or(
-        false,
-        adjective),
+      false || adjective,
       /*(*/ [aval] /*)*/,
       any,
       /*(*/ [lobj] /*)*/,
       any,
       /*(*/ [obj] /*)*/,
-      or(
-        false,
-        object),
+      false || object,
       /*(*/ [pprep] /*)*/,
       phrase] /*)*/] /*2*/,
   val = mapf(
@@ -163,19 +145,13 @@ define(
               x),
             mapleave(
               t)] /*)*/,
-          /*(*/ [and(
-              not(
-                action),
-              atm = lookup(
+          /*(*/ [!action && atm = lookup(
                   x,
-                  actions)),
+                  actions),
             action = /*,*/ [atm] /*1*/] /*)*/,
-          /*(*/ [and(
-              not(
-                action),
-              atm = lookup(
+          /*(*/ [!action && atm = lookup(
                   x,
-                  dirs)),
+                  dirs),
             put(
               pv,
               1,
@@ -187,21 +163,17 @@ define(
             return(
               win,
               sparout)] /*)*/,
-          /*(*/ [and(
-              atm = lookup(
+          /*(*/ [atm = lookup(
                   x,
-                  words),
-              cond(
+                  words) && cond(
                 /*(*/ [type_Q(
                     aval = /*,*/ [atm] /*1*/,
                     prep),
                   cond(
                     /*(*/ [prep,
-                      or(
-                        vb,
-                        tell(
+                      vb || tell(
                           "Double preposition?",
-                          0)),
+                          0),
                       mapleave(
                         null)] /*)*/,
                     /*(*/ [prep = aval] /*)*/)] /*)*/,
@@ -209,14 +181,10 @@ define(
                     aval,
                     adjective),
                   adj = aval,
-                  not(
-                    and(
-                      orfl,
-                      atm = oname(
-                          orph),
-                      x = spname(
-                          atm)))] /*)*/,
-                /*(*/ [t] /*)*/))] /*)*/,
+                  !orfl && atm = oname(
+                          orph) && x = spname(
+                          atm)] /*)*/,
+                /*(*/ [t] /*)*/)] /*)*/,
           /*(*/ [atm = lookup(
                 x,
                 objob),
@@ -224,16 +192,11 @@ define(
               /*(*/ [obj = get_object(
                     atm,
                     adj),
-                and(
-                  empty_Q(
-                    pvr),
-                  or(
-                    vb,
-                    tell(
+                empty_Q(
+                    pvr) && vb || tell(
                       "Too many objects specified?",
-                      0)),
-                  mapleave(
-                    null)),
+                      0) && mapleave(
+                    null),
                 put(
                   pvr,
                   1,
@@ -258,9 +221,7 @@ define(
                 cond(
                   /*(*/ [empty_Q(
                       obj),
-                    or(
-                      vb,
-                      cond(
+                    vb || cond(
                         /*(*/ [lit_Q(
                             here),
                           tell(
@@ -283,33 +244,25 @@ define(
                             "here.")] /*)*/,
                         /*(*/ [tell(
                             "It is too dark in here to see.",
-                            0)] /*)*/))] /*)*/,
+                            0)] /*)*/)] /*)*/,
                   /*(*/ [obj === GLOBALS.nefals2,
-                    or(
-                      vb,
-                      tell(
+                    vb || tell(
                         "I can't reach that from inside the",
                         0,
                         odesc2(
                           avehicle(
                             GLOBALS.winner)),
-                        "."))] /*)*/,
-                  /*(*/ [or(
-                      vb,
-                      tell(
+                        ".")] /*)*/,
+                  /*(*/ [vb || tell(
                         "Which",
                         0,
                         prstr(
                           atm),
-                        "?")),
+                        "?"),
                     orphan(
                       t,
-                      or(
-                        action,
-                        and(
-                          orfl,
-                          overb(
-                            orph))),
+                      action || orfl && overb(
+                            orph),
                       pv[2],
                       prep,
                       atm)] /*)*/),
@@ -317,12 +270,10 @@ define(
                   null)] /*)*/),
             adj = null,
             t] /*)*/,
-          /*(*/ [or(
-              vb,
-              tell(
+          /*(*/ [vb || tell(
                 "I don't know the word",
                 0,
-                x)),
+                x),
             mapleave(
               null)] /*)*/)
         },
@@ -330,17 +281,9 @@ define(
   cond(
     /*(*/ [val,
       cond(
-        /*(*/ [and(
-            not(
-              action),
-            not(
-              action = and(
-                  orfl,
-                  overb(
-                    orph)))),
-          or(
-            vb,
-            cond(
+        /*(*/ [!action && !action = orfl && overb(
+                    orph),
+          vb || cond(
               /*(*/ [type_Q(
                   pv[2],
                   object),
@@ -352,38 +295,28 @@ define(
                   "?")] /*)*/,
               /*(*/ [tell(
                   "Huh?",
-                  0)] /*)*/)),
+                  0)] /*)*/),
           orphan(
             t,
             null,
             pv[2]),
           null] /*)*/,
-        /*(*/ [and(
-            put(
+        /*(*/ [put(
               pv,
               1,
-              action),
-            adj),
-          or(
-            vb,
-            tell(
+              action) && adj,
+          vb || tell(
               "Dangling adjective?",
-              0)),
+              0),
           null] /*)*/,
-        /*(*/ [and(
-            orfl,
-            nprep = oprep(
-                orph),
-            obj = pv[2],
-            put(
+        /*(*/ [orfl && nprep = oprep(
+                orph) && obj = pv[2] && put(
               pprep = prv[1],
               1,
-              nprep),
-            put(
+              nprep) && put(
               pprep,
               2,
-              obj),
-            cond(
+              obj) && cond(
               /*(*/ [obj = oslot1(
                     orph),
                 put(
@@ -397,15 +330,12 @@ define(
               /*(*/ [put(
                   pv,
                   2,
-                  pprep)] /*)*/),
-            null)] /*)*/,
+                  pprep)] /*)*/) && null] /*)*/,
         /*(*/ [prep,
-          and(
-            type_Q(
+          type_Q(
               lobj = back(
                     pvr)[1],
-              object),
-            top(
+              object) && top(
               put(
                 back(
                   pvr),
@@ -416,7 +346,7 @@ define(
                     1,
                     prep),
                   2,
-                  lobj))))] /*)*/,
+                  lobj)))] /*)*/,
         /*(*/ [pv] /*)*/)] /*)*/))
 
 function sp
@@ -481,17 +411,14 @@ function syn_match
                     syn2(
                       syn),
                     o2),
-                  and(
-                    sflip(
-                      syn),
-                    put(
+                  sflip(
+                      syn) && put(
                       objs,
                       1,
-                      o2),
-                    put(
+                      o2) && put(
                       objs,
                       2,
-                      o1)),
+                      o1),
                   mapleave(
                     take_it_or_leave_it(
                       syn,
@@ -500,16 +427,14 @@ function syn_match
                         1,
                         sfcn(
                           syn))))] /*)*/,
-                /*(*/ [not(
-                    o2),
+                /*(*/ [!o2,
                   cond(
                     /*(*/ [sdriver(
                         syn),
                       dforce = syn] /*)*/,
                     /*(*/ [drive = syn] /*)*/),
                   null] /*)*/)] /*)*/,
-            /*(*/ [not(
-                o1),
+            /*(*/ [!o1,
               cond(
                 /*(*/ [sdriver(
                     syn),
@@ -519,29 +444,18 @@ function syn_match
           },
         vdecl(
           action))] /*)*/,
-    /*(*/ [drive = or(
-          dforce,
-          drive),
+    /*(*/ [drive = dforce || drive,
       cond(
-        /*(*/ [and(
-            synn = syn1(
-                drive),
-            not(
-              o1),
-            not(
-              0_Q(
+        /*(*/ [synn = syn1(
+                drive) && !o1 && !0_Q(
                 vbit(
-                  synn))),
-            not(
-              orfeo(
+                  synn)) && !orfeo(
                 synn,
-                objs)),
-            not(
-              o1 = gwim = gwim_slot(
+                objs) && !o1 = gwim = gwim_slot(
                     1,
                     synn,
                     action,
-                    objs))),
+                    objs),
           orphan(
             t,
             action,
@@ -552,21 +466,14 @@ function syn_match
             synn,
             action,
             gwim)] /*)*/,
-        /*(*/ [and(
-            synn = syn2(
-                drive),
-            not(
-              o2),
-            not(
-              0_Q(
+        /*(*/ [synn = syn2(
+                drive) && !o2 && !0_Q(
                 vbit(
-                  synn))),
-            not(
-              gwim_slot(
+                  synn)) && !gwim_slot(
                 2,
                 synn,
                 action,
-                objs))),
+                objs),
           orphan(
             t,
             action,
@@ -650,20 +557,15 @@ function take_it
     let sav1 = vec[1];
     let sav2 = vec[2];
     cond(
-    /*(*/ [and(
-        search_list(
+    /*(*/ [search_list(
           oid(
             obj),
           robjs(
             GLOBALS.here),
-          null),
-        or(
-          can_take_Q(
-            obj),
-          not(
-            vtrnn(
+          null) && can_take_Q(
+            obj) || !vtrnn(
               vrb,
-              GLOBALS.vtbit)))),
+              GLOBALS.vtbit),
       put(
         vec,
         1,
@@ -693,19 +595,16 @@ function orfeo
         orph);
     let slot1 = null;
     cond(
-    /*(*/ [not(
-        orfl),
+    /*(*/ [!orfl,
       null] /*)*/,
     /*(*/ [slot1 = oslot1(
           orph),
-      and(
-        syn_equal(
+      syn_equal(
           syn,
-          slot1),
-        put(
+          slot1) && put(
           objs,
           1,
-          slot1))] /*)*/)
+          slot1)] /*)*/)
   }
 
 function ortell
@@ -718,18 +617,15 @@ function ortell
     let sp = null;
     cond(
     /*(*/ [prep,
-      and(
-        gwim,
-        tell(
+      gwim && tell(
           vstr(
             action),
           0,
-          ""),
-        tell(
+          "") && tell(
           odesc2(
             gwim),
           0,
-          "")),
+          ""),
       tell(
         prstr(
           chtype(
@@ -770,9 +666,7 @@ function foostr
         y) {
         
         cond(
-        /*(*/ [and(
-            1st,
-            x === nam),
+        /*(*/ [1st && x === nam,
           put(
             y,
             1,
@@ -834,75 +728,46 @@ function gwim
     let av = avehicle(
         GLOBALS.winner);
     let sf = null;
-    and(
-    aobj,
-    obj = fwim(
+    aobj && obj = fwim(
         bit,
         aobjs(
           GLOBALS.winner),
-        ntake))
+        ntake)
 cond(
     /*(*/ [robj,
       cond(
-        /*(*/ [and(
-            nobj = fwim(
+        /*(*/ [nobj = fwim(
                 bit,
                 robjs(
                   GLOBALS.here),
-                ntake),
-            or(
-              not(
-                av),
-              av === nobj,
-              memq(
+                ntake) && !av || av === nobj || memq(
                 nobj,
                 ocontents(
-                  av)),
-              trnn(
+                  av)) || trnn(
                 nobj,
-                GLOBALS.findmebit))),
+                GLOBALS.findmebit),
           cond(
-            /*(*/ [and(
-                or(
-                  savobj = pv[2],
-                  t),
-                not(
-                  obj),
-                or(
-                  sf = pv[1],
-                  t),
-                put(
+            /*(*/ [savobj = pv[2] || t && !obj && sf = pv[1] || t && put(
                   pv,
                   1,
-                  GLOBALS.take_X_words),
-                put(
+                  GLOBALS.take_X_words) && put(
                   pv,
                   2,
-                  nobj),
-                or(
-                  action === pv[1],
-                  ntake,
-                  take(
-                    )),
-                put(
+                  nobj) && action === pv[1] || ntake || take(
+                    ) && put(
                   pv,
                   2,
-                  savobj),
-                put(
+                  savobj) && put(
                   pv,
                   1,
-                  sf),
-                nobj)] /*)*/,
+                  sf) && nobj] /*)*/,
             /*(*/ [put(
                 pv,
                 2,
                 savobj),
               null] /*)*/)] /*)*/,
-        /*(*/ [or(
-            nobj,
-            not(
-              empty_Q(
-                nobj))),
+        /*(*/ [nobj || !empty_Q(
+                nobj),
           GLOBALS.nefals] /*)*/,
         /*(*/ [obj] /*)*/)] /*)*/,
     /*(*/ [obj] /*)*/)
@@ -940,10 +805,7 @@ function make_action
                   string),
                 prep = find_prep(
                     itm)] /*)*/,
-              /*(*/ [and(
-                  itm === obj,
-                  itm = () => /*(*/ [_1] /*)*/,
-                  null)] /*)*/,
+              /*(*/ [itm === obj && itm = () => /*(*/ [_1] /*)*/ && null] /*)*/,
               /*(*/ [type_Q(
                   itm,
                   list),
@@ -959,34 +821,26 @@ function make_action
                   prep),
                 sum = 0,
                 prep = null,
-                and(
-                  memq(
+                memq(
                     aobjs,
-                    itm),
-                  sum = _(
+                    itm) && sum = _(
                       sum,
-                      GLOBALS.vabit)),
-                and(
-                  memq(
+                      GLOBALS.vabit),
+                memq(
                     robjs,
-                    itm),
-                  sum = _(
+                    itm) && sum = _(
                       sum,
-                      GLOBALS.vrbit)),
-                and(
-                  memq(
+                      GLOBALS.vrbit),
+                memq(
                     no_take,
-                    itm),
-                  sum = _(
+                    itm) && sum = _(
                       sum,
-                      GLOBALS.vtbit)),
-                and(
-                  memq(
+                      GLOBALS.vtbit),
+                memq(
                     _,
-                    itm),
-                  sum = _(
+                    itm) && sum = _(
                       sum,
-                      GLOBALS.vxbit)),
+                      GLOBALS.vxbit),
                 put(
                   vv,
                   3,
@@ -1033,20 +887,16 @@ function make_action
                   t)] /*)*/)
             },
           sp)
-or(
-          syn1(
-            syn),
-          put(
+syn1(
+            syn) || put(
             syn,
             GLOBALS.syn1,
-            GLOBALS.evarg))
-or(
-          syn2(
-            syn),
-          put(
+            GLOBALS.evarg)
+syn2(
+            syn) || put(
             syn,
             GLOBALS.syn2,
-            GLOBALS.evarg))
+            GLOBALS.evarg)
 chtype(
           syn,
           syntax)
@@ -1071,37 +921,23 @@ function syn_equal
     /*(*/ [type_Q(
         pobj,
         phrase),
-      and(
-        vprep(
-            varg) === pobj[1],
-        or(
-          not(
-            vtrnn(
+      vprep(
+            varg) === pobj[1] && !vtrnn(
               varg,
-              GLOBALS.vxbit)),
-          trnn(
+              GLOBALS.vxbit) || trnn(
             pobj[2],
-            vbit)))] /*)*/,
+            vbit)] /*)*/,
     /*(*/ [type_Q(
         pobj,
         object),
-      and(
-        not(
-          vprep(
-            varg)),
-        or(
-          not(
-            vtrnn(
+      !vprep(
+            varg) && !vtrnn(
               varg,
-              GLOBALS.vxbit)),
-          trnn(
+              GLOBALS.vxbit) || trnn(
             pobj,
-            vbit)))] /*)*/,
-    /*(*/ [and(
-        not(
-          pobj),
-        0_Q(
-          vbit))] /*)*/)
+            vbit)] /*)*/,
+    /*(*/ [!pobj && 0_Q(
+          vbit)] /*)*/)
   }
 
 GLOBALS.directions = moblist(
@@ -1117,21 +953,15 @@ function eparse
           pv,
           vb),
       cond(
-        /*(*/ [or(
-            val === win,
-            syn_match(
-              val)),
+        /*(*/ [val === win || syn_match(
+              val),
           orphan(
             null)] /*)*/,
-        /*(*/ [or(
-            vb,
-            tell(
-              "")),
+        /*(*/ [vb || tell(
+              ""),
           null] /*)*/)] /*)*/,
-    /*(*/ [or(
-        vb,
-        tell(
-          "")),
+    /*(*/ [vb || tell(
+          ""),
       null] /*)*/)
   }
 
@@ -1166,73 +996,52 @@ define(
     /*(*/ [/*(*/ [oobj,
         obj,
         av] /*)*/,
-      or(
-        object,
-        false),
+      object || false,
       /*(*/ [objnam] /*)*/,
       atom,
       /*(*/ [here] /*)*/,
       room,
       /*(*/ [adj] /*)*/,
-      or(
-        adjective,
-        false),
+      adjective || false,
       /*(*/ [chomp] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [objl] /*)*/,
-      or(
-        false,
-        list(
+      false || list(
           /*[*/ [rest,
-            object] /*]*/))] /*)*/] /*2*/,
+            object] /*]*/)] /*)*/] /*2*/,
   cond(
     /*(*/ [obj = search_list(
           objnam,
           GLOBALS.stars,
           adj),
       oobj = obj] /*)*/,
-    /*(*/ [not(
-        empty_Q(
-          obj)),
+    /*(*/ [!empty_Q(
+          obj),
       return(
         GLOBALS.nefals,
         get_obj)] /*)*/),
   cond(
-    /*(*/ [and(
-        lit_Q(
-          here),
-        obj = search_list(
+    /*(*/ [lit_Q(
+          here) && obj = search_list(
             objnam,
             robjs(
               GLOBALS.here),
-            adj)),
+            adj),
       cond(
-        /*(*/ [and(
-            av,
-            obj !== av,
-            not(
-              memq(
+        /*(*/ [av && obj !== av && !memq(
                 obj,
                 ocontents(
-                  av))),
-            not(
-              trnn(
+                  av)) && !trnn(
                 obj,
-                GLOBALS.findmebit))),
+                GLOBALS.findmebit),
           chomp = t] /*)*/,
         /*(*/ [oobj,
           return(
             GLOBALS.nefals,
             get_obj)] /*)*/,
         /*(*/ [oobj = obj] /*)*/)] /*)*/,
-    /*(*/ [and(
-        not(
-          obj),
-        not(
-          empty_Q(
-            obj))),
+    /*(*/ [!obj && !empty_Q(
+            obj),
       return(
         GLOBALS.nefals,
         get_obj)] /*)*/),
@@ -1246,9 +1055,8 @@ define(
               adj),
           chomp = null,
           oobj = obj] /*)*/,
-        /*(*/ [not(
-            empty_Q(
-              obj)),
+        /*(*/ [!empty_Q(
+              obj),
           return(
             GLOBALS.nefals,
             get_obj)] /*)*/)] /*)*/),
@@ -1262,9 +1070,8 @@ define(
         /*(*/ [oobj,
           GLOBALS.nefals] /*)*/,
         /*(*/ [obj] /*)*/)] /*)*/,
-    /*(*/ [not(
-        empty_Q(
-          obj)),
+    /*(*/ [!empty_Q(
+          obj),
       GLOBALS.nefals] /*)*/,
     /*(*/ [chomp,
       GLOBALS.nefals2] /*)*/,
@@ -1302,17 +1109,11 @@ define(
           object] /*]*/),
       /*(*/ [oobj,
         nobj] /*)*/,
-      or(
-        false,
-        object),
+      false || object,
       /*(*/ [adj] /*)*/,
-      or(
-        false,
-        adjective),
+      false || adjective,
       /*(*/ [first_Q] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [nefals] /*)*/,
       false] /*)*/] /*2*/,
   mapf(
@@ -1332,19 +1133,12 @@ define(
                 sl)] /*)*/,
             /*(*/ [oobj = obj] /*)*/)] /*)*/)
 cond(
-        /*(*/ [and(
-            ovis_Q(
-              obj),
-            or(
-              oopen_Q(
-                obj),
-              transparent_Q(
-                obj)),
-            or(
-              first_Q,
-              trnn(
+        /*(*/ [ovis_Q(
+              obj) && oopen_Q(
+                obj) || transparent_Q(
+                obj) && first_Q || trnn(
                 obj,
-                GLOBALS.searchbit))),
+                GLOBALS.searchbit),
           cond(
             /*(*/ [nobj = search_list(
                   objnam,
@@ -1379,9 +1173,7 @@ define(
       null] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [no_take] /*)*/,
-      or(
-        atom,
-        false),
+      atom || false,
       /*(*/ [bit] /*)*/,
       fix,
       /*(*/ [objs] /*)*/,
@@ -1389,25 +1181,18 @@ define(
         /*[*/ [rest,
           object] /*]*/),
       /*(*/ [nobj] /*)*/,
-      or(
-        false,
-        object)] /*)*/] /*2*/,
+      false || object] /*)*/] /*2*/,
   mapf(
     null,
     function
       (x) {
         
         cond(
-        /*(*/ [and(
-            ovis_Q(
-              x),
-            or(
-              no_take,
-              can_take_Q(
-                x)),
-            trnn(
+        /*(*/ [ovis_Q(
+              x) && no_take || can_take_Q(
+                x) && trnn(
               x,
-              bit)),
+              bit),
           cond(
             /*(*/ [nobj,
               return(
@@ -1415,23 +1200,19 @@ define(
                 dwim)] /*)*/),
           nobj = x] /*)*/)
 cond(
-        /*(*/ [and(
-            ovis_Q(
+        /*(*/ [ovis_Q(
+              x) && oopen_Q(
               x),
-            oopen_Q(
-              x)),
           mapf(
             null,
             function
               (x) {
                 
                 cond(
-                /*(*/ [and(
-                    ovis_Q(
-                      x),
-                    trnn(
+                /*(*/ [ovis_Q(
+                      x) && trnn(
                       x,
-                      bit)),
+                      bit),
                   cond(
                     /*(*/ [nobj,
                       return(

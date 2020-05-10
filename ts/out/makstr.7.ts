@@ -43,15 +43,13 @@ function cons_obj
         
         let y = find_obj(
             x);
-        or(
         memq(
           y,
           aobjs(
-            winner)),
-        take_object(
+            winner)) || take_object(
           find_obj(
             x),
-          winner))
+          winner)
       },
     objs)
   }
@@ -71,17 +69,15 @@ function cexit
         atom),
       flid = spname(
           flid)] /*)*/)
-atm = or(
-      lookup(
+atm = lookup(
         flid,
         get(
           flag,
-          oblist)),
-      insert(
+          oblist)) || insert(
         flid,
         get(
           flag,
-          oblist)))
+          oblist))
 setg(
     atm,
     flag)
@@ -109,26 +105,19 @@ function exit
         frob] /*)*/] /*)*/,
     /*#*/ [decl,
       /*(*/ [/*(*/ [atm] /*)*/,
-        or(
-          atom,
-          false),
+        atom || false,
         /*(*/ [rm] /*)*/,
-        or(
-          room,
-          false),
+        room || false,
         /*(*/ [f] /*)*/,
         vector] /*)*/] /*2*/,
     cond(
       /*(*/ [or(
-          and(
-            atm = lookup(
+          atm = lookup(
                 pairs[1],
-                dobl),
-            gassigned_Q(
-              atm),
-            type_Q(
+                dobl) && gassigned_Q(
+              atm) && type_Q(
               /*,*/ [atm] /*1*/,
-              direction))),
+              direction)),
         put(
           f,
           1,
@@ -300,12 +289,10 @@ function object
       GLOBALS.score_max,
       s1,
       s2)
-or(
-    0_Q(
-      light_Q),
-    flags = _(
+0_Q(
+      light_Q) || flags = _(
         flags,
-        GLOBALS.lightbit))
+        GLOBALS.lightbit)
 put(
     put(
       put(
@@ -380,13 +367,11 @@ function add_action
     _tuple_,
     decl) {
     
-    let atm = or(
-        lookup(
+    let atm = lookup(
           nam,
-          GLOBALS.actions),
-        insert(
+          GLOBALS.actions) || insert(
           nam,
-          GLOBALS.actions));
+          GLOBALS.actions);
     setg(
     atm,
     chtype(
@@ -410,13 +395,11 @@ function add_directions
       (x) {
         
         setg(
-        atm = or(
-            lookup(
+        atm = lookup(
+              x,
+              dir) || insert(
               x,
               dir),
-            insert(
-              x,
-              dir)),
         chtype(
           atm,
           direction))
@@ -440,13 +423,11 @@ mapf(
       (x) {
         
         setg(
-        atm = or(
-            lookup(
+        atm = lookup(
+              x,
+              dir) || insert(
               x,
               dir),
-            insert(
-              x,
-              dir)),
         val)
       },
     nms)
@@ -486,13 +467,11 @@ cond(
           (x) {
             
             setg(
-            or(
-              lookup(
+            lookup(
+                x,
+                GLOBALS.actions) || insert(
                 x,
                 GLOBALS.actions),
-              insert(
-                x,
-                GLOBALS.actions)),
             val)
           },
         n2)] /*)*/)
@@ -503,13 +482,11 @@ cond(
 function add_word
   (w) {
     
-    or(
     lookup(
       w,
-      GLOBALS.words),
-    insert(
+      GLOBALS.words) || insert(
       w,
-      GLOBALS.words))
+      GLOBALS.words)
   }
 
 function add_buzz
@@ -566,13 +543,11 @@ function add_object
       function
         (x) {
           
-          or(
           lookup(
             x,
-            objs),
-          insert(
+            objs) || insert(
             x,
-            objs))
+            objs)
         },
       names))
 put(
@@ -626,13 +601,11 @@ function add_abbrev
     setg(
     add_word(
       x),
-    or(
-      lookup(
+    lookup(
         y,
-        GLOBALS.words),
-      insert(
+        GLOBALS.words) || insert(
         y,
-        GLOBALS.words)))
+        GLOBALS.words))
   }
 
 function add_demon
