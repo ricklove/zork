@@ -10,24 +10,24 @@ FUNCTIONS.cevent =
     let atm = null;
     cond(
     /*(*/ [type_Q(
-        LOCALS.name,
+        name,
         string),
       cond(
-        /*(*/ [LOCALS.atm = lookup(
-              LOCALS.name,
-              LOCALS.obl)] /*)*/,
+        /*(*/ [atm = lookup(
+              name,
+              obl)] /*)*/,
         /*(*/ [t,
-          LOCALS.atm = insert(
-              LOCALS.name,
-              LOCALS.obl)] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.atm = LOCALS.name] /*)*/)
+          atm = insert(
+              name,
+              obl)] /*)*/)] /*)*/,
+    /*(*/ [atm = name] /*)*/)
 setg(
-    LOCALS.atm,
+    atm,
     chtype(
-      /*[*/ [LOCALS.tick,
-        LOCALS.app,
-        LOCALS.flg,
-        LOCALS.atm] /*]*/,
+      /*[*/ [tick,
+        app,
+        flg,
+        atm] /*]*/,
       cevent))
   }
 
@@ -42,18 +42,18 @@ FUNCTIONS.cons_obj =
       (x) => {
         
         let y = find_obj(
-            LOCALS.x);
+            x);
         or(
         memq(
-          LOCALS.y,
+          y,
           aobjs(
-            LOCALS.winner)),
+            winner)),
         take_object(
           find_obj(
-            LOCALS.x),
-          LOCALS.winner))
+            x),
+          winner))
       },
-    LOCALS.objs)
+    objs)
   }
 
 FUNCTIONS.cexit = 
@@ -67,31 +67,31 @@ FUNCTIONS.cexit =
     let atm = null;
     cond(
     /*(*/ [type_Q(
-        LOCALS.flid,
+        flid,
         atom),
-      LOCALS.flid = spname(
-          LOCALS.flid)] /*)*/)
-LOCALS.atm = or(
+      flid = spname(
+          flid)] /*)*/)
+atm = or(
       lookup(
-        LOCALS.flid,
+        flid,
         get(
           flag,
           oblist)),
       insert(
-        LOCALS.flid,
+        flid,
         get(
           flag,
           oblist)))
 setg(
-    LOCALS.atm,
-    LOCALS.flag)
+    atm,
+    flag)
 chtype(
     vector(
-      LOCALS.atm,
+      atm,
       find_room(
-        LOCALS.rmid),
-      LOCALS.str,
-      LOCALS.funct),
+        rmid),
+      str,
+      funct),
     cexit)
   }
 
@@ -102,12 +102,12 @@ FUNCTIONS.exit =
     let dobl = GLOBALS.directions;
     let frob = ivector(
         length(
-          LOCALS.pairs));
+          pairs));
     repeat(
     /*(*/ [atm,
       rm,
       /*(*/ [f,
-        LOCALS.frob] /*)*/] /*)*/,
+        frob] /*)*/] /*)*/,
     /*#*/ [decl,
       /*(*/ [/*(*/ [atm] /*)*/,
         or(
@@ -122,55 +122,55 @@ FUNCTIONS.exit =
     cond(
       /*(*/ [or(
           and(
-            LOCALS.atm = lookup(
+            atm = lookup(
                 1(
-                  LOCALS.pairs),
-                LOCALS.dobl),
+                  pairs),
+                dobl),
             gassigned_Q(
-              LOCALS.atm),
+              atm),
             type_Q(
-              /*,*/ [LOCALS.atm] /*1*/,
+              /*,*/ [atm] /*1*/,
               direction))),
         put(
-          LOCALS.f,
+          f,
           1,
-          LOCALS.atm),
+          atm),
         cond(
           /*(*/ [type_Q(
               2(
-                LOCALS.pairs),
+                pairs),
               string),
             put(
-              LOCALS.f,
+              f,
               2,
               find_room(
                 2(
-                  LOCALS.pairs)))] /*)*/,
+                  pairs)))] /*)*/,
           /*(*/ [put(
-              LOCALS.f,
+              f,
               2,
               2(
-                LOCALS.pairs))] /*)*/),
-        LOCALS.f = rest(
-            LOCALS.f,
+                pairs))] /*)*/),
+        f = rest(
+            f,
             2)] /*)*/,
       /*(*/ [t,
         put(
-          LOCALS.pairs,
+          pairs,
           1,
           error(
             illegal_direction,
             1(
-              LOCALS.pairs)))] /*)*/),
+              pairs)))] /*)*/),
     cond(
       /*(*/ [empty_Q(
-          LOCALS.pairs = rest(
-              LOCALS.pairs,
+          pairs = rest(
+              pairs,
               2)),
         return(
           )] /*)*/))
 chtype(
-    LOCALS.frob,
+    frob,
     exit)
   }
 
@@ -186,66 +186,66 @@ FUNCTIONS.room =
     bit) => {
     
     let rm = find_room(
-        LOCALS.id);
+        id);
     GLOBALS.score_max = _(
       GLOBALS.score_max,
-      LOCALS.val)
+      val)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rbits,
-    LOCALS.bit)
+    bit)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rval,
-    LOCALS.val)
+    val)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.robjs,
-    LOCALS.objs)
+    objs)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rdesc1,
-    LOCALS.d1)
+    d1)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rdesc2,
-    LOCALS.d2)
+    d2)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rexits,
-    LOCALS.ex)
+    ex)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.raction,
     cond(
       /*(*/ [type_Q(
-          LOCALS.app,
+          app,
           false,
           form),
         null] /*)*/,
-      /*(*/ [LOCALS.app] /*)*/))
+      /*(*/ [app] /*)*/))
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rlight_Q,
     cond(
       /*(*/ [type_Q(
-          LOCALS.lit_Q,
+          lit_Q,
           form),
         null] /*)*/,
       /*(*/ [t,
-        LOCALS.lit_Q] /*)*/))
+        lit_Q] /*)*/))
 mapf(
     null,
     /* FUNCTION */
       (x) => {
         
         put(
-        LOCALS.x,
+        x,
         GLOBALS.oroom,
-        LOCALS.rm)
+        rm)
       },
     robjs(
-      LOCALS.rm))
+      rm))
   }
 
 FUNCTIONS.sobject = 
@@ -255,16 +255,16 @@ FUNCTIONS.sobject =
     tup) => {
     
     object(
-    LOCALS.id,
+    id,
     "",
-    LOCALS.str,
+    str,
     /*%*/ [null] /*1*/,
     null,
     /*(*/ [] /*)*/,
     null,
     _(
       _X,
-      LOCALS.tup))
+      tup))
   }
 
 FUNCTIONS.aobject = 
@@ -275,16 +275,16 @@ FUNCTIONS.aobject =
     tup) => {
     
     object(
-    LOCALS.id,
+    id,
     "",
-    LOCALS.str,
+    str,
     /*%*/ [null] /*1*/,
-    LOCALS.app,
+    app,
     /*(*/ [] /*)*/,
     null,
     _(
       _X,
-      LOCALS.tup))
+      tup))
   }
 
 FUNCTIONS.object = 
@@ -304,13 +304,13 @@ FUNCTIONS.object =
     
     GLOBALS.score_max = _(
       GLOBALS.score_max,
-      LOCALS.s1,
-      LOCALS.s2)
+      s1,
+      s2)
 or(
     0_Q(
-      LOCALS.light_Q),
-    LOCALS.flags = _(
-        LOCALS.flags,
+      light_Q),
+    flags = _(
+        flags,
         GLOBALS.lightbit))
 put(
     put(
@@ -325,58 +325,58 @@ put(
                       put(
                         put(
                           find_obj(
-                            LOCALS.id),
+                            id),
                           GLOBALS.odesc1,
-                          LOCALS.desc1),
+                          desc1),
                         GLOBALS.ocapac,
-                        LOCALS.capac),
+                        capac),
                       GLOBALS.osize,
-                      LOCALS.size),
+                      size),
                     GLOBALS.odesco,
-                    LOCALS.desco),
+                    desco),
                   GLOBALS.olight_Q,
-                  LOCALS.light_Q),
+                  light_Q),
                 GLOBALS.oflags,
-                LOCALS.flags),
+                flags),
               GLOBALS.ofval,
-              LOCALS.s1),
+              s1),
             GLOBALS.otval,
-            LOCALS.s2),
+            s2),
           GLOBALS.ocan,
-          LOCALS.can),
+          can),
         GLOBALS.ocontents,
-        LOCALS.conts),
+        conts),
       GLOBALS.odesc2,
-      LOCALS.desc2),
+      desc2),
     GLOBALS.oaction,
     cond(
       /*(*/ [type_Q(
-          LOCALS.app,
+          app,
           false,
           form),
         null] /*)*/,
-      /*(*/ [LOCALS.app] /*)*/))
+      /*(*/ [app] /*)*/))
   }
 
 FUNCTIONS.find_prep = 
   (str) => {
     
     let atm = add_word(
-        LOCALS.str);
+        str);
     cond(
     /*(*/ [gassigned_Q(
-        LOCALS.atm),
+        atm),
       cond(
         /*(*/ [type_Q(
-            /*,*/ [LOCALS.atm] /*1*/,
+            /*,*/ [atm] /*1*/,
             prep),
-          /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+          /*,*/ [atm] /*1*/] /*)*/,
         /*(*/ [error(
             no_prep_X_errors)] /*)*/)] /*)*/,
     /*(*/ [setg(
-        LOCALS.atm,
+        atm,
         chtype(
-          LOCALS.atm,
+          atm,
           prep))] /*)*/)
   }
 
@@ -388,19 +388,19 @@ FUNCTIONS.add_action =
     
     let atm = or(
         lookup(
-          LOCALS.nam,
+          nam,
           GLOBALS.actions),
         insert(
-          LOCALS.nam,
+          nam,
           GLOBALS.actions));
     setg(
-    LOCALS.atm,
+    atm,
     chtype(
-      /*[*/ [LOCALS.atm,
+      /*[*/ [atm,
         make_action(
           _X,
-          LOCALS.decl),
-        LOCALS.str] /*]*/,
+          decl),
+        str] /*]*/,
       action))
   }
 
@@ -416,18 +416,18 @@ FUNCTIONS.add_directions =
       (x) => {
         
         setg(
-        LOCALS.atm = or(
+        atm = or(
             lookup(
-              LOCALS.x,
-              LOCALS.dir),
+              x,
+              dir),
             insert(
-              LOCALS.x,
-              LOCALS.dir)),
+              x,
+              dir)),
         chtype(
-          LOCALS.atm,
+          atm,
           direction))
       },
-    LOCALS.nms)
+    nms)
   }
 
 FUNCTIONS.dsynonym = 
@@ -438,24 +438,24 @@ FUNCTIONS.dsynonym =
     let val = null;
     let dir = GLOBALS.directions;
     let atm = null;
-    LOCALS.val = add_directions(
-      LOCALS.str)
+    val = add_directions(
+      str)
 mapf(
     null,
     /* FUNCTION */
       (x) => {
         
         setg(
-        LOCALS.atm = or(
+        atm = or(
             lookup(
-              LOCALS.x,
-              LOCALS.dir),
+              x,
+              dir),
             insert(
-              LOCALS.x,
-              LOCALS.dir)),
-        LOCALS.val)
+              x,
+              dir)),
+        val)
       },
-    LOCALS.nms)
+    nms)
   }
 
 FUNCTIONS.vsynonym = 
@@ -466,10 +466,10 @@ FUNCTIONS.vsynonym =
     let atm = null;
     let val = null;
     cond(
-    /*(*/ [LOCALS.atm = lookup(
-          LOCALS.n1,
+    /*(*/ [atm = lookup(
+          n1,
           GLOBALS.words),
-      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
+      val = /*,*/ [atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -477,15 +477,15 @@ FUNCTIONS.vsynonym =
             
             setg(
             add_word(
-              LOCALS.x),
-            LOCALS.val)
+              x),
+            val)
           },
-        LOCALS.n2)] /*)*/)
+        n2)] /*)*/)
 cond(
-    /*(*/ [LOCALS.atm = lookup(
-          LOCALS.n1,
+    /*(*/ [atm = lookup(
+          n1,
           GLOBALS.actions),
-      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
+      val = /*,*/ [atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -494,14 +494,14 @@ cond(
             setg(
             or(
               lookup(
-                LOCALS.x,
+                x,
                 GLOBALS.actions),
               insert(
-                LOCALS.x,
+                x,
                 GLOBALS.actions)),
-            LOCALS.val)
+            val)
           },
-        LOCALS.n2)] /*)*/)
+        n2)] /*)*/)
   }
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
@@ -511,10 +511,10 @@ FUNCTIONS.add_word =
     
     or(
     lookup(
-      LOCALS.w,
+      w,
       GLOBALS.words),
     insert(
-      LOCALS.w,
+      w,
       GLOBALS.words))
   }
 
@@ -529,12 +529,12 @@ FUNCTIONS.add_buzz =
         
         setg(
         add_word(
-          LOCALS.x),
+          x),
         chtype(
-          LOCALS.x,
+          x,
           buzz))
       },
-    LOCALS.w)
+    w)
   }
 
 FUNCTIONS.add_zork = 
@@ -549,13 +549,13 @@ FUNCTIONS.add_zork =
         
         let atm = null;
         setg(
-        LOCALS.atm = add_word(
-            LOCALS.x),
+        atm = add_word(
+            x),
         chtype(
-          LOCALS.atm,
-          LOCALS.nm))
+          atm,
+          nm))
       },
-    LOCALS.w)
+    w)
   }
 
 FUNCTIONS.add_object = 
@@ -565,7 +565,7 @@ FUNCTIONS.add_object =
     
     let objs = GLOBALS.object_obl;
     put(
-    LOCALS.obj,
+    obj,
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
@@ -574,15 +574,15 @@ FUNCTIONS.add_object =
           
           or(
           lookup(
-            LOCALS.x,
-            LOCALS.objs),
+            x,
+            objs),
           insert(
-            LOCALS.x,
-            LOCALS.objs))
+            x,
+            objs))
         },
-      LOCALS.names))
+      names))
 put(
-    LOCALS.obj,
+    obj,
     GLOBALS.oadjs,
     mapf(
       GLOBALS.uvector,
@@ -591,12 +591,12 @@ put(
           
           add_zork(
           adjective,
-          LOCALS.w)
+          w)
         },
-      LOCALS.adj))
+      adj))
 chutype(
     oadjs(
-      LOCALS.obj),
+      obj),
     adjective)
   }
 
@@ -608,10 +608,10 @@ FUNCTIONS.synonym =
     let atm = null;
     let val = null;
     cond(
-    /*(*/ [LOCALS.atm = lookup(
-          LOCALS.n1,
+    /*(*/ [atm = lookup(
+          n1,
           GLOBALS.words),
-      LOCALS.val = /*,*/ [LOCALS.atm] /*1*/,
+      val = /*,*/ [atm] /*1*/,
       mapf(
         null,
         /* FUNCTION */
@@ -619,10 +619,10 @@ FUNCTIONS.synonym =
             
             setg(
             add_word(
-              LOCALS.x),
-            LOCALS.val)
+              x),
+            val)
           },
-        LOCALS.n2)] /*)*/)
+        n2)] /*)*/)
   }
 
 FUNCTIONS.add_abbrev = 
@@ -631,13 +631,13 @@ FUNCTIONS.add_abbrev =
     
     setg(
     add_word(
-      LOCALS.x),
+      x),
     or(
       lookup(
-        LOCALS.y,
+        y,
         GLOBALS.words),
       insert(
-        LOCALS.y,
+        y,
         GLOBALS.words)))
   }
 
@@ -654,18 +654,18 @@ FUNCTIONS.add_demon =
             /*(*/ [_EQ_Q(
                 haction(
                   1(
-                    LOCALS.y)),
+                    y)),
                 haction(
-                  LOCALS.x)),
+                  x)),
               put(
-                LOCALS.y,
+                y,
                 1,
-                LOCALS.x),
+                x),
               mapleave(
                 t)] /*)*/)
           },
         GLOBALS.demons)] /*)*/,
-    /*(*/ [GLOBALS.demons = /*(*/ [LOCALS.x,
+    /*(*/ [GLOBALS.demons = /*(*/ [x,
           _X,
           GLOBALS.demons] /*)*/] /*)*/)
   }
@@ -673,7 +673,7 @@ FUNCTIONS.add_demon =
 FUNCTIONS.add_star = 
   (obj) => {
     
-    GLOBALS.stars = /*(*/ [LOCALS.obj,
+    GLOBALS.stars = /*(*/ [obj,
       _X,
       GLOBALS.stars] /*)*/
   }
@@ -691,16 +691,16 @@ FUNCTIONS.add_actor =
             cond(
             /*(*/ [_EQ_Q(
                 aobj(
-                  LOCALS.x),
+                  x),
                 aobj(
-                  LOCALS.adv)),
+                  adv)),
               mapleave(
                 t)] /*)*/)
           },
-        LOCALS.actors)] /*)*/,
-    /*(*/ [GLOBALS.actors = /*(*/ [LOCALS.adv,
+        actors)] /*)*/,
+    /*(*/ [GLOBALS.actors = /*(*/ [adv,
           _X,
-          LOCALS.actors] /*)*/] /*)*/)
+          actors] /*)*/] /*)*/)
   }
 
 FUNCTIONS.add_desc = 
@@ -708,9 +708,9 @@ FUNCTIONS.add_desc =
     str) => {
     
     put(
-    LOCALS.obj,
+    obj,
     GLOBALS.oread,
-    LOCALS.str)
+    str)
   }
 
 FUNCTIONS.sadd_action = 
@@ -718,10 +718,10 @@ FUNCTIONS.sadd_action =
   atm) => {
     
     add_action(
-    LOCALS.str1,
+    str1,
     "",
-    /*[*/ [/*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/)
+    /*[*/ [/*[*/ [str1,
+        atm] /*]*/] /*]*/)
   }
 
 FUNCTIONS.1add_action = 
@@ -730,11 +730,11 @@ FUNCTIONS.1add_action =
   atm) => {
     
     add_action(
-    LOCALS.str1,
-    LOCALS.str2,
+    str1,
+    str2,
     /*[*/ [obj,
-      /*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/)
+      /*[*/ [str1,
+        atm] /*]*/] /*]*/)
   }
 
 FUNCTIONS.aadd_action = 
@@ -743,11 +743,11 @@ FUNCTIONS.aadd_action =
   atm) => {
     
     add_action(
-    LOCALS.str1,
-    LOCALS.str2,
+    str1,
+    str2,
     /*[*/ [/*(*/ [_1,
         aobjs,
         no_take] /*)*/,
-      /*[*/ [LOCALS.str1,
-        LOCALS.atm] /*]*/] /*]*/)
+      /*[*/ [str1,
+        atm] /*]*/] /*]*/)
   }

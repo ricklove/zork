@@ -10,50 +10,50 @@ FUNCTIONS.boom_room =
     /*(*/ [or(
         _EQ_Q(
           vname(
-            LOCALS.prsact),
+            prsact),
           walk_in_X_words),
         and(
           _EQ_Q(
             vname(
-              LOCALS.prsact),
+              prsact),
             on_X_words),
-          LOCALS.dummy_Q = t)),
+          dummy_Q = t)),
       cond(
         /*(*/ [or(
             and(
               memq(
-                LOCALS.o = find_obj(
+                o = find_obj(
                     "CANDL"),
                 aobjs(
-                  LOCALS.win)),
+                  win)),
               1_Q(
                 olight_Q(
-                  LOCALS.o))),
+                  o))),
             and(
               memq(
-                LOCALS.o = find_obj(
+                o = find_obj(
                     "TORCH"),
                 aobjs(
-                  LOCALS.win)),
+                  win)),
               1_Q(
                 olight_Q(
-                  LOCALS.o)))),
+                  o)))),
           unwind(
             prog(
               /*(*/ [] /*)*/,
               cond(
-                /*(*/ [LOCALS.dummy_Q,
+                /*(*/ [dummy_Q,
                   tell(
                     "I didn't realize that adventurers are stupid enough to light a",
                     1,
                     odesc2(
-                      LOCALS.o),
+                      o),
                     "in a room which reeks of coal gas.\nFortunately, there is justice in the world.")] /*)*/,
                 /*(*/ [tell(
                     "Oh dear.  It appears that the smell coming from this room was coal\ngas.  I would have thought twice about carrying a",
                     1,
                     odesc2(
-                      LOCALS.o),
+                      o),
                     "in here.")] /*)*/),
               fweep(
                 7),
@@ -72,7 +72,7 @@ FUNCTIONS.bats_room =
     /*(*/ [and(
         _EQ_Q(
           vname(
-            LOCALS.prsact),
+            prsact),
           walk_in_X_words),
         not(
           memq(
@@ -83,7 +83,7 @@ FUNCTIONS.bats_room =
       fly_me(
         )] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.look_X_words),
       tell(
         "You are in a small room which has only one door, to the east."),
@@ -112,11 +112,11 @@ FUNCTIONS.fly_me =
       goto(
         find_room(
           pick_one(
-            LOCALS.bat_drops)))),
+            bat_drops)))),
     goto(
       find_room(
         pick_one(
-          LOCALS.bat_drops))))
+          bat_drops))))
 put(
     GLOBALS.prsvec,
     2,
@@ -131,11 +131,11 @@ FUNCTIONS.fweep =
     
     repeat(
     /*(*/ [/*(*/ [n,
-        LOCALS.num] /*)*/] /*)*/,
+        num] /*)*/] /*)*/,
     and(
       0_Q(
-        LOCALS.n = _(
-            LOCALS.n,
+        n = _(
+            n,
             1)),
       return(
         )),
@@ -143,9 +143,9 @@ FUNCTIONS.fweep =
       7),
     or(
       0_Q(
-        LOCALS.slp),
+        slp),
       sleep(
-        LOCALS.slp)))
+        slp)))
   }
 
 psetg(
@@ -186,65 +186,65 @@ FUNCTIONS.dumbwaiter =
     let dummy = GLOBALS.dummy;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.raise_X_words),
       cond(
-        /*(*/ [LOCALS.ct,
+        /*(*/ [ct,
           tell(
             pick_one(
               GLOBALS.dummy))] /*)*/,
         /*(*/ [remove_object(
-            LOCALS.tb),
+            tb),
           remove_object(
-            LOCALS.fb),
+            fb),
           insert_object(
-            LOCALS.tb,
-            LOCALS.top),
+            tb,
+            top),
           insert_object(
-            LOCALS.fb,
-            LOCALS.bot),
+            fb,
+            bot),
           tell(
             "The basket is raised to the top of the shaft."),
           GLOBALS.cage_top_X_flag = t] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.lower_X_words),
       cond(
         /*(*/ [not(
-            LOCALS.ct),
+            ct),
           tell(
             pick_one(
-              LOCALS.dummy))] /*)*/,
+              dummy))] /*)*/,
         /*(*/ [remove_object(
-            LOCALS.tb),
+            tb),
           remove_object(
-            LOCALS.fb),
+            fb),
           insert_object(
-            LOCALS.tb,
-            LOCALS.bot),
+            tb,
+            bot),
           insert_object(
-            LOCALS.fb,
-            LOCALS.top),
+            fb,
+            top),
           tell(
             "The basket is lowered to the bottom of the shaft."),
           GLOBALS.cage_top_X_flag = null,
           t] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.take_X_words),
       cond(
         /*(*/ [or(
             and(
-              LOCALS.ct,
+              ct,
               _EQ_Q(
-                LOCALS.here,
-                LOCALS.top)),
+                here,
+                top)),
             and(
               not(
-                LOCALS.ct),
+                ct),
               _EQ_Q(
-                LOCALS.here,
-                LOCALS.bot))),
+                here,
+                bot))),
           tell(
             "The cage is securely fastened to the iron chain.")] /*)*/,
         /*(*/ [tell(
@@ -258,7 +258,7 @@ FUNCTIONS.machine_room =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.look_X_words),
       tell(
         "You are in a large room which seems to be air-conditioned.  In one\ncorner there is a machine (?) which is shaped somewhat like a clothes\ndryer.  On the 'panel' there is a switch which is labelled in a\ndialect of Swahili.  Fortunately, I know this dialect and the label\ntranslates to START.  The switch does not appear to be manipulable by\nany human hand (unless the fingers are about 1/16 by 1/4 inch).  On\nthe front of the machine is a large lid."),
@@ -288,39 +288,39 @@ FUNCTIONS.machine_function =
       cond(
         /*(*/ [_EQ_Q(
             vname(
-              LOCALS.prsact),
+              prsact),
             open_X_words),
           cond(
             /*(*/ [oopen_Q(
-                LOCALS.mach),
+                mach),
               tell(
                 pick_one(
-                  LOCALS.dummy))] /*)*/,
+                  dummy))] /*)*/,
             /*(*/ [tell(
                 "The lid opens."),
               put(
-                LOCALS.mach,
+                mach,
                 GLOBALS.oopen_Q,
                 t)] /*)*/)] /*)*/,
         /*(*/ [_EQ_Q(
             vname(
-              LOCALS.prsact),
+              prsact),
             close_X_words),
           cond(
             /*(*/ [oopen_Q(
-                LOCALS.mach),
+                mach),
               tell(
                 "The lid closes."),
               put(
-                LOCALS.mach,
+                mach,
                 GLOBALS.oopen_Q,
                 null),
               t] /*)*/,
             /*(*/ [tell(
                 pick_one(
-                  LOCALS.dummy))] /*)*/)] /*)*/,
+                  dummy))] /*)*/)] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.prsact,
+            prsact,
             GLOBALS.take_X_words)] /*)*/)] /*)*/)
   }
 
@@ -340,58 +340,58 @@ FUNCTIONS.mswitch_function =
         "SCREW");
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.turn_X_words),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.imp,
-            LOCALS.screw),
+            imp,
+            screw),
           cond(
             /*(*/ [oopen_Q(
-                LOCALS.mach),
+                mach),
               tell(
                 "The machine doesn't seem to want to do anything.")] /*)*/,
             /*(*/ [tell(
                 "The machine comes to life (figuratively) with a dazzling display of\ncolored lights and bizarre noises.  After a few moments, the\nexcitement abates."),
               cond(
                 /*(*/ [memq(
-                    LOCALS.c,
+                    c,
                     ocontents(
-                      LOCALS.mach)),
+                      mach)),
                   put(
-                    LOCALS.mach,
+                    mach,
                     GLOBALS.ocontents,
                     splice_out(
-                      LOCALS.c,
+                      c,
                       ocontents(
-                        LOCALS.mach))),
+                        mach))),
                   put(
-                    LOCALS.mach,
+                    mach,
                     GLOBALS.ocontents,
-                    /*(*/ [LOCALS.d = find_obj(
+                    /*(*/ [d = find_obj(
                           "DIAMO"),
                       _X,
                       ocontents(
-                        LOCALS.mach)] /*)*/),
+                        mach)] /*)*/),
                   put(
-                    LOCALS.d,
+                    d,
                     GLOBALS.ocan,
-                    LOCALS.mach)] /*)*/,
+                    mach)] /*)*/,
                 /*(*/ [not(
                     empty_Q(
                       ocontents(
-                        LOCALS.mach))),
+                        mach))),
                   put(
-                    LOCALS.mach,
+                    mach,
                     GLOBALS.ocontents,
-                    /*(*/ [LOCALS.d = find_obj(
+                    /*(*/ [d = find_obj(
                           "GUNK")] /*)*/)] /*)*/,
                 /*(*/ [t] /*)*/)] /*)*/)] /*)*/,
         /*(*/ [tell(
             "It seems that a",
             1,
             odesc2(
-              LOCALS.imp),
+              imp),
             "won't do.")] /*)*/)] /*)*/)
   }
 
@@ -401,18 +401,18 @@ FUNCTIONS.gunk_function =
     let g = find_obj(
         "GUNK");
     let m = ocan(
-        LOCALS.g);
+        g);
     cond(
-    /*(*/ [LOCALS.m,
+    /*(*/ [m,
       put(
-        LOCALS.m,
+        m,
         GLOBALS.ocontents,
         splice_out(
-          LOCALS.g,
+          g,
           ocontents(
-            LOCALS.m))),
+            m))),
       put(
-        LOCALS.g,
+        g,
         GLOBALS.ocan,
         null),
       tell(
@@ -470,7 +470,7 @@ FUNCTIONS.stick_function =
     cond(
     /*(*/ [_EQ_Q(
         vname(
-          LOCALS.prsact),
+          prsact),
         wave_X_words),
       cond(
         /*(*/ [or(
@@ -513,7 +513,7 @@ FUNCTIONS.falls_room =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.look_X_words),
       tell(
         "You are at the top of Aragain Falls, an enormous waterfall with a\ndrop of about 450 feet.  The only path here is on the north end.\nThere is a man-sized barrel here which you could fit into."),
@@ -532,23 +532,23 @@ FUNCTIONS.digger =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prso,
+        prso,
         find_obj(
           "SHOVE"))] /*)*/,
     /*(*/ [trnn(
-        LOCALS.prso,
+        prso,
         GLOBALS.toolbit),
       tell(
         "Digging with the",
         1,
         odesc2(
-          LOCALS.prso),
+          prso),
         "is slow and tedious.")] /*)*/,
     /*(*/ [tell(
         "Digging with a",
         1,
         odesc2(
-          LOCALS.prso),
+          prso),
         "is silly.")] /*)*/)
   }
 
@@ -565,17 +565,17 @@ FUNCTIONS.dboat_function =
     cond(
     /*(*/ [_EQ_Q(
         vname(
-          LOCALS.prsact),
+          prsact),
         infla_X_words),
       tell(
         "This boat will not inflate since some moron put a hole in it.")] /*)*/,
     /*(*/ [_EQ_Q(
         vname(
-          LOCALS.prsact),
+          prsact),
         plug_X_words),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.prsi,
+            prsi,
             find_obj(
               "PUTTY")),
           tell(
@@ -583,9 +583,9 @@ FUNCTIONS.dboat_function =
           cond(
             /*(*/ [not(
                 oroom(
-                  LOCALS.dboat)),
+                  dboat)),
               drop_object(
-                LOCALS.dboat),
+                dboat),
               take_object(
                 find_obj(
                   "IBOAT"))] /*)*/,
@@ -595,9 +595,9 @@ FUNCTIONS.dboat_function =
               insert_object(
                 find_obj(
                   "IBOAT"),
-                LOCALS.here)] /*)*/)] /*)*/,
+                here)] /*)*/)] /*)*/,
         /*(*/ [with_tell(
-            LOCALS.prsi)] /*)*/)] /*)*/)
+            prsi)] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.rboat_function = 
@@ -611,10 +611,10 @@ FUNCTIONS.rboat_function =
         "IBOAT");
     let here = GLOBALS.here;
     cond(
-    /*(*/ [LOCALS.arg,
+    /*(*/ [arg,
       null] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.board_X_words),
       cond(
         /*(*/ [memq(
@@ -625,49 +625,49 @@ FUNCTIONS.rboat_function =
           tell(
             "There is a hissing sound and the boat deflates."),
           remove_object(
-            LOCALS.rboat),
+            rboat),
           insert_object(
             find_obj(
               "DBOAT"),
-            LOCALS.here),
+            here),
           t] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsact,
+        prsact,
         GLOBALS.disem_X_words),
       and(
         member(
           "RIVR",
           spname(
             rid(
-              LOCALS.here))),
+              here))),
         jigs_up(
           "Unfortunately, that leaves you in the water, where you drown."))] /*)*/,
     /*(*/ [_EQ_Q(
         vname(
-          LOCALS.prsact),
+          prsact),
         defla_X_words),
       cond(
         /*(*/ [_EQ_Q(
             avehicle(
               GLOBALS.winner),
-            LOCALS.rboat),
+            rboat),
           tell(
             "You can't deflate the boat while you're in it.")] /*)*/,
         /*(*/ [not(
             memq(
-              LOCALS.rboat,
+              rboat,
               robjs(
-                LOCALS.here))),
+                here))),
           tell(
             "The boat must be on the ground to be deflated.")] /*)*/,
         /*(*/ [tell(
             "The boat deflates."),
           GLOBALS.deflate_X_flag = t,
           remove_object(
-            LOCALS.rboat),
+            rboat),
           insert_object(
-            LOCALS.iboat,
-            LOCALS.here)] /*)*/)] /*)*/)
+            iboat,
+            here)] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.iboat_function = 
@@ -683,14 +683,14 @@ FUNCTIONS.iboat_function =
     cond(
     /*(*/ [_EQ_Q(
         vname(
-          LOCALS.prsact),
+          prsact),
         infla_X_words),
       cond(
         /*(*/ [not(
             memq(
-              LOCALS.iboat,
+              iboat,
               robjs(
-                LOCALS.here))),
+                here))),
           tell(
             "The boat must be on the ground to be inflated.")] /*)*/,
         /*(*/ [memq(
@@ -702,10 +702,10 @@ FUNCTIONS.iboat_function =
             "The boat inflates and appears seaworthy."),
           GLOBALS.deflate_X_flag = null,
           remove_object(
-            LOCALS.iboat),
+            iboat),
           insert_object(
-            LOCALS.rboat,
-            LOCALS.here)] /*)*/,
+            rboat,
+            here)] /*)*/,
         /*(*/ [tell(
             "I don't think you have enough lung-power to inflate this boat.")] /*)*/)] /*)*/)
   }
@@ -736,41 +736,41 @@ FUNCTIONS.shake =
     /*(*/ [and(
         not(
           oopen_Q(
-            LOCALS.prsobj)),
+            prsobj)),
         not(
           empty_Q(
             ocontents(
-              LOCALS.prsobj))),
+              prsobj))),
         tell(
           "It sounds like there is something inside the",
           1,
           odesc2(
-            LOCALS.prsobj),
+            prsobj),
           "."))] /*)*/,
     /*(*/ [and(
         oopen_Q(
-          LOCALS.prsobj),
+          prsobj),
         not(
           empty_Q(
             ocontents(
-              LOCALS.prsobj)))),
+              prsobj)))),
       mapf(
         null,
         /* FUNCTION */
           (x) => {
             
             put(
-            LOCALS.x,
+            x,
             GLOBALS.ocan,
             null)
 insert_object(
-            LOCALS.x,
-            LOCALS.here)
+            x,
+            here)
           },
         ocontents(
-          LOCALS.prsobj)),
+          prsobj)),
       put(
-        LOCALS.prsobj,
+        prsobj,
         GLOBALS.ocontents,
         /*(*/ [] /*)*/),
       tell(
@@ -805,31 +805,31 @@ FUNCTIONS.beach_room =
     /*(*/ [and(
         _EQ_Q(
           vname(
-            LOCALS.prsact),
+            prsact),
           dig_X_words),
         _EQ_Q(
-          LOCALS.shov,
+          shov,
           2(
             GLOBALS.prsvec))),
       put(
-        LOCALS.here,
+        here,
         GLOBALS.rvars,
-        LOCALS.cnt = _(
+        cnt = _(
             1,
             rvars(
-              LOCALS.here))),
+              here))),
       cond(
         /*(*/ [g_Q(
-            LOCALS.cnt,
+            cnt,
             4),
           put(
-            LOCALS.here,
+            here,
             GLOBALS.rvars,
             0),
           jigs_up(
             "The hole collapses, smothering you.")] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.cnt,
+            cnt,
             4),
           tell(
             "You can see a small statue here in the sand."),
@@ -838,16 +838,16 @@ FUNCTIONS.beach_room =
               "STATU"),
             GLOBALS.ovison),
           put(
-            LOCALS.here,
+            here,
             GLOBALS.rvars,
-            LOCALS.cnt)] /*)*/,
+            cnt)] /*)*/,
         /*(*/ [l_Q(
-            LOCALS.cnt,
+            cnt,
             0)] /*)*/,
         /*(*/ [tell(
             nth(
               GLOBALS.bdigs,
-              LOCALS.cnt))] /*)*/)] /*)*/)
+              cnt))] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.tcave_room = 
@@ -863,35 +863,35 @@ FUNCTIONS.tcave_room =
     /*(*/ [and(
         _EQ_Q(
           vname(
-            LOCALS.prsact),
+            prsact),
           dig_X_words),
         _EQ_Q(
           2(
             GLOBALS.prsvec),
-          LOCALS.shov)),
+          shov)),
       cond(
         /*(*/ [memq(
             find_obj(
               "GUANO"),
             robjs(
-              LOCALS.here)),
+              here)),
           put(
-            LOCALS.here,
+            here,
             GLOBALS.rvars,
-            LOCALS.cnt = _(
+            cnt = _(
                 1,
                 rvars(
-                  LOCALS.here))),
+                  here))),
           cond(
             /*(*/ [g_Q(
-                LOCALS.cnt,
+                cnt,
                 3),
               tell(
                 "This is getting you nowhere.")] /*)*/,
             /*(*/ [tell(
                 nth(
                   GLOBALS.cdigs,
-                  LOCALS.cnt))] /*)*/)] /*)*/,
+                  cnt))] /*)*/)] /*)*/,
         /*(*/ [tell(
             "There's nothing to dig into here.")] /*)*/)] /*)*/)
   }
@@ -953,7 +953,7 @@ FUNCTIONS.swimmer =
         "Swimming is not allowed in this dungeon.")] /*)*/,
     /*(*/ [tell(
         pick_one(
-          LOCALS.swimyuks))] /*)*/)
+          swimyuks))] /*)*/)
   }
 
 FUNCTIONS.grue_function = 
@@ -963,12 +963,12 @@ FUNCTIONS.grue_function =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.exami_X_words),
       tell(
         "The grue is a sinister, lurking presence in the dark places of the\nearth.  Its favorite diet is adventurers, but its insatiable\nappetite is tempered by its fear of light.  No grue has ever been\nseen by the light of day, and few have survived its fearsome jaws\nto tell the tale.")] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.find_X_words),
       tell(
         "There is no grue here, but I'm sure there is at least one lurking\nin the darkness nearby.  I wouldn't let my light go out if I were\nyou!")] /*)*/)
@@ -992,10 +992,10 @@ define(
         "BALLO")] /*)*/,
     /*(*/ [prsa,
       1(
-        LOCALS.prsvec)] /*)*/,
+        prsvec)] /*)*/,
     /*(*/ [prso,
       2(
-        LOCALS.prsvec)] /*)*/,
+        prsvec)] /*)*/,
     /*(*/ [cont,
       find_obj(
         "RECEP")] /*)*/,
@@ -1041,19 +1041,19 @@ define(
           room] /*>*/)] /*)*/] /*2*/,
   cond(
     /*(*/ [_EQ_Q(
-        LOCALS.arg,
+        arg,
         read_out),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.prsa,
+            prsa,
             GLOBALS.look_X_words),
           cond(
-            /*(*/ [LOCALS.binf,
+            /*(*/ [binf,
               tell(
                 "The cloth bag is inflated and there is a",
                 1,
                 odesc2(
-                  LOCALS.binf),
+                  binf),
                 "burning in the receptacle.")] /*)*/,
             /*(*/ [tell(
                 "The cloth bag is draped over the the basket.")] /*)*/),
@@ -1063,20 +1063,20 @@ define(
                 "The balloon is tied to the hook.")] /*)*/)] /*)*/),
       return(
         null,
-        LOCALS.ballact)] /*)*/),
+        ballact)] /*)*/),
   cond(
     /*(*/ [_EQ_Q(
-        LOCALS.arg,
+        arg,
         read_in),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.prsa,
+            prsa,
             GLOBALS.walk_X_words),
           cond(
-            /*(*/ [LOCALS.m = memq(
+            /*(*/ [m = memq(
                   chtype(
                     2(
-                      LOCALS.prsvec),
+                      prsvec),
                     atom),
                   rexits(
                     GLOBALS.here)),
@@ -1086,91 +1086,91 @@ define(
                     "You are tied to the ledge."),
                   return(
                     t,
-                    LOCALS.ballact)] /*)*/,
+                    ballact)] /*)*/,
                 /*(*/ [else,
                   and(
                     not(
                       rtrnn(
                         2(
-                          LOCALS.m),
+                          m),
                         GLOBALS.rmungbit)),
                     GLOBALS.bloc = 2(
-                        LOCALS.m)),
+                        m)),
                   return(
                     null,
-                    LOCALS.ballact)] /*)*/)] /*)*/,
+                    ballact)] /*)*/)] /*)*/,
             /*(*/ [tell(
                 "I'm afraid you can't control the balloon in this way."),
               return(
                 t,
-                LOCALS.ballact)] /*)*/)] /*)*/,
+                ballact)] /*)*/)] /*)*/,
         /*(*/ [and(
             _EQ_Q(
-              LOCALS.prsa,
+              prsa,
               GLOBALS.take_X_words),
             _EQ_Q(
               GLOBALS.binf_X_flag,
-              LOCALS.prso)),
+              prso)),
           tell(
             "You don't really want to hold a burning",
             1,
             odesc2(
-              LOCALS.prso),
+              prso),
             "."),
           return(
             t,
-            LOCALS.ballact)] /*)*/,
+            ballact)] /*)*/,
         /*(*/ [and(
             _EQ_Q(
-              LOCALS.prsa,
+              prsa,
               GLOBALS.put_X_words),
             _EQ_Q(
               3(
-                LOCALS.prsvec),
-              LOCALS.cont),
+                prsvec),
+              cont),
             not(
               empty_Q(
                 ocontents(
-                  LOCALS.cont)))),
+                  cont)))),
           tell(
             "The receptacle is already occupied."),
           return(
             t,
-            LOCALS.ballact)] /*)*/,
+            ballact)] /*)*/,
         /*(*/ [return(
             null,
-            LOCALS.ballact)] /*)*/)] /*)*/),
+            ballact)] /*)*/)] /*)*/),
   cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.burn_X_words),
       cond(
         /*(*/ [memq(
-            LOCALS.prso,
+            prso,
             ocontents(
-              LOCALS.cont)),
+              cont)),
           tell(
             "The",
             1,
             odesc2(
-              LOCALS.prso),
+              prso),
             "burns inside the receptacle."),
           GLOBALS.burnup_int = clock_int(
               GLOBALS.brnin,
               _(
                 osize(
-                  LOCALS.prso),
+                  prso),
                 20)),
           tro(
-            LOCALS.prso,
+            prso,
             GLOBALS.flamebit),
           trz(
-            LOCALS.prso,
+            prso,
             _(
               GLOBALS.takebit,
               GLOBALS.readbit)),
           put(
-            LOCALS.prso,
+            prso,
             GLOBALS.olight_Q,
             1),
           cond(
@@ -1181,25 +1181,25 @@ define(
                 /*(*/ [not(
                     GLOBALS.blab_X_flag),
                   put(
-                    LOCALS.ball,
+                    ball,
                     GLOBALS.ocontents,
-                    /*(*/ [LOCALS.blabe = find_obj(
+                    /*(*/ [blabe = find_obj(
                           "BLABE"),
                       _X,
                       ocontents(
-                        LOCALS.ball)] /*)*/),
+                        ball)] /*)*/),
                   put(
-                    LOCALS.blabe,
+                    blabe,
                     GLOBALS.ocan,
-                    LOCALS.ball)] /*)*/),
+                    ball)] /*)*/),
               GLOBALS.blab_X_flag = t,
-              GLOBALS.binf_X_flag = LOCALS.prso,
+              GLOBALS.binf_X_flag = prso,
               clock_int(
                 GLOBALS.bint,
                 3)] /*)*/)] /*)*/)] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.prsa,
+          prsa,
           GLOBALS.disem_X_words),
         rtrnn(
           GLOBALS.here,
@@ -1211,13 +1211,13 @@ define(
             3)] /*)*/),
       null] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.c_int_X_words),
       cond(
         /*(*/ [or(
             and(
               oopen_Q(
-                LOCALS.cont),
+                cont),
               GLOBALS.binf_X_flag),
             member(
               "LEDG",
@@ -1225,10 +1225,10 @@ define(
                 rid(
                   GLOBALS.here)))),
           rise_and_shine(
-            LOCALS.ball,
+            ball,
             GLOBALS.here)] /*)*/,
         /*(*/ [decline_and_fall(
-            LOCALS.ball,
+            ball,
             GLOBALS.here)] /*)*/)] /*)*/))
 
 GLOBALS.blab_X_flag = null
@@ -1248,22 +1248,22 @@ FUNCTIONS.rise_and_shine =
     let in_Q = _EQ_Q(
         avehicle(
           GLOBALS.winner),
-        LOCALS.ball);
+        ball);
     let bl = GLOBALS.bloc;
     let foo = null;
     clock_int(
     GLOBALS.bint,
     3)
 cond(
-    /*(*/ [LOCALS.m = member(
+    /*(*/ [m = member(
           "VAIR",
           spname(
             rid(
-              LOCALS.bl))),
+              bl))),
       cond(
         /*(*/ [__Q(
             rest(
-              LOCALS.m,
+              m,
               4),
             "4"),
           clock_disable(
@@ -1271,14 +1271,14 @@ cond(
           clock_disable(
             GLOBALS.bint),
           remove_object(
-            LOCALS.ball),
+            ball),
           insert_object(
             find_obj(
               "DBALL"),
             find_room(
               "VLBOT")),
           cond(
-            /*(*/ [LOCALS.in_Q,
+            /*(*/ [in_Q,
               jigs_up(
                 "Your balloon has hit the rim of the volcano, ripping the cloth and\ncausing you a 500 foot drop.  Did you get your flight insurance?")] /*)*/,
             /*(*/ [tell(
@@ -1288,55 +1288,55 @@ cond(
         /*(*/ [substruc(
             spname(
               rid(
-                LOCALS.bl)),
+                bl)),
             0,
             4,
-            LOCALS.s),
+            s),
           put(
-            LOCALS.s,
+            s,
             5,
             chtype(
               _(
                 chtype(
                   5(
-                    LOCALS.m),
+                    m),
                   fix),
                 1),
               character)),
           cond(
-            /*(*/ [LOCALS.in_Q,
+            /*(*/ [in_Q,
               goto(
                 GLOBALS.bloc = find_room(
-                    LOCALS.s)),
+                    s)),
               tell(
                 "The balloon ascends."),
               room_info(
                 t)] /*)*/,
             /*(*/ [put_balloon(
-                LOCALS.ball,
-                LOCALS.bl,
-                LOCALS.s,
+                ball,
+                bl,
+                s,
                 "ascends.")] /*)*/)] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.m = member(
+    /*(*/ [m = member(
           "LEDG",
           spname(
             rid(
-              LOCALS.bl))),
+              bl))),
       substruc(
         "VAIR",
         0,
         4,
-        LOCALS.s),
+        s),
       put(
-        LOCALS.s,
+        s,
         5,
         5(
-          LOCALS.m)),
+          m)),
       cond(
-        /*(*/ [LOCALS.in_Q,
+        /*(*/ [in_Q,
           goto(
             GLOBALS.bloc = find_room(
-                LOCALS.s)),
+                s)),
           tell(
             "The balloon leaves the ledge."),
           room_info(
@@ -1345,11 +1345,11 @@ cond(
             GLOBALS.vlgin,
             10),
           put_balloon(
-            LOCALS.ball,
-            LOCALS.bl,
-            LOCALS.s,
+            ball,
+            bl,
+            s,
             "floats away.  It seems to be ascending,\ndue to its light load.")] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.in_Q,
+    /*(*/ [in_Q,
       goto(
         GLOBALS.bloc = find_room(
             "VAIR1")),
@@ -1358,8 +1358,8 @@ cond(
       room_info(
         t)] /*)*/,
     /*(*/ [put_balloon(
-        LOCALS.ball,
-        LOCALS.bl,
+        ball,
+        bl,
         "VAIR1",
         "lifts off.")] /*)*/)
   }
@@ -1379,13 +1379,13 @@ FUNCTIONS.put_balloon =
     tell(
       "You watch as the balloon slowly",
       1,
-      LOCALS.str))
+      str))
 remove_object(
-    LOCALS.ball)
+    ball)
 insert_object(
-    LOCALS.ball,
+    ball,
     GLOBALS.bloc = find_room(
-        LOCALS.there))
+        there))
   }
 
 gdecl(
@@ -1403,25 +1403,25 @@ FUNCTIONS.decline_and_fall =
     let in_Q = _EQ_Q(
         avehicle(
           GLOBALS.winner),
-        LOCALS.ball);
+        ball);
     let foo = null;
     clock_int(
     GLOBALS.bint,
     3)
 cond(
-    /*(*/ [LOCALS.m = member(
+    /*(*/ [m = member(
           "VAIR",
           spname(
             rid(
-              LOCALS.bl))),
+              bl))),
       cond(
         /*(*/ [__Q(
             rest(
-              LOCALS.m,
+              m,
               4),
             "1"),
           cond(
-            /*(*/ [LOCALS.in_Q,
+            /*(*/ [in_Q,
               goto(
                 GLOBALS.bloc = find_room(
                     "VLBOT")),
@@ -1433,7 +1433,7 @@ cond(
                     t)] /*)*/,
                 /*(*/ [t,
                   remove_object(
-                    LOCALS.ball),
+                    ball),
                   insert_object(
                     find_obj(
                       "DBALL"),
@@ -1443,47 +1443,47 @@ cond(
                     GLOBALS.avehicle,
                     null),
                   clock_disable(
-                    LOCALS.foo = clock_int(
+                    foo = clock_int(
                         GLOBALS.bint,
                         0)),
                   tell(
                     "You have landed, but the balloon did not survive.")] /*)*/)] /*)*/,
             /*(*/ [put_balloon(
-                LOCALS.ball,
-                LOCALS.bl,
+                ball,
+                bl,
                 "VLBOT",
                 "lands.")] /*)*/)] /*)*/,
         /*(*/ [substruc(
             spname(
               rid(
-                LOCALS.bl)),
+                bl)),
             0,
             4,
-            LOCALS.s),
+            s),
           put(
-            LOCALS.s,
+            s,
             5,
             chtype(
               _(
                 chtype(
                   5(
-                    LOCALS.m),
+                    m),
                   fix),
                 1),
               character)),
           cond(
-            /*(*/ [LOCALS.in_Q,
+            /*(*/ [in_Q,
               goto(
                 GLOBALS.bloc = find_room(
-                    LOCALS.s)),
+                    s)),
               tell(
                 "The balloon descends."),
               room_info(
                 t)] /*)*/,
             /*(*/ [put_balloon(
-                LOCALS.ball,
-                LOCALS.bl,
-                LOCALS.s,
+                ball,
+                bl,
+                s,
                 "descends.")] /*)*/)] /*)*/)] /*)*/)
   }
 
@@ -1492,48 +1492,48 @@ FUNCTIONS.wire_function =
     
     let pv = GLOBALS.prsvec;
     let prsa = 1(
-        LOCALS.pv);
+        pv);
     let prso = 2(
-        LOCALS.pv);
+        pv);
     let prsi = 3(
-        LOCALS.pv);
+        pv);
     let bint = GLOBALS.bint;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.tie_X_words),
       cond(
         /*(*/ [and(
             _EQ_Q(
-              LOCALS.prso,
+              prso,
               find_obj(
                 "BROPE")),
             or(
               _EQ_Q(
-                LOCALS.prsi,
+                prsi,
                 find_obj(
                   "HOOK1")),
               _EQ_Q(
-                LOCALS.prsi,
+                prsi,
                 find_obj(
                   "HOOK2")))),
           GLOBALS.btie_X_flag = t,
           clock_disable(
-            LOCALS.bint),
+            bint),
           tell(
             "The balloon is fastened to the hook.")] /*)*/)] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.prsa,
+          prsa,
           GLOBALS.untie_X_words),
         _EQ_Q(
-          LOCALS.prso,
+          prso,
           find_obj(
             "BROPE"))),
       cond(
         /*(*/ [GLOBALS.btie_X_flag,
           clock_enable(
-            LOCALS.bint = clock_int(
+            bint = clock_int(
                 GLOBALS.bint,
                 3)),
           GLOBALS.btie_X_flag = null,
@@ -1550,19 +1550,19 @@ FUNCTIONS.burnup =
         "RECEP");
     let obj = 1(
         ocontents(
-          LOCALS.r));
+          r));
     put(
-    LOCALS.r,
+    r,
     GLOBALS.ocontents,
     splice_out(
-      LOCALS.obj,
+      obj,
       ocontents(
-        LOCALS.r)))
+        r)))
 tell(
     "It seems that the",
     1,
     odesc2(
-      LOCALS.obj),
+      obj),
     "has burned out, and the cloth\nbag starts to collapse.")
 GLOBALS.binf_X_flag = null
   }
@@ -1576,7 +1576,7 @@ FUNCTIONS.safe_room =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.look_X_words),
       tell(
         "You are in a dusty old room which is virtually featureless, except\nfor an exit on the north side.",
@@ -1595,12 +1595,12 @@ FUNCTIONS.safe_function =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.take_X_words),
       tell(
         "The box is imbedded in the wall.")] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.open_X_words),
       cond(
         /*(*/ [GLOBALS.safe_flag_X_flag,
@@ -1609,7 +1609,7 @@ FUNCTIONS.safe_function =
         /*(*/ [tell(
             "The box is rusted and will not open.")] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.close_X_words),
       cond(
         /*(*/ [GLOBALS.safe_flag_X_flag,
@@ -1618,7 +1618,7 @@ FUNCTIONS.safe_function =
         /*(*/ [tell(
             "The box is not open, chomper!")] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.blast_X_words),
       tell(
         "What do you expect, BOOM?")] /*)*/)
@@ -1635,7 +1635,7 @@ FUNCTIONS.brick_function =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.burn_X_words),
       jigs_up(
         GLOBALS.brick_boom)] /*)*/)
@@ -1654,64 +1654,64 @@ FUNCTIONS.fuse_function =
     let oc = null;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.burn_X_words),
       tell(
         "The wire starts to burn."),
       put(
-        LOCALS.fuse,
+        fuse,
         GLOBALS.orand,
         /*[*/ [0,
           clock_int(
             GLOBALS.fusin,
             2)] /*]*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.c_int_X_words),
       trz(
-        LOCALS.fuse,
+        fuse,
         GLOBALS.ovison),
       cond(
         /*(*/ [_EQ_Q(
             ocan(
-              LOCALS.fuse),
-            LOCALS.brick),
+              fuse),
+            brick),
           trz(
-            LOCALS.brick,
+            brick,
             GLOBALS.ovison),
           cond(
-            /*(*/ [LOCALS.oc = ocan(
-                  LOCALS.brick),
-              LOCALS.brick_room = oroom(
-                  LOCALS.oc)] /*)*/,
-            /*(*/ [LOCALS.brick_room = oroom(
-                  LOCALS.brick)] /*)*/),
+            /*(*/ [oc = ocan(
+                  brick),
+              brick_room = oroom(
+                  oc)] /*)*/,
+            /*(*/ [brick_room = oroom(
+                  brick)] /*)*/),
           or(
-            LOCALS.brick_room,
-            LOCALS.brick_room = GLOBALS.here),
+            brick_room,
+            brick_room = GLOBALS.here),
           cond(
             /*(*/ [_EQ_Q(
-                LOCALS.brick_room,
+                brick_room,
                 GLOBALS.here),
               mung_room(
-                LOCALS.brick_room,
+                brick_room,
                 "The way is blocked by debris from an explosion."),
               jigs_up(
                 GLOBALS.brick_boom)] /*)*/,
             /*(*/ [_EQ_Q(
-                LOCALS.brick_room,
+                brick_room,
                 find_room(
                   "SAFE")),
               clock_int(
                 GLOBALS.safin,
                 5),
               GLOBALS.munged_room = oroom(
-                  LOCALS.brick),
+                  brick),
               tell(
                 "There is an explosion nearby."),
               cond(
                 /*(*/ [memq(
-                    LOCALS.brick,
+                    brick,
                     ocontents(
                       find_obj(
                         "SSLOT"))),
@@ -1730,7 +1730,7 @@ FUNCTIONS.fuse_function =
               clock_int(
                 GLOBALS.safin,
                 5),
-              GLOBALS.munged_room = LOCALS.brick_room,
+              GLOBALS.munged_room = brick_room,
               mapf(
                 null,
                 /* FUNCTION */
@@ -1738,16 +1738,16 @@ FUNCTIONS.fuse_function =
                     
                     cond(
                     /*(*/ [can_take_Q(
-                        LOCALS.x),
+                        x),
                       trz(
-                        LOCALS.x,
+                        x,
                         GLOBALS.ovison)] /*)*/)
                   },
                 robjs(
-                  LOCALS.brick_room)),
+                  brick_room)),
               cond(
                 /*(*/ [_EQ_Q(
-                    LOCALS.brick_room,
+                    brick_room,
                     find_room(
                       "LROOM")),
                   mapf(
@@ -1756,7 +1756,7 @@ FUNCTIONS.fuse_function =
                       (x) => {
                         
                         put(
-                        LOCALS.x,
+                        x,
                         GLOBALS.ocan,
                         null)
                       },
@@ -1771,11 +1771,11 @@ FUNCTIONS.fuse_function =
         /*(*/ [or(
             not(
               oroom(
-                LOCALS.fuse)),
+                fuse)),
             _EQ_Q(
               GLOBALS.here,
               oroom(
-                LOCALS.fuse))),
+                fuse))),
           tell(
             "The wire rapidly burns into nothingness.")] /*)*/)] /*)*/)
   }
@@ -1787,11 +1787,11 @@ FUNCTIONS.safe_mung =
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
-        LOCALS.rm),
+        rm),
       jigs_up(
         cond(
           /*(*/ [rtrnn(
-              LOCALS.rm,
+              rm,
               GLOBALS.rhousebit),
             "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."] /*)*/,
           /*(*/ ["The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake."] /*)*/))] /*)*/,
@@ -1799,7 +1799,7 @@ FUNCTIONS.safe_mung =
         "You may recall your recent explosion.  Well, probably as a result of\nthat, you hear an ominous rumbling, as if one of the rooms in the\ndungeon had collapsed."),
       and(
         _EQ_Q(
-          LOCALS.rm,
+          rm,
           find_room(
             "SAFE")),
         clock_int(
@@ -1822,22 +1822,22 @@ FUNCTIONS.ledge_mung =
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
-        LOCALS.rm),
+        rm),
       cond(
         /*(*/ [avehicle(
             GLOBALS.winner),
           cond(
             /*(*/ [GLOBALS.btie_X_flag,
-              LOCALS.rm = find_room(
+              rm = find_room(
                   "VLBOT"),
-              GLOBALS.bloc = LOCALS.rm,
+              GLOBALS.bloc = rm,
               remove_object(
                 find_obj(
                   "BALLO")),
               insert_object(
                 find_obj(
                   "DBALL"),
-                LOCALS.rm),
+                rm),
               GLOBALS.btie_X_flag = null,
               GLOBALS.binf_X_flag = null,
               clock_disable(
@@ -1854,7 +1854,7 @@ FUNCTIONS.ledge_mung =
     /*(*/ [tell(
         "The ledge collapses, giving you a narrow escape.")] /*)*/)
 mung_room(
-    LOCALS.rm,
+    rm,
     "The ledge has collapsed and cannot be landed on.")
   }
 
@@ -1865,7 +1865,7 @@ FUNCTIONS.ledge_function =
         GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.walk_in_X_words),
       and(
         GLOBALS.safe_flag_X_flag,
@@ -1873,7 +1873,7 @@ FUNCTIONS.ledge_function =
           "Behind you, the walls of the safe room collapse into rubble."),
         GLOBALS.safe_flag_X_flag = null)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.look_X_words),
       tell(
         "You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.",
@@ -1926,43 +1926,43 @@ FUNCTIONS.gnome_function =
     
     let pv = GLOBALS.prsvec;
     let prsa = 1(
-        LOCALS.pv);
+        pv);
     let prso = 2(
-        LOCALS.pv);
+        pv);
     cond(
     /*(*/ [and(
         or(
           _EQ_Q(
-            LOCALS.prsa,
+            prsa,
             GLOBALS.give_X_words),
           _EQ_Q(
-            LOCALS.prsa,
+            prsa,
             GLOBALS.throw_X_words)),
         type_Q(
-          LOCALS.prso,
+          prso,
           object),
         cond(
           /*(*/ [n_EQ_Q(
               otval(
-                LOCALS.prso),
+                prso),
               0),
             tell(
               "Thank you very much for the",
               1,
               odesc2(
-                LOCALS.prso),
+                prso),
               ".  I don't believe \nI've ever seen one as beautiful. 'Follow me', he says, and a door \nappears on the west end of the ledge.  Through the door, you can see\na narrow chimney sloping steeply downward."),
             GLOBALS.gnome_door_X_flag = t] /*)*/,
           /*(*/ [tell(
               "'That wasn't quite what I had in mind', he says, crunching the",
               1,
               odesc2(
-                LOCALS.prso),
+                prso),
               "in his rock-hard hands."),
             remove_object(
-              LOCALS.prso)] /*)*/))] /*)*/,
+              prso)] /*)*/))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.prsa,
+        prsa,
         GLOBALS.c_int_X_words),
       tell(
         "The gnome glances at his watch.  'Oops.  I'm late for an\nappointment!' He disappears, leaving you alone on the ledge."),

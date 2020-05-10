@@ -49,10 +49,10 @@ defmac(
       chtype,
       form(
         andb,
-        LOCALS.bit,
+        bit,
         form(
           oflags,
-          LOCALS.obj)),
+          obj)),
       fix),
     0))
 
@@ -66,10 +66,10 @@ defmac(
       chtype,
       form(
         andb,
-        LOCALS.bit,
+        bit,
         form(
           rbits,
-          LOCALS.rm)),
+          rm)),
       fix),
     0))
 
@@ -79,16 +79,16 @@ defmac(
     () => bit] /*)*/,
   form(
     put,
-    LOCALS.rm,
+    rm,
     GLOBALS.rbits,
     form(
       andb,
       form(
         rbits,
-        LOCALS.rm),
+        rm),
       form(
         xorb,
-        LOCALS.bit,
+        bit,
         _1))))
 
 defmac(
@@ -97,14 +97,14 @@ defmac(
     () => bit] /*)*/,
   form(
     put,
-    LOCALS.obj,
+    obj,
     GLOBALS.oflags,
     form(
       xorb,
       form(
         oflags,
-        LOCALS.obj),
-      LOCALS.bit)))
+        obj),
+      bit)))
 
 defmac(
   trz,
@@ -112,16 +112,16 @@ defmac(
     () => bit] /*)*/,
   form(
     put,
-    LOCALS.obj,
+    obj,
     GLOBALS.oflags,
     form(
       andb,
       form(
         oflags,
-        LOCALS.obj),
+        obj),
       form(
         xorb,
-        LOCALS.bit,
+        bit,
         _1))))
 
 defmac(
@@ -130,14 +130,14 @@ defmac(
     () => bit] /*)*/,
   form(
     put,
-    LOCALS.obj,
+    obj,
     GLOBALS.oflags,
     form(
       orb,
       form(
         oflags,
-        LOCALS.obj),
-      LOCALS.bit)))
+        obj),
+      bit)))
 
 defmac(
   rtro,
@@ -145,14 +145,14 @@ defmac(
     () => bit] /*)*/,
   form(
     put,
-    LOCALS.rm,
+    rm,
     GLOBALS.rbits,
     form(
       orb,
       form(
         rbits,
-        LOCALS.rm),
-      LOCALS.bit)))
+        rm),
+      bit)))
 
 // room definition
 
@@ -369,10 +369,10 @@ defmac(
       chtype,
       form(
         andb,
-        LOCALS.bit,
+        bit,
         form(
           vword,
-          LOCALS.v)),
+          v)),
       fix),
     0))
 
@@ -670,7 +670,7 @@ defmac(
   /*(*/ [() => obj] /*)*/,
   form(
     trnn,
-    LOCALS.obj,
+    obj,
     form(
       _,
       GLOBALS.doorbit,
@@ -685,7 +685,7 @@ defmac(
     not,
     form(
       trnn,
-      LOCALS.obj,
+      obj,
       GLOBALS.ndescbit)))
 
 "if object is a light or aflame, then flaming"
@@ -697,13 +697,13 @@ defmac(
     and,
     form(
       trnn,
-      LOCALS.obj,
+      obj,
       GLOBALS.flamebit),
     form(
       1_Q,
       form(
         olight_Q,
-        LOCALS.obj))))
+        obj))))
 
 "if object visible and open or transparent, can see inside it"
 
@@ -714,15 +714,15 @@ defmac(
     and,
     form(
       ovis_Q,
-      LOCALS.obj),
+      obj),
     form(
       or,
       form(
         transparent_Q,
-        LOCALS.obj),
+        obj),
       form(
         oopen_Q,
-        LOCALS.obj))))
+        obj))))
 
 // demons
 
@@ -835,10 +835,10 @@ defmac(
         el,
         form(
           memq,
-          LOCALS.dir,
+          dir,
           form(
             rexits,
-            LOCALS.rm)))),
+            rm)))),
     /*#*/ [decl,
       /*(*/ [/*(*/ [el] /*)*/,
         /*<*/ [primtype(
@@ -867,10 +867,10 @@ defmac(
         el,
         form(
           memq,
-          LOCALS.dir,
+          dir,
           form(
             rexits,
-            LOCALS.rm)))),
+            rm)))),
     /*#*/ [decl,
       /*(*/ [/*(*/ [el] /*)*/,
         /*<*/ [primtype(
@@ -898,7 +898,7 @@ defmac(
     /*(*/ [/*(*/ [foo,
         form(
           oaction,
-          LOCALS.obj)] /*)*/] /*)*/,
+          obj)] /*)*/] /*)*/,
     form(
       cond,
       /*(*/ [form(
@@ -934,41 +934,41 @@ FUNCTIONS.remove_object =
     let ocan = null;
     let oroom = null;
     cond(
-    /*(*/ [LOCALS.ocan = ocan(
-          LOCALS.obj),
+    /*(*/ [ocan = ocan(
+          obj),
       put(
-        LOCALS.ocan,
+        ocan,
         GLOBALS.ocontents,
         splice_out(
-          LOCALS.obj,
+          obj,
           ocontents(
-            LOCALS.ocan)))] /*)*/,
-    /*(*/ [LOCALS.oroom = oroom(
-          LOCALS.obj),
+            ocan)))] /*)*/,
+    /*(*/ [oroom = oroom(
+          obj),
       put(
-        LOCALS.oroom,
+        oroom,
         GLOBALS.robjs,
         splice_out(
-          LOCALS.obj,
+          obj,
           robjs(
-            LOCALS.oroom)))] /*)*/,
+            oroom)))] /*)*/,
     /*(*/ [memq(
-        LOCALS.obj,
+        obj,
         robjs(
           GLOBALS.here)),
       put(
         GLOBALS.here,
         GLOBALS.robjs,
         splice_out(
-          LOCALS.obj,
+          obj,
           robjs(
             GLOBALS.here)))] /*)*/)
 put(
-    LOCALS.obj,
+    obj,
     GLOBALS.oroom,
     null)
 put(
-    LOCALS.obj,
+    obj,
     GLOBALS.ocan,
     null)
   }
@@ -979,17 +979,17 @@ defmac(
     () => room] /*)*/,
   form(
     put,
-    LOCALS.room,
+    room,
     GLOBALS.robjs,
     /*(*/ [form(
         put,
-        LOCALS.obj,
+        obj,
         GLOBALS.oroom,
-        LOCALS.room),
+        room),
       chtype(
         form(
           robjs,
-          LOCALS.room),
+          room),
         segment)] /*)*/))
 
 defmac(
@@ -1000,17 +1000,17 @@ defmac(
       () => GLOBALS.winner] /*)*/] /*)*/,
   form(
     put,
-    LOCALS.winner,
+    winner,
     GLOBALS.aobjs,
     /*(*/ [form(
         put,
-        LOCALS.obj,
+        obj,
         GLOBALS.oroom,
         null),
       chtype(
         form(
           aobjs,
-          LOCALS.winner),
+          winner),
         segment)] /*)*/))
 
 defmac(
@@ -1021,14 +1021,14 @@ defmac(
       () => GLOBALS.winner] /*)*/] /*)*/,
   form(
     put,
-    LOCALS.winner,
+    winner,
     GLOBALS.aobjs,
     form(
       splice_out,
-      LOCALS.obj,
+      obj,
       form(
         aobjs,
-        LOCALS.winner))))
+        winner))))
 
 FUNCTIONS.kill_obj = 
   (obj,
@@ -1036,18 +1036,18 @@ FUNCTIONS.kill_obj =
     
     cond(
     /*(*/ [memq(
-        LOCALS.obj,
+        obj,
         aobjs(
-          LOCALS.winner)),
+          winner)),
       put(
-        LOCALS.winner,
+        winner,
         GLOBALS.aobjs,
         splice_out(
-          LOCALS.obj,
+          obj,
           aobjs(
-            LOCALS.winner)))] /*)*/,
+            winner)))] /*)*/,
     /*(*/ [remove_object(
-        LOCALS.obj)] /*)*/)
+        obj)] /*)*/)
   }
 
 FUNCTIONS.flush_obj = 
@@ -1061,18 +1061,18 @@ FUNCTIONS.flush_obj =
       (x) => {
         
         let y = find_obj(
-            LOCALS.x);
+            x);
         and(
         memq(
-          LOCALS.y,
+          y,
           aobjs(
-            LOCALS.winner)),
+            winner)),
         drop_object(
           find_obj(
-            LOCALS.x),
-          LOCALS.winner))
+            x),
+          winner))
       },
-    LOCALS.objs)
+    objs)
   }
 
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
@@ -1090,25 +1090,25 @@ FUNCTIONS.rob_adv =
         /*(*/ [and(
             g_Q(
               otval(
-                LOCALS.x),
+                x),
               0),
             not(
               trnn(
-                LOCALS.x,
+                x,
                 GLOBALS.sacredbit))),
           put(
-            LOCALS.win,
+            win,
             GLOBALS.aobjs,
             splice_out(
-              LOCALS.x,
+              x,
               aobjs(
-                LOCALS.win))),
-          LOCALS.newlist = /*(*/ [LOCALS.x,
+                win))),
+          newlist = /*(*/ [x,
               _X,
-              LOCALS.newlist] /*)*/] /*)*/)
+              newlist] /*)*/] /*)*/)
       },
     aobjs(
-      LOCALS.win))
+      win))
   }
 
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
@@ -1127,36 +1127,36 @@ FUNCTIONS.rob_room =
         /*(*/ [and(
             g_Q(
               otval(
-                LOCALS.x),
+                x),
               0),
             not(
               trnn(
-                LOCALS.x,
+                x,
                 GLOBALS.sacredbit)),
             ovis_Q(
-              LOCALS.x),
+              x),
             prob(
-              LOCALS.prob)),
+              prob)),
           remove_object(
-            LOCALS.x),
+            x),
           put(
-            LOCALS.x,
+            x,
             GLOBALS.otouch_Q,
             t),
-          LOCALS.newlist = /*(*/ [LOCALS.x,
+          newlist = /*(*/ [x,
               _X,
-              LOCALS.newlist] /*)*/] /*)*/,
+              newlist] /*)*/] /*)*/,
         /*(*/ [type_Q(
             orand(
-              LOCALS.x),
+              x),
             adv),
-          LOCALS.newlist = rob_adv(
+          newlist = rob_adv(
               orand(
-                LOCALS.x),
-              LOCALS.newlist)] /*)*/)
+                x),
+              newlist)] /*)*/)
       },
     robjs(
-      LOCALS.rm))
+      rm))
   }
 
 FUNCTIONS.valuables_Q = 
@@ -1170,13 +1170,13 @@ FUNCTIONS.valuables_Q =
         cond(
         /*(*/ [g_Q(
             otval(
-              LOCALS.x),
+              x),
             0),
           mapleave(
             t)] /*)*/)
       },
     aobjs(
-      LOCALS.adv))
+      adv))
   }
 
 FUNCTIONS.armed_Q = 
@@ -1190,13 +1190,13 @@ FUNCTIONS.armed_Q =
         
         cond(
         /*(*/ [memq(
-            LOCALS.x,
-            LOCALS.weapons),
+            x,
+            weapons),
           mapleave(
             t)] /*)*/)
       },
     aobjs(
-      LOCALS.adv))
+      adv))
   }
 
 FUNCTIONS.light_source = 
@@ -1211,19 +1211,19 @@ FUNCTIONS.light_source =
         /*(*/ [not(
             0_Q(
               olight_Q(
-                LOCALS.x))),
+                x))),
           mapleave(
-            LOCALS.x)] /*)*/)
+            x)] /*)*/)
       },
     aobjs(
-      LOCALS.me))
+      me))
   }
 
 FUNCTIONS.get_demon = 
   (id) => {
     
     let obj = find_obj(
-        LOCALS.id);
+        id);
     let dems = GLOBALS.demons;
     mapf(
     null,
@@ -1233,12 +1233,12 @@ FUNCTIONS.get_demon =
         cond(
         /*(*/ [_EQ_Q(
             hobj(
-              LOCALS.x),
-            LOCALS.obj),
+              x),
+            obj),
           mapleave(
-            LOCALS.x)] /*)*/)
+            x)] /*)*/)
       },
-    LOCALS.dems)
+    dems)
   }
 
 defmac(
@@ -1246,7 +1246,7 @@ defmac(
   /*(*/ [() => vec] /*)*/,
   form(
     nth,
-    LOCALS.vec,
+    vec,
     form(
       _,
       1,
@@ -1256,14 +1256,14 @@ defmac(
           random),
         form(
           length,
-          LOCALS.vec)))))
+          vec)))))
 
 defmac(
   clock_disable,
   /*(*/ [() => ev] /*)*/,
   form(
     put,
-    LOCALS.ev,
+    ev,
     GLOBALS.cflag,
     null))
 
@@ -1272,7 +1272,7 @@ defmac(
   /*(*/ [() => ev] /*)*/,
   form(
     put,
-    LOCALS.ev,
+    ev,
     GLOBALS.cflag,
     t))
 
@@ -1282,22 +1282,22 @@ FUNCTIONS.yes_no =
     let inbuf = GLOBALS.inbuf;
     let inchan = GLOBALS.inchan;
     reset(
-    LOCALS.inchan)
+    inchan)
 readstring(
-    LOCALS.inbuf,
-    LOCALS.inchan,
+    inbuf,
+    inchan,
     GLOBALS.reader_string)
 cond(
-    /*(*/ [LOCALS.no_is_bad_Q,
+    /*(*/ [no_is_bad_Q,
       not(
         memq(
           1(
-            LOCALS.inbuf),
+            inbuf),
           "NnfF"))] /*)*/,
     /*(*/ [t,
       memq(
         1(
-          LOCALS.inbuf),
+          inbuf),
         "TtYy")] /*)*/)
   }
 
@@ -1311,26 +1311,26 @@ defmac(
     cond,
     /*(*/ [form(
         type_Q,
-        LOCALS.frob,
+        frob,
         atom),
       cond(
-        /*(*/ [LOCALS.mumble,
+        /*(*/ [mumble,
           form(
             apply,
             form(
               gval,
-              LOCALS.frob),
-            LOCALS.mumble)] /*)*/,
+              frob),
+            mumble)] /*)*/,
         /*(*/ [form(
             apply,
             form(
               gval,
-              LOCALS.frob))] /*)*/)] /*)*/,
+              frob))] /*)*/)] /*)*/,
     /*(*/ [t,
       form(
         dispatch,
-        LOCALS.frob,
-        LOCALS.mumble)] /*)*/))
+        frob,
+        mumble)] /*)*/))
 
 FUNCTIONS.da = 
   (fn,
@@ -1340,28 +1340,28 @@ FUNCTIONS.da =
     /*(*/ [] /*)*/,
     cond(
       /*(*/ [type_Q(
-          LOCALS.fn,
+          fn,
           fix),
         dispatch(
-          LOCALS.fn,
-          LOCALS.foo)] /*)*/,
+          fn,
+          foo)] /*)*/,
       /*(*/ [applicable_Q(
-          LOCALS.fn),
+          fn),
         cond(
-          /*(*/ [LOCALS.foo,
+          /*(*/ [foo,
             apply(
-              LOCALS.fn,
-              LOCALS.foo)] /*)*/,
+              fn,
+              foo)] /*)*/,
           /*(*/ [apply(
-              LOCALS.fn)] /*)*/)] /*)*/,
+              fn)] /*)*/)] /*)*/,
       /*(*/ [gassigned_Q(
-          LOCALS.fn),
-        LOCALS.fn = /*,*/ [LOCALS.fn] /*1*/,
+          fn),
+        fn = /*,*/ [fn] /*1*/,
         again(
           )] /*)*/,
       /*(*/ [error(
           unassigned_variable_X_errors,
-          LOCALS.fn,
+          fn,
           da)] /*)*/))
   }
 
@@ -1393,28 +1393,28 @@ FUNCTIONS.find_room =
     let room = null;
     cond(
     /*(*/ [type_Q(
-        LOCALS.id,
+        id,
         atom),
-      LOCALS.id = spname(
-          LOCALS.id)] /*)*/)
+      id = spname(
+          id)] /*)*/)
 cond(
     /*(*/ [and(
-        LOCALS.atm = lookup(
-            LOCALS.id,
+        atm = lookup(
+            id,
             GLOBALS.room_obl),
         gassigned_Q(
-          LOCALS.atm)),
-      /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+          atm)),
+      /*,*/ [atm] /*1*/] /*)*/,
     /*(*/ [or(
-        LOCALS.atm,
-        LOCALS.atm = insert(
-            LOCALS.id,
+        atm,
+        atm = insert(
+            id,
             GLOBALS.room_obl)),
       setg(
-        LOCALS.atm,
-        LOCALS.room = chtype(
+        atm,
+        room = chtype(
             vector(
-              LOCALS.atm,
+              atm,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
               null,
@@ -1427,10 +1427,10 @@ cond(
               0,
               t),
             room)),
-      GLOBALS.rooms = /*(*/ [LOCALS.room,
+      GLOBALS.rooms = /*(*/ [room,
           _X,
           GLOBALS.rooms] /*)*/,
-      LOCALS.room] /*)*/)
+      room] /*)*/)
   }
 
 FUNCTIONS.find_obj = 
@@ -1440,27 +1440,27 @@ FUNCTIONS.find_obj =
     let atm = null;
     cond(
     /*(*/ [type_Q(
-        LOCALS.id,
+        id,
         atom),
-      LOCALS.id = spname(
-          LOCALS.id)] /*)*/)
+      id = spname(
+          id)] /*)*/)
 cond(
     /*(*/ [and(
-        LOCALS.atm = lookup(
-            LOCALS.id,
+        atm = lookup(
+            id,
             GLOBALS.object_obl),
         gassigned_Q(
-          LOCALS.atm)),
-      /*,*/ [LOCALS.atm] /*1*/] /*)*/,
+          atm)),
+      /*,*/ [atm] /*1*/] /*)*/,
     /*(*/ [or(
-        LOCALS.atm,
-        LOCALS.atm = insert(
-            LOCALS.id,
+        atm,
+        atm = insert(
+            id,
             GLOBALS.object_obl)),
       setg(
-        LOCALS.atm,
-        LOCALS.obj = chtype(
-            /*[*/ [LOCALS.atm,
+        atm,
+        obj = chtype(
+            /*[*/ [atm,
               GLOBALS.null_syn,
               GLOBALS.null_desc,
               GLOBALS.null_desc,
@@ -1481,10 +1481,10 @@ cond(
               null,
               null] /*]*/,
             object)),
-      GLOBALS.objects = /*(*/ [LOCALS.obj,
+      GLOBALS.objects = /*(*/ [obj,
           _X,
           GLOBALS.objects] /*)*/,
-      LOCALS.obj] /*)*/)
+      obj] /*)*/)
   }
 
 FUNCTIONS.function_print = 
@@ -1492,32 +1492,32 @@ FUNCTIONS.function_print =
     
     cond(
     /*(*/ [not(
-        LOCALS.frob),
+        frob),
       princ(
         "<>")] /*)*/,
     /*(*/ [type_Q(
-        LOCALS.frob,
+        frob,
         rsubr,
         rsubr_entry),
       prin1(
         2(
-          LOCALS.frob))] /*)*/,
+          frob))] /*)*/,
     /*(*/ [type_Q(
-        LOCALS.frob,
+        frob,
         atom),
       prin1(
-        LOCALS.frob)] /*)*/,
+        frob)] /*)*/,
     /*(*/ [type_Q(
-        LOCALS.frob,
+        frob,
         offset),
       princ(
         "#OFFSET"),
       prin1(
         get_atom(
-          LOCALS.frob))] /*)*/,
+          frob))] /*)*/,
     /*(*/ [princ(
         "#FUNCTION"),
       prin1(
         get_atom(
-          LOCALS.frob))] /*)*/)
+          frob))] /*)*/)
   }

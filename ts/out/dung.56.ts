@@ -5353,7 +5353,7 @@ mapf(
       rtro(
       find_room(
         spname(
-          LOCALS.x)),
+          x)),
       GLOBALS.rfillbit)
     },
   _X,
@@ -5381,7 +5381,7 @@ mapf(
       
       rtro(
       find_room(
-        LOCALS.x),
+        x),
       GLOBALS.rhousebit)
     },
   /*[*/ ["LROOM",
@@ -5395,7 +5395,7 @@ mapf(
       
       rtro(
       find_room(
-        LOCALS.x),
+        x),
       GLOBALS.rsacredbit)
     },
   /*[*/ ["BSHAF",

@@ -3,25 +3,25 @@ FUNCTIONS.coke_bottles =
     
     let pv = GLOBALS.prsvec;
     let bottl = 2(
-        LOCALS.pv);
+        pv);
     let vb = 1(
-        LOCALS.pv);
+        pv);
     cond(
     /*(*/ [or(
         _EQ_Q(
-          LOCALS.vb,
+          vb,
           GLOBALS.throw_X_words),
         _EQ_Q(
           vname(
-            LOCALS.vb),
+            vb),
           mung_X_words)),
       tell(
         "Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately."),
       trz(
-        LOCALS.bottl,
+        bottl,
         GLOBALS.ovison),
       put(
-        LOCALS.bottl,
+        bottl,
         GLOBALS.osize,
         0),
       t] /*)*/)
@@ -32,42 +32,42 @@ FUNCTIONS.head_function =
     
     let pv = GLOBALS.prsvec;
     let vb = 1(
-        LOCALS.pv);
+        pv);
     let nl = /*(*/ [] /*)*/;
     let lcase = find_obj(
         "LCASE");
     cond(
     /*(*/ [n_EQ_Q(
-        LOCALS.vb,
+        vb,
         GLOBALS.read_X_words),
       tell(
         "Although the implementers are dead, they foresaw that some cretin\nwould tamper with their remains.  Therefore, they took steps to\nprevent this."),
-      LOCALS.nl = rob_adv(
+      nl = rob_adv(
           GLOBALS.winner,
-          LOCALS.nl),
-      LOCALS.nl = rob_room(
+          nl),
+      nl = rob_room(
           GLOBALS.here,
-          LOCALS.nl,
+          nl,
           100),
       cond(
         /*(*/ [not(
             empty_Q(
-              LOCALS.nl)),
+              nl)),
           or(
             oroom(
-              LOCALS.lcase),
+              lcase),
             insert_object(
-              LOCALS.lcase,
+              lcase,
               find_room(
                 "LROOM"))),
           put(
-            LOCALS.lcase,
+            lcase,
             GLOBALS.ocontents,
             /*(*/ [_X,
               ocontents(
-                LOCALS.lcase),
+                lcase),
               _X,
-              LOCALS.nl] /*)*/)] /*)*/),
+              nl] /*)*/)] /*)*/),
       jigs_up(
         "Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life."),
       t] /*)*/)
@@ -82,40 +82,40 @@ FUNCTIONS.bucket =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let po = 2(
-        LOCALS.pv);
+        pv);
     let w = find_obj(
         "WATER");
     let buck = find_obj(
         "BUCKE");
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.arg,
+        arg,
         read_in),
       null] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.c_int_X_words),
         cond(
           /*(*/ [memq(
-              LOCALS.w,
+              w,
               ocontents(
-                LOCALS.buck)),
+                buck)),
             remove_object(
-              LOCALS.w),
+              w),
             null] /*)*/,
           /*(*/ [t] /*)*/))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.arg,
+        arg,
         read_out),
       cond(
         /*(*/ [and(
             _EQ_Q(
               ocan(
-                LOCALS.w),
-              LOCALS.buck),
+                w),
+              buck),
             not(
               GLOBALS.bucket_top_X_flag)),
           tell(
@@ -124,8 +124,8 @@ FUNCTIONS.bucket =
           pass_the_bucket(
             find_room(
               "TWELL"),
-            LOCALS.pv,
-            LOCALS.buck),
+            pv,
+            buck),
           clock_int(
             GLOBALS.bckin,
             100),
@@ -134,16 +134,16 @@ FUNCTIONS.bucket =
             GLOBALS.bucket_top_X_flag,
             n_EQ_Q(
               ocan(
-                LOCALS.w),
-              LOCALS.buck)),
+                w),
+              buck)),
           tell(
             "The bucket descends and comes to a stop."),
           GLOBALS.bucket_top_X_flag = null,
           pass_the_bucket(
             find_room(
               "BWELL"),
-            LOCALS.pv,
-            LOCALS.buck)] /*)*/)] /*)*/)
+            pv,
+            buck)] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.pass_the_bucket = 
@@ -152,29 +152,29 @@ FUNCTIONS.pass_the_bucket =
     b) => {
     
     let pvs = 2(
-        LOCALS.pv);
+        pv);
     put(
-    LOCALS.pv,
+    pv,
     2,
     null)
 remove_object(
-    LOCALS.b)
+    b)
 insert_object(
-    LOCALS.b,
-    LOCALS.r)
+    b,
+    r)
 cond(
     /*(*/ [_EQ_Q(
         avehicle(
           GLOBALS.winner),
-        LOCALS.b),
+        b),
       goto(
-        LOCALS.r),
+        r),
       room_info(
         t)] /*)*/)
 put(
-    LOCALS.pv,
+    pv,
     2,
-    LOCALS.pvs)
+    pvs)
   }
 
 FUNCTIONS.eatme_function = 
@@ -188,50 +188,50 @@ FUNCTIONS.eatme_function =
     /*(*/ [and(
         _EQ_Q(
           1(
-            LOCALS.pv),
+            pv),
           GLOBALS.eat_X_words),
         _EQ_Q(
           2(
-            LOCALS.pv),
-          LOCALS.c = find_obj(
+            pv),
+          c = find_obj(
               "ECAKE")),
         _EQ_Q(
-          LOCALS.here,
+          here,
           find_room(
             "ALICE"))),
       tell(
         "Suddenly, the room appears to have become very large."),
       kill_obj(
-        LOCALS.c,
+        c,
         GLOBALS.winner),
-      LOCALS.r = find_room(
+      r = find_room(
           "ALISM"),
       put(
-        LOCALS.r,
+        r,
         GLOBALS.robjs,
         robjs(
-          LOCALS.here)),
+          here)),
       mapf(
         null,
         /* FUNCTION */
           (x) => {
             
             put(
-            LOCALS.x,
+            x,
             GLOBALS.osize,
             _(
               64,
               osize(
-                LOCALS.x)))
+                x)))
 put(
-            LOCALS.x,
+            x,
             GLOBALS.oroom,
-            LOCALS.r)
+            r)
           },
         robjs(
-          LOCALS.here)),
+          here)),
       goto(
-        LOCALS.r)] /*)*/)
+        r)] /*)*/)
   }
 
 FUNCTIONS.cake_function = 
@@ -239,11 +239,11 @@ FUNCTIONS.cake_function =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let po = 2(
-        LOCALS.pv);
+        pv);
     let pi = 3(
-        LOCALS.pv);
+        pv);
     let rice = find_obj(
         "RDICE");
     let oice = find_obj(
@@ -254,19 +254,19 @@ FUNCTIONS.cake_function =
     let r = null;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.read_X_words),
       cond(
-        /*(*/ [LOCALS.pi,
+        /*(*/ [pi,
           cond(
             /*(*/ [_EQ_Q(
-                LOCALS.pi,
+                pi,
                 find_obj(
                   "BOTTL")),
               tell(
                 "The letters appear larger, but still are too small to be read.")] /*)*/,
             /*(*/ [_EQ_Q(
-                LOCALS.pi,
+                pi,
                 find_obj(
                   "FLASK")),
               tell(
@@ -274,12 +274,12 @@ FUNCTIONS.cake_function =
                 1,
                 cond(
                   /*(*/ [_EQ_Q(
-                      LOCALS.po,
-                      LOCALS.rice),
+                      po,
+                      rice),
                     "Evaporate"] /*)*/,
                   /*(*/ [_EQ_Q(
-                      LOCALS.po,
-                      LOCALS.oice),
+                      po,
+                      oice),
                     "Explode"] /*)*/,
                   /*(*/ ["Enlarge"] /*)*/),
                 "'.")] /*)*/,
@@ -289,95 +289,95 @@ FUNCTIONS.cake_function =
             "The only writing legible is a capital E.  The rest is too small to\nbe clearly visible.")] /*)*/)] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.eat_X_words),
         member(
           "ALI",
           spname(
             rid(
-              LOCALS.here)))),
+              here)))),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.po,
-            LOCALS.oice),
+            po,
+            oice),
           kill_obj(
-            LOCALS.po,
+            po,
             GLOBALS.winner),
           iceboom(
             )] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.po,
-            LOCALS.bice),
+            po,
+            bice),
           kill_obj(
-            LOCALS.po,
+            po,
             GLOBALS.winner),
           tell(
             "The room around you seems to be getting smaller."),
           cond(
             /*(*/ [_EQ_Q(
-                LOCALS.here,
+                here,
                 find_room(
                   "ALISM")),
-              LOCALS.r = find_room(
+              r = find_room(
                   "ALICE"),
               put(
-                LOCALS.r,
+                r,
                 GLOBALS.robjs,
                 robjs(
-                  LOCALS.here)),
+                  here)),
               mapf(
                 null,
                 /* FUNCTION */
                   (x) => {
                     
                     put(
-                    LOCALS.x,
+                    x,
                     GLOBALS.oroom,
-                    LOCALS.r)
+                    r)
 put(
-                    LOCALS.x,
+                    x,
                     GLOBALS.osize,
                     _(
                       osize(
-                        LOCALS.x),
+                        x),
                       64))
                   },
                 robjs(
-                  LOCALS.here)),
+                  here)),
               goto(
-                LOCALS.r)] /*)*/,
+                r)] /*)*/,
             /*(*/ [jigs_up(
                 GLOBALS.crushed)] /*)*/)] /*)*/)] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.throw_X_words),
         _EQ_Q(
-          LOCALS.po,
-          LOCALS.oice),
+          po,
+          oice),
         member(
           "ALI",
           spname(
             rid(
-              LOCALS.here)))),
+              here)))),
       kill_obj(
-        LOCALS.po,
+        po,
         GLOBALS.winner),
       iceboom(
         )] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.throw_X_words),
         _EQ_Q(
-          LOCALS.po,
-          LOCALS.rice),
+          po,
+          rice),
         _EQ_Q(
-          LOCALS.pi,
+          pi,
           find_obj(
             "POOL"))),
       remove_object(
-        LOCALS.pi),
+        pi),
       tell(
         "The pool of water evaporates, revealing a tin of rare spices."),
       tro(
@@ -392,10 +392,10 @@ FUNCTIONS.flask_function =
     let f = null;
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.open_X_words),
       mung_room(
         GLOBALS.here,
@@ -404,17 +404,17 @@ FUNCTIONS.flask_function =
         GLOBALS.vapors)] /*)*/,
     /*(*/ [or(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.mung_X_words),
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.throw_X_words)),
       tell(
         "The flask breaks into pieces."),
-      LOCALS.f = 2(
-          LOCALS.pv),
+      f = 2(
+          pv),
       trz(
-        LOCALS.f,
+        f,
         GLOBALS.ovison),
       jigs_up(
         GLOBALS.vapors)] /*)*/)
@@ -448,20 +448,20 @@ FUNCTIONS.magnet_room =
     let foo = null;
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let po = 2(
-        LOCALS.pv);
+        pv);
     let here = GLOBALS.here;
     let m = null;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.look_X_words),
       tell(
         "You are in a room with a low ceiling which is circular in shape. \nThere are exits to the east and the southeast.")] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.walk_in_X_words),
         GLOBALS.carousel_flip_X_flag),
       cond(
@@ -472,7 +472,7 @@ FUNCTIONS.magnet_room =
             "As you enter, your compass starts spinning wildly."),
           null] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.walk_X_words),
       cond(
         /*(*/ [and(
@@ -484,9 +484,9 @@ FUNCTIONS.magnet_room =
             "You cannot get your bearings..."),
           goto(
             cxroom(
-              LOCALS.foo = nth(
+              foo = nth(
                   rexits(
-                    LOCALS.here),
+                    here),
                   _(
                     2,
                     _(
@@ -497,18 +497,18 @@ FUNCTIONS.magnet_room =
                         8)))))),
           room_info(
             )] /*)*/,
-        /*(*/ [LOCALS.m = memq(
+        /*(*/ [m = memq(
               chtype(
-                LOCALS.po,
+                po,
                 atom),
               rest(
                 rexits(
-                  LOCALS.here),
+                  here),
                 12)),
           goto(
             cxroom(
-              LOCALS.foo = 2(
-                  LOCALS.m))),
+              foo = 2(
+                  m))),
           room_info(
             )] /*)*/)] /*)*/)
   }
@@ -518,10 +518,10 @@ FUNCTIONS.cmach_room =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.look_X_words),
       tell(
         "You are in a large room full of assorted heavy machinery.  The room\nsmells of burned resistors. The room is noisy from the whirring\nsounds of the machines. Along one wall of the room are three buttons\nwhich are, respectively, round, triangular, and square.  Naturally,\nabove these buttons are instructions written in EBCDIC.  A large sign\nin English above all the buttons says\n		'DANGER -- HIGH VOLTAGE '.\nThere are exits to the west and the south.")] /*)*/)
@@ -537,12 +537,12 @@ FUNCTIONS.buttons =
     let i = null;
     let pv = GLOBALS.prsvec;
     let po = 2(
-        LOCALS.pv);
+        pv);
     let pa = 1(
-        LOCALS.pv);
+        pv);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.push_X_words),
       cond(
         /*(*/ [_EQ_Q(
@@ -551,7 +551,7 @@ FUNCTIONS.buttons =
           jigs_up(
             "There is a giant spark and you are fried to a crisp.")] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.po,
+            po,
             find_obj(
               "SQBUT")),
           cond(
@@ -562,7 +562,7 @@ FUNCTIONS.buttons =
               tell(
                 "The whirring increases in intensity slightly.")] /*)*/)] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.po,
+            po,
             find_obj(
               "RNBUT")),
           cond(
@@ -573,14 +573,14 @@ FUNCTIONS.buttons =
             /*(*/ [tell(
                 "Nothing seems to happen.")] /*)*/)] /*)*/,
         /*(*/ [_EQ_Q(
-            LOCALS.po,
+            po,
             find_obj(
               "TRBUT")),
           GLOBALS.carousel_flip_X_flag = not(
               GLOBALS.carousel_flip_X_flag),
           cond(
             /*(*/ [memq(
-                LOCALS.i = find_obj(
+                i = find_obj(
                     "IRBOX"),
                 robjs(
                   find_room(
@@ -588,7 +588,7 @@ FUNCTIONS.buttons =
               tell(
                 "A dull thump is heard in the distance."),
               trc(
-                LOCALS.i,
+                i,
                 GLOBALS.ovison)] /*)*/)] /*)*/)] /*)*/)
   }
 
@@ -603,21 +603,21 @@ FUNCTIONS.sphere_function =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let r = find_obj(
         "ROBOT");
     let c = null;
     let fl = null;
     let ract = null;
-    LOCALS.fl = and(
+    fl = and(
       not(
         GLOBALS.cage_solve_X_flag),
       _EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.take_X_words))
 cond(
     /*(*/ [and(
-        LOCALS.fl,
+        fl,
         _EQ_Q(
           GLOBALS.player,
           GLOBALS.winner)),
@@ -626,23 +626,23 @@ cond(
       cond(
         /*(*/ [_EQ_Q(
             oroom(
-              LOCALS.r),
+              r),
             GLOBALS.here),
           goto(
-            LOCALS.c = find_room(
+            c = find_room(
                 "CAGED")),
           remove_object(
-            LOCALS.r),
+            r),
           insert_object(
-            LOCALS.r,
-            LOCALS.c),
+            r,
+            c),
           put(
-            LOCALS.ract = orand(
-                LOCALS.r),
+            ract = orand(
+                r),
             GLOBALS.aroom,
-            LOCALS.c),
+            c),
           tro(
-            LOCALS.r,
+            r,
             GLOBALS.ndescbit),
           GLOBALS.sphere_clock = clock_int(
               GLOBALS.sphin,
@@ -659,7 +659,7 @@ cond(
             "You are stopped by a cloud of poisonous gas."),
           jigs_up(
             GLOBALS.poison)] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.fl,
+    /*(*/ [fl,
       trz(
         find_obj(
           "SPHER"),
@@ -667,10 +667,10 @@ cond(
       jigs_up(
         "As the robot reaches for the sphere, an iron cage falls from the\nceiling.  The robot attempts to fend it off, but is trapped below it.\nAlas, the robot short-circuits in his vain attempt to escape, and\ncrushes the sphere beneath him as he falls to the floor."),
       remove_object(
-        LOCALS.r),
+        r),
       trz(
         2(
-          LOCALS.pv),
+          pv),
         GLOBALS.ovison),
       insert_object(
         find_obj(
@@ -678,7 +678,7 @@ cond(
         GLOBALS.here),
       t] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.c_int_X_words),
       mung_room(
         find_room(
@@ -714,9 +714,9 @@ FUNCTIONS.robot_actor =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let po = 2(
-        LOCALS.pv);
+        pv);
     let c = null;
     let cage = null;
     let r = find_obj(
@@ -725,10 +725,10 @@ FUNCTIONS.robot_actor =
     cond(
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.raise_X_words),
         _EQ_Q(
-          LOCALS.po,
+          po,
           find_obj(
             "CAGE"))),
       tell(
@@ -737,52 +737,52 @@ FUNCTIONS.robot_actor =
         GLOBALS.sphere_clock),
       GLOBALS.winner = GLOBALS.player,
       goto(
-        LOCALS.c = find_room(
+        c = find_room(
             "CAGER")),
       insert_object(
-        LOCALS.cage = find_obj(
+        cage = find_obj(
             "CAGE"),
-        LOCALS.c),
+        c),
       tro(
-        LOCALS.cage,
+        cage,
         GLOBALS.takebit),
       trz(
-        LOCALS.cage,
+        cage,
         GLOBALS.ndescbit),
       trz(
-        LOCALS.r,
+        r,
         GLOBALS.ndescbit),
       tro(
         find_obj(
           "SPHER"),
         GLOBALS.takebit),
       remove_object(
-        LOCALS.r),
+        r),
       insert_object(
-        LOCALS.r,
-        LOCALS.c),
+        r,
+        c),
       put(
-        LOCALS.ract = orand(
-            LOCALS.r),
+        ract = orand(
+            r),
         GLOBALS.aroom,
-        LOCALS.c),
+        c),
       GLOBALS.cage_solve_X_flag = t] /*)*/,
     /*(*/ [or(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.eat_X_words),
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.drink_X_words)),
       tell(
         "\"I am sorry but that action is difficult in the absence of a mouth.\")] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.read_X_words),
       tell(
         "\"My vision is not that good without eyes.\")] /*)*/,
     /*(*/ [memq(
-        LOCALS.pa,
+        pa,
         GLOBALS.robot_actions),
       null] /*)*/,
     /*(*/ [tell(
@@ -794,50 +794,50 @@ FUNCTIONS.robot_function =
     
     let pv = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.pv);
+        pv);
     let po = 2(
-        LOCALS.pv);
+        pv);
     let pi = 3(
-        LOCALS.pv);
+        pv);
     let pp = null;
     let aa = null;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.give_X_words),
-      LOCALS.aa = orand(
-          LOCALS.pp = LOCALS.pi),
+      aa = orand(
+          pp = pi),
       remove_object(
-        LOCALS.po),
+        po),
       put(
-        LOCALS.aa,
+        aa,
         GLOBALS.aobjs,
-        /*(*/ [LOCALS.po,
+        /*(*/ [po,
           _X,
           aobjs(
-            LOCALS.aa)] /*)*/),
+            aa)] /*)*/),
       tell(
         "The robot gladly takes the",
         1,
         odesc2(
-          LOCALS.po),
+          po),
         "and nods his head-like appendage in thanks.")] /*)*/,
     /*(*/ [or(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.throw_X_words),
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.mung_X_words)),
       tell(
         "The robot is injured (being of shoddy construction) and falls to the\nfloor in a pile of garbage, which disintegrates before your eyes."),
       remove_object(
         cond(
           /*(*/ [_EQ_Q(
-              LOCALS.pa,
+              pa,
               GLOBALS.throw_X_words),
-            LOCALS.pi] /*)*/,
-          /*(*/ [LOCALS.po] /*)*/))] /*)*/)
+            pi] /*)*/,
+          /*(*/ [po] /*)*/))] /*)*/)
   }
 
 FUNCTIONS.knock = 
@@ -850,14 +850,14 @@ FUNCTIONS.knock =
     /*(*/ [memq(
         door_X_objects,
         onames(
-          LOCALS.prso)),
+          prso)),
       tell(
         "I don't think that anybody's home.")] /*)*/,
     /*(*/ [tell(
         "Why knock on a",
         0,
         odesc2(
-          LOCALS.prso),
+          prso),
         "?")] /*)*/)
   }
 

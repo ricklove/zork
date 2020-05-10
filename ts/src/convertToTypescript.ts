@@ -199,7 +199,7 @@ export const convertToTypescript = (node: ZNode): string => {
         if (firstNode && openSymbol === '.'
             && firstNode.kind === 'ZToken'
         ) {
-            return `LOCALS.${convertToTypescriptName(firstNode)}`;
+            return `${convertToTypescriptName(firstNode)}`;
         }
         // <LVAL atom>
         if (firstNode && openSymbol === '<'
@@ -208,7 +208,7 @@ export const convertToTypescript = (node: ZNode): string => {
             && nodes.length === 2
             && nodes[1].kind === 'ZToken'
         ) {
-            return `LOCALS.${convertToTypescriptName(nodes[1])}`;
+            return `${convertToTypescriptName(nodes[1])}`;
         }
         // <SET atom any>
         if (firstNode && openSymbol === '<'
@@ -217,7 +217,7 @@ export const convertToTypescript = (node: ZNode): string => {
             && nodes.length === 3
             && nodes[1].kind === 'ZToken'
         ) {
-            return `LOCALS.${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
+            return `${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
         }
 
         // Lazy Values

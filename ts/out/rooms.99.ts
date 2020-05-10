@@ -28,10 +28,10 @@ FUNCTIONS.save_it =
     GLOBALS.odesc1,
     unspeakable_code(
       ))
-GLOBALS.vers = LOCALS.st
+GLOBALS.vers = st
 GLOBALS.script_channel = null
 GLOBALS.raw_score = 0
-LOCALS.ih = on(
+ih = on(
       "IPC",
       GLOBALS.ilo,
       1)
@@ -40,7 +40,7 @@ handler(
     GLOBALS.divert_hand)
 cond(
     /*(*/ [g_Q(
-        LOCALS.muddle,
+        muddle,
         100),
       GLOBALS.scratch_str = istring(
           32),
@@ -55,7 +55,7 @@ int_level(
 cond(
     /*(*/ [__Q(
         save(
-          LOCALS.fn),
+          fn),
         "SAVED"),
       int_level(
         0),
@@ -65,11 +65,11 @@ cond(
       cond(
         /*(*/ [and(
             type_Q(
-              LOCALS.stv = starter(
+              stv = starter(
                   ),
               fix),
             g_Q(
-              LOCALS.stv,
+              stv,
               3)),
           or(
             member(
@@ -91,7 +91,7 @@ cond(
               quit(
                 )))] /*)*/,
         /*(*/ [type_Q(
-            LOCALS.stv,
+            stv,
             string),
           GLOBALS.snm = substruc(
               GLOBALS.scratch_str,
@@ -102,7 +102,7 @@ cond(
                 length(
                   memq(
                     _X__,
-                    LOCALS.stv))))] /*)*/),
+                    stv))))] /*)*/),
       cond(
         /*(*/ [g_Q(
             GLOBALS.muddle,
@@ -116,13 +116,13 @@ cond(
             uname(
               ),
             "ZORK")] /*)*/),
-      LOCALS.bh = on(
+      bh = on(
           "BLOCKED",
           GLOBALS.blo,
           100),
       start(
         "WHOUS",
-        LOCALS.st)] /*)*/)
+        st)] /*)*/)
   }
 
 "Stuff for diverting gc's"
@@ -155,7 +155,7 @@ FUNCTIONS.divert_fcn =
 GLOBALS.divert_amt = _(
       GLOBALS.divert_amt,
       GLOBALS.divert_inc,
-      LOCALS.amt)
+      amt)
 cond(
     /*(*/ [or(
         g_Q(
@@ -181,7 +181,7 @@ cond(
             GLOBALS.gc_hand)] /*)*/),
       bloat(
         _(
-          LOCALS.amt,
+          amt,
           GLOBALS.divert_inc)),
       // Get storage desired plus extra increment] /*)*/)
   }
@@ -225,15 +225,15 @@ FUNCTIONS.xuname =
         /*(*/ [or(
             0_Q(
               ascii(
-                LOCALS.x)),
+                x)),
             _EQ_Q(
               ascii(
-                LOCALS.x),
+                x),
               32)),
           mapstop(
             )] /*)*/,
         /*(*/ [t,
-          LOCALS.x] /*)*/)
+          x] /*)*/)
       },
     gxuname(
       ))
@@ -243,7 +243,7 @@ FUNCTIONS.its_get_name =
   (uname) => {
     
     let nm = field(
-        LOCALS.uname,
+        uname,
         GLOBALS._name);
     let cma = null;
     let jr = null;
@@ -253,89 +253,89 @@ FUNCTIONS.its_get_name =
     let tstr = null;
     let str = null;
     cond(
-    /*(*/ [LOCALS.nm,
+    /*(*/ [nm,
       cond(
-        /*(*/ [LOCALS.cma = memq(
+        /*(*/ [cma = memq(
               _X__,
-              LOCALS.nm),
-          LOCALS.llst = _(
+              nm),
+          llst = _(
               length(
-                LOCALS.nm),
+                nm),
               length(
-                LOCALS.cma)),
-          LOCALS.cma = rest(
-              LOCALS.cma),
-          LOCALS.lfst = length(
-              LOCALS.cma),
+                cma)),
+          cma = rest(
+              cma),
+          lfst = length(
+              cma),
           cond(
-            /*(*/ [LOCALS.jr = memq(
+            /*(*/ [jr = memq(
                   _X__,
-                  LOCALS.cma),
-              LOCALS.lfst = _(
-                  LOCALS.lfst,
+                  cma),
+              lfst = _(
+                  lfst,
                   length(
-                    LOCALS.jr))] /*)*/),
+                    jr))] /*)*/),
           repeat(
             /*(*/ [] /*)*/,
             cond(
               /*(*/ [empty_Q(
-                  LOCALS.cma),
+                  cma),
                 return(
                   )] /*)*/,
               /*(*/ [memq(
                   1(
-                    LOCALS.cma),
+                    cma),
                   /*%*/ [string(
                       ascii(
                         32),
                       ascii(
                         9))] /*1*/),
-                LOCALS.cma = rest(
-                    LOCALS.cma),
-                LOCALS.lfst = _(
-                    LOCALS.lfst,
+                cma = rest(
+                    cma),
+                lfst = _(
+                    lfst,
                     1)] /*)*/,
               /*(*/ [else,
                 return(
                   )] /*)*/)),
-          LOCALS.tlen = _(
-              LOCALS.lfst,
+          tlen = _(
+              lfst,
               1,
-              LOCALS.llst,
+              llst,
               length(
-                LOCALS.jr)),
-          LOCALS.str = istring(
-              LOCALS.tlen,
+                jr)),
+          str = istring(
+              tlen,
               _X__),
-          LOCALS.tstr = LOCALS.str,
+          tstr = str,
           substruc(
-            LOCALS.cma,
+            cma,
             0,
-            LOCALS.lfst,
-            LOCALS.tstr),
-          LOCALS.tstr = rest(
-              LOCALS.tstr,
+            lfst,
+            tstr),
+          tstr = rest(
+              tstr,
               _(
-                LOCALS.lfst,
+                lfst,
                 1)),
           substruc(
-            LOCALS.nm,
+            nm,
             0,
-            LOCALS.llst,
-            LOCALS.tstr),
+            llst,
+            tstr),
           and(
-            LOCALS.jr,
+            jr,
             substruc(
-              LOCALS.jr,
+              jr,
               0,
               length(
-                LOCALS.jr),
+                jr),
               rest(
-                LOCALS.tstr,
-                LOCALS.llst))),
-          GLOBALS.user_name = LOCALS.str] /*)*/,
+                tstr,
+                llst))),
+          GLOBALS.user_name = str] /*)*/,
         /*(*/ [else,
-          GLOBALS.user_name = LOCALS.nm] /*)*/)] /*)*/)
+          GLOBALS.user_name = nm] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.unspeakable_code = 
@@ -346,42 +346,42 @@ FUNCTIONS.unspeakable_code =
     let len_i = 0;
     let o = find_obj(
         "PAPER");
-    LOCALS.str = memq(
+    str = memq(
       _X__,
       oread(
-        LOCALS.o))
+        o))
 cond(
     /*(*/ [_EQ_Q(
         1(
           back(
-            LOCALS.str,
+            str,
             2)),
         _X_1),
-      LOCALS.str = back(
-          LOCALS.str,
+      str = back(
+          str,
           2),
-      LOCALS.len_i = 1] /*)*/,
-    /*(*/ [LOCALS.str = back(
-          LOCALS.str,
+      len_i = 1] /*)*/,
+    /*(*/ [str = back(
+          str,
           1)] /*)*/)
-LOCALS.nstr = rest(
+nstr = rest(
       memq(
         _X__,
         rest(
           memq(
             _X__,
-            LOCALS.str))),
+            str))),
       3)
 string(
     "There is an issue of US NEWS & DUNGEON REPORT dated",
     substruc(
-      LOCALS.str,
+      str,
       0,
       _(
         length(
-          LOCALS.str),
+          str),
         length(
-          LOCALS.nstr))),
+          nstr))),
     "here.")
   }
 
@@ -396,7 +396,7 @@ FUNCTIONS.remarkably_disgusting_code =
       GLOBALS.months,
       chtype(
         getbits(
-          LOCALS.n,
+          n,
           bits(
             4,
             23)),
@@ -405,7 +405,7 @@ FUNCTIONS.remarkably_disgusting_code =
     unparse(
       chtype(
         getbits(
-          LOCALS.n,
+          n,
           bits(
             5,
             18)),
@@ -437,14 +437,14 @@ FUNCTIONS.get_time =
       /*(*/ [n_EQ_Q(
           chtype(
             getbits(
-              LOCALS.now,
+              now,
               bits(
                 18,
                 18)),
             fix),
           chtype(
             getbits(
-              LOCALS.then,
+              then,
               bits(
                 18,
                 18)),
@@ -454,7 +454,7 @@ FUNCTIONS.get_time =
             _(
               chtype(
                 getbits(
-                  LOCALS.now,
+                  now,
                   bits(
                     18,
                     0)),
@@ -464,7 +464,7 @@ FUNCTIONS.get_time =
                 7200)),
             chtype(
               getbits(
-                LOCALS.then,
+                then,
                 bits(
                   18,
                   0)),
@@ -474,14 +474,14 @@ FUNCTIONS.get_time =
           _(
             chtype(
               getbits(
-                LOCALS.now,
+                now,
                 bits(
                   18,
                   0)),
               fix),
             chtype(
               getbits(
-                LOCALS.then,
+                then,
                 bits(
                   18,
                   0)),
@@ -496,11 +496,11 @@ FUNCTIONS.play_time =
     
     let time = null;
     let mins = null;
-    LOCALS.time = get_time(
+    time = get_time(
       )
 GLOBALS.tell_flag = t
 cond(
-    /*(*/ [LOCALS.loser_Q,
+    /*(*/ [loser_Q,
       princ(
         "You have been playing DUNGEON for")] /*)*/,
     /*(*/ [t,
@@ -508,54 +508,54 @@ cond(
         "Played for")] /*)*/)
 and(
     g_Q(
-      LOCALS.mins = _(
-          LOCALS.time,
+      mins = _(
+          time,
           3600),
       0),
     prin1(
-      LOCALS.mins),
+      mins),
     princ(
       "hour"),
     or(
       1_Q(
-        LOCALS.mins),
+        mins),
       princ(
         "s")),
     princ(
       ","))
 cond(
     /*(*/ [g_Q(
-        LOCALS.mins = mod(
+        mins = mod(
             _(
-              LOCALS.time,
+              time,
               60),
             60),
         0),
       prin1(
-        LOCALS.mins),
+        mins),
       princ(
         "minute"),
       cond(
         /*(*/ [not(
             1_Q(
-              LOCALS.mins)),
+              mins)),
           princ(
             "s")] /*)*/),
       princ(
         ", and")] /*)*/)
 prin1(
-    LOCALS.mins = mod(
-        LOCALS.time,
+    mins = mod(
+        time,
         60))
 princ(
     "second")
 or(
     1_Q(
-      LOCALS.mins),
+      mins),
     princ(
       "s"))
 cond(
-    /*(*/ [LOCALS.loser_Q,
+    /*(*/ [loser_Q,
       princ(
         ".")] /*)*/,
     /*(*/ [princ(
@@ -604,7 +604,7 @@ cond(
         assigned_Q(
           bh),
         off(
-          LOCALS.bh)),
+          bh)),
       int_level(
         0),
       GLOBALS.dbg = t,
@@ -614,10 +614,10 @@ cond(
         /*(*/ [and(
             not(
               empty_Q(
-                LOCALS.zork)),
+                zork)),
             _EQ_Q(
               1(
-                LOCALS.zork),
+                zork),
               control_g_Q_X_errors)),
           int_level(
             0),
@@ -644,26 +644,26 @@ cond(
                   _000000000015_] /*2*/] /*)*/)),
           erret(
             t,
-            LOCALS.frm)] /*)*/,
+            frm)] /*)*/,
         /*(*/ [and(
             _EQ_Q(
               length(
-                LOCALS.zork),
+                zork),
               3),
             _EQ_Q(
               1(
-                LOCALS.zork),
+                zork),
               file_system_error_X_errors),
             not(
-              LOCALS.zf = 3(
-                  LOCALS.zork)),
+              zf = 3(
+                  zork)),
             _EQ_Q(
               length(
-                LOCALS.zf),
+                zf),
               3),
             __Q(
               1(
-                LOCALS.zf),
+                zf),
               "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY")),
           // HACK FOR ILLEGAL CHR AFTER CTRL-P,
           put(
@@ -677,7 +677,7 @@ cond(
             0),
           erret(
             t,
-            LOCALS.frm)] /*)*/,
+            frm)] /*)*/,
         /*(*/ [tell(
             "I'm sorry, you seem to have encountered an error in the program.\nSend mail to DUNGEON@MIT-DMS describing what it was you tried to do."),
           tell(
@@ -688,9 +688,9 @@ cond(
               (x) => {
                 
                 print(
-                LOCALS.x)
+                x)
               },
-            LOCALS.zork),
+            zork),
           finish(
             /*#*/ [false,
               /*(*/ [". Error."] /*)*/] /*2*/)] /*)*/)] /*)*/)
@@ -746,7 +746,7 @@ FUNCTIONS.start =
     let muddle = GLOBALS.muddle;
     let xunm = xuname(
         );
-    GLOBALS.xunm = LOCALS.xunm
+    GLOBALS.xunm = xunm
 GLOBALS.ptemp = chtype(
       /*[*/ [chtype(
           with_X_words,
@@ -758,29 +758,29 @@ GLOBALS.intime = dskdate(
       )
 cond(
     /*(*/ [l_Q(
-        LOCALS.muddle,
+        muddle,
         100),
       and(
         g_Q(
           length(
-            LOCALS.xunm),
+            xunm),
           2),
         __Q(
           substruc(
-            LOCALS.xunm,
+            xunm,
             0,
             3),
           "___"),
         quit(
           )),
-      LOCALS.fn = its_get_name(
-          LOCALS.xunm)] /*)*/,
-    /*(*/ [LOCALS.fn = get_name(
+      fn = its_get_name(
+          xunm)] /*)*/,
+    /*(*/ [fn = get_name(
           )] /*)*/)
 cond(
-    /*(*/ [LOCALS.fn,
-      GLOBALS.user_name = LOCALS.fn] /*)*/,
-    /*(*/ [GLOBALS.user_name = LOCALS.xunm] /*)*/)
+    /*(*/ [fn,
+      GLOBALS.user_name = fn] /*)*/,
+    /*(*/ [GLOBALS.user_name = xunm] /*)*/)
 GLOBALS.deaths = 0
 GLOBALS.moves = 0
 GLOBALS.winner = GLOBALS.player
@@ -788,11 +788,11 @@ put(
     GLOBALS.winner,
     GLOBALS.aroom,
     GLOBALS.here = find_room(
-        LOCALS.rm))
+        rm))
 tell(
     "Welcome to Dungeon.",
     1,
-    LOCALS.st)
+    st)
 random(
     chtype(
       dskdate(
@@ -853,7 +853,7 @@ FUNCTIONS.make_script =
     cond(
     /*(*/ [GLOBALS.script_channel,
       null] /*)*/,
-    /*(*/ [LOCALS.ch = open(
+    /*(*/ [ch = open(
           "PRINT",
           string(
             "MARC;%Z",
@@ -863,13 +863,13 @@ FUNCTIONS.make_script =
         top(
           GLOBALS.inchan),
         1,
-        /*(*/ [LOCALS.ch] /*)*/),
+        /*(*/ [ch] /*)*/),
       put(
         top(
           GLOBALS.outchan),
         1,
-        /*(*/ [LOCALS.ch] /*)*/),
-      GLOBALS.script_channel = LOCALS.ch,
+        /*(*/ [ch] /*)*/),
+      GLOBALS.script_channel = ch,
       GLOBALS.my_script = t] /*)*/)
   }
 
@@ -904,46 +904,46 @@ cond(
     /*(*/ [and(
         or(
           g_Q(
-            LOCALS.muddle,
+            muddle,
             100),
           and(
             not(
               member(
                 "GUEST",
-                LOCALS.unm)),
-            LOCALS.ch = open(
+                unm)),
+            ch = open(
                 "READ",
                 ".FILE.",
                 "(DIR)",
                 "DSK",
-                LOCALS.unm),
+                unm),
             close(
-              LOCALS.ch),
-            LOCALS.ch = open(
+              ch),
+            ch = open(
                 "READ",
                 "_MSGS_",
-                LOCALS.unm,
+                unm,
                 "DSK",
-                LOCALS.unm),
+                unm),
             close(
-              LOCALS.ch))),
-        LOCALS.ch = open(
+              ch))),
+        ch = open(
             "PRINT",
             "ZORK",
             "SCRIPT",
             "DSK",
-            LOCALS.unm)),
+            unm)),
       put(
         top(
           GLOBALS.inchan),
         1,
-        /*(*/ [LOCALS.ch] /*)*/),
+        /*(*/ [ch] /*)*/),
       put(
         top(
           GLOBALS.outchan),
         1,
-        /*(*/ [LOCALS.ch] /*)*/),
-      GLOBALS.script_channel = LOCALS.ch,
+        /*(*/ [ch] /*)*/),
+      GLOBALS.script_channel = ch,
       cond(
         /*(*/ [l_Q(
             GLOBALS.muddle,
@@ -983,11 +983,11 @@ FUNCTIONS.do_unscript =
         GLOBALS.script_channel),
       GLOBALS.script_channel = null,
       and(
-        LOCALS.verbose,
+        verbose,
         tell(
           "Scripting off."))] /*)*/,
     /*(*/ [and(
-        LOCALS.verbose,
+        verbose,
         tell(
           "Scripting wasn't on."))] /*)*/)
   }
@@ -1005,35 +1005,35 @@ FUNCTIONS.do_save =
     cond(
     /*(*/ [or(
         g_Q(
-          LOCALS.muddle,
+          muddle,
           100),
         and(
           not(
             member(
               "GUEST",
-              LOCALS.unm)),
-          LOCALS.ch = open(
+              unm)),
+          ch = open(
               "READ",
               ".FILE.",
               "(DIR)",
               "DSK",
-              LOCALS.unm),
+              unm),
           close(
-            LOCALS.ch))),
+            ch))),
       cond(
         /*(*/ [or(
             g_Q(
-              LOCALS.muddle,
+              muddle,
               100),
             and(
-              LOCALS.ch = open(
+              ch = open(
                   "READ",
                   "_MSGS_",
-                  LOCALS.unm,
+                  unm,
                   "DSK",
-                  LOCALS.unm),
+                  unm),
               close(
-                LOCALS.ch))),
+                ch))),
           and(
             GLOBALS.script_channel,
             do_unscript(
@@ -1052,23 +1052,23 @@ FUNCTIONS.do_save =
           GLOBALS.played_time = get_time(
               ),
           cond(
-            /*(*/ [LOCALS.ch = open(
+            /*(*/ [ch = open(
                   "PRINTB",
                   cond(
                     /*(*/ [l_Q(
-                        LOCALS.muddle,
+                        muddle,
                         100),
                       string(
                         "DSK:",
-                        LOCALS.unm,
+                        unm,
                         ";ZORK SAVE")] /*)*/,
                     /*(*/ [t,
                       string(
                         "DSK:<",
-                        LOCALS.unm,
+                        unm,
                         ">ZORK.SAVE")] /*)*/)),
               save_game(
-                LOCALS.ch),
+                ch),
               finish(
                 chtype(
                   () => /*(*/ [". Saved."] /*)*/,
@@ -1077,11 +1077,11 @@ FUNCTIONS.do_save =
                 "Save failed."),
               tell(
                 1(
-                  LOCALS.ch),
+                  ch),
                 1,
                 "",
                 2(
-                  LOCALS.ch))] /*)*/)] /*)*/,
+                  ch))] /*)*/)] /*)*/,
         /*(*/ [tell(
             "Can't open channel for save.")] /*)*/)] /*)*/,
     /*(*/ [t,
@@ -1100,14 +1100,14 @@ FUNCTIONS.do_restore =
     let thend = null;
     cond(
     /*(*/ [l_Q(
-        LOCALS.muddle,
+        muddle,
         100),
-      LOCALS.str = string(
+      str = string(
           "DSK:",
           GLOBALS.xunm,
           ";ZORK SAVE")] /*)*/,
     /*(*/ [t,
-      LOCALS.str = string(
+      str = string(
           "DSK:<",
           GLOBALS.xunm,
           ">ZORK.SAVE")] /*)*/)
@@ -1126,20 +1126,20 @@ prog(
         special(
           string)] /*)*/] /*2*/,
     cond(
-      /*(*/ [LOCALS.ch = open(
+      /*(*/ [ch = open(
             "READB",
-            LOCALS.str),
+            str),
         cond(
           /*(*/ [restore_game(
-              LOCALS.ch),
+              ch),
             cond(
               /*(*/ [member(
                   GLOBALS.xunm,
                   GLOBALS.winners)] /*)*/,
               /*(*/ [_EQ_Q(
-                  LOCALS.nowd = chtype(
+                  nowd = chtype(
                       getbits(
-                        LOCALS.now = chtype(
+                        now = chtype(
                             dskdate(
                               ),
                             fix),
@@ -1147,7 +1147,7 @@ prog(
                           18,
                           18)),
                       fix),
-                  LOCALS.thend = chtype(
+                  thend = chtype(
                       getbits(
                         GLOBALS.then,
                         bits(
@@ -1157,7 +1157,7 @@ prog(
                 cond(
                   /*(*/ [g__Q(
                       _(
-                        LOCALS.now,
+                        now,
                         GLOBALS.then),
                       2400)] /*)*/,
                   /*(*/ [tell(
@@ -1177,15 +1177,15 @@ prog(
                       )] /*)*/)] /*)*/,
               /*(*/ [1_Q(
                   _(
-                    LOCALS.nowd,
-                    LOCALS.thend)),
+                    nowd,
+                    thend)),
                 cond(
                   /*(*/ [g__Q(
                       _(
                         _(
                           chtype(
                             getbits(
-                              LOCALS.now,
+                              now,
                               bits(
                                 18,
                                 0)),
@@ -1195,7 +1195,7 @@ prog(
                             7200)),
                         chtype(
                           getbits(
-                            LOCALS.now,
+                            now,
                             bits(
                               18,
                               0)),
@@ -1205,7 +1205,7 @@ prog(
                       "It's too soon."),
                     quit(
                       )] /*)*/)] /*)*/),
-            GLOBALS.intime = LOCALS.now,
+            GLOBALS.intime = now,
             tell(
               "Restored.")] /*)*/,
           /*(*/ [tell(
@@ -1213,24 +1213,24 @@ prog(
         room_desc(
           )] /*)*/,
       /*(*/ [and(
-          LOCALS.foo,
+          foo,
           g_Q(
-            LOCALS.muddle,
+            muddle,
             100)),
-        LOCALS.str = string(
+        str = string(
             sname(
               ),
             "ZORK.SAVE"),
-        LOCALS.foo = null,
+        foo = null,
         again(
           )] /*)*/,
       /*(*/ [tell(
           2(
-            LOCALS.ch),
+            ch),
           1,
           "",
           1(
-            LOCALS.ch))] /*)*/))
+            ch))] /*)*/))
   }
 
 FUNCTIONS.prob = 
@@ -1241,7 +1241,7 @@ FUNCTIONS.prob =
       random(
         ),
       100),
-    LOCALS.num)
+    num)
   }
 
 "GET-ATOM TAKES A VALUE AND SEARCHES INITIAL FOR FIRST ATOM\nSETG'ED TO THAT."
@@ -1271,17 +1271,17 @@ define(
             cond(
             /*(*/ [and(
                 gassigned_Q(
-                  LOCALS.x),
+                  x),
                 _EQ_Q(
-                  /*,*/ [LOCALS.x] /*1*/,
-                  LOCALS.val)),
+                  /*,*/ [x] /*1*/,
+                  val)),
               return(
-                LOCALS.x,
-                LOCALS.act)] /*)*/)
+                x,
+                act)] /*)*/)
           },
-        LOCALS.x)
+        x)
       },
-    LOCALS.o))
+    o))
 
 // ROOM-INFO --  PRINT SOMETHING ABOUT THIS PLACE  1. CHECK FOR LIGHT --> ELSE WARN LOSER  2. GIVE A DESCRIPTION OF THE ROOM  3. TELL WHAT'S ON THE FLOOR IN THE WAY OF OBJECTS  4. SIGNAL ENTRY INTO THE ROOM
 
@@ -1351,7 +1351,7 @@ FUNCTIONS.room_info =
     GLOBALS.tell_flag = t
 and(
     type_Q(
-      LOCALS.prso,
+      prso,
       direction),
     put(
       GLOBALS.prsvec,
@@ -1373,29 +1373,29 @@ prog(
         return(
           )] /*)*/,
       /*(*/ [and(
-          LOCALS.prso,
+          prso,
           type_Q(
-            LOCALS.prso,
+            prso,
             object)),
         cond(
           /*(*/ [object_action(
               )] /*)*/,
           /*(*/ [oread(
-              LOCALS.prso),
+              prso),
             tell(
               oread(
-                LOCALS.prso))] /*)*/,
+                prso))] /*)*/,
           /*(*/ [tell(
               "I see nothing special about the",
               1,
               odesc2(
-                LOCALS.prso),
+                prso),
               ".")] /*)*/),
         return(
           )] /*)*/,
       /*(*/ [not(
           lit_Q(
-            LOCALS.rm)),
+            rm)),
         tell(
           "It is pitch black.  You are likely to be eaten by a grue."),
         return(
@@ -1403,32 +1403,32 @@ prog(
       /*(*/ [or(
           and(
             not(
-              LOCALS.full),
+              full),
             GLOBALS.super_brief_X_flag),
           and(
             rseen_Q(
-              LOCALS.rm),
+              rm),
             or(
               GLOBALS.brief_X_flag,
               prob(
                 80)),
             not(
-              LOCALS.full))),
+              full))),
         tell(
           rdesc2(
-            LOCALS.rm))] /*)*/,
+            rm))] /*)*/,
       /*(*/ [and(
           empty_Q(
             rdesc1(
-              LOCALS.rm)),
-          LOCALS.ra = raction(
-              LOCALS.rm)),
+              rm)),
+          ra = raction(
+              rm)),
         put(
           GLOBALS.prsvec,
           1,
           GLOBALS.look_X_words),
         apply_random(
-          LOCALS.ra),
+          ra),
         put(
           GLOBALS.prsvec,
           1,
@@ -1436,18 +1436,18 @@ prog(
         // Something innocuous] /*)*/,
       /*(*/ [tell(
           rdesc1(
-            LOCALS.rm))] /*)*/),
+            rm))] /*)*/),
     put(
-      LOCALS.rm,
+      rm,
       GLOBALS.rseen_Q,
       t),
     and(
-      LOCALS.av,
+      av,
       tell(
         "You are in the",
         1,
         odesc2(
-          LOCALS.av),
+          av),
         ".")),
     mapf(
       null,
@@ -1457,19 +1457,19 @@ prog(
           cond(
           /*(*/ [and(
               ovis_Q(
-                LOCALS.x),
+                x),
               describable_Q(
-                LOCALS.x)),
+                x)),
             cond(
               /*(*/ [_EQ_Q(
-                  LOCALS.x,
-                  LOCALS.av)] /*)*/,
+                  x,
+                  av)] /*)*/,
               /*(*/ [t,
                 cond(
                   /*(*/ [long_desc_obj(
-                      LOCALS.x),
+                      x),
                     and(
-                      LOCALS.av,
+                      av,
                       tell(
                         "[in the room]",
                         0)),
@@ -1477,20 +1477,20 @@ prog(
                       )] /*)*/)] /*)*/),
             cond(
               /*(*/ [trnn(
-                  LOCALS.x,
+                  x,
                   GLOBALS.actorbit),
                 invent(
                   orand(
-                    LOCALS.x))] /*)*/,
+                    x))] /*)*/,
               /*(*/ [see_inside_Q(
-                  LOCALS.x),
+                  x),
                 print_cont(
-                  LOCALS.x,
-                  LOCALS.av,
-                  LOCALS.winobj,
+                  x,
+                  av,
+                  winobj,
                   GLOBALS.indentstr,
                   cond(
-                    /*(*/ [LOCALS.full] /*)*/,
+                    /*(*/ [full] /*)*/,
                     /*(*/ [GLOBALS.super_brief_X_flag,
                       null] /*)*/,
                     /*(*/ [GLOBALS.brief_X_flag,
@@ -1498,19 +1498,19 @@ prog(
                     /*(*/ [t] /*)*/))] /*)*/)] /*)*/)
         },
       robjs(
-        LOCALS.rm)),
+        rm)),
     cond(
       /*(*/ [and(
-          LOCALS.ra = raction(
-              LOCALS.rm),
+          ra = raction(
+              rm),
           not(
-            LOCALS.full)),
+            full)),
         put(
           GLOBALS.prsvec,
           1,
           GLOBALS.walk_in_X_words),
         apply_random(
-          LOCALS.ra),
+          ra),
         put(
           GLOBALS.prsvec,
           1,
@@ -1538,7 +1538,7 @@ define(
     "AUX",
     /*(*/ [cont,
       ocontents(
-        LOCALS.obj)] /*)*/] /*)*/,
+        obj)] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [av] /*)*/,
       or(
@@ -1560,43 +1560,43 @@ define(
   cond(
     /*(*/ [not(
         empty_Q(
-          LOCALS.cont)),
+          cont)),
       cond(
         /*(*/ [_EQ_Q(
-            LOCALS.obj,
+            obj,
             find_obj(
               "TCASE")),
           cond(
             /*(*/ [not(
-                LOCALS.case_Q),
+                case_Q),
               return(
                 t,
-                LOCALS.print_c)] /*)*/),
+                print_c)] /*)*/),
           tell(
             "Your collection of treasures consists of:")] /*)*/,
         /*(*/ [not(
             and(
               _EQ_Q(
                 length(
-                  LOCALS.cont),
+                  cont),
                 1),
               _EQ_Q(
                 1(
-                  LOCALS.cont),
+                  cont),
                 find_obj(
                   "#####")))),
           tell(
-            LOCALS.indent,
+            indent,
             0),
           tell(
             "The",
             1,
             odesc2(
-              LOCALS.obj),
+              obj),
             "contains:")] /*)*/,
         /*(*/ [return(
             t,
-            LOCALS.print_c)] /*)*/),
+            print_c)] /*)*/),
       mapf(
         null,
         /* FUNCTION */
@@ -1604,37 +1604,37 @@ define(
             
             cond(
             /*(*/ [and(
-                LOCALS.av,
+                av,
                 _EQ_Q(
-                  LOCALS.y,
-                  LOCALS.winobj))] /*)*/,
+                  y,
+                  winobj))] /*)*/,
             /*(*/ [and(
                 ovis_Q(
-                  LOCALS.y),
+                  y),
                 describable_Q(
-                  LOCALS.y),
+                  y),
                 not(
                   empty_Q(
                     odesc2(
-                      LOCALS.y)))),
+                      y)))),
               tell(
-                LOCALS.indent,
+                indent,
                 1,
                 "A",
                 odesc2(
-                  LOCALS.y))] /*)*/)
+                  y))] /*)*/)
 cond(
             /*(*/ [see_inside_Q(
-                LOCALS.y),
+                y),
               print_cont(
-                LOCALS.y,
-                LOCALS.av,
-                LOCALS.winobj,
+                y,
+                av,
+                winobj,
                 back(
-                  LOCALS.indent))] /*)*/)
+                  indent))] /*)*/)
           },
         ocontents(
-          LOCALS.obj))] /*)*/))
+          obj))] /*)*/))
 
 "GIVE LONG DESCRIPTION OF OBJECT"
 
@@ -1645,20 +1645,20 @@ FUNCTIONS.long_desc_obj =
     cond(
     /*(*/ [or(
         otouch_Q(
-          LOCALS.obj),
+          obj),
         not(
           odesco(
-            LOCALS.obj))),
-      LOCALS.str = odesc1(
-          LOCALS.obj)] /*)*/,
-    /*(*/ [LOCALS.str = odesco(
-          LOCALS.obj)] /*)*/)
+            obj))),
+      str = odesc1(
+          obj)] /*)*/,
+    /*(*/ [str = odesco(
+          obj)] /*)*/)
 cond(
     /*(*/ [empty_Q(
-        LOCALS.str),
+        str),
       null] /*)*/,
     /*(*/ [tell(
-        LOCALS.str,
+        str,
         0)] /*)*/)
   }
 
@@ -1694,11 +1694,11 @@ FUNCTIONS.rdcom =
     let outchan = GLOBALS.outchan;
     let random_action = null;
     or(
-    LOCALS.ivec,
+    ivec,
     prog(
       /*(*/ [] /*)*/,
       put(
-        LOCALS.outchan,
+        outchan,
         13,
         1000),
       room_info(
@@ -1711,33 +1711,33 @@ repeat(
         or(
           false,
           verb)] /*)*/] /*2*/,
-    LOCALS.vval = t,
+    vval = t,
     cond(
       /*(*/ [not(
-          LOCALS.ivec),
-        LOCALS.rm = GLOBALS.here,
+          ivec),
+        rm = GLOBALS.here,
         princ(
           ">"),
         GLOBALS.tell_flag = null,
-        LOCALS.inplen = readstring(
-            LOCALS.inbuf,
+        inplen = readstring(
+            inbuf,
             GLOBALS.inchan,
-            LOCALS.str),
+            str),
         readchr(
           GLOBALS.inchan),
         or(
           GLOBALS.alt_flag,
           readchr(
             GLOBALS.inchan)),
-        LOCALS.vc = lex(
-            LOCALS.inbuf,
+        vc = lex(
+            inbuf,
             rest(
-              LOCALS.inbuf,
-              LOCALS.inplen),
+              inbuf,
+              inplen),
             t)] /*)*/),
     cond(
       /*(*/ [g_Q(
-          LOCALS.inplen,
+          inplen,
           0),
         GLOBALS.moves = _(
             GLOBALS.moves,
@@ -1746,44 +1746,44 @@ repeat(
           /*(*/ [GLOBALS.parse_won = and(
                 eparse(
                   or(
-                    LOCALS.ivec,
-                    LOCALS.vc),
+                    ivec,
+                    vc),
                   null),
                 type_Q(
-                  LOCALS.cv = 1(
-                      LOCALS.rvec = GLOBALS.prsvec),
+                  cv = 1(
+                      rvec = GLOBALS.prsvec),
                   verb)),
             cond(
               /*(*/ [not(
-                  LOCALS.random_action = aaction(
-                      LOCALS.winner))] /*)*/,
+                  random_action = aaction(
+                      winner))] /*)*/,
               /*(*/ [apply_random(
-                  LOCALS.random_action),
+                  random_action),
                 return(
                   )] /*)*/),
             and(
-              LOCALS.av = avehicle(
-                  LOCALS.winner),
-              LOCALS.random_action = oaction(
-                  LOCALS.av),
-              LOCALS.vval = not(
+              av = avehicle(
+                  winner),
+              random_action = oaction(
+                  av),
+              vval = not(
                   apply_random(
-                    LOCALS.random_action,
+                    random_action,
                     read_in))),
             cond(
               /*(*/ [and(
-                  LOCALS.vval,
-                  LOCALS.random_action = vfcn(
-                      LOCALS.cv),
+                  vval,
+                  random_action = vfcn(
+                      cv),
                   apply_random(
-                    LOCALS.random_action)),
+                    random_action)),
                 cond(
                   /*(*/ [and(
-                      LOCALS.random_action = raction(
-                          LOCALS.rm = GLOBALS.here),
+                      random_action = raction(
+                          rm = GLOBALS.here),
                       apply_random(
-                        LOCALS.random_action))] /*)*/)] /*)*/)] /*)*/,
-          /*(*/ [LOCALS.ivec,
+                        random_action))] /*)*/)] /*)*/)] /*)*/,
+          /*(*/ [ivec,
             cond(
               /*(*/ [GLOBALS.tell_flag,
                 tell(
@@ -1806,24 +1806,24 @@ repeat(
         (x) => {
           
           cond(
-          /*(*/ [LOCALS.random_action = haction(
-                LOCALS.x),
+          /*(*/ [random_action = haction(
+                x),
             apply_random(
-              LOCALS.random_action,
-              LOCALS.x)] /*)*/)
+              random_action,
+              x)] /*)*/)
         },
       GLOBALS.demons),
     and(
       GLOBALS.parse_won,
-      LOCALS.av = avehicle(
-          LOCALS.winner),
-      LOCALS.random_action = oaction(
-          LOCALS.av),
+      av = avehicle(
+          winner),
+      random_action = oaction(
+          av),
       apply_random(
-        LOCALS.random_action,
+        random_action,
         read_out)),
     and(
-      LOCALS.ivec,
+      ivec,
       return(
         )))
   }
@@ -1834,13 +1834,13 @@ FUNCTIONS.score_obj =
     let temp = null;
     cond(
     /*(*/ [g_Q(
-        LOCALS.temp = ofval(
-            LOCALS.obj),
+        temp = ofval(
+            obj),
         0),
       score_upd(
-        LOCALS.temp),
+        temp),
       put(
-        LOCALS.obj,
+        obj,
         GLOBALS.ofval,
         0)] /*)*/)
   }
@@ -1851,13 +1851,13 @@ FUNCTIONS.score_room =
     let temp = null;
     cond(
     /*(*/ [g_Q(
-        LOCALS.temp = rval(
-            LOCALS.rm),
+        temp = rval(
+            rm),
         0),
       score_upd(
-        LOCALS.temp),
+        temp),
       put(
-        LOCALS.rm,
+        rm,
         GLOBALS.rval,
         0)] /*)*/)
   }
@@ -1867,34 +1867,34 @@ FUNCTIONS.score_upd =
     
     let winner = GLOBALS.winner;
     put(
-    LOCALS.winner,
+    winner,
     GLOBALS.ascore,
     _(
       ascore(
-        LOCALS.winner),
-      LOCALS.num))
+        winner),
+      num))
 GLOBALS.raw_score = _(
       GLOBALS.raw_score,
-      LOCALS.num)
+      num)
   }
 
 FUNCTIONS.score = 
   (ask_Q?) => {
     
     let scor = null;
-    let outchan = LOCALS.outchan;
+    let outchan = outchan;
     let pct = null;
     GLOBALS.tell_flag = t
 crlf(
     )
 cond(
-    /*(*/ [LOCALS.ask_Q,
+    /*(*/ [ask_Q,
       princ(
         "Your score would be")] /*)*/,
     /*(*/ [princ(
         "Your score is")] /*)*/)
 prin1(
-    LOCALS.scor = ascore(
+    scor = ascore(
         GLOBALS.winner))
 princ(
     "[total of")
@@ -1915,46 +1915,46 @@ crlf(
     )
 princ(
     "This score gives you the rank of")
-LOCALS.pct = _(
+pct = _(
       float(
-        LOCALS.scor),
+        scor),
       float(
         GLOBALS.score_max))
 princ(
     cond(
       /*(*/ [1_Q(
-          LOCALS.pct),
+          pct),
         "Cheater"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_95000000),
         "Wizard"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_89999999),
         "Master"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_79999999),
         "Winner"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_60000000),
         "Hacker"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_39999999),
         "Adventurer"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_19999999),
         "Junior Adventurer"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_09999999),
         "Novice Adventurer"] /*)*/,
       /*(*/ [g_Q(
-          LOCALS.pct,
+          pct,
           0_04999999),
         "Amateur Adventurer"] /*)*/,
       /*(*/ ["Beginner"] /*)*/))
@@ -1971,23 +1971,23 @@ FUNCTIONS.finish =
     unwind(
     prog(
       /*(*/ [] /*)*/,
-      LOCALS.scor = score(
-          LOCALS.ask_Q),
+      scor = score(
+          ask_Q),
       cond(
         /*(*/ [or(
             and(
-              LOCALS.ask_Q,
+              ask_Q,
               tell(
                 "Do you wish to leave the game? (Y is affirmative):"),
               yes_no(
                 null)),
             not(
-              LOCALS.ask_Q)),
+              ask_Q)),
           record(
-            LOCALS.scor,
+            scor,
             GLOBALS.moves,
             GLOBALS.deaths,
-            LOCALS.ask_Q,
+            ask_Q,
             GLOBALS.here),
           quit(
             )] /*)*/)),
@@ -2069,198 +2069,198 @@ define(
       prog(
         /*(*/ [] /*)*/,
         cond(
-          /*(*/ [LOCALS.ch = open(
+          /*(*/ [ch = open(
                 "READB",
                 "ZORK",
                 "LOG",
-                LOCALS.dev,
-                LOCALS.snm),
+                dev,
+                snm),
             cond(
               /*(*/ [g__Q(
-                  LOCALS.fl = file_length(
-                      LOCALS.ch),
+                  fl = file_length(
+                      ch),
                   1),
                 access(
-                  LOCALS.ch,
+                  ch,
                   _(
-                    LOCALS.fl,
+                    fl,
                     1)),
-                LOCALS.ct = readstring(
-                    LOCALS.str,
-                    LOCALS.ch,
+                ct = readstring(
+                    str,
+                    ch,
                     GLOBALS.recorder_string)] /*)*/),
             close(
-              LOCALS.ch),
+              ch),
             cond(
-              /*(*/ [LOCALS.ch = open(
+              /*(*/ [ch = open(
                     "PRINTO",
                     "ZORK",
                     "LOG",
-                    LOCALS.dev,
-                    LOCALS.snm)] /*)*/,
+                    dev,
+                    snm)] /*)*/,
               /*(*/ [and(
                   g_Q(
-                    LOCALS.muddle,
+                    muddle,
                     100),
                   _EQ_Q(
                     3(
-                      LOCALS.ch),
+                      ch),
                     _600123_)),
                 // Can't win--no write access,
                 return(
                   t,
-                  LOCALS.record)] /*)*/,
+                  record)] /*)*/,
               /*(*/ [t,
                 sleep(
                   1),
                 again(
                   )] /*)*/),
             access(
-              LOCALS.ch,
+              ch,
               max(
                 0,
                 _(
-                  LOCALS.fl,
+                  fl,
                   1))),
             printstring(
-              LOCALS.str,
-              LOCALS.ch,
-              LOCALS.ct)] /*)*/,
+              str,
+              ch,
+              ct)] /*)*/,
           /*(*/ [or(
               and(
                 l_Q(
-                  LOCALS.muddle,
+                  muddle,
                   100),
                 n_EQ_Q(
                   3(
-                    LOCALS.ch),
+                    ch),
                   _4000000_)),
               and(
                 g_Q(
-                  LOCALS.muddle,
+                  muddle,
                   100),
                 _EQ_Q(
                   3(
-                    LOCALS.ch),
+                    ch),
                   _600130_))),
             // on 10x, must get FILE BUSY to try again,
             sleep(
               1),
             again(
               )] /*)*/,
-          /*(*/ [LOCALS.ch = open(
+          /*(*/ [ch = open(
                 "PRINT",
                 "ZORK",
                 "LOG",
-                LOCALS.dev,
-                LOCALS.snm)] /*)*/,
+                dev,
+                snm)] /*)*/,
           /*(*/ [and(
               g_Q(
-                LOCALS.muddle,
+                muddle,
                 100),
               _EQ_Q(
                 3(
-                  LOCALS.ch),
+                  ch),
                 _600117_)),
             // No write access,
             return(
               t,
-              LOCALS.record)] /*)*/,
+              record)] /*)*/,
           /*(*/ [return(
               t,
-              LOCALS.record)] /*)*/)),
+              record)] /*)*/)),
       crlf(
-        LOCALS.ch),
+        ch),
       princ(
         "",
-        LOCALS.ch),
+        ch),
       princ(
         GLOBALS.user_name,
-        LOCALS.ch),
+        ch),
       cond(
         /*(*/ [n__Q(
             GLOBALS.user_name,
             GLOBALS.xunm),
           princ(
             "(",
-            LOCALS.ch),
+            ch),
           princ(
             GLOBALS.xunm,
-            LOCALS.ch),
+            ch),
           princ(
             _X__,
-            LOCALS.ch)] /*)*/),
+            ch)] /*)*/),
       princ(
         "",
-        LOCALS.ch),
+        ch),
       pdskdate(
         dskdate(
           ),
-        LOCALS.ch),
+        ch),
       crlf(
-        LOCALS.ch),
+        ch),
       play_time(
-        LOCALS.ch,
+        ch,
         null),
       crlf(
-        LOCALS.ch),
+        ch),
       prin1(
-        LOCALS.score,
-        LOCALS.ch),
+        score,
+        ch),
       princ(
         _X__,
-        LOCALS.ch),
+        ch),
       prin1(
         GLOBALS.score_max,
-        LOCALS.ch),
+        ch),
       princ(
         "points,",
-        LOCALS.ch),
+        ch),
       prin1(
-        LOCALS.moves,
-        LOCALS.ch),
+        moves,
+        ch),
       princ(
         "moves,",
-        LOCALS.ch),
+        ch),
       prin1(
-        LOCALS.deaths,
-        LOCALS.ch),
+        deaths,
+        ch),
       princ(
         "death",
-        LOCALS.ch),
+        ch),
       cond(
         /*(*/ [1_Q(
-            LOCALS.deaths),
+            deaths),
           princ(
             ".",
-            LOCALS.ch)] /*)*/,
+            ch)] /*)*/,
         /*(*/ [t,
           princ(
             "s.",
-            LOCALS.ch)] /*)*/),
+            ch)] /*)*/),
       princ(
         "In",
-        LOCALS.ch),
+        ch),
       princ(
         rdesc2(
-          LOCALS.loc),
-        LOCALS.ch),
+          loc),
+        ch),
       cond(
-        /*(*/ [LOCALS.quit_Q,
+        /*(*/ [quit_Q,
           princ(
             ". Quit.",
-            LOCALS.ch)] /*)*/,
+            ch)] /*)*/,
         /*(*/ [empty_Q(
-            LOCALS.quit_Q),
+            quit_Q),
           princ(
             ". Died.",
-            LOCALS.ch)] /*)*/,
+            ch)] /*)*/,
         /*(*/ [princ(
             1(
-              LOCALS.quit_Q),
-            LOCALS.ch)] /*)*/),
+              quit_Q),
+            ch)] /*)*/),
       crlf(
-        LOCALS.ch),
+        ch),
       mapf(
         null,
         /* FUNCTION */
@@ -2268,13 +2268,13 @@ define(
             y) => {
             
             cond(
-            /*(*/ [/*,*/ [LOCALS.x] /*1*/,
+            /*(*/ [/*,*/ [x] /*1*/,
               princ(
                 "/",
-                LOCALS.ch),
+                ch),
               princ(
-                LOCALS.y,
-                LOCALS.ch)] /*)*/)
+                y,
+                ch)] /*)*/)
           },
         GLOBALS.flag_names,
         GLOBALS.short_names),
@@ -2286,28 +2286,28 @@ define(
             
             cond(
             /*(*/ [0_Q(
-                /*,*/ [LOCALS.x] /*1*/),
+                /*,*/ [x] /*1*/),
               princ(
                 "/",
-                LOCALS.ch),
+                ch),
               princ(
-                LOCALS.y,
-                LOCALS.ch)] /*)*/)
+                y,
+                ch)] /*)*/)
           },
         GLOBALS.val_names,
         GLOBALS.short_val_names),
       crlf(
-        LOCALS.ch),
+        ch),
       close(
-        LOCALS.ch)),
+        ch)),
     and(
-      LOCALS.ch,
+      ch,
       not(
         0_Q(
           1(
-            LOCALS.ch))),
+            ch))),
       close(
-        LOCALS.ch))))
+        ch))))
 
 flag_names
 
@@ -2393,7 +2393,7 @@ FUNCTIONS.pdskdate =
     
     let tim = chtype(
         getbits(
-          LOCALS.wd,
+          wd,
           bits(
             18,
             0)),
@@ -2402,81 +2402,81 @@ FUNCTIONS.pdskdate =
     let hr = null;
     princ(
     "",
-    LOCALS.ch)
+    ch)
 cond(
     /*(*/ [0_Q(
         chtype(
-          LOCALS.wd,
+          wd,
           fix)),
       princ(
         "unknown",
-        LOCALS.ch)] /*)*/,
+        ch)] /*)*/,
     /*(*/ [t,
       princ(
         nth(
           GLOBALS.months,
           chtype(
             getbits(
-              LOCALS.wd,
+              wd,
               bits(
                 4,
                 23)),
             fix)),
-        LOCALS.ch),
+        ch),
       princ(
         "",
-        LOCALS.ch),
+        ch),
       prin1(
         chtype(
           getbits(
-            LOCALS.wd,
+            wd,
             bits(
               5,
               18)),
           fix),
-        LOCALS.ch),
+        ch),
       princ(
         "at",
-        LOCALS.ch),
-      LOCALS.hr = _(
-          LOCALS.tim,
+        ch),
+      hr = _(
+          tim,
           7200),
       cond(
         /*(*/ [g__Q(
-            LOCALS.hr,
+            hr,
             12),
-          LOCALS.hr = _(
-              LOCALS.hr,
+          hr = _(
+              hr,
               12),
-          LOCALS.a_p = "PM"] /*)*/),
+          a_p = "PM"] /*)*/),
       cond(
         /*(*/ [0_Q(
-            LOCALS.hr),
-          LOCALS.hr = 12] /*)*/),
+            hr),
+          hr = 12] /*)*/),
       prin1(
-        LOCALS.hr,
-        LOCALS.ch),
+        hr,
+        ch),
       princ(
         ":",
-        LOCALS.ch),
-      LOCALS.hr = _(
+        ch),
+      hr = _(
           mod(
-            LOCALS.tim,
+            tim,
             7200),
           120),
       cond(
         /*(*/ [l_Q(
-            LOCALS.hr,
+            hr,
             10),
           princ(
             "0",
-            LOCALS.ch)] /*)*/),
+            ch)] /*)*/),
       prin1(
-        LOCALS.hr,
-        LOCALS.ch),
+        hr,
+        ch),
       princ(
-        LOCALS.a_p,
-        LOCALS.ch)] /*)*/)
+        a_p,
+        ch)] /*)*/)
   }
 
 psetg(
@@ -2506,7 +2506,7 @@ FUNCTIONS.jigs_up =
     let winner = GLOBALS.winner;
     let deaths = GLOBALS.deaths;
     let aobjs = aobjs(
-        LOCALS.winner);
+        winner);
     let random_list = GLOBALS.random_list;
     let lamp = find_obj(
         "LAMP");
@@ -2516,28 +2516,28 @@ FUNCTIONS.jigs_up =
     cond(
     /*(*/ [GLOBALS.dbg,
       tell(
-        LOCALS.desc)] /*)*/,
+        desc)] /*)*/,
     /*(*/ [unwind(
         prog(
           /*(*/ [] /*)*/,
           cond(
             /*(*/ [n_EQ_Q(
-                LOCALS.winner,
+                winner,
                 GLOBALS.player),
               tell(
-                LOCALS.desc),
+                desc),
               tell(
                 "The",
                 1,
                 odesc2(
                   aobj(
-                    LOCALS.winner)),
+                    winner)),
                 "has died."),
               remove_object(
                 aobj(
-                  LOCALS.winner)),
+                  winner)),
               put(
-                LOCALS.winner,
+                winner,
                 GLOBALS.aroom,
                 find_room(
                   "FCHMP")),
@@ -2548,24 +2548,24 @@ FUNCTIONS.jigs_up =
           score_upd(
             _10),
           put(
-            LOCALS.winner,
+            winner,
             GLOBALS.avehicle,
             null),
           cond(
             /*(*/ [g__Q(
-                LOCALS.deaths,
+                deaths,
                 2),
               tell(
-                LOCALS.desc),
+                desc),
               tell(
                 "You clearly are a suicidal maniac.  We don't allow psychotics in the\ncave, since they may harm other adventurers.  Your remains will\ninstalled in the Land of the Living Dead, where your fellow adventurers \nmay gloat over them."),
               finish(
                 null)] /*)*/,
             /*(*/ [GLOBALS.deaths = _(
-                  LOCALS.deaths,
+                  deaths,
                   1),
               tell(
-                LOCALS.desc),
+                desc),
               tell(
                 "Do you want me to try to patch you?",
                 0),
@@ -2582,49 +2582,49 @@ FUNCTIONS.jigs_up =
                   tell(
                     "Now, let me see...\nWell, we weren't quite able to restore your state.  You can't have\neverything."),
                   cond(
-                    /*(*/ [LOCALS.lamp_location = oroom(
-                          LOCALS.lamp),
+                    /*(*/ [lamp_location = oroom(
+                          lamp),
                       put(
-                        LOCALS.winner,
+                        winner,
                         GLOBALS.aobjs,
-                        /*(*/ [LOCALS.lamp,
+                        /*(*/ [lamp,
                           _X,
-                          LOCALS.aobjs] /*)*/),
+                          aobjs] /*)*/),
                       cond(
                         /*(*/ [memq(
-                            LOCALS.lamp,
+                            lamp,
                             robjs(
-                              LOCALS.lamp_location)),
+                              lamp_location)),
                           remove_object(
-                            LOCALS.lamp)] /*)*/,
-                        /*(*/ [LOCALS.lc = ocan(
-                              LOCALS.lamp),
+                            lamp)] /*)*/,
+                        /*(*/ [lc = ocan(
+                              lamp),
                           put(
-                            LOCALS.lc,
+                            lc,
                             GLOBALS.ocontents,
                             splice_out(
-                              LOCALS.lamp,
+                              lamp,
                               ocontents(
-                                LOCALS.lc))),
+                                lc))),
                           put(
-                            LOCALS.lamp,
+                            lamp,
                             GLOBALS.oroom,
                             null),
                           put(
-                            LOCALS.lamp,
+                            lamp,
                             GLOBALS.ocan,
                             null)] /*)*/)] /*)*/,
                     /*(*/ [memq(
-                        LOCALS.lamp,
-                        LOCALS.aobjs),
+                        lamp,
+                        aobjs),
                       put(
-                        LOCALS.winner,
+                        winner,
                         GLOBALS.aobjs,
-                        /*(*/ [LOCALS.lamp,
+                        /*(*/ [lamp,
                           _X,
                           splice_out(
-                            LOCALS.lamp,
-                            LOCALS.aobjs)] /*)*/)] /*)*/),
+                            lamp,
+                            aobjs)] /*)*/)] /*)*/),
                   put(
                     find_obj(
                       "DOOR"),
@@ -2634,9 +2634,9 @@ FUNCTIONS.jigs_up =
                     find_room(
                       "FORE1")),
                   GLOBALS.egypt_flag_X_flag = t,
-                  LOCALS.val_list = rob_adv(
-                      LOCALS.winner,
-                      LOCALS.val_list),
+                  val_list = rob_adv(
+                      winner,
+                      val_list),
                   mapf(
                     null,
                     /* FUNCTION */
@@ -2644,38 +2644,38 @@ FUNCTIONS.jigs_up =
                         y) => {
                         
                         insert_object(
-                        LOCALS.x,
-                        LOCALS.y)
+                        x,
+                        y)
                       },
-                    LOCALS.aobjs = aobjs(
-                        LOCALS.winner),
-                    LOCALS.random_list),
+                    aobjs = aobjs(
+                        winner),
+                    random_list),
                   cond(
                     /*(*/ [g__Q(
                         length(
-                          LOCALS.random_list),
+                          random_list),
                         length(
-                          LOCALS.aobjs)),
-                      LOCALS.aobjs = LOCALS.val_list] /*)*/,
+                          aobjs)),
+                      aobjs = val_list] /*)*/,
                     /*(*/ [empty_Q(
-                        LOCALS.val_list),
-                      LOCALS.aobjs = rest(
-                          LOCALS.aobjs,
+                        val_list),
+                      aobjs = rest(
+                          aobjs,
                           length(
-                            LOCALS.random_list))] /*)*/,
+                            random_list))] /*)*/,
                     /*(*/ [t,
                       putrest(
                         rest(
-                          LOCALS.val_list,
+                          val_list,
                           _(
                             length(
-                              LOCALS.val_list),
+                              val_list),
                             1)),
                         rest(
-                          LOCALS.aobjs,
+                          aobjs,
                           length(
-                            LOCALS.random_list))),
-                      LOCALS.aobjs = LOCALS.val_list] /*)*/),
+                            random_list))),
+                      aobjs = val_list] /*)*/),
                   mapf(
                     null,
                     /* FUNCTION */
@@ -2683,13 +2683,13 @@ FUNCTIONS.jigs_up =
                         y) => {
                         
                         insert_object(
-                        LOCALS.x,
-                        LOCALS.y)
+                        x,
+                        y)
                       },
-                    LOCALS.aobjs,
+                    aobjs,
                     GLOBALS.rooms),
                   put(
-                    LOCALS.winner,
+                    winner,
                     GLOBALS.aobjs,
                     /*(*/ [] /*)*/),
                   t] /*)*/)] /*)*/)),
@@ -2738,32 +2738,32 @@ FUNCTIONS.file_to_tty =
     
     let ch = open(
         "READ",
-        LOCALS.file1,
-        LOCALS.file2,
-        LOCALS.dev,
-        LOCALS.snm);
+        file1,
+        file2,
+        dev,
+        snm);
     let len = null;
     let buf = GLOBALS.inbuf;
     let buflen = length(
-        LOCALS.buf);
+        buf);
     let iter = null;
     cond(
-    /*(*/ [LOCALS.ch,
+    /*(*/ [ch,
       unwind(
         prog(
           /*(*/ [] /*)*/,
-          LOCALS.len = file_length(
-              LOCALS.ch),
-          LOCALS.iter = _(
-              LOCALS.len,
-              LOCALS.buflen),
+          len = file_length(
+              ch),
+          iter = _(
+              len,
+              buflen),
           or(
             0_Q(
               mod(
-                LOCALS.len,
-                LOCALS.buflen)),
-            LOCALS.iter = _(
-                LOCALS.iter,
+                len,
+                buflen)),
+            iter = _(
+                iter,
                 1)),
           crlf(
             GLOBALS.outchan),
@@ -2775,31 +2775,31 @@ FUNCTIONS.file_to_tty =
                 fix] /*)*/] /*2*/,
             cond(
               /*(*/ [1_Q(
-                  LOCALS.iter),
-                LOCALS.slen = readstring(
-                    LOCALS.buf,
-                    LOCALS.ch,
+                  iter),
+                slen = readstring(
+                    buf,
+                    ch,
                     GLOBALS.breaks)] /*)*/,
-              /*(*/ [LOCALS.slen = readstring(
-                    LOCALS.buf,
-                    LOCALS.ch,
-                    LOCALS.buflen)] /*)*/),
+              /*(*/ [slen = readstring(
+                    buf,
+                    ch,
+                    buflen)] /*)*/),
             printstring(
-              LOCALS.buf,
+              buf,
               GLOBALS.outchan,
-              LOCALS.slen),
+              slen),
             cond(
               /*(*/ [0_Q(
-                  LOCALS.iter = _(
-                      LOCALS.iter,
+                  iter = _(
+                      iter,
                       1)),
                 crlf(
                   GLOBALS.outchan),
                 return(
                   close(
-                    LOCALS.ch))] /*)*/))),
+                    ch))] /*)*/))),
         close(
-          LOCALS.ch))] /*)*/,
+          ch))] /*)*/,
     /*(*/ [tell(
         "File not found.")] /*)*/)
   }
@@ -2816,14 +2816,14 @@ FUNCTIONS.invent =
         
         cond(
         /*(*/ [ovis_Q(
-            LOCALS.x),
+            x),
           or(
-            LOCALS.any,
+            any,
             prog(
               /*(*/ [] /*)*/,
               cond(
                 /*(*/ [_EQ_Q(
-                    LOCALS.win,
+                    win,
                     GLOBALS.player),
                   tell(
                     "You are carrying:")] /*)*/,
@@ -2832,37 +2832,37 @@ FUNCTIONS.invent =
                     1,
                     odesc2(
                       aobj(
-                        LOCALS.win)),
+                        win)),
                     "is carrying:")] /*)*/),
-              LOCALS.any = t)),
+              any = t)),
           tell(
             "A",
             0,
             odesc2(
-              LOCALS.x)),
+              x)),
           cond(
             /*(*/ [or(
                 empty_Q(
                   ocontents(
-                    LOCALS.x)),
+                    x)),
                 not(
                   see_inside_Q(
-                    LOCALS.x)))] /*)*/,
+                    x)))] /*)*/,
             /*(*/ [tell(
                 "with",
                 0),
               print_contents(
                 ocontents(
-                  LOCALS.x))] /*)*/),
+                  x))] /*)*/),
           crlf(
             )] /*)*/)
       },
     aobjs(
-      LOCALS.win))
+      win))
 or(
-    LOCALS.any,
+    any,
     n_EQ_Q(
-      LOCALS.win,
+      win,
       GLOBALS.player),
     tell(
       "You are empty handed."))
@@ -2882,22 +2882,22 @@ FUNCTIONS.print_contents =
 princ(
         odesc2(
           1(
-            LOCALS.y)))
+            y)))
 cond(
         /*(*/ [g_Q(
             length(
-              LOCALS.y),
+              y),
             2),
           princ(
             ",")] /*)*/,
         /*(*/ [_EQ_Q(
             length(
-              LOCALS.y),
+              y),
             2),
           princ(
             ", and")] /*)*/)
       },
-    LOCALS.olst)
+    olst)
   }
 
 // LIT? --  IS THERE ANY LIGHT SOURCE IN THIS ROOM
@@ -2908,16 +2908,16 @@ FUNCTIONS.lit_Q =
     let win = GLOBALS.winner;
     or(
     rlight_Q(
-      LOCALS.rm),
+      rm),
     lfcn(
       robjs(
-        LOCALS.rm)),
+        rm)),
     lfcn(
       aobjs(
-        LOCALS.win)),
+        win)),
     and(
       n_EQ_Q(
-        LOCALS.win,
+        win,
         GLOBALS.player),
       _EQ_Q(
         GLOBALS.here,
@@ -2949,19 +2949,19 @@ define(
         and(
         g_Q(
           olight_Q(
-            LOCALS.x),
+            x),
           0),
         mapleave(
           t))
 cond(
         /*(*/ [and(
             ovis_Q(
-              LOCALS.x),
+              x),
             or(
               oopen_Q(
-                LOCALS.x),
+                x),
               transparent_Q(
-                LOCALS.x))),
+                x))),
           mapf(
             null,
             /* FUNCTION */
@@ -2970,27 +2970,27 @@ cond(
                 cond(
                 /*(*/ [g_Q(
                     olight_Q(
-                      LOCALS.x),
+                      x),
                     0),
                   return(
                     t,
-                    LOCALS.lfcn)] /*)*/)
+                    lfcn)] /*)*/)
               },
             ocontents(
-              LOCALS.x))] /*)*/)
+              x))] /*)*/)
 cond(
         /*(*/ [and(
             trnn(
-              LOCALS.x,
+              x,
               GLOBALS.actorbit),
             lfcn(
               aobjs(
-                LOCALS.y = orand(
-                    LOCALS.x)))),
+                y = orand(
+                    x)))),
           mapleave(
             t)] /*)*/)
       },
-    LOCALS.l))
+    l))
 
 // WALK --  GIVEN A DIRECTION, WILL ATTEMPT TO WALK THERE
 
@@ -3005,119 +3005,119 @@ FUNCTIONS.walk =
         atom);
     let me = GLOBALS.winner;
     let rm = 1(
-        LOCALS.me);
+        me);
     let nl = null;
     let random_action = null;
     let cxs = null;
     cond(
     /*(*/ [and(
         _EQ_Q(
-          LOCALS.me,
+          me,
           GLOBALS.player),
         not(
           lit_Q(
-            LOCALS.rm)),
+            rm)),
         prob(
           75)),
       cond(
-        /*(*/ [LOCALS.nrm = memq(
-              LOCALS.where,
+        /*(*/ [nrm = memq(
+              where,
               rexits(
-                LOCALS.rm)),
-          LOCALS.leavings = 2(
-              LOCALS.nrm),
+                rm)),
+          leavings = 2(
+              nrm),
           cond(
             /*(*/ [and(
                 type_Q(
-                  LOCALS.leavings,
+                  leavings,
                   room),
                 lit_Q(
-                  LOCALS.leavings)),
+                  leavings)),
               and(
                 goto(
-                  LOCALS.leavings),
+                  leavings),
                 room_info(
                   null))] /*)*/,
             /*(*/ [and(
                 type_Q(
-                  LOCALS.leavings,
+                  leavings,
                   cexit),
-                LOCALS.leavings = cond(
+                leavings = cond(
                     /*(*/ [and(
-                        LOCALS.random_action = cxaction(
-                            LOCALS.leavings),
+                        random_action = cxaction(
+                            leavings),
                         apply_random(
-                          LOCALS.random_action))] /*)*/,
+                          random_action))] /*)*/,
                     /*(*/ [/*,*/ [cxflag(
-                          LOCALS.leavings)] /*1*/,
+                          leavings)] /*1*/,
                       cxroom(
-                        LOCALS.leavings)] /*)*/),
+                        leavings)] /*)*/),
                 lit_Q(
-                  LOCALS.leavings)),
+                  leavings)),
               or(
                 type_Q(
-                  LOCALS.leavings,
+                  leavings,
                   atom),
                 and(
                   goto(
-                    LOCALS.leavings),
+                    leavings),
                   room_info(
                     null)))] /*)*/,
             /*(*/ [jigs_up(
                 "Oh, no!  A fearsome grue slithered into the room and devoured you.")] /*)*/)] /*)*/,
         /*(*/ [jigs_up(
             "Oh, no!  You walked into the slavering fangs of a lurking grue.")] /*)*/)] /*)*/,
-    /*(*/ [LOCALS.nrm = memq(
-          LOCALS.where,
+    /*(*/ [nrm = memq(
+          where,
           rexits(
-            LOCALS.rm)),
-      LOCALS.leavings = 2(
-          LOCALS.nrm),
+            rm)),
+      leavings = 2(
+          nrm),
       cond(
         /*(*/ [type_Q(
-            LOCALS.leavings,
+            leavings,
             room),
           and(
             goto(
-              LOCALS.leavings),
+              leavings),
             room_info(
               null))] /*)*/,
         /*(*/ [type_Q(
-            LOCALS.leavings,
+            leavings,
             cexit),
           cond(
             /*(*/ [or(
                 and(
-                  LOCALS.random_action = cxaction(
-                      LOCALS.leavings),
-                  LOCALS.nl = apply_random(
-                      LOCALS.random_action)),
+                  random_action = cxaction(
+                      leavings),
+                  nl = apply_random(
+                      random_action)),
                 and(
                   /*,*/ [cxflag(
-                      LOCALS.leavings)] /*1*/,
-                  LOCALS.nl = cxroom(
-                      LOCALS.leavings))),
+                      leavings)] /*1*/,
+                  nl = cxroom(
+                      leavings))),
               or(
                 type_Q(
-                  LOCALS.nl,
+                  nl,
                   atom),
                 and(
                   goto(
-                    LOCALS.nl),
+                    nl),
                   room_info(
                     null)))] /*)*/,
-            /*(*/ [LOCALS.cxs = cxstr(
-                  LOCALS.leavings),
+            /*(*/ [cxs = cxstr(
+                  leavings),
               or(
                 empty_Q(
-                  LOCALS.cxs),
+                  cxs),
                 tell(
-                  LOCALS.cxs))] /*)*/,
+                  cxs))] /*)*/,
             /*(*/ [tell(
                 "There is no way to go in that direction.")] /*)*/)] /*)*/,
         /*(*/ [t,
           tell(
-            LOCALS.leavings)] /*)*/)] /*)*/,
+            leavings)] /*)*/)] /*)*/,
     /*(*/ [tell(
         "There is no way to go in that direction.")] /*)*/)
   }
@@ -3128,37 +3128,37 @@ FUNCTIONS.take =
     let win = GLOBALS.winner;
     let vec = GLOBALS.prsvec;
     let rm = aroom(
-        LOCALS.win);
+        win);
     let nobj = null;
     let obj = 2(
-        LOCALS.vec);
+        vec);
     let getter_Q = null;
     let robjs = robjs(
-        LOCALS.rm);
+        rm);
     let aobjs = aobjs(
-        LOCALS.win);
+        win);
     let load_max = GLOBALS.load_max;
     prog(
     /*(*/ [] /*)*/,
     cond(
       /*(*/ [trnn(
-          LOCALS.obj,
+          obj,
           GLOBALS.no_check_bit),
         return(
           object_action(
             ))] /*)*/),
     cond(
       /*(*/ [ocan(
-          LOCALS.obj),
-        LOCALS.nobj = ocan(
-            LOCALS.obj),
+          obj),
+        nobj = ocan(
+            obj),
         cond(
           /*(*/ [see_inside_Q(
-              LOCALS.nobj),
+              nobj),
             cond(
               /*(*/ [oopen_Q(
-                  LOCALS.nobj),
-                LOCALS.getter_Q = t] /*)*/,
+                  nobj),
+                getter_Q = t] /*)*/,
               /*(*/ [tell(
                   "I can't reach that."),
                 return(
@@ -3169,54 +3169,54 @@ FUNCTIONS.take =
               null)] /*)*/)] /*)*/),
     cond(
       /*(*/ [_EQ_Q(
-          LOCALS.obj,
+          obj,
           avehicle(
-            LOCALS.win)),
+            win)),
         tell(
           "You are in it, loser!"),
         return(
           null)] /*)*/,
       /*(*/ [not(
           can_take_Q(
-            LOCALS.obj)),
+            obj)),
         or(
           apply_object(
-            LOCALS.obj),
+            obj),
           tell(
             pick_one(
               GLOBALS.yuks))),
         return(
           null)] /*)*/,
       /*(*/ [or(
-          LOCALS.getter_Q,
+          getter_Q,
           memq(
-            LOCALS.obj,
-            LOCALS.robjs)),
-        LOCALS.load_max = _(
-            LOCALS.load_max,
+            obj,
+            robjs)),
+        load_max = _(
+            load_max,
             fix(
               _(
                 _(
                   1_0,
-                  LOCALS.load_max),
+                  load_max),
                 astrength(
-                  LOCALS.win)))),
+                  win)))),
         cond(
           /*(*/ [and(
-              LOCALS.getter_Q,
+              getter_Q,
               memq(
-                LOCALS.nobj,
-                LOCALS.aobjs))] /*)*/,
+                nobj,
+                aobjs))] /*)*/,
           /*(*/ [g_Q(
               _(
                 weight(
-                  LOCALS.aobjs),
+                  aobjs),
                 weight(
                   ocontents(
-                    LOCALS.obj)),
+                    obj)),
                 osize(
-                  LOCALS.obj)),
-              LOCALS.load_max),
+                  obj)),
+              load_max),
             tell(
               "Your load is too heavy.  You will have to leave something behind."),
             return(
@@ -3224,47 +3224,47 @@ FUNCTIONS.take =
         cond(
           /*(*/ [not(
               apply_object(
-                LOCALS.obj)),
+                obj)),
             cond(
-              /*(*/ [LOCALS.getter_Q,
+              /*(*/ [getter_Q,
                 put(
-                  LOCALS.nobj,
+                  nobj,
                   GLOBALS.ocontents,
                   splice_out(
-                    LOCALS.obj,
+                    obj,
                     ocontents(
-                      LOCALS.nobj))),
+                      nobj))),
                 put(
-                  LOCALS.obj,
+                  obj,
                   GLOBALS.oroom,
                   null),
                 put(
-                  LOCALS.obj,
+                  obj,
                   GLOBALS.ocan,
                   null)] /*)*/,
               /*(*/ [remove_object(
-                  LOCALS.obj)] /*)*/),
+                  obj)] /*)*/),
             put(
-              LOCALS.win,
+              win,
               GLOBALS.aobjs,
-              /*(*/ [LOCALS.obj,
+              /*(*/ [obj,
                 _X,
-                LOCALS.aobjs] /*)*/),
+                aobjs] /*)*/),
             put(
-              LOCALS.obj,
+              obj,
               GLOBALS.otouch_Q,
               t),
             score_obj(
-              LOCALS.obj),
+              obj),
             cond(
-              /*(*/ [LOCALS.take_Q,
+              /*(*/ [take_Q,
                 tell(
                   "Taken.")] /*)*/,
               /*(*/ [t] /*)*/)] /*)*/,
           /*(*/ [t] /*)*/)] /*)*/,
       /*(*/ [memq(
-          LOCALS.obj,
-          LOCALS.aobjs),
+          obj,
+          aobjs),
         tell(
           "You already have it.")] /*)*/,
       /*(*/ [tell(
@@ -3277,12 +3277,12 @@ FUNCTIONS.putter =
     
     let pv = GLOBALS.prsvec;
     let objo = 2(
-        LOCALS.pv);
+        pv);
     let obji = 3(
-        LOCALS.pv);
+        pv);
     let win = GLOBALS.winner;
     let aobjs = aobjs(
-        LOCALS.win);
+        win);
     let crock = null;
     let can = null;
     let robjs = robjs(
@@ -3292,7 +3292,7 @@ FUNCTIONS.putter =
     /*(*/ [] /*)*/,
     cond(
       /*(*/ [trnn(
-          LOCALS.objo,
+          objo,
           GLOBALS.no_check_bit),
         return(
           object_action(
@@ -3300,10 +3300,10 @@ FUNCTIONS.putter =
     cond(
       /*(*/ [or(
           memq(
-            LOCALS.objo,
+            objo,
             GLOBALS.stars),
           memq(
-            LOCALS.obji,
+            obji,
             GLOBALS.stars)),
         tell(
           "Nice try."),
@@ -3312,14 +3312,14 @@ FUNCTIONS.putter =
     cond(
       /*(*/ [or(
           oopen_Q(
-            LOCALS.obji),
+            obji),
           openable_Q(
-            LOCALS.obji),
+            obji),
           trnn(
-            LOCALS.obji,
+            obji,
             GLOBALS.vehbit)),
-        LOCALS.can = LOCALS.obji,
-        LOCALS.crock = LOCALS.objo] /*)*/,
+        can = obji,
+        crock = objo] /*)*/,
       /*(*/ [tell(
           "I can't do that."),
         return(
@@ -3327,14 +3327,14 @@ FUNCTIONS.putter =
     cond(
       /*(*/ [not(
           oopen_Q(
-            LOCALS.can)),
+            can)),
         tell(
           "I can't reach inside."),
         return(
           null)] /*)*/,
       /*(*/ [_EQ_Q(
-          LOCALS.can,
-          LOCALS.crock),
+          can,
+          crock),
         tell(
           "How can you do that?"),
         return(
@@ -3343,11 +3343,11 @@ FUNCTIONS.putter =
           _(
             weight(
               ocontents(
-                LOCALS.can)),
+                can)),
             osize(
-              LOCALS.crock)),
+              crock)),
           ocapac(
-            LOCALS.can)),
+            can)),
         tell(
           "It won't fit."),
         return(
@@ -3355,31 +3355,31 @@ FUNCTIONS.putter =
     cond(
       /*(*/ [or(
           memq(
-            LOCALS.crock,
-            LOCALS.robjs),
+            crock,
+            robjs),
           and(
-            LOCALS.ocan = ocan(
-                LOCALS.crock),
+            ocan = ocan(
+                crock),
             memq(
-              LOCALS.ocan,
-              LOCALS.robjs)),
+              ocan,
+              robjs)),
           and(
-            LOCALS.ocan,
-            LOCALS.ocan = ocan(
-                LOCALS.ocan),
+            ocan,
+            ocan = ocan(
+                ocan),
             memq(
-              LOCALS.ocan,
-              LOCALS.robjs))),
+              ocan,
+              robjs))),
         put(
-          LOCALS.pv,
+          pv,
           1,
           GLOBALS.take_X_words),
         put(
-          LOCALS.pv,
+          pv,
           2,
-          LOCALS.crock),
+          crock),
         put(
-          LOCALS.pv,
+          pv,
           3,
           null),
         cond(
@@ -3388,75 +3388,75 @@ FUNCTIONS.putter =
                 null)),
             return(
               null)] /*)*/,
-          /*(*/ [LOCALS.aobjs = aobjs(
-                LOCALS.win)] /*)*/)] /*)*/,
-      /*(*/ [LOCALS.ocan = ocan(
-            LOCALS.crock),
+          /*(*/ [aobjs = aobjs(
+                win)] /*)*/)] /*)*/,
+      /*(*/ [ocan = ocan(
+            crock),
         cond(
           /*(*/ [oopen_Q(
-              LOCALS.ocan),
+              ocan),
             put(
-              LOCALS.win,
+              win,
               GLOBALS.aobjs,
-              LOCALS.aobjs = /*(*/ [LOCALS.crock,
+              aobjs = /*(*/ [crock,
                   _X,
-                  LOCALS.aobjs] /*)*/),
+                  aobjs] /*)*/),
             put(
-              LOCALS.ocan,
+              ocan,
               GLOBALS.ocontents,
               splice_out(
-                LOCALS.crock,
+                crock,
                 ocontents(
-                  LOCALS.ocan))),
+                  ocan))),
             put(
-              LOCALS.crock,
+              crock,
               GLOBALS.ocan,
               null)] /*)*/,
           /*(*/ [tell(
               "I can't reach the",
               1,
               odesc2(
-                LOCALS.crock)),
+                crock)),
             return(
               null)] /*)*/)] /*)*/),
     put(
-      LOCALS.pv,
+      pv,
       1,
       GLOBALS.put_X_words),
     put(
-      LOCALS.pv,
+      pv,
       2,
-      LOCALS.crock),
+      crock),
     put(
-      LOCALS.pv,
+      pv,
       3,
-      LOCALS.can),
+      can),
     cond(
       /*(*/ [and(
-          LOCALS.objact,
+          objact,
           object_action(
             )),
         return(
           )] /*)*/,
       /*(*/ [put(
-          LOCALS.win,
+          win,
           GLOBALS.aobjs,
           splice_out(
-            LOCALS.crock,
-            LOCALS.aobjs)),
+            crock,
+            aobjs)),
         put(
-          LOCALS.can,
+          can,
           GLOBALS.ocontents,
-          /*(*/ [LOCALS.crock,
+          /*(*/ [crock,
             _X,
             ocontents(
-              LOCALS.can)] /*)*/),
+              can)] /*)*/),
         put(
-          LOCALS.crock,
+          crock,
           GLOBALS.ocan,
-          LOCALS.can),
+          can),
         put(
-          LOCALS.crock,
+          crock,
           GLOBALS.oroom,
           GLOBALS.here),
         tell(
@@ -3468,17 +3468,17 @@ FUNCTIONS.dropper =
     
     let winner = GLOBALS.winner;
     let av = avehicle(
-        LOCALS.winner);
+        winner);
     let aobjs = aobjs(
-        LOCALS.winner);
+        winner);
     let getter_Q = null;
     let vec = GLOBALS.prsvec;
     let rm = aroom(
-        LOCALS.winner);
+        winner);
     let obj = 2(
-        LOCALS.vec);
+        vec);
     let pi = 3(
-        LOCALS.vec);
+        vec);
     let nobj = null;
     prog(
     /*(*/ [] /*)*/,
@@ -3487,41 +3487,41 @@ FUNCTIONS.dropper =
           memq(
             vname(
               1(
-                LOCALS.vec)),
+                vec)),
             () => /*[*/ [drop_X_words,
                 pour_X_words] /*]*/),
-          LOCALS.pi),
+          pi),
         put(
-          LOCALS.vec,
+          vec,
           1,
           GLOBALS.put_X_words),
         return(
           putter(
             ))] /*)*/,
       /*(*/ [and(
-          LOCALS.pi,
+          pi,
           not(
             or(
               memq(
-                LOCALS.obj,
-                LOCALS.aobjs),
+                obj,
+                aobjs),
               memq(
                 ocan(
-                  LOCALS.obj),
-                LOCALS.aobjs)))),
+                  obj),
+                aobjs)))),
         put(
-          LOCALS.vec,
+          vec,
           2,
-          LOCALS.pi),
+          pi),
         put(
-          LOCALS.vec,
+          vec,
           3,
-          LOCALS.obj),
-        LOCALS.obj = 2(
-            LOCALS.vec)] /*)*/),
+          obj),
+        obj = 2(
+            vec)] /*)*/),
     cond(
       /*(*/ [trnn(
-          LOCALS.obj,
+          obj,
           GLOBALS.no_check_bit),
         return(
           object_action(
@@ -3529,18 +3529,18 @@ FUNCTIONS.dropper =
     cond(
       /*(*/ [and(
           ocan(
-            LOCALS.obj),
-          LOCALS.nobj = ocan(
-              LOCALS.obj),
+            obj),
+          nobj = ocan(
+              obj),
           memq(
-            LOCALS.nobj,
-            LOCALS.aobjs)),
+            nobj,
+            aobjs)),
         cond(
           /*(*/ [oopen_Q(
-              LOCALS.nobj),
-            LOCALS.getter_Q = t] /*)*/,
+              nobj),
+            getter_Q = t] /*)*/,
           /*(*/ [transparent_Q(
-              LOCALS.nobj),
+              nobj),
             tell(
               "I can't reach that."),
             return(
@@ -3549,59 +3549,59 @@ FUNCTIONS.dropper =
               "I can't see that here.")] /*)*/)] /*)*/),
     cond(
       /*(*/ [or(
-          LOCALS.getter_Q,
+          getter_Q,
           memq(
-            LOCALS.obj,
-            LOCALS.aobjs)),
+            obj,
+            aobjs)),
         cond(
-          /*(*/ [LOCALS.av] /*)*/,
-          /*(*/ [LOCALS.getter_Q,
+          /*(*/ [av] /*)*/,
+          /*(*/ [getter_Q,
             put(
-              LOCALS.nobj,
+              nobj,
               GLOBALS.ocontents,
               splice_out(
-                LOCALS.obj,
+                obj,
                 ocontents(
-                  LOCALS.nobj))),
+                  nobj))),
             put(
-              LOCALS.obj,
+              obj,
               GLOBALS.ocan,
               null)] /*)*/,
           /*(*/ [put(
-              LOCALS.winner,
+              winner,
               GLOBALS.aobjs,
               splice_out(
-                LOCALS.obj,
-                LOCALS.aobjs))] /*)*/),
+                obj,
+                aobjs))] /*)*/),
         cond(
-          /*(*/ [LOCALS.av,
+          /*(*/ [av,
             put(
-              LOCALS.vec,
+              vec,
               2,
-              LOCALS.obj),
+              obj),
             put(
-              LOCALS.vec,
+              vec,
               3,
-              LOCALS.av),
+              av),
             putter(
               null)] /*)*/,
           /*(*/ [insert_object(
-              LOCALS.obj,
-              LOCALS.rm)] /*)*/),
+              obj,
+              rm)] /*)*/),
         cond(
           /*(*/ [object_action(
               )] /*)*/,
           /*(*/ [_EQ_Q(
               vname(
                 1(
-                  LOCALS.vec)),
+                  vec)),
               drop_X_words),
             tell(
               "Dropped.")] /*)*/,
           /*(*/ [_EQ_Q(
               vname(
                 1(
-                  LOCALS.vec)),
+                  vec)),
               throw_X_words),
             tell(
               "Thrown.")] /*)*/)] /*)*/,
@@ -3629,15 +3629,15 @@ FUNCTIONS.frob_lots =
     
     let prsvec = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.prsvec);
+        prsvec);
     let ra = vfcn(
-        LOCALS.pa);
+        pa);
     let pi = null;
     let winner = GLOBALS.winner;
     let here = GLOBALS.here;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.take_X_words),
       mapf(
         null,
@@ -3647,36 +3647,36 @@ FUNCTIONS.frob_lots =
             cond(
             /*(*/ [or(
                 can_take_Q(
-                  LOCALS.x),
+                  x),
                 trnn(
-                  LOCALS.x,
+                  x,
                   GLOBALS.trytakebit)),
               put(
-                LOCALS.prsvec,
+                prsvec,
                 2,
-                LOCALS.x),
+                x),
               tell(
                 odesc2(
-                  LOCALS.x),
+                  x),
                 0,
                 ":"),
               apply_random(
-                LOCALS.ra),
+                ra),
               cond(
                 /*(*/ [n_EQ_Q(
-                    LOCALS.here,
+                    here,
                     aroom(
-                      LOCALS.winner)),
+                      winner)),
                   mapleave(
                     )] /*)*/)] /*)*/)
           },
-        LOCALS.uv)] /*)*/,
+        uv)] /*)*/,
     /*(*/ [or(
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.drop_X_words),
         _EQ_Q(
-          LOCALS.pa,
+          pa,
           GLOBALS.put_X_words)),
       mapf(
         null,
@@ -3684,25 +3684,25 @@ FUNCTIONS.frob_lots =
           (x) => {
             
             put(
-            LOCALS.prsvec,
+            prsvec,
             2,
-            LOCALS.x)
+            x)
 tell(
             odesc2(
-              LOCALS.x),
+              x),
             0,
             ":")
 apply_random(
-            LOCALS.ra)
+            ra)
 cond(
             /*(*/ [n_EQ_Q(
-                LOCALS.here,
+                here,
                 aroom(
-                  LOCALS.winner)),
+                  winner)),
               mapleave(
                 )] /*)*/)
           },
-        LOCALS.uv)] /*)*/)
+        uv)] /*)*/)
   }
 
 psetg(
@@ -3714,18 +3714,18 @@ FUNCTIONS.everything =
     
     let prsvec = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.prsvec);
+        prsvec);
     let pi = null;
     let suv = GLOBALS.obj_uv;
     let tuv = top(
-        LOCALS.suv);
+        suv);
     let lu = length(
-        LOCALS.tuv);
+        tuv);
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.take_X_words),
       mapf(
         null,
@@ -3735,50 +3735,50 @@ FUNCTIONS.everything =
             cond(
             /*(*/ [and(
                 ovis_Q(
-                  LOCALS.x),
+                  x),
                 not(
                   trnn(
-                    LOCALS.x,
+                    x,
                     GLOBALS.actorbit))),
               cond(
                 /*(*/ [_EQ_Q(
-                    LOCALS.suv,
-                    LOCALS.tuv),
+                    suv,
+                    tuv),
                   tell(
                     GLOBALS.losstr),
                   mapleave(
                     )] /*)*/),
-              LOCALS.suv = back(
-                  LOCALS.suv),
+              suv = back(
+                  suv),
               put(
-                LOCALS.suv,
+                suv,
                 1,
-                LOCALS.x)] /*)*/)
+                x)] /*)*/)
           },
         robjs(
-          LOCALS.here))] /*)*/,
+          here))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.drop_X_words),
       mapf(
         null,
         /* FUNCTION */
           (x) => {
             
-            LOCALS.suv = back(
-              LOCALS.suv)
+            suv = back(
+              suv)
 put(
-            LOCALS.suv,
+            suv,
             1,
-            LOCALS.x)
+            x)
           },
         aobjs(
-          LOCALS.winner))] /*)*/,
+          winner))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.put_X_words),
-      LOCALS.pi = 3(
-          LOCALS.prsvec),
+      pi = 3(
+          prsvec),
       prog(
         rp,
         /*(*/ [] /*)*/,
@@ -3790,32 +3790,32 @@ put(
               cond(
               /*(*/ [and(
                   ovis_Q(
-                    LOCALS.x),
+                    x),
                   n_EQ_Q(
-                    LOCALS.x,
-                    LOCALS.pi),
+                    x,
+                    pi),
                   not(
                     trnn(
-                      LOCALS.x,
+                      x,
                       GLOBALS.actorbit))),
                 cond(
                   /*(*/ [_EQ_Q(
-                      LOCALS.suv,
-                      LOCALS.tuv),
+                      suv,
+                      tuv),
                     tell(
                       GLOBALS.losstr),
                     return(
                       t,
-                      LOCALS.rp)] /*)*/),
-                LOCALS.suv = back(
-                    LOCALS.suv),
+                      rp)] /*)*/),
+                suv = back(
+                    suv),
                 put(
-                  LOCALS.suv,
+                  suv,
                   1,
-                  LOCALS.x)] /*)*/)
+                  x)] /*)*/)
             },
           robjs(
-            LOCALS.here)),
+            here)),
         mapf(
           null,
           /* FUNCTION */
@@ -3824,32 +3824,32 @@ put(
               cond(
               /*(*/ [and(
                   _EQ_Q(
-                    LOCALS.suv,
-                    LOCALS.tuv),
+                    suv,
+                    tuv),
                   n_EQ_Q(
-                    LOCALS.x,
-                    LOCALS.pi)),
+                    x,
+                    pi)),
                 tell(
                   GLOBALS.losstr),
                 return(
                   t,
-                  LOCALS.rp)] /*)*/)
-LOCALS.suv = back(
-                LOCALS.suv)
+                  rp)] /*)*/)
+suv = back(
+                suv)
 put(
-              LOCALS.suv,
+              suv,
               1,
-              LOCALS.x)
+              x)
             },
           aobjs(
-            LOCALS.winner)))] /*)*/)
+            winner)))] /*)*/)
 cond(
     /*(*/ [empty_Q(
-        LOCALS.suv),
+        suv),
       tell(
         "I couldn't find anything.")] /*)*/,
     /*(*/ [frob_lots(
-        LOCALS.suv)] /*)*/)
+        suv)] /*)*/)
   }
 
 FUNCTIONS.valuables = 
@@ -3857,18 +3857,18 @@ FUNCTIONS.valuables =
     
     let prsvec = GLOBALS.prsvec;
     let pa = 1(
-        LOCALS.prsvec);
+        prsvec);
     let suv = GLOBALS.obj_uv;
     let tuv = top(
-        LOCALS.suv);
+        suv);
     let pi = null;
     let lu = length(
-        LOCALS.tuv);
+        tuv);
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.take_X_words),
       mapf(
         null,
@@ -3878,34 +3878,34 @@ FUNCTIONS.valuables =
             cond(
             /*(*/ [and(
                 ovis_Q(
-                  LOCALS.x),
+                  x),
                 not(
                   trnn(
-                    LOCALS.x,
+                    x,
                     GLOBALS.actorbit)),
                 not(
                   0_Q(
                     otval(
-                      LOCALS.x)))),
+                      x)))),
               cond(
                 /*(*/ [_EQ_Q(
-                    LOCALS.suv,
-                    LOCALS.tuv),
+                    suv,
+                    tuv),
                   tell(
                     GLOBALS.losstr),
                   mapleave(
                     )] /*)*/),
-              LOCALS.suv = back(
-                  LOCALS.suv),
+              suv = back(
+                  suv),
               put(
-                LOCALS.suv,
+                suv,
                 1,
-                LOCALS.x)] /*)*/)
+                x)] /*)*/)
           },
         robjs(
-          LOCALS.here))] /*)*/,
+          here))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.drop_X_words),
       mapf(
         null,
@@ -3916,21 +3916,21 @@ FUNCTIONS.valuables =
             /*(*/ [not(
                 0_Q(
                   otval(
-                    LOCALS.x))),
-              LOCALS.suv = back(
-                  LOCALS.suv),
+                    x))),
+              suv = back(
+                  suv),
               put(
-                LOCALS.suv,
+                suv,
                 1,
-                LOCALS.x)] /*)*/)
+                x)] /*)*/)
           },
         aobjs(
-          LOCALS.winner))] /*)*/,
+          winner))] /*)*/,
     /*(*/ [_EQ_Q(
-        LOCALS.pa,
+        pa,
         GLOBALS.put_X_words),
-      LOCALS.pi = 3(
-          LOCALS.prsvec),
+      pi = 3(
+          prsvec),
       prog(
         rp,
         /*(*/ [] /*)*/,
@@ -3942,33 +3942,33 @@ FUNCTIONS.valuables =
               cond(
               /*(*/ [and(
                   _EQ_Q(
-                    LOCALS.suv,
-                    LOCALS.tuv),
+                    suv,
+                    tuv),
                   n_EQ_Q(
-                    LOCALS.x,
-                    LOCALS.pi)),
+                    x,
+                    pi)),
                 tell(
                   GLOBALS.losstr),
                 return(
                   t,
-                  LOCALS.rp)] /*)*/)
+                  rp)] /*)*/)
 cond(
               /*(*/ [and(
                   ovis_Q(
-                    LOCALS.x),
+                    x),
                   not(
                     0_Q(
                       otval(
-                        LOCALS.x)))),
-                LOCALS.suv = back(
-                    LOCALS.suv),
+                        x)))),
+                suv = back(
+                    suv),
                 put(
-                  LOCALS.suv,
+                  suv,
                   1,
-                  LOCALS.x)] /*)*/)
+                  x)] /*)*/)
             },
           robjs(
-            LOCALS.here)),
+            here)),
         mapf(
           null,
           /* FUNCTION */
@@ -3977,37 +3977,37 @@ cond(
               cond(
               /*(*/ [and(
                   _EQ_Q(
-                    LOCALS.suv,
-                    LOCALS.tuv),
+                    suv,
+                    tuv),
                   n_EQ_Q(
-                    LOCALS.x,
-                    LOCALS.pi)),
+                    x,
+                    pi)),
                 tell(
                   GLOBALS.losstr),
                 return(
                   t,
-                  LOCALS.rp)] /*)*/)
+                  rp)] /*)*/)
 cond(
               /*(*/ [not(
                   0_Q(
                     otval(
-                      LOCALS.x))),
-                LOCALS.suv = back(
-                    LOCALS.suv),
+                      x))),
+                suv = back(
+                    suv),
                 put(
-                  LOCALS.suv,
+                  suv,
                   1,
-                  LOCALS.x)] /*)*/)
+                  x)] /*)*/)
             },
           aobjs(
-            LOCALS.winner)))] /*)*/)
+            winner)))] /*)*/)
 cond(
     /*(*/ [empty_Q(
-        LOCALS.suv),
+        suv),
       tell(
         "I couldn't find any valuables.")] /*)*/,
     /*(*/ [frob_lots(
-        LOCALS.suv)] /*)*/)
+        suv)] /*)*/)
   }
 
 define(
@@ -4018,7 +4018,7 @@ define(
       GLOBALS.prsvec] /*)*/,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/,
+        pv)] /*)*/,
     /*(*/ [outchan,
       GLOBALS.outchan] /*)*/] /*)*/,
   /*#*/ [decl,
@@ -4035,35 +4035,35 @@ define(
         )] /*)*/,
     /*(*/ [not(
         trnn(
-          LOCALS.prso,
+          prso,
           GLOBALS.contbit)),
       tell(
         "You must tell me how to do that to a",
         1,
         odesc2(
-          LOCALS.prso),
+          prso),
         ".")] /*)*/,
     /*(*/ [n_EQ_Q(
         ocapac(
-          LOCALS.prso),
+          prso),
         0),
       cond(
         /*(*/ [oopen_Q(
-            LOCALS.prso),
+            prso),
           tell(
             "It is already open.")] /*)*/,
         /*(*/ [t,
           put(
-            LOCALS.prso,
+            prso,
             GLOBALS.oopen_Q,
             t),
           cond(
             /*(*/ [or(
                 empty_Q(
                   ocontents(
-                    LOCALS.prso)),
+                    prso)),
                 transparent_Q(
-                  LOCALS.prso)),
+                  prso)),
               tell(
                 "Opened.")] /*)*/,
             /*(*/ [GLOBALS.tell_flag = t,
@@ -4071,11 +4071,11 @@ define(
                 "Opening the",
                 0,
                 odesc2(
-                  LOCALS.prso),
+                  prso),
                 "reveals"),
               print_contents(
                 ocontents(
-                  LOCALS.prso)),
+                  prso)),
               princ(
                 _X__),
               crlf(
@@ -4084,7 +4084,7 @@ define(
         "The",
         1,
         odesc2(
-          LOCALS.prso),
+          prso),
         "cannot be opened.")] /*)*/))
 
 define(
@@ -4095,7 +4095,7 @@ define(
       GLOBALS.prsvec] /*)*/,
     /*(*/ [prso,
       2(
-        LOCALS.pv)] /*)*/] /*)*/,
+        pv)] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [pv] /*)*/,
       vector(
@@ -4108,23 +4108,23 @@ define(
         )] /*)*/,
     /*(*/ [not(
         trnn(
-          LOCALS.prso,
+          prso,
           GLOBALS.contbit)),
       tell(
         "You must tell me how to do that to a",
         1,
         odesc2(
-          LOCALS.prso),
+          prso),
         ".")] /*)*/,
     /*(*/ [n_EQ_Q(
         ocapac(
-          LOCALS.prso),
+          prso),
         0),
       cond(
         /*(*/ [oopen_Q(
-            LOCALS.prso),
+            prso),
           put(
-            LOCALS.prso,
+            prso,
             GLOBALS.oopen_Q,
             null),
           tell(
@@ -4143,16 +4143,16 @@ FUNCTIONS.find =
     cond(
     /*(*/ [object_action(
         )] /*)*/,
-    /*(*/ [LOCALS.prso,
+    /*(*/ [prso,
       find_frob(
-        LOCALS.prso,
+        prso,
         robjs(
           GLOBALS.here),
         ", which is in the room.",
         "There is a",
         "here."),
       find_frob(
-        LOCALS.prso,
+        prso,
         aobjs(
           GLOBALS.winner),
         ", which you are carrying.",
@@ -4181,22 +4181,22 @@ FUNCTIONS.find_frob =
         
         cond(
         /*(*/ [_EQ_Q(
-            LOCALS.x,
-            LOCALS.prso),
+            x,
+            prso),
           tell(
-            LOCALS.str2,
+            str2,
             1,
             odesc2(
-              LOCALS.x),
-            LOCALS.str3)] /*)*/,
+              x),
+            str3)] /*)*/,
         /*(*/ [or(
             transparent_Q(
-              LOCALS.x),
+              x),
             and(
               openable_Q(
-                LOCALS.x),
+                x),
               oopen_Q(
-                LOCALS.x))),
+                x))),
           mapf(
             null,
             /* FUNCTION */
@@ -4204,25 +4204,25 @@ FUNCTIONS.find_frob =
                 
                 cond(
                 /*(*/ [_EQ_Q(
-                    LOCALS.y,
-                    LOCALS.prso),
+                    y,
+                    prso),
                   tell(
-                    LOCALS.str2,
+                    str2,
                     1,
                     odesc2(
-                      LOCALS.y),
-                    LOCALS.str3),
+                      y),
+                    str3),
                   tell(
                     "It is in the",
                     1,
                     odesc2(
-                      LOCALS.x),
-                    LOCALS.str1)] /*)*/)
+                      x),
+                    str1)] /*)*/)
               },
             ocontents(
-              LOCALS.x))] /*)*/)
+              x))] /*)*/)
       },
-    LOCALS.objl)
+    objl)
   }
 
 // OBJECT-ACTION --  CALL OBJECT FUNCTIONS FOR DIRECT AND INDIRECT OBJECTS
@@ -4232,22 +4232,22 @@ FUNCTIONS.object_action =
     
     let vec = GLOBALS.prsvec;
     let prso = 2(
-        LOCALS.vec);
+        vec);
     let prsi = 3(
-        LOCALS.vec);
+        vec);
     prog(
     /*(*/ [] /*)*/,
     cond(
-      /*(*/ [LOCALS.prsi,
+      /*(*/ [prsi,
         and(
           apply_object(
-            LOCALS.prsi),
+            prsi),
           return(
             t))] /*)*/),
     cond(
-      /*(*/ [LOCALS.prso,
+      /*(*/ [prso,
         apply_object(
-          LOCALS.prso)] /*)*/))
+          prso)] /*)*/))
   }
 
 "SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL\nSEARCH, USE GET-OBJECT"
@@ -4263,26 +4263,26 @@ FUNCTIONS.obj_here_Q =
     cond(
       /*(*/ [not(
           ovis_Q(
-            LOCALS.obj)),
+            obj)),
         return(
           null)] /*)*/,
-      /*(*/ [LOCALS.nobj = ocan(
-            LOCALS.obj),
+      /*(*/ [nobj = ocan(
+            obj),
         cond(
           /*(*/ [oopen_Q(
-              LOCALS.nobj),
-            LOCALS.obj = LOCALS.nobj] /*)*/,
+              nobj),
+            obj = nobj] /*)*/,
           /*(*/ [return(
               null)] /*)*/)] /*)*/),
     or(
       memq(
-        LOCALS.obj,
+        obj,
         robjs(
-          LOCALS.rm)),
+          rm)),
       memq(
-        LOCALS.obj,
+        obj,
         aobjs(
-          LOCALS.win))))
+          win))))
   }
 
 FUNCTIONS.splice_out = 
@@ -4292,17 +4292,17 @@ FUNCTIONS.splice_out =
     cond(
     /*(*/ [_EQ_Q(
         1(
-          LOCALS.al),
-        LOCALS.obj),
+          al),
+        obj),
       rest(
-        LOCALS.al)] /*)*/,
+        al)] /*)*/,
     /*(*/ [t,
       repeat(
         /*(*/ [/*(*/ [nl,
             rest(
-              LOCALS.al)] /*)*/,
+              al)] /*)*/,
           /*(*/ [ol,
-            LOCALS.al] /*)*/] /*)*/,
+            al] /*)*/] /*)*/,
         /*#*/ [decl,
           /*(*/ [/*(*/ [nl,
               ol] /*)*/,
@@ -4310,17 +4310,17 @@ FUNCTIONS.splice_out =
         cond(
           /*(*/ [_EQ_Q(
               1(
-                LOCALS.nl),
-              LOCALS.obj),
+                nl),
+              obj),
             putrest(
-              LOCALS.ol,
+              ol,
               rest(
-                LOCALS.nl)),
+                nl)),
             return(
-              LOCALS.al)] /*)*/,
-          /*(*/ [LOCALS.ol = LOCALS.nl,
-            LOCALS.nl = rest(
-                LOCALS.nl)] /*)*/))] /*)*/)
+              al)] /*)*/,
+          /*(*/ [ol = nl,
+            nl = rest(
+                nl)] /*)*/))] /*)*/)
   }
 
 "WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level."
@@ -4338,16 +4338,16 @@ FUNCTIONS.weight =
         cond(
           /*(*/ [_EQ_Q(
               osize(
-                LOCALS.obj),
+                obj),
               GLOBALS.bigfix),
             0] /*)*/,
           /*(*/ [osize(
-              LOCALS.obj)] /*)*/),
+              obj)] /*)*/),
         weight(
           ocontents(
-            LOCALS.obj)))
+            obj)))
       },
-    LOCALS.objl)
+    objl)
   }
 
 FUNCTIONS.pour = 
@@ -4363,15 +4363,15 @@ FUNCTIONS.move =
     let rm = aroom(
         GLOBALS.winner);
     let obj = 2(
-        LOCALS.vec);
+        vec);
     cond(
     /*(*/ [memq(
-        LOCALS.obj,
+        obj,
         robjs(
-          LOCALS.rm)),
+          rm)),
       object_action(
         )] /*)*/,
-    /*(*/ [LOCALS.obj,
+    /*(*/ [obj,
       tell(
         "I can't get to that to move it.")] /*)*/)
   }
@@ -4386,13 +4386,13 @@ FUNCTIONS.victims_Q =
         
         cond(
         /*(*/ [trnn(
-            LOCALS.x,
+            x,
             GLOBALS.vicbit),
           mapleave(
-            LOCALS.x)] /*)*/)
+            x)] /*)*/)
       },
     robjs(
-      LOCALS.rm))
+      rm))
   }
 
 define(
@@ -4405,7 +4405,7 @@ define(
       GLOBALS.winner] /*)*/,
     /*(*/ [obj,
       2(
-        LOCALS.prsvec)] /*)*/,
+        prsvec)] /*)*/,
     /*(*/ [lit_Q,
       lit_Q(
         GLOBALS.here)] /*)*/] /*)*/,
@@ -4419,12 +4419,12 @@ define(
   cond(
     /*(*/ [and(
         trnn(
-          LOCALS.obj,
+          obj,
           GLOBALS.burnbit),
         3(
-          LOCALS.prsvec),
+          prsvec),
         put(
-          LOCALS.prsvec,
+          prsvec,
           1,
           GLOBALS.burn_X_words)),
       burner(
@@ -4435,38 +4435,38 @@ define(
         /*(*/ [and(
             n_EQ_Q(
               olight_Q(
-                LOCALS.obj),
+                obj),
               0),
             memq(
-              LOCALS.obj,
+              obj,
               aobjs(
-                LOCALS.me)))] /*)*/,
+                me)))] /*)*/,
         /*(*/ [t,
           tell(
             "You can't turn that on."),
           return(
             t,
-            LOCALS.lampo)] /*)*/),
+            lampo)] /*)*/),
       cond(
         /*(*/ [g_Q(
             olight_Q(
-              LOCALS.obj),
+              obj),
             0),
           tell(
             "It is already on.")] /*)*/,
         /*(*/ [put(
-            LOCALS.obj,
+            obj,
             GLOBALS.olight_Q,
             1),
           tell(
             "The",
             1,
             odesc2(
-              LOCALS.obj),
+              obj),
             "is now on."),
           cond(
             /*(*/ [not(
-                LOCALS.lit_Q),
+                lit_Q),
               put(
                 GLOBALS.prsvec,
                 2,
@@ -4497,33 +4497,33 @@ define(
         /*(*/ [and(
             n_EQ_Q(
               olight_Q(
-                LOCALS.obj),
+                obj),
               0),
             memq(
-              LOCALS.obj,
+              obj,
               aobjs(
-                LOCALS.me)))] /*)*/,
+                me)))] /*)*/,
         /*(*/ [tell(
             "You can't turn that off."),
           return(
             t,
-            LOCALS.lampo)] /*)*/),
+            lampo)] /*)*/),
       cond(
         /*(*/ [l_Q(
             olight_Q(
-              LOCALS.obj),
+              obj),
             0),
           tell(
             "It is already off.")] /*)*/,
         /*(*/ [put(
-            LOCALS.obj,
+            obj,
             GLOBALS.olight_Q,
             _1),
           tell(
             "The",
             1,
             odesc2(
-              LOCALS.obj),
+              obj),
             "is now off."),
           or(
             lit_Q(
@@ -4551,7 +4551,7 @@ FUNCTIONS.word_Q =
   (w) => {
     
     lookup(
-    LOCALS.w,
+    w,
     GLOBALS.words)
   }
 
@@ -4563,23 +4563,23 @@ FUNCTIONS.this_it_Q =
     cond(
     /*(*/ [and(
         ovis_Q(
-          LOCALS.obj),
+          obj),
         or(
           _EQ_Q(
-            LOCALS.objnam,
+            objnam,
             oid(
-              LOCALS.obj)),
+              obj)),
           memq(
-            LOCALS.objnam,
+            objnam,
             onames(
-              LOCALS.obj)))),
+              obj)))),
       cond(
         /*(*/ [not(
-            LOCALS.adj)] /*)*/,
+            adj)] /*)*/,
         /*(*/ [memq(
-            LOCALS.adj,
+            adj,
             oadjs(
-              LOCALS.obj))] /*)*/)] /*)*/)
+              obj))] /*)*/)] /*)*/)
   }
 
 GLOBALS.lexv = ivector(
@@ -4604,7 +4604,7 @@ FUNCTIONS.lex =
     
     let brks = GLOBALS.brks;
     let v = GLOBALS.lexv;
-    let s1 = LOCALS.s;
+    let s1 = s;
     let quot = null;
     mapr(
     null,
@@ -4612,23 +4612,23 @@ FUNCTIONS.lex =
       (x) => {
         
         let str = 1(
-            LOCALS.x);
+            x);
         put(
-        LOCALS.x,
+        x,
         1,
         rest(
-          LOCALS.str,
+          str,
           length(
-            LOCALS.str)))
+            str)))
       },
-    LOCALS.v)
+    v)
 cond(
     /*(*/ [_EQ_Q(
         1(
-          LOCALS.s),
+          s),
         _X__Q),
       put(
-        LOCALS.v,
+        v,
         1,
         substruc(
           "HELP",
@@ -4636,7 +4636,7 @@ cond(
           4,
           back(
             1(
-              LOCALS.v),
+              v),
             4)))] /*)*/,
     /*(*/ [repeat(
         /*(*/ [slen] /*)*/,
@@ -4647,76 +4647,76 @@ cond(
           /*(*/ [or(
               _EQ_Q(
                 length(
-                  LOCALS.s1),
+                  s1),
                 length(
-                  LOCALS.sx)),
+                  sx)),
               memq(
                 1(
-                  LOCALS.s1),
-                LOCALS.brks)),
+                  s1),
+                brks)),
             and(
               g_Q(
                 length(
-                  LOCALS.s1),
+                  s1),
                 length(
-                  LOCALS.sx)),
+                  sx)),
               or(
                 _EQ_Q(
                   1(
-                    LOCALS.s1),
+                    s1),
                   _X__),
                 _EQ_Q(
                   1(
-                    LOCALS.s1),
+                    s1),
                   _X__)),
               not(
-                LOCALS.quot),
-              LOCALS.quot = t,
-              LOCALS.v = rest(
-                  LOCALS.v)),
+                quot),
+              quot = t,
+              v = rest(
+                  v)),
             cond(
               /*(*/ [n_EQ_Q(
-                  LOCALS.s,
-                  LOCALS.s1),
+                  s,
+                  s1),
                 cond(
                   /*(*/ [empty_Q(
-                      LOCALS.v),
+                      v),
                     or(
-                      LOCALS.silent_Q,
+                      silent_Q,
                       tell(
                         "I'm too simple-minded for that."))] /*)*/,
                   /*(*/ [put(
-                      LOCALS.v,
+                      v,
                       1,
                       uppercase(
                         substruc(
-                          LOCALS.s,
+                          s,
                           0,
-                          LOCALS.slen = min(
+                          slen = min(
                               _(
                                 length(
-                                  LOCALS.s),
+                                  s),
                                 length(
-                                  LOCALS.s1)),
+                                  s1)),
                               5),
                           back(
                             1(
-                              LOCALS.v),
-                            LOCALS.slen)))),
-                    LOCALS.v = rest(
-                        LOCALS.v)] /*)*/)] /*)*/),
+                              v),
+                            slen)))),
+                    v = rest(
+                        v)] /*)*/)] /*)*/),
             cond(
               /*(*/ [_EQ_Q(
                   length(
-                    LOCALS.s1),
+                    s1),
                   length(
-                    LOCALS.sx)),
+                    sx)),
                 return(
-                  LOCALS.v)] /*)*/),
-            LOCALS.s = rest(
-                LOCALS.s1)] /*)*/),
-        LOCALS.s1 = rest(
-            LOCALS.s1))] /*)*/)
+                  v)] /*)*/),
+            s = rest(
+                s1)] /*)*/),
+        s1 = rest(
+            s1))] /*)*/)
   }
 
 psetg(
@@ -4734,19 +4734,19 @@ FUNCTIONS.anything =
         
         cond(
         /*(*/ [_EQ_Q(
-            LOCALS.x,
-            LOCALS.sx),
+            x,
+            sx),
           mapleave(
             null)] /*)*/,
         /*(*/ [not(
             memq(
               1(
-                LOCALS.x),
+                x),
               GLOBALS.brks)),
           mapleave(
-            LOCALS.x)] /*)*/)
+            x)] /*)*/)
       },
-    LOCALS.s)
+    s)
   }
 
 FUNCTIONS.uppercase = 
@@ -4760,24 +4760,24 @@ FUNCTIONS.uppercase =
       /*(*/ [c,
           ascii(
             1(
-              LOCALS.s))] /*)*/
+              s))] /*)*/
         cond(
         /*(*/ [and(
             g_Q(
-              LOCALS.c,
+              c,
               96),
             l__Q(
-              LOCALS.c,
+              c,
               122)),
           put(
-            LOCALS.s,
+            s,
             1,
             ascii(
               _(
-                LOCALS.c,
+                c,
                 32)))] /*)*/)
       },
-    LOCALS.str)
+    str)
   }
 
 FUNCTIONS.wait = 
@@ -4787,15 +4787,15 @@ FUNCTIONS.wait =
     "Time passes...")
 repeat(
     /*(*/ [/*(*/ [n,
-        LOCALS.num] /*)*/] /*)*/,
+        num] /*)*/] /*)*/,
     /*#*/ [decl,
       /*(*/ [/*(*/ [n] /*)*/,
         fix] /*)*/] /*2*/,
     cond(
       /*(*/ [or(
           l_Q(
-            LOCALS.n = _(
-                LOCALS.n,
+            n = _(
+                n,
                 1),
             0),
           clock_demon(
@@ -4827,15 +4827,15 @@ FUNCTIONS.clock_demon =
           (ev) => {
             
             let tick = ctick(
-                LOCALS.ev);
+                ev);
             cond(
             /*(*/ [not(
                 cflag(
-                  LOCALS.ev))] /*)*/,
+                  ev))] /*)*/,
             /*(*/ [0_Q(
-                LOCALS.tick)] /*)*/,
+                tick)] /*)*/,
             /*(*/ [l_Q(
-                LOCALS.tick,
+                tick,
                 0),
               put(
                 GLOBALS.prsvec,
@@ -4843,39 +4843,39 @@ FUNCTIONS.clock_demon =
                 GLOBALS.c_int_X_words),
               cond(
                 /*(*/ [type_Q(
-                    LOCALS.ca = caction(
-                        LOCALS.ev),
+                    ca = caction(
+                        ev),
                     offset),
                   dispatch(
-                    LOCALS.ca)] /*)*/,
+                    ca)] /*)*/,
                 /*(*/ [apply(
-                    LOCALS.ca)] /*)*/)] /*)*/,
+                    ca)] /*)*/)] /*)*/,
             /*(*/ [put(
-                LOCALS.ev,
+                ev,
                 GLOBALS.ctick,
-                LOCALS.tick = _(
-                    LOCALS.tick,
+                tick = _(
+                    tick,
                     1)),
               and(
                 0_Q(
-                  LOCALS.tick),
-                LOCALS.flg = t,
+                  tick),
+                flg = t,
                 put(
                   GLOBALS.prsvec,
                   1,
                   GLOBALS.c_int_X_words),
                 cond(
                   /*(*/ [type_Q(
-                      LOCALS.ca = caction(
-                          LOCALS.ev),
+                      ca = caction(
+                          ev),
                       offset),
                     dispatch(
-                      LOCALS.ca)] /*)*/,
+                      ca)] /*)*/,
                   /*(*/ [apply(
-                      LOCALS.ca)] /*)*/))] /*)*/)
+                      ca)] /*)*/))] /*)*/)
           },
         hobjs(
-          LOCALS.hack))] /*)*/)
+          hack))] /*)*/)
   }
 
 gdecl(
@@ -4890,22 +4890,22 @@ FUNCTIONS.clock_int =
     cond(
     /*(*/ [not(
         memq(
-          LOCALS.cev,
+          cev,
           hobjs(
-            LOCALS.clocker))),
+            clocker))),
       put(
-        LOCALS.clocker,
+        clocker,
         GLOBALS.hobjs,
-        /*(*/ [LOCALS.cev,
+        /*(*/ [cev,
           _X,
           hobjs(
-            LOCALS.clocker)] /*)*/)] /*)*/)
+            clocker)] /*)*/)] /*)*/)
 cond(
-    /*(*/ [LOCALS.num,
+    /*(*/ [num,
       put(
-        LOCALS.cev,
+        cev,
         GLOBALS.ctick,
-        LOCALS.num)] /*)*/)
+        num)] /*)*/)
   }
 
 GLOBALS.demons = /*(*/ [] /*)*/
@@ -4930,29 +4930,29 @@ FUNCTIONS.board =
         GLOBALS.prsvec);
     let win = GLOBALS.winner;
     let av = avehicle(
-        LOCALS.win);
+        win);
     cond(
     /*(*/ [not(
         memq(
-          LOCALS.obj,
+          obj,
           robjs(
             GLOBALS.here))),
       tell(
         "The",
         1,
         odesc2(
-          LOCALS.obj),
+          obj),
         "must be on the ground to be boarded.")] /*)*/,
     /*(*/ [trnn(
-        LOCALS.obj,
+        obj,
         GLOBALS.vehbit),
       cond(
-        /*(*/ [LOCALS.av,
+        /*(*/ [av,
           tell(
             "You are already in a",
             1,
             odesc2(
-              LOCALS.obj),
+              obj),
             ", cretin!")] /*)*/,
         /*(*/ [t,
           cond(
@@ -4962,25 +4962,25 @@ FUNCTIONS.board =
                 "You are in the",
                 1,
                 odesc2(
-                  LOCALS.obj),
+                  obj),
                 "."),
               put(
-                LOCALS.win,
+                win,
                 GLOBALS.avehicle,
-                LOCALS.obj),
+                obj),
               put(
-                LOCALS.obj,
+                obj,
                 GLOBALS.ocontents,
                 /*(*/ [find_obj(
                     "#####"),
                   _X,
                   ocontents(
-                    LOCALS.obj)] /*)*/)] /*)*/)] /*)*/)] /*)*/,
+                    obj)] /*)*/)] /*)*/)] /*)*/)] /*)*/,
     /*(*/ [tell(
         "I suppose you have a theory on boarding",
         1,
         odesc2(
-          LOCALS.obj),
+          obj),
         "s.")] /*)*/)
   }
 
@@ -4991,11 +4991,11 @@ FUNCTIONS.unboard =
         GLOBALS.prsvec);
     let win = GLOBALS.winner;
     let av = avehicle(
-        LOCALS.win);
+        win);
     cond(
     /*(*/ [_EQ_Q(
-        LOCALS.av,
-        LOCALS.obj),
+        av,
+        obj),
       cond(
         /*(*/ [object_action(
             )] /*)*/,
@@ -5005,17 +5005,17 @@ FUNCTIONS.unboard =
           tell(
             "You are on your own feet again."),
           put(
-            LOCALS.win,
+            win,
             GLOBALS.avehicle,
             null),
           put(
-            LOCALS.obj,
+            obj,
             GLOBALS.ocontents,
             splice_out(
               find_obj(
                 "#####"),
               ocontents(
-                LOCALS.obj)))] /*)*/,
+                obj)))] /*)*/,
         /*(*/ [tell(
             "You realize, just in time, that disembarking here would probably be\nfatal.")] /*)*/)] /*)*/,
     /*(*/ [tell(
@@ -5030,78 +5030,78 @@ FUNCTIONS.goto =
         GLOBALS.winner);
     let here = GLOBALS.here;
     let lb = rtrnn(
-        LOCALS.rm,
+        rm,
         GLOBALS.rlandbit);
     cond(
     /*(*/ [or(
         and(
           not(
-            LOCALS.lb),
+            lb),
           or(
             not(
-              LOCALS.av),
+              av),
             not(
               rtrnn(
-                LOCALS.rm,
+                rm,
                 orand(
-                  LOCALS.av))))),
+                  av))))),
         and(
           rtrnn(
-            LOCALS.here,
+            here,
             GLOBALS.rlandbit),
-          LOCALS.lb,
-          LOCALS.av,
+          lb,
+          av,
           n_EQ_Q(
             orand(
-              LOCALS.av),
+              av),
             GLOBALS.rlandbit),
           not(
             rtrnn(
-              LOCALS.rm,
+              rm,
               orand(
-                LOCALS.av))))),
+                av))))),
       cond(
-        /*(*/ [LOCALS.av,
+        /*(*/ [av,
           tell(
             "You can't go there in a",
             1,
             odesc2(
-              LOCALS.av),
+              av),
             ".")] /*)*/,
         /*(*/ [tell(
             "You can't go there without a vehicle.")] /*)*/),
       null] /*)*/,
     /*(*/ [rtrnn(
-        LOCALS.rm,
+        rm,
         GLOBALS.rmungbit),
       tell(
         rrand(
-          LOCALS.rm))] /*)*/,
+          rm))] /*)*/,
     /*(*/ [t,
       cond(
         /*(*/ [n_EQ_Q(
-            LOCALS.win,
+            win,
             GLOBALS.player),
           remove_object(
             aobj(
-              LOCALS.win)),
+              win)),
           insert_object(
             aobj(
-              LOCALS.win),
-            LOCALS.rm)] /*)*/),
+              win),
+            rm)] /*)*/),
       cond(
-        /*(*/ [LOCALS.av,
+        /*(*/ [av,
           remove_object(
-            LOCALS.av),
+            av),
           insert_object(
-            LOCALS.av,
-            LOCALS.rm)] /*)*/),
+            av,
+            rm)] /*)*/),
       put(
         GLOBALS.winner,
         GLOBALS.aroom,
-        GLOBALS.here = LOCALS.rm),
+        GLOBALS.here = rm),
       score_room(
-        LOCALS.rm),
+        rm),
       t] /*)*/)
   }
 
@@ -5126,12 +5126,12 @@ FUNCTIONS.mung_room =
     str) => {
     
     rtro(
-    LOCALS.rm,
+    rm,
     GLOBALS.rmungbit)
 put(
-    LOCALS.rm,
+    rm,
     GLOBALS.rrand,
-    LOCALS.str)
+    str)
   }
 
 FUNCTIONS.command = 
@@ -5139,7 +5139,7 @@ FUNCTIONS.command =
     
     let pv = GLOBALS.prsvec;
     let po = 2(
-        LOCALS.pv);
+        pv);
     let v = rest(
         member(
           "",
@@ -5149,19 +5149,19 @@ FUNCTIONS.command =
     let play = GLOBALS.player;
     cond(
     /*(*/ [n_EQ_Q(
-        LOCALS.win,
-        LOCALS.play),
+        win,
+        play),
       tell(
         "You cannot talk through another person!")] /*)*/,
     /*(*/ [trnn(
-        LOCALS.po,
+        po,
         GLOBALS.actorbit),
       GLOBALS.winner = orand(
-          LOCALS.po),
+          po),
       rdcom(
-        LOCALS.v),
-      GLOBALS.winner = LOCALS.play,
-      GLOBALS.here = LOCALS.hs] /*)*/,
+        v),
+      GLOBALS.winner = play,
+      GLOBALS.here = hs] /*)*/,
     /*(*/ [tell(
         "You cannot talk to that!")] /*)*/)
   }
