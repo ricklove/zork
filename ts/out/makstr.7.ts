@@ -123,8 +123,7 @@ FUNCTIONS.exit =
       /*(*/ [or(
           and(
             atm = lookup(
-                1(
-                  pairs),
+                pairs[1],
                 dobl),
             gassigned_Q(
               atm),
@@ -137,20 +136,17 @@ FUNCTIONS.exit =
           atm),
         cond(
           /*(*/ [type_Q(
-              2(
-                pairs),
+              pairs[2],
               string),
             put(
               f,
               2,
               find_room(
-                2(
-                  pairs)))] /*)*/,
+                pairs[2]))] /*)*/,
           /*(*/ [put(
               f,
               2,
-              2(
-                pairs))] /*)*/),
+              pairs[2])] /*)*/),
         f = rest(
             f,
             2)] /*)*/,
@@ -160,8 +156,7 @@ FUNCTIONS.exit =
           1,
           error(
             illegal_direction,
-            1(
-              pairs)))] /*)*/),
+            pairs[1]))] /*)*/),
     cond(
       /*(*/ [empty_Q(
           pairs = rest(
@@ -653,8 +648,7 @@ FUNCTIONS.add_demon =
             cond(
             /*(*/ [_EQ_Q(
                 haction(
-                  1(
-                    y)),
+                  y[1]),
                 haction(
                   x)),
               put(

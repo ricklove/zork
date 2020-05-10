@@ -239,8 +239,7 @@ define(
                   1,
                   cond(
                     /*(*/ [prep,
-                      pprep = 1(
-                          prv),
+                      pprep = prv[1],
                       prv = rest(
                           prv),
                       put(
@@ -313,8 +312,7 @@ define(
                           orfl,
                           overb(
                             orph))),
-                      2(
-                        pv),
+                      pv[2],
                       prep,
                       atm)] /*)*/),
                 mapleave(
@@ -346,15 +344,13 @@ define(
             vb,
             cond(
               /*(*/ [type_Q(
-                  2(
-                    pv),
+                  pv[2],
                   object),
                 tell(
                   "What should I do with the",
                   0,
                   odesc2(
-                    2(
-                      pv)),
+                    pv[2]),
                   "?")] /*)*/,
               /*(*/ [tell(
                   "Huh?",
@@ -362,8 +358,7 @@ define(
           orphan(
             t,
             null,
-            2(
-              pv)),
+            pv[2]),
           null] /*)*/,
         /*(*/ [and(
             put(
@@ -381,11 +376,9 @@ define(
             orfl,
             nprep = oprep(
                 orph),
-            obj = 2(
-                pv),
+            obj = pv[2],
             put(
-              pprep = 1(
-                  prv),
+              pprep = prv[1],
               1,
               nprep),
             put(
@@ -422,8 +415,7 @@ define(
                 1,
                 put(
                   put(
-                    1(
-                      prv),
+                    prv[1],
                     1,
                     prep),
                   2,
@@ -467,14 +459,11 @@ FUNCTIONS.orphan =
 FUNCTIONS.syn_match = 
   (pv) => {
     
-    let action = 1(
-        pv);
+    let action = pv[1];
     let objs = rest(
         pv);
-    let o1 = 1(
-        objs);
-    let o2 = 2(
-        objs);
+    let o1 = objs[1];
+    let o2 = objs[2];
     let dforce = null;
     let drive = null;
     let gwim = null;
@@ -608,10 +597,8 @@ FUNCTIONS.take_it_or_leave_it =
   (syn,
     pv) => {
     
-    let pv1 = 2(
-        pv);
-    let pv2 = 3(
-        pv);
+    let pv1 = pv[2];
+    let pv2 = pv[3];
     let obj = null;
     let varg = null;
     put(
@@ -625,8 +612,7 @@ FUNCTIONS.take_it_or_leave_it =
         /*(*/ [type_Q(
             pv1,
             phrase),
-          2(
-            pv1)] /*)*/))
+          pv1[2]] /*)*/))
 cond(
     /*(*/ [vtrnn(
         varg = syn1(
@@ -647,8 +633,7 @@ put(
         /*(*/ [type_Q(
             pv2,
             phrase),
-          2(
-            pv2)] /*)*/))
+          pv2[2]] /*)*/))
 cond(
     /*(*/ [vtrnn(
         varg = syn2(
@@ -665,10 +650,8 @@ FUNCTIONS.take_it =
     vec,
     vrb) => {
     
-    let sav1 = 1(
-        vec);
-    let sav2 = 2(
-        vec);
+    let sav1 = vec[1];
+    let sav2 = vec[2];
     cond(
     /*(*/ [and(
         search_list(
@@ -799,8 +782,7 @@ FUNCTIONS.foostr =
           put(
             y,
             1,
-            1(
-              x))] /*)*/,
+            x[1])] /*)*/,
         /*(*/ [put(
             y,
             1,
@@ -808,8 +790,7 @@ FUNCTIONS.foostr =
               _(
                 32,
                 ascii(
-                  1(
-                    x))),
+                  x[1])),
               character))] /*)*/)
       },
     nam,
@@ -891,14 +872,12 @@ cond(
           cond(
             /*(*/ [and(
                 or(
-                  savobj = 2(
-                      pv),
+                  savobj = pv[2],
                   t),
                 not(
                   obj),
                 or(
-                  sf = 1(
-                      pv),
+                  sf = pv[1],
                   t),
                 put(
                   pv,
@@ -911,8 +890,7 @@ cond(
                 or(
                   _EQ_Q(
                     action,
-                    1(
-                      pv)),
+                    pv[1]),
                   ntake,
                   take(
                     )),
@@ -986,8 +964,7 @@ FUNCTIONS.make_action =
                 put(
                   vv,
                   1,
-                  1(
-                    itm)),
+                  itm[1]),
                 put(
                   vv,
                   2,
@@ -1041,8 +1018,7 @@ FUNCTIONS.make_action =
                 cond(
                   /*(*/ [gassigned_Q(
                       atm = add_word(
-                          1(
-                            itm))),
+                          itm[1])),
                     put(
                       syn,
                       GLOBALS.sfcn,
@@ -1052,12 +1028,10 @@ FUNCTIONS.make_action =
                       GLOBALS.sfcn,
                       setg(
                         atm = add_word(
-                            1(
-                              itm)),
+                            itm[1]),
                         chtype(
                           /*[*/ [atm,
-                            2(
-                              itm)] /*]*/,
+                            itm[2]] /*]*/,
                           verb)))] /*)*/)] /*)*/,
               /*(*/ [_EQ_Q(
                   itm,
@@ -1117,16 +1091,14 @@ FUNCTIONS.syn_equal =
         _EQ_Q(
           vprep(
             varg),
-          1(
-            pobj)),
+          pobj[1]),
         or(
           not(
             vtrnn(
               varg,
               GLOBALS.vxbit)),
           trnn(
-            2(
-              pobj),
+            pobj[2],
             vbit)))] /*)*/,
     /*(*/ [type_Q(
         pobj,

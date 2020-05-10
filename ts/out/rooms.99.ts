@@ -283,8 +283,7 @@ FUNCTIONS.its_get_name =
                 return(
                   )] /*)*/,
               /*(*/ [memq(
-                  1(
-                    cma),
+                  cma[1],
                   /*%*/ [string(
                       ascii(
                         32),
@@ -616,8 +615,7 @@ cond(
               empty_Q(
                 zork)),
             _EQ_Q(
-              1(
-                zork),
+              zork[1],
               control_g_Q_X_errors)),
           int_level(
             0),
@@ -651,19 +649,16 @@ cond(
                 zork),
               3),
             _EQ_Q(
-              1(
-                zork),
+              zork[1],
               file_system_error_X_errors),
             not(
-              zf = 3(
-                  zork)),
+              zf = zork[3]),
             _EQ_Q(
               length(
                 zf),
               3),
             __Q(
-              1(
-                zf),
+              zf[1],
               "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY")),
           // HACK FOR ILLEGAL CHR AFTER CTRL-P,
           put(
@@ -1076,12 +1071,10 @@ FUNCTIONS.do_save =
             /*(*/ [tell(
                 "Save failed."),
               tell(
-                1(
-                  ch),
+                ch[1],
                 1,
                 "",
-                2(
-                  ch))] /*)*/)] /*)*/,
+                ch[2])] /*)*/)] /*)*/,
         /*(*/ [tell(
             "Can't open channel for save.")] /*)*/)] /*)*/,
     /*(*/ [t,
@@ -1225,12 +1218,10 @@ prog(
         again(
           )] /*)*/,
       /*(*/ [tell(
-          2(
-            ch),
+          ch[2],
           1,
           "",
-          1(
-            ch))] /*)*/))
+          ch[1])] /*)*/))
   }
 
 FUNCTIONS.prob = 
@@ -1342,8 +1333,7 @@ FUNCTIONS.room_info =
     let av = avehicle(
         GLOBALS.winner);
     let rm = GLOBALS.here;
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     let winobj = find_obj(
         "#####");
     let outchan = GLOBALS.outchan;
@@ -1581,8 +1571,7 @@ define(
                   cont),
                 1),
               _EQ_Q(
-                1(
-                  cont),
+                cont[1],
                 find_obj(
                   "#####")))),
           tell(
@@ -2103,8 +2092,7 @@ define(
                     muddle,
                     100),
                   _EQ_Q(
-                    3(
-                      ch),
+                    ch[3],
                     _600123_)),
                 // Can't win--no write access,
                 return(
@@ -2132,16 +2120,14 @@ define(
                   muddle,
                   100),
                 n_EQ_Q(
-                  3(
-                    ch),
+                  ch[3],
                   _4000000_)),
               and(
                 g_Q(
                   muddle,
                   100),
                 _EQ_Q(
-                  3(
-                    ch),
+                  ch[3],
                   _600130_))),
             // on 10x, must get FILE BUSY to try again,
             sleep(
@@ -2159,8 +2145,7 @@ define(
                 muddle,
                 100),
               _EQ_Q(
-                3(
-                  ch),
+                ch[3],
                 _600117_)),
             // No write access,
             return(
@@ -2256,8 +2241,7 @@ define(
             ". Died.",
             ch)] /*)*/,
         /*(*/ [princ(
-            1(
-              quit_Q),
+            quit_Q[1],
             ch)] /*)*/),
       crlf(
         ch),
@@ -2304,8 +2288,7 @@ define(
       ch,
       not(
         0_Q(
-          1(
-            ch))),
+          ch[1])),
       close(
         ch))))
 
@@ -2881,8 +2864,7 @@ FUNCTIONS.print_contents =
         "a")
 princ(
         odesc2(
-          1(
-            y)))
+          y[1]))
 cond(
         /*(*/ [g_Q(
             length(
@@ -3000,12 +2982,10 @@ FUNCTIONS.walk =
     let leavings = null;
     let nrm = null;
     let where = chtype(
-        2(
-          GLOBALS.prsvec),
+        GLOBALS.prsvec[2],
         atom);
     let me = GLOBALS.winner;
-    let rm = 1(
-        me);
+    let rm = me[1];
     let nl = null;
     let random_action = null;
     let cxs = null;
@@ -3024,8 +3004,7 @@ FUNCTIONS.walk =
               where,
               rexits(
                 rm)),
-          leavings = 2(
-              nrm),
+          leavings = nrm[2],
           cond(
             /*(*/ [and(
                 type_Q(
@@ -3071,8 +3050,7 @@ FUNCTIONS.walk =
           where,
           rexits(
             rm)),
-      leavings = 2(
-          nrm),
+      leavings = nrm[2],
       cond(
         /*(*/ [type_Q(
             leavings,
@@ -3130,8 +3108,7 @@ FUNCTIONS.take =
     let rm = aroom(
         win);
     let nobj = null;
-    let obj = 2(
-        vec);
+    let obj = vec[2];
     let getter_Q = null;
     let robjs = robjs(
         rm);
@@ -3276,10 +3253,8 @@ FUNCTIONS.putter =
   (objact?) => {
     
     let pv = GLOBALS.prsvec;
-    let objo = 2(
-        pv);
-    let obji = 3(
-        pv);
+    let objo = pv[2];
+    let obji = pv[3];
     let win = GLOBALS.winner;
     let aobjs = aobjs(
         win);
@@ -3475,10 +3450,8 @@ FUNCTIONS.dropper =
     let vec = GLOBALS.prsvec;
     let rm = aroom(
         winner);
-    let obj = 2(
-        vec);
-    let pi = 3(
-        vec);
+    let obj = vec[2];
+    let pi = vec[3];
     let nobj = null;
     prog(
     /*(*/ [] /*)*/,
@@ -3486,8 +3459,7 @@ FUNCTIONS.dropper =
       /*(*/ [and(
           memq(
             vname(
-              1(
-                vec)),
+              vec[1]),
             () => /*[*/ [drop_X_words,
                 pour_X_words] /*]*/),
           pi),
@@ -3517,8 +3489,7 @@ FUNCTIONS.dropper =
           vec,
           3,
           obj),
-        obj = 2(
-            vec)] /*)*/),
+        obj = vec[2]] /*)*/),
     cond(
       /*(*/ [trnn(
           obj,
@@ -3593,15 +3564,13 @@ FUNCTIONS.dropper =
               )] /*)*/,
           /*(*/ [_EQ_Q(
               vname(
-                1(
-                  vec)),
+                vec[1]),
               drop_X_words),
             tell(
               "Dropped.")] /*)*/,
           /*(*/ [_EQ_Q(
               vname(
-                1(
-                  vec)),
+                vec[1]),
               throw_X_words),
             tell(
               "Thrown.")] /*)*/)] /*)*/,
@@ -3628,8 +3597,7 @@ FUNCTIONS.frob_lots =
   (uv) => {
     
     let prsvec = GLOBALS.prsvec;
-    let pa = 1(
-        prsvec);
+    let pa = prsvec[1];
     let ra = vfcn(
         pa);
     let pi = null;
@@ -3713,8 +3681,7 @@ FUNCTIONS.everything =
   () => {
     
     let prsvec = GLOBALS.prsvec;
-    let pa = 1(
-        prsvec);
+    let pa = prsvec[1];
     let pi = null;
     let suv = GLOBALS.obj_uv;
     let tuv = top(
@@ -3777,8 +3744,7 @@ put(
     /*(*/ [_EQ_Q(
         pa,
         GLOBALS.put_X_words),
-      pi = 3(
-          prsvec),
+      pi = prsvec[3],
       prog(
         rp,
         /*(*/ [] /*)*/,
@@ -3856,8 +3822,7 @@ FUNCTIONS.valuables =
   () => {
     
     let prsvec = GLOBALS.prsvec;
-    let pa = 1(
-        prsvec);
+    let pa = prsvec[1];
     let suv = GLOBALS.obj_uv;
     let tuv = top(
         suv);
@@ -3929,8 +3894,7 @@ FUNCTIONS.valuables =
     /*(*/ [_EQ_Q(
         pa,
         GLOBALS.put_X_words),
-      pi = 3(
-          prsvec),
+      pi = prsvec[3],
       prog(
         rp,
         /*(*/ [] /*)*/,
@@ -4017,8 +3981,7 @@ define(
     /*(*/ [pv,
       GLOBALS.prsvec] /*)*/,
     /*(*/ [prso,
-      2(
-        pv)] /*)*/,
+      pv[2]] /*)*/,
     /*(*/ [outchan,
       GLOBALS.outchan] /*)*/] /*)*/,
   /*#*/ [decl,
@@ -4094,8 +4057,7 @@ define(
     /*(*/ [pv,
       GLOBALS.prsvec] /*)*/,
     /*(*/ [prso,
-      2(
-        pv)] /*)*/] /*)*/,
+      pv[2]] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [pv] /*)*/,
       vector(
@@ -4138,8 +4100,7 @@ define(
 FUNCTIONS.find = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -4231,10 +4192,8 @@ FUNCTIONS.object_action =
   () => {
     
     let vec = GLOBALS.prsvec;
-    let prso = 2(
-        vec);
-    let prsi = 3(
-        vec);
+    let prso = vec[2];
+    let prsi = vec[3];
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -4291,8 +4250,7 @@ FUNCTIONS.splice_out =
     
     cond(
     /*(*/ [_EQ_Q(
-        1(
-          al),
+        al[1],
         obj),
       rest(
         al)] /*)*/,
@@ -4309,8 +4267,7 @@ FUNCTIONS.splice_out =
             list] /*)*/] /*2*/,
         cond(
           /*(*/ [_EQ_Q(
-              1(
-                nl),
+              nl[1],
               obj),
             putrest(
               ol,
@@ -4362,8 +4319,7 @@ FUNCTIONS.move =
     let vec = GLOBALS.prsvec;
     let rm = aroom(
         GLOBALS.winner);
-    let obj = 2(
-        vec);
+    let obj = vec[2];
     cond(
     /*(*/ [memq(
         obj,
@@ -4404,8 +4360,7 @@ define(
     /*(*/ [me,
       GLOBALS.winner] /*)*/,
     /*(*/ [obj,
-      2(
-        prsvec)] /*)*/,
+      prsvec[2]] /*)*/,
     /*(*/ [lit_Q,
       lit_Q(
         GLOBALS.here)] /*)*/] /*)*/,
@@ -4421,8 +4376,7 @@ define(
         trnn(
           obj,
           GLOBALS.burnbit),
-        3(
-          prsvec),
+        prsvec[3],
         put(
           prsvec,
           1,
@@ -4481,8 +4435,7 @@ define(
     /*(*/ [me,
       GLOBALS.winner] /*)*/,
     /*(*/ [obj,
-      2(
-        GLOBALS.prsvec)] /*)*/] /*)*/,
+      GLOBALS.prsvec[2]] /*)*/] /*)*/,
   /*#*/ [decl,
     /*(*/ [/*(*/ [me] /*)*/,
       adv,
@@ -4611,8 +4564,7 @@ FUNCTIONS.lex =
     /* FUNCTION */
       (x) => {
         
-        let str = 1(
-            x);
+        let str = x[1];
         put(
         x,
         1,
@@ -4624,8 +4576,7 @@ FUNCTIONS.lex =
     v)
 cond(
     /*(*/ [_EQ_Q(
-        1(
-          s),
+        s[1],
         _X__Q),
       put(
         v,
@@ -4635,8 +4586,7 @@ cond(
           0,
           4,
           back(
-            1(
-              v),
+            v[1],
             4)))] /*)*/,
     /*(*/ [repeat(
         /*(*/ [slen] /*)*/,
@@ -4651,8 +4601,7 @@ cond(
                 length(
                   sx)),
               memq(
-                1(
-                  s1),
+                s1[1],
                 brks)),
             and(
               g_Q(
@@ -4662,12 +4611,10 @@ cond(
                   sx)),
               or(
                 _EQ_Q(
-                  1(
-                    s1),
+                  s1[1],
                   _X__),
                 _EQ_Q(
-                  1(
-                    s1),
+                  s1[1],
                   _X__)),
               not(
                 quot),
@@ -4700,8 +4647,7 @@ cond(
                                   s1)),
                               5),
                           back(
-                            1(
-                              v),
+                            v[1],
                             slen)))),
                     v = rest(
                         v)] /*)*/)] /*)*/),
@@ -4740,8 +4686,7 @@ FUNCTIONS.anything =
             null)] /*)*/,
         /*(*/ [not(
             memq(
-              1(
-                x),
+              x[1],
               GLOBALS.brks)),
           mapleave(
             x)] /*)*/)
@@ -4759,8 +4704,7 @@ FUNCTIONS.uppercase =
         "AUX",
       /*(*/ [c,
           ascii(
-            1(
-              s))] /*)*/
+            s[1])] /*)*/
         cond(
         /*(*/ [and(
             g_Q(
@@ -4926,8 +4870,7 @@ or(
 FUNCTIONS.board = 
   () => {
     
-    let obj = 2(
-        GLOBALS.prsvec);
+    let obj = GLOBALS.prsvec[2];
     let win = GLOBALS.winner;
     let av = avehicle(
         win);
@@ -4987,8 +4930,7 @@ FUNCTIONS.board =
 FUNCTIONS.unboard = 
   () => {
     
-    let obj = 2(
-        GLOBALS.prsvec);
+    let obj = GLOBALS.prsvec[2];
     let win = GLOBALS.winner;
     let av = avehicle(
         win);
@@ -5138,8 +5080,7 @@ FUNCTIONS.command =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let po = 2(
-        pv);
+    let po = pv[2];
     let v = rest(
         member(
           "",

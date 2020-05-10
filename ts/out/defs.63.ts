@@ -1291,13 +1291,11 @@ cond(
     /*(*/ [no_is_bad_Q,
       not(
         memq(
-          1(
-            inbuf),
+          inbuf[1],
           "NnfF"))] /*)*/,
     /*(*/ [t,
       memq(
-        1(
-          inbuf),
+        inbuf[1],
         "TtYy")] /*)*/)
   }
 
@@ -1500,8 +1498,7 @@ FUNCTIONS.function_print =
         rsubr,
         rsubr_entry),
       prin1(
-        2(
-          frob))] /*)*/,
+        frob[2])] /*)*/,
     /*(*/ [type_Q(
         frob,
         atom),

@@ -977,8 +977,7 @@ add_demon(
       /*[*/ [sword_glow,
         GLOBALS.villains,
         /*(*/ [] /*)*/,
-        1(
-          GLOBALS.rooms),
+        GLOBALS.rooms[1],
         find_obj(
           "SWORD"),
         null] /*]*/,
@@ -1013,8 +1012,7 @@ add_demon(
       /*[*/ [fighting,
         GLOBALS.villains,
         /*(*/ [] /*)*/,
-        1(
-          GLOBALS.rooms),
+        GLOBALS.rooms[1],
         find_obj(
           "TROLL"),
         null] /*]*/,
@@ -3384,8 +3382,7 @@ add_demon(
       /*[*/ [robber,
         /*(*/ [] /*)*/,
         GLOBALS.rooms,
-        1(
-          GLOBALS.rooms),
+        GLOBALS.rooms[1],
         find_obj(
           "THIEF"),
         null] /*]*/,

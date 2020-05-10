@@ -84,8 +84,7 @@ FUNCTIONS.east_house =
     
     let win = GLOBALS.winner;
     let prsvec = GLOBALS.prsvec;
-    let prsact = 1(
-        prsvec);
+    let prsact = prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -106,8 +105,7 @@ GLOBALS.grunlock_X_flag = null
 FUNCTIONS.window_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     open_close(
     prsact,
     kitchen_window_X_flag,
@@ -158,8 +156,7 @@ FUNCTIONS.kitchen =
     
     let win = GLOBALS.winner;
     let prsvec = GLOBALS.prsvec;
-    let prsact = 1(
-        prsvec);
+    let prsact = prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -182,12 +179,10 @@ FUNCTIONS.leaf_pile =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let l = 2(
-        pv);
+    let l = pv[2];
     cond(
     /*(*/ [_EQ_Q(
-        1(
-          pv),
+        pv[1],
         GLOBALS.burn_X_words),
       put(
         l,
@@ -206,8 +201,7 @@ FUNCTIONS.leaf_pile =
           jigs_up(
             "The sight of someone carrying a pile of burning leaves so offends\nthe neighbors that they come over and put you out.")] /*)*/)] /*)*/,
     /*(*/ [_EQ_Q(
-        1(
-          pv),
+        pv[1],
         GLOBALS.move_X_words),
       put(
         l,
@@ -228,8 +222,7 @@ psetg(
 FUNCTIONS.glacier_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -248,8 +241,7 @@ FUNCTIONS.glacier_room =
 FUNCTIONS.trophy_case = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -262,8 +254,7 @@ FUNCTIONS.glacier =
   () => {
     
     let prsvec = GLOBALS.prsvec;
-    let prsact = 1(
-        prsvec);
+    let prsact = prsvec[1];
     let t = null;
     cond(
     /*(*/ [_EQ_Q(
@@ -272,8 +263,7 @@ FUNCTIONS.glacier =
         throw_X_words),
       cond(
         /*(*/ [_EQ_Q(
-            2(
-              prsvec),
+            prsvec[2],
             t = find_obj(
                 "TORCH")),
           tell(
@@ -330,8 +320,7 @@ psetg(
 FUNCTIONS.reservoir_south = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -353,8 +342,7 @@ FUNCTIONS.reservoir_south =
 FUNCTIONS.reservoir_north = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -381,8 +369,7 @@ FUNCTIONS.living_room =
     let win = GLOBALS.winner;
     let prsvec = GLOBALS.prsvec;
     let rug_Q = null;
-    let prsact = 1(
-        prsvec);
+    let prsact = prsvec[1];
     let tc = null;
     cond(
     /*(*/ [_EQ_Q(
@@ -430,8 +417,7 @@ FUNCTIONS.living_room =
               prsact,
               GLOBALS.put_X_words),
             _EQ_Q(
-              3(
-                prsvec),
+              prsvec[3],
               tc)))),
       put(
         GLOBALS.winner,
@@ -448,8 +434,7 @@ FUNCTIONS.living_room =
 FUNCTIONS.trap_door = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let rm = GLOBALS.here;
     cond(
     /*(*/ [_EQ_Q(
@@ -500,8 +485,7 @@ FUNCTIONS.trap_door =
 FUNCTIONS.look_under = 
   () => {
     
-    let obj = 2(
-        GLOBALS.prsvec);
+    let obj = GLOBALS.prsvec[2];
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -539,8 +523,7 @@ FUNCTIONS.repent =
 FUNCTIONS.clearing = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let rm = GLOBALS.here;
     let grate = find_obj(
         "GRAT1");
@@ -584,8 +567,7 @@ FUNCTIONS.clearing =
             prsact,
             GLOBALS.move_X_words)),
         _EQ_Q(
-          2(
-            GLOBALS.prsvec),
+          GLOBALS.prsvec[2],
           leaves)),
       tell(
         "A grating appears on the ground."),
@@ -604,8 +586,7 @@ FUNCTIONS.cellar =
   () => {
     
     let win = GLOBALS.winner;
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let door = find_obj(
         "DOOR");
     cond(
@@ -672,8 +653,7 @@ FUNCTIONS.rug =
   () => {
     
     let prsvec = GLOBALS.prsvec;
-    let prsa = 1(
-        prsvec);
+    let prsa = prsvec[1];
     let obj = null;
     cond(
     /*(*/ [_EQ_Q(
@@ -711,10 +691,8 @@ FUNCTIONS.rusty_knife =
   () => {
     
     let prsvec = GLOBALS.prsvec;
-    let prsa = 1(
-        prsvec);
-    let prsi = 3(
-        prsvec);
+    let prsa = prsvec[1];
+    let prsi = prsvec[3];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -754,8 +732,7 @@ FUNCTIONS.rusty_knife =
 FUNCTIONS.skeleton = 
   () => {
     
-    let rm = 1(
-        GLOBALS.winner);
+    let rm = GLOBALS.winner[1];
     let lld = find_room(
         "LLD2");
     let l = null;
@@ -801,11 +778,9 @@ cond(
 FUNCTIONS.troll = 
   () => {
     
-    let pa = 1(
-        GLOBALS.prsvec);
+    let pa = GLOBALS.prsvec[1];
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
+    let prso = pv[2];
     let here = GLOBALS.here;
     let t = find_obj(
         "TROLL");
@@ -916,8 +891,7 @@ FUNCTIONS.troll =
         /*(*/ [tell(
             "and not having the most discriminating tastes, gleefully eats it."),
           remove_object(
-            2(
-              pv))] /*)*/)] /*)*/,
+            pv[2])] /*)*/)] /*)*/,
     /*(*/ [or(
         _EQ_Q(
           pa,
@@ -940,8 +914,7 @@ FUNCTIONS.troll =
 FUNCTIONS.mirror_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -963,8 +936,7 @@ GLOBALS.mirror_mung_X_flag = null
 FUNCTIONS.mirror_mirror = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let rm1 = null;
     let rm2 = null;
     let l1 = null;
@@ -1068,15 +1040,13 @@ FUNCTIONS.carousel_room =
     cond(
     /*(*/ [and(
         _EQ_Q(
-          1(
-            pv),
+          pv[1],
           GLOBALS.walk_in_X_words),
         GLOBALS.carousel_zoom_X_flag),
       jigs_up(
         GLOBALS.spindizzy)] /*)*/,
     /*(*/ [_EQ_Q(
-        1(
-          pv),
+        pv[1],
         GLOBALS.look_X_words),
       tell(
         "You are in a circular room with passages off in eight directions.",
@@ -1128,8 +1098,7 @@ FUNCTIONS.carousel_out =
 FUNCTIONS.torch_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -1146,8 +1115,7 @@ FUNCTIONS.torch_room =
 FUNCTIONS.dome_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -1189,8 +1157,7 @@ FUNCTIONS.lld_room =
     let win = GLOBALS.winner;
     let wobj = aobjs(
         win);
-    let pa = 1(
-        pv);
+    let pa = pv[1];
     let cand = find_obj(
         "CANDL");
     cond(
@@ -1247,8 +1214,7 @@ FUNCTIONS.lld_room =
 FUNCTIONS.lld2_room = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -1270,15 +1236,13 @@ FUNCTIONS.ghost_function =
         "GHOST");
     cond(
     /*(*/ [_EQ_Q(
-        3(
-          pv),
+        pv[3],
         g),
       tell(
         "How can you attack a spirit with material objects?"),
       null] /*)*/,
     /*(*/ [_EQ_Q(
-        2(
-          pv),
+        pv[2],
         g),
       tell(
         "You seem unable to affect these spirits.")] /*)*/)
@@ -1287,8 +1251,7 @@ FUNCTIONS.ghost_function =
 FUNCTIONS.maze_11 = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -1309,8 +1272,7 @@ FUNCTIONS.maze_11 =
 FUNCTIONS.grat1_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [GLOBALS.grunlock_X_flag,
       open_close(
@@ -1325,8 +1287,7 @@ FUNCTIONS.grat1_function =
 FUNCTIONS.grat2_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [GLOBALS.grunlock_X_flag,
       open_close(
@@ -1361,8 +1322,7 @@ FUNCTIONS.treasure_room =
           hack),
         _EQ_Q(
           vname(
-            1(
-              pv)),
+            pv[1]),
           walk_in_X_words)),
       cond(
         /*(*/ [flg = n_EQ_Q(
@@ -1448,8 +1408,7 @@ FUNCTIONS.treas =
     cond(
     /*(*/ [and(
         _EQ_Q(
-          1(
-            GLOBALS.prsvec),
+          GLOBALS.prsvec[1],
           GLOBALS.treas_X_words),
         _EQ_Q(
           GLOBALS.here,
@@ -1462,8 +1421,7 @@ FUNCTIONS.treas =
         )] /*)*/,
     /*(*/ [and(
         _EQ_Q(
-          1(
-            GLOBALS.prsvec),
+          GLOBALS.prsvec[1],
           GLOBALS.templ_X_words),
         _EQ_Q(
           GLOBALS.here,
@@ -1502,8 +1460,7 @@ GLOBALS.gate_flag_X_flag = null
 FUNCTIONS.dam_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -1531,10 +1488,8 @@ FUNCTIONS.dam_room =
 FUNCTIONS.bolt_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
-    let prsi = 3(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
+    let prsi = GLOBALS.prsvec[3];
     let trunk = find_obj(
         "TRUNK");
     cond(
@@ -1604,12 +1559,9 @@ FUNCTIONS.maint_room =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prsact = 1(
-        pv);
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prsact = pv[1];
+    let prso = pv[2];
+    let prsi = pv[3];
     let mnt = find_room(
         "MAINT");
     let here_Q = _EQ_Q(
@@ -1720,14 +1672,11 @@ FUNCTIONS.leak_function =
     
     let hack = null;
     let prsvec = GLOBALS.prsvec;
-    let prsa = 1(
-        prsvec);
-    let prsi = 3(
-        prsvec);
+    let prsa = prsvec[1];
+    let prsi = prsvec[3];
     cond(
     /*(*/ [_EQ_Q(
-        2(
-          prsvec),
+        prsvec[2],
         find_obj(
           "LEAK")),
       cond(
@@ -1765,12 +1714,10 @@ FUNCTIONS.tube_function =
     cond(
     /*(*/ [and(
         _EQ_Q(
-          1(
-            prsvec),
+          prsvec[1],
           GLOBALS.put_X_words),
         _EQ_Q(
-          3(
-            prsvec),
+          prsvec[3],
           find_obj(
             "TUBE"))),
       tell(
@@ -1793,8 +1740,7 @@ FUNCTIONS.cave2_room =
     
     let foo = null;
     let bar = null;
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let c = null;
     cond(
     /*(*/ [_EQ_Q(
@@ -1827,49 +1773,41 @@ FUNCTIONS.cave2_room =
 FUNCTIONS.bottle_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
-        1(
-          prsact),
+        prsact[1],
         throw_X_words),
       tell(
         "The bottle hits the far wall and is decimated."),
       remove_object(
-        2(
-          GLOBALS.prsvec))] /*)*/,
+        GLOBALS.prsvec[2])] /*)*/,
     /*(*/ [_EQ_Q(
-        1(
-          prsact),
+        prsact[1],
         mung_X_words),
       cond(
         /*(*/ [memq(
-            2(
-              GLOBALS.prsvec),
+            GLOBALS.prsvec[2],
             aobjs(
               GLOBALS.winner)),
           put(
             GLOBALS.winner,
             GLOBALS.aobjs,
             splice_out(
-              2(
-                GLOBALS.prsvec),
+              GLOBALS.prsvec[2],
               aobjs(
                 GLOBALS.winner))),
           tell(
             "You have destroyed the bottle.  Well done.")] /*)*/,
         /*(*/ [memq(
-            2(
-              GLOBALS.prsvec),
+            GLOBALS.prsvec[2],
             robjs(
               GLOBALS.here)),
           put(
             GLOBALS.here,
             GLOBALS.robjs,
             splice_out(
-              2(
-                GLOBALS.prsvec),
+              GLOBALS.prsvec[2],
               robjs(
                 GLOBALS.here))),
           tell(
@@ -1907,8 +1845,7 @@ FUNCTIONS.fill =
       put(
         prsvec,
         3,
-        2(
-          prsvec)),
+        prsvec[2]),
       put(
         prsvec,
         2,
@@ -1923,17 +1860,14 @@ FUNCTIONS.water_function =
   (rem?) => {
     
     let prsvec = GLOBALS.prsvec;
-    let prsact = 1(
-        prsvec);
+    let prsact = prsvec[1];
     let me = GLOBALS.winner;
     let b = find_obj(
         "BOTTL");
-    let w = 2(
-        prsvec);
+    let w = prsvec[2];
     let av = avehicle(
         me);
-    let can = 3(
-        prsvec);
+    let can = prsvec[3];
     cond(
     /*(*/ [or(
         _EQ_Q(
@@ -2094,8 +2028,7 @@ FUNCTIONS.water_function =
 FUNCTIONS.rope_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let droom = find_room(
         "DOME");
     let rope = find_obj(
@@ -2125,8 +2058,7 @@ FUNCTIONS.rope_function =
             prsact),
           tie_X_words),
         _EQ_Q(
-          3(
-            GLOBALS.prsvec),
+          GLOBALS.prsvec[3],
           find_obj(
             "RAILI"))),
       cond(
@@ -2193,10 +2125,8 @@ FUNCTIONS.rope_function =
 FUNCTIONS.cyclops = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
-    let prsob1 = 2(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
+    let prsob1 = GLOBALS.prsvec[2];
     let rm = GLOBALS.here;
     let food = find_obj(
         "FOOD");
@@ -2359,8 +2289,7 @@ FUNCTIONS.cyclops_room =
         rm);
     cond(
     /*(*/ [_EQ_Q(
-        1(
-          pv),
+        pv[1],
         GLOBALS.look_X_words),
       tell(
         "You are in a room with an exit on the west side, and a staircase\nleading up."),
@@ -2504,15 +2433,12 @@ FUNCTIONS.echo_room =
                       t),
                     t),
                   _EQ_Q(
-                    verb = 1(
-                        prsvec),
+                    verb = prsvec[1],
                     walk),
-                  2(
-                    prsvec),
+                  prsvec[2],
                   memq(
                     chtype(
-                      2(
-                        prsvec),
+                      prsvec[2],
                       atom),
                     rexits(
                       rm))),
@@ -2624,18 +2550,15 @@ FUNCTIONS.leaper =
       cond(
         /*(*/ [or(
             type_Q(
-              2(
-                m),
+              m[2],
               nexit),
             and(
               type_Q(
-                2(
-                  m),
+                m[2],
                 cexit),
               not(
                 cxflag(
-                  2(
-                    m))))),
+                  m[2])))),
           jigs_up(
             pick_one(
               GLOBALS.jumploss))] /*)*/)] /*)*/,
@@ -2661,8 +2584,7 @@ gdecl(
 FUNCTIONS.hello = 
   () => {
     
-    let prsobj = 2(
-        GLOBALS.prsvec);
+    let prsobj = GLOBALS.prsvec[2];
     let amt = GLOBALS.hs = _(
           GLOBALS.hs,
           1);
@@ -2740,10 +2662,8 @@ FUNCTIONS.reader =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let po = 2(
-        pv);
-    let pi = 3(
-        pv);
+    let po = pv[2];
+    let pi = pv[3];
     cond(
     /*(*/ [not(
         lit_Q(
@@ -2842,10 +2762,8 @@ gdecl(
 FUNCTIONS.brush = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
-    let prsi = 3(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
+    let prsi = GLOBALS.prsvec[3];
     cond(
     /*(*/ [_EQ_Q(
         prso,
@@ -2880,8 +2798,7 @@ FUNCTIONS.brush =
 FUNCTIONS.ring = 
   () => {
     
-    let prsobj = 2(
-        GLOBALS.prsvec);
+    let prsobj = GLOBALS.prsvec[2];
     cond(
     /*(*/ [_EQ_Q(
         prsobj,
@@ -2899,8 +2816,7 @@ FUNCTIONS.eat =
     let prsvec = GLOBALS.prsvec;
     let eat_Q = null;
     let drink_Q = null;
-    let prsobj = 2(
-        prsvec);
+    let prsobj = prsvec[2];
     let nobj = null;
     let aobjs = aobjs(
         GLOBALS.winner);
@@ -2915,8 +2831,7 @@ FUNCTIONS.eat =
           aobjs)),
       cond(
         /*(*/ [_EQ_Q(
-            1(
-              prsvec),
+            prsvec[1],
             GLOBALS.drink_X_words),
           tell(
             "How can I drink that?")] /*)*/,
@@ -3446,8 +3361,7 @@ define(
           /*(*/ [/*(*/ [rooms,
               hrooms(
                 hack)] /*)*/] /*)*/,
-          rm = 1(
-              rooms),
+          rm = rooms[1],
           cond(
             /*(*/ [empty_Q(
                 rooms = rest(
@@ -3545,13 +3459,11 @@ FUNCTIONS.snarf_object =
 FUNCTIONS.robber_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let dem = get_demon(
         "THIEF");
     let pv = GLOBALS.prsvec;
-    let prsobj = 2(
-        pv);
+    let prsobj = pv[2];
     let here = GLOBALS.here;
     let flg = null;
     let brick = null;
@@ -3738,8 +3650,7 @@ tro(
           prsobj,
           object),
         _EQ_Q(
-          2(
-            pv),
+          pv[2],
           GLOBALS.knife_X_objects),
         _EQ_Q(
           vname(
@@ -3880,10 +3791,8 @@ tro(
 FUNCTIONS.chalice = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
-    let ch = 2(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
+    let ch = GLOBALS.prsvec[2];
     let tr = null;
     let t = null;
     cond(
@@ -3917,10 +3826,8 @@ FUNCTIONS.burner =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prso = pv[2];
+    let prsi = pv[3];
     cond(
     /*(*/ [flaming_Q(
         prsi),
@@ -3982,10 +3889,8 @@ FUNCTIONS.turner =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prso = pv[2];
+    let prsi = pv[3];
     cond(
     /*(*/ [trnn(
         prso,
@@ -4021,8 +3926,7 @@ gdecl(
 FUNCTIONS.ddoor_function = 
   () => {
     
-    let pa = 1(
-        GLOBALS.prsvec);
+    let pa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         pa,
@@ -4045,10 +3949,8 @@ FUNCTIONS.ddoor_function =
 FUNCTIONS.inflater = 
   () => {
     
-    let prsi = 2(
-        GLOBALS.prsvec);
-    let prso = 3(
-        GLOBALS.prsvec);
+    let prsi = GLOBALS.prsvec[2];
+    let prso = GLOBALS.prsvec[3];
     cond(
     /*(*/ [_EQ_Q(
         prsi,
@@ -4076,8 +3978,7 @@ FUNCTIONS.inflater =
 FUNCTIONS.deflater = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [_EQ_Q(
         prso,
@@ -4092,8 +3993,7 @@ FUNCTIONS.deflater =
 FUNCTIONS.locker = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [_EQ_Q(
         prso,
@@ -4132,10 +4032,8 @@ FUNCTIONS.locker =
 FUNCTIONS.unlocker = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
-    let prsi = 3(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
+    let prsi = GLOBALS.prsvec[3];
     let r = find_room(
         "MGRAT");
     cond(
@@ -4188,10 +4086,8 @@ FUNCTIONS.killer =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prso = pv[2];
+    let prsi = pv[3];
     cond(
     /*(*/ [not(
         prso),
@@ -4234,10 +4130,8 @@ FUNCTIONS.attacker =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prso = pv[2];
+    let prsi = pv[3];
     cond(
     /*(*/ [not(
         prso),
@@ -4280,10 +4174,8 @@ FUNCTIONS.swinger =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prso = pv[2];
+    let prsi = pv[3];
     put(
     pv,
     2,
@@ -4344,10 +4236,8 @@ gdecl(
 FUNCTIONS.munger = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
-    let prsw = 3(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
+    let prsw = GLOBALS.prsvec[3];
     cond(
     /*(*/ [trnn(
         prso,
@@ -4392,8 +4282,7 @@ FUNCTIONS.munger =
 FUNCTIONS.kicker = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     hack_hack(
     prso,
     "Munging a")
@@ -4402,8 +4291,7 @@ FUNCTIONS.kicker =
 FUNCTIONS.waver = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     hack_hack(
     prso,
     "Waving a")
@@ -4412,8 +4300,7 @@ FUNCTIONS.waver =
 FUNCTIONS.r_l = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     hack_hack(
     prso,
     "Playing in this way with a")
@@ -4422,8 +4309,7 @@ FUNCTIONS.r_l =
 FUNCTIONS.rubber = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     hack_hack(
     prso,
     "Fiddling with a")
@@ -4451,8 +4337,7 @@ FUNCTIONS.plugger =
 FUNCTIONS.untie = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -4468,8 +4353,7 @@ FUNCTIONS.untie =
 FUNCTIONS.pusher = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -4485,8 +4369,7 @@ FUNCTIONS.pusher =
 FUNCTIONS.tie = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [trnn(
         prso,
@@ -4503,8 +4386,7 @@ FUNCTIONS.tie =
 FUNCTIONS.melter = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -4521,8 +4403,7 @@ GLOBALS.on_pole_X_flag = null
 FUNCTIONS.body_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -4558,8 +4439,7 @@ FUNCTIONS.mumbler =
 FUNCTIONS.alarm = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [trnn(
         prso,
@@ -4591,10 +4471,8 @@ FUNCTIONS.dungeon =
 FUNCTIONS.painting = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
-    let art = 2(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
+    let art = GLOBALS.prsvec[2];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -4640,8 +4518,7 @@ FUNCTIONS.lantern =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let verb = 1(
-        pv);
+    let verb = pv[1];
     let here = GLOBALS.here;
     let rlamp = find_obj(
         "LAMP");
@@ -4729,8 +4606,7 @@ FUNCTIONS.sword_glow =
                     cexit),
                   and(
                     infested_Q(
-                      2(
-                        e)),
+                      e[2]),
                     mapleave(
                       t))] /*)*/)
               },
@@ -4767,8 +4643,7 @@ FUNCTIONS.sword_glow =
 FUNCTIONS.sword = 
   () => {
     
-    let pa = 1(
-        GLOBALS.prsvec);
+    let pa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -4839,10 +4714,8 @@ psetg(
 FUNCTIONS.match_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
+    let prso = GLOBALS.prsvec[2];
     let match = find_obj(
         "MATCH");
     let mc = orand(
@@ -4917,15 +4790,13 @@ FUNCTIONS.match_function =
 FUNCTIONS.candles = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let c = find_obj(
         "CANDL");
     let winner = GLOBALS.winner;
     let ao = aobjs(
         winner);
-    let w = 3(
-        GLOBALS.prsvec);
+    let w = GLOBALS.prsvec[3];
     let match = null;
     let foo = null;
     let orphans = null;
@@ -4996,8 +4867,7 @@ cond(
               tell(
                 "The candles are lighted."),
               clock_enable(
-                2(
-                  foo))] /*)*/)] /*)*/,
+                foo[2])] /*)*/)] /*)*/,
         /*(*/ [_EQ_Q(
             w,
             find_obj(
@@ -5030,8 +4900,7 @@ cond(
         prsact,
         GLOBALS.turn_off_X_words),
       clock_disable(
-        2(
-          foo)),
+        foo[2]),
       cond(
         /*(*/ [1_Q(
             olight_Q(
@@ -5058,10 +4927,8 @@ FUNCTIONS.black_book =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let v = 1(
-        pv);
-    let b = 2(
-        pv);
+    let v = pv[1];
+    let b = pv[2];
     cond(
     /*(*/ [_EQ_Q(
         v,
@@ -5091,8 +4958,7 @@ FUNCTIONS.light_int =
     foo,
     1,
     cnt = _(
-        1(
-          foo),
+        foo[1],
         1))
 clock_int(
     cev,

@@ -314,6 +314,20 @@ export const convertToTypescript = (node: ZNode): string => {
             return convertToTypescriptFunctionDeclarationOuter(name, funNodes, depth);
         }
 
+        // FORMS: <NAME...args> ---
+
+        // Array Access: <1 .ATM>
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && nodes.length === 2
+            && nodes[1].kind === 'ZList'
+            && (nodes[1].openSymbol === '.' || nodes[1].openSymbol === ',')
+            && (parseInt(firstNode._raw.toString()) + '' === firstNode._raw.toString())
+        ) {
+            return `${convertToTypescript(nodes[1])}[${nodes[0]}]`;
+        }
+
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
             const name = convertToTypescriptName(firstNode);

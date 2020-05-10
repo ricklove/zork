@@ -2,10 +2,8 @@ FUNCTIONS.coke_bottles =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let bottl = 2(
-        pv);
-    let vb = 1(
-        pv);
+    let bottl = pv[2];
+    let vb = pv[1];
     cond(
     /*(*/ [or(
         _EQ_Q(
@@ -31,8 +29,7 @@ FUNCTIONS.head_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let vb = 1(
-        pv);
+    let vb = pv[1];
     let nl = /*(*/ [] /*)*/;
     let lcase = find_obj(
         "LCASE");
@@ -81,10 +78,8 @@ FUNCTIONS.bucket =
   (arg?) => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
-    let po = 2(
-        pv);
+    let pa = pv[1];
+    let po = pv[2];
     let w = find_obj(
         "WATER");
     let buck = find_obj(
@@ -151,8 +146,7 @@ FUNCTIONS.pass_the_bucket =
     pv,
     b) => {
     
-    let pvs = 2(
-        pv);
+    let pvs = pv[2];
     put(
     pv,
     2,
@@ -187,12 +181,10 @@ FUNCTIONS.eatme_function =
     cond(
     /*(*/ [and(
         _EQ_Q(
-          1(
-            pv),
+          pv[1],
           GLOBALS.eat_X_words),
         _EQ_Q(
-          2(
-            pv),
+          pv[2],
           c = find_obj(
               "ECAKE")),
         _EQ_Q(
@@ -238,12 +230,9 @@ FUNCTIONS.cake_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
-    let po = 2(
-        pv);
-    let pi = 3(
-        pv);
+    let pa = pv[1];
+    let po = pv[2];
+    let pi = pv[3];
     let rice = find_obj(
         "RDICE");
     let oice = find_obj(
@@ -391,8 +380,7 @@ FUNCTIONS.flask_function =
     
     let f = null;
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
+    let pa = pv[1];
     cond(
     /*(*/ [_EQ_Q(
         pa,
@@ -411,8 +399,7 @@ FUNCTIONS.flask_function =
           GLOBALS.throw_X_words)),
       tell(
         "The flask breaks into pieces."),
-      f = 2(
-          pv),
+      f = pv[2],
       trz(
         f,
         GLOBALS.ovison),
@@ -447,10 +434,8 @@ FUNCTIONS.magnet_room =
     
     let foo = null;
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
-    let po = 2(
-        pv);
+    let pa = pv[1];
+    let po = pv[2];
     let here = GLOBALS.here;
     let m = null;
     cond(
@@ -507,8 +492,7 @@ FUNCTIONS.magnet_room =
                 12)),
           goto(
             cxroom(
-              foo = 2(
-                  m))),
+              foo = m[2])),
           room_info(
             )] /*)*/)] /*)*/)
   }
@@ -517,8 +501,7 @@ FUNCTIONS.cmach_room =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
+    let pa = pv[1];
     cond(
     /*(*/ [_EQ_Q(
         pa,
@@ -536,10 +519,8 @@ FUNCTIONS.buttons =
     
     let i = null;
     let pv = GLOBALS.prsvec;
-    let po = 2(
-        pv);
-    let pa = 1(
-        pv);
+    let po = pv[2];
+    let pa = pv[1];
     cond(
     /*(*/ [_EQ_Q(
         pa,
@@ -602,8 +583,7 @@ FUNCTIONS.sphere_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
+    let pa = pv[1];
     let r = find_obj(
         "ROBOT");
     let c = null;
@@ -669,8 +649,7 @@ cond(
       remove_object(
         r),
       trz(
-        2(
-          pv),
+        pv[2],
         GLOBALS.ovison),
       insert_object(
         find_obj(
@@ -713,10 +692,8 @@ FUNCTIONS.robot_actor =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
-    let po = 2(
-        pv);
+    let pa = pv[1];
+    let po = pv[2];
     let c = null;
     let cage = null;
     let r = find_obj(
@@ -793,12 +770,9 @@ FUNCTIONS.robot_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let pa = 1(
-        pv);
-    let po = 2(
-        pv);
-    let pi = 3(
-        pv);
+    let pa = pv[1];
+    let po = pv[2];
+    let pi = pv[3];
     let pp = null;
     let aa = null;
     cond(
@@ -844,8 +818,7 @@ FUNCTIONS.knock =
   () => {
     "AUX",
   /*(*/ [prso,
-      2(
-        GLOBALS.prsvec)] /*)*/
+      GLOBALS.prsvec[2]] /*)*/
     cond(
     /*(*/ [memq(
         door_X_objects,

@@ -2,8 +2,7 @@ FUNCTIONS.boom_room =
   () => {
     
     let dummy_Q = null;
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let win = GLOBALS.winner;
     let o = null;
     cond(
@@ -66,8 +65,7 @@ FUNCTIONS.boom_room =
 FUNCTIONS.bats_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -171,8 +169,7 @@ GLOBALS.cage_top_X_flag = t
 FUNCTIONS.dumbwaiter = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let tb = find_obj(
         "TBASK");
     let top = find_room(
@@ -254,8 +251,7 @@ FUNCTIONS.dumbwaiter =
 FUNCTIONS.machine_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -276,8 +272,7 @@ FUNCTIONS.machine_function =
   () => {
     
     let dummy = GLOBALS.dummy;
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let mach = find_obj(
         "MACHI");
     cond(
@@ -327,12 +322,10 @@ FUNCTIONS.machine_function =
 FUNCTIONS.mswitch_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let c = find_obj(
         "COAL");
-    let imp = 3(
-        GLOBALS.prsvec);
+    let imp = GLOBALS.prsvec[3];
     let d = null;
     let mach = find_obj(
         "MACHI");
@@ -465,8 +458,7 @@ FUNCTIONS.cliff_function =
 FUNCTIONS.stick_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         vname(
@@ -509,8 +501,7 @@ FUNCTIONS.stick_function =
 FUNCTIONS.falls_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsact,
@@ -528,8 +519,7 @@ FUNCTIONS.falls_room =
 FUNCTIONS.digger = 
   () => {
     
-    let prso = 2(
-        GLOBALS.prsvec);
+    let prso = GLOBALS.prsvec[2];
     cond(
     /*(*/ [_EQ_Q(
         prso,
@@ -555,11 +545,9 @@ FUNCTIONS.digger =
 FUNCTIONS.dboat_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let here = GLOBALS.here;
-    let prsi = 3(
-        GLOBALS.prsvec);
+    let prsi = GLOBALS.prsvec[3];
     let dboat = find_obj(
         "DBOAT");
     cond(
@@ -603,8 +591,7 @@ FUNCTIONS.dboat_function =
 FUNCTIONS.rboat_function = 
   (arg?) => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let rboat = find_obj(
         "RBOAT");
     let iboat = find_obj(
@@ -673,8 +660,7 @@ FUNCTIONS.rboat_function =
 FUNCTIONS.iboat_function = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let iboat = find_obj(
         "IBOAT");
     let rboat = find_obj(
@@ -715,8 +701,7 @@ FUNCTIONS.over_falls =
     
     cond(
     /*(*/ [_EQ_Q(
-        1(
-          GLOBALS.prsvec),
+        GLOBALS.prsvec[1],
         GLOBALS.look_X_words)] /*)*/,
     /*(*/ [jigs_up(
         "Oh dear, you seem to have gone over Aragain Falls.  Not a very smart\nthing to do, apparently.")] /*)*/)
@@ -727,8 +712,7 @@ GLOBALS.buoy_flag_X_flag = t
 FUNCTIONS.shake = 
   () => {
     
-    let prsobj = 2(
-        GLOBALS.prsvec);
+    let prsobj = GLOBALS.prsvec[2];
     let here = GLOBALS.here;
     cond(
     /*(*/ [object_action(
@@ -795,8 +779,7 @@ FUNCTIONS.rivr4_room =
 FUNCTIONS.beach_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let shov = find_obj(
         "SHOVE");
     let here = GLOBALS.here;
@@ -809,8 +792,7 @@ FUNCTIONS.beach_room =
           dig_X_words),
         _EQ_Q(
           shov,
-          2(
-            GLOBALS.prsvec))),
+          GLOBALS.prsvec[2])),
       put(
         here,
         GLOBALS.rvars,
@@ -853,8 +835,7 @@ FUNCTIONS.beach_room =
 FUNCTIONS.tcave_room = 
   () => {
     
-    let prsact = 1(
-        GLOBALS.prsvec);
+    let prsact = GLOBALS.prsvec[1];
     let shov = find_obj(
         "SHOVE");
     let here = GLOBALS.here;
@@ -866,8 +847,7 @@ FUNCTIONS.tcave_room =
             prsact),
           dig_X_words),
         _EQ_Q(
-          2(
-            GLOBALS.prsvec),
+          GLOBALS.prsvec[2],
           shov)),
       cond(
         /*(*/ [memq(
@@ -959,8 +939,7 @@ FUNCTIONS.swimmer =
 FUNCTIONS.grue_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -991,11 +970,9 @@ define(
       find_obj(
         "BALLO")] /*)*/,
     /*(*/ [prsa,
-      1(
-        prsvec)] /*)*/,
+      prsvec[1]] /*)*/,
     /*(*/ [prso,
-      2(
-        prsvec)] /*)*/,
+      prsvec[2]] /*)*/,
     /*(*/ [cont,
       find_obj(
         "RECEP")] /*)*/,
@@ -1075,8 +1052,7 @@ define(
           cond(
             /*(*/ [m = memq(
                   chtype(
-                    2(
-                      prsvec),
+                    prsvec[2],
                     atom),
                   rexits(
                     GLOBALS.here)),
@@ -1091,11 +1067,9 @@ define(
                   and(
                     not(
                       rtrnn(
-                        2(
-                          m),
+                        m[2],
                         GLOBALS.rmungbit)),
-                    GLOBALS.bloc = 2(
-                        m)),
+                    GLOBALS.bloc = m[2]),
                   return(
                     null,
                     ballact)] /*)*/)] /*)*/,
@@ -1125,8 +1099,7 @@ define(
               prsa,
               GLOBALS.put_X_words),
             _EQ_Q(
-              3(
-                prsvec),
+              prsvec[3],
               cont),
             not(
               empty_Q(
@@ -1298,8 +1271,7 @@ cond(
             chtype(
               _(
                 chtype(
-                  5(
-                    m),
+                  m[5],
                   fix),
                 1),
               character)),
@@ -1330,8 +1302,7 @@ cond(
       put(
         s,
         5,
-        5(
-          m)),
+        m[5]),
       cond(
         /*(*/ [in_Q,
           goto(
@@ -1466,8 +1437,7 @@ cond(
             chtype(
               _(
                 chtype(
-                  5(
-                    m),
+                  m[5],
                   fix),
                 1),
               character)),
@@ -1491,12 +1461,9 @@ FUNCTIONS.wire_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prsa = 1(
-        pv);
-    let prso = 2(
-        pv);
-    let prsi = 3(
-        pv);
+    let prsa = pv[1];
+    let prso = pv[2];
+    let prsi = pv[3];
     let bint = GLOBALS.bint;
     cond(
     /*(*/ [_EQ_Q(
@@ -1572,8 +1539,7 @@ GLOBALS.safe_flag_X_flag = null
 FUNCTIONS.safe_room = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -1591,8 +1557,7 @@ FUNCTIONS.safe_room =
 FUNCTIONS.safe_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -1631,8 +1596,7 @@ psetg(
 FUNCTIONS.brick_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -1644,8 +1608,7 @@ FUNCTIONS.brick_function =
 FUNCTIONS.fuse_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     let fuse = find_obj(
         "FUSE");
     let brick = find_obj(
@@ -1861,8 +1824,7 @@ mung_room(
 FUNCTIONS.ledge_function = 
   () => {
     
-    let prsa = 1(
-        GLOBALS.prsvec);
+    let prsa = GLOBALS.prsvec[1];
     cond(
     /*(*/ [_EQ_Q(
         prsa,
@@ -1925,10 +1887,8 @@ FUNCTIONS.gnome_function =
   () => {
     
     let pv = GLOBALS.prsvec;
-    let prsa = 1(
-        pv);
-    let prso = 2(
-        pv);
+    let prsa = pv[1];
+    let prso = pv[2];
     cond(
     /*(*/ [and(
         or(
