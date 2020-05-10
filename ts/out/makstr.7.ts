@@ -645,11 +645,9 @@ function add_demon
           (y) {
             
             cond(
-            /*(*/ [_EQ_Q(
-                haction(
-                  y[1]),
-                haction(
-                  x)),
+            /*(*/ [haction(
+                  y[1]) === haction(
+                  x),
               put(
                 y,
                 1,
@@ -682,11 +680,9 @@ function add_actor
           (x) {
             
             cond(
-            /*(*/ [_EQ_Q(
-                aobj(
-                  x),
-                aobj(
-                  adv)),
+            /*(*/ [aobj(
+                  x) === aobj(
+                  adv),
               mapleave(
                 t)] /*)*/)
           },

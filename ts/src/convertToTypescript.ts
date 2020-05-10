@@ -346,6 +346,32 @@ export const convertToTypescript = (node: ZNode): string => {
             return `${convertToTypescript(nodes[1])}.length`;
         }
 
+        // Binary Operators
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && nodes.length === 3
+        ) {
+            if (firstNode.toString() === '==?') {
+                return `${convertToTypescript(nodes[1])} === ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'N==?') {
+                return `${convertToTypescript(nodes[1])} !== ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'L?') {
+                return `${convertToTypescript(nodes[1])} < ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'NL?') {
+                return `${convertToTypescript(nodes[1])} >= ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'G?') {
+                return `${convertToTypescript(nodes[1])} > ${convertToTypescript(nodes[2])}`;
+            }
+            if (firstNode.toString() === 'NG?') {
+                return `${convertToTypescript(nodes[1])} <= ${convertToTypescript(nodes[2])}`;
+            }
+        }
+
         // Forms: <FUNC ...ARGS> (i.e. calling functions)
         if (openSymbol === '<' && firstNode && firstNode.kind === 'ZToken') {
             const name = convertToTypescriptName(firstNode);

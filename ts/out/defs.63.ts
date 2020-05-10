@@ -1,7 +1,5 @@
 and(
-  l_Q(
-    GLOBALS.muddle,
-    100),
+  GLOBALS.muddle < 100,
   use(
     "LSRTNS"))
 
@@ -1088,10 +1086,8 @@ function rob_adv
         
         cond(
         /*(*/ [and(
-            g_Q(
-              otval(
-                x),
-              0),
+            otval(
+                x) > 0,
             not(
               trnn(
                 x,
@@ -1125,10 +1121,8 @@ function rob_room
         
         cond(
         /*(*/ [and(
-            g_Q(
-              otval(
-                x),
-              0),
+            otval(
+                x) > 0,
             not(
               trnn(
                 x,
@@ -1168,10 +1162,8 @@ function valuables_Q
       (x) {
         
         cond(
-        /*(*/ [g_Q(
-            otval(
-              x),
-            0),
+        /*(*/ [otval(
+              x) > 0,
           mapleave(
             t)] /*)*/)
       },
@@ -1231,10 +1223,8 @@ function get_demon
       (x) {
         
         cond(
-        /*(*/ [_EQ_Q(
-            hobj(
-              x),
-            obj),
+        /*(*/ [hobj(
+              x) === obj,
           mapleave(
             x)] /*)*/)
       },

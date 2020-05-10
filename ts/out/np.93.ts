@@ -284,9 +284,7 @@ define(
                         /*(*/ [tell(
                             "It is too dark in here to see.",
                             0)] /*)*/))] /*)*/,
-                  /*(*/ [_EQ_Q(
-                      obj,
-                      GLOBALS.nefals2),
+                  /*(*/ [obj === GLOBALS.nefals2,
                     or(
                       vb,
                       tell(
@@ -774,9 +772,7 @@ function foostr
         cond(
         /*(*/ [and(
             1st,
-            _EQ_Q(
-              x,
-              nam)),
+            x === nam),
           put(
             y,
             1,
@@ -857,9 +853,7 @@ cond(
             or(
               not(
                 av),
-              _EQ_Q(
-                av,
-                nobj),
+              av === nobj,
               memq(
                 nobj,
                 ocontents(
@@ -886,9 +880,7 @@ cond(
                   2,
                   nobj),
                 or(
-                  _EQ_Q(
-                    action,
-                    pv[1]),
+                  action === pv[1],
                   ntake,
                   take(
                     )),
@@ -949,9 +941,7 @@ function make_action
                 prep = find_prep(
                     itm)] /*)*/,
               /*(*/ [and(
-                  _EQ_Q(
-                    itm,
-                    obj),
+                  itm === obj,
                   itm = () => /*(*/ [_1] /*)*/,
                   null)] /*)*/,
               /*(*/ [type_Q(
@@ -1031,16 +1021,12 @@ function make_action
                           /*[*/ [atm,
                             itm[2]] /*]*/,
                           verb)))] /*)*/)] /*)*/,
-              /*(*/ [_EQ_Q(
-                  itm,
-                  driver),
+              /*(*/ [itm === driver,
                 put(
                   syn,
                   GLOBALS.sdriver,
                   t)] /*)*/,
-              /*(*/ [_EQ_Q(
-                  itm,
-                  flip),
+              /*(*/ [itm === flip,
                 put(
                   syn,
                   GLOBALS.sflip,
@@ -1086,10 +1072,8 @@ function syn_equal
         pobj,
         phrase),
       and(
-        _EQ_Q(
-          vprep(
-            varg),
-          pobj[1]),
+        vprep(
+            varg) === pobj[1],
         or(
           not(
             vtrnn(
@@ -1134,9 +1118,7 @@ function eparse
           vb),
       cond(
         /*(*/ [or(
-            _EQ_Q(
-              val,
-              win),
+            val === win,
             syn_match(
               val)),
           orphan(
@@ -1229,9 +1211,7 @@ define(
       cond(
         /*(*/ [and(
             av,
-            n_EQ_Q(
-              obj,
-              av),
+            obj !== av,
             not(
               memq(
                 obj,
@@ -1378,9 +1358,7 @@ cond(
                     nefals,
                     sl)] /*)*/,
                 /*(*/ [oobj = nobj] /*)*/)] /*)*/,
-            /*(*/ [_EQ_Q(
-                nobj,
-                nefals),
+            /*(*/ [nobj === nefals,
               return(
                 nefals,
                 sl)] /*)*/)] /*)*/)

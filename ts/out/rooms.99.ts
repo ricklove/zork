@@ -39,9 +39,7 @@ handler(
     GLOBALS.divert_int,
     GLOBALS.divert_hand)
 cond(
-    /*(*/ [g_Q(
-        muddle,
-        100),
+    /*(*/ [muddle > 100,
       GLOBALS.scratch_str = istring(
           32),
       GLOBALS.dev = "DSK",
@@ -68,9 +66,7 @@ cond(
               stv = starter(
                   ),
               fix),
-            g_Q(
-              stv,
-              3)),
+            stv > 3),
           or(
             member(
               GLOBALS.xunm = xuname(
@@ -102,9 +98,7 @@ cond(
                     _X__,
                     stv).length))] /*)*/),
       cond(
-        /*(*/ [g_Q(
-            GLOBALS.muddle,
-            100),
+        /*(*/ [GLOBALS.muddle > 100,
           GLOBALS.tenex_Q = getsys(
               )] /*)*/,
         /*(*/ [apply(
@@ -156,12 +150,8 @@ GLOBALS.divert_amt = _(
       amt)
 cond(
     /*(*/ [or(
-        g_Q(
-          GLOBALS.divert_cnt,
-          GLOBALS.divert_max),
-        g_Q(
-          GLOBALS.divert_amt,
-          GLOBALS.divert_lmt)),
+        GLOBALS.divert_cnt > GLOBALS.divert_max,
+        GLOBALS.divert_amt > GLOBALS.divert_lmt),
       // Too much diversion ?,
       GLOBALS.divert_amt = GLOBALS.divert_cnt = 0,
       gc_fcn(
@@ -224,10 +214,8 @@ function xuname
             0_Q(
               ascii(
                 x)),
-            _EQ_Q(
-              ascii(
-                x),
-              32)),
+            ascii(
+                x) === 32),
           mapstop(
             )] /*)*/,
         /*(*/ [t,
@@ -342,11 +330,9 @@ function unspeakable_code
       oread(
         o))
 cond(
-    /*(*/ [_EQ_Q(
-        back(
+    /*(*/ [back(
             str,
-            2)[1],
-        _X_1),
+            2)[1] === _X_1,
       str = back(
           str,
           2),
@@ -420,21 +406,19 @@ function get_time
     let then = GLOBALS.intime;
     _(
     cond(
-      /*(*/ [n_EQ_Q(
-          chtype(
+      /*(*/ [chtype(
             getbits(
               now,
               bits(
                 18,
                 18)),
-            fix),
-          chtype(
+            fix) !== chtype(
             getbits(
               then,
               bits(
                 18,
                 18)),
-            fix)),
+            fix),
         _(
           _(
             _(
@@ -493,11 +477,9 @@ cond(
       princ(
         "Played for")] /*)*/)
 and(
-    g_Q(
-      mins = _(
+    mins = _(
           time,
-          3600),
-      0),
+          3600) > 0,
     prin1(
       mins),
     princ(
@@ -510,13 +492,11 @@ and(
     princ(
       ","))
 cond(
-    /*(*/ [g_Q(
-        mins = mod(
+    /*(*/ [mins = mod(
             _(
               time,
               60),
-            60),
-        0),
+            60) > 0,
       prin1(
         mins),
       princ(
@@ -600,9 +580,7 @@ cond(
             not(
               empty_Q(
                 zork)),
-            _EQ_Q(
-              zork[1],
-              control_g_Q_X_errors)),
+            zork[1] === control_g_Q_X_errors),
           int_level(
             0),
           finish(
@@ -612,9 +590,7 @@ cond(
                 GLOBALS.inchan)[1],
             6,
             cond(
-              /*(*/ [g_Q(
-                  GLOBALS.muddle,
-                  100),
+              /*(*/ [GLOBALS.muddle > 100,
                 cond(
                   /*(*/ [GLOBALS.tenex_Q,
                     /*#*/ [lose,
@@ -629,17 +605,11 @@ cond(
             t,
             frm)] /*)*/,
         /*(*/ [and(
-            _EQ_Q(
-              zork.length,
-              3),
-            _EQ_Q(
-              zork[1],
-              file_system_error_X_errors),
+            zork.length === 3,
+            zork[1] === file_system_error_X_errors,
             not(
               zf = zork[3]),
-            _EQ_Q(
-              zf.length,
-              3),
+            zf.length === 3,
             __Q(
               zf[1],
               "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY")),
@@ -734,13 +704,9 @@ GLOBALS.ptemp = chtype(
 GLOBALS.intime = dskdate(
       )
 cond(
-    /*(*/ [l_Q(
-        muddle,
-        100),
+    /*(*/ [muddle < 100,
       and(
-        g_Q(
-          xunm.length,
-          2),
+        xunm.length > 2,
         __Q(
           substruc(
             xunm,
@@ -789,9 +755,7 @@ put(
         GLOBALS.inchan)[1],
     6,
     cond(
-      /*(*/ [g_Q(
-          GLOBALS.muddle,
-          100),
+      /*(*/ [GLOBALS.muddle > 100,
         cond(
           /*(*/ [GLOBALS.tenex_Q,
             /*#*/ [lose,
@@ -878,9 +842,7 @@ cond(
         "You are already scripting.")] /*)*/,
     /*(*/ [and(
         or(
-          g_Q(
-            muddle,
-            100),
+          muddle > 100,
           and(
             not(
               member(
@@ -920,9 +882,7 @@ cond(
         /*(*/ [ch] /*)*/),
       GLOBALS.script_channel = ch,
       cond(
-        /*(*/ [l_Q(
-            GLOBALS.muddle,
-            100),
+        /*(*/ [GLOBALS.muddle < 100,
           tell(
             "Scripting to",
             1,
@@ -979,9 +939,7 @@ function do_save
     let unm = GLOBALS.xunm;
     cond(
     /*(*/ [or(
-        g_Q(
-          muddle,
-          100),
+        muddle > 100,
         and(
           not(
             member(
@@ -997,9 +955,7 @@ function do_save
             ch))),
       cond(
         /*(*/ [or(
-            g_Q(
-              muddle,
-              100),
+            muddle > 100,
             and(
               ch = open(
                   "READ",
@@ -1030,9 +986,7 @@ function do_save
             /*(*/ [ch = open(
                   "PRINTB",
                   cond(
-                    /*(*/ [l_Q(
-                        muddle,
-                        100),
+                    /*(*/ [muddle < 100,
                       string(
                         "DSK:",
                         unm,
@@ -1072,9 +1026,7 @@ function do_restore
     let now = null;
     let thend = null;
     cond(
-    /*(*/ [l_Q(
-        muddle,
-        100),
+    /*(*/ [muddle < 100,
       str = string(
           "DSK:",
           GLOBALS.xunm,
@@ -1109,8 +1061,7 @@ prog(
               /*(*/ [member(
                   GLOBALS.xunm,
                   GLOBALS.winners)] /*)*/,
-              /*(*/ [_EQ_Q(
-                  nowd = chtype(
+              /*(*/ [nowd = chtype(
                       getbits(
                         now = chtype(
                             dskdate(
@@ -1119,14 +1070,13 @@ prog(
                         bits(
                           18,
                           18)),
-                      fix),
-                  thend = chtype(
+                      fix) === thend = chtype(
                       getbits(
                         GLOBALS.then,
                         bits(
                           18,
                           18)),
-                      fix)),
+                      fix),
                 cond(
                   /*(*/ [g__Q(
                       _(
@@ -1136,9 +1086,7 @@ prog(
                   /*(*/ [tell(
                       "It's too soon."),
                     cond(
-                      /*(*/ [g_Q(
-                          GLOBALS.muddle,
-                          100),
+                      /*(*/ [GLOBALS.muddle > 100,
                         off(
                           "CHAR",
                           GLOBALS.inchan),
@@ -1187,9 +1135,7 @@ prog(
           )] /*)*/,
       /*(*/ [and(
           foo,
-          g_Q(
-            muddle,
-            100)),
+          muddle > 100),
         str = string(
             sname(
               ),
@@ -1243,9 +1189,7 @@ define(
             /*(*/ [and(
                 gassigned_Q(
                   x),
-                _EQ_Q(
-                  /*,*/ [x] /*1*/,
-                  val)),
+                /*,*/ [x] /*1*/ === val),
               return(
                 x,
                 act)] /*)*/)
@@ -1330,10 +1274,8 @@ and(
 prog(
     /*(*/ [] /*)*/,
     cond(
-      /*(*/ [n_EQ_Q(
-          GLOBALS.here,
-          aroom(
-            GLOBALS.player)),
+      /*(*/ [GLOBALS.here !== aroom(
+            GLOBALS.player),
         put(
           GLOBALS.prsvec,
           1,
@@ -1431,9 +1373,7 @@ prog(
               describable_Q(
                 x)),
             cond(
-              /*(*/ [_EQ_Q(
-                  x,
-                  av)] /*)*/,
+              /*(*/ [x === av] /*)*/,
               /*(*/ [t,
                 cond(
                   /*(*/ [long_desc_obj(
@@ -1532,10 +1472,8 @@ define(
         empty_Q(
           cont)),
       cond(
-        /*(*/ [_EQ_Q(
-            obj,
-            find_obj(
-              "TCASE")),
+        /*(*/ [obj === find_obj(
+              "TCASE"),
           cond(
             /*(*/ [not(
                 case_Q),
@@ -1546,13 +1484,9 @@ define(
             "Your collection of treasures consists of:")] /*)*/,
         /*(*/ [not(
             and(
-              _EQ_Q(
-                cont.length,
-                1),
-              _EQ_Q(
-                cont[1],
-                find_obj(
-                  "#####")))),
+              cont.length === 1,
+              cont[1] === find_obj(
+                  "#####"))),
           tell(
             indent,
             0),
@@ -1573,9 +1507,7 @@ define(
             cond(
             /*(*/ [and(
                 av,
-                _EQ_Q(
-                  y,
-                  winobj))] /*)*/,
+                y === winobj)] /*)*/,
             /*(*/ [and(
                 ovis_Q(
                   y),
@@ -1704,9 +1636,7 @@ repeat(
               inplen),
             t)] /*)*/),
     cond(
-      /*(*/ [g_Q(
-          inplen,
-          0),
+      /*(*/ [inplen > 0,
         GLOBALS.moves = _(
             GLOBALS.moves,
             1),
@@ -1800,10 +1730,8 @@ function score_obj
     
     let temp = null;
     cond(
-    /*(*/ [g_Q(
-        temp = ofval(
-            obj),
-        0),
+    /*(*/ [temp = ofval(
+            obj) > 0,
       score_upd(
         temp),
       put(
@@ -1817,10 +1745,8 @@ function score_room
     
     let temp = null;
     cond(
-    /*(*/ [g_Q(
-        temp = rval(
-            rm),
-        0),
+    /*(*/ [temp = rval(
+            rm) > 0,
       score_upd(
         temp),
       put(
@@ -1892,37 +1818,21 @@ princ(
       /*(*/ [1_Q(
           pct),
         "Cheater"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_95000000),
+      /*(*/ [pct > 0_95000000,
         "Wizard"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_89999999),
+      /*(*/ [pct > 0_89999999,
         "Master"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_79999999),
+      /*(*/ [pct > 0_79999999,
         "Winner"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_60000000),
+      /*(*/ [pct > 0_60000000,
         "Hacker"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_39999999),
+      /*(*/ [pct > 0_39999999,
         "Adventurer"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_19999999),
+      /*(*/ [pct > 0_19999999,
         "Junior Adventurer"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_09999999),
+      /*(*/ [pct > 0_09999999,
         "Novice Adventurer"] /*)*/,
-      /*(*/ [g_Q(
-          pct,
-          0_04999999),
+      /*(*/ [pct > 0_04999999,
         "Amateur Adventurer"] /*)*/,
       /*(*/ ["Beginner"] /*)*/))
 princ(
@@ -2066,12 +1976,8 @@ define(
                     dev,
                     snm)] /*)*/,
               /*(*/ [and(
-                  g_Q(
-                    muddle,
-                    100),
-                  _EQ_Q(
-                    ch[3],
-                    _600123_)),
+                  muddle > 100,
+                  ch[3] === _600123_),
                 // Can't win--no write access,
                 return(
                   t,
@@ -2094,19 +2000,11 @@ define(
               ct)] /*)*/,
           /*(*/ [or(
               and(
-                l_Q(
-                  muddle,
-                  100),
-                n_EQ_Q(
-                  ch[3],
-                  _4000000_)),
+                muddle < 100,
+                ch[3] !== _4000000_),
               and(
-                g_Q(
-                  muddle,
-                  100),
-                _EQ_Q(
-                  ch[3],
-                  _600130_))),
+                muddle > 100,
+                ch[3] === _600130_)),
             // on 10x, must get FILE BUSY to try again,
             sleep(
               1),
@@ -2119,12 +2017,8 @@ define(
                 dev,
                 snm)] /*)*/,
           /*(*/ [and(
-              g_Q(
-                muddle,
-                100),
-              _EQ_Q(
-                ch[3],
-                _600117_)),
+              muddle > 100,
+              ch[3] === _600117_),
             // No write access,
             return(
               t,
@@ -2424,9 +2318,7 @@ cond(
             7200),
           120),
       cond(
-        /*(*/ [l_Q(
-            hr,
-            10),
+        /*(*/ [hr < 10,
           princ(
             "0",
             ch)] /*)*/),
@@ -2480,9 +2372,7 @@ function jigs_up
         prog(
           /*(*/ [] /*)*/,
           cond(
-            /*(*/ [n_EQ_Q(
-                winner,
-                GLOBALS.player),
+            /*(*/ [winner !== GLOBALS.player,
               tell(
                 desc),
               tell(
@@ -2775,9 +2665,7 @@ function invent
             prog(
               /*(*/ [] /*)*/,
               cond(
-                /*(*/ [_EQ_Q(
-                    win,
-                    GLOBALS.player),
+                /*(*/ [win === GLOBALS.player,
                   tell(
                     "You are carrying:")] /*)*/,
                 /*(*/ [tell(
@@ -2814,9 +2702,7 @@ function invent
       win))
 or(
     any,
-    n_EQ_Q(
-      win,
-      GLOBALS.player),
+    win !== GLOBALS.player,
     tell(
       "You are empty handed."))
   }
@@ -2836,14 +2722,10 @@ princ(
         odesc2(
           y[1]))
 cond(
-        /*(*/ [g_Q(
-            y.length,
-            2),
+        /*(*/ [y.length > 2,
           princ(
             ",")] /*)*/,
-        /*(*/ [_EQ_Q(
-            y.length,
-            2),
+        /*(*/ [y.length === 2,
           princ(
             ", and")] /*)*/)
       },
@@ -2866,13 +2748,9 @@ function lit_Q
       aobjs(
         win)),
     and(
-      n_EQ_Q(
-        win,
-        GLOBALS.player),
-      _EQ_Q(
-        GLOBALS.here,
-        aroom(
-          GLOBALS.player)),
+      win !== GLOBALS.player,
+      GLOBALS.here === aroom(
+          GLOBALS.player),
       lfcn(
         aobjs(
           GLOBALS.player))))
@@ -2897,10 +2775,8 @@ define(
       (x) {
         
         and(
-        g_Q(
-          olight_Q(
-            x),
-          0),
+        olight_Q(
+            x) > 0,
         mapleave(
           t))
 cond(
@@ -2918,10 +2794,8 @@ cond(
               (x) {
                 
                 cond(
-                /*(*/ [g_Q(
-                    olight_Q(
-                      x),
-                    0),
+                /*(*/ [olight_Q(
+                      x) > 0,
                   return(
                     t,
                     lfcn)] /*)*/)
@@ -2959,9 +2833,7 @@ function walk
     let cxs = null;
     cond(
     /*(*/ [and(
-        _EQ_Q(
-          me,
-          GLOBALS.player),
+        me === GLOBALS.player,
         not(
           lit_Q(
             rm)),
@@ -3113,10 +2985,8 @@ function take
             return(
               null)] /*)*/)] /*)*/),
     cond(
-      /*(*/ [_EQ_Q(
-          obj,
-          avehicle(
-            win)),
+      /*(*/ [obj === avehicle(
+            win),
         tell(
           "You are in it, loser!"),
         return(
@@ -3152,16 +3022,14 @@ function take
               memq(
                 nobj,
                 aobjs))] /*)*/,
-          /*(*/ [g_Q(
-              _(
+          /*(*/ [_(
                 weight(
                   aobjs),
                 weight(
                   ocontents(
                     obj)),
                 osize(
-                  obj)),
-              load_max),
+                  obj)) > load_max,
             tell(
               "Your load is too heavy.  You will have to leave something behind."),
             return(
@@ -3275,22 +3143,18 @@ function putter
           "I can't reach inside."),
         return(
           null)] /*)*/,
-      /*(*/ [_EQ_Q(
-          can,
-          crock),
+      /*(*/ [can === crock,
         tell(
           "How can you do that?"),
         return(
           null)] /*)*/,
-      /*(*/ [g_Q(
-          _(
+      /*(*/ [_(
             weight(
               ocontents(
                 can)),
             osize(
-              crock)),
-          ocapac(
-            can)),
+              crock)) > ocapac(
+            can),
         tell(
           "It won't fit."),
         return(
@@ -3530,16 +3394,12 @@ function dropper
         cond(
           /*(*/ [object_action(
               )] /*)*/,
-          /*(*/ [_EQ_Q(
-              vname(
-                vec[1]),
-              drop_X_words),
+          /*(*/ [vname(
+                vec[1]) === drop_X_words,
             tell(
               "Dropped.")] /*)*/,
-          /*(*/ [_EQ_Q(
-              vname(
-                vec[1]),
-              throw_X_words),
+          /*(*/ [vname(
+                vec[1]) === throw_X_words,
             tell(
               "Thrown.")] /*)*/)] /*)*/,
       /*(*/ [tell(
@@ -3572,9 +3432,7 @@ function frob_lots
     let winner = GLOBALS.winner;
     let here = GLOBALS.here;
     cond(
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.take_X_words),
+    /*(*/ [pa === GLOBALS.take_X_words,
       mapf(
         null,
         function
@@ -3599,21 +3457,15 @@ function frob_lots
               apply_random(
                 ra),
               cond(
-                /*(*/ [n_EQ_Q(
-                    here,
-                    aroom(
-                      winner)),
+                /*(*/ [here !== aroom(
+                      winner),
                   mapleave(
                     )] /*)*/)] /*)*/)
           },
         uv)] /*)*/,
     /*(*/ [or(
-        _EQ_Q(
-          pa,
-          GLOBALS.drop_X_words),
-        _EQ_Q(
-          pa,
-          GLOBALS.put_X_words)),
+        pa === GLOBALS.drop_X_words,
+        pa === GLOBALS.put_X_words),
       mapf(
         null,
         function
@@ -3631,10 +3483,8 @@ tell(
 apply_random(
             ra)
 cond(
-            /*(*/ [n_EQ_Q(
-                here,
-                aroom(
-                  winner)),
+            /*(*/ [here !== aroom(
+                  winner),
               mapleave(
                 )] /*)*/)
           },
@@ -3658,9 +3508,7 @@ function everything
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.take_X_words),
+    /*(*/ [pa === GLOBALS.take_X_words,
       mapf(
         null,
         function
@@ -3675,9 +3523,7 @@ function everything
                     x,
                     GLOBALS.actorbit))),
               cond(
-                /*(*/ [_EQ_Q(
-                    suv,
-                    tuv),
+                /*(*/ [suv === tuv,
                   tell(
                     GLOBALS.losstr),
                   mapleave(
@@ -3691,9 +3537,7 @@ function everything
           },
         robjs(
           here))] /*)*/,
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.drop_X_words),
+    /*(*/ [pa === GLOBALS.drop_X_words,
       mapf(
         null,
         function
@@ -3708,9 +3552,7 @@ put(
           },
         aobjs(
           winner))] /*)*/,
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.put_X_words),
+    /*(*/ [pa === GLOBALS.put_X_words,
       pi = prsvec[3],
       prog(
         rp,
@@ -3724,17 +3566,13 @@ put(
               /*(*/ [and(
                   ovis_Q(
                     x),
-                  n_EQ_Q(
-                    x,
-                    pi),
+                  x !== pi,
                   not(
                     trnn(
                       x,
                       GLOBALS.actorbit))),
                 cond(
-                  /*(*/ [_EQ_Q(
-                      suv,
-                      tuv),
+                  /*(*/ [suv === tuv,
                     tell(
                       GLOBALS.losstr),
                     return(
@@ -3756,12 +3594,8 @@ put(
               
               cond(
               /*(*/ [and(
-                  _EQ_Q(
-                    suv,
-                    tuv),
-                  n_EQ_Q(
-                    x,
-                    pi)),
+                  suv === tuv,
+                  x !== pi),
                 tell(
                   GLOBALS.losstr),
                 return(
@@ -3798,9 +3632,7 @@ function valuables
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.take_X_words),
+    /*(*/ [pa === GLOBALS.take_X_words,
       mapf(
         null,
         function
@@ -3819,9 +3651,7 @@ function valuables
                     otval(
                       x)))),
               cond(
-                /*(*/ [_EQ_Q(
-                    suv,
-                    tuv),
+                /*(*/ [suv === tuv,
                   tell(
                     GLOBALS.losstr),
                   mapleave(
@@ -3835,9 +3665,7 @@ function valuables
           },
         robjs(
           here))] /*)*/,
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.drop_X_words),
+    /*(*/ [pa === GLOBALS.drop_X_words,
       mapf(
         null,
         function
@@ -3857,9 +3685,7 @@ function valuables
           },
         aobjs(
           winner))] /*)*/,
-    /*(*/ [_EQ_Q(
-        pa,
-        GLOBALS.put_X_words),
+    /*(*/ [pa === GLOBALS.put_X_words,
       pi = prsvec[3],
       prog(
         rp,
@@ -3871,12 +3697,8 @@ function valuables
               
               cond(
               /*(*/ [and(
-                  _EQ_Q(
-                    suv,
-                    tuv),
-                  n_EQ_Q(
-                    x,
-                    pi)),
+                  suv === tuv,
+                  x !== pi),
                 tell(
                   GLOBALS.losstr),
                 return(
@@ -3906,12 +3728,8 @@ cond(
               
               cond(
               /*(*/ [and(
-                  _EQ_Q(
-                    suv,
-                    tuv),
-                  n_EQ_Q(
-                    x,
-                    pi)),
+                  suv === tuv,
+                  x !== pi),
                 tell(
                   GLOBALS.losstr),
                 return(
@@ -3972,10 +3790,8 @@ define(
         odesc2(
           prso),
         ".")] /*)*/,
-    /*(*/ [n_EQ_Q(
-        ocapac(
-          prso),
-        0),
+    /*(*/ [ocapac(
+          prso) !== 0,
       cond(
         /*(*/ [oopen_Q(
             prso),
@@ -4044,10 +3860,8 @@ define(
         odesc2(
           prso),
         ".")] /*)*/,
-    /*(*/ [n_EQ_Q(
-        ocapac(
-          prso),
-        0),
+    /*(*/ [ocapac(
+          prso) !== 0,
       cond(
         /*(*/ [oopen_Q(
             prso),
@@ -4107,9 +3921,7 @@ function find_frob
       (x) {
         
         cond(
-        /*(*/ [_EQ_Q(
-            x,
-            prso),
+        /*(*/ [x === prso,
           tell(
             str2,
             1,
@@ -4130,9 +3942,7 @@ function find_frob
               (y) {
                 
                 cond(
-                /*(*/ [_EQ_Q(
-                    y,
-                    prso),
+                /*(*/ [y === prso,
                   tell(
                     str2,
                     1,
@@ -4215,9 +4025,7 @@ function splice_out
     al) {
     
     cond(
-    /*(*/ [_EQ_Q(
-        al[1],
-        obj),
+    /*(*/ [al[1] === obj,
       rest(
         al)] /*)*/,
     /*(*/ [t,
@@ -4232,9 +4040,7 @@ function splice_out
               ol] /*)*/,
             list] /*)*/] /*2*/,
         cond(
-          /*(*/ [_EQ_Q(
-              nl[1],
-              obj),
+          /*(*/ [nl[1] === obj,
             putrest(
               ol,
               rest(
@@ -4259,10 +4065,8 @@ function weight
         
         _(
         cond(
-          /*(*/ [_EQ_Q(
-              osize(
-                obj),
-              GLOBALS.bigfix),
+          /*(*/ [osize(
+                obj) === GLOBALS.bigfix,
             0] /*)*/,
           /*(*/ [osize(
               obj)] /*)*/),
@@ -4353,10 +4157,8 @@ define(
         )] /*)*/,
     /*(*/ [cond(
         /*(*/ [and(
-            n_EQ_Q(
-              olight_Q(
-                obj),
-              0),
+            olight_Q(
+                obj) !== 0,
             memq(
               obj,
               aobjs(
@@ -4368,10 +4170,8 @@ define(
             t,
             lampo)] /*)*/),
       cond(
-        /*(*/ [g_Q(
-            olight_Q(
-              obj),
-            0),
+        /*(*/ [olight_Q(
+              obj) > 0,
           tell(
             "It is already on.")] /*)*/,
         /*(*/ [put(
@@ -4414,10 +4214,8 @@ define(
         )] /*)*/,
     /*(*/ [cond(
         /*(*/ [and(
-            n_EQ_Q(
-              olight_Q(
-                obj),
-              0),
+            olight_Q(
+                obj) !== 0,
             memq(
               obj,
               aobjs(
@@ -4428,10 +4226,8 @@ define(
             t,
             lampo)] /*)*/),
       cond(
-        /*(*/ [l_Q(
-            olight_Q(
-              obj),
-            0),
+        /*(*/ [olight_Q(
+              obj) < 0,
           tell(
             "It is already off.")] /*)*/,
         /*(*/ [put(
@@ -4484,10 +4280,8 @@ function this_it_Q
         ovis_Q(
           obj),
         or(
-          _EQ_Q(
-            objnam,
-            oid(
-              obj)),
+          objnam === oid(
+              obj),
           memq(
             objnam,
             onames(
@@ -4540,9 +4334,7 @@ function lex
       },
     v)
 cond(
-    /*(*/ [_EQ_Q(
-        s[1],
-        _X__Q),
+    /*(*/ [s[1] === _X__Q,
       put(
         v,
         1,
@@ -4560,32 +4352,22 @@ cond(
             fix] /*)*/] /*2*/,
         cond(
           /*(*/ [or(
-              _EQ_Q(
-                s1.length,
-                sx.length),
+              s1.length === sx.length,
               memq(
                 s1[1],
                 brks)),
             and(
-              g_Q(
-                s1.length,
-                sx.length),
+              s1.length > sx.length,
               or(
-                _EQ_Q(
-                  s1[1],
-                  _X__),
-                _EQ_Q(
-                  s1[1],
-                  _X__)),
+                s1[1] === _X__,
+                s1[1] === _X__),
               not(
                 quot),
               quot = t,
               v = rest(
                   v)),
             cond(
-              /*(*/ [n_EQ_Q(
-                  s,
-                  s1),
+              /*(*/ [s !== s1,
                 cond(
                   /*(*/ [empty_Q(
                       v),
@@ -4611,9 +4393,7 @@ cond(
                     v = rest(
                         v)] /*)*/)] /*)*/),
             cond(
-              /*(*/ [_EQ_Q(
-                  s1.length,
-                  sx.length),
+              /*(*/ [s1.length === sx.length,
                 return(
                   v)] /*)*/),
             s = rest(
@@ -4636,9 +4416,7 @@ function anything
       (x) {
         
         cond(
-        /*(*/ [_EQ_Q(
-            x,
-            sx),
+        /*(*/ [x === sx,
           mapleave(
             null)] /*)*/,
         /*(*/ [not(
@@ -4664,9 +4442,7 @@ function uppercase
             s[1])] /*)*/
         cond(
         /*(*/ [and(
-            g_Q(
-              c,
-              96),
+            c > 96,
             l__Q(
               c,
               122)),
@@ -4694,11 +4470,9 @@ repeat(
         fix] /*)*/] /*2*/,
     cond(
       /*(*/ [or(
-          l_Q(
-            n = _(
+          n = _(
                 n,
-                1),
-            0),
+                1) < 0,
           clock_demon(
             GLOBALS.clocker)),
         return(
@@ -4735,9 +4509,7 @@ function clock_demon
                   ev))] /*)*/,
             /*(*/ [0_Q(
                 tick)] /*)*/,
-            /*(*/ [l_Q(
-                tick,
-                0),
+            /*(*/ [tick < 0,
               put(
                 GLOBALS.prsvec,
                 1,
@@ -4892,9 +4664,7 @@ function unboard
     let av = avehicle(
         win);
     cond(
-    /*(*/ [_EQ_Q(
-        av,
-        obj),
+    /*(*/ [av === obj,
       cond(
         /*(*/ [object_action(
             )] /*)*/,
@@ -4950,10 +4720,8 @@ function goto
             GLOBALS.rlandbit),
           lb,
           av,
-          n_EQ_Q(
-            orand(
-              av),
-            GLOBALS.rlandbit),
+          orand(
+              av) !== GLOBALS.rlandbit,
           not(
             rtrnn(
               rm,
@@ -4978,9 +4746,7 @@ function goto
           rm))] /*)*/,
     /*(*/ [t,
       cond(
-        /*(*/ [n_EQ_Q(
-            win,
-            GLOBALS.player),
+        /*(*/ [win !== GLOBALS.player,
           remove_object(
             aobj(
               win)),
@@ -5046,9 +4812,7 @@ function command
     let win = GLOBALS.winner;
     let play = GLOBALS.player;
     cond(
-    /*(*/ [n_EQ_Q(
-        win,
-        play),
+    /*(*/ [win !== play,
       tell(
         "You cannot talk through another person!")] /*)*/,
     /*(*/ [trnn(
