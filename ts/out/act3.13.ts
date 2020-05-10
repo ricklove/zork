@@ -1,9 +1,10 @@
 function coke_bottles
   () {
     
-    let pv = GLOBALS.prsvec;
-    let bottl = pv[2];
-    let vb = pv[1];
+    let pv: vector(
+        verb) = GLOBALS.prsvec;
+    let bottl: object = pv[2];
+    let vb: verb = pv[1];
     cond(
     /*(*/ [vb === GLOBALS.throw_X_words || vname(
             vb) === mung_X_words,
@@ -22,10 +23,13 @@ function coke_bottles
 function head_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let vb = pv[1];
-    let nl = /*(*/ [] /*)*/;
-    let lcase = find_obj(
+    let pv: vector(
+        verb) = GLOBALS.prsvec;
+    let vb: verb = pv[1];
+    let nl: list(
+        /*[*/ [rest,
+          object] /*]*/) = /*(*/ [] /*)*/;
+    let lcase: object = find_obj(
         "LCASE");
     cond(
     /*(*/ [vb !== GLOBALS.read_X_words,
@@ -64,14 +68,14 @@ GLOBALS.then = 0
 GLOBALS.bucket_top_X_flag = null
 
 function bucket
-  (arg?) {
+  (arg?: false || atom) {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let po = pv[2];
-    let w = find_obj(
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let po: direction || false || object = pv[2];
+    let w: object = find_obj(
         "WATER");
-    let buck = find_obj(
+    let buck: object = find_obj(
         "BUCKE");
     cond(
     /*(*/ [arg === read_in,
@@ -114,11 +118,11 @@ function bucket
   }
 
 function pass_the_bucket
-  (r,
-    pv,
-    b) {
+  (r: room,
+    pv: vector,
+    b: object) {
     
-    let pvs = pv[2];
+    let pvs: false || object || direction = pv[2];
     put(
     pv,
     2,
@@ -144,10 +148,10 @@ put(
 function eatme_function
   () {
     
-    let r = null;
-    let c = null;
-    let pv = GLOBALS.prsvec;
-    let here = GLOBALS.here;
+    let r: room = null;
+    let c: object = null;
+    let pv: vector = GLOBALS.prsvec;
+    let here: room = GLOBALS.here;
     cond(
     /*(*/ [pv[1] === GLOBALS.eat_X_words && pv[2] === c = find_obj(
               "ECAKE") && here === find_room(
@@ -167,7 +171,7 @@ function eatme_function
       mapf(
         null,
         function
-          (x) {
+          (x: object) {
             
             put(
             x,
@@ -190,18 +194,18 @@ put(
 function cake_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let po = pv[2];
-    let pi = pv[3];
-    let rice = find_obj(
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let po: false || object = pv[2];
+    let pi: false || object = pv[3];
+    let rice: object = find_obj(
         "RDICE");
-    let oice = find_obj(
+    let oice: object = find_obj(
         "ORICE");
-    let bice = find_obj(
+    let bice: object = find_obj(
         "BLICE");
-    let here = GLOBALS.here;
-    let r = null;
+    let here: room = GLOBALS.here;
+    let r: object = null;
     cond(
     /*(*/ [pa === GLOBALS.read_X_words,
       cond(
@@ -258,7 +262,7 @@ function cake_function
               mapf(
                 null,
                 function
-                  (x) {
+                  (x: object) {
                     
                     put(
                     x,
@@ -304,8 +308,10 @@ function flask_function
   () {
     
     let f = null;
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
+    let pv: vector(
+        verb,
+        object) = GLOBALS.prsvec;
+    let pa: verb = pv[1];
     cond(
     /*(*/ [pa === GLOBALS.open_X_words,
       mung_room(
@@ -349,12 +355,13 @@ psetg(
 function magnet_room
   () {
     
-    let foo = null;
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let po = pv[2];
-    let here = GLOBALS.here;
-    let m = null;
+    let foo: cexit = null;
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let po: false || object || direction = pv[2];
+    let here: room = GLOBALS.here;
+    let m: false || primtype(
+          vector) = null;
     cond(
     /*(*/ [pa === GLOBALS.look_X_words,
       tell(
@@ -403,8 +410,8 @@ function magnet_room
 function cmach_room
   () {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
     cond(
     /*(*/ [pa === GLOBALS.look_X_words,
       tell(
@@ -418,10 +425,10 @@ GLOBALS.carousel_flip_X_flag = null
 function buttons
   () {
     
-    let i = null;
-    let pv = GLOBALS.prsvec;
+    let i: object = null;
+    let pv: vector = GLOBALS.prsvec;
     let po = pv[2];
-    let pa = pv[1];
+    let pa: verb = pv[1];
     cond(
     /*(*/ [pa === GLOBALS.push_X_words,
       cond(
@@ -472,13 +479,15 @@ GLOBALS.cage_solve_X_flag = null
 function sphere_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let r = find_obj(
+    let pv: vector(
+        verb,
+        object) = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let r: object = find_obj(
         "ROBOT");
-    let c = null;
-    let fl = null;
-    let ract = null;
+    let c: room = null;
+    let fl: atom || false = null;
+    let ract: adv = null;
     fl = !GLOBALS.cage_solve_X_flag && pa === GLOBALS.take_X_words
 cond(
     /*(*/ [fl && GLOBALS.player === GLOBALS.winner,
@@ -568,14 +577,14 @@ gdecl(
 function robot_actor
   () {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let po = pv[2];
-    let c = null;
-    let cage = null;
-    let r = find_obj(
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let po: false || object || direction = pv[2];
+    let c: room = null;
+    let cage: object = null;
+    let r: object = find_obj(
         "ROBOT");
-    let ract = null;
+    let ract: adv = null;
     cond(
     /*(*/ [pa === GLOBALS.raise_X_words && po === find_obj(
             "CAGE"),
@@ -632,12 +641,12 @@ function robot_actor
 function robot_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let pa = pv[1];
-    let po = pv[2];
-    let pi = pv[3];
-    let pp = null;
-    let aa = null;
+    let pv: vector = GLOBALS.prsvec;
+    let pa: verb = pv[1];
+    let po: object = pv[2];
+    let pi: false || object = pv[3];
+    let pp: object = null;
+    let aa: adv = null;
     cond(
     /*(*/ [pa === GLOBALS.give_X_words,
       aa = orand(

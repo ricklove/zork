@@ -1,13 +1,13 @@
 function cevent
-  (tick,
-    app,
-    flg,
-    name) {
+  (tick: fix,
+    app: applicable || offset,
+    flg: atom || false,
+    name: atom || string) {
     
     let obl = get(
         initial,
         oblist);
-    let atm = null;
+    let atm: atom || false = null;
     cond(
     /*(*/ [type_Q(
         name,
@@ -33,15 +33,17 @@ setg(
 
 function cons_obj
   (_tuple_,
-    objs) {
+    objs: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let winner = GLOBALS.winner;
+    let winner: adv = GLOBALS.winner;
     mapf(
     null,
     function
       (x) {
         
-        let y = find_obj(
+        let y: object = find_obj(
             x);
         memq(
           y,
@@ -55,14 +57,14 @@ function cons_obj
   }
 
 function cexit
-  (flid,
-    rmid,
-    str?,
-    flag,
-    funct) {
+  (flid: atom || string,
+    rmid: atom || string,
+    str?: false || string,
+    flag: atom || false,
+    funct: atom || false) {
     
-    let fval = null;
-    let atm = null;
+    let fval: applicable || false = null;
+    let atm: atom || false = null;
     cond(
     /*(*/ [type_Q(
         flid,
@@ -93,10 +95,13 @@ chtype(
 
 function exit
   (_tuple_,
-    pairs) {
+    pairs: tuple(
+        /*[*/ [rest,
+          string,
+          nexit || cexit || string || atom] /*]*/)) {
     
-    let dobl = GLOBALS.directions;
-    let frob = ivector(
+    let dobl: oblist = GLOBALS.directions;
+    let frob: vector = ivector(
         pairs.length);
     repeat(
     /*(*/ [atm,
@@ -158,17 +163,17 @@ chtype(
   }
 
 function room
-  (id,
-    d1,
-    d2,
-    lit_Q,
-    ex,
+  (id: string || atom,
+    d1: string,
+    d2: string,
+    lit_Q: atom || form || false,
+    ex: exit,
     objs?,
-    app,
-    val,
-    bit) {
+    app: form || false || atom,
+    val: fix,
+    bit: fix) {
     
-    let rm = find_room(
+    let rm: room = find_room(
         id);
     GLOBALS.score_max = _(
       GLOBALS.score_max,
@@ -220,7 +225,7 @@ put(
 mapf(
     null,
     function
-      (x) {
+      (x: object) {
         
         put(
         x,
@@ -232,10 +237,10 @@ mapf(
   }
 
 function sobject
-  (id,
+  (id: string,
     str,
     _tuple_,
-    tup) {
+    tup: tuple) {
     
     object(
     id,
@@ -251,11 +256,11 @@ function sobject
   }
 
 function aobject
-  (id,
+  (id: string,
     str,
-    app,
+    app: atom,
     _tuple_,
-    tup) {
+    tup: tuple) {
     
     object(
     id,
@@ -271,19 +276,22 @@ function aobject
   }
 
 function object
-  (id,
-    desc1,
-    desc2,
-    desco,
-    app,
-    conts,
-    can,
-    flags,
-    light_Q?,
-    s1,
-    s2,
-    size,
-    capac) {
+  (id: atom || string,
+    desc1: string,
+    desc2: string,
+    desco: string || false,
+    app: false || form || atom,
+    conts: list(
+        /*[*/ [rest,
+          object] /*]*/),
+    can: false || object,
+    flags: primtype(
+        word),
+    light_Q?: fix,
+    s1: fix,
+    s2: fix,
+    size: fix,
+    capac: fix) {
     
     GLOBALS.score_max = _(
       GLOBALS.score_max,
@@ -340,9 +348,9 @@ put(
   }
 
 function find_prep
-  (str) {
+  (str: string) {
     
-    let atm = add_word(
+    let atm: false || atom = add_word(
         str);
     cond(
     /*(*/ [gassigned_Q(
@@ -362,12 +370,14 @@ function find_prep
   }
 
 function add_action
-  (nam,
-    str,
+  (nam: string,
+    str: string,
     _tuple_,
-    decl) {
+    decl: tuple(
+        /*[*/ [rest,
+          vector] /*]*/)) {
     
-    let atm = lookup(
+    let atm: atom = lookup(
           nam,
           GLOBALS.actions) || insert(
           nam,
@@ -385,10 +395,12 @@ function add_action
 
 function add_directions
   (_tuple_,
-    nms) {
+    nms: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let dir = GLOBALS.directions;
-    let atm = null;
+    let dir: oblist = GLOBALS.directions;
+    let atm: atom = null;
     mapf(
     null,
     function
@@ -408,13 +420,15 @@ function add_directions
   }
 
 function dsynonym
-  (str,
+  (str: string,
     _tuple_,
-    nms) {
+    nms: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let val = null;
-    let dir = GLOBALS.directions;
-    let atm = null;
+    let val: direction = null;
+    let dir: oblist = GLOBALS.directions;
+    let atm: atom = null;
     val = add_directions(
       str)
 mapf(
@@ -434,12 +448,14 @@ mapf(
   }
 
 function vsynonym
-  (n1,
+  (n1: string,
     _tuple_,
-    n2) {
+    n2: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let atm = null;
-    let val = null;
+    let atm: false || atom = null;
+    let val: any = null;
     cond(
     /*(*/ [atm = lookup(
           n1,
@@ -480,7 +496,7 @@ cond(
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
 function add_word
-  (w) {
+  (w: string) {
     
     lookup(
       w,
@@ -491,12 +507,14 @@ function add_word
 
 function add_buzz
   (_tuple_,
-    w) {
+    w: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
     mapf(
     null,
     function
-      (x) {
+      (x: string) {
         
         setg(
         add_word(
@@ -509,16 +527,18 @@ function add_buzz
   }
 
 function add_zork
-  (nm,
+  (nm: atom,
     _tuple_,
-    w) {
+    w: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
     mapf(
     null,
     function
-      (x) {
+      (x: string) {
         
-        let atm = null;
+        let atm: atom = null;
         setg(
         atm = add_word(
             x),
@@ -530,18 +550,22 @@ function add_zork
   }
 
 function add_object
-  (obj,
-    names,
-    adj?) {
+  (obj: object,
+    names: vector(
+        /*[*/ [rest,
+          string] /*]*/),
+    adj?: vector(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let objs = GLOBALS.object_obl;
+    let objs: oblist = GLOBALS.object_obl;
     put(
     obj,
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
       function
-        (x) {
+        (x: string) {
           
           lookup(
             x,
@@ -570,12 +594,14 @@ chutype(
   }
 
 function synonym
-  (n1,
+  (n1: string,
     _tuple_,
-    n2) {
+    n2: tuple(
+        /*[*/ [rest,
+          string] /*]*/)) {
     
-    let atm = null;
-    let val = null;
+    let atm: false || atom = null;
+    let val: any = null;
     cond(
     /*(*/ [atm = lookup(
           n1,
@@ -595,8 +621,8 @@ function synonym
   }
 
 function add_abbrev
-  (x,
-    y) {
+  (x: string,
+    y: string) {
     
     setg(
     add_word(
@@ -609,13 +635,15 @@ function add_abbrev
   }
 
 function add_demon
-  (x) {
+  (x: hack) {
     
     cond(
     /*(*/ [mapr(
         null,
         function
-          (y) {
+          (y: list(
+                /*[*/ [rest,
+                  hack] /*]*/)) {
             
             cond(
             /*(*/ [haction(
@@ -643,14 +671,16 @@ function add_star
   }
 
 function add_actor
-  (adv) {
+  (adv: adv) {
     
-    let actors = GLOBALS.actors;
+    let actors: list(
+        /*[*/ [rest,
+          adv] /*]*/) = GLOBALS.actors;
     cond(
     /*(*/ [mapf(
         null,
         function
-          (x) {
+          (x: adv) {
             
             cond(
             /*(*/ [aobj(
@@ -666,8 +696,8 @@ function add_actor
   }
 
 function add_desc
-  (obj,
-    str) {
+  (obj: object,
+    str: string) {
     
     put(
     obj,

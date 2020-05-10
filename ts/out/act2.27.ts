@@ -1,10 +1,10 @@
 function boom_room
   () {
     
-    let dummy_Q = null;
-    let prsact = GLOBALS.prsvec[1];
-    let win = GLOBALS.winner;
-    let o = null;
+    let dummy_Q: atom || false = null;
+    let prsact: verb = GLOBALS.prsvec[1];
+    let win: adv = GLOBALS.winner;
+    let o: object = null;
     cond(
     /*(*/ [vname(
             prsact) === walk_in_X_words || vname(
@@ -51,7 +51,7 @@ function boom_room
 function bats_room
   () {
     
-    let prsact = GLOBALS.prsvec[1];
+    let prsact: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [vname(
             prsact) === walk_in_X_words && !memq(
@@ -75,7 +75,9 @@ function bats_room
 function fly_me
   () {
     
-    let bat_drops = GLOBALS.bat_drops;
+    let bat_drops: vector(
+        /*[*/ [rest,
+          string] /*]*/) = GLOBALS.bat_drops;
     unwind(
     prog(
       /*(*/ [] /*)*/,
@@ -101,8 +103,8 @@ room_desc(
   }
 
 function fweep
-  (num,
-    slp?) {
+  (num: fix,
+    slp?: fix) {
     
     repeat(
     /*(*/ [/*(*/ [n,
@@ -142,18 +144,20 @@ GLOBALS.cage_top_X_flag = t
 function dumbwaiter
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let tb = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let tb: object = find_obj(
         "TBASK");
-    let top = find_room(
+    let top: room = find_room(
         "TSHAF");
-    let bot = find_room(
+    let bot: room = find_room(
         "BSHAF");
-    let fb = find_obj(
+    let fb: object = find_obj(
         "FBASK");
-    let ct = GLOBALS.cage_top_X_flag;
-    let here = GLOBALS.here;
-    let dummy = GLOBALS.dummy;
+    let ct: verb = GLOBALS.cage_top_X_flag;
+    let here: room = GLOBALS.here;
+    let dummy: vector(
+        /*[*/ [rest,
+          string] /*]*/) = GLOBALS.dummy;
     cond(
     /*(*/ [prsact === GLOBALS.raise_X_words,
       cond(
@@ -206,7 +210,7 @@ function dumbwaiter
 function machine_room
   () {
     
-    let prsact = GLOBALS.prsvec[1];
+    let prsact: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsact === GLOBALS.look_X_words,
       tell(
@@ -224,9 +228,11 @@ function machine_room
 function machine_function
   () {
     
-    let dummy = GLOBALS.dummy;
-    let prsact = GLOBALS.prsvec[1];
-    let mach = find_obj(
+    let dummy: vector(
+        /*[*/ [rest,
+          string] /*]*/) = GLOBALS.dummy;
+    let prsact: verb = GLOBALS.prsvec[1];
+    let mach: object = find_obj(
         "MACHI");
     cond(
     /*(*/ [GLOBALS.here === find_room(
@@ -267,14 +273,14 @@ function machine_function
 function mswitch_function
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let c = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let c: verb = find_obj(
         "COAL");
-    let imp = GLOBALS.prsvec[3];
-    let d = null;
-    let mach = find_obj(
+    let imp: object = GLOBALS.prsvec[3];
+    let d: object = null;
+    let mach: object = find_obj(
         "MACHI");
-    let screw = find_obj(
+    let screw: object = find_obj(
         "SCREW");
     cond(
     /*(*/ [prsact === GLOBALS.turn_X_words,
@@ -331,9 +337,9 @@ function mswitch_function
 function gunk_function
   () {
     
-    let g = find_obj(
+    let g: object = find_obj(
         "GUNK");
-    let m = ocan(
+    let m: object || false = ocan(
         g);
     cond(
     /*(*/ [m,
@@ -394,7 +400,7 @@ function cliff_function
 function stick_function
   () {
     
-    let prsact = GLOBALS.prsvec[1];
+    let prsact: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [vname(
           prsact) === wave_X_words,
@@ -426,7 +432,7 @@ function stick_function
 function falls_room
   () {
     
-    let prsact = GLOBALS.prsvec[1];
+    let prsact: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsact === GLOBALS.look_X_words,
       tell(
@@ -442,7 +448,7 @@ function falls_room
 function digger
   () {
     
-    let prso = GLOBALS.prsvec[2];
+    let prso: object = GLOBALS.prsvec[2];
     cond(
     /*(*/ [prso === find_obj(
           "SHOVE")] /*)*/,
@@ -466,10 +472,10 @@ function digger
 function dboat_function
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let here = GLOBALS.here;
-    let prsi = GLOBALS.prsvec[3];
-    let dboat = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let here: room = GLOBALS.here;
+    let prsi: false || object = GLOBALS.prsvec[3];
+    let dboat: object = find_obj(
         "DBOAT");
     cond(
     /*(*/ [vname(
@@ -503,14 +509,14 @@ function dboat_function
   }
 
 function rboat_function
-  (arg?) {
+  (arg?: false || atom) {
     
-    let prsact = GLOBALS.prsvec[1];
-    let rboat = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let rboat: object = find_obj(
         "RBOAT");
-    let iboat = find_obj(
+    let iboat: object = find_obj(
         "IBOAT");
-    let here = GLOBALS.here;
+    let here: room = GLOBALS.here;
     cond(
     /*(*/ [arg,
       null] /*)*/,
@@ -563,12 +569,12 @@ function rboat_function
 function iboat_function
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let iboat = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let iboat: object = find_obj(
         "IBOAT");
-    let rboat = find_obj(
+    let rboat: object = find_obj(
         "RBOAT");
-    let here = GLOBALS.here;
+    let here: room = GLOBALS.here;
     cond(
     /*(*/ [vname(
           prsact) === infla_X_words,
@@ -610,8 +616,8 @@ GLOBALS.buoy_flag_X_flag = t
 function shake
   () {
     
-    let prsobj = GLOBALS.prsvec[2];
-    let here = GLOBALS.here;
+    let prsobj: object = GLOBALS.prsvec[2];
+    let here: room = GLOBALS.here;
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -631,7 +637,7 @@ function shake
       mapf(
         null,
         function
-          (x) {
+          (x: object) {
             
             put(
             x,
@@ -665,11 +671,11 @@ function rivr4_room
 function beach_room
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let shov = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let shov: object = find_obj(
         "SHOVE");
-    let here = GLOBALS.here;
-    let cnt = null;
+    let here: room = GLOBALS.here;
+    let cnt: fix = null;
     cond(
     /*(*/ [vname(
             prsact) === dig_X_words && shov === GLOBALS.prsvec[2],
@@ -707,11 +713,11 @@ function beach_room
 function tcave_room
   () {
     
-    let prsact = GLOBALS.prsvec[1];
-    let shov = find_obj(
+    let prsact: verb = GLOBALS.prsvec[1];
+    let shov: object = find_obj(
         "SHOVE");
-    let here = GLOBALS.here;
-    let cnt = null;
+    let here: room = GLOBALS.here;
+    let cnt: fix = null;
     cond(
     /*(*/ [vname(
             prsact) === dig_X_words && GLOBALS.prsvec[2] === shov,
@@ -784,7 +790,9 @@ gdecl(
 function swimmer
   () {
     
-    let swimyuks = GLOBALS.swimyuks;
+    let swimyuks: vector(
+        /*[*/ [rest,
+          string] /*]*/) = GLOBALS.swimyuks;
     cond(
     /*(*/ [rtrnn(
         GLOBALS.here,
@@ -799,7 +807,7 @@ function swimmer
 function grue_function
   () {
     
-    let prsa = GLOBALS.prsvec[1];
+    let prsa: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsa === GLOBALS.exami_X_words,
       tell(
@@ -1020,16 +1028,16 @@ gdecl(
   cevent)
 
 function rise_and_shine
-  (ball,
-    here) {
+  (ball: object,
+    here: room) {
     
-    let s = top(
+    let s: string = top(
         GLOBALS.scrstr);
-    let m = null;
-    let in_Q = avehicle(
+    let m: false || string = null;
+    let in_Q: atom || false = avehicle(
           GLOBALS.winner) === ball;
-    let bl = GLOBALS.bloc;
-    let foo = null;
+    let bl: room = GLOBALS.bloc;
+    let foo: cevent = null;
     clock_int(
     GLOBALS.bint,
     3)
@@ -1140,10 +1148,10 @@ cond(
   }
 
 function put_balloon
-  (ball,
-    here,
-    there,
-    str) {
+  (ball: object,
+    here: room,
+    there: string,
+    str: string) {
     
     member(
       "LEDG",
@@ -1166,16 +1174,16 @@ gdecl(
   room)
 
 function decline_and_fall
-  (ball,
-    here) {
+  (ball: object,
+    here: room) {
     
-    let s = top(
+    let s: string = top(
         GLOBALS.scrstr);
-    let m = null;
-    let bl = GLOBALS.bloc;
-    let in_Q = avehicle(
+    let m: false || string = null;
+    let bl: room = GLOBALS.bloc;
+    let in_Q: atom || false = avehicle(
           GLOBALS.winner) === ball;
-    let foo = null;
+    let foo: cevent = null;
     clock_int(
     GLOBALS.bint,
     3)
@@ -1258,11 +1266,11 @@ cond(
 function wire_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let prsa = pv[1];
-    let prso = pv[2];
-    let prsi = pv[3];
-    let bint = GLOBALS.bint;
+    let pv: vector = GLOBALS.prsvec;
+    let prsa: verb = pv[1];
+    let prso: prsobj = pv[2];
+    let prsi: prsobj = pv[3];
+    let bint: cevent = GLOBALS.bint;
     cond(
     /*(*/ [prsa === GLOBALS.tie_X_words,
       cond(
@@ -1293,9 +1301,9 @@ function wire_function
 function burnup
   () {
     
-    let r = find_obj(
+    let r: object = find_obj(
         "RECEP");
-    let obj = ocontents(
+    let obj: object = ocontents(
           r)[1];
     put(
     r,
@@ -1318,7 +1326,7 @@ GLOBALS.safe_flag_X_flag = null
 function safe_room
   () {
     
-    let prsa = GLOBALS.prsvec[1];
+    let prsa: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsa === GLOBALS.look_X_words,
       tell(
@@ -1333,7 +1341,7 @@ function safe_room
 function safe_function
   () {
     
-    let prsa = GLOBALS.prsvec[1];
+    let prsa: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsa === GLOBALS.take_X_words,
       tell(
@@ -1364,7 +1372,7 @@ psetg(
 function brick_function
   () {
     
-    let prsa = GLOBALS.prsvec[1];
+    let prsa: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsa === GLOBALS.burn_X_words,
       jigs_up(
@@ -1374,13 +1382,13 @@ function brick_function
 function fuse_function
   () {
     
-    let prsa = GLOBALS.prsvec[1];
-    let fuse = find_obj(
+    let prsa: verb = GLOBALS.prsvec[1];
+    let fuse: object = find_obj(
         "FUSE");
-    let brick = find_obj(
+    let brick: object = find_obj(
         "BRICK");
-    let brick_room = null;
-    let oc = null;
+    let brick_room: room || false = null;
+    let oc: object || false = null;
     cond(
     /*(*/ [prsa === GLOBALS.burn_X_words,
       tell(
@@ -1468,7 +1476,7 @@ function fuse_function
                   mapf(
                     null,
                     function
-                      (x) {
+                      (x: object) {
                         
                         put(
                         x,
@@ -1493,7 +1501,7 @@ function fuse_function
 function safe_mung
   () {
     
-    let rm = GLOBALS.munged_room;
+    let rm: room = GLOBALS.munged_room;
     cond(
     /*(*/ [GLOBALS.here === rm,
       jigs_up(
@@ -1519,7 +1527,7 @@ mung_room(
 function ledge_mung
   () {
     
-    let rm = find_room(
+    let rm: room = find_room(
         "LEDG4");
     cond(
     /*(*/ [GLOBALS.here === rm,
@@ -1561,7 +1569,7 @@ mung_room(
 function ledge_function
   () {
     
-    let prsa = GLOBALS.prsvec[1];
+    let prsa: verb = GLOBALS.prsvec[1];
     cond(
     /*(*/ [prsa === GLOBALS.walk_in_X_words,
       GLOBALS.safe_flag_X_flag && tell(
@@ -1614,9 +1622,9 @@ GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = null
 function gnome_function
   () {
     
-    let pv = GLOBALS.prsvec;
-    let prsa = pv[1];
-    let prso = pv[2];
+    let pv: vector = GLOBALS.prsvec;
+    let prsa: verb = pv[1];
+    let prso: prsobj = pv[2];
     cond(
     /*(*/ [prsa === GLOBALS.give_X_words || prsa === GLOBALS.throw_X_words && type_Q(
           prso,

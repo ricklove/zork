@@ -70,6 +70,7 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
                     const a = x.nodes[0] as ZToken;
                     return {
                         arg: x,
+                        rawName: a.toString(),
                         argName: convertToTypescriptName(a),
                         argValue: convertToTypescript(x.nodes[1]),
                     };
@@ -77,21 +78,22 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
 
                 return {
                     arg: x,
+                    rawName: x.toString(),
                     argName: convertToTypescriptName(x as ZToken),
                     argValue: null,
                 };
             }).map(x => {
-                if (x.arg.toString() === OPTIONAL) {
+                if (x.rawName === OPTIONAL) {
                     _lastOptional = true;
                     return null;
                 }
-                if (x.arg.toString() === AUX) {
+                if (x.rawName === AUX) {
                     _afterAux = true;
                     return null;
                 }
 
 
-                const dIndex = dMapNames.findIndex(d => d.includes(x.argName));
+                const dIndex = dMapNames.findIndex(d => d.includes(x.rawName));
                 const dType = dIndex >= 0 ? dMapTypes[dIndex] : undefined;
 
                 const isOptional = _lastOptional;
