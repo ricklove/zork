@@ -93,15 +93,15 @@ define(sparse, sparout, /*(*/ [sv, vb,
 		/*(*/ [prep,		 (type_Q(lobj = back(pvr)[1], object) && top(back(pvr)[1] = prv[1][1] = prep[2] = lobj))] /*)*/,
 		/*(*/ [pv] /*)*/)] /*)*/))
 
-function sp(str) {
+export function sp(str) {
     parse(lex(str), false);
   }
 
-function orphan(flag?: (atom | false), action, slot1, prep, name: (atom | false)) {
+export function orphan(flag?: (atom | false), action, slot1, prep, name: (atom | false)) {
     GLOBALS.orphans[GLOBALS.oname] = name[GLOBALS.oprep] = prep[GLOBALS.oslot1] = slot1[GLOBALS.overb] = action[GLOBALS.oflag] = flag;
   }
 
-function syn_match(pv: vector) {
+export function syn_match(pv: vector) {
     let action: action = pv[1];
     let objs: vector = rest(pv);
     let o1: (false | object | phrase) = objs[1];
@@ -135,7 +135,7 @@ function syn_match(pv: vector) {
     /*(*/ [tell("I can't make sense out of that.", 0), false] /*)*/);
   }
 
-function take_it_or_leave_it(syn: syntax, pv: vector) {
+export function take_it_or_leave_it(syn: syntax, pv: vector) {
     let pv1: (false | object | phrase) = pv[2];
     let pv2: (false | object | phrase) = pv[3];
     let obj: (false | object) = null;
@@ -150,7 +150,7 @@ cond(/*(*/ [vtrnn(varg = syn2(syn), GLOBALS.vrbit),
 	       take_it(obj,pv,varg)] /*)*/);
   }
 
-function take_it(obj: object, vec: vector, vrb: varg) {
+export function take_it(obj: object, vec: vector, vrb: varg) {
     let sav1: verb = vec[1];
     let sav2: (false | object) = vec[2];
     cond(/*(*/ [(search_list(oid(obj), robjs(GLOBALS.here), false) && (can_take_Q(obj) || !vtrnn(vrb,GLOBALS.vtbit))),
@@ -161,7 +161,7 @@ function take_it(obj: object, vec: vector, vrb: varg) {
 	       vec[2] = sav2] /*)*/);
   }
 
-function orfeo(syn: varg, objs: vector) {
+export function orfeo(syn: varg, objs: vector) {
     let orph: vector = GLOBALS.orphans;
     let orfl: (atom | false) = oflag(orph);
     let slot1: (false | phrase | object) = null;
@@ -170,7 +170,7 @@ function orfeo(syn: varg, objs: vector) {
 	       (syn_equal(syn,slot1) && objs[1] = slot1)] /*)*/);
   }
 
-function ortell(varg: varg, action: action, gwim: (false | object)) {
+export function ortell(varg: varg, action: action, gwim: (false | object)) {
     let prep: (false | prep) = vprep(varg);
     let sp: string = null;
     cond(/*(*/ [prep,	       (gwim && tell(vstr(action), 0, "") && tell(odesc2(gwim), 0, "")),
@@ -179,12 +179,12 @@ function ortell(varg: varg, action: action, gwim: (false | object)) {
 false;
   }
 
-function prstr(atm: atom) {
+export function prstr(atm: atom) {
     let sp: string = null;
     foostr(sp = spname(atm), back(GLOBALS.scrstr,sp.length), false);
   }
 
-function foostr(nam: string, str: string, 1st?: (atom | false)) {
+export function foostr(nam: string, str: string, 1st?: (atom | false)) {
     mapr(false,
 	function(x: string, y: string) {
         cond(/*(*/ [(1st && x === nam),
@@ -194,7 +194,7 @@ function foostr(nam: string, str: string, 1st?: (atom | false)) {
 	nam,	str);
   }
 
-function gwim_slot(fx: number, varg: varg, action: action, objs: vector) {
+export function gwim_slot(fx: number, varg: varg, action: action, objs: vector) {
     let obj: vector = null;
     cond(/*(*/ [obj = gwim(vbit(varg), varg,action),
 	       objs[fx] = obj,
@@ -203,7 +203,7 @@ function gwim_slot(fx: number, varg: varg, action: action, objs: vector) {
 
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
-function gwim(bit: number, fword: varg, action: action) {
+export function gwim(bit: number, fword: varg, action: action) {
     let aobj: (atom | false) = vtrnn(fword,GLOBALS.vabit);
     let ntake: (atom | false) = vtrnn(fword,GLOBALS.vtbit);
     let robj: (atom | false) = vtrnn(fword,GLOBALS.vrbit);
@@ -224,7 +224,7 @@ cond(/*(*/ [robj,	       cond(/*(*/ [(nobj = fwim(bit,robjs(GLOBALS.here), ntake
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
-function make_action("TUPLE", specs) {"AUX", vv, sum, /*(*/ [prep, false] /*)*/, atm
+export function make_action("TUPLE", specs) {"AUX", vv, sum, /*(*/ [prep, false] /*)*/, atm
     chtype(mapf(GLOBALS.uvector,     function(sp: vector) {
           let syn: vector = ivector(5, false);
           let whr: number = 1;
@@ -265,7 +265,7 @@ chtype(syn,syntax);
 
 GLOBALS.evarg = chtype(/*[*/ [0, false, 0] /*]*/, varg)
 
-function syn_equal(varg: varg, pobj: (false | phrase | object)) {
+export function syn_equal(varg: varg, pobj: (false | phrase | object)) {
     let vbit: number = vbit(varg);
     cond(/*(*/ [type_Q(pobj,phrase),
 	   (vprep(varg) === pobj[1] && (!vtrnn(varg,GLOBALS.vxbit) || trnn(pobj[2], vbit)))] /*)*/,
@@ -276,7 +276,7 @@ function syn_equal(varg: varg, pobj: (false | phrase | object)) {
 
 GLOBALS.directions = moblist(directions)
 
-function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: (atom | false)) {
+export function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: (atom | false)) {
     let val: any = null;
     cond(/*(*/ [val = sparse(pv,vb),
 	       cond(/*(*/ [(val === win || syn_match(val)), orphan(false)] /*)*/,

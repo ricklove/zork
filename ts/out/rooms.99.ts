@@ -4,7 +4,7 @@ GLOBALS.alt_flag = t
 
 gdecl(/*(*/ [muddle] /*)*/, fix, /*(*/ [tenex_Q] /*)*/, (atom || false), /*(*/ [vers, dev, snm, scratch_str] /*)*/, string)
 
-function save_it(fn?: string) {
+export function save_it(fn?: string) {
     let muddle: number = GLOBALS.muddle;
     let stv: (string | number) = null;
     let st: (string | number) = remarkably_disgusting_code();
@@ -54,7 +54,7 @@ GLOBALS.divert_lmt = 100000
 
 gdecl(/*(*/ [divert_cnt, divert_max, divert_inc, divert_amt, divert_lmt] /*)*/, fix)
 
-function divert_fcn(amt, reason) {
+export function divert_fcn(amt, reason) {
     GLOBALS.divert_cnt = _(GLOBALS.divert_cnt,1);
 GLOBALS.divert_amt = _(GLOBALS.divert_amt,GLOBALS.divert_inc,amt);
 cond(/*(*/ [(GLOBALS.divert_cnt > GLOBALS.divert_max || GLOBALS.divert_amt > GLOBALS.divert_lmt),	// Too much diversion ?,
@@ -73,7 +73,7 @@ GLOBALS.divert_hand = handler(GLOBALS.divert_int = event("DIVERT-AGC", 1000),
 
 off(GLOBALS.divert_hand)
 
-function gc_fcn("TUPLE", t) {
+export function gc_fcn("TUPLE", t) {
     off(GLOBALS.gc_hand);
 GLOBALS.divert_amt = GLOBALS.divert_cnt = 0;
   }
@@ -85,7 +85,7 @@ off(GLOBALS.gc_hand)
 
 
 
-function xuname() {
+export function xuname() {
     mapf(GLOBALS.string,	function(x: character) {
         cond(/*(*/ [(0_Q(ascii(x)) || ascii(x) === 32),
 		  mapstop()] /*)*/,
@@ -94,7 +94,7 @@ function xuname() {
 	gxuname());
   }
 
-function its_get_name(uname: string) {
+export function its_get_name(uname: string) {
     let nm: (string | false) = field(uname,GLOBALS._name);
     let cma: (string | false) = null;
     let jr: (string | false) = null;
@@ -126,7 +126,7 @@ function its_get_name(uname: string) {
 		     /*(*/ [else, GLOBALS.user_name = nm] /*)*/)] /*)*/);
   }
 
-function unspeakable_code() {
+export function unspeakable_code() {
     let str: string = null;
     let nstr: string = null;
     let len_i: number = 0;
@@ -142,7 +142,7 @@ string("There is an issue of US NEWS & DUNGEON REPORT dated",
 	    "here.");
   }
 
-function remarkably_disgusting_code() {
+export function remarkably_disgusting_code() {
     let n: primtype(word) = dskdate();
     string("This version created",
 	 GLOBALS.months[chtype(getbits(n,bits(4, 23)), fix)],
@@ -151,7 +151,7 @@ function remarkably_disgusting_code() {
 	 _X__);
   }
 
-function version() {
+export function version() {
     tell(GLOBALS.vers);
   }
 
@@ -159,7 +159,7 @@ GLOBALS.played_time = 0
 
 gdecl(/*(*/ [played_time] /*)*/, fix)
 
-function get_time() {
+export function get_time() {
     let now: primtype(word) = dskdate();
     let then: primtype(word) = GLOBALS.intime;
     _(cond(/*(*/ [chtype(getbits(now,bits(18, 18)), fix) !== chtype(getbits(then,bits(18, 18)), fix),
@@ -173,7 +173,7 @@ function get_time() {
 	   GLOBALS.played_time);
   }
 
-function play_time(outchan?: special(channel), loser_Q: (atom | false)) {
+export function play_time(outchan?: special(channel), loser_Q: (atom | false)) {
     let time: number = null;
     let mins: number = null;
     time = get_time();
@@ -194,10 +194,10 @@ cond(/*(*/ [loser_Q,princ(".")] /*)*/,
 	      /*(*/ [princ(".")] /*)*/);
   } 
 
-function pc() {
+export function pc() {
       }
 
-function handle(frm, _tuple_, zork) {
+export function handle(frm, _tuple_, zork) {
     let zf: any = null;
     GLOBALS.outchan[13] = 80;
 back(GLOBALS.inchan)[1][6] = /*#*/ [lose, 27] /*2*/;
@@ -238,7 +238,7 @@ gdecl(/*(*/ [winners] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
 gdecl(/*(*/ [moves] /*)*/, fix, /*(*/ [script_channel] /*)*/, (channel || false))
 
-function start(rm: string, st?: string) {
+export function start(rm: string, st?: string) {
     let fn: (false | string) = null;
     let muddle: number = GLOBALS.muddle;
     let xunm: string = xuname();
@@ -261,7 +261,7 @@ int_level(0);
 contin();
   }
 
-function contin() {
+export function contin() {
     GLOBALS.alt_flag = false;
 back(GLOBALS.inchan)[1][6] = cond(/*(*/ [GLOBALS.muddle > 100,
 					 cond(/*(*/ [GLOBALS.tenex_Q,/*#*/ [lose, _37_] /*2*/] /*)*/,
@@ -278,7 +278,7 @@ GLOBALS.my_script = false
 
 gdecl(/*(*/ [my_script] /*)*/, (atom || false))
 
-function make_script() {
+export function make_script() {
     let ch: (channel | false) = null;
     cond(/*(*/ [GLOBALS.script_channel,	 false] /*)*/,
 	/*(*/ [ch = open("PRINT", string("MARC;%Z", GLOBALS.xunm,">")),
@@ -288,14 +288,14 @@ function make_script() {
 	 GLOBALS.my_script = t] /*)*/);
   }
 
-function flush_me() {
+export function flush_me() {
     unwind(prog(/*(*/ [] /*)*/,
 	 tell("Suddenly, a sinister, wraithlike figure appears before you, seeming\nto float in the air.  He glows with an eldritch light.  In a barely\naudible voice he says, \"Begone, defiler!  Your presence upsets the\nvery balance of the System itself!\"  With a sinister chuckle, he\nraises his oaken staff, taps you on the head, and fades into the\ngloom.  In his place appears a tastefully lettered sign reading:\n\n			DUNGEON CLOSED\n\nAt that instant, you disappear, and all your belongings clatter to\nthe ground."),
 	 finish(false)),
    finish(false));
   }
 
-function do_script() {
+export function do_script() {
     let ch: (channel | false) = null;
     let unm: string = GLOBALS.xunm;
     let muddle: number = GLOBALS.muddle;
@@ -313,7 +313,7 @@ cond(/*(*/ [GLOBALS.script_channel,	 tell("You are already scripting.")] /*)*/,
 	 tell("I can't open the script channel.")] /*)*/);
   }
 
-function do_unscript(verbose?: (atom | false)) {
+export function do_unscript(verbose?: (atom | false)) {
     cond(/*(*/ [GLOBALS.script_channel,	 top(GLOBALS.inchan)[1] = /*(*/ [] /*)*/,
 	 top(GLOBALS.outchan)[1] = /*(*/ [] /*)*/,
 	 close(GLOBALS.script_channel),
@@ -324,7 +324,7 @@ function do_unscript(verbose?: (atom | false)) {
 
 gdecl(/*(*/ [then] /*)*/, fix)
 
-function do_save() {
+export function do_save() {
     let muddle: number = GLOBALS.muddle;
     let ch: (channel | false) = null;
     let unm: string = GLOBALS.xunm;
@@ -349,7 +349,7 @@ function do_save() {
 	/*(*/ [t, tell("Can't open channel for save.")] /*)*/);
   }
 
-function do_restore() {
+export function do_restore() {
     let ch: (channel | false) = null;
     let str: string = null;
     let muddle: number = GLOBALS.muddle;
@@ -393,7 +393,7 @@ prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	       /*(*/ [tell(ch[2], 1, "", ch[1])] /*)*/));
   }
 
-function prob(num: number) {
+export function prob(num: number) {
     l__Q(mod(random(), 100), num);
   }
 
@@ -418,32 +418,32 @@ GLOBALS.super_brief_X_flag = false
 
 gdecl(/*(*/ [super_brief_X_flag, brief_X_flag] /*)*/, (atom || false))
 
-function brief() {
+export function brief() {
     GLOBALS.brief_X_flag = t;
 tell("Brief descriptions.");
   }
 
-function super_brief() {
+export function super_brief() {
     GLOBALS.super_brief_X_flag = t;
 tell("No long descriptions.");
   }
 
-function un_brief() {
+export function un_brief() {
     GLOBALS.brief_X_flag = false;
 GLOBALS.super_brief_X_flag = false;
 tell("Long descriptions.");
   }
 
-function un_super_brief() {
+export function un_super_brief() {
     GLOBALS.super_brief_X_flag = false;
 tell("Some long descriptions.");
   }
 
-function room_desc() {
+export function room_desc() {
     room_info(t);
   }
 
-function room_info(full?: (atom | false)) {
+export function room_info(full?: (atom | false)) {
     let av: (false | object) = avehicle(GLOBALS.winner);
     let rm: room = GLOBALS.here;
     let prso: (direction | false | object) = GLOBALS.prsvec[2];
@@ -528,7 +528,7 @@ cond(/*(*/ [see_inside_Q(y),
 
 "GIVE LONG DESCRIPTION OF OBJECT"
 
-function long_desc_obj(obj: object) {
+export function long_desc_obj(obj: object) {
     let str = null;
     cond(/*(*/ [(otouch_Q(obj) || !odesco(obj)),
 	       str = odesc1(obj)] /*)*/,
@@ -543,7 +543,7 @@ gdecl(/*(*/ [parse_won] /*)*/, (atom || false))
 
 psetg(reader_string, string(ascii(27), ascii(13), ascii(10)))
 
-function rdcom(ivec?: (false | vector)) {
+export function rdcom(ivec?: (false | vector)) {
     let str = GLOBALS.reader_string;
     let vc: vector = null;
     let rvec: (false | vector) = null;
@@ -592,27 +592,27 @@ repeat(/*(*/ [vval, cv] /*)*/,
 	   (ivec && return()));
   }
 
-function score_obj(obj: object) {
+export function score_obj(obj: object) {
     let temp = null;
     cond(/*(*/ [temp = ofval(obj) > 0,
 	       score_upd(temp),
 	       obj[GLOBALS.ofval] = 0] /*)*/);
   }
 
-function score_room(rm: room) {
+export function score_room(rm: room) {
     let temp = null;
     cond(/*(*/ [temp = rval(rm) > 0,
 	       score_upd(temp),
 	       rm[GLOBALS.rval] = 0] /*)*/);
   }
 
-function score_upd(num: number) {
+export function score_upd(num: number) {
     let winner = GLOBALS.winner;
     winner[GLOBALS.ascore] = _(ascore(winner), num);
 GLOBALS.raw_score = _(GLOBALS.raw_score,num);
   }
 
-function score(ask_Q?: (atom | false)) {
+export function score(ask_Q?: (atom | false)) {
     let scor: number = null;
     let outchan: channel = outchan;
     let pct: number = null;
@@ -644,7 +644,7 @@ princ(".");
 crlf();
   }
 
-function finish(ask_Q?: (atom | false)) {
+export function finish(ask_Q?: (atom | false)) {
     let scor: number = null;
     unwind(prog(/*(*/ [] /*)*/,
 	  scor = score(ask_Q),
@@ -769,7 +769,7 @@ psetg(val_names, uvector(light_shaft))
 
 psetg(short_val_names, vector("LI"))
 
-function pdskdate(wd: primtype(word), ch: channel) {
+export function pdskdate(wd: primtype(word), ch: channel) {
     let tim: number = chtype(getbits(wd,bits(18, 0)), fix);
     let a_p: string = "AM";
     let hr: number = null;
@@ -807,7 +807,7 @@ psetg(months,
 
 gdecl(/*(*/ [months] /*)*/, vector(/*[*/ [12, string] /*]*/))
 
-function jigs_up(desc: string) {
+export function jigs_up(desc: string) {
     let winner: adv = GLOBALS.winner;
     let deaths: number = GLOBALS.deaths;
     let aobjs: list(/*[*/ [rest, object] /*]*/) = aobjs(winner);
@@ -879,17 +879,17 @@ function jigs_up(desc: string) {
        quit()))] /*)*/);
   }
 
-function info() {
+export function info() {
     file_to_tty("MADADV", "INFO");
   }
 
-function help() {
+export function help() {
     file_to_tty("MADADV", "HELP");
   }
 
 psetg(breaks, string(ascii(3), ascii(0)))
 
-function file_to_tty(file1: string, file2: string, dev?: string, snm: string) {
+export function file_to_tty(file1: string, file2: string, dev?: string, snm: string) {
     let ch: (channel | false) = open("READ", file1,file2,dev,snm);
     let len: number = null;
     let buf: string = GLOBALS.inbuf;
@@ -914,7 +914,7 @@ function file_to_tty(file1: string, file2: string, dev?: string, snm: string) {
 	      /*(*/ [tell("File not found.")] /*)*/);
   }
 
-function invent(win?: adv) {
+export function invent(win?: adv) {
     let any: (atom | false) = false;
     let outchan: channel = GLOBALS.outchan;
     mapf(false,
@@ -938,7 +938,7 @@ function invent(win?: adv) {
 (any || win !== GLOBALS.player || tell("You are empty handed."));
   }
 
-function print_contents(olst: list(/*[*/ [rest, object] /*]*/)) {
+export function print_contents(olst: list(/*[*/ [rest, object] /*]*/)) {
     let outchan: channel = GLOBALS.outchan;
     mapr(false,
 	function(y: list(/*[*/ [rest, object] /*]*/)) {
@@ -955,7 +955,7 @@ cond(/*(*/ [y.length > 2,
 
 // LIT? --  IS THERE ANY LIGHT SOURCE IN THIS ROOM
 
-function lit_Q(rm: room) {
+export function lit_Q(rm: room) {
     let win: adv = GLOBALS.winner;
     (rlight_Q(rm) || lfcn(robjs(rm)) || lfcn(aobjs(win)) || (win !== GLOBALS.player && GLOBALS.here === aroom(GLOBALS.player) && lfcn(aobjs(GLOBALS.player))));
   }
@@ -979,7 +979,7 @@ cond(/*(*/ [(trnn(x,GLOBALS.actorbit) && lfcn(aobjs(y = orand(x)))),
 
 // WALK --  GIVEN A DIRECTION, WILL ATTEMPT TO WALK THERE
 
-function walk() {
+export function walk() {
     let leavings: (atom | room | cexit | nexit) = null;
     let nrm: (false | /*<*/ [primtype(vector), /*[*/ [rest, atom, (room | nexit | cexit)] /*]*/] /*>*/) = null;
     let where: atom = chtype(GLOBALS.prsvec[2], atom);
@@ -1012,7 +1012,7 @@ function walk() {
 	      /*(*/ [tell("There is no way to go in that direction.")] /*)*/);
   }
 
-function take(take_Q?: (atom | false)) {
+export function take(take_Q?: (atom | false)) {
     let win: adv = GLOBALS.winner;
     let vec: vector = GLOBALS.prsvec;
     let rm: room = aroom(win);
@@ -1057,7 +1057,7 @@ function take(take_Q?: (atom | false)) {
 	  /*(*/ [tell("I can't see one here."), false] /*)*/));
   }
 
-function putter(objact?: (atom | false)) {
+export function putter(objact?: (atom | false)) {
     let pv: vector(/*[*/ [3, any] /*]*/) = GLOBALS.prsvec;
     let objo: object = pv[2];
     let obji: object = pv[3];
@@ -1110,7 +1110,7 @@ function putter(objact?: (atom | false)) {
 		     tell("Done.")] /*)*/));
   }
  
-function dropper() {
+export function dropper() {
     let winner = GLOBALS.winner;
     let av: (false | object) = avehicle(winner);
     let aobjs = aobjs(winner);
@@ -1156,7 +1156,7 @@ function dropper() {
 GLOBALS.obj_uv = chutype(rest(iuvector(20), 20), object)
 gdecl(/*(*/ [obj_uv] /*)*/, uvector(/*[*/ [rest, object] /*]*/))
 
-function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
+export function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
     let prsvec: vector(verb, /*[*/ [2, any] /*]*/) = GLOBALS.prsvec;
     let pa: verb = prsvec[1];
     let ra: rapplic = vfcn(pa);
@@ -1188,7 +1188,7 @@ cond(/*(*/ [here !== aroom(winner),
 
 psetg(losstr, "I can't do everything, because I ran out of room.")
 
-function everything() {
+export function everything() {
     let prsvec = GLOBALS.prsvec;
     let pa: verb = prsvec[1];
     let pi: object = null;
@@ -1242,7 +1242,7 @@ cond(/*(*/ [empty_Q(suv),
 	/*(*/ [frob_lots(suv)] /*)*/);
   }
 
-function valuables() {
+export function valuables() {
     let prsvec = GLOBALS.prsvec;
     let pa: verb = prsvec[1];
     let suv: uvector(/*[*/ [rest, object] /*]*/) = GLOBALS.obj_uv;
@@ -1328,7 +1328,7 @@ define(closer, close_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ 
 		     /*(*/ [t, tell("It is already closed.")] /*)*/)] /*)*/,
 	      /*(*/ [tell("You cannot close that.")] /*)*/))
 
-function find() {
+export function find() {
     let prso: (false | object) = GLOBALS.prsvec[2];
     cond(/*(*/ [object_action()] /*)*/,
 	/*(*/ [prso,	 find_frob(prso,		    robjs(GLOBALS.here),
@@ -1344,7 +1344,7 @@ function find() {
 	/*(*/ [tell("I don't know what that is.")] /*)*/);
   }
 
-function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: string, str2: string, str3: string) {
+export function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: string, str2: string, str3: string) {
     mapf(false,
 	function(x: object) {
         cond(/*(*/ [x === prso,
@@ -1366,7 +1366,7 @@ function find_frob(prso, objl: list(/*[*/ [rest, object] /*]*/), str1: string, s
 
 // OBJECT-ACTION --  CALL OBJECT FUNCTIONS FOR DIRECT AND INDIRECT OBJECTS
 
-function object_action() {
+export function object_action() {
     let vec: vector = GLOBALS.prsvec;
     let prso: (object | false) = vec[2];
     let prsi: (object | false) = vec[3];
@@ -1377,7 +1377,7 @@ function object_action() {
 
 "SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL\nSEARCH, USE GET-OBJECT"
 
-function obj_here_Q(obj: object) {
+export function obj_here_Q(obj: object) {
     let nobj: (false | object) = null;
     let rm: room = GLOBALS.here;
     let win: adv = GLOBALS.winner;
@@ -1388,7 +1388,7 @@ function obj_here_Q(obj: object) {
 	      (memq(obj,robjs(rm)) || memq(obj,aobjs(win))));
   }
 
-function splice_out(obj, al: list) {
+export function splice_out(obj, al: list) {
     cond(/*(*/ [al[1] === obj, rest(al)] /*)*/,
 	      /*(*/ [t,
 	       repeat(/*(*/ [/*(*/ [nl, rest(al)] /*)*/, /*(*/ [ol, al] /*)*/] /*)*/,
@@ -1401,7 +1401,7 @@ function splice_out(obj, al: list) {
 
 "WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level."
 
-function weight(objl: list(/*[*/ [rest, object] /*]*/)) {
+export function weight(objl: list(/*[*/ [rest, object] /*]*/)) {
     let bigfix: number = GLOBALS.bigfix;
     mapf(GLOBALS._,	      function(obj: object) {
         _(cond(/*(*/ [osize(obj) === GLOBALS.bigfix, 0] /*)*/,
@@ -1411,10 +1411,10 @@ function weight(objl: list(/*[*/ [rest, object] /*]*/)) {
 	      objl);
   }
 
-function pour() {
+export function pour() {
       }
 
-function move() {
+export function move() {
     let vec: vector = GLOBALS.prsvec;
     let rm: room = aroom(GLOBALS.winner);
     let obj: (atom | object) = vec[2];
@@ -1422,7 +1422,7 @@ function move() {
 	      /*(*/ [obj,	       tell("I can't get to that to move it.")] /*)*/);
   }
 
-function victims_Q(rm: room) {
+export function victims_Q(rm: room) {
     mapf(false,
 	      function(x: object) {
         cond(/*(*/ [trnn(x,GLOBALS.vicbit), mapleave(x)] /*)*/);
@@ -1465,11 +1465,11 @@ psetg(cntprs, "I can't parse that.")
 
 GLOBALS.prsvec = ivector(3, /*#*/ [false, /*(*/ [] /*)*/] /*2*/)
 
-function word_Q(w) {
+export function word_Q(w) {
     lookup(w,GLOBALS.words);
   }
 
-function this_it_Q(objnam: atom, obj: atom, adj: (false | adjective)) {
+export function this_it_Q(objnam: atom, obj: atom, adj: (false | adjective)) {
     cond(/*(*/ [(ovis_Q(obj) && (objnam === oid(obj) || memq(objnam,onames(obj)))),
 	       cond(/*(*/ [!adj] /*)*/, /*(*/ [memq(adj,oadjs(obj))] /*)*/)] /*)*/);
   }
@@ -1478,7 +1478,7 @@ GLOBALS.lexv = ivector(10, () => rest(istring(5), 5))
 
 gdecl(/*(*/ [lexv] /*)*/, vector(/*[*/ [rest, string] /*]*/), /*(*/ [brks] /*)*/, string)
 
-function lex(s: string, sx?: string, silent_Q: (atom | false)) {
+export function lex(s: string, sx?: string, silent_Q: (atom | false)) {
     let brks: string = GLOBALS.brks;
     let v: (false | vector) = GLOBALS.lexv;
     let s1: string = s;
@@ -1508,7 +1508,7 @@ cond(/*(*/ [s[1] === _X__Q, v[1] = substruc("HELP", 0, 4, back(v[1], 4))] /*)*/,
 
 psetg(brks, "\"' 	:;.,?!")
 
-function anything(s: string, sx: string) {
+export function anything(s: string, sx: string) {
     mapr(false,
 	      function(x) {
         cond(/*(*/ [x === sx, mapleave(false)] /*)*/,
@@ -1517,7 +1517,7 @@ function anything(s: string, sx: string) {
 	      s);
   }
 
-function uppercase(str: string) {
+export function uppercase(str: string) {
     mapr(false,
 	      function(s) {"AUX", /*(*/ [c, ascii(s[1])] /*)*/
         cond(/*(*/ [(c > 96 && l__Q(c,122)),
@@ -1526,7 +1526,7 @@ function uppercase(str: string) {
 	      str);
   }
 
-function wait(num?: number) {
+export function wait(num?: number) {
     tell("Time passes...");
 repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [n] /*)*/, fix] /*)*/] /*2*/,
@@ -1536,7 +1536,7 @@ repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 
 "RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS."
 
-function clock_demon(hack: hack) {
+export function clock_demon(hack: hack) {
     let ca = null;
     let flg: (atom | false) = false;
     cond(/*(*/ [GLOBALS.parse_won,	   GLOBALS.prsvec[2] = false,
@@ -1561,7 +1561,7 @@ function clock_demon(hack: hack) {
 
 gdecl(/*(*/ [clocker] /*)*/, hack)
 
-function clock_int(cev: cevent, num?: (number | false), clocker: hack) {
+export function clock_int(cev: cevent, num?: (number | false), clocker: hack) {
     cond(/*(*/ [!memq(cev,hobjs(clocker)),
 	   clocker[GLOBALS.hobjs] = /*(*/ [cev,_X,hobjs(clocker)] /*)*/] /*)*/);
 cond(/*(*/ [num,cev[GLOBALS.ctick] = num] /*)*/);
@@ -1571,7 +1571,7 @@ GLOBALS.demons = /*(*/ [] /*)*/
 
 (lookup("COMPILE", root()) || gassigned_Q(group_glue) || add_demon(GLOBALS.clocker = chtype(/*[*/ [clock_demon, /*(*/ [] /*)*/] /*]*/, hack)))
 
-function board() {
+export function board() {
     let obj: object = GLOBALS.prsvec[2];
     let win: adv = GLOBALS.winner;
     let av: (false | object) = avehicle(win);
@@ -1593,7 +1593,7 @@ function board() {
 		     "s.")] /*)*/);
   }
 
-function unboard() {
+export function unboard() {
     let obj: object = GLOBALS.prsvec[2];
     let win: adv = GLOBALS.winner;
     let av: (false | object) = avehicle(win);
@@ -1607,7 +1607,7 @@ function unboard() {
 	      /*(*/ [tell("You aren't in that!")] /*)*/);
   }
 
-function goto(rm: room) {
+export function goto(rm: room) {
     let win: adv = GLOBALS.winner;
     let av: (false | object) = avehicle(GLOBALS.winner);
     let here: room = GLOBALS.here;
@@ -1627,20 +1627,20 @@ function goto(rm: room) {
 	       t] /*)*/);
   }
 
-function backer() {
+export function backer() {
     tell("He who puts his hand to the plow and looks back is not fit for the\nkingdom of winners.  In any case, \"back\" doesn't work.");
   }
 
-function act_hack() {
+export function act_hack() {
     (object_action() || t);
   }
 
-function mung_room(rm: room, str: string) {
+export function mung_room(rm: room, str: string) {
     rtro(rm,GLOBALS.rmungbit);
 rm[GLOBALS.rrand] = str;
   }
 
-function command() {
+export function command() {
     let pv: vector = GLOBALS.prsvec;
     let po: object = pv[2];
     let v: vector = rest(GLOBALS.lexv[""]);
