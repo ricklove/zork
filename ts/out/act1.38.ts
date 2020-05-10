@@ -2,10 +2,10 @@
 
 function blo(y) {
     cond(/*(*/ [type_Q(GLOBALS.rep,subr, fsubr),
-	       read_table = put(ivector(256, 0), chtype(ascii(_X__), fix), _X__),
+	       read_table = ivector(256, 0)[chtype(ascii(_X__), fix)] = _X__,
 	       evaltype(form, segment),
 	       applytype(subr, fix),
-	       put(alltypes(), 6, alltypes()[7]),
+	       alltypes()[6] = alltypes()[7],
 	       substitute(2, 1),
 	       off(bh)] /*)*/)
   }
@@ -69,7 +69,7 @@ function leaf_pile() {
     let pv: vector(/*[*/ [3, any] /*]*/) = GLOBALS.prsvec;
     let l: object = pv[2];
     cond(/*(*/ [pv[1] === GLOBALS.burn_X_words,
-	       put(l,GLOBALS.orand,1),
+	       l[GLOBALS.orand] = 1,
 	       cond(/*(*/ [oroom(l),
 		      tell("The leaves burn and the neighbors start to complain."),
 		      remove_object(l)] /*)*/,
@@ -77,7 +77,7 @@ function leaf_pile() {
 		      drop_object(l),
 		      jigs_up("The sight of someone carrying a pile of burning leaves so offends\nthe neighbors that they come over and put you out.")] /*)*/)] /*)*/,
 	      /*(*/ [pv[1] === GLOBALS.move_X_words,
-	       put(l,GLOBALS.orand,1),
+	       l[GLOBALS.orand] = 1,
 	       tell("Done.")] /*)*/)
   }
 
@@ -111,9 +111,9 @@ function glacier() {
 		  remove_object(find_obj("ICE")),
 		  remove_object(t),
 		  insert_object(t,find_room("STREA")),
-		  put(t,GLOBALS.odesc2,"burned out ivory torch"),
-		  put(t,GLOBALS.odesc1,"There is a burned out ivory torch here."),
-		  put(t,GLOBALS.olight_Q,0),
+		  t[GLOBALS.odesc2] = "burned out ivory torch",
+		  t[GLOBALS.odesc1] = "There is a burned out ivory torch here.",
+		  t[GLOBALS.olight_Q] = 0,
 		  trz(t,GLOBALS.flamebit),
 		  lit_Q(GLOBALS.here) || tell("The melting glacier seems to have carried the torch away, leaving\nyou in the dark."),
 		  GLOBALS.glacier_flag_X_flag = t] /*)*/,
@@ -167,7 +167,7 @@ function living_room() {
 		     /*(*/ [tell("and a large oriental rug in the center of the room.", 1)] /*)*/),
 	       t] /*)*/,
 	      /*(*/ [tc = find_obj("TCASE") && prsact === GLOBALS.take_X_words || prsact === GLOBALS.put_X_words && prsvec[3] === tc,
-	       put(GLOBALS.winner,GLOBALS.ascore,_(GLOBALS.raw_score,				       mapf(GLOBALS._,GLOBALS.otval,ocontents(tc))))] /*)*/)
+	       GLOBALS.winner[GLOBALS.ascore] = _(GLOBALS.raw_score,				       mapf(GLOBALS._,GLOBALS.otval,ocontents(tc)))] /*)*/)
   }
 
 function trap_door() {
@@ -215,7 +215,7 @@ function clearing() {
 	/*(*/ [0_Q(rv) && prsact === GLOBALS.burn_X_words && !0_Q(orand(leaves)) || prsact === GLOBALS.take_X_words || prsact === GLOBALS.move_X_words && GLOBALS.prsvec[2] === leaves,
 	 tell("A grating appears on the ground."),
 	 tro(grate,GLOBALS.ovison),
-	 put(rm,GLOBALS.rvars,1)] /*)*/)
+	 rm[GLOBALS.rvars] = 1] /*)*/)
   }
 
 // CELLAR--FIRST ROOM IN BASEMENT.
@@ -228,7 +228,7 @@ function cellar() {
 	 tell("You are in a dark and damp cellar with a narrow passageway leading\neast, and a crawlway to the south.  On the west is the bottom of a\nsteep metal ramp which is unclimbable.")] /*)*/,
 	/*(*/ [vname(prsact) === walk_in_X_words && GLOBALS.trap_door_X_flag && !otouch_Q(door),
 	 GLOBALS.trap_door_X_flag = false,
-	 put(door,GLOBALS.otouch_Q,t),
+	 door[GLOBALS.otouch_Q] = t,
 	 tell("The trap door crashes shut, and you hear someone barring it.", 1)] /*)*/)
   }
 
@@ -241,7 +241,7 @@ function chimney_function() {
 	 GLOBALS.light_load_X_flag = t,
 	 // Door will slam shut next time, too, since this way up don't count.,
 	 cond(/*(*/ [!GLOBALS.trap_door_X_flag,
-		put(find_obj("DOOR"), GLOBALS.otouch_Q,false)] /*)*/),
+		find_obj("DOOR")[GLOBALS.otouch_Q] = false] /*)*/),
 	 false] /*)*/,
 	/*(*/ [t,
 	 GLOBALS.light_load_X_flag = false] /*)*/)
@@ -260,7 +260,7 @@ function rug() {
 		 tell("Having moved the carpet previously, you find it impossible to move\nit again.")] /*)*/,
 		/*(*/ [tell("With a great effort, the rug is moved to one side of the room.\nWith the rug moved, the dusty cover of a closed trap-door appears."),
 		 tro(find_obj("DOOR"), GLOBALS.ovison),
-		 put(obj,GLOBALS.orand,t)] /*)*/)] /*)*/,
+		 obj[GLOBALS.orand] = t] /*)*/)] /*)*/,
 	 /*(*/ [prsa === GLOBALS.take_X_words,
 	  tell("The rug is extremely heavy and cannot be carried.")] /*)*/)
   }
@@ -286,12 +286,12 @@ l = rob_room(rm,/*(*/ [] /*)*/, 100)
 l = rob_adv(GLOBALS.player,l)
 mapf(false,
 	 function(x: object) {
-        put(x,GLOBALS.oroom,lld)
+        x[GLOBALS.oroom] = lld
       },
 	 l)
 cond(/*(*/ [!empty_Q(l),
 	  putrest(rest(l,_(l.length, 1)), robjs(lld)),
-	  put(lld,GLOBALS.robjs,l)] /*)*/)
+	  lld[GLOBALS.robjs] = l] /*)*/)
   }
 
 function troll() {
@@ -313,13 +313,13 @@ function troll() {
 	      /*(*/ [pa === GLOBALS.dead__X_X_words, GLOBALS.troll_flag_X_flag = t] /*)*/,
 	      /*(*/ [pa === GLOBALS.out__X_X_words,
 	       trz(find_obj("AXE"), GLOBALS.ovison),
-	       put(t,GLOBALS.odesc1,GLOBALS.trollout),
+	       t[GLOBALS.odesc1] = GLOBALS.trollout,
 	       GLOBALS.troll_flag_X_flag = t] /*)*/,
 	      /*(*/ [pa === GLOBALS.in__X_X_words,
 	       tro(find_obj("AXE"), GLOBALS.ovison),
 	       cond(/*(*/ [oroom(t) === here,
 		      tell("The troll stirs, quickly resuming a fighting stance.")] /*)*/),
-	       put(t,GLOBALS.odesc1,GLOBALS.trolldesc),
+	       t[GLOBALS.odesc1] = GLOBALS.trolldesc,
 	       GLOBALS.troll_flag_X_flag = false] /*)*/,
 	      /*(*/ [pa === GLOBALS.first_Q_X_words, prob(33)] /*)*/,
 	      /*(*/ [pa === GLOBALS.throw_X_words || pa === GLOBALS.give_X_words && prso,
@@ -359,14 +359,14 @@ function mirror_mirror() {
 			find_room("MIRR2")] /*)*/,
 		       /*(*/ [find_room("MIRR1")] /*)*/),
 	       l1 = robjs(rm1),
-	       put(rm1,GLOBALS.robjs,robjs(rm2)),
-	       put(rm2,GLOBALS.robjs,l1),
+	       rm1[GLOBALS.robjs] = robjs(rm2),
+	       rm2[GLOBALS.robjs] = l1,
 	       mapf(false, function(x: object) {
-            put(x,GLOBALS.oroom,rm1)
+            x[GLOBALS.oroom] = rm1
           },
 		     robjs(rm1)),
 	       mapf(false, function(x: object) {
-            put(x,GLOBALS.oroom,rm2)
+            x[GLOBALS.oroom] = rm2
           },
 		     robjs(rm2)),
 	       goto(rm2),
@@ -507,10 +507,10 @@ function treasure_room() {
 		cond(/*(*/ [oroom(hobj),
 		       remove_object(hobj)] /*)*/),
 		tro(hobj,GLOBALS.fightbit),
-		put(hack,GLOBALS.hroom,here),
-		put(hack,GLOBALS.hrooms,cond(/*(*/ [empty_Q(tl = rest(memq(here,rooms))),
+		hack[GLOBALS.hroom] = here,
+		hack[GLOBALS.hrooms] = cond(/*(*/ [empty_Q(tl = rest(memq(here,rooms))),
 					  rooms] /*)*/,
-					 /*(*/ [tl] /*)*/)),
+					 /*(*/ [tl] /*)*/),
 		insert_object(hobj,here)] /*)*/,
 	       /*(*/ [t,
 		tro(hobj,GLOBALS.fightbit)] /*)*/),
@@ -593,7 +593,7 @@ function maint_room() {
     let here_Q: atom | false = GLOBALS.here === mnt;
     let hack: number = null;
     cond(/*(*/ [prsact === GLOBALS.c_int_X_words,
-	       put(mnt,GLOBALS.rvars,_(1, hack = rvars(mnt))),
+	       mnt[GLOBALS.rvars] = _(1, hack = rvars(mnt)),
 	       cond(/*(*/ [here_Q && tell("The water level here is now",
 				 1,
 				 GLOBALS.drownings[_(1, _(hack = rvars(mnt),
@@ -607,12 +607,12 @@ cond(/*(*/ [vname(prsact) === push_X_words,
 	       cond(/*(*/ [prso === find_obj("BLBUT"),
 		      cond(/*(*/ [0_Q(hack = rvars(GLOBALS.here)),
 			     tell("There is a rumbling sound and a stream of water appears to burst\nfrom the east wall of the room (apparently, a leak has occurred in a\npipe.)"),
-			     put(GLOBALS.here,GLOBALS.rvars,1),
+			     GLOBALS.here[GLOBALS.rvars] = 1,
 			     clock_int(GLOBALS.mntin,_1),
 			     t] /*)*/,
 			    /*(*/ [tell("The blue button appears to be jammed.")] /*)*/)] /*)*/,
 		     /*(*/ [prso === find_obj("RBUTT"),
-		      put(GLOBALS.here,GLOBALS.rlight_Q,!rlight_Q(GLOBALS.here)),
+		      GLOBALS.here[GLOBALS.rlight_Q] = !rlight_Q(GLOBALS.here),
 		      cond(/*(*/ [rlight_Q(GLOBALS.here),
 			     tell("The lights within the room come on.")] /*)*/,
 			    /*(*/ [tell("The lights within the room shut off.")] /*)*/)] /*)*/,
@@ -632,7 +632,7 @@ function leak_function() {
     cond(/*(*/ [prsvec[2] === find_obj("LEAK"),
 	       cond(/*(*/ [vname(prsa) === plug_X_words && hack = rvars(GLOBALS.here) > 0,
 		      cond(/*(*/ [prsi === find_obj("PUTTY"),
-			     put(GLOBALS.here,GLOBALS.rvars,_1),
+			     GLOBALS.here[GLOBALS.rvars] = _1,
 			     clock_int(GLOBALS.mntin,0),
 			     tell("By some miracle of elven technology, you have managed to stop the\nleak in the dam.")] /*)*/,
 			    /*(*/ [with_tell(prsi)] /*)*/)] /*)*/)] /*)*/)
@@ -654,7 +654,7 @@ function cave2_room() {
     let prsact: verb = GLOBALS.prsvec[1];
     let c: verb = null;
     cond(/*(*/ [vname(prsact) === walk_in_X_words,
-	 memq(c = find_obj("CANDL"), aobjs(GLOBALS.winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && put(c,GLOBALS.olight_Q,_1) && tell("The cave is very windy at the moment and your candles have blown out.")] /*)*/)
+	 memq(c = find_obj("CANDL"), aobjs(GLOBALS.winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && c[GLOBALS.olight_Q] = _1 && tell("The cave is very windy at the moment and your candles have blown out.")] /*)*/)
   }
 
 function bottle_function() {
@@ -664,10 +664,10 @@ function bottle_function() {
 	 remove_object(GLOBALS.prsvec[2])] /*)*/,
 	/*(*/ [prsact[1] === mung_X_words,
 	 cond(/*(*/ [memq(GLOBALS.prsvec[2], aobjs(GLOBALS.winner)),
-		put(GLOBALS.winner,GLOBALS.aobjs,splice_out(GLOBALS.prsvec[2], aobjs(GLOBALS.winner))),
+		GLOBALS.winner[GLOBALS.aobjs] = splice_out(GLOBALS.prsvec[2], aobjs(GLOBALS.winner)),
 		tell("You have destroyed the bottle.  Well done.")] /*)*/,
 	       /*(*/ [memq(GLOBALS.prsvec[2], robjs(GLOBALS.here)),
-		put(GLOBALS.here,GLOBALS.robjs,splice_out(GLOBALS.prsvec[2], robjs(GLOBALS.here))),
+		GLOBALS.here[GLOBALS.robjs] = splice_out(GLOBALS.prsvec[2], robjs(GLOBALS.here)),
 		tell("A brilliant maneuver destroys the bottle.")] /*)*/)] /*)*/)
   }
 	
@@ -677,9 +677,9 @@ function fill() {
     let w: object = find_obj("WATER");
     cond(/*(*/ [object_action()] /*)*/,
 	/*(*/ [rtrnn(GLOBALS.here,GLOBALS.rfillbit) || rem = ocan(w) === avehicle(GLOBALS.winner) || oroom(w) === GLOBALS.here,
-	 put(prsvec,1, GLOBALS.take_X_words),
-	 put(prsvec,3, prsvec[2]),
-	 put(prsvec,2, w),
+	 prsvec[1] = GLOBALS.take_X_words,
+	 prsvec[3] = prsvec[2],
+	 prsvec[2] = w,
 	 water_function(rem)] /*)*/,
 	/*(*/ [tell("I can't find any water here.")] /*)*/)
   }
@@ -701,8 +701,8 @@ function water_function(rem?: atom | false) {
 		      cond(/*(*/ [memq(w,aobjs(me)),
 			     drop_object(w,me)] /*)*/),
 		      cond(/*(*/ [memq(w,ocontents(av))] /*)*/,
-			    /*(*/ [put(av,GLOBALS.ocontents,/*(*/ [w,_X,ocontents(av)] /*)*/),
-			     put(w,GLOBALS.ocan,av)] /*)*/)] /*)*/,
+			    /*(*/ [av[GLOBALS.ocontents] = /*(*/ [w,_X,ocontents(av)] /*)*/,
+			     w[GLOBALS.ocan] = av] /*)*/)] /*)*/,
 		     /*(*/ [can && can !== b,
 		      tell("The water leaks out of the", 1, odesc2(can),
 			    "and evaporates immediately."),
@@ -716,13 +716,13 @@ function water_function(rem?: atom | false) {
 			     tell("The bottle is closed.")] /*)*/,
 			    /*(*/ [t,
 			     rem && remove_object(w),
-			     put(b,GLOBALS.ocontents,/*(*/ [w] /*)*/),
-			     put(w,GLOBALS.ocan,b),
+			     b[GLOBALS.ocontents] = /*(*/ [w] /*)*/,
+			     w[GLOBALS.ocan] = b,
 			     tell("The bottle is now full of water.")] /*)*/)] /*)*/,
 		     /*(*/ [ocan(w) === b && prsact === GLOBALS.take_X_words && !can,
-		      put(prsvec,2, b),
+		      prsvec[2] = b,
 		      take(t),
-		      put(prsvec,2, w)] /*)*/,
+		      prsvec[2] = w] /*)*/,
 		     /*(*/ [tell("The water slips through your fingers.")] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.drop_X_words || prsact === GLOBALS.pour_X_words || prsact === GLOBALS.give_X_words,
 	       cond(/*(*/ [memq(w,aobjs(me)),
@@ -755,7 +755,7 @@ function rope_function() {
 		GLOBALS.dome_flag_X_flag = t,
 		tro(rope,GLOBALS.ndescbit),
 		cond(/*(*/ [!oroom(rope),
-		       put(win,GLOBALS.aobjs,splice_out(rope,aobjs(win))),
+		       win[GLOBALS.aobjs] = splice_out(rope,aobjs(win)),
 		       insert_object(rope,droom)] /*)*/)] /*)*/)] /*)*/,
 	/*(*/ [vname(prsact) === untie_X_words,
 	 cond(/*(*/ [GLOBALS.dome_flag_X_flag,		GLOBALS.dome_flag_X_flag = false,
@@ -783,7 +783,7 @@ function cyclops() {
 		      GLOBALS.cyclops_flag_X_flag = false,
 		      trz(cyc = find_obj("CYCLO"), GLOBALS.sleepbit),
 		      tro(cyc,GLOBALS.fightbit),
-		      put(rm,GLOBALS.rvars,abs(rvars(rm))),
+		      rm[GLOBALS.rvars] = abs(rvars(rm)),
 		      t] /*)*/)] /*)*/,
 	      /*(*/ [abs(count) > 5,
 	       jigs_up("The cyclops, tired of all of your games and trickery, eats you.\nThe cyclops says 'Mmm.  Just like mom used to make 'em.'")] /*)*/,
@@ -792,7 +792,7 @@ function cyclops() {
 		      cond(/*(*/ [g__Q(count,0),
 			     remove_object(food),
 			     tell("The cyclops says 'Mmm Mmm.  I love hot peppers!  But oh, could I use\na drink.  Perhaps I could drink the blood of that thing'.  From the\ngleam in his eye, it could be surmised that you are 'that thing'."),
-			     put(rm,GLOBALS.rvars,min(_1, _(count)))] /*)*/)] /*)*/,
+			     rm[GLOBALS.rvars] = min(_1, _(count))] /*)*/)] /*)*/,
 		     /*(*/ [prsob1 === drink,
 		      cond(/*(*/ [count < 0,
 			     remove_object(drink),
@@ -804,11 +804,11 @@ function cyclops() {
 			     false] /*)*/)] /*)*/,
 		     /*(*/ [prsob1 === garlic,
 		      tell("The cyclops may be hungry, but there is a limit."),
-		      put(rm,GLOBALS.rvars,aos_sos(count))] /*)*/,
+		      rm[GLOBALS.rvars] = aos_sos(count)] /*)*/,
 		     /*(*/ [tell("The cyclops is not so stupid as to eat THAT!"),
-		      put(rm,GLOBALS.rvars,aos_sos(count))] /*)*/)] /*)*/,
+		      rm[GLOBALS.rvars] = aos_sos(count)] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.first_Q_X_words || prsact === GLOBALS.fight_X_words, false] /*)*/,
-	      /*(*/ [put(rm,GLOBALS.rvars,aos_sos(count)) && false] /*)*/,
+	      /*(*/ [rm[GLOBALS.rvars] = aos_sos(count) && false] /*)*/,
 	      /*(*/ [prsact === GLOBALS.throw_X_words || vname(prsact) === mung_X_words,
 	       cond(/*(*/ [prob(50),
 		      tell("Your actions don't appear to be doing much harm to the cyclops, but\nthey do not exactly lower your insurance premiums, either.")] /*)*/,
@@ -1047,14 +1047,14 @@ function eat() {
 	   cond(/*(*/ [prsvec[1] === GLOBALS.drink_X_words,
 		  tell("How can I drink that?")] /*)*/,
 		 /*(*/ [tell("Thank you very much.  It really hit the spot."),
-		  put(GLOBALS.winner,GLOBALS.aobjs,splice_out(prsobj,aobjs))] /*)*/)] /*)*/,
+		  GLOBALS.winner[GLOBALS.aobjs] = splice_out(prsobj,aobjs)] /*)*/)] /*)*/,
 	  /*(*/ [drink_Q = drinkable_Q(prsobj) && nobj = ocan(prsobj) && memq(nobj,aobjs),
 	   cond(/*(*/ [oopen_Q(nobj),
 		  tell("Thank you very much.  I was rather thirsty (from all this talking,\nprobably).")] /*)*/,
 		 /*(*/ [t,
 		  tell("I'd like to, but I can't get to it.")] /*)*/),
-	   put(prsobj,GLOBALS.ocan,false),
-	   put(nobj,GLOBALS.ocontents,splice_out(prsobj,ocontents(nobj)))] /*)*/,
+	   prsobj[GLOBALS.ocan] = false,
+	   nobj[GLOBALS.ocontents] = splice_out(prsobj,ocontents(nobj))] /*)*/,
 	  /*(*/ [!eat_Q || drink_Q,
 	   tell("I don't think that the", 1, odesc2(prsobj), "would agree with you.")] /*)*/,
 	  /*(*/ [tell("I think you should get that first.")] /*)*/)
@@ -1101,7 +1101,7 @@ define(robber, robber, /*(*/ [hack,
        mapf(false,
 	     function(x: object) {
               cond(/*(*/ [otval(x) > 0,
-			    put(hack,GLOBALS.hobjs,hh = splice_out(x,hh)),
+			    hack[GLOBALS.hobjs] = hh = splice_out(x,hh),
 			    insert_object(x,rm)] /*)*/)
             },
 	     hh)] /*)*/,
@@ -1112,7 +1112,7 @@ define(robber, robber, /*(*/ [hack,
 	        cond(/*(*/ [ocan(still) === hobj,
 		       insert_object(hobj,rm),
 		       tell("Someone carrying a large bag is casually leaning against one of the\nwalls here.  He does not speak, but it is clear from his aspect that\nthe bag will be taken only over his dead body."),
-		       put(hack,GLOBALS.hflag,t),
+		       hack[GLOBALS.hflag] = t,
 		       return(t, robber)] /*)*/)] /*)*/,
 	       /*(*/ [here_Q && fighting_Q(hobj) && cond(/*(*/ [!winning_Q(hobj,win),
 			    tell("Your opponent, determining discretion to be the better part of\nvalor, decides to terminate this little contretemps.  With a rueful\nnod of his head, he steps backward into the gloom and disappears."),
@@ -1129,12 +1129,12 @@ define(robber, robber, /*(*/ [hack,
 	       /*(*/ [prob(70), return(t, robber)] /*)*/,
 	       /*(*/ [t,
 		cond(/*(*/ [memq(still,hobjs(hack)),
-		       put(hack,GLOBALS.hobjs,splice_out(still,hobjs(hack))),
-		       put(hobj,GLOBALS.ocontents,/*(*/ [still] /*)*/),
-		       put(still,GLOBALS.ocan,hobj)] /*)*/),
-		put(hack,GLOBALS.hobjs,hh = rob_room(rm,hh,100)),
-	        put(hack,GLOBALS.hobjs,hh = rob_adv(win,hh)),
-	        put(hack,GLOBALS.hflag,t),
+		       hack[GLOBALS.hobjs] = splice_out(still,hobjs(hack)),
+		       hobj[GLOBALS.ocontents] = /*(*/ [still] /*)*/,
+		       still[GLOBALS.ocan] = hobj] /*)*/),
+		hack[GLOBALS.hobjs] = hh = rob_room(rm,hh,100),
+	        hack[GLOBALS.hobjs] = hh = rob_adv(win,hh),
+	        hack[GLOBALS.hflag] = t,
 	        cond(/*(*/ [objt !== hh && !here_Q,
 		       tell("A seedy-looking individual with a large bag just wandered through\nthe room.  On the way through, he quietly abstracted all valuables\nfrom the room and from your possession, mumbling something about\n\"Doing unto others before..\")] /*)*/,
 		      /*(*/ [here_Q,		       snarf_object(hobj,still),
@@ -1148,8 +1148,8 @@ define(robber, robber, /*(*/ [hack,
 	/*(*/ [t,
 	 cond(/*(*/ [here_Q,		// Here, already announced.,
 		cond(/*(*/ [prob(30),
-		       put(hack,GLOBALS.hobjs,hh = rob_room(rm,hh,100)),
-		       put(hack,GLOBALS.hobjs,hh = rob_adv(win,hh)),
+		       hack[GLOBALS.hobjs] = hh = rob_room(rm,hh,100),
+		       hack[GLOBALS.hobjs] = hh = rob_adv(win,hh),
 		       cond(/*(*/ [memq(find_obj("ROPE"), hh),
 			      GLOBALS.dome_flag_X_flag = false] /*)*/),
 		       cond(/*(*/ [objt === hh,
@@ -1163,7 +1163,7 @@ define(robber, robber, /*(*/ [hack,
       /*(*/ [memq(hobj,robjs(rm)) && // Leave if victim left && snarf_object(hobj,still) && remove_object(hobj) && here_Q = false] /*)*/,
       /*(*/ [oroom(still) === rm && snarf_object(hobj,still) && false] /*)*/,
       /*(*/ [seen_Q,			     // Hack the adventurer's belongings,
-       put(hack,GLOBALS.hobjs,hh = rob_room(rm,hh,75)),
+       hack[GLOBALS.hobjs] = hh = rob_room(rm,hh,75),
        cond(/*(*/ [rdesc2(rm) === GLOBALS.mazedesc && rdesc2(wroom) === GLOBALS.mazedesc,
 	 mapf(false,
 	       function(x: object) {
@@ -1172,8 +1172,8 @@ define(robber, robber, /*(*/ [hack,
 			      tell("", 1),
 			      cond(/*(*/ [prob(60),
 				     remove_object(x),
-				     put(x,GLOBALS.otouch_Q,t),
-				     put(hack,GLOBALS.hobjs,hh = /*(*/ [x,_X,hh] /*)*/)] /*)*/),
+				     x[GLOBALS.otouch_Q] = t,
+				     hack[GLOBALS.hobjs] = hh = /*(*/ [x,_X,hh] /*)*/] /*)*/),
 			      mapleave()] /*)*/)
                 },
 	       robjs(rm))] /*)*/,
@@ -1181,8 +1181,8 @@ define(robber, robber, /*(*/ [hack,
 	       function(x: object) {
                   cond(/*(*/ [0_Q(otval(x)) && can_take_Q(x) && ovis_Q(x) && prob(20),
 			      remove_object(x),
-			      put(x,GLOBALS.otouch_Q,t),
-			      put(hack,GLOBALS.hobjs,hh = /*(*/ [x,_X,hh] /*)*/),
+			      x[GLOBALS.otouch_Q] = t,
+			      hack[GLOBALS.hobjs] = hh = /*(*/ [x,_X,hh] /*)*/,
 			      cond(/*(*/ [rm === wroom,
 				     tell("You suddenly notice that the",
 					   1,
@@ -1200,15 +1200,15 @@ define(robber, robber, /*(*/ [hack,
 		     rooms = GLOBALS.rooms] /*)*/),
 	      cond(/*(*/ [rtrnn(rm,GLOBALS.rsacredbit),	// Can I work here?,
 		     again()] /*)*/),
-	      put(hack,GLOBALS.hroom,rm),
-	      put(hack,GLOBALS.hflag,false),
-	      put(hack,GLOBALS.hrooms,rooms),
+	      hack[GLOBALS.hroom] = rm,
+	      hack[GLOBALS.hflag] = false,
+	      hack[GLOBALS.hrooms] = rooms,
 	      seen_Q = rseen_Q(rm)),
 	    again()] /*)*/)),			      // Drop worthless cruft, sometimes,
    rm === treas || mapf(false,
 	     function(x: object) {
           cond(/*(*/ [0_Q(otval(x)) && prob(30),
-			    put(hack,GLOBALS.hobjs,hh = splice_out(x,hh)),
+			    hack[GLOBALS.hobjs] = hh = splice_out(x,hh),
 			    insert_object(x,rm),
 			    rm === wroom && tell("The robber, rummaging through his bag, dropped a few items he found\nvalueless.")] /*)*/)
         },
@@ -1217,8 +1217,8 @@ define(robber, robber, /*(*/ [hack,
 function snarf_object(who: object, what: object) {
     cond(/*(*/ [ocan(what) !== who && oroom(what) || ocan(what),
 	       remove_object(what),
-	       put(what,GLOBALS.ocan,who),
-	       put(who,GLOBALS.ocontents,/*(*/ [what,_X,ocontents(who)] /*)*/)] /*)*/,
+	       what[GLOBALS.ocan] = who,
+	       who[GLOBALS.ocontents] = /*(*/ [what,_X,ocontents(who)] /*)*/] /*)*/,
 	      /*(*/ [who] /*)*/)
   }
 
@@ -1253,7 +1253,7 @@ function robber_function() {
 tro(x,GLOBALS.echo_room_bit)
               },
 		      hobjs(dem)),
-		put(dem,GLOBALS.hobjs,/*(*/ [] /*)*/)] /*)*/),
+		dem[GLOBALS.hobjs] = /*(*/ [] /*)*/] /*)*/),
 	 tro(chali,GLOBALS.takebit),
 	 cond(/*(*/ [here === find_room("TREAS"),
 		mapf(false,
@@ -1268,19 +1268,19 @@ tro(x,GLOBALS.echo_room_bit)
 				  tell("A", 2, odesc2(x))] /*)*/)] /*)*/)
               },
 		  robjs(here))] /*)*/),
-	 put(dem,GLOBALS.haction,false)] /*)*/,
+	 dem[GLOBALS.haction] = false] /*)*/,
 	/*(*/ [prsact === GLOBALS.first_Q_X_words, prob(20)] /*)*/,
 	/*(*/ [prsact === GLOBALS.out__X_X_words,
-	 put(dem,GLOBALS.haction,false),
+	 dem[GLOBALS.haction] = false,
 	 trz(find_obj("STILL"), GLOBALS.ovison),
 	 tro(chali,GLOBALS.takebit),
-	 put(t,GLOBALS.odesc1,GLOBALS.robber_u_desc)] /*)*/,
+	 t[GLOBALS.odesc1] = GLOBALS.robber_u_desc] /*)*/,
 	/*(*/ [prsact === GLOBALS.in__X_X_words,
 	 cond(/*(*/ [hroom(dem) === here,
 		tell("The robber revives, briefly feigning continued unconsciousness, and\nwhen he sees his moment, scrambles away from you.")] /*)*/),
-	 cond(/*(*/ [type_Q(GLOBALS.robber,offset), put(dem,GLOBALS.haction,robber)] /*)*/,
-	       /*(*/ [put(dem,GLOBALS.haction,robber)] /*)*/),
-	 put(t,GLOBALS.odesc1,GLOBALS.robber_c_desc),
+	 cond(/*(*/ [type_Q(GLOBALS.robber,offset), dem[GLOBALS.haction] = robber] /*)*/,
+	       /*(*/ [dem[GLOBALS.haction] = robber] /*)*/),
+	 t[GLOBALS.odesc1] = GLOBALS.robber_c_desc,
 	 cond(/*(*/ [here === find_room("TREAS") && oroom(chali = chali),
 		trz(chali,GLOBALS.takebit)] /*)*/),
 	 tro(find_obj("STILL"), GLOBALS.ovison)] /*)*/,
@@ -1293,7 +1293,7 @@ tro(x,GLOBALS.echo_room_bit)
 		        mapf(false, function(x: object) {
                       insert_object(x,here)
                     }, hobjs(dem)),
-			put(dem,GLOBALS.hobjs,/*(*/ [] /*)*/),
+			dem[GLOBALS.hobjs] = /*(*/ [] /*)*/,
 		        ", but the contents of his bag fall on the floor."] /*)*/)),
 		remove_object(t)] /*)*/,
 	       /*(*/ [t,
@@ -1301,17 +1301,17 @@ tro(x,GLOBALS.echo_room_bit)
 		tro(t,GLOBALS.fightbit)] /*)*/)] /*)*/,
 	/*(*/ [prsact === GLOBALS.throw_X_words || prsact === GLOBALS.give_X_words && type_Q(prsobj,object) && prsobj !== hobj(dem),
 	 cond(/*(*/ [ocapac(t) < 0,
-		put(t,GLOBALS.ocapac,_(ocapac(t))),
-		put(dem,GLOBALS.haction,cond(/*(*/ [type_Q(GLOBALS.robber,offset), GLOBALS.robber] /*)*/,
-					 /*(*/ [robber] /*)*/)),
+		t[GLOBALS.ocapac] = _(ocapac(t)),
+		dem[GLOBALS.haction] = cond(/*(*/ [type_Q(GLOBALS.robber,offset), GLOBALS.robber] /*)*/,
+					 /*(*/ [robber] /*)*/),
 		tro(find_obj("STILL"), GLOBALS.ovison),
-		put(t,GLOBALS.odesc1,GLOBALS.robber_c_desc),
+		t[GLOBALS.odesc1] = GLOBALS.robber_c_desc,
 		tell("Your proposed victim suddenly recovers consciousness.")] /*)*/),
 	 cond(/*(*/ [prsobj === brick = find_obj("BRICK") && ocan(fuse = find_obj("FUSE")) === brick && orand(fuse) && !0_Q(ctick(f = orand(fuse)[2])),
 		// I.e., he's trying to give us the brick with a lighted fuse.,
 		tell("The thief seems rather offended by your offer.  Do you think he's as\nstupid as you are?")] /*)*/,
 	       /*(*/ [remove_object(prsobj),
-		put(dem,GLOBALS.hobjs,/*(*/ [prsobj,_X,hobjs(dem)] /*)*/),
+		dem[GLOBALS.hobjs] = /*(*/ [prsobj,_X,hobjs(dem)] /*)*/,
 		tell("The thief places the", 1, odesc2(prsobj), "in his bag and thanks\nyou politely.")] /*)*/)] /*)*/,
 	/*(*/ [prsact && vname(prsact) === take_X_words,
 	 tell("Once you got him, what would you do with him?")] /*)*/)
@@ -1402,7 +1402,7 @@ function locker() {
 	   mapf(false,
 		 function(x: cexit | nexit | room) {
             cond(/*(*/ [type_Q(x,cexit) && cxflag(x) === key_flag_X_flag,
-				  put(x,GLOBALS.cxstr,"The grate is locked."),
+				  x[GLOBALS.cxstr] = "The grate is locked.",
 				  mapleave()] /*)*/)
           },
 		 rexits(GLOBALS.here))] /*)*/,
@@ -1420,7 +1420,7 @@ function unlocker() {
 		  mapf(false,
 			function(x: cexit | nexit | room) {
                 cond(/*(*/ [type_Q(x,cexit) && cxflag(x) === key_flag_X_flag,
-				 put(x,GLOBALS.cxstr,"The grate is closed."),
+				 x[GLOBALS.cxstr] = "The grate is closed.",
 				 mapleave()] /*)*/)
               },
 			rexits(r))] /*)*/,
@@ -1466,8 +1466,8 @@ function swinger() {
     let pv: vector = GLOBALS.prsvec;
     let prso: false | object = pv[2];
     let prsi: false | object = pv[3];
-    put(pv,2, prsi)
-put(pv,3, prso)
+    pv[2] = prsi
+pv[3] = prso
 attacker()
   }
 
@@ -1597,9 +1597,9 @@ function painting() {
     let prsa: verb = GLOBALS.prsvec[1];
     let art: object = GLOBALS.prsvec[2];
     cond(/*(*/ [prsa === GLOBALS.mung_X_words,
-	   put(art,GLOBALS.otval,0),
-	   put(art,GLOBALS.odesc2,"worthless piece of canvas"),
-	   put(art,GLOBALS.odesc1,"There is a worthless piece of canvas here."),
+	   art[GLOBALS.otval] = 0,
+	   art[GLOBALS.odesc2] = "worthless piece of canvas",
+	   art[GLOBALS.odesc1] = "There is a worthless piece of canvas here.",
 	   tell("Congratulations!  Unlike the other vandals, who merely stole the\nartist's masterpieces, you have destroyed one.")] /*)*/)
   }
 
@@ -1649,16 +1649,16 @@ function sword_glow(dem: hack) {
 		/*(*/ [ng === 2, tell("Your sword has begun to glow very brightly.")] /*)*/,
 		/*(*/ [1_Q(ng), tell("Your sword is glowing with a faint blue glow.")] /*)*/,
 		/*(*/ [0_Q(ng), tell("Your sword is no longer glowing.")] /*)*/),
-	  put(sw,GLOBALS.otval,ng)] /*)*/,
-	 /*(*/ [put(dem,GLOBALS.haction,false)] /*)*/)
+	  sw[GLOBALS.otval] = ng] /*)*/,
+	 /*(*/ [dem[GLOBALS.haction] = false] /*)*/)
   }
 
 function sword() {
     let pa: verb = GLOBALS.prsvec[1];
     cond(/*(*/ [pa === GLOBALS.take_X_words && GLOBALS.winner === GLOBALS.player,
-	       put(GLOBALS.sword_demon,GLOBALS.haction,cond(/*(*/ [type_Q(GLOBALS.sword_glow,offset),
+	       GLOBALS.sword_demon[GLOBALS.haction] = cond(/*(*/ [type_Q(GLOBALS.sword_glow,offset),
 						 GLOBALS.sword_glow] /*)*/,
-						/*(*/ [sword_glow] /*)*/)),
+						/*(*/ [sword_glow] /*)*/),
 	       false] /*)*/)
   }
 
@@ -1685,22 +1685,22 @@ function match_function() {
     let match: object = find_obj("MATCH");
     let mc: number = orand(match);
     cond(/*(*/ [prsa === GLOBALS.light_X_words && prso === match,
-	   cond(/*(*/ [put(match,GLOBALS.orand,mc = _(mc,1)) && l__Q(mc,0),
+	   cond(/*(*/ [match[GLOBALS.orand] = mc = _(mc,1) && l__Q(mc,0),
 		  tell("I'm afraid that you have run out of matches.")] /*)*/,
 		 /*(*/ [tro(match,GLOBALS.flamebit),
-		  put(match,GLOBALS.olight_Q,1),
+		  match[GLOBALS.olight_Q] = 1,
 		  clock_int(GLOBALS.matin,2),
 		  tell("One of the matches starts to burn.")] /*)*/)] /*)*/,
 	  /*(*/ [prsa === GLOBALS.turn_off_X_words && 1_Q(olight_Q(match)),
 	   tell("The match is out."),
 	   trz(match,GLOBALS.flamebit),
-	   put(match,GLOBALS.olight_Q,0),
+	   match[GLOBALS.olight_Q] = 0,
 	   clock_int(GLOBALS.matin,0),
 	   t] /*)*/,
 	  /*(*/ [prsa === GLOBALS.c_int_X_words,
 	   tell("The match has gone out."),
 	   trz(match,GLOBALS.flamebit),
-	   put(match,GLOBALS.olight_Q,0)] /*)*/)
+	   match[GLOBALS.olight_Q] = 0] /*)*/)
   }
 
 function candles() {
@@ -1712,24 +1712,23 @@ function candles() {
     let match: object = null;
     let foo: vector(number, cevent) = null;
     let orphans: vector(/*[*/ [4, any] /*]*/) = null;
-    orand(c) || put(c,GLOBALS.orand,/*[*/ [0, clock_int(GLOBALS.cndin,50)] /*]*/)
+    orand(c) || c[GLOBALS.orand] = /*[*/ [0, clock_int(GLOBALS.cndin,50)] /*]*/
 foo = orand(c)
 cond(/*(*/ [prsact === GLOBALS.light_X_words,
 	       cond(/*(*/ [0_Q(olight_Q(c)),
 		      tell("Alas, there's not much left of the candles.  Certainly not enough to\nburn.")] /*)*/,
 		     /*(*/ [!w,
 		      tell("With what?"),
-		      put(orphans = GLOBALS.orphans,
-			   GLOBALS.oflag,t),
-		      put(orphans,GLOBALS.overb,prsact),
-		      put(orphans,GLOBALS.oslot1,c),
-		      put(orphans,GLOBALS.oprep,chtype(with_X_words, prep)),
+		      orphans = GLOBALS.orphans[GLOBALS.oflag] = t,
+		      orphans[GLOBALS.overb] = prsact,
+		      orphans[GLOBALS.oslot1] = c,
+		      orphans[GLOBALS.oprep] = chtype(with_X_words, prep),
 		      GLOBALS.parse_won = false,
 		      t] /*)*/,
 		     /*(*/ [w === match = find_obj("MATCH") && 1_Q(olight_Q(match)),
 		      cond(/*(*/ [1_Q(olight_Q(c)),
 			     tell("The candles are already lighted.")] /*)*/,
-			    /*(*/ [put(c,GLOBALS.olight_Q,1),
+			    /*(*/ [c[GLOBALS.olight_Q] = 1,
 			     tell("The candles are lighted."),
 			     clock_enable(foo[2])] /*)*/)] /*)*/,
 		     /*(*/ [w === find_obj("TORCH"),
@@ -1738,13 +1737,13 @@ cond(/*(*/ [prsact === GLOBALS.light_X_words,
 			    /*(*/ [tell("The heat from the torch is so intense that the candles are vaporised."),
 			     cond(/*(*/ [oroom(c) || ocan(c),
 				    remove_object(c)] /*)*/,
-				   /*(*/ [put(winner,GLOBALS.aobjs,splice_out(c,ao))] /*)*/)] /*)*/)] /*)*/,
+				   /*(*/ [winner[GLOBALS.aobjs] = splice_out(c,ao)] /*)*/)] /*)*/)] /*)*/,
 		     /*(*/ [tell("You have to light them with something that's burning, you know.")] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.turn_off_X_words,
 	       clock_disable(foo[2]),
 	       cond(/*(*/ [1_Q(olight_Q(c)),
 		      tell("The flame is extinguished."),
-		      put(c,GLOBALS.olight_Q,_1)] /*)*/,
+		      c[GLOBALS.olight_Q] = _1] /*)*/,
 		     /*(*/ [tell("The candles are not lighted.")] /*)*/)] /*)*/,
 	      /*(*/ [prsact === GLOBALS.c_int_X_words,
 	       light_int(c,GLOBALS.cndin,GLOBALS.candle_ticks,GLOBALS.candle_tells)] /*)*/)
@@ -1765,12 +1764,12 @@ function light_int(obj: object, cev, tick: vector(/*[*/ [rest, number] /*]*/), t
     let cnt: number = null;
     let tim: number = null;
     let foo: vector(number, cevent) = orand(obj);
-    put(foo,1, cnt = _(foo[1], 1))
+    foo[1] = cnt = _(foo[1], 1)
 clock_int(cev,tim = tick[cnt])
 cond(/*(*/ [0_Q(tim),
  	   cond(/*(*/ [!oroom(obj) || oroom(obj) === GLOBALS.here,
 		  tell("I hope you have more light than from a", 1, odesc2(obj), ".")] /*)*/),
-	   put(obj,GLOBALS.olight_Q,0)] /*)*/,
+	   obj[GLOBALS.olight_Q] = 0] /*)*/,
 	  /*(*/ [!oroom(obj) || oroom(obj) === GLOBALS.here,
 	   tell(tell[cnt])] /*)*/)
   }

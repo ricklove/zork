@@ -5,7 +5,7 @@ function coke_bottles() {
     cond(/*(*/ [vb === GLOBALS.throw_X_words || vname(vb) === mung_X_words,
 	 tell("Congratulations!  You've managed to break all those bottles.\nFortunately for your feet, they were made of magic glass and disappear\nimmediately."),
 	 trz(bottl,GLOBALS.ovison),
-	 put(bottl,GLOBALS.osize,0),
+	 bottl[GLOBALS.osize] = 0,
 	 t] /*)*/)
   }
 
@@ -20,7 +20,7 @@ function head_function() {
 	 nl = rob_room(GLOBALS.here,nl,100),
 	 cond(/*(*/ [!empty_Q(nl),
 		oroom(lcase) || insert_object(lcase,find_room("LROOM")),
-		put(lcase,GLOBALS.ocontents,/*(*/ [_X,ocontents(lcase), _X,nl] /*)*/)] /*)*/),
+		lcase[GLOBALS.ocontents] = /*(*/ [_X,ocontents(lcase), _X,nl] /*)*/] /*)*/),
 	 jigs_up("Unfortunately, we've run out of poles.  Therefore, in punishment for\nyour most grievous sin, we shall deprive you of all your valuables,\nand of your life."),
 	 t] /*)*/)
   }
@@ -55,13 +55,13 @@ function bucket(arg?: false | atom) {
 
 function pass_the_bucket(r: room, pv: vector, b: object) {
     let pvs: false | object | direction = pv[2];
-    put(pv,2, false)
+    pv[2] = false
 remove_object(b)
 insert_object(b,r)
 cond(/*(*/ [avehicle(GLOBALS.winner) === b,
 	   goto(r),
     	   room_info(t)] /*)*/)
-put(pv,2, pvs)
+pv[2] = pvs
   }
 
 function eatme_function() {
@@ -73,11 +73,11 @@ function eatme_function() {
 	   tell("Suddenly, the room appears to have become very large."),
 	   kill_obj(c,GLOBALS.winner),
 	   r = find_room("ALISM"),
-	   put(r,GLOBALS.robjs,robjs(here)),
+	   r[GLOBALS.robjs] = robjs(here),
 	   mapf(false,
 		 function(x: object) {
-            put(x,GLOBALS.osize,_(64, osize(x)))
-put(x,GLOBALS.oroom,r)
+            x[GLOBALS.osize] = _(64, osize(x))
+x[GLOBALS.oroom] = r
           },
 		 robjs(here)),
 	   goto(r)] /*)*/)
@@ -114,11 +114,11 @@ function cake_function() {
 		      tell("The room around you seems to be getting smaller."),
 		      cond(/*(*/ [here === find_room("ALISM"),
 			     r = find_room("ALICE"),
-			     put(r,GLOBALS.robjs,robjs(here)),
+			     r[GLOBALS.robjs] = robjs(here),
 			     mapf(false,
 				   function(x: object) {
-                    put(x,GLOBALS.oroom,r)
-put(x,GLOBALS.osize,_(osize(x), 64))
+                    x[GLOBALS.oroom] = r
+x[GLOBALS.osize] = _(osize(x), 64)
                   },
 				   robjs(here)),
 			     goto(r)] /*)*/,
@@ -236,7 +236,7 @@ cond(/*(*/ [fl && GLOBALS.player === GLOBALS.winner,
 		      goto(c = find_room("CAGED")),
 		      remove_object(r),
 		      insert_object(r,c),
-		      put(ract = orand(r), GLOBALS.aroom,c),
+		      ract = orand(r)[GLOBALS.aroom] = c,
 		      tro(r,GLOBALS.ndescbit),
 		      GLOBALS.sphere_clock = clock_int(GLOBALS.sphin,10),
 		      t] /*)*/,
@@ -284,7 +284,7 @@ function robot_actor() {
 	       tro(find_obj("SPHER"), GLOBALS.takebit),
 	       remove_object(r),
 	       insert_object(r,c),
-	       put(ract = orand(r), GLOBALS.aroom,c),
+	       ract = orand(r)[GLOBALS.aroom] = c,
 	       GLOBALS.cage_solve_X_flag = t] /*)*/,
 	      /*(*/ [pa === GLOBALS.eat_X_words || pa === GLOBALS.drink_X_words,
 	       tell("\"I am sorry but that action is difficult in the absence of a mouth.\")] /*)*/,
@@ -304,7 +304,7 @@ function robot_function() {
     cond(/*(*/ [pa === GLOBALS.give_X_words,
 	       aa = orand(pp = pi),
 	       remove_object(po),
-	       put(aa,GLOBALS.aobjs,/*(*/ [po,_X,aobjs(aa)] /*)*/),
+	       aa[GLOBALS.aobjs] = /*(*/ [po,_X,aobjs(aa)] /*)*/,
 	       tell("The robot gladly takes the",
 		     1,
 		     odesc2(po),

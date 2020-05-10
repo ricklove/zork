@@ -17,11 +17,11 @@ psetg(cntuse, "You can't use that!")
 
 GLOBALS.bigfix = _(chtype(min(), fix), 2)
 
-GLOBALS.words = get(words, oblist) || moblist(words, 23)
+GLOBALS.words = words[oblist] || moblist(words, 23)
 
-GLOBALS.object_obl = get(objects, oblist) || moblist(objects)
+GLOBALS.object_obl = objects[oblist] || moblist(objects)
 
-GLOBALS.room_obl = get(rooms, oblist) || moblist(rooms)
+GLOBALS.room_obl = rooms[oblist] || moblist(rooms)
 
 GLOBALS.actors = /*(*/ [] /*)*/
 
@@ -755,12 +755,12 @@ add_object(/*#*/ [object, /*{*/ ["TORCH",
 	      "WEST", "ENTRA", "NORTH", "TUNNE"] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ ["TBASK"] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
-put(add_object(/*#*/ [object, /*{*/ ["TBASK",
+add_object(/*#*/ [object, /*{*/ ["TBASK",
 	  "At the end of the chain is a basket.",
 	  "basket",
 	  /*%*/ [false] /*1*/,
 	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.contbit,GLOBALS.ovison,GLOBALS.transbit)] /*1*/, 0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,50] /*}*/] /*2*/,
-/*[*/ ["CAGE", "DUMBW", "BASKE"] /*]*/), GLOBALS.oopen_Q,t)
+/*[*/ ["CAGE", "DUMBW", "BASKE"] /*]*/)[GLOBALS.oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ ["FBASK",
 	  "", 
@@ -983,7 +983,7 @@ add_object(/*#*/ [object, /*{*/ ["STRAD",
 add_object(sobject("ENGRA", "wall with engravings", GLOBALS.ovison,GLOBALS.readbit,	 GLOBALS.sacredbit),
 	    /*[*/ ["INSCR"] /*]*/, /*[*/ ["OLD", "ANCIE"] /*]*/)
 
-put(find_obj("ENGRA"), GLOBALS.odesc1,"There are old engravings on the walls here.")
+find_obj("ENGRA")[GLOBALS.odesc1] = "There are old engravings on the walls here."
 
 /*#*/ [room, /*{*/ ["RIDDL",
 
@@ -1542,8 +1542,8 @@ add_object(/*#*/ [object, /*{*/ ["RBOAT",
 	  0, 0, 0, 20, 100] /*}*/] /*2*/,
 /*[*/ ["BOAT"] /*]*/, /*[*/ ["PLAST", "SEAWO"] /*]*/)
 
-put(find_obj("RBOAT"), GLOBALS.oopen_Q,t)
-put(find_obj("RBOAT"), GLOBALS.orand,GLOBALS.rwaterbit)
+find_obj("RBOAT")[GLOBALS.oopen_Q] = t
+find_obj("RBOAT")[GLOBALS.orand] = GLOBALS.rwaterbit
 
 add_object(/*#*/ [object, /*{*/ ["LABEL",
 	  "There is a tan label here.",
@@ -1678,8 +1678,8 @@ add_object(/*#*/ [object, /*{*/ ["BALLO",
 	  /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.vehbit,GLOBALS.ovison)] /*1*/, 0, 0, 0, 70, 100] /*}*/] /*2*/,
  /*[*/ ["BASKE"] /*]*/, /*[*/ ["WICKE"] /*]*/)
 
-put(find_obj("BALLO"), GLOBALS.oopen_Q,t)
-put(find_obj("BALLO"), GLOBALS.orand,GLOBALS.rairbit)
+find_obj("BALLO")[GLOBALS.oopen_Q] = t
+find_obj("BALLO")[GLOBALS.orand] = GLOBALS.rairbit
 
  /*#*/ [object, /*{*/ ["RECEP",
 	  "",
@@ -1743,7 +1743,7 @@ add_object(/*#*/ [object, /*{*/ ["SSLOT",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [GLOBALS.ovison] /*1*/,0, 0, 0, /*%*/ [GLOBALS.bigfix] /*1*/,10] /*}*/] /*2*/,
  /*[*/ ["SLOT", "HOLE"] /*]*/)
 
-put(find_obj("SSLOT"), GLOBALS.oopen_Q,t)
+find_obj("SSLOT")[GLOBALS.oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ ["CROWN",
 	  "Lord Dimwit's crown is here.",
@@ -1758,7 +1758,7 @@ add_object(/*#*/ [object, /*{*/ ["BRICK",
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.burnbit,GLOBALS.searchbit,GLOBALS.ovison,GLOBALS.takebit)] /*1*/, 0, 0, 0, 9, 2] /*}*/] /*2*/,
  /*[*/ ["BRICK"] /*]*/, /*[*/ ["SQUAR", "CLAY"] /*]*/)
 
-put(find_obj("BRICK"), GLOBALS.oopen_Q,t)
+find_obj("BRICK")[GLOBALS.oopen_Q] = t
 
 add_object(/*#*/ [object, /*{*/ ["FUSE",
 	  "There is a coil of thin shiny wire here.",
@@ -1834,11 +1834,11 @@ GLOBALS.bloc = find_room("VLBOT")
 
 // SET UP LIGHT INTERRUPTS, ETC.
 
-put(find_obj("LAMP"), GLOBALS.orand,/*[*/ [0, clock_disable(clock_int(GLOBALS.lntin,350))] /*]*/)
+find_obj("LAMP")[GLOBALS.orand] = /*[*/ [0, clock_disable(clock_int(GLOBALS.lntin,350))] /*]*/
 
-put(find_obj("CANDL"), GLOBALS.orand,false)
+find_obj("CANDL")[GLOBALS.orand] = false
 
-put(find_obj("MATCH"), GLOBALS.orand,5)		// NUMBER OF MATCHES
+find_obj("MATCH")[GLOBALS.orand] = 5		// NUMBER OF MATCHES
 
 psetg(indentstr, rest(istring(8, _X__), 8))
 
@@ -2106,7 +2106,7 @@ add_object(/*#*/ [object, /*{*/ ["BLICE",
 	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.readbit,GLOBALS.ovison,GLOBALS.takebit,GLOBALS.foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
  /*[*/ ["CAKE", "ICING"] /*]*/, /*[*/ ["BLUE", "ECCH"] /*]*/)
 
-put(put(find_obj("BUCKE"), GLOBALS.oopen_Q,t), GLOBALS.orand,GLOBALS.rbuckbit)
+find_obj("BUCKE")[GLOBALS.oopen_Q] = t[GLOBALS.orand] = GLOBALS.rbuckbit
 
 add_object(/*#*/ [object, /*{*/ ["ROBOT",
 	  "There is a robot here.",
@@ -2114,8 +2114,7 @@ add_object(/*#*/ [object, /*{*/ ["ROBOT",
 	  /*%*/ [false] /*1*/, robot_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(GLOBALS.sacredbit,GLOBALS.vicbit,GLOBALS.ovison,GLOBALS.actorbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ ["R2D2", "C3PO", "ROBBY"] /*]*/)
 
-put(find_obj("ROBOT"),
-     GLOBALS.orand,     add_actor(chtype(/*[*/ [find_room("MAGNE"), /*(*/ [] /*)*/, 0, false, find_obj("ROBOT"), robot_actor, 3, t, 0] /*]*/, adv)))
+find_obj("ROBOT")[GLOBALS.orand] = add_actor(chtype(/*[*/ [find_room("MAGNE"), /*(*/ [] /*)*/, 0, false, find_obj("ROBOT"), robot_actor, 3, t, 0] /*]*/, adv))
 
 add_object(/*#*/ [object, /*{*/ ["RBTLB",
 	  "There is a green piece of paper here.",

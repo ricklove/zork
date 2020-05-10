@@ -362,15 +362,31 @@ export const convertToTypescript = (node: ZNode): string => {
         ) {
             return `${convertToTypescript(nodes[1])}[${convertToTypescript(nodes[0])}]`;
         }
-
-        // Array Access: <NTH .ATM n?>
         if (openSymbol === '<'
             && firstNode
             && firstNode.kind === 'ZToken'
-            && firstNode.toString() === 'NTH'
-            && nodes.length >= 2
+            && (firstNode.toString() === 'NTH' || firstNode.toString() === 'GET')
+            && (nodes.length === 2 || nodes.length === 3)
         ) {
             return `${convertToTypescript(nodes[1])}[${nodes[2] ? convertToTypescript(nodes[2]) : 1}]`;
+        }
+
+        // Array Set: <1 .ATM VAL>
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && nodes.length === 3
+            && (parseInt(firstNode._raw.toString()) + '' === firstNode._raw.toString())
+        ) {
+            return `${convertToTypescript(nodes[1])}[${convertToTypescript(nodes[0])}] = ${convertToTypescript(nodes[2])}`;
+        }
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && (firstNode.toString() === 'PUT')
+            && nodes.length === 4
+        ) {
+            return `${convertToTypescript(nodes[1])}[${convertToTypescript(nodes[2])}] = ${convertToTypescript(nodes[3])}`;
         }
 
         // Length
@@ -382,6 +398,29 @@ export const convertToTypescript = (node: ZNode): string => {
         ) {
             return `${convertToTypescript(nodes[1])}.length`;
         }
+
+        // // Array Init: <ILIST, IVECTOR, IUVECTOR
+        // if (openSymbol === '<'
+        //     && firstNode
+        //     && firstNode.kind === 'ZToken'
+        //     && (firstNode.toString() === 'ILIST' || firstNode.toString() === 'IVECTOR' || firstNode.toString() === 'IUVECTOR')
+        //     && nodes.length >= 2
+        // ) {
+        //     const defaultVal = nodes[2] ? convertToTypescript(nodes[2]) : null;
+        //     return `[...new Array(${convertToTypescript(nodes[1])})].map(()=>${defaultVal})`;
+        // }
+        // // String Init: ISTRING
+        // if (openSymbol === '<'
+        //     && firstNode
+        //     && firstNode.kind === 'ZToken'
+        //     && (firstNode.toString() === 'ISTRING')
+        //     && nodes.length >= 2
+        // ) {
+        //     const defaultVal = nodes[2] ? convertToTypescript(nodes[2]) : '\\0';
+        //     return `[...new Array(${convertToTypescript(nodes[1])})].join(()=>${defaultVal})`;
+        // }
+
+
 
         // Unary Operators
         if (openSymbol === '<'

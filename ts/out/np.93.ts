@@ -1,6 +1,6 @@
-GLOBALS.words = get(words, oblist) || moblist(words, 23)
+GLOBALS.words = words[oblist] || moblist(words, 23)
 
-GLOBALS.object_obl = get(objects, oblist) || moblist(objects, 23)
+GLOBALS.object_obl = objects[oblist] || moblist(objects, 23)
 
 GLOBALS.actions = moblist(actions, 17)
 
@@ -14,7 +14,7 @@ cond(/*(*/ [lookup("COMPILE", root()) || gassigned_Q(group_glue)] /*)*/,
 
 define(sparse, sparout, /*(*/ [sv, vb,
 			"AUX", /*(*/ [words, GLOBALS.words] /*)*/, /*(*/ [objob, GLOBALS.object_obl] /*)*/, /*(*/ [pv, GLOBALS.prsvec] /*)*/,
-			      /*(*/ [pvr, put(put(rest(pv), 1, false), 2, false)] /*)*/,
+			      /*(*/ [pvr, rest(pv)[1] = false[2] = false] /*)*/,
 			      /*(*/ [actions, GLOBALS.actions] /*)*/, /*(*/ [dirs, GLOBALS.directions] /*)*/, /*(*/ [orph, GLOBALS.orphans] /*)*/,
 			      /*(*/ [orfl, oflag(orph)] /*)*/, /*(*/ [prv, GLOBALS.prepvec] /*)*/, /*(*/ [here, GLOBALS.here] /*)*/,
 			      /*(*/ [action, false] /*)*/, /*(*/ [prep, false] /*)*/, nprep, /*(*/ [adj, false] /*)*/, atm, aval, obj,
@@ -30,8 +30,8 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	 /*(*/ [!action && atm = lookup(x,actions),
 	  action = /*,*/ [atm] /*1*/] /*)*/,
 	 /*(*/ [!action && atm = lookup(x,dirs),
-	  put(pv,1, GLOBALS.walk_X_words),
-	  put(pv,2, /*,*/ [atm] /*1*/),
+	  pv[1] = GLOBALS.walk_X_words,
+	  pv[2] = /*,*/ [atm] /*1*/,
 	  return(win, sparout)] /*)*/,
 	 /*(*/ [atm = lookup(x,words) && cond(/*(*/ [type_Q(aval = /*,*/ [atm] /*1*/, prep),
 		      cond(/*(*/ [prep,			     vb || tell("Double preposition?", 0),
@@ -44,13 +44,12 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	 /*(*/ [atm = lookup(x,objob),
 	  cond(/*(*/ [obj = get_object(atm,adj),
 	    empty_Q(pvr) && vb || tell("Too many objects specified?", 0) && mapleave(false),
-	    put(pvr,		 1,
-		 cond(/*(*/ [prep,			pprep = prv[1],
+	    pvr[1] = cond(/*(*/ [prep,			pprep = prv[1],
 			prv = rest(prv),
-			put(pprep,1, prep),
+			pprep[1] = prep,
 			prep = false,
-			put(pprep,2, obj)] /*)*/,
-		       /*(*/ [obj] /*)*/)),
+			pprep[2] = obj] /*)*/,
+		       /*(*/ [obj] /*)*/),
 	    pvr = rest(pvr)] /*)*/,
 	   /*(*/ [t,
 	    cond(/*(*/ [empty_Q(obj),
@@ -84,16 +83,14 @@ define(sparse, sparout, /*(*/ [sv, vb,
 			   /*(*/ [tell("Huh?", 0)] /*)*/),
 		 orphan(t, false, pv[2]),
 		 false] /*)*/,
-		/*(*/ [put(pv,1, action) && adj,
+		/*(*/ [pv[1] = action && adj,
 		 vb || tell("Dangling adjective?", 0),
 		 false] /*)*/,
-		/*(*/ [orfl && nprep = oprep(orph) && obj = pv[2] && put(pprep = prv[1], 1, nprep) && put(pprep,2, obj) && cond(/*(*/ [obj = oslot1(orph),
-			     put(pv,2, obj),
-			     put(pv,3, pprep)] /*)*/,
-			    /*(*/ [put(pv,2, pprep)] /*)*/) && false] /*)*/,
-		/*(*/ [prep,		 type_Q(lobj = back(pvr)[1], object) && top(put(back(pvr),
-				1,
-				put(put(prv[1], 1, prep), 2, lobj)))] /*)*/,
+		/*(*/ [orfl && nprep = oprep(orph) && obj = pv[2] && pprep = prv[1][1] = nprep && pprep[2] = obj && cond(/*(*/ [obj = oslot1(orph),
+			     pv[2] = obj,
+			     pv[3] = pprep] /*)*/,
+			    /*(*/ [pv[2] = pprep] /*)*/) && false] /*)*/,
+		/*(*/ [prep,		 type_Q(lobj = back(pvr)[1], object) && top(back(pvr)[1] = prv[1][1] = prep[2] = lobj)] /*)*/,
 		/*(*/ [pv] /*)*/)] /*)*/))
 
 function sp(str) {
@@ -101,10 +98,7 @@ function sp(str) {
   }
 
 function orphan(flag?: atom | false, action, slot1, prep, name: atom | false) {
-    put(put(put(put(put(GLOBALS.orphans,GLOBALS.oname,name), GLOBALS.oprep,prep),
-		       GLOBALS.oslot1,		       slot1),
-		  GLOBALS.overb,		  action),
-	     GLOBALS.oflag,	     flag)
+    GLOBALS.orphans[GLOBALS.oname] = name[GLOBALS.oprep] = prep[GLOBALS.oslot1] = slot1[GLOBALS.overb] = action[GLOBALS.oflag] = flag
   }
 
 function syn_match(pv: vector) {
@@ -120,8 +114,8 @@ function syn_match(pv: vector) {
       function(syn: syntax) {
             cond(/*(*/ [syn_equal(syn1(syn), o1),
 	   cond(/*(*/ [syn_equal(syn2(syn), o2),
-		  sflip(syn) && put(objs,1, o2) && put(objs,2, o1),
-		  mapleave(take_it_or_leave_it(syn,put(pv,1, sfcn(syn))))] /*)*/,
+		  sflip(syn) && objs[1] = o2 && objs[2] = o1,
+		  mapleave(take_it_or_leave_it(syn,pv[1] = sfcn(syn)))] /*)*/,
 		 /*(*/ [!o2,
 		  cond(/*(*/ [sdriver(syn), dforce = syn] /*)*/, /*(*/ [drive = syn] /*)*/),
 		  false] /*)*/)] /*)*/,
@@ -137,7 +131,7 @@ function syn_match(pv: vector) {
 	   /*(*/ [synn = syn2(drive) && !o2 && !0_Q(vbit(synn)) && !gwim_slot(2, synn,action,objs),
 	    orphan(t, action,o1,vprep(synn)),
 	    ortell(synn,action,gwim)] /*)*/,
-	   /*(*/ [take_it_or_leave_it(drive,put(pv,1, sfcn(drive)))] /*)*/)] /*)*/,
+	   /*(*/ [take_it_or_leave_it(drive,pv[1] = sfcn(drive))] /*)*/)] /*)*/,
     /*(*/ [tell("I can't make sense out of that.", 0), false] /*)*/)
   }
 
@@ -146,14 +140,12 @@ function take_it_or_leave_it(syn: syntax, pv: vector) {
     let pv2: false | object | phrase = pv[3];
     let obj: false | object = null;
     let varg: varg = null;
-    put(pv,	     2,
-	     obj = cond(/*(*/ [type_Q(pv1,object), pv1] /*)*/,
-			/*(*/ [type_Q(pv1,phrase), pv1[2]] /*)*/))
+    pv[2] = obj = cond(/*(*/ [type_Q(pv1,object), pv1] /*)*/,
+			/*(*/ [type_Q(pv1,phrase), pv1[2]] /*)*/)
 cond(/*(*/ [vtrnn(varg = syn1(syn), GLOBALS.vrbit),
 	       take_it(obj,pv,varg)] /*)*/)
-put(pv,	     3,
-	     obj = cond(/*(*/ [type_Q(pv2,object), pv2] /*)*/,
-			/*(*/ [type_Q(pv2,phrase), pv2[2]] /*)*/))
+pv[3] = obj = cond(/*(*/ [type_Q(pv2,object), pv2] /*)*/,
+			/*(*/ [type_Q(pv2,phrase), pv2[2]] /*)*/)
 cond(/*(*/ [vtrnn(varg = syn2(syn), GLOBALS.vrbit),
 	       take_it(obj,pv,varg)] /*)*/)
   }
@@ -162,11 +154,11 @@ function take_it(obj: object, vec: vector, vrb: varg) {
     let sav1: verb = vec[1];
     let sav2: false | object = vec[2];
     cond(/*(*/ [search_list(oid(obj), robjs(GLOBALS.here), false) && can_take_Q(obj) || !vtrnn(vrb,GLOBALS.vtbit),
-	       put(vec,1, GLOBALS.take_X_words),
-	       put(vec,2, obj),
+	       vec[1] = GLOBALS.take_X_words,
+	       vec[2] = obj,
 	       take(t),
-	       put(vec,1, sav1),
-	       put(vec,2, sav2)] /*)*/)
+	       vec[1] = sav1,
+	       vec[2] = sav2] /*)*/)
   }
 
 function orfeo(syn: varg, objs: vector) {
@@ -175,7 +167,7 @@ function orfeo(syn: varg, objs: vector) {
     let slot1: false | phrase | object = null;
     cond(/*(*/ [!orfl, false] /*)*/,
 	      /*(*/ [slot1 = oslot1(orph),
-	       syn_equal(syn,slot1) && put(objs,1, slot1)] /*)*/)
+	       syn_equal(syn,slot1) && objs[1] = slot1] /*)*/)
   }
 
 function ortell(varg: varg, action: action, gwim: false | object) {
@@ -196,8 +188,8 @@ function foostr(nam: string, str: string, 1st?: atom | false) {
     mapr(false,
 	function(x: string, y: string) {
         cond(/*(*/ [1st && x === nam,
-		   put(y,1, x[1])] /*)*/,
-		  /*(*/ [put(y,1, chtype(_(32, ascii(x[1])), character))] /*)*/)
+		   y[1] = x[1]] /*)*/,
+		  /*(*/ [y[1] = chtype(_(32, ascii(x[1])), character)] /*)*/)
       },
 	nam,	str)
   }
@@ -205,7 +197,7 @@ function foostr(nam: string, str: string, 1st?: atom | false) {
 function gwim_slot(fx: number, varg: varg, action: action, objs: vector) {
     let obj: vector = null;
     cond(/*(*/ [obj = gwim(vbit(varg), varg,action),
-	       put(objs,fx,obj),
+	       objs[fx] = obj,
 	       obj] /*)*/)
   }
 
@@ -223,8 +215,8 @@ function gwim(bit: number, fword: varg, action: action) {
     let sf = null;
     aobj && obj = fwim(bit,aobjs(GLOBALS.winner), ntake)
 cond(/*(*/ [robj,	       cond(/*(*/ [nobj = fwim(bit,robjs(GLOBALS.here), ntake) && !av || av === nobj || memq(nobj,ocontents(av)) || trnn(nobj,GLOBALS.findmebit),
-		      cond(/*(*/ [savobj = pv[2] || t && !obj && sf = pv[1] || t && put(pv,1, GLOBALS.take_X_words) && put(pv,2, nobj) && action === pv[1] || ntake || take() && put(pv,2, savobj) && put(pv,1, sf) && nobj] /*)*/,
-			    /*(*/ [put(pv,2, savobj), false] /*)*/)] /*)*/,
+		      cond(/*(*/ [savobj = pv[2] || t && !obj && sf = pv[1] || t && pv[1] = GLOBALS.take_X_words && pv[2] = nobj && action === pv[1] || ntake || take() && pv[2] = savobj && pv[1] = sf && nobj] /*)*/,
+			    /*(*/ [pv[2] = savobj, false] /*)*/)] /*)*/,
 		     /*(*/ [nobj || !empty_Q(nobj), GLOBALS.nefals] /*)*/,
 		     /*(*/ [obj] /*)*/)] /*)*/,
 	      /*(*/ [obj] /*)*/)
@@ -243,28 +235,28 @@ function make_action("TUPLE", specs) {"AUX", vv, sum, /*(*/ [prep, false] /*)*/,
 				 /*(*/ [itm === obj && itm = () => /*(*/ [_1] /*)*/ && false] /*)*/,
 				 /*(*/ [type_Q(itm,list),
 				  vv = ivector(3),
-				  put(vv,1, itm[1]),
-				  put(vv,2, prep),
+				  vv[1] = itm[1],
+				  vv[2] = prep,
 				  sum = 0,
 				  prep = false,
 				  memq(aobjs, itm) && sum = _(sum,GLOBALS.vabit),
 				  memq(robjs, itm) && sum = _(sum,GLOBALS.vrbit),
 				  memq(no_take, itm) && sum = _(sum,GLOBALS.vtbit),
 				  memq(_, itm) && sum = _(sum,GLOBALS.vxbit),
-				  put(vv,3, sum),
-				  put(syn,whr,chtype(vv,varg)),
+				  vv[3] = sum,
+				  syn[whr] = chtype(vv,varg),
 				  whr = _(whr,1)] /*)*/,
 				 /*(*/ [type_Q(itm,vector),
 				  cond(/*(*/ [gassigned_Q(atm = add_word(itm[1])),
-					 put(syn,GLOBALS.sfcn,/*,*/ [atm] /*1*/)] /*)*/,
-					/*(*/ [put(syn,					      GLOBALS.sfcn,					      setg(atm = add_word(itm[1]),
-						    chtype(/*[*/ [atm,itm[2]] /*]*/, verb)))] /*)*/)] /*)*/,
-				 /*(*/ [itm === driver, put(syn,GLOBALS.sdriver,t)] /*)*/,
-				 /*(*/ [itm === flip, put(syn,GLOBALS.sflip,t)] /*)*/)
+					 syn[GLOBALS.sfcn] = /*,*/ [atm] /*1*/] /*)*/,
+					/*(*/ [syn[GLOBALS.sfcn] = setg(atm = add_word(itm[1]),
+						    chtype(/*[*/ [atm,itm[2]] /*]*/, verb))] /*)*/)] /*)*/,
+				 /*(*/ [itm === driver, syn[GLOBALS.sdriver] = t] /*)*/,
+				 /*(*/ [itm === flip, syn[GLOBALS.sflip] = t] /*)*/)
             },
 		   sp)
-syn1(syn) || put(syn,GLOBALS.syn1,GLOBALS.evarg)
-syn2(syn) || put(syn,GLOBALS.syn2,GLOBALS.evarg)
+syn1(syn) || syn[GLOBALS.syn1] = GLOBALS.evarg
+syn2(syn) || syn[GLOBALS.syn2] = GLOBALS.evarg
 chtype(syn,syntax)
         },
      specs),

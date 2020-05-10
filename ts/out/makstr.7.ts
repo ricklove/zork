@@ -1,5 +1,5 @@
 function cevent(tick: number, app: applicable | offset, flg: atom | false, name: atom | string) {
-    let obl = get(initial, oblist);
+    let obl = initial[oblist];
     let atm: atom | false = null;
     cond(/*(*/ [type_Q(name,string),
 	       cond(/*(*/ [atm = lookup(name,obl)] /*)*/,
@@ -22,7 +22,7 @@ function cexit(flid: atom | string, rmid: atom | string, str?: false | string, f
     let fval: applicable | false = false;
     let atm: atom | false = null;
     cond(/*(*/ [type_Q(flid,atom), flid = spname(flid)] /*)*/)
-atm = lookup(flid,get(flag, oblist)) || insert(flid,get(flag, oblist))
+atm = lookup(flid,flag[oblist]) || insert(flid,flag[oblist])
 setg(atm,flag)
 chtype(vector(atm,find_room(rmid), str,funct), cexit)
   }
@@ -33,13 +33,13 @@ function exit(_tuple_, pairs: tuple(/*[*/ [rest, string, nexit | cexit | string 
     repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
 	  /*#*/ [decl, /*(*/ [/*(*/ [atm] /*)*/, atom || false, /*(*/ [rm] /*)*/, room || false, /*(*/ [f] /*)*/, vector] /*)*/] /*2*/,
 	  cond(/*(*/ [or(atm = lookup(pairs[1], dobl) && gassigned_Q(atm) && type_Q(/*,*/ [atm] /*1*/,direction)),
-		 put(f,1, atm),
+		 f[1] = atm,
 		 cond(/*(*/ [type_Q(pairs[2], string),
-			put(f,2, find_room(pairs[2]))] /*)*/,
-		       /*(*/ [put(f,2, pairs[2])] /*)*/),
+			f[2] = find_room(pairs[2])] /*)*/,
+		       /*(*/ [f[2] = pairs[2]] /*)*/),
 		 f = rest(f,2)] /*)*/,
 		/*(*/ [t,
-		 put(pairs,1, error(illegal_direction, pairs[1]))] /*)*/),
+		 pairs[1] = error(illegal_direction, pairs[1])] /*)*/),
 	  cond(/*(*/ [empty_Q(pairs = rest(pairs,2)),
 		 return()] /*)*/))
 chtype(frob,exit)
@@ -48,19 +48,19 @@ chtype(frob,exit)
 function room(id: string | atom, d1: string, d2: string, lit_Q: atom | form | false, ex: exit, objs?, app: form | false | atom, val: number, bit: number) {
     let rm: room = find_room(id);
     GLOBALS.score_max = _(GLOBALS.score_max,val)
-put(rm,GLOBALS.rbits,bit)
-put(rm,GLOBALS.rval,val)
-put(rm,GLOBALS.robjs,objs)
-put(rm,GLOBALS.rdesc1,d1)
-put(rm,GLOBALS.rdesc2,d2)
-put(rm,GLOBALS.rexits,ex)
-put(rm,GLOBALS.raction,cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
-				/*(*/ [app] /*)*/))
-put(rm,GLOBALS.rlight_Q,cond(/*(*/ [type_Q(lit_Q,form), false] /*)*/,
-				/*(*/ [t, lit_Q] /*)*/))
+rm[GLOBALS.rbits] = bit
+rm[GLOBALS.rval] = val
+rm[GLOBALS.robjs] = objs
+rm[GLOBALS.rdesc1] = d1
+rm[GLOBALS.rdesc2] = d2
+rm[GLOBALS.rexits] = ex
+rm[GLOBALS.raction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
+				/*(*/ [app] /*)*/)
+rm[GLOBALS.rlight_Q] = cond(/*(*/ [type_Q(lit_Q,form), false] /*)*/,
+				/*(*/ [t, lit_Q] /*)*/)
 mapf(false,
 	      function(x: object) {
-        put(x,GLOBALS.oroom,rm)
+        x[GLOBALS.oroom] = rm
       },
 	      robjs(rm))
   }
@@ -76,20 +76,8 @@ function aobject(id: string, str, app: atom, _tuple_, tup: tuple) {
 function object(id: atom | string, desc1: string, desc2: string, desco: string | false, app: false | form | atom, conts: list(/*[*/ [rest, object] /*]*/), can: false | object, flags: primtype(word), light_Q?: number, s1: number, s2: number, size: number, capac: number) {
     GLOBALS.score_max = _(GLOBALS.score_max,s1,s2)
 0_Q(light_Q) || flags = _(flags,GLOBALS.lightbit)
-put(put(put(put(put(put(put(put(put(put(put(put(find_obj(id),
-		        GLOBALS.odesc1,		        desc1),
-		   GLOBALS.ocapac,		   capac),
-		  GLOBALS.osize,		  size),
-		 GLOBALS.odesco,		 desco),
-		GLOBALS.olight_Q,		light_Q),
-	       GLOBALS.oflags,	       flags),
-	      GLOBALS.ofval,	      s1),
-	     GLOBALS.otval,	     s2),
-	    GLOBALS.ocan,	    can),
-	   GLOBALS.ocontents,	   conts),
-	  GLOBALS.odesc2,	  desc2),
-	 GLOBALS.oaction,	 cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
-	       /*(*/ [app] /*)*/))
+find_obj(id)[GLOBALS.odesc1] = desc1[GLOBALS.ocapac] = capac[GLOBALS.osize] = size[GLOBALS.odesco] = desco[GLOBALS.olight_Q] = light_Q[GLOBALS.oflags] = flags[GLOBALS.ofval] = s1[GLOBALS.otval] = s2[GLOBALS.ocan] = can[GLOBALS.ocontents] = conts[GLOBALS.odesc2] = desc2[GLOBALS.oaction] = cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
+	       /*(*/ [app] /*)*/)
   }
 
 function find_prep(str: string) {
@@ -168,13 +156,13 @@ function add_zork(nm: atom, _tuple_, w: tuple(/*[*/ [rest, string] /*]*/)) {
 
 function add_object(obj: object, names: vector(/*[*/ [rest, string] /*]*/), adj?: vector(/*[*/ [rest, string] /*]*/)) {
     let objs: oblist = GLOBALS.object_obl;
-    put(obj,	     GLOBALS.onames,	     mapf(GLOBALS.uvector,		   function(x: string) {
+    obj[GLOBALS.onames] = mapf(GLOBALS.uvector,		   function(x: string) {
           lookup(x,objs) || insert(x,objs)
         },
-		   names))
-put(obj,GLOBALS.oadjs,mapf(GLOBALS.uvector,function(w) {
+		   names)
+obj[GLOBALS.oadjs] = mapf(GLOBALS.uvector,function(w) {
           add_zork(adjective, w)
-        }, adj))
+        }, adj)
 chutype(oadjs(obj), adjective)
   }
 
@@ -196,7 +184,7 @@ function add_demon(x: hack) {
     cond(/*(*/ [mapr(false,
 	  function(y: list(/*[*/ [rest, hack] /*]*/)) {
             cond(/*(*/ [haction(y[1]) === haction(x),
-		   put(y,1, x),
+		   y[1] = x,
 		   mapleave(t)] /*)*/)
           },
 	  GLOBALS.demons)] /*)*/,
@@ -219,7 +207,7 @@ function add_actor(adv: adv) {
   }
 
 function add_desc(obj: object, str: string) {
-    put(obj,GLOBALS.oread,str)
+    obj[GLOBALS.oread] = str
   }
 
 function sadd_action(str1, atm) {

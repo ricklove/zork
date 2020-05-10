@@ -8,7 +8,7 @@ function save_it(fn?: string) {
     let muddle: number = GLOBALS.muddle;
     let stv: string | number = null;
     let st: string | number = remarkably_disgusting_code();
-    put(find_obj("PAPER"), GLOBALS.odesc1,unspeakable_code())
+    find_obj("PAPER")[GLOBALS.odesc1] = unspeakable_code()
 GLOBALS.vers = st
 GLOBALS.script_channel = false
 GLOBALS.raw_score = 0
@@ -200,8 +200,8 @@ function pc() {
 
 function handle(frm, _tuple_, zork) {
     let zf: any = null;
-    put(GLOBALS.outchan,13, 80)
-put(back(GLOBALS.inchan)[1], 6, /*#*/ [lose, 27] /*2*/)
+    GLOBALS.outchan[13] = 80
+back(GLOBALS.inchan)[1][6] = /*#*/ [lose, 27] /*2*/
 cond(/*(*/ [!gassigned_Q(xunm) || member(GLOBALS.xunm,GLOBALS.winners) && pc(),
 	       gassigned_Q(saverep) && GLOBALS.rep = GLOBALS.saverep,
 	       assigned_Q(bh) && off(bh),
@@ -212,14 +212,14 @@ cond(/*(*/ [!gassigned_Q(xunm) || member(GLOBALS.xunm,GLOBALS.winners) && pc(),
 	       cond(/*(*/ [!empty_Q(zork) && zork[1] === control_g_Q_X_errors,
 		      int_level(0),
 		      finish(),
-		      put(back(GLOBALS.inchan)[1], 6, cond(/*(*/ [GLOBALS.muddle > 100,
+		      back(GLOBALS.inchan)[1][6] = cond(/*(*/ [GLOBALS.muddle > 100,
 						       cond(/*(*/ [GLOBALS.tenex_Q,/*#*/ [lose, _37_] /*2*/] /*)*/,
 							     /*(*/ [t, /*#*/ [lose, _000000000012_] /*2*/] /*)*/)] /*)*/,
-						      /*(*/ [t, /*#*/ [lose, _000000000015_] /*2*/] /*)*/)),
+						      /*(*/ [t, /*#*/ [lose, _000000000015_] /*2*/] /*)*/),
 		      erret(t, frm)] /*)*/,
 		     /*(*/ [zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY",
 		      // HACK FOR ILLEGAL CHR AFTER CTRL-P,
-		      put(back(GLOBALS.inchan)[1], 6, /*#*/ [lose, _000000000015_] /*2*/),
+		      back(GLOBALS.inchan)[1][6] = /*#*/ [lose, _000000000015_] /*2*/,
 		      int_level(0),
 		      erret(t, frm)] /*)*/,
 		     /*(*/ [tell("I'm sorry, you seem to have encountered an error in the program.\nSend mail to DUNGEON@MIT-DMS describing what it was you tried to do."),
@@ -234,7 +234,7 @@ psetg(winners, () => /*[*/ ["BKD", "TAA", "MARC", "PDL", "MDL"] /*]*/)
 
 gdecl(/*(*/ [winners] /*)*/, vector(/*[*/ [rest, string] /*]*/))
 
-lookup("COMPILE", root()) || lookup("GLUE", get(package, oblist)) || GLOBALS.errh = handler(get(error_X_interrupts, interrupt) || event("ERROR", 8),
+lookup("COMPILE", root()) || lookup("GLUE", package[oblist]) || GLOBALS.errh = handler(error_X_interrupts[interrupt] || event("ERROR", 8),
 		   GLOBALS.handle)
 
 gdecl(/*(*/ [moves] /*)*/, fix, /*(*/ [script_channel] /*)*/, channel || false)
@@ -255,7 +255,7 @@ cond(/*(*/ [fn,	       GLOBALS.user_name = fn] /*)*/,
 GLOBALS.deaths = 0
 GLOBALS.moves = 0
 GLOBALS.winner = GLOBALS.player
-put(GLOBALS.winner,GLOBALS.aroom,GLOBALS.here = find_room(rm))
+GLOBALS.winner[GLOBALS.aroom] = GLOBALS.here = find_room(rm)
 tell("Welcome to Dungeon.", 1, st)
 random(chtype(dskdate(), fix))
 int_level(0)
@@ -264,15 +264,15 @@ contin()
 
 function contin() {
     GLOBALS.alt_flag = false
-put(back(GLOBALS.inchan)[1], 6, cond(/*(*/ [GLOBALS.muddle > 100,
+back(GLOBALS.inchan)[1][6] = cond(/*(*/ [GLOBALS.muddle > 100,
 					 cond(/*(*/ [GLOBALS.tenex_Q,/*#*/ [lose, _37_] /*2*/] /*)*/,
 					       /*(*/ [t, /*#*/ [lose, _000000000012_] /*2*/] /*)*/)] /*)*/,
-					/*(*/ [t, /*#*/ [lose, _000000000015_] /*2*/] /*)*/))
+					/*(*/ [t, /*#*/ [lose, _000000000015_] /*2*/] /*)*/)
 GLOBALS.saverep = GLOBALS.rep
 GLOBALS.rep = GLOBALS.rdcom
 reset(GLOBALS.inchan)
 GLOBALS.winner = GLOBALS.player
-put(GLOBALS.prsvec,2, false)
+GLOBALS.prsvec[2] = false
   }
 
 GLOBALS.my_script = false
@@ -283,8 +283,8 @@ function make_script() {
     let ch: channel | false = null;
     cond(/*(*/ [GLOBALS.script_channel,	 false] /*)*/,
 	/*(*/ [ch = open("PRINT", string("MARC;%Z", GLOBALS.xunm,">")),
-	 put(top(GLOBALS.inchan), 1, /*(*/ [ch] /*)*/),
-	 put(top(GLOBALS.outchan), 1, /*(*/ [ch] /*)*/),
+	 top(GLOBALS.inchan)[1] = /*(*/ [ch] /*)*/,
+	 top(GLOBALS.outchan)[1] = /*(*/ [ch] /*)*/,
 	 GLOBALS.script_channel = ch,
 	 GLOBALS.my_script = t] /*)*/)
   }
@@ -303,8 +303,8 @@ function do_script() {
     cond(/*(*/ [GLOBALS.my_script,	 do_unscript(false)] /*)*/)
 cond(/*(*/ [GLOBALS.script_channel,	 tell("You are already scripting.")] /*)*/,
 	/*(*/ [muddle > 100 || !member("GUEST", unm) && ch = open("READ", ".FILE.", "(DIR)", "DSK", unm) && close(ch) && ch = open("READ", "_MSGS_", unm,"DSK", unm) && close(ch) && ch = open("PRINT", "ZORK", "SCRIPT", "DSK", unm),
-	 put(top(GLOBALS.inchan), 1, /*(*/ [ch] /*)*/),
-	 put(top(GLOBALS.outchan), 1, /*(*/ [ch] /*)*/),
+	 top(GLOBALS.inchan)[1] = /*(*/ [ch] /*)*/,
+	 top(GLOBALS.outchan)[1] = /*(*/ [ch] /*)*/,
 	 GLOBALS.script_channel = ch,
 	 cond(/*(*/ [GLOBALS.muddle < 100,
 		tell("Scripting to", 1, GLOBALS.xunm,";ZORK SCRIPT")] /*)*/,
@@ -315,8 +315,8 @@ cond(/*(*/ [GLOBALS.script_channel,	 tell("You are already scripting.")] /*)*/,
   }
 
 function do_unscript(verbose?: atom | false) {
-    cond(/*(*/ [GLOBALS.script_channel,	 put(top(GLOBALS.inchan), 1, /*(*/ [] /*)*/),
-	 put(top(GLOBALS.outchan), 1, /*(*/ [] /*)*/),
+    cond(/*(*/ [GLOBALS.script_channel,	 top(GLOBALS.inchan)[1] = /*(*/ [] /*)*/,
+	 top(GLOBALS.outchan)[1] = /*(*/ [] /*)*/,
 	 close(GLOBALS.script_channel),
 	 GLOBALS.script_channel = false,
 	 verbose && tell("Scripting off.")] /*)*/,
@@ -400,7 +400,7 @@ function prob(num: number) {
 
 "GET-ATOM TAKES A VALUE AND SEARCHES INITIAL FOR FIRST ATOM\nSETG'ED TO THAT."
 
-define(get_atom, act, /*(*/ [val, "AUX", /*(*/ [o, get(initial, oblist)] /*)*/] /*)*/,
+define(get_atom, act, /*(*/ [val, "AUX", /*(*/ [o, initial[oblist]] /*)*/] /*)*/,
   /*#*/ [decl, /*(*/ [/*(*/ [o] /*)*/, oblist] /*)*/] /*2*/,
   mapf(false,
     function(x: list(/*[*/ [rest, atom] /*]*/)) {
@@ -452,10 +452,10 @@ function room_info(full?: atom | false) {
     let outchan: channel = GLOBALS.outchan;
     let ra = null;
     GLOBALS.tell_flag = t
-type_Q(prso,direction) && put(GLOBALS.prsvec,2, false)
+type_Q(prso,direction) && GLOBALS.prsvec[2] = false
 prog(/*(*/ [] /*)*/,
      cond(/*(*/ [GLOBALS.here !== aroom(GLOBALS.player),
-	    put(GLOBALS.prsvec,1, GLOBALS.walk_in_X_words),
+	    GLOBALS.prsvec[1] = GLOBALS.walk_in_X_words,
 	    tell("Done."),
 	    return()] /*)*/,
 	   /*(*/ [prso && type_Q(prso,object),
@@ -473,11 +473,11 @@ prog(/*(*/ [] /*)*/,
 	   /*(*/ [!full && GLOBALS.super_brief_X_flag || rseen_Q(rm) && GLOBALS.brief_X_flag || prob(80) && !full,
 	    tell(rdesc2(rm))] /*)*/,
 	   /*(*/ [empty_Q(rdesc1(rm)) && ra = raction(rm),
-	    put(GLOBALS.prsvec,1, GLOBALS.look_X_words),
+	    GLOBALS.prsvec[1] = GLOBALS.look_X_words,
 	    apply_random(ra),
-	    put(GLOBALS.prsvec,1, GLOBALS.foo_X_words), // Something innocuous] /*)*/,
+	    GLOBALS.prsvec[1] = GLOBALS.foo_X_words, // Something innocuous] /*)*/,
 	   /*(*/ [tell(rdesc1(rm))] /*)*/),
-     put(rm,GLOBALS.rseen_Q,t),
+     rm[GLOBALS.rseen_Q] = t,
      av && tell("You are in the", 1, odesc2(av), "."),
      mapf(false,
       function(x: object) {
@@ -497,9 +497,9 @@ prog(/*(*/ [] /*)*/,
         },
       robjs(rm)),
      cond(/*(*/ [ra = raction(rm) && !full,
-	    put(GLOBALS.prsvec,1, GLOBALS.walk_in_X_words),
+	    GLOBALS.prsvec[1] = GLOBALS.walk_in_X_words,
 	    apply_random(ra),
-	    put(GLOBALS.prsvec,1, GLOBALS.foo_X_words)] /*)*/),
+	    GLOBALS.prsvec[1] = GLOBALS.foo_X_words] /*)*/),
      t)
   }
 
@@ -556,7 +556,7 @@ function rdcom(ivec?: false | vector) {
     let outchan: channel = GLOBALS.outchan;
     let random_action = null;
     ivec || prog(/*(*/ [] /*)*/,
-		   put(outchan,13, 1000),
+		   outchan[13] = 1000,
 		   room_info(t))
 repeat(/*(*/ [vval, cv] /*)*/,
 	   /*#*/ [decl, /*(*/ [/*(*/ [cv] /*)*/, false || verb] /*)*/] /*2*/,
@@ -597,19 +597,19 @@ function score_obj(obj: object) {
     let temp = null;
     cond(/*(*/ [temp = ofval(obj) > 0,
 	       score_upd(temp),
-	       put(obj,GLOBALS.ofval,0)] /*)*/)
+	       obj[GLOBALS.ofval] = 0] /*)*/)
   }
 
 function score_room(rm: room) {
     let temp = null;
     cond(/*(*/ [temp = rval(rm) > 0,
 	       score_upd(temp),
-	       put(rm,GLOBALS.rval,0)] /*)*/)
+	       rm[GLOBALS.rval] = 0] /*)*/)
   }
 
 function score_upd(num: number) {
     let winner = GLOBALS.winner;
-    put(winner,GLOBALS.ascore,_(ascore(winner), num))
+    winner[GLOBALS.ascore] = _(ascore(winner), num)
 GLOBALS.raw_score = _(GLOBALS.raw_score,num)
   }
 
@@ -741,7 +741,7 @@ gdecl(/*(*/ [flag_names, val_names] /*)*/,
        /*(*/ [short_names, short_val_names] /*)*/,
        vector(/*[*/ [rest, string] /*]*/))
 
-block(/*(*/ [get(flag, oblist) || moblist(flag), get(initial, oblist), root()] /*)*/)
+block(/*(*/ [flag[oblist] || moblist(flag), initial[oblist], root()] /*)*/)
 
 psetg(flag_names,
       uvector(kitchen_window,
@@ -823,11 +823,11 @@ function jigs_up(desc: string) {
 	       tell(desc),
 	       tell("The", 1, odesc2(aobj(winner)), "has died."),
 	       remove_object(aobj(winner)),
-	       put(winner,GLOBALS.aroom,find_room("FCHMP")),
+	       winner[GLOBALS.aroom] = find_room("FCHMP"),
 	       return()] /*)*/),
 	reset(GLOBALS.inchan),
 	score_upd(_10),
-	put(winner,GLOBALS.avehicle,false),
+	winner[GLOBALS.avehicle] = false,
 	cond(/*(*/ [g__Q(deaths,2),
 	       tell(desc),
 	       tell("You clearly are a suicidal maniac.  We don't allow psychotics in the\ncave, since they may harm other adventurers.  Your remains will\ninstalled in the Land of the Living Dead, where your fellow adventurers \nmay gloat over them."),
@@ -841,16 +841,16 @@ function jigs_up(desc: string) {
 		     /*(*/ [t,
 		      tell("Now, let me see...\nWell, we weren't quite able to restore your state.  You can't have\neverything."),
 		      cond(/*(*/ [lamp_location = oroom(lamp),
-			     put(winner,GLOBALS.aobjs,/*(*/ [lamp,_X,aobjs] /*)*/),
+			     winner[GLOBALS.aobjs] = /*(*/ [lamp,_X,aobjs] /*)*/,
 			     cond(/*(*/ [memq(lamp,robjs(lamp_location)),
 				    remove_object(lamp)] /*)*/,
 				   /*(*/ [lc = ocan(lamp),
-				    put(lc,					 GLOBALS.ocontents,					 splice_out(lamp,ocontents(lc))),
-				    put(lamp,GLOBALS.oroom,false),
-				    put(lamp,GLOBALS.ocan,false)] /*)*/)] /*)*/,
+				    lc[GLOBALS.ocontents] = splice_out(lamp,ocontents(lc)),
+				    lamp[GLOBALS.oroom] = false,
+				    lamp[GLOBALS.ocan] = false] /*)*/)] /*)*/,
 			    /*(*/ [memq(lamp,aobjs),
-			     put(winner,GLOBALS.aobjs,/*(*/ [lamp,_X,splice_out(lamp,aobjs)] /*)*/)] /*)*/),
-		      put(find_obj("DOOR"), GLOBALS.otouch_Q,false),
+			     winner[GLOBALS.aobjs] = /*(*/ [lamp,_X,splice_out(lamp,aobjs)] /*)*/] /*)*/),
+		      find_obj("DOOR")[GLOBALS.otouch_Q] = false,
 		      goto(find_room("FORE1")),
 		      GLOBALS.egypt_flag_X_flag = t,
 		      val_list = rob_adv(winner,val_list),
@@ -873,7 +873,7 @@ function jigs_up(desc: string) {
                         insert_object(x,y)
                       },
 			    aobjs,			    GLOBALS.rooms),
-		      put(winner,GLOBALS.aobjs,/*(*/ [] /*)*/),
+		      winner[GLOBALS.aobjs] = /*(*/ [] /*)*/,
 		      t] /*)*/)] /*)*/)),
      prog(/*(*/ [] /*)*/,
        record(score(false), GLOBALS.moves,GLOBALS.deaths,false, GLOBALS.here),
@@ -1045,12 +1045,12 @@ function take(take_Q?: atom | false) {
 		  tell("Your load is too heavy.  You will have to leave something behind."),
 		  return(false)] /*)*/),
 	   cond(/*(*/ [!apply_object(obj),
-		  cond(/*(*/ [getter_Q,			 put(nobj,			      GLOBALS.ocontents,			      splice_out(obj,ocontents(nobj))),
-			 put(obj,GLOBALS.oroom,false),
-			 put(obj,GLOBALS.ocan,false)] /*)*/,
+		  cond(/*(*/ [getter_Q,			 nobj[GLOBALS.ocontents] = splice_out(obj,ocontents(nobj)),
+			 obj[GLOBALS.oroom] = false,
+			 obj[GLOBALS.ocan] = false] /*)*/,
 			/*(*/ [remove_object(obj)] /*)*/),
-		  put(win,GLOBALS.aobjs,/*(*/ [obj,_X,aobjs] /*)*/),
-		  put(obj,GLOBALS.otouch_Q,t),
+		  win[GLOBALS.aobjs] = /*(*/ [obj,_X,aobjs] /*)*/,
+		  obj[GLOBALS.otouch_Q] = t,
 		  score_obj(obj),
 		  cond(/*(*/ [take_Q,tell("Taken.")] /*)*/, /*(*/ [t] /*)*/)] /*)*/,
 		 /*(*/ [t] /*)*/)] /*)*/,
@@ -1088,26 +1088,26 @@ function putter(objact?: atom | false) {
 		     tell("It won't fit."),
 		     return(false)] /*)*/),
 	      cond(/*(*/ [memq(crock,robjs) || ocan = ocan(crock) && memq(ocan,robjs) || ocan && ocan = ocan(ocan) && memq(ocan,robjs),
-		     put(pv,1, GLOBALS.take_X_words),
-		     put(pv,2, crock),
-		     put(pv,3, false),
+		     pv[1] = GLOBALS.take_X_words,
+		     pv[2] = crock,
+		     pv[3] = false,
 		     cond(/*(*/ [!take(false), return(false)] /*)*/,
 			   /*(*/ [aobjs = aobjs(win)] /*)*/)] /*)*/,
 		    /*(*/ [ocan = ocan(crock),
 		     cond(/*(*/ [oopen_Q(ocan),
-			    put(win,GLOBALS.aobjs,aobjs = /*(*/ [crock,_X,aobjs] /*)*/),
-			    put(ocan,				 GLOBALS.ocontents,				 splice_out(crock,ocontents(ocan))),
-			    put(crock,GLOBALS.ocan,false)] /*)*/,
+			    win[GLOBALS.aobjs] = aobjs = /*(*/ [crock,_X,aobjs] /*)*/,
+			    ocan[GLOBALS.ocontents] = splice_out(crock,ocontents(ocan)),
+			    crock[GLOBALS.ocan] = false] /*)*/,
 			   /*(*/ [tell("I can't reach the", 1, odesc2(crock)),
 			    return(false)] /*)*/)] /*)*/),
-	      put(pv,1, GLOBALS.put_X_words),
-	      put(pv,2, crock),
-	      put(pv,3, can),
+	      pv[1] = GLOBALS.put_X_words,
+	      pv[2] = crock,
+	      pv[3] = can,
 	      cond(/*(*/ [objact && object_action(), return()] /*)*/,
-		    /*(*/ [put(win,GLOBALS.aobjs,splice_out(crock,aobjs)),
-		     put(can,GLOBALS.ocontents,/*(*/ [crock,_X,ocontents(can)] /*)*/),
-		     put(crock,GLOBALS.ocan,can),
-		     put(crock,GLOBALS.oroom,GLOBALS.here),
+		    /*(*/ [win[GLOBALS.aobjs] = splice_out(crock,aobjs),
+		     can[GLOBALS.ocontents] = /*(*/ [crock,_X,ocontents(can)] /*)*/,
+		     crock[GLOBALS.ocan] = can,
+		     crock[GLOBALS.oroom] = GLOBALS.here,
 		     tell("Done.")] /*)*/))
   }
  
@@ -1123,11 +1123,11 @@ function dropper() {
     let nobj: object = null;
     prog(/*(*/ [] /*)*/,
 	      cond(/*(*/ [memq(vname(vec[1]), () => /*[*/ [drop_X_words, pour_X_words] /*]*/) && pi,
-		     put(vec,1, GLOBALS.put_X_words),
+		     vec[1] = GLOBALS.put_X_words,
 		     return(putter())] /*)*/,
 		    /*(*/ [pi && !memq(obj,aobjs) || memq(ocan(obj), aobjs),
-		     put(vec,2, pi),
-		     put(vec,3, obj),
+		     vec[2] = pi,
+		     vec[3] = obj,
 		     obj = vec[2]] /*)*/),
 	      cond(/*(*/ [trnn(obj,GLOBALS.no_check_bit),
 		     return(object_action())] /*)*/),
@@ -1139,10 +1139,10 @@ function dropper() {
 			   /*(*/ [tell("I can't see that here.")] /*)*/)] /*)*/),
 	      cond(/*(*/ [getter_Q || memq(obj,aobjs),
 		     cond(/*(*/ [av] /*)*/,
-			   /*(*/ [getter_Q,			    put(nobj,				 GLOBALS.ocontents,				 splice_out(obj,ocontents(nobj))),
-			    put(obj,GLOBALS.ocan,false)] /*)*/,
-			   /*(*/ [put(winner,GLOBALS.aobjs,splice_out(obj,aobjs))] /*)*/),
-		     cond(/*(*/ [av,put(vec,2, obj), put(vec,3, av), putter(false)] /*)*/,
+			   /*(*/ [getter_Q,			    nobj[GLOBALS.ocontents] = splice_out(obj,ocontents(nobj)),
+			    obj[GLOBALS.ocan] = false] /*)*/,
+			   /*(*/ [winner[GLOBALS.aobjs] = splice_out(obj,aobjs)] /*)*/),
+		     cond(/*(*/ [av,vec[2] = obj, vec[3] = av, putter(false)] /*)*/,
 			   /*(*/ [insert_object(obj,rm)] /*)*/),
 		     cond(/*(*/ [object_action()] /*)*/,
 			   /*(*/ [vname(vec[1]) === drop_X_words,
@@ -1168,7 +1168,7 @@ function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
 	 mapf(false,
 	   function(x: object) {
             cond(/*(*/ [can_take_Q(x) || trnn(x,GLOBALS.trytakebit),
-		    put(prsvec,2, x),
+		    prsvec[2] = x,
 		    tell(odesc2(x), 0, ":"),
 		    apply_random(ra),
 		    cond(/*(*/ [here !== aroom(winner),
@@ -1178,7 +1178,7 @@ function frob_lots(uv: uvector(/*[*/ [rest, object] /*]*/)) {
 	/*(*/ [pa === GLOBALS.drop_X_words || pa === GLOBALS.put_X_words,
 	 mapf(false,
 	   function(x: object) {
-            put(prsvec,2, x)
+            prsvec[2] = x
 tell(odesc2(x), 0, ":")
 apply_random(ra)
 cond(/*(*/ [here !== aroom(winner),
@@ -1206,14 +1206,14 @@ function everything() {
 			   tell(GLOBALS.losstr),
 			   mapleave()] /*)*/),
 		    suv = back(suv),
-		    put(suv,1, x)] /*)*/)
+		    suv[1] = x] /*)*/)
           },
 	   robjs(here))] /*)*/,
 	/*(*/ [pa === GLOBALS.drop_X_words,
 	 mapf(false,
 	   function(x: object) {
             suv = back(suv)
-put(suv,1, x)
+suv[1] = x
           },
 	   aobjs(winner))] /*)*/,
 	/*(*/ [pa === GLOBALS.put_X_words,
@@ -1226,7 +1226,7 @@ put(suv,1, x)
 			     tell(GLOBALS.losstr),
 			     return(t, rp)] /*)*/),
 		      suv = back(suv),
-		      put(suv,1, x)] /*)*/)
+		      suv[1] = x] /*)*/)
             },
 	     robjs(here)),
 	   mapf(false,
@@ -1235,7 +1235,7 @@ put(suv,1, x)
 		      tell(GLOBALS.losstr),
 		      return(t, rp)] /*)*/)
 suv = back(suv)
-put(suv,1, x)
+suv[1] = x
             },
 	     aobjs(winner)))] /*)*/)
 cond(/*(*/ [empty_Q(suv),
@@ -1260,7 +1260,7 @@ function valuables() {
 			   tell(GLOBALS.losstr),
 			   mapleave()] /*)*/),
 		    suv = back(suv),
-		    put(suv,1, x)] /*)*/)
+		    suv[1] = x] /*)*/)
           },
 	   robjs(here))] /*)*/,
 	/*(*/ [pa === GLOBALS.drop_X_words,
@@ -1268,7 +1268,7 @@ function valuables() {
 	   function(x: object) {
             cond(/*(*/ [!0_Q(otval(x)),
 		    suv = back(suv),
-		    put(suv,1, x)] /*)*/)
+		    suv[1] = x] /*)*/)
           },
 	   aobjs(winner))] /*)*/,
 	/*(*/ [pa === GLOBALS.put_X_words,
@@ -1281,7 +1281,7 @@ function valuables() {
 		      return(t, rp)] /*)*/)
 cond(/*(*/ [ovis_Q(x) && !0_Q(otval(x)),
 		      suv = back(suv),
-		      put(suv,1, x)] /*)*/)
+		      suv[1] = x] /*)*/)
             },
 	     robjs(here)),
 	   mapf(false,
@@ -1291,7 +1291,7 @@ cond(/*(*/ [ovis_Q(x) && !0_Q(otval(x)),
 		      return(t, rp)] /*)*/)
 cond(/*(*/ [!0_Q(otval(x)),
 		      suv = back(suv),
-		      put(suv,1, x)] /*)*/)
+		      suv[1] = x] /*)*/)
             },
 	     aobjs(winner)))] /*)*/)
 cond(/*(*/ [empty_Q(suv),
@@ -1309,7 +1309,7 @@ define(opener, open_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ [
 	      /*(*/ [ocapac(prso) !== 0,
 	       cond(/*(*/ [oopen_Q(prso), tell("It is already open.")] /*)*/,
 		     /*(*/ [t,
-		      put(prso,GLOBALS.oopen_Q,t),
+		      prso[GLOBALS.oopen_Q] = t,
 		      cond(/*(*/ [empty_Q(ocontents(prso)) || transparent_Q(prso),
 			     tell("Opened.")] /*)*/,
 			    /*(*/ [GLOBALS.tell_flag = t,
@@ -1325,7 +1325,7 @@ define(closer, close_act, /*(*/ ["AUX", /*(*/ [pv, GLOBALS.prsvec] /*)*/, /*(*/ 
 	      /*(*/ [!trnn(prso,GLOBALS.contbit),
 	       tell("You must tell me how to do that to a", 1, odesc2(prso), ".")] /*)*/,
 	      /*(*/ [ocapac(prso) !== 0,
-	       cond(/*(*/ [oopen_Q(prso), put(prso,GLOBALS.oopen_Q,false), tell("Closed.")] /*)*/,
+	       cond(/*(*/ [oopen_Q(prso), prso[GLOBALS.oopen_Q] = false, tell("Closed.")] /*)*/,
 		     /*(*/ [t, tell("It is already closed.")] /*)*/)] /*)*/,
 	      /*(*/ [tell("You cannot close that.")] /*)*/))
 
@@ -1435,16 +1435,16 @@ function victims_Q(rm: room) {
 define(lamp_on, lampo, /*(*/ ["AUX", /*(*/ [prsvec, GLOBALS.prsvec] /*)*/, /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, prsvec[2]] /*)*/, /*(*/ [lit_Q,
 							     lit_Q(GLOBALS.here)] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [me] /*)*/, adv, /*(*/ [obj] /*)*/, object, /*(*/ [lampo] /*)*/, activation] /*)*/] /*2*/,
-	cond(/*(*/ [trnn(obj,GLOBALS.burnbit) && prsvec[3] && put(prsvec,1, GLOBALS.burn_X_words),
+	cond(/*(*/ [trnn(obj,GLOBALS.burnbit) && prsvec[3] && prsvec[1] = GLOBALS.burn_X_words,
 	       burner()] /*)*/,
 	      /*(*/ [object_action()] /*)*/,
 	      /*(*/ [cond(/*(*/ [olight_Q(obj) !== 0 && memq(obj,aobjs(me))] /*)*/,
 		     /*(*/ [t, tell("You can't turn that on."), return(t, lampo)] /*)*/),
 	       cond(/*(*/ [olight_Q(obj) > 0, tell("It is already on.")] /*)*/,
-		     /*(*/ [put(obj,GLOBALS.olight_Q,1),
+		     /*(*/ [obj[GLOBALS.olight_Q] = 1,
 		      tell("The", 1, odesc2(obj), "is now on."),
 		      cond(/*(*/ [!lit_Q,
-			     put(GLOBALS.prsvec,2, false),
+			     GLOBALS.prsvec[2] = false,
 			     room_info(false)] /*)*/)] /*)*/)] /*)*/))
 
 define(lamp_off, lampo, /*(*/ ["AUX", /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [obj, GLOBALS.prsvec[2]] /*)*/] /*)*/, 
@@ -1453,7 +1453,7 @@ define(lamp_off, lampo, /*(*/ ["AUX", /*(*/ [me, GLOBALS.winner] /*)*/, /*(*/ [o
 	      /*(*/ [cond(/*(*/ [olight_Q(obj) !== 0 && memq(obj,aobjs(me))] /*)*/,
 		     /*(*/ [tell("You can't turn that off."), return(t, lampo)] /*)*/),
 	       cond(/*(*/ [olight_Q(obj) < 0, tell("It is already off.")] /*)*/,
-		     /*(*/ [put(obj,GLOBALS.olight_Q,_1),
+		     /*(*/ [obj[GLOBALS.olight_Q] = _1,
 		      tell("The", 1, odesc2(obj), "is now off."),
 		      lit_Q(GLOBALS.here) || tell("It is now pitch black.")] /*)*/)] /*)*/))
 
@@ -1488,21 +1488,20 @@ function lex(s: string, sx?: string, silent_Q: atom | false) {
     mapr(false,
 	 function(x: vector(/*[*/ [rest, string] /*]*/)) {
         let str: string = x[1];
-        put(x,1, rest(str,str.length))
+        x[1] = rest(str,str.length)
       },
 	 v)
-cond(/*(*/ [s[1] === _X__Q, put(v,1, substruc("HELP", 0, 4, back(v[1], 4)))] /*)*/,
+cond(/*(*/ [s[1] === _X__Q, v[1] = substruc("HELP", 0, 4, back(v[1], 4))] /*)*/,
     /*(*/ [repeat(/*(*/ [slen] /*)*/,
        /*#*/ [decl, /*(*/ [/*(*/ [slen] /*)*/, fix] /*)*/] /*2*/,
        cond(/*(*/ [s1.length === sx.length || memq(s1[1], brks),
 	 s1.length > sx.length && s1[1] === _X__ || s1[1] === _X__ && !quot && quot = t && v = rest(v),
 	 cond(/*(*/ [s !== s1,
 	   cond(/*(*/ [empty_Q(v), silent_Q || tell("I'm too simple-minded for that.")] /*)*/,
-	    /*(*/ [put(v,		  1,
-		  uppercase(substruc(s,				       0,
+	    /*(*/ [v[1] = uppercase(substruc(s,				       0,
 				       slen = min(_(s.length, s1.length),
 						 5),
-				       back(v[1], slen)))),
+				       back(v[1], slen))),
 	     v = rest(v)] /*)*/)] /*)*/),
 	 cond(/*(*/ [s1.length === sx.length, return(v)] /*)*/),
 	 s = rest(s1)] /*)*/),
@@ -1524,7 +1523,7 @@ function uppercase(str: string) {
     mapr(false,
 	      function(s) {"AUX", /*(*/ [c, ascii(s[1])] /*)*/
         cond(/*(*/ [c > 96 && l__Q(c,122),
-			     put(s,1, ascii(_(c,32)))] /*)*/)
+			     s[1] = ascii(_(c,32))] /*)*/)
       },
 	      str)
   }
@@ -1542,20 +1541,20 @@ repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 function clock_demon(hack: hack) {
     let ca = null;
     let flg: atom | false = false;
-    cond(/*(*/ [GLOBALS.parse_won,	   put(GLOBALS.prsvec,2, false),
-	   put(GLOBALS.prsvec,3, false),
+    cond(/*(*/ [GLOBALS.parse_won,	   GLOBALS.prsvec[2] = false,
+	   GLOBALS.prsvec[3] = false,
 	   mapf(false,
 		 function(ev: cevent) {
             let tick: number = ctick(ev);
             cond(/*(*/ [!cflag(ev)] /*)*/,
 				 /*(*/ [0_Q(tick)] /*)*/,
 				 /*(*/ [tick < 0,
-				  put(GLOBALS.prsvec,1, GLOBALS.c_int_X_words),
+				  GLOBALS.prsvec[1] = GLOBALS.c_int_X_words,
 				  cond(/*(*/ [type_Q(ca = caction(ev), offset),
 					 dispatch(ca)] /*)*/,
 					/*(*/ [apply(ca)] /*)*/)] /*)*/,
-				 /*(*/ [put(ev,GLOBALS.ctick,tick = _(tick,1)),
-				  0_Q(tick) && flg = t && put(GLOBALS.prsvec,1, GLOBALS.c_int_X_words) && cond(/*(*/ [type_Q(ca = caction(ev), offset),
+				 /*(*/ [ev[GLOBALS.ctick] = tick = _(tick,1),
+				  0_Q(tick) && flg = t && GLOBALS.prsvec[1] = GLOBALS.c_int_X_words && cond(/*(*/ [type_Q(ca = caction(ev), offset),
 					      dispatch(ca)] /*)*/,
 					     /*(*/ [apply(ca)] /*)*/)] /*)*/)
           },
@@ -1566,8 +1565,8 @@ gdecl(/*(*/ [clocker] /*)*/, hack)
 
 function clock_int(cev: cevent, num?: number | false, clocker: hack) {
     cond(/*(*/ [!memq(cev,hobjs(clocker)),
-	   put(clocker,GLOBALS.hobjs,/*(*/ [cev,_X,hobjs(clocker)] /*)*/)] /*)*/)
-cond(/*(*/ [num,put(cev,GLOBALS.ctick,num)] /*)*/)
+	   clocker[GLOBALS.hobjs] = /*(*/ [cev,_X,hobjs(clocker)] /*)*/] /*)*/)
+cond(/*(*/ [num,cev[GLOBALS.ctick] = num] /*)*/)
   }
 
 GLOBALS.demons = /*(*/ [] /*)*/
@@ -1588,8 +1587,8 @@ function board() {
 		     /*(*/ [t,
 		      cond(/*(*/ [object_action()] /*)*/,
 			    /*(*/ [tell("You are in the", 1, odesc2(obj), "."),
-		      	     put(win,GLOBALS.avehicle,obj),
-		             put(obj,			          GLOBALS.ocontents,			          /*(*/ [find_obj("#####"), _X,ocontents(obj)] /*)*/)] /*)*/)] /*)*/)] /*)*/,
+		      	     win[GLOBALS.avehicle] = obj,
+		             obj[GLOBALS.ocontents] = /*(*/ [find_obj("#####"), _X,ocontents(obj)] /*)*/] /*)*/)] /*)*/)] /*)*/,
 	      /*(*/ [tell("I suppose you have a theory on boarding",
 		     1,
 		     odesc2(obj),
@@ -1604,8 +1603,8 @@ function unboard() {
 	       cond(/*(*/ [object_action()] /*)*/,
 		     /*(*/ [rtrnn(GLOBALS.here,GLOBALS.rlandbit),
 		      tell("You are on your own feet again."),
-		      put(win,GLOBALS.avehicle,false),
-		      put(obj,			   GLOBALS.ocontents,			   splice_out(find_obj("#####"), ocontents(obj)))] /*)*/,
+		      win[GLOBALS.avehicle] = false,
+		      obj[GLOBALS.ocontents] = splice_out(find_obj("#####"), ocontents(obj))] /*)*/,
 		     /*(*/ [tell("You realize, just in time, that disembarking here would probably be\nfatal.")] /*)*/)] /*)*/,
 	      /*(*/ [tell("You aren't in that!")] /*)*/)
   }
@@ -1625,7 +1624,7 @@ function goto(rm: room) {
 		      remove_object(aobj(win)),
 		      insert_object(aobj(win), rm)] /*)*/),
 	       cond(/*(*/ [av,remove_object(av), insert_object(av,rm)] /*)*/),
-	       put(GLOBALS.winner,GLOBALS.aroom,GLOBALS.here = rm),
+	       GLOBALS.winner[GLOBALS.aroom] = GLOBALS.here = rm,
 	       score_room(rm),
 	       t] /*)*/)
   }
@@ -1640,7 +1639,7 @@ function act_hack() {
 
 function mung_room(rm: room, str: string) {
     rtro(rm,GLOBALS.rmungbit)
-put(rm,GLOBALS.rrand,str)
+rm[GLOBALS.rrand] = str
   }
 
 function command() {

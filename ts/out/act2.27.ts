@@ -30,7 +30,7 @@ function fly_me() {
 	      tell("A deranged giant vampire bat (a reject from WUMPUS) swoops down\nfrom his belfry and lifts you away...."),
 	      goto(find_room(pick_one(bat_drops)))),
 	goto(find_room(pick_one(bat_drops))))
-put(GLOBALS.prsvec,2, false)
+GLOBALS.prsvec[2] = false
 room_desc()
   }
 
@@ -107,11 +107,11 @@ function machine_function() {
        cond(/*(*/ [oopen_Q(mach),
 	      tell(pick_one(dummy))] /*)*/,
 	     /*(*/ [tell("The lid opens."),
-	      put(mach,GLOBALS.oopen_Q,t)] /*)*/)] /*)*/,
+	      mach[GLOBALS.oopen_Q] = t] /*)*/)] /*)*/,
       /*(*/ [vname(prsact) === close_X_words,
        cond(/*(*/ [oopen_Q(mach),
 	      tell("The lid closes."),
-	      put(mach,GLOBALS.oopen_Q,false),
+	      mach[GLOBALS.oopen_Q] = false,
 	      t] /*)*/,
 	     /*(*/ [tell(pick_one(dummy))] /*)*/)] /*)*/,
       /*(*/ [prsact === GLOBALS.take_X_words] /*)*/)] /*)*/)
@@ -130,16 +130,12 @@ function mswitch_function() {
 			 tell("The machine doesn't seem to want to do anything.")] /*)*/,
 			/*(*/ [tell("The machine comes to life (figuratively) with a dazzling display of\ncolored lights and bizarre noises.  After a few moments, the\nexcitement abates."),
 		         cond(/*(*/ [memq(c,ocontents(mach)),
-				put(mach,
-				     GLOBALS.ocontents,
-				     splice_out(c,ocontents(mach))),
-				put(mach,
-				     GLOBALS.ocontents,
-				     /*(*/ [d = find_obj("DIAMO"),
-				      _X,ocontents(mach)] /*)*/),
-				put(d,GLOBALS.ocan,mach)] /*)*/,
+				mach[GLOBALS.ocontents] = splice_out(c,ocontents(mach)),
+				mach[GLOBALS.ocontents] = /*(*/ [d = find_obj("DIAMO"),
+				      _X,ocontents(mach)] /*)*/,
+				d[GLOBALS.ocan] = mach] /*)*/,
 			       /*(*/ [!empty_Q(ocontents(mach)),
-				put(mach,GLOBALS.ocontents,/*(*/ [d = find_obj("GUNK")] /*)*/)] /*)*/,
+				mach[GLOBALS.ocontents] = /*(*/ [d = find_obj("GUNK")] /*)*/] /*)*/,
 			       /*(*/ [t] /*)*/)] /*)*/)] /*)*/,
 		 /*(*/ [tell("It seems that a", 1, odesc2(imp), "won't do.")] /*)*/)] /*)*/)
   }
@@ -148,8 +144,8 @@ function gunk_function() {
     let g: object = find_obj("GUNK");
     let m: object | false = ocan(g);
     cond(/*(*/ [m,
-	 put(m,GLOBALS.ocontents,splice_out(g,ocontents(m))),
-	 put(g,GLOBALS.ocan,false),
+	 m[GLOBALS.ocontents] = splice_out(g,ocontents(m)),
+	 g[GLOBALS.ocan] = false,
 	 tell("The slag turns out to be rather insubstantial, and crumbles into dust\nat your touch.  It must not have been very valuable.")] /*)*/)
   }
 
@@ -278,11 +274,11 @@ function shake() {
 	  /*(*/ [oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)),
 	   mapf(false,
 		 function(x: object) {
-            put(x,GLOBALS.ocan,false)
+            x[GLOBALS.ocan] = false
 insert_object(x,here)
           },
 		 ocontents(prsobj)),
-	   put(prsobj,GLOBALS.ocontents,/*(*/ [] /*)*/),
+	   prsobj[GLOBALS.ocontents] = /*(*/ [] /*)*/,
 	   tell("All of the objects spill onto the floor.")] /*)*/)
   }
 
@@ -296,14 +292,14 @@ function beach_room() {
     let here: room = GLOBALS.here;
     let cnt: number = null;
     cond(/*(*/ [vname(prsact) === dig_X_words && shov === GLOBALS.prsvec[2],
-	   put(here,GLOBALS.rvars,cnt = _(1, rvars(here))),
+	   here[GLOBALS.rvars] = cnt = _(1, rvars(here)),
 	   cond(/*(*/ [cnt > 4,
-		  put(here,GLOBALS.rvars,0),
+		  here[GLOBALS.rvars] = 0,
 		  jigs_up("The hole collapses, smothering you.")] /*)*/,
 		 /*(*/ [cnt === 4,
 		  tell("You can see a small statue here in the sand."),
 		  tro(find_obj("STATU"), GLOBALS.ovison),
-		  put(here,GLOBALS.rvars,cnt)] /*)*/,
+		  here[GLOBALS.rvars] = cnt] /*)*/,
 		 /*(*/ [cnt < 0] /*)*/,
 		 /*(*/ [tell(GLOBALS.bdigs[cnt])] /*)*/)] /*)*/)
   }
@@ -315,7 +311,7 @@ function tcave_room() {
     let cnt: number = null;
     cond(/*(*/ [vname(prsact) === dig_X_words && GLOBALS.prsvec[2] === shov,
 	   cond(/*(*/ [memq(find_obj("GUANO"), robjs(here)),
-		  put(here,GLOBALS.rvars,cnt = _(1, rvars(here))),
+		  here[GLOBALS.rvars] = cnt = _(1, rvars(here)),
 		  cond(/*(*/ [cnt > 3,
 		  	 tell("This is getting you nowhere.")] /*)*/,
 		 	/*(*/ [tell(GLOBALS.cdigs[cnt])] /*)*/)] /*)*/,
@@ -416,15 +412,13 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 		      GLOBALS.burnup_int = clock_int(GLOBALS.brnin,_(osize(prso), 20)),
 		      tro(prso,GLOBALS.flamebit),
 		      trz(prso,_(GLOBALS.takebit,GLOBALS.readbit)),
-		      put(prso,GLOBALS.olight_Q,1),
+		      prso[GLOBALS.olight_Q] = 1,
 		      cond(/*(*/ [GLOBALS.binf_X_flag] /*)*/,
 			    /*(*/ [tell("The cloth bag inflates as it fills with hot air."),
 			     cond(/*(*/ [!GLOBALS.blab_X_flag,
-				    put(ball,
-					 GLOBALS.ocontents,
-					 /*(*/ [blabe = find_obj("BLABE"),
-					  _X,ocontents(ball)] /*)*/),
-				    put(blabe,GLOBALS.ocan,ball)] /*)*/),
+				    ball[GLOBALS.ocontents] = /*(*/ [blabe = find_obj("BLABE"),
+					  _X,ocontents(ball)] /*)*/,
+				    blabe[GLOBALS.ocan] = ball] /*)*/),
 			     GLOBALS.blab_X_flag = t,
 			     GLOBALS.binf_X_flag = prso,
 			     clock_int(GLOBALS.bint,3)] /*)*/)] /*)*/)] /*)*/,
@@ -458,7 +452,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 			    /*(*/ [tell("You hear a boom and notice that the balloon is falling to the ground.")] /*)*/),
 		      GLOBALS.bloc = find_room("VLBOT")] /*)*/,
 		     /*(*/ [substruc(spname(rid(bl)), 0, 4, s),
-		      put(s,5, chtype(_(chtype(m[5], fix), 1), character)),
+		      s[5] = chtype(_(chtype(m[5], fix), 1), character),
 		      cond(/*(*/ [in_Q,
 			     goto(GLOBALS.bloc = find_room(s)),
 			     tell("The balloon ascends."),
@@ -466,7 +460,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 			    /*(*/ [put_balloon(ball,bl,s,"ascends.")] /*)*/)] /*)*/)] /*)*/,
 	      /*(*/ [m = member("LEDG", spname(rid(bl))),
 	       substruc("VAIR", 0, 4, s),
-	       put(s,5, m[5]),
+	       s[5] = m[5],
 	       cond(/*(*/ [in_Q,
 		      goto(GLOBALS.bloc = find_room(s)),
 		      tell("The balloon leaves the ledge."),
@@ -505,12 +499,12 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
 			       /*(*/ [t,
 				remove_object(ball),
 				insert_object(find_obj("DBALL"), GLOBALS.bloc),
-				put(GLOBALS.winner,GLOBALS.avehicle,false),
+				GLOBALS.winner[GLOBALS.avehicle] = false,
 				clock_disable(foo = clock_int(GLOBALS.bint,0)),
 				tell("You have landed, but the balloon did not survive.")] /*)*/)] /*)*/,
 			/*(*/ [put_balloon(ball,bl,"VLBOT", "lands.")] /*)*/)] /*)*/,
 		 /*(*/ [substruc(spname(rid(bl)), 0, 4, s),
-		  put(s,5, chtype(_(chtype(m[5], fix), 1), character)),
+		  s[5] = chtype(_(chtype(m[5], fix), 1), character),
 		  cond(/*(*/ [in_Q,
 			 goto(GLOBALS.bloc = find_room(s)),
 			 tell("The balloon descends."),
@@ -540,7 +534,7 @@ function wire_function() {
 function burnup() {
     let r: object = find_obj("RECEP");
     let obj: object = ocontents(r)[1];
-    put(r,GLOBALS.ocontents,splice_out(obj,ocontents(r)))
+    r[GLOBALS.ocontents] = splice_out(obj,ocontents(r))
 tell("It seems that the", 1, odesc2(obj), "has burned out, and the cloth\nbag starts to collapse.")
 GLOBALS.binf_X_flag = false
   }
@@ -586,7 +580,7 @@ function fuse_function() {
     let oc: object | false = null;
     cond(/*(*/ [prsa === GLOBALS.burn_X_words,
 	       tell("The wire starts to burn."),
-	       put(fuse,GLOBALS.orand,/*[*/ [0, clock_int(GLOBALS.fusin,2)] /*]*/)] /*)*/,
+	       fuse[GLOBALS.orand] = /*[*/ [0, clock_int(GLOBALS.fusin,2)] /*]*/] /*)*/,
 	      /*(*/ [prsa === GLOBALS.c_int_X_words,
 	       trz(fuse,GLOBALS.ovison),
 	       cond(/*(*/ [ocan(fuse) === brick,
@@ -605,7 +599,7 @@ function fuse_function() {
 			     tell("There is an explosion nearby."),
 			     cond(/*(*/ [memq(brick,ocontents(find_obj("SSLOT"))),
 				    trz(find_obj("SSLOT"), GLOBALS.ovison),
-				    put(find_obj("SAFE"), GLOBALS.oopen_Q,t),
+				    find_obj("SAFE")[GLOBALS.oopen_Q] = t,
 				    GLOBALS.safe_flag_X_flag = t] /*)*/)] /*)*/,
 			    /*(*/ [tell("There is an explosion nearby."),
 			     clock_int(GLOBALS.safin,5),
@@ -619,10 +613,10 @@ function fuse_function() {
 			     cond(/*(*/ [brick_room === find_room("LROOM"),
 				    mapf(false,
 					  function(x: object) {
-                        put(x,GLOBALS.ocan,false)
+                        x[GLOBALS.ocan] = false
                       },
 					  ocontents(find_obj("TCASE"))),
-				    put(find_obj("TCASE"), GLOBALS.ocontents,/*(*/ [] /*)*/)] /*)*/)] /*)*/)] /*)*/,
+				    find_obj("TCASE")[GLOBALS.ocontents] = /*(*/ [] /*)*/] /*)*/)] /*)*/)] /*)*/,
 		     /*(*/ [!oroom(fuse) || GLOBALS.here === oroom(fuse),
 		      tell("The wire rapidly burns into nothingness.")] /*)*/)] /*)*/)
   }

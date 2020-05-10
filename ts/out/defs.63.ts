@@ -2,7 +2,7 @@ GLOBALS.muddle < 100 && use("LSRTNS")
 
 // applicables
 newtype(offset, word)
-put(rapplic, decl, () => atom || false || offset)
+rapplic[decl] = () => atom || false || offset
 
 // newtypes for parser
 
@@ -308,13 +308,13 @@ function remove_object(obj: object) {
     let ocan: object | false = null;
     let oroom: false | room = null;
     cond(/*(*/ [ocan = ocan(obj),
-	       put(ocan,GLOBALS.ocontents,splice_out(obj,ocontents(ocan)))] /*)*/,
+	       ocan[GLOBALS.ocontents] = splice_out(obj,ocontents(ocan))] /*)*/,
 	      /*(*/ [oroom = oroom(obj),
-	       put(oroom,GLOBALS.robjs,splice_out(obj,robjs(oroom)))] /*)*/,
+	       oroom[GLOBALS.robjs] = splice_out(obj,robjs(oroom))] /*)*/,
 	      /*(*/ [memq(obj,robjs(GLOBALS.here)),
-	       put(GLOBALS.here,GLOBALS.robjs,splice_out(obj,robjs(GLOBALS.here)))] /*)*/)
-put(obj,GLOBALS.oroom,false)
-put(obj,GLOBALS.ocan,false)
+	       GLOBALS.here[GLOBALS.robjs] = splice_out(obj,robjs(GLOBALS.here))] /*)*/)
+obj[GLOBALS.oroom] = false
+obj[GLOBALS.ocan] = false
   }
 
 defmac(insert_object, /*(*/ [() => obj,() => room] /*)*/,
@@ -330,7 +330,7 @@ defmac(drop_object, /*(*/ [() => obj,"OPTIONAL", /*(*/ [() => winner,() => GLOBA
 
 function kill_obj(obj: object, winner: adv) {
     cond(/*(*/ [memq(obj,aobjs(winner)),
-	       put(winner,GLOBALS.aobjs,splice_out(obj,aobjs(winner)))] /*)*/,
+	       winner[GLOBALS.aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
 	      /*(*/ [remove_object(obj)] /*)*/)
   }
 
@@ -350,7 +350,7 @@ function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
     mapf(false,
     function(x: object) {
         cond(/*(*/ [otval(x) > 0 && !trnn(x,GLOBALS.sacredbit),
-	     put(win,GLOBALS.aobjs,splice_out(x,aobjs(win))),
+	     win[GLOBALS.aobjs] = splice_out(x,aobjs(win)),
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/)
       },
     aobjs(win))
@@ -363,7 +363,7 @@ function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), prob: num
     function(x: object) {
         cond(/*(*/ [otval(x) > 0 && !trnn(x,GLOBALS.sacredbit) && ovis_Q(x) && prob(prob),
 	     remove_object(x),
-	     put(x,GLOBALS.otouch_Q,t),
+	     x[GLOBALS.otouch_Q] = t,
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/,
 	    /*(*/ [type_Q(orand(x), adv),
 	     newlist = rob_adv(orand(x), newlist)] /*)*/)
