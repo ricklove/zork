@@ -1,22 +1,22 @@
-words = (words[oblist] || moblist(words, 23))
+G_words = (words[oblist] || moblist(words, 23))
 
-object_obl = (objects[oblist] || moblist(objects, 23))
+G_object_obl = (objects[oblist] || moblist(objects, 23))
 
-actions = moblist(actions, 17)
+G_actions = moblist(actions, 17)
 
-orphans = /*[*/ [false, false, false, false, false] /*]*/
+G_orphans = /*[*/ [false, false, false, false, false] /*]*/
 
 cond(/*(*/ [(lookup(`COMPILE`, root()) || gassigned_Q(group_glue))] /*)*/,
-      /*(*/ [prepvec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
+      /*(*/ [G_prepvec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
 	      chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase)] /*]*/,
-       prep2vec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
+       G_prep2vec = /*[*/ [chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase),
 	      chtype(/*[*/ [find_prep(`WITH`), find_obj(`#####`)] /*]*/, phrase)] /*]*/] /*)*/)
 
 define(sparse, sparout, /*(*/ [sv, vb,
-			`AUX`, /*(*/ [words, words] /*)*/, /*(*/ [objob, object_obl] /*)*/, /*(*/ [pv, prsvec] /*)*/,
+			`AUX`, /*(*/ [words, G_words] /*)*/, /*(*/ [objob, G_object_obl] /*)*/, /*(*/ [pv, G_prsvec] /*)*/,
 			      /*(*/ [pvr, rest(pv)[1] = false[2] = false] /*)*/,
-			      /*(*/ [actions, actions] /*)*/, /*(*/ [dirs, directions] /*)*/, /*(*/ [orph, orphans] /*)*/,
-			      /*(*/ [orfl, oflag(orph)] /*)*/, /*(*/ [prv, prepvec] /*)*/, /*(*/ [here, here] /*)*/,
+			      /*(*/ [actions, G_actions] /*)*/, /*(*/ [dirs, G_directions] /*)*/, /*(*/ [orph, G_orphans] /*)*/,
+			      /*(*/ [orfl, oflag(orph)] /*)*/, /*(*/ [prv, G_prepvec] /*)*/, /*(*/ [here, G_here] /*)*/,
 			      /*(*/ [action, false] /*)*/, /*(*/ [prep, false] /*)*/, nprep, /*(*/ [adj, false] /*)*/, atm, aval, obj,
 			      pprep, lobj, val] /*)*/,
    /*#*/ [decl, /*(*/ [/*(*/ [sv] /*)*/, vector(/*[*/ [rest, string] /*]*/), /*(*/ [vb, orfl] /*)*/, (atom || false),
@@ -30,7 +30,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
 	 /*(*/ [(!action && atm = lookup(x,actions)),
 	  action = /*,*/ [atm] /*1*/] /*)*/,
 	 /*(*/ [(!action && atm = lookup(x,dirs)),
-	  pv[1] = walk_X_words,
+	  pv[1] = G_walk_X_words,
 	  pv[2] = /*,*/ [atm] /*1*/,
 	  return(win, sparout)] /*)*/,
 	 /*(*/ [(atm = lookup(x,words) && cond(/*(*/ [type_Q(aval = /*,*/ [atm] /*1*/, prep),
@@ -58,10 +58,10 @@ define(sparse, sparout, /*(*/ [sv, vb,
 			      cond(/*(*/ [adj,				     tell(` `, 0, prstr(chtype(adj,atom)))] /*)*/),
 			      tell(` `, 0, prstr(atm), ` here.`)] /*)*/,
 			     /*(*/ [tell(`It is too dark in here to see.`, 0)] /*)*/))] /*)*/,
-		  /*(*/ [obj === nefals2,
+		  /*(*/ [obj === G_nefals2,
 		   (vb || tell(`I can't reach that from inside the `,
 			     0,
-			     odesc2(avehicle(winner)),
+			     odesc2(avehicle(G_winner)),
 			     `.`))] /*)*/,
 		  /*(*/ [(vb || tell(`Which `, 0, prstr(atm), `?`)),
 		   orphan(t,
@@ -98,7 +98,7 @@ export function sp(str) {
   }
 
 export function orphan(flag?: (atom | false), action, slot1, prep, name: (atom | false)) {
-    orphans[oname] = name[oprep] = prep[oslot1] = slot1[overb] = action[oflag] = flag;
+    G_orphans[G_oname] = name[G_oprep] = prep[G_oslot1] = slot1[G_overb] = action[G_oflag] = flag;
   }
 
 export function syn_match(pv: vector) {
@@ -142,19 +142,19 @@ export function take_it_or_leave_it(syn: syntax, pv: vector) {
     let varg: varg = null;
     pv[2] = obj = cond(/*(*/ [type_Q(pv1,object), pv1] /*)*/,
 			/*(*/ [type_Q(pv1,phrase), pv1[2]] /*)*/);
-cond(/*(*/ [vtrnn(varg = syn1(syn), vrbit),
+cond(/*(*/ [vtrnn(varg = syn1(syn), G_vrbit),
 	       take_it(obj,pv,varg)] /*)*/);
 pv[3] = obj = cond(/*(*/ [type_Q(pv2,object), pv2] /*)*/,
 			/*(*/ [type_Q(pv2,phrase), pv2[2]] /*)*/);
-cond(/*(*/ [vtrnn(varg = syn2(syn), vrbit),
+cond(/*(*/ [vtrnn(varg = syn2(syn), G_vrbit),
 	       take_it(obj,pv,varg)] /*)*/);
   }
 
 export function take_it(obj: object, vec: vector, vrb: varg) {
     let sav1: verb = vec[1];
     let sav2: (false | object) = vec[2];
-    cond(/*(*/ [(search_list(oid(obj), robjs(here), false) && (can_take_Q(obj) || !vtrnn(vrb,vtbit))),
-	       vec[1] = take_X_words,
+    cond(/*(*/ [(search_list(oid(obj), robjs(G_here), false) && (can_take_Q(obj) || !vtrnn(vrb,G_vtbit))),
+	       vec[1] = G_take_X_words,
 	       vec[2] = obj,
 	       take(t),
 	       vec[1] = sav1,
@@ -162,7 +162,7 @@ export function take_it(obj: object, vec: vector, vrb: varg) {
   }
 
 export function orfeo(syn: varg, objs: vector) {
-    let orph: vector = orphans;
+    let orph: vector = G_orphans;
     let orfl: (atom | false) = oflag(orph);
     let slot1: (false | phrase | object) = null;
     cond(/*(*/ [!orfl, false] /*)*/,
@@ -181,7 +181,7 @@ false;
 
 export function prstr(atm: atom) {
     let sp: string = null;
-    foostr(sp = spname(atm), back(scrstr,sp.length), false);
+    foostr(sp = spname(atm), back(G_scrstr,sp.length), false);
   }
 
 export function foostr(nam: string, str: string, 1st?: (atom | false)) {
@@ -205,20 +205,20 @@ export function gwim_slot(fx: number, varg: varg, action: action, objs: vector) 
  TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY`
 
 export function gwim(bit: number, fword: varg, action: action) {
-    let aobj: (atom | false) = vtrnn(fword,vabit);
-    let ntake: (atom | false) = vtrnn(fword,vtbit);
-    let robj: (atom | false) = vtrnn(fword,vrbit);
+    let aobj: (atom | false) = vtrnn(fword,G_vabit);
+    let ntake: (atom | false) = vtrnn(fword,G_vtbit);
+    let robj: (atom | false) = vtrnn(fword,G_vrbit);
     let obj: (atom | false) = false;
     let nobj: (object | false) = null;
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let savobj: (false | object | phrase) = null;
-    let av: (object | false) = avehicle(winner);
+    let av: (object | false) = avehicle(G_winner);
     let sf = null;
-    (aobj && obj = fwim(bit,aobjs(winner), ntake));
-cond(/*(*/ [robj,	       cond(/*(*/ [(nobj = fwim(bit,robjs(here), ntake) && (!av || av === nobj || memq(nobj,ocontents(av)) || trnn(nobj,findmebit))),
-		      cond(/*(*/ [((savobj = pv[2] || t) && !obj && (sf = pv[1] || t) && pv[1] = take_X_words && pv[2] = nobj && (action === pv[1] || ntake || take()) && pv[2] = savobj && pv[1] = sf && nobj)] /*)*/,
+    (aobj && obj = fwim(bit,aobjs(G_winner), ntake));
+cond(/*(*/ [robj,	       cond(/*(*/ [(nobj = fwim(bit,robjs(G_here), ntake) && (!av || av === nobj || memq(nobj,ocontents(av)) || trnn(nobj,G_findmebit))),
+		      cond(/*(*/ [((savobj = pv[2] || t) && !obj && (sf = pv[1] || t) && pv[1] = G_take_X_words && pv[2] = nobj && (action === pv[1] || ntake || take()) && pv[2] = savobj && pv[1] = sf && nobj)] /*)*/,
 			    /*(*/ [pv[2] = savobj, false] /*)*/)] /*)*/,
-		     /*(*/ [(nobj || !empty_Q(nobj)), nefals] /*)*/,
+		     /*(*/ [(nobj || !empty_Q(nobj)), G_nefals] /*)*/,
 		     /*(*/ [obj] /*)*/)] /*)*/,
 	      /*(*/ [obj] /*)*/);
   }
@@ -226,7 +226,7 @@ cond(/*(*/ [robj,	       cond(/*(*/ [(nobj = fwim(bit,robjs(here), ntake) && (!a
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
 export function make_action(`TUPLE`, specs) {`AUX`, vv, sum, /*(*/ [prep, false] /*)*/, atm
-    chtype(mapf(uvector,     function(sp: vector) {
+    chtype(mapf(G_uvector,     function(sp: vector) {
           let syn: vector = ivector(5, false);
           let whr: number = 1;
           mapf(false,
@@ -240,42 +240,42 @@ export function make_action(`TUPLE`, specs) {`AUX`, vv, sum, /*(*/ [prep, false]
 				  vv[2] = prep,
 				  sum = 0,
 				  prep = false,
-				  (memq(aobjs, itm) && sum = _(sum,vabit)),
-				  (memq(robjs, itm) && sum = _(sum,vrbit)),
-				  (memq(no_take, itm) && sum = _(sum,vtbit)),
-				  (memq(_, itm) && sum = _(sum,vxbit)),
+				  (memq(aobjs, itm) && sum = _(sum,G_vabit)),
+				  (memq(robjs, itm) && sum = _(sum,G_vrbit)),
+				  (memq(no_take, itm) && sum = _(sum,G_vtbit)),
+				  (memq(_, itm) && sum = _(sum,G_vxbit)),
 				  vv[3] = sum,
 				  syn[whr] = chtype(vv,varg),
 				  whr = _(whr,1)] /*)*/,
 				 /*(*/ [type_Q(itm,vector),
 				  cond(/*(*/ [gassigned_Q(atm = add_word(itm[1])),
-					 syn[sfcn] = /*,*/ [atm] /*1*/] /*)*/,
-					/*(*/ [syn[sfcn] = setg(atm = add_word(itm[1]),
+					 syn[G_sfcn] = /*,*/ [atm] /*1*/] /*)*/,
+					/*(*/ [syn[G_sfcn] = setg(atm = add_word(itm[1]),
 						    chtype(/*[*/ [atm,itm[2]] /*]*/, verb))] /*)*/)] /*)*/,
-				 /*(*/ [itm === driver, syn[sdriver] = t] /*)*/,
-				 /*(*/ [itm === flip, syn[sflip] = t] /*)*/);
+				 /*(*/ [itm === driver, syn[G_sdriver] = t] /*)*/,
+				 /*(*/ [itm === flip, syn[G_sflip] = t] /*)*/);
             },
 		   sp);
-(syn1(syn) || syn[syn1] = evarg);
-(syn2(syn) || syn[syn2] = evarg);
+(syn1(syn) || syn[G_syn1] = G_evarg);
+(syn2(syn) || syn[G_syn2] = G_evarg);
 chtype(syn,syntax);
         },
      specs),
     vspec);
   }
 
-evarg = chtype(/*[*/ [0, false, 0] /*]*/, varg)
+G_evarg = chtype(/*[*/ [0, false, 0] /*]*/, varg)
 
 export function syn_equal(varg: varg, pobj: (false | phrase | object)) {
     let vbit: number = vbit(varg);
     cond(/*(*/ [type_Q(pobj,phrase),
-	   (vprep(varg) === pobj[1] && (!vtrnn(varg,vxbit) || trnn(pobj[2], vbit)))] /*)*/,
+	   (vprep(varg) === pobj[1] && (!vtrnn(varg,G_vxbit) || trnn(pobj[2], vbit)))] /*)*/,
 	  /*(*/ [type_Q(pobj,object),
-	   (!vprep(varg) && (!vtrnn(varg,vxbit) || trnn(pobj,vbit)))] /*)*/,
+	   (!vprep(varg) && (!vtrnn(varg,G_vxbit) || trnn(pobj,vbit)))] /*)*/,
 	  /*(*/ [(!pobj && 0_Q(vbit))] /*)*/);
   }
 
-directions = moblist(directions)
+G_directions = moblist(directions)
 
 export function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: (atom | false)) {
     let val: any = null;
@@ -285,9 +285,9 @@ export function eparse(pv: vector(/*[*/ [rest, string] /*]*/), vb: (atom | false
 	      /*(*/ [(vb || tell(``)), false] /*)*/);
   }
 
-scrstr = rest(istring(5), 5)
+G_scrstr = rest(istring(5), 5)
 
-ssv = ivector(10, false)
+G_ssv = ivector(10, false)
 
 `GET-OBJECT:  TAKES ATOM (FROM OBJECTS OBLIST), VERBOSITY FLAG.  GROVELS
 OVER: ,STARS; ,HERE; ,WINNER LOOKING FOR OBJECT (LOOKS DOWN TO ONE LEVEL
@@ -295,39 +295,39 @@ OF CONTAINMENT).  RETURNS <> IF NOT FOUND OR FOUND MORE THAN ONE, THE
 OBJECT OTHERWISE.`
 
 define(get_object, get_obj, /*(*/ [objnam, adj,
-			    `AUX`, obj, /*(*/ [oobj, false] /*)*/, /*(*/ [here, here] /*)*/,
-				  /*(*/ [av, avehicle(winner)] /*)*/, /*(*/ [chomp, false] /*)*/] /*)*/,
+			    `AUX`, obj, /*(*/ [oobj, false] /*)*/, /*(*/ [here, G_here] /*)*/,
+				  /*(*/ [av, avehicle(G_winner)] /*)*/, /*(*/ [chomp, false] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [oobj, obj, av] /*)*/, (object || false), /*(*/ [objnam] /*)*/, atom, /*(*/ [here] /*)*/, room,
 	       /*(*/ [adj] /*)*/, (adjective || false), /*(*/ [chomp] /*)*/, (atom || false),
 	       /*(*/ [objl] /*)*/, (false || list(/*[*/ [rest, object] /*]*/))] /*)*/] /*2*/,
-	cond(/*(*/ [obj = search_list(objnam,stars,adj), oobj = obj] /*)*/,
-	      /*(*/ [!empty_Q(obj), return(nefals,get_obj)] /*)*/),
-	cond(/*(*/ [(lit_Q(here) && obj = search_list(objnam,robjs(here), adj)),
-	       cond(/*(*/ [(av && obj !== av && !memq(obj,ocontents(av)) && !trnn(obj,findmebit)),
+	cond(/*(*/ [obj = search_list(objnam,G_stars,adj), oobj = obj] /*)*/,
+	      /*(*/ [!empty_Q(obj), return(G_nefals,get_obj)] /*)*/),
+	cond(/*(*/ [(lit_Q(here) && obj = search_list(objnam,robjs(G_here), adj)),
+	       cond(/*(*/ [(av && obj !== av && !memq(obj,ocontents(av)) && !trnn(obj,G_findmebit)),
 		      chomp = t] /*)*/,
-		     /*(*/ [oobj,return(nefals,get_obj)] /*)*/,
+		     /*(*/ [oobj,return(G_nefals,get_obj)] /*)*/,
 		     /*(*/ [oobj = obj] /*)*/)] /*)*/,
-	      /*(*/ [(!obj && !empty_Q(obj)), return(nefals,get_obj)] /*)*/),
+	      /*(*/ [(!obj && !empty_Q(obj)), return(G_nefals,get_obj)] /*)*/),
 	cond(/*(*/ [av,	       cond(/*(*/ [obj = search_list(objnam,ocontents(av), adj),
 		      chomp = false,
 		      oobj = obj] /*)*/,
-		     /*(*/ [!empty_Q(obj), return(nefals,get_obj)] /*)*/)] /*)*/),
-	cond(/*(*/ [obj = search_list(objnam,aobjs(winner), adj),
-	       cond(/*(*/ [oobj,nefals] /*)*/, /*(*/ [obj] /*)*/)] /*)*/,
-	      /*(*/ [!empty_Q(obj), nefals] /*)*/,
-	      /*(*/ [chomp,nefals2] /*)*/,
+		     /*(*/ [!empty_Q(obj), return(G_nefals,get_obj)] /*)*/)] /*)*/),
+	cond(/*(*/ [obj = search_list(objnam,aobjs(G_winner), adj),
+	       cond(/*(*/ [oobj,G_nefals] /*)*/, /*(*/ [obj] /*)*/)] /*)*/,
+	      /*(*/ [!empty_Q(obj), G_nefals] /*)*/,
+	      /*(*/ [chomp,G_nefals2] /*)*/,
 	      /*(*/ [oobj] /*)*/))
 
 `SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.
 IF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO
 ONE LEVEL OF CONTAINMENT.`
 
-nefals = /*#*/ [false, /*(*/ [1] /*)*/] /*2*/
+G_nefals = /*#*/ [false, /*(*/ [1] /*)*/] /*2*/
 
-nefals2 = /*#*/ [false, /*(*/ [2] /*)*/] /*2*/
+G_nefals2 = /*#*/ [false, /*(*/ [2] /*)*/] /*2*/
 
 define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, t] /*)*/, `AUX`, /*(*/ [oobj, false] /*)*/,
-			/*(*/ [nefals, nefals] /*)*/, nobj] /*)*/, 
+			/*(*/ [nefals, G_nefals] /*)*/, nobj] /*)*/, 
    /*#*/ [decl, /*(*/ [/*(*/ [objnam] /*)*/, atom, /*(*/ [slist] /*)*/, list(/*[*/ [rest, object] /*]*/),
 	  /*(*/ [oobj, nobj] /*)*/, (false || object), /*(*/ [adj] /*)*/, (false || adjective),
 	  /*(*/ [first_Q] /*)*/, (atom || false), /*(*/ [nefals] /*)*/, false] /*)*/] /*2*/,
@@ -335,7 +335,7 @@ define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, t
     function(obj: object) {
         cond(/*(*/ [this_it_Q(objnam,obj,adj),
 		   cond(/*(*/ [oobj,return(nefals,sl)] /*)*/, /*(*/ [oobj = obj] /*)*/)] /*)*/);
-cond(/*(*/ [(ovis_Q(obj) && (oopen_Q(obj) || transparent_Q(obj)) && (first_Q || trnn(obj,searchbit))),
+cond(/*(*/ [(ovis_Q(obj) && (oopen_Q(obj) || transparent_Q(obj)) && (first_Q || trnn(obj,G_searchbit))),
 	      cond(/*(*/ [nobj = search_list(objnam,ocontents(obj), adj,false),
 		     cond(/*(*/ [oobj,return(nefals,sl)] /*)*/,
 			   /*(*/ [oobj = nobj] /*)*/)] /*)*/,
@@ -353,13 +353,13 @@ define(fwim, dwim, /*(*/ [bit, objs, no_take, `AUX`, /*(*/ [nobj, false] /*)*/] 
    mapf(false,
     function(x: object) {
         cond(/*(*/ [(ovis_Q(x) && (no_take || can_take_Q(x)) && trnn(x,bit)),
-		   cond(/*(*/ [nobj,return(nefals,dwim)] /*)*/),
+		   cond(/*(*/ [nobj,return(G_nefals,dwim)] /*)*/),
 		   nobj = x] /*)*/);
 cond(/*(*/ [(ovis_Q(x) && oopen_Q(x)),
 	      mapf(false,
 		    function(x: object) {
                 cond(/*(*/ [(ovis_Q(x) && trnn(x,bit)),
-				   cond(/*(*/ [nobj,return(nefals,dwim)] /*)*/,
+				   cond(/*(*/ [nobj,return(G_nefals,dwim)] /*)*/,
 					 /*(*/ [nobj = x] /*)*/)] /*)*/);
               },
 		    ocontents(x))] /*)*/);

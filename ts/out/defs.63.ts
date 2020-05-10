@@ -1,4 +1,4 @@
-(muddle < 100 && use(`LSRTNS`))
+(G_muddle < 100 && use(`LSRTNS`))
 
 // applicables
 newtype(offset, word)
@@ -20,15 +20,15 @@ defmac(trnn, /*(*/ [() => obj,() => bit] /*)*/,
 defmac(rtrnn, /*(*/ [() => rm,() => bit] /*)*/,
   form(n_EQ_Q, form(chtype, form(andb, bit,form(rbits, rm)), fix), 0))
 defmac(rtrz, /*(*/ [() => rm,() => bit] /*)*/,
-  form(put, rm,rbits,form(andb, form(rbits, rm), form(xorb, bit,_1))))
+  form(put, rm,G_rbits,form(andb, form(rbits, rm), form(xorb, bit,_1))))
 defmac(trc, /*(*/ [() => obj,() => bit] /*)*/,
-  form(put, obj,oflags,form(xorb, form(oflags, obj), bit)))
+  form(put, obj,G_oflags,form(xorb, form(oflags, obj), bit)))
 defmac(trz, /*(*/ [() => obj,() => bit] /*)*/,
-  form(put, obj,oflags,form(andb, form(oflags, obj), form(xorb, bit,_1))))
+  form(put, obj,G_oflags,form(andb, form(oflags, obj), form(xorb, bit,_1))))
 defmac(tro, /*(*/ [() => obj,() => bit] /*)*/,
-  form(put, obj,oflags,form(orb, form(oflags, obj), bit)))
+  form(put, obj,G_oflags,form(orb, form(oflags, obj), bit)))
 defmac(rtro, /*(*/ [() => rm,() => bit] /*)*/,
-  form(put, rm,rbits,form(orb, form(rbits, rm), bit)))
+  form(put, rm,G_rbits,form(orb, form(rbits, rm), bit)))
 
 \
 
@@ -127,7 +127,7 @@ newstruc(verb, vector,
 
 // ORPHANS -- mysterious vector of orphan data
 
-export let orphans: vector((false | atom),
+export let G_orphans: vector((false | atom),
 	       (false | verb),
 	       (false | object),
 	       (false | prep),
@@ -228,14 +228,14 @@ flagword(ovison,    ovis_Q,		// visible?,
 msetg(ovisoff, _777777777776_)
 
 `can i be opened?`
-defmac(openable_Q, /*(*/ [() => obj] /*)*/, form(trnn, obj,form(_, doorbit,contbit)))
+defmac(openable_Q, /*(*/ [() => obj] /*)*/, form(trnn, obj,form(_, G_doorbit,G_contbit)))
 
 `complement of the bit state` 
-defmac(describable_Q, /*(*/ [() => obj] /*)*/, form(not, form(trnn, obj,ndescbit)))
+defmac(describable_Q, /*(*/ [() => obj] /*)*/, form(not, form(trnn, obj,G_ndescbit)))
 
 `if object is a light or aflame, then flaming`
 defmac(flaming_Q, /*(*/ [() => obj] /*)*/,
-    form(and, form(trnn, obj,flamebit), form(1_Q, form(olight_Q, obj))))
+    form(and, form(trnn, obj,G_flamebit), form(1_Q, form(olight_Q, obj))))
 
 `if object visible and open or transparent, can see inside it`
 defmac(see_inside_Q, /*(*/ [() => obj] /*)*/,
@@ -266,11 +266,11 @@ newstruc(cevent, vector,
 \
 
 
-load_max = 100
-score_max = 0
+G_load_max = 100
+G_score_max = 0
 
-export let raw_score: number;export let load_max: number;export let score_max: number;export let random_list: list(/*[*/ [rest, room] /*]*/);export let rooms: list(/*[*/ [rest, room] /*]*/);export let sacred_places: list(/*[*/ [rest, room] /*]*/);export let stars: list(/*[*/ [rest, object] /*]*/);export let objects: list(/*[*/ [rest, object] /*]*/);export let weapons: list(/*[*/ [rest, object] /*]*/);export let nasties: list(/*[*/ [rest, object] /*]*/);export let prsvec: vector((false | verb), (false | object | direction),
-					(false | object));export let winner: adv;export let player: adv;export let here: room;export let inchan: channel;export let outchan: channel;export let demons: list;export let moves: number;export let deaths: number;export let dummy: vector(/*[*/ [rest, string] /*]*/);export let yuks: vector(/*[*/ [rest, string] /*]*/);export let sword_demon: hack;
+export let G_raw_score: number;export let G_load_max: number;export let G_score_max: number;export let G_random_list: list(/*[*/ [rest, room] /*]*/);export let G_rooms: list(/*[*/ [rest, room] /*]*/);export let G_sacred_places: list(/*[*/ [rest, room] /*]*/);export let G_stars: list(/*[*/ [rest, object] /*]*/);export let G_objects: list(/*[*/ [rest, object] /*]*/);export let G_weapons: list(/*[*/ [rest, object] /*]*/);export let G_nasties: list(/*[*/ [rest, object] /*]*/);export let G_prsvec: vector((false | verb), (false | object | direction),
+					(false | object));export let G_winner: adv;export let G_player: adv;export let G_here: room;export let G_inchan: channel;export let G_outchan: channel;export let G_demons: list;export let G_moves: number;export let G_deaths: number;export let G_dummy: vector(/*[*/ [rest, string] /*]*/);export let G_yuks: vector(/*[*/ [rest, string] /*]*/);export let G_sword_demon: hack;
 
 \
 
@@ -303,34 +303,34 @@ export function remove_object(obj: object) {
     let ocan: (object | false) = null;
     let oroom: (false | room) = null;
     cond(/*(*/ [ocan = ocan(obj),
-	       ocan[ocontents] = splice_out(obj,ocontents(ocan))] /*)*/,
+	       ocan[G_ocontents] = splice_out(obj,ocontents(ocan))] /*)*/,
 	      /*(*/ [oroom = oroom(obj),
-	       oroom[robjs] = splice_out(obj,robjs(oroom))] /*)*/,
-	      /*(*/ [memq(obj,robjs(here)),
-	       here[robjs] = splice_out(obj,robjs(here))] /*)*/);
-obj[oroom] = false;
-obj[ocan] = false;
+	       oroom[G_robjs] = splice_out(obj,robjs(oroom))] /*)*/,
+	      /*(*/ [memq(obj,robjs(G_here)),
+	       G_here[G_robjs] = splice_out(obj,robjs(G_here))] /*)*/);
+obj[G_oroom] = false;
+obj[G_ocan] = false;
   }
 
 defmac(insert_object, /*(*/ [() => obj,() => room] /*)*/,
 	form(put,
-	      room,	      robjs,	      /*(*/ [form(put, obj,oroom,room), chtype(form(robjs, room), segment)] /*)*/))
+	      room,	      G_robjs,	      /*(*/ [form(put, obj,G_oroom,room), chtype(form(robjs, room), segment)] /*)*/))
 
-defmac(take_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => winner] /*)*/] /*)*/,
+defmac(take_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_winner] /*)*/] /*)*/,
 	form(put,
-	      winner,	      aobjs,	      /*(*/ [form(put, obj,oroom,false), chtype(form(aobjs, winner), segment)] /*)*/))
+	      winner,	      G_aobjs,	      /*(*/ [form(put, obj,G_oroom,false), chtype(form(aobjs, winner), segment)] /*)*/))
 
-defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => winner] /*)*/] /*)*/,
-	form(put, winner,aobjs,form(splice_out, obj,form(aobjs, winner))))
+defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_winner] /*)*/] /*)*/,
+	form(put, winner,G_aobjs,form(splice_out, obj,form(aobjs, winner))))
 
 export function kill_obj(obj: object, winner: adv) {
     cond(/*(*/ [memq(obj,aobjs(winner)),
-	       winner[aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
+	       winner[G_aobjs] = splice_out(obj,aobjs(winner))] /*)*/,
 	      /*(*/ [remove_object(obj)] /*)*/);
   }
 
 export function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
-    let winner: adv = winner;
+    let winner: adv = G_winner;
     mapf(false,
 	function(x) {
         let y: object = find_obj(x);
@@ -344,8 +344,8 @@ export function flush_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
 export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
     mapf(false,
     function(x: object) {
-        cond(/*(*/ [(otval(x) > 0 && !trnn(x,sacredbit)),
-	     win[aobjs] = splice_out(x,aobjs(win)),
+        cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit)),
+	     win[G_aobjs] = splice_out(x,aobjs(win)),
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/);
       },
     aobjs(win));
@@ -356,9 +356,9 @@ export function rob_adv(win: adv, newlist: list(/*[*/ [rest, object] /*]*/)) {
 export function rob_room(rm: room, newlist: list(/*[*/ [rest, object] /*]*/), prob: number) {
     mapf(false,
     function(x: object) {
-        cond(/*(*/ [(otval(x) > 0 && !trnn(x,sacredbit) && ovis_Q(x) && prob(prob)),
+        cond(/*(*/ [(otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob)),
 	     remove_object(x),
-	     x[otouch_Q] = t,
+	     x[G_otouch_Q] = t,
 	     newlist = /*(*/ [x,_X,newlist] /*)*/] /*)*/,
 	    /*(*/ [type_Q(orand(x), adv),
 	     newlist = rob_adv(orand(x), newlist)] /*)*/);
@@ -375,7 +375,7 @@ export function valuables_Q(adv: adv) {
   }
 
 export function armed_Q(adv: adv) {
-    let weapons = weapons;
+    let weapons = G_weapons;
     mapf(false,
     function(x: object) {
         cond(/*(*/ [memq(x,weapons),
@@ -395,7 +395,7 @@ export function light_source(me: adv) {
 
 export function get_demon(id: string) {
     let obj: object = find_obj(id);
-    let dems: list(/*[*/ [rest, hack] /*]*/) = demons;
+    let dems: list(/*[*/ [rest, hack] /*]*/) = G_demons;
     mapf(false,
     function(x: hack) {
         cond(/*(*/ [hobj(x) === obj, mapleave(x)] /*)*/);
@@ -407,16 +407,16 @@ defmac(pick_one, /*(*/ [() => vec] /*)*/,
 	form(nth, vec,form(_, 1, form(mod, form(random), form(length, vec)))))
 
 defmac(clock_disable, /*(*/ [() => ev] /*)*/,
-    form(put, ev,cflag,false))
+    form(put, ev,G_cflag,false))
 
 defmac(clock_enable, /*(*/ [() => ev] /*)*/,
-    form(put, ev,cflag,t))
+    form(put, ev,G_cflag,t))
 
 export function yes_no(no_is_bad_Q: (atom | false)) {
-    let inbuf: string = inbuf;
-    let inchan = inchan;
+    let inbuf: string = G_inbuf;
+    let inchan = G_inchan;
     reset(inchan);
-readstring(inbuf,inchan,reader_string);
+readstring(inbuf,inchan,G_reader_string);
 cond(/*(*/ [no_is_bad_Q,	       !memq(inbuf[1], `NnfF`)] /*)*/,
 	      /*(*/ [t,
 	       memq(inbuf[1], `TtYy`)] /*)*/);
@@ -455,12 +455,12 @@ export function find_room(id: (atom | string)) {
     let atm: (atom | false) = null;
     let room: room = null;
     cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
-cond(/*(*/ [(atm = lookup(id,room_obl) && gassigned_Q(atm)),
+cond(/*(*/ [(atm = lookup(id,G_room_obl) && gassigned_Q(atm)),
 		    /*,*/ [atm] /*1*/] /*)*/,
-	      /*(*/ [(atm || atm = insert(id,room_obl)),
-	       setg(atm,		     room = chtype(vector(atm,null_desc,null_desc,					  false, false, null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
+	      /*(*/ [(atm || atm = insert(id,G_room_obl)),
+	       setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
 				 room)),
-	       rooms = /*(*/ [room,_X,rooms] /*)*/,
+	       G_rooms = /*(*/ [room,_X,G_rooms] /*)*/,
 	       room] /*)*/);
   }
 
@@ -468,13 +468,13 @@ export function find_obj(id: (atom | string)) {
     let obj: object = null;
     let atm: (atom | false) = null;
     cond(/*(*/ [type_Q(id,atom), id = spname(id)] /*)*/);
-cond(/*(*/ [(atm = lookup(id,object_obl) && gassigned_Q(atm)),
+cond(/*(*/ [(atm = lookup(id,G_object_obl) && gassigned_Q(atm)),
 	       /*,*/ [atm] /*1*/] /*)*/,
-	      /*(*/ [(atm || atm = insert(id,object_obl)),
-	       setg(atm,		     obj = chtype(/*[*/ [atm,null_syn,null_desc,null_desc,false,
-				   false, /*(*/ [] /*)*/, false, 0, false, 0, 0, 0, false, false, 5, 0, null_syn,false, false] /*]*/,
+	      /*(*/ [(atm || atm = insert(id,G_object_obl)),
+	       setg(atm,		     obj = chtype(/*[*/ [atm,G_null_syn,G_null_desc,G_null_desc,false,
+				   false, /*(*/ [] /*)*/, false, 0, false, 0, 0, 0, false, false, 5, 0, G_null_syn,false, false] /*]*/,
 				  object)),
-	       objects = /*(*/ [obj,_X,objects] /*)*/,
+	       G_objects = /*(*/ [obj,_X,G_objects] /*)*/,
 	       obj] /*)*/);
   }
 

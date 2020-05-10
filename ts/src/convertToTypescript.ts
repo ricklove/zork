@@ -228,7 +228,7 @@ export const convertToTypescript = (node: ZNode): string => {
         if (firstNode && openSymbol === ','
             && firstNode.kind === 'ZToken'
         ) {
-            return `${convertToTypescriptName(firstNode)}`;
+            return `G_${convertToTypescriptName(firstNode)}`;
         }
         // <GVAL atom>
         if (firstNode && openSymbol === '<'
@@ -237,7 +237,7 @@ export const convertToTypescript = (node: ZNode): string => {
             && nodes.length === 2
             && nodes[1].kind === 'ZToken'
         ) {
-            return `${convertToTypescriptName(nodes[1])}`;
+            return `G_${convertToTypescriptName(nodes[1])}`;
         }
         // <SETG atom any>
         if (firstNode && openSymbol === '<'
@@ -246,7 +246,7 @@ export const convertToTypescript = (node: ZNode): string => {
             && nodes.length === 3
             && nodes[1].kind === 'ZToken'
         ) {
-            return `${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
+            return `G_${convertToTypescriptName(nodes[1])} = ${convertToTypescript(nodes[2])}`;
         }
 
         // <GDLEC (atom list) type (atom list) type ...>
@@ -256,7 +256,7 @@ export const convertToTypescript = (node: ZNode): string => {
         ) {
             const { declarations } = getDeclarationMap(nodes.slice(1));
 
-            return declarations.map(x => `export let ${convertToTypescript(x.declaration)}: ${convertToTypescriptType(x.declarationType)};`).join('');
+            return declarations.map(x => `export let G_${convertToTypescript(x.declaration)}: ${convertToTypescriptType(x.declarationType)};`).join('');
         }
 
         // Local Values 

@@ -1,61 +1,61 @@
 export function coke_bottles() {
-    let pv: vector(verb) = prsvec;
+    let pv: vector(verb) = G_prsvec;
     let bottl: object = pv[2];
     let vb: verb = pv[1];
-    cond(/*(*/ [(vb === throw_X_words || vname(vb) === mung_X_words),
+    cond(/*(*/ [(vb === G_throw_X_words || vname(vb) === mung_X_words),
 	 tell(`Congratulations!  You've managed to break all those bottles.
 Fortunately for your feet, they were made of magic glass and disappear
 immediately.`),
-	 trz(bottl,ovison),
-	 bottl[osize] = 0,
+	 trz(bottl,G_ovison),
+	 bottl[G_osize] = 0,
 	 t] /*)*/);
   }
 
 export function head_function() {
-    let pv: vector(verb) = prsvec;
+    let pv: vector(verb) = G_prsvec;
     let vb: verb = pv[1];
     let nl: list(/*[*/ [rest, object] /*]*/) = /*(*/ [] /*)*/;
     let lcase: object = find_obj(`LCASE`);
-    cond(/*(*/ [vb !== read_X_words,
+    cond(/*(*/ [vb !== G_read_X_words,
 	 tell(`Although the implementers are dead, they foresaw that some cretin
 would tamper with their remains.  Therefore, they took steps to
 prevent this.`),
-	 nl = rob_adv(winner,nl),
-	 nl = rob_room(here,nl,100),
+	 nl = rob_adv(G_winner,nl),
+	 nl = rob_room(G_here,nl,100),
 	 cond(/*(*/ [!empty_Q(nl),
 		(oroom(lcase) || insert_object(lcase,find_room(`LROOM`))),
-		lcase[ocontents] = /*(*/ [_X,ocontents(lcase), _X,nl] /*)*/] /*)*/),
+		lcase[G_ocontents] = /*(*/ [_X,ocontents(lcase), _X,nl] /*)*/] /*)*/),
 	 jigs_up(`Unfortunately, we've run out of poles.  Therefore, in punishment for
 your most grievous sin, we shall deprive you of all your valuables,
 and of your life.`),
 	 t] /*)*/);
   }
 
-then = 0
+G_then = 0
 
-bucket_top_X_flag = false
+G_bucket_top_X_flag = false
 
 export function bucket(arg?: (false | atom)) {
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
     let po: (direction | false | object) = pv[2];
     let w: object = find_obj(`WATER`);
     let buck: object = find_obj(`BUCKE`);
     cond(/*(*/ [arg === read_in, false] /*)*/,
-	      /*(*/ [(pa === c_int_X_words && cond(/*(*/ [memq(w,ocontents(buck)),
+	      /*(*/ [(pa === G_c_int_X_words && cond(/*(*/ [memq(w,ocontents(buck)),
 			   remove_object(w),
 			   false] /*)*/,
 			  /*(*/ [t] /*)*/))] /*)*/,
 	      /*(*/ [arg === read_out,
-	       cond(/*(*/ [(ocan(w) === buck && !bucket_top_X_flag),
+	       cond(/*(*/ [(ocan(w) === buck && !G_bucket_top_X_flag),
 		      tell(`The bucket rises and comes to a stop.`),
-		      bucket_top_X_flag = t,
+		      G_bucket_top_X_flag = t,
 		      pass_the_bucket(find_room(`TWELL`), pv,buck),
-		      clock_int(bckin,100),
+		      clock_int(G_bckin,100),
 		      false] /*)*/,
-		     /*(*/ [(bucket_top_X_flag && ocan(w) !== buck),
+		     /*(*/ [(G_bucket_top_X_flag && ocan(w) !== buck),
 		      tell(`The bucket descends and comes to a stop.`),
-		      bucket_top_X_flag = false,
+		      G_bucket_top_X_flag = false,
 		      pass_the_bucket(find_room(`BWELL`), pv,buck)] /*)*/)] /*)*/);
   }
 
@@ -64,7 +64,7 @@ export function pass_the_bucket(r: room, pv: vector, b: object) {
     pv[2] = false;
 remove_object(b);
 insert_object(b,r);
-cond(/*(*/ [avehicle(winner) === b,
+cond(/*(*/ [avehicle(G_winner) === b,
 	   goto(r),
     	   room_info(t)] /*)*/);
 pv[2] = pvs;
@@ -73,33 +73,33 @@ pv[2] = pvs;
 export function eatme_function() {
     let r: room = null;
     let c: object = null;
-    let pv: vector = prsvec;
-    let here: room = here;
-    cond(/*(*/ [(pv[1] === eat_X_words && pv[2] === c = find_obj(`ECAKE`) && here === find_room(`ALICE`)),
+    let pv: vector = G_prsvec;
+    let here: room = G_here;
+    cond(/*(*/ [(pv[1] === G_eat_X_words && pv[2] === c = find_obj(`ECAKE`) && here === find_room(`ALICE`)),
 	   tell(`Suddenly, the room appears to have become very large.`),
-	   kill_obj(c,winner),
+	   kill_obj(c,G_winner),
 	   r = find_room(`ALISM`),
-	   r[robjs] = robjs(here),
+	   r[G_robjs] = robjs(here),
 	   mapf(false,
 		 function(x: object) {
-            x[osize] = _(64, osize(x));
-x[oroom] = r;
+            x[G_osize] = _(64, osize(x));
+x[G_oroom] = r;
           },
 		 robjs(here)),
 	   goto(r)] /*)*/);
   }
 
 export function cake_function() {
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
     let po: (false | object) = pv[2];
     let pi: (false | object) = pv[3];
     let rice: object = find_obj(`RDICE`);
     let oice: object = find_obj(`ORICE`);
     let bice: object = find_obj(`BLICE`);
-    let here: room = here;
+    let here: room = G_here;
     let r: object = null;
-    cond(/*(*/ [pa === read_X_words,
+    cond(/*(*/ [pa === G_read_X_words,
 	       cond(/*(*/ [pi,		      cond(/*(*/ [pi === find_obj(`BOTTL`),
 			     tell(`The letters appear larger, but still are too small to be read.`)] /*)*/,
 			    /*(*/ [pi === find_obj(`FLASK`),
@@ -112,45 +112,45 @@ export function cake_function() {
 			    /*(*/ [tell(`You can't see through that!`)] /*)*/)] /*)*/,
 		     /*(*/ [tell(`The only writing legible is a capital E.  The rest is too small to
 be clearly visible.`)] /*)*/)] /*)*/,
-	      /*(*/ [(pa === eat_X_words && spname(rid(here))[`ALI`]),
+	      /*(*/ [(pa === G_eat_X_words && spname(rid(here))[`ALI`]),
 	       cond(/*(*/ [po === oice,
-		      kill_obj(po,winner),
+		      kill_obj(po,G_winner),
 		      iceboom()] /*)*/,
 		     /*(*/ [po === bice,
-		      kill_obj(po,winner),
+		      kill_obj(po,G_winner),
 		      tell(`The room around you seems to be getting smaller.`),
 		      cond(/*(*/ [here === find_room(`ALISM`),
 			     r = find_room(`ALICE`),
-			     r[robjs] = robjs(here),
+			     r[G_robjs] = robjs(here),
 			     mapf(false,
 				   function(x: object) {
-                    x[oroom] = r;
-x[osize] = _(osize(x), 64);
+                    x[G_oroom] = r;
+x[G_osize] = _(osize(x), 64);
                   },
 				   robjs(here)),
 			     goto(r)] /*)*/,
-			    /*(*/ [jigs_up(crushed)] /*)*/)] /*)*/)] /*)*/,
-	      /*(*/ [(pa === throw_X_words && po === oice && spname(rid(here))[`ALI`]),
-	       kill_obj(po,winner),
+			    /*(*/ [jigs_up(G_crushed)] /*)*/)] /*)*/)] /*)*/,
+	      /*(*/ [(pa === G_throw_X_words && po === oice && spname(rid(here))[`ALI`]),
+	       kill_obj(po,G_winner),
 	       iceboom()] /*)*/,
-	      /*(*/ [(pa === throw_X_words && po === rice && pi === find_obj(`POOL`)),
+	      /*(*/ [(pa === G_throw_X_words && po === rice && pi === find_obj(`POOL`)),
 	       remove_object(pi),
 	       tell(`The pool of water evaporates, revealing a tin of rare spices.`),
-	       tro(find_obj(`SAFFR`), ovison)] /*)*/);
+	       tro(find_obj(`SAFFR`), G_ovison)] /*)*/);
   }
 
 export function flask_function() {
     let f = null;
-    let pv: vector(verb, object) = prsvec;
+    let pv: vector(verb, object) = G_prsvec;
     let pa: verb = pv[1];
-    cond(/*(*/ [pa === open_X_words,
-	   mung_room(here,`Noxious vapors prevent your entry.`),
-	   jigs_up(vapors)] /*)*/,
-	  /*(*/ [(pa === mung_X_words || pa === throw_X_words),
+    cond(/*(*/ [pa === G_open_X_words,
+	   mung_room(G_here,`Noxious vapors prevent your entry.`),
+	   jigs_up(G_vapors)] /*)*/,
+	  /*(*/ [(pa === G_mung_X_words || pa === G_throw_X_words),
 	   tell(`The flask breaks into pieces.`),
 	   f = pv[2],
-	   trz(f,ovison),
-	   jigs_up(vapors)] /*)*/);
+	   trz(f,G_ovison),
+	   jigs_up(G_vapors)] /*)*/);
   }
 
 psetg(vapors,
@@ -163,30 +163,30 @@ the  walls are not as compressible as your body, which is somewhat
 demolished.`)
 
 export function iceboom() {
-    mung_room(here,`The door to the room seems to be blocked by sticky orange rubble
+    mung_room(G_here,`The door to the room seems to be blocked by sticky orange rubble
 from an explosion.  Probably some careless adventurer was playing
 with blasting cakes.`);
-jigs_up(iceblast);
+jigs_up(G_iceblast);
   }
 
 psetg(iceblast, `You have been blasted to smithereens (wherever they are).`)
 
 export function magnet_room() {
     let foo: cexit = null;
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
     let po: (false | object | direction) = pv[2];
-    let here: room = here;
+    let here: room = G_here;
     let m: (false | primtype(vector)) = null;
-    cond(/*(*/ [pa === look_X_words,
+    cond(/*(*/ [pa === G_look_X_words,
 	       tell(`You are in a room with a low ceiling which is circular in shape. 
 There are exits to the east and the southeast.`)] /*)*/,
-	      /*(*/ [(pa === walk_in_X_words && carousel_flip_X_flag),
-	       cond(/*(*/ [carousel_zoom_X_flag,jigs_up(spindizzy)] /*)*/,
+	      /*(*/ [(pa === G_walk_in_X_words && G_carousel_flip_X_flag),
+	       cond(/*(*/ [G_carousel_zoom_X_flag,jigs_up(G_spindizzy)] /*)*/,
 		     /*(*/ [tell(`As you enter, your compass starts spinning wildly.`),
 		      false] /*)*/)] /*)*/,
-	      /*(*/ [pa === walk_X_words,
-	       cond(/*(*/ [(carousel_flip_X_flag && winner === player),
+	      /*(*/ [pa === G_walk_X_words,
+	       cond(/*(*/ [(G_carousel_flip_X_flag && G_winner === G_player),
 	       	      tell(`You cannot get your bearings...`),
 	       	      goto(cxroom(foo = rexits(here)[_(2, _(1, mod(random(), 8)))])),
 		      room_info()] /*)*/,
@@ -196,9 +196,9 @@ There are exits to the east and the southeast.`)] /*)*/,
   }
 
 export function cmach_room() {
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
-    cond(/*(*/ [pa === look_X_words,
+    cond(/*(*/ [pa === G_look_X_words,
 	   tell(`You are in a large room full of assorted heavy machinery.  The room
 smells of burned resistors. The room is noisy from the whirring
 sounds of the machines. Along one wall of the room are three buttons
@@ -209,32 +209,32 @@ in English above all the buttons says
 There are exits to the west and the south.`)] /*)*/);
   }
 	  
-carousel_zoom_X_flag = false
+G_carousel_zoom_X_flag = false
 
-carousel_flip_X_flag = false
+G_carousel_flip_X_flag = false
 
 export function buttons() {
     let i: object = null;
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let po = pv[2];
     let pa: verb = pv[1];
-    cond(/*(*/ [pa === push_X_words,
-	       cond(/*(*/ [winner === player,
+    cond(/*(*/ [pa === G_push_X_words,
+	       cond(/*(*/ [G_winner === G_player,
 		      jigs_up(`There is a giant spark and you are fried to a crisp.`)] /*)*/,
 		     /*(*/ [po === find_obj(`SQBUT`),
-		      cond(/*(*/ [carousel_zoom_X_flag,			     tell(`Nothing seems to happen.`)] /*)*/,
-			    /*(*/ [carousel_zoom_X_flag = t,
+		      cond(/*(*/ [G_carousel_zoom_X_flag,			     tell(`Nothing seems to happen.`)] /*)*/,
+			    /*(*/ [G_carousel_zoom_X_flag = t,
 		      	     tell(`The whirring increases in intensity slightly.`)] /*)*/)] /*)*/,
 		     /*(*/ [po === find_obj(`RNBUT`),
-		      cond(/*(*/ [carousel_zoom_X_flag,			     carousel_zoom_X_flag = false,
+		      cond(/*(*/ [G_carousel_zoom_X_flag,			     G_carousel_zoom_X_flag = false,
 		      	     tell(`The whirring decreases in intensity slightly.`)] /*)*/,
 			    /*(*/ [tell(`Nothing seems to happen.`)] /*)*/)] /*)*/,
 		     /*(*/ [po === find_obj(`TRBUT`),
-		      carousel_flip_X_flag = !carousel_flip_X_flag,
+		      G_carousel_flip_X_flag = !G_carousel_flip_X_flag,
 		      cond(/*(*/ [memq(i = find_obj(`IRBOX`),
 				   robjs(find_room(`CAROU`))),
 			     tell(`A dull thump is heard in the distance.`),
-			     trc(i,ovison)] /*)*/)] /*)*/)] /*)*/);
+			     trc(i,G_ovison)] /*)*/)] /*)*/)] /*)*/);
   }
 
 psetg(spindizzy,
@@ -242,108 +242,108 @@ psetg(spindizzy,
 fields in the room are so intense as to cause you to be electrocuted. 
 I really don't know, but in any event, something just killed you.`)
 
-cage_solve_X_flag = false
+G_cage_solve_X_flag = false
 
 export function sphere_function() {
-    let pv: vector(verb, object) = prsvec;
+    let pv: vector(verb, object) = G_prsvec;
     let pa: verb = pv[1];
     let r: object = find_obj(`ROBOT`);
     let c: room = null;
     let fl: (atom | false) = null;
     let ract: adv = null;
-    fl = (!cage_solve_X_flag && pa === take_X_words);
-cond(/*(*/ [(fl && player === winner),
+    fl = (!G_cage_solve_X_flag && pa === G_take_X_words);
+cond(/*(*/ [(fl && G_player === G_winner),
 	       tell(`As you reach for the sphere, an iron cage falls from the ceiling
 to entrap you.  To make matters worse, poisonous gas starts coming
 into the room.`),
-	       cond(/*(*/ [oroom(r) === here,
+	       cond(/*(*/ [oroom(r) === G_here,
 		      goto(c = find_room(`CAGED`)),
 		      remove_object(r),
 		      insert_object(r,c),
-		      ract = orand(r)[aroom] = c,
-		      tro(r,ndescbit),
-		      sphere_clock = clock_int(sphin,10),
+		      ract = orand(r)[G_aroom] = c,
+		      tro(r,G_ndescbit),
+		      G_sphere_clock = clock_int(G_sphin,10),
 		      t] /*)*/,
 		     /*(*/ [else,
-		      trz(find_obj(`SPHER`), ovison),
+		      trz(find_obj(`SPHER`), G_ovison),
 		      mung_room(find_room(`CAGER`),
 				 `You are stopped by a cloud of poisonous gas.`),
-		      jigs_up(poison)] /*)*/)] /*)*/,
-	      /*(*/ [fl,	       trz(find_obj(`SPHER`), ovison),
+		      jigs_up(G_poison)] /*)*/)] /*)*/,
+	      /*(*/ [fl,	       trz(find_obj(`SPHER`), G_ovison),
 	       jigs_up(`As the robot reaches for the sphere, an iron cage falls from the
 ceiling.  The robot attempts to fend it off, but is trapped below it.
 Alas, the robot short-circuits in his vain attempt to escape, and
 crushes the sphere beneath him as he falls to the floor.`),
 	       remove_object(r),
-	       trz(pv[2], ovison),
-	       insert_object(find_obj(`RCAGE`), here),
+	       trz(pv[2], G_ovison),
+	       insert_object(find_obj(`RCAGE`), G_here),
 	       t] /*)*/,
-	      /*(*/ [pa === c_int_X_words,
+	      /*(*/ [pa === G_c_int_X_words,
 	       mung_room(find_room(`CAGER`),
 			  `You are stopped by a cloud of poisonous gas.`),
-	       jigs_up(poison)] /*)*/);
+	       jigs_up(G_poison)] /*)*/);
   }
 
 psetg(poison, `Time passes...and you die from some obscure poisoning.`)
 
 export function caged_room() {
-    cond(/*(*/ [cage_solve_X_flag,here = find_room(`CAGER`)] /*)*/);
+    cond(/*(*/ [G_cage_solve_X_flag,G_here = find_room(`CAGER`)] /*)*/);
   }
 
-export let sphere_clock: cevent;export let robot_actions: uvector(/*[*/ [rest, verb] /*]*/);
+export let G_sphere_clock: cevent;export let G_robot_actions: uvector(/*[*/ [rest, verb] /*]*/);
 export function robot_actor() {
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
     let po: (false | object | direction) = pv[2];
     let c: room = null;
     let cage: object = null;
     let r: object = find_obj(`ROBOT`);
     let ract: adv = null;
-    cond(/*(*/ [(pa === raise_X_words && po === find_obj(`CAGE`)),
+    cond(/*(*/ [(pa === G_raise_X_words && po === find_obj(`CAGE`)),
 	       tell(`The cage shakes and is hurled across the room.`),
-	       clock_disable(sphere_clock),
-	       winner = player,
+	       clock_disable(G_sphere_clock),
+	       G_winner = G_player,
 	       goto(c = find_room(`CAGER`)),
 	       insert_object(cage = find_obj(`CAGE`), c),
-	       tro(cage,takebit),
-	       trz(cage,ndescbit),
-	       trz(r,ndescbit),
-	       tro(find_obj(`SPHER`), takebit),
+	       tro(cage,G_takebit),
+	       trz(cage,G_ndescbit),
+	       trz(r,G_ndescbit),
+	       tro(find_obj(`SPHER`), G_takebit),
 	       remove_object(r),
 	       insert_object(r,c),
-	       ract = orand(r)[aroom] = c,
-	       cage_solve_X_flag = t] /*)*/,
-	      /*(*/ [(pa === eat_X_words || pa === drink_X_words),
+	       ract = orand(r)[G_aroom] = c,
+	       G_cage_solve_X_flag = t] /*)*/,
+	      /*(*/ [(pa === G_eat_X_words || pa === G_drink_X_words),
 	       tell(`\"I am sorry but that action is difficult in the absence of a mouth.\`)] /*)*/,
-	      /*(*/ [pa === read_X_words,
+	      /*(*/ [pa === G_read_X_words,
 	       tell(`\"My vision is not that good without eyes.\`)] /*)*/,
-	      /*(*/ [memq(pa,robot_actions), false] /*)*/,
+	      /*(*/ [memq(pa,G_robot_actions), false] /*)*/,
 	      /*(*/ [tell(`\"I am only a stupid robot and cannot perform that command.\`)] /*)*/);
   }
 
 export function robot_function() {
-    let pv: vector = prsvec;
+    let pv: vector = G_prsvec;
     let pa: verb = pv[1];
     let po: object = pv[2];
     let pi: (false | object) = pv[3];
     let pp: object = null;
     let aa: adv = null;
-    cond(/*(*/ [pa === give_X_words,
+    cond(/*(*/ [pa === G_give_X_words,
 	       aa = orand(pp = pi),
 	       remove_object(po),
-	       aa[aobjs] = /*(*/ [po,_X,aobjs(aa)] /*)*/,
+	       aa[G_aobjs] = /*(*/ [po,_X,aobjs(aa)] /*)*/,
 	       tell(`The robot gladly takes the `,
 		     1,
 		     odesc2(po),
 		     `
 and nods his head-like appendage in thanks.`)] /*)*/,
-	      /*(*/ [(pa === throw_X_words || pa === mung_X_words),
+	      /*(*/ [(pa === G_throw_X_words || pa === G_mung_X_words),
 	       tell(`The robot is injured (being of shoddy construction) and falls to the
 floor in a pile of garbage, which disintegrates before your eyes.`),
-	       remove_object(cond(/*(*/ [pa === throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/);
+	       remove_object(cond(/*(*/ [pa === G_throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/);
   } 
 
-export function knock() {`AUX`, /*(*/ [prso, prsvec[2]] /*)*/
+export function knock() {`AUX`, /*(*/ [prso, G_prsvec[2]] /*)*/
     cond(/*(*/ [memq(door_X_objects, onames(prso)),
 	   tell(`I don't think that anybody's home.`)] /*)*/,
 	  /*(*/ [tell(`Why knock on a `, 0, odesc2(prso), `?`)] /*)*/);
