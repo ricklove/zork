@@ -1,10 +1,10 @@
 function boom_room() {
-    let dummy_Q: atom | false = false;
+    let dummy_Q: (atom | false) = false;
     let prsact: verb = GLOBALS.prsvec[1];
     let win: adv = GLOBALS.winner;
     let o: object = null;
-    cond(/*(*/ [vname(prsact) === walk_in_X_words || vname(prsact) === on_X_words && dummy_Q = t,
-	   cond(/*(*/ [memq(o = find_obj("CANDL"), aobjs(win)) && 1_Q(olight_Q(o)) || memq(o = find_obj("TORCH"), aobjs(win)) && 1_Q(olight_Q(o)),
+    cond(/*(*/ [(vname(prsact) === walk_in_X_words || (vname(prsact) === on_X_words && dummy_Q = t)),
+	   cond(/*(*/ [((memq(o = find_obj("CANDL"), aobjs(win)) && 1_Q(olight_Q(o))) || (memq(o = find_obj("TORCH"), aobjs(win)) && 1_Q(olight_Q(o)))),
 		  unwind(prog(/*(*/ [] /*)*/,
 		    cond(/*(*/ [dummy_Q,
 			   tell("I didn't realize that adventurers are stupid enough to light a", 1, odesc2(o), "in a room which reeks of coal gas.\nFortunately, there is justice in the world.")] /*)*/,
@@ -16,11 +16,11 @@ function boom_room() {
 
 function bats_room() {
     let prsact: verb = GLOBALS.prsvec[1];
-    cond(/*(*/ [vname(prsact) === walk_in_X_words && !memq(find_obj("GARLI"), aobjs(GLOBALS.winner)),
+    cond(/*(*/ [(vname(prsact) === walk_in_X_words && !memq(find_obj("GARLI"), aobjs(GLOBALS.winner))),
 	   fly_me()] /*)*/,
 	  /*(*/ [prsact === GLOBALS.look_X_words,
 	   tell("You are in a small room which has only one door, to the east."),
-	   memq(find_obj("GARLI"), aobjs(GLOBALS.winner)) && tell("In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose.")] /*)*/);
+	   (memq(find_obj("GARLI"), aobjs(GLOBALS.winner)) && tell("In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose."))] /*)*/);
   }
 
 function fly_me() {
@@ -36,9 +36,9 @@ room_desc();
 
 function fweep(num: number, slp?: number) {
     repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
-	0_Q(n = _(n,1)) && return(),
+	(0_Q(n = _(n,1)) && return()),
 	image(7),
-	0_Q(slp) || sleep(slp));
+	(0_Q(slp) || sleep(slp)));
   }
 
 psetg(bat_drops,
@@ -84,7 +84,7 @@ function dumbwaiter() {
 		  GLOBALS.cage_top_X_flag = false,
 		  t] /*)*/)] /*)*/,
 	  /*(*/ [prsact === GLOBALS.take_X_words,
-	   cond(/*(*/ [ct && here === top || !ct && here === bot,
+	   cond(/*(*/ [((ct && here === top) || (!ct && here === bot)),
 		  tell("The cage is securely fastened to the iron chain.")] /*)*/,
 		 /*(*/ [tell("I can't see that here.")] /*)*/)] /*)*/);
   }
@@ -142,7 +142,7 @@ function mswitch_function() {
 
 function gunk_function() {
     let g: object = find_obj("GUNK");
-    let m: object | false = ocan(g);
+    let m: (object | false) = ocan(g);
     cond(/*(*/ [m,
 	 m[GLOBALS.ocontents] = splice_out(g,ocontents(m)),
 	 g[GLOBALS.ocan] = false,
@@ -155,7 +155,7 @@ function no_objs() {
     cond(/*(*/ [empty_Q(aobjs(GLOBALS.winner)),
 	   GLOBALS.empty_handed_X_flag = t] /*)*/,
 	  /*(*/ [GLOBALS.empty_handed_X_flag = false] /*)*/);
-cond(/*(*/ [GLOBALS.here === find_room("BSHAF") && lit_Q(GLOBALS.here),
+cond(/*(*/ [(GLOBALS.here === find_room("BSHAF") && lit_Q(GLOBALS.here)),
 	   score_upd(GLOBALS.light_shaft),
 	   GLOBALS.light_shaft = 0] /*)*/);
   }
@@ -170,7 +170,7 @@ function cliff_function() {
 function stick_function() {
     let prsact: verb = GLOBALS.prsvec[1];
     cond(/*(*/ [vname(prsact) === wave_X_words,
-	   cond(/*(*/ [GLOBALS.here === find_room("FALLS") || GLOBALS.here === find_room("POG"),
+	   cond(/*(*/ [(GLOBALS.here === find_room("FALLS") || GLOBALS.here === find_room("POG")),
 		  cond(/*(*/ [!GLOBALS.rainbow_X_flag,
 			 tro(find_obj("POT"), GLOBALS.ovison),
 			 tell("Suddenly, the rainbow appears to become solid and, I venture,\nwalkable (I think the giveaway was the stairs and bannister)."),
@@ -203,7 +203,7 @@ function digger() {
 function dboat_function() {
     let prsact: verb = GLOBALS.prsvec[1];
     let here: room = GLOBALS.here;
-    let prsi: false | object = GLOBALS.prsvec[3];
+    let prsi: (false | object) = GLOBALS.prsvec[3];
     let dboat: object = find_obj("DBOAT");
     cond(/*(*/ [vname(prsact) === infla_X_words,
 	   tell("This boat will not inflate since some moron put a hole in it.")] /*)*/,
@@ -218,7 +218,7 @@ function dboat_function() {
 		 /*(*/ [with_tell(prsi)] /*)*/)] /*)*/);
   }
 
-function rboat_function(arg?: false | atom) {
+function rboat_function(arg?: (false | atom)) {
     let prsact: verb = GLOBALS.prsvec[1];
     let rboat: object = find_obj("RBOAT");
     let iboat: object = find_obj("IBOAT");
@@ -231,7 +231,7 @@ function rboat_function(arg?: false | atom) {
 		  insert_object(find_obj("DBOAT"), here),
 		  t] /*)*/)] /*)*/,
 	  /*(*/ [prsact === GLOBALS.disem_X_words,
-	   member("RIVR", spname(rid(here))) && jigs_up("Unfortunately, that leaves you in the water, where you drown.")] /*)*/,
+	   (member("RIVR", spname(rid(here))) && jigs_up("Unfortunately, that leaves you in the water, where you drown."))] /*)*/,
 	  /*(*/ [vname(prsact) === defla_X_words,
 	   cond(/*(*/ [avehicle(GLOBALS.winner) === rboat,
 		  tell("You can't deflate the boat while you're in it.")] /*)*/,
@@ -270,8 +270,8 @@ function shake() {
     let prsobj: object = GLOBALS.prsvec[2];
     let here: room = GLOBALS.here;
     cond(/*(*/ [object_action()] /*)*/,
-	  /*(*/ [!oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)) && tell("It sounds like there is something inside the", 1, odesc2(prsobj), ".")] /*)*/,
-	  /*(*/ [oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)),
+	  /*(*/ [(!oopen_Q(prsobj) && !empty_Q(ocontents(prsobj)) && tell("It sounds like there is something inside the", 1, odesc2(prsobj), "."))] /*)*/,
+	  /*(*/ [(oopen_Q(prsobj) && !empty_Q(ocontents(prsobj))),
 	   mapf(false,
 		 function(x: object) {
             x[GLOBALS.ocan] = false;
@@ -283,7 +283,7 @@ insert_object(x,here);
   }
 
 function rivr4_room() {
-    memq(find_obj("BUOY"), aobjs(GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell("Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false;
+    (memq(find_obj("BUOY"), aobjs(GLOBALS.winner)) && GLOBALS.buoy_flag_X_flag && tell("Something seems funny about the feel of the buoy.") && GLOBALS.buoy_flag_X_flag = false);
   } 
 
 function beach_room() {
@@ -291,7 +291,7 @@ function beach_room() {
     let shov: object = find_obj("SHOVE");
     let here: room = GLOBALS.here;
     let cnt: number = null;
-    cond(/*(*/ [vname(prsact) === dig_X_words && shov === GLOBALS.prsvec[2],
+    cond(/*(*/ [(vname(prsact) === dig_X_words && shov === GLOBALS.prsvec[2]),
 	   here[GLOBALS.rvars] = cnt = _(1, rvars(here)),
 	   cond(/*(*/ [cnt > 4,
 		  here[GLOBALS.rvars] = 0,
@@ -309,7 +309,7 @@ function tcave_room() {
     let shov: object = find_obj("SHOVE");
     let here: room = GLOBALS.here;
     let cnt: number = null;
-    cond(/*(*/ [vname(prsact) === dig_X_words && GLOBALS.prsvec[2] === shov,
+    cond(/*(*/ [(vname(prsact) === dig_X_words && GLOBALS.prsvec[2] === shov),
 	   cond(/*(*/ [memq(find_obj("GUANO"), robjs(here)),
 		  here[GLOBALS.rvars] = cnt = _(1, rvars(here)),
 		  cond(/*(*/ [cnt > 3,
@@ -366,10 +366,10 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 			       /*(*/ [ball, find_obj("BALLO")] /*)*/, /*(*/ [prsa, prsvec[1]] /*)*/,
 			       /*(*/ [prso, prsvec[2]] /*)*/, /*(*/ [cont, find_obj("RECEP")] /*)*/, m,
 			       /*(*/ [binf, GLOBALS.binf_X_flag] /*)*/, blabe] /*)*/,
-	/*#*/ [decl, /*(*/ [/*(*/ [arg] /*)*/, atom || false, /*(*/ [blabe, ball, cont, recep] /*)*/, object, /*(*/ [prsa] /*)*/, verb,
-	       /*(*/ [prso] /*)*/, object || direction, /*(*/ [m] /*)*/, false || primtype(vector),
-	       /*(*/ [prsvec] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [binf] /*)*/, false || room,
-	       /*(*/ [m] /*)*/, false || /*<*/ [primtype(vector), any, room] /*>*/] /*)*/] /*2*/,
+	/*#*/ [decl, /*(*/ [/*(*/ [arg] /*)*/, (atom || false), /*(*/ [blabe, ball, cont, recep] /*)*/, object, /*(*/ [prsa] /*)*/, verb,
+	       /*(*/ [prso] /*)*/, (object || direction), /*(*/ [m] /*)*/, (false || primtype(vector)),
+	       /*(*/ [prsvec] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [binf] /*)*/, (false || room),
+	       /*(*/ [m] /*)*/, (false || /*<*/ [primtype(vector), any, room] /*>*/)] /*)*/] /*2*/,
 	cond(/*(*/ [arg === read_out,
 	       cond(/*(*/ [prsa === GLOBALS.look_X_words,
 		      cond(/*(*/ [binf,
@@ -389,17 +389,17 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 				    tell("You are tied to the ledge."),
 				    return(t, ballact)] /*)*/,
 				   /*(*/ [else,
-				    !rtrnn(m[2], GLOBALS.rmungbit) && GLOBALS.bloc = m[2],
+				    (!rtrnn(m[2], GLOBALS.rmungbit) && GLOBALS.bloc = m[2]),
 				    return(false, ballact)] /*)*/)] /*)*/,
 			    /*(*/ [tell("I'm afraid you can't control the balloon in this way."),
 			     return(t, ballact)] /*)*/)] /*)*/,
-		     /*(*/ [prsa === GLOBALS.take_X_words && GLOBALS.binf_X_flag === prso,
+		     /*(*/ [(prsa === GLOBALS.take_X_words && GLOBALS.binf_X_flag === prso),
 	       	      tell("You don't really want to hold a burning",
 		     	    1,
 		            odesc2(prso),
 		            "."),
 		      return(t, ballact)] /*)*/,
-		     /*(*/ [prsa === GLOBALS.put_X_words && prsvec[3] === cont && !empty_Q(ocontents(cont)),
+		     /*(*/ [(prsa === GLOBALS.put_X_words && prsvec[3] === cont && !empty_Q(ocontents(cont))),
 		      tell("The receptacle is already occupied."),
 		      return(t, ballact)] /*)*/,
 		     /*(*/ [return(false, ballact)] /*)*/)] /*)*/),
@@ -422,12 +422,12 @@ define(balloon, ballact, /*(*/ ["OPTIONAL", /*(*/ [arg, false] /*)*/,
 			     GLOBALS.blab_X_flag = t,
 			     GLOBALS.binf_X_flag = prso,
 			     clock_int(GLOBALS.bint,3)] /*)*/)] /*)*/)] /*)*/,
-	      /*(*/ [prsa === GLOBALS.disem_X_words && rtrnn(GLOBALS.here,GLOBALS.rlandbit),
+	      /*(*/ [(prsa === GLOBALS.disem_X_words && rtrnn(GLOBALS.here,GLOBALS.rlandbit)),
 	       cond(/*(*/ [GLOBALS.binf_X_flag,
 		      clock_int(GLOBALS.bint,3)] /*)*/),
 	       false] /*)*/,
 	      /*(*/ [prsa === GLOBALS.c_int_X_words,
-	       cond(/*(*/ [oopen_Q(cont) && GLOBALS.binf_X_flag || member("LEDG", spname(rid(GLOBALS.here))),
+	       cond(/*(*/ [((oopen_Q(cont) && GLOBALS.binf_X_flag) || member("LEDG", spname(rid(GLOBALS.here)))),
 		      rise_and_shine(ball,GLOBALS.here)] /*)*/,
 		     /*(*/ [decline_and_fall(ball,GLOBALS.here)] /*)*/)] /*)*/))
 
@@ -436,8 +436,8 @@ GLOBALS.blab_X_flag = false
 gdecl(/*(*/ [burnup_int, bint] /*)*/, cevent)
 function rise_and_shine(ball: object, here: room) {
     let s: string = top(GLOBALS.scrstr);
-    let m: false | string = null;
-    let in_Q: atom | false = avehicle(GLOBALS.winner) === ball;
+    let m: (false | string) = null;
+    let in_Q: (atom | false) = avehicle(GLOBALS.winner) === ball;
     let bl: room = GLOBALS.bloc;
     let foo: cevent = null;
     clock_int(GLOBALS.bint,3);
@@ -475,7 +475,7 @@ cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
   }
 
 function put_balloon(ball: object, here: room, there: string, str: string) {
-    member("LEDG", spname(rid(GLOBALS.here))) && tell("You watch as the balloon slowly", 1, str);
+    (member("LEDG", spname(rid(GLOBALS.here))) && tell("You watch as the balloon slowly", 1, str));
 remove_object(ball);
 insert_object(ball,GLOBALS.bloc = find_room(there));
   }
@@ -484,9 +484,9 @@ gdecl(/*(*/ [bloc] /*)*/, room)
 
 function decline_and_fall(ball: object, here: room) {
     let s: string = top(GLOBALS.scrstr);
-    let m: false | string = null;
+    let m: (false | string) = null;
     let bl: room = GLOBALS.bloc;
-    let in_Q: atom | false = avehicle(GLOBALS.winner) === ball;
+    let in_Q: (atom | false) = avehicle(GLOBALS.winner) === ball;
     let foo: cevent = null;
     clock_int(GLOBALS.bint,3);
 cond(/*(*/ [m = member("VAIR", spname(rid(bl))),
@@ -519,11 +519,11 @@ function wire_function() {
     let prsi: prsobj = pv[3];
     let bint: cevent = GLOBALS.bint;
     cond(/*(*/ [prsa === GLOBALS.tie_X_words,
-	       cond(/*(*/ [prso === find_obj("BROPE") && prsi === find_obj("HOOK1") || prsi === find_obj("HOOK2"),
+	       cond(/*(*/ [(prso === find_obj("BROPE") && (prsi === find_obj("HOOK1") || prsi === find_obj("HOOK2"))),
 		      GLOBALS.btie_X_flag = t,
 		      clock_disable(bint),
 		      tell("The balloon is fastened to the hook.")] /*)*/)] /*)*/,
-	      /*(*/ [prsa === GLOBALS.untie_X_words && prso === find_obj("BROPE"),
+	      /*(*/ [(prsa === GLOBALS.untie_X_words && prso === find_obj("BROPE")),
 	       cond(/*(*/ [GLOBALS.btie_X_flag,
 		      clock_enable(bint = clock_int(GLOBALS.bint,3)),
 	       	      GLOBALS.btie_X_flag = false,
@@ -576,8 +576,8 @@ function fuse_function() {
     let prsa: verb = GLOBALS.prsvec[1];
     let fuse: object = find_obj("FUSE");
     let brick: object = find_obj("BRICK");
-    let brick_room: room | false = null;
-    let oc: object | false = null;
+    let brick_room: (room | false) = null;
+    let oc: (object | false) = null;
     cond(/*(*/ [prsa === GLOBALS.burn_X_words,
 	       tell("The wire starts to burn."),
 	       fuse[GLOBALS.orand] = /*[*/ [0, clock_int(GLOBALS.fusin,2)] /*]*/] /*)*/,
@@ -588,7 +588,7 @@ function fuse_function() {
 		      cond(/*(*/ [oc = ocan(brick),
 			     brick_room = oroom(oc)] /*)*/,
 			    /*(*/ [brick_room = oroom(brick)] /*)*/),
-		      brick_room || brick_room = GLOBALS.here,
+		      (brick_room || brick_room = GLOBALS.here),
 		      cond(/*(*/ [brick_room === GLOBALS.here,
 			     mung_room(brick_room,
 				"The way is blocked by debris from an explosion."),
@@ -617,7 +617,7 @@ function fuse_function() {
                       },
 					  ocontents(find_obj("TCASE"))),
 				    find_obj("TCASE")[GLOBALS.ocontents] = /*(*/ [] /*)*/] /*)*/)] /*)*/)] /*)*/,
-		     /*(*/ [!oroom(fuse) || GLOBALS.here === oroom(fuse),
+		     /*(*/ [(!oroom(fuse) || GLOBALS.here === oroom(fuse)),
 		      tell("The wire rapidly burns into nothingness.")] /*)*/)] /*)*/);
   }
 
@@ -628,8 +628,8 @@ function safe_mung() {
 "The house shakes, and the ceiling of the room you're in collapses,\nturning you into a pancake."] /*)*/, 
 /*(*/ ["The room trembles and 50,000 pounds of rock fall on you, turning you\ninto a pancake."] /*)*/))] /*)*/,
 	      /*(*/ [tell("You may recall your recent explosion.  Well, probably as a result of\nthat, you hear an ominous rumbling, as if one of the rooms in the\ndungeon had collapsed."),
-	       rm === find_room("SAFE") && clock_int(GLOBALS.ledin,8)] /*)*/);
-mung_room(oroom(find_obj("BRICK")) || GLOBALS.here,
+	       (rm === find_room("SAFE") && clock_int(GLOBALS.ledin,8))] /*)*/);
+mung_room((oroom(find_obj("BRICK")) || GLOBALS.here),
 		   "The way is blocked by debris from an explosion.");
   }
 
@@ -657,7 +657,7 @@ mung_room(rm,"The ledge has collapsed and cannot be landed on.");
 function ledge_function() {
     let prsa: verb = GLOBALS.prsvec[1];
     cond(/*(*/ [prsa === GLOBALS.walk_in_X_words,
-	   GLOBALS.safe_flag_X_flag && tell("Behind you, the walls of the safe room collapse into rubble.") && GLOBALS.safe_flag_X_flag = false] /*)*/,
+	   (GLOBALS.safe_flag_X_flag && tell("Behind you, the walls of the safe room collapse into rubble.") && GLOBALS.safe_flag_X_flag = false)] /*)*/,
 	  /*(*/ [prsa === GLOBALS.look_X_words,
 	   tell("You are on a wide ledge high into the volcano.  The rim of the\nvolcano is about 200 feet above and there is a precipitous drop below\nto the bottom.", 1,
 		cond(/*(*/ [rtrnn(find_room("SAFE"), GLOBALS.rmungbit),
@@ -683,15 +683,15 @@ function gnome_function() {
     let pv: vector = GLOBALS.prsvec;
     let prsa: verb = pv[1];
     let prso: prsobj = pv[2];
-    cond(/*(*/ [prsa === GLOBALS.give_X_words || prsa === GLOBALS.throw_X_words && type_Q(prso,object) && cond(/*(*/ [otval(prso) !== 0,
+    cond(/*(*/ [((prsa === GLOBALS.give_X_words || prsa === GLOBALS.throw_X_words) && type_Q(prso,object) && cond(/*(*/ [otval(prso) !== 0,
 		       tell("Thank you very much for the", 1, odesc2(prso), ".  I don't believe \nI've ever seen one as beautiful. 'Follow me', he says, and a door \nappears on the west end of the ledge.  Through the door, you can see\na narrow chimney sloping steeply downward."),
 		       GLOBALS.gnome_door_X_flag = t] /*)*/,
 		      /*(*/ [tell("'That wasn't quite what I had in mind', he says, crunching the", 1, odesc2(prso), "in his rock-hard hands."),
-		       remove_object(prso)] /*)*/)] /*)*/,
+		       remove_object(prso)] /*)*/))] /*)*/,
 	  /*(*/ [prsa === GLOBALS.c_int_X_words,
 	   tell("The gnome glances at his watch.  'Oops.  I'm late for an\nappointment!' He disappears, leaving you alone on the ledge."),
 	   remove_object(find_obj("GNOME"))] /*)*/,
 	  /*(*/ [tell("The gnome appears increasingly nervous."),
-	   GLOBALS.gnome_flag_X_flag || clock_int(GLOBALS.gnoin,5),
+	   (GLOBALS.gnome_flag_X_flag || clock_int(GLOBALS.gnoin,5)),
 	   GLOBALS.gnome_flag_X_flag = t] /*)*/);
   }

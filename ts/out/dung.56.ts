@@ -17,11 +17,11 @@ psetg(cntuse, "You can't use that!")
 
 GLOBALS.bigfix = _(chtype(min(), fix), 2)
 
-GLOBALS.words = words[oblist] || moblist(words, 23)
+GLOBALS.words = (words[oblist] || moblist(words, 23))
 
-GLOBALS.object_obl = objects[oblist] || moblist(objects)
+GLOBALS.object_obl = (objects[oblist] || moblist(objects))
 
-GLOBALS.room_obl = rooms[oblist] || moblist(rooms)
+GLOBALS.room_obl = (rooms[oblist] || moblist(rooms))
 
 GLOBALS.actors = /*(*/ [] /*)*/
 
@@ -54,33 +54,33 @@ GLOBALS.objects = /*(*/ [] /*)*/
 
 
 "CEVENT DEFINITIONS"
-lookup("COMPILE", root()) || cevent(0, GLOBALS.cure_clock,false, "CURIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.cure_clock,false, "CURIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.maint_room,t, "MNTIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.maint_room,t, "MNTIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.lantern,t, "LNTIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.lantern,t, "LNTIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.match_function,t, matin)
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.match_function,t, matin))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.candles,t, "CNDIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.candles,t, "CNDIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.balloon,t, "BINT")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.balloon,t, "BINT"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.burnup,t, "BRNIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.burnup,t, "BRNIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.fuse_function,t, "FUSIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.fuse_function,t, "FUSIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.ledge_mung,t, "LEDIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.ledge_mung,t, "LEDIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.safe_mung,t, "SAFIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.safe_mung,t, "SAFIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.volgnome,t, "VLGIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.volgnome,t, "VLGIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.gnome_function,t, "GNOIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.gnome_function,t, "GNOIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.bucket,t, "BCKIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.bucket,t, "BCKIN"))
 
-lookup("COMPILE", root()) || cevent(0, GLOBALS.sphere_function,t, "SPHIN")
+(lookup("COMPILE", root()) || cevent(0, GLOBALS.sphere_function,t, "SPHIN"))
 
 
 // KLUDGE

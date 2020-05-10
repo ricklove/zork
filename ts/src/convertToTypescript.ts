@@ -473,10 +473,10 @@ export const convertToTypescript = (node: ZNode): string => {
             && nodes.length >= 3
         ) {
             if (firstNode.toString() === 'AND') {
-                return nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' && ');
+                return `(${nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' && ')})`;
             }
             if (firstNode.toString() === 'OR') {
-                return nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' || ');
+                return `(${nodes.slice(1).map(x => `${convertToTypescript(x)}`).join(' || ')})`;
             }
         }
 
