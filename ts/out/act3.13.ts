@@ -1,6 +1,4 @@
-function coke_bottles
-  () {
-    
+function coke_bottles() {
     let pv: vector(verb) = GLOBALS.prsvec;
     let bottl: object = pv[2];
     let vb: verb = pv[1];
@@ -11,9 +9,7 @@ function coke_bottles
 	 t] /*)*/)
   }
 
-function head_function
-  () {
-    
+function head_function() {
     let pv: vector(verb) = GLOBALS.prsvec;
     let vb: verb = pv[1];
     let nl: list(/*[*/ [rest, object] /*]*/) = /*(*/ [] /*)*/;
@@ -33,9 +29,7 @@ GLOBALS.then = 0
 
 GLOBALS.bucket_top_X_flag = false
 
-function bucket
-  (arg?: false | atom) {
-    
+function bucket(arg?: false | atom) {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let po: direction | false | object = pv[2];
@@ -59,11 +53,7 @@ function bucket
 		      pass_the_bucket(find_room("BWELL"), pv,buck)] /*)*/)] /*)*/)
   }
 
-function pass_the_bucket
-  (r: room,
-    pv: vector,
-    b: object) {
-    
+function pass_the_bucket(r: room, pv: vector, b: object) {
     let pvs: false | object | direction = pv[2];
     put(pv,2, false)
 remove_object(b)
@@ -74,9 +64,7 @@ cond(/*(*/ [avehicle(GLOBALS.winner) === b,
 put(pv,2, pvs)
   }
 
-function eatme_function
-  () {
-    
+function eatme_function() {
     let r: room = null;
     let c: object = null;
     let pv: vector = GLOBALS.prsvec;
@@ -87,9 +75,7 @@ function eatme_function
 	   r = find_room("ALISM"),
 	   put(r,GLOBALS.robjs,robjs(here)),
 	   mapf(false,
-		 function
-          (x: object) {
-            
+		 function(x: object) {
             put(x,GLOBALS.osize,_(64, osize(x)))
 put(x,GLOBALS.oroom,r)
           },
@@ -97,9 +83,7 @@ put(x,GLOBALS.oroom,r)
 	   goto(r)] /*)*/)
   }
 
-function cake_function
-  () {
-    
+function cake_function() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let po: false | object = pv[2];
@@ -132,9 +116,7 @@ function cake_function
 			     r = find_room("ALICE"),
 			     put(r,GLOBALS.robjs,robjs(here)),
 			     mapf(false,
-				   function
-                  (x: object) {
-                    
+				   function(x: object) {
                     put(x,GLOBALS.oroom,r)
 put(x,GLOBALS.osize,_(osize(x), 64))
                   },
@@ -150,9 +132,7 @@ put(x,GLOBALS.osize,_(osize(x), 64))
 	       tro(find_obj("SAFFR"), GLOBALS.ovison)] /*)*/)
   }
 
-function flask_function
-  () {
-    
+function flask_function() {
     let f = null;
     let pv: vector(verb, object) = GLOBALS.prsvec;
     let pa: verb = pv[1];
@@ -172,18 +152,14 @@ psetg(vapors,
 psetg(crushed,
 "The room seems to have become too small to hold you.  It seems that\nthe  walls are not as compressible as your body, which is somewhat\ndemolished.")
 
-function iceboom
-  () {
-    
+function iceboom() {
     mung_room(GLOBALS.here,"The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes.")
 jigs_up(GLOBALS.iceblast)
   }
 
 psetg(iceblast, "You have been blasted to smithereens (wherever they are).")
 
-function magnet_room
-  () {
-    
+function magnet_room() {
     let foo: cexit = null;
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
@@ -206,9 +182,7 @@ function magnet_room
 		      room_info()] /*)*/)] /*)*/)
   }
 
-function cmach_room
-  () {
-    
+function cmach_room() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     cond(/*(*/ [pa === GLOBALS.look_X_words,
@@ -219,9 +193,7 @@ GLOBALS.carousel_zoom_X_flag = false
 
 GLOBALS.carousel_flip_X_flag = false
 
-function buttons
-  () {
-    
+function buttons() {
     let i: object = null;
     let pv: vector = GLOBALS.prsvec;
     let po = pv[2];
@@ -250,9 +222,7 @@ psetg(spindizzy,
 
 GLOBALS.cage_solve_X_flag = false
 
-function sphere_function
-  () {
-    
+function sphere_function() {
     let pv: vector(verb, object) = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let r: object = find_obj("ROBOT");
@@ -289,17 +259,13 @@ cond(/*(*/ [fl && GLOBALS.player === GLOBALS.winner,
 
 psetg(poison, "Time passes...and you die from some obscure poisoning.")
 
-function caged_room
-  () {
-    
+function caged_room() {
     cond(/*(*/ [GLOBALS.cage_solve_X_flag,GLOBALS.here = find_room("CAGER")] /*)*/)
   }
 
 gdecl(/*(*/ [sphere_clock] /*)*/, cevent, /*(*/ [robot_actions] /*)*/, uvector(/*[*/ [rest, verb] /*]*/))
 
-function robot_actor
-  () {
-    
+function robot_actor() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let po: false | object | direction = pv[2];
@@ -329,9 +295,7 @@ function robot_actor
 	      /*(*/ [tell("\"I am only a stupid robot and cannot perform that command.\")] /*)*/)
   }
 
-function robot_function
-  () {
-    
+function robot_function() {
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let po: object = pv[2];
@@ -351,34 +315,24 @@ function robot_function
 	       remove_object(cond(/*(*/ [pa === GLOBALS.throw_X_words, pi] /*)*/, /*(*/ [po] /*)*/))] /*)*/)
   }
 
-function knock
-  () {
-    "AUX", /*(*/ [prso, GLOBALS.prsvec[2]] /*)*/
+function knock() {"AUX", /*(*/ [prso, GLOBALS.prsvec[2]] /*)*/
     cond(/*(*/ [memq(door_X_objects, onames(prso)),
 	   tell("I don't think that anybody's home.")] /*)*/,
 	  /*(*/ [tell("Why knock on a", 0, odesc2(prso), "?")] /*)*/)
   }
 
-function chomp
-  () {
-    
+function chomp() {
     tell("I don't know how to do that.  I win in all cases!")
   }
 
-function frobozz
-  () {
-    
+function frobozz() {
     tell("The FROBOZZ Corporation created, owns, and operates this dungeon.")
   }
 
-function win
-  () {
-    
+function win() {
     tell("Naturally!")
   }
 
-function yell
-  () {
-    
+function yell() {
     tell("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!")
   }

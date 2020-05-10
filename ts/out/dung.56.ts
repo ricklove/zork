@@ -1919,9 +1919,7 @@ add_object(/*#*/ [object, /*{*/ ["LCASE",
  /*[*/ ["CASE"] /*]*/, /*[*/ ["LARGE"] /*]*/)
 
 mapf(false,
-   function
-    (x) {
-      
+   function(x) {
       rtro(find_room(spname(x)), GLOBALS.rfillbit)
     },
  _X,/*[*/ [resen_X_rooms, reses_X_rooms, dam_X_rooms, strea_X_rooms,
@@ -1929,17 +1927,13 @@ mapf(false,
    beach_X_rooms, rcave_X_rooms, dock_X_rooms, wclf1, wclf2, fante, pog] /*]*/)
 
 mapf(false,
-  function
-    (x) {
-      
+  function(x) {
       rtro(find_room(x), GLOBALS.rhousebit)
     },
   /*[*/ ["LROOM", "KITCH", "ATTIC"] /*]*/)
 
 mapf(false,
-   function
-    (x) {
-      
+   function(x) {
       rtro(find_room(x), GLOBALS.rsacredbit)
     },
       /*[*/ ["BSHAF",

@@ -1,9 +1,4 @@
-function cevent
-  (tick: number,
-    app: applicable | offset,
-    flg: atom | false,
-    name: atom | string) {
-    
+function cevent(tick: number, app: applicable | offset, flg: atom | false, name: atom | string) {
     let obl = get(initial, oblist);
     let atm: atom | false = null;
     cond(/*(*/ [type_Q(name,string),
@@ -13,28 +8,17 @@ function cevent
 setg(atm,chtype(/*[*/ [tick,app,flg,atm] /*]*/, cevent))
   }
 
-function cons_obj
-  (_tuple_,
-    objs: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function cons_obj(_tuple_, objs: tuple(/*[*/ [rest, string] /*]*/)) {
     let winner: adv = GLOBALS.winner;
     mapf(false,
-	function
-      (x) {
-        
+	function(x) {
         let y: object = find_obj(x);
         memq(y,aobjs(winner)) || take_object(find_obj(x), winner)
       },
 	objs)
   }
 
-function cexit
-  (flid: atom | string,
-    rmid: atom | string,
-    str?: false | string,
-    flag: atom | false,
-    funct: atom | false) {
-    
+function cexit(flid: atom | string, rmid: atom | string, str?: false | string, flag: atom | false, funct: atom | false) {
     let fval: applicable | false = false;
     let atm: atom | false = null;
     cond(/*(*/ [type_Q(flid,atom), flid = spname(flid)] /*)*/)
@@ -43,10 +27,7 @@ setg(atm,flag)
 chtype(vector(atm,find_room(rmid), str,funct), cexit)
   }
 
-function exit
-  (_tuple_,
-    pairs: tuple(/*[*/ [rest, string, nexit | cexit | string | atom] /*]*/)) {
-    
+function exit(_tuple_, pairs: tuple(/*[*/ [rest, string, nexit | cexit | string | atom] /*]*/)) {
     let dobl: oblist = GLOBALS.directions;
     let frob: vector = ivector(pairs.length);
     repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
@@ -64,17 +45,7 @@ function exit
 chtype(frob,exit)
   }
 
-function room
-  (id: string | atom,
-    d1: string,
-    d2: string,
-    lit_Q: atom | form | false,
-    ex: exit,
-    objs?,
-    app: form | false | atom,
-    val: number,
-    bit: number) {
-    
+function room(id: string | atom, d1: string, d2: string, lit_Q: atom | form | false, ex: exit, objs?, app: form | false | atom, val: number, bit: number) {
     let rm: room = find_room(id);
     GLOBALS.score_max = _(GLOBALS.score_max,val)
 put(rm,GLOBALS.rbits,bit)
@@ -88,48 +59,21 @@ put(rm,GLOBALS.raction,cond(/*(*/ [type_Q(app,false, form), false] /*)*/,
 put(rm,GLOBALS.rlight_Q,cond(/*(*/ [type_Q(lit_Q,form), false] /*)*/,
 				/*(*/ [t, lit_Q] /*)*/))
 mapf(false,
-	      function
-      (x: object) {
-        
+	      function(x: object) {
         put(x,GLOBALS.oroom,rm)
       },
 	      robjs(rm))
   }
 
-function sobject
-  (id: string,
-    str,
-    _tuple_,
-    tup: tuple) {
-    
+function sobject(id: string, str, _tuple_, tup: tuple) {
     object(id,"", str,/*%*/ [false] /*1*/, false, /*(*/ [] /*)*/, false, _(_X,tup))
   }
 
-function aobject
-  (id: string,
-    str,
-    app: atom,
-    _tuple_,
-    tup: tuple) {
-    
+function aobject(id: string, str, app: atom, _tuple_, tup: tuple) {
     object(id,"", str,/*%*/ [false] /*1*/, app,/*(*/ [] /*)*/, false, _(_X,tup))
   }
 
-function object
-  (id: atom | string,
-    desc1: string,
-    desc2: string,
-    desco: string | false,
-    app: false | form | atom,
-    conts: list(/*[*/ [rest, object] /*]*/),
-    can: false | object,
-    flags: primtype(word),
-    light_Q?: number,
-    s1: number,
-    s2: number,
-    size: number,
-    capac: number) {
-    
+function object(id: atom | string, desc1: string, desc2: string, desco: string | false, app: false | form | atom, conts: list(/*[*/ [rest, object] /*]*/), can: false | object, flags: primtype(word), light_Q?: number, s1: number, s2: number, size: number, capac: number) {
     GLOBALS.score_max = _(GLOBALS.score_max,s1,s2)
 0_Q(light_Q) || flags = _(flags,GLOBALS.lightbit)
 put(put(put(put(put(put(put(put(put(put(put(put(find_obj(id),
@@ -148,9 +92,7 @@ put(put(put(put(put(put(put(put(put(put(put(put(find_obj(id),
 	       /*(*/ [app] /*)*/))
   }
 
-function find_prep
-  (str: string) {
-    
+function find_prep(str: string) {
     let atm: false | atom = add_word(str);
     cond(/*(*/ [gassigned_Q(atm),
     	   cond(/*(*/ [type_Q(/*,*/ [atm] /*1*/,prep), /*,*/ [atm] /*1*/] /*)*/,
@@ -158,68 +100,44 @@ function find_prep
 	  /*(*/ [setg(atm,chtype(atm,prep))] /*)*/)
   }
 
-function add_action
-  (nam: string,
-    str: string,
-    _tuple_,
-    decl: tuple(/*[*/ [rest, vector] /*]*/)) {
-    
+function add_action(nam: string, str: string, _tuple_, decl: tuple(/*[*/ [rest, vector] /*]*/)) {
     let atm: atom = lookup(nam,GLOBALS.actions) || insert(nam,GLOBALS.actions);
     setg(atm,chtype(/*[*/ [atm,make_action(_X,decl), str] /*]*/, action))
   }
 
-function add_directions
-  (_tuple_,
-    nms: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function add_directions(_tuple_, nms: tuple(/*[*/ [rest, string] /*]*/)) {
     let dir: oblist = GLOBALS.directions;
     let atm: atom = null;
-    mapf(false, function
-      (x) {
-        
+    mapf(false, function(x) {
         setg(atm = lookup(x,dir) || insert(x,dir),
 				 chtype(atm,direction))
       },
 	  nms)
   }
 
-function dsynonym
-  (str: string,
-    _tuple_,
-    nms: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function dsynonym(str: string, _tuple_, nms: tuple(/*[*/ [rest, string] /*]*/)) {
     let val: direction = null;
     let dir: oblist = GLOBALS.directions;
     let atm: atom = null;
     val = add_directions(str)
-mapf(false, function
-      (x) {
-        
+mapf(false, function(x) {
         setg(atm = lookup(x,dir) || insert(x,dir),
 				 val)
       },
 	  nms)
   }
 
-function vsynonym
-  (n1: string,
-    _tuple_,
-    n2: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function vsynonym(n1: string, _tuple_, n2: tuple(/*[*/ [rest, string] /*]*/)) {
     let atm: false | atom = null;
     let val: any = null;
     cond(/*(*/ [atm = lookup(n1,GLOBALS.words),
 	       val = /*,*/ [atm] /*1*/,
-	       mapf(false, function
-          (x) {
-            
+	       mapf(false, function(x) {
             setg(add_word(x), val)
           }, n2)] /*)*/)
 cond(/*(*/ [atm = lookup(n1,GLOBALS.actions),
 	       val = /*,*/ [atm] /*1*/,
-	       mapf(false, function
-          (x) {
-            
+	       mapf(false, function(x) {
             setg(lookup(x,GLOBALS.actions) || insert(x,GLOBALS.actions),
 					    val)
           }, n2)] /*)*/)
@@ -227,90 +145,56 @@ cond(/*(*/ [atm = lookup(n1,GLOBALS.actions),
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-function add_word
-  (w: string) {
-    
+function add_word(w: string) {
     lookup(w,GLOBALS.words) || insert(w,GLOBALS.words)
   }
 
-function add_buzz
-  (_tuple_,
-    w: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function add_buzz(_tuple_, w: tuple(/*[*/ [rest, string] /*]*/)) {
     mapf(false,
-	      function
-      (x: string) {
-        
+	      function(x: string) {
         setg(add_word(x), chtype(x,buzz))
       },
 	      w)
   }
 
-function add_zork
-  (nm: atom,
-    _tuple_,
-    w: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function add_zork(nm: atom, _tuple_, w: tuple(/*[*/ [rest, string] /*]*/)) {
     mapf(false,
-	      function
-      (x: string) {
-        
+	      function(x: string) {
         let atm: atom = null;
         setg(atm = add_word(x), chtype(atm,nm))
       },
 	      w)
   }
 
-function add_object
-  (obj: object,
-    names: vector(/*[*/ [rest, string] /*]*/),
-    adj?: vector(/*[*/ [rest, string] /*]*/)) {
-    
+function add_object(obj: object, names: vector(/*[*/ [rest, string] /*]*/), adj?: vector(/*[*/ [rest, string] /*]*/)) {
     let objs: oblist = GLOBALS.object_obl;
-    put(obj,	     GLOBALS.onames,	     mapf(GLOBALS.uvector,		   function
-        (x: string) {
-          
+    put(obj,	     GLOBALS.onames,	     mapf(GLOBALS.uvector,		   function(x: string) {
           lookup(x,objs) || insert(x,objs)
         },
 		   names))
-put(obj,GLOBALS.oadjs,mapf(GLOBALS.uvector,function
-        (w) {
-          
+put(obj,GLOBALS.oadjs,mapf(GLOBALS.uvector,function(w) {
           add_zork(adjective, w)
         }, adj))
 chutype(oadjs(obj), adjective)
   }
 
-function synonym
-  (n1: string,
-    _tuple_,
-    n2: tuple(/*[*/ [rest, string] /*]*/)) {
-    
+function synonym(n1: string, _tuple_, n2: tuple(/*[*/ [rest, string] /*]*/)) {
     let atm: false | atom = null;
     let val: any = null;
     cond(/*(*/ [atm = lookup(n1,GLOBALS.words),
 	       val = /*,*/ [atm] /*1*/,
-	       mapf(false, function
-          (x) {
-            
+	       mapf(false, function(x) {
             setg(add_word(x), val)
           }, n2)] /*)*/)
   }
 
-function add_abbrev
-  (x: string,
-    y: string) {
-    
+function add_abbrev(x: string, y: string) {
     setg(add_word(x), lookup(y,GLOBALS.words) || insert(y,GLOBALS.words))
   }
 
-function add_demon
-  (x: hack) {
-    
+function add_demon(x: hack) {
     cond(/*(*/ [mapr(false,
-	  function
-          (y: list(/*[*/ [rest, hack] /*]*/)) {
-            
+	  function(y: list(/*[*/ [rest, hack] /*]*/)) {
             cond(/*(*/ [haction(y[1]) === haction(x),
 		   put(y,1, x),
 		   mapleave(t)] /*)*/)
@@ -319,20 +203,14 @@ function add_demon
 	/*(*/ [GLOBALS.demons = /*(*/ [x,_X,GLOBALS.demons] /*)*/] /*)*/)
   }
 
-function add_star
-  (obj) {
-    
+function add_star(obj) {
     GLOBALS.stars = /*(*/ [obj,_X,GLOBALS.stars] /*)*/
   }
 
-function add_actor
-  (adv: adv) {
-    
+function add_actor(adv: adv) {
     let actors: list(/*[*/ [rest, adv] /*]*/) = GLOBALS.actors;
     cond(/*(*/ [mapf(false,
-	       function
-          (x: adv) {
-            
+	       function(x: adv) {
             cond(/*(*/ [aobj(x) === aobj(adv),
 			mapleave(t)] /*)*/)
           },
@@ -340,27 +218,18 @@ function add_actor
 	/*(*/ [GLOBALS.actors = /*(*/ [adv,_X,actors] /*)*/] /*)*/)
   }
 
-function add_desc
-  (obj: object,
-    str: string) {
-    
+function add_desc(obj: object, str: string) {
     put(obj,GLOBALS.oread,str)
   }
 
-function sadd_action
-  (str1, atm) {
-    
+function sadd_action(str1, atm) {
     add_action(str1,"", /*[*/ [/*[*/ [str1,atm] /*]*/] /*]*/)
   }
 
-function 1add_action
-  (str1, str2, atm) {
-    
+function 1add_action(str1, str2, atm) {
     add_action(str1,str2,/*[*/ [obj, /*[*/ [str1,atm] /*]*/] /*]*/)
   }
 
-function aadd_action
-  (str1, str2, atm) {
-    
+function aadd_action(str1, str2, atm) {
     add_action(str1,str2,/*[*/ [/*(*/ [_1, aobjs, no_take] /*)*/, /*[*/ [str1,atm] /*]*/] /*]*/)
   }

@@ -145,12 +145,12 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
             // typeDefText = declListText ? `\n${getIndentation(declList?.depth ?? 0)}: ( (${declListText}) => unknown )` : '';
 
             const indent = getIndentation(depth + 1);
-            argsListText = `${args.filter(x => !x.afterAux).map(x => `${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescriptType(x.dataType)}` : ''}`).join(`,\n${indent}`)}`;
+            argsListText = `${args.filter(x => !x.afterAux).map(x => `${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescriptType(x.dataType)}` : ''}`).join(`, `)}`;
             varsListText = `${args.filter(x => x.afterAux).map(x => `\n${indent}let ${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescriptType(x.dataType)}` : ''} = ${x.argValue};`).join(``)}`;
         }
     }
 
-    return `${nameText ? `function ${nameText}` : 'function'}\n${getIndentation(depth)}(${argsListText}) {\n${getIndentation(depth + 1)}${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
+    return `${nameText ? `function ${nameText}` : 'function'}(${argsListText}) {${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
 };
 
 const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, funNodes: ZNode[], depth: number) => {
