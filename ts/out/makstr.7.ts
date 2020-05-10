@@ -1,15 +1,14 @@
 export function cevent(tick: FIX, app: (APPLICABLE | OFFSET), flg: (ATOM | FALSE), name: (ATOM | STRING)) {
     let obl = initial[oblist];
     let atm: (ATOM | FALSE) = null;
-    if(type_Q(name,string)) {
-      if(atm = lookup(name,obl)) {
+    (type_Q(name,string)) ? {
+      return (atm = lookup(name,obl)) ? {
           ;
-        } else {
-          t;
-          atm = insert(name,obl);
-        };
-    } else {
-      ;
+        } : (t) ? {
+          return atm = insert(name,obl);
+        } : false;
+    } : {
+      return atm = name;
     };
 setg(atm,chtype(/*[*/ [tick,app,flg,atm] /*]*/, cevent));
   }
@@ -27,9 +26,9 @@ export function cons_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
 export function cexit(flid: (ATOM | STRING), rmid: (ATOM | STRING), str?: (FALSE | STRING), flag: (ATOM | FALSE), funct: (ATOM | FALSE)) {
     let fval: (APPLICABLE | FALSE) = false;
     let atm: (ATOM | FALSE) = null;
-    if(type_Q(flid,atom)) {
-      flid = spname(flid);
-    };
+    (type_Q(flid,atom)) ? {
+      return flid = spname(flid);
+    } : false;
 atm = (lookup(flid,flag[oblist]) || insert(flid,flag[oblist]));
 setg(atm,flag);
 chtype(vector(atm,find_room(rmid), str,funct), cexit);
@@ -40,21 +39,20 @@ export function exit(_tuple_, pairs: TUPLE(/*[*/ [REST, STRING, (NEXIT | CEXIT |
     let frob: VECTOR = ivector(pairs.length);
     repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
 	  /*#*/ [decl, /*(*/ [/*(*/ [atm] /*)*/, (atom || false), /*(*/ [rm] /*)*/, (room || false), /*(*/ [f] /*)*/, vector] /*)*/] /*2*/,
-	  if(or((atm = lookup(pairs[1], dobl) && gassigned_Q(atm) && type_Q(/*,*/ [atm] /*1*/,direction)))) {
+	  (or((atm = lookup(pairs[1], dobl) && gassigned_Q(atm) && type_Q(/*,*/ [atm] /*1*/,direction)))) ? {
         f[1] = atm;
-        if(type_Q(pairs[2], string)) {
-            f[2] = find_room(pairs[2]);
-          } else {
-            ;
+        (type_Q(pairs[2], string)) ? {
+            return f[2] = find_room(pairs[2]);
+          } : {
+            return f[2] = pairs[2];
           };
-        f = rest(f,2);
-      } else {
-        t;
-        pairs[1] = error(illegal_direction, pairs[1]);
-      },
-	  if(empty_Q(pairs = rest(pairs,2))) {
-        return();
-      });
+        return f = rest(f,2);
+      } : (t) ? {
+        return pairs[1] = error(illegal_direction, pairs[1]);
+      } : false,
+	  (empty_Q(pairs = rest(pairs,2))) ? {
+        return return();
+      } : false);
 chtype(frob,exit);
   }
 
@@ -67,17 +65,16 @@ rm[G_robjs] = objs;
 rm[G_rdesc1] = d1;
 rm[G_rdesc2] = d2;
 rm[G_rexits] = ex;
-rm[G_raction] = if(type_Q(app,false, form)) {
-        false;
-      } else {
-        app;
+rm[G_raction] = (type_Q(app,false, form)) ? {
+        return false;
+      } : {
+        return app;
       };
-rm[G_rlight_Q] = if(type_Q(lit_Q,form)) {
-        false;
-      } else {
-        t;
-        lit_Q;
-      };
+rm[G_rlight_Q] = (type_Q(lit_Q,form)) ? {
+        return false;
+      } : (t) ? {
+        return lit_Q;
+      } : false;
 mapf(false,
 	      function(x: OBJECT) {
         x[G_oroom] = rm;
@@ -96,23 +93,23 @@ export function aobject(id: STRING, str, app: ATOM, _tuple_, tup: TUPLE) {
 export function object(id: (ATOM | STRING), desc1: STRING, desc2: STRING, desco: (STRING | FALSE), app: (FALSE | FORM | ATOM), conts: LIST(/*[*/ [REST, OBJECT] /*]*/), can: (FALSE | OBJECT), flags: PRIMTYPE(WORD), light_Q?: FIX, s1: FIX, s2: FIX, size: FIX, capac: FIX) {
     G_score_max = _(G_score_max,s1,s2);
 (0_Q(light_Q) || flags = _(flags,G_lightbit));
-find_obj(id)[G_odesc1] = desc1[G_ocapac] = capac[G_osize] = size[G_odesco] = desco[G_olight_Q] = light_Q[G_oflags] = flags[G_ofval] = s1[G_otval] = s2[G_ocan] = can[G_ocontents] = conts[G_odesc2] = desc2[G_oaction] = if(type_Q(app,false, form)) {
-        false;
-      } else {
-        app;
+find_obj(id)[G_odesc1] = desc1[G_ocapac] = capac[G_osize] = size[G_odesco] = desco[G_olight_Q] = light_Q[G_oflags] = flags[G_ofval] = s1[G_otval] = s2[G_ocan] = can[G_ocontents] = conts[G_odesc2] = desc2[G_oaction] = (type_Q(app,false, form)) ? {
+        return false;
+      } : {
+        return app;
       };
   }
 
 export function find_prep(str: STRING) {
     let atm: (FALSE | ATOM) = add_word(str);
-    if(gassigned_Q(atm)) {
-      if(type_Q(/*,*/ [atm] /*1*/,prep)) {
-          /*,*/ [atm] /*1*/;
-        } else {
-          ;
+    (gassigned_Q(atm)) ? {
+      return (type_Q(/*,*/ [atm] /*1*/,prep)) ? {
+          return /*,*/ [atm] /*1*/;
+        } : {
+          return error(no_prep_X_errors);
         };
-    } else {
-      ;
+    } : {
+      return setg(atm,chtype(atm,prep));
     };
   }
 
@@ -146,19 +143,19 @@ mapf(false, function(x) {
 export function vsynonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
     let atm: (FALSE | ATOM) = null;
     let val: ANY = null;
-    if(atm = lookup(n1,G_words)) {
+    (atm = lookup(n1,G_words)) ? {
       val = /*,*/ [atm] /*1*/;
-      mapf(false, function(x) {
+      return mapf(false, function(x) {
             setg(add_word(x), val);
           }, n2);
-    };
-if(atm = lookup(n1,G_actions)) {
+    } : false;
+(atm = lookup(n1,G_actions)) ? {
       val = /*,*/ [atm] /*1*/;
-      mapf(false, function(x) {
+      return mapf(false, function(x) {
             setg((lookup(x,G_actions) || insert(x,G_actions)),
 					    val);
           }, n2);
-    };
+    } : false;
   }
 
 `STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE).`
@@ -199,12 +196,12 @@ chutype(oadjs(obj), adjective);
 export function synonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
     let atm: (FALSE | ATOM) = null;
     let val: ANY = null;
-    if(atm = lookup(n1,G_words)) {
+    (atm = lookup(n1,G_words)) ? {
       val = /*,*/ [atm] /*1*/;
-      mapf(false, function(x) {
+      return mapf(false, function(x) {
             setg(add_word(x), val);
           }, n2);
-    };
+    } : false;
   }
 
 export function add_abbrev(x: STRING, y: STRING) {
@@ -212,17 +209,17 @@ export function add_abbrev(x: STRING, y: STRING) {
   }
 
 export function add_demon(x: HACK) {
-    if(mapr(false,
+    (mapr(false,
 	  function(y: LIST(/*[*/ [REST, HACK] /*]*/)) {
-            if(haction(y[1]) === haction(x)) {
+            (haction(y[1]) === haction(x)) ? {
               y[1] = x;
-              mapleave(t);
-            };
+              return mapleave(t);
+            } : false;
           },
-	  G_demons)) {
+	  G_demons)) ? {
       ;
-    } else {
-      ;
+    } : {
+      return G_demons = /*(*/ [x,_X,G_demons] /*)*/;
     };
   }
 
@@ -232,16 +229,16 @@ export function add_star(obj) {
 
 export function add_actor(adv: ADV) {
     let actors: LIST(/*[*/ [REST, ADV] /*]*/) = G_actors;
-    if(mapf(false,
+    (mapf(false,
 	       function(x: ADV) {
-            if(aobj(x) === aobj(adv)) {
-              mapleave(t);
-            };
+            (aobj(x) === aobj(adv)) ? {
+              return mapleave(t);
+            } : false;
           },
-	       actors)) {
+	       actors)) ? {
       ;
-    } else {
-      ;
+    } : {
+      return G_actors = /*(*/ [adv,_X,actors] /*)*/;
     };
   }
 

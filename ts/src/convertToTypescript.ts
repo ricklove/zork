@@ -8,9 +8,9 @@ const getNodesWithSpace = (nodes: ZNode[], depth: number, indentFirst = false, d
     return getNodesWithOriginalDecorations(nodes, depth, indentFirst, delimeter);
 };
 
-const getNodesWithIndent = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
+const getNodesWithIndent = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = '', shouldReturnLast = false): string => {
     const indent = getIndentation(depth);
-    return `${indentFirst ? `\n${indent}` : ''}${nodes.map(x => `${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
+    return `${indentFirst ? `\n${indent}` : ''}${nodes.map((x, i) => `${shouldReturnLast && i === nodes.length - 1 ? 'return ' : ''}${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
 };
 
 const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
@@ -87,9 +87,10 @@ const getDeclarationMap = (dMappingNodes: ZNode[]) => {
 
 const getConditionMap = (nodes: ZNode[]) => {
     const conditionBlocks = nodes
-        .map(x => {
+        .map((x, i) => {
             const cNodes = x.kind === 'ZList' && x.openSymbol === '(' && x.nodes || [];
-            const condition = cNodes[0] && cNodes[0].kind === 'ZList' && cNodes[0].openSymbol === '<' && cNodes[0] || undefined;
+            //const condition = nodes.length > 1 ? cNodes[0] : undefined;
+            const condition = cNodes[0];
             const bodyNodes = condition ? cNodes.slice(1) : cNodes;
             return {
                 condition,
@@ -545,15 +546,32 @@ export const convertToTypescript = (node: ZNode): string => {
             const indent = getIndentation(depth);
             const indent1 = getIndentation(depth + 1);
             return `${c.conditionBlocks.map((x, i) => {
+                const isTernary = true;
+
                 const isFirst = i === 0;
                 const isLast = i === c.conditionBlocks.length - 1;
-                const cond = x.condition ? convertToTypescript(x.condition) : true;
+                let cond = x.condition ? convertToTypescript(x.condition) : (isLast ? undefined : true);
                 //const body = getNodesWithSpace(x.bodyNodes, depth, false, ';');
-                const body = getNodesWithIndent(x.bodyNodes, depth + 1, false, ';') + ';';
+                let body = getNodesWithIndent(x.bodyNodes, depth + 1, false, ';', isTernary) + ';';
+
+                if (isLast && cond && x.bodyNodes.length === 0) {
+                    cond = undefined;
+                    body = getNodesWithIndent([x.condition], depth + 1, false, ';', isTernary) + ';';
+                }
+
+                if (isTernary) {
+                    if (isFirst) {
+                        return `(${cond}) ? {\n${indent1}${body}\n${indent}}${isLast ? ' : false' : ''}`;
+                    } else if (cond) {
+                        return `: (${cond}) ? {\n${indent1}${body}\n${indent}}${isLast ? ' : false' : ''}`;
+                    } else {
+                        return `: {\n${indent1}${body}\n${indent}}`;
+                    }
+                }
 
                 if (isFirst) {
                     return `if(${cond}) {\n${indent1}${body}\n${indent}}`;
-                } else if (!isLast) {
+                } else if (cond) {
                     return `else if(${cond}) {\n${indent1}${body}\n${indent}}`;
                 } else {
                     return `else {\n${indent1}${body}\n${indent}}`;
