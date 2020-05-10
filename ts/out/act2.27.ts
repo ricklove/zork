@@ -1,7 +1,7 @@
 function boom_room
   () {
     
-    let dummy_Q: atom || false = null;
+    let dummy_Q: atom | false = null;
     let prsact: verb = GLOBALS.prsvec[1];
     let win: adv = GLOBALS.winner;
     let o: object = null;
@@ -103,8 +103,8 @@ room_desc(
   }
 
 function fweep
-  (num: fix,
-    slp?: fix) {
+  (num: number,
+    slp?: number) {
     
     repeat(
     /*(*/ [/*(*/ [n,
@@ -339,7 +339,7 @@ function gunk_function
     
     let g: object = find_obj(
         "GUNK");
-    let m: object || false = ocan(
+    let m: object | false = ocan(
         g);
     cond(
     /*(*/ [m,
@@ -474,7 +474,7 @@ function dboat_function
     
     let prsact: verb = GLOBALS.prsvec[1];
     let here: room = GLOBALS.here;
-    let prsi: false || object = GLOBALS.prsvec[3];
+    let prsi: false | object = GLOBALS.prsvec[3];
     let dboat: object = find_obj(
         "DBOAT");
     cond(
@@ -509,7 +509,7 @@ function dboat_function
   }
 
 function rboat_function
-  (arg?: false || atom) {
+  (arg?: false | atom) {
     
     let prsact: verb = GLOBALS.prsvec[1];
     let rboat: object = find_obj(
@@ -675,7 +675,7 @@ function beach_room
     let shov: object = find_obj(
         "SHOVE");
     let here: room = GLOBALS.here;
-    let cnt: fix = null;
+    let cnt: number = null;
     cond(
     /*(*/ [vname(
             prsact) === dig_X_words && shov === GLOBALS.prsvec[2],
@@ -717,7 +717,7 @@ function tcave_room
     let shov: object = find_obj(
         "SHOVE");
     let here: room = GLOBALS.here;
-    let cnt: fix = null;
+    let cnt: number = null;
     cond(
     /*(*/ [vname(
             prsact) === dig_X_words && GLOBALS.prsvec[2] === shov,
@@ -1033,8 +1033,8 @@ function rise_and_shine
     
     let s: string = top(
         GLOBALS.scrstr);
-    let m: false || string = null;
-    let in_Q: atom || false = avehicle(
+    let m: false | string = null;
+    let in_Q: atom | false = avehicle(
           GLOBALS.winner) === ball;
     let bl: room = GLOBALS.bloc;
     let foo: cevent = null;
@@ -1179,9 +1179,9 @@ function decline_and_fall
     
     let s: string = top(
         GLOBALS.scrstr);
-    let m: false || string = null;
+    let m: false | string = null;
     let bl: room = GLOBALS.bloc;
-    let in_Q: atom || false = avehicle(
+    let in_Q: atom | false = avehicle(
           GLOBALS.winner) === ball;
     let foo: cevent = null;
     clock_int(
@@ -1387,8 +1387,8 @@ function fuse_function
         "FUSE");
     let brick: object = find_obj(
         "BRICK");
-    let brick_room: room || false = null;
-    let oc: object || false = null;
+    let brick_room: room | false = null;
+    let oc: object | false = null;
     cond(
     /*(*/ [prsa === GLOBALS.burn_X_words,
       tell(

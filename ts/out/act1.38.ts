@@ -42,7 +42,7 @@ gdecl(
 
 function ilo
   (body: string,
-    type: fix,
+    type: number,
     nm1: string,
     nm2: string,
     m1?: string,
@@ -335,7 +335,7 @@ function living_room
     
     let win: adv = GLOBALS.winner;
     let prsvec: vector = GLOBALS.prsvec;
-    let rug_Q: atom || false = null;
+    let rug_Q: atom | false = null;
     let prsact: verb = prsvec[1];
     let tc: object = null;
     cond(
@@ -457,7 +457,7 @@ function clearing
         "GRAT1");
     let leaves: object = find_obj(
         "LEAVE");
-    let rv: fix = rvars(
+    let rv: number = rvars(
         rm);
     cond(
     /*(*/ [prsact === GLOBALS.look_X_words,
@@ -584,7 +584,7 @@ function rusty_knife
     
     let prsvec: vector = GLOBALS.prsvec;
     let prsa: verb = prsvec[1];
-    let prsi: false || object = prsvec[3];
+    let prsi: false | object = prsvec[3];
     cond(
     /*(*/ [prsa === GLOBALS.take_X_words,
       memq(
@@ -652,7 +652,7 @@ function troll
     
     let pa: verb = GLOBALS.prsvec[1];
     let pv: vector = GLOBALS.prsvec;
-    let prso: false || object = pv[2];
+    let prso: false | object = pv[2];
     let here: room = GLOBALS.here;
     let t: object = find_obj(
         "TROLL");
@@ -864,7 +864,7 @@ function carousel_room
 function carousel_exit
   () {
     
-    let cx: cexit || nexit || room = null;
+    let cx: cexit | nexit | room = null;
     cond(
     /*(*/ [GLOBALS.carousel_flip_X_flag,
       null] /*)*/,
@@ -878,7 +878,7 @@ function carousel_exit
 function carousel_out
   () {
     
-    let cx: cexit || nexit || room = null;
+    let cx: cexit | nexit | room = null;
     type_Q(
       cx = rexits(
             GLOBALS.here)[_(
@@ -1090,7 +1090,7 @@ function treasure_room
     let chali = null;
     let hobj: object = hobj(
         hack);
-    let flg: atom || false = null;
+    let flg: atom | false = null;
     let tl: list(
         /*[*/ [rest,
           room] /*]*/) = null;
@@ -1234,7 +1234,7 @@ function bolt_function
   () {
     
     let prsact: verb = GLOBALS.prsvec[1];
-    let prsi: false || object = GLOBALS.prsvec[3];
+    let prsi: false | object = GLOBALS.prsvec[3];
     let trunk: object = find_obj(
         "TRUNK");
     cond(
@@ -1300,11 +1300,11 @@ function maint_room
     let pv = GLOBALS.prsvec;
     let prsact: verb = pv[1];
     let prso: prsobj = pv[2];
-    let prsi: false || object = pv[3];
+    let prsi: false | object = pv[3];
     let mnt: room = find_room(
         "MAINT");
-    let here_Q: atom || false = GLOBALS.here === mnt;
-    let hack: fix = null;
+    let here_Q: atom | false = GLOBALS.here === mnt;
+    let hack: number = null;
     cond(
     /*(*/ [prsact === GLOBALS.c_int_X_words,
       put(
@@ -1388,12 +1388,12 @@ cond(
 function leak_function
   () {
     
-    let hack: fix = null;
+    let hack: number = null;
     let prsvec: vector(
         /*[*/ [3,
           any] /*]*/) = GLOBALS.prsvec;
     let prsa: verb = prsvec[1];
-    let prsi: object || false = prsvec[3];
+    let prsi: object | false = prsvec[3];
     cond(
     /*(*/ [prsvec[2] === find_obj(
           "LEAK"),
@@ -1445,7 +1445,7 @@ function cave2_room
   () {
     
     let foo: vector(
-        fix,
+        number,
         cevent) = null;
     let bar: cevent = null;
     let prsact: verb = GLOBALS.prsvec[1];
@@ -1512,7 +1512,7 @@ function bottle_function
 function fill
   () {
     
-    let rem: atom || false = null;
+    let rem: atom | false = null;
     let prsvec: vector(
         verb,
         object,
@@ -1547,7 +1547,7 @@ function fill
   }
 
 function water_function
-  (rem?: atom || false) {
+  (rem?: atom | false) {
     
     let prsvec: vector(
         /*[*/ [3,
@@ -1557,9 +1557,9 @@ function water_function
     let b: object = find_obj(
         "BOTTL");
     let w: object = prsvec[2];
-    let av: object || false = avehicle(
+    let av: object | false = avehicle(
         me);
-    let can: false || object = prsvec[3];
+    let can: false | object = prsvec[3];
     cond(
     /*(*/ [prsact === GLOBALS.take_X_words || prsact === GLOBALS.put_X_words,
       cond(
@@ -1756,13 +1756,13 @@ function cyclops
   () {
     
     let prsact: verb = GLOBALS.prsvec[1];
-    let prsob1: object || false = GLOBALS.prsvec[2];
+    let prsob1: object | false = GLOBALS.prsvec[2];
     let rm: room = GLOBALS.here;
     let food: object = find_obj(
         "FOOD");
     let drink: object = find_obj(
         "WATER");
-    let count: fix = rvars(
+    let count: number = rvars(
         rm);
     let garlic: object = find_obj(
         "GARLI");
@@ -1873,7 +1873,7 @@ function cyclops_room
     
     let pv: vector = GLOBALS.prsvec;
     let rm: room = GLOBALS.here;
-    let vars: fix = rvars(
+    let vars: number = rvars(
         rm);
     cond(
     /*(*/ [pv[1] === GLOBALS.look_X_words,
@@ -1921,7 +1921,7 @@ gdecl(
       string] /*]*/))
 
 function aos_sos
-  (foo: fix) {
+  (foo: number) {
     
     cond(
     /*(*/ [foo < 0,
@@ -2138,8 +2138,8 @@ gdecl(
 function hello
   () {
     
-    let prsobj: object || false = GLOBALS.prsvec[2];
-    let amt: fix = GLOBALS.hs = _(
+    let prsobj: object | false = GLOBALS.prsvec[2];
+    let amt: number = GLOBALS.hs = _(
           GLOBALS.hs,
           1);
     cond(
@@ -2213,7 +2213,7 @@ function reader
     
     let pv: vector = GLOBALS.prsvec;
     let po: object = pv[2];
-    let pi: false || object = pv[3];
+    let pi: false | object = pv[3];
     cond(
     /*(*/ [!lit_Q(
           GLOBALS.here),
@@ -2302,7 +2302,7 @@ function brush
   () {
     
     let prso: object = GLOBALS.prsvec[2];
-    let prsi: object || false = GLOBALS.prsvec[3];
+    let prsi: object | false = GLOBALS.prsvec[3];
     cond(
     /*(*/ [prso === find_obj(
           "TEETH"),
@@ -2330,7 +2330,7 @@ function brush
 function ring
   () {
     
-    let prsobj: object || false = GLOBALS.prsvec[2];
+    let prsobj: object | false = GLOBALS.prsvec[2];
     cond(
     /*(*/ [prsobj === find_obj(
           "BELL"),
@@ -2346,10 +2346,10 @@ function eat
     let prsvec: vector(
         /*[*/ [3,
           any] /*]*/) = GLOBALS.prsvec;
-    let eat_Q: atom || false = null;
-    let drink_Q: atom || false = null;
+    let eat_Q: atom | false = null;
+    let drink_Q: atom | false = null;
     let prsobj: object = prsvec[2];
-    let nobj: object || false = null;
+    let nobj: object | false = null;
     let aobjs: list(
         /*[*/ [rest,
           object] /*]*/) = aobjs(
@@ -2904,9 +2904,9 @@ function robber_function
     let dem: hack = get_demon(
         "THIEF");
     let pv: vector = GLOBALS.prsvec;
-    let prsobj: object || false = pv[2];
+    let prsobj: object | false = pv[2];
     let here: room = GLOBALS.here;
-    let flg: atom || false = null;
+    let flg: atom | false = null;
     let brick: object = null;
     let fuse: object = null;
     let st: object = null;
@@ -3346,7 +3346,7 @@ function locker
       mapf(
         null,
         function
-          (x: cexit || nexit || room) {
+          (x: cexit | nexit | room) {
             
             cond(
             /*(*/ [type_Q(
@@ -3385,7 +3385,7 @@ function unlocker
           mapf(
             null,
             function
-              (x: cexit || nexit || room) {
+              (x: cexit | nexit | room) {
                 
                 cond(
                 /*(*/ [type_Q(
@@ -3415,8 +3415,8 @@ function killer
   () {
     
     let pv: vector = GLOBALS.prsvec;
-    let prso: false || object = pv[2];
-    let prsi: false || object = pv[3];
+    let prso: false | object = pv[2];
+    let prsi: false | object = pv[3];
     cond(
     /*(*/ [!prso,
       tell(
@@ -3456,8 +3456,8 @@ function attacker
   () {
     
     let pv: vector = GLOBALS.prsvec;
-    let prso: false || object = pv[2];
-    let prsi: false || object = pv[3];
+    let prso: false | object = pv[2];
+    let prsi: false | object = pv[3];
     cond(
     /*(*/ [!prso,
       tell(
@@ -3497,8 +3497,8 @@ function swinger
   () {
     
     let pv: vector = GLOBALS.prsvec;
-    let prso: false || object = pv[2];
-    let prsi: false || object = pv[3];
+    let prso: false | object = pv[2];
+    let prsi: false | object = pv[3];
     put(
     pv,
     2,
@@ -3514,7 +3514,7 @@ attacker(
 function hack_hack
   (obj: object,
     str: string,
-    obj2?: false || string) {
+    obj2?: false | string) {
     
     cond(
     /*(*/ [object_action(
@@ -3560,7 +3560,7 @@ function munger
   () {
     
     let prso: object = GLOBALS.prsvec[2];
-    let prsw: object || false = GLOBALS.prsvec[3];
+    let prsw: object | false = GLOBALS.prsvec[3];
     cond(
     /*(*/ [trnn(
         prso,
@@ -3872,10 +3872,10 @@ function sword_glow
     
     let sw: object = hobj(
         dem);
-    let g: fix = otval(
+    let g: number = otval(
         sw);
     let here: room = GLOBALS.here;
-    let ng: fix = 0;
+    let ng: number = 0;
     cond(
     /*(*/ [!oroom(
             sw) && !ocan(
@@ -3890,7 +3890,7 @@ function sword_glow
         /*(*/ [mapf(
             null,
             function
-              (e: room || cexit || nexit || atom) {
+              (e: room | cexit | nexit | atom) {
                 
                 cond(
                 /*(*/ [type_Q(
@@ -3998,7 +3998,7 @@ function match_function
     let prso = GLOBALS.prsvec[2];
     let match: object = find_obj(
         "MATCH");
-    let mc: fix = orand(
+    let mc: number = orand(
         match);
     cond(
     /*(*/ [prsa === GLOBALS.light_X_words && prso === match,
@@ -4064,10 +4064,10 @@ function candles
         /*[*/ [rest,
           object] /*]*/) = aobjs(
         winner);
-    let w: false || object = GLOBALS.prsvec[3];
+    let w: false | object = GLOBALS.prsvec[3];
     let match: object = null;
     let foo: vector(
-        fix,
+        number,
         cevent) = null;
     let orphans: vector(
         /*[*/ [4,
@@ -4206,15 +4206,15 @@ function light_int
     cev,
     tick: vector(
         /*[*/ [rest,
-          fix] /*]*/),
+          number] /*]*/),
     tell: vector(
         /*[*/ [rest,
           string] /*]*/)) {
     
-    let cnt: fix = null;
-    let tim: fix = null;
+    let cnt: number = null;
+    let tim: number = null;
     let foo: vector(
-        fix,
+        number,
         cevent) = orand(
         obj);
     put(
@@ -4254,7 +4254,7 @@ function hackable_Q
   (obj: object,
     rm: room) {
     
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         GLOBALS.winner);
     cond(
     /*(*/ [av,

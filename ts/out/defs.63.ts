@@ -874,8 +874,8 @@ defmac(
 function remove_object
   (obj: object) {
     
-    let ocan: object || false = null;
-    let oroom: false || room = null;
+    let ocan: object | false = null;
+    let oroom: false | room = null;
     cond(
     /*(*/ [ocan = ocan(
           obj),
@@ -1058,7 +1058,7 @@ function rob_room
     newlist: list(
         /*[*/ [rest,
           object] /*]*/),
-    prob: fix) {
+    prob: number) {
     
     mapf(
     null,
@@ -1209,7 +1209,7 @@ defmac(
     t))
 
 function yes_no
-  (no_is_bad_Q: atom || false) {
+  (no_is_bad_Q: atom | false) {
     
     let inbuf: string = GLOBALS.inbuf;
     let inchan = GLOBALS.inchan;
@@ -1262,7 +1262,7 @@ defmac(
         mumble)] /*)*/))
 
 function da
-  (fn: applicable || atom || fix,
+  (fn: applicable | atom | number,
     foo?) {
     
     prog(
@@ -1316,9 +1316,9 @@ psetg(
   /*[*/ [] /*]*/)
 
 function find_room
-  (id: atom || string) {
+  (id: atom | string) {
     
-    let atm: atom || false = null;
+    let atm: atom | false = null;
     let room: room = null;
     cond(
     /*(*/ [type_Q(
@@ -1359,10 +1359,10 @@ cond(
   }
 
 function find_obj
-  (id: atom || string) {
+  (id: atom | string) {
     
     let obj: object = null;
-    let atm: atom || false = null;
+    let atm: atom | false = null;
     cond(
     /*(*/ [type_Q(
         id,
@@ -1409,7 +1409,7 @@ cond(
   }
 
 function function_print
-  (frob: atom || offset || applicable || false) {
+  (frob: atom | offset | applicable | false) {
     
     cond(
     /*(*/ [!frob,

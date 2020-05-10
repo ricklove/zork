@@ -16,9 +16,9 @@ gdecl(
 function save_it
   (fn?: string) {
     
-    let muddle: fix = GLOBALS.muddle;
-    let stv: string || fix = null;
-    let st: string || fix = remarkably_disgusting_code(
+    let muddle: number = GLOBALS.muddle;
+    let stv: string | number = null;
+    let st: string | number = remarkably_disgusting_code(
         );
     put(
     find_obj(
@@ -207,14 +207,14 @@ function xuname
 function its_get_name
   (uname: string) {
     
-    let nm: string || false = field(
+    let nm: string | false = field(
         uname,
         GLOBALS._name);
-    let cma: string || false = null;
-    let jr: string || false = null;
-    let lfst: fix = null;
-    let llst: fix = null;
-    let tlen: fix = null;
+    let cma: string | false = null;
+    let jr: string | false = null;
+    let lfst: number = null;
+    let llst: number = null;
+    let tlen: number = null;
     let tstr: string = null;
     let str: string = null;
     cond(
@@ -299,7 +299,7 @@ function unspeakable_code
     
     let str: string = null;
     let nstr: string = null;
-    let len_i: fix = 0;
+    let len_i: number = 0;
     let o: object = find_obj(
         "PAPER");
     str = memq(
@@ -443,10 +443,10 @@ function get_time
 function play_time
   (outchan?: special(
         channel),
-    loser_Q: atom || false) {
+    loser_Q: atom | false) {
     
-    let time: fix = null;
-    let mins: fix = null;
+    let time: number = null;
+    let mins: number = null;
     time = get_time(
       )
 GLOBALS.tell_flag = t
@@ -633,8 +633,8 @@ function start
   (rm: string,
     st?: string) {
     
-    let fn: false || string = null;
-    let muddle: fix = GLOBALS.muddle;
+    let fn: false | string = null;
+    let muddle: number = GLOBALS.muddle;
     let xunm: string = xuname(
         );
     GLOBALS.xunm = xunm
@@ -725,7 +725,7 @@ gdecl(
 function make_script
   () {
     
-    let ch: channel || false = null;
+    let ch: channel | false = null;
     cond(
     /*(*/ [GLOBALS.script_channel,
       null] /*)*/,
@@ -766,9 +766,9 @@ function flush_me
 function do_script
   () {
     
-    let ch: channel || false = null;
+    let ch: channel | false = null;
     let unm: string = GLOBALS.xunm;
-    let muddle: fix = GLOBALS.muddle;
+    let muddle: number = GLOBALS.muddle;
     cond(
     /*(*/ [GLOBALS.my_script,
       do_unscript(
@@ -827,7 +827,7 @@ cond(
   }
 
 function do_unscript
-  (verbose?: atom || false) {
+  (verbose?: atom | false) {
     
     cond(
     /*(*/ [GLOBALS.script_channel,
@@ -857,8 +857,8 @@ gdecl(
 function do_save
   () {
     
-    let muddle: fix = GLOBALS.muddle;
-    let ch: channel || false = null;
+    let muddle: number = GLOBALS.muddle;
+    let ch: channel | false = null;
     let unm: string = GLOBALS.xunm;
     cond(
     /*(*/ [muddle > 100 || !member(
@@ -930,12 +930,12 @@ function do_save
 function do_restore
   () {
     
-    let ch: channel || false = null;
+    let ch: channel | false = null;
     let str: string = null;
-    let muddle: fix = GLOBALS.muddle;
-    let nowd: fix = null;
-    let now: fix = null;
-    let thend: fix = null;
+    let muddle: number = GLOBALS.muddle;
+    let nowd: number = null;
+    let now: number = null;
+    let thend: number = null;
     cond(
     /*(*/ [muddle < 100,
       str = string(
@@ -1058,7 +1058,7 @@ prog(
   }
 
 function prob
-  (num: fix) {
+  (num: number) {
     
     l__Q(
     mod(
@@ -1157,12 +1157,12 @@ function room_desc
   }
 
 function room_info
-  (full?: atom || false) {
+  (full?: atom | false) {
     
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         GLOBALS.winner);
     let rm: room = GLOBALS.here;
-    let prso: direction || false || object = GLOBALS.prsvec[2];
+    let prso: direction | false | object = GLOBALS.prsvec[2];
     let winobj: object = find_obj(
         "#####");
     let outchan: channel = GLOBALS.outchan;
@@ -1439,16 +1439,16 @@ psetg(
       10)))
 
 function rdcom
-  (ivec?: false || vector) {
+  (ivec?: false | vector) {
     
     let str = GLOBALS.reader_string;
     let vc: vector = null;
-    let rvec: false || vector = null;
+    let rvec: false | vector = null;
     let rm: room = null;
-    let inplen: fix = 1;
+    let inplen: number = 1;
     let inbuf: string = GLOBALS.inbuf;
     let winner: adv = GLOBALS.winner;
-    let av: false || object = null;
+    let av: false | object = null;
     let outchan: channel = GLOBALS.outchan;
     let random_action = null;
     ivec || prog(
@@ -1585,7 +1585,7 @@ function score_room
   }
 
 function score_upd
-  (num: fix) {
+  (num: number) {
     
     let winner = GLOBALS.winner;
     put(
@@ -1601,11 +1601,11 @@ GLOBALS.raw_score = _(
   }
 
 function score
-  (ask_Q?: atom || false) {
+  (ask_Q?: atom | false) {
     
-    let scor: fix = null;
+    let scor: number = null;
     let outchan: channel = outchan;
-    let pct: float = null;
+    let pct: number = null;
     GLOBALS.tell_flag = t
 crlf(
     )
@@ -1671,9 +1671,9 @@ crlf(
   }
 
 function finish
-  (ask_Q?: atom || false) {
+  (ask_Q?: atom | false) {
     
-    let scor: fix = null;
+    let scor: number = null;
     unwind(
     prog(
       /*(*/ [] /*)*/,
@@ -2048,7 +2048,7 @@ function pdskdate
         word),
     ch: channel) {
     
-    let tim: fix = chtype(
+    let tim: number = chtype(
         getbits(
           wd,
           bits(
@@ -2056,7 +2056,7 @@ function pdskdate
             0)),
         fix);
     let a_p: string = "AM";
-    let hr: fix = null;
+    let hr: number = null;
     princ(
     "",
     ch)
@@ -2157,7 +2157,7 @@ function jigs_up
   (desc: string) {
     
     let winner: adv = GLOBALS.winner;
-    let deaths: fix = GLOBALS.deaths;
+    let deaths: number = GLOBALS.deaths;
     let aobjs: list(
         /*[*/ [rest,
           object] /*]*/) = aobjs(
@@ -2165,9 +2165,9 @@ function jigs_up
     let random_list: list(
         /*[*/ [rest,
           room] /*]*/) = GLOBALS.random_list;
-    let lamp: false || room = find_obj(
+    let lamp: false | room = find_obj(
         "LAMP");
-    let lamp_location: false || room = null;
+    let lamp_location: false | room = null;
     let val_list: list(
         /*[*/ [rest,
           object] /*]*/) = /*(*/ [] /*)*/;
@@ -2387,16 +2387,16 @@ function file_to_tty
     dev?: string,
     snm: string) {
     
-    let ch: channel || false = open(
+    let ch: channel | false = open(
         "READ",
         file1,
         file2,
         dev,
         snm);
-    let len: fix = null;
+    let len: number = null;
     let buf: string = GLOBALS.inbuf;
-    let buflen: fix = buf.length;
-    let iter: fix = null;
+    let buflen: number = buf.length;
+    let iter: number = null;
     cond(
     /*(*/ [ch,
       unwind(
@@ -2455,7 +2455,7 @@ function file_to_tty
 function invent
   (win?: adv) {
     
-    let any: atom || false = null;
+    let any: atom | false = null;
     let outchan: channel = GLOBALS.outchan;
     mapf(
     null,
@@ -2607,18 +2607,18 @@ cond(
 function walk
   () {
     
-    let leavings: atom || room || cexit || nexit = null;
-    let nrm: false || /*<*/ [primtype(
+    let leavings: atom | room | cexit | nexit = null;
+    let nrm: false | /*<*/ [primtype(
             vector),
           /*[*/ [rest,
             atom,
-            room || nexit || cexit] /*]*/] /*>*/ = null;
+            room | nexit | cexit] /*]*/] /*>*/ = null;
     let where: atom = chtype(
         GLOBALS.prsvec[2],
         atom);
     let me: adv = GLOBALS.winner;
     let rm: room = me[1];
-    let nl: atom || room || false = null;
+    let nl: atom | room | false = null;
     let random_action = null;
     let cxs = null;
     cond(
@@ -2700,7 +2700,7 @@ function walk
   }
 
 function take
-  (take_Q?: atom || false) {
+  (take_Q?: atom | false) {
     
     let win: adv = GLOBALS.winner;
     let vec: vector = GLOBALS.prsvec;
@@ -2708,7 +2708,7 @@ function take
         win);
     let nobj: object = null;
     let obj: object = vec[2];
-    let getter_Q: atom || false = null;
+    let getter_Q: atom | false = null;
     let robjs: list(
         /*[*/ [rest,
           object] /*]*/) = robjs(
@@ -2717,7 +2717,7 @@ function take
         /*[*/ [rest,
           object] /*]*/) = aobjs(
         win);
-    let load_max: fix = GLOBALS.load_max;
+    let load_max: number = GLOBALS.load_max;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -2841,7 +2841,7 @@ function take
   }
 
 function putter
-  (objact?: atom || false) {
+  (objact?: atom | false) {
     
     let pv: vector(
         /*[*/ [3,
@@ -2859,7 +2859,7 @@ function putter
         /*[*/ [rest,
           object] /*]*/) = robjs(
         GLOBALS.here);
-    let ocan: false || object = null;
+    let ocan: false | object = null;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -3018,19 +3018,19 @@ function dropper
   () {
     
     let winner = GLOBALS.winner;
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         winner);
     let aobjs = aobjs(
         winner);
-    let getter_Q: atom || false = null;
+    let getter_Q: atom | false = null;
     let vec: vector(
         verb,
         object,
-        false || object) = GLOBALS.prsvec;
+        false | object) = GLOBALS.prsvec;
     let rm: room = aroom(
         winner);
     let obj: object = vec[2];
-    let pi: false || object = vec[3];
+    let pi: false | object = vec[3];
     let nobj: object = null;
     prog(
     /*(*/ [] /*)*/,
@@ -3168,7 +3168,7 @@ function frob_lots
     let pa: verb = prsvec[1];
     let ra: rapplic = vfcn(
         pa);
-    let pi: object || false = null;
+    let pi: object | false = null;
     let winner: adv = GLOBALS.winner;
     let here: room = GLOBALS.here;
     cond(
@@ -3244,7 +3244,7 @@ function everything
         /*[*/ [rest,
           object] /*]*/) = top(
         suv);
-    let lu: fix = tuv.length;
+    let lu: number = tuv.length;
     let here: room = GLOBALS.here;
     let winner: adv = GLOBALS.winner;
     cond(
@@ -3363,7 +3363,7 @@ function valuables
           object] /*]*/) = top(
         suv);
     let pi: object = null;
-    let lu: fix = tuv.length;
+    let lu: number = tuv.length;
     let here: room = GLOBALS.here;
     let winner: adv = GLOBALS.winner;
     cond(
@@ -3597,7 +3597,7 @@ define(
 function find
   () {
     
-    let prso: false || object = GLOBALS.prsvec[2];
+    let prso: false | object = GLOBALS.prsvec[2];
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -3682,8 +3682,8 @@ function object_action
   () {
     
     let vec: vector = GLOBALS.prsvec;
-    let prso: object || false = vec[2];
-    let prsi: object || false = vec[3];
+    let prso: object | false = vec[2];
+    let prsi: object | false = vec[3];
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -3702,7 +3702,7 @@ function object_action
 function obj_here_Q
   (obj: object) {
     
-    let nobj: false || object = null;
+    let nobj: false | object = null;
     let rm: room = GLOBALS.here;
     let win: adv = GLOBALS.winner;
     prog(
@@ -3768,7 +3768,7 @@ function weight
         /*[*/ [rest,
           object] /*]*/)) {
     
-    let bigfix: fix = GLOBALS.bigfix;
+    let bigfix: number = GLOBALS.bigfix;
     mapf(
     GLOBALS._,
     function
@@ -3800,7 +3800,7 @@ function move
     let vec: vector = GLOBALS.prsvec;
     let rm: room = aroom(
         GLOBALS.winner);
-    let obj: atom || object = vec[2];
+    let obj: atom | object = vec[2];
     cond(
     /*(*/ [memq(
         obj,
@@ -3974,7 +3974,7 @@ function word_Q
 function this_it_Q
   (objnam: atom,
     obj: atom,
-    adj: false || adjective) {
+    adj: false | adjective) {
     
     cond(
     /*(*/ [ovis_Q(
@@ -4009,12 +4009,12 @@ gdecl(
 function lex
   (s: string,
     sx?: string,
-    silent_Q: atom || false) {
+    silent_Q: atom | false) {
     
     let brks: string = GLOBALS.brks;
-    let v: false || vector = GLOBALS.lexv;
+    let v: false | vector = GLOBALS.lexv;
     let s1: string = s;
-    let quot: atom || false = null;
+    let quot: atom | false = null;
     mapr(
     null,
     function
@@ -4141,7 +4141,7 @@ function uppercase
   }
 
 function wait
-  (num?: fix) {
+  (num?: number) {
     
     tell(
     "Time passes...")
@@ -4166,7 +4166,7 @@ function clock_demon
   (hack: hack) {
     
     let ca = null;
-    let flg: atom || false = null;
+    let flg: atom | false = null;
     cond(
     /*(*/ [GLOBALS.parse_won,
       put(
@@ -4182,7 +4182,7 @@ function clock_demon
         function
           (ev: cevent) {
             
-            let tick: fix = ctick(
+            let tick: number = ctick(
                 ev);
             cond(
             /*(*/ [!cflag(
@@ -4233,7 +4233,7 @@ gdecl(
 
 function clock_int
   (cev: cevent,
-    num?: fix || false,
+    num?: number | false,
     clocker: hack) {
     
     cond(
@@ -4273,7 +4273,7 @@ function board
     
     let obj: object = GLOBALS.prsvec[2];
     let win: adv = GLOBALS.winner;
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         win);
     cond(
     /*(*/ [!memq(
@@ -4332,7 +4332,7 @@ function unboard
     
     let obj: object = GLOBALS.prsvec[2];
     let win: adv = GLOBALS.winner;
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         win);
     cond(
     /*(*/ [av === obj,
@@ -4366,10 +4366,10 @@ function goto
   (rm: room) {
     
     let win: adv = GLOBALS.winner;
-    let av: false || object = avehicle(
+    let av: false | object = avehicle(
         GLOBALS.winner);
     let here: room = GLOBALS.here;
-    let lb: atom || false = rtrnn(
+    let lb: atom | false = rtrnn(
         rm,
         GLOBALS.rlandbit);
     cond(

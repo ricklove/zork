@@ -68,11 +68,11 @@ GLOBALS.then = 0
 GLOBALS.bucket_top_X_flag = null
 
 function bucket
-  (arg?: false || atom) {
+  (arg?: false | atom) {
     
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
-    let po: direction || false || object = pv[2];
+    let po: direction | false | object = pv[2];
     let w: object = find_obj(
         "WATER");
     let buck: object = find_obj(
@@ -122,7 +122,7 @@ function pass_the_bucket
     pv: vector,
     b: object) {
     
-    let pvs: false || object || direction = pv[2];
+    let pvs: false | object | direction = pv[2];
     put(
     pv,
     2,
@@ -196,8 +196,8 @@ function cake_function
     
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
-    let po: false || object = pv[2];
-    let pi: false || object = pv[3];
+    let po: false | object = pv[2];
+    let pi: false | object = pv[3];
     let rice: object = find_obj(
         "RDICE");
     let oice: object = find_obj(
@@ -358,9 +358,9 @@ function magnet_room
     let foo: cexit = null;
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
-    let po: false || object || direction = pv[2];
+    let po: false | object | direction = pv[2];
     let here: room = GLOBALS.here;
-    let m: false || primtype(
+    let m: false | primtype(
           vector) = null;
     cond(
     /*(*/ [pa === GLOBALS.look_X_words,
@@ -486,7 +486,7 @@ function sphere_function
     let r: object = find_obj(
         "ROBOT");
     let c: room = null;
-    let fl: atom || false = null;
+    let fl: atom | false = null;
     let ract: adv = null;
     fl = !GLOBALS.cage_solve_X_flag && pa === GLOBALS.take_X_words
 cond(
@@ -579,7 +579,7 @@ function robot_actor
     
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
-    let po: false || object || direction = pv[2];
+    let po: false | object | direction = pv[2];
     let c: room = null;
     let cage: object = null;
     let r: object = find_obj(
@@ -644,7 +644,7 @@ function robot_function
     let pv: vector = GLOBALS.prsvec;
     let pa: verb = pv[1];
     let po: object = pv[2];
-    let pi: false || object = pv[3];
+    let pi: false | object = pv[3];
     let pp: object = null;
     let aa: adv = null;
     cond(

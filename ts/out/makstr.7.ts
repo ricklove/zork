@@ -1,13 +1,13 @@
 function cevent
-  (tick: fix,
-    app: applicable || offset,
-    flg: atom || false,
-    name: atom || string) {
+  (tick: number,
+    app: applicable | offset,
+    flg: atom | false,
+    name: atom | string) {
     
     let obl = get(
         initial,
         oblist);
-    let atm: atom || false = null;
+    let atm: atom | false = null;
     cond(
     /*(*/ [type_Q(
         name,
@@ -57,14 +57,14 @@ function cons_obj
   }
 
 function cexit
-  (flid: atom || string,
-    rmid: atom || string,
-    str?: false || string,
-    flag: atom || false,
-    funct: atom || false) {
+  (flid: atom | string,
+    rmid: atom | string,
+    str?: false | string,
+    flag: atom | false,
+    funct: atom | false) {
     
-    let fval: applicable || false = null;
-    let atm: atom || false = null;
+    let fval: applicable | false = null;
+    let atm: atom | false = null;
     cond(
     /*(*/ [type_Q(
         flid,
@@ -98,7 +98,7 @@ function exit
     pairs: tuple(
         /*[*/ [rest,
           string,
-          nexit || cexit || string || atom] /*]*/)) {
+          nexit | cexit | string | atom] /*]*/)) {
     
     let dobl: oblist = GLOBALS.directions;
     let frob: vector = ivector(
@@ -163,15 +163,15 @@ chtype(
   }
 
 function room
-  (id: string || atom,
+  (id: string | atom,
     d1: string,
     d2: string,
-    lit_Q: atom || form || false,
+    lit_Q: atom | form | false,
     ex: exit,
     objs?,
-    app: form || false || atom,
-    val: fix,
-    bit: fix) {
+    app: form | false | atom,
+    val: number,
+    bit: number) {
     
     let rm: room = find_room(
         id);
@@ -276,22 +276,22 @@ function aobject
   }
 
 function object
-  (id: atom || string,
+  (id: atom | string,
     desc1: string,
     desc2: string,
-    desco: string || false,
-    app: false || form || atom,
+    desco: string | false,
+    app: false | form | atom,
     conts: list(
         /*[*/ [rest,
           object] /*]*/),
-    can: false || object,
+    can: false | object,
     flags: primtype(
         word),
-    light_Q?: fix,
-    s1: fix,
-    s2: fix,
-    size: fix,
-    capac: fix) {
+    light_Q?: number,
+    s1: number,
+    s2: number,
+    size: number,
+    capac: number) {
     
     GLOBALS.score_max = _(
       GLOBALS.score_max,
@@ -350,7 +350,7 @@ put(
 function find_prep
   (str: string) {
     
-    let atm: false || atom = add_word(
+    let atm: false | atom = add_word(
         str);
     cond(
     /*(*/ [gassigned_Q(
@@ -454,7 +454,7 @@ function vsynonym
         /*[*/ [rest,
           string] /*]*/)) {
     
-    let atm: false || atom = null;
+    let atm: false | atom = null;
     let val: any = null;
     cond(
     /*(*/ [atm = lookup(
@@ -600,7 +600,7 @@ function synonym
         /*[*/ [rest,
           string] /*]*/)) {
     
-    let atm: false || atom = null;
+    let atm: false | atom = null;
     let val: any = null;
     cond(
     /*(*/ [atm = lookup(

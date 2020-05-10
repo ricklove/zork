@@ -359,11 +359,11 @@ function sp
   }
 
 function orphan
-  (flag?: atom || false,
+  (flag?: atom | false,
     action,
     slot1,
     prep,
-    name: atom || false) {
+    name: atom | false) {
     
     put(
     put(
@@ -389,11 +389,11 @@ function syn_match
     let action: action = pv[1];
     let objs: vector = rest(
         pv);
-    let o1: false || object || phrase = objs[1];
-    let o2: false || object || phrase = objs[2];
-    let dforce: false || syntax = null;
-    let drive: false || syntax = null;
-    let gwim: false || object = null;
+    let o1: false | object | phrase = objs[1];
+    let o2: false | object | phrase = objs[2];
+    let dforce: false | syntax = null;
+    let drive: false | syntax = null;
+    let gwim: false | object = null;
     let synn: varg = null;
     cond(
     /*(*/ [mapf(
@@ -501,9 +501,9 @@ function take_it_or_leave_it
   (syn: syntax,
     pv: vector) {
     
-    let pv1: false || object || phrase = pv[2];
-    let pv2: false || object || phrase = pv[3];
-    let obj: false || object = null;
+    let pv1: false | object | phrase = pv[2];
+    let pv2: false | object | phrase = pv[3];
+    let obj: false | object = null;
     let varg: varg = null;
     put(
     pv,
@@ -555,7 +555,7 @@ function take_it
     vrb: varg) {
     
     let sav1: verb = vec[1];
-    let sav2: false || object = vec[2];
+    let sav2: false | object = vec[2];
     cond(
     /*(*/ [search_list(
           oid(
@@ -591,9 +591,9 @@ function orfeo
     objs: vector) {
     
     let orph: vector = GLOBALS.orphans;
-    let orfl: atom || false = oflag(
+    let orfl: atom | false = oflag(
         orph);
-    let slot1: false || phrase || object = null;
+    let slot1: false | phrase | object = null;
     cond(
     /*(*/ [!orfl,
       null] /*)*/,
@@ -610,9 +610,9 @@ function orfeo
 function ortell
   (varg: varg,
     action: action,
-    gwim: false || object) {
+    gwim: false | object) {
     
-    let prep: false || prep = vprep(
+    let prep: false | prep = vprep(
         varg);
     let sp: string = null;
     cond(
@@ -657,7 +657,7 @@ function prstr
 function foostr
   (nam: string,
     str: string,
-    1st?: atom || false) {
+    1st?: atom | false) {
     
     mapr(
     null,
@@ -686,7 +686,7 @@ function foostr
   }
 
 function gwim_slot
-  (fx: fix,
+  (fx: number,
     varg: varg,
     action: action,
     objs: vector) {
@@ -708,24 +708,24 @@ function gwim_slot
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
 function gwim
-  (bit: fix,
+  (bit: number,
     fword: varg,
     action: action) {
     
-    let aobj: atom || false = vtrnn(
+    let aobj: atom | false = vtrnn(
         fword,
         GLOBALS.vabit);
-    let ntake: atom || false = vtrnn(
+    let ntake: atom | false = vtrnn(
         fword,
         GLOBALS.vtbit);
-    let robj: atom || false = vtrnn(
+    let robj: atom | false = vtrnn(
         fword,
         GLOBALS.vrbit);
-    let obj: atom || false = null;
-    let nobj: object || false = null;
+    let obj: atom | false = null;
+    let nobj: object | false = null;
     let pv: vector = GLOBALS.prsvec;
-    let savobj: false || object || phrase = null;
-    let av: object || false = avehicle(
+    let savobj: false | object | phrase = null;
+    let av: object | false = avehicle(
         GLOBALS.winner);
     let sf = null;
     aobj && obj = fwim(
@@ -793,7 +793,7 @@ function make_action
           let syn: vector = ivector(
               5,
               null);
-          let whr: fix = 1;
+          let whr: number = 1;
           mapf(
           null,
           function
@@ -913,9 +913,9 @@ GLOBALS.evarg = chtype(
 
 function syn_equal
   (varg: varg,
-    pobj: false || phrase || object) {
+    pobj: false | phrase | object) {
     
-    let vbit: fix = vbit(
+    let vbit: number = vbit(
         varg);
     cond(
     /*(*/ [type_Q(
@@ -947,7 +947,7 @@ function eparse
   (pv: vector(
         /*[*/ [rest,
           string] /*]*/),
-    vb: atom || false) {
+    vb: atom | false) {
     
     let val: any = null;
     cond(

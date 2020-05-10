@@ -27,12 +27,16 @@ const convertToTypescriptName = (node: ZToken): string => {
         }`;
 }
 
-// const convertToTypescriptTypeName = (node: ZToken): string => {
-//     const raw = node._raw.toString();
-//     if (raw === 'FIX') { return 'number'; }
+const convertToTypescriptType = (node: ZNode): string => {
+    const t = convertToTypescript(node);
 
-//     return convertToTypescriptName(node);
-// }
+    return t
+        .replace(/fix/g, 'number')
+        .replace(/float/g, 'number')
+        .replace(/\|\|/g, '|')
+        .replace(/&&/g, '&')
+        ;
+}
 
 const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsList: undefined | ZList, declList: undefined | ZList, body: undefined | ZList[], depth: number, ) => {
     const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
@@ -110,8 +114,8 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
             // typeDefText = declListText ? `\n${getIndentation(declList?.depth ?? 0)}: ( (${declListText}) => unknown )` : '';
 
             const indent = getIndentation(depth + 1);
-            argsListText = `${args.filter(x => !x.afterAux).map(x => `${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescript(x.dataType)}` : ''}`).join(`,\n${indent}`)}`;
-            varsListText = `${args.filter(x => x.afterAux).map(x => `\n${indent}let ${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescript(x.dataType)}` : ''} = ${x.argValue};`).join(``)}`;
+            argsListText = `${args.filter(x => !x.afterAux).map(x => `${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescriptType(x.dataType)}` : ''}`).join(`,\n${indent}`)}`;
+            varsListText = `${args.filter(x => x.afterAux).map(x => `\n${indent}let ${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescriptType(x.dataType)}` : ''} = ${x.argValue};`).join(``)}`;
         }
     }
 
