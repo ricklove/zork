@@ -101,8 +101,7 @@ FUNCTIONS.exit =
     
     let dobl = GLOBALS.directions;
     let frob = ivector(
-        length(
-          pairs));
+        pairs.length);
     repeat(
     /*(*/ [atm,
       rm,

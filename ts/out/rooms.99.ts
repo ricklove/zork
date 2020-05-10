@@ -97,12 +97,10 @@ cond(
               GLOBALS.scratch_str,
               0,
               _(
-                length(
-                  GLOBALS.scratch_str),
-                length(
-                  memq(
+                GLOBALS.scratch_str.length,
+                memq(
                     _X__,
-                    stv))))] /*)*/),
+                    stv).length))] /*)*/),
       cond(
         /*(*/ [g_Q(
             GLOBALS.muddle,
@@ -259,22 +257,18 @@ FUNCTIONS.its_get_name =
               _X__,
               nm),
           llst = _(
-              length(
-                nm),
-              length(
-                cma)),
+              nm.length,
+              cma.length),
           cma = rest(
               cma),
-          lfst = length(
-              cma),
+          lfst = cma.length,
           cond(
             /*(*/ [jr = memq(
                   _X__,
                   cma),
               lfst = _(
                   lfst,
-                  length(
-                    jr))] /*)*/),
+                  jr.length)] /*)*/),
           repeat(
             /*(*/ [] /*)*/,
             cond(
@@ -301,8 +295,7 @@ FUNCTIONS.its_get_name =
               lfst,
               1,
               llst,
-              length(
-                jr)),
+              jr.length),
           str = istring(
               tlen,
               _X__),
@@ -327,8 +320,7 @@ FUNCTIONS.its_get_name =
             substruc(
               jr,
               0,
-              length(
-                jr),
+              jr.length,
               rest(
                 tstr,
                 llst))),
@@ -351,10 +343,9 @@ FUNCTIONS.unspeakable_code =
         o))
 cond(
     /*(*/ [_EQ_Q(
-        1(
-          back(
+        back(
             str,
-            2)),
+            2)[1],
         _X_1),
       str = back(
           str,
@@ -377,10 +368,8 @@ string(
       str,
       0,
       _(
-        length(
-          str),
-        length(
-          nstr))),
+        str.length,
+        nstr.length)),
     "here.")
   }
 
@@ -391,15 +380,13 @@ FUNCTIONS.remarkably_disgusting_code =
         );
     string(
     "This version created",
-    nth(
-      GLOBALS.months,
-      chtype(
+    GLOBALS.months[chtype(
         getbits(
           n,
           bits(
             4,
             23)),
-        fix)),
+        fix)],
     _X__,
     unparse(
       chtype(
@@ -578,9 +565,8 @@ FUNCTIONS.handle =
     13,
     80)
 put(
-    1(
-      back(
-        GLOBALS.inchan)),
+    back(
+        GLOBALS.inchan)[1],
     6,
     /*#*/ [lose,
       27] /*2*/)
@@ -622,9 +608,8 @@ cond(
           finish(
             ),
           put(
-            1(
-              back(
-                GLOBALS.inchan)),
+            back(
+                GLOBALS.inchan)[1],
             6,
             cond(
               /*(*/ [g_Q(
@@ -645,8 +630,7 @@ cond(
             frm)] /*)*/,
         /*(*/ [and(
             _EQ_Q(
-              length(
-                zork),
+              zork.length,
               3),
             _EQ_Q(
               zork[1],
@@ -654,17 +638,15 @@ cond(
             not(
               zf = zork[3]),
             _EQ_Q(
-              length(
-                zf),
+              zf.length,
               3),
             __Q(
               zf[1],
               "ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY")),
           // HACK FOR ILLEGAL CHR AFTER CTRL-P,
           put(
-            1(
-              back(
-                GLOBALS.inchan)),
+            back(
+                GLOBALS.inchan)[1],
             6,
             /*#*/ [lose,
               _000000000015_] /*2*/),
@@ -757,8 +739,7 @@ cond(
         100),
       and(
         g_Q(
-          length(
-            xunm),
+          xunm.length,
           2),
         __Q(
           substruc(
@@ -804,9 +785,8 @@ FUNCTIONS.contin =
     
     GLOBALS.alt_flag = null
 put(
-    1(
-      back(
-        GLOBALS.inchan)),
+    back(
+        GLOBALS.inchan)[1],
     6,
     cond(
       /*(*/ [g_Q(
@@ -1567,8 +1547,7 @@ define(
         /*(*/ [not(
             and(
               _EQ_Q(
-                length(
-                  cont),
+                cont.length,
                 1),
               _EQ_Q(
                 cont[1],
@@ -1739,8 +1718,7 @@ repeat(
                     vc),
                   null),
                 type_Q(
-                  cv = 1(
-                      rvec = GLOBALS.prsvec),
+                  cv = rvec = GLOBALS.prsvec[1],
                   verb)),
             cond(
               /*(*/ [not(
@@ -2396,15 +2374,13 @@ cond(
         ch)] /*)*/,
     /*(*/ [t,
       princ(
-        nth(
-          GLOBALS.months,
-          chtype(
+        GLOBALS.months[chtype(
             getbits(
               wd,
               bits(
                 4,
                 23)),
-            fix)),
+            fix)],
         ch),
       princ(
         "",
@@ -2635,29 +2611,24 @@ FUNCTIONS.jigs_up =
                     random_list),
                   cond(
                     /*(*/ [g__Q(
-                        length(
-                          random_list),
-                        length(
-                          aobjs)),
+                        random_list.length,
+                        aobjs.length),
                       aobjs = val_list] /*)*/,
                     /*(*/ [empty_Q(
                         val_list),
                       aobjs = rest(
                           aobjs,
-                          length(
-                            random_list))] /*)*/,
+                          random_list.length)] /*)*/,
                     /*(*/ [t,
                       putrest(
                         rest(
                           val_list,
                           _(
-                            length(
-                              val_list),
+                            val_list.length,
                             1)),
                         rest(
                           aobjs,
-                          length(
-                            random_list))),
+                          random_list.length)),
                       aobjs = val_list] /*)*/),
                   mapf(
                     null,
@@ -2727,8 +2698,7 @@ FUNCTIONS.file_to_tty =
         snm);
     let len = null;
     let buf = GLOBALS.inbuf;
-    let buflen = length(
-        buf);
+    let buflen = buf.length;
     let iter = null;
     cond(
     /*(*/ [ch,
@@ -2867,14 +2837,12 @@ princ(
           y[1]))
 cond(
         /*(*/ [g_Q(
-            length(
-              y),
+            y.length,
             2),
           princ(
             ",")] /*)*/,
         /*(*/ [_EQ_Q(
-            length(
-              y),
+            y.length,
             2),
           princ(
             ", and")] /*)*/)
@@ -3686,8 +3654,7 @@ FUNCTIONS.everything =
     let suv = GLOBALS.obj_uv;
     let tuv = top(
         suv);
-    let lu = length(
-        tuv);
+    let lu = tuv.length;
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
@@ -3827,8 +3794,7 @@ FUNCTIONS.valuables =
     let tuv = top(
         suv);
     let pi = null;
-    let lu = length(
-        tuv);
+    let lu = tuv.length;
     let here = GLOBALS.here;
     let winner = GLOBALS.winner;
     cond(
@@ -4570,8 +4536,7 @@ FUNCTIONS.lex =
         1,
         rest(
           str,
-          length(
-            str)))
+          str.length))
       },
     v)
 cond(
@@ -4596,19 +4561,15 @@ cond(
         cond(
           /*(*/ [or(
               _EQ_Q(
-                length(
-                  s1),
-                length(
-                  sx)),
+                s1.length,
+                sx.length),
               memq(
                 s1[1],
                 brks)),
             and(
               g_Q(
-                length(
-                  s1),
-                length(
-                  sx)),
+                s1.length,
+                sx.length),
               or(
                 _EQ_Q(
                   s1[1],
@@ -4641,10 +4602,8 @@ cond(
                           0,
                           slen = min(
                               _(
-                                length(
-                                  s),
-                                length(
-                                  s1)),
+                                s.length,
+                                s1.length),
                               5),
                           back(
                             v[1],
@@ -4653,10 +4612,8 @@ cond(
                         v)] /*)*/)] /*)*/),
             cond(
               /*(*/ [_EQ_Q(
-                  length(
-                    s1),
-                  length(
-                    sx)),
+                  s1.length,
+                  sx.length),
                 return(
                   v)] /*)*/),
             s = rest(

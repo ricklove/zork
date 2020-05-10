@@ -827,9 +827,7 @@ FUNCTIONS.beach_room =
             cnt,
             0)] /*)*/,
         /*(*/ [tell(
-            nth(
-              GLOBALS.bdigs,
-              cnt))] /*)*/)] /*)*/)
+            GLOBALS.bdigs[cnt])] /*)*/)] /*)*/)
   }
 
 FUNCTIONS.tcave_room = 
@@ -869,9 +867,7 @@ FUNCTIONS.tcave_room =
               tell(
                 "This is getting you nowhere.")] /*)*/,
             /*(*/ [tell(
-                nth(
-                  GLOBALS.cdigs,
-                  cnt))] /*)*/)] /*)*/,
+                GLOBALS.cdigs[cnt])] /*)*/)] /*)*/,
         /*(*/ [tell(
             "There's nothing to dig into here.")] /*)*/)] /*)*/)
   }
@@ -1515,9 +1511,8 @@ FUNCTIONS.burnup =
     
     let r = find_obj(
         "RECEP");
-    let obj = 1(
-        ocontents(
-          r));
+    let obj = ocontents(
+          r)[1];
     put(
     r,
     GLOBALS.ocontents,

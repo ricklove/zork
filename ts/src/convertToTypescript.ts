@@ -321,11 +321,29 @@ export const convertToTypescript = (node: ZNode): string => {
             && firstNode
             && firstNode.kind === 'ZToken'
             && nodes.length === 2
-            && nodes[1].kind === 'ZList'
-            && (nodes[1].openSymbol === '.' || nodes[1].openSymbol === ',')
             && (parseInt(firstNode._raw.toString()) + '' === firstNode._raw.toString())
         ) {
-            return `${convertToTypescript(nodes[1])}[${nodes[0]}]`;
+            return `${convertToTypescript(nodes[1])}[${convertToTypescript(nodes[0])}]`;
+        }
+
+        // Array Access: <NTH .ATM n?>
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'NTH'
+            && nodes.length >= 2
+        ) {
+            return `${convertToTypescript(nodes[1])}[${nodes[2] ? convertToTypescript(nodes[2]) : 1}]`;
+        }
+
+        // Length
+        if (openSymbol === '<'
+            && firstNode
+            && firstNode.kind === 'ZToken'
+            && firstNode.toString() === 'LENGTH'
+            && nodes.length === 2
+        ) {
+            return `${convertToTypescript(nodes[1])}.length`;
         }
 
         // Forms: <FUNC ...ARGS> (i.e. calling functions)

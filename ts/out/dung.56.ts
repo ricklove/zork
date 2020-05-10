@@ -963,13 +963,11 @@ GLOBALS.villains = /*(*/ [find_obj(
       "CYCLO")] /*)*/
 
 GLOBALS.villain_probs = iuvector(
-    length(
-      GLOBALS.villains),
+    GLOBALS.villains.length,
     0)
 
 GLOBALS.oppv = ivector(
-    length(
-      GLOBALS.villains),
+    GLOBALS.villains.length,
     () => null)
 
 add_demon(

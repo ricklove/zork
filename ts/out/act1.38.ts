@@ -27,9 +27,8 @@ FUNCTIONS.blo =
         alltypes(
           ),
         6,
-        7(
-          alltypes(
-            ))),
+        alltypes(
+            )[7]),
       substitute(
         2,
         1),
@@ -625,8 +624,7 @@ FUNCTIONS.chimney_function =
     cond(
     /*(*/ [and(
         l__Q(
-          length(
-            aobjs),
+          aobjs.length,
           2),
         memq(
           find_obj(
@@ -764,8 +762,7 @@ cond(
         rest(
           l,
           _(
-            length(
-              l),
+            l.length,
             1)),
         robjs(
           lld)),
@@ -1079,17 +1076,15 @@ FUNCTIONS.carousel_out =
     let cx = null;
     and(
     type_Q(
-      cx = nth(
-          rexits(
-            GLOBALS.here),
-          _(
+      cx = rexits(
+            GLOBALS.here)[_(
             2,
             _(
               1,
               mod(
                 random(
                   ),
-                8)))),
+                8)))],
       cexit),
     cxroom(
       cx))
@@ -1585,14 +1580,12 @@ FUNCTIONS.maint_room =
             tell(
               "The water level here is now",
               1,
-              nth(
-                GLOBALS.drownings,
-                _(
+              GLOBALS.drownings[_(
                   1,
                   _(
                     hack = rvars(
                         mnt),
-                    2)))))] /*)*/),
+                    2))]))] /*)*/),
       cond(
         /*(*/ [g__Q(
             hack = rvars(
@@ -1759,9 +1752,8 @@ FUNCTIONS.cave2_room =
           olight_Q(
             c)),
         clock_disable(
-          bar = 2(
-              foo = orand(
-                  c))),
+          bar = foo = orand(
+                  c)[2]),
         put(
           c,
           GLOBALS.olight_Q,
@@ -2324,10 +2316,8 @@ FUNCTIONS.cyclops_room =
             0_Q(
               vars),
             tell(
-              nth(
-                GLOBALS.cyclomad,
-                abs(
-                  vars))))] /*)*/)] /*)*/)
+              GLOBALS.cyclomad[abs(
+                  vars)]))] /*)*/)] /*)*/)
   }
 
 psetg(
@@ -2361,10 +2351,8 @@ FUNCTIONS.aos_sos =
 cond(
     /*(*/ [GLOBALS.cyclops_flag_X_flag] /*)*/,
     /*(*/ [tell(
-        nth(
-          GLOBALS.cyclomad,
-          abs(
-            foo)))] /*)*/)
+        GLOBALS.cyclomad[abs(
+            foo)])] /*)*/)
   }
 
 GLOBALS.echo_flag_X_flag = null
@@ -3757,9 +3745,8 @@ tro(
             not(
               0_Q(
                 ctick(
-                  2(
-                    f = orand(
-                        fuse)))))),
+                  f = orand(
+                        fuse)[2])))),
           // I.e., he's trying to give us the brick with a lighted fuse.,
           tell(
             "The thief seems rather offended by your offer.  Do you think he's as\nstupid as you are?")] /*)*/,
@@ -4548,17 +4535,15 @@ FUNCTIONS.lantern =
         verb,
         GLOBALS.turn_on_X_words),
       clock_enable(
-        2(
-          foo = orand(
-              rlamp))),
+        foo = orand(
+              rlamp)[2]),
       null] /*)*/,
     /*(*/ [_EQ_Q(
         verb,
         GLOBALS.turn_off_X_words),
       clock_disable(
-        2(
-          foo = orand(
-              rlamp))),
+        foo = orand(
+              rlamp)[2]),
       null] /*)*/)
   }
 
@@ -4962,9 +4947,7 @@ FUNCTIONS.light_int =
         1))
 clock_int(
     cev,
-    tim = nth(
-        tick,
-        cnt))
+    tim = tick[cnt])
 cond(
     /*(*/ [0_Q(
         tim),
@@ -4996,9 +4979,7 @@ cond(
             obj),
           GLOBALS.here)),
       tell(
-        nth(
-          tell,
-          cnt))] /*)*/)
+        tell[cnt])] /*)*/)
   }
 
 FUNCTIONS.hackable_Q = 

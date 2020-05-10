@@ -404,9 +404,8 @@ define(
         /*(*/ [prep,
           and(
             type_Q(
-              lobj = 1(
-                  back(
-                    pvr)),
+              lobj = back(
+                    pvr)[1],
               object),
             top(
               put(
@@ -757,8 +756,7 @@ FUNCTIONS.prstr =
         atm),
     back(
       GLOBALS.scrstr,
-      length(
-        sp)),
+      sp.length),
     null)
   }
 

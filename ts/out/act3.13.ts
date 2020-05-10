@@ -469,17 +469,15 @@ FUNCTIONS.magnet_room =
             "You cannot get your bearings..."),
           goto(
             cxroom(
-              foo = nth(
-                  rexits(
-                    here),
-                  _(
+              foo = rexits(
+                    here)[_(
                     2,
                     _(
                       1,
                       mod(
                         random(
                           ),
-                        8)))))),
+                        8)))])),
           room_info(
             )] /*)*/,
         /*(*/ [m = memq(
