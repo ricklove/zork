@@ -5342,8 +5342,8 @@ add_object(
 
 mapf(
   null,
-  /* FUNCTION */
-    (x) => {
+  function
+    (x) {
       
       rtro(
       find_room(
@@ -5371,8 +5371,8 @@ mapf(
 
 mapf(
   null,
-  /* FUNCTION */
-    (x) => {
+  function
+    (x) {
       
       rtro(
       find_room(
@@ -5385,8 +5385,8 @@ mapf(
 
 mapf(
   null,
-  /* FUNCTION */
-    (x) => {
+  function
+    (x) {
       
       rtro(
       find_room(

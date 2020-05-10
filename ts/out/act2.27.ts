@@ -1,5 +1,5 @@
-FUNCTIONS.boom_room = 
-  () => {
+function boom_room
+  () {
     
     let dummy_Q = null;
     let prsact = GLOBALS.prsvec[1];
@@ -62,8 +62,8 @@ FUNCTIONS.boom_room =
               "BOOOOOOOOOOOM"))] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.bats_room = 
-  () => {
+function bats_room
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     cond(
@@ -95,8 +95,8 @@ FUNCTIONS.bats_room =
           "In the corner of the room on the ceiling is a large vampire bat who\nis obviously deranged and holding his nose."))] /*)*/)
   }
 
-FUNCTIONS.fly_me = 
-  () => {
+function fly_me
+  () {
     
     let bat_drops = GLOBALS.bat_drops;
     unwind(
@@ -123,9 +123,9 @@ room_desc(
     )
   }
 
-FUNCTIONS.fweep = 
+function fweep
   (num,
-    slp?) => {
+    slp?) {
     
     repeat(
     /*(*/ [/*(*/ [n,
@@ -166,8 +166,8 @@ gdecl(
 
 GLOBALS.cage_top_X_flag = t
 
-FUNCTIONS.dumbwaiter = 
-  () => {
+function dumbwaiter
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let tb = find_obj(
@@ -248,8 +248,8 @@ FUNCTIONS.dumbwaiter =
             "I can't see that here.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.machine_room = 
-  () => {
+function machine_room
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     cond(
@@ -268,8 +268,8 @@ FUNCTIONS.machine_room =
             "The lid on the machine is closed.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.machine_function = 
-  () => {
+function machine_function
+  () {
     
     let dummy = GLOBALS.dummy;
     let prsact = GLOBALS.prsvec[1];
@@ -319,8 +319,8 @@ FUNCTIONS.machine_function =
             GLOBALS.take_X_words)] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.mswitch_function = 
-  () => {
+function mswitch_function
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let c = find_obj(
@@ -388,8 +388,8 @@ FUNCTIONS.mswitch_function =
             "won't do.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.gunk_function = 
-  () => {
+function gunk_function
+  () {
     
     let g = find_obj(
         "GUNK");
@@ -416,8 +416,8 @@ GLOBALS.score_max = _(
     GLOBALS.score_max,
     GLOBALS.light_shaft = 10)
 
-FUNCTIONS.no_objs = 
-  () => {
+function no_objs
+  () {
     
     cond(
     /*(*/ [empty_Q(
@@ -442,8 +442,8 @@ gdecl(
   /*(*/ [light_shaft] /*)*/,
   fix)
 
-FUNCTIONS.cliff_function = 
-  () => {
+function cliff_function
+  () {
     
     cond(
     /*(*/ [memq(
@@ -455,8 +455,8 @@ FUNCTIONS.cliff_function =
     /*(*/ [GLOBALS.deflate_X_flag = t] /*)*/)
   }
 
-FUNCTIONS.stick_function = 
-  () => {
+function stick_function
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     cond(
@@ -498,8 +498,8 @@ FUNCTIONS.stick_function =
             "Very good.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.falls_room = 
-  () => {
+function falls_room
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     cond(
@@ -516,8 +516,8 @@ FUNCTIONS.falls_room =
             "A beautiful rainbow can be seen over the falls and to the east.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.digger = 
-  () => {
+function digger
+  () {
     
     let prso = GLOBALS.prsvec[2];
     cond(
@@ -542,8 +542,8 @@ FUNCTIONS.digger =
         "is silly.")] /*)*/)
   }
 
-FUNCTIONS.dboat_function = 
-  () => {
+function dboat_function
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let here = GLOBALS.here;
@@ -588,8 +588,8 @@ FUNCTIONS.dboat_function =
             prsi)] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.rboat_function = 
-  (arg?) => {
+function rboat_function
+  (arg?) {
     
     let prsact = GLOBALS.prsvec[1];
     let rboat = find_obj(
@@ -657,8 +657,8 @@ FUNCTIONS.rboat_function =
             here)] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.iboat_function = 
-  () => {
+function iboat_function
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let iboat = find_obj(
@@ -696,8 +696,8 @@ FUNCTIONS.iboat_function =
             "I don't think you have enough lung-power to inflate this boat.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.over_falls = 
-  () => {
+function over_falls
+  () {
     
     cond(
     /*(*/ [_EQ_Q(
@@ -709,8 +709,8 @@ FUNCTIONS.over_falls =
 
 GLOBALS.buoy_flag_X_flag = t
 
-FUNCTIONS.shake = 
-  () => {
+function shake
+  () {
     
     let prsobj = GLOBALS.prsvec[2];
     let here = GLOBALS.here;
@@ -740,8 +740,8 @@ FUNCTIONS.shake =
               prsobj)))),
       mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             put(
             x,
@@ -761,8 +761,8 @@ insert_object(
         "All of the objects spill onto the floor.")] /*)*/)
   }
 
-FUNCTIONS.rivr4_room = 
-  () => {
+function rivr4_room
+  () {
     
     and(
     memq(
@@ -776,8 +776,8 @@ FUNCTIONS.rivr4_room =
     GLOBALS.buoy_flag_X_flag = null)
   }
 
-FUNCTIONS.beach_room = 
-  () => {
+function beach_room
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let shov = find_obj(
@@ -830,8 +830,8 @@ FUNCTIONS.beach_room =
             GLOBALS.bdigs[cnt])] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.tcave_room = 
-  () => {
+function tcave_room
+  () {
     
     let prsact = GLOBALS.prsvec[1];
     let shov = find_obj(
@@ -891,8 +891,8 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-FUNCTIONS.geronimo = 
-  () => {
+function geronimo
+  () {
     
     cond(
     /*(*/ [_EQ_Q(
@@ -917,8 +917,8 @@ gdecl(
     /*[*/ [rest,
       string] /*]*/))
 
-FUNCTIONS.swimmer = 
-  () => {
+function swimmer
+  () {
     
     let swimyuks = GLOBALS.swimyuks;
     cond(
@@ -932,8 +932,8 @@ FUNCTIONS.swimmer =
           swimyuks))] /*)*/)
   }
 
-FUNCTIONS.grue_function = 
-  () => {
+function grue_function
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     cond(
@@ -1207,9 +1207,9 @@ gdecl(
     bint] /*)*/,
   cevent)
 
-FUNCTIONS.rise_and_shine = 
+function rise_and_shine
   (ball,
-    here) => {
+    here) {
     
     let s = top(
         GLOBALS.scrstr);
@@ -1331,11 +1331,11 @@ cond(
         "lifts off.")] /*)*/)
   }
 
-FUNCTIONS.put_balloon = 
+function put_balloon
   (ball,
     here,
     there,
-    str) => {
+    str) {
     
     and(
     member(
@@ -1359,9 +1359,9 @@ gdecl(
   /*(*/ [bloc] /*)*/,
   room)
 
-FUNCTIONS.decline_and_fall = 
+function decline_and_fall
   (ball,
-    here) => {
+    here) {
     
     let s = top(
         GLOBALS.scrstr);
@@ -1453,8 +1453,8 @@ cond(
                 "descends.")] /*)*/)] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.wire_function = 
-  () => {
+function wire_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let prsa = pv[1];
@@ -1506,8 +1506,8 @@ FUNCTIONS.wire_function =
             "The wire is not tied to anything.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.burnup = 
-  () => {
+function burnup
+  () {
     
     let r = find_obj(
         "RECEP");
@@ -1531,8 +1531,8 @@ GLOBALS.binf_X_flag = null
 
 GLOBALS.safe_flag_X_flag = null
 
-FUNCTIONS.safe_room = 
-  () => {
+function safe_room
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     cond(
@@ -1549,8 +1549,8 @@ FUNCTIONS.safe_room =
           /*(*/ ["On the far wall is a rusty box, whose door has been blown off."] /*)*/))] /*)*/)
   }
 
-FUNCTIONS.safe_function = 
-  () => {
+function safe_function
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     cond(
@@ -1588,8 +1588,8 @@ psetg(
   brick_boom,
   "Now you've done it.  It seems that the brick has other properties\nthan weight, namely the ability to blow you to smithereens.")
 
-FUNCTIONS.brick_function = 
-  () => {
+function brick_function
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     cond(
@@ -1600,8 +1600,8 @@ FUNCTIONS.brick_function =
         GLOBALS.brick_boom)] /*)*/)
   }
 
-FUNCTIONS.fuse_function = 
-  () => {
+function fuse_function
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     let fuse = find_obj(
@@ -1691,8 +1691,8 @@ FUNCTIONS.fuse_function =
               GLOBALS.munged_room = brick_room,
               mapf(
                 null,
-                /* FUNCTION */
-                  (x) => {
+                function
+                  (x) {
                     
                     cond(
                     /*(*/ [can_take_Q(
@@ -1710,8 +1710,8 @@ FUNCTIONS.fuse_function =
                       "LROOM")),
                   mapf(
                     null,
-                    /* FUNCTION */
-                      (x) => {
+                    function
+                      (x) {
                         
                         put(
                         x,
@@ -1738,8 +1738,8 @@ FUNCTIONS.fuse_function =
             "The wire rapidly burns into nothingness.")] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.safe_mung = 
-  () => {
+function safe_mung
+  () {
     
     let rm = GLOBALS.munged_room;
     cond(
@@ -1772,8 +1772,8 @@ mung_room(
     "The way is blocked by debris from an explosion.")
   }
 
-FUNCTIONS.ledge_mung = 
-  () => {
+function ledge_mung
+  () {
     
     let rm = find_room(
         "LEDG4");
@@ -1816,8 +1816,8 @@ mung_room(
     "The ledge has collapsed and cannot be landed on.")
   }
 
-FUNCTIONS.ledge_function = 
-  () => {
+function ledge_function
+  () {
     
     let prsa = GLOBALS.prsvec[1];
     cond(
@@ -1844,8 +1844,8 @@ FUNCTIONS.ledge_function =
           /*(*/ ["There is a small door to the south."] /*)*/))] /*)*/)
   }
 
-FUNCTIONS.blast = 
-  () => {
+function blast
+  () {
     
     cond(
     /*(*/ [_EQ_Q(
@@ -1856,8 +1856,8 @@ FUNCTIONS.blast =
         "I don't really know how to do that.")] /*)*/)
   }
 
-FUNCTIONS.volgnome = 
-  () => {
+function volgnome
+  () {
     
     cond(
     /*(*/ [member(
@@ -1878,8 +1878,8 @@ FUNCTIONS.volgnome =
 
 GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = null
 
-FUNCTIONS.gnome_function = 
-  () => {
+function gnome_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let prsa = pv[1];

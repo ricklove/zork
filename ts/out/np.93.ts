@@ -155,8 +155,8 @@ define(
       phrase] /*)*/] /*2*/,
   val = mapf(
       null,
-      /* FUNCTION */
-        (x) => {
+      function
+        (x) {
           
           cond(
           /*(*/ [empty_Q(
@@ -421,8 +421,8 @@ define(
                   lobj))))] /*)*/,
         /*(*/ [pv] /*)*/)] /*)*/))
 
-FUNCTIONS.sp = 
-  (str) => {
+function sp
+  (str) {
     
     parse(
     lex(
@@ -430,12 +430,12 @@ FUNCTIONS.sp =
     null)
   }
 
-FUNCTIONS.orphan = 
+function orphan
   (flag?,
     action,
     slot1,
     prep,
-    name) => {
+    name) {
     
     put(
     put(
@@ -455,8 +455,8 @@ FUNCTIONS.orphan =
     flag)
   }
 
-FUNCTIONS.syn_match = 
-  (pv) => {
+function syn_match
+  (pv) {
     
     let action = pv[1];
     let objs = rest(
@@ -470,8 +470,8 @@ FUNCTIONS.syn_match =
     cond(
     /*(*/ [mapf(
         null,
-        /* FUNCTION */
-          (syn) => {
+        function
+          (syn) {
             
             cond(
             /*(*/ [syn_equal(
@@ -592,9 +592,9 @@ FUNCTIONS.syn_match =
       null] /*)*/)
   }
 
-FUNCTIONS.take_it_or_leave_it = 
+function take_it_or_leave_it
   (syn,
-    pv) => {
+    pv) {
     
     let pv1 = pv[2];
     let pv2 = pv[3];
@@ -644,10 +644,10 @@ cond(
         varg)] /*)*/)
   }
 
-FUNCTIONS.take_it = 
+function take_it
   (obj,
     vec,
-    vrb) => {
+    vrb) {
     
     let sav1 = vec[1];
     let sav2 = vec[2];
@@ -686,9 +686,9 @@ FUNCTIONS.take_it =
         sav2)] /*)*/)
   }
 
-FUNCTIONS.orfeo = 
+function orfeo
   (syn,
-    objs) => {
+    objs) {
     
     let orph = GLOBALS.orphans;
     let orfl = oflag(
@@ -710,10 +710,10 @@ FUNCTIONS.orfeo =
           slot1))] /*)*/)
   }
 
-FUNCTIONS.ortell = 
+function ortell
   (varg,
     action,
-    gwim) => {
+    gwim) {
     
     let prep = vprep(
         varg);
@@ -747,8 +747,8 @@ FUNCTIONS.ortell =
 null
   }
 
-FUNCTIONS.prstr = 
-  (atm) => {
+function prstr
+  (atm) {
     
     let sp = null;
     foostr(
@@ -760,16 +760,16 @@ FUNCTIONS.prstr =
     null)
   }
 
-FUNCTIONS.foostr = 
+function foostr
   (nam,
     str,
-    1st?) => {
+    1st?) {
     
     mapr(
     null,
-    /* FUNCTION */
+    function
       (x,
-        y) => {
+        y) {
         
         cond(
         /*(*/ [and(
@@ -795,11 +795,11 @@ FUNCTIONS.foostr =
     str)
   }
 
-FUNCTIONS.gwim_slot = 
+function gwim_slot
   (fx,
     varg,
     action,
-    objs) => {
+    objs) {
     
     let obj = null;
     cond(
@@ -817,10 +817,10 @@ FUNCTIONS.gwim_slot =
 
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
-FUNCTIONS.gwim = 
+function gwim
   (bit,
     fword,
-    action) => {
+    action) {
     
     let aobj = vtrnn(
         fword,
@@ -918,9 +918,9 @@ cond(
 
 // [ON (,BIT ,BIT ,BIT ROBJS NO-TAKE ...) [ATOM!-WORDS <FCN>] DRIVER]
 
-FUNCTIONS.make_action = 
+function make_action
   ("TUPLE",
-  specs) => {
+  specs) {
     "AUX",
   vv,
   sum,
@@ -930,8 +930,8 @@ FUNCTIONS.make_action =
     chtype(
     mapf(
       GLOBALS.uvector,
-      /* FUNCTION */
-        (sp) => {
+      function
+        (sp) {
           
           let syn = ivector(
               5,
@@ -939,8 +939,8 @@ FUNCTIONS.make_action =
           let whr = 1;
           mapf(
           null,
-          /* FUNCTION */
-            (itm) => {
+          function
+            (itm) {
               
               cond(
               /*(*/ [type_Q(
@@ -1075,9 +1075,9 @@ GLOBALS.evarg = chtype(
       0] /*]*/,
     varg)
 
-FUNCTIONS.syn_equal = 
+function syn_equal
   (varg,
-    pobj) => {
+    pobj) {
     
     let vbit = vbit(
         varg);
@@ -1123,9 +1123,9 @@ FUNCTIONS.syn_equal =
 GLOBALS.directions = moblist(
     directions)
 
-FUNCTIONS.eparse = 
+function eparse
   (pv,
-    vb) => {
+    vb) {
     
     let val = null;
     cond(
@@ -1337,8 +1337,8 @@ define(
       false] /*)*/] /*2*/,
   mapf(
     null,
-    /* FUNCTION */
-      (obj) => {
+    function
+      (obj) {
         
         cond(
         /*(*/ [this_it_Q(
@@ -1416,8 +1416,8 @@ define(
         object)] /*)*/] /*2*/,
   mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [and(
@@ -1444,8 +1444,8 @@ cond(
               x)),
           mapf(
             null,
-            /* FUNCTION */
-              (x) => {
+            function
+              (x) {
                 
                 cond(
                 /*(*/ [and(

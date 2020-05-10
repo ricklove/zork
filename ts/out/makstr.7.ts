@@ -1,8 +1,8 @@
-FUNCTIONS.cevent = 
+function cevent
   (tick,
     app,
     flg,
-    name) => {
+    name) {
     
     let obl = get(
         initial,
@@ -31,15 +31,15 @@ setg(
       cevent))
   }
 
-FUNCTIONS.cons_obj = 
+function cons_obj
   (_tuple_,
-    objs) => {
+    objs) {
     
     let winner = GLOBALS.winner;
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         let y = find_obj(
             x);
@@ -56,12 +56,12 @@ FUNCTIONS.cons_obj =
     objs)
   }
 
-FUNCTIONS.cexit = 
+function cexit
   (flid,
     rmid,
     str?,
     flag,
-    funct) => {
+    funct) {
     
     let fval = null;
     let atm = null;
@@ -95,9 +95,9 @@ chtype(
     cexit)
   }
 
-FUNCTIONS.exit = 
+function exit
   (_tuple_,
-    pairs) => {
+    pairs) {
     
     let dobl = GLOBALS.directions;
     let frob = ivector(
@@ -168,7 +168,7 @@ chtype(
     exit)
   }
 
-FUNCTIONS.room = 
+function room
   (id,
     d1,
     d2,
@@ -177,7 +177,7 @@ FUNCTIONS.room =
     objs?,
     app,
     val,
-    bit) => {
+    bit) {
     
     let rm = find_room(
         id);
@@ -230,8 +230,8 @@ put(
         lit_Q] /*)*/))
 mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         put(
         x,
@@ -242,11 +242,11 @@ mapf(
       rm))
   }
 
-FUNCTIONS.sobject = 
+function sobject
   (id,
     str,
     _tuple_,
-    tup) => {
+    tup) {
     
     object(
     id,
@@ -261,12 +261,12 @@ FUNCTIONS.sobject =
       tup))
   }
 
-FUNCTIONS.aobject = 
+function aobject
   (id,
     str,
     app,
     _tuple_,
-    tup) => {
+    tup) {
     
     object(
     id,
@@ -281,7 +281,7 @@ FUNCTIONS.aobject =
       tup))
   }
 
-FUNCTIONS.object = 
+function object
   (id,
     desc1,
     desc2,
@@ -294,7 +294,7 @@ FUNCTIONS.object =
     s1,
     s2,
     size,
-    capac) => {
+    capac) {
     
     GLOBALS.score_max = _(
       GLOBALS.score_max,
@@ -352,8 +352,8 @@ put(
       /*(*/ [app] /*)*/))
   }
 
-FUNCTIONS.find_prep = 
-  (str) => {
+function find_prep
+  (str) {
     
     let atm = add_word(
         str);
@@ -374,11 +374,11 @@ FUNCTIONS.find_prep =
           prep))] /*)*/)
   }
 
-FUNCTIONS.add_action = 
+function add_action
   (nam,
     str,
     _tuple_,
-    decl) => {
+    decl) {
     
     let atm = or(
         lookup(
@@ -398,16 +398,16 @@ FUNCTIONS.add_action =
       action))
   }
 
-FUNCTIONS.add_directions = 
+function add_directions
   (_tuple_,
-    nms) => {
+    nms) {
     
     let dir = GLOBALS.directions;
     let atm = null;
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         setg(
         atm = or(
@@ -424,10 +424,10 @@ FUNCTIONS.add_directions =
     nms)
   }
 
-FUNCTIONS.dsynonym = 
+function dsynonym
   (str,
     _tuple_,
-    nms) => {
+    nms) {
     
     let val = null;
     let dir = GLOBALS.directions;
@@ -436,8 +436,8 @@ FUNCTIONS.dsynonym =
       str)
 mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         setg(
         atm = or(
@@ -452,10 +452,10 @@ mapf(
     nms)
   }
 
-FUNCTIONS.vsynonym = 
+function vsynonym
   (n1,
     _tuple_,
-    n2) => {
+    n2) {
     
     let atm = null;
     let val = null;
@@ -466,8 +466,8 @@ FUNCTIONS.vsynonym =
       val = /*,*/ [atm] /*1*/,
       mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             setg(
             add_word(
@@ -482,8 +482,8 @@ cond(
       val = /*,*/ [atm] /*1*/,
       mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             setg(
             or(
@@ -500,8 +500,8 @@ cond(
 
 "STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE)."
 
-FUNCTIONS.add_word = 
-  (w) => {
+function add_word
+  (w) {
     
     or(
     lookup(
@@ -512,14 +512,14 @@ FUNCTIONS.add_word =
       GLOBALS.words))
   }
 
-FUNCTIONS.add_buzz = 
+function add_buzz
   (_tuple_,
-    w) => {
+    w) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         setg(
         add_word(
@@ -531,15 +531,15 @@ FUNCTIONS.add_buzz =
     w)
   }
 
-FUNCTIONS.add_zork = 
+function add_zork
   (nm,
     _tuple_,
-    w) => {
+    w) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         let atm = null;
         setg(
@@ -552,10 +552,10 @@ FUNCTIONS.add_zork =
     w)
   }
 
-FUNCTIONS.add_object = 
+function add_object
   (obj,
     names,
-    adj?) => {
+    adj?) {
     
     let objs = GLOBALS.object_obl;
     put(
@@ -563,8 +563,8 @@ FUNCTIONS.add_object =
     GLOBALS.onames,
     mapf(
       GLOBALS.uvector,
-      /* FUNCTION */
-        (x) => {
+      function
+        (x) {
           
           or(
           lookup(
@@ -580,8 +580,8 @@ put(
     GLOBALS.oadjs,
     mapf(
       GLOBALS.uvector,
-      /* FUNCTION */
-        (w) => {
+      function
+        (w) {
           
           add_zork(
           adjective,
@@ -594,10 +594,10 @@ chutype(
     adjective)
   }
 
-FUNCTIONS.synonym = 
+function synonym
   (n1,
     _tuple_,
-    n2) => {
+    n2) {
     
     let atm = null;
     let val = null;
@@ -608,8 +608,8 @@ FUNCTIONS.synonym =
       val = /*,*/ [atm] /*1*/,
       mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             setg(
             add_word(
@@ -619,9 +619,9 @@ FUNCTIONS.synonym =
         n2)] /*)*/)
   }
 
-FUNCTIONS.add_abbrev = 
+function add_abbrev
   (x,
-    y) => {
+    y) {
     
     setg(
     add_word(
@@ -635,14 +635,14 @@ FUNCTIONS.add_abbrev =
         GLOBALS.words)))
   }
 
-FUNCTIONS.add_demon = 
-  (x) => {
+function add_demon
+  (x) {
     
     cond(
     /*(*/ [mapr(
         null,
-        /* FUNCTION */
-          (y) => {
+        function
+          (y) {
             
             cond(
             /*(*/ [_EQ_Q(
@@ -663,23 +663,23 @@ FUNCTIONS.add_demon =
           GLOBALS.demons] /*)*/] /*)*/)
   }
 
-FUNCTIONS.add_star = 
-  (obj) => {
+function add_star
+  (obj) {
     
     GLOBALS.stars = /*(*/ [obj,
       _X,
       GLOBALS.stars] /*)*/
   }
 
-FUNCTIONS.add_actor = 
-  (adv) => {
+function add_actor
+  (adv) {
     
     let actors = GLOBALS.actors;
     cond(
     /*(*/ [mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             cond(
             /*(*/ [_EQ_Q(
@@ -696,9 +696,9 @@ FUNCTIONS.add_actor =
           actors] /*)*/] /*)*/)
   }
 
-FUNCTIONS.add_desc = 
+function add_desc
   (obj,
-    str) => {
+    str) {
     
     put(
     obj,
@@ -706,9 +706,9 @@ FUNCTIONS.add_desc =
     str)
   }
 
-FUNCTIONS.sadd_action = 
+function sadd_action
   (str1,
-  atm) => {
+  atm) {
     
     add_action(
     str1,
@@ -717,10 +717,10 @@ FUNCTIONS.sadd_action =
         atm] /*]*/] /*]*/)
   }
 
-FUNCTIONS.1add_action = 
+function 1add_action
   (str1,
   str2,
-  atm) => {
+  atm) {
     
     add_action(
     str1,
@@ -730,10 +730,10 @@ FUNCTIONS.1add_action =
         atm] /*]*/] /*]*/)
   }
 
-FUNCTIONS.aadd_action = 
+function aadd_action
   (str1,
   str2,
-  atm) => {
+  atm) {
     
     add_action(
     str1,

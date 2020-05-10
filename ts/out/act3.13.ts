@@ -1,5 +1,5 @@
-FUNCTIONS.coke_bottles = 
-  () => {
+function coke_bottles
+  () {
     
     let pv = GLOBALS.prsvec;
     let bottl = pv[2];
@@ -25,8 +25,8 @@ FUNCTIONS.coke_bottles =
       t] /*)*/)
   }
 
-FUNCTIONS.head_function = 
-  () => {
+function head_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let vb = pv[1];
@@ -74,8 +74,8 @@ GLOBALS.then = 0
 
 GLOBALS.bucket_top_X_flag = null
 
-FUNCTIONS.bucket = 
-  (arg?) => {
+function bucket
+  (arg?) {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -141,10 +141,10 @@ FUNCTIONS.bucket =
             buck)] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.pass_the_bucket = 
+function pass_the_bucket
   (r,
     pv,
-    b) => {
+    b) {
     
     let pvs = pv[2];
     put(
@@ -171,8 +171,8 @@ put(
     pvs)
   }
 
-FUNCTIONS.eatme_function = 
-  () => {
+function eatme_function
+  () {
     
     let r = null;
     let c = null;
@@ -205,8 +205,8 @@ FUNCTIONS.eatme_function =
           here)),
       mapf(
         null,
-        /* FUNCTION */
-          (x) => {
+        function
+          (x) {
             
             put(
             x,
@@ -226,8 +226,8 @@ put(
         r)] /*)*/)
   }
 
-FUNCTIONS.cake_function = 
-  () => {
+function cake_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -316,8 +316,8 @@ FUNCTIONS.cake_function =
                   here)),
               mapf(
                 null,
-                /* FUNCTION */
-                  (x) => {
+                function
+                  (x) {
                     
                     put(
                     x,
@@ -375,8 +375,8 @@ put(
         GLOBALS.ovison)] /*)*/)
   }
 
-FUNCTIONS.flask_function = 
-  () => {
+function flask_function
+  () {
     
     let f = null;
     let pv = GLOBALS.prsvec;
@@ -415,8 +415,8 @@ psetg(
   crushed,
   "The room seems to have become too small to hold you.  It seems that\nthe  walls are not as compressible as your body, which is somewhat\ndemolished.")
 
-FUNCTIONS.iceboom = 
-  () => {
+function iceboom
+  () {
     
     mung_room(
     GLOBALS.here,
@@ -429,8 +429,8 @@ psetg(
   iceblast,
   "You have been blasted to smithereens (wherever they are).")
 
-FUNCTIONS.magnet_room = 
-  () => {
+function magnet_room
+  () {
     
     let foo = null;
     let pv = GLOBALS.prsvec;
@@ -495,8 +495,8 @@ FUNCTIONS.magnet_room =
             )] /*)*/)] /*)*/)
   }
 
-FUNCTIONS.cmach_room = 
-  () => {
+function cmach_room
+  () {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -512,8 +512,8 @@ GLOBALS.carousel_zoom_X_flag = null
 
 GLOBALS.carousel_flip_X_flag = null
 
-FUNCTIONS.buttons = 
-  () => {
+function buttons
+  () {
     
     let i = null;
     let pv = GLOBALS.prsvec;
@@ -577,8 +577,8 @@ psetg(
 
 GLOBALS.cage_solve_X_flag = null
 
-FUNCTIONS.sphere_function = 
-  () => {
+function sphere_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -669,8 +669,8 @@ psetg(
   poison,
   "Time passes...and you die from some obscure poisoning.")
 
-FUNCTIONS.caged_room = 
-  () => {
+function caged_room
+  () {
     
     cond(
     /*(*/ [GLOBALS.cage_solve_X_flag,
@@ -686,8 +686,8 @@ gdecl(
     /*[*/ [rest,
       verb] /*]*/))
 
-FUNCTIONS.robot_actor = 
-  () => {
+function robot_actor
+  () {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -764,8 +764,8 @@ FUNCTIONS.robot_actor =
         "\"I am only a stupid robot and cannot perform that command.\")] /*)*/)
   }
 
-FUNCTIONS.robot_function = 
-  () => {
+function robot_function
+  () {
     
     let pv = GLOBALS.prsvec;
     let pa = pv[1];
@@ -812,8 +812,8 @@ FUNCTIONS.robot_function =
           /*(*/ [po] /*)*/))] /*)*/)
   }
 
-FUNCTIONS.knock = 
-  () => {
+function knock
+  () {
     "AUX",
   /*(*/ [prso,
       GLOBALS.prsvec[2]] /*)*/
@@ -832,29 +832,29 @@ FUNCTIONS.knock =
         "?")] /*)*/)
   }
 
-FUNCTIONS.chomp = 
-  () => {
+function chomp
+  () {
     
     tell(
     "I don't know how to do that.  I win in all cases!")
   }
 
-FUNCTIONS.frobozz = 
-  () => {
+function frobozz
+  () {
     
     tell(
     "The FROBOZZ Corporation created, owns, and operates this dungeon.")
   }
 
-FUNCTIONS.win = 
-  () => {
+function win
+  () {
     
     tell(
     "Naturally!")
   }
 
-FUNCTIONS.yell = 
-  () => {
+function yell
+  () {
     
     tell(
     "Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!")

@@ -928,8 +928,8 @@ defmac(
 
 "FLUSH AN OBJECT FROM A ROOM"
 
-FUNCTIONS.remove_object = 
-  (obj) => {
+function remove_object
+  (obj) {
     
     let ocan = null;
     let oroom = null;
@@ -1030,9 +1030,9 @@ defmac(
         aobjs,
         winner))))
 
-FUNCTIONS.kill_obj = 
+function kill_obj
   (obj,
-    winner) => {
+    winner) {
     
     cond(
     /*(*/ [memq(
@@ -1050,15 +1050,15 @@ FUNCTIONS.kill_obj =
         obj)] /*)*/)
   }
 
-FUNCTIONS.flush_obj = 
+function flush_obj
   (_tuple_,
-    objs) => {
+    objs) {
     
     let winner = GLOBALS.winner;
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         let y = find_obj(
             x);
@@ -1077,14 +1077,14 @@ FUNCTIONS.flush_obj =
 
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
 
-FUNCTIONS.rob_adv = 
+function rob_adv
   (win,
-    newlist) => {
+    newlist) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [and(
@@ -1113,15 +1113,15 @@ FUNCTIONS.rob_adv =
 
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
 
-FUNCTIONS.rob_room = 
+function rob_room
   (rm,
     newlist,
-    prob) => {
+    prob) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [and(
@@ -1159,13 +1159,13 @@ FUNCTIONS.rob_room =
       rm))
   }
 
-FUNCTIONS.valuables_Q = 
-  (adv) => {
+function valuables_Q
+  (adv) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [g_Q(
@@ -1179,14 +1179,14 @@ FUNCTIONS.valuables_Q =
       adv))
   }
 
-FUNCTIONS.armed_Q = 
-  (adv) => {
+function armed_Q
+  (adv) {
     
     let weapons = GLOBALS.weapons;
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [memq(
@@ -1199,13 +1199,13 @@ FUNCTIONS.armed_Q =
       adv))
   }
 
-FUNCTIONS.light_source = 
-  (me) => {
+function light_source
+  (me) {
     
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [not(
@@ -1219,16 +1219,16 @@ FUNCTIONS.light_source =
       me))
   }
 
-FUNCTIONS.get_demon = 
-  (id) => {
+function get_demon
+  (id) {
     
     let obj = find_obj(
         id);
     let dems = GLOBALS.demons;
     mapf(
     null,
-    /* FUNCTION */
-      (x) => {
+    function
+      (x) {
         
         cond(
         /*(*/ [_EQ_Q(
@@ -1276,8 +1276,8 @@ defmac(
     GLOBALS.cflag,
     t))
 
-FUNCTIONS.yes_no = 
-  (no_is_bad_Q) => {
+function yes_no
+  (no_is_bad_Q) {
     
     let inbuf = GLOBALS.inbuf;
     let inchan = GLOBALS.inchan;
@@ -1330,9 +1330,9 @@ defmac(
         frob,
         mumble)] /*)*/))
 
-FUNCTIONS.da = 
+function da
   (fn,
-    foo?) => {
+    foo?) {
     
     prog(
     /*(*/ [] /*)*/,
@@ -1384,8 +1384,8 @@ psetg(
   _X,
   /*[*/ [] /*]*/)
 
-FUNCTIONS.find_room = 
-  (id) => {
+function find_room
+  (id) {
     
     let atm = null;
     let room = null;
@@ -1431,8 +1431,8 @@ cond(
       room] /*)*/)
   }
 
-FUNCTIONS.find_obj = 
-  (id) => {
+function find_obj
+  (id) {
     
     let obj = null;
     let atm = null;
@@ -1485,8 +1485,8 @@ cond(
       obj] /*)*/)
   }
 
-FUNCTIONS.function_print = 
-  (frob) => {
+function function_print
+  (frob) {
     
     cond(
     /*(*/ [not(

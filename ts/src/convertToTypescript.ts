@@ -113,7 +113,7 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
         }
     }
 
-    return `${nameText ? `FUNCTIONS.${nameText} = ` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => {\n${getIndentation(depth + 1)}${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
+    return `${nameText ? `function ${nameText}` : 'function'}\n${getIndentation(depth)}(${argsListText}) {\n${getIndentation(depth + 1)}${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
 };
 
 const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, funNodes: ZNode[], depth: number) => {
