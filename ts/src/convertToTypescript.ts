@@ -38,49 +38,82 @@ const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsLi
     const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
     const bodyText = body?.map(n => convertToTypescript(n)).join('\n') ?? '';
 
-    const OPTIONAL = '"OPTIONAL"';
+    let argsListText = '';
+    let varsListText = '';
+    if (argsList) {
 
-    let argsListText = getIndentedNodes(argsList?.nodes.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
+        const OPTIONAL = '"OPTIONAL"';
+        const AUX = '"AUX"';
 
-    if (declList) {
-        // <DEFINE OPEN-CLOSE (VERB ATM STROPN STRCLS)
-        //   #DECL ((VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING)
-        const dNode = declList?.nodes[1];
+        const argNodes = argsList.nodes.filter(x => x.toString() !== OPTIONAL);
+        const iAux = argNodes.findIndex(x => x.toString() === AUX);
+        const argsBeforeAux = iAux >= 0 ? argNodes.slice(0, iAux) : argNodes;
+        const argsAfterAux = iAux >= 0 ? argNodes.slice(iAux) : [];
 
-        // (VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING
-        const dMappingNodes = dNode?.kind === 'ZList' ? dNode.nodes : [];
-        const dMapNames = dMappingNodes.filter((x, i) => i % 2 === 0).map(x => ` ${x.toString()} `);
-        const dMapTypes = dMappingNodes.filter((x, i) => i % 2 === 1);
+        argsListText = getIndentedNodes(argsBeforeAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
+        varsListText = getIndentedNodes(argsAfterAux.filter(x => x.toString() !== OPTIONAL) ?? [], depth, false, ',');
 
-        let _lastOptional = false;
-        const args = (argsList?.nodes as ZToken[]).map(x => ({
-            arg: x,
-            argName: x._raw.toString(),
-        })).map(x => {
-            if (x.argName === OPTIONAL) {
-                _lastOptional = true;
-                return null;
-            }
+        if (declList) {
+            // <DEFINE OPEN-CLOSE (VERB ATM STROPN STRCLS)
+            //   #DECL ((VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING)
+            const dNode = declList?.nodes[1];
 
-            const dIndex = dMapNames.findIndex(d => d.includes(x.argName));
-            const dType = dIndex >= 0 ? dMapTypes[dIndex] : undefined;
+            // (VERB) VERB (ATM) ATOM (STROPN STRCLS) STRING
+            const dMappingNodes = dNode?.kind === 'ZList' ? dNode.nodes : [];
+            const dMapNames = dMappingNodes.filter((x, i) => i % 2 === 0).map(x => ` ${x.toString()} `);
+            const dMapTypes = dMappingNodes.filter((x, i) => i % 2 === 1);
 
-            const isOptional = _lastOptional;
-            _lastOptional = false;
-            return {
-                ...x,
-                dataType: dType,
-                isOptional,
-            };
-        }).filter(x => x).map(x => x!);
-        // const declListText = dInput ? getIndentedNodes(dInput, depth, false, ',') : undefined;
-        // typeDefText = declListText ? `\n${getIndentation(declList?.depth ?? 0)}: ( (${declListText}) => unknown )` : '';
+            let _lastOptional = false;
+            let _afterAux = false;
+            const args = (argsList.nodes).map(x => {
+                if (x.kind === 'ZList' && x.openSymbol === '(') {
+                    const a = x.nodes[0] as ZToken;
+                    return {
+                        arg: x,
+                        argName: convertToTypescriptName(a),
+                        argValue: convertToTypescript(x.nodes[1]),
+                    };
+                }
 
-        const indent = getIndentation(depth + 1);
-        argsListText = `${args.map(x => `${convertToTypescript(x.arg)}${x.isOptional ? '?' : ''}: ${x.dataType ? convertToTypescript(x.dataType) : 'unknown'}`).join(`,\n${indent}`)}`;
+                return {
+                    arg: x,
+                    argName: convertToTypescriptName(x as ZToken),
+                    argValue: null,
+                };
+            }).map(x => {
+                if (x.arg.toString() === OPTIONAL) {
+                    _lastOptional = true;
+                    return null;
+                }
+                if (x.arg.toString() === AUX) {
+                    _afterAux = true;
+                    return null;
+                }
+
+
+                const dIndex = dMapNames.findIndex(d => d.includes(x.argName));
+                const dType = dIndex >= 0 ? dMapTypes[dIndex] : undefined;
+
+                const isOptional = _lastOptional;
+                _lastOptional = false;
+                return {
+                    ...x,
+                    // defaultValue:
+                    dataType: dType,
+                    isOptional,
+                    afterAux: _afterAux,
+                };
+            }).filter(x => x).map(x => x!);
+            // const declListText = dInput ? getIndentedNodes(dInput, depth, false, ',') : undefined;
+            // typeDefText = declListText ? `\n${getIndentation(declList?.depth ?? 0)}: ( (${declListText}) => unknown )` : '';
+
+            const indent = getIndentation(depth + 1);
+            argsListText = `${args.filter(x => !x.afterAux).map(x => `${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescript(x.dataType)}` : ''}`).join(`,\n${indent}`)}`;
+            varsListText = `${args.filter(x => x.afterAux).map(x => `\n${indent}let ${x.argName}${x.isOptional ? '?' : ''}${x.dataType ? `: ${convertToTypescript(x.dataType)}` : ''} = ${x.argValue};`).join(``)}`;
+        }
     }
 
-    return `${nameText ? `FUNCTIONS.${nameText} = ` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => {\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
+    return `${nameText ? `FUNCTIONS.${nameText} = ` : '/* FUNCTION */'}\n${getIndentation(depth)}(${argsListText}) => {\n${getIndentation(depth + 1)}${varsListText}\n${getIndentation(depth + 1)}${bodyText}\n${getIndentation(depth)}}`;
 };
 
 const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, funNodes: ZNode[], depth: number) => {

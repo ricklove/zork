@@ -1,13 +1,11 @@
 FUNCTIONS.coke_bottles = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [bottl,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [vb,
-      1(
-        LOCALS.pv)] /*)*/: unknown) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let bottl = 2(
+        LOCALS.pv);
+    let vb = 1(
+        LOCALS.pv);
     cond(
     /*(*/ [or(
         _EQ_Q(
@@ -30,17 +28,14 @@ FUNCTIONS.coke_bottles =
   }
 
 FUNCTIONS.head_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [vb,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [nl,
-      /*(*/ [] /*)*/] /*)*/: unknown,
-    /*(*/ [lcase,
-      find_obj(
-        "LCASE")] /*)*/: unknown) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let vb = 1(
+        LOCALS.pv);
+    let nl = /*(*/ [] /*)*/;
+    let lcase = find_obj(
+        "LCASE");
     cond(
     /*(*/ [n_EQ_Q(
         LOCALS.vb,
@@ -83,23 +78,17 @@ GLOBALS.then = 0
 GLOBALS.bucket_top_X_flag = null
 
 FUNCTIONS.bucket = 
-  (/*(*/ [arg,
-      null] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [w,
-      find_obj(
-        "WATER")] /*)*/: unknown,
-    /*(*/ [buck,
-      find_obj(
-        "BUCKE")] /*)*/: unknown) => {
+  (arg?) => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let po = 2(
+        LOCALS.pv);
+    let w = find_obj(
+        "WATER");
+    let buck = find_obj(
+        "BUCKE");
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.arg,
@@ -158,13 +147,12 @@ FUNCTIONS.bucket =
   }
 
 FUNCTIONS.pass_the_bucket = 
-  (r: room,
-    pv: vector,
-    b: object,
-    "AUX": unknown,
-    /*(*/ [pvs,
-      2(
-        LOCALS.pv)] /*)*/: unknown) => {
+  (r,
+    pv,
+    b) => {
+    
+    let pvs = 2(
+        LOCALS.pv);
     put(
     LOCALS.pv,
     2,
@@ -190,13 +178,12 @@ put(
   }
 
 FUNCTIONS.eatme_function = 
-  ("AUX": unknown,
-    r: room,
-    c: object,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown) => {
+  () => {
+    
+    let r = null;
+    let c = null;
+    let pv = GLOBALS.prsvec;
+    let here = GLOBALS.here;
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -227,7 +214,8 @@ FUNCTIONS.eatme_function =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             put(
             LOCALS.x,
             GLOBALS.osize,
@@ -247,30 +235,23 @@ put(
   }
 
 FUNCTIONS.cake_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [pi,
-      3(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [rice,
-      find_obj(
-        "RDICE")] /*)*/: unknown,
-    /*(*/ [oice,
-      find_obj(
-        "ORICE")] /*)*/: unknown,
-    /*(*/ [bice,
-      find_obj(
-        "BLICE")] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    r: object) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let po = 2(
+        LOCALS.pv);
+    let pi = 3(
+        LOCALS.pv);
+    let rice = find_obj(
+        "RDICE");
+    let oice = find_obj(
+        "ORICE");
+    let bice = find_obj(
+        "BLICE");
+    let here = GLOBALS.here;
+    let r = null;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -347,7 +328,8 @@ FUNCTIONS.cake_function =
               mapf(
                 null,
                 /* FUNCTION */
-                  (x: object) => {
+                  (x) => {
+                    
                     put(
                     LOCALS.x,
                     GLOBALS.oroom,
@@ -405,13 +387,12 @@ put(
   }
 
 FUNCTIONS.flask_function = 
-  ("AUX": unknown,
-    f: unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown) => {
+  () => {
+    
+    let f = null;
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -449,6 +430,7 @@ psetg(
 
 FUNCTIONS.iceboom = 
   () => {
+    
     mung_room(
     GLOBALS.here,
     "The door to the room seems to be blocked by sticky orange rubble\nfrom an explosion.  Probably some careless adventurer was playing\nwith blasting cakes.")
@@ -461,22 +443,16 @@ psetg(
   "You have been blasted to smithereens (wherever they are).")
 
 FUNCTIONS.magnet_room = 
-  ("AUX": unknown,
-    foo: cexit,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    m: or(
-        false,
-        primtype(
-          vector))) => {
+  () => {
+    
+    let foo = null;
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let po = 2(
+        LOCALS.pv);
+    let here = GLOBALS.here;
+    let m = null;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -538,12 +514,11 @@ FUNCTIONS.magnet_room =
   }
 
 FUNCTIONS.cmach_room = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -557,16 +532,14 @@ GLOBALS.carousel_zoom_X_flag = null
 GLOBALS.carousel_flip_X_flag = null
 
 FUNCTIONS.buttons = 
-  ("AUX": unknown,
-    i: object,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown) => {
+  () => {
+    
+    let i = null;
+    let pv = GLOBALS.prsvec;
+    let po = 2(
+        LOCALS.pv);
+    let pa = 1(
+        LOCALS.pv);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -626,20 +599,16 @@ psetg(
 GLOBALS.cage_solve_X_flag = null
 
 FUNCTIONS.sphere_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [r,
-      find_obj(
-        "ROBOT")] /*)*/: unknown,
-    c: room,
-    fl: or(
-        atom,
-        false),
-    ract: adv) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let r = find_obj(
+        "ROBOT");
+    let c = null;
+    let fl = null;
+    let ract = null;
     LOCALS.fl = and(
       not(
         GLOBALS.cage_solve_X_flag),
@@ -725,6 +694,7 @@ psetg(
 
 FUNCTIONS.caged_room = 
   () => {
+    
     cond(
     /*(*/ [GLOBALS.cage_solve_X_flag,
       GLOBALS.here = find_room(
@@ -740,21 +710,18 @@ gdecl(
       verb] /*]*/))
 
 FUNCTIONS.robot_actor = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    c: room,
-    cage: object,
-    /*(*/ [r,
-      find_obj(
-        "ROBOT")] /*)*/: unknown,
-    ract: adv) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let po = 2(
+        LOCALS.pv);
+    let c = null;
+    let cage = null;
+    let r = find_obj(
+        "ROBOT");
+    let ract = null;
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -823,20 +790,17 @@ FUNCTIONS.robot_actor =
   }
 
 FUNCTIONS.robot_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [pi,
-      3(
-        LOCALS.pv)] /*)*/: unknown,
-    pp: object,
-    aa: adv) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.pv);
+    let po = 2(
+        LOCALS.pv);
+    let pi = 3(
+        LOCALS.pv);
+    let pp = null;
+    let aa = null;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -877,10 +841,11 @@ FUNCTIONS.robot_function =
   }
 
 FUNCTIONS.knock = 
-  ("AUX",
+  () => {
+    "AUX",
   /*(*/ [prso,
       2(
-        GLOBALS.prsvec)] /*)*/) => {
+        GLOBALS.prsvec)] /*)*/
     cond(
     /*(*/ [memq(
         door_X_objects,
@@ -898,24 +863,28 @@ FUNCTIONS.knock =
 
 FUNCTIONS.chomp = 
   () => {
+    
     tell(
     "I don't know how to do that.  I win in all cases!")
   }
 
 FUNCTIONS.frobozz = 
   () => {
+    
     tell(
     "The FROBOZZ Corporation created, owns, and operates this dungeon.")
   }
 
 FUNCTIONS.win = 
   () => {
+    
     tell(
     "Naturally!")
   }
 
 FUNCTIONS.yell = 
   () => {
+    
     tell(
     "Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!")
   }

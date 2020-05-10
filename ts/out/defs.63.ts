@@ -929,14 +929,10 @@ defmac(
 "FLUSH AN OBJECT FROM A ROOM"
 
 FUNCTIONS.remove_object = 
-  (obj: object,
-    "AUX": unknown,
-    ocan: or(
-        object,
-        false),
-    oroom: or(
-        false,
-        room)) => {
+  (obj) => {
+    
+    let ocan = null;
+    let oroom = null;
     cond(
     /*(*/ [LOCALS.ocan = ocan(
           LOCALS.obj),
@@ -1035,8 +1031,9 @@ defmac(
         LOCALS.winner))))
 
 FUNCTIONS.kill_obj = 
-  (obj: object,
-    winner: adv) => {
+  (obj,
+    winner) => {
+    
     cond(
     /*(*/ [memq(
         LOCALS.obj,
@@ -1054,21 +1051,17 @@ FUNCTIONS.kill_obj =
   }
 
 FUNCTIONS.flush_obj = 
-  ("TUPLE": unknown,
-    objs: tuple(
-        /*[*/ [rest,
-          string] /*]*/),
-    "AUX": unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown) => {
+  (_tuple_,
+    objs) => {
+    
+    let winner = GLOBALS.winner;
     mapf(
     null,
     /* FUNCTION */
-      (x: unknown,
-        "AUX": unknown,
-        /*(*/ [y,
-          find_obj(
-            LOCALS.x)] /*)*/: unknown) => {
+      (x) => {
+        
+        let y = find_obj(
+            LOCALS.x);
         and(
         memq(
           LOCALS.y,
@@ -1085,14 +1078,14 @@ FUNCTIONS.flush_obj =
 "ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING"
 
 FUNCTIONS.rob_adv = 
-  (win: adv,
-    newlist: list(
-        /*[*/ [rest,
-          object] /*]*/)) => {
+  (win,
+    newlist) => {
+    
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [and(
             g_Q(
@@ -1121,15 +1114,15 @@ FUNCTIONS.rob_adv =
 "ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY"
 
 FUNCTIONS.rob_room = 
-  (rm: room,
-    newlist: list(
-        /*[*/ [rest,
-          object] /*]*/),
-    prob: fix) => {
+  (rm,
+    newlist,
+    prob) => {
+    
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [and(
             g_Q(
@@ -1167,11 +1160,13 @@ FUNCTIONS.rob_room =
   }
 
 FUNCTIONS.valuables_Q = 
-  (adv: adv) => {
+  (adv) => {
+    
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [g_Q(
             otval(
@@ -1185,14 +1180,14 @@ FUNCTIONS.valuables_Q =
   }
 
 FUNCTIONS.armed_Q = 
-  (adv: adv,
-    "AUX": unknown,
-    /*(*/ [weapons,
-      GLOBALS.weapons] /*)*/: unknown) => {
+  (adv) => {
+    
+    let weapons = GLOBALS.weapons;
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [memq(
             LOCALS.x,
@@ -1205,11 +1200,13 @@ FUNCTIONS.armed_Q =
   }
 
 FUNCTIONS.light_source = 
-  (me: adv) => {
+  (me) => {
+    
     mapf(
     null,
     /* FUNCTION */
       (x) => {
+        
         cond(
         /*(*/ [not(
             0_Q(
@@ -1223,17 +1220,16 @@ FUNCTIONS.light_source =
   }
 
 FUNCTIONS.get_demon = 
-  (id: string,
-    "AUX": unknown,
-    /*(*/ [obj,
-      find_obj(
-        LOCALS.id)] /*)*/: unknown,
-    /*(*/ [dems,
-      GLOBALS.demons] /*)*/: unknown) => {
+  (id) => {
+    
+    let obj = find_obj(
+        LOCALS.id);
+    let dems = GLOBALS.demons;
     mapf(
     null,
     /* FUNCTION */
-      (x: hack) => {
+      (x) => {
+        
         cond(
         /*(*/ [_EQ_Q(
             hobj(
@@ -1281,14 +1277,10 @@ defmac(
     t))
 
 FUNCTIONS.yes_no = 
-  (no_is_bad_Q: or(
-        atom,
-        false),
-    "AUX": unknown,
-    /*(*/ [inbuf,
-      GLOBALS.inbuf] /*)*/: unknown,
-    /*(*/ [inchan,
-      GLOBALS.inchan] /*)*/: unknown) => {
+  (no_is_bad_Q) => {
+    
+    let inbuf = GLOBALS.inbuf;
+    let inchan = GLOBALS.inchan;
     reset(
     LOCALS.inchan)
 readstring(
@@ -1341,12 +1333,9 @@ defmac(
         LOCALS.mumble)] /*)*/))
 
 FUNCTIONS.da = 
-  (fn: or(
-        applicable,
-        atom,
-        fix),
-    /*(*/ [foo,
-      null] /*)*/?: unknown) => {
+  (fn,
+    foo?) => {
+    
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -1398,14 +1387,10 @@ psetg(
   /*[*/ [] /*]*/)
 
 FUNCTIONS.find_room = 
-  (id: or(
-        atom,
-        string),
-    "AUX": unknown,
-    atm: or(
-        atom,
-        false),
-    room: room) => {
+  (id) => {
+    
+    let atm = null;
+    let room = null;
     cond(
     /*(*/ [type_Q(
         LOCALS.id,
@@ -1449,14 +1434,10 @@ cond(
   }
 
 FUNCTIONS.find_obj = 
-  (id: or(
-        atom,
-        string),
-    "AUX": unknown,
-    obj: object,
-    atm: or(
-        atom,
-        false)) => {
+  (id) => {
+    
+    let obj = null;
+    let atm = null;
     cond(
     /*(*/ [type_Q(
         LOCALS.id,
@@ -1507,11 +1488,8 @@ cond(
   }
 
 FUNCTIONS.function_print = 
-  (frob: or(
-        atom,
-        offset,
-        applicable,
-        false)) => {
+  (frob) => {
+    
     cond(
     /*(*/ [not(
         LOCALS.frob),

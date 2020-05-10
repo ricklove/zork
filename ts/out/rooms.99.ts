@@ -16,23 +16,12 @@ gdecl(
   string)
 
 FUNCTIONS.save_it = 
-  (/*(*/ [fn,
-      cond(
-        /*(*/ [l_Q(
-            GLOBALS.muddle,
-            100),
-          "MADMAN;MADADV SAVE"] /*)*/,
-        /*(*/ [t,
-          "<MDL>MADADV.SAVE"] /*)*/)] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [muddle,
-      GLOBALS.muddle] /*)*/: unknown,
-    stv: or(
-        string,
-        fix),
-    /*(*/ [st,
-      remarkably_disgusting_code(
-        )] /*)*/: unknown) => {
+  (fn?) => {
+    
+    let muddle = GLOBALS.muddle;
+    let stv = null;
+    let st = remarkably_disgusting_code(
+        );
     put(
     find_obj(
       "PAPER"),
@@ -159,6 +148,7 @@ gdecl(
 FUNCTIONS.divert_fcn = 
   (amt,
   reason) => {
+    
     GLOBALS.divert_cnt = _(
       GLOBALS.divert_cnt,
       1)
@@ -208,6 +198,7 @@ off(
 FUNCTIONS.gc_fcn = 
   ("TUPLE",
   t) => {
+    
     off(
     GLOBALS.gc_hand)
 GLOBALS.divert_amt = GLOBALS.divert_cnt = 0
@@ -224,10 +215,12 @@ off(
 
 FUNCTIONS.xuname = 
   () => {
+    
     mapf(
     GLOBALS.string,
     /* FUNCTION */
-      (x: character) => {
+      (x) => {
+        
         cond(
         /*(*/ [or(
             0_Q(
@@ -247,23 +240,18 @@ FUNCTIONS.xuname =
   }
 
 FUNCTIONS.its_get_name = 
-  (uname: string,
-    "AUX": unknown,
-    /*(*/ [nm,
-      field(
+  (uname) => {
+    
+    let nm = field(
         LOCALS.uname,
-        GLOBALS._name)] /*)*/: unknown,
-    cma: or(
-        string,
-        false),
-    jr: or(
-        string,
-        false),
-    lfst: fix,
-    llst: fix,
-    tlen: fix,
-    tstr: string,
-    str: string) => {
+        GLOBALS._name);
+    let cma = null;
+    let jr = null;
+    let lfst = null;
+    let llst = null;
+    let tlen = null;
+    let tstr = null;
+    let str = null;
     cond(
     /*(*/ [LOCALS.nm,
       cond(
@@ -351,14 +339,13 @@ FUNCTIONS.its_get_name =
   }
 
 FUNCTIONS.unspeakable_code = 
-  ("AUX": unknown,
-    str: string,
-    nstr: string,
-    /*(*/ [len_i,
-      0] /*)*/: unknown,
-    /*(*/ [o,
-      find_obj(
-        "PAPER")] /*)*/: unknown) => {
+  () => {
+    
+    let str = null;
+    let nstr = null;
+    let len_i = 0;
+    let o = find_obj(
+        "PAPER");
     LOCALS.str = memq(
       _X__,
       oread(
@@ -399,10 +386,10 @@ string(
   }
 
 FUNCTIONS.remarkably_disgusting_code = 
-  ("AUX": unknown,
-    /*(*/ [n,
-      dskdate(
-        )] /*)*/: unknown) => {
+  () => {
+    
+    let n = dskdate(
+        );
     string(
     "This version created",
     nth(
@@ -428,6 +415,7 @@ FUNCTIONS.remarkably_disgusting_code =
 
 FUNCTIONS.version = 
   () => {
+    
     tell(
     GLOBALS.vers)
   }
@@ -439,12 +427,11 @@ gdecl(
   fix)
 
 FUNCTIONS.get_time = 
-  ("AUX": unknown,
-    /*(*/ [now,
-      dskdate(
-        )] /*)*/: unknown,
-    /*(*/ [then,
-      GLOBALS.intime] /*)*/: unknown) => {
+  () => {
+    
+    let now = dskdate(
+        );
+    let then = GLOBALS.intime;
     _(
     cond(
       /*(*/ [n_EQ_Q(
@@ -504,13 +491,11 @@ FUNCTIONS.get_time =
   }
 
 FUNCTIONS.play_time = 
-  (/*(*/ [outchan,
-      GLOBALS.outchan] /*)*/?: unknown,
-    /*(*/ [loser_Q,
-      t] /*)*/: unknown,
-    "AUX": unknown,
-    time: fix,
-    mins: fix) => {
+  (outchan?,
+    loser_Q) => {
+    
+    let time = null;
+    let mins = null;
     LOCALS.time = get_time(
       )
 GLOBALS.tell_flag = t
@@ -580,14 +565,15 @@ cond(
 FUNCTIONS.pc = 
   () => {
     
+    
   }
 
 FUNCTIONS.handle = 
-  (frm: unknown,
-    "TUPLE": unknown,
-    zork: unknown,
-    "AUX": unknown,
-    zf: any) => {
+  (frm,
+    _tuple_,
+    zork) => {
+    
+    let zf = null;
     put(
     GLOBALS.outchan,
     13,
@@ -700,6 +686,7 @@ cond(
             null,
             /* FUNCTION */
               (x) => {
+                
                 print(
                 LOCALS.x)
               },
@@ -752,18 +739,13 @@ gdecl(
     false))
 
 FUNCTIONS.start = 
-  (rm: string,
-    /*(*/ [st,
-      ""] /*)*/?: unknown,
-    "AUX": unknown,
-    fn: or(
-        false,
-        string),
-    /*(*/ [muddle,
-      GLOBALS.muddle] /*)*/: unknown,
-    /*(*/ [xunm,
-      xuname(
-        )] /*)*/: unknown) => {
+  (rm,
+    st?) => {
+    
+    let fn = null;
+    let muddle = GLOBALS.muddle;
+    let xunm = xuname(
+        );
     GLOBALS.xunm = LOCALS.xunm
 GLOBALS.ptemp = chtype(
       /*[*/ [chtype(
@@ -824,6 +806,7 @@ contin(
 
 FUNCTIONS.contin = 
   () => {
+    
     GLOBALS.alt_flag = null
 put(
     1(
@@ -864,10 +847,9 @@ gdecl(
     false))
 
 FUNCTIONS.make_script = 
-  ("AUX": unknown,
-    ch: or(
-        channel,
-        false)) => {
+  () => {
+    
+    let ch = null;
     cond(
     /*(*/ [GLOBALS.script_channel,
       null] /*)*/,
@@ -893,6 +875,7 @@ FUNCTIONS.make_script =
 
 FUNCTIONS.flush_me = 
   () => {
+    
     unwind(
     prog(
       /*(*/ [] /*)*/,
@@ -905,14 +888,11 @@ FUNCTIONS.flush_me =
   }
 
 FUNCTIONS.do_script = 
-  ("AUX": unknown,
-    ch: or(
-        channel,
-        false),
-    /*(*/ [unm,
-      GLOBALS.xunm] /*)*/: unknown,
-    /*(*/ [muddle,
-      GLOBALS.muddle] /*)*/: unknown) => {
+  () => {
+    
+    let ch = null;
+    let unm = GLOBALS.xunm;
+    let muddle = GLOBALS.muddle;
     cond(
     /*(*/ [GLOBALS.my_script,
       do_unscript(
@@ -985,8 +965,8 @@ cond(
   }
 
 FUNCTIONS.do_unscript = 
-  (/*(*/ [verbose,
-      t] /*)*/?: unknown) => {
+  (verbose?) => {
+    
     cond(
     /*(*/ [GLOBALS.script_channel,
       put(
@@ -1017,14 +997,11 @@ gdecl(
   fix)
 
 FUNCTIONS.do_save = 
-  ("AUX": unknown,
-    /*(*/ [muddle,
-      GLOBALS.muddle] /*)*/: unknown,
-    ch: or(
-        channel,
-        false),
-    /*(*/ [unm,
-      GLOBALS.xunm] /*)*/: unknown) => {
+  () => {
+    
+    let muddle = GLOBALS.muddle;
+    let ch = null;
+    let unm = GLOBALS.xunm;
     cond(
     /*(*/ [or(
         g_Q(
@@ -1113,16 +1090,14 @@ FUNCTIONS.do_save =
   }
 
 FUNCTIONS.do_restore = 
-  ("AUX": unknown,
-    ch: or(
-        channel,
-        false),
-    str: string,
-    /*(*/ [muddle,
-      GLOBALS.muddle] /*)*/: unknown,
-    nowd: fix,
-    now: fix,
-    thend: fix) => {
+  () => {
+    
+    let ch = null;
+    let str = null;
+    let muddle = GLOBALS.muddle;
+    let nowd = null;
+    let now = null;
+    let thend = null;
     cond(
     /*(*/ [l_Q(
         LOCALS.muddle,
@@ -1259,7 +1234,8 @@ prog(
   }
 
 FUNCTIONS.prob = 
-  (num: fix) => {
+  (num) => {
+    
     l__Q(
     mod(
       random(
@@ -1285,13 +1261,13 @@ define(
   mapf(
     null,
     /* FUNCTION */
-      (x: list(
-            /*[*/ [rest,
-              atom] /*]*/)) => {
+      (x) => {
+        
         mapf(
         null,
         /* FUNCTION */
-          (x: atom) => {
+          (x) => {
+            
             cond(
             /*(*/ [and(
                 gassigned_Q(
@@ -1322,6 +1298,7 @@ gdecl(
 
 FUNCTIONS.brief = 
   () => {
+    
     GLOBALS.brief_X_flag = t
 tell(
     "Brief descriptions.")
@@ -1329,6 +1306,7 @@ tell(
 
 FUNCTIONS.super_brief = 
   () => {
+    
     GLOBALS.super_brief_X_flag = t
 tell(
     "No long descriptions.")
@@ -1336,6 +1314,7 @@ tell(
 
 FUNCTIONS.un_brief = 
   () => {
+    
     GLOBALS.brief_X_flag = null
 GLOBALS.super_brief_X_flag = null
 tell(
@@ -1344,6 +1323,7 @@ tell(
 
 FUNCTIONS.un_super_brief = 
   () => {
+    
     GLOBALS.super_brief_X_flag = null
 tell(
     "Some long descriptions.")
@@ -1351,28 +1331,23 @@ tell(
 
 FUNCTIONS.room_desc = 
   () => {
+    
     room_info(
     t)
   }
 
 FUNCTIONS.room_info = 
-  (/*(*/ [full,
-      null] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [av,
-      avehicle(
-        GLOBALS.winner)] /*)*/: unknown,
-    /*(*/ [rm,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [prso,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [winobj,
-      find_obj(
-        "#####")] /*)*/: unknown,
-    /*(*/ [outchan,
-      GLOBALS.outchan] /*)*/: unknown,
-    ra: unknown) => {
+  (full?) => {
+    
+    let av = avehicle(
+        GLOBALS.winner);
+    let rm = GLOBALS.here;
+    let prso = 2(
+        GLOBALS.prsvec);
+    let winobj = find_obj(
+        "#####");
+    let outchan = GLOBALS.outchan;
+    let ra = null;
     GLOBALS.tell_flag = t
 and(
     type_Q(
@@ -1477,7 +1452,8 @@ prog(
     mapf(
       null,
       /* FUNCTION */
-        (x: object) => {
+        (x) => {
+          
           cond(
           /*(*/ [and(
               ovis_Q(
@@ -1624,7 +1600,8 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (y: object) => {
+          (y) => {
+            
             cond(
             /*(*/ [and(
                 LOCALS.av,
@@ -1662,9 +1639,9 @@ cond(
 "GIVE LONG DESCRIPTION OF OBJECT"
 
 FUNCTIONS.long_desc_obj = 
-  (obj: object,
-    "AUX": unknown,
-    str: unknown) => {
+  (obj) => {
+    
+    let str = null;
     cond(
     /*(*/ [or(
         otouch_Q(
@@ -1704,28 +1681,18 @@ psetg(
       10)))
 
 FUNCTIONS.rdcom = 
-  (/*(*/ [ivec,
-      null] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [str,
-      GLOBALS.reader_string] /*)*/: unknown,
-    vc: vector,
-    rvec: or(
-        false,
-        vector),
-    rm: room,
-    /*(*/ [inplen,
-      1] /*)*/: unknown,
-    /*(*/ [inbuf,
-      GLOBALS.inbuf] /*)*/: unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown,
-    av: or(
-        false,
-        object),
-    /*(*/ [outchan,
-      GLOBALS.outchan] /*)*/: unknown,
-    random_action: unknown) => {
+  (ivec?) => {
+    
+    let str = GLOBALS.reader_string;
+    let vc = null;
+    let rvec = null;
+    let rm = null;
+    let inplen = 1;
+    let inbuf = GLOBALS.inbuf;
+    let winner = GLOBALS.winner;
+    let av = null;
+    let outchan = GLOBALS.outchan;
+    let random_action = null;
     or(
     LOCALS.ivec,
     prog(
@@ -1836,7 +1803,8 @@ repeat(
     mapf(
       null,
       /* FUNCTION */
-        (x: hack) => {
+        (x) => {
+          
           cond(
           /*(*/ [LOCALS.random_action = haction(
                 LOCALS.x),
@@ -1861,9 +1829,9 @@ repeat(
   }
 
 FUNCTIONS.score_obj = 
-  (obj: object,
-    "AUX": unknown,
-    temp: unknown) => {
+  (obj) => {
+    
+    let temp = null;
     cond(
     /*(*/ [g_Q(
         LOCALS.temp = ofval(
@@ -1878,9 +1846,9 @@ FUNCTIONS.score_obj =
   }
 
 FUNCTIONS.score_room = 
-  (rm: room,
-    "AUX": unknown,
-    temp: unknown) => {
+  (rm) => {
+    
+    let temp = null;
     cond(
     /*(*/ [g_Q(
         LOCALS.temp = rval(
@@ -1895,10 +1863,9 @@ FUNCTIONS.score_room =
   }
 
 FUNCTIONS.score_upd = 
-  (num: fix,
-    "AUX": unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown) => {
+  (num) => {
+    
+    let winner = GLOBALS.winner;
     put(
     LOCALS.winner,
     GLOBALS.ascore,
@@ -1912,13 +1879,11 @@ GLOBALS.raw_score = _(
   }
 
 FUNCTIONS.score = 
-  (/*(*/ [ask_Q,
-      t] /*)*/?: unknown,
-    "AUX": unknown,
-    scor: fix,
-    /*(*/ [outchan,
-      LOCALS.outchan] /*)*/: unknown,
-    pct: float) => {
+  (ask_Q?) => {
+    
+    let scor = null;
+    let outchan = LOCALS.outchan;
+    let pct = null;
     GLOBALS.tell_flag = t
 crlf(
     )
@@ -2000,10 +1965,9 @@ crlf(
   }
 
 FUNCTIONS.finish = 
-  (/*(*/ [ask_Q,
-      t] /*)*/?: unknown,
-    "AUX": unknown,
-    scor: fix) => {
+  (ask_Q?) => {
+    
+    let scor = null;
     unwind(
     prog(
       /*(*/ [] /*)*/,
@@ -2300,8 +2264,9 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (x: atom,
-            y: string) => {
+          (x,
+            y) => {
+            
             cond(
             /*(*/ [/*,*/ [LOCALS.x] /*1*/,
               princ(
@@ -2316,8 +2281,9 @@ define(
       mapf(
         null,
         /* FUNCTION */
-          (x: atom,
-            y: string) => {
+          (x,
+            y) => {
+            
             cond(
             /*(*/ [0_Q(
                 /*,*/ [LOCALS.x] /*1*/),
@@ -2422,21 +2388,18 @@ psetg(
     "LI"))
 
 FUNCTIONS.pdskdate = 
-  (wd: primtype(
-        word),
-    ch: channel,
-    "AUX": unknown,
-    /*(*/ [tim,
-      chtype(
+  (wd,
+    ch) => {
+    
+    let tim = chtype(
         getbits(
           LOCALS.wd,
           bits(
             18,
             0)),
-        fix)] /*)*/: unknown,
-    /*(*/ [a_p,
-      "AM"] /*)*/: unknown,
-    hr: fix) => {
+        fix);
+    let a_p = "AM";
+    let hr = null;
     princ(
     "",
     LOCALS.ch)
@@ -2538,26 +2501,18 @@ gdecl(
       string] /*]*/))
 
 FUNCTIONS.jigs_up = 
-  (desc: string,
-    "AUX": unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [deaths,
-      GLOBALS.deaths] /*)*/: unknown,
-    /*(*/ [aobjs,
-      aobjs(
-        LOCALS.winner)] /*)*/: unknown,
-    /*(*/ [random_list,
-      GLOBALS.random_list] /*)*/: unknown,
-    /*(*/ [lamp,
-      find_obj(
-        "LAMP")] /*)*/: unknown,
-    lamp_location: or(
-        false,
-        room),
-    /*(*/ [val_list,
-      /*(*/ [] /*)*/] /*)*/: unknown,
-    lc: unknown) => {
+  (desc) => {
+    
+    let winner = GLOBALS.winner;
+    let deaths = GLOBALS.deaths;
+    let aobjs = aobjs(
+        LOCALS.winner);
+    let random_list = GLOBALS.random_list;
+    let lamp = find_obj(
+        "LAMP");
+    let lamp_location = null;
+    let val_list = /*(*/ [] /*)*/;
+    let lc = null;
     cond(
     /*(*/ [GLOBALS.dbg,
       tell(
@@ -2685,8 +2640,9 @@ FUNCTIONS.jigs_up =
                   mapf(
                     null,
                     /* FUNCTION */
-                      (x: object,
-                        y: room) => {
+                      (x,
+                        y) => {
+                        
                         insert_object(
                         LOCALS.x,
                         LOCALS.y)
@@ -2723,8 +2679,9 @@ FUNCTIONS.jigs_up =
                   mapf(
                     null,
                     /* FUNCTION */
-                      (x: object,
-                        y: room) => {
+                      (x,
+                        y) => {
+                        
                         insert_object(
                         LOCALS.x,
                         LOCALS.y)
@@ -2751,6 +2708,7 @@ FUNCTIONS.jigs_up =
 
 FUNCTIONS.info = 
   () => {
+    
     file_to_tty(
     "MADADV",
     "INFO")
@@ -2758,6 +2716,7 @@ FUNCTIONS.info =
 
 FUNCTIONS.help = 
   () => {
+    
     file_to_tty(
     "MADADV",
     "HELP")
@@ -2772,29 +2731,22 @@ psetg(
       0)))
 
 FUNCTIONS.file_to_tty = 
-  (file1: string,
-    file2: string,
-    /*(*/ [dev,
-      value(
-        dev)] /*)*/?: unknown,
-    /*(*/ [snm,
-      value(
-        snm)] /*)*/: unknown,
-    "AUX": unknown,
-    /*(*/ [ch,
-      open(
+  (file1,
+    file2,
+    dev?,
+    snm) => {
+    
+    let ch = open(
         "READ",
         LOCALS.file1,
         LOCALS.file2,
         LOCALS.dev,
-        LOCALS.snm)] /*)*/: unknown,
-    len: fix,
-    /*(*/ [buf,
-      GLOBALS.inbuf] /*)*/: unknown,
-    /*(*/ [buflen,
-      length(
-        LOCALS.buf)] /*)*/: unknown,
-    iter: fix) => {
+        LOCALS.snm);
+    let len = null;
+    let buf = GLOBALS.inbuf;
+    let buflen = length(
+        LOCALS.buf);
+    let iter = null;
     cond(
     /*(*/ [LOCALS.ch,
       unwind(
@@ -2853,17 +2805,15 @@ FUNCTIONS.file_to_tty =
   }
 
 FUNCTIONS.invent = 
-  (/*(*/ [win,
-      GLOBALS.winner] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [any,
-      null] /*)*/: unknown,
-    /*(*/ [outchan,
-      GLOBALS.outchan] /*)*/: unknown) => {
+  (win?) => {
+    
+    let any = null;
+    let outchan = GLOBALS.outchan;
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [ovis_Q(
             LOCALS.x),
@@ -2919,18 +2869,14 @@ or(
   }
 
 FUNCTIONS.print_contents = 
-  (olst: list(
-        /*[*/ [rest,
-          object] /*]*/),
-    "AUX": unknown,
-    /*(*/ [outchan,
-      GLOBALS.outchan] /*)*/: unknown) => {
+  (olst) => {
+    
+    let outchan = GLOBALS.outchan;
     mapr(
     null,
     /* FUNCTION */
-      (y: list(
-            /*[*/ [rest,
-              object] /*]*/)) => {
+      (y) => {
+        
         princ(
         "a")
 princ(
@@ -2957,10 +2903,9 @@ cond(
 // LIT? --  IS THERE ANY LIGHT SOURCE IN THIS ROOM
 
 FUNCTIONS.lit_Q = 
-  (rm: room,
-    "AUX": unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown) => {
+  (rm) => {
+    
+    let win = GLOBALS.winner;
     or(
     rlight_Q(
       LOCALS.rm),
@@ -2999,7 +2944,8 @@ define(
   mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         and(
         g_Q(
           olight_Q(
@@ -3019,7 +2965,8 @@ cond(
           mapf(
             null,
             /* FUNCTION */
-              (x: object) => {
+              (x) => {
+                
                 cond(
                 /*(*/ [g_Q(
                     olight_Q(
@@ -3048,38 +2995,20 @@ cond(
 // WALK --  GIVEN A DIRECTION, WILL ATTEMPT TO WALK THERE
 
 FUNCTIONS.walk = 
-  ("AUX": unknown,
-    leavings: or(
-        atom,
-        room,
-        cexit,
-        nexit),
-    nrm: or(
-        false,
-        /*<*/ [primtype(
-            vector),
-          /*[*/ [rest,
-            atom,
-            or(
-              room,
-              nexit,
-              cexit)] /*]*/] /*>*/),
-    /*(*/ [where,
-      chtype(
+  () => {
+    
+    let leavings = null;
+    let nrm = null;
+    let where = chtype(
         2(
           GLOBALS.prsvec),
-        atom)] /*)*/: unknown,
-    /*(*/ [me,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [rm,
-      1(
-        LOCALS.me)] /*)*/: unknown,
-    nl: or(
-        atom,
-        room,
-        false),
-    random_action: unknown,
-    cxs: unknown) => {
+        atom);
+    let me = GLOBALS.winner;
+    let rm = 1(
+        LOCALS.me);
+    let nl = null;
+    let random_action = null;
+    let cxs = null;
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -3194,30 +3123,21 @@ FUNCTIONS.walk =
   }
 
 FUNCTIONS.take = 
-  (/*(*/ [take_Q,
-      t] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [vec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [rm,
-      aroom(
-        LOCALS.win)] /*)*/: unknown,
-    nobj: object,
-    /*(*/ [obj,
-      2(
-        LOCALS.vec)] /*)*/: unknown,
-    /*(*/ [getter_Q,
-      null] /*)*/: unknown,
-    /*(*/ [robjs,
-      robjs(
-        LOCALS.rm)] /*)*/: unknown,
-    /*(*/ [aobjs,
-      aobjs(
-        LOCALS.win)] /*)*/: unknown,
-    /*(*/ [load_max,
-      GLOBALS.load_max] /*)*/: unknown) => {
+  (take_Q?) => {
+    
+    let win = GLOBALS.winner;
+    let vec = GLOBALS.prsvec;
+    let rm = aroom(
+        LOCALS.win);
+    let nobj = null;
+    let obj = 2(
+        LOCALS.vec);
+    let getter_Q = null;
+    let robjs = robjs(
+        LOCALS.rm);
+    let aobjs = aobjs(
+        LOCALS.win);
+    let load_max = GLOBALS.load_max;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -3353,29 +3273,21 @@ FUNCTIONS.take =
   }
 
 FUNCTIONS.putter = 
-  (/*(*/ [objact,
-      t] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [objo,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [obji,
-      3(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [aobjs,
-      aobjs(
-        LOCALS.win)] /*)*/: unknown,
-    crock: object,
-    can: object,
-    /*(*/ [robjs,
-      robjs(
-        GLOBALS.here)] /*)*/: unknown,
-    /*(*/ [ocan,
-      null] /*)*/: unknown) => {
+  (objact?) => {
+    
+    let pv = GLOBALS.prsvec;
+    let objo = 2(
+        LOCALS.pv);
+    let obji = 3(
+        LOCALS.pv);
+    let win = GLOBALS.winner;
+    let aobjs = aobjs(
+        LOCALS.win);
+    let crock = null;
+    let can = null;
+    let robjs = robjs(
+        GLOBALS.here);
+    let ocan = null;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -3552,29 +3464,22 @@ FUNCTIONS.putter =
   }
 
 FUNCTIONS.dropper = 
-  ("AUX": unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [av,
-      avehicle(
-        LOCALS.winner)] /*)*/: unknown,
-    /*(*/ [aobjs,
-      aobjs(
-        LOCALS.winner)] /*)*/: unknown,
-    /*(*/ [getter_Q,
-      null] /*)*/: unknown,
-    /*(*/ [vec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [rm,
-      aroom(
-        LOCALS.winner)] /*)*/: unknown,
-    /*(*/ [obj,
-      2(
-        LOCALS.vec)] /*)*/: unknown,
-    /*(*/ [pi,
-      3(
-        LOCALS.vec)] /*)*/: unknown,
-    nobj: object) => {
+  () => {
+    
+    let winner = GLOBALS.winner;
+    let av = avehicle(
+        LOCALS.winner);
+    let aobjs = aobjs(
+        LOCALS.winner);
+    let getter_Q = null;
+    let vec = GLOBALS.prsvec;
+    let rm = aroom(
+        LOCALS.winner);
+    let obj = 2(
+        LOCALS.vec);
+    let pi = 3(
+        LOCALS.vec);
+    let nobj = null;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -3720,25 +3625,16 @@ gdecl(
       object] /*]*/))
 
 FUNCTIONS.frob_lots = 
-  (uv: uvector(
-        /*[*/ [rest,
-          object] /*]*/),
-    "AUX": unknown,
-    /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.prsvec)] /*)*/: unknown,
-    /*(*/ [ra,
-      vfcn(
-        LOCALS.pa)] /*)*/: unknown,
-    pi: or(
-        object,
-        false),
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown) => {
+  (uv) => {
+    
+    let prsvec = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.prsvec);
+    let ra = vfcn(
+        LOCALS.pa);
+    let pi = null;
+    let winner = GLOBALS.winner;
+    let here = GLOBALS.here;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -3746,7 +3642,8 @@ FUNCTIONS.frob_lots =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             cond(
             /*(*/ [or(
                 can_take_Q(
@@ -3784,7 +3681,8 @@ FUNCTIONS.frob_lots =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             put(
             LOCALS.prsvec,
             2,
@@ -3812,25 +3710,19 @@ psetg(
   "I can't do everything, because I ran out of room.")
 
 FUNCTIONS.everything = 
-  ("AUX": unknown,
-    /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.prsvec)] /*)*/: unknown,
-    pi: object,
-    /*(*/ [suv,
-      GLOBALS.obj_uv] /*)*/: unknown,
-    /*(*/ [tuv,
-      top(
-        LOCALS.suv)] /*)*/: unknown,
-    /*(*/ [lu,
-      length(
-        LOCALS.tuv)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown) => {
+  () => {
+    
+    let prsvec = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.prsvec);
+    let pi = null;
+    let suv = GLOBALS.obj_uv;
+    let tuv = top(
+        LOCALS.suv);
+    let lu = length(
+        LOCALS.tuv);
+    let here = GLOBALS.here;
+    let winner = GLOBALS.winner;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -3838,7 +3730,8 @@ FUNCTIONS.everything =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             cond(
             /*(*/ [and(
                 ovis_Q(
@@ -3870,7 +3763,8 @@ FUNCTIONS.everything =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             LOCALS.suv = back(
               LOCALS.suv)
 put(
@@ -3891,7 +3785,8 @@ put(
         mapf(
           null,
           /* FUNCTION */
-            (x: object) => {
+            (x) => {
+              
               cond(
               /*(*/ [and(
                   ovis_Q(
@@ -3924,7 +3819,8 @@ put(
         mapf(
           null,
           /* FUNCTION */
-            (x: object) => {
+            (x) => {
+              
               cond(
               /*(*/ [and(
                   _EQ_Q(
@@ -3957,25 +3853,19 @@ cond(
   }
 
 FUNCTIONS.valuables = 
-  ("AUX": unknown,
-    /*(*/ [prsvec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [pa,
-      1(
-        LOCALS.prsvec)] /*)*/: unknown,
-    /*(*/ [suv,
-      GLOBALS.obj_uv] /*)*/: unknown,
-    /*(*/ [tuv,
-      top(
-        LOCALS.suv)] /*)*/: unknown,
-    pi: object,
-    /*(*/ [lu,
-      length(
-        LOCALS.tuv)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [winner,
-      GLOBALS.winner] /*)*/: unknown) => {
+  () => {
+    
+    let prsvec = GLOBALS.prsvec;
+    let pa = 1(
+        LOCALS.prsvec);
+    let suv = GLOBALS.obj_uv;
+    let tuv = top(
+        LOCALS.suv);
+    let pi = null;
+    let lu = length(
+        LOCALS.tuv);
+    let here = GLOBALS.here;
+    let winner = GLOBALS.winner;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.pa,
@@ -3983,7 +3873,8 @@ FUNCTIONS.valuables =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             cond(
             /*(*/ [and(
                 ovis_Q(
@@ -4019,7 +3910,8 @@ FUNCTIONS.valuables =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             cond(
             /*(*/ [not(
                 0_Q(
@@ -4045,7 +3937,8 @@ FUNCTIONS.valuables =
         mapf(
           null,
           /* FUNCTION */
-            (x: object) => {
+            (x) => {
+              
               cond(
               /*(*/ [and(
                   _EQ_Q(
@@ -4079,7 +3972,8 @@ cond(
         mapf(
           null,
           /* FUNCTION */
-            (x: object) => {
+            (x) => {
+              
               cond(
               /*(*/ [and(
                   _EQ_Q(
@@ -4242,10 +4136,10 @@ define(
         "You cannot close that.")] /*)*/))
 
 FUNCTIONS.find = 
-  ("AUX": unknown,
-    /*(*/ [prso,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prso = 2(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -4274,17 +4168,17 @@ FUNCTIONS.find =
   }
 
 FUNCTIONS.find_frob = 
-  (prso: unknown,
-    objl: list(
-        /*[*/ [rest,
-          object] /*]*/),
-    str1: string,
-    str2: string,
-    str3: string) => {
+  (prso,
+    objl,
+    str1,
+    str2,
+    str3) => {
+    
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [_EQ_Q(
             LOCALS.x,
@@ -4306,7 +4200,8 @@ FUNCTIONS.find_frob =
           mapf(
             null,
             /* FUNCTION */
-              (y: object) => {
+              (y) => {
+                
                 cond(
                 /*(*/ [_EQ_Q(
                     LOCALS.y,
@@ -4333,15 +4228,13 @@ FUNCTIONS.find_frob =
 // OBJECT-ACTION --  CALL OBJECT FUNCTIONS FOR DIRECT AND INDIRECT OBJECTS
 
 FUNCTIONS.object_action = 
-  ("AUX": unknown,
-    /*(*/ [vec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [prso,
-      2(
-        LOCALS.vec)] /*)*/: unknown,
-    /*(*/ [prsi,
-      3(
-        LOCALS.vec)] /*)*/: unknown) => {
+  () => {
+    
+    let vec = GLOBALS.prsvec;
+    let prso = 2(
+        LOCALS.vec);
+    let prsi = 3(
+        LOCALS.vec);
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -4360,15 +4253,11 @@ FUNCTIONS.object_action =
 "SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL\nSEARCH, USE GET-OBJECT"
 
 FUNCTIONS.obj_here_Q = 
-  (obj: object,
-    "AUX": unknown,
-    nobj: or(
-        false,
-        object),
-    /*(*/ [rm,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown) => {
+  (obj) => {
+    
+    let nobj = null;
+    let rm = GLOBALS.here;
+    let win = GLOBALS.winner;
     prog(
     /*(*/ [] /*)*/,
     cond(
@@ -4397,8 +4286,9 @@ FUNCTIONS.obj_here_Q =
   }
 
 FUNCTIONS.splice_out = 
-  (obj: unknown,
-    al: list) => {
+  (obj,
+    al) => {
+    
     cond(
     /*(*/ [_EQ_Q(
         1(
@@ -4436,16 +4326,14 @@ FUNCTIONS.splice_out =
 "WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level."
 
 FUNCTIONS.weight = 
-  (objl: list(
-        /*[*/ [rest,
-          object] /*]*/),
-    "AUX": unknown,
-    /*(*/ [bigfix,
-      GLOBALS.bigfix] /*)*/: unknown) => {
+  (objl) => {
+    
+    let bigfix = GLOBALS.bigfix;
     mapf(
     GLOBALS._,
     /* FUNCTION */
-      (obj: object) => {
+      (obj) => {
+        
         _(
         cond(
           /*(*/ [_EQ_Q(
@@ -4465,18 +4353,17 @@ FUNCTIONS.weight =
 FUNCTIONS.pour = 
   () => {
     
+    
   }
 
 FUNCTIONS.move = 
-  ("AUX": unknown,
-    /*(*/ [vec,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [rm,
-      aroom(
-        GLOBALS.winner)] /*)*/: unknown,
-    /*(*/ [obj,
-      2(
-        LOCALS.vec)] /*)*/: unknown) => {
+  () => {
+    
+    let vec = GLOBALS.prsvec;
+    let rm = aroom(
+        GLOBALS.winner);
+    let obj = 2(
+        LOCALS.vec);
     cond(
     /*(*/ [memq(
         LOCALS.obj,
@@ -4490,11 +4377,13 @@ FUNCTIONS.move =
   }
 
 FUNCTIONS.victims_Q = 
-  (rm: room) => {
+  (rm) => {
+    
     mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [trnn(
             LOCALS.x,
@@ -4660,17 +4549,17 @@ GLOBALS.prsvec = ivector(
 
 FUNCTIONS.word_Q = 
   (w) => {
+    
     lookup(
     LOCALS.w,
     GLOBALS.words)
   }
 
 FUNCTIONS.this_it_Q = 
-  (objnam: atom,
-    obj: atom,
-    adj: or(
-        false,
-        adjective)) => {
+  (objnam,
+    obj,
+    adj) => {
+    
     cond(
     /*(*/ [and(
         ovis_Q(
@@ -4709,33 +4598,21 @@ gdecl(
   string)
 
 FUNCTIONS.lex = 
-  (s: string,
-    /*(*/ [sx,
-      rest(
-        LOCALS.s,
-        length(
-          LOCALS.s))] /*)*/?: unknown,
-    /*(*/ [silent_Q,
-      null] /*)*/: unknown,
-    "AUX": unknown,
-    /*(*/ [brks,
-      GLOBALS.brks] /*)*/: unknown,
-    /*(*/ [v,
-      GLOBALS.lexv] /*)*/: unknown,
-    /*(*/ [s1,
-      LOCALS.s] /*)*/: unknown,
-    /*(*/ [quot,
-      null] /*)*/: unknown) => {
+  (s,
+    sx?,
+    silent_Q) => {
+    
+    let brks = GLOBALS.brks;
+    let v = GLOBALS.lexv;
+    let s1 = LOCALS.s;
+    let quot = null;
     mapr(
     null,
     /* FUNCTION */
-      (x: vector(
-            /*[*/ [rest,
-              string] /*]*/),
-        "AUX": unknown,
-        /*(*/ [str,
-          1(
-            LOCALS.x)] /*)*/: unknown) => {
+      (x) => {
+        
+        let str = 1(
+            LOCALS.x);
         put(
         LOCALS.x,
         1,
@@ -4847,12 +4724,14 @@ psetg(
   "\"' 	:;.,?!")
 
 FUNCTIONS.anything = 
-  (s: string,
-    sx: string) => {
+  (s,
+    sx) => {
+    
     mapr(
     null,
     /* FUNCTION */
       (x) => {
+        
         cond(
         /*(*/ [_EQ_Q(
             LOCALS.x,
@@ -4871,16 +4750,17 @@ FUNCTIONS.anything =
   }
 
 FUNCTIONS.uppercase = 
-  (str: string) => {
+  (str) => {
+    
     mapr(
     null,
     /* FUNCTION */
-      (s,
-      "AUX",
+      (s) => {
+        "AUX",
       /*(*/ [c,
           ascii(
             1(
-              LOCALS.s))] /*)*/) => {
+              LOCALS.s))] /*)*/
         cond(
         /*(*/ [and(
             g_Q(
@@ -4901,8 +4781,8 @@ FUNCTIONS.uppercase =
   }
 
 FUNCTIONS.wait = 
-  (/*(*/ [num,
-      3] /*)*/?: unknown) => {
+  (num?) => {
+    
     tell(
     "Time passes...")
 repeat(
@@ -4927,11 +4807,10 @@ repeat(
 "RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS."
 
 FUNCTIONS.clock_demon = 
-  (hack: hack,
-    "AUX": unknown,
-    ca: unknown,
-    /*(*/ [flg,
-      null] /*)*/: unknown) => {
+  (hack) => {
+    
+    let ca = null;
+    let flg = null;
     cond(
     /*(*/ [GLOBALS.parse_won,
       put(
@@ -4945,11 +4824,10 @@ FUNCTIONS.clock_demon =
       mapf(
         null,
         /* FUNCTION */
-          (ev: cevent,
-            "AUX": unknown,
-            /*(*/ [tick,
-              ctick(
-                LOCALS.ev)] /*)*/: unknown) => {
+          (ev) => {
+            
+            let tick = ctick(
+                LOCALS.ev);
             cond(
             /*(*/ [not(
                 cflag(
@@ -5005,11 +4883,10 @@ gdecl(
   hack)
 
 FUNCTIONS.clock_int = 
-  (cev: cevent,
-    /*(*/ [num,
-      null] /*)*/?: unknown,
-    /*(*/ [clocker,
-      GLOBALS.clocker] /*)*/: unknown) => {
+  (cev,
+    num?,
+    clocker) => {
+    
     cond(
     /*(*/ [not(
         memq(
@@ -5047,15 +4924,13 @@ or(
         hack)))
 
 FUNCTIONS.board = 
-  ("AUX": unknown,
-    /*(*/ [obj,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [av,
-      avehicle(
-        LOCALS.win)] /*)*/: unknown) => {
+  () => {
+    
+    let obj = 2(
+        GLOBALS.prsvec);
+    let win = GLOBALS.winner;
+    let av = avehicle(
+        LOCALS.win);
     cond(
     /*(*/ [not(
         memq(
@@ -5110,15 +4985,13 @@ FUNCTIONS.board =
   }
 
 FUNCTIONS.unboard = 
-  ("AUX": unknown,
-    /*(*/ [obj,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [av,
-      avehicle(
-        LOCALS.win)] /*)*/: unknown) => {
+  () => {
+    
+    let obj = 2(
+        GLOBALS.prsvec);
+    let win = GLOBALS.winner;
+    let av = avehicle(
+        LOCALS.win);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.av,
@@ -5150,19 +5023,15 @@ FUNCTIONS.unboard =
   }
 
 FUNCTIONS.goto = 
-  (rm: room,
-    "AUX": unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [av,
-      avehicle(
-        GLOBALS.winner)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [lb,
-      rtrnn(
+  (rm) => {
+    
+    let win = GLOBALS.winner;
+    let av = avehicle(
+        GLOBALS.winner);
+    let here = GLOBALS.here;
+    let lb = rtrnn(
         LOCALS.rm,
-        GLOBALS.rlandbit)] /*)*/: unknown) => {
+        GLOBALS.rlandbit);
     cond(
     /*(*/ [or(
         and(
@@ -5238,12 +5107,14 @@ FUNCTIONS.goto =
 
 FUNCTIONS.backer = 
   () => {
+    
     tell(
     "He who puts his hand to the plow and looks back is not fit for the\nkingdom of winners.  In any case, \"back\" doesn't work.")
   }
 
 FUNCTIONS.act_hack = 
   () => {
+    
     or(
     object_action(
       ),
@@ -5251,8 +5122,9 @@ FUNCTIONS.act_hack =
   }
 
 FUNCTIONS.mung_room = 
-  (rm: room,
-    str: string) => {
+  (rm,
+    str) => {
+    
     rtro(
     LOCALS.rm,
     GLOBALS.rmungbit)
@@ -5263,23 +5135,18 @@ put(
   }
 
 FUNCTIONS.command = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [po,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [v,
-      rest(
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let po = 2(
+        LOCALS.pv);
+    let v = rest(
         member(
           "",
-          GLOBALS.lexv))] /*)*/: unknown,
-    /*(*/ [hs,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    /*(*/ [play,
-      GLOBALS.player] /*)*/: unknown) => {
+          GLOBALS.lexv));
+    let hs = GLOBALS.here;
+    let win = GLOBALS.winner;
+    let play = GLOBALS.player;
     cond(
     /*(*/ [n_EQ_Q(
         LOCALS.win,

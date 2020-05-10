@@ -5349,6 +5349,7 @@ mapf(
   null,
   /* FUNCTION */
     (x) => {
+      
       rtro(
       find_room(
         spname(
@@ -5377,6 +5378,7 @@ mapf(
   null,
   /* FUNCTION */
     (x) => {
+      
       rtro(
       find_room(
         LOCALS.x),
@@ -5390,6 +5392,7 @@ mapf(
   null,
   /* FUNCTION */
     (x) => {
+      
       rtro(
       find_room(
         LOCALS.x),

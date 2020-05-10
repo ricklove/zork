@@ -1,13 +1,11 @@
 FUNCTIONS.boom_room = 
-  ("AUX": unknown,
-    /*(*/ [dummy_Q,
-      null] /*)*/: unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [win,
-      GLOBALS.winner] /*)*/: unknown,
-    o: object) => {
+  () => {
+    
+    let dummy_Q = null;
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let win = GLOBALS.winner;
+    let o = null;
     cond(
     /*(*/ [or(
         _EQ_Q(
@@ -66,10 +64,10 @@ FUNCTIONS.boom_room =
   }
 
 FUNCTIONS.bats_room = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -100,9 +98,9 @@ FUNCTIONS.bats_room =
   }
 
 FUNCTIONS.fly_me = 
-  ("AUX": unknown,
-    /*(*/ [bat_drops,
-      GLOBALS.bat_drops] /*)*/: unknown) => {
+  () => {
+    
+    let bat_drops = GLOBALS.bat_drops;
     unwind(
     prog(
       /*(*/ [] /*)*/,
@@ -128,9 +126,9 @@ room_desc(
   }
 
 FUNCTIONS.fweep = 
-  (num: fix,
-    /*(*/ [slp,
-      0] /*)*/?: unknown) => {
+  (num,
+    slp?) => {
+    
     repeat(
     /*(*/ [/*(*/ [n,
         LOCALS.num] /*)*/] /*)*/,
@@ -171,28 +169,21 @@ gdecl(
 GLOBALS.cage_top_X_flag = t
 
 FUNCTIONS.dumbwaiter = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [tb,
-      find_obj(
-        "TBASK")] /*)*/: unknown,
-    /*(*/ [top,
-      find_room(
-        "TSHAF")] /*)*/: unknown,
-    /*(*/ [bot,
-      find_room(
-        "BSHAF")] /*)*/: unknown,
-    /*(*/ [fb,
-      find_obj(
-        "FBASK")] /*)*/: unknown,
-    /*(*/ [ct,
-      GLOBALS.cage_top_X_flag] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [dummy,
-      GLOBALS.dummy] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let tb = find_obj(
+        "TBASK");
+    let top = find_room(
+        "TSHAF");
+    let bot = find_room(
+        "BSHAF");
+    let fb = find_obj(
+        "FBASK");
+    let ct = GLOBALS.cage_top_X_flag;
+    let here = GLOBALS.here;
+    let dummy = GLOBALS.dummy;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
@@ -261,10 +252,10 @@ FUNCTIONS.dumbwaiter =
   }
 
 FUNCTIONS.machine_room = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
@@ -282,15 +273,13 @@ FUNCTIONS.machine_room =
   }
 
 FUNCTIONS.machine_function = 
-  ("AUX": unknown,
-    /*(*/ [dummy,
-      GLOBALS.dummy] /*)*/: unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [mach,
-      find_obj(
-        "MACHI")] /*)*/: unknown) => {
+  () => {
+    
+    let dummy = GLOBALS.dummy;
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let mach = find_obj(
+        "MACHI");
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
@@ -336,23 +325,19 @@ FUNCTIONS.machine_function =
   }
 
 FUNCTIONS.mswitch_function = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [c,
-      find_obj(
-        "COAL")] /*)*/: unknown,
-    /*(*/ [imp,
-      3(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    d: object,
-    /*(*/ [mach,
-      find_obj(
-        "MACHI")] /*)*/: unknown,
-    /*(*/ [screw,
-      find_obj(
-        "SCREW")] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let c = find_obj(
+        "COAL");
+    let imp = 3(
+        GLOBALS.prsvec);
+    let d = null;
+    let mach = find_obj(
+        "MACHI");
+    let screw = find_obj(
+        "SCREW");
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
@@ -411,13 +396,12 @@ FUNCTIONS.mswitch_function =
   }
 
 FUNCTIONS.gunk_function = 
-  ("AUX": unknown,
-    /*(*/ [g,
-      find_obj(
-        "GUNK")] /*)*/: unknown,
-    /*(*/ [m,
-      ocan(
-        LOCALS.g)] /*)*/: unknown) => {
+  () => {
+    
+    let g = find_obj(
+        "GUNK");
+    let m = ocan(
+        LOCALS.g);
     cond(
     /*(*/ [LOCALS.m,
       put(
@@ -441,6 +425,7 @@ GLOBALS.score_max = _(
 
 FUNCTIONS.no_objs = 
   () => {
+    
     cond(
     /*(*/ [empty_Q(
         aobjs(
@@ -466,6 +451,7 @@ gdecl(
 
 FUNCTIONS.cliff_function = 
   () => {
+    
     cond(
     /*(*/ [memq(
         find_obj(
@@ -477,10 +463,10 @@ FUNCTIONS.cliff_function =
   }
 
 FUNCTIONS.stick_function = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         vname(
@@ -521,10 +507,10 @@ FUNCTIONS.stick_function =
   }
 
 FUNCTIONS.falls_room = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsact,
@@ -540,10 +526,10 @@ FUNCTIONS.falls_room =
   }
 
 FUNCTIONS.digger = 
-  ("AUX": unknown,
-    /*(*/ [prso,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prso = 2(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prso,
@@ -567,18 +553,15 @@ FUNCTIONS.digger =
   }
 
 FUNCTIONS.dboat_function = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    /*(*/ [prsi,
-      3(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [dboat,
-      find_obj(
-        "DBOAT")] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let here = GLOBALS.here;
+    let prsi = 3(
+        GLOBALS.prsvec);
+    let dboat = find_obj(
+        "DBOAT");
     cond(
     /*(*/ [_EQ_Q(
         vname(
@@ -618,20 +601,15 @@ FUNCTIONS.dboat_function =
   }
 
 FUNCTIONS.rboat_function = 
-  (/*(*/ [arg,
-      null] /*)*/?: unknown,
-    "AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [rboat,
-      find_obj(
-        "RBOAT")] /*)*/: unknown,
-    /*(*/ [iboat,
-      find_obj(
-        "IBOAT")] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown) => {
+  (arg?) => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let rboat = find_obj(
+        "RBOAT");
+    let iboat = find_obj(
+        "IBOAT");
+    let here = GLOBALS.here;
     cond(
     /*(*/ [LOCALS.arg,
       null] /*)*/,
@@ -693,18 +671,15 @@ FUNCTIONS.rboat_function =
   }
 
 FUNCTIONS.iboat_function = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [iboat,
-      find_obj(
-        "IBOAT")] /*)*/: unknown,
-    /*(*/ [rboat,
-      find_obj(
-        "RBOAT")] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let iboat = find_obj(
+        "IBOAT");
+    let rboat = find_obj(
+        "RBOAT");
+    let here = GLOBALS.here;
     cond(
     /*(*/ [_EQ_Q(
         vname(
@@ -737,6 +712,7 @@ FUNCTIONS.iboat_function =
 
 FUNCTIONS.over_falls = 
   () => {
+    
     cond(
     /*(*/ [_EQ_Q(
         1(
@@ -749,12 +725,11 @@ FUNCTIONS.over_falls =
 GLOBALS.buoy_flag_X_flag = t
 
 FUNCTIONS.shake = 
-  ("AUX": unknown,
-    /*(*/ [prsobj,
-      2(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown) => {
+  () => {
+    
+    let prsobj = 2(
+        GLOBALS.prsvec);
+    let here = GLOBALS.here;
     cond(
     /*(*/ [object_action(
         )] /*)*/,
@@ -782,7 +757,8 @@ FUNCTIONS.shake =
       mapf(
         null,
         /* FUNCTION */
-          (x: object) => {
+          (x) => {
+            
             put(
             LOCALS.x,
             GLOBALS.ocan,
@@ -803,6 +779,7 @@ insert_object(
 
 FUNCTIONS.rivr4_room = 
   () => {
+    
     and(
     memq(
       find_obj(
@@ -816,16 +793,14 @@ FUNCTIONS.rivr4_room =
   }
 
 FUNCTIONS.beach_room = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [shov,
-      find_obj(
-        "SHOVE")] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    cnt: fix) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let shov = find_obj(
+        "SHOVE");
+    let here = GLOBALS.here;
+    let cnt = null;
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -876,16 +851,14 @@ FUNCTIONS.beach_room =
   }
 
 FUNCTIONS.tcave_room = 
-  ("AUX": unknown,
-    /*(*/ [prsact,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [shov,
-      find_obj(
-        "SHOVE")] /*)*/: unknown,
-    /*(*/ [here,
-      GLOBALS.here] /*)*/: unknown,
-    cnt: fix) => {
+  () => {
+    
+    let prsact = 1(
+        GLOBALS.prsvec);
+    let shov = find_obj(
+        "SHOVE");
+    let here = GLOBALS.here;
+    let cnt = null;
     cond(
     /*(*/ [and(
         _EQ_Q(
@@ -944,6 +917,7 @@ gdecl(
 
 FUNCTIONS.geronimo = 
   () => {
+    
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
@@ -968,9 +942,9 @@ gdecl(
       string] /*]*/))
 
 FUNCTIONS.swimmer = 
-  ("AUX": unknown,
-    /*(*/ [swimyuks,
-      GLOBALS.swimyuks] /*)*/: unknown) => {
+  () => {
+    
+    let swimyuks = GLOBALS.swimyuks;
     cond(
     /*(*/ [rtrnn(
         GLOBALS.here,
@@ -983,10 +957,10 @@ FUNCTIONS.swimmer =
   }
 
 FUNCTIONS.grue_function = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1265,23 +1239,18 @@ gdecl(
   cevent)
 
 FUNCTIONS.rise_and_shine = 
-  (ball: object,
-    here: room,
-    "AUX": unknown,
-    /*(*/ [s,
-      top(
-        GLOBALS.scrstr)] /*)*/: unknown,
-    m: or(
-        false,
-        string),
-    /*(*/ [in_Q,
-      _EQ_Q(
+  (ball,
+    here) => {
+    
+    let s = top(
+        GLOBALS.scrstr);
+    let m = null;
+    let in_Q = _EQ_Q(
         avehicle(
           GLOBALS.winner),
-        LOCALS.ball)] /*)*/: unknown,
-    /*(*/ [bl,
-      GLOBALS.bloc] /*)*/: unknown,
-    foo: cevent) => {
+        LOCALS.ball);
+    let bl = GLOBALS.bloc;
+    let foo = null;
     clock_int(
     GLOBALS.bint,
     3)
@@ -1396,10 +1365,11 @@ cond(
   }
 
 FUNCTIONS.put_balloon = 
-  (ball: object,
-    here: room,
-    there: string,
-    str: string) => {
+  (ball,
+    here,
+    there,
+    str) => {
+    
     and(
     member(
       "LEDG",
@@ -1423,23 +1393,18 @@ gdecl(
   room)
 
 FUNCTIONS.decline_and_fall = 
-  (ball: object,
-    here: room,
-    "AUX": unknown,
-    /*(*/ [s,
-      top(
-        GLOBALS.scrstr)] /*)*/: unknown,
-    m: or(
-        false,
-        string),
-    /*(*/ [bl,
-      GLOBALS.bloc] /*)*/: unknown,
-    /*(*/ [in_Q,
-      _EQ_Q(
+  (ball,
+    here) => {
+    
+    let s = top(
+        GLOBALS.scrstr);
+    let m = null;
+    let bl = GLOBALS.bloc;
+    let in_Q = _EQ_Q(
         avehicle(
           GLOBALS.winner),
-        LOCALS.ball)] /*)*/: unknown,
-    foo: cevent) => {
+        LOCALS.ball);
+    let foo = null;
     clock_int(
     GLOBALS.bint,
     3)
@@ -1523,20 +1488,16 @@ cond(
   }
 
 FUNCTIONS.wire_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [prsa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [prso,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [prsi,
-      3(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [bint,
-      GLOBALS.bint] /*)*/: unknown) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let prsa = 1(
+        LOCALS.pv);
+    let prso = 2(
+        LOCALS.pv);
+    let prsi = 3(
+        LOCALS.pv);
+    let bint = GLOBALS.bint;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1583,14 +1544,13 @@ FUNCTIONS.wire_function =
   }
 
 FUNCTIONS.burnup = 
-  ("AUX": unknown,
-    /*(*/ [r,
-      find_obj(
-        "RECEP")] /*)*/: unknown,
-    /*(*/ [obj,
-      1(
+  () => {
+    
+    let r = find_obj(
+        "RECEP");
+    let obj = 1(
         ocontents(
-          LOCALS.r))] /*)*/: unknown) => {
+          LOCALS.r));
     put(
     LOCALS.r,
     GLOBALS.ocontents,
@@ -1610,10 +1570,10 @@ GLOBALS.binf_X_flag = null
 GLOBALS.safe_flag_X_flag = null
 
 FUNCTIONS.safe_room = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1629,10 +1589,10 @@ FUNCTIONS.safe_room =
   }
 
 FUNCTIONS.safe_function = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1669,10 +1629,10 @@ psetg(
   "Now you've done it.  It seems that the brick has other properties\nthan weight, namely the ability to blow you to smithereens.")
 
 FUNCTIONS.brick_function = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1682,22 +1642,16 @@ FUNCTIONS.brick_function =
   }
 
 FUNCTIONS.fuse_function = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown,
-    /*(*/ [fuse,
-      find_obj(
-        "FUSE")] /*)*/: unknown,
-    /*(*/ [brick,
-      find_obj(
-        "BRICK")] /*)*/: unknown,
-    brick_room: or(
-        room,
-        false),
-    oc: or(
-        object,
-        false)) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
+    let fuse = find_obj(
+        "FUSE");
+    let brick = find_obj(
+        "BRICK");
+    let brick_room = null;
+    let oc = null;
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1781,6 +1735,7 @@ FUNCTIONS.fuse_function =
                 null,
                 /* FUNCTION */
                   (x) => {
+                    
                     cond(
                     /*(*/ [can_take_Q(
                         LOCALS.x),
@@ -1798,7 +1753,8 @@ FUNCTIONS.fuse_function =
                   mapf(
                     null,
                     /* FUNCTION */
-                      (x: object) => {
+                      (x) => {
+                        
                         put(
                         LOCALS.x,
                         GLOBALS.ocan,
@@ -1825,9 +1781,9 @@ FUNCTIONS.fuse_function =
   }
 
 FUNCTIONS.safe_mung = 
-  ("AUX": unknown,
-    /*(*/ [rm,
-      GLOBALS.munged_room] /*)*/: unknown) => {
+  () => {
+    
+    let rm = GLOBALS.munged_room;
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
@@ -1859,10 +1815,10 @@ mung_room(
   }
 
 FUNCTIONS.ledge_mung = 
-  ("AUX": unknown,
-    /*(*/ [rm,
-      find_room(
-        "LEDG4")] /*)*/: unknown) => {
+  () => {
+    
+    let rm = find_room(
+        "LEDG4");
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
@@ -1903,10 +1859,10 @@ mung_room(
   }
 
 FUNCTIONS.ledge_function = 
-  ("AUX": unknown,
-    /*(*/ [prsa,
-      1(
-        GLOBALS.prsvec)] /*)*/: unknown) => {
+  () => {
+    
+    let prsa = 1(
+        GLOBALS.prsvec);
     cond(
     /*(*/ [_EQ_Q(
         LOCALS.prsa,
@@ -1933,6 +1889,7 @@ FUNCTIONS.ledge_function =
 
 FUNCTIONS.blast = 
   () => {
+    
     cond(
     /*(*/ [_EQ_Q(
         GLOBALS.here,
@@ -1944,6 +1901,7 @@ FUNCTIONS.blast =
 
 FUNCTIONS.volgnome = 
   () => {
+    
     cond(
     /*(*/ [member(
         "LEDG",
@@ -1964,15 +1922,13 @@ FUNCTIONS.volgnome =
 GLOBALS.gnome_door_X_flag = GLOBALS.gnome_flag_X_flag = null
 
 FUNCTIONS.gnome_function = 
-  ("AUX": unknown,
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    /*(*/ [prsa,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [prso,
-      2(
-        LOCALS.pv)] /*)*/: unknown) => {
+  () => {
+    
+    let pv = GLOBALS.prsvec;
+    let prsa = 1(
+        LOCALS.pv);
+    let prso = 2(
+        LOCALS.pv);
     cond(
     /*(*/ [and(
         or(

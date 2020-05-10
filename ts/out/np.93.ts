@@ -156,7 +156,8 @@ define(
   LOCALS.val = mapf(
       null,
       /* FUNCTION */
-        (x: string) => {
+        (x) => {
+          
           cond(
           /*(*/ [empty_Q(
               LOCALS.x),
@@ -431,6 +432,7 @@ define(
 
 FUNCTIONS.sp = 
   (str) => {
+    
     parse(
     lex(
       LOCALS.str),
@@ -438,16 +440,12 @@ FUNCTIONS.sp =
   }
 
 FUNCTIONS.orphan = 
-  (/*(*/ [flag,
-      null] /*)*/?: unknown,
-    /*(*/ [action,
-      null] /*)*/: unknown,
-    /*(*/ [slot1,
-      null] /*)*/: unknown,
-    /*(*/ [prep,
-      null] /*)*/: unknown,
-    /*(*/ [name,
-      null] /*)*/: unknown) => {
+  (flag?,
+    action,
+    slot1,
+    prep,
+    name) => {
+    
     put(
     put(
       put(
@@ -467,32 +465,26 @@ FUNCTIONS.orphan =
   }
 
 FUNCTIONS.syn_match = 
-  (pv: vector,
-    "AUX": unknown,
-    /*(*/ [action,
-      1(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [objs,
-      rest(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [o1,
-      1(
-        LOCALS.objs)] /*)*/: unknown,
-    /*(*/ [o2,
-      2(
-        LOCALS.objs)] /*)*/: unknown,
-    /*(*/ [dforce,
-      null] /*)*/: unknown,
-    /*(*/ [drive,
-      null] /*)*/: unknown,
-    /*(*/ [gwim,
-      null] /*)*/: unknown,
-    synn: varg) => {
+  (pv) => {
+    
+    let action = 1(
+        LOCALS.pv);
+    let objs = rest(
+        LOCALS.pv);
+    let o1 = 1(
+        LOCALS.objs);
+    let o2 = 2(
+        LOCALS.objs);
+    let dforce = null;
+    let drive = null;
+    let gwim = null;
+    let synn = null;
     cond(
     /*(*/ [mapf(
         null,
         /* FUNCTION */
-          (syn: syntax) => {
+          (syn) => {
+            
             cond(
             /*(*/ [syn_equal(
                 syn1(
@@ -613,19 +605,15 @@ FUNCTIONS.syn_match =
   }
 
 FUNCTIONS.take_it_or_leave_it = 
-  (syn: syntax,
-    pv: vector,
-    "AUX": unknown,
-    /*(*/ [pv1,
-      2(
-        LOCALS.pv)] /*)*/: unknown,
-    /*(*/ [pv2,
-      3(
-        LOCALS.pv)] /*)*/: unknown,
-    obj: or(
-        false,
-        object),
-    varg: varg) => {
+  (syn,
+    pv) => {
+    
+    let pv1 = 2(
+        LOCALS.pv);
+    let pv2 = 3(
+        LOCALS.pv);
+    let obj = null;
+    let varg = null;
     put(
     LOCALS.pv,
     2,
@@ -673,16 +661,14 @@ cond(
   }
 
 FUNCTIONS.take_it = 
-  (obj: object,
-    vec: vector,
-    vrb: varg,
-    "AUX": unknown,
-    /*(*/ [sav1,
-      1(
-        LOCALS.vec)] /*)*/: unknown,
-    /*(*/ [sav2,
-      2(
-        LOCALS.vec)] /*)*/: unknown) => {
+  (obj,
+    vec,
+    vrb) => {
+    
+    let sav1 = 1(
+        LOCALS.vec);
+    let sav2 = 2(
+        LOCALS.vec);
     cond(
     /*(*/ [and(
         search_list(
@@ -719,18 +705,13 @@ FUNCTIONS.take_it =
   }
 
 FUNCTIONS.orfeo = 
-  (syn: varg,
-    objs: vector,
-    "AUX": unknown,
-    /*(*/ [orph,
-      GLOBALS.orphans] /*)*/: unknown,
-    /*(*/ [orfl,
-      oflag(
-        LOCALS.orph)] /*)*/: unknown,
-    slot1: or(
-        false,
-        phrase,
-        object)) => {
+  (syn,
+    objs) => {
+    
+    let orph = GLOBALS.orphans;
+    let orfl = oflag(
+        LOCALS.orph);
+    let slot1 = null;
     cond(
     /*(*/ [not(
         LOCALS.orfl),
@@ -748,16 +729,13 @@ FUNCTIONS.orfeo =
   }
 
 FUNCTIONS.ortell = 
-  (varg: varg,
-    action: action,
-    gwim: or(
-        false,
-        object),
-    "AUX": unknown,
-    /*(*/ [prep,
-      vprep(
-        LOCALS.varg)] /*)*/: unknown,
-    sp: string) => {
+  (varg,
+    action,
+    gwim) => {
+    
+    let prep = vprep(
+        LOCALS.varg);
+    let sp = null;
     cond(
     /*(*/ [LOCALS.prep,
       and(
@@ -788,9 +766,9 @@ null
   }
 
 FUNCTIONS.prstr = 
-  (atm: atom,
-    "AUX": unknown,
-    sp: string) => {
+  (atm) => {
+    
+    let sp = null;
     foostr(
     LOCALS.sp = spname(
         LOCALS.atm),
@@ -802,15 +780,16 @@ FUNCTIONS.prstr =
   }
 
 FUNCTIONS.foostr = 
-  (nam: string,
-    str: string,
-    /*(*/ [1st,
-      t] /*)*/?: unknown) => {
+  (nam,
+    str,
+    1st?) => {
+    
     mapr(
     null,
     /* FUNCTION */
-      (x: string,
-        y: string) => {
+      (x,
+        y) => {
+        
         cond(
         /*(*/ [and(
             LOCALS.1st,
@@ -838,12 +817,12 @@ FUNCTIONS.foostr =
   }
 
 FUNCTIONS.gwim_slot = 
-  (fx: fix,
-    varg: varg,
-    action: action,
-    objs: vector,
-    "AUX": unknown,
-    obj: vector) => {
+  (fx,
+    varg,
+    action,
+    objs) => {
+    
+    let obj = null;
     cond(
     /*(*/ [LOCALS.obj = gwim(
           vbit(
@@ -860,37 +839,26 @@ FUNCTIONS.gwim_slot =
 "GET WHAT I MEAN - GWIM\n TAKES BIT TO CHECK AND WHERE TO CHECK AND WINS TOTALLY"
 
 FUNCTIONS.gwim = 
-  (bit: fix,
-    fword: varg,
-    action: action,
-    "AUX": unknown,
-    /*(*/ [aobj,
-      vtrnn(
+  (bit,
+    fword,
+    action) => {
+    
+    let aobj = vtrnn(
         LOCALS.fword,
-        GLOBALS.vabit)] /*)*/: unknown,
-    /*(*/ [ntake,
-      vtrnn(
+        GLOBALS.vabit);
+    let ntake = vtrnn(
         LOCALS.fword,
-        GLOBALS.vtbit)] /*)*/: unknown,
-    /*(*/ [robj,
-      vtrnn(
+        GLOBALS.vtbit);
+    let robj = vtrnn(
         LOCALS.fword,
-        GLOBALS.vrbit)] /*)*/: unknown,
-    /*(*/ [obj,
-      null] /*)*/: unknown,
-    nobj: or(
-        object,
-        false),
-    /*(*/ [pv,
-      GLOBALS.prsvec] /*)*/: unknown,
-    savobj: or(
-        false,
-        object,
-        phrase),
-    /*(*/ [av,
-      avehicle(
-        GLOBALS.winner)] /*)*/: unknown,
-    sf: unknown) => {
+        GLOBALS.vrbit);
+    let obj = null;
+    let nobj = null;
+    let pv = GLOBALS.prsvec;
+    let savobj = null;
+    let av = avehicle(
+        GLOBALS.winner);
+    let sf = null;
     and(
     LOCALS.aobj,
     LOCALS.obj = fwim(
@@ -976,29 +944,28 @@ cond(
 
 FUNCTIONS.make_action = 
   ("TUPLE",
-  specs,
-  "AUX",
+  specs) => {
+    "AUX",
   vv,
   sum,
   /*(*/ [prep,
       null] /*)*/,
-  atm) => {
+  atm
     chtype(
     mapf(
       GLOBALS.uvector,
       /* FUNCTION */
-        (sp: vector,
-          "AUX": unknown,
-          /*(*/ [syn,
-            ivector(
+        (sp) => {
+          
+          let syn = ivector(
               5,
-              null)] /*)*/: unknown,
-          /*(*/ [whr,
-            1] /*)*/: unknown) => {
+              null);
+          let whr = 1;
           mapf(
           null,
           /* FUNCTION */
             (itm) => {
+              
               cond(
               /*(*/ [type_Q(
                   LOCALS.itm,
@@ -1137,15 +1104,11 @@ GLOBALS.evarg = chtype(
     varg)
 
 FUNCTIONS.syn_equal = 
-  (varg: varg,
-    pobj: or(
-        false,
-        phrase,
-        object),
-    "AUX": unknown,
-    /*(*/ [vbit,
-      vbit(
-        LOCALS.varg)] /*)*/: unknown) => {
+  (varg,
+    pobj) => {
+    
+    let vbit = vbit(
+        LOCALS.varg);
     cond(
     /*(*/ [type_Q(
         LOCALS.pobj,
@@ -1191,14 +1154,10 @@ GLOBALS.directions = moblist(
     directions)
 
 FUNCTIONS.eparse = 
-  (pv: vector(
-        /*[*/ [rest,
-          string] /*]*/),
-    vb: or(
-        atom,
-        false),
-    "AUX": unknown,
-    val: any) => {
+  (pv,
+    vb) => {
+    
+    let val = null;
     cond(
     /*(*/ [LOCALS.val = sparse(
           LOCALS.pv,
@@ -1409,7 +1368,8 @@ define(
   mapf(
     null,
     /* FUNCTION */
-      (obj: object) => {
+      (obj) => {
+        
         cond(
         /*(*/ [this_it_Q(
             LOCALS.objnam,
@@ -1487,7 +1447,8 @@ define(
   mapf(
     null,
     /* FUNCTION */
-      (x: object) => {
+      (x) => {
+        
         cond(
         /*(*/ [and(
             ovis_Q(
@@ -1514,7 +1475,8 @@ cond(
           mapf(
             null,
             /* FUNCTION */
-              (x: object) => {
+              (x) => {
+                
                 cond(
                 /*(*/ [and(
                     ovis_Q(
