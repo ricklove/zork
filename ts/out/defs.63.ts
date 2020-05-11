@@ -438,16 +438,16 @@ if(no_is_bad_Q) {
 defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*)*/] /*)*/,
 	form(cond,
 	      /*(*/ [form(type_Q, frob,atom),
-	       if(mumble) {
+	       (() => {if(mumble) {
           return form(apply, form(gval, frob), mumble);
         } else {
           return form(apply, form(gval, frob));
-        }] /*)*/,
+        }})()] /*)*/,
 	      /*(*/ [t, form(dispatch, frob,mumble)] /*)*/))
 
 export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
     return prog(/*(*/ [] /*)*/,
-    if(type_Q(fn,fix)) {
+    (() => {if(type_Q(fn,fix)) {
         return dispatch(fn,foo);
       } else if(applicable_Q(fn)) {
         if(foo) {
@@ -460,7 +460,7 @@ export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
         return again();
       } else {
         return error(unassigned_variable_X_errors, fn,da);
-      });
+      }})());
   }
 
 `OLD MAZER`

@@ -6,14 +6,14 @@ export function boom_room() {
     if((vname(prsact) === walk_in_X_words || (vname(prsact) === on_X_words && dummy_Q = t))) {
       if(((memq(o = find_obj(`CANDL`), aobjs(win)) && 1_Q(olight_Q(o))) || (memq(o = find_obj(`TORCH`), aobjs(win)) && 1_Q(olight_Q(o))))) {
           return unwind(prog(/*(*/ [] /*)*/,
-		    if(dummy_Q) {
+		    (() => {if(dummy_Q) {
                   return tell(`I didn't realize that adventurers are stupid enough to light a 
 `, 1, odesc2(o), ` in a room which reeks of coal gas.
 Fortunately, there is justice in the world.`);
                 } else {
                   return tell(`Oh dear.  It appears that the smell coming from this room was coal
 gas.  I would have thought twice about carrying a `, 1, odesc2(o), `in here.`);
-                },
+                }})(),
 		    fweep(7),
 		    jigs_up(`   BOOOOOOOOOOOM      `)),
 		   jigs_up(`   BOOOOOOOOOOOM      `));
@@ -470,7 +470,7 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
 	       /*(*/ [prso] /*)*/, (object || direction), /*(*/ [m] /*)*/, (false || primtype(vector)),
 	       /*(*/ [prsvec] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [binf] /*)*/, (false || room),
 	       /*(*/ [m] /*)*/, (false || /*<*/ [primtype(vector), any, room] /*>*/)] /*)*/] /*2*/,
-	if(arg === read_out) {
+	(() => {if(arg === read_out) {
       if(prsa === G_look_X_words) {
           if(binf) {
               return tell(`The cloth bag is inflated and there is a `,
@@ -485,8 +485,8 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
             };
         };
       return return(false, ballact);
-    },
-	if(arg === read_in) {
+    }})(),
+	(() => {if(arg === read_in) {
       if(prsa === G_walk_X_words) {
           if(m = memq(chtype(prsvec[2], atom),
 					rexits(G_here))) {
@@ -512,8 +512,8 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
         } else {
           return return(false, ballact);
         };
-    },
-	if(prsa === G_burn_X_words) {
+    }})(),
+	(() => {if(prsa === G_burn_X_words) {
       if(memq(prso,ocontents(cont))) {
           tell(`The `,
 			    1,
@@ -547,7 +547,7 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
         } else {
           return decline_and_fall(ball,G_here);
         };
-    })
+    }})())
 
 G_blab_X_flag = false
 
@@ -687,7 +687,7 @@ export function safe_room() {
       return tell(`You are in a dusty old room which is virtually featureless, except
 for an exit on the north side.`,
 	         1,
-		 if(!G_safe_flag_X_flag) {
+		 (() => {if(!G_safe_flag_X_flag) {
             return `
 Imbedded in the far wall, there is a rusty old box.  It appears that
 the box is somewhat damaged, since an oblong hole has been chipped
@@ -695,7 +695,7 @@ out of the front of it.`;
           } else {
             return `
 On the far wall is a rusty box, whose door has been blown off.`;
-          });
+          }})());
     };
   }
 
@@ -791,13 +791,13 @@ export function fuse_function() {
 export function safe_mung() {
     let rm: ROOM = G_munged_room;
     if(G_here === rm) {
-      return jigs_up(if(rtrnn(rm,G_rhousebit)) {
+      return jigs_up((() => {if(rtrnn(rm,G_rhousebit)) {
             return `The house shakes, and the ceiling of the room you're in collapses,
 turning you into a pancake.`;
           } else {
             return `The room trembles and 50,000 pounds of rock fall on you, turning you
 into a pancake.`;
-          });
+          }})());
     } else if(tell(`You may recall your recent explosion.  Well, probably as a result of
 that, you hear an ominous rumbling, as if one of the rooms in the
 dungeon had collapsed.`)) {
@@ -844,11 +844,11 @@ export function ledge_function() {
       return tell(`You are on a wide ledge high into the volcano.  The rim of the
 volcano is about 200 feet above and there is a precipitous drop below
 to the bottom.`, 1,
-		if(rtrnn(find_room(`SAFE`), G_rmungbit)) {
+		(() => {if(rtrnn(find_room(`SAFE`), G_rmungbit)) {
             return ` The way to the south is blocked by rubble.`;
           } else {
             return ` There is a small door to the south.`;
-          });
+          }})());
     };
   }
 
@@ -878,7 +878,7 @@ export function gnome_function() {
     let pv: VECTOR = G_prsvec;
     let prsa: VERB = pv[1];
     let prso: PRSOBJ = pv[2];
-    if(((prsa === G_give_X_words || prsa === G_throw_X_words) && type_Q(prso,object) && if(otval(prso) !== 0) {
+    if(((prsa === G_give_X_words || prsa === G_throw_X_words) && type_Q(prso,object) && (() => {if(otval(prso) !== 0) {
             tell(`Thank you very much for the `, 1, odesc2(prso), `.  I don't believe 
 I've ever seen one as beautiful. 'Follow me', he says, and a door 
 appears on the west end of the ledge.  Through the door, you can see
@@ -887,7 +887,7 @@ a narrow chimney sloping steeply downward.`);
           } else if(tell(`'That wasn't quite what I had in mind', he says, crunching the
 `, 1, odesc2(prso), ` in his rock-hard hands.`)) {
             return remove_object(prso);
-          })) {
+          }})())) {
       ;
     } else if(prsa === G_c_int_X_words) {
       tell(`The gnome glances at his watch.  'Oops.  I'm late for an

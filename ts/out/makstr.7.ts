@@ -39,7 +39,7 @@ export function exit(_tuple_, pairs: TUPLE(/*[*/ [REST, STRING, (NEXIT | CEXIT |
     let frob: VECTOR = ivector(pairs.length);
     return repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
 	  /*#*/ [decl, /*(*/ [/*(*/ [atm] /*)*/, (atom || false), /*(*/ [rm] /*)*/, (room || false), /*(*/ [f] /*)*/, vector] /*)*/] /*2*/,
-	  if(or((atm = lookup(pairs[1], dobl) && gassigned_Q(atm) && type_Q(/*,*/ [atm] /*1*/,direction)))) {
+	  (() => {if(((atm = lookup(pairs[1], dobl) && gassigned_Q(atm) && type_Q(/*,*/ [atm] /*1*/,direction)))) {
         f[1] = atm;
         if(type_Q(pairs[2], string)) {
             return f[2] = find_room(pairs[2]);
@@ -49,10 +49,10 @@ export function exit(_tuple_, pairs: TUPLE(/*[*/ [REST, STRING, (NEXIT | CEXIT |
         return f = rest(f,2);
       } else if(t) {
         return pairs[1] = error(illegal_direction, pairs[1]);
-      },
-	  if(empty_Q(pairs = rest(pairs,2))) {
+      }})(),
+	  (() => {if(empty_Q(pairs = rest(pairs,2))) {
         return return();
-      });
+      }})());
 return chtype(frob,exit);
   }
 
@@ -65,16 +65,16 @@ return rm[G_robjs] = objs;
 return rm[G_rdesc1] = d1;
 return rm[G_rdesc2] = d2;
 return rm[G_rexits] = ex;
-return rm[G_raction] = if(type_Q(app,false, form)) {
+return rm[G_raction] = (() => {if(type_Q(app,false, form)) {
         return false;
       } else {
         return app;
-      };
-return rm[G_rlight_Q] = if(type_Q(lit_Q,form)) {
+      }})();
+return rm[G_rlight_Q] = (() => {if(type_Q(lit_Q,form)) {
         return false;
       } else if(t) {
         return lit_Q;
-      };
+      }})();
 return mapf(false,
 	      function(x: OBJECT) {
         return x[G_oroom] = rm;
@@ -93,11 +93,11 @@ export function aobject(id: STRING, str, app: ATOM, _tuple_, tup: TUPLE) {
 export function object(id: (ATOM | STRING), desc1: STRING, desc2: STRING, desco: (STRING | FALSE), app: (FALSE | FORM | ATOM), conts: LIST(/*[*/ [REST, OBJECT] /*]*/), can: (FALSE | OBJECT), flags: PRIMTYPE(WORD), light_Q?: FIX, s1: FIX, s2: FIX, size: FIX, capac: FIX) {
     return G_score_max = _(G_score_max,s1,s2);
 return (0_Q(light_Q) || flags = _(flags,G_lightbit));
-return find_obj(id)[G_odesc1] = desc1[G_ocapac] = capac[G_osize] = size[G_odesco] = desco[G_olight_Q] = light_Q[G_oflags] = flags[G_ofval] = s1[G_otval] = s2[G_ocan] = can[G_ocontents] = conts[G_odesc2] = desc2[G_oaction] = if(type_Q(app,false, form)) {
+return find_obj(id)[G_odesc1] = desc1[G_ocapac] = capac[G_osize] = size[G_odesco] = desco[G_olight_Q] = light_Q[G_oflags] = flags[G_ofval] = s1[G_otval] = s2[G_ocan] = can[G_ocontents] = conts[G_odesc2] = desc2[G_oaction] = (() => {if(type_Q(app,false, form)) {
         return false;
       } else {
         return app;
-      };
+      }})();
   }
 
 export function find_prep(str: STRING) {

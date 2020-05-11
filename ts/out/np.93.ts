@@ -36,7 +36,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
             pv[1] = G_walk_X_words;
             pv[2] = /*,*/ [atm] /*1*/;
             return return(win, sparout);
-          } else if((atm = lookup(x,words) && if(type_Q(aval = /*,*/ [atm] /*1*/, prep)) {
+          } else if((atm = lookup(x,words) && (() => {if(type_Q(aval = /*,*/ [atm] /*1*/, prep)) {
                   if(prep) {
                       (vb || tell(`Double preposition?`, 0));
                       return mapleave(false);
@@ -48,12 +48,12 @@ define(sparse, sparout, /*(*/ [sv, vb,
                   return !(orfl && atm = oname(orph) && x = spname(atm));
                 } else {
                   return t;
-                })) {
+                }})())) {
             ;
           } else if(atm = lookup(x,objob)) {
             if(obj = get_object(atm,adj)) {
                 (empty_Q(pvr) && (vb || tell(`Too many objects specified?`, 0)) && mapleave(false));
-                pvr[1] = if(prep) {
+                pvr[1] = (() => {if(prep) {
                       pprep = prv[1];
                       prv = rest(prv);
                       pprep[1] = prep;
@@ -61,11 +61,11 @@ define(sparse, sparout, /*(*/ [sv, vb,
                       return pprep[2] = obj;
                     } else {
                       return obj;
-                    };
+                    }})();
                 return pvr = rest(pvr);
               } else if(t) {
                 if(empty_Q(obj)) {
-                    return (vb || if(lit_Q(here)) {
+                    return (vb || (() => {if(lit_Q(here)) {
                           tell(`I can't see a`, 0);
                           if(adj) {
                               return tell(` `, 0, prstr(chtype(adj,atom)));
@@ -73,7 +73,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
                           return tell(` `, 0, prstr(atm), ` here.`);
                         } else {
                           return tell(`It is too dark in here to see.`, 0);
-                        });
+                        }})());
                   } else if(obj === G_nefals2) {
                     return (vb || tell(`I can't reach that from inside the `,
 			     0,
@@ -94,34 +94,34 @@ define(sparse, sparout, /*(*/ [sv, vb,
           };
         },
      sv),
-   if(val) {
+   (() => {if(val) {
       if((!action && !action = (orfl && overb(orph)))) {
-          (vb || if(type_Q(pv[2], object)) {
+          (vb || (() => {if(type_Q(pv[2], object)) {
                 return tell(`What should I do with the `,
 				  0,
 				  odesc2(pv[2]),
 				  `?`);
               } else {
                 return tell(`Huh?`, 0);
-              });
+              }})());
           orphan(t, false, pv[2]);
           return false;
         } else if((pv[1] = action && adj)) {
           (vb || tell(`Dangling adjective?`, 0));
           return false;
-        } else if((orfl && nprep = oprep(orph) && obj = pv[2] && pprep = prv[1][1] = nprep && pprep[2] = obj && if(obj = oslot1(orph)) {
+        } else if((orfl && nprep = oprep(orph) && obj = pv[2] && pprep = prv[1][1] = nprep && pprep[2] = obj && (() => {if(obj = oslot1(orph)) {
                 pv[2] = obj;
                 return pv[3] = pprep;
               } else {
                 return pv[2] = pprep;
-              } && false)) {
+              }})() && false)) {
           ;
         } else if(prep) {
           return (type_Q(lobj = back(pvr)[1], object) && top(back(pvr)[1] = prv[1][1] = prep[2] = lobj));
         } else {
           return pv;
         };
-    })
+    }})())
 
 export function sp(str) {
     return parse(lex(str), false);
@@ -185,19 +185,19 @@ export function take_it_or_leave_it(syn: SYNTAX, pv: VECTOR) {
     let pv2: (FALSE | OBJECT | PHRASE) = pv[3];
     let obj: (FALSE | OBJECT) = null;
     let varg: VARG = null;
-    return pv[2] = obj = if(type_Q(pv1,object)) {
+    return pv[2] = obj = (() => {if(type_Q(pv1,object)) {
           return pv1;
         } else if(type_Q(pv1,phrase)) {
           return pv1[2];
-        };
+        }})();
 if(vtrnn(varg = syn1(syn), G_vrbit)) {
       return take_it(obj,pv,varg);
     };
-return pv[3] = obj = if(type_Q(pv2,object)) {
+return pv[3] = obj = (() => {if(type_Q(pv2,object)) {
           return pv2;
         } else if(type_Q(pv2,phrase)) {
           return pv2[2];
-        };
+        }})();
 if(vtrnn(varg = syn2(syn), G_vrbit)) {
       return take_it(obj,pv,varg);
     };
@@ -384,12 +384,12 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
 	/*#*/ [decl, /*(*/ [/*(*/ [oobj, obj, av] /*)*/, (object || false), /*(*/ [objnam] /*)*/, atom, /*(*/ [here] /*)*/, room,
 	       /*(*/ [adj] /*)*/, (adjective || false), /*(*/ [chomp] /*)*/, (atom || false),
 	       /*(*/ [objl] /*)*/, (false || list(/*[*/ [rest, object] /*]*/))] /*)*/] /*2*/,
-	if(obj = search_list(objnam,G_stars,adj)) {
+	(() => {if(obj = search_list(objnam,G_stars,adj)) {
       return oobj = obj;
     } else if(!empty_Q(obj)) {
       return return(G_nefals,get_obj);
-    },
-	if((lit_Q(here) && obj = search_list(objnam,robjs(G_here), adj))) {
+    }})(),
+	(() => {if((lit_Q(here) && obj = search_list(objnam,robjs(G_here), adj))) {
       if((av && obj !== av && !memq(obj,ocontents(av)) && !trnn(obj,G_findmebit))) {
           return chomp = t;
         } else if(oobj) {
@@ -399,16 +399,16 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
         };
     } else if((!obj && !empty_Q(obj))) {
       return return(G_nefals,get_obj);
-    },
-	if(av) {
+    }})(),
+	(() => {if(av) {
       if(obj = search_list(objnam,ocontents(av), adj)) {
           chomp = false;
           return oobj = obj;
         } else if(!empty_Q(obj)) {
           return return(G_nefals,get_obj);
         };
-    },
-	if(obj = search_list(objnam,aobjs(G_winner), adj)) {
+    }})(),
+	(() => {if(obj = search_list(objnam,aobjs(G_winner), adj)) {
       if(oobj) {
           return G_nefals;
         } else {
@@ -420,7 +420,7 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
       return G_nefals2;
     } else {
       return oobj;
-    })
+    }})())
 
 `SEARCH-LIST:  TAKES OBJECT NAME, LIST OF OBJECTS, AND VERBOSITY.
 IF FINDS ONE FROB UNDER THAT NAME ON LIST, RETURNS IT.  SEARCH IS TO

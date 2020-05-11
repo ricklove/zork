@@ -29,11 +29,11 @@ export function east_house() {
     let prsact: VERB = prsvec[1];
     if(prsact === G_look_X_words) {
       return tell(`You are behind the white house.  In one corner of the house there
-is a small window which is `, 1, if(G_kitchen_window_X_flag) {
+is a small window which is `, 1, (() => {if(G_kitchen_window_X_flag) {
             return `open.`;
           } else {
             return `slightly ajar.`;
-          });
+          }})());
     };
   }
 	   
@@ -471,11 +471,11 @@ export function mirror_mirror() {
     let l1: LIST(/*[*/ [REST, OBJECT] /*]*/) = null;
     if((!G_mirror_mung_X_flag && vname(prsact) === rub_X_words)) {
       rm1 = G_here;
-      rm2 = if(rm1 === find_room(`MIRR1`)) {
+      rm2 = (() => {if(rm1 === find_room(`MIRR1`)) {
             return find_room(`MIRR2`);
           } else {
             return find_room(`MIRR1`);
-          };
+          }})();
       l1 = robjs(rm1);
       rm1[G_robjs] = robjs(rm2);
       rm2[G_robjs] = l1;
@@ -617,12 +617,12 @@ stacked the remains of dozens of previous adventurers who were less
 fortunate than yourself.  To the east is an ornate passage,
 apparently recently constructed. `,
 		1,
-		if(G_on_pole_X_flag) {
+		(() => {if(G_on_pole_X_flag) {
             return ` Amid the desolation, you spot what
 appears to be your head, at the end of a long pole.`;
           } else {
             return ``;
-          });
+          }})());
     };
   }
 
@@ -694,11 +694,11 @@ Using passages unknown to you, he rushes to its defense.`);
             };
           tro(hobj,G_fightbit);
           hack[G_hroom] = here;
-          hack[G_hrooms] = if(empty_Q(tl = rest(memq(here,rooms)))) {
+          hack[G_hrooms] = (() => {if(empty_Q(tl = rest(memq(here,rooms)))) {
                 return rooms;
               } else {
                 return tl;
-              };
+              }})();
           return insert_object(hobj,here);
         } else if(t) {
           return tro(hobj,G_fightbit);
@@ -1184,7 +1184,7 @@ export function echo_room() {
 		       readchr(G_inchan),
 		       (G_alt_flag || readchr(G_inchan)),
 		       G_moves = _(G_moves,1),
-		       if((eparse(lex(b,rest(b,l), t), t) && verb = prsvec[1] === walk && prsvec[2] && memq(chtype(prsvec[2], atom),
+		       (() => {if((eparse(lex(b,rest(b,l), t), t) && verb = prsvec[1] === walk && prsvec[2] && memq(chtype(prsvec[2], atom),
 					 rexits(rm)))) {
                 random_action = vfcn(verb);
                 apply_random(random_action);
@@ -1216,7 +1216,7 @@ export function echo_room() {
 					   robjs(rm));
                     return return(t);
                   };
-              })),
+              }})())),
 		prog(/*(*/ [] /*)*/,
 		      goto(find_room(`CHAS3`)),
 		      G_moves = _(G_moves,1),
@@ -1433,12 +1433,12 @@ define(robber, robber, /*(*/ [hack,
 	  /*(*/ [here_Q] /*)*/, (room || false), /*(*/ [still] /*)*/, object, /*(*/ [treas] /*)*/, room] /*)*/] /*2*/,
    prog(/*(*/ [/*(*/ [once, false] /*)*/, objt] /*)*/,
      /*#*/ [decl, /*(*/ [/*(*/ [once] /*)*/, (atom || false), /*(*/ [objt] /*)*/, list(/*[*/ [rest, object] /*]*/)] /*)*/] /*2*/,
-     if(here_Q = oroom(hobj)) {
+     (() => {if(here_Q = oroom(hobj)) {
         return rm = here_Q;
-      },
+      }})(),
      robj = robjs(rm),
      objt = hh,
-     if((rm === treas && rm !== wroom)) {
+     (() => {if((rm === treas && rm !== wroom)) {
         if(here_Q) {
             if(oroom(still) === treas) {
                 return snarf_object(hobj,still);
@@ -1470,7 +1470,7 @@ the bag will be taken only over his dead body.`);
                     hack[G_hflag] = t;
                     return return(t, robber);
                   };
-              } else if((here_Q && fighting_Q(hobj) && if(!winning_Q(hobj,win)) {
+              } else if((here_Q && fighting_Q(hobj) && (() => {if(!winning_Q(hobj,win)) {
                       tell(`Your opponent, determining discretion to be the better part of
 valor, decides to terminate this little contretemps.  With a rueful
 nod of his head, he steps backward into the gloom and disappears.`);
@@ -1480,7 +1480,7 @@ nod of his head, he steps backward into the gloom and disappears.`);
                       return return(t, robber);
                     } else {
                       return prob(90);
-                    })) {
+                    }})())) {
                 ;
               } else if((here_Q && prob(30))) {
                 tell(`The holder of the large bag just left, looking disgusted. 
@@ -1587,24 +1587,24 @@ this fine `,		      3, odesc2(x), ` is doing here.\`);
                 return G_dome_flag_X_flag = false;
               };
           };
-      },
-     if(once = !once) {
+      }})(),
+     (() => {if(once = !once) {
         // Move to next room, and hack.;
         prog(/*(*/ [/*(*/ [rooms, hrooms(hack)] /*)*/] /*)*/,
 	      rm = rooms[1],
-	      if(empty_Q(rooms = rest(rooms))) {
+	      (() => {if(empty_Q(rooms = rest(rooms))) {
               return rooms = G_rooms;
-            },
-	      if(rtrnn(rm,G_rsacredbit)) {
+            }})(),
+	      (() => {if(rtrnn(rm,G_rsacredbit)) {
               // Can I work here?;
               return again();
-            },
+            }})(),
 	      hack[G_hroom] = rm,
 	      hack[G_hflag] = false,
 	      hack[G_hrooms] = rooms,
 	      seen_Q = rseen_Q(rm));
         return again();
-      }),			      // Drop worthless cruft, sometimes,
+      }})()),			      // Drop worthless cruft, sometimes,
    (rm === treas || mapf(false,
 	     function(x: OBJECT) {
           if((0_Q(otval(x)) && prob(30))) {
@@ -1709,7 +1709,7 @@ when he sees his moment, scrambles away from you.`);
       if(prob(10)) {
           tell(`You evidently frightened the robber, though you didn't hit him.  He
 flees`,		 1,
-		 if(empty_Q(hobjs(dem))) {
+		 (() => {if(empty_Q(hobjs(dem))) {
                 return `.`;
               } else if(t) {
                 mapf(false, function(x: OBJECT) {
@@ -1717,7 +1717,7 @@ flees`,		 1,
                     }, hobjs(dem));
                 dem[G_hobjs] = /*(*/ [] /*)*/;
                 return `, but the contents of his bag fall on the floor.`;
-              });
+              }})());
           return remove_object(t);
         } else if(t) {
           tell(`You missed.  The thief makes no attempt to take the knife, though it
@@ -1728,11 +1728,11 @@ angered by your attempt.`);
     } else if(((prsact === G_throw_X_words || prsact === G_give_X_words) && type_Q(prsobj,object) && prsobj !== hobj(dem))) {
       if(ocapac(t) < 0) {
           t[G_ocapac] = _(ocapac(t));
-          dem[G_haction] = if(type_Q(G_robber,offset)) {
+          dem[G_haction] = (() => {if(type_Q(G_robber,offset)) {
                 return G_robber;
               } else {
                 return robber;
-              };
+              }})();
           tro(find_obj(`STILL`), G_ovison);
           t[G_odesc1] = G_robber_c_desc;
           return tell(`Your proposed victim suddenly recovers consciousness.`);
@@ -1775,7 +1775,7 @@ export function burner() {
           ;
         } else if((avehicle(G_winner) === find_obj(`BALLO`) && balloon())) {
           ;
-        } else if((burnable_Q(prso) && if(memq(prso,aobjs(G_winner))) {
+        } else if((burnable_Q(prso) && (() => {if(memq(prso,aobjs(G_winner))) {
                 tell(`The `, 1, odesc2(prso), ` catches fire.`);
                 return jigs_up(`Unfortunately, you were holding it at the time.`);
               } else if(hackable_Q(prso,G_here)) {
@@ -1783,7 +1783,7 @@ export function burner() {
                 return remove_object(prso);
               } else {
                 return tell(`You don't have that.`);
-              })) {
+              }})())) {
           ;
         } else {
           return tell(`I don't think you can burn a `, 1, odesc2(prso), `.`);
@@ -2172,11 +2172,11 @@ export function sword_glow(dem: HACK) {
 export function sword() {
     let pa: VERB = G_prsvec[1];
     if((pa === G_take_X_words && G_winner === G_player)) {
-      G_sword_demon[G_haction] = if(type_Q(G_sword_glow,offset)) {
+      G_sword_demon[G_haction] = (() => {if(type_Q(G_sword_glow,offset)) {
             return G_sword_glow;
           } else {
             return sword_glow;
-          };
+          }})();
       return false;
     };
   }

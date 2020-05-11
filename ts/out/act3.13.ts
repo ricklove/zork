@@ -46,12 +46,12 @@ export function bucket(arg?: (FALSE | ATOM)) {
     let buck: OBJECT = find_obj(`BUCKE`);
     if(arg === read_in) {
       return false;
-    } else if((pa === G_c_int_X_words && if(memq(w,ocontents(buck))) {
+    } else if((pa === G_c_int_X_words && (() => {if(memq(w,ocontents(buck))) {
             remove_object(w);
             return false;
           } else {
             return t;
-          })) {
+          }})())) {
       ;
     } else if(arg === read_out) {
       if((ocan(w) === buck && !G_bucket_top_X_flag)) {
@@ -117,13 +117,13 @@ export function cake_function() {
             } else if(pi === find_obj(`FLASK`)) {
               return tell(`The icing, now visible, says '`,
 				   1,
-				   if(po === rice) {
+				   (() => {if(po === rice) {
                     return `Evaporate`;
                   } else if(po === oice) {
                     return `Explode`;
                   } else {
                     return `Enlarge`;
-                  },
+                  }})(),
 				   `'.`);
             } else {
               return tell(`You can't see through that!`);
@@ -386,11 +386,11 @@ and nods his head-like appendage in thanks.`);
     } else if((pa === G_throw_X_words || pa === G_mung_X_words)) {
       tell(`The robot is injured (being of shoddy construction) and falls to the
 floor in a pile of garbage, which disintegrates before your eyes.`);
-      return remove_object(if(pa === G_throw_X_words) {
+      return remove_object((() => {if(pa === G_throw_X_words) {
             return pi;
           } else {
             return po;
-          });
+          }})());
     };
   } 
 
