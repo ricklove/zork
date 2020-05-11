@@ -44,7 +44,7 @@ const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFi
 };
 
 const convertToTypescriptString = (node: ZList): string => {
-    return `\`${node._raw.trim().trim('"').toString()}\``;
+    return `\`${node._raw.trim().transform(1, -1).toString()}\``;
 }
 
 const convertToTypescriptComment = (node: ZList): string => {

@@ -357,13 +357,13 @@ export function robot_actor() {
       ract = orand(r)[G_aroom] = c;
       return G_cage_solve_X_flag = t;
     } else if((pa === G_eat_X_words || pa === G_drink_X_words)) {
-      return tell(`\"I am sorry but that action is difficult in the absence of a mouth.\`);
+      return tell(`\"I am sorry but that action is difficult in the absence of a mouth.\"`);
     } else if(pa === G_read_X_words) {
-      return tell(`\"My vision is not that good without eyes.\`);
+      return tell(`\"My vision is not that good without eyes.\"`);
     } else if(memq(pa,G_robot_actions)) {
       return false;
     } else {
-      return tell(`\"I am only a stupid robot and cannot perform that command.\`);
+      return tell(`\"I am only a stupid robot and cannot perform that command.\"`);
     };
   }
 

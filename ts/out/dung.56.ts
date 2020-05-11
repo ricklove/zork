@@ -2206,7 +2206,7 @@ psetg(indentstr, rest(istring(8, _X__), 8))
 
 /*#*/ [room, /*{*/ [`TOMB`,
 `You are in the Tomb of the Unknown Implementer.
-A hollow voice says:  \"That's not a bug, it's a feature!\`,
+A hollow voice says:  \"That's not a bug, it's a feature!\"`,
        `Tomb of the Unknown Implementer`,
 	/*%*/ [false] /*1*/, /*#*/ [exit, /*{*/ [`WEST`, `LLD2`] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`TOMB`] /*}*/] /*2*/,
 				    /*#*/ [find_obj, /*{*/ [`HEADS`] /*}*/] /*2*/,

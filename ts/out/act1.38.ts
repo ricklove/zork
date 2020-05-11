@@ -441,7 +441,7 @@ not look pleased.`);
           return remove_object(pv[2]);
         };
     } else if((pa === G_take_X_words || pa === G_move_X_words)) {
-      return tell(`The troll spits in your face, saying \"Better luck next time.\`);
+      return tell(`The troll spits in your face, saying \"Better luck next time.\"`);
     } else if(vname(pa) === mung_X_words) {
       return tell(`The troll laughs at your puny gesture.`);
     };
@@ -1503,7 +1503,7 @@ Fortunately, he took nothing.`);
                     return tell(`A seedy-looking individual with a large bag just wandered through
 the room.  On the way through, he quietly abstracted all valuables
 from the room and from your possession, mumbling something about
-\"Doing unto others before..\`);
+\"Doing unto others before..\"`);
                   } else if(here_Q) {
                     snarf_object(hobj,still);
                     if(objt !== hh) {
@@ -1556,7 +1556,7 @@ not have noticed that he robbed you blind first.`);
 	       function(x: OBJECT) {
                   if((can_take_Q(x) && ovis_Q(x) && prob(40))) {
                     tell(`You hear, off in the distance, someone saying \"My, I wonder what
-this fine `,		      3, odesc2(x), ` is doing here.\`);
+this fine `,		      3, odesc2(x), ` is doing here.\"`);
                     tell(``, 1);
                     if(prob(60)) {
                         remove_object(x);
