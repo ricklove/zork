@@ -1,5 +1,5 @@
 export function coke_bottles() {
-    let pv: VECTOR(VERB) = G_prsvec;
+    let pv: VECTOR<VERB> = G_prsvec;
     let bottl: OBJECT = pv[2];
     let vb: VERB = pv[1];
     if((vb === G_throw_X_words || vname(vb) === mung_X_words)) {
@@ -13,9 +13,9 @@ immediately.`);
   }
 
 export function head_function() {
-    let pv: VECTOR(VERB) = G_prsvec;
+    let pv: VECTOR<VERB> = G_prsvec;
     let vb: VERB = pv[1];
-    let nl: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
+    let nl: LIST</*[*/ [REST, OBJECT] /*]*/> = /*(*/ [] /*)*/;
     let lcase: OBJECT = find_obj(`LCASE`);
     if(vb !== G_read_X_words) {
       tell(`Although the implementers are dead, they foresaw that some cretin
@@ -165,7 +165,7 @@ return x[G_osize] = _(osize(x), 64);
 
 export function flask_function() {
     let f = null;
-    let pv: VECTOR(VERB, OBJECT) = G_prsvec;
+    let pv: VECTOR<VERB, OBJECT> = G_prsvec;
     let pa: VERB = pv[1];
     if(pa === G_open_X_words) {
       mung_room(G_here,`Noxious vapors prevent your entry.`);
@@ -283,7 +283,7 @@ I really don't know, but in any event, something just killed you.`)
 G_cage_solve_X_flag = false
 
 export function sphere_function() {
-    let pv: VECTOR(VERB, OBJECT) = G_prsvec;
+    let pv: VECTOR<VERB, OBJECT> = G_prsvec;
     let pa: VERB = pv[1];
     let r: OBJECT = find_obj(`ROBOT`);
     let c: ROOM = null;
@@ -333,7 +333,7 @@ export function caged_room() {
     };
   }
 
-export let G_sphere_clock: CEVENT;export let G_robot_actions: UVECTOR(/*[*/ [REST, VERB] /*]*/);
+export let G_sphere_clock: CEVENT;export let G_robot_actions: UVECTOR</*[*/ [REST, VERB] /*]*/>;
 export function robot_actor() {
     let pv: VECTOR = G_prsvec;
     let pa: VERB = pv[1];

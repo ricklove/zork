@@ -269,8 +269,8 @@ newstruc(cevent, vector,
 G_load_max = 100
 G_score_max = 0
 
-export let G_raw_score: FIX;export let G_load_max: FIX;export let G_score_max: FIX;export let G_random_list: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_rooms: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_sacred_places: LIST(/*[*/ [REST, ROOM] /*]*/);export let G_stars: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_objects: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_weapons: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_nasties: LIST(/*[*/ [REST, OBJECT] /*]*/);export let G_prsvec: VECTOR((FALSE | VERB), (FALSE | OBJECT | DIRECTION),
-					(FALSE | OBJECT));export let G_winner: ADV;export let G_player: ADV;export let G_here: ROOM;export let G_inchan: CHANNEL;export let G_outchan: CHANNEL;export let G_demons: LIST;export let G_moves: FIX;export let G_deaths: FIX;export let G_dummy: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_yuks: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_sword_demon: HACK;
+export let G_raw_score: FIX;export let G_load_max: FIX;export let G_score_max: FIX;export let G_random_list: LIST</*[*/ [REST, ROOM] /*]*/>;export let G_rooms: LIST</*[*/ [REST, ROOM] /*]*/>;export let G_sacred_places: LIST</*[*/ [REST, ROOM] /*]*/>;export let G_stars: LIST</*[*/ [REST, OBJECT] /*]*/>;export let G_objects: LIST</*[*/ [REST, OBJECT] /*]*/>;export let G_weapons: LIST</*[*/ [REST, OBJECT] /*]*/>;export let G_nasties: LIST</*[*/ [REST, OBJECT] /*]*/>;export let G_prsvec: VECTOR((FALSE | VERB), (FALSE | OBJECT | DIRECTION),
+					(FALSE | OBJECT));export let G_winner: ADV;export let G_player: ADV;export let G_here: ROOM;export let G_inchan: CHANNEL;export let G_outchan: CHANNEL;export let G_demons: LIST;export let G_moves: FIX;export let G_deaths: FIX;export let G_dummy: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_yuks: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_sword_demon: HACK;
 
 \
 
@@ -332,7 +332,7 @@ export function kill_obj(obj: OBJECT, winner: ADV) {
     };
   }
 
-export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function flush_obj(_tuple_, objs: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let winner: ADV = G_winner;
     return mapf(false,
 	function(x) {
@@ -344,7 +344,7 @@ export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
 
 `ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING`
 
-export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+export function rob_adv(win: ADV, newlist: LIST</*[*/ [REST, OBJECT] /*]*/>) {
     return mapf(false,
     function(x: OBJECT) {
         if((otval(x) > 0 && !trnn(x,G_sacredbit))) {
@@ -357,7 +357,7 @@ export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
 
 `ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY`
 
-export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), prob: FIX) {
+export function rob_room(rm: ROOM, newlist: LIST</*[*/ [REST, OBJECT] /*]*/>, prob: FIX) {
     return mapf(false,
     function(x: OBJECT) {
         if((otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob))) {
@@ -404,7 +404,7 @@ export function light_source(me: ADV) {
 
 export function get_demon(id: STRING) {
     let obj: OBJECT = find_obj(id);
-    let dems: LIST(/*[*/ [REST, HACK] /*]*/) = G_demons;
+    let dems: LIST</*[*/ [REST, HACK] /*]*/> = G_demons;
     return mapf(false,
     function(x: HACK) {
         if(hobj(x) === obj) {

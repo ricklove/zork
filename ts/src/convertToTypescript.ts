@@ -64,7 +64,7 @@ const convertToTypescriptName = (node: ZToken): string => {
 const convertToTypescriptType = (node: ZNode): string => {
     const t = convertToTypescript(node);
 
-    return t
+    const t2 = t
         .replace(/\|\|/g, '|')
         .replace(/&&/g, '&')
         // .replace(/\[/g, '<')
@@ -77,6 +77,14 @@ const convertToTypescriptType = (node: ZNode): string => {
         // .replace(/\]\)/g, '>')
         .toUpperCase()
         ;
+
+    let final = t2;
+    const m = final.match(/^([A-Z]+)\((.*)\)$/);
+    if (m) {
+        final = `${m[1] ?? ''}<${m[2] ?? ''}>`;
+    }
+
+    return final;
 }
 
 const getDeclarationMap = (dMappingNodes: ZNode[]) => {

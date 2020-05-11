@@ -33,7 +33,7 @@ is obviously deranged and holding his nose.`));
   }
 
 export function fly_me() {
-    let bat_drops: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_bat_drops;
+    let bat_drops: VECTOR</*[*/ [REST, STRING] /*]*/> = G_bat_drops;
     return unwind(prog(/*(*/ [] /*)*/,
 	      fweep(4, 1),
 	      tell(`A deranged giant vampire bat (a reject from WUMPUS) swoops down
@@ -61,7 +61,7 @@ psetg(bat_drops,
 	`MINE7`,
 	`TLADD`,
 	`BLADD`] /*]*/)
-export let G_bat_drops: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_bat_drops: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 G_cage_top_X_flag = t
 
@@ -73,7 +73,7 @@ export function dumbwaiter() {
     let fb: OBJECT = find_obj(`FBASK`);
     let ct: VERB = G_cage_top_X_flag;
     let here: ROOM = G_here;
-    let dummy: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_dummy;
+    let dummy: VECTOR</*[*/ [REST, STRING] /*]*/> = G_dummy;
     if(prsact === G_raise_X_words) {
       if(ct) {
           return tell(pick_one(G_dummy));
@@ -123,7 +123,7 @@ the front of the machine is a large lid.`);
   }
 
 export function machine_function() {
-    let dummy: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_dummy;
+    let dummy: VECTOR</*[*/ [REST, STRING] /*]*/> = G_dummy;
     let prsact: VERB = G_prsvec[1];
     let mach: OBJECT = find_obj(`MACHI`);
     if(G_here === find_room(`MACHI`)) {
@@ -413,7 +413,7 @@ psetg(bdigs,
    () => /*[*/ [`You seem to be digging a hole here.`,
      `The hole is getting deeper, but that's about it.`,
      `You are surrounded by a wall of sand on all sides.`] /*]*/)
-export let G_bdigs: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_cdigs: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_bdigs: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_cdigs: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function geronimo() {
     if(G_here === find_room(`BARRE`)) {
@@ -430,10 +430,10 @@ psetg(swimyuks,
    () => /*[*/ [`I don't really see how.`,
      `I think that swimming is best performed in water.`,
      `Perhaps it is your head that is swimming.`] /*]*/)
-export let G_swimyuks: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_swimyuks: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function swimmer() {
-    let swimyuks: VECTOR(/*[*/ [REST, STRING] /*]*/) = G_swimyuks;
+    let swimyuks: VECTOR</*[*/ [REST, STRING] /*]*/> = G_swimyuks;
     if(rtrnn(G_here,G_rfillbit)) {
       return tell(`Swimming is not allowed in this dungeon.`);
     } else {

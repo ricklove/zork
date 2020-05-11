@@ -88,7 +88,7 @@ east is a small window which is `, 0);
   }
 
 export function leaf_pile() {
-    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let pv: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     let l: OBJECT = pv[2];
     if(pv[1] === G_burn_X_words) {
       l[G_orand] = 1;
@@ -135,7 +135,7 @@ attempt by robbers to remove it).`);
   }
 	  
 export function glacier() {
-    let prsvec: VECTOR(VERB, /*[*/ [2, ANY] /*]*/) = G_prsvec;
+    let prsvec: VECTOR<VERB, /*[*/ [2, ANY] /*]*/> = G_prsvec;
     let prsact: VERB = prsvec[1];
     let t: VERB = null;
     if(vname(prsact) === throw_X_words) {
@@ -317,7 +317,7 @@ steep metal ramp which is unclimbable.`);
 
 export function chimney_function() {
     let winner: ADV = G_winner;
-    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
+    let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(winner);
     if((l__Q(aobjs.length, 2) && memq(find_obj(`LAMP`), aobjs))) {
       G_light_load_X_flag = t;
       // Door will slam shut next time, too, since this way up don't count.;
@@ -468,7 +468,7 @@ export function mirror_mirror() {
     let prsact: VERB = G_prsvec[1];
     let rm1: ROOM = null;
     let rm2: ROOM = null;
-    let l1: LIST(/*[*/ [REST, OBJECT] /*]*/) = null;
+    let l1: LIST</*[*/ [REST, OBJECT] /*]*/> = null;
     if((!G_mirror_mung_X_flag && vname(prsact) === rub_X_words)) {
       rm1 = G_here;
       rm2 = (() => {if(rm1 === find_room(`MIRR1`)) {
@@ -575,7 +575,7 @@ return false;
 export function lld_room() {
     let pv: VECTOR = G_prsvec;
     let win: ADV = G_winner;
-    let wobj: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let wobj: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(win);
     let pa: VERB = pv[1];
     let cand: OBJECT = find_obj(`CANDL`);
     if(pa === G_look_X_words) {
@@ -676,15 +676,15 @@ export function grat2_function() {
   }
 
 export function treasure_room() {
-    let pv: VECTOR(VERB) = G_prsvec;
+    let pv: VECTOR<VERB> = G_prsvec;
     let hack: HACK = G_robber_demon;
-    let hh: LIST(/*[*/ [REST, OBJECT] /*]*/) = null;
+    let hh: LIST</*[*/ [REST, OBJECT] /*]*/> = null;
     let chali = null;
     let hobj: OBJECT = hobj(hack);
     let flg: (ATOM | FALSE) = false;
-    let tl: LIST(/*[*/ [REST, ROOM] /*]*/) = null;
+    let tl: LIST</*[*/ [REST, ROOM] /*]*/> = null;
     let here: ROOM = G_here;
-    let rooms: LIST(/*[*/ [REST, ROOM] /*]*/) = G_rooms;
+    let rooms: LIST</*[*/ [REST, ROOM] /*]*/> = G_rooms;
     if((haction(hack) && vname(pv[1]) === walk_in_X_words)) {
       if(flg = oroom(hobj) !== here) {
           tell(`You hear a scream of anguish as you violate the robber's hideaway. 
@@ -799,7 +799,7 @@ psetg(drownings,
 	`over your head.`,
 	`high in your lungs.`] /*]*/)
 
-export let G_drownings: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_drownings: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function maint_room() {
     let pv = G_prsvec;
@@ -855,7 +855,7 @@ pipe.)`);
 
 export function leak_function() {
     let hack: FIX = null;
-    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsvec: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     let prsa: VERB = prsvec[1];
     let prsi: (OBJECT | FALSE) = prsvec[3];
     if(prsvec[2] === find_obj(`LEAK`)) {
@@ -873,7 +873,7 @@ leak in the dam.`);
   }
 
 export function tube_function() {
-    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsvec: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     if((prsvec[1] === G_put_X_words && prsvec[3] === find_obj(`TUBE`))) {
       return tell(`The tube refuses to accept anything.`);
     };
@@ -884,7 +884,7 @@ export function with_tell(obj: OBJECT) {
   }
 
 export function cave2_room() {
-    let foo: VECTOR(FIX, CEVENT) = null;
+    let foo: VECTOR<FIX, CEVENT> = null;
     let bar: CEVENT = null;
     let prsact: VERB = G_prsvec[1];
     let c: VERB = null;
@@ -911,7 +911,7 @@ export function bottle_function() {
 	
 export function fill() {
     let rem: (ATOM | FALSE) = false;
-    let prsvec: VECTOR(VERB, OBJECT, ANY) = G_prsvec;
+    let prsvec: VECTOR<VERB, OBJECT, ANY> = G_prsvec;
     let w: OBJECT = find_obj(`WATER`);
     if(object_action()) {
       ;
@@ -926,7 +926,7 @@ export function fill() {
   }
 
 export function water_function(rem?: (ATOM | FALSE)) {
-    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsvec: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     let prsact: VERB = prsvec[1];
     let me: ADV = G_winner;
     let b: OBJECT = find_obj(`BOTTL`);
@@ -1141,7 +1141,7 @@ condiments for his upcoming snack.`,
 	`The cyclops is moving toward you in an unfriendly manner.`,
 	`You have two choices: 1. Leave  2. Become dinner.`] /*]*/)
 
-export let G_cyclomad: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_cyclomad: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function aos_sos(foo: FIX) {
     if(foo < 0) {
@@ -1292,7 +1292,7 @@ psetg(jumploss,
 	`In the movies, your life would be passing in front of your eyes.`,
 	`Geronimo.....`] /*]*/)
 
-export let G_hellos: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_wheeeee: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_jumploss: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_hellos: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_wheeeee: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_jumploss: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function reader() {
     let pv: VECTOR = G_prsvec;
@@ -1343,7 +1343,7 @@ psetg(dummy,
 	`You think it isn't?`,
 	`I think you've already done that.`] /*]*/)
 
-export let G_dummy: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_dummy: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function brush() {
     let prso: OBJECT = G_prsvec[2];
@@ -1374,12 +1374,12 @@ export function ring() {
   }
 
 export function eat() {
-    let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let prsvec: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     let eat_Q: (ATOM | FALSE) = false;
     let drink_Q: (ATOM | FALSE) = false;
     let prsobj: OBJECT = prsvec[2];
     let nobj: (OBJECT | FALSE) = null;
-    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(G_winner);
+    let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(G_winner);
     if(object_action()) {
       ;
     } else if((eat_Q = edible_Q(prsobj) && memq(prsobj,aobjs))) {
@@ -1419,7 +1419,7 @@ psetg(offended,
     `Tough shit, asshole.`,
     `Oh, dear.  Such language from a supposed winning adventurer!`] /*]*/)
 
-export let G_offended: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_offended: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 `ROBBER`
 
@@ -1813,7 +1813,7 @@ psetg(doormungs,
     `You cannot damage this door.`,
     `The door is still under warranty.`] /*]*/)
 
-export let G_doormungs: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_doormungs: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function ddoor_function() {
     let pa: VERB = G_prsvec[1];
@@ -1957,7 +1957,7 @@ psetg(ho_hum,
    ` has no effect.`,
    ` doesn't do anything.`] /*]*/)
 
-export let G_ho_hum: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_ho_hum: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 export function munger() {
     let prso: OBJECT = G_prsvec[2];
@@ -2119,7 +2119,7 @@ export function lantern() {
     let verb: VERB = pv[1];
     let here: ROOM = G_here;
     let rlamp: OBJECT = find_obj(`LAMP`);
-    let foo: VECTOR(ANY, CEVENT) = null;
+    let foo: VECTOR<ANY, CEVENT> = null;
     if(verb === G_throw_X_words) {
       tell(`The lamp has smashed into the floor and the light has gone out.`);
       remove_object(find_obj(`LAMP`));
@@ -2182,7 +2182,7 @@ export function sword() {
   }
 
 export function infested_Q(r: ROOM) {
-    let villains: LIST(/*[*/ [REST, OBJECT] /*]*/) = G_villains;
+    let villains: LIST</*[*/ [REST, OBJECT] /*]*/> = G_villains;
     let dem: HACK = get_demon(`THIEF`);
     return ((r === hroom(dem) && haction(dem)) || mapf(false,
 		  function(v: OBJECT) {
@@ -2230,11 +2230,11 @@ export function candles() {
     let prsact: VERB = G_prsvec[1];
     let c: VERB = find_obj(`CANDL`);
     let winner: ADV = G_winner;
-    let ao: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
+    let ao: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(winner);
     let w: (FALSE | OBJECT) = G_prsvec[3];
     let match: OBJECT = null;
-    let foo: VECTOR(FIX, CEVENT) = null;
-    let orphans: VECTOR(/*[*/ [4, ANY] /*]*/) = null;
+    let foo: VECTOR<FIX, CEVENT> = null;
+    let orphans: VECTOR</*[*/ [4, ANY] /*]*/> = null;
     return (orand(c) || c[G_orand] = /*[*/ [0, clock_int(G_cndin,50)] /*]*/);
 return foo = orand(c);
 if(prsact === G_light_X_words) {
@@ -2283,8 +2283,8 @@ burn.`);
   }
 
 export function black_book() {
-    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
-    let v: VECTOR(/*[*/ [3, ANY] /*]*/) = pv[1];
+    let pv: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
+    let v: VECTOR</*[*/ [3, ANY] /*]*/> = pv[1];
     let b: OBJECT = pv[2];
     if(v === G_burn_X_words) {
       if(oroom(b)) {
@@ -2297,10 +2297,10 @@ turned into a pile of dust.`);
     };
   }
 
-export function light_int(obj: OBJECT, cev, tick: VECTOR(/*[*/ [REST, FIX] /*]*/), tell: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
+export function light_int(obj: OBJECT, cev, tick: VECTOR</*[*/ [REST, FIX] /*]*/>, tell: VECTOR</*[*/ [REST, STRING] /*]*/>) {
     let cnt: FIX = null;
     let tim: FIX = null;
-    let foo: VECTOR(FIX, CEVENT) = orand(obj);
+    let foo: VECTOR<FIX, CEVENT> = orand(obj);
     return foo[1] = cnt = _(foo[1], 1);
 return clock_int(cev,tim = tick[cnt]);
 if(0_Q(tim)) {

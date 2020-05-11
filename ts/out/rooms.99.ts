@@ -178,7 +178,7 @@ return string(`There is an issue of US NEWS & DUNGEON REPORT dated `,
   }
 
 export function remarkably_disgusting_code() {
-    let n: PRIMTYPE(WORD) = dskdate();
+    let n: PRIMTYPE<WORD> = dskdate();
     return string(`This version created `,
 	 G_months[chtype(getbits(n,bits(4, 23)), fix)],
 	 _X__,
@@ -195,8 +195,8 @@ G_played_time = 0
 export let G_played_time: FIX;
 
 export function get_time() {
-    let now: PRIMTYPE(WORD) = dskdate();
-    let then: PRIMTYPE(WORD) = G_intime;
+    let now: PRIMTYPE<WORD> = dskdate();
+    let then: PRIMTYPE<WORD> = G_intime;
     return _((() => {if(chtype(getbits(now,bits(18, 18)), fix) !== chtype(getbits(then,bits(18, 18)), fix)) {
         return _(_(_(chtype(getbits(now,bits(18, 0)), fix),
 			   _(24, 7200)),
@@ -210,7 +210,7 @@ export function get_time() {
 	   G_played_time);
   }
 
-export function play_time(outchan?: SPECIAL(CHANNEL), loser_Q: (ATOM | FALSE)) {
+export function play_time(outchan?: SPECIAL<CHANNEL>, loser_Q: (ATOM | FALSE)) {
     let time: FIX = null;
     let mins: FIX = null;
     return time = get_time();
@@ -285,7 +285,7 @@ Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`)) {
 
 psetg(winners, () => /*[*/ [`BKD`, `TAA`, `MARC`, `PDL`, `MDL`] /*]*/)
 
-export let G_winners: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_winners: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 (lookup(`COMPILE`, root()) || lookup(`GLUE`, package[oblist]) || G_errh = handler((error_X_interrupts[interrupt] || event(`ERROR`, 8)),
 		   G_handle))
@@ -507,7 +507,7 @@ SETG'ED TO THAT.`
 define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/,
   /*#*/ [decl, /*(*/ [/*(*/ [o] /*)*/, oblist] /*)*/] /*2*/,
   mapf(false,
-    function(x: LIST(/*[*/ [REST, ATOM] /*]*/)) {
+    function(x: LIST</*[*/ [REST, ATOM] /*]*/>) {
         return mapf(false,
         function(x: ATOM) {
             if((gassigned_Q(x) && /*,*/ [x] /*1*/ === val)) {
@@ -928,7 +928,7 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 
 flag_names 
 
-export let G_flag_names: UVECTOR(/*[*/ [REST, ATOM] /*]*/);export let G_val_names: UVECTOR(/*[*/ [REST, ATOM] /*]*/);export let G_short_names: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_short_val_names: VECTOR(/*[*/ [REST, STRING] /*]*/);
+export let G_flag_names: UVECTOR</*[*/ [REST, ATOM] /*]*/>;export let G_val_names: UVECTOR</*[*/ [REST, ATOM] /*]*/>;export let G_short_names: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_short_val_names: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
 block(/*(*/ [(flag[oblist] || moblist(flag)), initial[oblist], root()] /*)*/)
 
@@ -959,7 +959,7 @@ psetg(val_names, uvector(light_shaft))
 
 psetg(short_val_names, vector(`LI`))
 
-export function pdskdate(wd: PRIMTYPE(WORD), ch: CHANNEL) {
+export function pdskdate(wd: PRIMTYPE<WORD>, ch: CHANNEL) {
     let tim: FIX = chtype(getbits(wd,bits(18, 0)), fix);
     let a_p: STRING = ` AM`;
     let hr: FIX = null;
@@ -1004,16 +1004,16 @@ psetg(months,
        `November`,
        `December`] /*]*/)
 
-export let G_months: VECTOR(/*[*/ [12, STRING] /*]*/);
+export let G_months: VECTOR</*[*/ [12, STRING] /*]*/>;
 
 export function jigs_up(desc: STRING) {
     let winner: ADV = G_winner;
     let deaths: FIX = G_deaths;
-    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(winner);
-    let random_list: LIST(/*[*/ [REST, ROOM] /*]*/) = G_random_list;
+    let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(winner);
+    let random_list: LIST</*[*/ [REST, ROOM] /*]*/> = G_random_list;
     let lamp: (FALSE | ROOM) = find_obj(`LAMP`);
     let lamp_location: (FALSE | ROOM) = null;
-    let val_list: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
+    let val_list: LIST</*[*/ [REST, OBJECT] /*]*/> = /*(*/ [] /*)*/;
     let lc = null;
     if(G_dbg) {
       return tell(desc);
@@ -1163,10 +1163,10 @@ export function invent(win?: ADV) {
 return (any || win !== G_player || tell(`You are empty handed.`));
   }
 
-export function print_contents(olst: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+export function print_contents(olst: LIST</*[*/ [REST, OBJECT] /*]*/>) {
     let outchan: CHANNEL = G_outchan;
     return mapr(false,
-	function(y: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+	function(y: LIST</*[*/ [REST, OBJECT] /*]*/>) {
         return princ(`a `);
 return princ(odesc2(y[1]));
 if(y.length > 2) {
@@ -1261,8 +1261,8 @@ export function take(take_Q?: (ATOM | FALSE)) {
     let nobj: OBJECT = null;
     let obj: OBJECT = vec[2];
     let getter_Q: (ATOM | FALSE) = false;
-    let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(rm);
-    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let robjs: LIST</*[*/ [REST, OBJECT] /*]*/> = robjs(rm);
+    let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(win);
     let load_max: FIX = G_load_max;
     return prog(/*(*/ [] /*)*/,
 	 (() => {if(trnn(obj,G_no_check_bit)) {
@@ -1321,14 +1321,14 @@ export function take(take_Q?: (ATOM | FALSE)) {
   }
 
 export function putter(objact?: (ATOM | FALSE)) {
-    let pv: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
+    let pv: VECTOR</*[*/ [3, ANY] /*]*/> = G_prsvec;
     let objo: OBJECT = pv[2];
     let obji: OBJECT = pv[3];
     let win: ADV = G_winner;
-    let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
+    let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(win);
     let crock: OBJECT = null;
     let can: OBJECT = null;
-    let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(G_here);
+    let robjs: LIST</*[*/ [REST, OBJECT] /*]*/> = robjs(G_here);
     let ocan: (FALSE | OBJECT) = false;
     return prog(/*(*/ [] /*)*/,
 	      (() => {if(trnn(objo,G_no_check_bit)) {
@@ -1390,7 +1390,7 @@ export function dropper() {
     let av: (FALSE | OBJECT) = avehicle(winner);
     let aobjs = aobjs(winner);
     let getter_Q: (ATOM | FALSE) = false;
-    let vec: VECTOR(VERB, OBJECT, (FALSE | OBJECT)) = G_prsvec;
+    let vec: VECTOR<VERB, OBJECT, (FALSE | OBJECT)> = G_prsvec;
     let rm: ROOM = aroom(winner);
     let obj: OBJECT = vec[2];
     let pi: (FALSE | OBJECT) = vec[3];
@@ -1448,10 +1448,10 @@ export function dropper() {
 
 `STUFF FOR 'EVERYTHING' AND 'VALUABLES'`
 G_obj_uv = chutype(rest(iuvector(20), 20), object)
-export let G_obj_uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/);
+export let G_obj_uv: UVECTOR</*[*/ [REST, OBJECT] /*]*/>;
 
-export function frob_lots(uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/)) {
-    let prsvec: VECTOR(VERB, /*[*/ [2, ANY] /*]*/) = G_prsvec;
+export function frob_lots(uv: UVECTOR</*[*/ [REST, OBJECT] /*]*/>) {
+    let prsvec: VECTOR<VERB, /*[*/ [2, ANY] /*]*/> = G_prsvec;
     let pa: VERB = prsvec[1];
     let ra: RAPPLIC = vfcn(pa);
     let pi: (OBJECT | FALSE) = null;
@@ -1492,8 +1492,8 @@ export function everything() {
     let prsvec = G_prsvec;
     let pa: VERB = prsvec[1];
     let pi: OBJECT = null;
-    let suv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = G_obj_uv;
-    let tuv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = top(suv);
+    let suv: UVECTOR</*[*/ [REST, OBJECT] /*]*/> = G_obj_uv;
+    let tuv: UVECTOR</*[*/ [REST, OBJECT] /*]*/> = top(suv);
     let lu: FIX = tuv.length;
     let here: ROOM = G_here;
     let winner: ADV = G_winner;
@@ -1553,8 +1553,8 @@ if(empty_Q(suv)) {
 export function valuables() {
     let prsvec = G_prsvec;
     let pa: VERB = prsvec[1];
-    let suv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = G_obj_uv;
-    let tuv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/) = top(suv);
+    let suv: UVECTOR</*[*/ [REST, OBJECT] /*]*/> = G_obj_uv;
+    let tuv: UVECTOR</*[*/ [REST, OBJECT] /*]*/> = top(suv);
     let pi: OBJECT = null;
     let lu: FIX = tuv.length;
     let here: ROOM = G_here;
@@ -1680,7 +1680,7 @@ export function find() {
     };
   }
 
-export function find_frob(prso, objl: LIST(/*[*/ [REST, OBJECT] /*]*/), str1: STRING, str2: STRING, str3: STRING) {
+export function find_frob(prso, objl: LIST</*[*/ [REST, OBJECT] /*]*/>, str1: STRING, str2: STRING, str3: STRING) {
     return mapf(false,
 	function(x: OBJECT) {
         if(x === prso) {
@@ -1754,7 +1754,7 @@ export function splice_out(obj, al: LIST) {
 
 `WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level.`
 
-export function weight(objl: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
+export function weight(objl: LIST</*[*/ [REST, OBJECT] /*]*/>) {
     let bigfix: FIX = G_bigfix;
     return mapf(G__,	      function(obj: OBJECT) {
         return _((() => {if(osize(obj) === G_bigfix) {
@@ -1858,7 +1858,7 @@ export function this_it_Q(objnam: ATOM, obj: ATOM, adj: (FALSE | ADJECTIVE)) {
 
 G_lexv = ivector(10, () => rest(istring(5), 5))
 
-export let G_lexv: VECTOR(/*[*/ [REST, STRING] /*]*/);export let G_brks: STRING;
+export let G_lexv: VECTOR</*[*/ [REST, STRING] /*]*/>;export let G_brks: STRING;
 
 export function lex(s: STRING, sx?: STRING, silent_Q: (ATOM | FALSE)) {
     let brks: STRING = G_brks;
@@ -1866,7 +1866,7 @@ export function lex(s: STRING, sx?: STRING, silent_Q: (ATOM | FALSE)) {
     let s1: STRING = s;
     let quot: (ATOM | FALSE) = false;
     return mapr(false,
-	 function(x: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
+	 function(x: VECTOR</*[*/ [REST, STRING] /*]*/>) {
         let str: STRING = x[1];
         return x[1] = rest(str,str.length);
       },

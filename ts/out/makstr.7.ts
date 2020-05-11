@@ -13,7 +13,7 @@ export function cevent(tick: FIX, app: (APPLICABLE | OFFSET), flg: (ATOM | FALSE
 return setg(atm,chtype(/*[*/ [tick,app,flg,atm] /*]*/, cevent));
   }
 
-export function cons_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function cons_obj(_tuple_, objs: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let winner: ADV = G_winner;
     return mapf(false,
 	function(x) {
@@ -34,7 +34,7 @@ return setg(atm,flag);
 return chtype(vector(atm,find_room(rmid), str,funct), cexit);
   }
 
-export function exit(_tuple_, pairs: TUPLE(/*[*/ [REST, STRING, (NEXIT | CEXIT | STRING | ATOM)] /*]*/)) {
+export function exit(_tuple_, pairs: TUPLE</*[*/ [REST, STRING, (NEXIT | CEXIT | STRING | ATOM)] /*]*/>) {
     let dobl: OBLIST = G_directions;
     let frob: VECTOR = ivector(pairs.length);
     return repeat(/*(*/ [atm, rm, /*(*/ [f, frob] /*)*/] /*)*/,
@@ -90,7 +90,7 @@ export function aobject(id: STRING, str, app: ATOM, _tuple_, tup: TUPLE) {
     return object(id,``, str,/*%*/ [false] /*1*/, app,/*(*/ [] /*)*/, false, _(_X,tup));
   }
 
-export function object(id: (ATOM | STRING), desc1: STRING, desc2: STRING, desco: (STRING | FALSE), app: (FALSE | FORM | ATOM), conts: LIST(/*[*/ [REST, OBJECT] /*]*/), can: (FALSE | OBJECT), flags: PRIMTYPE(WORD), light_Q?: FIX, s1: FIX, s2: FIX, size: FIX, capac: FIX) {
+export function object(id: (ATOM | STRING), desc1: STRING, desc2: STRING, desco: (STRING | FALSE), app: (FALSE | FORM | ATOM), conts: LIST</*[*/ [REST, OBJECT] /*]*/>, can: (FALSE | OBJECT), flags: PRIMTYPE<WORD>, light_Q?: FIX, s1: FIX, s2: FIX, size: FIX, capac: FIX) {
     return G_score_max = _(G_score_max,s1,s2);
 return (0_Q(light_Q) || flags = _(flags,G_lightbit));
 return find_obj(id)[G_odesc1] = desc1[G_ocapac] = capac[G_osize] = size[G_odesco] = desco[G_olight_Q] = light_Q[G_oflags] = flags[G_ofval] = s1[G_otval] = s2[G_ocan] = can[G_ocontents] = conts[G_odesc2] = desc2[G_oaction] = (() => {if(type_Q(app,false, form)) {
@@ -113,12 +113,12 @@ export function find_prep(str: STRING) {
     };
   }
 
-export function add_action(nam: STRING, str: STRING, _tuple_, decl: TUPLE(/*[*/ [REST, VECTOR] /*]*/)) {
+export function add_action(nam: STRING, str: STRING, _tuple_, decl: TUPLE</*[*/ [REST, VECTOR] /*]*/>) {
     let atm: ATOM = (lookup(nam,G_actions) || insert(nam,G_actions));
     return setg(atm,chtype(/*[*/ [atm,make_action(_X,decl), str] /*]*/, action));
   }
 
-export function add_directions(_tuple_, nms: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function add_directions(_tuple_, nms: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let dir: OBLIST = G_directions;
     let atm: ATOM = null;
     return mapf(false, function(x) {
@@ -128,7 +128,7 @@ export function add_directions(_tuple_, nms: TUPLE(/*[*/ [REST, STRING] /*]*/)) 
 	  nms);
   }
 
-export function dsynonym(str: STRING, _tuple_, nms: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function dsynonym(str: STRING, _tuple_, nms: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let val: DIRECTION = null;
     let dir: OBLIST = G_directions;
     let atm: ATOM = null;
@@ -140,7 +140,7 @@ return mapf(false, function(x) {
 	  nms);
   }
 
-export function vsynonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function vsynonym(n1: STRING, _tuple_, n2: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let atm: (FALSE | ATOM) = null;
     let val: ANY = null;
     if(atm = lookup(n1,G_words)) {
@@ -164,7 +164,7 @@ export function add_word(w: STRING) {
     return (lookup(w,G_words) || insert(w,G_words));
   }
 
-export function add_buzz(_tuple_, w: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function add_buzz(_tuple_, w: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     return mapf(false,
 	      function(x: STRING) {
         return setg(add_word(x), chtype(x,buzz));
@@ -172,7 +172,7 @@ export function add_buzz(_tuple_, w: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
 	      w);
   }
 
-export function add_zork(nm: ATOM, _tuple_, w: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function add_zork(nm: ATOM, _tuple_, w: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     return mapf(false,
 	      function(x: STRING) {
         let atm: ATOM = null;
@@ -181,7 +181,7 @@ export function add_zork(nm: ATOM, _tuple_, w: TUPLE(/*[*/ [REST, STRING] /*]*/)
 	      w);
   }
 
-export function add_object(obj: OBJECT, names: VECTOR(/*[*/ [REST, STRING] /*]*/), adj?: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
+export function add_object(obj: OBJECT, names: VECTOR</*[*/ [REST, STRING] /*]*/>, adj?: VECTOR</*[*/ [REST, STRING] /*]*/>) {
     let objs: OBLIST = G_object_obl;
     return obj[G_onames] = mapf(G_uvector,		   function(x: STRING) {
           return (lookup(x,objs) || insert(x,objs));
@@ -193,7 +193,7 @@ return obj[G_oadjs] = mapf(G_uvector,function(w) {
 return chutype(oadjs(obj), adjective);
   }
 
-export function synonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
+export function synonym(n1: STRING, _tuple_, n2: TUPLE</*[*/ [REST, STRING] /*]*/>) {
     let atm: (FALSE | ATOM) = null;
     let val: ANY = null;
     if(atm = lookup(n1,G_words)) {
@@ -210,7 +210,7 @@ export function add_abbrev(x: STRING, y: STRING) {
 
 export function add_demon(x: HACK) {
     if(mapr(false,
-	  function(y: LIST(/*[*/ [REST, HACK] /*]*/)) {
+	  function(y: LIST</*[*/ [REST, HACK] /*]*/>) {
             if(haction(y[1]) === haction(x)) {
               y[1] = x;
               return mapleave(t);
@@ -228,7 +228,7 @@ export function add_star(obj) {
   }
 
 export function add_actor(adv: ADV) {
-    let actors: LIST(/*[*/ [REST, ADV] /*]*/) = G_actors;
+    let actors: LIST</*[*/ [REST, ADV] /*]*/> = G_actors;
     if(mapf(false,
 	       function(x: ADV) {
             if(aobj(x) === aobj(adv)) {

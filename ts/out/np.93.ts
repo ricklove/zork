@@ -356,7 +356,7 @@ export function syn_equal(varg: VARG, pobj: (FALSE | PHRASE | OBJECT)) {
 
 G_directions = moblist(directions)
 
-export function eparse(pv: VECTOR(/*[*/ [REST, STRING] /*]*/), vb: (ATOM | FALSE)) {
+export function eparse(pv: VECTOR</*[*/ [REST, STRING] /*]*/>, vb: (ATOM | FALSE)) {
     let val: ANY = null;
     if(val = sparse(pv,vb)) {
       if((val === win || syn_match(val))) {
