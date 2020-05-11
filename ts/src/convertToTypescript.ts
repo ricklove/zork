@@ -214,6 +214,7 @@ export const convertToTypescript = (node: ZNode, options?: { shouldReturn?: bool
     const n = convertToTypescript_inner(node, {
         shouldReturn,
         onHasReturned: () => shouldReturn = false,
+        shouldUseExpression: !options?.allowsStatement,
         onUsesStatement: () => usesStatement = true
     });
 
@@ -225,7 +226,7 @@ export const convertToTypescript = (node: ZNode, options?: { shouldReturn?: bool
     return `${shouldReturn ? 'return ' : ''}${n}`;
 }
 
-export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn: boolean, onHasReturned: () => void, onUsesStatement: () => void }): string => {
+export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn: boolean, onHasReturned: () => void, shouldUseExpression: boolean, onUsesStatement: () => void }): string => {
 
     if (node.kind === 'ZFile') {
         // Get title
@@ -563,18 +564,22 @@ export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn:
             && firstNode.kind === 'ZToken'
             && firstNode.toString() === 'COND'
         ) {
+            const isTernary = false;
+            // const isTernary = options?.shouldUseExpression;
+            const isStatement = !isTernary;
+            if (isStatement) {
+                options?.onUsesStatement();
+            }
+
             if (options?.shouldReturn) {
                 options.onHasReturned();
             }
-            options?.onUsesStatement();
 
             const c = getConditionMap(nodes.slice(1));
             const indent = getIndentation(depth);
             const indent1 = getIndentation(depth + 1);
             return `${c.conditionBlocks.map((x, i) => {
-                const isTernary = false;
                 const returnLast = true;
-                const isStatement = true;
 
                 const isFirst = i === 0;
                 const isLast = i === c.conditionBlocks.length - 1;
@@ -589,11 +594,11 @@ export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn:
 
                 if (isTernary) {
                     if (isFirst) {
-                        return `(${cond}) ? {\n${indent1}${body}\n${indent}}${isLast ? ' : false' : ''}`;
+                        return `(${cond}) ? (${body})${isLast ? ' : false' : ''}`;
                     } else if (cond) {
-                        return `: (${cond}) ? {\n${indent1}${body}\n${indent}}${isLast ? ' : false' : ''}`;
+                        return `: (${cond}) ? (${body})${isLast ? ' : false' : ''}`;
                     } else {
-                        return `: {\n${indent1}${body}\n${indent}}`;
+                        return `: (${body})`;
                     }
                 }
 
