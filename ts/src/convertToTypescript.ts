@@ -67,6 +67,14 @@ const convertToTypescriptType = (node: ZNode): string => {
     return t
         .replace(/\|\|/g, '|')
         .replace(/&&/g, '&')
+        // .replace(/\[/g, '<')
+        // .replace(/\]/g, '>')
+        // .replace(/\(/g, '<')
+        // .replace(/\)/g, '>')
+        // .replace(/\<\</g, '<')
+        // .replace(/\>\>/g, '>')
+        // .replace(/\(\[/g, '<')
+        // .replace(/\]\)/g, '>')
         .toUpperCase()
         ;
 }
@@ -625,6 +633,7 @@ export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn:
 
         // TS List as Array
         return `/*${openSymbol ?? ''}*/ [${getNodesWithOriginalDecorations(nodes, depth, false, ',')}] /*${closeSymbol ?? ''}*/`;
+        // return `[${getNodesWithOriginalDecorations(nodes, depth, false, ',')}]`;
 
         // Unknown
         const getDefaultWithIndentedChildren = () => {
