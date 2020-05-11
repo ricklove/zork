@@ -651,6 +651,9 @@ export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn:
     }
 
     if (node.kind === 'ZToken') {
+        // TRUE
+        if (node.toString() === 'T') { return 'true'; }
+
         const name = convertToTypescriptName(node);
         return name;
     }

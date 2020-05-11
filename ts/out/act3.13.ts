@@ -8,7 +8,7 @@ Fortunately for your feet, they were made of magic glass and disappear
 immediately.`);
       trz(bottl,G_ovison);
       bottl[G_osize] = 0;
-      return t;
+      return true;
     };
   }
 
@@ -30,7 +30,7 @@ prevent this.`);
       jigs_up(`Unfortunately, we've run out of poles.  Therefore, in punishment for
 your most grievous sin, we shall deprive you of all your valuables,
 and of your life.`);
-      return t;
+      return true;
     };
   }
 
@@ -50,13 +50,13 @@ export function bucket(arg?: (FALSE | ATOM)) {
             remove_object(w);
             return false;
           } else {
-            return t;
+            return true;
           }})())) {
       ;
     } else if(arg === read_out) {
       if((ocan(w) === buck && !G_bucket_top_X_flag)) {
           tell(`The bucket rises and comes to a stop.`);
-          G_bucket_top_X_flag = t;
+          G_bucket_top_X_flag = true;
           pass_the_bucket(find_room(`TWELL`), pv,buck);
           clock_int(G_bckin,100);
           return false;
@@ -75,7 +75,7 @@ return remove_object(b);
 return insert_object(b,r);
 if(avehicle(G_winner) === b) {
       goto(r);
-      return room_info(t);
+      return room_info(true);
     };
 return pv[2] = pvs;
   }
@@ -254,7 +254,7 @@ export function buttons() {
         } else if(po === find_obj(`SQBUT`)) {
           if(G_carousel_zoom_X_flag) {
               return tell(`Nothing seems to happen.`);
-            } else if(G_carousel_zoom_X_flag = t) {
+            } else if(G_carousel_zoom_X_flag = true) {
               return tell(`The whirring increases in intensity slightly.`);
             };
         } else if(po === find_obj(`RNBUT`)) {
@@ -301,7 +301,7 @@ into the room.`);
           ract = orand(r)[G_aroom] = c;
           tro(r,G_ndescbit);
           G_sphere_clock = clock_int(G_sphin,10);
-          return t;
+          return true;
         } else if(else) {
           trz(find_obj(`SPHER`), G_ovison);
           mung_room(find_room(`CAGER`),
@@ -317,7 +317,7 @@ crushes the sphere beneath him as he falls to the floor.`);
       remove_object(r);
       trz(pv[2], G_ovison);
       insert_object(find_obj(`RCAGE`), G_here);
-      return t;
+      return true;
     } else if(pa === G_c_int_X_words) {
       mung_room(find_room(`CAGER`),
 			  `You are stopped by a cloud of poisonous gas.`);
@@ -355,7 +355,7 @@ export function robot_actor() {
       remove_object(r);
       insert_object(r,c);
       ract = orand(r)[G_aroom] = c;
-      return G_cage_solve_X_flag = t;
+      return G_cage_solve_X_flag = true;
     } else if((pa === G_eat_X_words || pa === G_drink_X_words)) {
       return tell(`\"I am sorry but that action is difficult in the absence of a mouth.\"`);
     } else if(pa === G_read_X_words) {

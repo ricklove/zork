@@ -3,7 +3,7 @@ export function boom_room() {
     let prsact: VERB = G_prsvec[1];
     let win: ADV = G_winner;
     let o: OBJECT = null;
-    if((vname(prsact) === walk_in_X_words || (vname(prsact) === on_X_words && dummy_Q = t))) {
+    if((vname(prsact) === walk_in_X_words || (vname(prsact) === on_X_words && dummy_Q = true))) {
       if(((memq(o = find_obj(`CANDL`), aobjs(win)) && 1_Q(olight_Q(o))) || (memq(o = find_obj(`TORCH`), aobjs(win)) && 1_Q(olight_Q(o))))) {
           return unwind(prog(/*(*/ [] /*)*/,
 		    (() => {if(dummy_Q) {
@@ -63,7 +63,7 @@ psetg(bat_drops,
 	`BLADD`] /*]*/)
 export let G_bat_drops: VECTOR</*[*/ [REST, STRING] /*]*/>;
 
-G_cage_top_X_flag = t
+G_cage_top_X_flag = true
 
 export function dumbwaiter() {
     let prsact: VERB = G_prsvec[1];
@@ -82,7 +82,7 @@ export function dumbwaiter() {
           insert_object(tb,top);
           insert_object(fb,bot);
           tell(`The basket is raised to the top of the shaft.`);
-          return G_cage_top_X_flag = t;
+          return G_cage_top_X_flag = true;
         };
     } else if(prsact === G_lower_X_words) {
       if(!ct) {
@@ -93,7 +93,7 @@ export function dumbwaiter() {
           insert_object(fb,top);
           tell(`The basket is lowered to the bottom of the shaft.`);
           G_cage_top_X_flag = false;
-          return t;
+          return true;
         };
     } else if(prsact === G_take_X_words) {
       if(((ct && here === top) || (!ct && here === bot))) {
@@ -131,13 +131,13 @@ export function machine_function() {
           if(oopen_Q(mach)) {
               return tell(pick_one(dummy));
             } else if(tell(`The lid opens.`)) {
-              return mach[G_oopen_Q] = t;
+              return mach[G_oopen_Q] = true;
             };
         } else if(vname(prsact) === close_X_words) {
           if(oopen_Q(mach)) {
               tell(`The lid closes.`);
               mach[G_oopen_Q] = false;
-              return t;
+              return true;
             } else {
               return tell(pick_one(dummy));
             };
@@ -169,7 +169,7 @@ excitement abates.`)) {
                 } else if(!empty_Q(ocontents(mach))) {
                   return mach[G_ocontents] = /*(*/ [d = find_obj(`GUNK`)] /*)*/;
                 } else {
-                  return t;
+                  return true;
                 };
             };
         } else {
@@ -193,7 +193,7 @@ G_score_max = _(G_score_max,G_light_shaft = 10)
 
 export function no_objs() {
     if(empty_Q(aobjs(G_winner))) {
-      return G_empty_handed_X_flag = t;
+      return G_empty_handed_X_flag = true;
     } else {
       return G_empty_handed_X_flag = false;
     };
@@ -208,7 +208,7 @@ export function cliff_function() {
     if(memq(find_obj(`RBOAT`), aobjs(G_winner))) {
       return G_deflate_X_flag = false;
     } else {
-      return G_deflate_X_flag = t;
+      return G_deflate_X_flag = true;
     };
   }
 
@@ -220,7 +220,7 @@ export function stick_function() {
               tro(find_obj(`POT`), G_ovison);
               tell(`Suddenly, the rainbow appears to become solid and, I venture,
 walkable (I think the giveaway was the stairs and bannister).`);
-              return G_rainbow_X_flag = t;
+              return G_rainbow_X_flag = true;
             } else if(tell(`The rainbow seems to have become somewhat run-of-the-mill.`)) {
               return G_rainbow_X_flag = false;
             };
@@ -293,7 +293,7 @@ export function rboat_function(arg?: (FALSE | ATOM)) {
           tell(`There is a hissing sound and the boat deflates.`);
           remove_object(rboat);
           insert_object(find_obj(`DBOAT`), here);
-          return t;
+          return true;
         };
     } else if(prsact === G_disem_X_words) {
       return (spname(rid(here))[`RIVR`] && jigs_up(`Unfortunately, that leaves you in the water, where you drown.`));
@@ -303,7 +303,7 @@ export function rboat_function(arg?: (FALSE | ATOM)) {
         } else if(!memq(rboat,robjs(here))) {
           return tell(`The boat must be on the ground to be deflated.`);
         } else if(tell(`The boat deflates.`)) {
-          G_deflate_X_flag = t;
+          G_deflate_X_flag = true;
           remove_object(rboat);
           return insert_object(iboat,here);
         };
@@ -338,7 +338,7 @@ thing to do, apparently.`);
     };
   }
 
-G_buoy_flag_X_flag = t
+G_buoy_flag_X_flag = true
 
 export function shake() {
     let prsobj: OBJECT = G_prsvec[2];
@@ -492,23 +492,23 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
 					rexits(G_here))) {
               if(G_btie_X_flag) {
                   tell(`You are tied to the ledge.`);
-                  return return(t, ballact);
+                  return return(true, ballact);
                 } else if(else) {
                   (!rtrnn(m[2], G_rmungbit) && G_bloc = m[2]);
                   return return(false, ballact);
                 };
             } else if(tell(`I'm afraid you can't control the balloon in this way.`)) {
-              return return(t, ballact);
+              return return(true, ballact);
             };
         } else if((prsa === G_take_X_words && G_binf_X_flag === prso)) {
           tell(`You don't really want to hold a burning `,
 		     	    1,
 		            odesc2(prso),
 		            `.`);
-          return return(t, ballact);
+          return return(true, ballact);
         } else if((prsa === G_put_X_words && prsvec[3] === cont && !empty_Q(ocontents(cont)))) {
           tell(`The receptacle is already occupied.`);
-          return return(t, ballact);
+          return return(true, ballact);
         } else {
           return return(false, ballact);
         };
@@ -531,7 +531,7 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
 					  _X,ocontents(ball)] /*)*/;
                   return blabe[G_ocan] = ball;
                 };
-              G_blab_X_flag = t;
+              G_blab_X_flag = true;
               G_binf_X_flag = prso;
               return clock_int(G_bint,3);
             };
@@ -577,7 +577,7 @@ causing you a 500 foot drop.  Did you get your flight insurance?`);
           if(in_Q) {
               goto(G_bloc = find_room(s));
               tell(`The balloon ascends.`);
-              return room_info(t);
+              return room_info(true);
             } else {
               return put_balloon(ball,bl,s,`ascends.`);
             };
@@ -588,7 +588,7 @@ causing you a 500 foot drop.  Did you get your flight insurance?`);
       if(in_Q) {
           goto(G_bloc = find_room(s));
           tell(`The balloon leaves the ledge.`);
-          return room_info(t);
+          return room_info(true);
         } else if(clock_int(G_vlgin,10)) {
           return put_balloon(ball,bl,s,`floats away.  It seems to be ascending,
 due to its light load.`);
@@ -596,7 +596,7 @@ due to its light load.`);
     } else if(in_Q) {
       goto(G_bloc = find_room(`VAIR1`));
       tell(`The balloon rises slowly from the ground.`);
-      return room_info(t);
+      return room_info(true);
     } else {
       return put_balloon(ball,bl,`VAIR1`, `lifts off.`);
     };
@@ -623,8 +623,8 @@ if(m = spname(rid(bl))[`VAIR`]) {
               goto(G_bloc = find_room(`VLBOT`));
               if(G_binf_X_flag) {
                   tell(`The balloon has landed.`);
-                  return room_info(t);
-                } else if(t) {
+                  return room_info(true);
+                } else if(true) {
                   remove_object(ball);
                   insert_object(find_obj(`DBALL`), G_bloc);
                   G_winner[G_avehicle] = false;
@@ -639,7 +639,7 @@ if(m = spname(rid(bl))[`VAIR`]) {
           if(in_Q) {
               goto(G_bloc = find_room(s));
               tell(`The balloon descends.`);
-              return room_info(t);
+              return room_info(true);
             } else {
               return put_balloon(ball,bl,s,`descends.`);
             };
@@ -655,7 +655,7 @@ export function wire_function() {
     let bint: CEVENT = G_bint;
     if(prsa === G_tie_X_words) {
       if((prso === find_obj(`BROPE`) && (prsi === find_obj(`HOOK1`) || prsi === find_obj(`HOOK2`)))) {
-          G_btie_X_flag = t;
+          G_btie_X_flag = true;
           clock_disable(bint);
           return tell(`The balloon is fastened to the hook.`);
         };
@@ -760,8 +760,8 @@ export function fuse_function() {
               tell(`There is an explosion nearby.`);
               if(memq(brick,ocontents(find_obj(`SSLOT`)))) {
                   trz(find_obj(`SSLOT`), G_ovison);
-                  find_obj(`SAFE`)[G_oopen_Q] = t;
-                  return G_safe_flag_X_flag = t;
+                  find_obj(`SAFE`)[G_oopen_Q] = true;
+                  return G_safe_flag_X_flag = true;
                 };
             } else if(tell(`There is an explosion nearby.`)) {
               clock_int(G_safin,5);
@@ -826,7 +826,7 @@ ground.  Fatally.`);
             } else {
               return tell(`The ledge collapses, leaving you with no place to land.`);
             };
-        } else if(t) {
+        } else if(true) {
           return jigs_up(`The force of the explosion has caused the ledge to collapse
 belatedly.`);
         };
@@ -883,7 +883,7 @@ export function gnome_function() {
 I've ever seen one as beautiful. 'Follow me', he says, and a door 
 appears on the west end of the ledge.  Through the door, you can see
 a narrow chimney sloping steeply downward.`);
-            return G_gnome_door_X_flag = t;
+            return G_gnome_door_X_flag = true;
           } else if(tell(`'That wasn't quite what I had in mind', he says, crunching the
 `, 1, odesc2(prso), ` in his rock-hard hands.`)) {
             return remove_object(prso);
@@ -895,6 +895,6 @@ appointment!' He disappears, leaving you alone on the ledge.`);
       return remove_object(find_obj(`GNOME`));
     } else if(tell(`The gnome appears increasingly nervous.`)) {
       (G_gnome_flag_X_flag || clock_int(G_gnoin,5));
-      return G_gnome_flag_X_flag = t;
+      return G_gnome_flag_X_flag = true;
     };
   }

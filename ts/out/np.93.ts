@@ -29,7 +29,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
    val = mapf(false,
      function(x: STRING) {
           if(empty_Q(x)) {
-            return mapleave(t);
+            return mapleave(true);
           } else if((!action && atm = lookup(x,actions))) {
             return action = /*,*/ [atm] /*1*/;
           } else if((!action && atm = lookup(x,dirs))) {
@@ -47,7 +47,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
                   adj = aval;
                   return !(orfl && atm = oname(orph) && x = spname(atm));
                 } else {
-                  return t;
+                  return true;
                 }})())) {
             ;
           } else if(atm = lookup(x,objob)) {
@@ -63,7 +63,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
                       return obj;
                     }})();
                 return pvr = rest(pvr);
-              } else if(t) {
+              } else if(true) {
                 if(empty_Q(obj)) {
                     return (vb || (() => {if(lit_Q(here)) {
                           tell(`I can't see a`, 0);
@@ -80,7 +80,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
 			     odesc2(avehicle(G_winner)),
 			     `.`));
                   } else if((vb || tell(`Which `, 0, prstr(atm), `?`))) {
-                    return orphan(t,
+                    return orphan(true,
 			   (action || (orfl && overb(orph))),
 			   pv[2],
 			   prep,			   atm);
@@ -88,7 +88,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
                 return mapleave(false);
               };
             adj = false;
-            return t;
+            return true;
           } else if((vb || tell(`I don't know the word `, 0, x))) {
             return mapleave(false);
           };
@@ -104,7 +104,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
               } else {
                 return tell(`Huh?`, 0);
               }})());
-          orphan(t, false, pv[2]);
+          orphan(true, false, pv[2]);
           return false;
         } else if((pv[1] = action && adj)) {
           (vb || tell(`Dangling adjective?`, 0));
@@ -167,10 +167,10 @@ export function syn_match(pv: VECTOR) {
       ;
     } else if(drive = (dforce || drive)) {
       if((synn = syn1(drive) && !o1 && !0_Q(vbit(synn)) && !orfeo(synn,objs) && !o1 = gwim = gwim_slot(1, synn,action,objs))) {
-          orphan(t, action,false, vprep(synn));
+          orphan(true, action,false, vprep(synn));
           return ortell(synn,action,gwim);
         } else if((synn = syn2(drive) && !o2 && !0_Q(vbit(synn)) && !gwim_slot(2, synn,action,objs))) {
-          orphan(t, action,o1,vprep(synn));
+          orphan(true, action,o1,vprep(synn));
           return ortell(synn,action,gwim);
         } else {
           return take_it_or_leave_it(drive,pv[1] = sfcn(drive));
@@ -209,7 +209,7 @@ export function take_it(obj: OBJECT, vec: VECTOR, vrb: VARG) {
     if((search_list(oid(obj), robjs(G_here), false) && (can_take_Q(obj) || !vtrnn(vrb,G_vtbit)))) {
       vec[1] = G_take_X_words;
       vec[2] = obj;
-      take(t);
+      take(true);
       vec[1] = sav1;
       return vec[2] = sav2;
     };
@@ -279,7 +279,7 @@ export function gwim(bit: FIX, fword: VARG, action: ACTION) {
     return (aobj && obj = fwim(bit,aobjs(G_winner), ntake));
 if(robj) {
       if((nobj = fwim(bit,robjs(G_here), ntake) && (!av || av === nobj || memq(nobj,ocontents(av)) || trnn(nobj,G_findmebit)))) {
-          if(((savobj = pv[2] || t) && !obj && (sf = pv[1] || t) && pv[1] = G_take_X_words && pv[2] = nobj && (action === pv[1] || ntake || take()) && pv[2] = savobj && pv[1] = sf && nobj)) {
+          if(((savobj = pv[2] || true) && !obj && (sf = pv[1] || true) && pv[1] = G_take_X_words && pv[2] = nobj && (action === pv[1] || ntake || take()) && pv[2] = savobj && pv[1] = sf && nobj)) {
               ;
             } else if(pv[2] = savobj) {
               return false;
@@ -327,9 +327,9 @@ export function make_action(`TUPLE`, specs) {`AUX`, vv, sum, /*(*/ [prep, false]
 						    chtype(/*[*/ [atm,itm[2]] /*]*/, verb));
                   };
               } else if(itm === driver) {
-                return syn[G_sdriver] = t;
+                return syn[G_sdriver] = true;
               } else if(itm === flip) {
-                return syn[G_sflip] = t;
+                return syn[G_sflip] = true;
               };
             },
 		   sp);
@@ -391,7 +391,7 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
     }})(),
 	(() => {if((lit_Q(here) && obj = search_list(objnam,robjs(G_here), adj))) {
       if((av && obj !== av && !memq(obj,ocontents(av)) && !trnn(obj,G_findmebit))) {
-          return chomp = t;
+          return chomp = true;
         } else if(oobj) {
           return return(G_nefals,get_obj);
         } else {
@@ -430,7 +430,7 @@ G_nefals = /*#*/ [false, /*(*/ [1] /*)*/] /*2*/
 
 G_nefals2 = /*#*/ [false, /*(*/ [2] /*)*/] /*2*/
 
-define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, t] /*)*/, `AUX`, /*(*/ [oobj, false] /*)*/,
+define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, true] /*)*/, `AUX`, /*(*/ [oobj, false] /*)*/,
 			/*(*/ [nefals, G_nefals] /*)*/, nobj] /*)*/, 
    /*#*/ [decl, /*(*/ [/*(*/ [objnam] /*)*/, atom, /*(*/ [slist] /*)*/, list(/*[*/ [rest, object] /*]*/),
 	  /*(*/ [oobj, nobj] /*)*/, (false || object), /*(*/ [adj] /*)*/, (false || adjective),

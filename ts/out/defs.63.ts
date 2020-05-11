@@ -281,7 +281,7 @@ export let G_raw_score: FIX;export let G_load_max: FIX;export let G_score_max: F
 defmac(cond_open, /*(*/ [() => dir,() => rm] /*)*/,
   form(prog, list(list(el, form(memq, dir,form(rexits, rm)))),
 	/*#*/ [decl, /*(*/ [/*(*/ [el] /*)*/, /*<*/ [primtype(vector), atom, cexit] /*>*/] /*)*/] /*2*/,
-	form(setg, form(cxflag, form(2, form(lval, el))), t)))
+	form(setg, form(cxflag, form(2, form(lval, el))), true)))
 
 defmac(cond_close, /*(*/ [() => dir,() => rm] /*)*/,
   form(prog, list(list(el, form(memq, dir,form(rexits, rm)))),
@@ -362,7 +362,7 @@ export function rob_room(rm: ROOM, newlist: LIST</*[*/ [REST, OBJECT] /*]*/>, pr
     function(x: OBJECT) {
         if((otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob))) {
           remove_object(x);
-          x[G_otouch_Q] = t;
+          x[G_otouch_Q] = true;
           return newlist = /*(*/ [x,_X,newlist] /*)*/;
         } else if(type_Q(orand(x), adv)) {
           return newlist = rob_adv(orand(x), newlist);
@@ -375,7 +375,7 @@ export function valuables_Q(adv: ADV) {
     return mapf(false,
     function(x: OBJECT) {
         if(otval(x) > 0) {
-          return mapleave(t);
+          return mapleave(true);
         };
       },
     aobjs(adv));
@@ -386,7 +386,7 @@ export function armed_Q(adv: ADV) {
     return mapf(false,
     function(x: OBJECT) {
         if(memq(x,weapons)) {
-          return mapleave(t);
+          return mapleave(true);
         };
       },
     aobjs(adv));
@@ -421,7 +421,7 @@ defmac(clock_disable, /*(*/ [() => ev] /*)*/,
     form(put, ev,G_cflag,false))
 
 defmac(clock_enable, /*(*/ [() => ev] /*)*/,
-    form(put, ev,G_cflag,t))
+    form(put, ev,G_cflag,true))
 
 export function yes_no(no_is_bad_Q: (ATOM | FALSE)) {
     let inbuf: STRING = G_inbuf;
@@ -430,7 +430,7 @@ export function yes_no(no_is_bad_Q: (ATOM | FALSE)) {
 return readstring(inbuf,inchan,G_reader_string);
 if(no_is_bad_Q) {
       return !memq(inbuf[1], `NnfF`);
-    } else if(t) {
+    } else if(true) {
       return memq(inbuf[1], `TtYy`);
     };
   }
@@ -443,7 +443,7 @@ defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*
         } else {
           return form(apply, form(gval, frob));
         }})()] /*)*/,
-	      /*(*/ [t, form(dispatch, frob,mumble)] /*)*/))
+	      /*(*/ [true, form(dispatch, frob,mumble)] /*)*/))
 
 export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
     return prog(/*(*/ [] /*)*/,
@@ -482,7 +482,7 @@ export function find_room(id: (ATOM | STRING)) {
 if((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) {
       return /*,*/ [atm] /*1*/;
     } else if((atm || atm = insert(id,G_room_obl))) {
-      setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
+      setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, true),
 				 room));
       G_rooms = /*(*/ [room,_X,G_rooms] /*)*/;
       return room;

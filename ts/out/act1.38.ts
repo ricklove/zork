@@ -18,7 +18,7 @@ export function ilo(body: STRING, type: FIX, nm1: STRING, nm2: STRING, m1?: STRI
           return eval(parse(body));
         };
     };
-return dismiss(t);
+return dismiss(true);
   }
 
 // ROOM FUNCTIONS
@@ -53,13 +53,13 @@ export function open_close(verb: VERB, atm: ATOM, stropn: STRING, strcls: STRING
       if(/*,*/ [atm] /*1*/) {
           return tell(pick_one(G_dummy));
         } else if(tell(stropn)) {
-          return setg(atm,t);
+          return setg(atm,true);
         };
     } else if(verb === G_close_X_words) {
       if(/*,*/ [atm] /*1*/) {
           tell(strcls);
           setg(atm,false);
-          return t;
+          return true;
         } else {
           return tell(pick_one(G_dummy));
         };
@@ -83,7 +83,7 @@ east is a small window which is `, 0);
           return tell(`slightly ajar.`, 1);
         };
     } else {
-      return t;
+      return true;
     };
   }
 
@@ -95,7 +95,7 @@ export function leaf_pile() {
       if(oroom(l)) {
           tell(`The leaves burn and the neighbors start to complain.`);
           return remove_object(l);
-        } else if(t) {
+        } else if(true) {
           drop_object(l);
           return jigs_up(`The sight of someone carrying a pile of burning leaves so offends
 the neighbors that they come over and put you out.`);
@@ -153,7 +153,7 @@ there is a passageway leading west.`);
           trz(t,G_flamebit);
           (lit_Q(G_here) || tell(`The melting glacier seems to have carried the torch away, leaving
 you in the dark.`));
-          return G_glacier_flag_X_flag = t;
+          return G_glacier_flag_X_flag = true;
         } else if(tell(`The glacier is unmoved by your ridiculous attempt.`)) {
           return false;
         };
@@ -226,7 +226,7 @@ nailed shut, `, 0);
         } else {
           return tell(`and a large oriental rug in the center of the room.`, 1);
         };
-      return t;
+      return true;
     } else if((tc = find_obj(`TCASE`) && (prsact === G_take_X_words || (prsact === G_put_X_words && prsvec[3] === tc)))) {
       return G_winner[G_ascore] = _(G_raw_score,				       mapf(G__,G_otval,ocontents(tc)));
     };
@@ -251,7 +251,7 @@ into darkness.`);
               return tell(`It's closed.`);
             };
           cond_close(down_X_directions, rm);
-          return t;
+          return true;
         };
     } else if(rm === find_room(`CELLA`)) {
       if(prsact === G_open_X_words) {
@@ -308,7 +308,7 @@ east, and a crawlway to the south.  On the west is the bottom of a
 steep metal ramp which is unclimbable.`);
     } else if((vname(prsact) === walk_in_X_words && G_trap_door_X_flag && !otouch_Q(door))) {
       G_trap_door_X_flag = false;
-      door[G_otouch_Q] = t;
+      door[G_otouch_Q] = true;
       return tell(`The trap door crashes shut, and you hear someone barring it.`, 1);
     };
   }
@@ -319,13 +319,13 @@ export function chimney_function() {
     let winner: ADV = G_winner;
     let aobjs: LIST</*[*/ [REST, OBJECT] /*]*/> = aobjs(winner);
     if((l__Q(aobjs.length, 2) && memq(find_obj(`LAMP`), aobjs))) {
-      G_light_load_X_flag = t;
+      G_light_load_X_flag = true;
       // Door will slam shut next time, too, since this way up don't count.;
       if(!G_trap_door_X_flag) {
           return find_obj(`DOOR`)[G_otouch_Q] = false;
         };
       return false;
-    } else if(t) {
+    } else if(true) {
       return G_light_load_X_flag = false;
     };
   }
@@ -346,7 +346,7 @@ it again.`);
         } else if(tell(`With a great effort, the rug is moved to one side of the room.
 With the rug moved, the dusty cover of a closed trap-door appears.`)) {
           tro(find_obj(`DOOR`), G_ovison);
-          return obj[G_orand] = t;
+          return obj[G_orand] = true;
         };
     } else if(prsa === G_take_X_words) {
       return tell(`The rug is extremely heavy and cannot be carried.`);
@@ -405,18 +405,18 @@ export function troll() {
           snarf_object(t,a);
           (here === oroom(t) && tell(`The troll, now worried about this encounter, recovers his bloody
 axe.`));
-          return t;
+          return true;
         } else if(here === oroom(t)) {
           tell(`The troll, disarmed, cowers in terror, pleading for his life in
 the guttural tongue of the trolls.`);
-          return t;
+          return true;
         };
     } else if(pa === G_dead__X_X_words) {
-      return G_troll_flag_X_flag = t;
+      return G_troll_flag_X_flag = true;
     } else if(pa === G_out__X_X_words) {
       trz(find_obj(`AXE`), G_ovison);
       t[G_odesc1] = G_trollout;
-      return G_troll_flag_X_flag = t;
+      return G_troll_flag_X_flag = true;
     } else if(pa === G_in__X_X_words) {
       tro(find_obj(`AXE`), G_ovison);
       if(oroom(t) === here) {
@@ -500,7 +500,7 @@ export function mirror_mirror() {
     } else if((vname(prsact) === mung_X_words || vname(prsact) === throw_X_words)) {
       if(G_mirror_mung_X_flag) {
           return tell(`Haven't you done enough already?`);
-        } else if(G_mirror_mung_X_flag = t) {
+        } else if(G_mirror_mung_X_flag = true) {
           return tell(`You have broken the mirror.  I hope you have a seven years supply of
 good luck handy.`);
         };
@@ -567,7 +567,7 @@ export function coffin_cure() {
     if(memq(find_obj(`COFFI`), aobjs(G_winner))) {
       return G_egypt_flag_X_flag = false;
     } else if(else) {
-      return G_egypt_flag_X_flag = t;
+      return G_egypt_flag_X_flag = true;
     };
 return false;
   }
@@ -595,7 +595,7 @@ attempts to pass.`);
 \"Begone, fiends!\"  The spirits, sensing the presence of a greater
 power, flee through the walls.`);
               remove_object(find_obj(`GHOST`));
-              return G_lld_flag_X_flag = t;
+              return G_lld_flag_X_flag = true;
             } else {
               return tell(`You are not equipped for an exorcism.`);
             };
@@ -700,7 +700,7 @@ Using passages unknown to you, he rushes to its defense.`);
                 return tl;
               }})();
           return insert_object(hobj,here);
-        } else if(t) {
+        } else if(true) {
           return tro(hobj,G_fightbit);
         };
       (!ocan(chali = find_obj(`CHALI`)) && oroom(chali) === here && trz(chali,G_takebit));
@@ -725,7 +725,7 @@ export function treas() {
     } else if((G_prsvec[1] === G_templ_X_words && G_here === find_room(`TREAS`))) {
       goto(find_room(`TEMP1`));
       return room_desc();
-    } else if(t) {
+    } else if(true) {
       return tell(`Nothing happens.`);
     };
   }
@@ -774,8 +774,8 @@ export function bolt_function() {
                   G_low_tide_X_flag = false;
                   tell(`The sluice gates close and water starts to collect behind the dam.`);
                   (memq(trunk,robjs(find_room(`RESES`))) && trz(trunk,G_ovison));
-                  return t;
-                } else if(G_low_tide_X_flag = t) {
+                  return true;
+                } else if(G_low_tide_X_flag = true) {
                   tell(`The sluice gates open and water pours through the dam.`);
                   return tro(trunk,G_ovison);
                 };
@@ -832,7 +832,7 @@ from the east wall of the room (apparently, a leak has occurred in a
 pipe.)`);
               G_here[G_rvars] = 1;
               clock_int(G_mntin,_1);
-              return t;
+              return true;
             } else {
               return tell(`The blue button appears to be jammed.`);
             };
@@ -847,7 +847,7 @@ pipe.)`);
           G_gate_flag_X_flag = false;
           return tell(`Click.`);
         } else if(prso === find_obj(`YBUTT`)) {
-          G_gate_flag_X_flag = t;
+          G_gate_flag_X_flag = true;
           return tell(`Click.`);
         };
     };
@@ -960,7 +960,7 @@ export function water_function(rem?: (ATOM | FALSE)) {
               return tell(`The bottle is already full.`);
             } else if(!oopen_Q(b)) {
               return tell(`The bottle is closed.`);
-            } else if(t) {
+            } else if(true) {
               (rem && remove_object(w));
               b[G_ocontents] = /*(*/ [w] /*)*/;
               w[G_ocan] = b;
@@ -968,7 +968,7 @@ export function water_function(rem?: (ATOM | FALSE)) {
             };
         } else if((ocan(w) === b && prsact === G_take_X_words && !can)) {
           prsvec[2] = b;
-          take(t);
+          take(true);
           return prsvec[2] = w;
         } else {
           return tell(`The water slips through your fingers.`);
@@ -1007,7 +1007,7 @@ export function rope_function() {
       if(G_dome_flag_X_flag) {
           return tell(`The rope is already attached.`);
         } else if(tell(`The rope drops over the side and comes within ten feet of the floor.`)) {
-          G_dome_flag_X_flag = t;
+          G_dome_flag_X_flag = true;
           tro(rope,G_ndescbit);
           if(!oroom(rope)) {
               win[G_aobjs] = splice_out(rope,aobjs(win));
@@ -1047,7 +1047,7 @@ export function cyclops() {
           trz(cyc = find_obj(`CYCLO`), G_sleepbit);
           tro(cyc,G_fightbit);
           rm[G_rvars] = abs(rvars(rm));
-          return t;
+          return true;
         };
     } else if(abs(count) > 5) {
       return jigs_up(`The cyclops, tired of all of your games and trickery, eats you.
@@ -1068,7 +1068,7 @@ gleam in his eye, it could be surmised that you are 'that thing'.`);
               trz(cyc,G_fightbit);
               tell(`The cyclops looks tired and quickly falls fast asleep (what did you
 put in that drink, anyway?).`);
-              return G_cyclops_flag_X_flag = t;
+              return G_cyclops_flag_X_flag = true;
             } else if(tell(`The cyclops apparently was not thirsty at the time and refuses your
 generous gesture.`)) {
               return false;
@@ -1184,7 +1184,7 @@ export function echo_room() {
 		       readchr(G_inchan),
 		       (G_alt_flag || readchr(G_inchan)),
 		       G_moves = _(G_moves,1),
-		       (() => {if((eparse(lex(b,rest(b,l), t), t) && verb = prsvec[1] === walk && prsvec[2] && memq(chtype(prsvec[2], atom),
+		       (() => {if((eparse(lex(b,rest(b,l), true), true) && verb = prsvec[1] === walk && prsvec[2] && memq(chtype(prsvec[2], atom),
 					 rexits(rm)))) {
                 random_action = vfcn(verb);
                 apply_random(random_action);
@@ -1198,14 +1198,14 @@ export function echo_room() {
                         },
 				       robjs(rm));
                   };
-                return return(t);
+                return return(true);
               } else if(printstring(b,outchan,l)) {
-                G_tell_flag = t;
+                G_tell_flag = true;
                 crlf();
                 if(uppercase(b)[`ECHO`] === b) {
                     tell(`The acoustics of the room change subtly.`,
 					   1);
-                    G_echo_flag_X_flag = t;
+                    G_echo_flag_X_flag = true;
                     mapf(false,
 					   function(x: OBJECT) {
                           if(trnn(x,G_echo_room_bit)) {
@@ -1214,7 +1214,7 @@ export function echo_room() {
                           };
                         },
 					   robjs(rm));
-                    return return(t);
+                    return return(true);
                   };
               }})())),
 		prog(/*(*/ [] /*)*/,
@@ -1315,7 +1315,7 @@ export function well() {
     if(G_riddle_flag_X_flag) {
       return tell(`Well what?`);
     } else if(G_here === find_room(`RIDDL`)) {
-      G_riddle_flag_X_flag = t;
+      G_riddle_flag_X_flag = true;
       return tell(`There is a clap of thunder and the east door opens.`);
     } else {
       return tell(`Well what?`);
@@ -1324,10 +1324,10 @@ export function well() {
 
 export function sinbad() {
     if((G_here === find_room(`CYCLO`) && memq(find_obj(`CYCLO`), robjs(G_here)))) {
-      G_cyclops_flag_X_flag = t;
+      G_cyclops_flag_X_flag = true;
       tell(`The cyclops, hearing the name of his deadly nemesis, flees the room
 by knocking down the wall on the north of the room.`);
-      G_magic_flag_X_flag = t;
+      G_magic_flag_X_flag = true;
       return remove_object(find_obj(`CYCLO`));
     } else {
       return tell(`Wasn't he a sailor?`);
@@ -1392,7 +1392,7 @@ export function eat() {
       if(oopen_Q(nobj)) {
           return tell(`Thank you very much.  I was rather thirsty (from all this talking,
 probably).`);
-        } else if(t) {
+        } else if(true) {
           return tell(`I'd like to, but I can't get to it.`);
         };
       prsobj[G_ocan] = false;
@@ -1467,8 +1467,8 @@ define(robber, robber, /*(*/ [hack,
                     tell(`Someone carrying a large bag is casually leaning against one of the
 walls here.  He does not speak, but it is clear from his aspect that
 the bag will be taken only over his dead body.`);
-                    hack[G_hflag] = t;
-                    return return(t, robber);
+                    hack[G_hflag] = true;
+                    return return(true, robber);
                   };
               } else if((here_Q && fighting_Q(hobj) && (() => {if(!winning_Q(hobj,win)) {
                       tell(`Your opponent, determining discretion to be the better part of
@@ -1477,7 +1477,7 @@ nod of his head, he steps backward into the gloom and disappears.`);
                       remove_object(hobj);
                       trz(hobj,G_fighting);
                       snarf_object(hobj,still);
-                      return return(t, robber);
+                      return return(true, robber);
                     } else {
                       return prob(90);
                     }})())) {
@@ -1487,10 +1487,10 @@ nod of his head, he steps backward into the gloom and disappears.`);
 Fortunately, he took nothing.`);
                 remove_object(hobj);
                 snarf_object(hobj,still);
-                return return(t, robber);
+                return return(true, robber);
               } else if(prob(70)) {
-                return return(t, robber);
-              } else if(t) {
+                return return(true, robber);
+              } else if(true) {
                 if(memq(still,hobjs(hack))) {
                     hack[G_hobjs] = splice_out(still,hobjs(hack));
                     hobj[G_ocontents] = /*(*/ [still] /*)*/;
@@ -1498,7 +1498,7 @@ Fortunately, he took nothing.`);
                   };
                 hack[G_hobjs] = hh = rob_room(rm,hh,100);
                 hack[G_hobjs] = hh = rob_adv(win,hh);
-                hack[G_hflag] = t;
+                hack[G_hflag] = true;
                 if((objt !== hh && !here_Q)) {
                     return tell(`A seedy-looking individual with a large bag just wandered through
 the room.  On the way through, he quietly abstracted all valuables
@@ -1515,12 +1515,12 @@ left disgusted.`);
                       };
                     remove_object(hobj);
                     return here_Q = false;
-                  } else if(t) {
+                  } else if(true) {
                     return tell(`A 'lean and hungry' gentleman just wandered through.  Finding
 nothing of value, he left disgruntled.`);
                   };
               };
-          } else if(t) {
+          } else if(true) {
             if(here_Q) {
                 // Here, already announced.;
                 if(prob(30)) {
@@ -1532,7 +1532,7 @@ nothing of value, he left disgruntled.`);
                     if(objt === hh) {
                         return tell(`The other occupant (he of the large bag), finding nothing of value,
 left disgusted.`);
-                      } else if(t) {
+                      } else if(true) {
                         return tell(`The other occupant just left, still carrying his large bag.  You may
 not have noticed that he robbed you blind first.`);
                       };
@@ -1540,7 +1540,7 @@ not have noticed that he robbed you blind first.`);
                     here_Q = false;
                     return snarf_object(hobj,still);
                   } else {
-                    return return(t, robber);
+                    return return(true, robber);
                   };
               };
           };
@@ -1560,7 +1560,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\"`);
                     tell(``, 1);
                     if(prob(60)) {
                         remove_object(x);
-                        x[G_otouch_Q] = t;
+                        x[G_otouch_Q] = true;
                         return hack[G_hobjs] = hh = /*(*/ [x,_X,hh] /*)*/;
                       };
                     return mapleave();
@@ -1571,7 +1571,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\"`);
 	       function(x: OBJECT) {
                   if((0_Q(otval(x)) && can_take_Q(x) && ovis_Q(x) && prob(20))) {
                     remove_object(x);
-                    x[G_otouch_Q] = t;
+                    x[G_otouch_Q] = true;
                     hack[G_hobjs] = hh = /*(*/ [x,_X,hh] /*)*/;
                     if(rm === wroom) {
                         return tell(`You suddenly notice that the `,
@@ -1646,7 +1646,7 @@ export function robber_function() {
           snarf_object(t,st);
           tell(`The robber, somewhat surprised at this turn of events, nimbly
 retrieves his stilletto.`);
-          return t;
+          return true;
         } else if(else) {
           tell(`Annoyed to be left unarmed in such an obviously dangerous
 neighborhood, the thief slips off into the shadows.`);
@@ -1672,7 +1672,7 @@ return tro(x,G_echo_room_bit);
                       return trz(x,G_echo_room_bit);
                     } else if(tro(x,G_ovison)) {
                       if(!flg) {
-                          flg = t;
+                          flg = true;
                           return tell(`As the thief dies, the power of his magic decreases, and his
 treasures reappear:`, 2);
                         };
@@ -1711,7 +1711,7 @@ when he sees his moment, scrambles away from you.`);
 flees`,		 1,
 		 (() => {if(empty_Q(hobjs(dem))) {
                 return `.`;
-              } else if(t) {
+              } else if(true) {
                 mapf(false, function(x: OBJECT) {
                       return insert_object(x,here);
                     }, hobjs(dem));
@@ -1719,7 +1719,7 @@ flees`,		 1,
                 return `, but the contents of his bag fall on the floor.`;
               }})());
           return remove_object(t);
-        } else if(t) {
+        } else if(true) {
           tell(`You missed.  The thief makes no attempt to take the knife, though it
 would be a fine addition to the collection in his bag.  He does seem
 angered by your attempt.`);
@@ -1875,7 +1875,7 @@ export function unlocker() {
     let r: OBJECT = find_room(`MGRAT`);
     if(prso === find_obj(`GRAT2`)) {
       if(prsi === find_obj(`KEYS`)) {
-          G_grunlock_X_flag = t;
+          G_grunlock_X_flag = true;
           tell(`The grate is unlocked.`);
           return mapf(false,
 			function(x: (CEXIT | NEXIT | ROOM)) {
@@ -1907,7 +1907,7 @@ export function killer() {
 		     ` with a `);
       return tell(odesc2(prsi), 1, ` is suicidal.`);
     } else if(else) {
-      return blow(G_player,prso,orand(prsi), t, false);
+      return blow(G_player,prso,orand(prsi), true, false);
     };
   }
 
@@ -1925,7 +1925,7 @@ export function attacker() {
 		      ` with a `);
       return tell(odesc2(prsi), 1, ` is suicidal.`);
     } else if(else) {
-      return blow(G_player,prso,orand(prsi), t, false);
+      return blow(G_player,prso,orand(prsi), true, false);
     };
   }
 
@@ -1965,12 +1965,12 @@ export function munger() {
     if(trnn(prso,G_villain)) {
       if(prsw) {
           if(trnn(prsw,G_weaponbit)) {
-              return blow(G_player,prso,orand(prsw), t, false);
-            } else if(t) {
+              return blow(G_player,prso,orand(prsw), true, false);
+            } else if(true) {
               tell(`Munging a `, 0, odesc2(prso), ` with a `);
               return tell(odesc2(prsw), 1, ` is quite self-destructive.`);
             };
-        } else if(t) {
+        } else if(true) {
           return tell(`Munging a `, 1, odesc2(prso), ` with your bare hands is suicidal.`);
         };
     } else {
@@ -2002,7 +2002,7 @@ export function exorcise() {
     if(object_action()) {
       ;
     } else {
-      return t;
+      return true;
     };
   }
 	  
@@ -2067,7 +2067,7 @@ export function body_function() {
     } else if((prsa === G_mung_X_words || prsa === G_burn_X_words)) {
       if(G_on_pole_X_flag) {
           ;
-        } else if(G_on_pole_X_flag = t) {
+        } else if(G_on_pole_X_flag = true) {
           return insert_object(find_obj(`HPOLE`), find_room(`LLD2`));
         };
       return jigs_up(`The voice of the guardian of the dungeon booms out from the darkness 
@@ -2146,9 +2146,9 @@ export function sword_glow(dem: HACK) {
         } else if(mapf(false,
 		       function(e: (ROOM | CEXIT | NEXIT | ATOM)) {
                 if(type_Q(e,room)) {
-                  return (infested_Q(e) && mapleave(t));
+                  return (infested_Q(e) && mapleave(true));
                 } else if(type_Q(e,cexit)) {
-                  return (infested_Q(e[2]) && mapleave(t));
+                  return (infested_Q(e[2]) && mapleave(true));
                 };
               },
 		       rexits(here))) {
@@ -2187,7 +2187,7 @@ export function infested_Q(r: ROOM) {
     return ((r === hroom(dem) && haction(dem)) || mapf(false,
 		  function(v: OBJECT) {
           if(r === oroom(v)) {
-            return mapleave(t);
+            return mapleave(true);
           };
         },
 		  villains));
@@ -2218,7 +2218,7 @@ export function match_function() {
       trz(match,G_flamebit);
       match[G_olight_Q] = 0;
       clock_int(G_matin,0);
-      return t;
+      return true;
     } else if(prsa === G_c_int_X_words) {
       tell(`The match has gone out.`);
       trz(match,G_flamebit);
@@ -2243,12 +2243,12 @@ if(prsact === G_light_X_words) {
 burn.`);
         } else if(!w) {
           tell(`With what?`);
-          orphans = G_orphans[G_oflag] = t;
+          orphans = G_orphans[G_oflag] = true;
           orphans[G_overb] = prsact;
           orphans[G_oslot1] = c;
           orphans[G_oprep] = chtype(with_X_words, prep);
           G_parse_won = false;
-          return t;
+          return true;
         } else if((w === match = find_obj(`MATCH`) && 1_Q(olight_Q(match)))) {
           if(1_Q(olight_Q(c))) {
               return tell(`The candles are already lighted.`);

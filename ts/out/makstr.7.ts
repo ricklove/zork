@@ -4,7 +4,7 @@ export function cevent(tick: FIX, app: (APPLICABLE | OFFSET), flg: (ATOM | FALSE
     if(type_Q(name,string)) {
       if(atm = lookup(name,obl)) {
           ;
-        } else if(t) {
+        } else if(true) {
           return atm = insert(name,obl);
         };
     } else {
@@ -47,7 +47,7 @@ export function exit(_tuple_, pairs: TUPLE</*[*/ [REST, STRING, (NEXIT | CEXIT |
             return f[2] = pairs[2];
           };
         return f = rest(f,2);
-      } else if(t) {
+      } else if(true) {
         return pairs[1] = error(illegal_direction, pairs[1]);
       }})(),
 	  (() => {if(empty_Q(pairs = rest(pairs,2))) {
@@ -72,7 +72,7 @@ return rm[G_raction] = (() => {if(type_Q(app,false, form)) {
       }})();
 return rm[G_rlight_Q] = (() => {if(type_Q(lit_Q,form)) {
         return false;
-      } else if(t) {
+      } else if(true) {
         return lit_Q;
       }})();
 return mapf(false,
@@ -213,7 +213,7 @@ export function add_demon(x: HACK) {
 	  function(y: LIST</*[*/ [REST, HACK] /*]*/>) {
             if(haction(y[1]) === haction(x)) {
               y[1] = x;
-              return mapleave(t);
+              return mapleave(true);
             };
           },
 	  G_demons)) {
@@ -232,7 +232,7 @@ export function add_actor(adv: ADV) {
     if(mapf(false,
 	       function(x: ADV) {
             if(aobj(x) === aobj(adv)) {
-              return mapleave(t);
+              return mapleave(true);
             };
           },
 	       actors)) {

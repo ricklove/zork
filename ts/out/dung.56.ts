@@ -56,31 +56,31 @@ G_objects = /*(*/ [] /*)*/
 `CEVENT DEFINITIONS`
 (lookup(`COMPILE`, root()) || cevent(0, G_cure_clock,false, `CURIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_maint_room,t, `MNTIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_maint_room,true, `MNTIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_lantern,t, `LNTIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_lantern,true, `LNTIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_match_function,t, matin))
+(lookup(`COMPILE`, root()) || cevent(0, G_match_function,true, matin))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_candles,t, `CNDIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_candles,true, `CNDIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_balloon,t, `BINT`))
+(lookup(`COMPILE`, root()) || cevent(0, G_balloon,true, `BINT`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_burnup,t, `BRNIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_burnup,true, `BRNIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_fuse_function,t, `FUSIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_fuse_function,true, `FUSIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_ledge_mung,t, `LEDIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_ledge_mung,true, `LEDIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_safe_mung,t, `SAFIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_safe_mung,true, `SAFIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_volgnome,t, `VLGIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_volgnome,true, `VLGIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_gnome_function,t, `GNOIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_gnome_function,true, `GNOIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_bucket,t, `BCKIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_bucket,true, `BCKIN`))
 
-(lookup(`COMPILE`, root()) || cevent(0, G_sphere_function,t, `SPHIN`))
+(lookup(`COMPILE`, root()) || cevent(0, G_sphere_function,true, `SPHIN`))
 
 
 // KLUDGE
@@ -106,7 +106,7 @@ leading down at the north end of the room.`,
 `You are in an open field west of a big white house, with a boarded
 front door.`,
        `West of House`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`NORTH`, `NHOUS`, `SOUTH`, `SHOUS`, `WEST`, `FORE1`,
 	      `EAST`, /*#*/ [nexit, `The door is locked, and there is evidently no key.`] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`FDOOR`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`MAILB`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
@@ -115,7 +115,7 @@ front door.`,
        `You are facing the north side of a white house.  There is no door here,
 and all the windows are barred.`,
        `North of House`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`WEST`, `WHOUS`, `EAST`, `EHOUS`, `NORTH`, `FORE3`,
 	      `SOUTH`, /*#*/ [nexit, `The windows are all barred.`] /*2*/] /*}*/] /*2*/] /*}*/] /*2*/
 
@@ -123,7 +123,7 @@ and all the windows are barred.`,
 `You are facing the south side of a white house. There is no door here,
 and all the windows are barred.`,
        `South of House`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`WEST`, `WHOUS`, `EAST`, `EHOUS`, `SOUTH`, `FORE2`,
 	      `NORTH`, /*#*/ [nexit, `The windows are all barred.`] /*2*/] /*}*/] /*2*/,
        /*(*/ [] /*)*/] /*}*/] /*2*/
@@ -131,7 +131,7 @@ and all the windows are barred.`,
 /*#*/ [room, /*{*/ [`EHOUS`,
        ``,
        `Behind House`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`NORTH`, `NHOUS`, `SOUTH`, `SHOUS`, `EAST`, `CLEAR`,
 	      `WEST`, /*#*/ [cexit, /*{*/ [`KITCHEN-WINDOW`, `KITCH`] /*}*/] /*2*/,
 	      `ENTER`, /*#*/ [cexit, /*{*/ [`KITCHEN-WINDOW`, `KITCH`] /*}*/] /*2*/] /*}*/] /*2*/,
@@ -141,7 +141,7 @@ and all the windows are barred.`,
 /*#*/ [room, /*{*/ [`KITCH`,
        ``,
        `Kitchen`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`EAST`, /*#*/ [cexit, /*{*/ [`KITCHEN-WINDOW`, `EHOUS`] /*}*/] /*2*/, `WEST`, `LROOM`,
 	      `EXIT`, /*#*/ [cexit, /*{*/ [`KITCHEN-WINDOW`, `EHOUS`] /*}*/] /*2*/, `UP`, `ATTIC`,
 	      `DOWN`, /*#*/ [nexit, `Only Santa Claus climbs down chimneys.`] /*2*/] /*}*/] /*2*/,
@@ -254,7 +254,7 @@ add_melee(find_obj(`KNIFE`), G_knife_melee)
 /*#*/ [room, /*{*/ [`LROOM`,
        ``,
        `Living Room`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`EAST`, `KITCH`,
 	      `WEST`, /*#*/ [cexit, /*{*/ [`MAGIC-FLAG`, `BLROO`, `The door is nailed shut.`] /*}*/] /*2*/,
 	      `DOWN`, /*#*/ [cexit, /*{*/ [`TRAP-DOOR`, `CELLA`] /*}*/] /*2*/] /*}*/] /*2*/,
@@ -503,17 +503,17 @@ add_object(/*#*/ [object, /*{*/ [`PEARL`,
 psetg(stfore,        `You are in a forest, with trees in all directions around you.`)
 
 /*#*/ [room, /*{*/ [`FORE1`,
-       /*%*/ [G_stfore] /*1*/,       /*%*/ [G_forest] /*1*/,t,
+       /*%*/ [G_stfore] /*1*/,       /*%*/ [G_forest] /*1*/,true,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE1`, `EAST`, `FORE3`, `SOUTH`, `FORE2`, `WEST`, `FORE1`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE4`,
        `You are in a large forest, with trees obstructing all views except
 to the east, where a small clearing may be seen through the trees.`,
-       /*%*/ [G_forest] /*1*/,       t,
+       /*%*/ [G_forest] /*1*/,       true,
        /*#*/ [exit, /*{*/ [`EAST`, `CLTOP`, `NORTH`, `FORE5`, `SOUTH`, `FORE4`, `WEST`, `FORE2`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE5`,
-       /*%*/ [G_stfore] /*1*/,       /*%*/ [G_forest] /*1*/,       t,
+       /*%*/ [G_stfore] /*1*/,       /*%*/ [G_forest] /*1*/,       true,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE5`, `SE`, `CLTOP`, `SOUTH`, `FORE4`, `WEST`, `FORE2`] /*}*/] /*2*/] /*}*/] /*2*/
 
 psetg(fordes,
@@ -521,16 +521,16 @@ psetg(fordes,
 east, there appears to be sunlight.`)
 
 /*#*/ [room, /*{*/ [`FORE2`,
-       /*%*/ [G_fordes] /*1*/,       /*%*/ [G_forest] /*1*/,t,
+       /*%*/ [G_fordes] /*1*/,       /*%*/ [G_forest] /*1*/,true,
        /*#*/ [exit, /*{*/ [`NORTH`, `SHOUS`, `EAST`, `CLEAR`, `SOUTH`, `FORE4`, `WEST`, `FORE1`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`FORE3`,
-       /*%*/ [G_fordes] /*1*/,       /*%*/ [G_forest] /*1*/,t,
+       /*%*/ [G_fordes] /*1*/,       /*%*/ [G_forest] /*1*/,true,
        /*#*/ [exit, /*{*/ [`NORTH`, `FORE2`, `EAST`, `CLEAR`, `SOUTH`, `CLEAR`, `WEST`, `NHOUS`] /*}*/] /*2*/, /*(*/ [] /*)*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CLEAR`,
        ``,
-       `Clearing`, t,
+       `Clearing`, true,
        /*#*/ [exit, /*{*/ [`SW`, `EHOUS`, `SE`, `FORE5`, `NORTH`, `CLEAR`, `EAST`, `CLEAR`,
 	      `WEST`, `FORE3`, `SOUTH`, `FORE2`, `DOWN`, /*#*/ [cexit, /*{*/ [`KEY-FLAG`, `MGRAT`] /*}*/] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`GRAT1`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`LEAVE`] /*}*/] /*2*/] /*)*/, clearing] /*}*/] /*2*/
@@ -561,7 +561,7 @@ passage.`,
        /*#*/ [exit, /*{*/ [`SOUTH`, /*#*/ [cexit, /*{*/ [`EGYPT-FLAG`,
 			      `RAVI1`,
 			      `The coffin will not fit through this passage.`,
-			      t,
+			      true,
 			      coffin_cure] /*}*/] /*2*/,
 	      `WEST`, `STREA`,
 	      `CROSS`, /*#*/ [cexit, /*{*/ [`LOW-TIDE`, `RESEN`, `You are not equipped for swimming.`] /*}*/] /*2*/,
@@ -569,7 +569,7 @@ passage.`,
 	      `UP`, /*#*/ [cexit, /*{*/ [`EGYPT-FLAG`,
 			   `CANY1`,
 			   `The stairs are too steep for carrying the coffin.`,
-			   t,
+			   true,
 			   coffin_cure] /*}*/] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`TRUNK`] /*}*/] /*2*/] /*)*/,
        reservoir_south] /*}*/] /*2*/
@@ -600,7 +600,7 @@ ascending staircase in the room as well as doors, east and south.`,
        /*%*/ [false] /*1*/,
        /*#*/ [exit, /*{*/ [`UP`, `ICY`, `SOUTH`, `LEDG3`,
 	      `EAST`, /*#*/ [cexit, /*{*/ [`EGYPT-FLAG`, `CRAW1`,
-			     `The passage is too narrow to accomodate coffins.`, t,
+			     `The passage is too narrow to accomodate coffins.`, true,
 			     coffin_cure] /*}*/] /*2*/] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`COFFI`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
@@ -709,7 +709,7 @@ add_object(/*#*/ [object, /*{*/ [`TORCH`,
 /*#*/ [room, /*{*/ [`MIRR2`,
        ``,
        `Mirror Room`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`WEST`, `PASS4`, `NORTH`, `CRAW3`, `EAST`, `CAVE2`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`REFL2`] /*}*/] /*2*/] /*)*/,
        mirror_room] /*}*/] /*2*/
@@ -803,7 +803,7 @@ add_object(/*#*/ [object, /*{*/ [`TBASK`,
 	  `basket`,
 	  /*%*/ [false] /*1*/,
 	  dumbwaiter, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(G_contbit,G_ovison,G_transbit)] /*1*/, 0, 0, 0, /*%*/ [G_bigfix] /*1*/,50] /*}*/] /*2*/,
-/*[*/ [`CAGE`, `DUMBW`, `BASKE`] /*]*/)[G_oopen_Q] = t
+/*[*/ [`CAGE`, `DUMBW`, `BASKE`] /*]*/)[G_oopen_Q] = true
 
 add_object(/*#*/ [object, /*{*/ [`FBASK`,
 	  ``, 
@@ -1072,7 +1072,7 @@ solving this riddle:
 /*#*/ [room, /*{*/ [`LLD1`,
        ``,
        `Entrance to Hades`,
-       t, /*#*/ [exit, /*{*/ [`EAST`,
+       true, /*#*/ [exit, /*{*/ [`EAST`,
 		/*#*/ [cexit, /*{*/ [`LLD-FLAG`,
 			`LLD2`,
 			`Some invisible force prevents you from passing through the gate.`] /*}*/] /*2*/,
@@ -1092,7 +1092,7 @@ add_object(/*#*/ [object, /*{*/ [`GHOST`,
 /*#*/ [room, /*{*/ [`LLD2`,
        ``,
        `Land of the Living Dead`,
-       t, /*#*/ [exit, /*{*/ [`EAST`, `TOMB`,
+       true, /*#*/ [exit, /*{*/ [`EAST`, `TOMB`,
 		`EXIT`, `LLD1`, `WEST`, `LLD1`] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`BODIE`] /*}*/] /*2*/] /*)*/, lld2_room, 30] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`MGRAI`,
@@ -1113,7 +1113,7 @@ ancient inscription, probably a prayer in a long-forgotten language.
 The north wall is solid granite.  The entrance at the west end of the
 room is through huge marble pillars.`,
        `Temple`,
-       t, /*#*/ [exit, /*{*/ [`WEST`, `MGRAI`, `EAST`, `TEMP2`] /*}*/] /*2*/,
+       true, /*#*/ [exit, /*{*/ [`WEST`, `MGRAI`, `EAST`, `TEMP2`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`PRAYE`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`BELL`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(sobject(`PRAYE`, `prayer`, _(G_readbit,G_sacredbit,G_ovison)),
@@ -1123,7 +1123,7 @@ add_object(sobject(`PRAYE`, `prayer`, _(G_readbit,G_sacredbit,G_ovison)),
 `You are in the east end of a large temple.  In front of you is what
 appears to be an altar.`,
        `Altar`,
-       t, /*#*/ [exit, /*{*/ [`WEST`, `TEMP1`] /*}*/] /*2*/,
+       true, /*#*/ [exit, /*{*/ [`WEST`, `TEMP1`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`BOOK`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`CANDL`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 add_object(/*#*/ [object, /*{*/ [`TRUNK`,
@@ -1156,7 +1156,7 @@ add_object(/*#*/ [object, /*{*/ [`CANDL`,
 /*#*/ [room, /*{*/ [`DAM`,
        ``,
        `Dam`,
-       t, /*#*/ [exit, /*{*/ [`SOUTH`, `CANY1`, `DOWN`, `DOCK`, `EAST`, `CAVE3`, `NORTH`, `LOBBY`] /*}*/] /*2*/,
+       true, /*#*/ [exit, /*{*/ [`SOUTH`, `CANY1`, `DOWN`, `DOCK`, `EAST`, `CAVE3`, `NORTH`, `LOBBY`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`BOLT`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`DAM`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`BUBBL`] /*}*/] /*2*/] /*)*/, dam_room] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`LOBBY`,
@@ -1164,7 +1164,7 @@ add_object(/*#*/ [object, /*{*/ [`CANDL`,
 the dam.  There are exits here to the north and east marked
 'Private', though the doors are open, and an exit to the south.`,
        `Dam Lobby`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`SOUTH`, `DAM`,
 	      `NORTH`, `MAINT`,
 	      `EAST`, `MAINT`] /*}*/] /*2*/,
@@ -1296,7 +1296,7 @@ down.`,
 have been stolen by vandals with exceptional taste.  The vandals
 left through either the north or south exits.`,
        `Gallery`,
-       t, /*#*/ [exit, /*{*/ [`NORTH`, `CHAS2`, `SOUTH`, `STUDI`] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`PAINT`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
+       true, /*#*/ [exit, /*{*/ [`NORTH`, `CHAS2`, `SOUTH`, `STUDI`] /*}*/] /*2*/, /*(*/ [/*#*/ [find_obj, /*{*/ [`PAINT`] /*}*/] /*2*/] /*)*/] /*}*/] /*2*/
 
 
 add_object(/*#*/ [object, /*{*/ [`PAINT`,
@@ -1589,7 +1589,7 @@ river are the White Cliffs which seem to form a giant wall stretching
 from north to south along the east shore of the river as it winds its
 way downstream.`,
        `Dam Base`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`NORTH`, `DAM`, `UP`, `DAM`, `LAUNC`, `RIVR1`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`IBOAT`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`STICK`] /*}*/] /*2*/] /*)*/,
        /*%*/ [false] /*1*/] /*}*/] /*2*/
@@ -1716,7 +1716,7 @@ barrel is the word 'Geronimo!'.`,
 on a rainbow), with a magnificent view of the Falls.  The rainbow
 travels east-west here.  There is an NBC Commissary here.`,
        `Rainbow Room`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`EAST`, `POG`, `WEST`, `FALLS`] /*}*/] /*2*/] /*}*/] /*2*/
 
 G_crain = /*#*/ [cexit, /*{*/ [`RAINBOW`, `RAINB`] /*}*/] /*2*/
@@ -1728,7 +1728,7 @@ Cliffs.  The river canyon opens here and sunlight shines in from
 above. A rainbow crosses over the falls to the west and a narrow path
 continues to the southeast.`,
        `End of Rainbow`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`UP`, /*%*/ [G_crain] /*1*/,`NW`, /*%*/ [G_crain] /*1*/,`WEST`, /*%*/ [G_crain] /*1*/,`SE`, `CLBOT`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`RAINB`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`POT`] /*}*/] /*2*/] /*)*/, /*%*/ [false] /*1*/, 0] /*}*/] /*2*/
 
@@ -1737,7 +1737,7 @@ continues to the southeast.`,
 here.  There is a small stream here, which is the lesser part of the
 runoff of Aragain Falls. To the north is a narrow path.`,
        `Canyon Bottom`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`UP`, `CLMID`, `CLIMB`, `CLMID`, `NORTH`, `POG`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CLMID`,
@@ -1748,7 +1748,7 @@ along a passage which it is impossible to enter.  Below you is the
 canyon bottom.  Above you is more cliff, which still appears
 climbable.`,
        `Rocky Ledge`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`UP`, `CLTOP`, `CLIMB`, `CLTOP`, `DOWN`, `CLBOT`] /*}*/] /*2*/] /*}*/] /*2*/
 
 /*#*/ [room, /*{*/ [`CLTOP`,
@@ -1763,7 +1763,7 @@ top of the Flood Control Dam #3 far to the distant north.  To the
 west and south can be seen an immense forest, stretching for miles
 around.  It is possible to climb down into the canyon from here.`,
        `Canyon View`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`DOWN`, `CLMID`, `CLIMB`, `CLMID`, `SOUTH`, `FORE4`, `WEST`, `FORE5`] /*}*/] /*2*/] /*}*/] /*2*/
 
 add_object(/*#*/ [object, /*{*/ [`POT`,
@@ -1803,7 +1803,7 @@ add_object(/*#*/ [object, /*{*/ [`RBOAT`,
 	  0, 0, 0, 20, 100] /*}*/] /*2*/,
 /*[*/ [`BOAT`] /*]*/, /*[*/ [`PLAST`, `SEAWO`] /*]*/)
 
-find_obj(`RBOAT`)[G_oopen_Q] = t
+find_obj(`RBOAT`)[G_oopen_Q] = true
 find_obj(`RBOAT`)[G_orand] = G_rwaterbit
 
 add_object(/*#*/ [object, /*{*/ [`LABEL`,
@@ -1956,7 +1956,7 @@ those on the other side.  The exit from this room is to the east.`,
 /*#*/ [room, /*{*/ [`SAFE`,
        ``,
        `Dusty Room`,
-       t,
+       true,
        /*#*/ [exit, /*{*/ [`NORTH`, `LEDG4`] /*}*/] /*2*/,
        /*(*/ [/*#*/ [find_obj, /*{*/ [`SSLOT`] /*}*/] /*2*/, /*#*/ [find_obj, /*{*/ [`SAFE`] /*}*/] /*2*/] /*)*/,
        safe_room] /*}*/] /*2*/
@@ -1978,7 +1978,7 @@ Attached to the basket on the outside is a piece of wire.`,
 	  /*%*/ [false] /*1*/, /*%*/ [_(G_vehbit,G_ovison)] /*1*/, 0, 0, 0, 70, 100] /*}*/] /*2*/,
  /*[*/ [`BASKE`] /*]*/, /*[*/ [`WICKE`] /*]*/)
 
-find_obj(`BALLO`)[G_oopen_Q] = t
+find_obj(`BALLO`)[G_oopen_Q] = true
 find_obj(`BALLO`)[G_orand] = G_rairbit
 
  /*#*/ [object, /*{*/ [`RECEP`,
@@ -2070,7 +2070,7 @@ add_object(/*#*/ [object, /*{*/ [`SSLOT`,
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [G_ovison] /*1*/,0, 0, 0, /*%*/ [G_bigfix] /*1*/,10] /*}*/] /*2*/,
  /*[*/ [`SLOT`, `HOLE`] /*]*/)
 
-find_obj(`SSLOT`)[G_oopen_Q] = t
+find_obj(`SSLOT`)[G_oopen_Q] = true
 
 add_object(/*#*/ [object, /*{*/ [`CROWN`,
 	  `Lord Dimwit's crown is here.`,
@@ -2085,7 +2085,7 @@ add_object(/*#*/ [object, /*{*/ [`BRICK`,
 	  /*%*/ [false] /*1*/, /*%*/ [false] /*1*/, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(G_burnbit,G_searchbit,G_ovison,G_takebit)] /*1*/, 0, 0, 0, 9, 2] /*}*/] /*2*/,
  /*[*/ [`BRICK`] /*]*/, /*[*/ [`SQUAR`, `CLAY`] /*]*/)
 
-find_obj(`BRICK`)[G_oopen_Q] = t
+find_obj(`BRICK`)[G_oopen_Q] = true
 
 add_object(/*#*/ [object, /*{*/ [`FUSE`,
 	  `There is a coil of thin shiny wire here.`,
@@ -2515,7 +2515,7 @@ add_object(/*#*/ [object, /*{*/ [`BLICE`,
 	  /*%*/ [false] /*1*/, cake_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(G_readbit,G_ovison,G_takebit,G_foodbit)] /*1*/, 0, 0, 0, 4, 0] /*}*/] /*2*/,
  /*[*/ [`CAKE`, `ICING`] /*]*/, /*[*/ [`BLUE`, `ECCH`] /*]*/)
 
-find_obj(`BUCKE`)[G_oopen_Q] = t[G_orand] = G_rbuckbit
+find_obj(`BUCKE`)[G_oopen_Q] = true[G_orand] = G_rbuckbit
 
 add_object(/*#*/ [object, /*{*/ [`ROBOT`,
 	  `There is a robot here.`,
@@ -2523,7 +2523,7 @@ add_object(/*#*/ [object, /*{*/ [`ROBOT`,
 	  /*%*/ [false] /*1*/, robot_function, /*(*/ [] /*)*/, /*%*/ [false] /*1*/, /*%*/ [_(G_sacredbit,G_vicbit,G_ovison,G_actorbit)] /*1*/, 0, 0, 0, 0, 0] /*}*/] /*2*/,
  /*[*/ [`R2D2`, `C3PO`, `ROBBY`] /*]*/)
 
-find_obj(`ROBOT`)[G_orand] = add_actor(chtype(/*[*/ [find_room(`MAGNE`), /*(*/ [] /*)*/, 0, false, find_obj(`ROBOT`), robot_actor, 3, t, 0] /*]*/, adv))
+find_obj(`ROBOT`)[G_orand] = add_actor(chtype(/*[*/ [find_room(`MAGNE`), /*(*/ [] /*)*/, 0, false, find_obj(`ROBOT`), robot_actor, 3, true, 0] /*]*/, adv))
 
 add_object(/*#*/ [object, /*{*/ [`RBTLB`,
 	  `There is a green piece of paper here.`,
@@ -2912,5 +2912,5 @@ add_buzz(`RUN`, `GO`, `PROCE`)
 
 setg(robot_actions, _X,/*[*/ [G_walk_X_words,G_take_X_words,G_drop_X_words,G_put_X_words,    G_jump_X_words,G_push_X_words,G_throw_X_words,G_turn_X_words] /*]*/)
 
-G_player = add_actor(chtype(/*[*/ [G_whous_X_rooms,			  /*(*/ [] /*)*/, 0, false, find_obj(`#####`), false, 0, t, 0] /*]*/,
+G_player = add_actor(chtype(/*[*/ [G_whous_X_rooms,			  /*(*/ [] /*)*/, 0, false, find_obj(`#####`), false, 0, true, 0] /*]*/,
 			 adv))
