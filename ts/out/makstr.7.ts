@@ -6,8 +6,7 @@ export function cevent(tick: FIX, app: (APPLICABLE | OFFSET), flg: (ATOM | FALSE
           ;
         } else if(t) {
           return atm = insert(name,obl);
-        }
-        return false;
+        };
     } else {
       return atm = name;
     };
@@ -29,8 +28,7 @@ export function cexit(flid: (ATOM | STRING), rmid: (ATOM | STRING), str?: (FALSE
     let atm: (ATOM | FALSE) = null;
     if(type_Q(flid,atom)) {
       return flid = spname(flid);
-    }
-    return false;
+    };
 return atm = (lookup(flid,flag[oblist]) || insert(flid,flag[oblist]));
 return setg(atm,flag);
 return chtype(vector(atm,find_room(rmid), str,funct), cexit);
@@ -150,16 +148,14 @@ export function vsynonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]
       return mapf(false, function(x) {
             return setg(add_word(x), val);
           }, n2);
-    }
-    return false;
+    };
 if(atm = lookup(n1,G_actions)) {
       val = /*,*/ [atm] /*1*/;
       return mapf(false, function(x) {
             return setg((lookup(x,G_actions) || insert(x,G_actions)),
 					    val);
           }, n2);
-    }
-    return false;
+    };
   }
 
 `STUFF FOR ADDING TO VOCABULARY, ADDING TO LISTS (OF DEMONS, FOR EXAMPLE).`
@@ -205,8 +201,7 @@ export function synonym(n1: STRING, _tuple_, n2: TUPLE(/*[*/ [REST, STRING] /*]*
       return mapf(false, function(x) {
             return setg(add_word(x), val);
           }, n2);
-    }
-    return false;
+    };
   }
 
 export function add_abbrev(x: STRING, y: STRING) {
@@ -219,8 +214,7 @@ export function add_demon(x: HACK) {
             if(haction(y[1]) === haction(x)) {
               y[1] = x;
               return mapleave(t);
-            }
-            return false;
+            };
           },
 	  G_demons)) {
       ;
@@ -239,8 +233,7 @@ export function add_actor(adv: ADV) {
 	       function(x: ADV) {
             if(aobj(x) === aobj(adv)) {
               return mapleave(t);
-            }
-            return false;
+            };
           },
 	       actors)) {
       ;

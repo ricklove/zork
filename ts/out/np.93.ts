@@ -91,8 +91,7 @@ define(sparse, sparout, /*(*/ [sv, vb,
             return t;
           } else if((vb || tell(`I don't know the word `, 0, x))) {
             return mapleave(false);
-          }
-          return false;
+          };
         },
      sv),
    if(val) {
@@ -154,8 +153,7 @@ export function syn_match(pv: VECTOR) {
                       return drive = syn;
                     };
                   return false;
-                }
-                return false;
+                };
             } else if(!o1) {
               if(sdriver(syn)) {
                   return dforce = syn;
@@ -163,8 +161,7 @@ export function syn_match(pv: VECTOR) {
                   return drive = syn;
                 };
               return false;
-            }
-            return false;
+            };
           },
       vdecl(action))) {
       ;
@@ -180,8 +177,7 @@ export function syn_match(pv: VECTOR) {
         };
     } else if(tell(`I can't make sense out of that.`, 0)) {
       return false;
-    }
-    return false;
+    };
   }
 
 export function take_it_or_leave_it(syn: SYNTAX, pv: VECTOR) {
@@ -196,8 +192,7 @@ export function take_it_or_leave_it(syn: SYNTAX, pv: VECTOR) {
         };
 if(vtrnn(varg = syn1(syn), G_vrbit)) {
       return take_it(obj,pv,varg);
-    }
-    return false;
+    };
 return pv[3] = obj = if(type_Q(pv2,object)) {
           return pv2;
         } else if(type_Q(pv2,phrase)) {
@@ -205,8 +200,7 @@ return pv[3] = obj = if(type_Q(pv2,object)) {
         };
 if(vtrnn(varg = syn2(syn), G_vrbit)) {
       return take_it(obj,pv,varg);
-    }
-    return false;
+    };
   }
 
 export function take_it(obj: OBJECT, vec: VECTOR, vrb: VARG) {
@@ -218,8 +212,7 @@ export function take_it(obj: OBJECT, vec: VECTOR, vrb: VARG) {
       take(t);
       vec[1] = sav1;
       return vec[2] = sav2;
-    }
-    return false;
+    };
   }
 
 export function orfeo(syn: VARG, objs: VECTOR) {
@@ -230,8 +223,7 @@ export function orfeo(syn: VARG, objs: VECTOR) {
       return false;
     } else if(slot1 = oslot1(orph)) {
       return (syn_equal(syn,slot1) && objs[1] = slot1);
-    }
-    return false;
+    };
   }
 
 export function ortell(varg: VARG, action: ACTION, gwim: (FALSE | OBJECT)) {
@@ -268,8 +260,7 @@ export function gwim_slot(fx: FIX, varg: VARG, action: ACTION, objs: VECTOR) {
     if(obj = gwim(vbit(varg), varg,action)) {
       objs[fx] = obj;
       return obj;
-    }
-    return false;
+    };
   }
 
 `GET WHAT I MEAN - GWIM
@@ -292,8 +283,7 @@ if(robj) {
               ;
             } else if(pv[2] = savobj) {
               return false;
-            }
-            return false;
+            };
         } else if((nobj || !empty_Q(nobj))) {
           return G_nefals;
         } else {
@@ -340,8 +330,7 @@ export function make_action(`TUPLE`, specs) {`AUX`, vv, sum, /*(*/ [prep, false]
                 return syn[G_sdriver] = t;
               } else if(itm === flip) {
                 return syn[G_sflip] = t;
-              }
-              return false;
+              };
             },
 		   sp);
 return (syn1(syn) || syn[G_syn1] = G_evarg);
@@ -374,12 +363,10 @@ export function eparse(pv: VECTOR(/*[*/ [REST, STRING] /*]*/), vb: (ATOM | FALSE
           return orphan(false);
         } else if((vb || tell(``))) {
           return false;
-        }
-        return false;
+        };
     } else if((vb || tell(``))) {
       return false;
-    }
-    return false;
+    };
   }
 
 G_scrstr = rest(istring(5), 5)
@@ -419,8 +406,7 @@ define(get_object, get_obj, /*(*/ [objnam, adj,
           return oobj = obj;
         } else if(!empty_Q(obj)) {
           return return(G_nefals,get_obj);
-        }
-        return false;
+        };
     },
 	if(obj = search_list(objnam,aobjs(G_winner), adj)) {
       if(oobj) {
@@ -457,8 +443,7 @@ define(search_list, sl, /*(*/ [objnam, slist, adj, `OPTIONAL`, /*(*/ [first_Q, t
             } else {
               return oobj = obj;
             };
-        }
-        return false;
+        };
 if((ovis_Q(obj) && (oopen_Q(obj) || transparent_Q(obj)) && (first_Q || trnn(obj,G_searchbit)))) {
           if(nobj = search_list(objnam,ocontents(obj), adj,false)) {
               if(oobj) {
@@ -468,10 +453,8 @@ if((ovis_Q(obj) && (oopen_Q(obj) || transparent_Q(obj)) && (first_Q || trnn(obj,
                 };
             } else if(nobj === nefals) {
               return return(nefals,sl);
-            }
-            return false;
-        }
-        return false;
+            };
+        };
       },
     slist),
    oobj)
@@ -489,8 +472,7 @@ define(fwim, dwim, /*(*/ [bit, objs, no_take, `AUX`, /*(*/ [nobj, false] /*)*/] 
               return return(G_nefals,dwim);
             };
           return nobj = x;
-        }
-        return false;
+        };
 if((ovis_Q(x) && oopen_Q(x))) {
           return mapf(false,
 		    function(x: OBJECT) {
@@ -500,12 +482,10 @@ if((ovis_Q(x) && oopen_Q(x))) {
                     } else {
                       return nobj = x;
                     };
-                }
-                return false;
+                };
               },
 		    ocontents(x));
-        }
-        return false;
+        };
       },
     objs),
    nobj)

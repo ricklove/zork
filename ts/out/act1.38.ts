@@ -8,8 +8,7 @@ export function blo(y) {
       alltypes()[6] = alltypes()[7];
       substitute(2, 1);
       return off(bh);
-    }
-    return false;
+    };
   }
 
 export let G_ff: STRING;
@@ -17,10 +16,8 @@ export function ilo(body: STRING, type: FIX, nm1: STRING, nm2: STRING, m1?: STRI
     if(type === _400000000000_) {
       if(((body[`<FLUSH-ME>`] && !G_winners[G_xunm]) || (G_winners[nm1] && body[G_ff]))) {
           return eval(parse(body));
-        }
-        return false;
-    }
-    return false;
+        };
+    };
 return dismiss(t);
   }
 
@@ -37,8 +34,7 @@ is a small window which is `, 1, if(G_kitchen_window_X_flag) {
           } else {
             return `slightly ajar.`;
           });
-    }
-    return false;
+    };
   }
 	   
 // HACK THE KITCHEN WINDOW
@@ -58,8 +54,7 @@ export function open_close(verb: VERB, atm: ATOM, stropn: STRING, strcls: STRING
           return tell(pick_one(G_dummy));
         } else if(tell(stropn)) {
           return setg(atm,t);
-        }
-        return false;
+        };
     } else if(verb === G_close_X_words) {
       if(/*,*/ [atm] /*1*/) {
           tell(strcls);
@@ -68,8 +63,7 @@ export function open_close(verb: VERB, atm: ATOM, stropn: STRING, strcls: STRING
         } else {
           return tell(pick_one(G_dummy));
         };
-    }
-    return false;
+    };
   }
 
 // KITCHEN -- CHECK THE WINDOW
@@ -105,13 +99,11 @@ export function leaf_pile() {
           drop_object(l);
           return jigs_up(`The sight of someone carrying a pile of burning leaves so offends
 the neighbors that they come over and put you out.`);
-        }
-        return false;
+        };
     } else if(pv[1] === G_move_X_words) {
       l[G_orand] = 1;
       return tell(`Done.`);
-    }
-    return false;
+    };
   }
 
 psetg(resdesc,
@@ -131,8 +123,7 @@ export function glacier_room() {
         } else {
           return tell(G_gladesc);
         };
-    }
-    return false;
+    };
   }
 
 export function trophy_case() {
@@ -140,8 +131,7 @@ export function trophy_case() {
     if(prsact === G_take_X_words) {
       return tell(`The trophy case is securely fastened to the wall (perhaps to foil any
 attempt by robbers to remove it).`);
-    }
-    return false;
+    };
   }
 	  
 export function glacier() {
@@ -166,12 +156,10 @@ you in the dark.`));
           return G_glacier_flag_X_flag = t;
         } else if(tell(`The glacier is unmoved by your ridiculous attempt.`)) {
           return false;
-        }
-        return false;
+        };
     } else if(vname(prsact) === melt_X_words) {
       return tell(`How exactly are you going to melt this glacier?`);
-    }
-    return false;
+    };
   }
 
 psetg(yuks,
@@ -193,8 +181,7 @@ a reservoir.`);
         };
       return tell(`There is a western exit, a passageway south, and a steep pathway
 climbing up along the edge of a cliff.`, 1);
-    }
-    return false;
+    };
   }
 
 export function reservoir_north() {
@@ -208,8 +195,7 @@ a reservoir.`);
           return tell(`You are at the north end of a large reservoir.`);
         };
       return tell(`There is a tunnel leaving the room to the north.`, 1);
-    }
-    return false;
+    };
   }
 
 // LIVING-ROOM -- FUNCTION TO ENTER THE DUNGEON FROM THE HOUSE
@@ -243,8 +229,7 @@ nailed shut, `, 0);
       return t;
     } else if((tc = find_obj(`TCASE`) && (prsact === G_take_X_words || (prsact === G_put_X_words && prsvec[3] === tc)))) {
       return G_winner[G_ascore] = _(G_raw_score,				       mapf(G__,G_otval,ocontents(tc)));
-    }
-    return false;
+    };
   }
 
 export function trap_door() {
@@ -267,16 +252,14 @@ into darkness.`);
             };
           cond_close(down_X_directions, rm);
           return t;
-        }
-        return false;
+        };
     } else if(rm === find_room(`CELLA`)) {
       if(prsact === G_open_X_words) {
           return tell(`The door is locked from above.`);
         } else {
           return tell(pick_one(G_dummy));
         };
-    }
-    return false;
+    };
   }
 
 export function look_under() {
@@ -285,8 +268,7 @@ export function look_under() {
       return tell(`Underneath the rug is a closed trap door.`);
     } else if((obj === find_obj(`LEAVE`) && rvars(find_room(`CLEAR`)) !== 1)) {
       return tell(`Underneath the pile of leaves is a grating.`);
-    }
-    return false;
+    };
   }
 
 export function repent() {
@@ -306,14 +288,12 @@ and south.`);
           return tell(`There is an open grating, descending into darkness.`, 1);
         } else if(!0_Q(rv)) {
           return tell(`There is a grating securely fastened into the ground.`, 1);
-        }
-        return false;
+        };
     } else if((0_Q(rv) && ((prsact === G_burn_X_words && !0_Q(orand(leaves))) || prsact === G_take_X_words || prsact === G_move_X_words) && G_prsvec[2] === leaves)) {
       tell(`A grating appears on the ground.`);
       tro(grate,G_ovison);
       return rm[G_rvars] = 1;
-    }
-    return false;
+    };
   }
 
 // CELLAR--FIRST ROOM IN BASEMENT.
@@ -330,8 +310,7 @@ steep metal ramp which is unclimbable.`);
       G_trap_door_X_flag = false;
       door[G_otouch_Q] = t;
       return tell(`The trap door crashes shut, and you hear someone barring it.`, 1);
-    }
-    return false;
+    };
   }
 
 `STUDIO:  LET PEOPLE UP THE CHIMNEY IF THEY DON'T HAVE MUCH STUFF`
@@ -348,8 +327,7 @@ export function chimney_function() {
       return false;
     } else if(t) {
       return G_light_load_X_flag = false;
-    }
-    return false;
+    };
   }
 
 // OBJECT FUNCTIONS
@@ -369,12 +347,10 @@ it again.`);
 With the rug moved, the dusty cover of a closed trap-door appears.`)) {
           tro(find_obj(`DOOR`), G_ovison);
           return obj[G_orand] = t;
-        }
-        return false;
+        };
     } else if(prsa === G_take_X_words) {
       return tell(`The rug is extremely heavy and cannot be carried.`);
-    }
-    return false;
+    };
   }
 
 export function rusty_knife() {
@@ -391,8 +367,7 @@ of blinding blue light.`));
 overmastering will.  Slowly, your hand turns, until the rusty blade
 is an inch from your neck.  The knife seems to sing as it savagely
 slits your throat.`);
-    }
-    return false;
+    };
   }
 
 export function skeleton() {
@@ -413,8 +388,7 @@ return mapf(false,
 if(!empty_Q(l)) {
       putrest(rest(l,_(l.length, 1)), robjs(lld));
       return lld[G_robjs] = l;
-    }
-    return false;
+    };
   }
 
 export function troll() {
@@ -436,8 +410,7 @@ axe.`));
           tell(`The troll, disarmed, cowers in terror, pleading for his life in
 the guttural tongue of the trolls.`);
           return t;
-        }
-        return false;
+        };
     } else if(pa === G_dead__X_X_words) {
       return G_troll_flag_X_flag = t;
     } else if(pa === G_out__X_X_words) {
@@ -466,14 +439,12 @@ not look pleased.`);
           return tro(t,G_fightbit);
         } else if(tell(`and not having the most discriminating tastes, gleefully eats it.`)) {
           return remove_object(pv[2]);
-        }
-        return false;
+        };
     } else if((pa === G_take_X_words || pa === G_move_X_words)) {
       return tell(`The troll spits in your face, saying \"Better luck next time.\`);
     } else if(vname(pa) === mung_X_words) {
       return tell(`The troll laughs at your puny gesture.`);
-    }
-    return false;
+    };
   }
 
 `MIRROR ROOM HACKERY`
@@ -487,10 +458,8 @@ on the other three sides of the room.`);
       if(G_mirror_mung_X_flag) {
           return tell(`Unfortunately, you have managed to destroy it by your reckless
 actions.`, 1);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 G_mirror_mung_X_flag = false
@@ -534,10 +503,8 @@ export function mirror_mirror() {
         } else if(G_mirror_mung_X_flag = t) {
           return tell(`You have broken the mirror.  I hope you have a seven years supply of
 good luck handy.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   } 
 
 export function carousel_room() {
@@ -548,10 +515,8 @@ export function carousel_room() {
       tell(`You are in a circular room with passages off in eight directions.`, 1);
       if(!G_carousel_flip_X_flag) {
           return tell(`Your compass needle spins wildly, and you can't get your bearings.`, 1);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function carousel_exit() {
@@ -560,8 +525,7 @@ export function carousel_exit() {
       return false;
     } else if(tell(`Unfortunately, it is impossible to tell directions in here.`, 1)) {
       return carousel_out();
-    }
-    return false;
+    };
   }
 
 export function carousel_out() {
@@ -580,10 +544,8 @@ center of the room there is a white marble pedestal.`);
       if(G_dome_flag_X_flag) {
           return tell(`A large piece of rope descends from the railing above, ending some
 five feet above your head.`, 1);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function dome_room() {
@@ -595,12 +557,10 @@ wooden railing which circles the dome.`);
       if(G_dome_flag_X_flag) {
           return tell(`Hanging down from the railing is a rope which ends about ten feet
 from the floor below.`, 1);
-        }
-        return false;
+        };
     } else if(vname(prsact) === jump_X_words) {
       return jigs_up(`I'm afraid that the leap you attempted has done you in.`);
-    }
-    return false;
+    };
   }
 
 export function coffin_cure() {
@@ -608,8 +568,7 @@ export function coffin_cure() {
       return G_egypt_flag_X_flag = false;
     } else if(else) {
       return G_egypt_flag_X_flag = t;
-    }
-    return false;
+    };
 return false;
   }
 
@@ -628,8 +587,7 @@ hideous fate, can be heard.`);
       if(!G_lld_flag_X_flag) {
           return tell(`The way through the gate is barred by evil spirits, who jeer at your
 attempts to pass.`);
-        }
-        return false;
+        };
     } else if(vname(pa) === exorc_X_words) {
       if(memq(find_obj(`GHOST`), robjs(G_here))) {
           if((memq(find_obj(`BELL`), wobj) && memq(find_obj(`BOOK`), wobj) && memq(cand = find_obj(`CANDL`), wobj) && olight_Q(cand) > 0)) {
@@ -646,8 +604,7 @@ power, flee through the walls.`);
 cavern: \"Begone, chomper!\"  Apparently, the voice thinks you
 are an evil spirit, and dismisses you from the realm of the living.`);
         };
-    }
-    return false;
+    };
   }
 
 export function lld2_room() {
@@ -666,8 +623,7 @@ appears to be your head, at the end of a long pole.`;
           } else {
             return ``;
           });
-    }
-    return false;
+    };
   }
 
 export function ghost_function() {
@@ -678,8 +634,7 @@ export function ghost_function() {
       return false;
     } else if(pv[2] === g) {
       return tell(`You seem unable to affect these spirits.`);
-    }
-    return false;
+    };
   }
 
 export function maze_11() {
@@ -694,8 +649,7 @@ in the immediate vicinity.`);
         } else {
           return tell(`Above you is a grating locked with a skull-and-crossbones lock.`);
         };
-    }
-    return false;
+    };
   }
 
 export function grat1_function() {
@@ -758,12 +712,10 @@ suddenly vanish.`);
 	   function(x: OBJECT) {
             if((x !== chali && x !== hobj)) {
               return trz(x,G_ovison);
-            }
-            return false;
+            };
           },
 	   robjs(here));
-    }
-    return false;
+    };
   }
 
 export function treas() {
@@ -775,8 +727,7 @@ export function treas() {
       return room_desc();
     } else if(t) {
       return tell(`Nothing happens.`);
-    }
-    return false;
+    };
   }
 
 export function prayer() {
@@ -808,10 +759,8 @@ lake.`, 1);
 panel. Above the bolt is a small green plastic bubble.`, 1);
       if(G_gate_flag_X_flag) {
           return tell(`The green bubble is glowing.`, 1);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function bolt_function() {
@@ -829,17 +778,14 @@ export function bolt_function() {
                 } else if(G_low_tide_X_flag = t) {
                   tell(`The sluice gates open and water pours through the dam.`);
                   return tro(trunk,G_ovison);
-                }
-                return false;
+                };
             } else {
               return tell(`The bolt won't turn with your best effort.`);
             };
         } else if(type_Q(prsi,object)) {
           return tell(`The bolt won't turn using the `, 1, odesc2(prsi), `.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 psetg(drownings,
@@ -876,10 +822,8 @@ export function maint_room() {
 `The room is full of water and cannot be entered.`);
           clock_int(G_mntin,0);
           return (here_Q && jigs_up(`I'm afraid you have done drowned yourself.`));
-        }
-        return false;
-    }
-    return false;
+        };
+    };
 if(vname(prsact) === push_X_words) {
       if(prso === find_obj(`BLBUT`)) {
           if(0_Q(hack = rvars(G_here))) {
@@ -905,10 +849,8 @@ pipe.)`);
         } else if(prso === find_obj(`YBUTT`)) {
           G_gate_flag_X_flag = t;
           return tell(`Click.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function leak_function() {
@@ -926,18 +868,15 @@ leak in the dam.`);
             } else {
               return with_tell(prsi);
             };
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function tube_function() {
     let prsvec: VECTOR(/*[*/ [3, ANY] /*]*/) = G_prsvec;
     if((prsvec[1] === G_put_X_words && prsvec[3] === find_obj(`TUBE`))) {
       return tell(`The tube refuses to accept anything.`);
-    }
-    return false;
+    };
   }
 
 export function with_tell(obj: OBJECT) {
@@ -951,8 +890,7 @@ export function cave2_room() {
     let c: VERB = null;
     if(vname(prsact) === walk_in_X_words) {
       return (memq(c = find_obj(`CANDL`), aobjs(G_winner)) && prob(50) && 1_Q(olight_Q(c)) && clock_disable(bar = foo = orand(c)[2]) && c[G_olight_Q] = _1 && tell(`The cave is very windy at the moment and your candles have blown out.`));
-    }
-    return false;
+    };
   }
 
 export function bottle_function() {
@@ -967,10 +905,8 @@ export function bottle_function() {
         } else if(memq(G_prsvec[2], robjs(G_here))) {
           G_here[G_robjs] = splice_out(G_prsvec[2], robjs(G_here));
           return tell(`A brilliant maneuver destroys the bottle.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 	
 export function fill() {
@@ -1010,8 +946,7 @@ export function water_function(rem?: (ATOM | FALSE)) {
               ;
             } else if(av[G_ocontents] = /*(*/ [w,_X,ocontents(av)] /*)*/) {
               return w[G_ocan] = av;
-            }
-            return false;
+            };
         } else if((can && can !== b)) {
           tell(`The water leaks out of the `, 1, odesc2(can),
 			    ` and evaporates immediately.`);
@@ -1030,8 +965,7 @@ export function water_function(rem?: (ATOM | FALSE)) {
               b[G_ocontents] = /*(*/ [w] /*)*/;
               w[G_ocan] = b;
               return tell(`The bottle is now full of water.`);
-            }
-            return false;
+            };
         } else if((ocan(w) === b && prsact === G_take_X_words && !can)) {
           prsvec[2] = b;
           take(t);
@@ -1050,13 +984,11 @@ export function water_function(rem?: (ATOM | FALSE)) {
 			    `.`);
         } else if(tell(`The water spills to the floor and evaporates immediately.`)) {
           return remove_object(w);
-        }
-        return false;
+        };
     } else if(prsact === G_throw_X_words) {
       tell(`The water splashes on the walls, and evaporates immediately.`);
       return remove_object(w);
-    }
-    return false;
+    };
   }
 
 export function rope_function() {
@@ -1070,8 +1002,7 @@ export function rope_function() {
           return tell(`There is nothing it can be tied to.`);
         } else if(vname(prsact) === untie_X_words) {
           return tell(`It is not tied to anything.`);
-        }
-        return false;
+        };
     } else if((vname(prsact) === tie_X_words && G_prsvec[3] === find_obj(`RAILI`))) {
       if(G_dome_flag_X_flag) {
           return tell(`The rope is already attached.`);
@@ -1081,10 +1012,8 @@ export function rope_function() {
           if(!oroom(rope)) {
               win[G_aobjs] = splice_out(rope,aobjs(win));
               return insert_object(rope,droom);
-            }
-            return false;
-        }
-        return false;
+            };
+        };
     } else if(vname(prsact) === untie_X_words) {
       if(G_dome_flag_X_flag) {
           G_dome_flag_X_flag = false;
@@ -1119,8 +1048,7 @@ export function cyclops() {
           tro(cyc,G_fightbit);
           rm[G_rvars] = abs(rvars(rm));
           return t;
-        }
-        return false;
+        };
     } else if(abs(count) > 5) {
       return jigs_up(`The cyclops, tired of all of your games and trickery, eats you.
 The cyclops says 'Mmm.  Just like mom used to make 'em.'`);
@@ -1132,8 +1060,7 @@ The cyclops says 'Mmm.  Just like mom used to make 'em.'`);
 a drink.  Perhaps I could drink the blood of that thing'.  From the
 gleam in his eye, it could be surmised that you are 'that thing'.`);
               return rm[G_rvars] = min(_1, _(count));
-            }
-            return false;
+            };
         } else if(prsob1 === drink) {
           if(count < 0) {
               remove_object(drink);
@@ -1145,15 +1072,13 @@ put in that drink, anyway?).`);
             } else if(tell(`The cyclops apparently was not thirsty at the time and refuses your
 generous gesture.`)) {
               return false;
-            }
-            return false;
+            };
         } else if(prsob1 === garlic) {
           tell(`The cyclops may be hungry, but there is a limit.`);
           return rm[G_rvars] = aos_sos(count);
         } else if(tell(`The cyclops is not so stupid as to eat THAT!`)) {
           return rm[G_rvars] = aos_sos(count);
-        }
-        return false;
+        };
     } else if((prsact === G_first_Q_X_words || prsact === G_fight_X_words)) {
       return false;
     } else if((rm[G_rvars] = aos_sos(count) && false)) {
@@ -1169,8 +1094,7 @@ they do not exactly lower your insurance premiums, either.`);
       return tell(`The cyclops is rather heavy and doesn't take kindly to being grabbed.`);
     } else if(prsact === G_tie_X_words) {
       return tell(`You cannot tie the cyclops, although he is fit to be tied.`);
-    }
-    return false;
+    };
   }
 
 export function cyclops_room() {
@@ -1204,8 +1128,7 @@ His enflamed tongue protrudes from his man-sized mouth.`);
         } else {
           return (0_Q(vars) || tell(G_cyclomad[abs(vars)]));
         };
-    }
-    return false;
+    };
   }
 
 psetg(cyclomad,
@@ -1252,8 +1175,7 @@ export function echo_room() {
                 if(ovis_Q(obj)) {
                   tro(obj,G_echo_room_bit);
                   return trz(obj,G_ovison);
-                }
-                return false;
+                };
               },
 		   robjs(rm)),
 	        repeat(/*(*/ [/*(*/ [prsvec, G_prsvec] /*)*/, random_action] /*)*/,
@@ -1272,8 +1194,7 @@ export function echo_room() {
                           if(trnn(x,G_echo_room_bit)) {
                             trz(x,G_echo_room_bit);
                             return tro(x,G_ovison);
-                          }
-                          return false;
+                          };
                         },
 				       robjs(rm));
                   };
@@ -1290,13 +1211,11 @@ export function echo_room() {
                           if(trnn(x,G_echo_room_bit)) {
                             trz(x,G_echo_room_bit);
                             return tro(x,G_ovison);
-                          }
-                          return false;
+                          };
                         },
 					   robjs(rm));
                     return return(t);
-                  }
-                  return false;
+                  };
               })),
 		prog(/*(*/ [] /*)*/,
 		      goto(find_room(`CHAS3`)),
@@ -1306,8 +1225,7 @@ export function echo_room() {
                 if(trnn(x,G_echo_room_bit)) {
                   trz(x,G_echo_room_bit);
                   return tro(x,G_ovison);
-                }
-                return false;
+                };
               },
 			    robjs(rm))));
     };
@@ -1320,8 +1238,7 @@ export function leaper() {
     if(m = memq(down_X_words, exits)) {
       if((type_Q(m[2], nexit) || (type_Q(m[2], cexit) && !cxflag(m[2])))) {
           return jigs_up(pick_one(G_jumploss));
-        }
-        return false;
+        };
     } else {
       return tell(pick_one(G_wheeeee));
     };
@@ -1470,8 +1387,7 @@ export function eat() {
           return tell(`How can I drink that?`);
         } else if(tell(`Thank you very much.  It really hit the spot.`)) {
           return G_winner[G_aobjs] = splice_out(prsobj,aobjs);
-        }
-        return false;
+        };
     } else if((drink_Q = drinkable_Q(prsobj) && nobj = ocan(prsobj) && memq(nobj,aobjs))) {
       if(oopen_Q(nobj)) {
           return tell(`Thank you very much.  I was rather thirsty (from all this talking,
@@ -1535,8 +1451,7 @@ define(robber, robber, /*(*/ [hack,
               if(otval(x) > 0) {
                 hack[G_hobjs] = hh = splice_out(x,hh);
                 return insert_object(x,rm);
-              }
-              return false;
+              };
             },
 	     hh);
       } else if(rm === wroom) {
@@ -1554,8 +1469,7 @@ walls here.  He does not speak, but it is clear from his aspect that
 the bag will be taken only over his dead body.`);
                     hack[G_hflag] = t;
                     return return(t, robber);
-                  }
-                  return false;
+                  };
               } else if((here_Q && fighting_Q(hobj) && if(!winning_Q(hobj,win)) {
                       tell(`Your opponent, determining discretion to be the better part of
 valor, decides to terminate this little contretemps.  With a rueful
@@ -1604,10 +1518,8 @@ left disgusted.`);
                   } else if(t) {
                     return tell(`A 'lean and hungry' gentleman just wandered through.  Finding
 nothing of value, he left disgruntled.`);
-                  }
-                  return false;
-              }
-              return false;
+                  };
+              };
           } else if(t) {
             if(here_Q) {
                 // Here, already announced.;
@@ -1630,10 +1542,8 @@ not have noticed that he robbed you blind first.`);
                   } else {
                     return return(t, robber);
                   };
-              }
-              return false;
-          }
-          return false;
+              };
+          };
       } else if((memq(hobj,robjs(rm)) && // Leave if victim left && snarf_object(hobj,still) && remove_object(hobj) && here_Q = false)) {
         ;
       } else if((oroom(still) === rm && snarf_object(hobj,still) && false)) {
@@ -1654,8 +1564,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\`);
                         return hack[G_hobjs] = hh = /*(*/ [x,_X,hh] /*)*/;
                       };
                     return mapleave();
-                  }
-                  return false;
+                  };
                 },
 	       robjs(rm));
           } else if(mapf(false,
@@ -1671,16 +1580,13 @@ this fine `,		      3, odesc2(x), ` is doing here.\`);
 					   ` vanished.`);
                       };
                     return mapleave();
-                  }
-                  return false;
+                  };
                 },
 	       robjs(rm))) {
             if(memq(find_obj(`ROPE`), hh)) {
                 return G_dome_flag_X_flag = false;
-              }
-              return false;
-          }
-          return false;
+              };
+          };
       },
      if(once = !once) {
         // Move to next room, and hack.;
@@ -1706,8 +1612,7 @@ this fine `,		      3, odesc2(x), ` is doing here.\`);
             insert_object(x,rm);
             return (rm === wroom && tell(`The robber, rummaging through his bag, dropped a few items he found
 valueless.`));
-          }
-          return false;
+          };
         },
 	      hh)))
 
@@ -1747,8 +1652,7 @@ retrieves his stilletto.`);
 neighborhood, the thief slips off into the shadows.`);
           tro(chali,G_takebit);
           return remove_object(t);
-        }
-        return false;
+        };
     } else if(prsact === G_dead__X_X_words) {
       if(!empty_Q(hobjs(dem))) {
           tell(`  His booty remains.`);
@@ -1773,10 +1677,8 @@ return tro(x,G_echo_room_bit);
 treasures reappear:`, 2);
                         };
                       return tell(`  A `, 2, odesc2(x));
-                    }
-                    return false;
-                }
-                return false;
+                    };
+                };
               },
 		  robjs(here));
         };
@@ -1822,8 +1724,7 @@ flees`,		 1,
 would be a fine addition to the collection in his bag.  He does seem
 angered by your attempt.`);
           return tro(t,G_fightbit);
-        }
-        return false;
+        };
     } else if(((prsact === G_throw_X_words || prsact === G_give_X_words) && type_Q(prsobj,object) && prsobj !== hobj(dem))) {
       if(ocapac(t) < 0) {
           t[G_ocapac] = _(ocapac(t));
@@ -1844,12 +1745,10 @@ stupid as you are?`);
           dem[G_hobjs] = /*(*/ [prsobj,_X,hobjs(dem)] /*)*/;
           return tell(`The thief places the `, 1, odesc2(prsobj), ` in his bag and thanks
 you politely.`);
-        }
-        return false;
+        };
     } else if((prsact && vname(prsact) === take_X_words)) {
       return tell(`Once you got him, what would you do with him?`);
-    }
-    return false;
+    };
   }
 
 export function chalice() {
@@ -1861,10 +1760,8 @@ export function chalice() {
       if((!ocan(ch) && oroom(ch) === tr = find_room(`TREAS`) && oroom(t = find_obj(`THIEF`)) === tr && fighting_Q(t) && haction(G_robber_demon))) {
           return tell(`Realizing just in time that you'd be stabbed in the back if you
 attempted to take the chalice, you return to the fray.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 
@@ -1926,8 +1823,7 @@ export function ddoor_function() {
       return tell(`You cannot burn this door.`);
     } else if(pa === G_mung_X_words) {
       return tell(pick_one(G_doormungs));
-    }
-    return false;
+    };
   }
 
  export function inflater() {
@@ -1965,8 +1861,7 @@ export function locker() {
             if((type_Q(x,cexit) && cxflag(x) === key_flag_X_flag)) {
               x[G_cxstr] = `The grate is locked.`;
               return mapleave();
-            }
-            return false;
+            };
           },
 		 rexits(G_here));
     } else {
@@ -1987,8 +1882,7 @@ export function unlocker() {
                 if((type_Q(x,cexit) && cxflag(x) === key_flag_X_flag)) {
                   x[G_cxstr] = `The grate is closed.`;
                   return mapleave();
-                }
-                return false;
+                };
               },
 			rexits(r));
         } else {
@@ -2014,8 +1908,7 @@ export function killer() {
       return tell(odesc2(prsi), 1, ` is suicidal.`);
     } else if(else) {
       return blow(G_player,prso,orand(prsi), t, false);
-    }
-    return false;
+    };
   }
 
 export function attacker() {
@@ -2033,8 +1926,7 @@ export function attacker() {
       return tell(odesc2(prsi), 1, ` is suicidal.`);
     } else if(else) {
       return blow(G_player,prso,orand(prsi), t, false);
-    }
-    return false;
+    };
   }
 
 export function swinger() {
@@ -2054,8 +1946,7 @@ export function hack_hack(obj: OBJECT, str: STRING, obj2?: (FALSE | STRING)) {
       return tell(obj2,1, pick_one(G_ho_hum));
     } else if(else) {
       return tell(str,1, odesc2(obj), pick_one(G_ho_hum));
-    }
-    return false;
+    };
   }
 
 psetg(ho_hum,
@@ -2078,12 +1969,10 @@ export function munger() {
             } else if(t) {
               tell(`Munging a `, 0, odesc2(prso), ` with a `);
               return tell(odesc2(prsw), 1, ` is quite self-destructive.`);
-            }
-            return false;
+            };
         } else if(t) {
           return tell(`Munging a `, 1, odesc2(prso), ` with your bare hands is suicidal.`);
-        }
-        return false;
+        };
     } else {
       return hack_hack(prso,`Munging a `);
     };
@@ -2183,8 +2072,7 @@ export function body_function() {
         };
       return jigs_up(`The voice of the guardian of the dungeon booms out from the darkness 
 'Your disrespect costs you your life!' and places your head on a pole.`);
-    }
-    return false;
+    };
   }
 
 export function mumbler() {
@@ -2217,8 +2105,7 @@ export function painting() {
       art[G_odesc1] = `There is a worthless piece of canvas here.`;
       return tell(`Congratulations!  Unlike the other vandals, who merely stole the
 artist's masterpieces, you have destroyed one.`);
-    }
-    return false;
+    };
   }
 
 psetg(dimmer, `The lamp appears to be getting dimmer.`)
@@ -2245,8 +2132,7 @@ export function lantern() {
     } else if(verb === G_turn_off_X_words) {
       clock_disable(foo = orand(rlamp)[2]);
       return false;
-    }
-    return false;
+    };
   }
 
 export function sword_glow(dem: HACK) {
@@ -2263,8 +2149,7 @@ export function sword_glow(dem: HACK) {
                   return (infested_Q(e) && mapleave(t));
                 } else if(type_Q(e,cexit)) {
                   return (infested_Q(e[2]) && mapleave(t));
-                }
-                return false;
+                };
               },
 		       rexits(here))) {
           return ng = 1;
@@ -2293,8 +2178,7 @@ export function sword() {
             return sword_glow;
           };
       return false;
-    }
-    return false;
+    };
   }
 
 export function infested_Q(r: ROOM) {
@@ -2304,8 +2188,7 @@ export function infested_Q(r: ROOM) {
 		  function(v: OBJECT) {
           if(r === oroom(v)) {
             return mapleave(t);
-          }
-          return false;
+          };
         },
 		  villains));
   }
@@ -2329,8 +2212,7 @@ export function match_function() {
           match[G_olight_Q] = 1;
           clock_int(G_matin,2);
           return tell(`One of the matches starts to burn.`);
-        }
-        return false;
+        };
     } else if((prsa === G_turn_off_X_words && 1_Q(olight_Q(match)))) {
       tell(`The match is out.`);
       trz(match,G_flamebit);
@@ -2341,8 +2223,7 @@ export function match_function() {
       tell(`The match has gone out.`);
       trz(match,G_flamebit);
       return match[G_olight_Q] = 0;
-    }
-    return false;
+    };
   }
 
 export function candles() {
@@ -2374,8 +2255,7 @@ burn.`);
             } else if(c[G_olight_Q] = 1) {
               tell(`The candles are lighted.`);
               return clock_enable(foo[2]);
-            }
-            return false;
+            };
         } else if(w === find_obj(`TORCH`)) {
           if(1_Q(olight_Q(c))) {
               return tell(`You realize, just in time, that the candles are already lighted.`);
@@ -2385,8 +2265,7 @@ burn.`);
                 } else {
                   return winner[G_aobjs] = splice_out(c,ao);
                 };
-            }
-            return false;
+            };
         } else {
           return tell(`You have to light them with something that's burning, you know.`);
         };
@@ -2400,8 +2279,7 @@ burn.`);
         };
     } else if(prsact === G_c_int_X_words) {
       return light_int(c,G_cndin,G_candle_ticks,G_candle_tells);
-    }
-    return false;
+    };
   }
 
 export function black_book() {
@@ -2416,8 +2294,7 @@ export function black_book() {
         };
       return jigs_up(`A booming voice says 'Wrong, cretin!' and you notice that you have
 turned into a pile of dust.`);
-    }
-    return false;
+    };
   }
 
 export function light_int(obj: OBJECT, cev, tick: VECTOR(/*[*/ [REST, FIX] /*]*/), tell: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
@@ -2433,8 +2310,7 @@ if(0_Q(tim)) {
       return obj[G_olight_Q] = 0;
     } else if((!oroom(obj) || oroom(obj) === G_here)) {
       return tell(tell[cnt]);
-    }
-    return false;
+    };
   }
 
 export function hackable_Q(obj: OBJECT, rm: ROOM) {

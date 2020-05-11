@@ -9,8 +9,7 @@ immediately.`);
       trz(bottl,G_ovison);
       bottl[G_osize] = 0;
       return t;
-    }
-    return false;
+    };
   }
 
 export function head_function() {
@@ -32,8 +31,7 @@ prevent this.`);
 your most grievous sin, we shall deprive you of all your valuables,
 and of your life.`);
       return t;
-    }
-    return false;
+    };
   }
 
 G_then = 0
@@ -66,10 +64,8 @@ export function bucket(arg?: (FALSE | ATOM)) {
           tell(`The bucket descends and comes to a stop.`);
           G_bucket_top_X_flag = false;
           return pass_the_bucket(find_room(`BWELL`), pv,buck);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function pass_the_bucket(r: ROOM, pv: VECTOR, b: OBJECT) {
@@ -80,8 +76,7 @@ return insert_object(b,r);
 if(avehicle(G_winner) === b) {
       goto(r);
       return room_info(t);
-    }
-    return false;
+    };
 return pv[2] = pvs;
   }
 
@@ -102,8 +97,7 @@ return x[G_oroom] = r;
           },
 		 robjs(here));
       return goto(r);
-    }
-    return false;
+    };
   }
 
 export function cake_function() {
@@ -158,8 +152,7 @@ return x[G_osize] = _(osize(x), 64);
             } else {
               return jigs_up(G_crushed);
             };
-        }
-        return false;
+        };
     } else if((pa === G_throw_X_words && po === oice && spname(rid(here))[`ALI`])) {
       kill_obj(po,G_winner);
       return iceboom();
@@ -167,8 +160,7 @@ return x[G_osize] = _(osize(x), 64);
       remove_object(pi);
       tell(`The pool of water evaporates, revealing a tin of rare spices.`);
       return tro(find_obj(`SAFFR`), G_ovison);
-    }
-    return false;
+    };
   }
 
 export function flask_function() {
@@ -183,8 +175,7 @@ export function flask_function() {
       f = pv[2];
       trz(f,G_ovison);
       return jigs_up(G_vapors);
-    }
-    return false;
+    };
   }
 
 psetg(vapors,
@@ -220,8 +211,7 @@ There are exits to the east and the southeast.`);
           return jigs_up(G_spindizzy);
         } else if(tell(`As you enter, your compass starts spinning wildly.`)) {
           return false;
-        }
-        return false;
+        };
     } else if(pa === G_walk_X_words) {
       if((G_carousel_flip_X_flag && G_winner === G_player)) {
           tell(`You cannot get your bearings...`);
@@ -230,10 +220,8 @@ There are exits to the east and the southeast.`);
         } else if(m = memq(chtype(po,atom), rest(rexits(here), 12))) {
           goto(cxroom(foo = m[2]));
           return room_info();
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function cmach_room() {
@@ -248,8 +236,7 @@ above these buttons are instructions written in EBCDIC.  A large sign
 in English above all the buttons says
 		'DANGER -- HIGH VOLTAGE '.
 There are exits to the west and the south.`);
-    }
-    return false;
+    };
   }
 	  
 G_carousel_zoom_X_flag = false
@@ -269,8 +256,7 @@ export function buttons() {
               return tell(`Nothing seems to happen.`);
             } else if(G_carousel_zoom_X_flag = t) {
               return tell(`The whirring increases in intensity slightly.`);
-            }
-            return false;
+            };
         } else if(po === find_obj(`RNBUT`)) {
           if(G_carousel_zoom_X_flag) {
               G_carousel_zoom_X_flag = false;
@@ -284,12 +270,9 @@ export function buttons() {
 				   robjs(find_room(`CAROU`)))) {
               tell(`A dull thump is heard in the distance.`);
               return trc(i,G_ovison);
-            }
-            return false;
-        }
-        return false;
-    }
-    return false;
+            };
+        };
+    };
   }
 
 psetg(spindizzy,
@@ -324,8 +307,7 @@ into the room.`);
           mung_room(find_room(`CAGER`),
 				 `You are stopped by a cloud of poisonous gas.`);
           return jigs_up(G_poison);
-        }
-        return false;
+        };
     } else if(fl) {
       trz(find_obj(`SPHER`), G_ovison);
       jigs_up(`As the robot reaches for the sphere, an iron cage falls from the
@@ -340,8 +322,7 @@ crushes the sphere beneath him as he falls to the floor.`);
       mung_room(find_room(`CAGER`),
 			  `You are stopped by a cloud of poisonous gas.`);
       return jigs_up(G_poison);
-    }
-    return false;
+    };
   }
 
 psetg(poison, `Time passes...and you die from some obscure poisoning.`)
@@ -349,8 +330,7 @@ psetg(poison, `Time passes...and you die from some obscure poisoning.`)
 export function caged_room() {
     if(G_cage_solve_X_flag) {
       return G_here = find_room(`CAGER`);
-    }
-    return false;
+    };
   }
 
 export let G_sphere_clock: CEVENT;export let G_robot_actions: UVECTOR(/*[*/ [REST, VERB] /*]*/);
@@ -411,8 +391,7 @@ floor in a pile of garbage, which disintegrates before your eyes.`);
           } else {
             return po;
           });
-    }
-    return false;
+    };
   } 
 
 export function knock() {`AUX`, /*(*/ [prso, G_prsvec[2]] /*)*/

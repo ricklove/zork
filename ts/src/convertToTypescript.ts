@@ -585,7 +585,9 @@ export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn:
                     }
                 }
 
-                const defaultReturn = `${isLast && options?.shouldReturn ? `\n${indent}return false` : ''}`;
+                // TS will return undefined by default which is good enough for a falsy value
+                //const defaultReturn = `${isLast && options?.shouldReturn ? `\n${indent}return false` : ''}`;
+                const defaultReturn = ``;
 
                 if (isFirst) {
                     return `if(${cond}) {\n${indent1}${body}\n${indent}}${defaultReturn}`;

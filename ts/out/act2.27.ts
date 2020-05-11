@@ -17,10 +17,8 @@ gas.  I would have thought twice about carrying a `, 1, odesc2(o), `in here.`);
 		    fweep(7),
 		    jigs_up(`   BOOOOOOOOOOOM      `)),
 		   jigs_up(`   BOOOOOOOOOOOM      `));
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }    
 
 export function bats_room() {
@@ -31,8 +29,7 @@ export function bats_room() {
       tell(`You are in a small room which has only one door, to the east.`);
       return (memq(find_obj(`GARLI`), aobjs(G_winner)) && tell(`In the corner of the room on the ceiling is a large vampire bat who
 is obviously deranged and holding his nose.`));
-    }
-    return false;
+    };
   }
 
 export function fly_me() {
@@ -86,8 +83,7 @@ export function dumbwaiter() {
           insert_object(fb,bot);
           tell(`The basket is raised to the top of the shaft.`);
           return G_cage_top_X_flag = t;
-        }
-        return false;
+        };
     } else if(prsact === G_lower_X_words) {
       if(!ct) {
           return tell(pick_one(dummy));
@@ -98,16 +94,14 @@ export function dumbwaiter() {
           tell(`The basket is lowered to the bottom of the shaft.`);
           G_cage_top_X_flag = false;
           return t;
-        }
-        return false;
+        };
     } else if(prsact === G_take_X_words) {
       if(((ct && here === top) || (!ct && here === bot))) {
           return tell(`The cage is securely fastened to the iron chain.`);
         } else {
           return tell(`I can't see that here.`);
         };
-    }
-    return false;
+    };
   }
 
 export function machine_room() {
@@ -125,8 +119,7 @@ the front of the machine is a large lid.`);
         } else {
           return tell(`The lid on the machine is closed.`);
         };
-    }
-    return false;
+    };
   }
 
 export function machine_function() {
@@ -139,8 +132,7 @@ export function machine_function() {
               return tell(pick_one(dummy));
             } else if(tell(`The lid opens.`)) {
               return mach[G_oopen_Q] = t;
-            }
-            return false;
+            };
         } else if(vname(prsact) === close_X_words) {
           if(oopen_Q(mach)) {
               tell(`The lid closes.`);
@@ -152,8 +144,7 @@ export function machine_function() {
         } else {
           return prsact === G_take_X_words;
         };
-    }
-    return false;
+    };
   }
 
 export function mswitch_function() {
@@ -180,13 +171,11 @@ excitement abates.`)) {
                 } else {
                   return t;
                 };
-            }
-            return false;
+            };
         } else {
           return tell(`It seems that a `, 1, odesc2(imp), ` won't do.`);
         };
-    }
-    return false;
+    };
   }
 
 export function gunk_function() {
@@ -197,8 +186,7 @@ export function gunk_function() {
       g[G_ocan] = false;
       return tell(`The slag turns out to be rather insubstantial, and crumbles into dust
 at your touch.  It must not have been very valuable.`);
-    }
-    return false;
+    };
   }
 
 G_score_max = _(G_score_max,G_light_shaft = 10)
@@ -212,8 +200,7 @@ export function no_objs() {
 if((G_here === find_room(`BSHAF`) && lit_Q(G_here))) {
       score_upd(G_light_shaft);
       return G_light_shaft = 0;
-    }
-    return false;
+    };
   }
 export let G_light_shaft: FIX;
 
@@ -236,8 +223,7 @@ walkable (I think the giveaway was the stairs and bannister).`);
               return G_rainbow_X_flag = t;
             } else if(tell(`The rainbow seems to have become somewhat run-of-the-mill.`)) {
               return G_rainbow_X_flag = false;
-            }
-            return false;
+            };
         } else if(G_here === find_room(`RAINB`)) {
           G_rainbow_X_flag = false;
           return jigs_up(`The structural integrity of the rainbow seems to have left it,
@@ -245,8 +231,7 @@ leaving you about 450 feet in the air, supported by water vapor.`);
         } else {
           return tell(`Very good.`);
         };
-    }
-    return false;
+    };
   }
 
 export function falls_room() {
@@ -260,8 +245,7 @@ There is a man-sized barrel here which you could fit into.`);
         } else {
           return tell(`A beautiful rainbow can be seen over the falls and to the east.`);
         };
-    }
-    return false;
+    };
   }
 
 export function digger() {
@@ -290,13 +274,11 @@ export function dboat_function() {
               return take_object(find_obj(`IBOAT`));
             } else if(remove_object(find_obj(`DBOAT`))) {
               return insert_object(find_obj(`IBOAT`), here);
-            }
-            return false;
+            };
         } else {
           return with_tell(prsi);
         };
-    }
-    return false;
+    };
   }
 
 export function rboat_function(arg?: (FALSE | ATOM)) {
@@ -312,8 +294,7 @@ export function rboat_function(arg?: (FALSE | ATOM)) {
           remove_object(rboat);
           insert_object(find_obj(`DBOAT`), here);
           return t;
-        }
-        return false;
+        };
     } else if(prsact === G_disem_X_words) {
       return (spname(rid(here))[`RIVR`] && jigs_up(`Unfortunately, that leaves you in the water, where you drown.`));
     } else if(vname(prsact) === defla_X_words) {
@@ -325,10 +306,8 @@ export function rboat_function(arg?: (FALSE | ATOM)) {
           G_deflate_X_flag = t;
           remove_object(rboat);
           return insert_object(iboat,here);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function iboat_function() {
@@ -347,8 +326,7 @@ export function iboat_function() {
         } else {
           return tell(`I don't think you have enough lung-power to inflate this boat.`);
         };
-    }
-    return false;
+    };
   }
 
 export function over_falls() {
@@ -378,8 +356,7 @@ return insert_object(x,here);
 		 ocontents(prsobj));
       prsobj[G_ocontents] = /*(*/ [] /*)*/;
       return tell(`All of the objects spill onto the floor.`);
-    }
-    return false;
+    };
   }
 
 export function rivr4_room() {
@@ -405,8 +382,7 @@ export function beach_room() {
         } else {
           return tell(G_bdigs[cnt]);
         };
-    }
-    return false;
+    };
   }
 
 export function tcave_room() {
@@ -425,8 +401,7 @@ export function tcave_room() {
         } else {
           return tell(`There's nothing to dig into here.`);
         };
-    }
-    return false;
+    };
   }
 	   
 psetg(cdigs,
@@ -479,8 +454,7 @@ to tell the tale.`);
       return tell(`There is no grue here, but I'm sure there is at least one lurking
 in the darkness nearby.  I wouldn't let my light go out if I were
 you!`);
-    }
-    return false;
+    };
   }
 
 G_btie_X_flag = false
@@ -508,8 +482,7 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
             };
           if(G_btie_X_flag) {
               return tell(`The balloon is tied to the hook.`);
-            }
-            return false;
+            };
         };
       return return(false, ballact);
     },
@@ -523,12 +496,10 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
                 } else if(else) {
                   (!rtrnn(m[2], G_rmungbit) && G_bloc = m[2]);
                   return return(false, ballact);
-                }
-                return false;
+                };
             } else if(tell(`I'm afraid you can't control the balloon in this way.`)) {
               return return(t, ballact);
-            }
-            return false;
+            };
         } else if((prsa === G_take_X_words && G_binf_X_flag === prso)) {
           tell(`You don't really want to hold a burning `,
 		     	    1,
@@ -563,10 +534,8 @@ define(balloon, ballact, /*(*/ [`OPTIONAL`, /*(*/ [arg, false] /*)*/,
               G_blab_X_flag = t;
               G_binf_X_flag = prso;
               return clock_int(G_bint,3);
-            }
-            return false;
-        }
-        return false;
+            };
+        };
     } else if((prsa === G_disem_X_words && rtrnn(G_here,G_rlandbit))) {
       if(G_binf_X_flag) {
           return clock_int(G_bint,3);
@@ -612,8 +581,7 @@ causing you a 500 foot drop.  Did you get your flight insurance?`);
             } else {
               return put_balloon(ball,bl,s,`ascends.`);
             };
-        }
-        return false;
+        };
     } else if(m = spname(rid(bl))[`LEDG`]) {
       substruc(`VAIR`, 0, 4, s);
       s[5] = m[5];
@@ -624,8 +592,7 @@ causing you a 500 foot drop.  Did you get your flight insurance?`);
         } else if(clock_int(G_vlgin,10)) {
           return put_balloon(ball,bl,s,`floats away.  It seems to be ascending,
 due to its light load.`);
-        }
-        return false;
+        };
     } else if(in_Q) {
       goto(G_bloc = find_room(`VAIR1`));
       tell(`The balloon rises slowly from the ground.`);
@@ -663,8 +630,7 @@ if(m = spname(rid(bl))[`VAIR`]) {
                   G_winner[G_avehicle] = false;
                   clock_disable(foo = clock_int(G_bint,0));
                   return tell(`You have landed, but the balloon did not survive.`);
-                }
-                return false;
+                };
             } else {
               return put_balloon(ball,bl,`VLBOT`, `lands.`);
             };
@@ -677,10 +643,8 @@ if(m = spname(rid(bl))[`VAIR`]) {
             } else {
               return put_balloon(ball,bl,s,`descends.`);
             };
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function wire_function() {
@@ -694,8 +658,7 @@ export function wire_function() {
           G_btie_X_flag = t;
           clock_disable(bint);
           return tell(`The balloon is fastened to the hook.`);
-        }
-        return false;
+        };
     } else if((prsa === G_untie_X_words && prso === find_obj(`BROPE`))) {
       if(G_btie_X_flag) {
           clock_enable(bint = clock_int(G_bint,3));
@@ -704,8 +667,7 @@ export function wire_function() {
         } else {
           return tell(`The wire is not tied to anything.`);
         };
-    }
-    return false;
+    };
   }
 
 export function burnup() {
@@ -734,8 +696,7 @@ out of the front of it.`;
             return `
 On the far wall is a rusty box, whose door has been blown off.`;
           });
-    }
-    return false;
+    };
   }
 
 export function safe_function() {
@@ -756,8 +717,7 @@ export function safe_function() {
         };
     } else if(prsa === G_blast_X_words) {
       return tell(`What do you expect, BOOM?`);
-    }
-    return false;
+    };
   }
 
 psetg(brick_boom, 
@@ -768,8 +728,7 @@ export function brick_function() {
     let prsa: VERB = G_prsvec[1];
     if(prsa === G_burn_X_words) {
       return jigs_up(G_brick_boom);
-    }
-    return false;
+    };
   }
 
 export function fuse_function() {
@@ -803,8 +762,7 @@ export function fuse_function() {
                   trz(find_obj(`SSLOT`), G_ovison);
                   find_obj(`SAFE`)[G_oopen_Q] = t;
                   return G_safe_flag_X_flag = t;
-                }
-                return false;
+                };
             } else if(tell(`There is an explosion nearby.`)) {
               clock_int(G_safin,5);
               G_munged_room = brick_room;
@@ -812,8 +770,7 @@ export function fuse_function() {
 				   function(x) {
                     if(can_take_Q(x)) {
                       return trz(x,G_ovison);
-                    }
-                    return false;
+                    };
                   },
 				   robjs(brick_room));
               if(brick_room === find_room(`LROOM`)) {
@@ -823,16 +780,12 @@ export function fuse_function() {
                       },
 					  ocontents(find_obj(`TCASE`)));
                   return find_obj(`TCASE`)[G_ocontents] = /*(*/ [] /*)*/;
-                }
-                return false;
-            }
-            return false;
+                };
+            };
         } else if((!oroom(fuse) || G_here === oroom(fuse))) {
           return tell(`The wire rapidly burns into nothingness.`);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function safe_mung() {
@@ -849,8 +802,7 @@ into a pancake.`;
 that, you hear an ominous rumbling, as if one of the rooms in the
 dungeon had collapsed.`)) {
       return (rm === find_room(`SAFE`) && clock_int(G_ledin,8));
-    }
-    return false;
+    };
 return mung_room((oroom(find_obj(`BRICK`)) || G_here),
 		   `The way is blocked by debris from an explosion.`);
   }
@@ -877,8 +829,7 @@ ground.  Fatally.`);
         } else if(t) {
           return jigs_up(`The force of the explosion has caused the ledge to collapse
 belatedly.`);
-        }
-        return false;
+        };
     } else {
       return tell(`The ledge collapses, giving you a narrow escape.`);
     };
@@ -898,8 +849,7 @@ to the bottom.`, 1,
           } else {
             return ` There is a small door to the south.`;
           });
-    }
-    return false;
+    };
   }
 
 export function blast() {
@@ -946,6 +896,5 @@ appointment!' He disappears, leaving you alone on the ledge.`);
     } else if(tell(`The gnome appears increasingly nervous.`)) {
       (G_gnome_flag_X_flag || clock_int(G_gnoin,5));
       return G_gnome_flag_X_flag = t;
-    }
-    return false;
+    };
   }

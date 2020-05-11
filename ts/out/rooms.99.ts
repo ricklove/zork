@@ -21,8 +21,7 @@ if(muddle > 100) {
     } else if(sname(``)) {
       G_dev = `DSK`;
       return G_snm = `MADMAN`;
-    }
-    return false;
+    };
 return int_level(100000);
 if(save(fn) == `SAVED`) {
       int_level(0);
@@ -54,8 +53,7 @@ As he grabs you by the neck all grows dim about you.`) && quit()));
         };
       bh = on(`BLOCKED`, G_blo,100);
       return start(`WHOUS`, st);
-    }
-    return false;
+    };
   }
 
 
@@ -90,8 +88,7 @@ if((G_divert_cnt > G_divert_max || G_divert_amt > G_divert_lmt)) {
         };
       bloat(_(amt,G_divert_inc));
       return // Get storage desired plus extra increment;
-    }
-    return false;
+    };
   }
 
 G_divert_hand = handler(G_divert_int = event(`DIVERT-AGC`, 1000),
@@ -117,8 +114,7 @@ export function xuname() {
           return mapstop();
         } else if(t) {
           return x;
-        }
-        return false;
+        };
       },
 	gxuname());
   }
@@ -159,10 +155,8 @@ export function its_get_name(uname: STRING) {
           return G_user_name = str;
         } else if(else) {
           return G_user_name = nm;
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 export function unspeakable_code() {
@@ -225,8 +219,7 @@ if(loser_Q) {
       return princ(`You have been playing DUNGEON for `);
     } else if(t) {
       return princ(`Played for `);
-    }
-    return false;
+    };
 return (mins = _(time,3600) > 0 && prin1(mins) && princ(` hour`) && (1_Q(mins) || princ(`s`)) && princ(`, `));
 if(mins = mod(_(time,60), 60) > 0) {
       prin1(mins);
@@ -235,8 +228,7 @@ if(mins = mod(_(time,60), 60) > 0) {
           return princ(`s`);
         };
       return princ(`, and `);
-    }
-    return false;
+    };
 return prin1(mins = mod(time,60));
 return princ(` second`);
 return (1_Q(mins) || princ(`s`));
@@ -270,8 +262,7 @@ if(((!gassigned_Q(xunm) || G_winners[G_xunm]) && pc())) {
                     return /*#*/ [lose, _37_] /*2*/;
                   } else if(t) {
                     return /*#*/ [lose, _000000000012_] /*2*/;
-                  }
-                  return false;
+                  };
               } else if(t) {
                 return /*#*/ [lose, _000000000015_] /*2*/;
               };
@@ -288,10 +279,8 @@ Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`)) {
                 return print(x);
               }, zork);
           return finish(/*#*/ [false, /*(*/ [`. Error.`] /*)*/] /*2*/);
-        }
-        return false;
-    }
-    return false;
+        };
+    };
   }
 
 psetg(winners, () => /*[*/ [`BKD`, `TAA`, `MARC`, `PDL`, `MDL`] /*]*/)
@@ -339,8 +328,7 @@ return back(G_inchan)[1][6] = if(G_muddle > 100) {
             return /*#*/ [lose, _37_] /*2*/;
           } else if(t) {
             return /*#*/ [lose, _000000000012_] /*2*/;
-          }
-          return false;
+          };
       } else if(t) {
         return /*#*/ [lose, _000000000015_] /*2*/;
       };
@@ -364,8 +352,7 @@ export function make_script() {
       top(G_outchan)[1] = /*(*/ [ch] /*)*/;
       G_script_channel = ch;
       return G_my_script = t;
-    }
-    return false;
+    };
   }
 
 export function flush_me() {
@@ -392,8 +379,7 @@ export function do_script() {
     let muddle: FIX = G_muddle;
     if(G_my_script) {
       return do_unscript(false);
-    }
-    return false;
+    };
 if(G_script_channel) {
       return tell(`You are already scripting.`);
     } else if(((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch) && ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))) && ch = open(`PRINT`, `ZORK`, `SCRIPT`, `DSK`, unm))) {
@@ -404,12 +390,10 @@ if(G_script_channel) {
           return tell(`Scripting to `, 1, G_xunm,`;ZORK SCRIPT`);
         } else if(t) {
           return tell(`Scripting to <`, 1, G_xunm,`>ZORK.SCRIPT`);
-        }
-        return false;
+        };
     } else if(t) {
       return tell(`I can't open the script channel.`);
-    }
-    return false;
+    };
   }
 
 export function do_unscript(verbose?: (ATOM | FALSE)) {
@@ -448,15 +432,13 @@ export function do_save() {
               return finish(chtype(() => /*(*/ [`. Saved.`] /*)*/, false));
             } else if(tell(`Save failed.`)) {
               return tell(ch[1], 1, ` `, ch[2]);
-            }
-            return false;
+            };
         } else {
           return tell(`Can't open channel for save.`);
         };
     } else if(t) {
       return tell(`Can't open channel for save.`);
-    }
-    return false;
+    };
   }
 
 export function do_restore() {
@@ -470,8 +452,7 @@ export function do_restore() {
       return str = string(`DSK:`, G_xunm,`;ZORK SAVE`);
     } else if(t) {
       return str = string(`DSK:<`, G_xunm,`>ZORK.SAVE`);
-    }
-    return false;
+    };
 return prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	 /*#*/ [decl, /*(*/ [/*(*/ [foo] /*)*/, (atom || false), /*(*/ [snm] /*)*/, special(string)] /*)*/] /*2*/,
 	 if(ch = open(`READB`, str)) {
@@ -490,8 +471,7 @@ return prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
                         return quit();
                       };
                     return quit();
-                  }
-                  return false;
+                  };
               } else if(1_Q(_(nowd,thend))) {
                 if(g__Q(_(_(chtype(getbits(now,bits(18, 0)), fix),
 						_(24, 7200)),
@@ -500,8 +480,7 @@ return prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
                     ;
                   } else if(tell(`It's too soon.`)) {
                     return quit();
-                  }
-                  return false;
+                  };
               };
             G_intime = now;
             return tell(`Restored.`);
@@ -533,8 +512,7 @@ define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/
         function(x: ATOM) {
             if((gassigned_Q(x) && /*,*/ [x] /*1*/ === val)) {
               return return(x,act);
-            }
-            return false;
+            };
           },
 	x);
       },
@@ -621,8 +599,7 @@ return prog(/*(*/ [] /*)*/,
                 if(long_desc_obj(x)) {
                     (av && tell(` [in the room]`, 0));
                     return crlf();
-                  }
-                  return false;
+                  };
               };
             if(trnn(x,G_actorbit)) {
                 return invent(orand(x));
@@ -636,10 +613,8 @@ return prog(/*(*/ [] /*)*/,
                     } else {
                       return t;
                     });
-              }
-              return false;
-          }
-          return false;
+              };
+          };
         },
       robjs(rm)),
      if((ra = raction(rm) && !full)) {
@@ -674,12 +649,10 @@ define(print_cont, print_c, /*(*/ [obj, av, winobj, indent, `OPTIONAL`, /*(*/ [c
               ;
             } else if((ovis_Q(y) && describable_Q(y) && !empty_Q(odesc2(y)))) {
               return tell(indent,1, ` A `, odesc2(y));
-            }
-            return false;
+            };
 if(see_inside_Q(y)) {
               return print_cont(y,av,winobj,back(indent));
-            }
-            return false;
+            };
           },
 	     ocontents(obj));
     })
@@ -744,10 +717,8 @@ return repeat(/*(*/ [vval, cv] /*)*/,
             if((vval && random_action = vfcn(cv) && apply_random(random_action))) {
                 if(undefined) {
                     return (random_action = raction(rm = G_here) && apply_random(random_action));
-                  }
-                  return false;
-              }
-              return false;
+                  };
+              };
           } else if(ivec) {
             if(G_tell_flag) {
                 return tell(`Please input entire command again.`);
@@ -765,8 +736,7 @@ return repeat(/*(*/ [vval, cv] /*)*/,
 		 function(x: HACK) {
           if(random_action = haction(x)) {
             return apply_random(random_action,x);
-          }
-          return false;
+          };
         },
 		 G_demons),
 	   (G_parse_won && av = avehicle(winner) && random_action = oaction(av) && apply_random(random_action,read_out)),
@@ -778,8 +748,7 @@ export function score_obj(obj: OBJECT) {
     if(temp = ofval(obj) > 0) {
       score_upd(temp);
       return obj[G_ofval] = 0;
-    }
-    return false;
+    };
   }
 
 export function score_room(rm: ROOM) {
@@ -787,8 +756,7 @@ export function score_room(rm: ROOM) {
     if(temp = rval(rm) > 0) {
       score_upd(temp);
       return rm[G_rval] = 0;
-    }
-    return false;
+    };
   }
 
 export function score_upd(num: FIX) {
@@ -943,8 +911,7 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
             if(/*,*/ [x] /*1*/) {
               princ(`/`, ch);
               return princ(y,ch);
-            }
-            return false;
+            };
           },
 		G_flag_names,		G_short_names),
 	  mapf(false,
@@ -952,8 +919,7 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
             if(0_Q(/*,*/ [x] /*1*/)) {
               princ(`/`, ch);
               return princ(y,ch);
-            }
-            return false;
+            };
           },
 		G_val_names,		G_short_val_names),
 	  crlf(ch),
@@ -1021,8 +987,7 @@ if(0_Q(chtype(wd,fix))) {
         };
       prin1(hr,ch);
       return princ(a_p,ch);
-    }
-    return false;
+    };
   }
 
 psetg(months,
@@ -1090,8 +1055,7 @@ everything.`);
                           lc[G_ocontents] = splice_out(lamp,ocontents(lc));
                           lamp[G_oroom] = false;
                           return lamp[G_ocan] = false;
-                        }
-                        return false;
+                        };
                     } else if(memq(lamp,aobjs)) {
                       return winner[G_aobjs] = /*(*/ [lamp,_X,splice_out(lamp,aobjs)] /*)*/;
                     };
@@ -1121,8 +1085,7 @@ everything.`);
 			    aobjs,			    G_rooms);
                   winner[G_aobjs] = /*(*/ [] /*)*/;
                   return t;
-                }
-                return false;
+                };
             }),
      prog(/*(*/ [] /*)*/,
        record(score(false), G_moves,G_deaths,false, G_here),
@@ -1194,8 +1157,7 @@ export function invent(win?: ADV) {
               return print_contents(ocontents(x));
             };
           return crlf();
-        }
-        return false;
+        };
       },
     aobjs(win));
 return (any || win !== G_player || tell(`You are empty handed.`));
@@ -1211,8 +1173,7 @@ if(y.length > 2) {
           return princ(`, `);
         } else if(y.length === 2) {
           return princ(`, and `);
-        }
-        return false;
+        };
       },
 	olst);
   }
@@ -1235,16 +1196,13 @@ if((ovis_Q(x) && (oopen_Q(x) || transparent_Q(x)))) {
 			       function(x: OBJECT) {
                 if(olight_Q(x) > 0) {
                   return return(t, lfcn);
-                }
-                return false;
+                };
               },
 			       ocontents(x));
-        }
-        return false;
+        };
 if((trnn(x,G_actorbit) && lfcn(aobjs(y = orand(x))))) {
           return mapleave(t);
-        }
-        return false;
+        };
       },
 	      l))
 
@@ -1290,8 +1248,7 @@ export function walk() {
             };
         } else if(t) {
           return tell(leavings);
-        }
-        return false;
+        };
     } else {
       return tell(`There is no way to go in that direction.`);
     };
@@ -1318,12 +1275,10 @@ export function take(take_Q?: (ATOM | FALSE)) {
                 return getter_Q = t;
               } else if(tell(`I can't reach that.`)) {
                 return return(false);
-              }
-              return false;
+              };
           } else if(tell(`I can't see one here.`)) {
             return return(false);
-          }
-          return false;
+          };
       },
 	 if(obj === avehicle(win)) {
         tell(`You are in it, loser!`);
@@ -1415,8 +1370,7 @@ export function putter(objact?: (ATOM | FALSE)) {
             return crock[G_ocan] = false;
           } else if(tell(`I can't reach the `, 1, odesc2(crock))) {
             return return(false);
-          }
-          return false;
+          };
       },
 	      pv[1] = G_put_X_words,
 	      pv[2] = crock,
@@ -1485,8 +1439,7 @@ export function dropper() {
             return tell(`Dropped.`);
           } else if(vname(vec[1]) === throw_X_words) {
             return tell(`Thrown.`);
-          }
-          return false;
+          };
       } else {
         return tell(`You are not carrying that.`);
       });
@@ -1514,10 +1467,8 @@ export function frob_lots(uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/)) {
               apply_random(ra);
               if(here !== aroom(winner)) {
                   return mapleave();
-                }
-                return false;
-            }
-            return false;
+                };
+            };
           },
 	   uv);
     } else if((pa === G_drop_X_words || pa === G_put_X_words)) {
@@ -1529,12 +1480,10 @@ return tell(odesc2(x), 0, `:
 return apply_random(ra);
 if(here !== aroom(winner)) {
               return mapleave();
-            }
-            return false;
+            };
           },
 	   uv);
-    }
-    return false;
+    };
   }
 
 psetg(losstr, `I can't do everything, because I ran out of room.`)
@@ -1558,8 +1507,7 @@ export function everything() {
                 };
               suv = back(suv);
               return suv[1] = x;
-            }
-            return false;
+            };
           },
 	   robjs(here));
     } else if(pa === G_drop_X_words) {
@@ -1581,8 +1529,7 @@ return suv[1] = x;
                   };
                 suv = back(suv);
                 return suv[1] = x;
-              }
-              return false;
+              };
             },
 	     robjs(here)),
 	   mapf(false,
@@ -1590,14 +1537,12 @@ return suv[1] = x;
               if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              }
-              return false;
+              };
 return suv = back(suv);
 return suv[1] = x;
             },
 	     aobjs(winner)));
-    }
-    return false;
+    };
 if(empty_Q(suv)) {
       return tell(`I couldn't find anything.`);
     } else {
@@ -1624,8 +1569,7 @@ export function valuables() {
                 };
               suv = back(suv);
               return suv[1] = x;
-            }
-            return false;
+            };
           },
 	   robjs(here));
     } else if(pa === G_drop_X_words) {
@@ -1634,8 +1578,7 @@ export function valuables() {
             if(!0_Q(otval(x))) {
               suv = back(suv);
               return suv[1] = x;
-            }
-            return false;
+            };
           },
 	   aobjs(winner));
     } else if(pa === G_put_X_words) {
@@ -1646,13 +1589,11 @@ export function valuables() {
               if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              }
-              return false;
+              };
 if((ovis_Q(x) && !0_Q(otval(x)))) {
                 suv = back(suv);
                 return suv[1] = x;
-              }
-              return false;
+              };
             },
 	     robjs(here)),
 	   mapf(false,
@@ -1660,17 +1601,14 @@ if((ovis_Q(x) && !0_Q(otval(x)))) {
               if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              }
-              return false;
+              };
 if(!0_Q(otval(x))) {
                 suv = back(suv);
                 return suv[1] = x;
-              }
-              return false;
+              };
             },
 	     aobjs(winner)));
-    }
-    return false;
+    };
 if(empty_Q(suv)) {
       return tell(`I couldn't find any valuables.`);
     } else {
@@ -1698,10 +1636,8 @@ define(opener, open_act, /*(*/ [`AUX`, /*(*/ [pv, G_prsvec] /*)*/, /*(*/ [prso, 
               print_contents(ocontents(prso));
               princ(_X__);
               return crlf();
-            }
-            return false;
-        }
-        return false;
+            };
+        };
     } else {
       return tell(`The `, 1, odesc2(prso), ` cannot be opened.`);
     })
@@ -1718,8 +1654,7 @@ define(closer, close_act, /*(*/ [`AUX`, /*(*/ [pv, G_prsvec] /*)*/, /*(*/ [prso,
           return tell(`Closed.`);
         } else if(t) {
           return tell(`It is already closed.`);
-        }
-        return false;
+        };
     } else {
       return tell(`You cannot close that.`);
     })
@@ -1739,8 +1674,7 @@ export function find() {
 		    `.`);
       if(!G_tell_flag) {
           return tell(`I can't see that here.`);
-        }
-        return false;
+        };
     } else {
       return tell(`I don't know what that is.`);
     };
@@ -1760,12 +1694,10 @@ export function find_frob(prso, objl: LIST(/*[*/ [REST, OBJECT] /*]*/), str1: ST
 						      1,
 						      odesc2(x),
 						      str1);
-                }
-                return false;
+                };
               },
 			       ocontents(x));
-        }
-        return false;
+        };
       },
 	 objl);
   }
@@ -1817,8 +1749,7 @@ export function splice_out(obj, al: LIST) {
           } else if(ol = nl) {
             return nl = rest(nl);
           });
-    }
-    return false;
+    };
   }
 
 `WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level.`
@@ -1847,8 +1778,7 @@ export function move() {
       return object_action();
     } else if(obj) {
       return tell(`I can't get to that to move it.`);
-    }
-    return false;
+    };
   }
 
 export function victims_Q(rm: ROOM) {
@@ -1856,8 +1786,7 @@ export function victims_Q(rm: ROOM) {
 	      function(x: OBJECT) {
         if(trnn(x,G_vicbit)) {
           return mapleave(x);
-        }
-        return false;
+        };
       },
 	      robjs(rm));
   }
@@ -1882,10 +1811,8 @@ define(lamp_on, lampo, /*(*/ [`AUX`, /*(*/ [prsvec, G_prsvec] /*)*/, /*(*/ [me, 
           if(!lit_Q) {
               G_prsvec[2] = false;
               return room_info(false);
-            }
-            return false;
-        }
-        return false;
+            };
+        };
     })
 
 define(lamp_off, lampo, /*(*/ [`AUX`, /*(*/ [me, G_winner] /*)*/, /*(*/ [obj, G_prsvec[2]] /*)*/] /*)*/, 
@@ -1902,8 +1829,7 @@ define(lamp_off, lampo, /*(*/ [`AUX`, /*(*/ [me, G_winner] /*)*/, /*(*/ [obj, G_
         } else if(obj[G_olight_Q] = _1) {
           tell(`The `, 1, odesc2(obj), ` is now off.`);
           return (lit_Q(G_here) || tell(`It is now pitch black.`));
-        }
-        return false;
+        };
     })
 
 `PARSER & AUXILIARIES`
@@ -1927,8 +1853,7 @@ export function this_it_Q(objnam: ATOM, obj: ATOM, adj: (FALSE | ADJECTIVE)) {
         } else {
           return memq(adj,oadjs(obj));
         };
-    }
-    return false;
+    };
   }
 
 G_lexv = ivector(10, () => rest(istring(5), 5))
@@ -1961,8 +1886,7 @@ if(s[1] === _X__Q) {
 						 5),
 				       back(v[1], slen)))) {
                     return v = rest(v);
-                  }
-                  return false;
+                  };
               };
             if(s1.length === sx.length) {
                 return return(v);
@@ -1983,8 +1907,7 @@ export function anything(s: STRING, sx: STRING) {
           return mapleave(false);
         } else if(!memq(x[1], G_brks)) {
           return mapleave(x);
-        }
-        return false;
+        };
       },
 	      s);
   }
@@ -1994,8 +1917,7 @@ export function uppercase(str: STRING) {
 	      function(s) {`AUX`, /*(*/ [c, ascii(s[1])] /*)*/
         if((c > 96 && l__Q(c,122))) {
           return s[1] = ascii(_(c,32));
-        }
-        return false;
+        };
       },
 	      str);
   }
@@ -2037,12 +1959,10 @@ export function clock_demon(hack: HACK) {
                   } else {
                     return apply(ca);
                   });
-            }
-            return false;
+            };
           },
 		 hobjs(hack));
-    }
-    return false;
+    };
   }
 
 export let G_clocker: HACK;
@@ -2050,12 +1970,10 @@ export let G_clocker: HACK;
 export function clock_int(cev: CEVENT, num?: (FIX | FALSE), clocker: HACK) {
     if(!memq(cev,hobjs(clocker))) {
       return clocker[G_hobjs] = /*(*/ [cev,_X,hobjs(clocker)] /*)*/;
-    }
-    return false;
+    };
 if(num) {
       return cev[G_ctick] = num;
-    }
-    return false;
+    };
   }
 
 G_demons = /*(*/ [] /*)*/
@@ -2080,10 +1998,8 @@ export function board() {
             } else if(tell(`You are in the `, 1, odesc2(obj), `.`)) {
               win[G_avehicle] = obj;
               return obj[G_ocontents] = /*(*/ [find_obj(`#####`), _X,ocontents(obj)] /*)*/;
-            }
-            return false;
-        }
-        return false;
+            };
+        };
     } else {
       return tell(`I suppose you have a theory on boarding `,
 		     1,
@@ -2138,8 +2054,7 @@ export function goto(rm: ROOM) {
       G_winner[G_aroom] = G_here = rm;
       score_room(rm);
       return t;
-    }
-    return false;
+    };
   }
 
 export function backer() {

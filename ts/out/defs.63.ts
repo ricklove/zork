@@ -308,8 +308,7 @@ export function remove_object(obj: OBJECT) {
       return oroom[G_robjs] = splice_out(obj,robjs(oroom));
     } else if(memq(obj,robjs(G_here))) {
       return G_here[G_robjs] = splice_out(obj,robjs(G_here));
-    }
-    return false;
+    };
 return obj[G_oroom] = false;
 return obj[G_ocan] = false;
   }
@@ -351,8 +350,7 @@ export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
         if((otval(x) > 0 && !trnn(x,G_sacredbit))) {
           win[G_aobjs] = splice_out(x,aobjs(win));
           return newlist = /*(*/ [x,_X,newlist] /*)*/;
-        }
-        return false;
+        };
       },
     aobjs(win));
   }
@@ -368,8 +366,7 @@ export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), pr
           return newlist = /*(*/ [x,_X,newlist] /*)*/;
         } else if(type_Q(orand(x), adv)) {
           return newlist = rob_adv(orand(x), newlist);
-        }
-        return false;
+        };
       },
     robjs(rm));
   }
@@ -379,8 +376,7 @@ export function valuables_Q(adv: ADV) {
     function(x: OBJECT) {
         if(otval(x) > 0) {
           return mapleave(t);
-        }
-        return false;
+        };
       },
     aobjs(adv));
   }
@@ -391,8 +387,7 @@ export function armed_Q(adv: ADV) {
     function(x: OBJECT) {
         if(memq(x,weapons)) {
           return mapleave(t);
-        }
-        return false;
+        };
       },
     aobjs(adv));
   }
@@ -402,8 +397,7 @@ export function light_source(me: ADV) {
 	      function(x) {
         if(!0_Q(olight_Q(x))) {
           return mapleave(x);
-        }
-        return false;
+        };
       },
 	      aobjs(me));
   }
@@ -415,8 +409,7 @@ export function get_demon(id: STRING) {
     function(x: HACK) {
         if(hobj(x) === obj) {
           return mapleave(x);
-        }
-        return false;
+        };
       },
     dems);
   }
@@ -439,8 +432,7 @@ if(no_is_bad_Q) {
       return !memq(inbuf[1], `NnfF`);
     } else if(t) {
       return memq(inbuf[1], `TtYy`);
-    }
-    return false;
+    };
   }
 
 defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*)*/] /*)*/,
@@ -486,8 +478,7 @@ export function find_room(id: (ATOM | STRING)) {
     let room: ROOM = null;
     if(type_Q(id,atom)) {
       return id = spname(id);
-    }
-    return false;
+    };
 if((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) {
       return /*,*/ [atm] /*1*/;
     } else if((atm || atm = insert(id,G_room_obl))) {
@@ -495,8 +486,7 @@ if((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) {
 				 room));
       G_rooms = /*(*/ [room,_X,G_rooms] /*)*/;
       return room;
-    }
-    return false;
+    };
   }
 
 export function find_obj(id: (ATOM | STRING)) {
@@ -504,8 +494,7 @@ export function find_obj(id: (ATOM | STRING)) {
     let atm: (ATOM | FALSE) = null;
     if(type_Q(id,atom)) {
       return id = spname(id);
-    }
-    return false;
+    };
 if((atm = lookup(id,G_object_obl) && gassigned_Q(atm))) {
       return /*,*/ [atm] /*1*/;
     } else if((atm || atm = insert(id,G_object_obl))) {
@@ -514,8 +503,7 @@ if((atm = lookup(id,G_object_obl) && gassigned_Q(atm))) {
 				  object));
       G_objects = /*(*/ [obj,_X,G_objects] /*)*/;
       return obj;
-    }
-    return false;
+    };
   }
 
 export function function_print(frob: (ATOM | OFFSET | APPLICABLE | FALSE)) {
@@ -530,6 +518,5 @@ export function function_print(frob: (ATOM | OFFSET | APPLICABLE | FALSE)) {
       return prin1(get_atom(frob));
     } else if(princ(`#FUNCTION `)) {
       return prin1(get_atom(frob));
-    }
-    return false;
+    };
   }
