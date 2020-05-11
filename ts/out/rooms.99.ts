@@ -8,27 +8,28 @@ export function save_it(fn?: STRING) {
     let muddle: FIX = G_muddle;
     let stv: (STRING | FIX) = null;
     let st: (STRING | FIX) = remarkably_disgusting_code();
-    find_obj(`PAPER`)[G_odesc1] = unspeakable_code();
-G_vers = st;
-G_script_channel = false;
-G_raw_score = 0;
-ih = on(`IPC`, G_ilo,1);
-handler(G_divert_int,G_divert_hand);
-(muddle > 100) ? {
+    return find_obj(`PAPER`)[G_odesc1] = unspeakable_code();
+return G_vers = st;
+return G_script_channel = false;
+return G_raw_score = 0;
+return ih = on(`IPC`, G_ilo,1);
+return handler(G_divert_int,G_divert_hand);
+if(muddle > 100) {
       G_scratch_str = istring(32);
       G_dev = `DSK`;
       return G_snm = `MDL`;
-    } : (sname(``)) ? {
+    } else if(sname(``)) {
       G_dev = `DSK`;
       return G_snm = `MADMAN`;
-    } : false;
-int_level(100000);
-(save(fn) == `SAVED`) ? {
+    }
+    return false;
+return int_level(100000);
+if(save(fn) == `SAVED`) {
       int_level(0);
       return t;
-    } : (t) ? {
+    } else if(t) {
       // STARTER on 10x sets up tty correctly, setg's DEV to \"MDL\"     if that device exists; if not, (sort of) returns directory muddle     came from.  On its it returns # zorkers currently in existence.;
-      ((type_Q(stv = starter(), fix) && stv > 3)) ? {
+      if((type_Q(stv = starter(), fix) && stv > 3)) {
           return (G_winners[G_xunm = xuname()] || G_xunm == `SEC` || G_xunm == `ELBOW` || (off(`CHAR`, G_inchan) && tell(`There appears before you a threatening figure clad all over
 in heavy black armor.  His legs seem like the massive trunk
 of the oak tree.  His broad shoulders and helmeted head loom
@@ -41,19 +42,20 @@ He speaks with a commanding voice:
 		\"YOU SHALL NOT PASS \"
 
 As he grabs you by the neck all grows dim about you.`) && quit()));
-        } : (type_Q(stv,string)) ? {
+        } else if(type_Q(stv,string)) {
           return G_snm = substruc(G_scratch_str,					  0,
 					  _(G_scratch_str.length,
 					     memq(_X__, stv).length));
-        } : false;
-      (G_muddle > 100) ? {
+        };
+      if(G_muddle > 100) {
           return G_tenex_Q = getsys();
-        } : (apply(G_ipc_off)) ? {
+        } else if(apply(G_ipc_off)) {
           return apply(G_ipc_on,uname(), `ZORK`);
-        } : false;
+        };
       bh = on(`BLOCKED`, G_blo,100);
       return start(`WHOUS`, st);
-    } : false;
+    }
+    return false;
   }
 
 
@@ -73,22 +75,23 @@ G_divert_lmt = 100000
 export let G_divert_cnt: FIX;export let G_divert_max: FIX;export let G_divert_inc: FIX;export let G_divert_amt: FIX;export let G_divert_lmt: FIX;
 
 export function divert_fcn(amt, reason) {
-    G_divert_cnt = _(G_divert_cnt,1);
-G_divert_amt = _(G_divert_amt,G_divert_inc,amt);
-((G_divert_cnt > G_divert_max || G_divert_amt > G_divert_lmt)) ? {
+    return G_divert_cnt = _(G_divert_cnt,1);
+return G_divert_amt = _(G_divert_amt,G_divert_inc,amt);
+if((G_divert_cnt > G_divert_max || G_divert_amt > G_divert_lmt)) {
       // Too much diversion ?;
       G_divert_amt = G_divert_cnt = 0;
       gc_fcn();
       return gc();
-    } : (else) ? {
+    } else if(else) {
       // Divert this request for storage;
-      (1_Q(G_divert_cnt)) ? {
+      if(1_Q(G_divert_cnt)) {
           // First diversion ?;
           return handler(G_gc_int,G_gc_hand);
-        } : false;
+        };
       bloat(_(amt,G_divert_inc));
       return // Get storage desired plus extra increment;
-    } : false;
+    }
+    return false;
   }
 
 G_divert_hand = handler(G_divert_int = event(`DIVERT-AGC`, 1000),
@@ -97,8 +100,8 @@ G_divert_hand = handler(G_divert_int = event(`DIVERT-AGC`, 1000),
 off(G_divert_hand)
 
 export function gc_fcn(`TUPLE`, t) {
-    off(G_gc_hand);
-G_divert_amt = G_divert_cnt = 0;
+    return off(G_gc_hand);
+return G_divert_amt = G_divert_cnt = 0;
   }
 
 G_gc_hand = handler(G_gc_int = event(`GC`, 11),
@@ -109,12 +112,13 @@ off(G_gc_hand)
 
 
 export function xuname() {
-    mapf(G_string,	function(x: CHARACTER) {
-        ((0_Q(ascii(x)) || ascii(x) === 32)) ? {
+    return mapf(G_string,	function(x: CHARACTER) {
+        if((0_Q(ascii(x)) || ascii(x) === 32)) {
           return mapstop();
-        } : (t) ? {
+        } else if(t) {
           return x;
-        } : false;
+        }
+        return false;
       },
 	gxuname());
   }
@@ -128,23 +132,23 @@ export function its_get_name(uname: STRING) {
     let tlen: FIX = null;
     let tstr: STRING = null;
     let str: STRING = null;
-    (nm) ? {
-      return (cma = memq(_X__, nm)) ? {
+    if(nm) {
+      if(cma = memq(_X__, nm)) {
           llst = _(nm.length, cma.length);
           cma = rest(cma);
           lfst = cma.length;
-          (jr = memq(_X__, cma)) ? {
+          if(jr = memq(_X__, cma)) {
               return lfst = _(lfst,jr.length);
-            } : false;
+            };
           repeat(/*(*/ [] /*)*/,
-			      (empty_Q(cma)) ? {
+			      if(empty_Q(cma)) {
                 return return();
-              } : (memq(cma[1], /*%*/ [string(ascii(32), ascii(9))] /*1*/)) ? {
+              } else if(memq(cma[1], /*%*/ [string(ascii(32), ascii(9))] /*1*/)) {
                 cma = rest(cma);
                 return lfst = _(lfst,1);
-              } : (else) ? {
+              } else if(else) {
                 return return();
-              } : false);
+              });
           tlen = _(lfst,1, llst,jr.length);
           str = istring(tlen,_X__);
           tstr = str;
@@ -153,10 +157,12 @@ export function its_get_name(uname: STRING) {
           substruc(nm,0, llst,tstr);
           (jr && substruc(jr,0, jr.length, rest(tstr,llst)));
           return G_user_name = str;
-        } : (else) ? {
+        } else if(else) {
           return G_user_name = nm;
-        } : false;
-    } : false;
+        }
+        return false;
+    }
+    return false;
   }
 
 export function unspeakable_code() {
@@ -164,22 +170,22 @@ export function unspeakable_code() {
     let nstr: STRING = null;
     let len_i: FIX = 0;
     let o: OBJECT = find_obj(`PAPER`);
-    str = memq(_X__, oread(o));
-(back(str,2)[1] === _X_1) ? {
+    return str = memq(_X__, oread(o));
+if(back(str,2)[1] === _X_1) {
       str = back(str,2);
       return len_i = 1;
-    } : {
+    } else {
       return str = back(str,1);
     };
-nstr = rest(memq(_X__, rest(memq(_X__, str))), 3);
-string(`There is an issue of US NEWS & DUNGEON REPORT dated `,
+return nstr = rest(memq(_X__, rest(memq(_X__, str))), 3);
+return string(`There is an issue of US NEWS & DUNGEON REPORT dated `,
 	    substruc(str,0, _(str.length, nstr.length)),
 	    ` here.`);
   }
 
 export function remarkably_disgusting_code() {
     let n: PRIMTYPE(WORD) = dskdate();
-    string(`This version created `,
+    return string(`This version created `,
 	 G_months[chtype(getbits(n,bits(4, 23)), fix)],
 	 _X__,
 	 unparse(chtype(getbits(n,bits(5, 18)), fix)),
@@ -187,7 +193,7 @@ export function remarkably_disgusting_code() {
   }
 
 export function version() {
-    tell(G_vers);
+    return tell(G_vers);
   }
 
 G_played_time = 0
@@ -197,12 +203,12 @@ export let G_played_time: FIX;
 export function get_time() {
     let now: PRIMTYPE(WORD) = dskdate();
     let then: PRIMTYPE(WORD) = G_intime;
-    _((chtype(getbits(now,bits(18, 18)), fix) !== chtype(getbits(then,bits(18, 18)), fix)) ? {
+    return _(if(chtype(getbits(now,bits(18, 18)), fix) !== chtype(getbits(then,bits(18, 18)), fix)) {
         return _(_(_(chtype(getbits(now,bits(18, 0)), fix),
 			   _(24, 7200)),
 			chtype(getbits(then,bits(18, 0)), fix)),
 		     2);
-      } : {
+      } else {
         return _(_(chtype(getbits(now,bits(18, 0)), fix),
 			chtype(getbits(then,bits(18, 0)), fix)),
 		     2);
@@ -213,29 +219,31 @@ export function get_time() {
 export function play_time(outchan?: SPECIAL(CHANNEL), loser_Q: (ATOM | FALSE)) {
     let time: FIX = null;
     let mins: FIX = null;
-    time = get_time();
-G_tell_flag = t;
-(loser_Q) ? {
+    return time = get_time();
+return G_tell_flag = t;
+if(loser_Q) {
       return princ(`You have been playing DUNGEON for `);
-    } : (t) ? {
+    } else if(t) {
       return princ(`Played for `);
-    } : false;
-(mins = _(time,3600) > 0 && prin1(mins) && princ(` hour`) && (1_Q(mins) || princ(`s`)) && princ(`, `));
-(mins = mod(_(time,60), 60) > 0) ? {
+    }
+    return false;
+return (mins = _(time,3600) > 0 && prin1(mins) && princ(` hour`) && (1_Q(mins) || princ(`s`)) && princ(`, `));
+if(mins = mod(_(time,60), 60) > 0) {
       prin1(mins);
       princ(` minute`);
-      (!1_Q(mins)) ? {
+      if(!1_Q(mins)) {
           return princ(`s`);
-        } : false;
+        };
       return princ(`, and `);
-    } : false;
-prin1(mins = mod(time,60));
-princ(` second`);
-(1_Q(mins) || princ(`s`));
-(loser_Q) ? {
+    }
+    return false;
+return prin1(mins = mod(time,60));
+return princ(` second`);
+return (1_Q(mins) || princ(`s`));
+if(loser_Q) {
       return princ(`.
 `);
-    } : {
+    } else {
       return princ(`.`);
     };
   } 
@@ -245,42 +253,45 @@ export function pc() {
 
 export function handle(frm, _tuple_, zork) {
     let zf: ANY = null;
-    G_outchan[13] = 80;
-back(G_inchan)[1][6] = /*#*/ [lose, 27] /*2*/;
-(((!gassigned_Q(xunm) || G_winners[G_xunm]) && pc())) ? {
+    return G_outchan[13] = 80;
+return back(G_inchan)[1][6] = /*#*/ [lose, 27] /*2*/;
+if(((!gassigned_Q(xunm) || G_winners[G_xunm]) && pc())) {
       (gassigned_Q(saverep) && G_rep = G_saverep);
       (assigned_Q(bh) && off(bh));
       int_level(0);
       G_dbg = t;
       return G_alt_flag = t;
-    } : (t) ? {
-      return ((!empty_Q(zork) && zork[1] === control_g_Q_X_errors)) ? {
+    } else if(t) {
+      if((!empty_Q(zork) && zork[1] === control_g_Q_X_errors)) {
           int_level(0);
           finish();
-          back(G_inchan)[1][6] = (G_muddle > 100) ? {
-                return (G_tenex_Q) ? {
+          back(G_inchan)[1][6] = if(G_muddle > 100) {
+                if(G_tenex_Q) {
                     return /*#*/ [lose, _37_] /*2*/;
-                  } : (t) ? {
+                  } else if(t) {
                     return /*#*/ [lose, _000000000012_] /*2*/;
-                  } : false;
-              } : (t) ? {
+                  }
+                  return false;
+              } else if(t) {
                 return /*#*/ [lose, _000000000015_] /*2*/;
-              } : false;
+              };
           return erret(t, frm);
-        } : ((zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == `ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY`)) ? {
+        } else if((zork.length === 3 && zork[1] === file_system_error_X_errors && !zf = zork[3] && zf.length === 3 && zf[1] == `ILLEGAL CHR AFTER CNTRL P ON TTY DISPLAY`)) {
           // HACK FOR ILLEGAL CHR AFTER CTRL-P;
           back(G_inchan)[1][6] = /*#*/ [lose, _000000000015_] /*2*/;
           int_level(0);
           return erret(t, frm);
-        } : (tell(`I'm sorry, you seem to have encountered an error in the program.
-Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`)) ? {
+        } else if(tell(`I'm sorry, you seem to have encountered an error in the program.
+Send mail to DUNGEON@MIT-DMS describing what it was you tried to do.`)) {
           tell(G_vers);
           mapf(false, function(x) {
-                print(x);
+                return print(x);
               }, zork);
           return finish(/*#*/ [false, /*(*/ [`. Error.`] /*)*/] /*2*/);
-        } : false;
-    } : false;
+        }
+        return false;
+    }
+    return false;
   }
 
 psetg(winners, () => /*[*/ [`BKD`, `TAA`, `MARC`, `PDL`, `MDL`] /*]*/)
@@ -296,47 +307,48 @@ export function start(rm: STRING, st?: STRING) {
     let fn: (FALSE | STRING) = null;
     let muddle: FIX = G_muddle;
     let xunm: STRING = xuname();
-    G_xunm = xunm;
-G_ptemp = chtype(/*[*/ [chtype(with_X_words, prep), find_obj(`!!!!!`)] /*]*/, phrase);
-G_intime = dskdate();
-(muddle < 100) ? {
+    return G_xunm = xunm;
+return G_ptemp = chtype(/*[*/ [chtype(with_X_words, prep), find_obj(`!!!!!`)] /*]*/, phrase);
+return G_intime = dskdate();
+if(muddle < 100) {
       (xunm.length > 2 && substruc(xunm,0, 3) == `___` && quit());
       return fn = its_get_name(xunm);
-    } : {
+    } else {
       return fn = get_name();
     };
-(fn) ? {
+if(fn) {
       return G_user_name = fn;
-    } : {
+    } else {
       return G_user_name = xunm;
     };
-G_deaths = 0;
-G_moves = 0;
-G_winner = G_player;
-G_winner[G_aroom] = G_here = find_room(rm);
-tell(`Welcome to Dungeon.
+return G_deaths = 0;
+return G_moves = 0;
+return G_winner = G_player;
+return G_winner[G_aroom] = G_here = find_room(rm);
+return tell(`Welcome to Dungeon.
 `, 1, st);
-random(chtype(dskdate(), fix));
-int_level(0);
-contin();
+return random(chtype(dskdate(), fix));
+return int_level(0);
+return contin();
   }
 
 export function contin() {
-    G_alt_flag = false;
-back(G_inchan)[1][6] = (G_muddle > 100) ? {
-        return (G_tenex_Q) ? {
+    return G_alt_flag = false;
+return back(G_inchan)[1][6] = if(G_muddle > 100) {
+        if(G_tenex_Q) {
             return /*#*/ [lose, _37_] /*2*/;
-          } : (t) ? {
+          } else if(t) {
             return /*#*/ [lose, _000000000012_] /*2*/;
-          } : false;
-      } : (t) ? {
+          }
+          return false;
+      } else if(t) {
         return /*#*/ [lose, _000000000015_] /*2*/;
-      } : false;
-G_saverep = G_rep;
-G_rep = G_rdcom;
-reset(G_inchan);
-G_winner = G_player;
-G_prsvec[2] = false;
+      };
+return G_saverep = G_rep;
+return G_rep = G_rdcom;
+return reset(G_inchan);
+return G_winner = G_player;
+return G_prsvec[2] = false;
   }
 
 G_my_script = false
@@ -345,18 +357,19 @@ export let G_my_script: (ATOM | FALSE);
 
 export function make_script() {
     let ch: (CHANNEL | FALSE) = null;
-    (G_script_channel) ? {
+    if(G_script_channel) {
       return false;
-    } : (ch = open(`PRINT`, string(`MARC;%Z`, G_xunm,` >`))) ? {
+    } else if(ch = open(`PRINT`, string(`MARC;%Z`, G_xunm,` >`))) {
       top(G_inchan)[1] = /*(*/ [ch] /*)*/;
       top(G_outchan)[1] = /*(*/ [ch] /*)*/;
       G_script_channel = ch;
       return G_my_script = t;
-    } : false;
+    }
+    return false;
   }
 
 export function flush_me() {
-    unwind(prog(/*(*/ [] /*)*/,
+    return unwind(prog(/*(*/ [] /*)*/,
 	 tell(`Suddenly, a sinister, wraithlike figure appears before you, seeming
 to float in the air.  He glows with an eldritch light.  In a barely
 audible voice he says, \"Begone, defiler!  Your presence upsets the
@@ -377,33 +390,36 @@ export function do_script() {
     let ch: (CHANNEL | FALSE) = null;
     let unm: STRING = G_xunm;
     let muddle: FIX = G_muddle;
-    (G_my_script) ? {
+    if(G_my_script) {
       return do_unscript(false);
-    } : false;
-(G_script_channel) ? {
+    }
+    return false;
+if(G_script_channel) {
       return tell(`You are already scripting.`);
-    } : (((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch) && ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))) && ch = open(`PRINT`, `ZORK`, `SCRIPT`, `DSK`, unm))) ? {
+    } else if(((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch) && ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch))) && ch = open(`PRINT`, `ZORK`, `SCRIPT`, `DSK`, unm))) {
       top(G_inchan)[1] = /*(*/ [ch] /*)*/;
       top(G_outchan)[1] = /*(*/ [ch] /*)*/;
       G_script_channel = ch;
-      return (G_muddle < 100) ? {
+      if(G_muddle < 100) {
           return tell(`Scripting to `, 1, G_xunm,`;ZORK SCRIPT`);
-        } : (t) ? {
+        } else if(t) {
           return tell(`Scripting to <`, 1, G_xunm,`>ZORK.SCRIPT`);
-        } : false;
-    } : (t) ? {
+        }
+        return false;
+    } else if(t) {
       return tell(`I can't open the script channel.`);
-    } : false;
+    }
+    return false;
   }
 
 export function do_unscript(verbose?: (ATOM | FALSE)) {
-    (G_script_channel) ? {
+    if(G_script_channel) {
       top(G_inchan)[1] = /*(*/ [] /*)*/;
       top(G_outchan)[1] = /*(*/ [] /*)*/;
       close(G_script_channel);
       G_script_channel = false;
       return (verbose && tell(`Scripting off.`));
-    } : {
+    } else {
       return (verbose && tell(`Scripting wasn't on.`));
     };
   }
@@ -414,31 +430,33 @@ export function do_save() {
     let muddle: FIX = G_muddle;
     let ch: (CHANNEL | FALSE) = null;
     let unm: STRING = G_xunm;
-    ((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch)))) ? {
-      return ((muddle > 100 || (ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch)))) ? {
+    if((muddle > 100 || (!unm[`GUEST`] && ch = open(`READ`, `.FILE.`, `(DIR)`, `DSK`, unm) && close(ch)))) {
+      if((muddle > 100 || (ch = open(`READ`, `_MSGS_`, unm,`DSK`, unm) && close(ch)))) {
           (G_script_channel && do_unscript());
           tell(`Saving.`);
           int_level(100000);
           off(`CHAR`, G_inchan);
           G_then = chtype(dskdate(), fix);
           G_played_time = get_time();
-          return (ch = open(`PRINTB`,
-				     (muddle < 100) ? {
+          if(ch = open(`PRINTB`,
+				     if(muddle < 100) {
                       return string(`DSK:`, unm,`;ZORK SAVE`);
-                    } : (t) ? {
+                    } else if(t) {
                       return string(`DSK:<`, unm,`>ZORK.SAVE`);
-                    } : false)) ? {
+                    })) {
               save_game(ch);
               return finish(chtype(() => /*(*/ [`. Saved.`] /*)*/, false));
-            } : (tell(`Save failed.`)) ? {
+            } else if(tell(`Save failed.`)) {
               return tell(ch[1], 1, ` `, ch[2]);
-            } : false;
-        } : {
+            }
+            return false;
+        } else {
           return tell(`Can't open channel for save.`);
         };
-    } : (t) ? {
+    } else if(t) {
       return tell(`Can't open channel for save.`);
-    } : false;
+    }
+    return false;
   }
 
 export function do_restore() {
@@ -448,57 +466,60 @@ export function do_restore() {
     let nowd: FIX = null;
     let now: FIX = null;
     let thend: FIX = null;
-    (muddle < 100) ? {
+    if(muddle < 100) {
       return str = string(`DSK:`, G_xunm,`;ZORK SAVE`);
-    } : (t) ? {
+    } else if(t) {
       return str = string(`DSK:<`, G_xunm,`>ZORK.SAVE`);
-    } : false;
-prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
+    }
+    return false;
+return prog(/*(*/ [/*(*/ [foo, t] /*)*/, /*(*/ [snm, sname()] /*)*/] /*)*/,
 	 /*#*/ [decl, /*(*/ [/*(*/ [foo] /*)*/, (atom || false), /*(*/ [snm] /*)*/, special(string)] /*)*/] /*2*/,
-	 (ch = open(`READB`, str)) ? {
-        (restore_game(ch)) ? {
-            (G_winners[G_xunm]) ? {
+	 if(ch = open(`READB`, str)) {
+        if(restore_game(ch)) {
+            if(G_winners[G_xunm]) {
                 ;
-              } : (nowd = chtype(getbits(now = chtype(dskdate(), fix),
+              } else if(nowd = chtype(getbits(now = chtype(dskdate(), fix),
 							 bits(18, 18)),
-						fix) === thend = chtype(getbits(G_then,bits(18, 18)), fix)) ? {
-                return (g__Q(_(now,G_then), 2400)) ? {
+						fix) === thend = chtype(getbits(G_then,bits(18, 18)), fix)) {
+                if(g__Q(_(now,G_then), 2400)) {
                     ;
-                  } : (tell(`It's too soon.`)) ? {
-                    (G_muddle > 100) ? {
+                  } else if(tell(`It's too soon.`)) {
+                    if(G_muddle > 100) {
                         off(`CHAR`, G_inchan);
                         int_level(10000);
                         return quit();
-                      } : false;
+                      };
                     return quit();
-                  } : false;
-              } : (1_Q(_(nowd,thend))) ? {
-                return (g__Q(_(_(chtype(getbits(now,bits(18, 0)), fix),
+                  }
+                  return false;
+              } else if(1_Q(_(nowd,thend))) {
+                if(g__Q(_(_(chtype(getbits(now,bits(18, 0)), fix),
 						_(24, 7200)),
 					     chtype(getbits(now,bits(18, 0)), fix)),
-					  2400)) ? {
+					  2400)) {
                     ;
-                  } : (tell(`It's too soon.`)) ? {
+                  } else if(tell(`It's too soon.`)) {
                     return quit();
-                  } : false;
-              } : false;
+                  }
+                  return false;
+              };
             G_intime = now;
             return tell(`Restored.`);
-          } : {
+          } else {
             return tell(`Restore failed.`);
           };
         return room_desc();
-      } : ((foo && muddle > 100)) ? {
+      } else if((foo && muddle > 100)) {
         str = string(sname(), `ZORK.SAVE`);
         foo = false;
         return again();
-      } : {
+      } else {
         return tell(ch[2], 1, ` `, ch[1]);
       });
   }
 
 export function prob(num: FIX) {
-    l__Q(mod(random(), 100), num);
+    return l__Q(mod(random(), 100), num);
   }
 
 `GET-ATOM TAKES A VALUE AND SEARCHES INITIAL FOR FIRST ATOM
@@ -508,11 +529,12 @@ define(get_atom, act, /*(*/ [val, `AUX`, /*(*/ [o, initial[oblist]] /*)*/] /*)*/
   /*#*/ [decl, /*(*/ [/*(*/ [o] /*)*/, oblist] /*)*/] /*2*/,
   mapf(false,
     function(x: LIST(/*[*/ [REST, ATOM] /*]*/)) {
-        mapf(false,
+        return mapf(false,
         function(x: ATOM) {
-            ((gassigned_Q(x) && /*,*/ [x] /*1*/ === val)) ? {
+            if((gassigned_Q(x) && /*,*/ [x] /*1*/ === val)) {
               return return(x,act);
-            } : false;
+            }
+            return false;
           },
 	x);
       },
@@ -525,28 +547,28 @@ G_super_brief_X_flag = false
 export let G_super_brief_X_flag: (ATOM | FALSE);export let G_brief_X_flag: (ATOM | FALSE);
 
 export function brief() {
-    G_brief_X_flag = t;
-tell(`Brief descriptions.`);
+    return G_brief_X_flag = t;
+return tell(`Brief descriptions.`);
   }
 
 export function super_brief() {
-    G_super_brief_X_flag = t;
-tell(`No long descriptions.`);
+    return G_super_brief_X_flag = t;
+return tell(`No long descriptions.`);
   }
 
 export function un_brief() {
-    G_brief_X_flag = false;
-G_super_brief_X_flag = false;
-tell(`Long descriptions.`);
+    return G_brief_X_flag = false;
+return G_super_brief_X_flag = false;
+return tell(`Long descriptions.`);
   }
 
 export function un_super_brief() {
-    G_super_brief_X_flag = false;
-tell(`Some long descriptions.`);
+    return G_super_brief_X_flag = false;
+return tell(`Some long descriptions.`);
   }
 
 export function room_desc() {
-    room_info(t);
+    return room_info(t);
   }
 
 export function room_info(full?: (ATOM | FALSE)) {
@@ -556,72 +578,75 @@ export function room_info(full?: (ATOM | FALSE)) {
     let winobj: OBJECT = find_obj(`#####`);
     let outchan: CHANNEL = G_outchan;
     let ra = null;
-    G_tell_flag = t;
-(type_Q(prso,direction) && G_prsvec[2] = false);
-prog(/*(*/ [] /*)*/,
-     (G_here !== aroom(G_player)) ? {
+    return G_tell_flag = t;
+return (type_Q(prso,direction) && G_prsvec[2] = false);
+return prog(/*(*/ [] /*)*/,
+     if(G_here !== aroom(G_player)) {
         G_prsvec[1] = G_walk_in_X_words;
         tell(`Done.`);
         return return();
-      } : ((prso && type_Q(prso,object))) ? {
-        (object_action()) ? {
+      } else if((prso && type_Q(prso,object))) {
+        if(object_action()) {
             ;
-          } : (oread(prso)) ? {
+          } else if(oread(prso)) {
             return tell(oread(prso));
-          } : {
+          } else {
             return tell(`I see nothing special about the `,
 			 1,
 			 odesc2(prso),
 			 `.`);
           };
         return return();
-      } : (!lit_Q(rm)) ? {
+      } else if(!lit_Q(rm)) {
         tell(`It is pitch black.  You are likely to be eaten by a grue.`);
         return return(false);
-      } : (((!full && G_super_brief_X_flag) || (rseen_Q(rm) && (G_brief_X_flag || prob(80)) && !full))) ? {
+      } else if(((!full && G_super_brief_X_flag) || (rseen_Q(rm) && (G_brief_X_flag || prob(80)) && !full))) {
         return tell(rdesc2(rm));
-      } : ((empty_Q(rdesc1(rm)) && ra = raction(rm))) ? {
+      } else if((empty_Q(rdesc1(rm)) && ra = raction(rm))) {
         G_prsvec[1] = G_look_X_words;
         apply_random(ra);
         G_prsvec[1] = G_foo_X_words;
         return // Something innocuous;
-      } : {
+      } else {
         return tell(rdesc1(rm));
       },
      rm[G_rseen_Q] = t,
      (av && tell(`You are in the `, 1, odesc2(av), `.`)),
      mapf(false,
       function(x: OBJECT) {
-          ((ovis_Q(x) && describable_Q(x))) ? {
-            (x === av) ? {
+          if((ovis_Q(x) && describable_Q(x))) {
+            if(x === av) {
                 ;
-              } : (t) ? {
-                return (long_desc_obj(x)) ? {
+              } else if(t) {
+                if(long_desc_obj(x)) {
                     (av && tell(` [in the room]`, 0));
                     return crlf();
-                  } : false;
-              } : false;
-            return (trnn(x,G_actorbit)) ? {
+                  }
+                  return false;
+              };
+            if(trnn(x,G_actorbit)) {
                 return invent(orand(x));
-              } : (see_inside_Q(x)) ? {
-                return print_cont(x,av,winobj,G_indentstr,(full) ? {
+              } else if(see_inside_Q(x)) {
+                return print_cont(x,av,winobj,G_indentstr,if(full) {
                       ;
-                    } : (G_super_brief_X_flag) ? {
+                    } else if(G_super_brief_X_flag) {
                       return false;
-                    } : (G_brief_X_flag) ? {
+                    } else if(G_brief_X_flag) {
                       return false;
-                    } : {
+                    } else {
                       return t;
                     });
-              } : false;
-          } : false;
+              }
+              return false;
+          }
+          return false;
         },
       robjs(rm)),
-     ((ra = raction(rm) && !full)) ? {
+     if((ra = raction(rm) && !full)) {
         G_prsvec[1] = G_walk_in_X_words;
         apply_random(ra);
         return G_prsvec[1] = G_foo_X_words;
-      } : false,
+      },
      t);
   }
 
@@ -631,44 +656,46 @@ define(print_cont, print_c, /*(*/ [obj, av, winobj, indent, `OPTIONAL`, /*(*/ [c
 			    `AUX`, /*(*/ [cont, ocontents(obj)] /*)*/] /*)*/,
     /*#*/ [decl, /*(*/ [/*(*/ [av] /*)*/, (false || object), /*(*/ [obj, winobj] /*)*/, object, /*(*/ [indent] /*)*/, string,
 	   /*(*/ [cont] /*)*/, list(/*[*/ [rest, object] /*]*/), /*(*/ [case_Q] /*)*/, (atom || false)] /*)*/] /*2*/,
-    (!empty_Q(cont)) ? {
-      (obj === find_obj(`TCASE`)) ? {
-          (!case_Q) ? {
+    if(!empty_Q(cont)) {
+      if(obj === find_obj(`TCASE`)) {
+          if(!case_Q) {
               return return(t, print_c);
-            } : false;
+            };
           return tell(`Your collection of treasures consists of:`);
-        } : (!(cont.length === 1 && cont[1] === find_obj(`#####`))) ? {
+        } else if(!(cont.length === 1 && cont[1] === find_obj(`#####`))) {
           tell(indent,0);
           return tell(`The `, 1, odesc2(obj), ` contains:`);
-        } : {
+        } else {
           return return(t, print_c);
         };
       return mapf(false,
 	     function(y: OBJECT) {
-            ((av && y === winobj)) ? {
+            if((av && y === winobj)) {
               ;
-            } : ((ovis_Q(y) && describable_Q(y) && !empty_Q(odesc2(y)))) ? {
+            } else if((ovis_Q(y) && describable_Q(y) && !empty_Q(odesc2(y)))) {
               return tell(indent,1, ` A `, odesc2(y));
-            } : false;
-(see_inside_Q(y)) ? {
+            }
+            return false;
+if(see_inside_Q(y)) {
               return print_cont(y,av,winobj,back(indent));
-            } : false;
+            }
+            return false;
           },
 	     ocontents(obj));
-    } : false)
+    })
 
 `GIVE LONG DESCRIPTION OF OBJECT`
 
 export function long_desc_obj(obj: OBJECT) {
     let str = null;
-    ((otouch_Q(obj) || !odesco(obj))) ? {
+    if((otouch_Q(obj) || !odesco(obj))) {
       return str = odesc1(obj);
-    } : {
+    } else {
       return str = odesco(obj);
     };
-(empty_Q(str)) ? {
+if(empty_Q(str)) {
       return false;
-    } : {
+    } else {
       return tell(str,0);
     };
   }
@@ -690,13 +717,13 @@ export function rdcom(ivec?: (FALSE | VECTOR)) {
     let av: (FALSE | OBJECT) = null;
     let outchan: CHANNEL = G_outchan;
     let random_action = null;
-    (ivec || prog(/*(*/ [] /*)*/,
+    return (ivec || prog(/*(*/ [] /*)*/,
 		   outchan[13] = 1000,
 		   room_info(t)));
-repeat(/*(*/ [vval, cv] /*)*/,
+return repeat(/*(*/ [vval, cv] /*)*/,
 	   /*#*/ [decl, /*(*/ [/*(*/ [cv] /*)*/, (false || verb)] /*)*/] /*2*/,
 	   vval = t,
-	   (!ivec) ? {
+	   if(!ivec) {
         rm = G_here;
         princ(`>`);
         G_tell_flag = false;
@@ -704,39 +731,42 @@ repeat(/*(*/ [vval, cv] /*)*/,
         readchr(G_inchan);
         (G_alt_flag || readchr(G_inchan));
         return vc = lex(inbuf,rest(inbuf,inplen), t);
-      } : false,
-	   (inplen > 0) ? {
+      },
+	   if(inplen > 0) {
         G_moves = _(G_moves,1);
-        (G_parse_won = (eparse((ivec || vc), false) && type_Q(cv = rvec = G_prsvec[1], verb))) ? {
-            (!random_action = aaction(winner)) ? {
+        if(G_parse_won = (eparse((ivec || vc), false) && type_Q(cv = rvec = G_prsvec[1], verb))) {
+            if(!random_action = aaction(winner)) {
                 ;
-              } : (apply_random(random_action)) ? {
+              } else if(apply_random(random_action)) {
                 return return();
-              } : false;
+              };
             (av = avehicle(winner) && random_action = oaction(av) && vval = !apply_random(random_action,read_in));
-            return ((vval && random_action = vfcn(cv) && apply_random(random_action))) ? {
-                return (undefined) ? {
+            if((vval && random_action = vfcn(cv) && apply_random(random_action))) {
+                if(undefined) {
                     return (random_action = raction(rm = G_here) && apply_random(random_action));
-                  } : false;
-              } : false;
-          } : (ivec) ? {
-            (G_tell_flag) ? {
+                  }
+                  return false;
+              }
+              return false;
+          } else if(ivec) {
+            if(G_tell_flag) {
                 return tell(`Please input entire command again.`);
-              } : {
+              } else {
                 return tell(`Nothing happens.`);
               };
             return return();
-          } : false;
+          };
         return (G_tell_flag || tell(`Nothing happens.`));
-      } : (t) ? {
+      } else if(t) {
         G_parse_won = false;
         return tell(`Beg pardon?`);
-      } : false,
+      },
 	   mapf(false,
 		 function(x: HACK) {
-          (random_action = haction(x)) ? {
+          if(random_action = haction(x)) {
             return apply_random(random_action,x);
-          } : false;
+          }
+          return false;
         },
 		 G_demons),
 	   (G_parse_won && av = avehicle(winner) && random_action = oaction(av) && apply_random(random_action,read_out)),
@@ -745,83 +775,85 @@ repeat(/*(*/ [vval, cv] /*)*/,
 
 export function score_obj(obj: OBJECT) {
     let temp = null;
-    (temp = ofval(obj) > 0) ? {
+    if(temp = ofval(obj) > 0) {
       score_upd(temp);
       return obj[G_ofval] = 0;
-    } : false;
+    }
+    return false;
   }
 
 export function score_room(rm: ROOM) {
     let temp = null;
-    (temp = rval(rm) > 0) ? {
+    if(temp = rval(rm) > 0) {
       score_upd(temp);
       return rm[G_rval] = 0;
-    } : false;
+    }
+    return false;
   }
 
 export function score_upd(num: FIX) {
     let winner = G_winner;
-    winner[G_ascore] = _(ascore(winner), num);
-G_raw_score = _(G_raw_score,num);
+    return winner[G_ascore] = _(ascore(winner), num);
+return G_raw_score = _(G_raw_score,num);
   }
 
 export function score(ask_Q?: (ATOM | FALSE)) {
     let scor: FIX = null;
     let outchan: CHANNEL = outchan;
     let pct: FLOAT = null;
-    G_tell_flag = t;
-crlf();
-(ask_Q) ? {
+    return G_tell_flag = t;
+return crlf();
+if(ask_Q) {
       return princ(`Your score would be `);
-    } : {
+    } else {
       return princ(`Your score is `);
     };
-prin1(scor = ascore(G_winner));
-princ(` [total of `);
-prin1(G_score_max);
-princ(` points], in `);
-prin1(G_moves);
-(1_Q(G_moves)) ? {
+return prin1(scor = ascore(G_winner));
+return princ(` [total of `);
+return prin1(G_score_max);
+return princ(` points], in `);
+return prin1(G_moves);
+if(1_Q(G_moves)) {
       return princ(` move.`);
-    } : {
+    } else {
       return princ(` moves.`);
     };
-crlf();
-princ(`This score gives you the rank of `);
-pct = _(float(scor), float(G_score_max));
-princ((1_Q(pct)) ? {
+return crlf();
+return princ(`This score gives you the rank of `);
+return pct = _(float(scor), float(G_score_max));
+return princ(if(1_Q(pct)) {
         return `Cheater`;
-      } : (pct > 0_95000000) ? {
+      } else if(pct > 0_95000000) {
         return `Wizard`;
-      } : (pct > 0_89999999) ? {
+      } else if(pct > 0_89999999) {
         return `Master`;
-      } : (pct > 0_79999999) ? {
+      } else if(pct > 0_79999999) {
         return `Winner`;
-      } : (pct > 0_60000000) ? {
+      } else if(pct > 0_60000000) {
         return `Hacker`;
-      } : (pct > 0_39999999) ? {
+      } else if(pct > 0_39999999) {
         return `Adventurer`;
-      } : (pct > 0_19999999) ? {
+      } else if(pct > 0_19999999) {
         return `Junior Adventurer`;
-      } : (pct > 0_09999999) ? {
+      } else if(pct > 0_09999999) {
         return `Novice Adventurer`;
-      } : (pct > 0_04999999) ? {
+      } else if(pct > 0_04999999) {
         return `Amateur Adventurer`;
-      } : {
+      } else {
         return `Beginner`;
       });
-princ(`.`);
-crlf();
+return princ(`.`);
+return crlf();
   }
 
 export function finish(ask_Q?: (ATOM | FALSE)) {
     let scor: FIX = null;
-    unwind(prog(/*(*/ [] /*)*/,
+    return unwind(prog(/*(*/ [] /*)*/,
 	  scor = score(ask_Q),
-	  (((ask_Q && tell(`Do you wish to leave the game? (Y is affirmative): `) && yes_no(false)) || !ask_Q)) ? {
+	  if(((ask_Q && tell(`Do you wish to leave the game? (Y is affirmative): `) && yes_no(false)) || !ask_Q)) {
           record(scor,G_moves,G_deaths,ask_Q,G_here);
           return quit();
-        } : false),
+        }),
 	 quit());
   }
 
@@ -841,43 +873,43 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 	       /*(*/ [dev, snm] /*)*/, string] /*)*/] /*2*/,
 	unwind(prog(/*(*/ [] /*)*/,
 	  prog(/*(*/ [] /*)*/,
-		(ch = open(`READB`, `ZORK`, `LOG`, dev,snm)) ? {
-            (g__Q(fl = file_length(ch), 1)) ? {
+		if(ch = open(`READB`, `ZORK`, `LOG`, dev,snm)) {
+            if(g__Q(fl = file_length(ch), 1)) {
                 access(ch,_(fl,1));
                 return ct = readstring(str,ch,G_recorder_string);
-              } : false;
+              };
             close(ch);
-            (ch = open(`PRINTO`, `ZORK`, `LOG`, dev,snm)) ? {
+            if(ch = open(`PRINTO`, `ZORK`, `LOG`, dev,snm)) {
                 ;
-              } : ((muddle > 100 && ch[3] === _600123_)) ? {
+              } else if((muddle > 100 && ch[3] === _600123_)) {
                 // Can't win--no write access;
                 return return(t, record);
-              } : (t) ? {
+              } else if(t) {
                 sleep(1);
                 return again();
-              } : false;
+              };
             access(ch,max(0, _(fl,1)));
             return printstring(str,ch,ct);
-          } : (((muddle < 100 && ch[3] !== _4000000_) || (muddle > 100 && ch[3] === _600130_))) ? {
+          } else if(((muddle < 100 && ch[3] !== _4000000_) || (muddle > 100 && ch[3] === _600130_))) {
             // on 10x, must get FILE BUSY to try again;
             sleep(1);
             return again();
-          } : (ch = open(`PRINT`, `ZORK`, `LOG`, dev,snm)) ? {
+          } else if(ch = open(`PRINT`, `ZORK`, `LOG`, dev,snm)) {
             ;
-          } : ((muddle > 100 && ch[3] === _600117_)) ? {
+          } else if((muddle > 100 && ch[3] === _600117_)) {
             // No write access;
             return return(t, record);
-          } : {
+          } else {
             return return(t, record);
           }),
 	  crlf(ch),
 	  princ(`	`, ch),
 	  princ(G_user_name,ch),
-	  (G_user_name != G_xunm) ? {
+	  if(G_user_name != G_xunm) {
           princ(`  (`, ch);
           princ(G_xunm,ch);
           return princ(_X__, ch);
-        } : false,
+        },
 	  princ(`	`, ch),
 	  pdskdate(dskdate(), ch),
 	  crlf(ch),
@@ -891,35 +923,37 @@ define(record, record, /*(*/ [score, moves, deaths, quit_Q, loc,
 	  princ(` moves, `, ch),
 	  prin1(deaths,ch),
 	  princ(` death`, ch),
-	  (1_Q(deaths)) ? {
+	  if(1_Q(deaths)) {
           return princ(`.`, ch);
-        } : (t) ? {
+        } else if(t) {
           return princ(`s.`, ch);
-        } : false,
+        },
 	  princ(`  In `, ch),
 	  princ(rdesc2(loc), ch),
-	  (quit_Q) ? {
+	  if(quit_Q) {
           return princ(`. Quit.`, ch);
-        } : (empty_Q(quit_Q)) ? {
+        } else if(empty_Q(quit_Q)) {
           return princ(`. Died.`, ch);
-        } : {
+        } else {
           return princ(quit_Q[1], ch);
         },
 	  crlf(ch),
 	  mapf(false,
 		function(x: ATOM, y: STRING) {
-            (/*,*/ [x] /*1*/) ? {
+            if(/*,*/ [x] /*1*/) {
               princ(`/`, ch);
               return princ(y,ch);
-            } : false;
+            }
+            return false;
           },
 		G_flag_names,		G_short_names),
 	  mapf(false,
 		function(x: ATOM, y: STRING) {
-            (0_Q(/*,*/ [x] /*1*/)) ? {
+            if(0_Q(/*,*/ [x] /*1*/)) {
               princ(`/`, ch);
               return princ(y,ch);
-            } : false;
+            }
+            return false;
           },
 		G_val_names,		G_short_val_names),
 	  crlf(ch),
@@ -963,31 +997,32 @@ export function pdskdate(wd: PRIMTYPE(WORD), ch: CHANNEL) {
     let tim: FIX = chtype(getbits(wd,bits(18, 0)), fix);
     let a_p: STRING = ` AM`;
     let hr: FIX = null;
-    princ(` `, ch);
-(0_Q(chtype(wd,fix))) ? {
+    return princ(` `, ch);
+if(0_Q(chtype(wd,fix))) {
       return princ(`unknown `, ch);
-    } : (t) ? {
+    } else if(t) {
       princ(G_months[chtype(getbits(wd,bits(4, 23)), fix)], ch);
       princ(` `, ch);
       prin1(chtype(getbits(wd,bits(5, 18)), fix), ch);
       princ(` at `, ch);
       hr = _(tim,7200);
-      (g__Q(hr,12)) ? {
+      if(g__Q(hr,12)) {
           hr = _(hr,12);
           return a_p = ` PM`;
-        } : false;
-      (0_Q(hr)) ? {
+        };
+      if(0_Q(hr)) {
           return hr = 12;
-        } : false;
+        };
       prin1(hr,ch);
       princ(`:`, ch);
       hr = _(mod(tim,7200), 120);
-      (hr < 10) ? {
+      if(hr < 10) {
           return princ(`0`, ch);
-        } : false;
+        };
       prin1(hr,ch);
       return princ(a_p,ch);
-    } : false;
+    }
+    return false;
   }
 
 psetg(months,
@@ -1015,78 +1050,80 @@ export function jigs_up(desc: STRING) {
     let lamp_location: (FALSE | ROOM) = null;
     let val_list: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
     let lc = null;
-    (G_dbg) ? {
+    if(G_dbg) {
       return tell(desc);
-    } : {
+    } else {
       return unwind(prog(/*(*/ [] /*)*/,
-        (winner !== G_player) ? {
+        if(winner !== G_player) {
               tell(desc);
               tell(`The `, 1, odesc2(aobj(winner)), ` has died.`);
               remove_object(aobj(winner));
               winner[G_aroom] = find_room(`FCHMP`);
               return return();
-            } : false,
+            },
 	reset(G_inchan),
 	score_upd(_10),
 	winner[G_avehicle] = false,
-	(g__Q(deaths,2)) ? {
+	if(g__Q(deaths,2)) {
               tell(desc);
               tell(`You clearly are a suicidal maniac.  We don't allow psychotics in the
 cave, since they may harm other adventurers.  Your remains will
 installed in the Land of the Living Dead, where your fellow adventurers 
 may gloat over them.`);
               return finish(false);
-            } : (G_deaths = _(deaths,1)) ? {
+            } else if(G_deaths = _(deaths,1)) {
               tell(desc);
               tell(`Do you want me to try to patch you?`, 0);
-              return (!yes_no(t)) ? {
+              if(!yes_no(t)) {
                   tell(`What?  You don't trust me?  Why, only last week I patched a running ITS
 and it survived for over 30 seconds.  Oh, well.`, 2);
                   return finish(false);
-                } : (t) ? {
+                } else if(t) {
                   tell(`Now, let me see...
 Well, we weren't quite able to restore your state.  You can't have
 everything.`);
-                  (lamp_location = oroom(lamp)) ? {
+                  if(lamp_location = oroom(lamp)) {
                       winner[G_aobjs] = /*(*/ [lamp,_X,aobjs] /*)*/;
-                      return (memq(lamp,robjs(lamp_location))) ? {
+                      if(memq(lamp,robjs(lamp_location))) {
                           return remove_object(lamp);
-                        } : (lc = ocan(lamp)) ? {
+                        } else if(lc = ocan(lamp)) {
                           lc[G_ocontents] = splice_out(lamp,ocontents(lc));
                           lamp[G_oroom] = false;
                           return lamp[G_ocan] = false;
-                        } : false;
-                    } : (memq(lamp,aobjs)) ? {
+                        }
+                        return false;
+                    } else if(memq(lamp,aobjs)) {
                       return winner[G_aobjs] = /*(*/ [lamp,_X,splice_out(lamp,aobjs)] /*)*/;
-                    } : false;
+                    };
                   find_obj(`DOOR`)[G_otouch_Q] = false;
                   goto(find_room(`FORE1`));
                   G_egypt_flag_X_flag = t;
                   val_list = rob_adv(winner,val_list);
                   mapf(false,
 			    function(x: OBJECT, y: ROOM) {
-                        insert_object(x,y);
+                        return insert_object(x,y);
                       },
 			    aobjs = aobjs(winner),
 			    random_list);
-                  (g__Q(random_list.length, aobjs.length)) ? {
+                  if(g__Q(random_list.length, aobjs.length)) {
                       return aobjs = val_list;
-                    } : (empty_Q(val_list)) ? {
+                    } else if(empty_Q(val_list)) {
                       return aobjs = rest(aobjs,random_list.length);
-                    } : (t) ? {
+                    } else if(t) {
                       putrest(rest(val_list,_(val_list.length, 1)),
 				      rest(aobjs,random_list.length));
                       return aobjs = val_list;
-                    } : false;
+                    };
                   mapf(false,
 			    function(x: OBJECT, y: ROOM) {
-                        insert_object(x,y);
+                        return insert_object(x,y);
                       },
 			    aobjs,			    G_rooms);
                   winner[G_aobjs] = /*(*/ [] /*)*/;
                   return t;
-                } : false;
-            } : false),
+                }
+                return false;
+            }),
      prog(/*(*/ [] /*)*/,
        record(score(false), G_moves,G_deaths,false, G_here),
        quit()));
@@ -1094,11 +1131,11 @@ everything.`);
   }
 
 export function info() {
-    file_to_tty(`MADADV`, `INFO`);
+    return file_to_tty(`MADADV`, `INFO`);
   }
 
 export function help() {
-    file_to_tty(`MADADV`, `HELP`);
+    return file_to_tty(`MADADV`, `HELP`);
   }
 
 psetg(breaks, string(ascii(3), ascii(0)))
@@ -1109,7 +1146,7 @@ export function file_to_tty(file1: STRING, file2: STRING, dev?: STRING, snm: STR
     let buf: STRING = G_inbuf;
     let buflen: FIX = buf.length;
     let iter: FIX = null;
-    (ch) ? {
+    if(ch) {
       return unwind(prog(/*(*/ [] /*)*/,
 		      len = file_length(ch),
 		      iter = _(len,buflen),
@@ -1118,18 +1155,18 @@ export function file_to_tty(file1: STRING, file2: STRING, dev?: STRING, snm: STR
 		      G_tell_flag = t,
 		      repeat(/*(*/ [slen] /*)*/,
 			      /*#*/ [decl, /*(*/ [/*(*/ [slen] /*)*/, fix] /*)*/] /*2*/,
-			      (1_Q(iter)) ? {
+			      if(1_Q(iter)) {
                 return slen = readstring(buf,ch,G_breaks);
-              } : {
+              } else {
                 return slen = readstring(buf,ch,buflen);
               },
 			      printstring(buf,G_outchan,slen),
-			      (0_Q(iter = _(iter,1))) ? {
+			      if(0_Q(iter = _(iter,1))) {
                 crlf(G_outchan);
                 return return(close(ch));
-              } : false)),
+              })),
 		close(ch));
-    } : {
+    } else {
       return tell(`File not found.`);
     };
   }
@@ -1137,13 +1174,13 @@ export function file_to_tty(file1: STRING, file2: STRING, dev?: STRING, snm: STR
 export function invent(win?: ADV) {
     let any: (ATOM | FALSE) = false;
     let outchan: CHANNEL = G_outchan;
-    mapf(false,
+    return mapf(false,
     function(x: OBJECT) {
-        (ovis_Q(x)) ? {
+        if(ovis_Q(x)) {
           (any || prog(/*(*/ [] /*)*/,
-				  (win === G_player) ? {
+				  if(win === G_player) {
                   return tell(`You are carrying:`);
-                } : {
+                } else {
                   return tell(`The `,
 					       1,
 					       odesc2(aobj(win)),
@@ -1151,29 +1188,31 @@ export function invent(win?: ADV) {
                 },
 				  any = t));
           tell(`A `, 0, odesc2(x));
-          ((empty_Q(ocontents(x)) || !see_inside_Q(x))) ? {
+          if((empty_Q(ocontents(x)) || !see_inside_Q(x))) {
               ;
-            } : (tell(` with `, 0)) ? {
+            } else if(tell(` with `, 0)) {
               return print_contents(ocontents(x));
-            } : false;
+            };
           return crlf();
-        } : false;
+        }
+        return false;
       },
     aobjs(win));
-(any || win !== G_player || tell(`You are empty handed.`));
+return (any || win !== G_player || tell(`You are empty handed.`));
   }
 
 export function print_contents(olst: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
     let outchan: CHANNEL = G_outchan;
-    mapr(false,
+    return mapr(false,
 	function(y: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
-        princ(`a `);
-princ(odesc2(y[1]));
-(y.length > 2) ? {
+        return princ(`a `);
+return princ(odesc2(y[1]));
+if(y.length > 2) {
           return princ(`, `);
-        } : (y.length === 2) ? {
+        } else if(y.length === 2) {
           return princ(`, and `);
-        } : false;
+        }
+        return false;
       },
 	olst);
   }
@@ -1183,26 +1222,29 @@ princ(odesc2(y[1]));
 
 export function lit_Q(rm: ROOM) {
     let win: ADV = G_winner;
-    (rlight_Q(rm) || lfcn(robjs(rm)) || lfcn(aobjs(win)) || (win !== G_player && G_here === aroom(G_player) && lfcn(aobjs(G_player))));
+    return (rlight_Q(rm) || lfcn(robjs(rm)) || lfcn(aobjs(win)) || (win !== G_player && G_here === aroom(G_player) && lfcn(aobjs(G_player))));
   }
 
 define(lfcn, lfcn, /*(*/ [l, `AUX`, y] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [l] /*)*/, list(/*[*/ [rest, object] /*]*/), /*(*/ [y] /*)*/, adv] /*)*/] /*2*/,
 	mapf(false,
 	      function(x: OBJECT) {
-        (olight_Q(x) > 0 && mapleave(t));
-((ovis_Q(x) && (oopen_Q(x) || transparent_Q(x)))) ? {
+        return (olight_Q(x) > 0 && mapleave(t));
+if((ovis_Q(x) && (oopen_Q(x) || transparent_Q(x)))) {
           return mapf(false,
 			       function(x: OBJECT) {
-                (olight_Q(x) > 0) ? {
+                if(olight_Q(x) > 0) {
                   return return(t, lfcn);
-                } : false;
+                }
+                return false;
               },
 			       ocontents(x));
-        } : false;
-((trnn(x,G_actorbit) && lfcn(aobjs(y = orand(x))))) ? {
+        }
+        return false;
+if((trnn(x,G_actorbit) && lfcn(aobjs(y = orand(x))))) {
           return mapleave(t);
-        } : false;
+        }
+        return false;
       },
 	      l))
 
@@ -1217,39 +1259,40 @@ export function walk() {
     let nl: (ATOM | ROOM | FALSE) = null;
     let random_action = null;
     let cxs = null;
-    ((me === G_player && !lit_Q(rm) && prob(75))) ? {
-      return (nrm = memq(where,rexits(rm))) ? {
+    if((me === G_player && !lit_Q(rm) && prob(75))) {
+      if(nrm = memq(where,rexits(rm))) {
           leavings = nrm[2];
-          return ((type_Q(leavings,room) && lit_Q(leavings))) ? {
+          if((type_Q(leavings,room) && lit_Q(leavings))) {
               return (goto(leavings) && room_info(false));
-            } : ((type_Q(leavings,cexit) && leavings = ((random_action = cxaction(leavings) && apply_random(random_action))) ? {
+            } else if((type_Q(leavings,cexit) && leavings = if((random_action = cxaction(leavings) && apply_random(random_action))) {
                       ;
-                    } : (/*,*/ [cxflag(leavings)] /*1*/) ? {
+                    } else if(/*,*/ [cxflag(leavings)] /*1*/) {
                       return cxroom(leavings);
-                    } : false && lit_Q(leavings))) ? {
+                    } && lit_Q(leavings))) {
               return (type_Q(leavings,atom) || (goto(leavings) && room_info(false)));
-            } : {
+            } else {
               return jigs_up(`Oh, no!  A fearsome grue slithered into the room and devoured you.`);
             };
-        } : {
+        } else {
           return jigs_up(`Oh, no!  You walked into the slavering fangs of a lurking grue.`);
         };
-    } : (nrm = memq(where,rexits(rm))) ? {
+    } else if(nrm = memq(where,rexits(rm))) {
       leavings = nrm[2];
-      return (type_Q(leavings,room)) ? {
+      if(type_Q(leavings,room)) {
           return (goto(leavings) && room_info(false));
-        } : (type_Q(leavings,cexit)) ? {
-          return (((random_action = cxaction(leavings) && nl = apply_random(random_action)) || (/*,*/ [cxflag(leavings)] /*1*/ && nl = cxroom(leavings)))) ? {
+        } else if(type_Q(leavings,cexit)) {
+          if(((random_action = cxaction(leavings) && nl = apply_random(random_action)) || (/*,*/ [cxflag(leavings)] /*1*/ && nl = cxroom(leavings)))) {
               return (type_Q(nl,atom) || (goto(nl) && room_info(false)));
-            } : (cxs = cxstr(leavings)) ? {
+            } else if(cxs = cxstr(leavings)) {
               return (empty_Q(cxs) || tell(cxs));
-            } : {
+            } else {
               return tell(`There is no way to go in that direction.`);
             };
-        } : (t) ? {
+        } else if(t) {
           return tell(leavings);
-        } : false;
-    } : {
+        }
+        return false;
+    } else {
       return tell(`There is no way to go in that direction.`);
     };
   }
@@ -1264,60 +1307,62 @@ export function take(take_Q?: (ATOM | FALSE)) {
     let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(rm);
     let aobjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = aobjs(win);
     let load_max: FIX = G_load_max;
-    prog(/*(*/ [] /*)*/,
-	 (trnn(obj,G_no_check_bit)) ? {
+    return prog(/*(*/ [] /*)*/,
+	 if(trnn(obj,G_no_check_bit)) {
         return return(object_action());
-      } : false,
-	 (ocan(obj)) ? {
+      },
+	 if(ocan(obj)) {
         nobj = ocan(obj);
-        return (see_inside_Q(nobj)) ? {
-            return (oopen_Q(nobj)) ? {
+        if(see_inside_Q(nobj)) {
+            if(oopen_Q(nobj)) {
                 return getter_Q = t;
-              } : (tell(`I can't reach that.`)) ? {
+              } else if(tell(`I can't reach that.`)) {
                 return return(false);
-              } : false;
-          } : (tell(`I can't see one here.`)) ? {
+              }
+              return false;
+          } else if(tell(`I can't see one here.`)) {
             return return(false);
-          } : false;
-      } : false,
-	 (obj === avehicle(win)) ? {
+          }
+          return false;
+      },
+	 if(obj === avehicle(win)) {
         tell(`You are in it, loser!`);
         return return(false);
-      } : (!can_take_Q(obj)) ? {
+      } else if(!can_take_Q(obj)) {
         (apply_object(obj) || tell(pick_one(G_yuks)));
         return return(false);
-      } : ((getter_Q || memq(obj,robjs))) ? {
+      } else if((getter_Q || memq(obj,robjs))) {
         load_max = _(load_max,fix(_(_(1_0, load_max), astrength(win))));
-        ((getter_Q && memq(nobj,aobjs))) ? {
+        if((getter_Q && memq(nobj,aobjs))) {
             ;
-          } : (_(weight(aobjs), weight(ocontents(obj)), osize(obj)) > load_max) ? {
+          } else if(_(weight(aobjs), weight(ocontents(obj)), osize(obj)) > load_max) {
             tell(`Your load is too heavy.  You will have to leave something behind.`);
             return return(false);
-          } : false;
-        return (!apply_object(obj)) ? {
-            (getter_Q) ? {
+          };
+        if(!apply_object(obj)) {
+            if(getter_Q) {
                 nobj[G_ocontents] = splice_out(obj,ocontents(nobj));
                 obj[G_oroom] = false;
                 return obj[G_ocan] = false;
-              } : {
+              } else {
                 return remove_object(obj);
               };
             win[G_aobjs] = /*(*/ [obj,_X,aobjs] /*)*/;
             obj[G_otouch_Q] = t;
             score_obj(obj);
-            return (take_Q) ? {
+            if(take_Q) {
                 return tell(`Taken.`);
-              } : {
+              } else {
                 return t;
               };
-          } : {
+          } else {
             return t;
           };
-      } : (memq(obj,aobjs)) ? {
+      } else if(memq(obj,aobjs)) {
         return tell(`You already have it.`);
-      } : (tell(`I can't see one here.`)) ? {
+      } else if(tell(`I can't see one here.`)) {
         return false;
-      } : false);
+      });
   }
 
 export function putter(objact?: (ATOM | FALSE)) {
@@ -1330,59 +1375,60 @@ export function putter(objact?: (ATOM | FALSE)) {
     let can: OBJECT = null;
     let robjs: LIST(/*[*/ [REST, OBJECT] /*]*/) = robjs(G_here);
     let ocan: (FALSE | OBJECT) = false;
-    prog(/*(*/ [] /*)*/,
-	      (trnn(objo,G_no_check_bit)) ? {
+    return prog(/*(*/ [] /*)*/,
+	      if(trnn(objo,G_no_check_bit)) {
         return return(object_action());
-      } : false,
-	      ((memq(objo,G_stars) || memq(obji,G_stars))) ? {
+      },
+	      if((memq(objo,G_stars) || memq(obji,G_stars))) {
         tell(`Nice try.`);
         return return(false);
-      } : false,
-	      ((oopen_Q(obji) || openable_Q(obji) || trnn(obji,G_vehbit))) ? {
+      },
+	      if((oopen_Q(obji) || openable_Q(obji) || trnn(obji,G_vehbit))) {
         can = obji;
         return crock = objo;
-      } : (tell(`I can't do that.`)) ? {
+      } else if(tell(`I can't do that.`)) {
         return return(false);
-      } : false,
-	      (!oopen_Q(can)) ? {
+      },
+	      if(!oopen_Q(can)) {
         tell(`I can't reach inside.`);
         return return(false);
-      } : (can === crock) ? {
+      } else if(can === crock) {
         tell(`How can you do that?`);
         return return(false);
-      } : (_(weight(ocontents(can)), osize(crock)) > ocapac(can)) ? {
+      } else if(_(weight(ocontents(can)), osize(crock)) > ocapac(can)) {
         tell(`It won't fit.`);
         return return(false);
-      } : false,
-	      ((memq(crock,robjs) || (ocan = ocan(crock) && memq(ocan,robjs)) || (ocan && ocan = ocan(ocan) && memq(ocan,robjs)))) ? {
+      },
+	      if((memq(crock,robjs) || (ocan = ocan(crock) && memq(ocan,robjs)) || (ocan && ocan = ocan(ocan) && memq(ocan,robjs)))) {
         pv[1] = G_take_X_words;
         pv[2] = crock;
         pv[3] = false;
-        return (!take(false)) ? {
+        if(!take(false)) {
             return return(false);
-          } : {
+          } else {
             return aobjs = aobjs(win);
           };
-      } : (ocan = ocan(crock)) ? {
-        return (oopen_Q(ocan)) ? {
+      } else if(ocan = ocan(crock)) {
+        if(oopen_Q(ocan)) {
             win[G_aobjs] = aobjs = /*(*/ [crock,_X,aobjs] /*)*/;
             ocan[G_ocontents] = splice_out(crock,ocontents(ocan));
             return crock[G_ocan] = false;
-          } : (tell(`I can't reach the `, 1, odesc2(crock))) ? {
+          } else if(tell(`I can't reach the `, 1, odesc2(crock))) {
             return return(false);
-          } : false;
-      } : false,
+          }
+          return false;
+      },
 	      pv[1] = G_put_X_words,
 	      pv[2] = crock,
 	      pv[3] = can,
-	      ((objact && object_action())) ? {
+	      if((objact && object_action())) {
         return return();
-      } : (win[G_aobjs] = splice_out(crock,aobjs)) ? {
+      } else if(win[G_aobjs] = splice_out(crock,aobjs)) {
         can[G_ocontents] = /*(*/ [crock,_X,ocontents(can)] /*)*/;
         crock[G_ocan] = can;
         crock[G_oroom] = G_here;
         return tell(`Done.`);
-      } : false);
+      });
   }
  
 export function dropper() {
@@ -1395,52 +1441,53 @@ export function dropper() {
     let obj: OBJECT = vec[2];
     let pi: (FALSE | OBJECT) = vec[3];
     let nobj: OBJECT = null;
-    prog(/*(*/ [] /*)*/,
-	      ((memq(vname(vec[1]), () => /*[*/ [drop_X_words, pour_X_words] /*]*/) && pi)) ? {
+    return prog(/*(*/ [] /*)*/,
+	      if((memq(vname(vec[1]), () => /*[*/ [drop_X_words, pour_X_words] /*]*/) && pi)) {
         vec[1] = G_put_X_words;
         return return(putter());
-      } : ((pi && !(memq(obj,aobjs) || memq(ocan(obj), aobjs)))) ? {
+      } else if((pi && !(memq(obj,aobjs) || memq(ocan(obj), aobjs)))) {
         vec[2] = pi;
         vec[3] = obj;
         return obj = vec[2];
-      } : false,
-	      (trnn(obj,G_no_check_bit)) ? {
+      },
+	      if(trnn(obj,G_no_check_bit)) {
         return return(object_action());
-      } : false,
-	      ((ocan(obj) && nobj = ocan(obj) && memq(nobj,aobjs))) ? {
-        return (oopen_Q(nobj)) ? {
+      },
+	      if((ocan(obj) && nobj = ocan(obj) && memq(nobj,aobjs))) {
+        if(oopen_Q(nobj)) {
             return getter_Q = t;
-          } : (transparent_Q(nobj)) ? {
+          } else if(transparent_Q(nobj)) {
             tell(`I can't reach that.`);
             return return();
-          } : {
+          } else {
             return tell(`I can't see that here.`);
           };
-      } : false,
-	      ((getter_Q || memq(obj,aobjs))) ? {
-        (av) ? {
+      },
+	      if((getter_Q || memq(obj,aobjs))) {
+        if(av) {
             ;
-          } : (getter_Q) ? {
+          } else if(getter_Q) {
             nobj[G_ocontents] = splice_out(obj,ocontents(nobj));
             return obj[G_ocan] = false;
-          } : {
+          } else {
             return winner[G_aobjs] = splice_out(obj,aobjs);
           };
-        (av) ? {
+        if(av) {
             vec[2] = obj;
             vec[3] = av;
             return putter(false);
-          } : {
+          } else {
             return insert_object(obj,rm);
           };
-        return (object_action()) ? {
+        if(object_action()) {
             ;
-          } : (vname(vec[1]) === drop_X_words) ? {
+          } else if(vname(vec[1]) === drop_X_words) {
             return tell(`Dropped.`);
-          } : (vname(vec[1]) === throw_X_words) ? {
+          } else if(vname(vec[1]) === throw_X_words) {
             return tell(`Thrown.`);
-          } : false;
-      } : {
+          }
+          return false;
+      } else {
         return tell(`You are not carrying that.`);
       });
   }
@@ -1457,33 +1504,37 @@ export function frob_lots(uv: UVECTOR(/*[*/ [REST, OBJECT] /*]*/)) {
     let pi: (OBJECT | FALSE) = null;
     let winner: ADV = G_winner;
     let here: ROOM = G_here;
-    (pa === G_take_X_words) ? {
+    if(pa === G_take_X_words) {
       return mapf(false,
 	   function(x: OBJECT) {
-            ((can_take_Q(x) || trnn(x,G_trytakebit))) ? {
+            if((can_take_Q(x) || trnn(x,G_trytakebit))) {
               prsvec[2] = x;
               tell(odesc2(x), 0, `:
   `);
               apply_random(ra);
-              return (here !== aroom(winner)) ? {
+              if(here !== aroom(winner)) {
                   return mapleave();
-                } : false;
-            } : false;
+                }
+                return false;
+            }
+            return false;
           },
 	   uv);
-    } : ((pa === G_drop_X_words || pa === G_put_X_words)) ? {
+    } else if((pa === G_drop_X_words || pa === G_put_X_words)) {
       return mapf(false,
 	   function(x: OBJECT) {
-            prsvec[2] = x;
-tell(odesc2(x), 0, `:
+            return prsvec[2] = x;
+return tell(odesc2(x), 0, `:
   `);
-apply_random(ra);
-(here !== aroom(winner)) ? {
+return apply_random(ra);
+if(here !== aroom(winner)) {
               return mapleave();
-            } : false;
+            }
+            return false;
           },
 	   uv);
-    } : false;
+    }
+    return false;
   }
 
 psetg(losstr, `I can't do everything, because I ran out of room.`)
@@ -1497,55 +1548,59 @@ export function everything() {
     let lu: FIX = tuv.length;
     let here: ROOM = G_here;
     let winner: ADV = G_winner;
-    (pa === G_take_X_words) ? {
+    if(pa === G_take_X_words) {
       return mapf(false,
 	   function(x: OBJECT) {
-            ((ovis_Q(x) && !trnn(x,G_actorbit))) ? {
-              (suv === tuv) ? {
+            if((ovis_Q(x) && !trnn(x,G_actorbit))) {
+              if(suv === tuv) {
                   tell(G_losstr);
                   return mapleave();
-                } : false;
+                };
               suv = back(suv);
               return suv[1] = x;
-            } : false;
+            }
+            return false;
           },
 	   robjs(here));
-    } : (pa === G_drop_X_words) ? {
+    } else if(pa === G_drop_X_words) {
       return mapf(false,
 	   function(x: OBJECT) {
-            suv = back(suv);
-suv[1] = x;
+            return suv = back(suv);
+return suv[1] = x;
           },
 	   aobjs(winner));
-    } : (pa === G_put_X_words) ? {
+    } else if(pa === G_put_X_words) {
       pi = prsvec[3];
       return prog(rp, /*(*/ [] /*)*/,
 	   mapf(false,
 	     function(x: OBJECT) {
-              ((ovis_Q(x) && x !== pi && !trnn(x,G_actorbit))) ? {
-                (suv === tuv) ? {
+              if((ovis_Q(x) && x !== pi && !trnn(x,G_actorbit))) {
+                if(suv === tuv) {
                     tell(G_losstr);
                     return return(t, rp);
-                  } : false;
+                  };
                 suv = back(suv);
                 return suv[1] = x;
-              } : false;
+              }
+              return false;
             },
 	     robjs(here)),
 	   mapf(false,
 	     function(x: OBJECT) {
-              ((suv === tuv && x !== pi)) ? {
+              if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              } : false;
-suv = back(suv);
-suv[1] = x;
+              }
+              return false;
+return suv = back(suv);
+return suv[1] = x;
             },
 	     aobjs(winner)));
-    } : false;
-(empty_Q(suv)) ? {
+    }
+    return false;
+if(empty_Q(suv)) {
       return tell(`I couldn't find anything.`);
-    } : {
+    } else {
       return frob_lots(suv);
     };
   }
@@ -1559,59 +1614,66 @@ export function valuables() {
     let lu: FIX = tuv.length;
     let here: ROOM = G_here;
     let winner: ADV = G_winner;
-    (pa === G_take_X_words) ? {
+    if(pa === G_take_X_words) {
       return mapf(false,
 	   function(x: OBJECT) {
-            ((ovis_Q(x) && !trnn(x,G_actorbit) && !0_Q(otval(x)))) ? {
-              (suv === tuv) ? {
+            if((ovis_Q(x) && !trnn(x,G_actorbit) && !0_Q(otval(x)))) {
+              if(suv === tuv) {
                   tell(G_losstr);
                   return mapleave();
-                } : false;
+                };
               suv = back(suv);
               return suv[1] = x;
-            } : false;
+            }
+            return false;
           },
 	   robjs(here));
-    } : (pa === G_drop_X_words) ? {
+    } else if(pa === G_drop_X_words) {
       return mapf(false,
 	   function(x: OBJECT) {
-            (!0_Q(otval(x))) ? {
+            if(!0_Q(otval(x))) {
               suv = back(suv);
               return suv[1] = x;
-            } : false;
+            }
+            return false;
           },
 	   aobjs(winner));
-    } : (pa === G_put_X_words) ? {
+    } else if(pa === G_put_X_words) {
       pi = prsvec[3];
       return prog(rp, /*(*/ [] /*)*/,
 	   mapf(false,
 	     function(x: OBJECT) {
-              ((suv === tuv && x !== pi)) ? {
+              if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              } : false;
-((ovis_Q(x) && !0_Q(otval(x)))) ? {
+              }
+              return false;
+if((ovis_Q(x) && !0_Q(otval(x)))) {
                 suv = back(suv);
                 return suv[1] = x;
-              } : false;
+              }
+              return false;
             },
 	     robjs(here)),
 	   mapf(false,
 	     function(x: OBJECT) {
-              ((suv === tuv && x !== pi)) ? {
+              if((suv === tuv && x !== pi)) {
                 tell(G_losstr);
                 return return(t, rp);
-              } : false;
-(!0_Q(otval(x))) ? {
+              }
+              return false;
+if(!0_Q(otval(x))) {
                 suv = back(suv);
                 return suv[1] = x;
-              } : false;
+              }
+              return false;
             },
 	     aobjs(winner)));
-    } : false;
-(empty_Q(suv)) ? {
+    }
+    return false;
+if(empty_Q(suv)) {
       return tell(`I couldn't find any valuables.`);
-    } : {
+    } else {
       return frob_lots(suv);
     };
   }
@@ -1620,50 +1682,53 @@ export function valuables() {
 
 define(opener, open_act, /*(*/ [`AUX`, /*(*/ [pv, G_prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/, /*(*/ [outchan, G_outchan] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [prso] /*)*/, object, /*(*/ [pv] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [outchan] /*)*/, channel] /*)*/] /*2*/,
-	(object_action()) ? {
+	if(object_action()) {
       ;
-    } : (!trnn(prso,G_contbit)) ? {
+    } else if(!trnn(prso,G_contbit)) {
       return tell(`You must tell me how to do that to a `, 1, odesc2(prso), `.`);
-    } : (ocapac(prso) !== 0) ? {
-      return (oopen_Q(prso)) ? {
+    } else if(ocapac(prso) !== 0) {
+      if(oopen_Q(prso)) {
           return tell(`It is already open.`);
-        } : (t) ? {
+        } else if(t) {
           prso[G_oopen_Q] = t;
-          return ((empty_Q(ocontents(prso)) || transparent_Q(prso))) ? {
+          if((empty_Q(ocontents(prso)) || transparent_Q(prso))) {
               return tell(`Opened.`);
-            } : (G_tell_flag = t) ? {
+            } else if(G_tell_flag = t) {
               tell(`Opening the `, 0, odesc2(prso), ` reveals `);
               print_contents(ocontents(prso));
               princ(_X__);
               return crlf();
-            } : false;
-        } : false;
-    } : {
+            }
+            return false;
+        }
+        return false;
+    } else {
       return tell(`The `, 1, odesc2(prso), ` cannot be opened.`);
     })
 
 define(closer, close_act, /*(*/ [`AUX`, /*(*/ [pv, G_prsvec] /*)*/, /*(*/ [prso, pv[2]] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [pv] /*)*/, vector(/*[*/ [3, any] /*]*/), /*(*/ [prso] /*)*/, object] /*)*/] /*2*/,
-	(object_action()) ? {
+	if(object_action()) {
       ;
-    } : (!trnn(prso,G_contbit)) ? {
+    } else if(!trnn(prso,G_contbit)) {
       return tell(`You must tell me how to do that to a `, 1, odesc2(prso), `.`);
-    } : (ocapac(prso) !== 0) ? {
-      return (oopen_Q(prso)) ? {
+    } else if(ocapac(prso) !== 0) {
+      if(oopen_Q(prso)) {
           prso[G_oopen_Q] = false;
           return tell(`Closed.`);
-        } : (t) ? {
+        } else if(t) {
           return tell(`It is already closed.`);
-        } : false;
-    } : {
+        }
+        return false;
+    } else {
       return tell(`You cannot close that.`);
     })
 
 export function find() {
     let prso: (FALSE | OBJECT) = G_prsvec[2];
-    (object_action()) ? {
+    if(object_action()) {
       ;
-    } : (prso) ? {
+    } else if(prso) {
       find_frob(prso,		    robjs(G_here),
 		    `, which is in the room.`,
 		    `There is a `,
@@ -1672,32 +1737,35 @@ export function find() {
 		    `, which you are carrying.`,
 		    `You are carrying a `,
 		    `.`);
-      return (!G_tell_flag) ? {
+      if(!G_tell_flag) {
           return tell(`I can't see that here.`);
-        } : false;
-    } : {
+        }
+        return false;
+    } else {
       return tell(`I don't know what that is.`);
     };
   }
 
 export function find_frob(prso, objl: LIST(/*[*/ [REST, OBJECT] /*]*/), str1: STRING, str2: STRING, str3: STRING) {
-    mapf(false,
+    return mapf(false,
 	function(x: OBJECT) {
-        (x === prso) ? {
+        if(x === prso) {
           return tell(str2,1, odesc2(x), str3);
-        } : ((transparent_Q(x) || (openable_Q(x) && oopen_Q(x)))) ? {
+        } else if((transparent_Q(x) || (openable_Q(x) && oopen_Q(x)))) {
           return mapf(false,
 			       function(y: OBJECT) {
-                (y === prso) ? {
+                if(y === prso) {
                   tell(str2,1, odesc2(y), str3);
                   return tell(`It is in the `,
 						      1,
 						      odesc2(x),
 						      str1);
-                } : false;
+                }
+                return false;
               },
 			       ocontents(x));
-        } : false;
+        }
+        return false;
       },
 	 objl);
   }
@@ -1708,13 +1776,13 @@ export function object_action() {
     let vec: VECTOR = G_prsvec;
     let prso: (OBJECT | FALSE) = vec[2];
     let prsi: (OBJECT | FALSE) = vec[3];
-    prog(/*(*/ [] /*)*/,
-	      (prsi) ? {
+    return prog(/*(*/ [] /*)*/,
+	      if(prsi) {
         return (apply_object(prsi) && return(t));
-      } : false,
-	      (prso) ? {
+      },
+	      if(prso) {
         return apply_object(prso);
-      } : false);
+      });
   }
 
 `SIMPLE OBJ-HERE:  IS IT IN THE ROOM OR IN THE GUY'S HAND.  TO DO FULL
@@ -1724,42 +1792,43 @@ export function obj_here_Q(obj: OBJECT) {
     let nobj: (FALSE | OBJECT) = null;
     let rm: ROOM = G_here;
     let win: ADV = G_winner;
-    prog(/*(*/ [] /*)*/,
-	      (!ovis_Q(obj)) ? {
+    return prog(/*(*/ [] /*)*/,
+	      if(!ovis_Q(obj)) {
         return return(false);
-      } : (nobj = ocan(obj)) ? {
-        return (oopen_Q(nobj)) ? {
+      } else if(nobj = ocan(obj)) {
+        if(oopen_Q(nobj)) {
             return obj = nobj;
-          } : {
+          } else {
             return return(false);
           };
-      } : false,
+      },
 	      (memq(obj,robjs(rm)) || memq(obj,aobjs(win))));
   }
 
 export function splice_out(obj, al: LIST) {
-    (al[1] === obj) ? {
+    if(al[1] === obj) {
       return rest(al);
-    } : (t) ? {
+    } else if(t) {
       return repeat(/*(*/ [/*(*/ [nl, rest(al)] /*)*/, /*(*/ [ol, al] /*)*/] /*)*/,
 		       /*#*/ [decl, /*(*/ [/*(*/ [nl, ol] /*)*/, list] /*)*/] /*2*/,
-		       (nl[1] === obj) ? {
+		       if(nl[1] === obj) {
             putrest(ol,rest(nl));
             return return(al);
-          } : (ol = nl) ? {
+          } else if(ol = nl) {
             return nl = rest(nl);
-          } : false);
-    } : false;
+          });
+    }
+    return false;
   }
 
 `WEIGHT:  Get sum of OSIZEs of supplied list, recursing to the nth level.`
 
 export function weight(objl: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
     let bigfix: FIX = G_bigfix;
-    mapf(G__,	      function(obj: OBJECT) {
-        _((osize(obj) === G_bigfix) ? {
+    return mapf(G__,	      function(obj: OBJECT) {
+        return _(if(osize(obj) === G_bigfix) {
             return 0;
-          } : {
+          } else {
             return osize(obj);
           },
 			 weight(ocontents(obj)));
@@ -1774,19 +1843,21 @@ export function move() {
     let vec: VECTOR = G_prsvec;
     let rm: ROOM = aroom(G_winner);
     let obj: (ATOM | OBJECT) = vec[2];
-    (memq(obj,robjs(rm))) ? {
+    if(memq(obj,robjs(rm))) {
       return object_action();
-    } : (obj) ? {
+    } else if(obj) {
       return tell(`I can't get to that to move it.`);
-    } : false;
+    }
+    return false;
   }
 
 export function victims_Q(rm: ROOM) {
-    mapf(false,
+    return mapf(false,
 	      function(x: OBJECT) {
-        (trnn(x,G_vicbit)) ? {
+        if(trnn(x,G_vicbit)) {
           return mapleave(x);
-        } : false;
+        }
+        return false;
       },
 	      robjs(rm));
   }
@@ -1794,43 +1865,46 @@ export function victims_Q(rm: ROOM) {
 define(lamp_on, lampo, /*(*/ [`AUX`, /*(*/ [prsvec, G_prsvec] /*)*/, /*(*/ [me, G_winner] /*)*/, /*(*/ [obj, prsvec[2]] /*)*/, /*(*/ [lit_Q,
 							     lit_Q(G_here)] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [me] /*)*/, adv, /*(*/ [obj] /*)*/, object, /*(*/ [lampo] /*)*/, activation] /*)*/] /*2*/,
-	((trnn(obj,G_burnbit) && prsvec[3] && prsvec[1] = G_burn_X_words)) ? {
+	if((trnn(obj,G_burnbit) && prsvec[3] && prsvec[1] = G_burn_X_words)) {
       return burner();
-    } : (object_action()) ? {
+    } else if(object_action()) {
       ;
-    } : (((olight_Q(obj) !== 0 && memq(obj,aobjs(me)))) ? {
+    } else if(if((olight_Q(obj) !== 0 && memq(obj,aobjs(me)))) {
           ;
-        } : (t) ? {
+        } else if(t) {
           tell(`You can't turn that on.`);
           return return(t, lampo);
-        } : false) ? {
-      return (olight_Q(obj) > 0) ? {
+        }) {
+      if(olight_Q(obj) > 0) {
           return tell(`It is already on.`);
-        } : (obj[G_olight_Q] = 1) ? {
+        } else if(obj[G_olight_Q] = 1) {
           tell(`The `, 1, odesc2(obj), ` is now on.`);
-          return (!lit_Q) ? {
+          if(!lit_Q) {
               G_prsvec[2] = false;
               return room_info(false);
-            } : false;
-        } : false;
-    } : false)
+            }
+            return false;
+        }
+        return false;
+    })
 
 define(lamp_off, lampo, /*(*/ [`AUX`, /*(*/ [me, G_winner] /*)*/, /*(*/ [obj, G_prsvec[2]] /*)*/] /*)*/, 
 	/*#*/ [decl, /*(*/ [/*(*/ [me] /*)*/, adv, /*(*/ [obj] /*)*/, object, /*(*/ [lampo] /*)*/, activation] /*)*/] /*2*/,
-	(object_action()) ? {
+	if(object_action()) {
       ;
-    } : (((olight_Q(obj) !== 0 && memq(obj,aobjs(me)))) ? {
+    } else if(if((olight_Q(obj) !== 0 && memq(obj,aobjs(me)))) {
           ;
-        } : (tell(`You can't turn that off.`)) ? {
+        } else if(tell(`You can't turn that off.`)) {
           return return(t, lampo);
-        } : false) ? {
-      return (olight_Q(obj) < 0) ? {
+        }) {
+      if(olight_Q(obj) < 0) {
           return tell(`It is already off.`);
-        } : (obj[G_olight_Q] = _1) ? {
+        } else if(obj[G_olight_Q] = _1) {
           tell(`The `, 1, odesc2(obj), ` is now off.`);
           return (lit_Q(G_here) || tell(`It is now pitch black.`));
-        } : false;
-    } : false)
+        }
+        return false;
+    })
 
 `PARSER & AUXILIARIES`
 
@@ -1843,17 +1917,18 @@ psetg(cntprs, `I can't parse that.`)
 G_prsvec = ivector(3, /*#*/ [false, /*(*/ [] /*)*/] /*2*/)
 
 export function word_Q(w) {
-    lookup(w,G_words);
+    return lookup(w,G_words);
   }
 
 export function this_it_Q(objnam: ATOM, obj: ATOM, adj: (FALSE | ADJECTIVE)) {
-    ((ovis_Q(obj) && (objnam === oid(obj) || memq(objnam,onames(obj))))) ? {
-      return (!adj) ? {
+    if((ovis_Q(obj) && (objnam === oid(obj) || memq(objnam,onames(obj))))) {
+      if(!adj) {
           ;
-        } : {
+        } else {
           return memq(adj,oadjs(obj));
         };
-    } : false;
+    }
+    return false;
   }
 
 G_lexv = ivector(10, () => rest(istring(5), 5))
@@ -1865,34 +1940,35 @@ export function lex(s: STRING, sx?: STRING, silent_Q: (ATOM | FALSE)) {
     let v: (FALSE | VECTOR) = G_lexv;
     let s1: STRING = s;
     let quot: (ATOM | FALSE) = false;
-    mapr(false,
+    return mapr(false,
 	 function(x: VECTOR(/*[*/ [REST, STRING] /*]*/)) {
         let str: STRING = x[1];
-        x[1] = rest(str,str.length);
+        return x[1] = rest(str,str.length);
       },
 	 v);
-(s[1] === _X__Q) ? {
+if(s[1] === _X__Q) {
       return v[1] = substruc(`HELP`, 0, 4, back(v[1], 4));
-    } : {
+    } else {
       return repeat(/*(*/ [slen] /*)*/,
        /*#*/ [decl, /*(*/ [/*(*/ [slen] /*)*/, fix] /*)*/] /*2*/,
-       ((s1.length === sx.length || memq(s1[1], brks))) ? {
+       if((s1.length === sx.length || memq(s1[1], brks))) {
             (s1.length > sx.length && (s1[1] === _X__ || s1[1] === _X__) && !quot && quot = t && v = rest(v));
-            (s !== s1) ? {
-                return (empty_Q(v)) ? {
+            if(s !== s1) {
+                if(empty_Q(v)) {
                     return (silent_Q || tell(`I'm too simple-minded for that.`));
-                  } : (v[1] = uppercase(substruc(s,				       0,
+                  } else if(v[1] = uppercase(substruc(s,				       0,
 				       slen = min(_(s.length, s1.length),
 						 5),
-				       back(v[1], slen)))) ? {
+				       back(v[1], slen)))) {
                     return v = rest(v);
-                  } : false;
-              } : false;
-            (s1.length === sx.length) ? {
+                  }
+                  return false;
+              };
+            if(s1.length === sx.length) {
                 return return(v);
-              } : false;
+              };
             return s = rest(s1);
-          } : false,
+          },
        s1 = rest(s1));
     };
   }
@@ -1901,34 +1977,36 @@ psetg(brks, `\"' 	:;.,?!
 `)
 
 export function anything(s: STRING, sx: STRING) {
-    mapr(false,
+    return mapr(false,
 	      function(x) {
-        (x === sx) ? {
+        if(x === sx) {
           return mapleave(false);
-        } : (!memq(x[1], G_brks)) ? {
+        } else if(!memq(x[1], G_brks)) {
           return mapleave(x);
-        } : false;
+        }
+        return false;
       },
 	      s);
   }
 
 export function uppercase(str: STRING) {
-    mapr(false,
+    return mapr(false,
 	      function(s) {`AUX`, /*(*/ [c, ascii(s[1])] /*)*/
-        ((c > 96 && l__Q(c,122))) ? {
+        if((c > 96 && l__Q(c,122))) {
           return s[1] = ascii(_(c,32));
-        } : false;
+        }
+        return false;
       },
 	      str);
   }
 
 export function wait(num?: FIX) {
-    tell(`Time passes...`);
-repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
+    return tell(`Time passes...`);
+return repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 	/*#*/ [decl, /*(*/ [/*(*/ [n] /*)*/, fix] /*)*/] /*2*/,
-	((n = _(n,1) < 0 || clock_demon(G_clocker))) ? {
+	if((n = _(n,1) < 0 || clock_demon(G_clocker))) {
         return return();
-      } : false);
+      });
   }
 
 `RUNS ONLY IF PARSE WON, TO PREVENT SCREWS FROM TYPOS.`
@@ -1936,44 +2014,48 @@ repeat(/*(*/ [/*(*/ [n, num] /*)*/] /*)*/,
 export function clock_demon(hack: HACK) {
     let ca = null;
     let flg: (ATOM | FALSE) = false;
-    (G_parse_won) ? {
+    if(G_parse_won) {
       G_prsvec[2] = false;
       G_prsvec[3] = false;
       return mapf(false,
 		 function(ev: CEVENT) {
             let tick: FIX = ctick(ev);
-            (!cflag(ev)) ? {
+            if(!cflag(ev)) {
               ;
-            } : (0_Q(tick)) ? {
+            } else if(0_Q(tick)) {
               ;
-            } : (tick < 0) ? {
+            } else if(tick < 0) {
               G_prsvec[1] = G_c_int_X_words;
-              return (type_Q(ca = caction(ev), offset)) ? {
+              if(type_Q(ca = caction(ev), offset)) {
                   return dispatch(ca);
-                } : {
+                } else {
                   return apply(ca);
                 };
-            } : (ev[G_ctick] = tick = _(tick,1)) ? {
-              return (0_Q(tick) && flg = t && G_prsvec[1] = G_c_int_X_words && (type_Q(ca = caction(ev), offset)) ? {
+            } else if(ev[G_ctick] = tick = _(tick,1)) {
+              return (0_Q(tick) && flg = t && G_prsvec[1] = G_c_int_X_words && if(type_Q(ca = caction(ev), offset)) {
                     return dispatch(ca);
-                  } : {
+                  } else {
                     return apply(ca);
                   });
-            } : false;
+            }
+            return false;
           },
 		 hobjs(hack));
-    } : false;
+    }
+    return false;
   }
 
 export let G_clocker: HACK;
 
 export function clock_int(cev: CEVENT, num?: (FIX | FALSE), clocker: HACK) {
-    (!memq(cev,hobjs(clocker))) ? {
+    if(!memq(cev,hobjs(clocker))) {
       return clocker[G_hobjs] = /*(*/ [cev,_X,hobjs(clocker)] /*)*/;
-    } : false;
-(num) ? {
+    }
+    return false;
+if(num) {
       return cev[G_ctick] = num;
-    } : false;
+    }
+    return false;
   }
 
 G_demons = /*(*/ [] /*)*/
@@ -1984,23 +2066,25 @@ export function board() {
     let obj: OBJECT = G_prsvec[2];
     let win: ADV = G_winner;
     let av: (FALSE | OBJECT) = avehicle(win);
-    (!memq(obj,robjs(G_here))) ? {
+    if(!memq(obj,robjs(G_here))) {
       return tell(`The `, 1, odesc2(obj), ` must be on the ground to be boarded.`);
-    } : (trnn(obj,G_vehbit)) ? {
-      return (av) ? {
+    } else if(trnn(obj,G_vehbit)) {
+      if(av) {
           return tell(`You are already in a `,
 			    1,
 			    odesc2(obj),
 			    `, cretin!`);
-        } : (t) ? {
-          return (object_action()) ? {
+        } else if(t) {
+          if(object_action()) {
               ;
-            } : (tell(`You are in the `, 1, odesc2(obj), `.`)) ? {
+            } else if(tell(`You are in the `, 1, odesc2(obj), `.`)) {
               win[G_avehicle] = obj;
               return obj[G_ocontents] = /*(*/ [find_obj(`#####`), _X,ocontents(obj)] /*)*/;
-            } : false;
-        } : false;
-    } : {
+            }
+            return false;
+        }
+        return false;
+    } else {
       return tell(`I suppose you have a theory on boarding `,
 		     1,
 		     odesc2(obj),
@@ -2012,18 +2096,18 @@ export function unboard() {
     let obj: OBJECT = G_prsvec[2];
     let win: ADV = G_winner;
     let av: (FALSE | OBJECT) = avehicle(win);
-    (av === obj) ? {
-      return (object_action()) ? {
+    if(av === obj) {
+      if(object_action()) {
           ;
-        } : (rtrnn(G_here,G_rlandbit)) ? {
+        } else if(rtrnn(G_here,G_rlandbit)) {
           tell(`You are on your own feet again.`);
           win[G_avehicle] = false;
           return obj[G_ocontents] = splice_out(find_obj(`#####`), ocontents(obj));
-        } : {
+        } else {
           return tell(`You realize, just in time, that disembarking here would probably be
 fatal.`);
         };
-    } : {
+    } else {
       return tell(`You aren't in that!`);
     };
   }
@@ -2033,42 +2117,43 @@ export function goto(rm: ROOM) {
     let av: (FALSE | OBJECT) = avehicle(G_winner);
     let here: ROOM = G_here;
     let lb: (ATOM | FALSE) = rtrnn(rm,G_rlandbit);
-    (((!lb && (!av || !rtrnn(rm,orand(av)))) || (rtrnn(here,G_rlandbit) && lb && av && orand(av) !== G_rlandbit && !rtrnn(rm,orand(av))))) ? {
-      (av) ? {
+    if(((!lb && (!av || !rtrnn(rm,orand(av)))) || (rtrnn(here,G_rlandbit) && lb && av && orand(av) !== G_rlandbit && !rtrnn(rm,orand(av))))) {
+      if(av) {
           return tell(`You can't go there in a `, 1, odesc2(av), `.`);
-        } : {
+        } else {
           return tell(`You can't go there without a vehicle.`);
         };
       return false;
-    } : (rtrnn(rm,G_rmungbit)) ? {
+    } else if(rtrnn(rm,G_rmungbit)) {
       return tell(rrand(rm));
-    } : (t) ? {
-      (win !== G_player) ? {
+    } else if(t) {
+      if(win !== G_player) {
           remove_object(aobj(win));
           return insert_object(aobj(win), rm);
-        } : false;
-      (av) ? {
+        };
+      if(av) {
           remove_object(av);
           return insert_object(av,rm);
-        } : false;
+        };
       G_winner[G_aroom] = G_here = rm;
       score_room(rm);
       return t;
-    } : false;
+    }
+    return false;
   }
 
 export function backer() {
-    tell(`He who puts his hand to the plow and looks back is not fit for the
+    return tell(`He who puts his hand to the plow and looks back is not fit for the
 kingdom of winners.  In any case, \"back\" doesn't work.`);
   }
 
 export function act_hack() {
-    (object_action() || t);
+    return (object_action() || t);
   }
 
 export function mung_room(rm: ROOM, str: STRING) {
-    rtro(rm,G_rmungbit);
-rm[G_rrand] = str;
+    return rtro(rm,G_rmungbit);
+return rm[G_rrand] = str;
   }
 
 export function command() {
@@ -2078,14 +2163,14 @@ export function command() {
     let hs: ROOM = G_here;
     let win: ADV = G_winner;
     let play: ADV = G_player;
-    (win !== play) ? {
+    if(win !== play) {
       return tell(`You cannot talk through another person!`);
-    } : (trnn(po,G_actorbit)) ? {
+    } else if(trnn(po,G_actorbit)) {
       G_winner = orand(po);
       rdcom(v);
       G_winner = play;
       return G_here = hs;
-    } : {
+    } else {
       return tell(`You cannot talk to that!`);
     };
   }

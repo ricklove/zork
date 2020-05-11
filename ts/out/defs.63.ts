@@ -302,15 +302,16 @@ defmac(apply_object, /*(*/ [() => obj] /*)*/,
 export function remove_object(obj: OBJECT) {
     let ocan: (OBJECT | FALSE) = null;
     let oroom: (FALSE | ROOM) = null;
-    (ocan = ocan(obj)) ? {
+    if(ocan = ocan(obj)) {
       return ocan[G_ocontents] = splice_out(obj,ocontents(ocan));
-    } : (oroom = oroom(obj)) ? {
+    } else if(oroom = oroom(obj)) {
       return oroom[G_robjs] = splice_out(obj,robjs(oroom));
-    } : (memq(obj,robjs(G_here))) ? {
+    } else if(memq(obj,robjs(G_here))) {
       return G_here[G_robjs] = splice_out(obj,robjs(G_here));
-    } : false;
-obj[G_oroom] = false;
-obj[G_ocan] = false;
+    }
+    return false;
+return obj[G_oroom] = false;
+return obj[G_ocan] = false;
   }
 
 defmac(insert_object, /*(*/ [() => obj,() => room] /*)*/,
@@ -325,19 +326,19 @@ defmac(drop_object, /*(*/ [() => obj,`OPTIONAL`, /*(*/ [() => winner,() => G_win
 	form(put, winner,G_aobjs,form(splice_out, obj,form(aobjs, winner))))
 
 export function kill_obj(obj: OBJECT, winner: ADV) {
-    (memq(obj,aobjs(winner))) ? {
+    if(memq(obj,aobjs(winner))) {
       return winner[G_aobjs] = splice_out(obj,aobjs(winner));
-    } : {
+    } else {
       return remove_object(obj);
     };
   }
 
 export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
     let winner: ADV = G_winner;
-    mapf(false,
+    return mapf(false,
 	function(x) {
         let y: OBJECT = find_obj(x);
-        (memq(y,aobjs(winner)) && drop_object(find_obj(x), winner));
+        return (memq(y,aobjs(winner)) && drop_object(find_obj(x), winner));
       },
 	objs);
   }
@@ -345,12 +346,13 @@ export function flush_obj(_tuple_, objs: TUPLE(/*[*/ [REST, STRING] /*]*/)) {
 `ROB-ADV:  TAKE ALL OF THE VALUABLES A HACKER IS CARRYING`
 
 export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
-    mapf(false,
+    return mapf(false,
     function(x: OBJECT) {
-        ((otval(x) > 0 && !trnn(x,G_sacredbit))) ? {
+        if((otval(x) > 0 && !trnn(x,G_sacredbit))) {
           win[G_aobjs] = splice_out(x,aobjs(win));
           return newlist = /*(*/ [x,_X,newlist] /*)*/;
-        } : false;
+        }
+        return false;
       },
     aobjs(win));
   }
@@ -358,46 +360,50 @@ export function rob_adv(win: ADV, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/)) {
 `ROB-ROOM:  TAKE VALUABLES FROM A ROOM, PROBABILISTICALLY`
 
 export function rob_room(rm: ROOM, newlist: LIST(/*[*/ [REST, OBJECT] /*]*/), prob: FIX) {
-    mapf(false,
+    return mapf(false,
     function(x: OBJECT) {
-        ((otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob))) ? {
+        if((otval(x) > 0 && !trnn(x,G_sacredbit) && ovis_Q(x) && prob(prob))) {
           remove_object(x);
           x[G_otouch_Q] = t;
           return newlist = /*(*/ [x,_X,newlist] /*)*/;
-        } : (type_Q(orand(x), adv)) ? {
+        } else if(type_Q(orand(x), adv)) {
           return newlist = rob_adv(orand(x), newlist);
-        } : false;
+        }
+        return false;
       },
     robjs(rm));
   }
 
 export function valuables_Q(adv: ADV) {
-    mapf(false,
+    return mapf(false,
     function(x: OBJECT) {
-        (otval(x) > 0) ? {
+        if(otval(x) > 0) {
           return mapleave(t);
-        } : false;
+        }
+        return false;
       },
     aobjs(adv));
   }
 
 export function armed_Q(adv: ADV) {
     let weapons = G_weapons;
-    mapf(false,
+    return mapf(false,
     function(x: OBJECT) {
-        (memq(x,weapons)) ? {
+        if(memq(x,weapons)) {
           return mapleave(t);
-        } : false;
+        }
+        return false;
       },
     aobjs(adv));
   }
 
 export function light_source(me: ADV) {
-    mapf(false,
+    return mapf(false,
 	      function(x) {
-        (!0_Q(olight_Q(x))) ? {
+        if(!0_Q(olight_Q(x))) {
           return mapleave(x);
-        } : false;
+        }
+        return false;
       },
 	      aobjs(me));
   }
@@ -405,11 +411,12 @@ export function light_source(me: ADV) {
 export function get_demon(id: STRING) {
     let obj: OBJECT = find_obj(id);
     let dems: LIST(/*[*/ [REST, HACK] /*]*/) = G_demons;
-    mapf(false,
+    return mapf(false,
     function(x: HACK) {
-        (hobj(x) === obj) ? {
+        if(hobj(x) === obj) {
           return mapleave(x);
-        } : false;
+        }
+        return false;
       },
     dems);
   }
@@ -426,39 +433,40 @@ defmac(clock_enable, /*(*/ [() => ev] /*)*/,
 export function yes_no(no_is_bad_Q: (ATOM | FALSE)) {
     let inbuf: STRING = G_inbuf;
     let inchan = G_inchan;
-    reset(inchan);
-readstring(inbuf,inchan,G_reader_string);
-(no_is_bad_Q) ? {
+    return reset(inchan);
+return readstring(inbuf,inchan,G_reader_string);
+if(no_is_bad_Q) {
       return !memq(inbuf[1], `NnfF`);
-    } : (t) ? {
+    } else if(t) {
       return memq(inbuf[1], `TtYy`);
-    } : false;
+    }
+    return false;
   }
 
 defmac(apply_random, /*(*/ [() => frob,`OPTIONAL`, /*(*/ [() => mumble,false] /*)*/] /*)*/,
 	form(cond,
 	      /*(*/ [form(type_Q, frob,atom),
-	       (mumble) ? {
+	       if(mumble) {
           return form(apply, form(gval, frob), mumble);
-        } : {
+        } else {
           return form(apply, form(gval, frob));
         }] /*)*/,
 	      /*(*/ [t, form(dispatch, frob,mumble)] /*)*/))
 
 export function da(fn: (APPLICABLE | ATOM | FIX), foo?) {
-    prog(/*(*/ [] /*)*/,
-    (type_Q(fn,fix)) ? {
+    return prog(/*(*/ [] /*)*/,
+    if(type_Q(fn,fix)) {
         return dispatch(fn,foo);
-      } : (applicable_Q(fn)) ? {
-        return (foo) ? {
+      } else if(applicable_Q(fn)) {
+        if(foo) {
             return apply(fn,foo);
-          } : {
+          } else {
             return apply(fn);
           };
-      } : (gassigned_Q(fn)) ? {
+      } else if(gassigned_Q(fn)) {
         fn = /*,*/ [fn] /*1*/;
         return again();
-      } : {
+      } else {
         return error(unassigned_variable_X_errors, fn,da);
       });
   }
@@ -476,47 +484,52 @@ psetg(null_syn, _X,/*[*/ [] /*]*/)
 export function find_room(id: (ATOM | STRING)) {
     let atm: (ATOM | FALSE) = null;
     let room: ROOM = null;
-    (type_Q(id,atom)) ? {
+    if(type_Q(id,atom)) {
       return id = spname(id);
-    } : false;
-((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) ? {
+    }
+    return false;
+if((atm = lookup(id,G_room_obl) && gassigned_Q(atm))) {
       return /*,*/ [atm] /*1*/;
-    } : ((atm || atm = insert(id,G_room_obl))) ? {
+    } else if((atm || atm = insert(id,G_room_obl))) {
       setg(atm,		     room = chtype(vector(atm,G_null_desc,G_null_desc,					  false, false, G_null_exit,/*(*/ [] /*)*/, false, 0, 0, 0, t),
 				 room));
       G_rooms = /*(*/ [room,_X,G_rooms] /*)*/;
       return room;
-    } : false;
+    }
+    return false;
   }
 
 export function find_obj(id: (ATOM | STRING)) {
     let obj: OBJECT = null;
     let atm: (ATOM | FALSE) = null;
-    (type_Q(id,atom)) ? {
+    if(type_Q(id,atom)) {
       return id = spname(id);
-    } : false;
-((atm = lookup(id,G_object_obl) && gassigned_Q(atm))) ? {
+    }
+    return false;
+if((atm = lookup(id,G_object_obl) && gassigned_Q(atm))) {
       return /*,*/ [atm] /*1*/;
-    } : ((atm || atm = insert(id,G_object_obl))) ? {
+    } else if((atm || atm = insert(id,G_object_obl))) {
       setg(atm,		     obj = chtype(/*[*/ [atm,G_null_syn,G_null_desc,G_null_desc,false,
 				   false, /*(*/ [] /*)*/, false, 0, false, 0, 0, 0, false, false, 5, 0, G_null_syn,false, false] /*]*/,
 				  object));
       G_objects = /*(*/ [obj,_X,G_objects] /*)*/;
       return obj;
-    } : false;
+    }
+    return false;
   }
 
 export function function_print(frob: (ATOM | OFFSET | APPLICABLE | FALSE)) {
-    (!frob) ? {
+    if(!frob) {
       return princ(`<>`);
-    } : (type_Q(frob,rsubr, rsubr_entry)) ? {
+    } else if(type_Q(frob,rsubr, rsubr_entry)) {
       return prin1(frob[2]);
-    } : (type_Q(frob,atom)) ? {
+    } else if(type_Q(frob,atom)) {
       return prin1(frob);
-    } : (type_Q(frob,offset)) ? {
+    } else if(type_Q(frob,offset)) {
       princ(`#OFFSET `);
       return prin1(get_atom(frob));
-    } : (princ(`#FUNCTION `)) ? {
+    } else if(princ(`#FUNCTION `)) {
       return prin1(get_atom(frob));
-    } : false;
+    }
+    return false;
   }

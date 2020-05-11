@@ -2268,7 +2268,7 @@ possess.`,
 
 mapf(false,
    function(x) {
-      rtro(find_room(spname(x)), G_rfillbit);
+      return rtro(find_room(spname(x)), G_rfillbit);
     },
  _X,/*[*/ [resen_X_rooms, reses_X_rooms, dam_X_rooms, strea_X_rooms,
    rivr1_X_rooms, rivr2_X_rooms, rivr3_X_rooms, rivr4_X_rooms, rivr5_X_rooms,
@@ -2276,13 +2276,13 @@ mapf(false,
 
 mapf(false,
   function(x) {
-      rtro(find_room(x), G_rhousebit);
+      return rtro(find_room(x), G_rhousebit);
     },
   /*[*/ [`LROOM`, `KITCH`, `ATTIC`] /*]*/)
 
 mapf(false,
    function(x) {
-      rtro(find_room(x), G_rsacredbit);
+      return rtro(find_room(x), G_rsacredbit);
     },
       /*[*/ [`BSHAF`,
        `RIVR1`,

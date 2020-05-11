@@ -2,14 +2,15 @@ export function coke_bottles() {
     let pv: VECTOR(VERB) = G_prsvec;
     let bottl: OBJECT = pv[2];
     let vb: VERB = pv[1];
-    ((vb === G_throw_X_words || vname(vb) === mung_X_words)) ? {
+    if((vb === G_throw_X_words || vname(vb) === mung_X_words)) {
       tell(`Congratulations!  You've managed to break all those bottles.
 Fortunately for your feet, they were made of magic glass and disappear
 immediately.`);
       trz(bottl,G_ovison);
       bottl[G_osize] = 0;
       return t;
-    } : false;
+    }
+    return false;
   }
 
 export function head_function() {
@@ -17,21 +18,22 @@ export function head_function() {
     let vb: VERB = pv[1];
     let nl: LIST(/*[*/ [REST, OBJECT] /*]*/) = /*(*/ [] /*)*/;
     let lcase: OBJECT = find_obj(`LCASE`);
-    (vb !== G_read_X_words) ? {
+    if(vb !== G_read_X_words) {
       tell(`Although the implementers are dead, they foresaw that some cretin
 would tamper with their remains.  Therefore, they took steps to
 prevent this.`);
       nl = rob_adv(G_winner,nl);
       nl = rob_room(G_here,nl,100);
-      (!empty_Q(nl)) ? {
+      if(!empty_Q(nl)) {
           (oroom(lcase) || insert_object(lcase,find_room(`LROOM`)));
           return lcase[G_ocontents] = /*(*/ [_X,ocontents(lcase), _X,nl] /*)*/;
-        } : false;
+        };
       jigs_up(`Unfortunately, we've run out of poles.  Therefore, in punishment for
 your most grievous sin, we shall deprive you of all your valuables,
 and of your life.`);
       return t;
-    } : false;
+    }
+    return false;
   }
 
 G_then = 0
@@ -44,40 +46,43 @@ export function bucket(arg?: (FALSE | ATOM)) {
     let po: (DIRECTION | FALSE | OBJECT) = pv[2];
     let w: OBJECT = find_obj(`WATER`);
     let buck: OBJECT = find_obj(`BUCKE`);
-    (arg === read_in) ? {
+    if(arg === read_in) {
       return false;
-    } : ((pa === G_c_int_X_words && (memq(w,ocontents(buck))) ? {
+    } else if((pa === G_c_int_X_words && if(memq(w,ocontents(buck))) {
             remove_object(w);
             return false;
-          } : {
+          } else {
             return t;
-          })) ? {
+          })) {
       ;
-    } : (arg === read_out) ? {
-      return ((ocan(w) === buck && !G_bucket_top_X_flag)) ? {
+    } else if(arg === read_out) {
+      if((ocan(w) === buck && !G_bucket_top_X_flag)) {
           tell(`The bucket rises and comes to a stop.`);
           G_bucket_top_X_flag = t;
           pass_the_bucket(find_room(`TWELL`), pv,buck);
           clock_int(G_bckin,100);
           return false;
-        } : ((G_bucket_top_X_flag && ocan(w) !== buck)) ? {
+        } else if((G_bucket_top_X_flag && ocan(w) !== buck)) {
           tell(`The bucket descends and comes to a stop.`);
           G_bucket_top_X_flag = false;
           return pass_the_bucket(find_room(`BWELL`), pv,buck);
-        } : false;
-    } : false;
+        }
+        return false;
+    }
+    return false;
   }
 
 export function pass_the_bucket(r: ROOM, pv: VECTOR, b: OBJECT) {
     let pvs: (FALSE | OBJECT | DIRECTION) = pv[2];
-    pv[2] = false;
-remove_object(b);
-insert_object(b,r);
-(avehicle(G_winner) === b) ? {
+    return pv[2] = false;
+return remove_object(b);
+return insert_object(b,r);
+if(avehicle(G_winner) === b) {
       goto(r);
       return room_info(t);
-    } : false;
-pv[2] = pvs;
+    }
+    return false;
+return pv[2] = pvs;
   }
 
 export function eatme_function() {
@@ -85,19 +90,20 @@ export function eatme_function() {
     let c: OBJECT = null;
     let pv: VECTOR = G_prsvec;
     let here: ROOM = G_here;
-    ((pv[1] === G_eat_X_words && pv[2] === c = find_obj(`ECAKE`) && here === find_room(`ALICE`))) ? {
+    if((pv[1] === G_eat_X_words && pv[2] === c = find_obj(`ECAKE`) && here === find_room(`ALICE`))) {
       tell(`Suddenly, the room appears to have become very large.`);
       kill_obj(c,G_winner);
       r = find_room(`ALISM`);
       r[G_robjs] = robjs(here);
       mapf(false,
 		 function(x: OBJECT) {
-            x[G_osize] = _(64, osize(x));
-x[G_oroom] = r;
+            return x[G_osize] = _(64, osize(x));
+return x[G_oroom] = r;
           },
 		 robjs(here));
       return goto(r);
-    } : false;
+    }
+    return false;
   }
 
 export function cake_function() {
@@ -110,72 +116,75 @@ export function cake_function() {
     let bice: OBJECT = find_obj(`BLICE`);
     let here: ROOM = G_here;
     let r: OBJECT = null;
-    (pa === G_read_X_words) ? {
-      return (pi) ? {
-          return (pi === find_obj(`BOTTL`)) ? {
+    if(pa === G_read_X_words) {
+      if(pi) {
+          if(pi === find_obj(`BOTTL`)) {
               return tell(`The letters appear larger, but still are too small to be read.`);
-            } : (pi === find_obj(`FLASK`)) ? {
+            } else if(pi === find_obj(`FLASK`)) {
               return tell(`The icing, now visible, says '`,
 				   1,
-				   (po === rice) ? {
+				   if(po === rice) {
                     return `Evaporate`;
-                  } : (po === oice) ? {
+                  } else if(po === oice) {
                     return `Explode`;
-                  } : {
+                  } else {
                     return `Enlarge`;
                   },
 				   `'.`);
-            } : {
+            } else {
               return tell(`You can't see through that!`);
             };
-        } : {
+        } else {
           return tell(`The only writing legible is a capital E.  The rest is too small to
 be clearly visible.`);
         };
-    } : ((pa === G_eat_X_words && spname(rid(here))[`ALI`])) ? {
-      return (po === oice) ? {
+    } else if((pa === G_eat_X_words && spname(rid(here))[`ALI`])) {
+      if(po === oice) {
           kill_obj(po,G_winner);
           return iceboom();
-        } : (po === bice) ? {
+        } else if(po === bice) {
           kill_obj(po,G_winner);
           tell(`The room around you seems to be getting smaller.`);
-          return (here === find_room(`ALISM`)) ? {
+          if(here === find_room(`ALISM`)) {
               r = find_room(`ALICE`);
               r[G_robjs] = robjs(here);
               mapf(false,
 				   function(x: OBJECT) {
-                    x[G_oroom] = r;
-x[G_osize] = _(osize(x), 64);
+                    return x[G_oroom] = r;
+return x[G_osize] = _(osize(x), 64);
                   },
 				   robjs(here));
               return goto(r);
-            } : {
+            } else {
               return jigs_up(G_crushed);
             };
-        } : false;
-    } : ((pa === G_throw_X_words && po === oice && spname(rid(here))[`ALI`])) ? {
+        }
+        return false;
+    } else if((pa === G_throw_X_words && po === oice && spname(rid(here))[`ALI`])) {
       kill_obj(po,G_winner);
       return iceboom();
-    } : ((pa === G_throw_X_words && po === rice && pi === find_obj(`POOL`))) ? {
+    } else if((pa === G_throw_X_words && po === rice && pi === find_obj(`POOL`))) {
       remove_object(pi);
       tell(`The pool of water evaporates, revealing a tin of rare spices.`);
       return tro(find_obj(`SAFFR`), G_ovison);
-    } : false;
+    }
+    return false;
   }
 
 export function flask_function() {
     let f = null;
     let pv: VECTOR(VERB, OBJECT) = G_prsvec;
     let pa: VERB = pv[1];
-    (pa === G_open_X_words) ? {
+    if(pa === G_open_X_words) {
       mung_room(G_here,`Noxious vapors prevent your entry.`);
       return jigs_up(G_vapors);
-    } : ((pa === G_mung_X_words || pa === G_throw_X_words)) ? {
+    } else if((pa === G_mung_X_words || pa === G_throw_X_words)) {
       tell(`The flask breaks into pieces.`);
       f = pv[2];
       trz(f,G_ovison);
       return jigs_up(G_vapors);
-    } : false;
+    }
+    return false;
   }
 
 psetg(vapors,
@@ -188,10 +197,10 @@ the  walls are not as compressible as your body, which is somewhat
 demolished.`)
 
 export function iceboom() {
-    mung_room(G_here,`The door to the room seems to be blocked by sticky orange rubble
+    return mung_room(G_here,`The door to the room seems to be blocked by sticky orange rubble
 from an explosion.  Probably some careless adventurer was playing
 with blasting cakes.`);
-jigs_up(G_iceblast);
+return jigs_up(G_iceblast);
   }
 
 psetg(iceblast, `You have been blasted to smithereens (wherever they are).`)
@@ -203,31 +212,34 @@ export function magnet_room() {
     let po: (FALSE | OBJECT | DIRECTION) = pv[2];
     let here: ROOM = G_here;
     let m: (FALSE | PRIMTYPE(VECTOR)) = null;
-    (pa === G_look_X_words) ? {
+    if(pa === G_look_X_words) {
       return tell(`You are in a room with a low ceiling which is circular in shape. 
 There are exits to the east and the southeast.`);
-    } : ((pa === G_walk_in_X_words && G_carousel_flip_X_flag)) ? {
-      return (G_carousel_zoom_X_flag) ? {
+    } else if((pa === G_walk_in_X_words && G_carousel_flip_X_flag)) {
+      if(G_carousel_zoom_X_flag) {
           return jigs_up(G_spindizzy);
-        } : (tell(`As you enter, your compass starts spinning wildly.`)) ? {
+        } else if(tell(`As you enter, your compass starts spinning wildly.`)) {
           return false;
-        } : false;
-    } : (pa === G_walk_X_words) ? {
-      return ((G_carousel_flip_X_flag && G_winner === G_player)) ? {
+        }
+        return false;
+    } else if(pa === G_walk_X_words) {
+      if((G_carousel_flip_X_flag && G_winner === G_player)) {
           tell(`You cannot get your bearings...`);
           goto(cxroom(foo = rexits(here)[_(2, _(1, mod(random(), 8)))]));
           return room_info();
-        } : (m = memq(chtype(po,atom), rest(rexits(here), 12))) ? {
+        } else if(m = memq(chtype(po,atom), rest(rexits(here), 12))) {
           goto(cxroom(foo = m[2]));
           return room_info();
-        } : false;
-    } : false;
+        }
+        return false;
+    }
+    return false;
   }
 
 export function cmach_room() {
     let pv: VECTOR = G_prsvec;
     let pa: VERB = pv[1];
-    (pa === G_look_X_words) ? {
+    if(pa === G_look_X_words) {
       return tell(`You are in a large room full of assorted heavy machinery.  The room
 smells of burned resistors. The room is noisy from the whirring
 sounds of the machines. Along one wall of the room are three buttons
@@ -236,7 +248,8 @@ above these buttons are instructions written in EBCDIC.  A large sign
 in English above all the buttons says
 		'DANGER -- HIGH VOLTAGE '.
 There are exits to the west and the south.`);
-    } : false;
+    }
+    return false;
   }
 	  
 G_carousel_zoom_X_flag = false
@@ -248,31 +261,35 @@ export function buttons() {
     let pv: VECTOR = G_prsvec;
     let po = pv[2];
     let pa: VERB = pv[1];
-    (pa === G_push_X_words) ? {
-      return (G_winner === G_player) ? {
+    if(pa === G_push_X_words) {
+      if(G_winner === G_player) {
           return jigs_up(`There is a giant spark and you are fried to a crisp.`);
-        } : (po === find_obj(`SQBUT`)) ? {
-          return (G_carousel_zoom_X_flag) ? {
+        } else if(po === find_obj(`SQBUT`)) {
+          if(G_carousel_zoom_X_flag) {
               return tell(`Nothing seems to happen.`);
-            } : (G_carousel_zoom_X_flag = t) ? {
+            } else if(G_carousel_zoom_X_flag = t) {
               return tell(`The whirring increases in intensity slightly.`);
-            } : false;
-        } : (po === find_obj(`RNBUT`)) ? {
-          return (G_carousel_zoom_X_flag) ? {
+            }
+            return false;
+        } else if(po === find_obj(`RNBUT`)) {
+          if(G_carousel_zoom_X_flag) {
               G_carousel_zoom_X_flag = false;
               return tell(`The whirring decreases in intensity slightly.`);
-            } : {
+            } else {
               return tell(`Nothing seems to happen.`);
             };
-        } : (po === find_obj(`TRBUT`)) ? {
+        } else if(po === find_obj(`TRBUT`)) {
           G_carousel_flip_X_flag = !G_carousel_flip_X_flag;
-          return (memq(i = find_obj(`IRBOX`),
-				   robjs(find_room(`CAROU`)))) ? {
+          if(memq(i = find_obj(`IRBOX`),
+				   robjs(find_room(`CAROU`)))) {
               tell(`A dull thump is heard in the distance.`);
               return trc(i,G_ovison);
-            } : false;
-        } : false;
-    } : false;
+            }
+            return false;
+        }
+        return false;
+    }
+    return false;
   }
 
 psetg(spindizzy,
@@ -289,12 +306,12 @@ export function sphere_function() {
     let c: ROOM = null;
     let fl: (ATOM | FALSE) = null;
     let ract: ADV = null;
-    fl = (!G_cage_solve_X_flag && pa === G_take_X_words);
-((fl && G_player === G_winner)) ? {
+    return fl = (!G_cage_solve_X_flag && pa === G_take_X_words);
+if((fl && G_player === G_winner)) {
       tell(`As you reach for the sphere, an iron cage falls from the ceiling
 to entrap you.  To make matters worse, poisonous gas starts coming
 into the room.`);
-      return (oroom(r) === G_here) ? {
+      if(oroom(r) === G_here) {
           goto(c = find_room(`CAGED`));
           remove_object(r);
           insert_object(r,c);
@@ -302,13 +319,14 @@ into the room.`);
           tro(r,G_ndescbit);
           G_sphere_clock = clock_int(G_sphin,10);
           return t;
-        } : (else) ? {
+        } else if(else) {
           trz(find_obj(`SPHER`), G_ovison);
           mung_room(find_room(`CAGER`),
 				 `You are stopped by a cloud of poisonous gas.`);
           return jigs_up(G_poison);
-        } : false;
-    } : (fl) ? {
+        }
+        return false;
+    } else if(fl) {
       trz(find_obj(`SPHER`), G_ovison);
       jigs_up(`As the robot reaches for the sphere, an iron cage falls from the
 ceiling.  The robot attempts to fend it off, but is trapped below it.
@@ -318,19 +336,21 @@ crushes the sphere beneath him as he falls to the floor.`);
       trz(pv[2], G_ovison);
       insert_object(find_obj(`RCAGE`), G_here);
       return t;
-    } : (pa === G_c_int_X_words) ? {
+    } else if(pa === G_c_int_X_words) {
       mung_room(find_room(`CAGER`),
 			  `You are stopped by a cloud of poisonous gas.`);
       return jigs_up(G_poison);
-    } : false;
+    }
+    return false;
   }
 
 psetg(poison, `Time passes...and you die from some obscure poisoning.`)
 
 export function caged_room() {
-    (G_cage_solve_X_flag) ? {
+    if(G_cage_solve_X_flag) {
       return G_here = find_room(`CAGER`);
-    } : false;
+    }
+    return false;
   }
 
 export let G_sphere_clock: CEVENT;export let G_robot_actions: UVECTOR(/*[*/ [REST, VERB] /*]*/);
@@ -342,7 +362,7 @@ export function robot_actor() {
     let cage: OBJECT = null;
     let r: OBJECT = find_obj(`ROBOT`);
     let ract: ADV = null;
-    ((pa === G_raise_X_words && po === find_obj(`CAGE`))) ? {
+    if((pa === G_raise_X_words && po === find_obj(`CAGE`))) {
       tell(`The cage shakes and is hurled across the room.`);
       clock_disable(G_sphere_clock);
       G_winner = G_player;
@@ -356,13 +376,13 @@ export function robot_actor() {
       insert_object(r,c);
       ract = orand(r)[G_aroom] = c;
       return G_cage_solve_X_flag = t;
-    } : ((pa === G_eat_X_words || pa === G_drink_X_words)) ? {
+    } else if((pa === G_eat_X_words || pa === G_drink_X_words)) {
       return tell(`\"I am sorry but that action is difficult in the absence of a mouth.\`);
-    } : (pa === G_read_X_words) ? {
+    } else if(pa === G_read_X_words) {
       return tell(`\"My vision is not that good without eyes.\`);
-    } : (memq(pa,G_robot_actions)) ? {
+    } else if(memq(pa,G_robot_actions)) {
       return false;
-    } : {
+    } else {
       return tell(`\"I am only a stupid robot and cannot perform that command.\`);
     };
   }
@@ -374,7 +394,7 @@ export function robot_function() {
     let pi: (FALSE | OBJECT) = pv[3];
     let pp: OBJECT = null;
     let aa: ADV = null;
-    (pa === G_give_X_words) ? {
+    if(pa === G_give_X_words) {
       aa = orand(pp = pi);
       remove_object(po);
       aa[G_aobjs] = /*(*/ [po,_X,aobjs(aa)] /*)*/;
@@ -383,37 +403,38 @@ export function robot_function() {
 		     odesc2(po),
 		     `
 and nods his head-like appendage in thanks.`);
-    } : ((pa === G_throw_X_words || pa === G_mung_X_words)) ? {
+    } else if((pa === G_throw_X_words || pa === G_mung_X_words)) {
       tell(`The robot is injured (being of shoddy construction) and falls to the
 floor in a pile of garbage, which disintegrates before your eyes.`);
-      return remove_object((pa === G_throw_X_words) ? {
+      return remove_object(if(pa === G_throw_X_words) {
             return pi;
-          } : {
+          } else {
             return po;
           });
-    } : false;
+    }
+    return false;
   } 
 
 export function knock() {`AUX`, /*(*/ [prso, G_prsvec[2]] /*)*/
-    (memq(door_X_objects, onames(prso))) ? {
+    if(memq(door_X_objects, onames(prso))) {
       return tell(`I don't think that anybody's home.`);
-    } : {
+    } else {
       return tell(`Why knock on a `, 0, odesc2(prso), `?`);
     };
   }
 
 export function chomp() {
-    tell(`I don't know how to do that.  I win in all cases!`);
+    return tell(`I don't know how to do that.  I win in all cases!`);
   }
 
 export function frobozz() {
-    tell(`The FROBOZZ Corporation created, owns, and operates this dungeon.`);
+    return tell(`The FROBOZZ Corporation created, owns, and operates this dungeon.`);
   }
 
 export function win() {
-    tell(`Naturally!`);
+    return tell(`Naturally!`);
   }
 
 export function yell() {
-    tell(`Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!`);
+    return tell(`Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!`);
   }

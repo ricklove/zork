@@ -4,16 +4,16 @@ function getIndentation(depth: number) {
     return [...new Array(depth + 1)].join('  ');
 }
 
-const getNodesWithSpace = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
-    return getNodesWithOriginalDecorations(nodes, depth, indentFirst, delimeter);
+const getNodesWithSpace = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = '', shouldReturnLast = false): string => {
+    return getNodesWithOriginalDecorations(nodes, depth, indentFirst, delimeter, shouldReturnLast);
 };
 
 const getNodesWithIndent = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = '', shouldReturnLast = false): string => {
     const indent = getIndentation(depth);
-    return `${indentFirst ? `\n${indent}` : ''}${nodes.map((x, i) => `${shouldReturnLast && i === nodes.length - 1 ? 'return ' : ''}${convertToTypescript(x)}`).join(`${delimeter}\n${indent}`)}`;
+    return `${indentFirst ? `\n${indent}` : ''}${nodes.map((x, i) => convertToTypescript(x, { shouldReturn: shouldReturnLast && i === nodes.length - 1 })).join(`${delimeter}\n${indent}`)}`;
 };
 
-const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = ''): string => {
+const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFirst = false, delimeter = '', shouldReturnLast = false): string => {
     if (nodes.length === 0) { return ''; }
 
     const start = nodes[0]._raw.start;
@@ -21,7 +21,9 @@ const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFi
     let text = '';
     let s = start;
 
-    for (let n of nodes) {
+    for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+
         // Get extra stuff
         const extraLen = n._raw.start - s;
         if (extraLen > 0) {
@@ -31,7 +33,8 @@ const getNodesWithOriginalDecorations = (nodes: ZNode[], depth: number, indentFi
         }
 
         // Get node content
-        text += convertToTypescript(n) + delimeter;
+        const nodeText = convertToTypescript(n, { shouldReturn: shouldReturnLast && i === nodes.length - 1 });
+        text += `${nodeText}${delimeter}`;
         s += n._raw.length;
     }
 
@@ -105,7 +108,9 @@ const getConditionMap = (nodes: ZNode[]) => {
 
 const convertToTypescriptFunctionDeclaration = (name: undefined | ZToken, argsList: undefined | ZList, declList: undefined | ZList, body: undefined | ZList[], depth: number, isFileScope = false) => {
     const nameText = name && name.kind === 'ZToken' ? convertToTypescriptName(name) : undefined;
-    const bodyText = body?.map(n => `${convertToTypescript(n)};\n`).join('') ?? '';
+
+
+    const bodyText = body?.map(n => `${convertToTypescript(n, { shouldReturn: true })};\n`).join('') ?? '';
 
     let argsListText = '';
     let varsListText = '';
@@ -204,7 +209,13 @@ const convertToTypescriptFunctionDeclarationOuter = (name: undefined | ZToken, f
 };
 
 
-export const convertToTypescript = (node: ZNode): string => {
+export const convertToTypescript = (node: ZNode, options?: { shouldReturn: boolean }): string => {
+    let shouldReturn = options?.shouldReturn ?? false;
+    const n = convertToTypescript_inner(node, { shouldReturn, onHasReturned: () => shouldReturn = false });
+    return `${shouldReturn ? 'return ' : ''}${n}`;
+}
+
+export const convertToTypescript_inner = (node: ZNode, options?: { shouldReturn: boolean, onHasReturned: () => void }): string => {
 
     if (node.kind === 'ZFile') {
         // Get title
@@ -542,21 +553,26 @@ export const convertToTypescript = (node: ZNode): string => {
             && firstNode.kind === 'ZToken'
             && firstNode.toString() === 'COND'
         ) {
+            if (options?.shouldReturn) {
+                options.onHasReturned();
+            }
+
             const c = getConditionMap(nodes.slice(1));
             const indent = getIndentation(depth);
             const indent1 = getIndentation(depth + 1);
             return `${c.conditionBlocks.map((x, i) => {
-                const isTernary = true;
+                const isTernary = false;
+                const returnLast = true;
 
                 const isFirst = i === 0;
                 const isLast = i === c.conditionBlocks.length - 1;
                 let cond = x.condition ? convertToTypescript(x.condition) : (isLast ? undefined : true);
                 //const body = getNodesWithSpace(x.bodyNodes, depth, false, ';');
-                let body = getNodesWithIndent(x.bodyNodes, depth + 1, false, ';', isTernary) + ';';
+                let body = getNodesWithIndent(x.bodyNodes, depth + 1, false, ';', returnLast) + ';';
 
                 if (isLast && cond && x.bodyNodes.length === 0) {
                     cond = undefined;
-                    body = getNodesWithIndent([x.condition], depth + 1, false, ';', isTernary) + ';';
+                    body = getNodesWithIndent([x.condition], depth + 1, false, ';', returnLast) + ';';
                 }
 
                 if (isTernary) {
@@ -569,10 +585,12 @@ export const convertToTypescript = (node: ZNode): string => {
                     }
                 }
 
+                const defaultReturn = `${isLast && options?.shouldReturn ? `\n${indent}return false` : ''}`;
+
                 if (isFirst) {
-                    return `if(${cond}) {\n${indent1}${body}\n${indent}}`;
+                    return `if(${cond}) {\n${indent1}${body}\n${indent}}${defaultReturn}`;
                 } else if (cond) {
-                    return `else if(${cond}) {\n${indent1}${body}\n${indent}}`;
+                    return `else if(${cond}) {\n${indent1}${body}\n${indent}}${defaultReturn}`;
                 } else {
                     return `else {\n${indent1}${body}\n${indent}}`;
                 }
